@@ -1,0 +1,15 @@
+node_modules
+src/bower_components
+bower_components
+e2e_screenshots
+.idea/
+.tmp/
+*.iml
+*.ipr
+*.iws
+gradle
+build/
+src/app/templates.js
+.sass-cache/
+dist/
+.DS_Store

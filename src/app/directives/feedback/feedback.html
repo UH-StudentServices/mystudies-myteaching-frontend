@@ -1,0 +1,53 @@
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<div class="feedback-container" ng-class="{form: showForm}">
+    <div class="feedback__box-default" ng-show="showDefaultState" ng-click="giveFeedback()">
+        <div class="content">
+            <span class="hy hy-2x hy-chat"></span>
+            <div class="hide-mobile-only">{{ 'feedback.title' | translate }}</div>
+        </div>
+    </div>
+    <div class="feedback__box-submitted" ng-show="showSubmittedState">
+        <div class="content">
+            <span class="hy hy-2x hy-done"></span>
+            <div class="hide-mobile-only">{{ 'feedback.submitted' | translate }}</div>
+        </div>
+    </div>
+    <div class="feedback__box-form" ng-show="showForm">
+        <div class="content">
+            <form novalidate name="feedbackForm">
+                <textarea rows="8" ng-model="content" focus="showForm" maxlength="2000" required></textarea>
+                <div>
+                    <input id="feedBackEmailReplyCheck" type="checkbox" ng-model="emailReply"/>
+                    <label for="feedBackEmailReplyCheck">
+                        {{'feedback.emailReply' | translate | capitalize }}
+                    </label>
+                </div>
+                <input ng-required="emailReply"
+                        type="email"
+                        ng-model="email"
+                        ng-show="emailReply"
+                        placeholder="{{'general.emailAddress' | translate | capitalize}}">
+                <div class="actions">
+                    <span ng-click="cancel()" class="hy hy-remove cancel"></span>
+                    <input ng-disabled="!feedbackForm.$valid" ng-click="submit()" type="submit" value="{{ 'feedback.submit' | translate }}" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

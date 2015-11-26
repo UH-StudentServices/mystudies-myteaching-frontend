@@ -1,0 +1,380 @@
+{
+  "general": {
+    "teacher": "lärare",
+    "student": "studerande",
+    "teachers": "lärare",
+    "courses": "kurser",
+    "exams": "tentamina",
+    "show": "visa",
+    "save": "spara",
+    "cancel": "annulera",
+    "edit": "redigera",
+    "done": "färdig",
+    "copyToClipboard" : "kopiera till klippbordet",
+    "copyToClipboardSuccess" : "Kopierad",
+    "copyToClipboardFailMac" : "Klicka ⌘-C för att kopiera",
+    "copyToClipboardFailOther" : "Klicka Ctrl-C för att kopiera",
+    "teaching" : "undervisning",
+    "pastTeaching" : "avslutad undervisning",
+    "emailAddress" : "e-post",
+    "readMore" : "läs mer",
+    "yes"  : "ja",
+    "no" : "nej"
+  },
+  "abbreviations": {
+    "credits": "sp"
+  },
+  "toolbar": {
+    "logout": "Logga ut",
+    "helsinkiUniversity": "Helsingfors universitet",
+    "search": {
+      "openSearch": "Öppna sök",
+      "search": "Sök",
+      "closeSearch": "Stäng sök",
+      "categories": {
+        "ALL": "Allt",
+        "HELDA": "HELDA",
+        "COURSES": "Kurser",
+        "EVENTS": "Evenemanger",
+        "UNIVERSITY": "Universitetets websidor"
+      }
+    },
+    "icons": {
+      "search": "Sök",
+      "tour": "Introduktionstur",
+      "notifications": "Notifikationer",
+      "logout": "Logga ut"
+    }
+  },
+  "pageHeaderLinks": {
+    "email": "e-post",
+    "flamma": "flamma",
+    "moodle": "moodle",
+    "library": "bibliotek",
+    "contact": "kontaktinformation"
+  },
+  "primaryLinks": {
+    "oodi": "Weboodi"
+  },
+  "opintoni": {
+    "feedback": {
+      "bannerHeading": "GE FEEDBACK PÅ MINA STUDIER",
+      "bannerText": "Mina studier ger en översikt av dina kurser. Med feedback hjälper du att förbättra tjänsten."
+    },
+    "pageHeaderBranding": "Mina studier"
+  },
+  "opetukseni": {
+    "feedback": {
+      "bannerHeading": "GE FEEDBACK PÅ MIN UNDERVISNING",
+      "bannerText": "Min undervisning ger en översikt av dina kurser. Med feedback hjälper du att förbättra tjänsten."
+    },
+    "pageHeaderBranding": "Min undervisning"
+  },
+  "admin": {
+    "pageHeaderBranding": "Admin",
+    "feedback": "Feedback",
+    "downloadCsv": "Ladda som CSV",
+    "timestamp": "Tidsstämpel",
+    "first": "första",
+    "last": "sista",
+    "emailReply" : "User wants reply to email (sv)",
+    "faculty" : "Faculty (sv)",
+    "state" : "state (sv)",
+    "userAgent" : "userAgent (sv)"
+  },
+  "navigationTab": {
+    "frontPage": "Framsidan",
+    "calendar": "Kalender",
+    "structure": "Struktur",
+    "timetable": "tidsplan"
+  },
+  "mobileNavigation": {
+    "shortcutsTitle": "Genvägar",
+    "shortcutsDescription": "Email, Flamma, Moodle, Library, Kontaktinformation",
+    "returnLinksTitle": "Returlänkar",
+    "returnLinksDescription": "Tillbaka till universitetes hemsida"
+  },
+  "weekFeed": {
+    "nowTeaching": "Nu i min undervisning",
+    "nowStudying": "Nu i mina studier",
+    "nextEvents": "Kommande händelser",
+    "nextEventsShort": "Kommande",
+    "allEvents": "Alla händelser",
+    "noEvents": "Inga händelser",
+    "noUpcomingEvents": "Du har inga kommande händelser.",
+    "noPastEvents": "Du har inga tidigare hädelser.",
+    "noCourses" : "Du har inte gjort någon kursanmälan i WebOodi",
+    "noExams" : "Du har inga kommande tentamina",
+    "noCurrentTeacherCourses": "Du har inga aktuella kurser.",
+    "noPastTeacherCourses": "Du har inga avslutade kurser.",
+    "courseMaterials": "Gå till kursmaterial",
+    "courseMaterialsMoodle": "Gå till Moodle",
+    "showRoute": "Visa vägen",
+    "showOnMap": "Visa på karta",
+    "errors": {
+      "errorLoadingFutureEvents": "Kommande händelser kunde inte laddas",
+      "errorLoadingExams": "Tentamina kunde inte laddas",
+      "errorLoadingCourses": "Kurserna kunde inte laddas"
+    },
+    "subscribeEvents" : "beställ händelser",
+    "calendarInstructions" : "Så här importerar du händelser till kalenderprogram"
+  },
+  "attainments": {
+    "attainments": "Prestationer",
+    "seeMoreLink": "se en lista över dina prestationer i WebOodi",
+    "noAttainmentsFromLastSixMonths": "Inga prestationer från de senaste sex månaderna"
+  },
+  "usefulLinks": {
+    "title": "Nyttigt",
+    "yths": "SHVS",
+    "studyingAndTrainingAbroad": "Studier och praktik utomlands ",
+    "studenServices": "Tjänster för studerande",
+    "academicAdministration": "Studieadministration",
+    "professionalDevelopment": "Utvecklas som lärare",
+    "staffAndFacultyMobility": "Internationellt lärar- och forskarutbyte",
+    "addNewLink": "skapa länk...",
+    "linkDescription": "länkbeskrivning…",
+    "linkUrl": "länk URL...",
+    "openUniversity": "Öppna universitet",
+    "teachingSupportOpenUniversity": "Opetuksen tueksi/Avoin yliopisto",
+    "teachingPracticesInOpenUniversity": "Opetuksen käytännöt Avoimessa",
+    "pedagogicTraining": "Pedagoginen koulutus",
+    "forTeachers": "För lärare",
+    "studentCounseling": "Studiehandledning",
+    "examsAndOtherAssessmentTools": "Examina och andra utvärderingsverktyg",
+    "certificateOfStudyAttainments": "Studieutdrag"
+  },
+  "notificationsMenu": {
+    "title": "Notifikationer"
+  },
+  "userSettings": {
+    "title": "Inställningar",
+    "changeAvatar": {
+      "title": "Byt avatar bild",
+      "uploadFile": "Ladda up fil",
+      "takePicture": "Ta bild",
+      "useDefault": "Anfand standard bild",
+      "cancelPicture": "Annulera"
+    },
+    "changeBackground": "Byt bakgrundsbild",
+    "portfolio": "portfolio",
+    "ariaLabels": {
+      "chooseBackgroundImage": "Välj bakgrundsbild"
+    }
+  },
+  "buttons": {
+    "showMore": "Visa mer"
+  },
+  "favorites": {
+    "types": {
+      "RSS": "RSS",
+      "TWITTER": "Twitter",
+      "LINK": "Webbsidans länk",
+      "UNICAFE": "Unicafes lunchmeny",
+      "UNISPORT": "Unisports bokningar"
+    },
+    "title": "favoriter",
+    "readMore": "läs mer...",
+    "addNew": "lägg till",
+    "rss": {
+      "rssFeedSearch": "Sök innehåll eller lägg till urlen",
+      "numberOfItems": "Antal synliga notiser",
+      "1item": "1 notis",
+      "3items": "3 notiser"
+    },
+    "link": {
+      "linkPlaceholder": "urlen till favorit hemsidan"
+    },
+    "unicafe" : {
+      "notAvailable" : "lunchmeny inte tillgängligt",
+      "closed" : "restaurangen är stängd",
+      "lunchMenu" : "lunchmeny"
+    },
+    "twitter": {
+      "twitterPlaceholder": "Twitter användernamn, t.ex helsinkiuni"
+    },
+    "submitButton": "lägg",
+    "cancelButton": "avbryt",
+    "ariaLabels": {
+      "clearSearch": "återställ",
+      "searchResults": "sökresultat"
+    }
+  },
+  "globalMessages": {
+    "errors": {
+      "genericError": "Det uppstår problem med tjänsten för tillfället. Vissa funktioner fungerar inte kanske som de ska."
+    }
+  },
+  "todoItems": {
+    "title": "Uppgiftslista",
+    "listIsEmpty": "Din uppgiftslista är tom",
+    "addNew": "Skapa en ny todo",
+    "check": "Klarmarkera",
+    "ariaLabels": {
+      "addNewButton": "Skapa en ny todo -knapp"
+    }
+  },
+  "userNotifications": {
+    "title": "",
+    "noNotifications" : "Inga notifikationer."
+  },
+  "tour" : {
+    "common": {
+      "closeConfirm" : "Vill du stänga introduktionsturen?",
+      "start": "Börja",
+      "skip": "hoppa över",
+      "next": "följande",
+      "previous": "föregående",
+      "finish": "sluta",
+      "search": {
+        "heading": "Sök",
+        "text": "Sök information från Helsingfors universitets hemsidor, evenemanger, kurser och digitala arkivet (HELDA)."
+      },
+      "notifications": {
+        "heading": "Notifikationer",
+        "text": "Notifikationsklockan berättar om nya meddelanden eller material har läggs till kurssidan."
+      },
+      "todoItems": {
+        "heading": "Uppgiftslista",
+        "text": "Skapa en ny todo genom att skriva den i textrutan och klicka +-knappen. Du kan markera en todo färdigt eller ta bort den med ikoner på den högra sidan av todon."
+      },
+      "usefulLinks": {
+        "heading": "Nyttigt",
+        "text": "Nyttiga länkar rekommenderas baserad på din studerande- eller lärarstatus. Om du är både lärare och studerande, ser du länkar som är riktade mot lärare. Du kan ta bort och skapa nya länkar genom att klicka Redigera. Länkar visas i den ordning du har skapat dem."
+      },
+      "favorites": {
+        "heading": "Favoriter",
+        "text": "Du kan lägga rss feed, länkar och Unicafes lunchmeny till favoriter.  Klicka +-knappen i Lägg till -lådan för att lägga till en ny favorit. Klicka på Redigera och dra en favorit till en ny plats eller ta bort den genom att klicka den blåa korsen i dess övre högra hörnet. Klicka på Färdig för att spara ändringar."
+      }
+    },
+    "student": {
+      "intro": {
+        "heading": "Mina studier",
+        "text": "Mina studier ger en översikt av dina kurser. Sidan visar kommande händelser med tids- och platsinformation och ger en enkel åtkomst till dina kurssidor. Observera att varje kurs ännu inte har en kurssida. Du kan till och med personifiera egna länk-, favorit och uppgiftslistor. Tjänsten aktiveras när du slutar introduktionsturen. Du kan öppna turen igen genom att klicka på i-ikonen bredvid sökfältet. Kom ihåg att ge feedback och hjälp oss att förbättra tjänsten."
+      },
+      "weekFeed": {
+        "heading": "Nu i mina studier",
+        "text": "Nu i mina studier visar de kurser och tentamina som du har anmält dig till i WebOodi. De finns tre flikar: kommande händelser, kurser och tentamina. Mina studier visar den flik som förblev öppen senaste gången du besökte sidan. Du riktas till kurssidan när du klickar på kursens namn. Observera att varje kurs ännu inte har en kurssida."
+      }
+    },
+    "teacher": {
+      "intro": {
+        "heading": "Min undervisning",
+        "text": "Min undervisning ger en översikt av dina kurser. Sidan visar kommande händelser med tids- och platsinformation och ger en enkel åtkomst till dina kurssidor. Observera att varje kurs ännu inte har en kurssida. Du kan till och med personifiera egna länk-, favorit och uppgiftslistor. Tjänsten aktiveras när du slutar introduktionsturen. Du kan öppna turen igen genom att klicka på i-ikonen bredvid sökfältet. Kom ihåg att ge feedback och hjälp oss att förbättra tjänsten."
+      },
+      "weekFeed": {
+        "heading": "Nu i min undervisning",
+        "text": "Nu i min undervisning visar de kurser och tentamina som du är som lärare i WebOodi. De finns fyra flikar: kommande händelser, undervisning, tentamina och avslutad undervisning. Min undervisning visar den flik som förblev öppen senaste gången du besökte sidan. Om kurssidan har genererats till dig, riktas du till kurssidan när du klickar på kursens namn."
+      }
+    },
+    "ariaLabels" : {
+      "startTour" : "börja turen"
+    }
+  },
+  "searchResults": {
+    "title": "Sök",
+    "hitsFound": "Resultat ({{ hitCount }})",
+    "close": "Stäng sök"
+  },
+  "pageBanner": {
+    "giveFeedback": "Ge feedback",
+    "newsButtonLabel": "Läs mera",
+    "chooseDefaultBackground": "Välj av standardbilder"
+  },
+  "errorPage" : {
+    "accessDenied" : {
+      "title" : "nekat tillträde",
+      "description" : "du har inte tillgång till denna sida"
+    },
+    "maintenance" : {
+      "title" : "under underhåll",
+      "description" : "Vi odlar nytt! Sidan är för närvarande under underhåll."
+    }
+  },
+  "landerPage": {
+    "opintoni": {
+      "login": {
+        "title": "Välkommen till Mina studier",
+        "intro": "Mina studier finns där du är. Den är din egen sida för kurser, intressant innehåll och universitetets andra tjänster.",
+        "alternativeLogin": "Om du är lärare vid Helsingfors universitet, logga in till <a href=\"{{ loginUrlTeacher }}\">Min undervisning</a>.",
+        "goToLogin": "Logga in"
+      }
+    },
+    "opetukseni": {
+      "login": {
+        "title": "Välkommen till Min undervisning",
+        "intro": "Min undervisning finns där du är. Den är din egen sida för kurser, intressant innehåll och universitetets andra tjänster.",
+        "alternativeLogin": "Om du är studerande vid Helsingfors universitet, logga in till <a href=\"{{ loginUrlStudent }}\">Mina studier</a>.",
+        "goToLogin": "Logga in"
+      }
+    },
+    "readMore": "Läs mera"
+  },
+  "upcomingCourses": {
+    "title": "Kommande undervisning"
+  },
+  "codes": {
+    "courseTypes": {
+      "3": "Praktik",
+      "5": "Föreläsningskurs",
+      "7": "Övningsgrupp",
+      "8": "Allmän tent",
+      "10": "Seminarium",
+      "12": "Fältkurs",
+      "16": "Sommartent",
+      "17": "Kurs",
+      "19": "Tentamen",
+      "20": "Litteraturtentamen",
+      "21": "Skriftlig arbete",
+      "22": "Laboratorium arbete",
+      "23": "Omtentamen",
+      "26": "Nätkurs",
+      "27": "Nättentamen",
+      "99": "Annan undervisningsprocess"
+    }
+  },
+  "faculties": {
+    "A93000": "Öppna universitetet",
+    "H57": "Bio- och miljövetenskapliga fakulteten",
+    "H90": "Veterinärmedicinska fakulteten",
+    "H55": "Farmaceutiska fakulteten",
+    "H40": "Humanistiska fakulteten",
+    "H60": "Beteendevetenskapliga fakulteten",
+    "H30": "Medicinska fakulteten",
+    "H80": "Agrikultur- och forstvetenskapliga fakulteten",
+    "H50": "Matematisk-naturvetenskapliga fakulteten",
+    "H20": "Juridiska fakulteten",
+    "H74": "Svenska social- och kommunalhögskolan",
+    "H10": "Teologiska fakulteten",
+    "H70": "Statsvetenskapliga fakulteten",
+    "A57000": "Bio- och miljövetenskapliga fakulteten",
+    "A90000": "Veterinärmedicinska fakulteten",
+    "A55000": "Farmaceutiska fakulteten",
+    "A40000": "Humanistiska fakulteten",
+    "A60000": "Beteendevetenskapliga fakulteten",
+    "A30000": "Medicinska fakulteten",
+    "A80000": "Agrikultur- och forstvetenskapliga fakulteten",
+    "A50000": "Matematisk-naturvetenskapliga fakulteten",
+    "A20000": "Juridiska fakulteten",
+    "A74000": "Svenska social- och kommunalhögskolan",
+    "A10000": "Teologiska fakulteten",
+    "A70000": "Statsvetenskapliga fakulteten"
+  },
+  "feedback": {
+    "title": "Feedback",
+    "submit": "Skicka",
+    "submitted": "Tack",
+    "emailReply" : "Jag vill gärna ha svar på min feedback"
+  },
+  "upload" : {
+    "privacyMessage" : "den uppladdade bilden används också i andra HUs tjänster (t.ex. Opinder) och bilden ska har en publik länk."
+  },
+  "eventCalendar" : {
+    "day" : "dag",
+    "week" : "vecka",
+    "month" : "månad"
+  },
+  "courseRecommendations" : {
+    "title" : "potentiellt intressanta kurser"
+  }
+}

@@ -1,0 +1,52 @@
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<div class="ui-component favorites-container" role="article" id="favorites" ng-class="{'edit-favorites' : editMode}">
+
+    <div class="tube">
+        <div class="edit-link-wrapper">
+            <h2 class="ui-component__title border-bottom">
+                {{'favorites.title' | translate}}
+            </h2>
+            <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
+        </div>
+    </div>
+
+    <div class="dropzone">
+        <ul dnd-list="favorites"
+            dnd-horizontal-list="true"
+            class="itemlist">
+            
+            <li ng-repeat="favorite in favorites" 
+                dnd-draggable="favorite"
+                dnd-type="'itemType'"
+                dnd-moved="moved($index)"
+                dnd-effect-allowed="copyMove"
+                ng-switch on="favorite.type"
+                dnd-disable-if="!editMode">
+                <favorites-rss remove-favorite ng-switch-when="RSS" data="favorite"></favorites-rss>
+                <favorites-unicafe remove-favorite ng-switch-when="UNICAFE" data="favorite"></favorites-unicafe>
+                <favorites-twitter remove-favorite ng-switch-when="TWITTER" data="favorite"></favorites-twitter>
+                <favorites-unisport remove-favorite ng-switch-when="UNISPORT" data="favorite"></favorites-unisport>
+            </li>
+            <li class="favorites-list__item-wrapper">
+                <add-new-favorite></add-new-favorite>
+            </li>
+        </ul>
+    </div>
+
+</div>

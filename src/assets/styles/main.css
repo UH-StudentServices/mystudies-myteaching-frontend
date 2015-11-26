@@ -1,0 +1,3873 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+/* Portfolio application main stylesheet */
+/* Styleguide elements required by the application */
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+/* Imports from styleguide */
+/*
+ section: 1.1
+ title: Colors
+ description: The colors used through out the theme.
+*/
+/*
+ section: 1.1.1
+ title: Text colors
+ description: Main text colors for Helsingin yliopisto - Julkiset
+ color-list: grid
+ colors: $white, $black
+*/
+/*
+ section: 1.1.2
+ title: Other colors
+ description: The colors used through out the theme.
+ color-list: list
+ colors: $blue, $blue--active, $darkblue, $darkblue--active, $lightsilver, $silver, $darksilver, $lightgray, $gray, $darkgray, $green, $brown
+*/
+/*
+ section: 1.1.3
+ title: Faculty colors
+ description:  <table><tr><th>Faculty</th><th>Color variable</th></tr><tr><td>humanistinen</td><td>$lightblue</td></tr><tr><td>oikeustieteellinen</td><td>$darkred</td></tr><tr><td>kayttaytymistieteellinen</td><td>$yellow</td></tr><tr><td>laaketieteellinen</td><td>$darkturquoise</td></tr><tr><td>maatalous-metsatieteellinen </td><td>$turquoise</td></tr><tr><td>matemaattis-luonnontieteellinen</td><td>$orange</td></tr><tr><td>svenska-social--och-kommunalhogskolan</td><td>$pink</td></tr><tr><td>farmasian</td><td>$lightturquoise</td></tr><tr><td>valtiotieteellinen</td><td>$red</td></tr><tr><td>teologinen</td><td>$lila</td></tr><tr><td>elainlaaketieteellinen</td><td>$darkgreen</td></tr><tr><td>bio--ja-ymparistotieteellinen  </td><td>$limegreen</td></tr></table>
+ color-list: list
+ colors: $lightblue,$darkgreen,$yellow,$lila,$darkred,$red,$orange,$turquoise,$darkturquoise,$lightturquoise,$limegreen,$pink
+*/
+/**
+ * Mixin for basic paragraph, if one is used in other elements
+ */
+/**
+ * Mixin for fatmenu heading
+ */
+/**
+ * Mixin for subtitle
+ */
+/**
+ * Mixin for subtitle thin
+ */
+.ui-tabs-hide {
+  display: none; }
+
+.border-bottom {
+  border-bottom: 1px solid #EBEBEB;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0; }
+
+.regional-rule-top {
+  border-top: 1px solid #EBEBEB;
+  background: transparent url('../images/bg_shadow.png') no-repeat top center;
+  background-size: 100% auto;
+  margin-top: 30px;
+  padding-top: 30px; }
+
+.regional-rule-bottom {
+  border-bottom: 1px solid #EBEBEB;
+  background: transparent url('../images/bg_shadow.png') no-repeat top center;
+  background-size: 100% auto; }
+
+.horizontal-rule-top {
+  border-top: 1px solid #EBEBEB;
+  margin-top: 30px;
+  padding-top: 30px; }
+
+.horizontal-rule-bottom {
+  border-bottom: 1px solid #EBEBEB;
+  margin-bottom: 30px;
+  padding-bottom: 30px; }
+
+.tiedekulma-embed {
+  display: inline-block;
+  margin-bottom: 0.5em;
+  position: relative;
+  width: 100%; }
+  .tiedekulma-embed:after {
+    content: '';
+    display: block;
+    padding-top: 55%; }
+  .tiedekulma-embed > * {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0; }
+
+.link-wrapper {
+  display: block;
+  height: 100%; }
+
+.float-left {
+  float: left; }
+
+.float-right {
+  float: right; }
+
+.element-invisible {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px); }
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.clearfix {
+  *zoom: 1;
+  clear: both;
+  clear: both; }
+  .clearfix:before, .clearfix:after {
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */ }
+  .clearfix:after {
+    clear: both; }
+
+.inline-list > *, .tag-list > * {
+  margin-left: 6px;
+  margin-right: 6px; }
+  .inline-list > *:first-child, .tag-list > *:first-child {
+    margin-left: 0; }
+  .inline-list > *:last-child, .tag-list > *:last-child {
+    margin-right: 0; }
+.inline-list > *, .tag-list > * {
+  display: inline-block;
+  vertical-align: middle; }
+
+.inline-list--large > * {
+  margin-left: 12px;
+  margin-right: 12px; }
+  .inline-list--large > *:first-child {
+    margin-left: 0; }
+  .inline-list--large > *:last-child {
+    margin-right: 0; }
+
+.inline-list--small > *, .tag-list > * {
+  margin-left: 3px;
+  margin-right: 3px; }
+  .inline-list--small > *:first-child, .tag-list > *:first-child {
+    margin-left: 0; }
+  .inline-list--small > *:last-child, .tag-list > *:last-child {
+    margin-right: 0; }
+
+.table-list {
+  display: table;
+  width: 100%; }
+  .table-list > * {
+    padding-left: 6px;
+    padding-right: 6px; }
+    .table-list > *:first-child {
+      padding-left: 0; }
+    .table-list > *:last-child {
+      padding-right: 0; }
+  .table-list > * {
+    display: table-cell;
+    vertical-align: middle; }
+
+.table-list--large > * {
+  padding-left: 12px;
+  padding-right: 12px; }
+  .table-list--large > *:first-child {
+    padding-left: 0; }
+  .table-list--large > *:last-child {
+    padding-right: 0; }
+
+.table-list--small > * {
+  padding-left: 3px;
+  padding-right: 3px; }
+  .table-list--small > *:first-child {
+    padding-left: 0; }
+  .table-list--small > *:last-child {
+    padding-right: 0; }
+
+.tag-list > * {
+  margin-bottom: 6px; }
+
+.item-list {
+  list-style: none outside none;
+  margin: 0;
+  padding: 0; }
+
+.item-list--bar > li {
+  border-color: #979797;
+  border-style: solid;
+  border-width: 0 0 1px 0;
+  padding-bottom: .5em;
+  padding-top: .5em; }
+  .item-list--bar > li:last-child {
+    border-bottom-width: 0; }
+
+/* Application custom styles */
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+/* Opintoni application styles */
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+@media  (max-width: 767px) {
+  .hide-mobile-only {
+    display: none !important; } }
+
+@media  (min-width: 48em) {
+  .show-mobile-only {
+    display: none !important; } }
+
+@media  (max-width: 768px) {
+  .hide-mobile-only-with-ipad-mini {
+    display: none !important; } }
+
+@media  (min-width: 769px) {
+  .show-mobile-only-with-ipad-mini {
+    display: none !important; } }
+
+.right {
+  float: right; }
+
+.left {
+  float: left; }
+
+.clickable {
+  cursor: pointer; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+ul {
+  margin: 0;
+  padding: 0; }
+
+input {
+  border-radius: 0; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.user-avatar__small {
+  height: 3em;
+  width: 3em;
+  position: relative; }
+  @media  (min-width: 48em) {
+    .user-avatar__small {
+      height: 3em;
+      width: 3em; } }
+
+.user-avatar__large {
+  height: 90px;
+  width: 90px;
+  position: relative; }
+  @media  (min-width: 48em) {
+    .user-avatar__large {
+      height: 90px;
+      width: 90px; } }
+
+.user-avatar {
+  width: 100%;
+  height: 100%;
+  background-color: #9258c8;
+  position: relative; }
+  @media  (min-width: 48em) {
+    .user-avatar {
+      background-color: rgba(146, 88, 200, 0.45); } }
+  .user-avatar.teacher {
+    background-color: #4FB151; }
+    @media  (min-width: 48em) {
+      .user-avatar.teacher {
+        background-color: rgba(79, 177, 81, 0.45); } }
+  .user-avatar.default img {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    left: 25%;
+    top: 25%; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+button {
+  border: none; }
+
+a.disabled {
+  color: grey;
+  background-color: white;
+  border: 1px solid grey;
+  cursor: auto; }
+
+a.disabled:hover {
+  color: grey;
+  background-color: white;
+  border: 1px solid grey;
+  cursor: auto; }
+
+button.button--light, .event-calendar .fc-right .fc-button {
+  color: #0098d0;
+  border: solid #0098d0 1px;
+  background-color: transparent;
+  padding: 0.3em 0.7em 0.3em 0.7em; }
+
+button.button--dark {
+  border: solid #0098d0 1px;
+  padding: 0.3em 0.7em 0.3em 0.7em; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.icon {
+  vertical-align: middle; }
+
+button.icon {
+  position: relative; }
+  button.icon:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -transform: translate(-50%, -50%); }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.carousel {
+  height: 364px;
+  width: 100%; }
+
+.carousel-slide {
+  color: #666;
+  padding-left: 1em;
+  padding-right: 1em;
+  text-align: center; }
+  @media  (min-width: 48em) {
+    .carousel-slide {
+      height: 364px;
+      position: relative;
+      padding-left: 0;
+      padding-right: 0;
+      text-align: left; } }
+
+@media  (min-width: 48em) {
+  .carousel-slide__main {
+    height: 316px;
+    overflow: hidden; } }
+
+.carousel-slide__title {
+  font-size: 32px;
+  font-size: 2rem;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  margin-bottom: .25em;
+  margin-top: .5em;
+  word-wrap: break-word; }
+  @media  (min-width: 48em) {
+    .carousel-slide__title {
+      font-size: 65px;
+      font-size: 4.0625rem;
+      margin-top: 0; } }
+  @media  (min-width: 62.5em) {
+    .carousel-slide__title {
+      font-size: 70px;
+      font-size: 4.375rem; } }
+
+.carousel-slide__desc {
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 1.2;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  padding-bottom: 0; }
+  @media  (min-width: 48em) {
+    .carousel-slide__desc {
+      font-size: 20px;
+      font-size: 1.25rem; } }
+
+@media  (min-width: 48em) {
+  .carousel-slide__cta {
+    bottom: 0;
+    left: 0;
+    position: absolute; } }
+.carousel-slide__cta .list-of-links__link {
+  display: inline-block; }
+.carousel-slide__cta .list-of-links__link > span {
+  padding-right: 1em; }
+
+.carousel-controls {
+  margin: 1em; }
+  @media  (min-width: 48em) {
+    .carousel-controls {
+      margin: 0 0 1em; } }
+  .carousel-controls .rn-carousel-indicator span {
+    display: block;
+    float: left;
+    height: 0.5em;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    overflow: hidden;
+    width: 0.5em; }
+    .carousel-controls .rn-carousel-indicator span:first-child {
+      margin-left: 0; }
+    .carousel-controls .rn-carousel-indicator span:last-child {
+      margin-right: 0; }
+  .carousel-controls .rn-carousel-indicator span {
+    background-color: #0098d0;
+    color: #0098d0; }
+    .carousel-controls .rn-carousel-indicator span.active {
+      background-color: #222;
+      color: #222; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.input-search {
+  border-color: #EBEBEB;
+  border-style: solid;
+  border-width: 2px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  color: #777777;
+  line-height: 1.5em;
+  padding: .5em 1em;
+  width: 100%; }
+
+.invalid-input {
+  border-color: red; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.padding-5 {
+  padding: 5px; }
+
+.padding-10 {
+  padding: 10px; }
+
+.padding-15 {
+  padding: 15px; }
+
+.padding-top-5 {
+  padding-top: 5px; }
+
+.padding-top-10 {
+  padding-top: 10px; }
+
+.padding-top-15 {
+  padding-top: 15px; }
+
+.padding-bottom-5 {
+  padding-bottom: 5px; }
+
+.padding-bottom-10 {
+  padding-bottom: 10px; }
+
+.padding-bottom-15 {
+  padding-bottom: 15px; }
+
+.margin-5 {
+  margin: 5px; }
+
+.margin-10 {
+  margin: 10px; }
+
+.margin-15 {
+  margin: 15px; }
+
+.margin-top-5 {
+  margin-top: 5px; }
+
+.margin-top-10 {
+  margin-top: 10px; }
+
+.margin-top-15 {
+  margin-top: 15px; }
+
+.margin-bottom-5 {
+  margin-bottom: 5px; }
+
+.margin-bottom-10 {
+  margin-bottom: 10px; }
+
+.margin-bottom-15 {
+  margin-bottom: 15px; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.l-toolbar:before, .l-toolbar:after {
+  content: "";
+  display: table; }
+.l-toolbar:after {
+  clear: both; }
+
+.l-header:before, .l-header:after {
+  content: "";
+  display: table; }
+.l-header:after {
+  clear: both; }
+
+.l-banner:before, .l-banner:after {
+  content: "";
+  display: table; }
+.l-banner:after {
+  clear: both; }
+
+.l-page:before, .l-page:after {
+  content: "";
+  display: table; }
+.l-page:after {
+  clear: both; }
+
+.l-aside {
+  border-top: 1px solid #EBEBEB;
+  background: transparent url('../images/bg_shadow.png') no-repeat top center;
+  background-size: 100% auto;
+  background-image: url('../images/ui/bg_shadow.png'); }
+  .l-aside:before, .l-aside:after {
+    content: "";
+    display: table; }
+  .l-aside:after {
+    clear: both; }
+
+.l-footer {
+  background-color: #222;
+  color: #FFF;
+  margin-top: 10em; }
+  .l-footer:before, .l-footer:after {
+    content: "";
+    display: table; }
+  .l-footer:after {
+    clear: both; }
+
+.l-multi-col-content-wrapper:before, .l-multi-col-content-wrapper:after {
+  content: "";
+  display: table; }
+.l-multi-col-content-wrapper:after {
+  clear: both; }
+
+@media  (min-width: 48em) {
+  .l-content-primary-wrapper {
+    width: 66.1016949153%;
+    float: left;
+    margin-right: -100%;
+    margin-left: 0;
+    clear: none; }
+  .l-content-secondary-wrapper {
+    width: 32.2033898305%;
+    float: right;
+    margin-left: 0;
+    margin-right: 0;
+    clear: none; } }
+
+@media  (min-width: 62.5em) {
+  .l-content-primary-wrapper {
+    width: 57.6271186441%;
+    float: left;
+    margin-right: -100%;
+    margin-left: 0;
+    clear: none; }
+  .l-content-secondary-wrapper {
+    width: 32.2033898305%;
+    float: right;
+    margin-left: 0;
+    margin-right: 0;
+    clear: none; } }
+
+.clear {
+  clear: both; }
+
+.ui-component {
+  margin-bottom: 3em;
+  margin-top: 1em; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.link-label {
+  font-size: 11px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: #979797;
+  text-decoration: none;
+  text-transform: uppercase; }
+  .link-label:hover, .link-label:focus, .link-label:active {
+    color: #666; }
+  @media  (max-width: 767px) {
+    .link-label {
+      font-size: 13px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: #222;
+      text-decoration: none;
+      text-transform: uppercase; }
+      .link-label:hover, .link-label:focus, .link-label:active {
+        color: #222; } }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.s-some {
+  background-color: transparent;
+  background-image: url('../images/ui/s-some.png');
+  background-position: -100px -250px;
+  display: inline-block;
+  height: 50px;
+  line-height: 1;
+  overflow: hidden;
+  position: relative;
+  top: -1px;
+  vertical-align: middle;
+  width: 50px;
+  zoom: 1;
+  *text-indent: -9999px; }
+  .s-some:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 100%; }
+
+.s-some--facebook {
+  background-position: 0 0; }
+
+.s-some--twitter {
+  background-position: 0 -50px; }
+
+.s-some--youtube {
+  background-position: 0 -100px; }
+
+.s-some--linkedin {
+  background-position: 0 -150px; }
+
+.s-some--facebook:hover {
+  background-position: -50px 0; }
+
+.s-some--twitter:hover {
+  background-position: -50px -50px; }
+
+.s-some--youtube:hover {
+  background-position: -50px -100px; }
+
+.s-some--linkedin:hover {
+  background-position: -50px -150px; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.logo--header {
+  vertical-align: middle;
+  height: 100%;
+  width: 45px !important; }
+
+.logo--footer {
+  display: none;
+  float: left;
+  margin-right: 1em;
+  opacity: 0.2; }
+  @media  (min-width: 62.5em) {
+    .logo--footer {
+      display: inline; } }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.messages.messages--light.error {
+  background-color: #f5ede9;
+  border: 1px solid #eddfd7; }
+  .messages.messages--light.error p {
+    color: #974822; }
+.messages.messages--light.info {
+  background-color: #EBEBEB;
+  border: 1px solid #dedede; }
+  .messages.messages--light.info p {
+    color: #222; }
+
+.messages .hy-remove {
+  margin-left: 1em; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.mobile-toolbar .table-list {
+  height: 3em;
+  border-bottom: 1px solid #EBEBEB;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0; }
+.mobile-toolbar .user-menu {
+  margin-bottom: -30px; }
+  .mobile-toolbar .user-menu > *:last-child {
+    margin-bottom: 30px; }
+.mobile-toolbar .dropdown-toggle {
+  position: absolute;
+  width: 3em;
+  height: 3em; }
+  .mobile-toolbar .dropdown-toggle.active {
+    color: #FFF;
+    background-color: #222;
+    border-left: 1px solid #000000;
+    line-height: 3em;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    width: 3em;
+    height: 3em;
+    display: block; }
+    .mobile-toolbar .dropdown-toggle.active > * {
+      display: none; }
+    .mobile-toolbar .dropdown-toggle.active:before {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-family: "hy-icons";
+      content: "\EA32"; }
+.mobile-toolbar .mobile-menu .dropdown-toggle {
+  right: 0;
+  top: 0;
+  color: #FFF;
+  background-color: #222;
+  border-left: 1px solid #000000;
+  line-height: 3em;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  width: 3em;
+  height: 3em;
+  display: block; }
+.mobile-toolbar .user-settings, .mobile-toolbar .user-notifications, .mobile-toolbar .search-icon {
+  display: block; }
+.mobile-toolbar .user-settings .dropdown-toggle {
+  top: -3em;
+  right: 3em; }
+.mobile-toolbar .user-notifications .dropdown-toggle {
+  top: -3em;
+  right: 6em; }
+.mobile-toolbar .search-icon .dropdown-toggle {
+  top: -3em;
+  right: 9em; }
+.mobile-toolbar .dropdown-toggle .icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -transform: translate(-50%, -50%); }
+  .mobile-toolbar .dropdown-toggle .icon .circled-number {
+    top: -5px; }
+
+.mobile-toolbar__secondary-links-title {
+  background-color: #222;
+  display: block;
+  padding: 0.5em 1em;
+  position: relative; }
+  .mobile-toolbar__secondary-links-title h5, .mobile-toolbar__secondary-links-title p {
+    text-transform: none;
+    margin: 0;
+    color: #979797;
+    font-size: 14px;
+    font-size: 0.875rem; }
+  .mobile-toolbar__secondary-links-title i {
+    font-size: 14px;
+    font-size: 0.875rem; }
+
+.mobile-toolbar__secondary-links {
+  background-color: #222; }
+  .mobile-toolbar__secondary-links li {
+    position: relative;
+    border-top: 1px solid #424242;
+    padding: 0.6em 1em; }
+    .mobile-toolbar__secondary-links li i {
+      color: #FFF;
+      margin-right: 1em; }
+    .mobile-toolbar__secondary-links li.mobile-toolbar__logout {
+      background-color: #0098d0;
+      padding-top: 1em;
+      padding-bottom: 1em; }
+      .mobile-toolbar__secondary-links li.mobile-toolbar__logout a {
+        font-size: 15px;
+        font-size: 0.9375rem;
+        font-weight: 600;
+        font-style: normal;
+        padding-left: 2em;
+        text-transform: uppercase;
+        font-weight: 600px;
+        width: 100%;
+        display: block; }
+      .mobile-toolbar__secondary-links li.mobile-toolbar__logout i {
+        font-size: 15px;
+        font-size: 0.9375rem;
+        position: absolute;
+        margin-top: 3px; }
+    .mobile-toolbar__secondary-links li a {
+      color: #FFF;
+      font-size: 13px;
+      font-size: 0.8125rem; }
+    .mobile-toolbar__secondary-links li:before {
+      content: "";
+      width: 100%;
+      height: 1px;
+      background-color: #222;
+      display: block;
+      position: absolute;
+      top: -2px;
+      left: 0; }
+
+.mobile-toolbar__expand-secondary {
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -transform: translate(0, -50%);
+  font-size: 20px;
+  font-size: 1.25rem;
+  position: absolute;
+  color: #FFF;
+  right: 1em;
+  top: 50%; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.modal-backdrop {
+  width: 100%;
+  height: 100%;
+  background-color: #222;
+  position: fixed;
+  top: 0;
+  opacity: 0.4; }
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  z-index: 10000; }
+
+.modal-dialog {
+  width: 100%;
+  height: 100%; }
+
+.modal.confirm .modal-dialog {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.8);
+  height: auto;
+  color: #FFF;
+  font-size: 13px;
+  font-size: 0.8125rem;
+  padding: 1em; }
+  @media  (min-width: 48em) {
+    .modal.confirm .modal-dialog {
+      position: relative;
+      position: relative;
+      width: 300px;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      -transform: translate(-50%, -50%); } }
+
+.modal-content {
+  width: 100%;
+  height: 100%; }
+
+.modal__actions {
+  position: relative;
+  text-align: center;
+  z-index: 3;
+  margin-top: -120px; }
+  .modal.confirm .modal__actions {
+    margin-top: 3em;
+    margin-bottom: 0.5em; }
+  @media  (max-width: 767px) {
+    .modal__actions {
+      margin-top: 20px; } }
+  .modal__actions a, .modal__actions button {
+    color: #FFF !important;
+    padding: 0.5em 2em;
+    background-color: #0098d0; }
+    .modal__actions a:hover, .modal__actions button:hover {
+      background-color: #005479; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.page-banner-container {
+  position: relative; }
+  .page-banner-container .flexslider {
+    border: none;
+    margin: 0; }
+    @media  (min-width: 48em) {
+      .page-banner-container .flexslider {
+        height: 420px; } }
+    @media  (min-width: 48em) {
+      .page-banner-container .flexslider h1 {
+        max-height: 180px; }
+      .page-banner-container .flexslider p {
+        max-height: 110px; } }
+  .page-banner-container .page-banner {
+    position: relative; }
+    .page-banner-container .page-banner .page-banner__content {
+      position: relative;
+      z-index: 1; }
+      .page-banner-container .page-banner .page-banner__content:before, .page-banner-container .page-banner .page-banner__content:after {
+        content: "";
+        display: table; }
+      .page-banner-container .page-banner .page-banner__content:after {
+        clear: both; }
+    .page-banner-container .page-banner p {
+      color: #424242; }
+    @media  (max-width: 767px) {
+      .page-banner-container .page-banner .page-banner__image {
+        height: 300px; }
+      .page-banner-container .page-banner .page-banner__content-left {
+        text-align: center;
+        padding: 2rem 1rem; } }
+    @media  (min-width: 48em) {
+      .page-banner-container .page-banner h1 {
+        color: #FFF;
+        text-shadow: 0 1px 2px #222; }
+      .page-banner-container .page-banner p {
+        color: #FFF;
+        text-shadow: 0 1px 2px #222; }
+      .page-banner-container .page-banner .page-banner__image {
+        height: 420px; }
+      .page-banner-container .page-banner .page-banner__content {
+        padding: 2.5rem 1rem; }
+      .page-banner-container .page-banner .page-banner__content-left {
+        width: 66.1016949153%;
+        float: left;
+        margin-right: -100%;
+        margin-left: 0;
+        clear: none; }
+        @media  (max-width: 1280px) {
+          .page-banner-container .page-banner .page-banner__content-left {
+            margin-left: 30px;
+            width: 60%; } }
+      .page-banner-container .page-banner .page-banner__content-right {
+        width: 32.2033898305%;
+        float: right;
+        margin-left: 0;
+        margin-right: 0;
+        clear: none; }
+      .page-banner-container .page-banner .list-of-links--dark li > a {
+        display: inline-block !important;
+        position: absolute;
+        bottom: 0;
+        padding-right: 4em !important; } }
+  .page-banner-container .page-banner__image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover; }
+  .page-banner-container .page-banner__image-cover {
+    width: 80%;
+    height: 100%;
+    background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.6), transparent);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, rgba(0, 0, 0, 0.6), transparent);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, rgba(0, 0, 0, 0.6), transparent);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.6), transparent);
+    /* Standard syntax */ }
+
+.page-banner__change-background-container {
+  width: 100%;
+  position: absolute;
+  bottom: 1px; }
+  @media  (max-width: 767px) {
+    .page-banner__change-background-container {
+      z-index: 9;
+      bottom: -50px; } }
+
+.page-banner__change-background {
+  width: 50px;
+  height: 50px;
+  background-color: #FFF;
+  display: block;
+  position: relative; }
+  @media  (max-width: 767px) {
+    .page-banner__change-background {
+      float: right; } }
+  @media  (min-width: 48em) {
+    .page-banner__change-background {
+      margin-left: auto;
+      margin-right: auto; } }
+  .page-banner__change-background i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -transform: translate(-50%, -50%); }
+    .page-banner__change-background i:before {
+      font-size: 23px;
+      font-size: 1.4375rem; }
+
+.page-banner__change-background-menu {
+  font-size: 13px;
+  font-size: 0.8125rem;
+  position: absolute;
+  white-space: nowrap;
+  padding: 1em; }
+  .page-banner__change-background-menu:after, .page-banner__change-background-menu:before {
+    bottom: 100%;
+    border-style: solid;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none; }
+  .page-banner__change-background-menu:after {
+    border-bottom-color: #FFF;
+    border-width: 12px;
+    right: 12px; }
+  .page-banner__change-background-menu:before {
+    border-bottom-color: #EBEBEB;
+    border-width: 13px;
+    right: 11px; }
+  @media  (min-width: 48em) {
+    .page-banner__change-background-menu {
+      top: 70px; } }
+  @media  (max-width: 767px) {
+    .page-banner__change-background-menu {
+      top: 50px;
+      right: 0;
+      border: 1px solid #EBEBEB !important; } }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.page-footer__social-links {
+  margin-bottom: 1em;
+  margin-top: 1em;
+  text-align: center; }
+  @media  (min-width: 62.5em) {
+    .page-footer__social-links {
+      text-align: left; } }
+
+.page-footer__contact {
+  margin-bottom: 1em;
+  margin-top: 1em;
+  text-align: center; }
+  @media  (min-width: 62.5em) {
+    .page-footer__contact {
+      text-align: left; } }
+  .page-footer__contact p {
+    font-size: 14px;
+    font-size: 0.875rem;
+    line-height: 1.2em; }
+
+.page-footer__copyright {
+  border-top: 1px solid #000;
+  color: #979797;
+  padding: 1em 0 0; }
+  @media  (min-width: 62.5em) {
+    .page-footer__copyright {
+      border: 0; } }
+
+.page-footer .list-of-links--light li a {
+  color: #FFF !important;
+  border-bottom-color: #000000 !important; }
+
+@media  (min-width: 62.5em) {
+  .page-footer__contact {
+    width: 32.2033898305%;
+    float: left;
+    margin-right: -100%;
+    margin-left: 0;
+    clear: none; }
+  .page-footer__links {
+    width: 32.2033898305%;
+    float: left;
+    margin-right: -100%;
+    margin-left: 33.8983050847%;
+    clear: none; }
+  .page-footer__social-links {
+    width: 32.2033898305%;
+    float: right;
+    margin-left: 0;
+    margin-right: 0;
+    clear: none; }
+  .page-footer__copyright {
+    width: 100%;
+    clear: right;
+    float: right;
+    margin-right: 0;
+    clear: both; } }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+@media  (max-width: 767px) {
+  .page-header__branding {
+    padding: 0.5em 2em;
+    border-top: 1px solid #424242;
+    border-bottom: 1px solid #424242;
+    background-color: #222; } }
+
+@media  (min-width: 48em) {
+  .page-header {
+    background-color: #222;
+    height: 70px; }
+    .page-header:before, .page-header:after {
+      content: "";
+      display: table; }
+    .page-header:after {
+      clear: both; }
+    .page-header .wrapper {
+      height: 100%;
+      padding: 0 1em; }
+  .page-header__branding {
+    height: 100%;
+    float: left;
+    background-color: #222;
+    line-height: 100%; }
+    .page-header__branding ul, .page-header__branding li {
+      height: 100%; }
+    .page-header__branding a {
+      display: inline-block;
+      height: 100%; }
+    .page-header__branding h1 {
+      line-height: 70px; }
+  .page-header__links {
+    float: right;
+    height: 100%; }
+    .page-header__links ul, .page-header__links li {
+      height: 100%; }
+    .page-header__links .divider {
+      line-height: 70px; }
+  .page-header__links-list {
+    float: right; }
+    .page-header__links-list > * {
+      margin-left: 3px;
+      margin-right: 3px; }
+      .page-header__links-list > *:first-child {
+        margin-left: 0; }
+      .page-header__links-list > *:last-child {
+        margin-right: 0; }
+    .page-header__links-list > li {
+      display: inline-block;
+      margin-right: 0.8em; }
+  .page-header__link {
+    font-size: 11px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: #979797;
+    text-decoration: none;
+    text-transform: uppercase;
+    line-height: 70px; }
+    .page-header__link:hover, .page-header__link:focus, .page-header__link:active {
+      color: #FFF; } }
+
+.menu-language li {
+  margin-left: 0.8em; }
+@media  (max-width: 767px) {
+  .menu-language {
+    padding: 0 1em; }
+    .menu-language li {
+      margin-left: 1.5em; } }
+
+@media  (min-width: 48em) {
+  .menu-language__item, .menu-language__item:hover, .menu-language__item:focus, .menu-language__item:active {
+    color: #FFF; } }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.page-navigation:before, .page-navigation:after {
+  content: "";
+  display: table; }
+.page-navigation:after {
+  clear: both; }
+.page-navigation nav {
+  float: left; }
+.page-navigation .wrapper {
+  padding: 0 1em; }
+@media  (min-width: 48em) {
+  .page-navigation {
+    height: 60px;
+    box-sizing: border-box; }
+    .page-navigation .wrapper {
+      height: 100%; }
+    @media  (min-width: 48em) {
+      .page-navigation nav {
+        height: 100%; }
+      .page-navigation .main-menu {
+        display: table;
+        height: 100%; }
+      .page-navigation .main-menu__item {
+        display: table-cell;
+        vertical-align: middle;
+        font-weight: 700;
+        font-size: 15px;
+        letter-spacing: 0.01em;
+        text-transform: uppercase;
+        text-decoration: none; }
+        .page-navigation .main-menu__item:first-child {
+          padding-right: 20px;
+          position: relative;
+          top: 2px; } } }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.page-toolbar {
+  font-size: 12px;
+  font-size: 0.75rem;
+  padding: .5em 1.333em; }
+  .page-toolbar select {
+    width: auto; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.portfolio-header {
+  margin-bottom: 2em; }
+  .portfolio-header:before, .portfolio-header:after {
+    content: "";
+    display: table; }
+  .portfolio-header:after {
+    clear: both; }
+
+.portfolio-header__search {
+  margin-bottom: 1em;
+  margin-top: 1em; }
+
+@media  (min-width: 48em) {
+  .portfolio-header__title {
+    width: 66.1016949153%;
+    clear: right;
+    float: left;
+    margin-left: 0;
+    margin-right: 1.6949152542%;
+    clear: both; }
+  .portfolio-header__search {
+    width: 32.2033898305%;
+    clear: right;
+    float: right;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-top: 0; } }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+@media  (max-width: 767px) {
+  .modal {
+    top: 25%;
+    width: 100%;
+    left: 0; } }
+
+.choose-background-container {
+  height: 100%; }
+
+.choose-background {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; }
+  @media  (max-width: 767px) {
+    .choose-background {
+      height: 60%; } }
+  .choose-background .flexslider {
+    margin-bottom: 0;
+    border-color: #222;
+    background-color: #222; }
+
+.choose-background__image {
+  height: 100%;
+  position: relative; }
+  .choose-background__image .flex-direction-nav a {
+    line-height: 0;
+    font-size: 0;
+    color: transparent;
+    opacity: 1;
+    background-color: #222;
+    bottom: 50% !important;
+    top: auto; }
+  .choose-background__image .flex-direction-nav a:before {
+    font-size: 15px;
+    font-size: 0.9375rem;
+    color: #0098d0;
+    text-shadow: none;
+    top: 50%;
+    left: 12px;
+    position: absolute;
+    display: block; }
+  .choose-background__image .flex-direction-nav a.flex-next:before {
+    left: 18px; }
+  .choose-background__image .flex-direction-nav .flex-prev {
+    left: 0; }
+  .choose-background__image .flex-direction-nav .flex-next {
+    right: 0; }
+  .choose-background__image .flexslider:hover .flex-direction-nav .flex-prev {
+    opacity: 1;
+    left: 0; }
+  .choose-background__image .flexslider:hover .flex-direction-nav .flex-next {
+    opacity: 1;
+    right: 0; }
+  .choose-background__image .flexslider-container, .choose-background__image .flexslider {
+    height: 100%; }
+
+.choose-background__image--container .flexslider {
+  border: 0; }
+
+.choose-background__thumbnails {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  width: 100%; }
+  .choose-background__thumbnails .flexslider {
+    border-top-width: 10px;
+    border-bottom-width: 10px; }
+    .choose-background__thumbnails .flexslider .slides li {
+      cursor: pointer;
+      margin: 0 5px; }
+      .choose-background__thumbnails .flexslider .slides li:first-child {
+        margin-left: 0; }
+      .choose-background__thumbnails .flexslider .slides li:last-child {
+        margin-right: 0; }
+    .choose-background__thumbnails .flexslider .flex-active-slide {
+      border: 2px solid #0098d0; }
+  .choose-background__thumbnails .flex-direction-nav a {
+    display: none !important; }
+
+.choose-background__actions {
+  position: relative;
+  text-align: center;
+  z-index: 3;
+  margin-top: -120px; }
+  @media  (max-width: 767px) {
+    .choose-background__actions {
+      margin-top: 20px; } }
+  .choose-background__actions a {
+    color: #FFF !important;
+    padding: 0.5em 2em;
+    background-color: #0098d0; }
+    .choose-background__actions a:hover {
+      background-color: #005479; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.modal.crop-image-modal {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+  .modal.crop-image-modal:focus {
+    outline: 0; }
+  .modal.crop-image-modal .crop-image-container {
+    width: 100%;
+    height: 100%; }
+    .modal.crop-image-modal .crop-image-container .crop-image {
+      width: 100%;
+      height: 100%; }
+    .modal.crop-image-modal .crop-image-container .modal__actions {
+      margin-top: -120px; }
+      .modal.crop-image-modal .crop-image-container .modal__actions button {
+        padding: 0.5em 0;
+        width: 100px; }
+      .modal.crop-image-modal .crop-image-container .modal__actions .image-controls {
+        margin-bottom: 20px; }
+        .modal.crop-image-modal .crop-image-container .modal__actions .image-controls button {
+          width: 50px; }
+    .modal.crop-image-modal .crop-image-container .messages {
+      position: absolute;
+      z-index: 9999;
+      width: 100%;
+      top: 0; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.site-name__header {
+  color: #FFF;
+  font-size: 15px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  padding-bottom: 0;
+  margin-bottom: 0; }
+
+.site-name__footer {
+  color: #FFF;
+  font-size: 16px;
+  font-size: 1rem; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.milli {
+  font-size: 13px;
+  font-size: 0.8125rem; }
+
+.micro {
+  font-size: 10px;
+  font-size: 0.625rem; }
+
+.text-neutral, a.text-neutral {
+  color: #666; }
+
+.text-label {
+  color: #979797;
+  font-size: 14px;
+  font-size: 0.875rem;
+  margin-bottom: .5em;
+  text-transform: uppercase; }
+
+.title-stricken {
+  display: table; }
+  .title-stricken:after {
+    background-image: url('../images/ui/bg_line.png');
+    background-position: 0 50%;
+    background-repeat: repeat-x;
+    content: '';
+    display: table-cell;
+    width: 100%; }
+  .title-stricken:after {
+    background-clip: padding-box;
+    border-left: .5em solid transparent; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.unicafe-favorite h4 {
+  margin-bottom: 0.4em; }
+.unicafe-favorite .restaurant-select option:disabled {
+  color: black;
+  font-weight: bold; }
+.unicafe-favorite select option:disabled {
+  color: black;
+  font-weight: bold; }
+.unicafe-favorite .unicafe-meta-data {
+  font-style: italic;
+  font-size: 0.8em; }
+.unicafe-favorite .select-icon {
+  pointer-events: none; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.user-menu {
+  position: relative; }
+  @media  (min-width: 48em) {
+    .user-menu {
+      display: table;
+      float: right;
+      height: 100%; } }
+  .user-menu .search-bar {
+    padding: 0; }
+  .user-menu .hy {
+    font-size: 1.2em; }
+
+@media  (min-width: 48em) {
+  .user-menu__item.user-settings {
+    padding-right: 0px; } }
+
+@media  (min-width: 48em) {
+  .user-menu__item {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0 20px; } }
+
+.user-settings__menu {
+  background-color: #FFF; }
+  .user-settings__menu:after, .user-settings__menu:before {
+    bottom: 100%;
+    border-style: solid;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none; }
+  .user-settings__menu:after {
+    border-bottom-color: #FFF;
+    border-width: 12px;
+    right: 12px; }
+  .user-settings__menu:before {
+    border-bottom-color: #EBEBEB;
+    border-width: 13px;
+    right: 11px; }
+  .user-settings__menu a {
+    color: #0098d0; }
+    .user-settings__menu a.tag {
+      color: #FFF; }
+  .user-settings__menu .fa {
+    margin-right: 1em; }
+  .user-settings__menu .hy {
+    position: relative;
+    left: -3px;
+    margin-right: 2px;
+    vertical-align: middle; }
+  .user-settings__menu li.change-avatar {
+    position: relative; }
+    .user-settings__menu li.change-avatar .camera-actions {
+      margin-bottom: 20px; }
+    .user-settings__menu li.change-avatar .user-avatar__large {
+      display: inline-block;
+      margin-right: 1em;
+      vertical-align: top; }
+    .user-settings__menu li.change-avatar .change-avatar__details {
+      display: inline-block;
+      width: 60%;
+      vertical-align: top; }
+      .user-settings__menu li.change-avatar .change-avatar__details h5 {
+        font-size: 1.1em; }
+      .user-settings__menu li.change-avatar .change-avatar__details a {
+        position: absolute;
+        bottom: 1em; }
+  @media  (min-width: 48em) {
+    .user-settings__menu {
+      top: 4em;
+      width: 330px;
+      min-width: 15em; } }
+
+.user-notifications .user-avatar {
+  width: 70px;
+  height: 70px;
+  float: left; }
+.user-notifications .content {
+  padding: 0 10px 0 80px; }
+.user-notifications .icon {
+  position: relative;
+  cursor: pointer; }
+.user-notifications .user-settings__menu {
+  right: 112px;
+  color: #424242; }
+  .user-notifications .user-settings__menu:after, .user-notifications .user-settings__menu:before {
+    bottom: 100%;
+    border-style: solid;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none; }
+  .user-notifications .user-settings__menu:after {
+    border-bottom-color: #FFF;
+    border-width: 12px;
+    right: 34px; }
+  .user-notifications .user-settings__menu:before {
+    border-bottom-color: #EBEBEB;
+    border-width: 13px;
+    right: 33px; }
+  .user-notifications .user-settings__menu li {
+    position: relative;
+    height: 90px;
+    margin: 0 1em;
+    padding: 10px 0 0 0;
+    overflow-x: hidden; }
+  .user-notifications .user-settings__menu .course-name a {
+    color: #0098d0;
+    font-weight: bold;
+    height: 18px;
+    display: block; }
+  .user-notifications .user-settings__menu .notification-time {
+    position: absolute;
+    bottom: 8px;
+    text-transform: uppercase;
+    font-size: 10px;
+    color: #6d6d6d; }
+  .user-notifications .user-settings__menu .notification-message {
+    height: 36px; }
+  @media  (min-width: 48em) {
+    .user-notifications .user-settings__menu {
+      background-color: #FFF;
+      left: initial;
+      width: 300px; }
+      .user-notifications .user-settings__menu ul {
+        max-height: 270px;
+        overflow-y: scroll; } }
+.user-notifications .circled-number {
+  position: absolute;
+  z-index: 1;
+  top: 5px;
+  left: 5px;
+  border-radius: 50%;
+  width: 1.4em;
+  height: 1.4em;
+  background: #fca311;
+  color: #FFF;
+  text-align: center;
+  font-size: 0.6em;
+  font-weight: bold;
+  line-height: 1.4em; }
+  @media  (min-width: 48em) {
+    .user-notifications .circled-number {
+      top: -1px;
+      left: 8px; } }
+
+.user-menu__actions--action:hover {
+  cursor: pointer; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+#week-feed .tag-list--tabs {
+  margin-bottom: 1em; }
+  #week-feed .tag-list--tabs:before, #week-feed .tag-list--tabs:after {
+    content: "";
+    display: table; }
+  #week-feed .tag-list--tabs:after {
+    clear: both; }
+  #week-feed .tag-list--tabs li {
+    margin-right: 0.5em; }
+
+@media  (max-width: 767px) {
+  .week-feed-items li .event.exam {
+    position: relative; }
+    .week-feed-items li .event.exam:after {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background-color: #fca311;
+      left: -1em; }
+    .week-feed-items li .event.exam:before {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background-color: #fca311;
+      right: -1em; }
+  .week-feed-items li:first-child .event.exam:after {
+    display: none; }
+  .week-feed-items li:first-child .event.exam:before {
+    display: none; } }
+
+.event .bar {
+  padding: 0; }
+
+.event.exam .box-data__date, .enrollment.exam .box-data__date {
+  background-color: #fca311; }
+.event > *, .enrollment > * {
+  margin: 0.5em 0; }
+  .event > *:before, .event > *:after, .enrollment > *:before, .enrollment > *:after {
+    content: "";
+    display: table; }
+  .event > *:after, .enrollment > *:after {
+    clear: both; }
+.event .box-data__title, .enrollment .box-data__title {
+  padding: 0.3em 0; }
+  .event .box-data__title h4, .enrollment .box-data__title h4 {
+    padding: 0; }
+.event .image-container, .enrollment .image-container {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  min-height: 200px;
+  width: 100%;
+  display: inline-block;
+  margin-right: 1em; }
+  @media  (min-width: 48em) {
+    .event .image-container, .enrollment .image-container {
+      width: 200px; } }
+  @media  (min-width: 62.5em) {
+    .event .image-container, .enrollment .image-container {
+      width: 250px; } }
+.event .info-container, .enrollment .info-container {
+  position: relative;
+  vertical-align: top;
+  width: 100%;
+  display: inline-block; }
+  @media  (max-width: 767px) {
+    .event .info-container, .enrollment .info-container {
+      margin-top: 1em; } }
+  @media  (min-width: 48em) {
+    .event .info-container, .enrollment .info-container {
+      width: 250px;
+      min-height: 200px;
+      padding-bottom: 75px; } }
+  @media  (min-width: 62.5em) {
+    .event .info-container, .enrollment .info-container {
+      width: 290px; } }
+  @media  (min-width: 75em) {
+    .event .info-container, .enrollment .info-container {
+      width: 400px; } }
+.event .course-material, .enrollment .course-material {
+  padding: 0.5em 0;
+  border-bottom: 1px solid #EBEBEB;
+  border-top: 1px solid #EBEBEB;
+  font-weight: 600; }
+  @media  (max-width: 767px) {
+    .event .course-material, .enrollment .course-material {
+      margin-top: 0.5em; } }
+  @media  (min-width: 48em) {
+    .event .course-material, .enrollment .course-material {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0; } }
+  .event .course-material .fa-arrow-right, .enrollment .course-material .fa-arrow-right {
+    float: right; }
+@media  (min-width: 48em) {
+  .event .course-meta, .enrollment .course-meta {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0; }
+    .event .course-meta .course-material, .enrollment .course-meta .course-material {
+      position: relative;
+      margin-top: 0.5em; } }
+.event .event-location, .enrollment .event-location {
+  margin-right: 1em;
+  margin-bottom: 0.3em;
+  display: inline-block; }
+.event .event-location-links, .enrollment .event-location-links {
+  white-space: nowrap; }
+  .event .event-location-links > *:first-child, .enrollment .event-location-links > *:first-child {
+    margin-right: 0.5em; }
+
+.week-feed-actions:before, .week-feed-actions:after {
+  content: "";
+  display: table; }
+.week-feed-actions:after {
+  clear: both; }
+.week-feed-actions button {
+  float: left;
+  margin-right: 1em; }
+
+.subscribe-events-popover {
+  background-color: #FFF;
+  margin-top: 10px;
+  border: 1px solid #EBEBEB;
+  box-shadow: 1px 1px 2px -1px rgba(0, 0, 0, 0.25); }
+  @media  (max-width: 767px) {
+    .subscribe-events-popover {
+      width: 300px; } }
+
+.subscribe-events-popover__link {
+  border-bottom: 1px solid #EBEBEB;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  font-size: 13px;
+  font-size: 0.8125rem;
+  color: #979797;
+  padding: 1em;
+  font-weight: 600;
+  background-color: #FFF;
+  word-wrap: break-word; }
+
+.subscribe-events-popover__content {
+  font-size: 14px;
+  font-size: 0.875rem;
+  padding: 1.5em 1em 1em 1em; }
+
+.subscribe-events-popover__arrow {
+  position: absolute;
+  top: 10px;
+  left: 70px;
+  display: block;
+  width: 0;
+  height: 0; }
+  .subscribe-events-popover__arrow:before {
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: -10px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #EBEBEB; }
+  .subscribe-events-popover__arrow:after {
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: -9px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #FFF; }
+
+.subscribe-events-popover__instructions {
+  margin-top: 1em; }
+  .subscribe-events-popover__instructions a {
+    margin-left: 1em; }
+
+.week-feed-items {
+  margin-bottom: 1em; }
+  @media  (min-width: 48em) {
+    .week-feed-items .bar .box-data__content {
+      margin-left: 70px; } }
+
+#week-feed .messages {
+  margin-bottom: 1em; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1280px; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.dropdown-menu, .page-banner__change-background-menu, .user-settings__menu {
+  border: 1px solid #EBEBEB;
+  background-color: #FFF; }
+  .dropdown-menu.ng-hide-remove.ng-hide-remove-active, .ng-hide-remove.ng-hide-remove-active.page-banner__change-background-menu, .ng-hide-remove.ng-hide-remove-active.user-settings__menu {
+    transition: all linear 0.4s; }
+  .dropdown-menu.ng-hide-add, .ng-hide-add.page-banner__change-background-menu, .ng-hide-add.user-settings__menu {
+    opacity: 1; }
+  .dropdown-menu.ng-hide-add-active, .ng-hide-add-active.page-banner__change-background-menu, .ng-hide-add-active.user-settings__menu {
+    opacity: 0; }
+  .dropdown-menu.ng-hide-remove, .ng-hide-remove.page-banner__change-background-menu, .ng-hide-remove.user-settings__menu {
+    opacity: 0; }
+  .dropdown-menu.ng-hide-remove-active, .ng-hide-remove-active.page-banner__change-background-menu, .ng-hide-remove-active.user-settings__menu {
+    opacity: 1; }
+  .dropdown-menu a, .page-banner__change-background-menu a, .user-settings__menu a {
+    color: #0098d0; }
+  .dropdown-menu li, .page-banner__change-background-menu li, .user-settings__menu li {
+    padding: 1em;
+    font-size: 0.8em; }
+    .dropdown-menu li:last-child, .page-banner__change-background-menu li:last-child, .user-settings__menu li:last-child {
+      border: 0; }
+  .dropdown-menu li.divider, .page-banner__change-background-menu li.divider, .user-settings__menu li.divider {
+    border-bottom: 1px solid #EBEBEB;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0; }
+  .dropdown-menu li.divider-with-margin, .page-banner__change-background-menu li.divider-with-margin, .user-settings__menu li.divider-with-margin {
+    padding: 1em 0;
+    margin: 0 1em;
+    border-bottom: 1px solid #EBEBEB;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0; }
+  @media  (min-width: 48em) {
+    .dropdown-menu, .page-banner__change-background-menu, .user-settings__menu {
+      z-index: 12;
+      position: absolute;
+      right: 0; } }
+  @media  (max-width: 767px) {
+    .dropdown-menu, .page-banner__change-background-menu, .user-settings__menu {
+      border: 0; } }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.todo-items {
+  margin-top: 10px;
+  color: #fff; }
+  @media  (min-width: 48em) {
+    .todo-items {
+      margin-top: 0 !important;
+      width: 32%;
+      float: right;
+      top: -400px;
+      position: relative; }
+      @media  (max-width: 1280px) {
+        .todo-items {
+          margin-right: 30px; } } }
+  .todo-items .box {
+    height: 196px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    margin: 1em;
+    padding: 20px;
+    overflow: auto;
+    border: 0 transparent;
+    position: relative; }
+    @media  (max-width: 767px) {
+      .todo-items .box {
+        margin-top: 20px;
+        height: 180px; } }
+    @media  (min-width: 48em) {
+      .todo-items .box {
+        margin: 0;
+        height: 260px; } }
+    .todo-items .box h2 {
+      color: #FFF;
+      padding-bottom: 0; }
+    .todo-items .box .icon {
+      text-align: center; }
+      @media  (min-width: 48em) {
+        .todo-items .box .icon {
+          margin-top: 20px; } }
+    .todo-items .box li {
+      position: relative;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 10px 60px 10px 0px;
+      word-wrap: break-word;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+      .todo-items .box li:first-child {
+        padding-top: 0; }
+      .todo-items .box li .todo-action {
+        cursor: pointer; }
+        .todo-items .box li .todo-action.todo-action__done {
+          right: 35px; }
+        .todo-items .box li .todo-action.todo-action__remove {
+          right: 10px; }
+      .todo-items .box li.done {
+        color: #b3b3b3; }
+        .todo-items .box li.done .todo-action {
+          color: #222; }
+          .todo-items .box li.done .todo-action.todo-action__remove {
+            color: #FFF; }
+      .todo-items .box li .vertically-centered, .todo-items .box li .todo-action {
+        position: absolute;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -transform: translateY(-50%); }
+  .todo-items .new-todo-item {
+    position: relative;
+    margin: 0 1em; }
+    @media  (min-width: 48em) {
+      .todo-items .new-todo-item {
+        padding: 0;
+        margin: 10px 0 0 0;
+        height: 4em;
+        line-height: 4em; } }
+    .todo-items .new-todo-item .input-container {
+      overflow: hidden;
+      margin-right: 4em; }
+      .todo-items .new-todo-item .input-container input {
+        width: 100%;
+        height: 4em;
+        border: none;
+        padding: 0 20px;
+        color: #666;
+        background-color: rgba(255, 255, 255, 0.8); }
+        .todo-items .new-todo-item .input-container input:focus {
+          background: #ffffff; }
+        .todo-items .new-todo-item .input-container input ::-webkit-input-placeholder {
+          color: #979797; }
+        .todo-items .new-todo-item .input-container input :-moz-placeholder {
+          color: #979797; }
+        .todo-items .new-todo-item .input-container input ::-moz-placeholder {
+          color: #979797; }
+        .todo-items .new-todo-item .input-container input :-ms-input-placeholder {
+          color: #979797; }
+    .todo-items .new-todo-item .add-icon {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 4em;
+      height: 4em;
+      text-align: center;
+      background-color: #0098d0; }
+      .todo-items .new-todo-item .add-icon .fa-plus {
+        color: #ffffff; }
+
+@media  (min-width: 48em) {
+  .todo-items-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 0;
+    padding: 1em;
+    position: absolute;
+    max-width: 1280px;
+    left: 0;
+    right: 0;
+    z-index: 2; } }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+#ng-curtain {
+  opacity: 0 !important;
+  z-index: 998 !important; }
+
+.popover.ng-joyride > .arrow, .popover.ng-joyride > .arrow:after {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid; }
+.popover.ng-joyride > .arrow {
+  border-width: 11px; }
+.popover.ng-joyride > .arrow:after {
+  content: "";
+  border-width: 10px; }
+.popover.ng-joyride.top > .arrow {
+  bottom: -11px;
+  left: 50%;
+  margin-left: -11px;
+  border-top-color: rgba(0, 0, 0, 0.8);
+  border-bottom-width: 0; }
+.popover.ng-joyride.right > .arrow {
+  top: 50%;
+  left: -11px;
+  margin-top: -11px;
+  border-right-color: rgba(0, 0, 0, 0.8);
+  border-left-width: 0; }
+.popover.ng-joyride.bottom > .arrow {
+  top: -11px;
+  left: 50%;
+  margin-left: -11px;
+  border-top-width: 0;
+  border-bottom-color: rgba(0, 0, 0, 0.8); }
+.popover.ng-joyride.left > .arrow {
+  top: 50%;
+  right: -11px;
+  margin-top: -11px;
+  border-right-width: 0;
+  border-left-color: rgba(0, 0, 0, 0.8); }
+
+.ng-joyride-title, .popover.ng-joyride {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  color: #FFF;
+  z-index: 999 !important; }
+  .ng-joyride-title .popover-title, .popover.ng-joyride .popover-title {
+    font-size: 20px;
+    font-size: 1.25rem;
+    padding: 1rem 3rem 1rem 1rem;
+    background-color: transparent;
+    color: #FFF; }
+  .ng-joyride-title .popover-text, .popover.ng-joyride .popover-text {
+    font-size: 13px;
+    font-size: 0.8125rem;
+    padding: 0 1rem 1rem 1rem; }
+  .ng-joyride-title .popover-content, .popover.ng-joyride .popover-content {
+    padding: 0 !important; }
+  .ng-joyride-title .list-of-links--dark, .popover.ng-joyride .list-of-links--dark {
+    padding: 1rem; }
+    .ng-joyride-title .list-of-links--dark > li a, .popover.ng-joyride .list-of-links--dark > li a {
+      cursor: pointer;
+      display: inline-block;
+      padding-left: 2em;
+      padding-right: 5em;
+      transition-duration: 0s; }
+  .ng-joyride-title .skipBtn, .popover.ng-joyride .skipBtn {
+    border: 0;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    cursor: pointer;
+    color: #666; }
+    .ng-joyride-title .skipBtn:hover, .popover.ng-joyride .skipBtn:hover {
+      color: #FFF; }
+    .ng-joyride-title .skipBtn:before, .popover.ng-joyride .skipBtn:before {
+      font-family: "hy-icons";
+      content: "\EA32"; }
+
+@media  (max-width: 767px) {
+  .ng-joyride-title {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important; } }
+
+.popover.ng-joyride {
+  position: absolute;
+  z-index: 999;
+  display: none;
+  max-width: 300px; }
+  .popover.ng-joyride.top {
+    margin-top: -10px; }
+  .popover.ng-joyride.right {
+    margin-left: 10px; }
+  .popover.ng-joyride.bottom {
+    margin-top: 10px; }
+  .popover.ng-joyride.left {
+    margin-left: -10px; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.search-bar {
+  position: relative;
+  z-index: 3;
+  right: 5px; }
+  @media  (max-width: 767px) {
+    .search-bar {
+      position: relative;
+      margin: 1em 1em;
+      left: 0; }
+      .search-bar .input-container input {
+        width: 100%; } }
+  .search-bar label {
+    top: 50%;
+    transform: translate(0, -50%);
+    position: absolute;
+    left: 10px;
+    cursor: pointer;
+    color: #0098d0; }
+  .search-bar .clear {
+    top: 50%;
+    transform: translate(0, -50%);
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    color: #0098d0; }
+  .search-bar input {
+    padding: 10px 30px;
+    border: 2px solid #0098d0;
+    width: 300px; }
+    .search-bar input:focus {
+      outline: 0; }
+  .search-bar .dropdown-menu, .search-bar .page-banner__change-background-menu, .search-bar .user-settings__menu {
+    position: absolute;
+    width: 100%;
+    z-index: 2; }
+    .search-bar .dropdown-menu li, .search-bar .page-banner__change-background-menu li, .search-bar .user-settings__menu li {
+      margin: 0 10px; }
+      .search-bar .dropdown-menu li:not(:last-child), .search-bar .page-banner__change-background-menu li:not(:last-child), .search-bar .user-settings__menu li:not(:last-child) {
+        border-bottom: 1px solid #EBEBEB; }
+      .search-bar .dropdown-menu li:hover, .search-bar .page-banner__change-background-menu li:hover, .search-bar .user-settings__menu li:hover {
+        cursor: pointer; }
+        .search-bar .dropdown-menu li:hover a, .search-bar .page-banner__change-background-menu li:hover a, .search-bar .user-settings__menu li:hover a {
+          color: #005479; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+@media  (min-width: 48em) {
+  .search-icon .active .icon {
+    display: none; } }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+@media  (min-width: 48em) {
+  #search-results-wrapper {
+    width: 70%; } }
+#search-results-wrapper .header {
+  position: relative; }
+  @media  (max-width: 767px) {
+    #search-results-wrapper .header {
+      text-align: center;
+      padding-bottom: 1em; } }
+  #search-results-wrapper .header a {
+    display: block; }
+    @media  (min-width: 48em) {
+      #search-results-wrapper .header a {
+        position: absolute;
+        right: 0;
+        bottom: 15px; } }
+    #search-results-wrapper .header a i {
+      margin-left: 5px; }
+#search-results-wrapper h1 {
+  display: inline-block;
+  margin-right: 0.2em; }
+#search-results-wrapper .hits {
+  word-wrap: break-word; }
+  #search-results-wrapper .hits h3 a {
+    color: #0098d0;
+    font-weight: 500;
+    font-size: 0.85em; }
+  #search-results-wrapper .hits p {
+    margin-bottom: 1em; }
+  #search-results-wrapper .hits .info {
+    font-size: 0.85em; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.favorites-container:before, .favorites-container:after {
+  content: "";
+  display: table; }
+.favorites-container:after {
+  clear: both; }
+
+.favorites-list__item {
+  position: relative; }
+
+.favorites-list__remove {
+  display: none;
+  color: #FFF;
+  background-color: #0098d0;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 0;
+  right: 0; }
+  .edit-favorites .favorites-list__remove {
+    display: block; }
+  .favorites-list__remove:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -transform: translate(-50%, -50%);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "hy-icons";
+    content: "\EA32"; }
+
+.favorites-list__remove-screen {
+  display: none;
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); }
+  .edit-favorites .favorites-list__remove-screen {
+    display: block; }
+
+/***************************** Required styles *****************************/
+/**
+ * For the correct positioning of the placeholder element, the dnd-list and
+ * it's children must have position: relative
+ */
+.favorites-container ul[dnd-list], .favorites-container ul[dnd-list] > li {
+  position: relative; }
+
+/***************************** Dropzone Styling *****************************/
+/**
+ * The dnd-list should always have a min-height,
+ * otherwise you can't drop to it once it's empty
+ */
+.favorites-container .dropzone ul[dnd-list] {
+  min-height: 42px;
+  margin: 0px;
+  padding-left: 0px; }
+  @media  (min-width: 48em) {
+    .favorites-container .dropzone ul[dnd-list] {
+      margin-right: -40px; } }
+  @media  (min-width: 62.5em) {
+    .favorites-container .dropzone ul[dnd-list] {
+      margin-right: -80px; } }
+
+/**
+ * The dnd-lists's child elements currently MUST have
+ * position: relative. Otherwise we can not determine
+ * whether the mouse pointer is in the upper or lower
+ * half of the element we are dragging over. In other
+ * browsers we can use event.offsetY for this.
+ */
+.favorites-container .dropzone li {
+  display: block; }
+  .favorites-container .dropzone li section {
+    height: 100%; }
+
+/**
+ * Reduce opacity of elements during the drag operation. This allows the user
+ * to see where he is dropping his element, even if the element is huge. The
+ * .dndDragging class is automatically set during the drag operation.
+ */
+.favorites-container .dropzone .dndDragging {
+  opacity: 0.7; }
+
+/**
+ * The dndDraggingSource class will be applied to the source element of a drag
+ * operation. It makes sense to hide it to give the user the feeling that he's
+ * actually moving it. Note that the source element has also .dndDragging class.
+ */
+.favorites-container .dropzone .dndDraggingSource {
+  display: none; }
+
+/**
+ * An element with .dndPlaceholder class will be added as child of the dnd-list
+ * while the user is dragging over it.
+ */
+.favorites-container .dropzone .dndPlaceholder {
+  background-color: #ddd !important;
+  display: block;
+  position: relative; }
+  @media  (min-width: 62.5em) {
+    .favorites-container .dropzone .dndPlaceholder {
+      height: 300px; } }
+  @media  (min-width: 75em) {
+    .favorites-container .dropzone .dndPlaceholder {
+      height: 340px; } }
+
+/***************************** Element type specific styles *****************************/
+.favorites-container .dropzone .itemlist {
+  min-height: 120px !important; }
+
+.favorites-container .dropzone .itemlist > li {
+  margin-bottom: 26px; }
+  @media  (min-width: 48em) {
+    .favorites-container .dropzone .itemlist > li {
+      height: 380px;
+      float: left;
+      width: 33.33%;
+      padding: 20px 40px 20px 0; } }
+  @media  (min-width: 62.5em) {
+    .favorites-container .dropzone .itemlist > li {
+      padding: 20px 80px 20px 0; } }
+  .favorites-container .dropzone .itemlist > li .add-new {
+    border: 1px solid #EBEBEB; }
+    @media  (min-width: 48em) {
+      .favorites-container .dropzone .itemlist > li .add-new {
+        overflow-y: auto; } }
+  .favorites-container .dropzone .itemlist > li .rss-feed .rss-header {
+    white-space: nowrap; }
+  .favorites-container .dropzone .itemlist > li .rss-feed .rss-content {
+    overflow-y: auto;
+    max-height: 340px; }
+    @media  (min-width: 48em) {
+      .favorites-container .dropzone .itemlist > li .rss-feed .rss-content {
+        overflow-y: auto; } }
+  .favorites-container .dropzone .itemlist > li .rss-feed .single-item-image-container {
+    width: 100%;
+    height: 200px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin-bottom: 5px; }
+  .favorites-container .dropzone .itemlist > li .twitter {
+    padding: 0;
+    overflow: hidden; }
+
+.favorites-container .dropzone .container-element {
+  margin: 10px; }
+
+.loading-container {
+  text-align: center;
+  padding: 15px; }
+
+.favorite-img {
+  max-height: 150px; }
+
+.favorites-list__item.add-new {
+  height: 100%; }
+  @media  (max-width: 767px) {
+    .favorites-list__item.add-new {
+      height: 100px; } }
+
+.add-favorite-container {
+  border: 1px solid #EBEBEB;
+  box-shadow: 1px 1px 2px -1px rgba(0, 0, 0, 0.25);
+  background-color: #FFF;
+  position: relative; }
+
+.add-favorite-arrow {
+  position: relative;
+  left: -5px;
+  display: block;
+  width: 0;
+  height: 0;
+  margin-left: auto;
+  margin-right: auto; }
+  .add-favorite-arrow:before {
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: -10px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #EBEBEB; }
+  .add-favorite-arrow:after {
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: -9px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #FFF; }
+
+.add-favorite {
+  overflow: hidden;
+  width: 250px;
+  height: 250px; }
+  @media  (min-width: 48em) {
+    .add-favorite {
+      width: 280px;
+      height: 280px; } }
+  @media  (min-width: 62.5em) {
+    .add-favorite {
+      width: 320px;
+      height: 320px; } }
+  @media  (min-width: 75em) {
+    .add-favorite {
+      width: 350px;
+      height: 350px; } }
+
+.add-favorite-step {
+  width: 100%; }
+  .add-favorite-step ul {
+    padding: 0.5em; }
+  .add-favorite-step li.bar {
+    padding: 0.5em 0;
+    font-size: 0.9em; }
+
+.add-favorite-button {
+  height: 100%;
+  display: block; }
+
+.add-favorite-button__plus {
+  font-weight: bold;
+  font-size: 6rem;
+  width: 100%;
+  text-align: center;
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -transform: translate(-50%, -50%); }
+
+.add-favorite-button__title {
+  font-size: 2rem; }
+
+.favorites-container .unicafe {
+  position: relative;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('/app/assets/images/bg/ruokalista.png');
+  color: #FFF;
+  overflow-y: hidden !important; }
+  @media  (max-width: 767px) {
+    .favorites-container .unicafe {
+      height: 300px; } }
+  .favorites-container .unicafe h4 {
+    font-size: 2rem;
+    color: #FFF; }
+  .favorites-container .unicafe .unicafe-favorite__menu {
+    overflow-y: auto; }
+    @media  (max-width: 767px) {
+      .favorites-container .unicafe .unicafe-favorite__menu {
+        padding-bottom: 3em; } }
+    @media  (min-width: 48em) {
+      .favorites-container .unicafe .unicafe-favorite__menu {
+        height: 100px; } }
+    @media  (min-width: 62.5em) {
+      .favorites-container .unicafe .unicafe-favorite__menu {
+        height: 150px; } }
+    @media  (min-width: 75em) {
+      .favorites-container .unicafe .unicafe-favorite__menu {
+        height: 200px; } }
+  .favorites-container .unicafe .unicafe-favorite__select-container {
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+    right: 1em;
+    background-color: #FFF;
+    border: 1px solid #EBEBEB; }
+    .favorites-container .unicafe .unicafe-favorite__select-container select {
+      padding: 2px 0 2px 2px;
+      overflow: hidden;
+      width: 100%;
+      border: none;
+      color: #666;
+      height: 35px;
+      padding: 0 1em !important; }
+
+.add-favorite-search {
+  padding: 0 0 0 1em; }
+  .add-favorite-search input[type="text"], .add-favorite-search input[type="url"] {
+    border: 0;
+    width: 80%;
+    font-size: 0.8rem; }
+    .add-favorite-search input[type="text"].ng-invalid, .add-favorite-search input[type="url"].ng-invalid {
+      border: 1px solid #e5053a; }
+  .add-favorite-search i.fa-search {
+    color: #EBEBEB; }
+  .add-favorite-search a.fa-close {
+    color: #0098d0;
+    cursor: pointer; }
+
+.add-favorite-search-result {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 200px;
+  font-size: 0.8rem; }
+  @media  (min-width: 48em) {
+    .add-favorite-search-result {
+      height: 230px; } }
+  @media  (min-width: 62.5em) {
+    .add-favorite-search-result {
+      height: 270px; } }
+  @media  (min-width: 75em) {
+    .add-favorite-search-result {
+      height: 300px; } }
+
+.rss-feed-visible-items {
+  margin: 10px; }
+
+.unisport-iframe {
+  width: 100%;
+  border: none; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.rss-feed {
+  font-size: 0.9rem; }
+
+.rss-feed__item {
+  border-bottom: 1px solid #EBEBEB;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  padding: 0.5em 0; }
+  .rss-feed__item:first-child {
+    padding-top: 0; }
+  .rss-feed__item:last-child {
+    border: 0; }
+
+.rss-feed__item-title {
+  margin: 0.2em 0;
+  font-size: 1.1rem;
+  word-wrap: break-word; }
+
+.rss-feed__date {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  padding-bottom: 0.5em; }
+
+.add-new-rss-feed input[type="text"] {
+  border: 0;
+  width: 80%;
+  font-size: 0.8rem; }
+.add-new-rss-feed i.fa-search {
+  color: #EBEBEB; }
+.add-new-rss-feed a.fa-close {
+  color: #0098d0;
+  cursor: pointer; }
+.add-new-rss-feed .bar {
+  padding: 1em; }
+.add-new-rss-feed .rss-search-result-list {
+  font-size: 0.8rem; }
+
+.rss-search-result-list {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 200px; }
+  @media  (min-width: 48em) {
+    .rss-search-result-list {
+      height: 230px; } }
+  @media  (min-width: 62.5em) {
+    .rss-search-result-list {
+      height: 270px; } }
+  @media  (min-width: 75em) {
+    .rss-search-result-list {
+      height: 300px; } }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.show-mobile-only.page-banner-container .page-banner .page-banner__content-left {
+  margin: 2rem 0 1rem 0;
+  padding: 0; }
+  .show-mobile-only.page-banner-container .page-banner .page-banner__content-left .flexslider {
+    padding: 0 3rem; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.flexslider-container .flex-direction-nav .flex-next::before {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "hy-icons";
+  content: "\EA03"; }
+.flexslider-container .flex-direction-nav .flex-prev::before {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "hy-icons";
+  content: "\EA03";
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -transform: rotate(180deg); }
+.flexslider-container.controls-visible .flex-direction-nav .flex-next {
+  right: 10px !important;
+  opacity: 1 !important; }
+  .flexslider-container.controls-visible .flex-direction-nav .flex-next::before {
+    color: #FFF; }
+.flexslider-container.controls-visible .flex-direction-nav .flex-prev {
+  left: 10px !important;
+  opacity: 1 !important; }
+  .flexslider-container.controls-visible .flex-direction-nav .flex-prev::before {
+    color: #FFF; }
+
+.show-mobile-only .slides li:not(.flex-active-slide) {
+  display: none !important; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.useful-links {
+  position: relative; }
+
+.useful-links h3 {
+  font-size: 20px;
+  font-size: 1.25rem;
+  width: 70%;
+  margin-bottom: 16px; }
+
+.useful-links ul[dnd-list], .useful-links li[dnd-list] {
+  position: relative; }
+
+.useful-links li[dnd-list] {
+  display: block; }
+
+.useful-links .dndDraggingSource {
+  display: none; }
+
+.useful-links .dndDragging {
+  opacity: 0.7; }
+
+.useful-links .dndPlaceholder {
+  background-color: #ddd !important;
+  display: block;
+  position: relative;
+  height: 50px; }
+
+.useful-links__edit {
+  display: block;
+  text-align: right;
+  margin-bottom: 0.5em; }
+
+.useful-links li {
+  position: relative;
+  margin-bottom: 2px; }
+
+.useful-links__delete-link {
+  color: #FFF;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  right: 1em;
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -transform: translate(0, -50%); }
+
+.useful-links__edit-link-url {
+  position: relative;
+  background-color: #FFF;
+  border: 2px solid #EBEBEB;
+  margin-bottom: 2px;
+  padding: 0.8em 3em 0.8em 1em; }
+  .useful-links__edit-link-url input {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    width: 100%; }
+  .useful-links__edit-link-url a {
+    position: absolute;
+    right: 1em;
+    top: 50%;
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    -transform: translate(0, -50%); }
+
+.useful-links__edit-link {
+  border-bottom: 1px solid #EBEBEB;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif, Nimbus Sans L;
+  font-size: 15px;
+  font-size: 0.9375rem;
+  display: block;
+  line-height: normal;
+  overflow: hidden;
+  padding-bottom: 0.8em;
+  padding-left: 0;
+  padding-right: 2em;
+  padding-top: 0.8em;
+  position: relative;
+  background: #0098d0;
+  border: none;
+  color: #FFF;
+  overflow: visible;
+  padding-left: 1em;
+  padding-right: 3em;
+  font-weight: 600;
+  font-style: normal;
+  display: table;
+  width: 100%;
+  background-color: #777777 !important; }
+  .useful-links__edit-link:after {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "hy-icons";
+    content: "\EA1B";
+    color: inherit;
+    font-weight: 200;
+    height: 100%;
+    margin-top: -0.5em;
+    position: absolute;
+    right: 0;
+    top: 50%; }
+  a:hover .useful-links__edit-link:after, .useful-links__edit-link:hover:after {
+    color: #005479; }
+  .useful-links__edit-link:after {
+    transition-duration: 0.1s;
+    transition-property: padding;
+    background-color: #0882B3;
+    color: #FFF;
+    line-height: 2.8em;
+    margin-top: 0;
+    padding-left: 1em;
+    padding-right: 1em;
+    top: 0; }
+  .useful-links__edit-link:hover {
+    background-color: #005479;
+    color: #FFF; }
+    a:hover .useful-links__edit-link:hover:after, .useful-links__edit-link:hover:after {
+      background: #003146;
+      color: #FFF; }
+  .useful-links__edit-link .hy-list {
+    display: table-cell;
+    vertical-align: middle;
+    width: 15px; }
+  .useful-links__edit-link:after {
+    display: none; }
+  .useful-links__edit-link span {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 20px; }
+    @media  (max-width: 767px) {
+      .useful-links__edit-link span {
+        margin-left: 0; } }
+  .useful-links__edit-link span i {
+    margin-left: 0.5em;
+    display: none; }
+  @media  (max-width: 767px) {
+    .useful-links__edit-link.editable span {
+      cursor: pointer;
+      background-color: #666; }
+      .useful-links__edit-link.editable span i {
+        display: inline; } }
+  .useful-links__edit-link.editable:hover span {
+    cursor: pointer;
+    background-color: #666; }
+    .useful-links__edit-link.editable:hover span i {
+      display: inline; }
+
+.new-useful-link {
+  position: relative;
+  padding: 0.7em 0 0.7em 1em;
+  border: 2px solid #EBEBEB;
+  margin-bottom: 2px; }
+  .new-useful-link form {
+    display: inline;
+    margin: 0;
+    padding: 0; }
+  .new-useful-link input {
+    border: 0;
+    width: 70%; }
+
+.new-useful-link__add-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 3em;
+  background-color: #0098d0; }
+  .new-useful-link__add-button:link, .new-useful-link__add-button:hover, .new-useful-link__add-button:active, .new-useful-link__add-button:visited {
+    color: #FFF; }
+  .new-useful-link__add-button i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -transform: translate(-50%, -50%); }
+
+.useful-link-title {
+  border: 1px solid #EBEBEB;
+  box-shadow: 1px 1px 2px -1px rgba(0, 0, 0, 0.25);
+  background-color: #FFF;
+  position: absolute;
+  margin-top: -0.5em;
+  margin-left: 0.5em;
+  padding: 0.5em;
+  width: 85%;
+  z-index: 2; }
+  .useful-link-title.ng-hide-remove.ng-hide-remove-active {
+    transition: all linear 0.4s; }
+  .useful-link-title.ng-hide-add {
+    opacity: 1; }
+  .useful-link-title.ng-hide-add-active {
+    opacity: 0; }
+  .useful-link-title.ng-hide-remove {
+    opacity: 0; }
+  .useful-link-title.ng-hide-remove-active {
+    opacity: 1; }
+  .useful-link-title input {
+    border: 0;
+    width: 100%;
+    color: #0098d0; }
+
+.useful-link-title__arrow {
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 0;
+  height: 0; }
+  .useful-link-title__arrow:before {
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: -10px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #EBEBEB; }
+  .useful-link-title__arrow:after {
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: -9px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #FFF; }
+
+.useful-links__helpdesk {
+  padding: 1em;
+  background-color: #0098d0;
+  color: #FFF; }
+  .useful-links__helpdesk a:link, .useful-links__helpdesk a:hover, .useful-links__helpdesk a:active, .useful-links__helpdesk a:visited {
+    color: #FFF; }
+  .useful-links__helpdesk p {
+    margin-bottom: 0;
+    font-family: Georgia; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.error-page__title {
+  padding: 1em 0;
+  border-bottom: 1px solid #EBEBEB;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0; }
+
+.error-page__description {
+  float: left;
+  margin-top: 1em; }
+
+.error-page__image {
+  margin-top: 1em;
+  float: right;
+  display: none; }
+  @media  (min-width: 62.5em) {
+    .error-page__image {
+      display: inline; } }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.edit-link-wrapper {
+  position: relative; }
+
+.edit-link {
+  position: absolute;
+  right: 0;
+  bottom: 0.5em; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.upcoming-courses .ui-component__title {
+  margin-bottom: 1rem; }
+.upcoming-courses li {
+  margin-bottom: 1rem; }
+
+.upcoming-course__img .image-container {
+  background: no-repeat center;
+  background-size: cover;
+  height: 200px;
+  width: 100%; }
+
+.upcoming-course__details-container {
+  margin-top: 1rem; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.feedback-container {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 10;
+  color: #FFF; }
+  .feedback-container.form {
+    left: 20px; }
+    @media  (min-width: 48em) {
+      .feedback-container.form {
+        left: auto;
+        width: 400px; } }
+
+.feedback__box-default, .feedback__box-submitted {
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  cursor: pointer;
+  position: relative; }
+  @media  (min-width: 48em) {
+    .feedback__box-default, .feedback__box-submitted {
+      height: 100px;
+      width: 100px; } }
+  .feedback__box-default .content, .feedback__box-submitted .content {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 100%; }
+
+.feedback__box-default {
+  background-color: #222; }
+
+.feedback__box-submitted {
+  background-color: #5bbf21; }
+
+.feedback__box-form {
+  width: 100%;
+  background-color: #222;
+  padding: 20px; }
+  .feedback__box-form textarea {
+    background-color: transparent;
+    border: none;
+    color: #FFF;
+    resize: none;
+    padding: 0; }
+    .feedback__box-form textarea:focus {
+      outline: 0; }
+  .feedback__box-form .actions {
+    margin-top: 15px; }
+    .feedback__box-form .actions input[type="submit"] {
+      background-color: transparent;
+      padding: 0; }
+      .feedback__box-form .actions input[type="submit"]:hover {
+        background-color: transparent; }
+      .feedback__box-form .actions input[type="submit"]:disabled {
+        opacity: 0.5; }
+    .feedback__box-form .actions .cancel {
+      cursor: pointer;
+      float: right; }
+  .feedback__box-form input[type="checkbox"] {
+    -webkit-appearance: checkbox;
+    margin-right: 0.5em; }
+  .feedback__box-form input[type="email"] {
+    color: #222;
+    font-size: 12px;
+    font-size: 0.75rem;
+    padding: 0.3em;
+    border: 1px solid #222;
+    width: 100%; }
+    .feedback__box-form input[type="email"].ng-invalid:not(.ng-pristine) {
+      border: 1px solid #e5053a; }
+  .feedback__box-form label {
+    font-size: 12px;
+    font-size: 0.75rem; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.event-calendar {
+  border-top: 1px solid #EBEBEB;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+  padding-bottom: 1em; }
+  .event-calendar h2 {
+    font-size: 20px;
+    font-size: 1.25rem;
+    text-align: center;
+    position: relative;
+    top: 5px; }
+  .event-calendar .fc-day-header {
+    color: #222;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 0.2em; }
+  .event-calendar .fc-week-number {
+    text-align: center;
+    color: #979797;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 14px;
+    font-size: 0.875rem; }
+  .event-calendar .fc-day-grid-event, .event-calendar .fc-time-grid-event {
+    border-radius: 0; }
+  .event-calendar .fc-event-container .fc-content {
+    font-size: 9px;
+    font-size: 0.5625rem; }
+  .event-calendar .fc-left .fc-button {
+    transition-duration: 0.1s;
+    transition-property: all;
+    background-color: #0098d0;
+    border: none;
+    color: #FFF;
+    cursor: pointer;
+    display: block;
+    line-height: 125%;
+    padding: 0.9em 1em;
+    font-size: 15px;
+    font-size: 0.9375rem;
+    background-image: none;
+    border-radius: 0;
+    text-shadow: none;
+    padding: 0 0.7em;
+    box-shadow: none; }
+    .event-calendar .fc-left .fc-button:hover {
+      background-color: #005479;
+      color: #FFF; }
+    .event-calendar .fc-left .fc-button.fc-state-active {
+      background-color: #005479; }
+  .event-calendar .fc-right .fc-button {
+    font-size: 15px;
+    font-size: 0.9375rem;
+    padding: 0 0.7em;
+    background: transparent;
+    border-radius: 0; }
+  .event-calendar .fc-today-button, .event-calendar .event-calendar__button {
+    text-transform: capitalize; }
+  .event-calendar .fc-state-disabled {
+    opacity: 1; }
+  .event-calendar .fc-prev-button, .event-calendar .fc-next-button {
+    padding: 0 0.3em !important; }
+  .event-calendar .fc-icon {
+    position: relative;
+    top: -1px !important; }
+  .event-calendar .fc-icon-calendar-prev {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -transform: rotate(180deg); }
+    .event-calendar .fc-icon-calendar-prev:before {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-family: "hy-icons";
+      content: "\EA1B"; }
+  .event-calendar .fc-icon-calendar-next:before {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "hy-icons";
+    content: "\EA1B"; }
+  @media  (max-width: 767px) {
+    .event-calendar {
+      padding-top: 0.5em; }
+      .event-calendar .fc-right, .event-calendar .fc-left, .event-calendar .fc-center {
+        display: block;
+        width: 100%; }
+      .event-calendar .fc-right, .event-calendar .fc-center {
+        margin-top: 0.5em; } }
+  @media  (min-width: 48em) {
+    .event-calendar {
+      padding-top: 1em; } }
+  .event-calendar .fc-today {
+    background-color: #e5f3f9; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.attainments .messages--light {
+  margin-top: -1px; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.lander-wrapper .l-footer {
+  display: none; }
+
+.login-page-wrapper {
+  width: 350px; }
+
+.login-page__title {
+  color: #FFF;
+  font-size: 3.5rem; }
+
+.login-page__intro {
+  color: #FFF;
+  font-size: 1.25rem; }
+
+.button-internal--dark.login-page__login-link {
+  width: 200px;
+  margin-top: 30px; }
+
+.lander-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-image: url('/api/public/v1/images/backgrounds/Profile_2.jpg');
+  background-size: cover; }
+  .lander-bg .gradient-overlay {
+    width: 100%;
+    height: 100%;
+    background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.8), transparent);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, rgba(0, 0, 0, 0.8), transparent);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, rgba(0, 0, 0, 0.8), transparent);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent);
+    /* Standard syntax */ }
+
+.login-page__read-more {
+  text-transform: uppercase;
+  color: #FFF;
+  font-size: .93em;
+  font-weight: 600;
+  letter-spacing: .01em; }
+  .login-page__read-more:hover {
+    color: #0098d0; }
+
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+.course-recommendations {
+  margin-top: 2em; }
+
+.course-recommendations__title {
+  font-size: 20px;
+  font-size: 1.25rem; }
+
+.course-recommendations-list {
+  font-size: 14px;
+  font-size: 0.875rem; }
+
+.course-recommendations-list__link a span {
+  margin-left: 0.5em; }
+
+.course-recommendations-list__title {
+  font-weight: 600;
+  font-style: normal;
+  margin-bottom: 1em; }

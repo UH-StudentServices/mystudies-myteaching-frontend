@@ -1,0 +1,42 @@
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<section class="favorites-list__item unicafe island">
+  <div class="loading-container" ng-if="loading">
+    <i class="hy hy-5x hy-rotate-right hy-spin center"></i>
+  </div>
+  <div class="unicafe-favorite" ng-if="!loading">
+    <h4>{{ 'favorites.unicafe.lunchMenu' | translate | capitalize }}</h4>
+    <div ng-show="closed">{{'favorites.unicafe.closed' | translate | capitalize}}</div>
+    <div ng-show="!closed && menu.length === 0">{{'favorites.unicafe.notAvailable' | translate | capitalize}}</div>
+    <ul class="unicafe-favorite__menu">
+      <li ng-repeat="menuItem in menu" class="margin-bottom-10">
+        {{ menuItem['name' + languageSuffix] }}
+        <br />
+        <span ng-repeat="metaData in menuItem.meta[0]" class="unicafe-meta-data"><span ng-if="$index !== 0">, </span>{{ metaData }}</span>
+      </li>
+    </ul>
+    <div class="unicafe-favorite__select-container">
+        <select
+            name="restaurantSelect"
+            ng-model="selectedRestaurant"
+            ng-change="restaurantSelected(selectedRestaurant)"
+            ng-options="restaurant.id as restaurant.name disable when restaurant.isDisabled for restaurant in restaurantOptions">
+        </select>
+    </div>
+  </div>
+</section>

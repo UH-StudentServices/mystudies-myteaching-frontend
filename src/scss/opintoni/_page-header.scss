@@ -1,0 +1,104 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+$headerHeight: 70px;
+
+@include breakpoint($mobile-only) {
+  .page-header__branding {
+    $border : 1px solid $darkgray;
+    padding: 0.5em 2em;
+    border-top: $border;
+    border-bottom: $border;
+    background-color: $black;
+  }
+}
+
+@include breakpoint($small) {
+  .page-header {
+    @include clearfix;
+    background-color: $black;
+    height: $headerHeight;
+
+    .wrapper {
+      height: 100%;
+      padding: 0 1em;
+    }
+  }
+
+  .page-header__branding {
+    height: 100%;
+    float: left;
+    background-color: $black;
+    line-height: 100%;
+    ul, li {
+      height: 100%;
+    }
+    a {
+      display: inline-block;
+      height: 100%;
+    }
+    h1 {
+      line-height: $headerHeight;
+    }
+  }
+  .page-header__links {
+    float: right;
+    height: 100%;
+    ul, li {
+      height: 100%;
+    }
+    .divider {
+      line-height: $headerHeight;
+    }
+  }
+
+  .page-header__links-list {
+    @include inline-list-size-variant;
+    float: right;
+
+    > li {
+      display: inline-block;
+      margin-right: 0.8em;
+    }
+  }
+
+  .page-header__link {
+    @include link-label($color-active: $white);
+    line-height: $headerHeight;
+  }
+}
+
+.menu-language {
+  li {
+    margin-left: 0.8em;
+  }
+
+  @include breakpoint($mobile-only) {
+    padding: 0 1em;
+    li {
+      margin-left: 1.5em;
+    }
+  }
+}
+
+.menu-language__item {
+  @include breakpoint($small) {
+    &, &:hover, &:focus, &:active {
+      color: $white;
+    }
+  }
+}

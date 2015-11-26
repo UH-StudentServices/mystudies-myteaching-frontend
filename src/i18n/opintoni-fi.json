@@ -1,0 +1,385 @@
+{
+  "general": {
+    "teacher": "opettaja",
+    "student": "opiskelija",
+    "teachers": "opettajat",
+    "courses": "kurssit",
+    "exams": "tentit",
+    "show": "näytä",
+    "save": "tallenna",
+    "cancel": "peruuta",
+    "edit": "muokkaa",
+    "done": "valmis",
+    "copyToClipboard": "kopioi leikepöydälle",
+    "copyToClipboardSuccess": "Kopioitu!",
+    "copyToClipboardFailMac": "Paina ⌘-C kopioidaksesi",
+    "copyToClipboardFailOther": "Paina Ctrl-C kopioidaksesi",
+    "teaching": "opetus",
+    "pastTeaching": "päättynyt opetus",
+    "emailAddress" : "sähköpostiosoite",
+    "readMore" : "lue lisää",
+    "yes" : "kyllä",
+    "no" : "ei"
+  },
+  "abbreviations": {
+    "credits": "op"
+  },
+  "toolbar": {
+    "logout": "Kirjaudu ulos",
+    "helsinkiUniversity": "Helsingin Yliopisto",
+    "search": {
+      "openSearch": "Avaa haku",
+      "search": "Hae",
+      "closeSearch": "Sulje haku",
+      "categories": {
+        "ALL": "Kaikki",
+        "HELDA": "HELDA",
+        "COURSES": "Kurssit",
+        "EVENTS": "Tapahtumat",
+        "UNIVERSITY": "Yliopiston sivut"
+      }
+    },
+    "icons": {
+      "search": "Haku",
+      "tour": "Esittelykierros",
+      "notifications": "Ilmoitukset",
+      "logout": "Kirjaudu ulos"
+    }
+  },
+  "pageHeaderLinks": {
+    "email": "sähköposti",
+    "flamma": "flamma",
+    "moodle": "moodle",
+    "library": "kirjasto",
+    "contact": "yhteystiedot"
+  },
+  "primaryLinks": {
+    "oodi": "Weboodi"
+  },
+  "opintoni": {
+    "feedback": {
+      "bannerHeading": "ANNA PALAUTETTA OPINTONI-SIVUSTA",
+      "bannerText": "Opintoni tarjoaa näkymän käynnissä oleviin kursseihisi. Palvelua kehitetään saadun palautteen perusteella."
+    },
+    "pageHeaderBranding": "Opintoni"
+  },
+  "opetukseni": {
+    "feedback": {
+      "bannerHeading": "ANNA PALAUTETTA OPETUKSENI-SIVUSTA",
+      "bannerText": "Opetukseni tarjoaa näkymän käynnissä oleviin kursseihisi. Palvelua kehitetään saadun palautteen perusteella."
+    },
+    "pageHeaderBranding": "Opetukseni"
+  },
+  "admin": {
+    "pageHeaderBranding": "Ylläpito",
+    "feedback": "Palaute",
+    "downloadCsv": "Lataa CSV",
+    "timestamp": "Aikaleima",
+    "first": "ensimmäinen",
+    "last": "viimeinen",
+    "emailReply" : "Käyttäjä haluaa vastauksen sähköpostiin",
+    "faculty" : "Tiedekunta",
+    "state" : "tila",
+    "userAgent" : "userAgent"
+  },
+  "navigationTab": {
+    "frontPage": "Etusivu",
+    "calendar": "Kalenteri",
+    "structure": "Rakenne",
+    "timetable": "Aikataulu"
+  },
+  "mobileNavigation": {
+    "shortcutsTitle": "Oikopolut",
+    "shortcutsDescription": "Sähköposti, Flamma, Moodle, Kirjasto, Yhteystiedot",
+    "returnLinksTitle": "Paluulinkit",
+    "returnLinksDescription": "Paluu yliopiston tai yksiköiden sivuille"
+  },
+  "weekFeed": {
+    "nowTeaching": "Nyt opetuksessani",
+    "nowStudying": "Nyt opinnoissani",
+    "nextEvents": "Seuraavat tapahtumat",
+    "nextEventsShort": "Seuraavat",
+    "allEvents": "Kaikki tapahtumat",
+    "noUpcomingEvents": "sinulla ei ole tulevia tapahtumia.",
+    "noPastEvents": "sinulla ei ole menneitä tapahtumia.",
+    "noCourses": "Et ole ilmoittautunut kursseille WebOodissa.",
+    "noExams": "Sinulla ei ole tulevia tenttejä.",
+    "noCurrentTeacherCourses": "Sinulla ei ole meneillään olevaa opetusta.",
+    "noPastTeacherCourses": "Sinulla ei ole päättynyttä opetusta.",
+    "courseMaterials": "Siirry kurssin materiaaleihin",
+    "courseMaterialsMoodle": "Siirry Moodleen",
+    "showRoute": "Näytä reitti",
+    "showOnMap": "Näytä kartalla",
+    "errors": {
+      "errorLoadingFutureEvents": "Tulevien tapahtumien haussa tapahtui virhe",
+      "errorLoadingExams": "Tenttien haussa tapahtui virhe",
+      "errorLoadingCourses": "Kurssien haussa tapahtui virhe"
+    },
+    "subscribeEvents": "tilaa tapahtumat",
+    "calendarInstructions": "Näin lisäät tapahtumat kalenteriohjelmiin "
+  },
+  "attainments": {
+    "attainments": "Suoritetut",
+    "seeMoreLink": "katso kaikki suoritukset WebOodista",
+    "noAttainmentsFromLastSixMonths": "Ei opintosuorituksia viimeiseltä kuudelta kuukaudelta"
+  },
+  "usefulLinks": {
+    "title": "hyödyllistä",
+    "yths": "YTHS",
+    "studyingAndTrainingAbroad": "Opiskelu ja harjoittelu ulkomailla",
+    "studenServices": "Opiskelun palvelut",
+    "academicAdministration": "Opintohallinto",
+    "professionalDevelopment": "Opettajana kehittyminen",
+    "staffAndFacultyMobility": "Opettaja- ja tutkijavaihto",
+    "addNewLink": "lisää uusi linkki...",
+    "linkDescription": "linkin kuvaus...",
+    "linkUrl": "linkin URL-osoite...",
+    "teachingSupport": "opetuksen tueksi",
+    "forTeacher": "opettajalle",
+    "forPersonnel": "henkilöstölle",
+    "teaching": "opetus",
+    "teachingMatters": "opetusasiat",
+    "forStudent": "opiskelijalle",
+    "openUniversity": "Avoimen yliopiston Omat sivut -palvelu",
+    "teachingSupportOpenUniversity": "Opetuksen tueksi/Avoin yliopisto",
+    "teachingPracticesInOpenUniversity": "Opetuksen käytännöt Avoimessa",
+    "pedagogicTraining": "Pedagoginen koulutus",
+    "forTeachers": "Opettajille",
+    "studentCounseling": "Opintoneuvonta",
+    "examsAndOtherAssessmentTools": "Tentit ja muut suoritustavat",
+    "certificateOfStudyAttainments": "Todistus opintosuorituksista"
+  },
+  "notificationsMenu": {
+    "title": "Ilmoitukset"
+  },
+  "userSettings": {
+    "title": "Käyttäjän asetukset",
+    "changeAvatar": {
+      "title": "Vaihda profiilikuva",
+      "uploadFile": "Lataa tiedosto",
+      "takePicture": "Ota kuva",
+      "useDefault": "Käytä oletuskuvaa",
+      "cancelPicture": "Peruuta"
+    },
+    "changeBackground": "vaihda taustakuva",
+    "portfolio": "portfolio",
+    "ariaLabels": {
+      "chooseBackgroundImage": "valitse taustakuva"
+    }
+  },
+  "buttons": {
+    "showMore": "Näytä lisää"
+  },
+  "favorites": {
+    "types": {
+      "RSS": "RSS-syöte",
+      "TWITTER": "Twitter-aikajana",
+      "LINK": "Linkki verkkosivulle",
+      "UNICAFE": "Unicafe-lounaslista",
+      "UNISPORT": "Unisport-varaukset"
+    },
+    "title": "suosikit",
+    "readMore": "lue lisää...",
+    "addNew": "lisää uusi",
+    "rss": {
+      "rssFeedSearch": "hae sisältöä tai syötä osoite",
+      "numberOfItems": "Näytettävien uutisten määrä",
+      "1item": "1 uutinen",
+      "3items": "3 uutista"
+    },
+    "link": {
+      "linkPlaceholder": "URL suosikkisivulle"
+    },
+    "unicafe": {
+      "notAvailable": "lounaslista ei saatavilla",
+      "closed": "ravintola suljettu",
+      "lunchMenu": "lounaslista"
+    },
+    "twitter": {
+      "twitterPlaceholder": "Twitter-käyttäjänimi, esim. helsinkiuni"
+    },
+    "submitButton": "Lisää",
+    "cancelButton": "Peruuta",
+    "ariaLabels": {
+      "clearSearch": "tyhjennä haku",
+      "searchResults": "hakutulokset"
+    }
+  },
+  "globalMessages": {
+    "errors": {
+      "genericError": "Palvelun toiminnassa on havaittu ongelmia. Jotkut ominaisuudet saattavat olla pois käytöstä."
+    }
+  },
+  "todoItems": {
+    "title": "Muistilista",
+    "listIsEmpty": "Muistilistasi on vielä tyhjä",
+    "addNew": "Uusi tehtävä...",
+    "check": "Merkitse tehdyksi",
+    "ariaLabels": {
+      "addNewButton": "Lisää uusi tehtävä -painike"
+    }
+  },
+  "userNotifications": {
+    "title": "Ilmoitukset",
+    "noNotifications": "Ei ilmoituksia."
+  },
+  "tour": {
+    "common": {
+      "closeConfirm" : "Haluatko sulkea palvelun esittelyn?",
+      "start": "aloita",
+      "skip": "ohita",
+      "next": "seuraava",
+      "previous": "edellinen",
+      "finish": "lopeta",
+      "search": {
+        "heading": "Haku",
+        "text": "Hae tietoja Helsingin yliopiston sivuilta, tapahtumista, kursseista ja digitaalisesta arkistosta (HELDA)."
+      },
+      "notifications": {
+        "heading": "Ilmoitukset",
+        "text": "Ilmoituskello kertoo kurssisivuille lisätyistä viesteistä ja materiaaleista. Ilmoitusta klikkaamalla pääset kurssisivun päivitettyyn kohtaan."
+      },
+      "todoItems": {
+        "heading": "Tehtävälista",
+        "text": "Lisää uusi tehtävä listaan kirjoittamalla se tekstikenttään ja painamalla +-painiketta tai enteriä. Voit merkitä tehtävän tehdyksi tai poistaa sen tehtävän oikealla puolella puolella olevilla painikkeilla."
+      },
+      "usefulLinks": {
+        "heading": "Hyödyllistä",
+        "text": "Hyödyllistä-linkit ovat opiskelija- tai opettajaroolisi ja tiedekuntasi mukaan sinulle tarjottuja linkkejä. Jos olet sekä opettaja että opiskelija, näet opettajille suunnatut linkit. Voit poistaa ja lisätä linkkejä painamalla Muokkaa-painiketta. Linkit näytetään lisäysjärjestyksessä."
+      },
+      "favorites": {
+        "heading": "Suosikit",
+        "text": "Voit lisätä suosikkeihin rss-syötteitä, linkkejä verkkosivuille ja valitsemasi Unicafen päivän ruokalistan. Lisää suosikki painamalla +-painiketta Lisää uusi -laatikossa. Suosikkien järjestystä voit muokata Muokkaa-tilassa raahaamalla suosikin haluamaasi paikkaan ja suosikin saat poistettua painamalla sen oikeassa yläreunassa olevaa ruksia. Muista painaa Valmis tallentaaksesi muutokset."
+      }
+    },
+    "student": {
+      "intro": {
+        "heading": "Opintoni",
+        "text": "Opintoni tarjoaa näkymän käynnissä oleviin kursseihisi. Näet sivulla kursseihisi liittyvät seuraavat tapahtumat aika- ja paikkatietoineen ja  pääset yhdellä klikkauksella kurssisivuille. Huomaa, että kaikilla kursseilla ei vielä ole kurssisivua. Lisäksi voit ylläpitää omia linkki, suosikki- ja tehtävälistoja. Palvelun toiminnot aktivoituvat suljettuasi tämän esittelyn. Löydät esittelyn myöhemmin klikkaamalla hakukentän vieressä olevaa i-ikonia. Muista myös antaa palautetta: kehitämme palvelua saadun palautteen perusteella."
+      },
+      "weekFeed": {
+        "heading": "Nyt opinnoissani",
+        "text": "Nyt opinnoissani näyttää kurssit ja tentit, joihin olet ilmoittautunut WebOodissa. Välilehtiä on kolme: seuraavat tapahtumat, kurssit ja tentit. Opintoni-sivu näyttää sen välilehden, joka jäi auki viimeksi sivulla käydessäsi. Kurssin nimeä klikkaamalla pääset kurssisivulle. Huomaa, että kaikilla kursseilla ei vielä ole kurssisivua."
+      }
+    },
+    "teacher": {
+      "intro": {
+        "heading": "Opetukseni",
+        "text": "Opetukseni tarjoaa näkymän käynnissä oleviin kursseisihisi. Näet sivulla kursseihisi liittyvät seuraavat tapahtumat aika- ja paikkatietoineen ja pääset yhdellä klikkauksella kurssisivuille. Huomaa, että kaikilla kursseilla ei vielä ole kurssisivua. Lisäksi voit ylläpitää omia linkki, suosikki- ja tehtävälistoja. Palvelun toiminnot aktivoituvat suljettuasi tämän esittelyn. Löydät esittelyn myöhemmin klikkaamalla hakukentän vieressä olevaa i-ikonia. Muista myös antaa palautetta: kehitämme palvelua saadun palautteen perusteella."
+      },
+      "weekFeed": {
+        "heading": "Nyt opetuksessani",
+        "text": "Nyt opetuksessani näyttää kurssit ja tentit, joihit sinut on merkitty opettajaksi Oodissa. Välilehtiä on neljä: seuraavat tapahtumat, opetus, tentit ja päättynyt opetus. Opetukseni-sivu näyttää sen välilehden, joka jäi auki viimeksi sivulla käydessäsi. Kurssin nimeä klikkaamalla pääset kurssisivullesi, jos sellainen on sinulle generoitu."
+      }
+    },
+    "ariaLabels": {
+      "startTour": "Aloita palvelun esittely"
+    }
+  },
+  "searchResults": {
+    "title": "Haku",
+    "hitsFound": "Tulokset ({{ hitCount }})",
+    "close": "Sulje haku"
+  },
+  "pageBanner": {
+    "giveFeedback": "Anna palautetta",
+    "newsButtonLabel": "Lue lisää",
+    "chooseDefaultBackground": "Valitse vakiokuvista"
+  },
+  "errorPage": {
+    "accessDenied": {
+      "title": "pääsy kielletty",
+      "description": "tunnuksellasi ei ole pääsyä palveluun."
+    },
+    "maintenance": {
+      "title": "huoltokatko",
+      "description": "Kasvatamme uutta! Sivu on poissa käytöstä huoltotöiden vuoksi."
+    }
+  },
+  "landerPage": {
+    "opintoni": {
+      "login": {
+        "title": "Tervetuloa Opintoni-sivulle",
+        "intro": "Opintoni-sivu on siellä missä sinäkin. Se on oma sivusi kursseihin, kiinnostaviin sisältöihin sekä yliopiston muihin palveluihin.",
+        "alternativeLogin": "Jos olet opettaja Helsingin yliopistossa, kirjaudu <a href=\"{{ loginUrlTeacher }}\">Opetukseni-sivulle</a>.",
+        "goToLogin": "Kirjaudu"
+      }
+    },
+    "opetukseni": {
+      "login": {
+        "title": "Tervetuloa Opetukseni-sivulle",
+        "intro": "Opetukseni-sivu on siellä missä sinäkin. Se on oma sivusi kursseihin, kiinnostaviin sisältöihin sekä yliopiston muihin palveluihin.",
+        "alternativeLogin": "Jos olet opiskelija Helsingin yliopistossa, kirjaudu <a href=\"{{ loginUrlStudent }}\">Opintoni-sivulle</a>.",
+        "goToLogin": "Kirjaudu"
+      }
+    },
+    "readMore": "Lue lisää"
+  },
+  "upcomingCourses": {
+    "title": "Tuleva opetus"
+  },
+  "codes": {
+    "courseTypes": {
+      "3": "Harjoittelu",
+      "5": "Luentokurssi",
+      "7": "Harjoitusryhmä",
+      "8": "Yleinen tentti",
+      "10": "Seminaari",
+      "12": "Kenttäkurssi",
+      "16": "Kesätentti",
+      "17": "Kurssi",
+      "19": "Tentti",
+      "20": "Kirjallisuuskuulustelu",
+      "21": "Kirjallinen työ",
+      "22": "Laboratoriotyö",
+      "23": "Rästitentti",
+      "26": "Verkkokurssi",
+      "27": "Verkkotentti",
+      "99": "Muu opetustapahtuma"
+    }
+  },
+  "faculties": {
+    "A93000": "Avoin yliopisto",
+    "H57": "Bio- ja ympäristötieteellinen tiedekunta",
+    "H90": "Eläinlääketieteellinen tiedekunta",
+    "H55": "Farmasian tiedekunta",
+    "H40": "Humanistinen tiedekunta",
+    "H60": "Käyttäytymistieteellinen tiedekunta",
+    "H30": "Lääketieteellinen tiedekunta",
+    "H80": "Maatalous-metsätieteellinen tiedekunta",
+    "H50": "Matemaattis-luonnontieteellinen tiedekunta",
+    "H20": "Oikeustieteellinen tiedekunta",
+    "H74": "Svenska social- och kommunalhögskolan",
+    "H10": "Teologinen tiedekunta",
+    "H70": "Valtiotieteellinen tiedekunta",
+    "A57000": "Bio- ja ympäristötieteellinen tiedekunta",
+    "A90000": "Eläinlääketieteellinen tiedekunta",
+    "A55000": "Farmasian tiedekunta",
+    "A40000": "Humanistinen tiedekunta",
+    "A60000": "Käyttäytymistieteellinen tiedekunta",
+    "A30000": "Lääketieteellinen tiedekunta",
+    "A80000": "Maatalous-metsätieteellinen tiedekunta",
+    "A50000": "Matemaattis-luonnontieteellinen tiedekunta",
+    "A20000": "Oikeustieteellinen tiedekunta",
+    "A74000": "Svenska social- och kommunalhögskolan",
+    "A10000": "Teologinen tiedekunta",
+    "A70000": "Valtiotieteellinen tiedekunta"
+  },
+  "feedback": {
+    "title": "Palaute",
+    "submit": "Lähetä",
+    "submitted": "Kiitos",
+    "emailReply" : "Haluan vastauksen palautteeseeni"
+  },
+  "upload": {
+    "privacyMessage": "lataamaasi kuvaa käytetään automaattisesti myös muissa HY:n palveluissa (esimerkiksi Opinderissa) ja kuvalle muodostuu julkinen linkki."
+  },
+  "eventCalendar": {
+    "day": "päivä",
+    "week": "viikko",
+    "month": "kuukausi"
+  },
+  "courseRecommendations" : {
+    "title" : "mahdollisesti kiinnostavia kursseja"
+  }
+}

@@ -1,0 +1,386 @@
+{
+  "general": {
+    "teacher": "teacher",
+    "student": "student",
+    "teachers": "teachers",
+    "courses": "courses",
+    "exams": "exams",
+    "show": "show",
+    "edit": "edit",
+    "done": "done",
+    "save": "save",
+    "cancel": "cancel",
+    "copyToClipboard" : "copy to clipboard",
+    "copyToClipboardSuccess" : "Copied!",
+    "copyToClipboardFailMac" : "Press ⌘-C to copy",
+    "copyToClipboardFailOther" : "Press Ctrl-C to copy",
+    "teaching" : "teaching",
+    "pastTeaching" : "past teaching",
+    "emailAddress" : "email",
+    "readMore" : "read more",
+    "yes" : "yes",
+    "no" : "no"
+  },
+  "abbreviations": {
+    "credits": "cr"
+  },
+  "toolbar": {
+    "logout": "Log out",
+    "helsinkiUniversity": "University of Helsinki",
+    "search": {
+      "openSearch": "Open search",
+      "search": "Search",
+      "closeSearch": "Close search",
+      "categories": {
+        "ALL": "All",
+        "HELDA": "HELDA",
+        "COURSES": "Courses",
+        "EVENTS": "Events",
+        "UNIVERSITY": "The university's website"
+      }
+    },
+    "icons": {
+      "search": "Search",
+      "tour": "Introduction tour",
+      "notifications": "Notifications",
+      "logout": "Logout"
+    }
+  },
+  "pageHeaderLinks": {
+    "email": "email",
+    "flamma": "flamma",
+    "moodle": "moodle",
+    "library": "library",
+    "contact": "contact information"
+  },
+  "primaryLinks": {
+    "oodi": "Weboodi"
+  },
+  "opintoni": {
+    "feedback": {
+      "bannerHeading": "GIVE FEEDBACK ON MY STUDIES",
+      "bannerText": "My studies provides an overview on your courses. Your feedback helps us to improve the service."
+    },
+    "pageHeaderBranding": "My studies"
+  },
+  "opetukseni": {
+    "feedback": {
+      "bannerHeading": "GIVE FEEDBACK ON MY TEACHING",
+      "bannerText": "My teaching provides an overview on your courses. Your feedback helps us to improve the service."
+    },
+    "pageHeaderBranding": "My teaching"
+  },
+  "admin": {
+    "pageHeaderBranding": "Admin",
+    "feedback": "Feedback",
+    "downloadCsv": "Download as CSV",
+    "timestamp": "Timestamp",
+    "first": "first",
+    "last": "last",
+    "emailReply" : "User wants reply to email",
+    "faculty" : "Faculty",
+    "state" : "state",
+    "userAgent" : "userAgent"
+  },
+  "navigationTab": {
+    "frontPage": "Frontpage",
+    "calendar": "Calendar",
+    "structure": "Structure",
+    "timetable": "Timetable"
+  },
+  "mobileNavigation": {
+    "shortcutsTitle": "Shortcuts",
+    "shortcutsDescription": "Email, Flamma, Moodle, Library, Contact information",
+    "returnLinksTitle": "Return links",
+    "returnLinksDescription": "Return to University pages"
+  },
+  "weekFeed": {
+    "nowTeaching": "Now in my teaching",
+    "nowStudying": "Now in my studies",
+    "nextEvents": "Upcoming events",
+    "nextEventsShort": "Upcoming",
+    "allEvents": "All events",
+    "noEvents": "No events",
+    "noUpcomingEvents": "you have no upcoming events.",
+    "noPastEvents": "you have no past events.",
+    "noCourses": "You have not registered for any courses.",
+    "noExams": "You have no upcoming exams.",
+    "noCurrentTeacherCourses": "You have no current courses.",
+    "noPastTeacherCourses": "You have no past courses.",
+    "courseMaterials": "Go to course materials",
+    "courseMaterialsMoodle": "Go to Moodle",
+    "showRoute": "Show route",
+    "showOnMap": "Show on map",
+    "errors": {
+      "errorLoadingFutureEvents": "Future events could not be loaded",
+      "errorLoadingExams": "Exams could not be loaded",
+      "errorLoadingCourses": "Courses could not be loaded"
+    },
+    "subscribeEvents" : "subscribe events",
+    "calendarInstructions" : "How to import events to calendar applications"
+  },
+  "attainments": {
+    "attainments": "Completed studies",
+    "seeMoreLink": "see a list of your completed studies in WebOodi",
+    "noAttainmentsFromLastSixMonths": "No completed studies found from the last six months"
+  },
+  "usefulLinks": {
+    "title": "useful information",
+    "yths": "FSHS",
+    "studyingAndTrainingAbroad": "Exchange opportunities and traineeships abroad",
+    "studenServices": "Services for students",
+    "academicAdministration": "Academic administration",
+    "professionalDevelopment": "Professional development",
+    "staffAndFacultyMobility": "International staff and faculty mobility",
+    "addNewLink": "add new link...",
+    "linkDescription": "link description...",
+    "linkUrl": "link URL...",
+    "teachingSupport": "teaching support",
+    "forTeacher": "for teacher",
+    "forPersonnel": "for personnel",
+    "teaching": "teaching",
+    "teachingMatters": "teaching matters",
+    "forStudent": "for student",
+    "openUniversity": "Open university",
+    "teachingSupportOpenUniversity": "Teaching support/Open University",
+    "teachingPracticesInOpenUniversity": "Teacher practices Open University",
+    "pedagogicTraining": "Pedagogic training",
+    "forTeachers": "For teachers",
+    "studentCounseling": "Student counseling",
+    "examsAndOtherAssessmentTools": "Exams and other assessment tools",
+    "certificateOfStudyAttainments": "Certificate of study attainments"
+  },
+  "notificationsMenu": {
+    "title": "Notifications"
+  },
+  "userSettings": {
+    "title": "User settings",
+    "changeAvatar": {
+      "title": "Change avatar image",
+      "uploadFile": "Upload file",
+      "takePicture": "Take picture",
+      "useDefault": "Use default picture",
+      "cancelPicture": "Cancel"
+    },
+    "changeBackground": "change background image",
+    "portfolio": "portfolio",
+    "ariaLabels" : {
+      "chooseBackgroundImage" : "choose background image"
+    }
+  },
+  "buttons": {
+    "showMore": "Show more"
+  },
+  "favorites": {
+    "types": {
+      "RSS": "RSS feed",
+      "TWITTER": "Twitter timeline",
+      "LINK": "Website link",
+      "UNICAFE": "Unicafe lunch menu",
+      "UNISPORT": "Unisport timetable"
+    },
+    "title": "favorites",
+    "readMore": "read more...",
+    "addNew": "add new",
+    "rss": {
+      "rssFeedSearch": "Search content or input url",
+      "numberOfItems": "Number of visible feed items",
+      "1item": "1 item",
+      "3items": "3 items"
+    },
+    "link": {
+      "linkPlaceholder": "URL to favorite website"
+    },
+    "unicafe" : {
+      "notAvailable" : "lunch menu not available",
+      "closed" : "restaurant is closed",
+      "lunchMenu" : "lunch menu"
+    },
+    "twitter": {
+      "twitterPlaceholder": "Twitter username, eg. helsinkiuni"
+    },
+    "submitButton": "add",
+    "cancelButton": "cancel",
+    "ariaLabels": {
+      "clearSearch": "clear search",
+      "searchResults": "search results"
+    }
+  },
+  "globalMessages": {
+    "errors": {
+      "genericError": "Service has some problems at the moment. Some features may not work."
+    }
+  },
+  "todoItems": {
+    "title": "To do list",
+    "listIsEmpty": "Your to do list is empty",
+    "addNew": "Add new todo item...",
+    "check": "Mark as done",
+    "ariaLabels": {
+      "addNewButton": "Add new todo item button"
+    }
+  },
+  "userNotifications": {
+    "title": "Notifications",
+    "noNotifications" : "No notifications."
+  },
+  "tour" : {
+    "common": {
+      "closeConfirm" : "Do you want to close the introduction tour?",
+      "start": "start",
+      "skip": "skip",
+      "next": "next",
+      "previous": "previous",
+      "finish": "finish",
+      "search": {
+        "heading": "Search",
+        "text": "Search within the homepage, events, courses, and digital repository of the University of Helsinki."
+      },
+      "notifications": {
+        "heading": "Notifications",
+        "text": "The notification bell notifies you when new messages or materials have been added to a course page. A click on the notification will lead you to the course page."
+      },
+      "todoItems": {
+        "heading": "To do list",
+        "text": "Add a new to do item by writing it into the text box and clicking the +-button. Mark the item as done or remove it with the icons on the right side of the item."
+      },
+      "usefulLinks": {
+        "heading": "Useful information",
+        "text": "Useful links are recommended to you based on your student or teacher status and your faculty. If you are a teacher and a student, you will see the links offered to teachers. You can remove and links by pressing Edit. Links will be displayed in the order you added them."
+      },
+      "favorites": {
+        "heading": "Favorites",
+        "text": "You can add rss feeds, links, and Unicafe lunch menu to favorites. Add a new favorite by clicking +-button in Add new box. Favourites can be organized in Edit mode simply by dragging then to a new spot and removed by clicking the blue cross in the top right hand corner of the specific favorite item. Remember to press Done to save the changes."
+      }
+    },
+    "student": {
+      "intro": {
+        "heading": "My Studies",
+        "text": "My studies provides an overview on your courses. The service displays next course events including information on time and place and allows easy access to your course pages. Please note that every course does not yet have a course page. In addition, it lets you personalize own lists of links, favorites and to do items. The service will activate when you close this introduction tour. You can open the tour later by clicking the i-icon next the the search field. Please give feedback: it helps us to improve the service."
+      },
+      "weekFeed": {
+        "heading": "Now in my studies",
+        "text": "Now in my studies shows the courses and examinations for which you have registered in WebOodi. There are three tabs: next events, courses, and exams. My studies displays the tab that remained open the last time you visited the page. Clicking the course name will direct you the course page. Please note that every course does not yet have a course page."
+      }
+    },
+    "teacher": {
+      "intro": {
+        "heading": "My Teaching",
+        "text": "My teaching provides an overview on your courses. The service displays next course events including information on time and place and allows easy access to your course pages. Please note that every course does not yet have a course page. In addition, it lets you personalize own lists of links, favorites and to do items. The service will activate when you close this introduction tour. You can open the tour later by clicking the i-icon next to the search field. Please give feedback: it helps us to improve the service."
+      },
+      "weekFeed": {
+        "heading": "Now in my teaching",
+        "text": "Now in my teaching shows the courses and examinations for which you have registered in WebOodi. There are four tabs: upcoming events, teaching, exams, and past teaching. My teaching displays the tab that remained open the last time you visited the page. Clicking the course name will direct you to your course page if one has been generated."
+      }
+    },
+   "ariaLabels" : {
+      "startTour" : "start tour"
+    }
+  },
+  "searchResults": {
+    "title": "Search",
+    "hitsFound": "Results ({{ hitCount }})",
+    "close": "Close search"
+  },
+  "pageBanner": {
+    "giveFeedback": "Give feedback",
+    "newsButtonLabel": "Read more",
+    "chooseDefaultBackground": "Choose from default backgrounds"
+  },
+  "errorPage" : {
+    "accessDenied" : {
+      "title" : "access denied",
+      "description" : "your account does not have access to this page."
+    },
+    "maintenance" : {
+      "title" : "under maintenance",
+      "description" : "We are growing new features! The page is currently under maintenance."
+    }
+  },
+  "landerPage": {
+    "opintoni": {
+      "login": {
+        "title": "Welcome to My Studies",
+        "intro": "My Studies is where you are. It is your own page for courses, interesting content, and other services offered by the University.",
+        "alternativeLogin": "If you are a teacher at the University of Helsinki, please login to <a href=\"{{ loginUrlTeacher }}\">My Teaching.</a>",
+        "goToLogin": "Login"
+      }
+    },
+    "opetukseni": {
+      "login": {
+        "title": "Welcome to My Teaching",
+        "intro": "My Teaching is where you are. It is your own page for courses, interesting content, and other services offered by the University.",
+        "alternativeLogin": "If you are a student at the University of Helsinki, please login to <a href=\"{{ loginUrlStudent }}\">My Studies</a>.",
+        "goToLogin": "Login"
+      }
+    },
+    "readMore": "Read more"
+  },
+  "upcomingCourses": {
+    "title": "Upcoming courses"
+  },
+  "codes": {
+    "courseTypes": {
+      "3": "Practice",
+      "5": "Lecture Course",
+      "7": "Exercise Group",
+      "8": "General Examination",
+      "10": "Seminar",
+      "12": "Field Course",
+      "16": "Summer Examination",
+      "17": "Course",
+      "19": "Examination",
+      "20": "Literature examination",
+      "21": "Written work",
+      "22": "Laboratory work",
+      "23": "Exam retake",
+      "26": "Online Course",
+      "27": "Online Examination",
+      "99": "Other teaching"
+    }
+  },
+  "faculties": {
+    "A93000": "Open University",
+    "H57": "Faculty of Biological and Environmental Sciences",
+    "H90": "Faculty of Veterinary Medicine",
+    "H55": "Faculty of Pharmacy",
+    "H40": "Faculty of Arts",
+    "H60": "Faculty of Behavioural Sciences",
+    "H30": "Faculty of Medicine",
+    "H80": "Faculty of Agriculture and Forestry",
+    "H50": "Faculty of Science",
+    "H20": "Faculty of Law",
+    "H74": "Swedish School of Social Science",
+    "H10": "Faculty of Theology",
+    "H70": "Faculty of Social Sciences",
+    "A57000": "Faculty of Biological and Environmental Sciences",
+    "A90000": "Faculty of Veterinary Medicine",
+    "A55000": "Faculty of Pharmacy",
+    "A40000": "Faculty of Arts",
+    "A60000": "Faculty of Behavioural Sciences",
+    "A30000": "Faculty of Medicine",
+    "A80000": "Faculty of Agriculture and Forestry",
+    "A50000": "Faculty of Science",
+    "A20000": "Faculty of Law",
+    "A74000": "Swedish School of Social Science",
+    "A10000": "Faculty of Theology",
+    "A70000": "Faculty of Social Sciences"
+  },
+  "feedback": {
+    "title": "Feedback",
+    "submit": "Submit",
+    "submitted": "Thanks",
+    "emailReply" : "I want a reply to my feedback"
+  },
+  "upload" : {
+    "privacyMessage" : "the uploaded picture is automatically used in other UH services (e.g. Opinder), and the picture will have a public link."
+  },
+  "eventCalendar" : {
+    "day" : "day",
+    "week" : "week",
+    "month" : "month"
+  },
+  "courseRecommendations" : {
+    "title" : "potentially interesting courses"
+  }
+}

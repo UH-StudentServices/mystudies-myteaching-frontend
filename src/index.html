@@ -1,0 +1,254 @@
+<!doctype html>
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<html class="no-js" ng-app="opintoniApp">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- build:css assets/styles/vendor.css -->
+    <link rel="stylesheet" href="bower_components/angular-carousel/dist/angular-carousel.css" />
+    <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css"/>
+
+      <!-- endbuild -->
+
+    <!-- build:css assets/styles/main.css -->
+    <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="stylesheet" href="assets/styles/styleguide/main.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/flexslider/flexslider.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/cropper/dist/cropper.css">
+    <link rel="stylesheet" type="text/css" href="app/vendor/ng-joyride/ng-joyride.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/Styleguide-icons/css/icons.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/Styleguide-icons/css/main.css">
+    <!-- endbuild -->
+
+    <!-- External stylesheets -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+
+    <link rel="icon" href="assets/images/ui/hy_favicon.ico" type="image/x-icon">
+
+    <link rel="apple-touch-icon" href="assets/icons/mobile-icons/apple-touch-icon-114x114.png" sizes="114x114" />
+    <link rel="apple-touch-icon" href="assets/icons/mobile-icons/apple-touch-icon-120x120.png" sizes="120x120" />
+    <link rel="apple-touch-icon" href="assets/icons/mobile-icons/apple-touch-icon-144x144.png" sizes="144x144" />
+    <link rel="apple-touch-icon" href="assets/icons/mobile-icons/apple-touch-icon-152x152.png" sizes="152x152" />
+    <link rel="apple-touch-icon" href="assets/icons/mobile-icons/apple-touch-icon-57x57.png" sizes="57x57" />
+    <link rel="apple-touch-icon" href="assets/icons/mobile-icons/apple-touch-icon-60x60.png" sizes="60x60" />
+    <link rel="apple-touch-icon" href="assets/icons/mobile-icons/apple-touch-icon-72x72.png" sizes="72x72" />
+    <link rel="apple-touch-icon" href="assets/icons/mobile-icons/apple-touch-icon-76x76.png" sizes="76x76" />
+    <link rel="apple-touch-icon-precomposed" href="assets/icons/mobile-icons/apple-touch-icon-precomposed.png" />
+    <link rel="apple-touch-icon" href="assets/icons/mobile-icons/apple-touch-icon.png" />
+    <link rel="icon" href="assets/icons/mobile-icons/favicon-160x160.png" type="image/png" sizes="160x160" />
+    <link rel="icon" href="assets/icons/mobile-icons/favicon-16x16.png" type="image/png" sizes="16x16" />
+    <link rel="icon" href="assets/icons/mobile-icons/favicon-196x196.png" type="image/png" sizes="196x196" />
+    <link rel="icon" href="assets/icons/mobile-icons/favicon-32x32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="assets/icons/mobile-icons/favicon-96x96.png" type="image/png" sizes="96x96" />
+    <link rel="shortcut icon" href="assets/icons/mobile-icons/favicon.ico" />
+    <meta name="msapplication-TileImage144x144logo" content="assets/icons/mobile-icons/mstile-144x144.png" />
+    <meta name="msapplication-square150x150logo" content="assets/icons/mobile-icons/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="assets/icons/mobile-icons/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="assets/icons/mobile-icons/mstile-310x310.png" />
+    <meta name="msapplication-square70x70logo" content="assets/icons/mobile-icons/mstile-70x70.png" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+
+  </head>
+  <body>
+    <!--[if lt IE 9]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div ui-view="content"></div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbz5Uz3fJ2kmOxdFlp8R60zetyb__o7po"></script>
+    <script src="/api/public/v1/configuration"></script>
+
+    <!-- build:js app/vendor.js -->
+    <script src="bower_components/modernizr/modernizr.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/flexslider/jquery.flexslider.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-translate/angular-translate.js"></script>
+    <script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+    <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-carousel/dist/angular-carousel.js"></script>
+    <script src="bower_components/angular-utils-pagination/dirPagination.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/moment/min/moment-with-locales.min.js"></script>
+    <script src="bower_components/moment-timezone/builds/moment-timezone-with-data.min.js"></script>
+    <script src="bower_components/karma-read-json/karma-read-json.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/angular-drag-and-drop-lists/angular-drag-and-drop-lists.js"></script>
+    <script src="bower_components/nsPopover/src/nsPopover.js"></script>
+    <script src="bower_components/angular-google-analytics/dist/angular-google-analytics.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-flexslider/angular-flexslider.js"></script>
+    <script src="bower_components/angular-ui-utils/ui-utils.js"></script>
+    <script src="bower_components/hammerjs/hammer.js"></script>
+    <script src="bower_components/cropper/dist/cropper.js"></script>
+    <script src="bower_components/sprintf/dist/sprintf.min.js"></script>
+    <script src="app/vendor/ng-joyride/ng-joyride.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-ellipsis/src/angular-ellipsis.js"></script>
+    <script src="bower_components/clipboard/dist/clipboard.js"></script>
+
+    <script src="app/vendor/ng-file-upload/ng-file-upload.js"></script>
+    <script src="app/vendor/ng-file-upload/ng-file-upload-shim.js"></script>
+
+    <script type="text/javascript" src="bower_components/angular-ui-calendar/src/calendar.js"></script>
+    <script type="text/javascript" src="bower_components/fullcalendar/dist/fullcalendar.js"></script>
+    <script type="text/javascript" src="bower_components/fullcalendar/dist/gcal.js"></script>
+    <script type="text/javascript" src="bower_components/fullcalendar/dist/lang/fi.js"></script>
+    <script type="text/javascript" src="bower_components/fullcalendar/dist/lang/sv.js"></script>
+
+    <!-- endbuild -->
+
+
+
+    <!-- build:js app/app.js -->
+    <script src="app/app.js"></script>
+    <script src="app/templates.js"></script>
+    <script src="app/errors/errors.js"></script>
+    <script src="app/lander/lander.js"></script>
+
+    <script src="app/controllers/main.js"></script>
+
+    <script src="app/language/language.service.js"></script>
+    <script src="app/language/language.controller.js"></script>
+
+    <script src="app/directives/clipboard/clipboard.directive.js"></script>
+    <script src="app/directives/toolbar/toolbar.js"></script>
+    <script src="app/directives/user.js"></script>
+    <script src="app/directives/attainments/attainments.directive.js"></script>
+    <script src="app/directives/pageHeader/pageHeader.js"></script>
+    <script src="app/directives/menuLanguage/menuLanguage.js"></script>
+    <script src="app/directives/weekFeed/weekFeed.js"></script>
+
+    <script src="app/directives/favorites/favorites.directive.js"></script>
+    <script src="app/directives/favorites/removeFavorite.directive.js"></script>
+    <script src="app/directives/favorites/favorites.addNew.directive.js"></script>
+    <script src="app/directives/favorites/rss/favorites.rss.directive.js"></script>
+    <script src="app/directives/favorites/rss/favorites.addNew.rss.directive.js"></script>
+    <script src="app/directives/favorites/twitter/favorites.twitter.directive.js"></script>
+    <script src="app/directives/favorites/twitter/favorites.addNew.twitter.directive.js"></script>
+    <script src="app/directives/favorites/unicafe/favorites.unicafe.directive.js"></script>
+    <script src="app/directives/favorites/unicafe/favorites.addNew.unicafe.directive.js"></script>
+    <script src="app/directives/favorites/unisport/favorites.unisport.directive.js"></script>
+    <script src="app/directives/favorites/unisport/favorites.addNew.unisport.directive.js"></script>
+
+    <script src="app/directives/feedback/feedback.directive.js"></script>
+    <script src="app/directives/imgLoad/imgLoad.directive.js"></script>
+    <script src="app/directives/dropdown/dropdown.directive.js"></script>
+    <script src="app/directives/userMenu/userMenu.directive.js"></script>
+    <script src="app/directives/userMenu/avatarImage.directive.js"></script>
+    <script src="app/directives/userMenu/settings/userMenu.settings.directive.js"></script>
+    <script src="app/directives/userMenu/userNotifications.directive.js"></script>
+    <script src="app/directives/userMenu/settings/userMenu.settings.avatar.directive.js"></script>
+    <script src="app/directives/userMenu/settings/userMenu.settings.webcam.directive.js"></script>
+    <script src="app/directives/searchBar/searchBar.directive.js"></script>
+    <script src="app/directives/searchIcon/searchIcon.directive.js"></script>
+    <script src="app/directives/searchResults/searchResults.directive.js"></script>
+    <script src="app/directives/userBackground/userBackground.directive.js"></script>
+    <script src="app/directives/messages/globalMessages.directive.js"></script>
+    <script src="app/directives/messages/message.directive.js"></script>
+    <script src="app/directives/todoItems/todoItems.directive.js"></script>
+    <script src="app/directives/todoItems/swipe.directive.js"></script>
+    <script src="app/directives/mobilePageBanner/mobilePageBanner.directive.js"></script>
+    <script src="app/directives/mobileToolbar/mobileToolbar.directive.js"></script>
+    <script src="app/directives/mobileToolbar/mobileMenu.directive.js"></script>
+    <script src="app/directives/logoutLink/logoutLink.directive.js"></script>
+    <script src="app/directives/onlyDev/onlyDev.directive.js"></script>
+    <script src="app/directives/pageBanner/pageBanner.directive.js"></script>
+    <script src="app/directives/stateChange/stateChange.directive.js"></script>
+    <script src="app/directives/upcomingCourses/upcomingCourses.directive.js"></script>
+    <script src="app/directives/usefulLinks/usefulLinks.directive.js"></script>
+    <script src="app/directives/usefulLinks/usefulLinks.title.directive.js"></script>
+    <script src="app/directives/usefulLinks/usefulLinks.editableLink.directive.js"></script>
+    <script src="app/directives/tour/tour.directive.js"></script>
+    <script src="app/directives/visibility/visibility.directive.js"></script>
+    <script src="app/directives/focus/focus.js"></script>
+    <script src="app/directives/weekFeed/subscribeEvents/subscribeEvents.directive.js"></script>
+    <script src="app/directives/editLink/editLink.directive.js"></script>
+    <script src="app/directives/chooseBackground/chooseBackground.directive.js"></script>
+    <script src="app/directives/uploadImage/uploadImage.directive.js"></script>
+    <script src="app/directives/eventCalendar/eventCalendar.directive.js"></script>
+    <script src="app/directives/admin/feedback/feedback.directive.js"></script>
+    <script src="app/directives/courseRecommendations/courseRecommendations.directive.js"></script>
+
+    <script src="app/resources/feedback.resource.js"></script>
+    <script src="app/resources/httpInterceptor.js"></script>
+    <script src="app/resources/stateInterceptor.js"></script>
+    <script src="app/resources/attainments.resource.js"></script>
+    <script src="app/resources/events.resource.js"></script>
+    <script src="app/resources/courses.resource.js"></script>
+    <script src="app/resources/favorites.resource.js"></script>
+    <script src="app/resources/favorites.rss.resource.js"></script>
+    <script src="app/resources/favorites.link.resource.js"></script>
+    <script src="app/resources/favorites.unicafe.resource.js"></script>
+    <script src="app/resources/news.resource.js"></script>
+    <script src="app/resources/portfolio.resource.js"></script>
+    <script src="app/resources/todoItems.resource.js"></script>
+    <script src="app/resources/userNotifications.resource.js"></script>
+    <script src="app/resources/search.resource.js"></script>
+    <script src="app/resources/calendarFeed.resource.js"></script>
+    <script src="app/resources/metaData.resource.js"></script>
+
+    <script src="app/resources/session.resource.js"></script>
+    <script src="app/resources/userSettings.resource.js"></script>
+    <script src="app/resources/usefulLinks.resource.js"></script>
+    <script src="app/resources/courseRecommendations.resource.js"></script>
+
+    <script src="app/services/configuration.service.js"></script>
+    <script src="app/services/eventUri.service.js"></script>
+    <script src="app/services/location.service.js"></script>
+    <script src="app/services/news.service.js"></script>
+    <script src="app/services/portfolio.service.js"></script>
+    <script src="app/services/session.service.js"></script>
+    <script src="app/services/state.service.js"></script>
+    <script src="app/services/userSettings.service.js"></script>
+    <script src="app/services/focus.service.js"></script>
+    <script src="app/services/userPreferences.service.js"></script>
+    <script src="app/services/search.service.js"></script>
+    <script src="app/services/courses.service.js"></script>
+    <script src="app/services/message.service.js"></script>
+    <script src="app/services/attainments.service.js"></script>
+
+    <script src="app/filters/moment.filter.js"></script>
+    <script src="app/filters/formatting.js"></script>
+    <script src="app/filters/search.filter.js"></script>
+
+    <script src="app/utils/moment.util.js"></script>
+    <script src="app/utils/browser.util.js"></script>
+    <script src="app/utils/domain.util.js"></script>
+    <script src="app/utils/validator.util.js"></script>
+    <script src="app/constants/externalLinks.js"></script>
+
+    <script src="app/analytics/analytics.js"></script>
+
+    <script src="app/dialog/dialog.js"></script>
+    <!-- endbuild -->
+
+</body>
+</html>

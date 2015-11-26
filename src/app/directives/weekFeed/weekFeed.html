@@ -1,0 +1,82 @@
+
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<div role="article" id="week-feed">
+  <div class="ui-component ui-component--events">
+
+    <h2 ng-if="currentStateName === State.MY_STUDIES" class="ui-component__title">{{ "weekFeed.nowStudying" | translate }}</h2>
+    <h2 ng-if="currentStateName === State.MY_TEACHINGS" class="ui-component__title">{{ "weekFeed.nowTeaching" | translate }}</h2>
+
+    <div class="text-label title-stricken">{{ "general.show" | translate | capitalize }}</div>
+
+      <ul class="tag-list--tabs" role="tablist">
+          <li ng-class="{'active' : selectedTab === tabs.UPCOMING_EVENTS }" role="tab">
+              <a href="" ng-click="tabSelect(tabs.UPCOMING_EVENTS)">
+                  <span class="hide-mobile-only-with-ipad-mini">{{ "weekFeed.nextEvents" | translate }}</span>
+                  <span class="show-mobile-only-with-ipad-mini">{{ "weekFeed.nextEventsShort" | translate }}</span>
+              </a>
+          </li>
+          <li ng-if="currentStateName === State.MY_STUDIES" ng-class="{'active' : selectedTab === tabs.COURSES }" role="tab">
+              <a href="" ng-click="tabSelect(tabs.COURSES)">
+                  {{ "general.courses" | translate | capitalize }}
+              </a>
+          </li>
+          <li ng-if="currentStateName === State.MY_TEACHINGS" ng-class="{'active' : selectedTab === tabs.CURRENT_TEACHER_COURSES }" role="tab">
+              <a href="" ng-click="tabSelect(tabs.CURRENT_TEACHER_COURSES)">
+                  {{ "general.teaching" | translate | capitalize }}
+              </a>
+          </li>
+          <li ng-class="{'active' : selectedTab === tabs.EXAMS }" role="tab">
+              <a href="" ng-click="tabSelect(tabs.EXAMS)">
+                  {{ "general.exams" | translate | capitalize }}
+              </a>
+          </li>
+          <li ng-if="currentStateName === State.MY_TEACHINGS" ng-class="{'active' : selectedTab === tabs.PAST_TEACHER_COURSES }" role="tab">
+              <a href="" ng-click="tabSelect(tabs.PAST_TEACHER_COURSES)">
+                  {{ "general.pastTeaching" | translate | capitalize }}
+              </a>
+          </li>
+          <li ng-class="{'active' : selectedTab === tabs.CALENDAR }" role="tab">
+              <a href="" ng-click="tabSelect(tabs.CALENDAR)">
+                  {{ "navigationTab.calendar" | translate | capitalize }}
+              </a>
+          </li>
+      </ul>
+
+    <message
+        class="messages--light"
+        ng-show="message"
+        message="message">
+    </message>
+
+    <ul class="week-feed-items">
+      <li ng-repeat="feedItem in feedItems | limitTo:numberOfVisibleItems">
+        <div ng-if="feedItem.type !== undefined" ng-include="'app/directives/weekFeed/event.html'"></div>
+        <div ng-if="feedItem.type === undefined" ng-include="'app/directives/weekFeed/enrollment.html'"></div>
+      </li>
+    </ul>
+
+    <event-calendar events-promise="events" ng-if="selectedTab === tabs.CALENDAR"></event-calendar>
+
+    <div class="week-feed-actions">
+      <button class="button--light button" ng-click="showMore()" ng-show="showMoreVisible()">{{ "buttons.showMore" | translate }}</button>
+      <subscribe-events ng-show="selectedTab === tabs.UPCOMING_EVENTS || selectedTab === tabs.CALENDAR"></subscribe-events>
+    </div>
+  </div>
+
+</div>

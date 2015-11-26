@@ -1,0 +1,44 @@
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<div class="image-container" style="background-image: url('{{feedItem.courseImageUri}}')"></div>
+
+<div class="info-container">
+    <div class="box-data__content">
+        {{ feedItem.startDate | eventTimeSpan:feedItem.endDate}}
+    </div>
+
+    <div class="box-data__title">
+        <a href="{{feedItem.courseUri}}" ng-if="feedItem.courseUri">
+            <h4><event-title></event-title></h4>
+        </a>
+        <h4 ng-if="!feedItem.courseUri"><event-title></event-title></h4>
+    </div>
+
+    <div class="box-data__content">
+        <span class="event-location">{{ feedItem.locations }}</span>
+        <span class="event-location-links">
+            <a ng-if="feedItem.googleMapsUri" href="{{feedItem.googleMapsUri}}" target="_blank">{{ 'weekFeed.showOnMap' | translate }}</a>
+            <a ng-if="feedItem.reittiopasEnabled" ng-click="openReittiopas(feedItem)" href="">{{ 'weekFeed.showRoute' | translate }}
+                <span ng-show="feedItem.loadingLocation"><i class="hy hy-rotate-right hy-spin"></i></span>
+            </a>
+        </span>
+    </div>
+
+    <course-materials-link></course-materials-link>
+
+</div>

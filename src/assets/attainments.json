@@ -1,0 +1,134 @@
+[
+  {
+    "studyrightid": null,
+    "studyattainment_id": 54707557,
+    "personid": 1503094,
+    "learningopportunityname": "Opettajan pedagogiset opinnot",
+    "teachers": [
+      {
+        "first_names": "Mikko Tapani",
+        "last_names": "Anttinen",
+        "short_name": "Anttinen Mikko T",
+        "person_id": 1451618,
+        "teacher_id": "022651"
+      },
+      {
+        "first_names": "Jon *Daniel",
+        "last_names": "Virtanen",
+        "short_name": "Virtanen J Daniel",
+        "person_id": 1455370,
+        "teacher_id": "023165"
+      }
+    ],
+    "attainmentdate": "04.05.2006",
+    "attainmentlang": null,
+    "grade": "4",
+    "credits": 60,
+    "learningopportunityid": "68601",
+    "textualassessment": null,
+    "attainmentstatus": "Suoritettu",
+    "studyrightid_2": null,
+    "expirydate": null,
+    "attainmentstatuscode": 4
+  },
+  {
+    "studyrightid": null,
+    "studyattainment_id": 56739003,
+    "personid": 1503094,
+    "learningopportunityname": "Syventävä harjoittelu",
+    "teachers": [
+      {
+        "first_names": "Elmo *Ilmari",
+        "last_names": "Vasseur",
+        "short_name": "Vasseur E Ilmari",
+        "person_id": 1482248,
+        "teacher_id": "026794"
+      }
+    ],
+    "attainmentdate": "04.05.2006",
+    "attainmentlang": null,
+    "grade": "Hyv.",
+    "credits": 8,
+    "learningopportunityid": "68362",
+    "textualassessment": null,
+    "attainmentstatus": "Suoritettu",
+    "studyrightid_2": null,
+    "expirydate": null,
+    "attainmentstatuscode": 4
+  },
+  {
+    "studyrightid": null,
+    "studyattainment_id": 53253783,
+    "personid": 1503094,
+    "learningopportunityname": "Opettaja työnsä tutkijana -seminaari",
+    "teachers": [
+      {
+        "first_names": "Hilja Kukka Maria",
+        "last_names": "Lönngren",
+        "short_name": "Lönngren Hilja K M",
+        "person_id": 1518867,
+        "teacher_id": "031922"
+      }
+    ],
+    "attainmentdate": "03.05.2006",
+    "attainmentlang": null,
+    "grade": "4",
+    "credits": 10,
+    "learningopportunityid": "68162",
+    "textualassessment": null,
+    "attainmentstatus": "Suoritettu",
+    "studyrightid_2": null,
+    "expirydate": null,
+    "attainmentstatuscode": 4
+  },
+  {
+    "studyrightid": null,
+    "studyattainment_id": 54707543,
+    "personid": 1503094,
+    "learningopportunityname": "Kasvatustieteen perusopinnot, opettajan pedagogisten opintojen perusopinnot",
+    "teachers": [
+      {
+        "first_names": "Hilja Kukka Maria",
+        "last_names": "Lönngren",
+        "short_name": "Lönngren Hilja K M",
+        "person_id": 1518867,
+        "teacher_id": "031922"
+      }
+    ],
+    "attainmentdate": "03.05.2006",
+    "attainmentlang": null,
+    "grade": "4",
+    "credits": 25,
+    "learningopportunityid": "68199",
+    "textualassessment": null,
+    "attainmentstatus": "Suoritettu",
+    "studyrightid_2": null,
+    "expirydate": null,
+    "attainmentstatuscode": 4
+  },
+  {
+    "studyrightid": null,
+    "studyattainment_id": 56715899,
+    "personid": 1503094,
+    "learningopportunityname": "Reflektointi II",
+    "teachers": [
+      {
+        "first_names": "Hilja Kukka Maria",
+        "last_names": "Lönngren",
+        "short_name": "Lönngren Hilja K M",
+        "person_id": 1518867,
+        "teacher_id": "031922"
+      }
+    ],
+    "attainmentdate": "03.05.2006",
+    "attainmentlang": null,
+    "grade": "Hyv.",
+    "credits": 1,
+    "learningopportunityid": "68332",
+    "textualassessment": null,
+    "attainmentstatus": "Suoritettu",
+    "studyrightid_2": null,
+    "expirydate": null,
+    "attainmentstatuscode": 4
+  }
+]

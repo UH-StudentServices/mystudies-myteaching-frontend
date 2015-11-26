@@ -1,0 +1,52 @@
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<div class="admin-feedback">
+  <h3>{{ 'admin.feedback' | translate }}</h3>
+  <table class="table-simple">
+    <tr>
+      <th>{{ 'admin.feedback' | translate }}</th>
+      <th>{{ 'admin.emailReply' | translate }}</th>
+      <th>{{ 'admin.timestamp' | translate }}</th>
+      <th>{{ 'admin.faculty' | translate }}</th>
+      <th>{{ 'admin.state' | translate }}</th>
+      <th>{{ 'admin.userAgent' | translate }}</th>
+    </tr>
+    <tr ng-repeat="feedback in feedbackItems">
+      <td>{{ feedback.content }}</td>
+      <td>{{ feedback.email }}</td>
+      <td>{{ feedback.created }}</td>
+      <td>{{ feedback.metadata | faculty }}</td>
+      <td>{{ feedback.metadata | state }}</td>
+      <td>{{ feedback.metadata | userAgent }}</td>
+    </tr>
+  </table>
+
+  <ul class="pager">
+    <li class="pager__first" ng-click="selectPage(0)"><a>{{ 'admin.first' | translate }}</a></li>
+    <li class="pager__previous" ng-click="previousPage()"><a>{{ 'tour.common.previous' | translate }}</a></li>
+    
+    <li class="pager__page" ng-repeat="index in pageIndexes" ng-class="pageClasses(index)"><a ng-click="selectPage(index)">{{ index + 1 }}</a></li>
+    
+    <li class="pager__next" ng-click="nextPage()"><a>{{ 'tour.common.next' | translate }}</a></li>
+    <li class="pager__last" ng-click="selectPage(pageIndexes.length - 1)"><a>{{ 'admin.last' | translate }}</a></li>
+    <li class="pager__page"><a href="/api/admin/v1/feedback/csv">{{ 'admin.downloadCsv' | translate }}</a></li>
+  </ul>
+  
+  
+  
+</div>

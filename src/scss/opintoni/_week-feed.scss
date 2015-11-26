@@ -1,0 +1,235 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.tag-list--tabs {
+  #week-feed & {
+    @include clearfix();
+    margin-bottom: 1em;
+    li {
+      margin-right: 0.5em;
+    }
+  }
+}
+
+@mixin mobile-exam-border($left-position) {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: $orange;
+}
+
+@include breakpoint($mobile-only) {
+  .week-feed-items {
+    li .event.exam {
+      position: relative;
+      &:after {
+        @include mobile-exam-border(-1em);
+        left: -1em;
+      }
+      &:before {
+        @include mobile-exam-border(1em);
+        right: -1em;
+      }
+    }
+
+    li:first-child .event.exam {
+      &:after {
+        display: none;
+      }
+      &:before {
+        display: none;
+      }
+    }
+  }
+}
+
+.event .bar {
+  padding: 0;
+}
+
+.event, .enrollment {
+  &.exam .box-data__date {
+    background-color: $orange;
+  }
+
+  > * {
+    @include clearfix;
+    margin: 0.5em 0;
+  }
+
+  .box-data__title {
+    h4 {
+      padding: 0;
+    }
+    padding: 0.3em 0;
+  }
+
+  .image-container {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 200px;
+    width: 100%;
+    display: inline-block;
+    margin-right: 1em;
+    @include breakpoint($small) {
+      width: 200px;
+    }
+
+    @include breakpoint($medium) {
+      width: 250px;
+    }
+  }
+
+  .info-container {
+    position: relative;
+    vertical-align: top;
+    width: 100%;
+    display: inline-block;
+
+    @include breakpoint($mobile-only) {
+      margin-top: 1em;
+    }
+
+    @include breakpoint($small) {
+      width: 250px;
+      min-height: 200px;
+      padding-bottom: 75px;
+    }
+
+    @include breakpoint($medium) {
+      width: 290px;
+    }
+
+    @include breakpoint($large) {
+      width: 400px;
+    }
+  }
+
+  .course-material {
+    @include breakpoint($mobile-only) {
+      margin-top: 0.5em;
+    }
+    @include breakpoint($small) {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+    padding: 0.5em 0;
+    border-bottom: 1px solid $lightsilver;
+    border-top: 1px solid $lightsilver;
+    font-weight: 600;
+    .fa-arrow-right {
+      float: right;
+    }
+  }
+
+  @include breakpoint($small) {
+    .course-meta {
+      .course-material {
+        position: relative;
+        margin-top: 0.5em;
+      }
+
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+
+  .event-location {
+    margin-right: 1em;
+    margin-bottom: 0.3em;
+    display: inline-block;
+  }
+
+  .event-location-links {
+    white-space: nowrap;
+    > *:first-child {
+      margin-right: 0.5em;
+    }
+  }
+}
+
+.week-feed-actions {
+  @include clearfix;
+  button {
+    float: left;
+    margin-right: 1em;
+  }
+}
+
+.subscribe-events-popover {
+  background-color: $white;
+  margin-top: 10px;
+  @include border;
+  @include tab-shadow;
+
+  @include breakpoint($mobile-only) {
+    width: 300px;
+  }
+}
+
+.subscribe-events-popover__link {
+  @include border-bottom;
+  @include font-size(13px);
+  color: $silver;
+  padding: 1em;
+  font-weight: 600;
+  background-color: $white;
+  word-wrap: break-word;
+}
+
+.subscribe-events-popover__content {
+  @include font-size(14px);
+  padding: 1.5em 1em 1em 1em;
+}
+
+.subscribe-events-popover__arrow {
+  @include triangle(10px);
+  position: absolute;
+  top: 10px;
+  left: 70px;
+  display: block;
+  width: 0;
+  height: 0;
+}
+
+.subscribe-events-popover__instructions {
+  margin-top: 1em;
+  a {
+    margin-left: 1em;
+  }
+}
+
+.week-feed-items {
+  margin-bottom: 1em;
+  @include breakpoint($small) {
+    .bar .box-data__content {
+      margin-left: 70px;
+    }
+  }
+}
+
+#week-feed .messages {
+  margin-bottom: 1em;
+}

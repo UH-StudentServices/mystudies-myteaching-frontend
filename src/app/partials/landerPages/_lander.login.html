@@ -1,0 +1,31 @@
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<div class="login-page-wrapper">
+    <h2 class="login-page__title">{{'landerPage.' + currentStateName + '.login.title' | translate | capitalize}}</h2>
+
+    <div class="login-page__intro">
+        <p>{{'landerPage.' + currentStateName + '.login.intro' | translate }}</p>
+        <p><a class="login-page__login-link button-internal--dark" href="{{ loginUrl }}">{{ 'landerPage.' + currentStateName + '.login.goToLogin' | translate }}</a></p>
+        <p ng-bind-html="'landerPage.' + currentStateName +'.login.alternativeLogin' | translate:loginUrls"></p>
+        <p><a class="login-page__read-more" href="https://courses.helsinki.fi/">{{ 'landerPage.readMore' | translate }}</a></p>
+    </div>
+
+    <div class="lander-bg">
+        <div class="gradient-overlay"></div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<span>
+    <div>
+        <a class="useful-links__edit-link" ng-hide="usefulLink.edit" ng-class="{editable : editable}">
+            <i class="hy hy-list hide-mobile-only"></i>
+            <span ng-click="editUsefulLink()">{{ usefulLink.description | renderUsefulLinkDescription:usefulLink.type }}<i class="hy hy-edit"></i></span>
+        </a>
+        <div class="useful-links__edit-link-url" ng-show="usefulLink.edit">
+            <input ng-model="usefulLink.url" ui-keypress="{'enter':'saveUsefulLink()'}">
+            <a href="" ng-click="saveUsefulLink()"><i class="hy hy-done"></i></a>
+        </div>
+    </div>
+
+    <useful-link-title
+        ng-show="usefulLink.edit"
+        model="usefulLink.description"
+        enter-fn="saveUsefulLink">
+    </useful-link-title>
+</span>

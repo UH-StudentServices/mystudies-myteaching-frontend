@@ -1,0 +1,55 @@
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<div ng-show="showApp">
+    <header class="l-header">
+        <page-header></page-header>
+        <div ng-include="'app/partials/_page_navigation.html'"></div>
+        <global-messages></global-messages>
+    </header>
+
+    <student-tour student-only></student-tour>
+    <teacher-tour teacher-only></teacher-tour>
+
+    <search-bar class="show-mobile-only"></search-bar>
+    <search-results></search-results>
+
+    <page-banner class="hide-mobile-only"></page-banner>
+    <mobile-page-banner class="show-mobile-only"></mobile-page-banner>
+
+    <div class="l-page island wrapper">
+
+        <div class="l-multi-col-content-wrapper">
+            <div class="l-content-primary-wrapper">
+                <week-feed></week-feed>
+                <attainments student-only></attainments>
+            </div>
+
+            <div class="l-content-secondary-wrapper" role="navigation">
+                <div class="ui-component">
+                    <useful-links></useful-links>
+                    <upcoming-courses teacher-only></upcoming-courses>
+                    <course-recommendations only-dev student-only></course-recommendations>
+                </div>
+            </div>
+        </div>
+        <favorites></favorites>
+    </div>
+
+    <feedback></feedback>
+    <footer class="l-footer island" ng-include="'app/partials/_page_footer.html'"></footer>
+</div>

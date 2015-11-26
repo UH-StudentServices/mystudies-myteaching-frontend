@@ -1,0 +1,76 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.search-bar {
+  position: relative;
+  z-index: 3;
+  right: 5px;
+  @include breakpoint($mobile-only) {
+    position: relative;
+    margin: 1em 1em;
+    left: 0;
+    .input-container {
+      input {
+        width: 100%;
+      }
+    }
+  }
+
+  label {
+    @include center-vertical;
+    position: absolute;
+    left: 10px;
+    cursor: pointer;
+    color: $blue;
+  }
+
+  .clear {
+    @include center-vertical;
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    color: $blue;
+  }
+
+  input {
+    padding: 10px 30px;
+    border: 2px solid $blue;
+    width: 300px;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    li {
+      &:not(:last-child) {
+        border-bottom: 1px solid $lightsilver;
+      }
+      margin: 0 10px;
+      &:hover {
+        cursor: pointer;
+        a {
+          color: $darkblue;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+angular.module('resources.stateInterceptor', [
+  'services.session',
+  'services.state',
+  'directives.stateChange'])
+
+  .run(function($rootScope, $state, SessionService, State) {
+
+    function authorizeState(stateRoles) {
+      return SessionService.getSession().then(function(session) {
+        return SessionService.isInAnyRole(stateRoles, session);
+      });
+    }
+
+    $rootScope.$on('$stateChangeStart', function(event, toState){
+      if(toState.data && toState.data.roles) {
+        authorizeState(toState.data.roles).then(function(authorized) {
+          if(!authorized) {
+            $state.go(State.ACCESS_DENIED);
+          }
+          event.preventDefault();
+        });
+      }
+    })
+  });
