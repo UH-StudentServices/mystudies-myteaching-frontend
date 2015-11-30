@@ -85,42 +85,21 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
           return event.pageX >= offset.left && event.pageX <= offset.left + width && event.pageY >= offset.top && event.pageY <= offset.top + height;
         }
 
-        function setClickoutsideListener() {
-          var listenerParentElement = $('html');
-          listenerParentElement.off('click.tour');
-
-          //Set small delay to prevent triggering when tour is started by clicking tour icon.
-          $timeout(function() {
-            listenerParentElement.on('click.tour', function(event) {
-              var popoverElement = $('.ng-joyride-title, .popover.ng-joyride');
-              if(popoverElement.length > 0 &&
-                !clickInsidePopover(event, popoverElement)) {
-                Dialog.modalDialog(
-                  'tour.common.closeConfirm',
-                  'general.yes',
-                  'general.no',
-                  function okCallback(event) {
-                    event.stopPropagation();
-                    listenerParentElement.off('click.tour');
-                    $scope.startTour = false;
-                  },
-                  function cancelCallback(event) {
-                    event.stopPropagation();
-                  });
-              }
+        function showEndTourDialog() {
+          Dialog.modalDialog(
+            'tour.common.closeConfirm',
+            'general.yes',
+            'general.no',
+            function okCallback() {
+              $scope.startTour = false;
             });
-          }, 500);
         }
 
         $rootScope.$on(StartTourEvent, function() {
           $scope.startTour = true;
         });
 
-        $scope.$watch('startTour', function(startTour) {
-          if(startTour) {
-            setClickoutsideListener();
-          }
-        })
+        $('body').on('click', '#ng-curtain', showEndTourDialog);
       }
     }
   })

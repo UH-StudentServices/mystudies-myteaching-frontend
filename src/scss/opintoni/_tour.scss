@@ -21,6 +21,7 @@ $joyride-z-index: 999;
 #ng-curtain {
   opacity: 0!important;
   z-index: $joyride-z-index - 1!important;
+  cursor: pointer; //For IOS.
 }
 
 .popover.ng-joyride {
