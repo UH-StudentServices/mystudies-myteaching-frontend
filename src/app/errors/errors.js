@@ -35,7 +35,13 @@ angular.module('opintoniErrors', [])
       .state('accessDenied', {
         parent: 'error',
         url: '/accessdenied',
-        templateUrl: 'app/partials/errorPages/_error.accessdenied.html'
+        templateUrl: 'app/partials/errorPages/_error.accessdenied.html',
+        controller : function($scope, Configuration) {
+          $scope.loginUrls = {
+            loginUrlStudent: Configuration.studentAppUrl,
+            loginUrlTeacher: Configuration.teacherAppUrl
+          };
+        }
       })
       .state('maintenance', {
         parent: 'error',
