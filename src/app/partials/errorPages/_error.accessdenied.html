@@ -17,6 +17,9 @@
 
 <h2 class="error-page__title">{{'errorPage.accessDenied.title' | translate | capitalize}}</h2>
 <div>
-    <p class="error-page__description">{{'errorPage.accessDenied.description' | translate | capitalize}}</p>
+    <div class="error-page__description">
+        <p>{{'errorPage.accessDenied.description' | translate | capitalize}}</p>
+        <p ng-bind-html="'landerPage.' + currentStateName +'.login.alternativeLogin' | translate:loginUrls"></p>
+    </div>
     <img class="error-page__image" src="/app/assets/images/errors/403.png">
 </div>
