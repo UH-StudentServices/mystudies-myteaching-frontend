@@ -2498,7 +2498,8 @@ button.icon {
  */
 #ng-curtain {
   opacity: 0 !important;
-  z-index: 998 !important; }
+  z-index: 998 !important;
+  cursor: pointer; }
 
 .popover.ng-joyride > .arrow, .popover.ng-joyride > .arrow:after {
   position: absolute;
