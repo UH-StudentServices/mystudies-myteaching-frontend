@@ -210,10 +210,15 @@
   height: 0;
 }
 
-.useful-links__helpdesk {
+.useful-links__fixed {
   padding: 1em;
   background-color: $blue;
   color: $white;
+  margin-bottom: 2px;
+
+  h4 {
+    padding-bottom: 0;
+  }
 
   a {
     @include all-link-states {

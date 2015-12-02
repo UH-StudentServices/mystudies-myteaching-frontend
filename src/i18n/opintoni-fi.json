@@ -147,7 +147,8 @@
     "forTeachers": "Opettajille",
     "studentCounseling": "Opintoneuvonta",
     "examsAndOtherAssessmentTools": "Tentit ja muut suoritustavat",
-    "certificateOfStudyAttainments": "Todistus opintosuorituksista"
+    "certificateOfStudyAttainments": "Todistus opintosuorituksista",
+    "studentServices" : "yleinen opiskelijaneuvonta"
   },
   "notificationsMenu": {
     "title": "Ilmoitukset"

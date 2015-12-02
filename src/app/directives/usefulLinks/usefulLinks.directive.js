@@ -36,6 +36,12 @@ angular.module('directives.usefulLinks', [
     USER_DEFINED : 'USER_DEFINED'
   })
 
+  .constant('StudentServicesLinks', {
+    'fi' : "https://flamma.helsinki.fi/fi/neuvonta/HY054785",
+    'sv' : "https://flamma.helsinki.fi/sv/radgivning/HY054786",
+    'en' : "https://flamma.helsinki.fi/en/services-students/HY054787"
+  })
+
   .filter('renderUsefulLinkDescription', function($filter) {
     return function(description, type) {
       if(type === 'DEFAULT') {
@@ -53,7 +59,8 @@ angular.module('directives.usefulLinks', [
                                      closeEditUsefulLinkEvent,
                                      Focus,
                                      AnalyticsService,
-                                     ValidatorUtils) {
+                                     ValidatorUtils,
+                                     StudentServicesLinks) {
     return {
       restrict: 'E',
       replace : true,
@@ -73,6 +80,10 @@ angular.module('directives.usefulLinks', [
 
         $scope.editMode = false;
         $scope.newLink = {};
+
+        $scope.getStudentServicesLinks = function() {
+          return StudentServicesLinks[$scope.userLang];
+        }
 
         $scope.edit = function() {
           $scope.editMode = true;

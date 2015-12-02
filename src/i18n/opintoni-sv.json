@@ -148,7 +148,8 @@
     "forTeachers": "För lärare",
     "studentCounseling": "Studiehandledning",
     "examsAndOtherAssessmentTools": "Examina och andra utvärderingsverktyg",
-    "certificateOfStudyAttainments": "Studieutdrag"
+    "certificateOfStudyAttainments": "Studieutdrag",
+    "studentServices" : "almänna studentservicen"
   },
   "notificationsMenu": {
     "title": "Notifikationer"

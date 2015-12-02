@@ -60,7 +60,10 @@
             enter-fn="addNewUsefulLink">
         </useful-link-title>
     </div>
-    <div class="useful-links__helpdesk">
+    <div class="useful-links__fixed">
+        <h4><a href="{{getStudentServicesLinks()}}" target="_blank">{{'usefulLinks.studentServices' | translate }}</a></h4>
+    </div>
+    <div class="useful-links__fixed">
         <h4 ng-if="userLang ==='fi'"><a href="http://www.helsinki.fi/helpdesk" target="_blank">Helpdesk</a></h4>
         <h4 ng-if="userLang ==='sv'"><a href="http://www.helsinki.fi/helpdesk/sve/" target="_blank">Helpdesk</a></h4>
         <h4 ng-if="userLang ==='en'"><a href="http://www.helsinki.fi/helpdesk/eng/" target="_blank">Helpdesk</a></h4>
