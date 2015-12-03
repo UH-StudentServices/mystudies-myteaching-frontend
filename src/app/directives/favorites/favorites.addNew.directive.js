@@ -24,6 +24,7 @@ angular.module('directives.favorites.addNew', [
   'services.focus'])
 
   .constant('availableFavoriteTypes', ['RSS', 'UNICAFE', 'TWITTER'])
+  .constant('disabledFavoriteTypes', ['RSS'])
   .constant('newFavoriteAddedEvent', 'NEW_FAVORITE_ADDED')
 
   .directive('addNewFavoriteSearch', function() {
@@ -69,7 +70,7 @@ angular.module('directives.favorites.addNew', [
     }
   })
 
-  .directive('addNewFavorite', function(availableFavoriteTypes, newFavoriteAddedEvent, Focus){
+  .directive('addNewFavorite', function(availableFavoriteTypes, disabledFavoriteTypes, newFavoriteAddedEvent, Focus){
     return {
       restrict : 'E',
       templateUrl: 'app/directives/favorites/favorites.addNew.html',
@@ -78,7 +79,7 @@ angular.module('directives.favorites.addNew', [
       link : function($scope) {
 
         $scope.favorite = {};
-        $scope.availableFavoriteTypes = availableFavoriteTypes;
+        $scope.availableFavoriteTypes = _.difference(availableFavoriteTypes, disabledFavoriteTypes);
         $scope.displayPopover = false;
 
         $scope.showPopover = function() {
