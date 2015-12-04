@@ -290,7 +290,7 @@
   "errorPage" : {
     "accessDenied" : {
       "title" : "nekat tillträde",
-      "description" : "du har inte tillgång till denna sida"
+      "description" : "du har inte tillgång till denna sida."
     },
     "maintenance" : {
       "title" : "under underhåll",
