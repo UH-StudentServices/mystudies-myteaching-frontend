@@ -183,7 +183,7 @@
     "readMore": "läs mer...",
     "addNew": "lägg till",
     "rss": {
-      "rssFeedSearch": "Sök innehåll eller lägg till urlen",
+      "rssFeedSearch": "Feed url (sv)",
       "numberOfItems": "Antal synliga notiser",
       "1item": "1 notis",
       "3items": "3 notiser"

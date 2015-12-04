@@ -25,7 +25,7 @@ angular.module('directives.favorites', [
   'directives.favorites.unisport',
   'dndLists'
 ])
-  .directive('favorites', function(FavoritesResource, newFavoriteAddedEvent, removeFavoriteEvent, AnalyticsService, disabledFavoriteTypes){
+  .directive('favorites', function(FavoritesResource, newFavoriteAddedEvent, removeFavoriteEvent, AnalyticsService){
     return {
       restrict : 'E',
       templateUrl: 'app/directives/favorites/favorites.html',
@@ -43,9 +43,7 @@ angular.module('directives.favorites', [
         };
 
         function showFavorites(favorites) {
-          $scope.favorites = _.filter(favorites, function(favorite) {
-            return !_.contains(disabledFavoriteTypes, favorite.type);
-          });
+          $scope.favorites = favorites;
         }
 
         function updateFavorites() {

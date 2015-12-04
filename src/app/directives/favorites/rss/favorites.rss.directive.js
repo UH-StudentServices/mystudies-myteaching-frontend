@@ -16,11 +16,11 @@
  */
 
 angular.module('directives.favorites.rss',[
-  'resources.favorites.rss',
+  'services.favorites.rss',
   'resources.metaData',
   'filters.moment'])
 
-  .directive('favoritesRss', function(RSSResource, MetaDataResource) {
+  .directive('favoritesRss', function(RSSService, MetaDataResource) {
     return {
       restrict : 'E',
       templateUrl: 'app/directives/favorites/rss/favorites.rss.html',
@@ -29,20 +29,23 @@ angular.module('directives.favorites.rss',[
         data : '='
       },
       link : function($scope) {
-        RSSResource.get($scope.data.url, $scope.data.visibleItems).then(function(feedData) {
-          if(feedData.data.responseData) {
-            $scope.feedTitle = feedData.data.responseData.feed.title;
-            $scope.feedDateLocalized = moment(new Date(feedData.data.responseData.feed.entries[0].publishedDate)).format('l');
-            $scope.feedLink = feedData.data.responseData.feed.link;
-            if($scope.data.visibleItems === 1) {
-              MetaDataResource.getMetaData(feedData.data.responseData.feed.entries[0].link).then(
-                function getPageMetaDataSuccess(metaData) {
-                  $scope.singleFeedItem = feedData.data.responseData.feed.entries[0];
-                  $scope.metaData = metaData;                  
-                });
-            } else {
-              $scope.feed = feedData.data.responseData.feed;
-            }
+
+        var feedUrl = $scope.data.url;
+
+        RSSService.get(feedUrl, $scope.data.visibleItems).then(function getFeedSuccess(feedData) {
+
+          $scope.feedTitle = feedData.title ? feedData.title : feedUrl;
+          $scope.feedDateLocalized = feedData.momentDate.format('l');
+          $scope.feedLink = feedData.link;
+
+          if($scope.data.visibleItems === 1 && feedData.entries && feedData.entries.length > 0) {
+            MetaDataResource.getMetaData(feedData.entries[0].link).then(
+              function getPageMetaDataSuccess(metaData) {
+                $scope.singleFeedItem = feedData.entries[0];
+                $scope.metaData = metaData;
+              });
+          } else {
+            $scope.feed = feedData;
           }
         });
 

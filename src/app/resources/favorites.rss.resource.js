@@ -17,18 +17,15 @@
 
 angular.module('resources.favorites.rss', [])
   
-  .factory('RSSResource', function($http, $q){
+  .factory('RSSResource', function($resource){
 
-    var apiBaseUrl = '//ajax.googleapis.com/ajax/services/feed/';
+    var favoritesResource = $resource('/api/private/v1/favorites/rss');
 
     function get(url, numberOfItems) {
-      return $http.jsonp(apiBaseUrl + 'load?v=1.0&num=' + numberOfItems + '&callback=JSON_CALLBACK&q=' + encodeURIComponent(url));
+      return favoritesResource.get({url : url, limit : numberOfItems}).$promise;
     }
-    function search(searchString) {
-      return $http.jsonp(apiBaseUrl + 'find?v=1.0&callback=JSON_CALLBACK&q=' + encodeURIComponent(searchString));
-    }
+
     return {
-      get: get,
-      search : search
+      get: get
     }
   });
