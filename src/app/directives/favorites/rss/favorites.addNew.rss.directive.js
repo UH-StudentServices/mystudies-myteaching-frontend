@@ -17,7 +17,7 @@
 
 angular.module('directives.favorites.addNew.rss',
   ['resources.favorites',
-    'resources.favorites.rss'])
+   'services.favorites.rss'])
 
   .filter('stripHTML', function() {
     return function(input) {
@@ -27,7 +27,7 @@ angular.module('directives.favorites.addNew.rss',
 
   .constant('minSearchStringLength', 3)
 
-  .directive('addNewRssFavorite', function(RSSResource, FavoritesResource, newFavoriteAddedEvent, minSearchStringLength) {
+  .directive('addNewRssFavorite', function(RSSService, FavoritesResource, newFavoriteAddedEvent, minSearchStringLength) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/rss/favorites.addNew.rss.html',
@@ -39,45 +39,27 @@ angular.module('directives.favorites.addNew.rss',
         $scope.loading = false;
         $scope.visibleItems = 3;
 
-        function getFeedTitle(feedResponseData, defaultTitle) {
-          var title = _.get(feedResponseData, 'feed.title', defaultTitle);
-          return title ? title : defaultTitle;
-        }
-
         function searchWithUrl(searchUrl) {
-          return RSSResource.get(searchUrl)
-            .then(function(result) {
-              if (_.get(result, 'data.responseData', false)) {
-                return [{title: getFeedTitle(result.data.responseData, searchUrl), url: searchUrl}];
+          return RSSService.getFeedTitle(searchUrl)
+            .then(function(title) {
+              if(title) {
+                return [{title: title, url: searchUrl}];
               } else {
-                throw "Feed not found";
+                return null;
               }
             });
         }
 
-        function searchWithString(searchString) {
-          return RSSResource.search(searchString)
-            .then(function(result) {
-              if (_.get(result, 'data.responseData', false)) {
-                return result.data.responseData.entries;
-              } else {
-                throw "No results found";
-              }
-            });
-        }
-
-        function search(searchString) {
-          if (searchString.length >= minSearchStringLength) {
+        function search(feedUrl) {
             $scope.loading = true;
-            searchWithUrl(searchString)
-              .catch(_.partial(searchWithString, searchString))
+            $scope.searchResults = undefined;
+            searchWithUrl(feedUrl)
               .then(function(searchResults) {
                 $scope.searchResults = searchResults;
               })
               .finally(function() {
                 $scope.loading = false;
               });
-          }
         }
 
         $scope.search = _.debounce(search, 500);

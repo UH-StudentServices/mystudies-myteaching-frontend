@@ -19,12 +19,12 @@
   <div ng-if="feed">
     <div class="box-story__topical rss-header">
       <span class="box-story__date" ng-bind="feedDateLocalized"></span>
-      <a class="box-story__tag" href="{{ feedLink }}" target="_blank"><span>{{ feedTitle }}</span></a>
+      <a class="box-story__tag" href="{{ feedLink }}" target="_blank" title="{{ feedTitle }}"><span>{{ feedTitle }}</span></a>
     </div>
     <div class="rss-content">     
       <article ng-repeat="feedItem in feed.entries" class="rss-feed__item">
           <h4 class="rss-feed__item-title"><a href="{{feedItem.link}}" target="_blank">{{feedItem.title}}</a></h4>
-          <div class="rss-feed__date">{{feed.title}} {{feedItem.publishedDate | convertDateFormat:'D.M.YYYY'}}</div>
+          <div class="rss-feed__date">{{feedItem.momentDate | convertDateFormat:'L LT'}}</div>
       </article>
     </div>
   </div>

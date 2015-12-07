@@ -254,6 +254,11 @@ $favorite-size-large: 340px;
   @include tab-shadow;
   background-color: $white;
   position: relative;
+  top: -20px;
+
+  @include breakpoint($small) {
+    top: -130px;
+  }
 }
 
 .add-favorite-arrow {

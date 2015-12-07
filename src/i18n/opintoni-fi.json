@@ -182,7 +182,7 @@
     "readMore": "lue lisää...",
     "addNew": "lisää uusi",
     "rss": {
-      "rssFeedSearch": "hae sisältöä tai syötä osoite",
+      "rssFeedSearch": "RSS-syötteen osoite",
       "numberOfItems": "Näytettävien uutisten määrä",
       "1item": "1 uutinen",
       "3items": "3 uutista"

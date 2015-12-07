@@ -183,7 +183,7 @@
     "readMore": "read more...",
     "addNew": "add new",
     "rss": {
-      "rssFeedSearch": "Search content or input url",
+      "rssFeedSearch": "Feed url",
       "numberOfItems": "Number of visible feed items",
       "1item": "1 item",
       "3items": "3 items"
