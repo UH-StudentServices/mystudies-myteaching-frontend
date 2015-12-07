@@ -82,18 +82,17 @@ angular.module('directives.favorites.addNew', [
         $scope.favorite = {};
         $scope.availableFavoriteTypes = availableFavoriteTypes
         $scope.displayPopover = false;
-        $scope.disabledFavoriteTypes = [];
-
-        if(_.isUndefined(_.find(favorites, function(favorite) {
-          return favorite.type === 'UNISPORT'
-        }))) {
-          $scope.disabledFavoriteTypes.push('UNISPORT');
-        }
-
+        
         $scope.getFavoriteTypeClasses = function getFavoriteTypeClasses(favoriteType) {
-          return {
-            disabled: $scope.disabledFavoriteTypes.indexOf(favoriteType) !== -1
-          };
+          if(favoriteType === 'UNISPORT') {
+            return {
+              disabled: !_.isUndefined(_.find($scope.favorites, function(favorite) {
+                return favorite.type === 'UNISPORT';
+              }))
+            };
+          } else {
+            return {};
+          }
         }        
 
         $scope.showPopover = function() {

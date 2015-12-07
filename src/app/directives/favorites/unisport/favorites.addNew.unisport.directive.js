@@ -23,16 +23,15 @@ angular.module('directives.favorites.addNew.unisport',
       restrict: 'E',
       scope: true,
       link: function($scope) {
-        FavoritesResource.getAll().then(function getAllSuccess(allFavorites) {
-          if(_.isUndefined(_.find(allFavorites, function(favorite) {
-            return favorite.type === 'UNISPORT'
-          }))) {
-            return FavoritesResource.saveUnisportFavorite();
-          }
-        }).finally(function addNewUnisportFavoriteFinally(){
-          $scope.$emit(newFavoriteAddedEvent, $scope.favorite.type);
-          $scope.hidePopover();
-        });
+                
+        if(_.isUndefined(_.find($scope.favorites, function(favorite) {
+          return favorite.type === 'UNISPORT'
+        }))) {
+          FavoritesResource.saveUnisportFavorite().then(function addUnisportFavoriteSuccess() {
+            $scope.$emit(newFavoriteAddedEvent, $scope.favorite.type);    
+          });
+        }
+        $scope.hidePopover();
       }
     }
   });
