@@ -23,7 +23,7 @@ angular.module('directives.favorites.addNew', [
   'nsPopover',
   'services.focus'])
 
-  .constant('availableFavoriteTypes', ['RSS', 'UNICAFE', 'TWITTER'])
+  .constant('availableFavoriteTypes', ['RSS', 'UNICAFE', 'TWITTER', 'UNISPORT'])
   .constant('newFavoriteAddedEvent', 'NEW_FAVORITE_ADDED')
 
   .directive('addNewFavoriteSearch', function() {
@@ -74,12 +74,24 @@ angular.module('directives.favorites.addNew', [
       restrict : 'E',
       templateUrl: 'app/directives/favorites/favorites.addNew.html',
       replace : true,
-      scope : {},
+      scope : {
+        favorites: '='
+      },
       link : function($scope) {
 
         $scope.favorite = {};
         $scope.availableFavoriteTypes = availableFavoriteTypes
         $scope.displayPopover = false;
+        
+        $scope.getFavoriteTypeClasses = function getFavoriteTypeClasses(favoriteType) {
+          if(favoriteType === 'UNISPORT') {
+            return {
+              disabled: !_.isUndefined(_.find($scope.favorites, {'type' : 'UNISPORT'}))
+            };
+          } else {
+            return {};
+          }
+        }        
 
         $scope.showPopover = function() {
           setFocus();
