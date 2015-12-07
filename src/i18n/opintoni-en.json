@@ -148,7 +148,8 @@
     "forTeachers": "For teachers",
     "studentCounseling": "Student counseling",
     "examsAndOtherAssessmentTools": "Exams and other assessment tools",
-    "certificateOfStudyAttainments": "Certificate of study attainments"
+    "certificateOfStudyAttainments": "Certificate of study attainments",
+    "studentServices" : "student services"
   },
   "notificationsMenu": {
     "title": "Notifications"

@@ -3458,13 +3458,16 @@ button.icon {
     border-right: 10px solid transparent;
     border-bottom: 10px solid #FFF; }
 
-.useful-links__helpdesk {
+.useful-links__fixed {
   padding: 1em;
   background-color: #0098d0;
-  color: #FFF; }
-  .useful-links__helpdesk a:link, .useful-links__helpdesk a:hover, .useful-links__helpdesk a:active, .useful-links__helpdesk a:visited {
+  color: #FFF;
+  margin-bottom: 2px; }
+  .useful-links__fixed h4 {
+    padding-bottom: 0; }
+  .useful-links__fixed a:link, .useful-links__fixed a:hover, .useful-links__fixed a:active, .useful-links__fixed a:visited {
     color: #FFF; }
-  .useful-links__helpdesk p {
+  .useful-links__fixed p {
     margin-bottom: 0;
     font-family: Georgia; }
 
