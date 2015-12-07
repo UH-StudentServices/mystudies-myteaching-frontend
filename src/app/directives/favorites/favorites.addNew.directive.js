@@ -86,9 +86,7 @@ angular.module('directives.favorites.addNew', [
         $scope.getFavoriteTypeClasses = function getFavoriteTypeClasses(favoriteType) {
           if(favoriteType === 'UNISPORT') {
             return {
-              disabled: !_.isUndefined(_.find($scope.favorites, function(favorite) {
-                return favorite.type === 'UNISPORT';
-              }))
+              disabled: !_.isUndefined(_.find($scope.favorites, {'type' : 'UNISPORT'}))
             };
           } else {
             return {};
