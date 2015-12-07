@@ -225,6 +225,7 @@ $favorite-size-large: 340px;
     padding: 0;
     overflow: hidden;
   }
+
 }
 
 .favorites-container .dropzone .container-element {
@@ -420,7 +421,28 @@ $favorite-size-large: 340px;
   margin: 10px;
 }
 
-.unisport-iframe {
-  width: 100%;
-  border: none;
+.unisport {
+
+    .unisport-header {
+      width: 100%;
+      height: 100px;
+      overflow: hidden;
+      position: relative;
+
+      img {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+      }
+    }
+
+    .unisport-iframe {
+      width: 100%;
+      height: 100%;
+      margin-top: -100px;
+      padding-top: 100px;
+      border: none;
+    }
 }
+

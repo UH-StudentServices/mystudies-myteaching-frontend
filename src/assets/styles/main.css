@@ -3071,8 +3071,21 @@ button.icon {
 .rss-feed-visible-items {
   margin: 10px; }
 
-.unisport-iframe {
+.unisport .unisport-header {
   width: 100%;
+  height: 100px;
+  overflow: hidden;
+  position: relative; }
+  .unisport .unisport-header img {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0; }
+.unisport .unisport-iframe {
+  width: 100%;
+  height: 100%;
+  margin-top: -100px;
+  padding-top: 100px;
   border: none; }
 
 /*
