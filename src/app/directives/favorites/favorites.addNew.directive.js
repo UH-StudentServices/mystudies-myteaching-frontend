@@ -74,12 +74,27 @@ angular.module('directives.favorites.addNew', [
       restrict : 'E',
       templateUrl: 'app/directives/favorites/favorites.addNew.html',
       replace : true,
-      scope : {},
+      scope : {
+        favorites: '='
+      },
       link : function($scope) {
 
         $scope.favorite = {};
         $scope.availableFavoriteTypes = availableFavoriteTypes
         $scope.displayPopover = false;
+        $scope.disabledFavoriteTypes = [];
+
+        if(_.isUndefined(_.find(favorites, function(favorite) {
+          return favorite.type === 'UNISPORT'
+        }))) {
+          $scope.disabledFavoriteTypes.push('UNISPORT');
+        }
+
+        $scope.getFavoriteTypeClasses = function getFavoriteTypeClasses(favoriteType) {
+          return {
+            disabled: $scope.disabledFavoriteTypes.indexOf(favoriteType) !== -1
+          };
+        }        
 
         $scope.showPopover = function() {
           setFocus();

@@ -2972,7 +2972,12 @@ button.icon {
     padding: 0.5em; }
   .add-favorite-step li.bar {
     padding: 0.5em 0;
-    font-size: 0.9em; }
+    font-size: 0.9em;
+    cursor: pointer; }
+    .add-favorite-step li.bar.disabled {
+      cursor: auto; }
+      .add-favorite-step li.bar.disabled a {
+        color: grey; }
 
 .add-favorite-button {
   height: 100%;

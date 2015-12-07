@@ -299,6 +299,16 @@ $favorite-size-large: 340px;
   li.bar {
     padding: 0.5em 0;
     font-size: 0.9em;
+    cursor: pointer;
+
+    &.disabled {
+      cursor: auto;
+
+      a {
+        color: grey;  
+      }
+      
+    }
   }
 }
 

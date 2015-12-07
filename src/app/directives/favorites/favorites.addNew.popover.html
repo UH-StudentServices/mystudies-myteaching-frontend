@@ -20,8 +20,11 @@
     <div class="add-favorite">
         <div class="add-favorite-step add-favorite-step-type" ng-hide="favorite.type">
             <ul role="list">
-                <li role="listitem" ng-repeat="favoriteType in availableFavoriteTypes" class="bar">
-                    <a ng-click="selectFavoriteType(favoriteType)" href="">{{'favorites.types.' + favoriteType | translate}}</a>
+                <li role="listitem"
+                  ng-repeat="favoriteType in availableFavoriteTypes"
+                  class="bar"
+                  ng-class="getFavoriteTypeClasses(favoriteType)">
+                    <a ng-click="selectFavoriteType(favoriteType)">{{'favorites.types.' + favoriteType | translate}}</a>
                 </li>
             </ul>
         </div>
