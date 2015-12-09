@@ -19,7 +19,7 @@
 
 angular.module('services.language', [])
 
-  .factory('Language', function ($translate) {
+  .factory('LanguageService', function ($translate) {
     return {
       getCurrent: function () {
         return $translate.proposedLanguage() || $translate.use();

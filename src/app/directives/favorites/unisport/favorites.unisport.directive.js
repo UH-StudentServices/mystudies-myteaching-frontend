@@ -19,7 +19,7 @@ angular.module('directives.favorites.unisport', [
   'services.language'
 ])
 
-  .directive('favoritesUnisport', function($sce, Language) {
+  .directive('favoritesUnisport', function($sce, LanguageService) {
     return {
       restrict : 'E',
       templateUrl: 'app/directives/favorites/unisport/favorites.unisport.html',
@@ -29,7 +29,7 @@ angular.module('directives.favorites.unisport', [
       },
       link : function($scope) {
         var unisportUrlTemplateCompiled = _.template($scope.data.url);
-        $scope.unisportUrl = $sce.trustAsResourceUrl(unisportUrlTemplateCompiled({ 'userLanguage': Language.getCurrent() }));
+        $scope.unisportUrl = $sce.trustAsResourceUrl(unisportUrlTemplateCompiled({ 'userLanguage': LanguageService.getCurrent() }));
       }
     }
   });

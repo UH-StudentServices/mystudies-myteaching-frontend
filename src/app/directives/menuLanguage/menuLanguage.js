@@ -21,7 +21,7 @@ angular.module('directives.menuLanguage', [
   'services.language'
 ])
 
-  .directive('menuLanguage', function($translate, $window, Language) {
+  .directive('menuLanguage', function($translate, $window, LanguageService) {
 
     return {
       restrict: 'E',
@@ -49,7 +49,7 @@ angular.module('directives.menuLanguage', [
           }
         ];
 
-        $scope.selectedLanguage = Language.getCurrent();
+        $scope.selectedLanguage = LanguageService.getCurrent();
 
         $scope.getLanguageOptions = function getLanguageOptions(userLanguage) {
           if(userLanguage === 'fi') {
