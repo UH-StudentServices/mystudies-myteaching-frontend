@@ -25,7 +25,7 @@ angular.module('directives.userNotifications', [
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'app/directives/userMenu/userNotifications.html',
+      templateUrl: 'app/directives/header/userMenu/userNotifications.html',
       scope: {},
       link: function($scope) {
 

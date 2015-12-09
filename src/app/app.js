@@ -44,7 +44,6 @@ angular.module('opintoniApp', [
   'resources.httpInterceptor',
   'resources.stateInterceptor',
 
-  'directives.toolbar',
   'directives.menuLanguage',
   'directives.dropdown',
   'directives.onlyDev',

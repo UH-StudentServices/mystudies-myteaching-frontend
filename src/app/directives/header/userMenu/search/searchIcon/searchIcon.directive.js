@@ -15,12 +15,31 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.mobileMenu', [])
+'use strict';
 
-  .directive('mobileMenu', function() {
+angular.module('directives.searchIcon', [
+  'services.search',
+  'services.message',
+  'ui.bootstrap.typeahead'
+])
+  .directive('searchIcon', function($document, SearchEvents, MessageService) {
     return {
-      restrict : 'E',
-      replace : 'true',
-      templateUrl : 'app/directives/mobileToolbar/mobileMenu.html'
+      restrict: 'E',
+      replace: true,
+      templateUrl: 'app/directives/header/userMenu/search/searchIcon/searchIcon.html',
+      scope: {},
+      link: function($scope) {
+
+        $scope.active = false;
+
+        $scope.toggle = function() {
+          MessageService.broadcast(SearchEvents.TOGGLE_SEARCH_CLICKED, !$scope.active);
+        };
+
+        MessageService.subscribe($scope, SearchEvents.TOGGLE_SEARCH_CLICKED, function(active) {
+          $scope.active = active;
+        });
+
+      }
     }
   });

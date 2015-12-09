@@ -46,7 +46,7 @@ angular.module('directives.userMenu.settings', [
       restrict: 'E',
       replace: true,
       scope: true,
-      templateUrl: 'app/directives/userMenu/settings/userMenu.settings.html',
+      templateUrl: 'app/directives/header/userMenu/settings/userMenu.settings.html',
       link: function($scope) {
 
         $scope.showAvatarChangeType = false;

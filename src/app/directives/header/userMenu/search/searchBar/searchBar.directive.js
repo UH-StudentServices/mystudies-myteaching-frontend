@@ -28,7 +28,7 @@ angular.module('directives.searchBar', [
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'app/directives/searchBar/searchBar.html',
+      templateUrl: 'app/directives/header/userMenu/search/searchBar/searchBar.html',
       scope: {},
       link: function($scope, element) {
 

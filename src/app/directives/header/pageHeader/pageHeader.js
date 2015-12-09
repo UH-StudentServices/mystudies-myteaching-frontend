@@ -15,22 +15,16 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.avatarImage', ['services.state'])
-  .directive('avatarImage', function(StateService, State) {
+'use strict';
+
+angular.module('directives.pageHeader', ['constants.externalLinks'])
+  .directive('pageHeader', function(pageHeaderLinks, primaryLinks) {
     return {
       restrict: 'E',
-      replace: true,
-      templateUrl: 'app/directives/userMenu/avatarImage.html',
-      scope: {
-        imgSrc: '=',
-        imgAlt: '='
-      },
-      link: function($scope) {
-        $scope.isTeacher = StateService.getRootStateName() === State.MY_TEACHINGS;
-
-        $scope.isDefault = function() {
-          return $scope.imgSrc.indexOf('/api') === -1;
-        };
+      templateUrl: 'app/directives/header/pageHeader/page_header.html',
+      link : function($scope) {
+        $scope.pageHeaderLinks = pageHeaderLinks;
+        $scope.primaryLinks = primaryLinks;
       }
-    }
+    };
   });

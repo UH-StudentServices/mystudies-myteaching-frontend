@@ -26,7 +26,7 @@ angular.module('directives.todoItems', ['resources.todoItems', 'directives.swipe
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'app/directives/todoItems/todoItems.html',
+      templateUrl: 'app/directives/pageBanner/todoItems/todoItems.html',
       link: function($scope) {
 
         function loadTodoItems() {

@@ -69,7 +69,7 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
     return {
       restrict : 'E',
       replace : 'true',
-      templateUrl : 'app/directives/tour/tour.html',
+      templateUrl : 'app/directives/header/userMenu/tour/tour.html',
       scope : {
         config : '=',
         onFinish : '=',
@@ -111,7 +111,7 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
     return {
       restrict : 'E',
       replace : 'true',
-      templateUrl : 'app/directives/tour/studentTour.html',
+      templateUrl : 'app/directives/header/userMenu/tour/studentTour.html',
       link : function($scope) {
         var translate = TourTemplate.translate;
 
@@ -191,7 +191,7 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
     return {
       restrict : 'E',
       replace : 'true',
-      templateUrl : 'app/directives/tour/teacherTour.html',
+      templateUrl : 'app/directives/header/userMenu/tour/teacherTour.html',
       link : function($scope) {
 
         var translate = TourTemplate.translate;
@@ -273,7 +273,7 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
       restrict : 'E',
       replace : true,
       scope : {},
-      templateUrl : 'app/directives/tour/startTour.html',
+      templateUrl : 'app/directives/header/userMenu/tour/startTour.html',
       controller : function($scope) {
         $scope.startTour = function() {
           AnalyticsService.trackStartTour();

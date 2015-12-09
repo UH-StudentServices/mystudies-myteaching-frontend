@@ -21,7 +21,7 @@ angular.module('directives.logoutLink', [])
     return {
       restrict: 'E',
       replace : true,
-      templateUrl: 'app/directives/logoutLink/logoutLink.html',
+      templateUrl: 'app/directives/header/logoutLink/logoutLink.html',
       link : function($scope) {
         $scope.logoutUrl = Configuration.logoutUrl;
       }

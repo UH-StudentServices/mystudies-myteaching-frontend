@@ -15,16 +15,18 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-'use strict';
-
-angular.module('directives.pageHeader', ['constants.externalLinks'])
-  .directive('pageHeader', function(pageHeaderLinks, primaryLinks) {
+angular.module('directives.userMenu',
+  ['directives.searchBar',
+    'directives.searchIcon',
+    'directives.userMenu.settings',
+    'directives.userNotifications',
+    'ngFileUpload'])
+  .directive('userMenu', function() {
     return {
       restrict: 'E',
-      templateUrl: 'app/directives/pageHeader/page_header.html',
-      link : function($scope) {
-        $scope.pageHeaderLinks = pageHeaderLinks;
-        $scope.primaryLinks = primaryLinks;
+      replace: true,
+      templateUrl: 'app/directives/header/userMenu/userMenu.html',
+      link: function($scope) {
       }
-    };
+    }
   });

@@ -32,7 +32,7 @@ angular.module('directives.mobileToolbar', [
     return {
       restrict : 'E',
       replace : true,
-      templateUrl : 'app/directives/mobileToolbar/mobileToolbar.html',
+      templateUrl : 'app/directives/header/mobileToolbar/mobileToolbar.html',
       link : function($scope) {
         $scope.showToolbar = false;
         $scope.showShortcuts = false;

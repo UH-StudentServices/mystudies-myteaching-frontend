@@ -15,31 +15,22 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-'use strict';
-
-angular.module('directives.searchIcon', [
-  'services.search',
-  'services.message',
-  'ui.bootstrap.typeahead'
-])
-  .directive('searchIcon', function($document, SearchEvents, MessageService) {
+angular.module('directives.avatarImage', ['services.state'])
+  .directive('avatarImage', function(StateService, State) {
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'app/directives/searchIcon/searchIcon.html',
-      scope: {},
+      templateUrl: 'app/directives/header/userMenu/avatarImage.html',
+      scope: {
+        imgSrc: '=',
+        imgAlt: '='
+      },
       link: function($scope) {
+        $scope.isTeacher = StateService.getRootStateName() === State.MY_TEACHINGS;
 
-        $scope.active = false;
-
-        $scope.toggle = function() {
-          MessageService.broadcast(SearchEvents.TOGGLE_SEARCH_CLICKED, !$scope.active);
+        $scope.isDefault = function() {
+          return $scope.imgSrc.indexOf('/api') === -1;
         };
-
-        MessageService.subscribe($scope, SearchEvents.TOGGLE_SEARCH_CLICKED, function(active) {
-          $scope.active = active;
-        });
-
       }
     }
   });

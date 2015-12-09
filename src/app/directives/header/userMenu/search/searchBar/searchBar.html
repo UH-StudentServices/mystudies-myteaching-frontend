@@ -27,7 +27,7 @@
                        ng-model="searchTerm"
                        ui-keypress="{'enter':'search()'}"
                        typeahead="categoryTitle for categoryTitle in getCategoryTitles($viewValue)"
-                       typeahead-template-url="app/directives/searchBar/autocomplete-tpl.html"
+                       typeahead-template-url="app/directives/header/userMenu/search/searchBar/autocomplete-tpl.html"
                        typeahead-on-select="search()"
                        typeahead-focus-first="false"
                        autocomplete="off">

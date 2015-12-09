@@ -15,25 +15,12 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.userBackground', ['services.userSettings', 'directives.chooseBackground'])
+angular.module('directives.mobileMenu', [])
 
-  .constant('backgroundChangeEvent', 'backgroundChange')
-
-  .directive('userBackground', function($rootScope, UserSettingsService, backgroundChangeEvent) {
+  .directive('mobileMenu', function() {
     return {
-      restrict: 'E',
-      replace: true,
-      templateUrl: 'app/directives/userBackground/userBackground.html',
-      link: function($scope) {
-        function setBackgroundImage() {
-          UserSettingsService.getUserSettings().then(function(userSettings) {
-            $scope.userBackgroundStyle = {'background-image' : 'url("' + userSettings.backgroundUri + '")'};
-          });
-        }
-
-        $rootScope.$on(backgroundChangeEvent, setBackgroundImage);
-
-        setBackgroundImage();
-      }
+      restrict : 'E',
+      replace : 'true',
+      templateUrl : 'app/directives/header/mobileToolbar/mobileMenu.html'
     }
   });

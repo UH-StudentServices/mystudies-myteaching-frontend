@@ -28,7 +28,7 @@ angular.module('directives.searchResults', [
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'app/directives/searchResults/searchResults.html',
+      templateUrl: 'app/directives/header/userMenu/search/searchResults/searchResults.html',
       scope: {},
       link: function($scope) {
 

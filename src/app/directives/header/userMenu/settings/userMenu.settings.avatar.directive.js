@@ -33,7 +33,7 @@ angular.module('directives.userMenu.settings.avatar', ['directives.imgLoad', 'di
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'app/directives/userMenu/settings/userMenu.settings.avatar.html',
+      templateUrl: 'app/directives/header/userMenu/settings/userMenu.settings.avatar.html',
       link: function($scope) {
 
         function reset() {
