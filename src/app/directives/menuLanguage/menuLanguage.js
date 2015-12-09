@@ -18,14 +18,21 @@
 'use strict';
 
 angular.module('directives.menuLanguage', [
-  'controllers.language'
+  'services.language'
 ])
 
-  .directive('menuLanguage', function() {
+  .directive('menuLanguage', function($translate, $window, Language) {
+
     return {
       restrict: 'E',
       templateUrl: 'app/directives/menuLanguage/menu_language.html',
       link: function($scope) {
+
+        $scope.changeLanguage = function (languageKey) {
+          $translate.use(languageKey).then(function translationUseSuccess(){
+            $window.location.reload();
+          });
+        };
 
         var languageOptions = [
           {
@@ -41,6 +48,8 @@ angular.module('directives.menuLanguage', [
             languageCode: 'fi'
           }
         ];
+
+        $scope.selectedLanguage = Language.getCurrent();
 
         $scope.getLanguageOptions = function getLanguageOptions(userLanguage) {
           if(userLanguage === 'fi') {

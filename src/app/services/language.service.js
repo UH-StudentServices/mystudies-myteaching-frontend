@@ -18,22 +18,11 @@
 'use strict';
 
 angular.module('services.language', [])
-  .factory('Language', function ($translate, LANGUAGES) {
+
+  .factory('Language', function ($translate) {
     return {
       getCurrent: function () {
         return $translate.proposedLanguage() || $translate.use();
-      },
-      getAll: function () {
-        return LANGUAGES;
       }
     };
-  })
-
-  .constant('LANGUAGES', [
-    'en', 'fi', 'sv'
-  ]
-);
-
-
-
-
+  });

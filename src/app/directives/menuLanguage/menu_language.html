@@ -16,8 +16,8 @@
   -->
 
 <div>
-    <ul class="inline-list inline-list--small menu-language" ng-controller="LanguageController" >
-        <li ng-repeat="languageOption in getLanguageOptions(userLang)">
+    <ul class="inline-list inline-list--small menu-language">
+        <li ng-repeat="languageOption in getLanguageOptions(selectedLanguage)">
             <a role="button" aria-label="English" class="menu-language__item link-label clickable" ng-click="changeLanguage(languageOption.languageCode)">
                 <span class="hide-mobile-only">{{ languageOption.nativeName }}</span>
                 <span class="show-mobile-only">{{ languageOption.languageCode | capitalize }}</span>
