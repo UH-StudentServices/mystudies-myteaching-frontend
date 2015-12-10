@@ -18,5 +18,6 @@
 <div class="user-menu__item start-tour">
     <a href="" role="button" aria-label="{{'tour.ariaLabels.startTour' | translate}}" ng-click="startTour()">
         <span class="hy hy-info-stroke" title="{{ 'toolbar.icons.tour' | translate }}"></span>
+        <span ng-if="startTourText">{{startTourText}}</span>
     </a>
 </div>

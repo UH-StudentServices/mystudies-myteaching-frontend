@@ -19,7 +19,8 @@
     "emailAddress" : "e-post",
     "readMore" : "läs mer",
     "yes"  : "ja",
-    "no" : "nej"
+    "no" : "nej",
+    "introduction" : "introduktion"
   },
   "abbreviations": {
     "credits": "sp"

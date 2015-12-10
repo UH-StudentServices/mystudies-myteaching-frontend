@@ -20,15 +20,16 @@
         <i class="hy hy-hamburger" ng-hide="showToolbar"></i>
     </a>
 
-    <div class="mobile-toolbar dropdown-content" role="navigation">
-        <ul class="mobile-toolbar__secondary-links">
+    <div class="dropdown-content" role="navigation">
+
+        <ul class="mobile-menu__links mobile-menu__links--dark">
             <li ng-repeat="link in pageHeaderLinks">
                 <a href="{{link.href}}" target="_blank">{{ link.key | translate | capitalize }}</a>
             </li>
         </ul>
 
-        <ul class="mobile-toolbar__secondary-links">
-            <li class="mobile-toolbar__logout"><i class="hy hy-link-arrow"></i><logout-link></logout-link></li>
+        <ul class="mobile-menu__links mobile-menu__links--light mobile-menu__actions">
+            <li><start-tour start-tour-text="{{'general.introduction' | translate}}"></start-tour></li>
         </ul>
     </div>
 </div>

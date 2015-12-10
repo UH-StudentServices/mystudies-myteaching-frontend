@@ -19,7 +19,8 @@
     "emailAddress" : "sähköpostiosoite",
     "readMore" : "lue lisää",
     "yes" : "kyllä",
-    "no" : "ei"
+    "no" : "ei",
+    "introduction" : "esittely"
   },
   "abbreviations": {
     "credits": "op"
