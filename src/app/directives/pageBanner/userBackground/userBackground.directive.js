@@ -15,21 +15,25 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.favorites.unisport', [
-  'services.language'
-])
+angular.module('directives.userBackground', ['services.userSettings', 'directives.chooseBackground'])
 
-  .directive('favoritesUnisport', function($sce, LanguageService) {
+  .constant('backgroundChangeEvent', 'backgroundChange')
+
+  .directive('userBackground', function($rootScope, UserSettingsService, backgroundChangeEvent) {
     return {
-      restrict : 'E',
-      templateUrl: 'app/directives/favorites/unisport/favorites.unisport.html',
+      restrict: 'E',
       replace: true,
-      scope : {
-        data : '='
-      },
-      link : function($scope) {
-        var unisportUrlTemplateCompiled = _.template($scope.data.url);
-        $scope.unisportUrl = $sce.trustAsResourceUrl(unisportUrlTemplateCompiled({ 'userLanguage': LanguageService.getCurrent() }));
+      templateUrl: 'app/directives/pageBanner/userBackground/userBackground.html',
+      link: function($scope) {
+        function setBackgroundImage() {
+          UserSettingsService.getUserSettings().then(function(userSettings) {
+            $scope.userBackgroundStyle = {'background-image' : 'url("' + userSettings.backgroundUri + '")'};
+          });
+        }
+
+        $rootScope.$on(backgroundChangeEvent, setBackgroundImage);
+
+        setBackgroundImage();
       }
     }
   });

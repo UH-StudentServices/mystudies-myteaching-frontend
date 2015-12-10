@@ -15,21 +15,31 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.favorites.unisport', [
-  'services.language'
-])
+'use strict';
 
-  .directive('favoritesUnisport', function($sce, LanguageService) {
+angular.module('directives.searchIcon', [
+  'services.search',
+  'services.message',
+  'ui.bootstrap.typeahead'
+])
+  .directive('searchIcon', function($document, SearchEvents, MessageService) {
     return {
-      restrict : 'E',
-      templateUrl: 'app/directives/favorites/unisport/favorites.unisport.html',
+      restrict: 'E',
       replace: true,
-      scope : {
-        data : '='
-      },
-      link : function($scope) {
-        var unisportUrlTemplateCompiled = _.template($scope.data.url);
-        $scope.unisportUrl = $sce.trustAsResourceUrl(unisportUrlTemplateCompiled({ 'userLanguage': LanguageService.getCurrent() }));
+      templateUrl: 'app/directives/header/userMenu/search/searchIcon/searchIcon.html',
+      scope: {},
+      link: function($scope) {
+
+        $scope.active = false;
+
+        $scope.toggle = function() {
+          MessageService.broadcast(SearchEvents.TOGGLE_SEARCH_CLICKED, !$scope.active);
+        };
+
+        MessageService.subscribe($scope, SearchEvents.TOGGLE_SEARCH_CLICKED, function(active) {
+          $scope.active = active;
+        });
+
       }
     }
   });

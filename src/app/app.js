@@ -44,7 +44,6 @@ angular.module('opintoniApp', [
   'resources.httpInterceptor',
   'resources.stateInterceptor',
 
-  'directives.toolbar',
   'directives.menuLanguage',
   'directives.dropdown',
   'directives.onlyDev',
@@ -61,8 +60,8 @@ angular.module('opintoniApp', [
 ])
   .constant('preferredLanguage', 'fi')
 
-  .run(function ($rootScope, Language) {
-    $rootScope.userLang = Language.getCurrent();
+  .run(function ($rootScope, LanguageService) {
+    $rootScope.userLang = LanguageService.getCurrent();
     moment.locale($rootScope.userLang);
   })
 

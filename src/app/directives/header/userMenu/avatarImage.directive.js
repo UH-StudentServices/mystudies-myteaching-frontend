@@ -15,21 +15,22 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.favorites.unisport', [
-  'services.language'
-])
-
-  .directive('favoritesUnisport', function($sce, LanguageService) {
+angular.module('directives.avatarImage', ['services.state'])
+  .directive('avatarImage', function(StateService, State) {
     return {
-      restrict : 'E',
-      templateUrl: 'app/directives/favorites/unisport/favorites.unisport.html',
+      restrict: 'E',
       replace: true,
-      scope : {
-        data : '='
+      templateUrl: 'app/directives/header/userMenu/avatarImage.html',
+      scope: {
+        imgSrc: '=',
+        imgAlt: '='
       },
-      link : function($scope) {
-        var unisportUrlTemplateCompiled = _.template($scope.data.url);
-        $scope.unisportUrl = $sce.trustAsResourceUrl(unisportUrlTemplateCompiled({ 'userLanguage': LanguageService.getCurrent() }));
+      link: function($scope) {
+        $scope.isTeacher = StateService.getRootStateName() === State.MY_TEACHINGS;
+
+        $scope.isDefault = function() {
+          return $scope.imgSrc.indexOf('/api') === -1;
+        };
       }
     }
   });
