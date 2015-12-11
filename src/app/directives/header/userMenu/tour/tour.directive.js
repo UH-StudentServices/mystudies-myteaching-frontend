@@ -139,7 +139,7 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
           },
           {
             type: "element",
-            selector: "#todo-items",
+            selector: TourElementSelectorByMedia(".new-todo-item"),
             heading: translate('tour.common.todoItems.heading'),
             text: translate('tour.common.todoItems.text'),
             placement: 'bottom'
@@ -221,7 +221,7 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
           },
           {
             type: "element",
-            selector: "#todo-items",
+            selector: TourElementSelectorByMedia(".new-todo-item"),
             heading: translate('tour.common.todoItems.heading'),
             text: translate('tour.common.todoItems.text'),
             placement: 'bottom'
@@ -272,7 +272,9 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
     return {
       restrict : 'E',
       replace : true,
-      scope : {},
+      scope : {
+        startTourText : '@'
+      },
       templateUrl : 'app/directives/header/userMenu/tour/startTour.html',
       controller : function($scope) {
         $scope.startTour = function() {

@@ -19,7 +19,8 @@
     "emailAddress" : "email",
     "readMore" : "read more",
     "yes" : "yes",
-    "no" : "no"
+    "no" : "no",
+    "introduction" : "introduction"
   },
   "abbreviations": {
     "credits": "cr"
