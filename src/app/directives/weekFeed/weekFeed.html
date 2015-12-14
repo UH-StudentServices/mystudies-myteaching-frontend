@@ -71,7 +71,7 @@
       </li>
     </ul>
 
-    <event-calendar events-promise="events" ng-if="selectedTab === tabs.CALENDAR"></event-calendar>
+    <event-calendar events="events" ng-if="selectedTab === tabs.CALENDAR"></event-calendar>
 
     <div class="week-feed-actions">
       <button class="button--light button" ng-click="showMore()" ng-show="showMoreVisible()">{{ "buttons.showMore" | translate }}</button>

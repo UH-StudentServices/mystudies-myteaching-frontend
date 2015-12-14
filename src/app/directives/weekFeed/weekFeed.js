@@ -18,14 +18,13 @@
 'use strict';
 
 angular.module('directives.weekFeed', [
-  'resources.events',
   'filters.moment',
   'directives.message',
   'directives.subscribeEvents',
   'directives.eventCalendar',
-  'services.courses',
   'services.userPreferences',
-  'services.eventUri'
+  'services.eventUri',
+  'services.state'
 ])
 
   .constant('feedItemFilterType', {
@@ -48,6 +47,7 @@ angular.module('directives.weekFeed', [
     'PAST_TEACHER_COURSES': 'PAST_TEACHER_COURSES',
     'CALENDAR': 'CALENDAR'
   })
+  
   .filter('filterFeedItems', function(feedItemFilterType) {
     return function(items, filterType) {
 
@@ -95,59 +95,42 @@ angular.module('directives.weekFeed', [
     "PAST_TEACHER_COURSES": {info: "weekFeed.noPastTeacherCourses", error: "weekFeed.errors.errorLoadingCourses"}
   })
 
-  .directive('weekFeed', function(EventsResource,
-                                  CoursesService,
-                                  StateService,
-                                  State,
-                                  feedItemFilterType,
-                                  feedItemSortType,
-                                  tabs,
-                                  $filter,
-                                  $q,
-                                  MessageTypes,
-                                  WeekFeedMessageKeys,
-                                  UserPreferencesService,
-                                  LocationService,
-                                  EventUriService,
-                                  AnalyticsService) {
+  .directive('weekFeed', function(
+    $filter,
+    $q,
+    State,
+    StateService,
+    feedItemFilterType,
+    feedItemSortType,
+    tabs,
+    MessageTypes,
+    WeekFeedMessageKeys,
+    UserPreferencesService,
+    LocationService,
+    EventUriService,
+    AnalyticsService) {
+
+
     return {
       restrict: 'E',
       templateUrl: 'app/directives/weekFeed/weekFeed.html',
-      scope: {},
+      scope: {
+        courses: '=',
+        events: '='
+      },
       link: function($scope) {
-
         $scope.feedItems = [];
         $scope.tabs = tabs;
         $scope.feedItemFilterType = feedItemFilterType;
         $scope.currentStateName = StateService.getRootStateName();
         $scope.State = State;
-
-        var events, exams, courses;
-
+      
         var selectedFeedItemFilterType = feedItemFilterType.ALL;
         var selectedFeedItemSortType = feedItemSortType.NONE;
 
-        if ($scope.currentStateName === State.MY_STUDIES) {
-          events = EventsResource.getStudentEvents();
-          exams = examsPromise(events);
-          courses = CoursesService.getStudentCourses();
-        }
-
-        if ($scope.currentStateName === State.MY_TEACHINGS) {
-          events = EventsResource.getTeacherEvents();
-          exams = examsPromise(events);
-          courses = CoursesService.getTeacherCourses();
-        }
-
-        $scope.events = events;
+        var exams = _.filter($scope.events, {type: 'EXAM'});
 
         setSelectedTab(getDefaultTab());
-
-        function examsPromise(eventsPromise) {
-          return eventsPromise.then(function(events) {
-            return _.filter(events, {type: 'EXAM'});
-          });
-        }
 
         function getDefaultTab() {
           return UserPreferencesService.getPreferences().selectedTab || tabs.UPCOMING_EVENTS;
@@ -160,32 +143,22 @@ angular.module('directives.weekFeed', [
           AnalyticsService.trackShowWeekFeedTab(selectedTab);
           switch (selectedTab) {
             case tabs.UPCOMING_EVENTS:
-              setFeedItems(events);
-              selectedFeedItemFilterType = feedItemFilterType.UPCOMING;
-              selectedFeedItemSortType = feedItemSortType.NONE;
+              setFeedItems($scope.events, feedItemFilterType.UPCOMING, feedItemSortType.NONE);
               break;
             case tabs.COURSES:
-              setFeedItems(courses);
-              selectedFeedItemFilterType = feedItemFilterType.ALL;
-              selectedFeedItemSortType = feedItemSortType.NONE;
+              setFeedItems($scope.courses, feedItemFilterType.ALL, feedItemSortType.NONE);
               break;
             case tabs.EXAMS:
-              setFeedItems(exams);
-              selectedFeedItemFilterType = feedItemFilterType.UPCOMING;
-              selectedFeedItemSortType = feedItemSortType.NONE;
+              setFeedItems(exams, feedItemFilterType.UPCOMING, feedItemSortType.NONE);
               break;
             case tabs.CURRENT_TEACHER_COURSES:
-              setFeedItems(courses);
-              selectedFeedItemFilterType = feedItemFilterType.CURRENT;
-              selectedFeedItemSortType = feedItemSortType.START_DATE_ASC;
+              setFeedItems($scope.courses, feedItemFilterType.CURRENT, feedItemSortType.START_DATE_ASC);
               break;
             case tabs.PAST_TEACHER_COURSES:
-              setFeedItems(courses);
-              selectedFeedItemFilterType = feedItemFilterType.PAST;
-              selectedFeedItemSortType = feedItemSortType.NONE;
+              setFeedItems($scope.courses, feedItemFilterType.PAST, feedItemSortType.NONE);
               break;
             case tabs.CALENDAR:
-              setFeedItems(null);
+              $scope.feedItems = [];
               break;
           }
         }
@@ -197,24 +170,16 @@ angular.module('directives.weekFeed', [
           };
         }
 
-        function setFeedItems(itemsPromise) {
+        function setFeedItems(items, feedItemFilterType, feedItemSortType) {
           $scope.message = null;
-          $scope.feedItems = [];
+            
+          var filteredFeedItems = $filter('filterFeedItems')(items, selectedFeedItemFilterType);
+          $scope.feedItems = $filter('sortFeedItems')(filteredFeedItems, selectedFeedItemSortType);
 
-          if (itemsPromise) {
-            itemsPromise.then(function feedItemsPromiseSuccess(items) {
-              var filteredFeedItems = $filter('filterFeedItems')(items, selectedFeedItemFilterType);
-              var sortedFeedItems = $filter('sortFeedItems')(filteredFeedItems, selectedFeedItemSortType);
-
-              $scope.feedItems = sortedFeedItems;
-
-              if ($scope.feedItems.length === 0) {
-                setMessage(MessageTypes.INFO);
-              }
-            }, function feedItemsPromiseFail() {
-              setMessage(MessageTypes.ERROR);
-            })
+          if ($scope.feedItems.length === 0) {
+            setMessage(MessageTypes.INFO);
           }
+         
         }
 
         $scope.showMore = function showMore() {
@@ -230,7 +195,7 @@ angular.module('directives.weekFeed', [
         };
 
         $scope.showCourseImage = function showCourseImage($first, feedItem) {
-          return $first && selectedFeedItemFilterType === feedItemFilterType.UPCOMING && feedItem.courseImageUri;
+          return $first && $scope.selectedTab === tabs.UPCOMING_EVENTS && feedItem.courseImageUri;
         };
 
         $scope.openReittiopas = function(feedItem) {
