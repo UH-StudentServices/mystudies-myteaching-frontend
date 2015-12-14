@@ -43,7 +43,7 @@ angular.module('directives.eventCalendar', [])
     AnalyticsService) {
     return {
       restrict : 'E',
-      templateUrl : 'app/directives/eventCalendar/eventCalendar.html',
+      templateUrl : 'app/directives/weekFeed/eventCalendar/eventCalendar.html',
       scope : {
         events: '='
       },
