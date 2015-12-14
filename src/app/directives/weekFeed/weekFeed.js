@@ -22,6 +22,7 @@ angular.module('directives.weekFeed', [
   'directives.message',
   'directives.subscribeEvents',
   'directives.eventCalendar',
+  'directives.weekFeed.feedItem',
   'services.userPreferences',
   'services.eventUri',
   'services.state'
@@ -47,7 +48,7 @@ angular.module('directives.weekFeed', [
     'PAST_TEACHER_COURSES': 'PAST_TEACHER_COURSES',
     'CALENDAR': 'CALENDAR'
   })
-  
+
   .filter('filterFeedItems', function(feedItemFilterType) {
     return function(items, filterType) {
 
@@ -197,19 +198,6 @@ angular.module('directives.weekFeed', [
         $scope.showCourseImage = function showCourseImage($first, feedItem) {
           return $first && $scope.selectedTab === tabs.UPCOMING_EVENTS && feedItem.courseImageUri;
         };
-
-        $scope.openReittiopas = function(feedItem) {
-          var addressFromCookie = LocationService.getUserAddressFromCookie();
-          if (addressFromCookie) {
-            window.location = EventUriService.getReittiopasUri(feedItem, addressFromCookie);
-          } else {
-            feedItem.loadingLocation = true;
-            LocationService.getUserAddressFromGeolocation().then(function(data) {
-              LocationService.putUserAddressToCookie(data);
-              window.location = EventUriService.getReittiopasUri(feedItem, data);
-            });
-          }
-        };
       }
     };
   })
@@ -285,22 +273,5 @@ angular.module('directives.weekFeed', [
       } else {
         return formatMomentDateSpan(startDate, endDate);
       }
-    }
-  })
-
-
-  .directive('eventTitle', function() {
-    return {
-      restrict : 'E',
-      replace : true,
-      templateUrl : 'app/directives/weekFeed/eventTitle.html'
-    }
-  })
-
-  .directive('courseMaterialsLink', function() {
-    return {
-      restrict : 'E',
-      replace : true,
-      templateUrl : 'app/directives/weekFeed/courseMaterialsLink.html'
     }
   });

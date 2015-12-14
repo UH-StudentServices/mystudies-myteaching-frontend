@@ -66,8 +66,7 @@
 
     <ul class="week-feed-items">
       <li ng-repeat="feedItem in feedItems | limitTo:numberOfVisibleItems">
-        <div ng-if="feedItem.type !== undefined" ng-include="'app/directives/weekFeed/event.html'"></div>
-        <div ng-if="feedItem.type === undefined" ng-include="'app/directives/weekFeed/enrollment.html'"></div>
+        <item feed-item="feedItem" first="$first"></item>
       </li>
     </ul>
 
