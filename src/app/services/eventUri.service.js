@@ -24,12 +24,22 @@ angular.module('services.eventUri', ['services.location'])
   .factory('EventUriService', function(Timezones, LocationService, BrowserUtil) {
 
     function hasBuilding(event) {
-      return event.building && event.building.street && event.building.zipCode;
+      return event.building && event.building.street;
+    }
+
+    function getPlace(building) {
+      var place = building.street;
+
+      if(building.zipCode) {
+        place += '+' + building.zipCode;
+      }
+
+      return place;
     }
 
     function getGoogleMapsUri(event) {
       if (hasBuilding(event)) {
-        var encoded = encodeURIComponent(event.building.street + '+' + event.building.zipCode);
+        var encoded = encodeURIComponent(getPlace(event.building));
         return 'https://www.google.fi/maps/place/' + encoded;
       } else {
         return undefined;
