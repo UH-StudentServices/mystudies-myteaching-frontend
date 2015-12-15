@@ -50,7 +50,7 @@
                     placeholder="{{'usefulLinks.addNewLink' | translate | capitalize}}"
                     ui-keypress="{'enter':'addNewUsefulLink()'}">
             </form>
-            <span ng-show="pageTitleSearchState === SearchState.SEARCHING"><i class="hy hy-rotate-right hy-spin"></i></span>
+            <span ng-show="pageTitleSearchState === SearchState.SEARCHING"><i class="hy hy-spinner hy-spin"></i></span>
             <a ng-show="newLink.url" href="" ng-click="clearSearch()"><i class="hy hy-close"></i></a>
             <a class="new-useful-link__add-button" href="" ng-click="addNewUsefulLink()"><i class="hy hy-plus"></i></a>
         </div>
