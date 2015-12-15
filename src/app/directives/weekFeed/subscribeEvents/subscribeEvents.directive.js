@@ -48,7 +48,8 @@ angular.module('directives.subscribeEvents', [
                                          BrowserUtil,
                                          DomainUtil,
                                          $timeout,
-                                         MessageTimeouts) {
+                                         MessageTimeouts,
+                                         AnalyticsService) {
     return {
       rescrict: 'E',
       replace: true,
@@ -66,6 +67,7 @@ angular.module('directives.subscribeEvents', [
             deferred.resolve(calendarFeed);
           }, function getCalendarFeedFail() {
             CalendarFeedResource.saveCalendarFeed().$promise.then(function saveCalendarFeedSuccess(calendarFeed) {
+              AnalyticsService.trackCalendarSubscribe();
               deferred.resolve(calendarFeed);
             })
           });
