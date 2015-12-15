@@ -35,7 +35,12 @@ angular.module('directives.eventCalendar', [])
 
   })
 
-  .directive('eventCalendar', function(uiCalendarConfig, CalendarViews, EventColorService, $window) {
+  .directive('eventCalendar', function(
+    uiCalendarConfig,
+    CalendarViews,
+    EventColorService,
+    $window,
+    AnalyticsService) {
     return {
       restrict : 'E',
       templateUrl : 'app/directives/eventCalendar/eventCalendar.html',
@@ -70,6 +75,9 @@ angular.module('directives.eventCalendar', [])
               }
 
               return false;
+            },
+            viewRender: function(view) {
+              AnalyticsService.trackShowCalendarView(view.name);
             },
             weekNumbers : true
           }

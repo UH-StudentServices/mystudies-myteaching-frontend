@@ -57,11 +57,18 @@ angular.module('services.session', [
       return sessionPromise;
     };
 
+    var getFacultyCode = function getFacultyCode() {
+      return getSession().then(function(session) {
+        return session.faculty ? session.faculty.code : undefined;
+      });
+    }
+
     return {
       isInRole: isInRole,
       isInAnyRole: isInAnyRole,
       getSession: getSession,
-      reloadSession: reloadSession
+      reloadSession: reloadSession,
+      getFacultyCode: getFacultyCode
     };
 
   });

@@ -108,7 +108,8 @@ angular.module('directives.weekFeed', [
                                   WeekFeedMessageKeys,
                                   UserPreferencesService,
                                   LocationService,
-                                  EventUriService) {
+                                  EventUriService,
+                                  AnalyticsService) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/weekFeed/weekFeed.html',
@@ -156,6 +157,7 @@ angular.module('directives.weekFeed', [
           $scope.numberOfVisibleItems = 5;
           $scope.selectedTab = selectedTab;
           UserPreferencesService.addProperty('selectedTab', selectedTab);
+          AnalyticsService.trackShowWeekFeedTab(selectedTab);
           switch (selectedTab) {
             case tabs.UPCOMING_EVENTS:
               setFeedItems(events);

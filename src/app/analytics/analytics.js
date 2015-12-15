@@ -18,7 +18,12 @@
 angular.module('opintoniAnalytics', [])
 
   //Analytics must be injected at least once if relying on automatic page tracking, do not remove it.
-  .run(function(Analytics) {})
+  .run(function(Analytics, SessionService, StateService) {
+    SessionService.getFacultyCode().then(function(facultyCode) {
+      Analytics.set('dimension1', StateService.getRootStateName());
+      Analytics.set('dimension2', facultyCode);
+    });
+  })
 
   .config(function(AnalyticsProvider) {
     if (window.configuration) {
@@ -54,7 +59,10 @@ angular.module('opintoniAnalytics', [])
     'SEARCH' : 'search',
     'START_TOUR' : 'startTour',
     'MARK_NOTIFICATION_AS_READ' : 'markNotificationAsRead',
-    'FEEDBACK' : 'feedback'
+    'FEEDBACK' : 'feedback',
+    'SUBSCRIBE_CALENDAR' : 'subscribeCalendar',
+    'SHOW_WEEK_FEED_TAB' : 'showWeekFeedTab',
+    'SHOW_CALENDAR_VIEW' : 'showCalendarView'
   })
 
   .constant('EventLabels', {
@@ -127,6 +135,18 @@ angular.module('opintoniAnalytics', [])
       Analytics.trackEvent(EventCategories.SITE_ACTIONS, EventActions.FEEDBACK);
     }
 
+    function trackCalendarSubscribe() {
+      Analytics.trackEvent(EventCategories.SITE_ACTIONS, EventActions.SUBSCRIBE_CALENDAR);
+    }
+
+    function trackShowWeekFeedTab(tab) {
+      Analytics.trackEvent(EventCategories.SITE_ACTIONS, EventActions.SHOW_WEEK_FEED_TAB, tab);
+    }
+
+    function trackShowCalendarView(view) {
+      Analytics.trackEvent(EventCategories.SITE_ACTIONS, EventActions.SHOW_CALENDAR_VIEW, view);
+    }
+
 
     return {
       trackAddFavorite : trackAddFavorite,
@@ -144,7 +164,10 @@ angular.module('opintoniAnalytics', [])
       trackChangeDefaultBackground : trackChangeDefaultBackground,
       trackAddAvatar : trackAddAvatar,
       trackRemoveAvatar : trackRemoveAvatar,
-      trackSendFeedback : trackSendFeedback
+      trackSendFeedback : trackSendFeedback,
+      trackCalendarSubscribe : trackCalendarSubscribe,
+      trackShowWeekFeedTab : trackShowWeekFeedTab,
+      trackShowCalendarView : trackShowCalendarView
     }
   });
 
