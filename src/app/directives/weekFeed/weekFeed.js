@@ -18,55 +18,124 @@
 'use strict';
 
 angular.module('directives.weekFeed', [
-  'resources.events',
   'filters.moment',
   'directives.message',
   'directives.subscribeEvents',
   'directives.eventCalendar',
-  'services.courses',
+  'directives.weekFeed.feedItem',
   'services.userPreferences',
-  'services.eventUri'
+  'services.state'
 ])
 
-  .constant('feedItemFilterType', {
+  .constant('FeedItemTimeCondition', {
     'ALL': 'ALL',
     'UPCOMING': 'UPCOMING',
     'CURRENT': 'CURRENT',
     'PAST': 'PAST'
   })
 
-  .constant('feedItemSortType', {
+  .constant('FeedItemSortCondition', {
     'NONE': 'NONE',
     'START_DATE_ASC' : 'START_DATE_ASC'
   })
 
-  .constant('tabs', {
-    'UPCOMING_EVENTS': 'UPCOMING_EVENTS',
-    'COURSES': 'COURSES',
-    'EXAMS': 'EXAMS',
-    'CURRENT_TEACHER_COURSES': 'CURRENT_TEACHER_COURSES',
-    'PAST_TEACHER_COURSES': 'PAST_TEACHER_COURSES',
-    'CALENDAR': 'CALENDAR'
+  .factory('Tabs', function($filter, FeedItemTimeCondition, FeedItemSortCondition) {
+    return {
+      'UPCOMING_EVENTS': {
+        key: 'UPCOMING_EVENTS',
+        translateKey: 'weekFeed.nextEventsShort',
+        getItems: function(courses, events) {
+          var filteredFeedItems = $filter('filterFeedItems')(events, FeedItemTimeCondition.UPCOMING);
+          return $filter('sortFeedItems')(filteredFeedItems, FeedItemSortCondition.NONE);
+        }
+      },
+      'COURSES': {
+        key: 'COURSES',
+        translateKey: 'general.courses',
+        getItems: function(courses, events) {
+          var filteredFeedItems = $filter('filterFeedItems')(courses, FeedItemTimeCondition.ALL);
+          return $filter('sortFeedItems')(filteredFeedItems, FeedItemSortCondition.NONE);
+        }
+      },
+      'STUDENT_EXAMS': {
+        key: 'STUDENT_EXAMS',
+        translateKey: 'general.exams',
+        getItems: function(courses, events) {
+          var exams = _.filter(events, {type: 'EXAM'});
+          var filteredFeedItems = $filter('filterFeedItems')(exams, FeedItemTimeCondition.UPCOMING);
+          return $filter('sortFeedItems')(filteredFeedItems, FeedItemSortCondition.NONE);
+        }
+      },
+      'TEACHER_EXAMS': {
+        key: 'TEACHER_EXAMS',
+        translateKey: 'general.exams',
+        getItems: function(courses, events) {
+          var exams = _.filter(events, {type: 'EXAM'});
+          var filteredFeedItems = $filter('filterFeedItems')(exams, FeedItemTimeCondition.UPCOMING);
+          return $filter('sortFeedItems')(filteredFeedItems, FeedItemSortCondition.NONE);
+        }
+      },
+      'CURRENT_TEACHER_COURSES': {
+        key: 'CURRENT_TEACHER_COURSES',
+        translateKey: 'general.teaching',
+        getItems: function(courses, events) {
+          var filteredFeedItems = $filter('filterFeedItems')(courses, FeedItemTimeCondition.CURRENT);
+          return $filter('sortFeedItems')(filteredFeedItems, FeedItemSortCondition.START_DATE_ASC);
+        }
+      },
+      'PAST_TEACHER_COURSES': {
+        key: 'PAST_TEACHER_COURSES',
+        translateKey: 'general.pastTeaching',
+        getItems: function(courses, events) {
+          var filteredFeedItems = $filter('filterFeedItems')(courses, FeedItemTimeCondition.PAST);
+          return $filter('sortFeedItems')(filteredFeedItems, FeedItemSortCondition.NONE);
+        }
+      },
+      'CALENDAR': {
+        key: 'CALENDAR',
+        translateKey: 'navigationTab.calendar',
+        getItems: function(courses, events) {
+          return [];
+        }
+      }
+    };
   })
-  .filter('filterFeedItems', function(feedItemFilterType) {
+
+  .constant('TabConfiguration', {
+    'opintoni': [
+      'UPCOMING_EVENTS',
+      'COURSES',
+      'STUDENT_EXAMS',
+      'CALENDAR'
+    ],
+    'opetukseni': [
+      'UPCOMING_EVENTS',
+      'CURRENT_TEACHER_COURSES',
+      'TEACHER_EXAMS',
+      'PAST_TEACHER_COURSES',
+      'CALENDAR'
+    ]
+  })
+
+  .filter('filterFeedItems', function(FeedItemTimeCondition) {
     return function(items, filterType) {
 
       var nowMoment = moment.utc();
 
       switch (filterType) {
-        case feedItemFilterType.ALL:
+        case FeedItemTimeCondition.ALL:
           return items;
-        case feedItemFilterType.UPCOMING:
+        case FeedItemTimeCondition.UPCOMING:
           return _.filter(items, function(item) {
             return nowMoment.isBefore(item.startDate);
           });
-        case feedItemFilterType.CURRENT:
+        case FeedItemTimeCondition.CURRENT:
           return _.filter(items, function(item) {
             var startDate = item.startDate;
             var endDate = item.endDate;
             return nowMoment.isBetween(startDate, endDate) || nowMoment.isSame(startDate) || nowMoment.isSame(endDate);
           });
-        case feedItemFilterType.PAST:
+        case FeedItemTimeCondition.PAST:
           return _.filter(items, function(item) {
             return nowMoment.isAfter(item.endDate);
           });
@@ -74,12 +143,12 @@ angular.module('directives.weekFeed', [
     }
   })
 
-  .filter('sortFeedItems', function(feedItemSortType) {
+  .filter('sortFeedItems', function(FeedItemSortCondition) {
     return function(items, filterType) {
       switch (filterType) {
-        case feedItemSortType.NONE:
+        case FeedItemSortCondition.NONE:
           return items;
-        case feedItemSortType.START_DATE_ASC:
+        case FeedItemSortCondition.START_DATE_ASC:
           return _.sortBy(items, function(item) {
             return item.startDate.unix();
           });
@@ -90,132 +159,65 @@ angular.module('directives.weekFeed', [
   .constant('WeekFeedMessageKeys', {
     "UPCOMING_EVENTS": {info: "weekFeed.noUpcomingEvents", error: "weekFeed.errors.errorLoadingFutureEvents"},
     "COURSES": {info: "weekFeed.noCourses", error: "weekFeed.errors.errorLoadingCourses"},
-    "EXAMS": {info: "weekFeed.noExams", error: "weekFeed.errors.errorLoadingExams"},
+    "STUDENT_EXAMS": {info: "weekFeed.noExams", error: "weekFeed.errors.errorLoadingExams"},
+    "TEACHER_EXAMS": {info: "weekFeed.noExams", error: "weekFeed.errors.errorLoadingExams"},
     "CURRENT_TEACHER_COURSES": {info: "weekFeed.noCurrentTeacherCourses", error: "weekFeed.errors.errorLoadingCourses"},
     "PAST_TEACHER_COURSES": {info: "weekFeed.noPastTeacherCourses", error: "weekFeed.errors.errorLoadingCourses"}
   })
 
-  .directive('weekFeed', function(EventsResource,
-                                  CoursesService,
-                                  StateService,
-                                  State,
-                                  feedItemFilterType,
-                                  feedItemSortType,
-                                  tabs,
-                                  $filter,
-                                  $q,
-                                  MessageTypes,
-                                  WeekFeedMessageKeys,
-                                  UserPreferencesService,
-                                  LocationService,
-                                  EventUriService,
-                                  AnalyticsService) {
+  .directive('weekFeed', function(
+    $filter,
+    State,
+    StateService,
+    Tabs,
+    TabConfiguration,
+    MessageTypes,
+    WeekFeedMessageKeys,
+    UserPreferencesService,
+    AnalyticsService) {
+
     return {
       restrict: 'E',
       templateUrl: 'app/directives/weekFeed/weekFeed.html',
-      scope: {},
+      scope: {
+        courses: '=',
+        events: '='
+      },
       link: function($scope) {
-
-        $scope.feedItems = [];
-        $scope.tabs = tabs;
-        $scope.feedItemFilterType = feedItemFilterType;
-        $scope.currentStateName = StateService.getRootStateName();
+        var currentStateName = StateService.getRootStateName();
         $scope.State = State;
+        $scope.Tabs = Tabs;
+        $scope.tabs = [];
+        $scope.feedItems = [];
 
-        var events, exams, courses;
+        _.each(TabConfiguration[currentStateName], function(tabKey){
+          $scope.tabs.push(Tabs[tabKey]);
+        });
 
-        var selectedFeedItemFilterType = feedItemFilterType.ALL;
-        var selectedFeedItemSortType = feedItemSortType.NONE;
+        $scope.selectedTab = _.find($scope.tabs, { key: UserPreferencesService.getPreferences().selectedTab }) || $scope.tabs[0];
 
-        if ($scope.currentStateName === State.MY_STUDIES) {
-          events = EventsResource.getStudentEvents();
-          exams = examsPromise(events);
-          courses = CoursesService.getStudentCourses();
-        }
+        $scope.feedItems = $scope.selectedTab.getItems($scope.courses, $scope.events);
 
-        if ($scope.currentStateName === State.MY_TEACHINGS) {
-          events = EventsResource.getTeacherEvents();
-          exams = examsPromise(events);
-          courses = CoursesService.getTeacherCourses();
-        }
-
-        $scope.events = events;
-
-        setSelectedTab(getDefaultTab());
-
-        function examsPromise(eventsPromise) {
-          return eventsPromise.then(function(events) {
-            return _.filter(events, {type: 'EXAM'});
-          });
-        }
-
-        function getDefaultTab() {
-          return UserPreferencesService.getPreferences().selectedTab || tabs.UPCOMING_EVENTS;
-        }
-
-        function setSelectedTab(selectedTab) {
+        $scope.header = $filter('translate')(currentStateName === State.MY_STUDIES ? 'weekFeed.nowStudying' : 'weekFeed.nowTeaching');
+  
+        $scope.selectTab = function selectTab(selectedTab) {
           $scope.numberOfVisibleItems = 5;
           $scope.selectedTab = selectedTab;
-          UserPreferencesService.addProperty('selectedTab', selectedTab);
+          $scope.feedItems = $scope.selectedTab.getItems($scope.courses, $scope.events);
+          UserPreferencesService.addProperty('selectedTab', selectedTab.key);
           AnalyticsService.trackShowWeekFeedTab(selectedTab);
-          switch (selectedTab) {
-            case tabs.UPCOMING_EVENTS:
-              setFeedItems(events);
-              selectedFeedItemFilterType = feedItemFilterType.UPCOMING;
-              selectedFeedItemSortType = feedItemSortType.NONE;
-              break;
-            case tabs.COURSES:
-              setFeedItems(courses);
-              selectedFeedItemFilterType = feedItemFilterType.ALL;
-              selectedFeedItemSortType = feedItemSortType.NONE;
-              break;
-            case tabs.EXAMS:
-              setFeedItems(exams);
-              selectedFeedItemFilterType = feedItemFilterType.UPCOMING;
-              selectedFeedItemSortType = feedItemSortType.NONE;
-              break;
-            case tabs.CURRENT_TEACHER_COURSES:
-              setFeedItems(courses);
-              selectedFeedItemFilterType = feedItemFilterType.CURRENT;
-              selectedFeedItemSortType = feedItemSortType.START_DATE_ASC;
-              break;
-            case tabs.PAST_TEACHER_COURSES:
-              setFeedItems(courses);
-              selectedFeedItemFilterType = feedItemFilterType.PAST;
-              selectedFeedItemSortType = feedItemSortType.NONE;
-              break;
-            case tabs.CALENDAR:
-              setFeedItems(null);
-              break;
+        };
+
+        $scope.$watch('selectedTab', function() {
+          if($scope.feedItems.length === 0 && $scope.selectedTab.key !== 'CALENDAR') {
+            $scope.message = {
+              messageType: MessageTypes.INFO,
+              key: WeekFeedMessageKeys[$scope.selectedTab.key][MessageTypes.INFO]
+            };
+          } else {
+            $scope.message = null;
           }
-        }
-
-        function setMessage(messageType) {
-          $scope.message = {
-            messageType: messageType,
-            key: WeekFeedMessageKeys[$scope.selectedTab][messageType]
-          };
-        }
-
-        function setFeedItems(itemsPromise) {
-          $scope.message = null;
-          $scope.feedItems = [];
-
-          if (itemsPromise) {
-            itemsPromise.then(function feedItemsPromiseSuccess(items) {
-              var filteredFeedItems = $filter('filterFeedItems')(items, selectedFeedItemFilterType);
-              var sortedFeedItems = $filter('sortFeedItems')(filteredFeedItems, selectedFeedItemSortType);
-
-              $scope.feedItems = sortedFeedItems;
-
-              if ($scope.feedItems.length === 0) {
-                setMessage(MessageTypes.INFO);
-              }
-            }, function feedItemsPromiseFail() {
-              setMessage(MessageTypes.ERROR);
-            })
-          }
-        }
+        });
 
         $scope.showMore = function showMore() {
           $scope.numberOfVisibleItems += 5;
@@ -225,117 +227,12 @@ angular.module('directives.weekFeed', [
           return $scope.feedItems.length > $scope.numberOfVisibleItems;
         };
 
-        $scope.tabSelect = function tabSelect(selectedTab) {
-          setSelectedTab(selectedTab);
+        $scope.getTabClasses = function getTabClasses(tab) {
+          return {
+            'active': tab === $scope.selectedTab
+          };
         };
-
-        $scope.showCourseImage = function showCourseImage($first, feedItem) {
-          return $first && selectedFeedItemFilterType === feedItemFilterType.UPCOMING && feedItem.courseImageUri;
-        };
-
-        $scope.openReittiopas = function(feedItem) {
-          var addressFromCookie = LocationService.getUserAddressFromCookie();
-          if (addressFromCookie) {
-            window.location = EventUriService.getReittiopasUri(feedItem, addressFromCookie);
-          } else {
-            feedItem.loadingLocation = true;
-            LocationService.getUserAddressFromGeolocation().then(function(data) {
-              LocationService.putUserAddressToCookie(data);
-              window.location = EventUriService.getReittiopasUri(feedItem, data);
-            });
-          }
-        };
+        
       }
     };
-  })
-
-
-  .filter('eventTimeSpan', function() {
-    var dateString = 'DD.MM.YYYY';
-    var hoursString = 'HH:mm';
-
-    function momentDateHasHours(momentDate) {
-      return _.isArray(momentDate._i) && momentDate._i.length > 3;
-    }
-
-    function getFormatString(momentDate) {
-      if (momentDateHasHours(momentDate)) {
-        return dateString + ' ' + hoursString;
-      } else {
-        return dateString;
-      }
-    }
-
-    function formatMomentDate(momentDate) {
-      return momentDate.format(getFormatString(momentDate));
-    }
-
-    function formatMomentDateSpan(startDate, endDate) {
-      return formatMomentDate(startDate) + ' - ' + formatMomentDate(endDate);
-    }
-
-    function formatMomentDateTimeSpan(startDate, endDate) {
-      var dateString = formatMomentDate(startDate);
-
-      if (momentDateHasHours(startDate) && momentDateHasHours(endDate)) {
-        dateString += ' - ' + endDate.format(hoursString);
-      }
-      return dateString;
-    }
-
-    return function(startDate, endDate) {
-
-      /* Dates are UTC but we want to show them as local times */
-      startDate = startDate.local();
-      endDate = endDate.local();
-
-      if (startDate.diff(endDate) === 0) {
-        return formatMomentDate(startDate);
-      } else if (startDate.year() == endDate.year() && startDate.dayOfYear() === endDate.dayOfYear()) {
-        return formatMomentDateTimeSpan(startDate, endDate);
-      } else {
-        return formatMomentDateSpan(startDate, endDate);
-      }
-    }
-  })
-
-  .filter('eventDateSpan', function() {
-
-    function formatMomentDate(momentDate) {
-      return momentDate.format('DD.MM.YYYY');
-    }
-
-    function formatMomentDateSpan(startDate, endDate) {
-      return formatMomentDate(startDate) + ' - ' + formatMomentDate(endDate);
-    }
-
-    return function(startDate, endDate) {
-
-      /* Dates are UTC but we want to show them as local times */
-      startDate = startDate.local();
-      endDate = endDate.local();
-
-      if (startDate.diff(endDate) === 0) {
-        return formatMomentDate(startDate);
-      } else {
-        return formatMomentDateSpan(startDate, endDate);
-      }
-    }
-  })
-
-
-  .directive('eventTitle', function() {
-    return {
-      restrict : 'E',
-      replace : true,
-      templateUrl : 'app/directives/weekFeed/eventTitle.html'
-    }
-  })
-
-  .directive('courseMaterialsLink', function() {
-    return {
-      restrict : 'E',
-      replace : true,
-      templateUrl : 'app/directives/weekFeed/courseMaterialsLink.html'
-    }
   });

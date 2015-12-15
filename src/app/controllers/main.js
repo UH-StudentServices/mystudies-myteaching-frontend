@@ -40,13 +40,17 @@ angular.module('controllers.main', [
     StateService,
     State,
     userSettings,
-    session) {
+    session,
+    courses,
+    events) {
 
     $scope.currentStateName = StateService.getRootStateName();
     $scope.State = State;
     $scope.userSettings = userSettings;
     $scope.showApp = session !== undefined;
     $scope.session = session;
+    $scope.courses = courses;
+    $scope.events = events;
 
 
   });

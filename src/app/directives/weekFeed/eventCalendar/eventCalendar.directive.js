@@ -43,9 +43,9 @@ angular.module('directives.eventCalendar', [])
     AnalyticsService) {
     return {
       restrict : 'E',
-      templateUrl : 'app/directives/eventCalendar/eventCalendar.html',
+      templateUrl : 'app/directives/weekFeed/eventCalendar/eventCalendar.html',
       scope : {
-        eventsPromise : '='
+        events: '='
       },
       replace : true,
       controller : function($scope) {
@@ -100,30 +100,28 @@ angular.module('directives.eventCalendar', [])
 
         }
 
-        $scope.eventsPromise.then(function(events) {
+        var sortedEvents = _.sortBy($scope.events, 'realisationId');
 
-          var sortedEvents = _.sortBy(events, 'realisationId');
+        var calendarEvents = _.map(sortedEvents, function(event) {
 
-          var calendarEvents = _.map(sortedEvents, function(event) {
+          var startMoment =  event.startDate;
+          var endMoment = event.endDate;
+          var title = getEventTitle(event);
 
-            var startMoment =  event.startDate;
-            var endMoment = event.endDate;
-            var title = getEventTitle(event);
+          var calendarEvent = {
+            title: title,
+            start: startMoment.toDate(),
+            end: endMoment.toDate(),
+            color: EventColorService.getColor(event.realisationId),
+            tooltip: title,
+            url : event.moodleUri ? event.moodleUri : event.courseUri
+          }
 
-            var calendarEvent = {
-              title: title,
-              start: startMoment.toDate(),
-              end: endMoment.toDate(),
-              color: EventColorService.getColor(event.realisationId),
-              tooltip: title,
-              url : event.moodleUri ? event.moodleUri : event.courseUri
-            }
-
-           return calendarEvent;
-          });
-
-          $scope.eventSources.push(calendarEvents);
+         return calendarEvent;
         });
+
+        $scope.eventSources.push(calendarEvents);
+      
 
       }
     }

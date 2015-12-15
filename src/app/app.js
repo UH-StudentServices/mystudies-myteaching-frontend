@@ -40,9 +40,11 @@ angular.module('opintoniApp', [
   'services.userSettings',
   'services.configuration',
   'services.location',
+  'services.courses',
 
   'resources.httpInterceptor',
   'resources.stateInterceptor',
+  'resources.events',
 
   'directives.menuLanguage',
   'directives.dropdown',
@@ -140,6 +142,12 @@ angular.module('opintoniApp', [
               deferred.resolve(title);
             });
             return deferred.promise;
+          },
+          courses: function(CoursesService) {
+            return CoursesService.getStudentCourses();
+          },
+          events: function(EventsResource) {
+            return EventsResource.getStudentEvents();
           }
         }
       })
@@ -165,6 +173,12 @@ angular.module('opintoniApp', [
               deferred.resolve(title);
             });
             return deferred.promise;
+          },
+          courses: function(CoursesService) {
+            return CoursesService.getTeacherCourses();
+          },
+          events: function(EventsResource) {
+            return EventsResource.getTeacherEvents();
           }
         }
       })
