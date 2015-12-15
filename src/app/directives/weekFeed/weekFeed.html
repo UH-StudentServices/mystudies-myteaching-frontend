@@ -19,42 +19,17 @@
 <div role="article" id="week-feed">
   <div class="ui-component ui-component--events">
 
-    <h2 ng-if="currentStateName === State.MY_STUDIES" class="ui-component__title">{{ "weekFeed.nowStudying" | translate }}</h2>
-    <h2 ng-if="currentStateName === State.MY_TEACHINGS" class="ui-component__title">{{ "weekFeed.nowTeaching" | translate }}</h2>
-
+    <h2 class="ui-component__title"><span ng-bind="header"></span></h2>
+    
     <div class="text-label title-stricken">{{ "general.show" | translate | capitalize }}</div>
 
       <ul class="tag-list--tabs" role="tablist">
-          <li ng-class="{'active' : selectedTab === tabs.UPCOMING_EVENTS }" role="tab">
-              <a ng-click="tabSelect(tabs.UPCOMING_EVENTS)">
-                  <span class="hide-mobile-only-with-ipad-mini">{{ "weekFeed.nextEvents" | translate }}</span>
-                  <span class="show-mobile-only-with-ipad-mini">{{ "weekFeed.nextEventsShort" | translate }}</span>
-              </a>
-          </li>
-          <li ng-if="currentStateName === State.MY_STUDIES" ng-class="{'active' : selectedTab === tabs.COURSES }" role="tab">
-              <a ng-click="tabSelect(tabs.COURSES)">
-                  {{ "general.courses" | translate | capitalize }}
-              </a>
-          </li>
-          <li ng-if="currentStateName === State.MY_TEACHINGS" ng-class="{'active' : selectedTab === tabs.CURRENT_TEACHER_COURSES }" role="tab">
-              <a ng-click="tabSelect(tabs.CURRENT_TEACHER_COURSES)">
-                  {{ "general.teaching" | translate | capitalize }}
-              </a>
-          </li>
-          <li ng-class="{'active' : selectedTab === tabs.EXAMS }" role="tab">
-              <a ng-click="tabSelect(tabs.EXAMS)">
-                  {{ "general.exams" | translate | capitalize }}
-              </a>
-          </li>
-          <li ng-if="currentStateName === State.MY_TEACHINGS" ng-class="{'active' : selectedTab === tabs.PAST_TEACHER_COURSES }" role="tab">
-              <a ng-click="tabSelect(tabs.PAST_TEACHER_COURSES)">
-                  {{ "general.pastTeaching" | translate | capitalize }}
-              </a>
-          </li>
-          <li ng-class="{'active' : selectedTab === tabs.CALENDAR }" role="tab">
-              <a ng-click="tabSelect(tabs.CALENDAR)">
-                  {{ "navigationTab.calendar" | translate | capitalize }}
-              </a>
+          <li ng-repeat="tab in tabs"
+            ng-class="getTabClasses(tab)"
+            ng-click="selectTab(tab)"
+            role="tab"
+            class="clickable">
+            <a>{{ tab.translateKey | translate }}</a>
           </li>
       </ul>
 
@@ -70,11 +45,11 @@
       </li>
     </ul>
 
-    <event-calendar events="events" ng-if="selectedTab === tabs.CALENDAR"></event-calendar>
+    <event-calendar events="events" ng-if="selectedTab === Tabs.CALENDAR"></event-calendar>
 
     <div class="week-feed-actions">
       <button class="button--light button" ng-click="showMore()" ng-show="showMoreVisible()">{{ "buttons.showMore" | translate }}</button>
-      <subscribe-events ng-show="selectedTab === tabs.UPCOMING_EVENTS || selectedTab === tabs.CALENDAR"></subscribe-events>
+      <subscribe-events ng-show="selectedTab === Tabs.UPCOMING_EVENTS || selectedTab === Tabs.CALENDAR"></subscribe-events>
     </div>
   </div>
 

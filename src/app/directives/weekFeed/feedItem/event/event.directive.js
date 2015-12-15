@@ -16,9 +16,10 @@
  */
 
 angular.module('directives.weekFeed.feedItem.event',[
-  'services.location'])
+  'services.location',
+  'services.eventUri'])
 
-  .directive('event', function(LocationService) {
+  .directive('event', function(LocationService, EventUriService) {
     return {
       restrict : 'E',
       replace : true,
@@ -41,8 +42,11 @@ angular.module('directives.weekFeed.feedItem.event',[
             });
           }
         };
-      
-        
+
+        $scope.showCourseImage = function showCourseImage($first, feedItem) {
+          return $first && $scope.selectedTab === Tabs.UPCOMING_EVENTS && feedItem.courseImageUri;
+        };
+              
       }
     }
   })
