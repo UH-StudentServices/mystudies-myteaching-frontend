@@ -21,14 +21,18 @@ $change-background-button-size : 50px;
 
   position: relative;
 
-  .flexslider {
-    border: none;
-    margin: 0;
+  .flexslider-container {
     @include breakpoint($small) {
       height: $page-banner-height;
     }
+  }
+
+  .flexslider {
+    border: none;
+    margin: 0;
 
     @include breakpoint($small) {
+      height: 100%;
       h1 {
         max-height: 180px;
       }

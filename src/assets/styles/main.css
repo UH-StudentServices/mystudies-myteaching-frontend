@@ -1158,17 +1158,19 @@ button.icon {
  */
 .page-banner-container {
   position: relative; }
+  @media  (min-width: 48em) {
+    .page-banner-container .flexslider-container {
+      height: 420px; } }
   .page-banner-container .flexslider {
     border: none;
     margin: 0; }
     @media  (min-width: 48em) {
       .page-banner-container .flexslider {
-        height: 420px; } }
-    @media  (min-width: 48em) {
-      .page-banner-container .flexslider h1 {
-        max-height: 180px; }
-      .page-banner-container .flexslider p {
-        max-height: 110px; } }
+        height: 100%; }
+        .page-banner-container .flexslider h1 {
+          max-height: 180px; }
+        .page-banner-container .flexslider p {
+          max-height: 110px; } }
   .page-banner-container .page-banner {
     position: relative; }
     .page-banner-container .page-banner .page-banner__content {
