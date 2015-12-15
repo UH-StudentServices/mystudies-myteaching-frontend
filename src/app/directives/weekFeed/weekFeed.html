@@ -26,33 +26,33 @@
 
       <ul class="tag-list--tabs" role="tablist">
           <li ng-class="{'active' : selectedTab === tabs.UPCOMING_EVENTS }" role="tab">
-              <a href="" ng-click="tabSelect(tabs.UPCOMING_EVENTS)">
+              <a ng-click="tabSelect(tabs.UPCOMING_EVENTS)">
                   <span class="hide-mobile-only-with-ipad-mini">{{ "weekFeed.nextEvents" | translate }}</span>
                   <span class="show-mobile-only-with-ipad-mini">{{ "weekFeed.nextEventsShort" | translate }}</span>
               </a>
           </li>
           <li ng-if="currentStateName === State.MY_STUDIES" ng-class="{'active' : selectedTab === tabs.COURSES }" role="tab">
-              <a href="" ng-click="tabSelect(tabs.COURSES)">
+              <a ng-click="tabSelect(tabs.COURSES)">
                   {{ "general.courses" | translate | capitalize }}
               </a>
           </li>
           <li ng-if="currentStateName === State.MY_TEACHINGS" ng-class="{'active' : selectedTab === tabs.CURRENT_TEACHER_COURSES }" role="tab">
-              <a href="" ng-click="tabSelect(tabs.CURRENT_TEACHER_COURSES)">
+              <a ng-click="tabSelect(tabs.CURRENT_TEACHER_COURSES)">
                   {{ "general.teaching" | translate | capitalize }}
               </a>
           </li>
           <li ng-class="{'active' : selectedTab === tabs.EXAMS }" role="tab">
-              <a href="" ng-click="tabSelect(tabs.EXAMS)">
+              <a ng-click="tabSelect(tabs.EXAMS)">
                   {{ "general.exams" | translate | capitalize }}
               </a>
           </li>
           <li ng-if="currentStateName === State.MY_TEACHINGS" ng-class="{'active' : selectedTab === tabs.PAST_TEACHER_COURSES }" role="tab">
-              <a href="" ng-click="tabSelect(tabs.PAST_TEACHER_COURSES)">
+              <a ng-click="tabSelect(tabs.PAST_TEACHER_COURSES)">
                   {{ "general.pastTeaching" | translate | capitalize }}
               </a>
           </li>
           <li ng-class="{'active' : selectedTab === tabs.CALENDAR }" role="tab">
-              <a href="" ng-click="tabSelect(tabs.CALENDAR)">
+              <a ng-click="tabSelect(tabs.CALENDAR)">
                   {{ "navigationTab.calendar" | translate | capitalize }}
               </a>
           </li>

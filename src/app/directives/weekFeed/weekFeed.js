@@ -28,14 +28,14 @@ angular.module('directives.weekFeed', [
   'services.state'
 ])
 
-  .constant('feedItemFilterType', {
+  .constant('FeedItemTimeCondition', {
     'ALL': 'ALL',
     'UPCOMING': 'UPCOMING',
     'CURRENT': 'CURRENT',
     'PAST': 'PAST'
   })
 
-  .constant('feedItemSortType', {
+  .constant('FeedItemSortCondition', {
     'NONE': 'NONE',
     'START_DATE_ASC' : 'START_DATE_ASC'
   })
@@ -49,25 +49,25 @@ angular.module('directives.weekFeed', [
     'CALENDAR': 'CALENDAR'
   })
 
-  .filter('filterFeedItems', function(feedItemFilterType) {
+  .filter('filterFeedItems', function(FeedItemTimeCondition) {
     return function(items, filterType) {
 
       var nowMoment = moment.utc();
 
       switch (filterType) {
-        case feedItemFilterType.ALL:
+        case FeedItemTimeCondition.ALL:
           return items;
-        case feedItemFilterType.UPCOMING:
+        case FeedItemTimeCondition.UPCOMING:
           return _.filter(items, function(item) {
             return nowMoment.isBefore(item.startDate);
           });
-        case feedItemFilterType.CURRENT:
+        case FeedItemTimeCondition.CURRENT:
           return _.filter(items, function(item) {
             var startDate = item.startDate;
             var endDate = item.endDate;
             return nowMoment.isBetween(startDate, endDate) || nowMoment.isSame(startDate) || nowMoment.isSame(endDate);
           });
-        case feedItemFilterType.PAST:
+        case FeedItemTimeCondition.PAST:
           return _.filter(items, function(item) {
             return nowMoment.isAfter(item.endDate);
           });
@@ -75,12 +75,12 @@ angular.module('directives.weekFeed', [
     }
   })
 
-  .filter('sortFeedItems', function(feedItemSortType) {
+  .filter('sortFeedItems', function(FeedItemSortCondition) {
     return function(items, filterType) {
       switch (filterType) {
-        case feedItemSortType.NONE:
+        case FeedItemSortCondition.NONE:
           return items;
-        case feedItemSortType.START_DATE_ASC:
+        case FeedItemSortCondition.START_DATE_ASC:
           return _.sortBy(items, function(item) {
             return item.startDate.unix();
           });
@@ -101,8 +101,8 @@ angular.module('directives.weekFeed', [
     $q,
     State,
     StateService,
-    feedItemFilterType,
-    feedItemSortType,
+    FeedItemTimeCondition,
+    FeedItemSortCondition,
     tabs,
     MessageTypes,
     WeekFeedMessageKeys,
@@ -122,12 +122,12 @@ angular.module('directives.weekFeed', [
       link: function($scope) {
         $scope.feedItems = [];
         $scope.tabs = tabs;
-        $scope.feedItemFilterType = feedItemFilterType;
+        $scope.FeedItemTimeCondition = FeedItemTimeCondition;
         $scope.currentStateName = StateService.getRootStateName();
         $scope.State = State;
       
-        var selectedFeedItemFilterType = feedItemFilterType.ALL;
-        var selectedFeedItemSortType = feedItemSortType.NONE;
+        var selectedFeedItemFilterType = FeedItemTimeCondition.ALL;
+        var selectedFeedItemSortType = FeedItemSortCondition.NONE;
 
         var exams = _.filter($scope.events, {type: 'EXAM'});
 
@@ -144,19 +144,19 @@ angular.module('directives.weekFeed', [
           AnalyticsService.trackShowWeekFeedTab(selectedTab);
           switch (selectedTab) {
             case tabs.UPCOMING_EVENTS:
-              setFeedItems($scope.events, feedItemFilterType.UPCOMING, feedItemSortType.NONE);
+              setFeedItems($scope.events, FeedItemTimeCondition.UPCOMING, FeedItemSortCondition.NONE);
               break;
             case tabs.COURSES:
-              setFeedItems($scope.courses, feedItemFilterType.ALL, feedItemSortType.NONE);
+              setFeedItems($scope.courses, FeedItemTimeCondition.ALL, FeedItemSortCondition.NONE);
               break;
             case tabs.EXAMS:
-              setFeedItems(exams, feedItemFilterType.UPCOMING, feedItemSortType.NONE);
+              setFeedItems(exams, FeedItemTimeCondition.UPCOMING, FeedItemSortCondition.NONE);
               break;
             case tabs.CURRENT_TEACHER_COURSES:
-              setFeedItems($scope.courses, feedItemFilterType.CURRENT, feedItemSortType.START_DATE_ASC);
+              setFeedItems($scope.courses, FeedItemTimeCondition.CURRENT, FeedItemSortCondition.START_DATE_ASC);
               break;
             case tabs.PAST_TEACHER_COURSES:
-              setFeedItems($scope.courses, feedItemFilterType.PAST, feedItemSortType.NONE);
+              setFeedItems($scope.courses, FeedItemTimeCondition.PAST, FeedItemSortCondition.NONE);
               break;
             case tabs.CALENDAR:
               $scope.feedItems = [];
@@ -171,11 +171,11 @@ angular.module('directives.weekFeed', [
           };
         }
 
-        function setFeedItems(items, feedItemFilterType, feedItemSortType) {
+        function setFeedItems(items, feedItemTimeCondition, feedItemSortCondition) {
           $scope.message = null;
             
-          var filteredFeedItems = $filter('filterFeedItems')(items, selectedFeedItemFilterType);
-          $scope.feedItems = $filter('sortFeedItems')(filteredFeedItems, selectedFeedItemSortType);
+          var filteredFeedItems = $filter('filterFeedItems')(items, feedItemTimeCondition);
+          $scope.feedItems = $filter('sortFeedItems')(filteredFeedItems, feedItemSortCondition);
 
           if ($scope.feedItems.length === 0) {
             setMessage(MessageTypes.INFO);
@@ -200,78 +200,4 @@ angular.module('directives.weekFeed', [
         };
       }
     };
-  })
-
-
-  .filter('eventTimeSpan', function() {
-    var dateString = 'DD.MM.YYYY';
-    var hoursString = 'HH:mm';
-
-    function momentDateHasHours(momentDate) {
-      return _.isArray(momentDate._i) && momentDate._i.length > 3;
-    }
-
-    function getFormatString(momentDate) {
-      if (momentDateHasHours(momentDate)) {
-        return dateString + ' ' + hoursString;
-      } else {
-        return dateString;
-      }
-    }
-
-    function formatMomentDate(momentDate) {
-      return momentDate.format(getFormatString(momentDate));
-    }
-
-    function formatMomentDateSpan(startDate, endDate) {
-      return formatMomentDate(startDate) + ' - ' + formatMomentDate(endDate);
-    }
-
-    function formatMomentDateTimeSpan(startDate, endDate) {
-      var dateString = formatMomentDate(startDate);
-
-      if (momentDateHasHours(startDate) && momentDateHasHours(endDate)) {
-        dateString += ' - ' + endDate.format(hoursString);
-      }
-      return dateString;
-    }
-
-    return function(startDate, endDate) {
-
-      /* Dates are UTC but we want to show them as local times */
-      startDate = startDate.local();
-      endDate = endDate.local();
-
-      if (startDate.diff(endDate) === 0) {
-        return formatMomentDate(startDate);
-      } else if (startDate.year() == endDate.year() && startDate.dayOfYear() === endDate.dayOfYear()) {
-        return formatMomentDateTimeSpan(startDate, endDate);
-      } else {
-        return formatMomentDateSpan(startDate, endDate);
-      }
-    }
-  })
-
-  .filter('eventDateSpan', function() {
-
-    function formatMomentDate(momentDate) {
-      return momentDate.format('DD.MM.YYYY');
-    }
-
-    function formatMomentDateSpan(startDate, endDate) {
-      return formatMomentDate(startDate) + ' - ' + formatMomentDate(endDate);
-    }
-
-    return function(startDate, endDate) {
-
-      /* Dates are UTC but we want to show them as local times */
-      startDate = startDate.local();
-      endDate = endDate.local();
-
-      if (startDate.diff(endDate) === 0) {
-        return formatMomentDate(startDate);
-      } else {
-        return formatMomentDateSpan(startDate, endDate);
-      }
-    }
   });

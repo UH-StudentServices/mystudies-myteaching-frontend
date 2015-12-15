@@ -53,4 +53,53 @@ angular.module('directives.weekFeed.feedItem.event',[
       replace : true,
       templateUrl : 'app/directives/weekFeed/feedItem/event/eventTitle.html'
     }
+  })
+
+  .filter('eventTimeSpan', function() {
+    var dateString = 'DD.MM.YYYY';
+    var hoursString = 'HH:mm';
+
+    function momentDateHasHours(momentDate) {
+      return _.isArray(momentDate._i) && momentDate._i.length > 3;
+    }
+
+    function getFormatString(momentDate) {
+      if (momentDateHasHours(momentDate)) {
+        return dateString + ' ' + hoursString;
+      } else {
+        return dateString;
+      }
+    }
+
+    function formatMomentDate(momentDate) {
+      return momentDate.format(getFormatString(momentDate));
+    }
+
+    function formatMomentDateSpan(startDate, endDate) {
+      return formatMomentDate(startDate) + ' - ' + formatMomentDate(endDate);
+    }
+
+    function formatMomentDateTimeSpan(startDate, endDate) {
+      var dateString = formatMomentDate(startDate);
+
+      if (momentDateHasHours(startDate) && momentDateHasHours(endDate)) {
+        dateString += ' - ' + endDate.format(hoursString);
+      }
+      return dateString;
+    }
+
+    return function(startDate, endDate) {
+
+      /* Dates are UTC but we want to show them as local times */
+      startDate = startDate.local();
+      endDate = endDate.local();
+
+      if (startDate.diff(endDate) === 0) {
+        return formatMomentDate(startDate);
+      } else if (startDate.year() == endDate.year() && startDate.dayOfYear() === endDate.dayOfYear()) {
+        return formatMomentDateTimeSpan(startDate, endDate);
+      } else {
+        return formatMomentDateSpan(startDate, endDate);
+      }
+    }
   });

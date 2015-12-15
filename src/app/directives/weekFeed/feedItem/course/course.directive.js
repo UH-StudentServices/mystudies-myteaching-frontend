@@ -38,4 +38,28 @@ angular.module('directives.weekFeed.feedItem.course',[
       replace : true,
       templateUrl : 'app/directives/weekFeed/feedItem/course/courseMaterialsLink.html'
     }
+  })
+
+  .filter('eventDateSpan', function() {
+
+    function formatMomentDate(momentDate) {
+      return momentDate.format('DD.MM.YYYY');
+    }
+
+    function formatMomentDateSpan(startDate, endDate) {
+      return formatMomentDate(startDate) + ' - ' + formatMomentDate(endDate);
+    }
+
+    return function(startDate, endDate) {
+
+      /* Dates are UTC but we want to show them as local times */
+      startDate = startDate.local();
+      endDate = endDate.local();
+
+      if (startDate.diff(endDate) === 0) {
+        return formatMomentDate(startDate);
+      } else {
+        return formatMomentDateSpan(startDate, endDate);
+      }
+    }
   });
