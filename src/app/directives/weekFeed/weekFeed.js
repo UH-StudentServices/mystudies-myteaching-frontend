@@ -189,6 +189,7 @@ angular.module('directives.weekFeed', [
         $scope.Tabs = Tabs;
         $scope.tabs = [];
         $scope.feedItems = [];
+        $scope.numberOfVisibleItems = 5;
 
         _.each(TabConfiguration[currentStateName], function(tabKey){
           $scope.tabs.push(Tabs[tabKey]);
@@ -205,7 +206,7 @@ angular.module('directives.weekFeed', [
           $scope.selectedTab = selectedTab;
           $scope.feedItems = $scope.selectedTab.getItems($scope.courses, $scope.events);
           UserPreferencesService.addProperty('selectedTab', selectedTab.key);
-          AnalyticsService.trackShowWeekFeedTab(selectedTab);
+          AnalyticsService.trackShowWeekFeedTab(selectedTab.key);
         };
 
         $scope.$watch('selectedTab', function() {
