@@ -27,9 +27,8 @@
           <li ng-repeat="tab in tabs"
             ng-class="getTabClasses(tab)"
             ng-click="selectTab(tab)"
-            role="tab"
-            class="clickable">
-            <a>{{ tab.translateKey | translate }}</a>
+            role="tab">
+            <a>{{ tab.translateKey | translate | capitalize }}</a>
           </li>
       </ul>
 
