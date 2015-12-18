@@ -47,7 +47,8 @@ angular.module('directives.weekFeed', [
         getItems: function(courses, events) {
           var filteredFeedItems = $filter('filterFeedItems')(events, FeedItemTimeCondition.UPCOMING);
           return $filter('sortFeedItems')(filteredFeedItems, FeedItemSortCondition.NONE);
-        }
+        },
+        showFirstItemImage : true
       },
       'COURSES': {
         key: 'COURSES',

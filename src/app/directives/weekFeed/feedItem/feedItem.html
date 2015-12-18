@@ -16,6 +16,6 @@
   -->
 
 <div>
-  <event feed-item="feedItem" ng-if="isEvent(feedItem)" first="first"></event>
+  <event feed-item="feedItem" ng-if="isEvent(feedItem)" show-course-image="first && tabOptions.showFirstItemImage"></event>
   <course feed-item="feedItem" ng-if="isCourse(feedItem)"></course>
 </div>
