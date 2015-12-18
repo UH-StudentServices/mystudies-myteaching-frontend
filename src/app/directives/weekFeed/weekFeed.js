@@ -43,7 +43,7 @@ angular.module('directives.weekFeed', [
     return {
       'UPCOMING_EVENTS': {
         key: 'UPCOMING_EVENTS',
-        translateKey: 'weekFeed.nextEventsShort',
+        translateKey: 'weekFeed.timetable',
         getItems: function(courses, events) {
           var filteredFeedItems = $filter('filterFeedItems')(events, FeedItemTimeCondition.UPCOMING);
           return $filter('sortFeedItems')(filteredFeedItems, FeedItemSortCondition.NONE);

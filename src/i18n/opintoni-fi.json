@@ -98,8 +98,7 @@
   "weekFeed": {
     "nowTeaching": "Nyt opetuksessani",
     "nowStudying": "Nyt opinnoissani",
-    "nextEvents": "Seuraavat tapahtumat",
-    "nextEventsShort": "Seuraavat",
+    "timetable": "Aikataulu",
     "allEvents": "Kaikki tapahtumat",
     "noUpcomingEvents": "sinulla ei ole tulevia tapahtumia.",
     "noPastEvents": "sinulla ei ole menneitä tapahtumia.",
