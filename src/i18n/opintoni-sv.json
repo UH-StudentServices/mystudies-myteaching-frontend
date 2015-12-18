@@ -98,8 +98,7 @@
   "weekFeed": {
     "nowTeaching": "Nu i min undervisning",
     "nowStudying": "Nu i mina studier",
-    "nextEvents": "Kommande händelser",
-    "nextEventsShort": "Kommande",
+    "timetable": "Tidsschema",
     "allEvents": "Alla händelser",
     "noEvents": "Inga händelser",
     "noUpcomingEvents": "Du har inga kommande händelser.",

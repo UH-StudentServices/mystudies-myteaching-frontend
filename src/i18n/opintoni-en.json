@@ -98,8 +98,7 @@
   "weekFeed": {
     "nowTeaching": "Now in my teaching",
     "nowStudying": "Now in my studies",
-    "nextEvents": "Upcoming events",
-    "nextEventsShort": "Upcoming",
+    "timetable": "Timetable",
     "allEvents": "All events",
     "noEvents": "No events",
     "noUpcomingEvents": "you have no upcoming events.",
