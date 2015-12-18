@@ -41,7 +41,7 @@
 
     <ul class="week-feed-items">
       <li ng-repeat="feedItem in feedItems | limitTo:numberOfVisibleItems">
-        <item feed-item="feedItem" first="$first"></item>
+        <item feed-item="feedItem" first="$first" tab-options="selectedTab"></item>
       </li>
     </ul>
 

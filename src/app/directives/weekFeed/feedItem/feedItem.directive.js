@@ -27,7 +27,8 @@ angular.module('directives.weekFeed.feedItem',[
       templateUrl : 'app/directives/weekFeed/feedItem/feedItem.html',
       scope : {
         feedItem: '=',
-        first: '='
+        first: '=',
+        tabOptions : '='
       },
       link : function($scope) {
         

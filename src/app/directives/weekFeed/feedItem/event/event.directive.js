@@ -26,7 +26,7 @@ angular.module('directives.weekFeed.feedItem.event',[
       templateUrl : 'app/directives/weekFeed/feedItem/event/event.html',
       scope : {
         feedItem: '=',
-        first: '='
+        showCourseImage: '='
       },
       link : function($scope) {
 
@@ -42,11 +42,6 @@ angular.module('directives.weekFeed.feedItem.event',[
             });
           }
         };
-
-        $scope.showCourseImage = function showCourseImage($first, feedItem) {
-          return $first && $scope.selectedTab === Tabs.UPCOMING_EVENTS && feedItem.courseImageUri;
-        };
-              
       }
     }
   })

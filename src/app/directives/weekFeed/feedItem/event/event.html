@@ -15,6 +15,6 @@
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
   -->
 <article class="event {{ feedItem.type | lowercase }}">
-  <div ng-if="showCourseImage($first, feedItem)" ng-include="'app/directives/weekFeed/feedItem/event/eventWithImage.html'"></div>
-  <div class="bar" ng-if="!showCourseImage($first, feedItem)" ng-include="'app/directives/weekFeed/feedItem/event/eventWithoutImage.html'"></div>
+  <div ng-if="showCourseImage" ng-include="'app/directives/weekFeed/feedItem/event/eventWithImage.html'"></div>
+  <div class="bar" ng-if="!showCourseImage" ng-include="'app/directives/weekFeed/feedItem/event/eventWithoutImage.html'"></div>
 </article>
