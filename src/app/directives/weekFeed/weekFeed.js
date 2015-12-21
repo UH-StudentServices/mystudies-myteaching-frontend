@@ -71,7 +71,7 @@ angular.module('directives.weekFeed', [
         key: 'TEACHER_EXAMS',
         translateKey: 'general.exams',
         getItems: function(courses, events) {
-          var exams = _.filter(events, {type: 'EXAM'});
+          var exams = _.filter(courses, { isExam: true });
           var filteredFeedItems = $filter('filterFeedItems')(exams, FeedItemTimeCondition.UPCOMING);
           return $filter('sortFeedItems')(filteredFeedItems, FeedItemSortCondition.NONE);
         }
