@@ -200,6 +200,12 @@ angular.module('opintoniApp', [
             var title = 'Admin';
             document.title = title;
             return title;
+          },
+          courses: function(CoursesService) {
+            return CoursesService.getTeacherCourses();
+          },
+          events: function(EventsResource) {
+            return EventsResource.getTeacherEvents();
           }
         }
       })
