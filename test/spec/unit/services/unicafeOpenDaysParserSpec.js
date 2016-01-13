@@ -49,6 +49,21 @@ describe('UnicafeOpenDaysParser', function(){
     }
   };
 
+  function momentFromNextWeekStart(offsetDays) {
+    return moment()
+      .add(1, 'weeks')
+      .startOf('isoWeek')
+      .add(offsetDays, 'days');
+  }
+
+  var monday = momentFromNextWeekStart(0);
+  var tuesday = momentFromNextWeekStart(1);
+  var wednesday = momentFromNextWeekStart(2);
+  var thursday = momentFromNextWeekStart(3);
+  var friday = momentFromNextWeekStart(4);
+  var saturday = momentFromNextWeekStart(5);
+  var sunday = momentFromNextWeekStart(6);
+
   beforeEach(module('directives.favorites.unicafe'));
 
   beforeEach(inject(function(_UnicafeOpenDaysParser_) {
@@ -56,13 +71,13 @@ describe('UnicafeOpenDaysParser', function(){
   }));
 
   it('Should show the restaurant is regularly open from monday to friday', function() {
-    _.each(['17.8', '18.8', '19.8', '20.8', '21.9'], function (d) {
-      expect(UnicafeOpenDaysParser.isRestaurantClosed(unicafeDataRegular, moment(d, 'DD.M'))).toEqual(false);
+    _.each([monday, tuesday, wednesday, thursday, friday], function (m) {
+      expect(UnicafeOpenDaysParser.isRestaurantClosed(unicafeDataRegular, m)).toEqual(false);
     })
   });
 
   it('Should show the restaurant is regularly closed from saturday to sunday', function() {
-    _.each(['22.8', '23.8'], function(d){
+    _.each([saturday, sunday], function(d){
       expect(UnicafeOpenDaysParser.isRestaurantClosed(unicafeDataRegular, moment(d, 'DD.M'))).toEqual(true);
     })
   });
