@@ -319,10 +319,10 @@ module.exports = function (grunt) {
             browser : 'phantomjs',
             params : {
               student : {
-                loginUrl : 'http://opi-1.student.helsinki.fi:3000/app/locallog.html'
+                loginUrl : 'https://opi-1.student.helsinki.fi/app/locallog.html'
               },
               teacher : {
-                loginUrl : 'http://opi-1.teacher.helsinki.fi:3000/app/locallog.html'
+                loginUrl : 'https://opi-1.teacher.helsinki.fi/app/locallog.html'
               }
             }
           }
