@@ -18,7 +18,7 @@
 var util = require('../util');
 var baseUrl = browser.params.baseUrl;
 
-describe('Global messages', function() {
+/*describe('Global messages', function() {
 
   beforeEach(function() {
     util.loginStudent();
@@ -51,4 +51,4 @@ describe('Global messages', function() {
   });
 
   afterEach(function(){browser.clearMockModules});
-});
+});*/

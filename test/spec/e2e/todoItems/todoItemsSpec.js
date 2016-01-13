@@ -22,17 +22,17 @@ describe('Todo items', function(){
 
   var newTodoItemContent = _.uniqueId('Do this and that!');
 
-  var addNewTodoItemButtonSelector = element(by.css('.new-todo-item .add-icon'));
+  var addNewTodoItemButtonSelector = util.firstVisibleElement(by.css('.new-todo-item .add-icon'));
   var newTodoItemSelector = element(by.cssContainingText('li.todo-item', newTodoItemContent));
-  var newTodoItemMarkDoneSelector = newTodoItemSelector.element(by.css('.todo-action.fa-check'));
-  var newTodoItemChecked = newTodoItemSelector.element(by.css('.done .todo-action.fa-check'));
-  var newTodoItemRemoveSelector = newTodoItemSelector.element(by.css('.todo-action.fa-close'));
+  var newTodoItemMarkDoneSelector = newTodoItemSelector.element(by.css('.todo-action.hy-done'));
+  var newTodoItemChecked = newTodoItemSelector.element(by.css('.done .todo-action.hy-done'));
+  var newTodoItemRemoveSelector = newTodoItemSelector.element(by.css('.todo-action.hy-remove'));
 
   it('Is possible to add a new todo item and mark it as checked and remove it.', function(){
 
     util.loginStudent();
 
-    element(by.model('newTodoItem.content')).sendKeys(newTodoItemContent);
+    util.firstVisibleElement(by.model('newTodoItem.content')).sendKeys(newTodoItemContent);
 
     addNewTodoItemButtonSelector.click();
 

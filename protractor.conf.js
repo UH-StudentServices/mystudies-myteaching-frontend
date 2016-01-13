@@ -25,6 +25,6 @@ exports.config = {
       baseDirectory: 'e2e_screenshots',
       takeScreenShotsOnlyForFailedSpecs: true
     }));
-    browser.driver.manage().window().setSize(1200, 768);
+    browser.driver.manage().window().setSize(2000, 1500);
   }
 };

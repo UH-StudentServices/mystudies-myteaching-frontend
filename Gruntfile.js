@@ -303,8 +303,12 @@ module.exports = function (grunt) {
           args: {
             browser : 'chrome',
             params : {
-              baseUrl: "http://localhost:3000/app/",
-              logoutUrl : "http://localhost:3000/logout"
+              student : {
+                loginUrl : 'http://local.student.helsinki.fi:3000/app/locallog.html'
+              },
+              teacher : {
+                loginUrl : 'http://local.teacher.helsinki.fi:3000/app/locallog.html'
+              }
             }
           }
         }
@@ -314,8 +318,12 @@ module.exports = function (grunt) {
           args: {
             browser : 'phantomjs',
             params : {
-              baseUrl: "https://opi-1.student.helsinki.fi/app",
-              logoutUrl : "https://opi-1.student.helsinki.fi/logout"
+              student : {
+                loginUrl : 'http://opi-1.student.helsinki.fi:3000/app/locallog.html'
+              },
+              teacher : {
+                loginUrl : 'http://opi-1.teacher.helsinki.fi:3000/app/locallog.html'
+              }
             }
           }
         }

@@ -27,20 +27,5 @@ describe('Frontpage', function(){
     util.loginStudent();
     expect(siteNameFinder('My studies').isPresent()).toEqual(true);
   });
-  it('Will load the teaching frontpage', function() {
-    util.loginTeacher();
-    expect(siteNameFinder('My teaching').isPresent()).toEqual(true);
-  });
-  //TODO: Fix Unstability with phantomJS.
-  /*it('Will load the my studies frontpage by default for hybrid user and hybrid user is able to switch to teacher page', function() {
-    util.loginHydridUser();
-    expect(siteNameFinder('My studies').isPresent()).toEqual(true);
-    element(by.cssContainingText('option', 'My teaching')).click();
 
-    browser.wait(function(){
-      return siteNameFinder('My teaching').isPresent();
-    }, 10000);
-
-    expect(siteNameFinder('My teaching').isPresent()).toEqual(true);
-  });*/
 });

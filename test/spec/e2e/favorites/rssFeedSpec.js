@@ -15,7 +15,7 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-describe('RSS feed favorite', function(){
+/* describe('RSS feed favorite', function(){
 
   var util = require('../util');
   var feedUrl = 'http://yle.fi/urheilu/rss/luetuimmat.rss';
@@ -62,4 +62,4 @@ describe('RSS feed favorite', function(){
   })
 
 
-});
+});*/
