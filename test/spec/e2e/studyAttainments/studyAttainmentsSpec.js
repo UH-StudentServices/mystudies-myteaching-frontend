@@ -23,14 +23,8 @@ describe('studyAttainments', function() {
 
   var attainmentsFinder = element.all(by.repeater('attainment in attainments'));
 
-  it('Will show a list of 5 studyattainments', function() {
-    expect(attainmentsFinder.count()).toEqual(5);
-  });
-
-  it('Will show more attainments when show more button is clicked', function(){
-    expect(attainmentsFinder.count()).toEqual(5);
-    element(by.cssContainingText('attainments button', 'Show more')).click();
-    expect(attainmentsFinder.count()).toEqual(8);
+  it('Will show a list of studyattainments', function() {
+    expect(attainmentsFinder.count()).toBeGreaterThan(0);
   });
 
 });

@@ -15,19 +15,22 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var logoutUrl = browser.params.logoutUrl;
 var _ = require('lodash');
 var uuid = require('node-uuid');
 
-function login(username, password, siteName) {
+function getLoginUrl(role) {
+ return browser.params[role].loginUrl;
+}
 
-  var userNameInputLocator = by.model('username');
-  var passwordInputLocator = by.model('password');
+function login(role, username, password, siteName) {
+
+  var userNameInputLocator = by.css('input[name="username"]');
+  var passwordInputLocator = by.css('input[name="password"]');
   var submitInputLocator = by.css('input[type="submit"]');
 
   browser.ignoreSynchronization = true;
 
-  browser.get(logoutUrl);
+  browser.get(getLoginUrl(role));
 
   browser.wait(function() {
     return element(userNameInputLocator).isPresent();
@@ -120,14 +123,20 @@ function firstVisibleElement(locator) {
   }).first();
 }
 
+function hasClass(element, cls) {
+  return element.getAttribute('class').then(function (classes) {
+    return classes.split(' ').indexOf(cls) !== -1;
+  });
+};
+
 module.exports = {
   login : login,
-  loginStudent : _.partial(login, 'teststudent', 'password', 'My studies'),
-  loginTeacher : _.partial(login, 'testteacher', 'password', 'My teaching'),
-  loginHydridUser : _.partial(login, 'testhybriduser', 'password', 'My studies'),
+  loginStudent : _.partial(login, 'student', 'teststudent', 'password', 'My studies'),
+  loginTeacher : _.partial(login, 'teacher', 'testteacher', 'password', 'My teaching'),
   waitUntilPresent : waitUntilPresent,
   waitUntilNotPresent : waitUntilNotPresent,
   waitUntilVisible : waitUntilVisible,
   uniqueId : uniqueId,
-  firstVisibleElement : firstVisibleElement
+  firstVisibleElement : firstVisibleElement,
+  hasClass : hasClass
 };

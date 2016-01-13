@@ -21,13 +21,8 @@ describe('Useful links', function() {
 
   var usefulLinksElementFinder = element.all(by.repeater('link in usefulLinks'));
 
-  it('Will show some useful links for student', function() {
+  it('Will show some useful links', function() {
     util.loginStudent();
-    expect(usefulLinksElementFinder.count()).toBeGreaterThan(0);
-  });
-
-  it('Will show some useful links for teacher', function() {
-    util.loginTeacher();
     expect(usefulLinksElementFinder.count()).toBeGreaterThan(0);
   });
 
@@ -35,10 +30,10 @@ describe('Useful links', function() {
     var linkUrl = util.uniqueId('http://www.usefullink') + '.fi';
     var linkTitle = util.uniqueId();
     var editedString = '_edited';
-    var editUsefulLinksElementFinder = element(by.cssContainingText('a.useful-links__edit span', 'Edit'));
-    var editUsefulLinksDoneElementFinder = element(by.cssContainingText('a.useful-links__edit span', 'Done'));
+    var editUsefulLinksElementFinder = element(by.cssContainingText('#useful-links a.edit-link', 'Edit'));
+    var editUsefulLinksDoneElementFinder = element(by.cssContainingText('#useful-links a.edit-link', 'Done'));
     var newUsefulLinkContainerElementFinder =  element(by.css('.new-useful-link-container'));
-    var newLinkTitleElementFinder =  newUsefulLinkContainerElementFinder.element(by.css('.useful-link-title input'));
+    var newLinkTitleElementFinder = newUsefulLinkContainerElementFinder.element(by.css('.useful-link-title input'));
 
     function findUsefulLinkToEdit(linkTitle) {
       return usefulLinksElementFinder.filter(function(e) {
@@ -78,7 +73,7 @@ describe('Useful links', function() {
             return titleInput.sendKeys(editedString);
           })
           .then(function() {
-            return e.element(by.css('a .fa-check')).click();
+            return e.element(by.css('a .hy-done')).click();
           })
           .then(function() {
             return editUsefulLinksDoneElementFinder.click();
@@ -93,7 +88,7 @@ describe('Useful links', function() {
       editUsefulLinksElementFinder.click();
 
       findUsefulLinkToEdit(linkTitle).then(function(e) {
-        e.element(by.css('a .fa-close'))
+        e.element(by.css('.hy-remove'))
           .click()
           .then(function() {
             return editUsefulLinksDoneElementFinder.click();

@@ -19,60 +19,56 @@ var util = require('../util');
 
 describe('Week feed', function() {
 
-  var upcomingEventsTabName = 'Upcoming events';
+  var upcomingEventsTabName = 'Timetable';
   var coursesTabName = 'Courses';
   var examsTabName = 'Exams';
 
-  var activeTabSelector = element(by.css('a.tag.tag--active'));
   var feedSelector = element.all(by.repeater('feedItem in feedItems'));
 
+  function tabSelector() {
+    return element
+      .all(by.css('#week-feed'))
+      .all(by.repeater('tab in tabs'));
+  }
+
   function selectTab(tabName) {
-    element(by.cssContainingText('a.tag', tabName)).click();
+    tabSelector().filter(function(elem) {
+      return elem.getText().then(function(text) {
+        return text == tabName;
+      });
+    }).click();
   }
 
-  function expectActiveWeekFeedTab(tabName) {
-    expect(activeTabSelector.getText()).toEqual(tabName);
+  function getActiveTab() {
+    return tabSelector()
+      .filter(function(tab) {
+        return util.hasClass(tab, 'active');
+      })
+      .first();
   }
 
-  describe('Student week feed', function() {
+  function expectActiveTab(tabName) {
+    expect(getActiveTab().getText()).toEqual(tabName);
+  }
+
+  describe('week feed', function() {
 
     beforeEach(util.loginStudent);
 
-    it('Will show upcoming events for student when clicking upcoming events tab.', function() {
+    it('Will show timetable when clicking timetable tab.', function() {
       selectTab(upcomingEventsTabName);
-      expectActiveWeekFeedTab(upcomingEventsTabName);
+      expectActiveTab(upcomingEventsTabName);
       expect(feedSelector.count()).toBeGreaterThan(0);
     });
-    it('Will show courses for student when clicking courses tab.', function() {
+    it('Will show courses when clicking courses tab.', function() {
       selectTab(coursesTabName);
-      expectActiveWeekFeedTab(coursesTabName);
+      expectActiveTab(coursesTabName);
       expect(feedSelector.count()).toBeGreaterThan(0);
     });
-    it('Will show exams for student when clicking exams tab.', function() {
+    it('Will show exams when clicking exams tab.', function() {
       selectTab(examsTabName);
-      expectActiveWeekFeedTab(examsTabName);
-      expect(feedSelector.count()).toBe(1);
-    });
-  });
-
-  describe('Teacher week feed', function() {
-
-    beforeEach(util.loginTeacher);
-
-    it('Will show upcoming events for teacher when clicking upcoming events tab.', function() {
-      selectTab(upcomingEventsTabName);
-      expectActiveWeekFeedTab(upcomingEventsTabName);
+      expectActiveTab(examsTabName);
       expect(feedSelector.count()).toBeGreaterThan(0);
-    });
-    it('Will show courses for teacher when clicking courses tab', function() {
-      selectTab(coursesTabName);
-      expectActiveWeekFeedTab(coursesTabName);
-      expect(feedSelector.count()).toBeGreaterThan(0);
-    });
-    it('Will show exams for teacher when clicking exams tab', function() {
-      selectTab(examsTabName);
-      expectActiveWeekFeedTab(examsTabName);
-      expect(feedSelector.count()).toBe(1);
     });
   });
 });
