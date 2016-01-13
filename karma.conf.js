@@ -11,7 +11,6 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
-            'src/bower_components/modernizr/modernizr.js',
             'src/bower_components/jquery/dist/jquery.js',
             'src/bower_components/angular/angular.js',
             'src/bower_components/angular-ui-router/release/angular-ui-router.js',
@@ -19,9 +18,7 @@ module.exports = function (config) {
             'src/bower_components/angular-cookies/angular-cookies.js',
             'src/bower_components/angular-translate/angular-translate.js',
             'src/bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js',
-            'src/bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js',
             'src/bower_components/angular-local-storage/dist/angular-local-storage.js',
-            'src/bower_components/angular-cache-buster/angular-cache-buster.js',
             'src/bower_components/angular-touch/angular-touch.js',
             'src/bower_components/angular-carousel/dist/angular-carousel.js',
             'src/bower_components/angular-utils-pagination/dirPagination.js',
@@ -37,8 +34,6 @@ module.exports = function (config) {
             'src/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
             'src/bower_components/angular-flexslider/angular-flexslider.js',
             'src/bower_components/angular-mocks/angular-mocks.js',
-            'src/bower_components/zeroclipboard/dist/ZeroClipboard.js',
-            'src/bower_components/angular-zeroclipboard/src/angular-zeroclipboard.js',
             'src/app/app.js',
             'src/app/services/**/*.js',
             'src/app/filters/*.js',
