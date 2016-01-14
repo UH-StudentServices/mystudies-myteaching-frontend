@@ -63,6 +63,8 @@ angular.module('directives.admin.feedback', [
             loadingFeedback = [],
             allItems;
 
+        var loadingFeedback = [];
+
         $scope.activePage = 0;
 
         $scope.pageIndexes = [];
@@ -124,7 +126,7 @@ angular.module('directives.admin.feedback', [
           $timeout(function (){
             _.remove(loadingFeedback, function(item) {
               return item.id === feedback.id;
-            });  
+            });
           }, REMOVE_FEEDBACK_DELAY);
         }
     

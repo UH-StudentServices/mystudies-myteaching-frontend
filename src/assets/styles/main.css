@@ -3608,6 +3608,7 @@ a.text-neutral {
  * You should have received a copy of the GNU General Public License
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
+<<<<<<< 4b4911b92c4d1040c82400a4c5e47f5436c35b89
 <<<<<<< 31d0323419ebd1647328a19e2f820c1b0df15626
 .upcoming-courses .ui-component__title {
   margin-bottom: 1rem; }
@@ -3624,6 +3625,9 @@ a.text-neutral {
 .upcoming-course__details-container {
   margin-top: 1rem; }
 =======
+=======
+<<<<<<< 415c0661eb2799329e8caf6c719349b523d7ca09
+>>>>>>> UI for marking feedback processed
 .link-list h3 {
   border-bottom: 1px solid #EBEBEB;
   border-left: 0;
@@ -3635,7 +3639,26 @@ a.text-neutral {
   text-transform: none;
   color: #979797;
   padding: 1.5em 0; }
+<<<<<<< 4b4911b92c4d1040c82400a4c5e47f5436c35b89
 >>>>>>> Improved ui for recommendations and upcoming courses
+=======
+=======
+.upcoming-courses .ui-component__title {
+  margin-bottom: 1rem; }
+
+.upcoming-courses li {
+  margin-bottom: 1rem; }
+
+.upcoming-course__img .image-container {
+  background: no-repeat center;
+  background-size: cover;
+  height: 200px;
+  width: 100%; }
+
+.upcoming-course__details-container {
+  margin-top: 1rem; }
+>>>>>>> UI for marking feedback processed
+>>>>>>> UI for marking feedback processed
 
 /*
  * This file is part of MystudiesMyteaching application.
