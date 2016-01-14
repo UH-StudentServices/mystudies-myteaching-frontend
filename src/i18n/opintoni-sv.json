@@ -81,7 +81,9 @@
     "emailReply" : "User wants reply to email (sv)",
     "faculty" : "Faculty (sv)",
     "state" : "state (sv)",
-    "userAgent" : "userAgent (sv)"
+    "userAgent" : "userAgent (sv)",
+    ,
+    "feedbackProcessed": "Processed (sv)"
   },
   "navigationTab": {
     "frontPage": "Framsidan",

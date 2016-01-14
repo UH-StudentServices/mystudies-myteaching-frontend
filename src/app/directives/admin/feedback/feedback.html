@@ -17,8 +17,10 @@
 
 <div class="admin-feedback">
   <h3>{{ 'admin.feedback' | translate }}</h3>
+  
   <table class="table-simple">
     <tr>
+      <th>{{ 'admin.feedbackProcessed' | translate }}</th>
       <th>{{ 'admin.feedback' | translate }}</th>
       <th>{{ 'admin.emailReply' | translate }}</th>
       <th>{{ 'admin.timestamp' | translate }}</th>
@@ -27,6 +29,16 @@
       <th>{{ 'admin.userAgent' | translate }}</th>
     </tr>
     <tr ng-repeat="feedback in feedbackItems">
+      <td>
+        <div class="form-type-checkbox">
+          <input id="{{ feedback.id }}" type="checkbox" ng-model="feedback.processed" ng-change="feedbackChanged(feedback)" />
+          <label ng-if="!isLoading(feedback)" for="{{ feedback.id }}"></label>
+          <div class="loading-spinner-container" ng-if="isLoading(feedback)">
+            <span class="hy hy-spinner hy-spin"></span>
+          </div>
+        </div>
+        
+      </td>
       <td>{{ feedback.content }}</td>
       <td>{{ feedback.email }}</td>
       <td>{{ feedback.created }}</td>

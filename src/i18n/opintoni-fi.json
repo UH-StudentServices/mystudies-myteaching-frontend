@@ -81,7 +81,8 @@
     "emailReply" : "Käyttäjä haluaa vastauksen sähköpostiin",
     "faculty" : "Tiedekunta",
     "state" : "tila",
-    "userAgent" : "userAgent"
+    "userAgent" : "userAgent",
+    "feedbackProcessed": "Käsitelty"
   },
   "navigationTab": {
     "frontPage": "Etusivu",

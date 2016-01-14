@@ -17,4 +17,16 @@
 
 .admin-feedback {
 
+  .form-type-checkbox label {
+    padding-left: 0;
+  }
+
+  .form-type-checkbox label:before {
+    position: relative;
+  }
+
+  .loading-spinner-container {
+    margin: 3px;
+    color: $blue;
+  }
 }

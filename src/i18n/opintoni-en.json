@@ -81,7 +81,8 @@
     "emailReply" : "User wants reply to email",
     "faculty" : "Faculty",
     "state" : "state",
-    "userAgent" : "userAgent"
+    "userAgent" : "userAgent",
+    "feedbackProcessed": "Processed"
   },
   "navigationTab": {
     "frontPage": "Frontpage",
