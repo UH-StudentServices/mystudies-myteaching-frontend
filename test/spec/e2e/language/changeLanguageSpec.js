@@ -18,8 +18,7 @@
 var util = require('../util');
 
 describe('Changing language', function() {
-  //TODO: Fix Unstability with phantomJS.
-  /*beforeEach(util.loginStudent);
+  beforeEach(util.loginStudent);
 
   function createTitleElementFinder(title) {
     return element(by.cssContainingText('h1', title));
@@ -34,7 +33,7 @@ describe('Changing language', function() {
 
     browser.ignoreSynchronization = true;
 
-    clickChangeLanguageLink('Suomeksi');
+    clickChangeLanguageLink('Suomi');
     util.waitUntilPresent(titleElementFinder).then(function() {
       browser.ignoreSynchronization = false;
     });
@@ -55,6 +54,6 @@ describe('Changing language', function() {
 
   afterEach(function() {
     browser.driver.manage().deleteAllCookies();
-  })*/
+  })
 
 });
