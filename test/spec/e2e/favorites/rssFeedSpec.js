@@ -15,51 +15,45 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* describe('RSS feed favorite', function(){
+describe('RSS feed favorite', function(){
 
   var util = require('../util');
-  var feedUrl = 'http://yle.fi/urheilu/rss/luetuimmat.rss';
+  var feedUrl = 'http://www.helsinki.fi';
 
+  var favoritesListElementFinder = element.all(by.repeater('favorite in favorites'));
   var addNewFavoriteButtonElementFinder = element(by.css('a.add-favorite-button'));
-  var feedElementFinder = element(by.css('section.rss-feed[data-feed-url="'+ feedUrl + '"] '));
-  var removeButtonFinder = feedElementFinder.element(by.css('a.favorites-list__remove'));
-  var resultsFinder = element.all(by.repeater('result in searchResults'));
+  var selectRSSFavoriteTypeElementFinder = element(by.cssContainingText('.add-favorite-container a', 'RSS feed'));
+  var searchRSSFeedElementFinder = element(by.css('.add-favorite-container'))
+    .element(by.model('searchString'));
+  var editButtonFinder = element(by.css('#favorites .edit-link'));
+  var removeButtonFinder = element.all(by.css('#favorites .favorites-list__remove'));
+  var searchResultsFinder = element
+    .all(by.repeater('result in searchResults'));
+  var firstSearchResultFinder = searchResultsFinder
+    .first()
+    .element(by.css('a'));
 
   beforeEach(function() {
     util.loginStudent();
-    //Clean up any leftover feeds
-    var removeButtonsSelector = element.all(by.css('a.favorites-list__remove'));
-    removeButtonsSelector.each(function(e) {
-      e.click();
-    });
-    util.waitUntilNotPresent(removeButtonsSelector);
   });
 
-  it('Is possible to add an RSS feed as favorite and remove it', function(){
+  it('Is possible to add an RSS feed', function() {
+    favoritesListElementFinder.count().then(function(count) {
+      addNewFavoriteButtonElementFinder.click();
+      selectRSSFavoriteTypeElementFinder.click();
+      searchRSSFeedElementFinder.sendKeys(feedUrl);
+      util.waitUntilPresent(searchResultsFinder);
+      firstSearchResultFinder.click();
+      expect(favoritesListElementFinder.count()).toEqual(count + 1);
+    })
+  });
 
-    addNewFavoriteButtonElementFinder.click();
-
-    element(by.cssContainingText('a', 'RSS feed')).click();
-
-    element(by.model('searchString')).sendKeys(feedUrl);
-
-    util.waitUntilPresent(resultsFinder);
-
-    resultsFinder.first().element(by.css('a')).click();
-
-    util.waitUntilPresent(feedElementFinder);
-
-    expect(feedElementFinder.isPresent()).toEqual(true);
-
-    util.waitUntilPresent(removeButtonFinder);
-
-    removeButtonFinder.click();
-
-    util.waitUntilNotPresent(feedElementFinder);
-
-    expect(feedElementFinder.isPresent()).toEqual(false);
-
-  })
-
-
-});*/
+  it('Is posssible to remove an RSS feed', function() {
+    favoritesListElementFinder.count().then(function(count) {
+      editButtonFinder.click();
+      util.waitUntilPresent(removeButtonFinder);
+      removeButtonFinder.first().click();
+      expect(favoritesListElementFinder.count()).toEqual(count - 1);
+    });
+  });
+});
