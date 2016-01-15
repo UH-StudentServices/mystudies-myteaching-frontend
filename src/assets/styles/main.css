@@ -3608,6 +3608,7 @@ a.text-neutral {
  * You should have received a copy of the GNU General Public License
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
+<<<<<<< 31d0323419ebd1647328a19e2f820c1b0df15626
 .upcoming-courses .ui-component__title {
   margin-bottom: 1rem; }
 
@@ -3622,6 +3623,19 @@ a.text-neutral {
 
 .upcoming-course__details-container {
   margin-top: 1rem; }
+=======
+.link-list h3 {
+  border-bottom: 1px solid #EBEBEB;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  font-size: 17px;
+  font-size: 1.0625rem;
+  font-weight: normal;
+  text-transform: none;
+  color: #979797;
+  padding: 1.5em 0; }
+>>>>>>> Improved ui for recommendations and upcoming courses
 
 /*
  * This file is part of MystudiesMyteaching application.
@@ -3907,38 +3921,3 @@ a.text-neutral {
   letter-spacing: .01em; }
   .login-page__read-more:hover {
     color: #0098d0; }
-
-/*
- * This file is part of MystudiesMyteaching application.
- *
- * MystudiesMyteaching application is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * MystudiesMyteaching application is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
- */
-.course-recommendations {
-  margin-top: 2em; }
-
-.course-recommendations__title {
-  font-size: 20px;
-  font-size: 1.25rem; }
-
-.course-recommendations-list {
-  font-size: 14px;
-  font-size: 0.875rem; }
-
-.course-recommendations-list__link a span {
-  margin-left: 0.5em; }
-
-.course-recommendations-list__title {
-  font-weight: 600;
-  font-style: normal;
-  margin-bottom: 1em; }

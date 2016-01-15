@@ -15,26 +15,13 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-$dateTypeHeight: 24px;
-
-.upcoming-courses {
-  .ui-component__title {
-    margin-bottom: 1rem;
+.link-list {
+  h3 {
+    @include border-bottom;
+    @include font-size(17px);
+    font-weight: normal;
+    text-transform: none;
+    color: $silver;
+    padding: 1.5em 0;
   }
-  li {
-    margin-bottom: 1rem;
-  }
-}
-
-.upcoming-course__img {
-  .image-container {
-    background: no-repeat center;
-    background-size: cover;
-    height: 200px;
-    width: 100%;
-  }
-}
-
-.upcoming-course__details-container {
-  margin-top: 1rem;
 }
