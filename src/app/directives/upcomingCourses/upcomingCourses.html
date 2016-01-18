@@ -15,34 +15,14 @@
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<div id="upcoming-courses" class="ui-component upcoming-courses" role="article" ng-show="upcomingCourses.length > 0">
-
-    <div class="ui-component__title">{{ 'upcomingCourses.title' | translate }}</div>
-
-    <ul>
+<div class="link-list" role="article" ng-if="upcomingCourses.length > 0">
+    <h3>{{ 'upcomingCourses.title' | translate }}</h3>
+    <ul class="list-of-links--light">
         <li ng-repeat="upcomingCourse in upcomingCourses">
-            <div class="upcoming-course__item">
-                <div class="upcoming-course__content">
-
-                    <div class="upcoming-course__img">
-                        <div class="image-container" style="background-image: url('{{upcomingCourse.imageUri}}')"></div>
-                    </div>
-                    <div class="upcoming-course__details-container">
-                        <div class="upcoming-course__date-and-type">
-                            <div class="box-story__topical">
-                                <span class="box-story__date">{{ upcomingCourse.startDate | momentFormat:'DD.MM.YYYY' }}</span>
-                                <span class="box-story__tag"><span>{{ 'codes.courseTypes.' + upcomingCourse.typeCode | translate }}</span></span>
-                            </div>
-                        </div>
-                        <div class="upcoming-course__title">
-                            <a ng-if="upcomingCourse.coursePageUri" href="{{ upcomingCourse.coursePageUri }}">
-                                <h4>{{ upcomingCourse.name }} ({{ upcomingCourse.code }})</h4>
-                            </a>
-                            <h4 ng-if="!upcomingCourse.coursePageUri">{{ upcomingCourse.name }} ({{ upcomingCourse.code }})</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <a ng-if="upcomingCourse.coursePageUri" href="{{ upcomingCourse.coursePageUri }}">
+                {{ upcomingCourse.name }}
+            </a>
+            <span ng-if="!upcomingCourse.coursePageUri">{{ upcomingCourse.name }}</span>
         </li>
     </ul>
 </div>
