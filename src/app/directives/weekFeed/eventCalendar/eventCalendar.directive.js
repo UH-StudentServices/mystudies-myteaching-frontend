@@ -79,7 +79,8 @@ angular.module('directives.eventCalendar', [])
             viewRender: function(view) {
               AnalyticsService.trackShowCalendarView(view.name);
             },
-            weekNumbers : true
+            weekNumbers : true,
+            scrollTime : '08:00:00'
           }
         };
 
