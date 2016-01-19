@@ -20,6 +20,12 @@ angular.module('resources.feedback', [])
   .factory('FeedbackResource', function FeedbackResource($resource) {
     var feedbackResource = $resource('/api/public/v1/feedback');
     var adminFeedbackResource = $resource('/api/admin/v1/feedback');
+    var adminFeedbackUpdateresource = $resource('/api/admin/v1/feedback/:id', null, {
+      'update': { 
+        method:'PUT',
+        isArray: true
+      }
+    });
 
     function getFeedback() {
       return adminFeedbackResource.query().$promise;
@@ -29,8 +35,13 @@ angular.module('resources.feedback', [])
       return feedbackResource.save(insertFeedbackRequest).$promise;
     }
 
+    function update(feedback) {
+      return adminFeedbackUpdateresource.update({ id: feedback.id }, feedback).$promise;     
+    }
+
     return {
       save: save,
-      getFeedback: getFeedback
+      getFeedback: getFeedback,
+      update: update
     }
   });

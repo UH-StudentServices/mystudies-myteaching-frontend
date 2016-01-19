@@ -410,6 +410,16 @@ input {
  * You should have received a copy of the GNU General Public License
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
+.admin-feedback .form-type-checkbox label {
+  padding-left: 0; }
+
+.admin-feedback .form-type-checkbox label:before {
+  position: relative; }
+
+.admin-feedback .loading-spinner-container {
+  margin: 3px;
+  color: #0098d0; }
+
 /*
  * This file is part of MystudiesMyteaching application.
  *

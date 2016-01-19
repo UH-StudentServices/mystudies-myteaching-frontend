@@ -17,8 +17,10 @@
 
 <div class="admin-feedback">
   <h3>{{ 'admin.feedback' | translate }}</h3>
+  
   <table class="table-simple">
     <tr>
+      <th>{{ 'admin.feedbackProcessed' | translate }}</th>
       <th>{{ 'admin.feedback' | translate }}</th>
       <th>{{ 'admin.emailReply' | translate }}</th>
       <th>{{ 'admin.timestamp' | translate }}</th>
@@ -27,6 +29,16 @@
       <th>{{ 'admin.userAgent' | translate }}</th>
     </tr>
     <tr ng-repeat="feedback in feedbackItems">
+      <td>
+        <div class="form-type-checkbox">
+          <input id="{{ feedback.id }}" type="checkbox" ng-model="feedback.processed" ng-change="feedbackChanged(feedback)" />
+          <label ng-if="!isLoading(feedback)" for="{{ feedback.id }}"></label>
+          <div class="loading-spinner-container" ng-if="isLoading(feedback)">
+            <span class="hy hy-spinner hy-spin"></span>
+          </div>
+        </div>
+        
+      </td>
       <td>{{ feedback.content }}</td>
       <td>{{ feedback.email }}</td>
       <td>{{ feedback.created }}</td>
@@ -37,16 +49,14 @@
   </table>
 
   <ul class="pager">
-    <li class="pager__first" ng-click="selectPage(0)"><a>{{ 'admin.first' | translate }}</a></li>
-    <li class="pager__previous" ng-click="previousPage()"><a>{{ 'tour.common.previous' | translate }}</a></li>
+    <li class="pager__first" ng-click="selectPage(0)"><a tabindex="0">{{ 'admin.first' | translate }}</a></li>
+    <li class="pager__previous" ng-click="previousPage()"><a tabindex="0">{{ 'tour.common.previous' | translate }}</a></li>
     
-    <li class="pager__page" ng-repeat="index in pageIndexes" ng-class="pageClasses(index)"><a ng-click="selectPage(index)">{{ index + 1 }}</a></li>
+    <li class="pager__page" ng-repeat="index in pageIndexes" ng-class="pageClasses(index)"><a  tabindex="0" ng-click="selectPage(index)">{{ index + 1 }}</a></li>
     
-    <li class="pager__next" ng-click="nextPage()"><a>{{ 'tour.common.next' | translate }}</a></li>
-    <li class="pager__last" ng-click="selectPage(pageIndexes.length - 1)"><a>{{ 'admin.last' | translate }}</a></li>
-    <li class="pager__page"><a href="/api/admin/v1/feedback/csv">{{ 'admin.downloadCsv' | translate }}</a></li>
+    <li class="pager__next" ng-click="nextPage()"><a  tabindex="0">{{ 'tour.common.next' | translate }}</a></li>
+    <li class="pager__last" ng-click="selectPage(pageIndexes.length - 1)"><a  tabindex="0">{{ 'admin.last' | translate }}</a></li>
+    <li class="pager__page"><a  tabindex="0" href="/api/admin/v1/feedback/csv">{{ 'admin.downloadCsv' | translate }}</a></li>
   </ul>
-  
-  
-  
+    
 </div>
