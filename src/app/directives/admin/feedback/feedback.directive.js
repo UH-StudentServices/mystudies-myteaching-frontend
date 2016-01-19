@@ -58,10 +58,10 @@ angular.module('directives.admin.feedback', [
       templateUrl: 'app/directives/admin/feedback/feedback.html',
       link: function($scope) {
 
-        var itemsPerPage = 5, 
+        var REMOVE_FEEDBACK_DELAY = 300,
+            itemsPerPage = 5,
+            loadingFeedback = [],
             allItems;
-
-        var loadingFeedback = [];
 
         $scope.activePage = 0;
 
@@ -125,7 +125,7 @@ angular.module('directives.admin.feedback', [
             _.remove(loadingFeedback, function(item) {
               return item.id === feedback.id;
             });  
-          }, 300);
+          }, REMOVE_FEEDBACK_DELAY);
         }
     
         $scope.feedbackChanged = function feedbackChanged(feedback) {
