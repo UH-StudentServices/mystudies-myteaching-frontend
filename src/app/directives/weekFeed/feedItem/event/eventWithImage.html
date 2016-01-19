@@ -24,9 +24,9 @@
 
     <div class="box-data__title">
         <a href="{{feedItem.courseUri}}" ng-if="feedItem.courseUri">
-            <h4><event-title></event-title></h4>
+            <event-title></event-title>
         </a>
-        <h4 ng-if="!feedItem.courseUri"><event-title></event-title></h4>
+        <span ng-if="!feedItem.courseUri"><event-title></event-title></span>
     </div>
 
     <div class="box-data__content">

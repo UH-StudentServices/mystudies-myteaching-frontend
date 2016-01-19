@@ -137,7 +137,11 @@
     border-bottom: 1px solid $lightsilver;
     border-top: 1px solid $lightsilver;
     font-weight: 600;
-    .fa-arrow-right {
+    a {
+      @include font-size(14px);
+      display: block;
+    }
+    .hy-link-arrow {
       float: right;
     }
   }
