@@ -57,16 +57,20 @@ angular.module('directives.admin.feedback', [
       replace: true,
       templateUrl: 'app/directives/admin/feedback/feedback.html',
       link: function($scope) {
-
         var REMOVE_FEEDBACK_DELAY = 300,
             itemsPerPage = 5,
             loadingFeedback = [],
             allItems;
 
-        var loadingFeedback = [];
+        function stopLoading(feedback) {
+          $timeout(function (){
+            _.remove(loadingFeedback, function(item) {
+              return item.id === feedback.id;
+            });
+          }, REMOVE_FEEDBACK_DELAY);
+        }
 
         $scope.activePage = 0;
-
         $scope.pageIndexes = [];
 
         FeedbackResource.getFeedback().then(function getFeedbackSuccess(feedback) {
@@ -121,14 +125,6 @@ angular.module('directives.admin.feedback', [
         $scope.isLoading = function isLoading(feedback) {
           return loadingFeedback.indexOf(feedback) !== -1;
         }
-
-        function stopLoading(feedback) {
-          $timeout(function (){
-            _.remove(loadingFeedback, function(item) {
-              return item.id === feedback.id;
-            });
-          }, REMOVE_FEEDBACK_DELAY);
-        }
     
         $scope.feedbackChanged = function feedbackChanged(feedback) {
           loadingFeedback.push(feedback);
@@ -137,7 +133,6 @@ angular.module('directives.admin.feedback', [
             stopLoading(feedback);
           });
         }
-
       }
     }
   });
