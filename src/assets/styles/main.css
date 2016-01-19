@@ -2439,6 +2439,12 @@ a.text-neutral {
       .todo-items .box li:first-child {
         padding-top: 0; }
       .todo-items .box li .todo-action {
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -transform: translateY(-50%);
+        position: absolute;
+        top: 50%;
         cursor: pointer; }
         .todo-items .box li .todo-action.todo-action__done {
           right: 35px; }
@@ -2446,11 +2452,11 @@ a.text-neutral {
           right: 10px; }
       .todo-items .box li.done {
         color: #b3b3b3; }
-        .todo-items .box li.done .todo-action {
-          color: #222; }
-          .todo-items .box li.done .todo-action.todo-action__remove {
-            color: #FFF; }
-      .todo-items .box li .vertically-centered, .todo-items .box li .todo-action {
+        .todo-items .box li.done .todo-action__done {
+          cursor: default; }
+        .todo-items .box li.done .todo-action__remove {
+          color: #FFF; }
+      .todo-items .box li .vertically-centered {
         position: absolute;
         top: 50%;
         -webkit-transform: translateY(-50%);

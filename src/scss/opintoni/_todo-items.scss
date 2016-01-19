@@ -75,10 +75,7 @@
       }
 
       .todo-action {
-        @extend .vertically-centered;
-      }
-
-      .todo-action {
+        @include vertically-center;
         cursor: pointer;
         &.todo-action__done {
           right: 35px;
@@ -90,11 +87,11 @@
 
       &.done {
         color: $todo-item-done-color;
-        .todo-action {
-          color: $black;
-          &.todo-action__remove {
-            color: $white;
-          }
+        .todo-action__done {
+          cursor: default;
+        }
+        .todo-action__remove {
+          color: $white;
         }
       }
 
