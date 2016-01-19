@@ -2094,7 +2094,8 @@ a.text-neutral {
   #week-feed .tag-list--tabs:after {
     clear: both; }
   #week-feed .tag-list--tabs li {
-    margin-right: 0.5em; }
+    margin-right: 0.5em;
+    margin-bottom: 0.5em; }
 
 @media (max-width: 767px) {
   .week-feed-items li .event.exam {
