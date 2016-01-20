@@ -72,15 +72,14 @@ angular.module('directives.admin.feedback', [
             },
             updateFeedback = function(feedback) {
               return FeedbackResource.update(stripTempModelProps(feedback));
+            },
+            stopLoading = function(feedback) {
+              $timeout(function (){
+                _.remove(loadingFeedback, function(item) {
+                  return item.id === feedback.id;
+                });
+              }, REMOVE_FEEDBACK_DELAY);
             };
-
-        function stopLoading(feedback) {
-          $timeout(function (){
-            _.remove(loadingFeedback, function(item) {
-              return item.id === feedback.id;
-            });
-          }, REMOVE_FEEDBACK_DELAY);
-        }
 
         $scope.activePage = 0;
         $scope.pageIndexes = [];
