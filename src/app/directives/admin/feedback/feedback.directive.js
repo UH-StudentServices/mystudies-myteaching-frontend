@@ -57,9 +57,9 @@ angular.module('directives.admin.feedback', [
       replace: true,
       templateUrl: 'app/directives/admin/feedback/feedback.html',
       link: function($scope) {
-        var REMOVE_FEEDBACK_DELAY = 300,
+        var SPINNER_HIDE_DELAY = 300,
             TEMP_MODEL_PROPS_LIST = ['commentEditMode', 'stagedComment', 'inflightUpdate'],
-            itemsPerPage = 5,
+            ITEMS_PER_PAGE = 5,
             loadingFeedback = [],
             allItems,
             focusCommentInput = function(index) {
@@ -78,7 +78,7 @@ angular.module('directives.admin.feedback', [
                 _.remove(loadingFeedback, function(item) {
                   return item.id === feedback.id;
                 });
-              }, REMOVE_FEEDBACK_DELAY);
+              }, SPINNER_HIDE_DELAY);
             };
 
         $scope.activePage = 0;
@@ -86,15 +86,15 @@ angular.module('directives.admin.feedback', [
 
         FeedbackResource.getFeedback().then(function getFeedbackSuccess(feedback) {
           allItems = feedback.reverse();
-          for(var i=0; i<Math.ceil(allItems.length / itemsPerPage); i++) {
+          for(var i=0; i<Math.ceil(allItems.length / ITEMS_PER_PAGE); i++) {
             $scope.pageIndexes.push(i);
           }
           $scope.selectPage(0);
         });
 
         $scope.selectPage = function selectPage(pageIndex) {
-          var startIndex = pageIndex * itemsPerPage;
-          var endIndex = startIndex + itemsPerPage;
+          var startIndex = pageIndex * ITEMS_PER_PAGE;
+          var endIndex = startIndex + ITEMS_PER_PAGE;
           $scope.activePage = pageIndex;
           $scope.feedbackItems = allItems.slice(startIndex, endIndex);
         };
