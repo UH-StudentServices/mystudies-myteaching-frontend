@@ -50,7 +50,7 @@
     "breakpoint-sass": "~2.5.0",
     "singularity": "~1.4.0",
     "Styleguide": "https://github.com/UniversityofHelsinki/Styleguide.git#release-1.0.7",
-    "Styleguide-icons": "https://github.com/UniversityofHelsinki/Styleguide-icons.git#5.0.3"
+    "Styleguide-icons": "https://github.com/UniversityofHelsinki/Styleguide-icons.git#5.0.4"
   },
   "resolutions": {
     "angular": "1.4.4",
@@ -58,7 +58,7 @@
     "jquery": "2.1.3",
     "angular-ui-router": "~0.2.15",
     "fullcalendar": "~2.4.0",
-    "Styleguide-icons": "5.0.3",
+    "Styleguide-icons": "5.0.4",
     "angular-sanitize": "1.4.4"
   }
 }
