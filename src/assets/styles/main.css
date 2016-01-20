@@ -2135,7 +2135,8 @@ a.text-neutral {
   #week-feed .tag-list--tabs:after {
     clear: both; }
   #week-feed .tag-list--tabs li {
-    margin-right: 0.5em; }
+    margin-right: 0.5em;
+    margin-bottom: 0.5em; }
 
 @media (max-width: 767px) {
   .week-feed-items li .event.exam {
@@ -2231,7 +2232,11 @@ a.text-neutral {
       bottom: 0;
       left: 0;
       right: 0; } }
-  .event .course-material .fa-arrow-right, .enrollment .course-material .fa-arrow-right {
+  .event .course-material a, .enrollment .course-material a {
+    font-size: 14px;
+    font-size: 0.875rem;
+    display: block; }
+  .event .course-material .hy-link-arrow, .enrollment .course-material .hy-link-arrow {
     float: right; }
 
 @media (min-width: 48em) {
