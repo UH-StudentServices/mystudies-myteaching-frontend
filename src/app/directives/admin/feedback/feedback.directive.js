@@ -97,45 +97,45 @@ angular.module('directives.admin.feedback', [
           var endIndex = startIndex + itemsPerPage;
           $scope.activePage = pageIndex;
           $scope.feedbackItems = allItems.slice(startIndex, endIndex);
-        }
+        };
 
         $scope.previousPage = function previousPage() {
           if($scope.previousPageEnabled()) {
             $scope.activePage--;
             $scope.selectPage($scope.activePage);
           }
-        }
+        };
 
         $scope.nextPage = function nextPage() {
           if($scope.nextPageEnabled()) {
             $scope.activePage++;
             $scope.selectPage($scope.activePage);
           }
-        }
+        };
 
         $scope.nextPageEnabled = function nextPageEnabled() {
           return $scope.activePage < $scope.pageIndexes.length - 1;
-        }
+        };
 
         $scope.previousPageEnabled = function previousPageEnabled() {
           return $scope.activePage > 0;
-        }
+        };
 
         $scope.nextClasses = function showMoreClasses() {
           return {
             disabled: !$scope.nextPageEnabled()
           };
-        }
+        };
 
         $scope.pageClasses = function pageClasses(index) {
           return {
             'is-active': $scope.activePage === index
           };
-        }
+        };
 
         $scope.isLoading = function isLoading(feedback) {
           return loadingFeedback.indexOf(feedback) !== -1;
-        }
+        };
     
         $scope.feedbackChanged = function feedbackChanged(feedback) {
           loadingFeedback.push(feedback);
@@ -143,7 +143,7 @@ angular.module('directives.admin.feedback', [
           .finally(function updateFeedbackFinally() {
             stopLoading(feedback);
           });
-        }
+        };
 
         $scope.toggleCommentEditMode = function toggleCommentEditMode(feedback, index) {
           feedback.commentEditMode = !feedback.commentEditMode;
