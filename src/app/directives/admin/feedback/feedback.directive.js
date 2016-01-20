@@ -27,7 +27,7 @@ angular.module('directives.admin.feedback', [
       if(facultyCode) {
         return $filter('translate')('faculties.' + facultyCode);
       } else {
-        return "";
+        return '';
       }
     }
   })
@@ -46,7 +46,7 @@ angular.module('directives.admin.feedback', [
       if(state) {
         return $filter('translate')(state + '.pageHeaderBranding');
       } else {
-        return "";
+        return '';
       }
     }
   })
