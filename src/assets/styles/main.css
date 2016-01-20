@@ -420,6 +420,47 @@ input {
   margin: 3px;
   color: #0098d0; }
 
+.feedback-table {
+  table-layout: fixed; }
+  .feedback-table td {
+    word-wrap: break-word; }
+  .feedback-table__comment-cell {
+    position: relative; }
+
+.feedback-edit-toggle {
+  padding-left: 0.2em;
+  cursor: pointer; }
+
+.feedback-highlight-overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.7); }
+
+.feedback-comment-edit-controls {
+  position: absolute;
+  top: 0.2em;
+  left: -100%;
+  width: 200%;
+  z-index: 2;
+  background-color: #fff; }
+  .feedback-comment-edit-controls a {
+    display: inline-block;
+    min-width: 5em;
+    text-align: center;
+    color: #fff !important; }
+    .feedback-comment-edit-controls a:hover {
+      background-color: #005479;
+      cursor: pointer; }
+  .feedback-comment-edit-controls .button-group--small {
+    margin-top: 0.2em; }
+  .feedback-comment-edit-controls .hy-spin {
+    outline: 1px solid transparent;
+    font-size: 12px; }
+
 /*
  * This file is part of MystudiesMyteaching application.
  *

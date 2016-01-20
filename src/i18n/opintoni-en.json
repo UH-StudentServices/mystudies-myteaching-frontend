@@ -82,7 +82,8 @@
     "faculty" : "Faculty",
     "state" : "state",
     "userAgent" : "userAgent",
-    "feedbackProcessed": "Processed"
+    "feedbackProcessed": "Processed",
+    "comment": "Comment"
   },
   "navigationTab": {
     "frontPage": "Frontpage",

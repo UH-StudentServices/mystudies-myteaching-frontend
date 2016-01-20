@@ -58,9 +58,21 @@ angular.module('directives.admin.feedback', [
       templateUrl: 'app/directives/admin/feedback/feedback.html',
       link: function($scope) {
         var REMOVE_FEEDBACK_DELAY = 300,
+            TEMP_MODEL_PROPS_LIST = ['commentEditMode', 'stagedComment', 'inflightUpdate'],
             itemsPerPage = 5,
             loadingFeedback = [],
-            allItems;
+            allItems,
+            focusCommentInput = function(index) {
+              angular.isNumber(index) && _.defer(function() {
+                angular.element('.feedback-comment-edit-controls__comment-content').eq(index)[0].focus();
+              });
+            },
+            stripTempModelProps = function(feedback) {
+              return _.omit(feedback, TEMP_MODEL_PROPS_LIST);
+            },
+            updateFeedback = function(feedback) {
+              return FeedbackResource.update(stripTempModelProps(feedback));
+            };
 
         function stopLoading(feedback) {
           $timeout(function (){
@@ -128,11 +140,35 @@ angular.module('directives.admin.feedback', [
     
         $scope.feedbackChanged = function feedbackChanged(feedback) {
           loadingFeedback.push(feedback);
-          FeedbackResource.update(feedback)
+          updateFeedback(feedback)
           .finally(function updateFeedbackFinally() {
             stopLoading(feedback);
           });
         }
+
+        $scope.toggleCommentEditMode = function toggleCommentEditMode(feedback, index) {
+          feedback.commentEditMode = !feedback.commentEditMode;
+          feedback.stagedComment = feedback.comment;
+          focusCommentInput(index);
+        };
+
+        $scope.saveComment = function saveComment(feedback) {
+          var newComment = feedback.stagedComment;
+
+          if(feedback.comment === newComment) {
+            $scope.toggleCommentEditMode(feedback);
+
+            // no need to hit server if comment is unchanged
+            return;
+          }
+
+          feedback.inflightUpdate = true;
+          feedback.comment = newComment;
+          updateFeedback(feedback).then(function() {
+            $scope.toggleCommentEditMode(feedback);
+            feedback.inflightUpdate = false;
+          });
+        };
       }
     }
   });

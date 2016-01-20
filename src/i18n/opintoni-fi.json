@@ -82,7 +82,8 @@
     "faculty" : "Tiedekunta",
     "state" : "tila",
     "userAgent" : "userAgent",
-    "feedbackProcessed": "Käsitelty"
+    "feedbackProcessed": "Käsitelty",
+    "comment": "Kommentti"
   },
   "navigationTab": {
     "frontPage": "Etusivu",

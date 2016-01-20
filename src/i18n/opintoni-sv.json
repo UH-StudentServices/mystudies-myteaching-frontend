@@ -82,8 +82,8 @@
     "faculty" : "Faculty (sv)",
     "state" : "state (sv)",
     "userAgent" : "userAgent (sv)",
-    ,
-    "feedbackProcessed": "Processed (sv)"
+    "feedbackProcessed": "Processed (sv)",
+    "comment": "Comment (sv)"
   },
   "navigationTab": {
     "frontPage": "Framsidan",
