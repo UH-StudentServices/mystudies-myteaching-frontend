@@ -24,4 +24,10 @@
     color: $silver;
     padding: 1.5em 0;
   }
+  .link-list__no-link {
+    @include button-internal;
+    &:after {
+      content: none;
+    }
+  }
 }
