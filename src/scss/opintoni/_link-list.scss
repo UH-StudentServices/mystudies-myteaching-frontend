@@ -24,7 +24,7 @@
     color: $silver;
     padding: 1.5em 0;
   }
-  li > span {
+  .link-list__no-link {
     @include button-internal;
     &:after {
       content: none;

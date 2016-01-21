@@ -3631,7 +3631,7 @@ a.text-neutral {
   color: #979797;
   padding: 1.5em 0; }
 
-.link-list li > span {
+.link-list .link-list__no-link {
   border-bottom: 1px solid #EBEBEB;
   font-family: "Open Sans", Helvetica, Arial, sans-serif, Nimbus Sans L;
   font-size: 15px;
@@ -3644,7 +3644,7 @@ a.text-neutral {
   padding-right: 2em;
   padding-top: 0.8em;
   position: relative; }
-  .link-list li > span:after {
+  .link-list .link-list__no-link:after {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: "hy-icons";
@@ -3656,9 +3656,9 @@ a.text-neutral {
     position: absolute;
     right: 0;
     top: 50%; }
-  a:hover .link-list li > span:after, .link-list li > span:hover:after {
+  a:hover .link-list .link-list__no-link:after, .link-list .link-list__no-link:hover:after {
     color: #005479; }
-  .link-list li > span:after {
+  .link-list .link-list__no-link:after {
     content: none; }
 
 /*

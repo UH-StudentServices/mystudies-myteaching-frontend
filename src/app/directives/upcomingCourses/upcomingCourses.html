@@ -22,7 +22,7 @@
             <a ng-if="upcomingCourse.coursePageUri" href="{{ upcomingCourse.coursePageUri }}">
                 {{ upcomingCourse.name }}
             </a>
-            <span ng-if="!upcomingCourse.coursePageUri">{{ upcomingCourse.name }}</span>
+            <span class="link-list__no-link" ng-if="!upcomingCourse.coursePageUri">{{ upcomingCourse.name }}</span>
         </li>
     </ul>
 </div>
