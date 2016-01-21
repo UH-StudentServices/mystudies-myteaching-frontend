@@ -18,7 +18,7 @@
 <div class="admin-feedback">
   <h3>{{ 'admin.feedback' | translate }}</h3>
   
-  <table class="table-simple">
+  <table class="table-simple feedback-table">
     <tr>
       <th>{{ 'admin.feedbackProcessed' | translate }}</th>
       <th>{{ 'admin.feedback' | translate }}</th>
@@ -27,6 +27,7 @@
       <th>{{ 'admin.faculty' | translate }}</th>
       <th>{{ 'admin.state' | translate }}</th>
       <th>{{ 'admin.userAgent' | translate }}</th>
+      <th>{{ 'admin.comment' | translate }}</th>
     </tr>
     <tr ng-repeat="feedback in feedbackItems">
       <td>
@@ -37,7 +38,6 @@
             <span class="hy hy-spinner hy-spin"></span>
           </div>
         </div>
-        
       </td>
       <td>{{ feedback.content }}</td>
       <td>{{ feedback.email }}</td>
@@ -45,6 +45,24 @@
       <td>{{ feedback.metadata | faculty }}</td>
       <td>{{ feedback.metadata | state }}</td>
       <td>{{ feedback.metadata | userAgent }}</td>
+      <td class="feedback-table__comment-cell">
+        <span ng-bind="feedback.comment"></span>
+        <a class="feedback-edit-toggle button--action theme-transparent"
+           tabindex="0"
+           ng-click="toggleCommentEditMode(feedback, $index)"
+           ng-show="!feedback.commentEditMode">{{ 'general.edit' | translate }}</a>
+        <div class="feedback-highlight-overlay" ng-show="feedback.commentEditMode"></div>
+        <div class="feedback-comment-edit-controls" ng-show="feedback.commentEditMode">
+          <textarea cols="10" rows="5" class="feedback-comment-edit-controls__comment-content" ng-model="feedback.stagedComment"></textarea>
+          <div class="button-group--small">
+            <a class="button" tabindex="0" ng-click="saveComment(feedback)">
+              <span ng-show="!feedback.inflightUpdate">{{ 'general.save' | translate }}</span>
+              <span ng-show="feedback.inflightUpdate" class="hy hy-spinner hy-spin"></span>
+            </a>
+            <a class="button" tabindex="0" ng-click="toggleCommentEditMode(feedback)">{{ 'general.cancel' | translate }}</a>
+          </div>
+        </div>
+      </td>
     </tr>
   </table>
 
@@ -58,5 +76,4 @@
     <li class="pager__last" ng-click="selectPage(pageIndexes.length - 1)"><a  tabindex="0">{{ 'admin.last' | translate }}</a></li>
     <li class="pager__page"><a  tabindex="0" href="/api/admin/v1/feedback/csv">{{ 'admin.downloadCsv' | translate }}</a></li>
   </ul>
-    
 </div>

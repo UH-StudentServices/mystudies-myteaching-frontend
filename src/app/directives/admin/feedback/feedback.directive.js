@@ -27,7 +27,7 @@ angular.module('directives.admin.feedback', [
       if(facultyCode) {
         return $filter('translate')('faculties.' + facultyCode);
       } else {
-        return "";
+        return '';
       }
     }
   })
@@ -46,7 +46,7 @@ angular.module('directives.admin.feedback', [
       if(state) {
         return $filter('translate')(state + '.pageHeaderBranding');
       } else {
-        return "";
+        return '';
       }
     }
   })
@@ -57,87 +57,114 @@ angular.module('directives.admin.feedback', [
       replace: true,
       templateUrl: 'app/directives/admin/feedback/feedback.html',
       link: function($scope) {
-
-        var REMOVE_FEEDBACK_DELAY = 300,
-            itemsPerPage = 5,
+        var SPINNER_HIDE_DELAY = 300,
+            TEMP_MODEL_PROPS_LIST = ['commentEditMode', 'stagedComment', 'inflightUpdate'],
+            ITEMS_PER_PAGE = 5,
             loadingFeedback = [],
-            allItems;
-
-        var loadingFeedback = [];
+            allItems,
+            focusCommentInput = function(index) {
+              angular.isNumber(index) && _.defer(function() {
+                angular.element('.feedback-comment-edit-controls__comment-content').eq(index)[0].focus();
+              });
+            },
+            stripTempModelProps = function(feedback) {
+              return _.omit(feedback, TEMP_MODEL_PROPS_LIST);
+            },
+            updateFeedback = function(feedback) {
+              return FeedbackResource.update(stripTempModelProps(feedback));
+            },
+            stopLoading = function(feedback) {
+              $timeout(function (){
+                _.remove(loadingFeedback, function(item) {
+                  return item.id === feedback.id;
+                });
+              }, SPINNER_HIDE_DELAY);
+            };
 
         $scope.activePage = 0;
-
         $scope.pageIndexes = [];
 
         FeedbackResource.getFeedback().then(function getFeedbackSuccess(feedback) {
           allItems = feedback.reverse();
-          for(var i=0; i<Math.ceil(allItems.length / itemsPerPage); i++) {
+          for(var i=0; i<Math.ceil(allItems.length / ITEMS_PER_PAGE); i++) {
             $scope.pageIndexes.push(i);
           }
           $scope.selectPage(0);
         });
 
         $scope.selectPage = function selectPage(pageIndex) {
-          var startIndex = pageIndex * itemsPerPage;
-          var endIndex = startIndex + itemsPerPage;
+          var startIndex = pageIndex * ITEMS_PER_PAGE;
+          var endIndex = startIndex + ITEMS_PER_PAGE;
           $scope.activePage = pageIndex;
           $scope.feedbackItems = allItems.slice(startIndex, endIndex);
-        }
+        };
 
         $scope.previousPage = function previousPage() {
           if($scope.previousPageEnabled()) {
             $scope.activePage--;
             $scope.selectPage($scope.activePage);
           }
-        }
+        };
 
         $scope.nextPage = function nextPage() {
           if($scope.nextPageEnabled()) {
             $scope.activePage++;
             $scope.selectPage($scope.activePage);
           }
-        }
+        };
 
         $scope.nextPageEnabled = function nextPageEnabled() {
           return $scope.activePage < $scope.pageIndexes.length - 1;
-        }
+        };
 
         $scope.previousPageEnabled = function previousPageEnabled() {
           return $scope.activePage > 0;
-        }
+        };
 
         $scope.nextClasses = function showMoreClasses() {
           return {
             disabled: !$scope.nextPageEnabled()
           };
-        }
+        };
 
         $scope.pageClasses = function pageClasses(index) {
           return {
             'is-active': $scope.activePage === index
           };
-        }
+        };
 
         $scope.isLoading = function isLoading(feedback) {
           return loadingFeedback.indexOf(feedback) !== -1;
-        }
-
-        function stopLoading(feedback) {
-          $timeout(function (){
-            _.remove(loadingFeedback, function(item) {
-              return item.id === feedback.id;
-            });
-          }, REMOVE_FEEDBACK_DELAY);
-        }
+        };
     
         $scope.feedbackChanged = function feedbackChanged(feedback) {
           loadingFeedback.push(feedback);
-          FeedbackResource.update(feedback)
+          updateFeedback(feedback)
           .finally(function updateFeedbackFinally() {
             stopLoading(feedback);
           });
-        }
+        };
 
+        $scope.toggleCommentEditMode = function toggleCommentEditMode(feedback, index) {
+          feedback.commentEditMode = !feedback.commentEditMode;
+          feedback.stagedComment = feedback.comment;
+          focusCommentInput(index);
+        };
+
+        $scope.saveComment = function saveComment(feedback) {
+          var newComment = feedback.stagedComment;
+
+          if(feedback.comment !== newComment) {
+            feedback.inflightUpdate = true;
+            feedback.comment = newComment;
+            updateFeedback(feedback).then(function() {
+              $scope.toggleCommentEditMode(feedback);
+              feedback.inflightUpdate = false;
+            });
+          } else {
+            $scope.toggleCommentEditMode(feedback);
+          }
+        };
       }
     }
   });

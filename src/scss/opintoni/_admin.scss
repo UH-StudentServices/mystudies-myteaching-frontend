@@ -15,8 +15,9 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-.admin-feedback {
+$feedback-comment-edit-controls-bg-color: $white;
 
+.admin-feedback {
   .form-type-checkbox label {
     padding-left: 0;
   }
@@ -28,5 +29,62 @@
   .loading-spinner-container {
     margin: 3px;
     color: $blue;
+  }
+}
+
+.feedback-table {
+  table-layout: fixed;
+
+  td {
+    word-wrap: break-word;
+  }
+
+  &__comment-cell {
+    position: relative;
+  }
+}
+
+.feedback-edit-toggle {
+  padding-left: 0.2em;
+  cursor: pointer;
+}
+
+.feedback-highlight-overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.feedback-comment-edit-controls {
+  position: absolute;
+  top: 0.2em;
+  left: -100%;
+  width: 200%;
+  z-index: 2;
+  background-color: $feedback-comment-edit-controls-bg-color;
+
+  a {
+    display: inline-block;
+    min-width: 5em;
+    text-align: center;
+    color: $button-text-color !important;
+
+    &:hover {
+      background-color: $button-bg-hover-color;
+      cursor: pointer;
+    }
+  }
+
+  .button-group--small {
+    margin-top: 0.2em;
+  }
+
+  .hy-spin {
+    outline: 1px solid transparent;
+    font-size: 12px;
   }
 }
