@@ -15,7 +15,7 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-$button-hover-color: #005479;
+$feedback-comment-edit-controls-bg-color: #fff;
 
 .admin-feedback {
   .form-type-checkbox label {
@@ -65,16 +65,16 @@ $button-hover-color: #005479;
   left: -100%;
   width: 200%;
   z-index: 2;
-  background-color: #fff;
+  background-color: $feedback-comment-edit-controls-bg-color;
 
   a {
     display: inline-block;
     min-width: 5em;
     text-align: center;
-    color: #fff !important;
+    color: $button-text-color !important;
 
     &:hover {
-      background-color: $button-hover-color;
+      background-color: $button-bg-hover-color;
       cursor: pointer;
     }
   }
