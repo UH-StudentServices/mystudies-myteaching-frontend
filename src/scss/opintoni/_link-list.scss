@@ -24,4 +24,10 @@
     color: $silver;
     padding: 1.5em 0;
   }
+  li > span {
+    @include button-internal;
+    &:after {
+      content: none;
+    }
+  }
 }

@@ -3631,6 +3631,36 @@ a.text-neutral {
   color: #979797;
   padding: 1.5em 0; }
 
+.link-list li > span {
+  border-bottom: 1px solid #EBEBEB;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif, Nimbus Sans L;
+  font-size: 15px;
+  font-size: 0.9375rem;
+  display: block;
+  line-height: normal;
+  overflow: hidden;
+  padding-bottom: 0.8em;
+  padding-left: 0;
+  padding-right: 2em;
+  padding-top: 0.8em;
+  position: relative; }
+  .link-list li > span:after {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "hy-icons";
+    content: "";
+    color: inherit;
+    font-weight: 200;
+    height: 100%;
+    margin-top: -0.5em;
+    position: absolute;
+    right: 0;
+    top: 50%; }
+  a:hover .link-list li > span:after, .link-list li > span:hover:after {
+    color: #005479; }
+  .link-list li > span:after {
+    content: none; }
+
 /*
  * This file is part of MystudiesMyteaching application.
  *
