@@ -154,19 +154,16 @@ angular.module('directives.admin.feedback', [
         $scope.saveComment = function saveComment(feedback) {
           var newComment = feedback.stagedComment;
 
-          if(feedback.comment === newComment) {
+          if(feedback.comment !== newComment) {
+            feedback.inflightUpdate = true;
+            feedback.comment = newComment;
+            updateFeedback(feedback).then(function() {
+              $scope.toggleCommentEditMode(feedback);
+              feedback.inflightUpdate = false;
+            });
+          } else {
             $scope.toggleCommentEditMode(feedback);
-
-            // no need to hit server if comment is unchanged
-            return;
           }
-
-          feedback.inflightUpdate = true;
-          feedback.comment = newComment;
-          updateFeedback(feedback).then(function() {
-            $scope.toggleCommentEditMode(feedback);
-            feedback.inflightUpdate = false;
-          });
         };
       }
     }
