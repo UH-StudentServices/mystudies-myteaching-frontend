@@ -446,12 +446,12 @@ input {
   left: -100%;
   width: 200%;
   z-index: 2;
-  background-color: #fff; }
+  background-color: #FFF; }
   .feedback-comment-edit-controls a {
     display: inline-block;
     min-width: 5em;
     text-align: center;
-    color: #fff !important; }
+    color: #FFF !important; }
     .feedback-comment-edit-controls a:hover {
       background-color: #005479;
       cursor: pointer; }
