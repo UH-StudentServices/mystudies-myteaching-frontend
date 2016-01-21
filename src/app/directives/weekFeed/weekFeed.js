@@ -54,7 +54,8 @@ angular.module('directives.weekFeed', [
         key: 'COURSES',
         translateKey: 'general.courses',
         getItems: function(courses, events) {
-          var filteredFeedItems = $filter('filterFeedItems')(courses, FeedItemTimeCondition.ALL);
+          var filteredCourses = _.filter(courses, { isExam: false });
+          var filteredFeedItems = $filter('filterFeedItems')(filteredCourses, FeedItemTimeCondition.ALL);
           return $filter('sortFeedItems')(filteredFeedItems, FeedItemSortCondition.NONE);
         }
       },
@@ -80,7 +81,8 @@ angular.module('directives.weekFeed', [
         key: 'CURRENT_TEACHER_COURSES',
         translateKey: 'general.teaching',
         getItems: function(courses, events) {
-          var filteredFeedItems = $filter('filterFeedItems')(courses, FeedItemTimeCondition.CURRENT);
+          var filteredCourses = _.filter(courses, { isExam: false });
+          var filteredFeedItems = $filter('filterFeedItems')(filteredCourses, FeedItemTimeCondition.CURRENT);
           return $filter('sortFeedItems')(filteredFeedItems, FeedItemSortCondition.START_DATE_ASC);
         }
       },

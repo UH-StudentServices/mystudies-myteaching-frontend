@@ -29,7 +29,7 @@ angular.module('directives.upcomingCourses', ['services.courses'])
         CoursesService.getTeacherCourses().then(function(data) {
           var now = moment();
           $scope.upcomingCourses = _.filter(data, function(course) {
-            return course.startDate.isAfter(now, 'day');
+            return course.startDate.isAfter(now, 'day') && !course.isExam;
           });
         });
       }
