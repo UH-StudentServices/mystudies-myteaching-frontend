@@ -40,13 +40,18 @@ angular.module('directives.weekFeed', [
   })
 
   .factory('Tabs', function($filter, FeedItemTimeCondition, FeedItemSortCondition) {
+
+    function getItems(items, feedItemTimeCondition, feedItemSortCondition) {
+      var filteredFeedItems = $filter('filterFeedItems')(items, feedItemTimeCondition);
+      return $filter('sortFeedItems')(items, feedItemSortCondition);
+    }
+
     return {
       'UPCOMING_EVENTS': {
         key: 'UPCOMING_EVENTS',
         translateKey: 'weekFeed.timetable',
         getItems: function(courses, events) {
-          var filteredFeedItems = $filter('filterFeedItems')(events, FeedItemTimeCondition.UPCOMING);
-          return $filter('sortFeedItems')(filteredFeedItems, FeedItemSortCondition.NONE);
+          return getItems(events, FeedItemTimeCondition.UPCOMING, FeedItemSortCondition.NONE)
         },
         showFirstItemImage : true
       },
@@ -54,42 +59,35 @@ angular.module('directives.weekFeed', [
         key: 'COURSES',
         translateKey: 'general.courses',
         getItems: function(courses, events) {
-          var filteredFeedItems = $filter('filterFeedItems')(courses, FeedItemTimeCondition.ALL);
-          return $filter('sortFeedItems')(filteredFeedItems, FeedItemSortCondition.NONE);
+          return getItems(_.filter(courses, { isExam: false }), FeedItemTimeCondition.ALL, FeedItemSortCondition.NONE);
         }
       },
       'STUDENT_EXAMS': {
         key: 'STUDENT_EXAMS',
         translateKey: 'general.exams',
         getItems: function(courses, events) {
-          var exams = _.filter(events, {type: 'EXAM'});
-          var filteredFeedItems = $filter('filterFeedItems')(exams, FeedItemTimeCondition.UPCOMING);
-          return $filter('sortFeedItems')(filteredFeedItems, FeedItemSortCondition.NONE);
+          return getItems(_.filter(events, {type: 'EXAM'}), FeedItemTimeCondition.UPCOMING, FeedItemSortCondition.NONE);
         }
       },
       'TEACHER_EXAMS': {
         key: 'TEACHER_EXAMS',
         translateKey: 'general.exams',
         getItems: function(courses, events) {
-          var exams = _.filter(courses, { isExam: true });
-          var filteredFeedItems = $filter('filterFeedItems')(exams, FeedItemTimeCondition.UPCOMING);
-          return $filter('sortFeedItems')(filteredFeedItems, FeedItemSortCondition.NONE);
+          return getItems(_.filter(courses, { isExam: true }), FeedItemTimeCondition.UPCOMING, FeedItemSortCondition.NONE);
         }
       },
       'CURRENT_TEACHER_COURSES': {
         key: 'CURRENT_TEACHER_COURSES',
         translateKey: 'general.teaching',
         getItems: function(courses, events) {
-          var filteredFeedItems = $filter('filterFeedItems')(courses, FeedItemTimeCondition.CURRENT);
-          return $filter('sortFeedItems')(filteredFeedItems, FeedItemSortCondition.START_DATE_ASC);
+          return getItems(_.filter(courses, { isExam: false }), FeedItemTimeCondition.CURRENT, FeedItemSortCondition.START_DATE_ASC);
         }
       },
       'PAST_TEACHER_COURSES': {
         key: 'PAST_TEACHER_COURSES',
         translateKey: 'general.pastTeaching',
         getItems: function(courses, events) {
-          var filteredFeedItems = $filter('filterFeedItems')(courses, FeedItemTimeCondition.PAST);
-          return $filter('sortFeedItems')(filteredFeedItems, FeedItemSortCondition.NONE);
+          return getItems(courses, FeedItemTimeCondition.PAST, FeedItemSortCondition.NONE);
         }
       },
       'CALENDAR': {
