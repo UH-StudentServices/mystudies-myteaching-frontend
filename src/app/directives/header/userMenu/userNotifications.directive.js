@@ -40,22 +40,24 @@ angular.module('directives.userNotifications', [
         }
 
         function loadUserNotifications() {
-          UserNotificationsResource.getAll().then(function userNotificationsGetAllSuccess(userNotifications) {
-            $scope.userNotifications = userNotifications;
-            $scope.unreadCount = getUnreadCount();
-          });
+          UserNotificationsResource.getAll()
+            .then(function userNotificationsGetAllSuccess(userNotifications) {
+              $scope.userNotifications = userNotifications;
+              $scope.unreadCount = getUnreadCount();
+            });
         }
 
         loadUserNotifications();
 
         $scope.markRead = function() {
           if (getUnreadCount() > 0) {
-            UserNotificationsResource.markRead(getNotificationIds()).then(function userNotificationsMarkReadSuccess() {
-              AnalyticsService.trackNotificationMarkAsRead();
-              $scope.unreadCount = 0;
-            });
+            UserNotificationsResource.markRead(getNotificationIds())
+              .then(function userNotificationsMarkReadSuccess() {
+                AnalyticsService.trackNotificationMarkAsRead();
+                $scope.unreadCount = 0;
+              });
           }
-        }
+        };
       }
-    }
+    };
   });

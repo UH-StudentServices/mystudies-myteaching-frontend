@@ -27,6 +27,6 @@ angular.module('resources.attainments', [])
 
     return {
       getStudyAttainments: getStudyAttainments
-    }
+    };
 
   });

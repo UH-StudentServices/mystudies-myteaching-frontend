@@ -18,27 +18,27 @@
 angular.module('directives.weekFeed.feedItem',[
   'directives.weekFeed.feedItem.event',
   'directives.weekFeed.feedItem.course'
-  ])
+])
 
   .directive('item', function() {
     return {
-      restrict : 'E',
-      replace : true,
-      templateUrl : 'app/directives/weekFeed/feedItem/feedItem.html',
-      scope : {
+      restrict: 'E',
+      replace: true,
+      templateUrl: 'app/directives/weekFeed/feedItem/feedItem.html',
+      scope: {
         feedItem: '=',
         first: '=',
-        tabOptions : '='
+        tabOptions: '='
       },
-      link : function($scope) {
-        
+      link: function($scope) {
+
         $scope.isEvent = function isEvent() {
           return !_.isUndefined($scope.feedItem.type);
-        }
+        };
 
         $scope.isCourse = function isCourse() {
-          return _.isUndefined($scope.feedItem.type); 
-        }
+          return _.isUndefined($scope.feedItem.type);
+        };
       }
-    }
+    };
   });

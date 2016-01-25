@@ -23,8 +23,8 @@ angular.module('filters.moment', [])
     };
   })
 
-  .filter('convertDateFormat', function(){
+  .filter('convertDateFormat', function() {
     return function(inputString, outputFormat) {
       return moment(new Date(inputString)).format(outputFormat);
-    }
+    };
   });

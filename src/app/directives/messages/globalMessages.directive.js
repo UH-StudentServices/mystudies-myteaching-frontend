@@ -19,8 +19,8 @@ angular.module('directives.globalMessages',
   ['directives.message'])
 
   .factory('globalMessagesService', function(MessageTypes) {
-    var messages = [];
-    var lastUpdate;
+    var messages = [],
+        lastUpdate;
 
     function addMessage(message) {
       messages.push(message);
@@ -28,33 +28,35 @@ angular.module('directives.globalMessages',
     }
 
     return {
-      addErrorMessage : function(err) {
-        var messageQuery = {messageType : MessageTypes.ERROR, active : true};
+      addErrorMessage: function(err) {
+        var messageQuery = {messageType: MessageTypes.ERROR, active: true};
 
         if(!_.find(messages, messageQuery)) {
-          addMessage(_.extend(messageQuery, {key : 'globalMessages.errors.genericError'}));
+          addMessage(_.extend(messageQuery, {key: 'globalMessages.errors.genericError'}));
         }
       },
-      addStatusMessage : function() {},
-      addInfomessage : function() {},
-      getMessages : function () {
+      addStatusMessage: function() {},
+      addInfomessage: function() {},
+      getMessages: function() {
         return messages;
       },
-      getLastUpdate : function() {
+      getLastUpdate: function() {
         return lastUpdate;
       }
-    }
+    };
   })
 
   .factory('httpRequestInterceptor', function($q, globalMessagesService) {
     return {
       'responseError': function(err) {
-        if(err.config && err.config.url && err.config.url.indexOf('/api/') > -1 && err.status !== 404) {
+        if(err.config && err.config.url &&
+           err.config.url.indexOf('/api/') > -1 && err.status !== 404) {
           globalMessagesService.addErrorMessage(err);
         }
+
         return $q.reject(err);
       }
-    }
+    };
   })
 
   .config(function($httpProvider) {
@@ -63,10 +65,10 @@ angular.module('directives.globalMessages',
 
   .directive('globalMessages', function(globalMessagesService) {
     return {
-      restrict : 'E',
-      replace : true,
-      templateUrl : 'app/directives/messages/globalMessages.html',
-      link : function($scope) {
+      restrict: 'E',
+      replace: true,
+      templateUrl: 'app/directives/messages/globalMessages.html',
+      link: function($scope) {
         $scope.messages = [];
         $scope.$watch(function() {
           return globalMessagesService.getLastUpdate();
@@ -76,7 +78,7 @@ angular.module('directives.globalMessages',
 
         $scope.dismissMessage = function(message) {
           message.active = false;
-        }
+        };
       }
-    }
+    };
   });

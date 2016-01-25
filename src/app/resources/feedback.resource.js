@@ -21,8 +21,8 @@ angular.module('resources.feedback', [])
     var feedbackResource = $resource('/api/public/v1/feedback');
     var adminFeedbackResource = $resource('/api/admin/v1/feedback');
     var adminFeedbackUpdateresource = $resource('/api/admin/v1/feedback/:id', null, {
-      'update': { 
-        method:'PUT',
+      'update': {
+        method: 'PUT',
         isArray: true
       }
     });
@@ -36,12 +36,12 @@ angular.module('resources.feedback', [])
     }
 
     function update(feedback) {
-      return adminFeedbackUpdateresource.update({ id: feedback.id }, feedback).$promise;     
+      return adminFeedbackUpdateresource.update({id: feedback.id}, feedback).$promise;
     }
 
     return {
       save: save,
       getFeedback: getFeedback,
       update: update
-    }
+    };
   });

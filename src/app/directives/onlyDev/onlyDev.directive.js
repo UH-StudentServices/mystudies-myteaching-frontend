@@ -25,5 +25,5 @@ angular.module('directives.onlyDev', [])
           element.remove();
         }
       }
-    }
+    };
   });

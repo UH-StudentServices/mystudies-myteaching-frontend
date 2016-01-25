@@ -30,17 +30,21 @@ describe('Useful links', function() {
     var linkUrl = util.uniqueId('http://www.usefullink') + '.fi';
     var linkTitle = util.uniqueId();
     var editedString = '_edited';
-    var editUsefulLinksElementFinder = element(by.cssContainingText('#useful-links a.edit-link', 'Edit'));
-    var editUsefulLinksDoneElementFinder = element(by.cssContainingText('#useful-links a.edit-link', 'Done'));
-    var newUsefulLinkContainerElementFinder =  element(by.css('.new-useful-link-container'));
-    var newLinkTitleElementFinder = newUsefulLinkContainerElementFinder.element(by.css('.useful-link-title input'));
+    var editUsefulLinksElementFinder = element(
+      by.cssContainingText('#useful-links a.edit-link', 'Edit'));
+    var editUsefulLinksDoneElementFinder = element(
+      by.cssContainingText('#useful-links a.edit-link', 'Done'));
+    var newUsefulLinkContainerElementFinder =  element(
+      by.css('.new-useful-link-container'));
+    var newLinkTitleElementFinder = newUsefulLinkContainerElementFinder.element(
+      by.css('.useful-link-title input'));
 
     function findUsefulLinkToEdit(linkTitle) {
       return usefulLinksElementFinder.filter(function(e) {
         return e.element(by.cssContainingText('a', linkTitle)).isPresent();
       }).then(function(e) {
         return e[0];
-      })
+      });
     }
 
     beforeEach(util.loginStudent);
@@ -79,7 +83,8 @@ describe('Useful links', function() {
             return editUsefulLinksDoneElementFinder.click();
           })
           .then(function() {
-            expect(element(by.cssContainingText('a', linkTitle + editedString)).isPresent()).toEqual(true);
+            expect(element(by.cssContainingText('a',
+              linkTitle + editedString)).isPresent()).toEqual(true);
           });
       });
     });
@@ -94,10 +99,11 @@ describe('Useful links', function() {
             return editUsefulLinksDoneElementFinder.click();
           })
           .then(function() {
-            expect(element(by.cssContainingText('a', linkTitle + editedString)).isPresent()).toEqual(false);
-          })
+            expect(element(by.cssContainingText('a',
+              linkTitle + editedString)).isPresent()).toEqual(false);
+          });
       });
-    })
-  })
+    });
+  });
 
 });

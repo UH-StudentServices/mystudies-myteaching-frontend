@@ -20,11 +20,11 @@ angular.module('resources.usefulLinks', [])
   .factory('UsefulLinksResource', function UsefulLinksResource($resource) {
     var usefulLinksResource = $resource('/api/private/v1/usefullinks/:id', {id: '@id'}, {
       update: {method: 'PUT'},
-      delete : {method: 'DELETE', isArray : true},
-      updateOrder: {method: 'POST', url : '/api/private/v1/usefullinks/order'}
+      delete: {method: 'DELETE', isArray: true},
+      updateOrder: {method: 'POST', url: '/api/private/v1/usefullinks/order'}
     });
     var searchPageTitleResource = $resource('/api/private/v1/usefullinks/searchpagetitle', null, {
-      searchPageTitle : {method: 'POST'}
+      searchPageTitle: {method: 'POST'}
     });
 
     function getAll() {
@@ -48,7 +48,7 @@ angular.module('resources.usefulLinks', [])
     }
 
     function updateOrder(usefulLinksIds) {
-      return usefulLinksResource.updateOrder({usefulLinkIds : usefulLinksIds})
+      return usefulLinksResource.updateOrder({usefulLinkIds: usefulLinksIds});
     }
 
     return {
@@ -57,6 +57,6 @@ angular.module('resources.usefulLinks', [])
       update: update,
       deleteLink: deleteLink,
       searchPageTitle: searchPageTitle,
-      updateOrder : updateOrder
-    }
+      updateOrder: updateOrder
+    };
   });

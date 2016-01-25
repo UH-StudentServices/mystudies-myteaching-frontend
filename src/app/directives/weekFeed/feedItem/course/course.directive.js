@@ -16,28 +16,28 @@
  */
 
 angular.module('directives.weekFeed.feedItem.course',[
-  ])
+])
 
   .directive('course', function() {
     return {
-      restrict : 'E',
-      replace : true,
-      templateUrl : 'app/directives/weekFeed/feedItem/course/course.html',
-      scope : {
+      restrict: 'E',
+      replace: true,
+      templateUrl: 'app/directives/weekFeed/feedItem/course/course.html',
+      scope: {
         feedItem: '='
       },
-      link : function($scope) {
-        
+      link: function($scope) {
+
       }
-    }
+    };
   })
 
   .directive('courseMaterialsLink', function() {
     return {
-      restrict : 'E',
-      replace : true,
-      templateUrl : 'app/directives/weekFeed/feedItem/course/courseMaterialsLink.html'
-    }
+      restrict: 'E',
+      replace: true,
+      templateUrl: 'app/directives/weekFeed/feedItem/course/courseMaterialsLink.html'
+    };
   })
 
   .filter('eventDateSpan', function() {
@@ -61,5 +61,5 @@ angular.module('directives.weekFeed.feedItem.course',[
       } else {
         return formatMomentDateSpan(startDate, endDate);
       }
-    }
+    };
   });

@@ -24,8 +24,8 @@ angular.module('utils.domain', [])
     }
 
     return {
-      getDomain : function() {
+      getDomain: function() {
         return $location.protocol() + '://' + $location.host() + getPort($location.port());
       }
-    }
-  })
+    };
+  });

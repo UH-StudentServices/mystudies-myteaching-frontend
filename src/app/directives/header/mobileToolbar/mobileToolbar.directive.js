@@ -30,10 +30,10 @@ angular.module('directives.mobileToolbar', [
                                        mobileReturnLinks,
                                        primaryLinks) {
     return {
-      restrict : 'E',
-      replace : true,
-      templateUrl : 'app/directives/header/mobileToolbar/mobileToolbar.html',
-      link : function($scope) {
+      restrict: 'E',
+      replace: true,
+      templateUrl: 'app/directives/header/mobileToolbar/mobileToolbar.html',
+      link: function($scope) {
         $scope.showToolbar = false;
         $scope.showShortcuts = false;
         $scope.showReturnLinks = false;
@@ -53,7 +53,9 @@ angular.module('directives.mobileToolbar', [
 
         StateChangeService.isStateChangeAvailable().then(function(stateChangeAvailable) {
           if(stateChangeAvailable) {
-            $scope.changeStateTo = StateService.getRootStateName() === State.MY_STUDIES ? State.MY_TEACHINGS : State.MY_STUDIES;
+            $scope.changeStateTo = StateService.getRootStateName() === State.MY_STUDIES ?
+              State.MY_TEACHINGS :
+              State.MY_STUDIES;
           }
         });
 
@@ -61,5 +63,5 @@ angular.module('directives.mobileToolbar', [
         $scope.mobileReturnLinks = mobileReturnLinks;
         $scope.primaryLinks = primaryLinks;
       }
-    }
+    };
   });

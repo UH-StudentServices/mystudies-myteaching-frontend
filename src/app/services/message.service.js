@@ -30,15 +30,15 @@ angular.module('services.message', [])
 
     var broadcast = function broadcast(eventName, data) {
       $rootScope.$broadcast(eventName, data);
-    }
+    };
 
     var subscribe = function subscribe($scope, eventName, callback) {
       $scope.$on(eventName, function(event, data) { callback(data); });
-    }
+    };
 
     return {
       broadcast: broadcast,
       subscribe: subscribe
-    }
+    };
 
   });

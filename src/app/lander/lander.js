@@ -27,9 +27,9 @@ angular.module('opintoniLander', [])
             templateUrl: 'app/partials/landerPages/_lander.html',
             controller: function($scope, state, Configuration) {
               $scope.currentStateName = state;
-              $scope.loginUrl = !state || state === 'opintoni'
-                ? Configuration.loginUrlStudent
-                : Configuration.loginUrlTeacher;
+              $scope.loginUrl = !state || state === 'opintoni' ?
+                Configuration.loginUrlStudent :
+                Configuration.loginUrlTeacher;
 
               $scope.loginUrls = {
                 loginUrlStudent: Configuration.studentAppUrl,
@@ -44,5 +44,5 @@ angular.module('opintoniLander', [])
         parent: 'lander',
         url: '/login',
         templateUrl: 'app/partials/landerPages/_lander.login.html'
-      })
+      });
   });

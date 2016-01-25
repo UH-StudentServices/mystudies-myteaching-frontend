@@ -30,7 +30,9 @@ angular.module('resources.userNotifications', [])
       if (!userNotificationsPromise) {
         userNotificationsPromise = userNotificationsResource.query().$promise.then(function(data) {
           return _.map(data, function(userNotification) {
-            userNotification.timeFromNow = dateArrayToUTCMomentObject(userNotification.timestamp).fromNow();
+            userNotification.timeFromNow = dateArrayToUTCMomentObject(userNotification.timestamp)
+              .fromNow();
+
             return userNotification;
           });
         });
@@ -45,5 +47,5 @@ angular.module('resources.userNotifications', [])
     return {
       getAll: getAll,
       markRead: markRead
-    }
+    };
   });

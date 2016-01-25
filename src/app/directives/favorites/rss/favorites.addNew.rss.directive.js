@@ -22,19 +22,19 @@ angular.module('directives.favorites.addNew.rss',
   .filter('stripHTML', function() {
     return function(input) {
       return String(input).replace(/<[^>]+>/gm, '');
-    }
+    };
   })
 
   .constant('minSearchStringLength', 3)
 
-  .directive('addNewRssFavorite', function(RSSService, FavoritesResource, newFavoriteAddedEvent, minSearchStringLength) {
+  .directive('addNewRssFavorite', function(RSSService, FavoritesResource,
+                                           newFavoriteAddedEvent, minSearchStringLength) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/rss/favorites.addNew.rss.html',
       replace: true,
       scope: true,
       link: function($scope) {
-
         $scope.searchString = '';
         $scope.loading = false;
         $scope.visibleItems = 3;
@@ -51,15 +51,15 @@ angular.module('directives.favorites.addNew.rss',
         }
 
         function search(feedUrl) {
-            $scope.loading = true;
-            $scope.searchResults = undefined;
-            searchWithUrl(feedUrl)
-              .then(function(searchResults) {
-                $scope.searchResults = searchResults;
-              })
-              .finally(function() {
-                $scope.loading = false;
-              });
+          $scope.loading = true;
+          $scope.searchResults = undefined;
+          searchWithUrl(feedUrl)
+            .then(function(searchResults) {
+              $scope.searchResults = searchResults;
+            })
+            .finally(function() {
+              $scope.loading = false;
+            });
         }
 
         $scope.search = _.debounce(search, 500);
@@ -72,7 +72,8 @@ angular.module('directives.favorites.addNew.rss',
           $scope.favorite.url = feedUrl;
           $scope.favorite.visibleItems = $scope.visibleItems;
           FavoritesResource.saveRSSFavorite($scope.favorite).then(function() {
-            $scope.$emit(newFavoriteAddedEvent, $scope.favorite.type + '_' + $scope.favorite.visibleItems);
+            $scope.$emit(newFavoriteAddedEvent,
+              $scope.favorite.type + '_' + $scope.favorite.visibleItems);
             $scope.hidePopover();
           });
         };
@@ -81,5 +82,5 @@ angular.module('directives.favorites.addNew.rss',
           $scope.addFeed($scope.searchString);
         };
       }
-    }
+    };
   });

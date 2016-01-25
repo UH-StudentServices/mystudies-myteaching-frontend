@@ -62,7 +62,7 @@ angular.module('opintoniApp', [
 ])
   .constant('preferredLanguage', 'fi')
 
-  .run(function ($rootScope, LanguageService) {
+  .run(function($rootScope, LanguageService) {
     $rootScope.userLang = LanguageService.getCurrent();
     moment.locale($rootScope.userLang);
   })
@@ -88,27 +88,29 @@ angular.module('opintoniApp', [
         abstract: true,
         resolve: {
           session: function($q, SessionService, $state) {
-            return SessionService.getSession().then(function getSessionSuccess(session){
+            return SessionService.getSession().then(function getSessionSuccess(session) {
               return session;
             }, function getSessionError() {
               $state.go('noSession');
             });
           },
-          userSettings: function(UserSettingsService, session){
-            return UserSettingsService.getUserSettings().then(function getUserSettingsSuccess(userSettings){
-              return userSettings;
-            }, function getUserSettingsError() {
-              return undefined;
-            });
+          userSettings: function(UserSettingsService, session) {
+            return UserSettingsService.getUserSettings()
+              .then(function getUserSettingsSuccess(userSettings) {
+                return userSettings;
+              }, function getUserSettingsError() {
+                return undefined;
+              });
           }
         }
       })
       .state('init', {
         url: '/init',
-        parent : 'root',
+        parent: 'root',
         resolve: {
           toState: function(StateService, session) {
             var stateFromDomain = StateService.getStateFromDomain();
+
             if(stateFromDomain) {
               return stateFromDomain;
             } else {
@@ -137,7 +139,8 @@ angular.module('opintoniApp', [
         resolve: {
           pageTitle: function($q, $translate) {
             var deferred = $q.defer();
-            $translate('opintoni.pageHeaderBranding').then(function translateHeaderSuccess(title){
+
+            $translate('opintoni.pageHeaderBranding').then(function translateHeaderSuccess(title) {
               document.title = title;
               deferred.resolve(title);
             });
@@ -168,10 +171,13 @@ angular.module('opintoniApp', [
         resolve: {
           pageTitle: function($q, $translate) {
             var deferred = $q.defer();
-            $translate('opetukseni.pageHeaderBranding').then(function translateHeaderSuccess(title){
-              document.title = title;
-              deferred.resolve(title);
-            });
+
+            $translate('opetukseni.pageHeaderBranding')
+              .then(function translateHeaderSuccess(title) {
+                document.title = title;
+                deferred.resolve(title);
+              });
+
             return deferred.promise;
           },
           courses: function(CoursesService) {
@@ -198,6 +204,7 @@ angular.module('opintoniApp', [
         resolve: {
           pageTitle: function() {
             var title = 'Admin';
+
             document.title = title;
             return title;
           },
@@ -213,7 +220,7 @@ angular.module('opintoniApp', [
       .state('getState', {
         abstract: true,
         resolve: {
-          state : ['StateService', function(StateService) {
+          state: ['StateService', function(StateService) {
             return StateService.getStateFromDomain();
           }]
         }
@@ -228,7 +235,7 @@ angular.module('opintoniApp', [
     $translateProvider.useCookieStorage();
     $translateProvider.useSanitizeValueStrategy('escaped');
     $translateProvider.preferredLanguage(preferredLanguage);
-    
+
     $cookiesProvider.defaults.path = '/';
-    $cookiesProvider.defaults.domain = '.helsinki.fi'
+    $cookiesProvider.defaults.domain = '.helsinki.fi';
   });

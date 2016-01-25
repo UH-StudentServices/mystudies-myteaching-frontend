@@ -33,11 +33,11 @@ angular.module('directives.attainments', [
         $scope.hasAttainments = false;
         $scope.numberOfVisibleAttainments = 3;
 
-        AttainmentsService.hasStudyAttainments().then(function hasAttainmentsSuccess(hasAttainments) {
+        AttainmentsService.hasStudyAttainments().then(function(hasAttainments) {
           $scope.hasAttainments = hasAttainments;
         });
 
-        AttainmentsService.getLastStudyAttainments().then(function getAttainmentsSuccess(attainments) {
+        AttainmentsService.getLastStudyAttainments().then(function(attainments) {
           $scope.attainments = attainments;
           if($scope.attainments.length === 0) {
             $scope.message = {

@@ -28,7 +28,7 @@ angular.module('resources.stateInterceptor', [
       });
     }
 
-    $rootScope.$on('$stateChangeStart', function(event, toState){
+    $rootScope.$on('$stateChangeStart', function(event, toState) {
       if(toState.data && toState.data.roles) {
         authorizeState(toState.data.roles).then(function(authorized) {
           if(!authorized) {
@@ -37,5 +37,5 @@ angular.module('resources.stateInterceptor', [
           event.preventDefault();
         });
       }
-    })
+    });
   });

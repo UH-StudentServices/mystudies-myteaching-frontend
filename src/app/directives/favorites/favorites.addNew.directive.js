@@ -28,23 +28,21 @@ angular.module('directives.favorites.addNew', [
 
   .directive('addNewFavoriteSearch', function() {
     return {
-      restrict : 'E',
+      restrict: 'E',
       templateUrl: 'app/directives/favorites/favorites.addNew.search.html',
-      replace : true,
-      scope : {
-        searchFn : '=',
-        clearSearchFn : '=',
-        enterFn : '=',
-        searchString : '=',
-        placeholder : '@',
-        loading : '='
+      replace: true,
+      scope: {
+        searchFn: '=',
+        clearSearchFn: '=',
+        enterFn: '=',
+        searchString: '=',
+        placeholder: '@',
+        loading: '='
       },
-      compile : function(tElement, tAttrs) {
-
+      compile: function(tElement, tAttrs) {
         tElement.find('input').attr('type', tAttrs.inputType);
 
         return function($scope) {
-
           $scope.search = _.debounce(function(searchString) {
             if($scope.favoriteSearchForm.$valid && $scope.searchFn) {
               $scope.searchFn(searchString);
@@ -62,36 +60,34 @@ angular.module('directives.favorites.addNew', [
             if($scope.clearSearchFn) {
               $scope.clearSearchFn();
             }
-          }
-
-        }
+          };
+        };
       }
-    }
+    };
   })
 
-  .directive('addNewFavorite', function(availableFavoriteTypes, newFavoriteAddedEvent, Focus){
+  .directive('addNewFavorite', function(availableFavoriteTypes, newFavoriteAddedEvent, Focus) {
     return {
-      restrict : 'E',
+      restrict: 'E',
       templateUrl: 'app/directives/favorites/favorites.addNew.html',
-      replace : true,
-      scope : {
+      replace: true,
+      scope: {
         favorites: '='
       },
-      link : function($scope) {
-
+      link: function($scope) {
         $scope.favorite = {};
-        $scope.availableFavoriteTypes = availableFavoriteTypes
+        $scope.availableFavoriteTypes = availableFavoriteTypes;
         $scope.displayPopover = false;
-        
+
         $scope.getFavoriteTypeClasses = function getFavoriteTypeClasses(favoriteType) {
           if(favoriteType === 'UNISPORT') {
             return {
-              disabled: !_.isUndefined(_.find($scope.favorites, {'type' : 'UNISPORT'}))
+              disabled: !_.isUndefined(_.find($scope.favorites, {'type': 'UNISPORT'}))
             };
           } else {
             return {};
           }
-        }        
+        };
 
         $scope.showPopover = function() {
           setFocus();
@@ -103,7 +99,7 @@ angular.module('directives.favorites.addNew', [
           Focus.setFocus('.add-favorite-container input');
         };
 
-        $scope.$on(newFavoriteAddedEvent, function(){
+        $scope.$on(newFavoriteAddedEvent, function() {
           resetPopover();
         });
 
@@ -115,5 +111,5 @@ angular.module('directives.favorites.addNew', [
           $scope.favorite = {};
         };
       }
-    }
+    };
   });

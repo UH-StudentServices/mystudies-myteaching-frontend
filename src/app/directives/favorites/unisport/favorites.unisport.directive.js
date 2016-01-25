@@ -21,15 +21,18 @@ angular.module('directives.favorites.unisport', [
 
   .directive('favoritesUnisport', function($sce, LanguageService) {
     return {
-      restrict : 'E',
+      restrict: 'E',
       templateUrl: 'app/directives/favorites/unisport/favorites.unisport.html',
       replace: true,
-      scope : {
-        data : '='
+      scope: {
+        data: '='
       },
-      link : function($scope) {
+      link: function($scope) {
         var unisportUrlTemplateCompiled = _.template($scope.data.url);
-        $scope.unisportUrl = $sce.trustAsResourceUrl(unisportUrlTemplateCompiled({ 'userLanguage': LanguageService.getCurrent() }));
+
+        $scope.unisportUrl = $sce.trustAsResourceUrl(unisportUrlTemplateCompiled({
+          'userLanguage': LanguageService.getCurrent()
+        }));
       }
-    }
+    };
   });

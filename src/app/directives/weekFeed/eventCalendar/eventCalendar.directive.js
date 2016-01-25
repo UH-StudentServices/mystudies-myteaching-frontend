@@ -18,20 +18,23 @@
 angular.module('directives.eventCalendar', [])
 
   .constant('CalendarViews', {
-    'DAY' : 'agendaDay',
-    'WEEK' : 'agendaWeek',
-    'MONTH' : 'month'
+    'DAY': 'agendaDay',
+    'WEEK': 'agendaWeek',
+    'MONTH': 'month'
   })
 
   .service('EventColorService', function() {
-    var colors = ['#009e60', '#fcd116', '#9258c8', '#8c0032', '#e5053a', '#fca311', '#00b08c', '#00a39a', '#00bd9d', '#5bbf21', '#e63375'];
+    var colors = ['#009e60', '#fcd116', '#9258c8', '#8c0032', '#e5053a',
+                  '#fca311', '#00b08c', '#00a39a', '#00bd9d', '#5bbf21',
+                  '#e63375'];
 
     return {
-      getColor : function(identifier) {
+      getColor: function(identifier) {
         var index = identifier % colors.length;
+
         return colors[index];
       }
-    }
+    };
 
   })
 
@@ -42,34 +45,34 @@ angular.module('directives.eventCalendar', [])
     $window,
     AnalyticsService) {
     return {
-      restrict : 'E',
-      templateUrl : 'app/directives/weekFeed/eventCalendar/eventCalendar.html',
-      scope : {
+      restrict: 'E',
+      templateUrl: 'app/directives/weekFeed/eventCalendar/eventCalendar.html',
+      scope: {
         events: '='
       },
-      replace : true,
-      controller : function($scope) {
+      replace: true,
+      controller: function($scope) {
         $scope.uiConfig = {
-          calendar:{
-            lang : moment.locale(),
-            allDaySlot : false,
+          calendar: {
+            lang: moment.locale(),
+            allDaySlot: false,
             eventRender: function(event, element) {
               element.attr('title', event.tooltip);
             },
-            header : {
-              left:   CalendarViews.DAY + ' ' + CalendarViews.WEEK + ' ' + CalendarViews.MONTH,
+            header: {
+              left: CalendarViews.DAY + ' ' + CalendarViews.WEEK + ' ' + CalendarViews.MONTH,
               center: 'title',
-              right:  'today prev,next'
+              right: 'today prev,next'
             },
-            columnFormat : 'dd',
-            timeFormat : 'HH:mm',
-            slotLabelFormat : 'HH:mm',
-            buttonIcons : {
+            columnFormat: 'dd',
+            timeFormat: 'HH:mm',
+            slotLabelFormat: 'HH:mm',
+            buttonIcons: {
               prev: 'calendar-prev',
               next: 'calendar-next'
             },
             defaultView: CalendarViews.WEEK,
-            eventClick : function(calEvent) {
+            eventClick: function(calEvent) {
               if(calEvent.url) {
                 $window.open(calEvent.url, '_blank');
               }
@@ -79,8 +82,8 @@ angular.module('directives.eventCalendar', [])
             viewRender: function(view) {
               AnalyticsService.trackShowCalendarView(view.name);
             },
-            weekNumbers : true,
-            scrollTime : '08:00:00'
+            weekNumbers: true,
+            scrollTime: '08:00:00'
           }
         };
 
@@ -115,15 +118,15 @@ angular.module('directives.eventCalendar', [])
             end: endMoment.toDate(),
             color: EventColorService.getColor(event.realisationId),
             tooltip: title,
-            url : event.moodleUri ? event.moodleUri : event.courseUri
-          }
+            url: event.moodleUri ? event.moodleUri : event.courseUri
+          };
 
-         return calendarEvent;
+          return calendarEvent;
         });
 
         $scope.eventSources.push(calendarEvents);
-      
+
 
       }
-    }
-  })
+    };
+  });

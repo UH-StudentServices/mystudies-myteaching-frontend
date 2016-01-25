@@ -19,7 +19,7 @@ var _ = require('lodash');
 var uuid = require('node-uuid');
 
 function getLoginUrl(role) {
- return browser.params[role].loginUrl;
+  return browser.params[role].loginUrl;
 }
 
 function login(role, username, password, siteName) {
@@ -38,7 +38,7 @@ function login(role, username, password, siteName) {
   element(userNameInputLocator).sendKeys(username);
   element(passwordInputLocator).sendKeys(password);
   element(submitInputLocator).click();
-  browser.wait(function(){
+  browser.wait(function() {
     return element(by.cssContainingText('h1', siteName)).isPresent();
   }, 10000).then(function() {
     browser.ignoreSynchronization = false;
@@ -48,6 +48,7 @@ function login(role, username, password, siteName) {
 
 function dismissTour() {
   var dismisButtonFinder = element(by.css('.ng-joyride-title .skipBtn'));
+
   return dismisButtonFinder.isPresent().then(function(isPresent) {
     if(isPresent) {
       dismisButtonFinder.click();
@@ -63,11 +64,11 @@ function waitUntilPresent(elementFinder) {
       return elementFinder.count().then(function(count) {
         return count > 0;
       });
-    }
+    };
   } else {
     predicateFunction = function() {
       return elementFinder.isPresent();
-    }
+    };
   }
   return browser.wait(predicateFunction, 10000);
 }
@@ -80,13 +81,13 @@ function waitUntilNotPresent(elementFinder) {
       return elementFinder.count().then(function(count) {
         return count === 0;
       });
-    }
+    };
   } else {
     predicateFunction = function() {
       return elementFinder.isPresent().then(function(present) {
         return present === false;
       });
-    }
+    };
   }
 
   return browser.wait(predicateFunction, 10000);
@@ -102,11 +103,11 @@ function waitUntilVisible(elementFinder) {
       }).count().then(function(count) {
         return count > 0;
       });
-    }
+    };
   } else {
     predicateFunction = function() {
       return elementFinder.isDisplayed();
-    }
+    };
   }
 
   return browser.wait(predicateFunction, 10000);
@@ -114,7 +115,8 @@ function waitUntilVisible(elementFinder) {
 
 function uniqueId(str) {
   var id = uuid.v4().substr(0, 8);
-  return str? str + id : id;
+
+  return str ? str + id : id;
 }
 
 function firstVisibleElement(locator) {
@@ -124,19 +126,19 @@ function firstVisibleElement(locator) {
 }
 
 function hasClass(element, cls) {
-  return element.getAttribute('class').then(function (classes) {
+  return element.getAttribute('class').then(function(classes) {
     return classes.split(' ').indexOf(cls) !== -1;
   });
 };
 
 module.exports = {
-  login : login,
-  loginStudent : _.partial(login, 'student', 'teststudent', 'password', 'My studies'),
-  loginTeacher : _.partial(login, 'teacher', 'testteacher', 'password', 'My teaching'),
-  waitUntilPresent : waitUntilPresent,
-  waitUntilNotPresent : waitUntilNotPresent,
-  waitUntilVisible : waitUntilVisible,
-  uniqueId : uniqueId,
-  firstVisibleElement : firstVisibleElement,
-  hasClass : hasClass
+  login: login,
+  loginStudent: _.partial(login, 'student', 'teststudent', 'password', 'My studies'),
+  loginTeacher: _.partial(login, 'teacher', 'testteacher', 'password', 'My teaching'),
+  waitUntilPresent: waitUntilPresent,
+  waitUntilNotPresent: waitUntilNotPresent,
+  waitUntilVisible: waitUntilVisible,
+  uniqueId: uniqueId,
+  firstVisibleElement: firstVisibleElement,
+  hasClass: hasClass
 };

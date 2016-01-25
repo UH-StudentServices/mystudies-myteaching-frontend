@@ -40,6 +40,7 @@ angular.module('services.eventUri', ['services.location'])
     function getGoogleMapsUri(event) {
       if (hasBuilding(event)) {
         var encoded = encodeURIComponent(getPlace(event.building));
+
         return 'https://www.google.fi/maps/place/' + encoded;
       } else {
         return undefined;
@@ -47,28 +48,33 @@ angular.module('services.eventUri', ['services.location'])
     }
 
     function getReittiopasUri(event, fromAddress) {
-      var to = event.building.street;
-      var start = event.startDate.tz(Timezones.HELSINKI);
-      var minutes = start.minute();
-      var hours = start.hour();
-      var date = start.date();
-      var month = start.month() + 1;
-      var year = start.year();
+      var to = event.building.street,
+          start = event.startDate.tz(Timezones.HELSINKI),
+          minutes = start.minute(),
+          hours = start.hour(),
+          date = start.date(),
+          month = start.month() + 1,
+          year = start.year();
 
       if (BrowserUtil.isMobile()) {
         return sprintf(
-          'http://m.reittiopas.fi/fi/index.php?txtFrom=%s&txtTo=%s&minute=%s&hour=%s&day=%s&month=%s&year=2015&timetype=arrival&search=Hae+Reitti&cmargin=3&wspeed=70&route-type=fastest&stz=0&bus=bus&tram=tram&metro=metro&train=train&uline=uline&service=service&nroutes=3&is-now=OFF',
+          'http://m.reittiopas.fi/fi/index.php?txtFrom=%s&txtTo=%s&minute=%s&hour=%s&day=%s' +
+          '&month=%s&year=2015&timetype=arrival&search=Hae+Reitti&cmargin=3&wspeed=70' +
+          '&route-type=fastest&stz=0&bus=bus&tram=tram&metro=metro&train=train&uline=uline' +
+          '&service=service&nroutes=3&is-now=OFF',
           fromAddress.substr(0, fromAddress.indexOf(',')), to, minutes, hours, date, month, year);
       } else {
         return sprintf(
-          'http://www.reittiopas.fi/fi/?from=%s&to=%s&minute=%s&hour=%s&day=%s&month=%s&year=%s&timetype=arrival',
+          'http://www.reittiopas.fi/fi/?from=%s&to=%s&minute=%s&hour=%s&day=%s&month=%s&year=%s' +
+          '&timetype=arrival',
           fromAddress, to, minutes, hours, date, month, year);
       }
     }
 
     function reittiopasUriCanBeGenerated(event) {
-      var now = moment().tz(Timezones.HELSINKI);
-      var start = event.startDate.clone().tz(Timezones.HELSINKI);
+      var now = moment().tz(Timezones.HELSINKI),
+          start = event.startDate.clone().tz(Timezones.HELSINKI);
+
       return hasBuilding(event) && now.isBefore(start) && start.diff(now, 'days') < 7;
     }
 
@@ -76,5 +82,5 @@ angular.module('services.eventUri', ['services.location'])
       getGoogleMapsUri: getGoogleMapsUri,
       getReittiopasUri: getReittiopasUri,
       reittiopasUriCanBeGenerated: reittiopasUriCanBeGenerated
-    }
+    };
   });

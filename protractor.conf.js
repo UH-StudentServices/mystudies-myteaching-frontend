@@ -18,13 +18,14 @@
 var ScreenShotReporter = require('protractor-screenshot-reporter');
 
 exports.config = {
-  specs : ['test/spec/e2e/**/*.js'],
+  specs: ['test/spec/e2e/**/*.js'],
   onPrepare: function() {
     // Add a screenshot reporter and store screenshots to `/tmp/screnshots`:
     jasmine.getEnv().addReporter(new ScreenShotReporter({
       baseDirectory: 'e2e_screenshots',
       takeScreenShotsOnlyForFailedSpecs: true
     }));
+
     browser.driver.manage().window().setSize(2000, 1500);
   }
 };

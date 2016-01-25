@@ -15,15 +15,17 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.chooseBackground', ['ui.bootstrap.modal', 'directives.uploadImage', 'services.userSettings', 'directives.userBackground'])
+angular.module('directives.chooseBackground', ['ui.bootstrap.modal', 'directives.uploadImage',
+  'services.userSettings', 'directives.userBackground'])
 
   .directive('chooseBackgroundButton', function() {
     return {
-      restrict : 'E',
-      replace : true,
-      templateUrl : 'app/directives/chooseBackground/chooseBackgroundButton.html',
-      scope : {},
-      controller : function($scope, $modal, $rootScope, UserSettingsService, backgroundChangeEvent, AnalyticsService) {
+      restrict: 'E',
+      replace: true,
+      templateUrl: 'app/directives/chooseBackground/chooseBackgroundButton.html',
+      scope: {},
+      controller: function($scope, $modal, $rootScope, UserSettingsService,
+                           backgroundChangeEvent, AnalyticsService) {
         $scope.openChooseBGModal = function() {
           $modal.open({
             templateUrl: 'app/directives/chooseBackground/chooseDefaultBackground.html',
@@ -39,9 +41,9 @@ angular.module('directives.chooseBackground', ['ui.bootstrap.modal', 'directives
             $rootScope.$broadcast(backgroundChangeEvent);
             AnalyticsService.trackUploadBackground();
           });
-        }
+        };
       }
-    }
+    };
   })
 
   .controller('ChooseDefaultBackgroundController', function($scope,
@@ -52,16 +54,19 @@ angular.module('directives.chooseBackground', ['ui.bootstrap.modal', 'directives
                                                             backgroundChangeEvent,
                                                             AnalyticsService) {
     var availableBackgroundImages,
-      selectedItemIndex;
+        selectedItemIndex;
 
-    $q.all([UserSettingsService.getUserSettings(), UserSettingsService.getAvailableBackgrounds()]).then(function(data) {
-      availableBackgroundImages = data[1];
-      var userBackgroundImage = data[0].backgroundFilename ? data[0].backgroundFilename : _.first(availableBackgroundImages);
+    $q.all([UserSettingsService.getUserSettings(), UserSettingsService.getAvailableBackgrounds()])
+      .then(function(data) {
+        availableBackgroundImages = data[1];
+        var userBackgroundImage = data[0].backgroundFilename ?
+          data[0].backgroundFilename :
+          _.first(availableBackgroundImages);
 
-      selectedItemIndex = _.indexOf(availableBackgroundImages, userBackgroundImage);
+        selectedItemIndex = _.indexOf(availableBackgroundImages, userBackgroundImage);
 
-      $scope.backgroundImages = availableBackgroundImages;
-    });
+        $scope.backgroundImages = availableBackgroundImages;
+      });
 
     function getSelectedBackgroundImageName() {
       return availableBackgroundImages[selectedItemIndex];
@@ -69,6 +74,7 @@ angular.module('directives.chooseBackground', ['ui.bootstrap.modal', 'directives
 
     $scope.ok = function() {
       var selectedBackgroundImageName = getSelectedBackgroundImageName();
+
       UserSettingsService.selectUserBackground(getSelectedBackgroundImageName()).then(function() {
         AnalyticsService.trackChangeDefaultBackground(selectedBackgroundImageName);
         $rootScope.$broadcast(backgroundChangeEvent);
@@ -86,5 +92,5 @@ angular.module('directives.chooseBackground', ['ui.bootstrap.modal', 'directives
 
     $scope.change = function(slider) {
       selectedItemIndex = slider.element.currentSlide;
-    }
+    };
   });

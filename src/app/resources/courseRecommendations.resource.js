@@ -26,5 +26,5 @@ angular.module('resources.courseRecommendations', [])
 
     return {
       getCourseRecommendations: getCourseRecommendations
-    }
+    };
   });

@@ -67,5 +67,5 @@ angular.module('directives.todoItems', ['resources.todoItems', 'directives.swipe
           });
         };
       }
-    }
+    };
   });

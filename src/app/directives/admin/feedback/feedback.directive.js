@@ -22,33 +22,36 @@ angular.module('directives.admin.feedback', [
 
   .filter('faculty', function($filter) {
     return function(metadata) {
-      var metadataJSON = JSON.parse(metadata);
-      var facultyCode = metadataJSON.faculty;
+      var metadataJSON = JSON.parse(metadata),
+          facultyCode = metadataJSON.faculty;
+
       if(facultyCode) {
         return $filter('translate')('faculties.' + facultyCode);
       } else {
         return '';
       }
-    }
+    };
   })
 
   .filter('userAgent', function() {
     return function(metadata) {
       var metadataJSON = JSON.parse(metadata);
+
       return metadataJSON.userAgent;
-    }
+    };
   })
 
   .filter('state', function($filter) {
     return function(metadata) {
-      var metadataJSON = JSON.parse(metadata);
-      var state = metadataJSON.state;
+      var metadataJSON = JSON.parse(metadata),
+          state = metadataJSON.state;
+
       if(state) {
         return $filter('translate')(state + '.pageHeaderBranding');
       } else {
         return '';
       }
-    }
+    };
   })
 
   .directive('adminFeedback', function($timeout, FeedbackResource) {
@@ -64,7 +67,9 @@ angular.module('directives.admin.feedback', [
             allItems,
             focusCommentInput = function(index) {
               angular.isNumber(index) && _.defer(function() {
-                angular.element('.feedback-comment-edit-controls__comment-content').eq(index)[0].focus();
+                angular.element('.feedback-comment-edit-controls__comment-content')
+                  .eq(index)[0]
+                  .focus();
               });
             },
             stripTempModelProps = function(feedback) {
@@ -74,7 +79,7 @@ angular.module('directives.admin.feedback', [
               return FeedbackResource.update(stripTempModelProps(feedback));
             },
             stopLoading = function(feedback) {
-              $timeout(function (){
+              $timeout(function() {
                 _.remove(loadingFeedback, function(item) {
                   return item.id === feedback.id;
                 });
@@ -86,15 +91,16 @@ angular.module('directives.admin.feedback', [
 
         FeedbackResource.getFeedback().then(function getFeedbackSuccess(feedback) {
           allItems = feedback.reverse();
-          for(var i=0; i<Math.ceil(allItems.length / ITEMS_PER_PAGE); i++) {
+          for(var i = 0; i < Math.ceil(allItems.length / ITEMS_PER_PAGE); i++) {
             $scope.pageIndexes.push(i);
           }
           $scope.selectPage(0);
         });
 
         $scope.selectPage = function selectPage(pageIndex) {
-          var startIndex = pageIndex * ITEMS_PER_PAGE;
-          var endIndex = startIndex + ITEMS_PER_PAGE;
+          var startIndex = pageIndex * ITEMS_PER_PAGE,
+              endIndex = startIndex + ITEMS_PER_PAGE;
+
           $scope.activePage = pageIndex;
           $scope.feedbackItems = allItems.slice(startIndex, endIndex);
         };
@@ -136,7 +142,7 @@ angular.module('directives.admin.feedback', [
         $scope.isLoading = function isLoading(feedback) {
           return loadingFeedback.indexOf(feedback) !== -1;
         };
-    
+
         $scope.feedbackChanged = function feedbackChanged(feedback) {
           loadingFeedback.push(feedback);
           updateFeedback(feedback)
@@ -166,5 +172,5 @@ angular.module('directives.admin.feedback', [
           }
         };
       }
-    }
+    };
   });

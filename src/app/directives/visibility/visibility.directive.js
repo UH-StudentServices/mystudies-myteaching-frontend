@@ -20,7 +20,8 @@ angular.module('directives.visibility', [
   'services.session'])
 
 /**
-* Implemented based on ngIf directive https://github.com/angular/angular.js/blob/master/src/ng/directive/ngIf.js#L3
+* Implemented based on ngIf directive
+* https://github.com/angular/angular.js/blob/master/src/ng/directive/ngIf.js#L3
 */
 .directive('teacherOnly', function($animate, StateService, State) {
   return {

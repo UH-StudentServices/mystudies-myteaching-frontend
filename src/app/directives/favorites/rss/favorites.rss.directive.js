@@ -22,13 +22,13 @@ angular.module('directives.favorites.rss',[
 
   .directive('favoritesRss', function(RSSService, MetaDataResource) {
     return {
-      restrict : 'E',
+      restrict: 'E',
       templateUrl: 'app/directives/favorites/rss/favorites.rss.html',
       replace: true,
-      scope : {
-        data : '='
+      scope: {
+        data: '='
       },
-      link : function($scope) {
+      link: function($scope) {
 
         var feedUrl = $scope.data.url;
 
@@ -49,17 +49,17 @@ angular.module('directives.favorites.rss',[
           }
         });
 
-        $scope.getFeedClasses = function getFeedClasses(){
+        $scope.getFeedClasses = function getFeedClasses() {
           return {
             'single': !_.isUndefined($scope.singleFeedItem)
           };
-        }
+        };
 
         $scope.getSingleItemStyle = function getSingleItemStyle() {
           return {
             background: 'url(' + $scope.metaData.image + ') no-repeat center center'
           };
-        }
+        };
       }
-    }
+    };
   });

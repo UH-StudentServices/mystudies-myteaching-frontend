@@ -19,8 +19,8 @@ angular.module('directives.mobileMenu', ['directives.tour'])
 
   .directive('mobileMenu', function() {
     return {
-      restrict : 'E',
-      replace : 'true',
-      templateUrl : 'app/directives/header/mobileToolbar/mobileMenu.html'
-    }
+      restrict: 'E',
+      replace: 'true',
+      templateUrl: 'app/directives/header/mobileToolbar/mobileMenu.html'
+    };
   });

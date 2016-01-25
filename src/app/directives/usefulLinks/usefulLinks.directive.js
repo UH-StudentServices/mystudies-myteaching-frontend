@@ -26,20 +26,20 @@ angular.module('directives.usefulLinks', [
   .constant('pageTitleSearchDebounceDelay', 1000)
 
   .constant('SearchState', {
-    NO_SEARCH : 'NO_SEARCH',
-    SEARCHING : 'SEARCHING',
-    SHOW_RESULTS : 'SHOW_RESULTS'
+    NO_SEARCH: 'NO_SEARCH',
+    SEARCHING: 'SEARCHING',
+    SHOW_RESULTS: 'SHOW_RESULTS'
   })
 
   .constant('UsefulLinkType', {
-    DEFAULT : 'DEFAULT',
-    USER_DEFINED : 'USER_DEFINED'
+    DEFAULT: 'DEFAULT',
+    USER_DEFINED: 'USER_DEFINED'
   })
 
   .constant('StudentServicesLinks', {
-    'fi' : "https://flamma.helsinki.fi/fi/neuvonta/HY054785",
-    'sv' : "https://flamma.helsinki.fi/sv/radgivning/HY054786",
-    'en' : "https://flamma.helsinki.fi/en/services-students/HY054787"
+    'fi': 'https://flamma.helsinki.fi/fi/neuvonta/HY054785',
+    'sv': 'https://flamma.helsinki.fi/sv/radgivning/HY054786',
+    'en': 'https://flamma.helsinki.fi/en/services-students/HY054787'
   })
 
   .filter('renderUsefulLinkDescription', function($filter) {
@@ -49,7 +49,7 @@ angular.module('directives.usefulLinks', [
       } else {
         return description;
       }
-    }
+    };
   })
   .directive('usefulLinks', function(UsefulLinksResource,
                                      SearchState,
@@ -63,10 +63,10 @@ angular.module('directives.usefulLinks', [
                                      StudentServicesLinks) {
     return {
       restrict: 'E',
-      replace : true,
+      replace: true,
       scope: {},
-      templateUrl : 'app/directives/usefulLinks/usefulLinks.html',
-      link : function($scope) {
+      templateUrl: 'app/directives/usefulLinks/usefulLinks.html',
+      link: function($scope) {
 
         UsefulLinksResource.getAll().then(function(usefulLinks) {
           $scope.usefulLinks = usefulLinks;
@@ -83,7 +83,7 @@ angular.module('directives.usefulLinks', [
 
         $scope.getStudentServicesLinks = function() {
           return StudentServicesLinks[$scope.userLang];
-        }
+        };
 
         $scope.edit = function() {
           $scope.editMode = true;
@@ -99,13 +99,13 @@ angular.module('directives.usefulLinks', [
           UsefulLinksResource.deleteLink(link).then(function(usefulLinks) {
             AnalyticsService.trackRemoveUsefulLink();
             Focus.focusNext();
-            _.remove($scope.usefulLinks, {id : link.id});
+            _.remove($scope.usefulLinks, {id: link.id});
           });
         };
 
         $scope.clearSearch = function() {
-          $scope.newLink.url = "";
-          $scope.newLink.description = "";
+          $scope.newLink.url = '';
+          $scope.newLink.description = '';
           setSearchState(SearchState.NO_SEARCH);
         };
 
@@ -129,7 +129,9 @@ angular.module('directives.usefulLinks', [
                 $scope.newLink.description = validUrl;
               })
               .then(function searchPageTitleSuccess(pageTitleSearchResult) {
-                $scope.newLink.description = pageTitleSearchResult.searchResult ? pageTitleSearchResult.searchResult : validUrl;
+                $scope.newLink.description = pageTitleSearchResult.searchResult ?
+                  pageTitleSearchResult.searchResult :
+                  validUrl;
               })
               .finally(function() {
                 setSearchState(SearchState.SHOW_RESULTS);
@@ -141,8 +143,12 @@ angular.module('directives.usefulLinks', [
 
         $scope.addNewUsefulLink = function() {
           var newLink = $scope.newLink;
+
           if(newLink.url && newLink.description) {
-            UsefulLinksResource.save({url: newLink.url, description: newLink.description}).then(function(usefulLink) {
+            UsefulLinksResource.save({
+              url: newLink.url,
+              description: newLink.description
+            }).then(function(usefulLink) {
               AnalyticsService.trackAddUsefulLink();
               $scope.usefulLinks.push(usefulLink);
               $scope.clearSearch();
@@ -150,5 +156,5 @@ angular.module('directives.usefulLinks', [
           }
         };
       }
-    }
+    };
   });

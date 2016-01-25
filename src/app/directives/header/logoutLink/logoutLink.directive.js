@@ -20,10 +20,10 @@ angular.module('directives.logoutLink', [])
   .directive('logoutLink', function(Configuration) {
     return {
       restrict: 'E',
-      replace : true,
+      replace: true,
       templateUrl: 'app/directives/header/logoutLink/logoutLink.html',
-      link : function($scope) {
+      link: function($scope) {
         $scope.logoutUrl = Configuration.logoutUrl;
       }
-    }
+    };
   });

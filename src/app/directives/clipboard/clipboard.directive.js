@@ -28,11 +28,9 @@ angular.module('directives.clipboard', [])
         errorCallback: '=clipboardErrorCallback'
       },
       link: function($scope, element) {
-
         element.attr('data-clipboard-target', $scope.selector);
 
         $timeout(function() {
-
           var clipboard = new Clipboard('#' + element.attr('id'));
 
           clipboard.on('success', function(e) {
@@ -47,5 +45,5 @@ angular.module('directives.clipboard', [])
           });
         }, 0);
       }
-    }
+    };
   });

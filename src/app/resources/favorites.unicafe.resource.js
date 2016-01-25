@@ -22,31 +22,31 @@ angular.module('resources.favorites.unicafe', [])
     var baseUrl = '/proxy/hyyravintolat';
 
     var areas = [
-      {
-        id: 1,
-        name: 'Keskusta',
-        restaurants: []
-      },
-      {
-        id: 2,
-        name: 'Kumpula',
-        restaurants: []
-      },
-      {
-        id: 3,
-        name: 'Meilahti',
-        restaurants: []
-      },
-      {
-        id: 5,
-        name: 'Viikki',
-        restaurants: []
-      },
-      {
-        id: 6,
-        name: 'Metropolia',
-        restaurants: []
-      }
+        {
+          id: 1,
+          name: 'Keskusta',
+          restaurants: []
+        },
+        {
+          id: 2,
+          name: 'Kumpula',
+          restaurants: []
+        },
+        {
+          id: 3,
+          name: 'Meilahti',
+          restaurants: []
+        },
+        {
+          id: 5,
+          name: 'Viikki',
+          restaurants: []
+        },
+        {
+          id: 6,
+          name: 'Metropolia',
+          restaurants: []
+        }
     ];
 
     function getRestaurants() {
@@ -64,6 +64,7 @@ angular.module('resources.favorites.unicafe', [])
     function getRestaurantOptions() {
       return getRestaurants().then(function(restaurants) {
         var restaurantsByAreaCode = _.groupBy(restaurants.data, 'areacode');
+
         return _.map(areas, function(area) {
           area.restaurants = restaurantsByAreaCode[area.id];
           return area;

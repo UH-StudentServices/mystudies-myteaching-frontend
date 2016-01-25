@@ -12,20 +12,20 @@ angular.module('services.favorites.rss', ['resources.favorites.rss', 'utils.mome
         feed.momentDate = convertDate(feed.date);
         _.each(feed.entries, function(entry) {
           entry.momentDate = convertDate(feed.date);
-        })
+        });
         return feed;
-      })
+      });
     }
 
     function getFeedTitle(feedUrl) {
       return RSSResource.get(feedUrl, 1).then(function(feed) {
         return feed.title;
-      })
+      });
     }
 
     return {
-      get : get,
-      getFeedTitle : getFeedTitle
-    }
+      get: get,
+      getFeedTitle: getFeedTitle
+    };
 
-  })
+  });

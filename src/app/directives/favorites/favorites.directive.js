@@ -25,12 +25,13 @@ angular.module('directives.favorites', [
   'directives.favorites.unisport',
   'dndLists'
 ])
-  .directive('favorites', function(FavoritesResource, newFavoriteAddedEvent, removeFavoriteEvent, AnalyticsService){
+  .directive('favorites', function(FavoritesResource, newFavoriteAddedEvent,
+                                   removeFavoriteEvent, AnalyticsService) {
     return {
-      restrict : 'E',
+      restrict: 'E',
       templateUrl: 'app/directives/favorites/favorites.html',
-      scope : {},
-      link : function($scope) {
+      scope: {},
+      link: function($scope) {
 
         $scope.editMode = false;
 
@@ -56,7 +57,7 @@ angular.module('directives.favorites', [
         }
 
         function removeFavorite(event, favoriteId, favoriteType) {
-          FavoritesResource.deleteFavorite(favoriteId).then(function(favorites){
+          FavoritesResource.deleteFavorite(favoriteId).then(function(favorites) {
             AnalyticsService.trackRemoveFavorite(favoriteType);
             showFavorites(favorites);
           });
@@ -76,5 +77,5 @@ angular.module('directives.favorites', [
           });
         };
       }
-    }
+    };
   });

@@ -25,13 +25,13 @@ angular.module('directives.upcomingCourses', ['services.courses'])
       replace: true,
       templateUrl: 'app/directives/upcomingCourses/upcomingCourses.html',
       link: function($scope) {
-
         CoursesService.getTeacherCourses().then(function(data) {
           var now = moment();
+
           $scope.upcomingCourses = _.filter(data, function(course) {
             return course.startDate.isAfter(now, 'day') && !course.isExam;
           });
         });
       }
-    }
+    };
   });
