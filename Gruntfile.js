@@ -274,7 +274,8 @@ module.exports = function(grunt) {
       ],
       test: [
         'sass:main',
-        'buildTemplates'
+        'buildTemplates',
+        'eslint'
       ],
       dist: [
         'sass:main',
