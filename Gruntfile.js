@@ -17,28 +17,31 @@
  */
 
 'use strict';
-var fs = require('fs');
 
-var httpProxy = require('http-proxy');
-var modRewrite = require('connect-modrewrite');
+var fs = require('fs'),
+    httpProxy = require('http-proxy'),
+    modRewrite = require('connect-modrewrite'),
+    urlUtil = require('url'),
+    _ = require('lodash'),
+    proxy,
+    proxyPaths,
+    proxyMiddleware,
+    useminAutoprefixer;
 
-var _ = require('lodash');
-
-var urlUtil = require('url');
-
-var proxy = httpProxy.createProxyServer({
+proxy = httpProxy.createProxyServer({
   target: 'http://localhost:8080/'
 });
 
-var proxyPaths = [
+proxyPaths = [
   '/api',
   '/login',
   '/logout',
   '/redirect',
   '/files'];
 
-var proxyMiddleware = function(req, res, next) {
+proxyMiddleware = function(req, res, next) {
   var path = urlUtil.parse(req.url).pathname;
+
   if (_.any(proxyPaths, function(p) {return path.indexOf(p) === 0;})) {
     proxy.web(req, res);
   } else {
@@ -47,12 +50,12 @@ var proxyMiddleware = function(req, res, next) {
 };
 
 // usemin custom step
-var useminAutoprefixer = {
+useminAutoprefixer = {
   name: 'autoprefixer',
   createConfig: require('grunt-usemin/lib/config/cssmin').createConfig // Reuse cssmins createConfig
 };
 
-module.exports = function (grunt) {
+module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
   require('time-grunt')(grunt);
 
@@ -72,14 +75,15 @@ module.exports = function (grunt) {
           'src/scss/opintoni/**/*.{scss,sass}',
           'src/scss/styleguide/**/*.{scss,sass}',
           'src/scss/styleguide_additions/**/*.{scss,sass}',
-          'src/app/**/*.html'],
-        tasks: ['sass:main', 'buildTemplates']
+          'src/app/**/*.html',
+          'src/app/**/*.js'],
+        tasks: ['sass:main', 'buildTemplates', 'eslint']
       }
     },
     browserSync: {
       dev: {
         bsFiles: {
-          src : [
+          src: [
             'src/index.html',
             'src/**/*.json',
             'src/assets/styles/**/*.css',
@@ -122,15 +126,11 @@ module.exports = function (grunt) {
       },
       server: '.tmp'
     },
-    jshint: {
+    eslint: {
+      src: ['src/app/**/*.js', 'test/spec/**/*.js', '*.js'],
       options: {
-        jshintrc: '.jshintrc'
-      },
-      all: [
-        'Gruntfile.js',
-        'src/app/app/**/*.js',
-        'src/app/components/**/*.js'
-      ]
+        quiet: true
+      }
     },
     sass: {
       options: {
@@ -172,7 +172,8 @@ module.exports = function (grunt) {
           html: {
             steps: {
               js: ['concat', 'uglifyjs'],
-              css: ['cssmin', useminAutoprefixer] // Let cssmin concat files so it corrects relative paths to fonts and images
+              // Let cssmin concat files so it corrects relative paths to fonts and images
+              css: ['cssmin', useminAutoprefixer]
             },
             post: {}
           }
@@ -189,7 +190,7 @@ module.exports = function (grunt) {
     },
     htmlmin: {
       dist: {
-        options: {                                 // Target options
+        options: {
           removeComments: true,
           collapseWhitespace: true,
           keepClosingSlash: true
@@ -219,20 +220,20 @@ module.exports = function (grunt) {
           ]
         },
         {
-          flatten : true,
+          flatten: true,
           expand: true,
           cwd: 'src',
-          src : 'bower_components/Styleguide-icons/fonts/*',
-          dest : '<%= application.dist %>/assets/fonts'
+          src: 'bower_components/Styleguide-icons/fonts/*',
+          dest: '<%= application.dist %>/assets/fonts'
 
         },
         {
-          flatten : true,
+          flatten: true,
           expand: true,
           cwd: 'src',
-          src : ['app/vendor/ng-file-upload/FileAPI.min.js',
+          src: ['app/vendor/ng-file-upload/FileAPI.min.js',
                  'app/vendor/ng-file-upload/FileAPI.flash.swf'],
-          dest : '<%= application.dist %>/app'
+          dest: '<%= application.dist %>/app'
 
         }]
       },
@@ -253,11 +254,11 @@ module.exports = function (grunt) {
       }
     },
     html2js: {
-      options : {
-        singleModule : true,
-        module : 'opintoniApp',
-        existingModule : true,
-        rename: function (moduleName) {
+      options: {
+        singleModule: true,
+        module: 'opintoniApp',
+        existingModule: true,
+        rename: function(moduleName) {
           return moduleName.replace('../.tmp/src/', '');
         }
       },
@@ -286,43 +287,43 @@ module.exports = function (grunt) {
         configFile: 'karma.conf.js',
         singleRun: true
       },
-       local:{
+      local: {
         configFile: 'karma.conf.js',
         autoWatch: true
       }
     },
     protractor: {
       options: {
-        configFile: "protractor.conf.js",
+        configFile: 'protractor.conf.js',
         keepAlive: false,
         noColor: false,
-        includeStackTrace : true
+        includeStackTrace: true
       },
       local: {
         options: {
           args: {
-            browser : 'chrome',
-            params : {
-              student : {
-                loginUrl : 'http://local.student.helsinki.fi:3000/app/locallog.html'
+            browser: 'chrome',
+            params: {
+              student: {
+                loginUrl: 'http://local.student.helsinki.fi:3000/app/locallog.html'
               },
-              teacher : {
-                loginUrl : 'http://local.teacher.helsinki.fi:3000/app/locallog.html'
+              teacher: {
+                loginUrl: 'http://local.teacher.helsinki.fi:3000/app/locallog.html'
               }
             }
           }
         }
       },
-      dev : {
+      dev: {
         options: {
           args: {
-            browser : 'phantomjs',
-            params : {
-              student : {
-                loginUrl : 'https://opi-1.student.helsinki.fi/app/locallog.html'
+            browser: 'phantomjs',
+            params: {
+              student: {
+                loginUrl: 'https://opi-1.student.helsinki.fi/app/locallog.html'
               },
-              teacher : {
-                loginUrl : 'https://opi-1.teacher.helsinki.fi/app/locallog.html'
+              teacher: {
+                loginUrl: 'https://opi-1.teacher.helsinki.fi/app/locallog.html'
               }
             }
           }
@@ -339,10 +340,12 @@ module.exports = function (grunt) {
         }]
       }
     },
-    exec : {
+    exec: {
       bowerInstall: 'bower install'
     }
   });
+
+  grunt.loadNpmTasks('gruntify-eslint');
 
   grunt.registerTask('serve', [
     'clean:server',
