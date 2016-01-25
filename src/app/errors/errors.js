@@ -20,15 +20,16 @@ angular.module('opintoniErrors', [])
     $stateProvider
       .state('error', {
         abstract: true,
-        parent : 'getState',
-        url : '/error',
+        parent: 'getState',
+        url: '/error',
         views: {
-          'content@' : {
+          'content@': {
             templateUrl: 'app/partials/errorPages/_error.html',
-            controller : ['$scope', 'pageHeaderLinks', 'state', function($scope, pageHeaderLinks, state) {
-              $scope.pageHeaderLinks = pageHeaderLinks;
-              $scope.currentStateName = state;
-            }]
+            controller: ['$scope', 'pageHeaderLinks', 'state',
+                        function($scope, pageHeaderLinks, state) {
+                          $scope.pageHeaderLinks = pageHeaderLinks;
+                          $scope.currentStateName = state;
+                        }]
           }
         }
       })
@@ -36,7 +37,7 @@ angular.module('opintoniErrors', [])
         parent: 'error',
         url: '/accessdenied',
         templateUrl: 'app/partials/errorPages/_error.accessdenied.html',
-        controller : function($scope, Configuration) {
+        controller: function($scope, Configuration) {
           $scope.loginUrls = {
             loginUrlStudent: Configuration.studentAppUrl,
             loginUrlTeacher: Configuration.teacherAppUrl

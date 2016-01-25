@@ -54,6 +54,6 @@ describe('Changing language', function() {
 
   afterEach(function() {
     browser.driver.manage().deleteAllCookies();
-  })
+  });
 
 });

@@ -30,7 +30,9 @@ angular.module('filters.search', [])
         return searchResults;
       } else {
         return _.filter(searchResults, function(searchResult) {
-          return !_.isNull(searchResult.link) ? searchResult.link.indexOf(selectedResultSource) !== -1 : false;
+          return !_.isNull(searchResult.link) ?
+                 searchResult.link.indexOf(selectedResultSource) !== -1 :
+                 false;
         });
       }
     };

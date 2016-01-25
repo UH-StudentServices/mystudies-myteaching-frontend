@@ -31,6 +31,6 @@ angular.module('resources.courses', [])
     return {
       getStudentCourses: _.partial(getCourses, studentCoursesResource),
       getTeacherCourses: _.partial(getCourses, teacherCoursesResource)
-    }
+    };
 
   });

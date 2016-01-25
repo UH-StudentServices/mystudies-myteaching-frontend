@@ -21,10 +21,16 @@ angular.module('resources.search', [])
 
   .factory('SearchResource', function SearchResource($resource) {
     var searchResource = $resource('/api/private/v1/search?searchTerm=:searchTerm', {}, {
-        search: {method: 'GET', isArray: true},
-        searchCategory: {url: '/api/private/v1/search/category?searchTerm=:searchTerm', method: 'GET', isArray: true}
+      search: {
+        method: 'GET',
+        isArray: true
+      },
+      searchCategory: {
+        url: '/api/private/v1/search/category?searchTerm=:searchTerm',
+        method: 'GET',
+        isArray: true
       }
-    );
+    });
 
     function search(searchTerm) {
       return searchResource.search({searchTerm: searchTerm}).$promise;
@@ -37,5 +43,5 @@ angular.module('resources.search', [])
     return {
       search: search,
       searchCategory: searchCategory
-    }
+    };
   });

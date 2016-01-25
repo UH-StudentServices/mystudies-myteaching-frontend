@@ -55,6 +55,7 @@ angular.module('resources.httpInterceptor', ['services.state'])
 
     function redirectToLogin() {
       var state = getStateFromDomain();
+
       if (!state || state === 'opintoni') {
         window.location.href = Configuration.loginUrlStudent;
       } else if (state === 'opetukseni') {

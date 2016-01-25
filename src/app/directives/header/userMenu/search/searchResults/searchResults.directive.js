@@ -52,19 +52,19 @@ angular.module('directives.searchResults', [
 
         $scope.categories = function categories() {
           return Object.keys($scope.resultsBySource);
-        }
+        };
 
         $scope.categoryClasses = function categoryClasses(category) {
           return {
             active: $scope.selectedCategory === category,
             clickable: $scope.selectedCategory !== category
           };
-        }
+        };
 
         $scope.selectCategory = function selectCategory(category) {
           $scope.selectedCategory = category;
           $scope.results = $scope.resultsBySource[category];
-        }
+        };
 
         $scope.close = function() {
           $scope.showResults = false;
@@ -77,5 +77,5 @@ angular.module('directives.searchResults', [
           }
         });
       }
-    }
+    };
   });

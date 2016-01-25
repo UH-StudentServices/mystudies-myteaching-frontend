@@ -18,11 +18,11 @@
 angular.module('directives.usefulLinks.title', [])
   .directive('usefulLinkTitle', function() {
     return {
-      restrict : 'E',
-      templateUrl : 'app/directives/usefulLinks/usefulLinks.title.html',
-      scope : {
-        model : '=',
-        enterFn : '='
+      restrict: 'E',
+      templateUrl: 'app/directives/usefulLinks/usefulLinks.title.html',
+      scope: {
+        model: '=',
+        enterFn: '='
       }
-    }
+    };
   });

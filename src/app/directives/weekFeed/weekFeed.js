@@ -36,13 +36,14 @@ angular.module('directives.weekFeed', [
 
   .constant('FeedItemSortCondition', {
     'NONE': 'NONE',
-    'START_DATE_ASC' : 'START_DATE_ASC'
+    'START_DATE_ASC': 'START_DATE_ASC'
   })
 
   .factory('Tabs', function($filter, FeedItemTimeCondition, FeedItemSortCondition) {
 
     function getItems(items, feedItemTimeCondition, feedItemSortCondition) {
       var filteredFeedItems = $filter('filterFeedItems')(items, feedItemTimeCondition);
+
       return $filter('sortFeedItems')(items, feedItemSortCondition);
     }
 
@@ -51,36 +52,40 @@ angular.module('directives.weekFeed', [
         key: 'UPCOMING_EVENTS',
         translateKey: 'weekFeed.timetable',
         getItems: function(courses, events) {
-          return getItems(events, FeedItemTimeCondition.UPCOMING, FeedItemSortCondition.NONE)
+          return getItems(events, FeedItemTimeCondition.UPCOMING, FeedItemSortCondition.NONE);
         },
-        showFirstItemImage : true
+        showFirstItemImage: true
       },
       'COURSES': {
         key: 'COURSES',
         translateKey: 'general.courses',
         getItems: function(courses, events) {
-          return getItems(_.filter(courses, { isExam: false }), FeedItemTimeCondition.ALL, FeedItemSortCondition.NONE);
+          return getItems(_.filter(courses, {isExam: false}),
+            FeedItemTimeCondition.ALL, FeedItemSortCondition.NONE);
         }
       },
       'STUDENT_EXAMS': {
         key: 'STUDENT_EXAMS',
         translateKey: 'general.exams',
         getItems: function(courses, events) {
-          return getItems(_.filter(events, {type: 'EXAM'}), FeedItemTimeCondition.UPCOMING, FeedItemSortCondition.NONE);
+          return getItems(_.filter(events, {type: 'EXAM'}),
+            FeedItemTimeCondition.UPCOMING, FeedItemSortCondition.NONE);
         }
       },
       'TEACHER_EXAMS': {
         key: 'TEACHER_EXAMS',
         translateKey: 'general.exams',
         getItems: function(courses, events) {
-          return getItems(_.filter(courses, { isExam: true }), FeedItemTimeCondition.UPCOMING, FeedItemSortCondition.NONE);
+          return getItems(_.filter(courses, {isExam: true}),
+            FeedItemTimeCondition.UPCOMING, FeedItemSortCondition.NONE);
         }
       },
       'CURRENT_TEACHER_COURSES': {
         key: 'CURRENT_TEACHER_COURSES',
         translateKey: 'general.teaching',
         getItems: function(courses, events) {
-          return getItems(_.filter(courses, { isExam: false }), FeedItemTimeCondition.CURRENT, FeedItemSortCondition.START_DATE_ASC);
+          return getItems(_.filter(courses, {isExam: false}),
+            FeedItemTimeCondition.CURRENT, FeedItemSortCondition.START_DATE_ASC);
         }
       },
       'PAST_TEACHER_COURSES': {
@@ -118,7 +123,6 @@ angular.module('directives.weekFeed', [
 
   .filter('filterFeedItems', function(FeedItemTimeCondition) {
     return function(items, filterType) {
-
       var nowMoment = moment.utc();
 
       switch (filterType) {
@@ -130,16 +134,21 @@ angular.module('directives.weekFeed', [
           });
         case FeedItemTimeCondition.CURRENT:
           return _.filter(items, function(item) {
-            var startDate = item.startDate;
-            var endDate = item.endDate;
-            return nowMoment.isBetween(startDate, endDate) || nowMoment.isSame(startDate) || nowMoment.isSame(endDate);
+            var startDate = item.startDate,
+                endDate = item.endDate;
+
+            return nowMoment.isBetween(startDate, endDate) ||
+              nowMoment.isSame(startDate) ||
+              nowMoment.isSame(endDate);
           });
         case FeedItemTimeCondition.PAST:
           return _.filter(items, function(item) {
             return nowMoment.isAfter(item.endDate);
           });
+        default:
+          // FIXME: error, anyone?
       }
-    }
+    };
   })
 
   .filter('sortFeedItems', function(FeedItemSortCondition) {
@@ -151,17 +160,37 @@ angular.module('directives.weekFeed', [
           return _.sortBy(items, function(item) {
             return item.startDate.unix();
           });
+        default:
+          // FIXME: error, anyone?
       }
-    }
+    };
   })
 
   .constant('WeekFeedMessageKeys', {
-    "UPCOMING_EVENTS": {info: "weekFeed.noUpcomingEvents", error: "weekFeed.errors.errorLoadingFutureEvents"},
-    "COURSES": {info: "weekFeed.noCourses", error: "weekFeed.errors.errorLoadingCourses"},
-    "STUDENT_EXAMS": {info: "weekFeed.noExams", error: "weekFeed.errors.errorLoadingExams"},
-    "TEACHER_EXAMS": {info: "weekFeed.noExams", error: "weekFeed.errors.errorLoadingExams"},
-    "CURRENT_TEACHER_COURSES": {info: "weekFeed.noCurrentTeacherCourses", error: "weekFeed.errors.errorLoadingCourses"},
-    "PAST_TEACHER_COURSES": {info: "weekFeed.noPastTeacherCourses", error: "weekFeed.errors.errorLoadingCourses"}
+    'UPCOMING_EVENTS': {
+      info: 'weekFeed.noUpcomingEvents',
+      error: 'weekFeed.errors.errorLoadingFutureEvents'
+    },
+    'COURSES': {
+      info: 'weekFeed.noCourses',
+      error: 'weekFeed.errors.errorLoadingCourses'
+    },
+    'STUDENT_EXAMS': {
+      info: 'weekFeed.noExams',
+      error: 'weekFeed.errors.errorLoadingExams'
+    },
+    'TEACHER_EXAMS': {
+      info: 'weekFeed.noExams',
+      error: 'weekFeed.errors.errorLoadingExams'
+    },
+    'CURRENT_TEACHER_COURSES': {
+      info: 'weekFeed.noCurrentTeacherCourses',
+      error: 'weekFeed.errors.errorLoadingCourses'
+    },
+    'PAST_TEACHER_COURSES': {
+      info: 'weekFeed.noPastTeacherCourses',
+      error: 'weekFeed.errors.errorLoadingCourses'
+    }
   })
 
   .directive('weekFeed', function(
@@ -184,22 +213,27 @@ angular.module('directives.weekFeed', [
       },
       link: function($scope) {
         var currentStateName = StateService.getRootStateName();
+
         $scope.State = State;
         $scope.Tabs = Tabs;
         $scope.tabs = [];
         $scope.feedItems = [];
         $scope.numberOfVisibleItems = 5;
 
-        _.each(TabConfiguration[currentStateName], function(tabKey){
+        _.each(TabConfiguration[currentStateName], function(tabKey) {
           $scope.tabs.push(Tabs[tabKey]);
         });
 
-        $scope.selectedTab = _.find($scope.tabs, { key: UserPreferencesService.getPreferences().selectedTab }) || $scope.tabs[0];
+        $scope.selectedTab = _.find($scope.tabs, {
+          key: UserPreferencesService.getPreferences().selectedTab
+        }) || $scope.tabs[0];
 
         $scope.feedItems = $scope.selectedTab.getItems($scope.courses, $scope.events);
 
-        $scope.header = $filter('translate')(currentStateName === State.MY_STUDIES ? 'weekFeed.nowStudying' : 'weekFeed.nowTeaching');
-  
+        $scope.header = $filter('translate')(currentStateName === State.MY_STUDIES ?
+          'weekFeed.nowStudying' :
+          'weekFeed.nowTeaching');
+
         $scope.selectTab = function selectTab(selectedTab) {
           $scope.numberOfVisibleItems = 5;
           $scope.selectedTab = selectedTab;
@@ -232,7 +266,6 @@ angular.module('directives.weekFeed', [
             'active': tab === $scope.selectedTab
           };
         };
-        
       }
     };
   });

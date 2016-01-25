@@ -23,21 +23,22 @@ angular.module('directives.usefulLinks.editableLink', [
 
   .constant('closeEditUsefulLinkEvent', 'EXIT_EDIT_USEFUL_LINK_EVENT')
 
-  .directive('editableUsefulLink', function($rootScope, closeEditUsefulLinkEvent, UsefulLinksResource, Focus) {
+  .directive('editableUsefulLink', function($rootScope, closeEditUsefulLinkEvent,
+                                            UsefulLinksResource, Focus) {
     return {
-      restrict : 'E',
-      replace : true,
-      templateUrl : 'app/directives/usefulLinks/usefulLinks.editableLink.html',
-      scope : {
-        usefulLink : '=',
-        editable : '='
+      restrict: 'E',
+      replace: true,
+      templateUrl: 'app/directives/usefulLinks/usefulLinks.editableLink.html',
+      scope: {
+        usefulLink: '=',
+        editable: '='
       },
-      link : function ($scope, element) {
-
+      link: function($scope, element) {
         function setFocusOnEdit() {
           Focus.storeFocus();
-          Focus.setFocus( element.find('input[ng-model="usefulLink.url"]'));
+          Focus.setFocus(element.find('input[ng-model="usefulLink.url"]'));
         }
+
         function setFocusOnSave() {
           Focus.revertFocus();
         }
@@ -52,7 +53,7 @@ angular.module('directives.usefulLinks.editableLink', [
             $rootScope.$broadcast(closeEditUsefulLinkEvent, $scope.usefulLink);
             setFocusOnEdit();
           }
-        }
+        };
 
         $scope.saveUsefulLink = function() {
           if($scope.usefulLink.url && $scope.usefulLink.description) {
@@ -63,7 +64,7 @@ angular.module('directives.usefulLinks.editableLink', [
                 exitEditUsefulLink();
               });
           }
-        }
+        };
 
         $rootScope.$on(closeEditUsefulLinkEvent, function(event, link) {
           if(link !== $scope.usefulLink) {
@@ -71,5 +72,5 @@ angular.module('directives.usefulLinks.editableLink', [
           }
         });
       }
-    }
+    };
   });

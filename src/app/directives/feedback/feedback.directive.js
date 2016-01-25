@@ -20,7 +20,8 @@ angular.module('directives.feedback', [
   'services.session',
   'services.state'])
 
-  .directive('feedback', function(FeedbackResource, $timeout, $window, SessionService, StateService, AnalyticsService) {
+  .directive('feedback', function(FeedbackResource, $timeout, $window, SessionService,
+                                  StateService, AnalyticsService) {
     return {
       restrict: 'E',
       replace: true,
@@ -61,11 +62,12 @@ angular.module('directives.feedback', [
               })
               .then(function(faculty) {
                 var insertFeedbackRequest = {};
+
                 insertFeedbackRequest.content = $scope.content;
                 insertFeedbackRequest.metadata = {
-                  "userAgent": $window.navigator.userAgent,
-                  "faculty" : faculty,
-                  "state" : StateService.getRootStateName()};
+                  'userAgent': $window.navigator.userAgent,
+                  'faculty': faculty,
+                  'state': StateService.getRootStateName()};
                 insertFeedbackRequest.email = $scope.email;
                 return insertFeedbackRequest;
               })
@@ -78,5 +80,5 @@ angular.module('directives.feedback', [
           }
         };
       }
-    }
+    };
   });

@@ -32,6 +32,6 @@ angular.module('resources.portfolio', [])
     return {
       createPortfolio: createPortfolio,
       getPortfolio: getPortfolio
-    }
+    };
 
   });

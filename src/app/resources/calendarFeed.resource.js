@@ -22,9 +22,9 @@ angular.module('resources.calendarFeed', [])
     var calendarFeedResource = $resource('/api/private/v1/calendar');
 
     return {
-      getCalendarFeed : calendarFeedResource.get,
-      saveCalendarFeed : calendarFeedResource.save,
-      deleteCalendarFeed : calendarFeedResource.delete
-    }
+      getCalendarFeed: calendarFeedResource.get,
+      saveCalendarFeed: calendarFeedResource.save,
+      deleteCalendarFeed: calendarFeedResource.delete
+    };
 
   });

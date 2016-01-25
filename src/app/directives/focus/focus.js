@@ -19,7 +19,6 @@
 
 angular.module('directives.focus', [])
   .directive('focus', function($timeout) {
-
     return {
       restrict: 'A',
       link: function($scope, element, attrs) {
@@ -30,11 +29,11 @@ angular.module('directives.focus', [])
                 // Checks whether the element is visible. We only
                 // want to focus to an element that is visible.
                 if (element[0].offsetParent !== null) {
-                  element[0].focus()
+                  element[0].focus();
                 }
               }, 200);
             }
           });
       }
-    }
+    };
   });

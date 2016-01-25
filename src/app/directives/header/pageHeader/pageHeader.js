@@ -22,7 +22,7 @@ angular.module('directives.pageHeader', ['constants.externalLinks'])
     return {
       restrict: 'E',
       templateUrl: 'app/directives/header/pageHeader/page_header.html',
-      link : function($scope) {
+      link: function($scope) {
         $scope.pageHeaderLinks = pageHeaderLinks;
         $scope.primaryLinks = primaryLinks;
       }

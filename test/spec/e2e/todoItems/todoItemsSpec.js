@@ -15,7 +15,7 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-describe('Todo items', function(){
+describe('Todo items', function() {
 
   var util = require('../util');
   var _ = require('lodash');
@@ -28,7 +28,7 @@ describe('Todo items', function(){
   var newTodoItemChecked = newTodoItemSelector.element(by.css('.done .todo-action.hy-done'));
   var newTodoItemRemoveSelector = newTodoItemSelector.element(by.css('.todo-action.hy-remove'));
 
-  it('Is possible to add a new todo item and mark it as checked and remove it.', function(){
+  it('Is possible to add a new todo item and mark it as checked and remove it.', function() {
 
     util.loginStudent();
 
@@ -49,6 +49,6 @@ describe('Todo items', function(){
     util.waitUntilNotPresent(newTodoItemSelector);
 
     expect(newTodoItemSelector.isPresent()).toEqual(false);
-  })
+  });
 
 });

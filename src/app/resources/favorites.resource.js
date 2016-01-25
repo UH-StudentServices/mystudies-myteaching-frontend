@@ -19,11 +19,11 @@
 
 angular.module('resources.favorites', [])
   .factory('FavoritesResource', function($resource) {
-    var favoritesResource = $resource('/api/private/v1/favorites', {'id' : '@id'}, {
+    var favoritesResource = $resource('/api/private/v1/favorites', {'id': '@id'}, {
       saveRSSFavorite: {method: 'POST', url: '/api/private/v1/favorites/rss'},
       saveLinkFavorite: {method: 'POST', url: '/api/private/v1/favorites/link'},
       saveUnicafeFavorite: {method: 'POST', url: '/api/private/v1/favorites/unicafe'},
-      updateUnicafeFavorite : {method: 'PUT', url: '/api/private/v1/favorites/unicafe/:id'},
+      updateUnicafeFavorite: {method: 'PUT', url: '/api/private/v1/favorites/unicafe/:id'},
       saveUnisportFavorite: {method: 'POST', url: '/api/private/v1/favorites/unisport'},
       saveTwitterFavorite: {method: 'POST', url: '/api/private/v1/favorites/twitter'},
       updateFavoriteOrder: {method: 'POST', url: '/api/private/v1/favorites/order', isArray: true},
@@ -70,7 +70,7 @@ angular.module('resources.favorites', [])
     }
 
     function deleteFavorite(favoriteId) {
-      return favoritesResource.deleteFavorite({id: favoriteId}).$promise
+      return favoritesResource.deleteFavorite({id: favoriteId}).$promise;
     }
 
     return {
@@ -83,5 +83,5 @@ angular.module('resources.favorites', [])
       saveTwitterFavorite: saveTwitterFavorite,
       updateFavoriteOrder: updateFavoriteOrder,
       deleteFavorite: deleteFavorite
-    }
+    };
   });

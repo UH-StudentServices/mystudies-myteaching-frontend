@@ -78,13 +78,15 @@ angular.module('services.userSettings', ['resources.userSettings'])
 
     function markStudentTourShown() {
       return getUserSettings().then(function(settings) {
-        return UserSettingsResource.updateUserSettings(_.assign(settings, {showMyStudiesTour: false}));
+        return UserSettingsResource.updateUserSettings(_.assign(settings,
+          {showMyStudiesTour: false}));
       });
     }
 
     function markTeacherTourShown() {
       return getUserSettings().then(function(settings) {
-        return UserSettingsResource.updateUserSettings(_.assign(settings, {showMyTeachingTour: false}));
+        return UserSettingsResource.updateUserSettings(_.assign(settings,
+          {showMyTeachingTour: false}));
       });
     }
 
@@ -100,5 +102,5 @@ angular.module('services.userSettings', ['resources.userSettings'])
       showMyTeachingTour: showMyTeachingTour,
       markStudentTourShown: markStudentTourShown,
       markTeacherTourShown: markTeacherTourShown
-    }
+    };
   });

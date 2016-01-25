@@ -19,8 +19,8 @@
 
 angular.module('resources.events', ['services.eventUri', 'utils.moment'])
 
-  .factory('EventsResource', function Attainments($resource, EventUriService, dateArrayToUTCMomentObject) {
-
+  .factory('EventsResource', function Attainments($resource, EventUriService,
+                                                  dateArrayToUTCMomentObject) {
     var studentEventsResource = $resource('/api/private/v1/students/enrollments/events');
     var teacherEventsResource = $resource('/api/private/v1/teachers/enrollments/events');
 

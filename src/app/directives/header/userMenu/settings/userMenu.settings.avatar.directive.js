@@ -15,11 +15,11 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.userMenu.settings.avatar', ['directives.imgLoad', 'directives.uploadImage'])
+angular.module('directives.userMenu.settings.avatar', ['directives.imgLoad',
+                                                       'directives.uploadImage'])
   .constant('Camera', {
     START: 'START_WEBCAM',
     STOP: 'STOP_WEBCAM'
-
   })
 
   .directive('avatar', function($modal,
@@ -63,6 +63,7 @@ angular.module('directives.userMenu.settings.avatar', ['directives.imgLoad', 'di
 
         $scope.takeSnapshot = function() {
           var videoElement = $scope.avatarChannel.video;
+
           $scope.$broadcast(startImageCropperEvent, videoElement, ImageSourceMedia.WEBCAM);
         };
 
@@ -80,12 +81,12 @@ angular.module('directives.userMenu.settings.avatar', ['directives.imgLoad', 'di
             AnalyticsService.trackAddAvatar(imageSourceMedia);
             reset();
             $scope.$emit(userAvatarUpdatedEvent);
-          })
-        }
+          });
+        };
 
         $scope.cancelUpload = function() {
           reset();
         };
       }
-    }
+    };
   });

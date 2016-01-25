@@ -27,9 +27,9 @@ angular.module('directives.swipe', [])
         swipeObject: '='
       },
       link: function($scope, el) {
-
         if (Modernizr.touch) {
           var mc = new Hammer(el[0]);
+
           mc.get('swipe').set({velocity: 0.15});
 
           mc.on('swipeleft', function() {
@@ -41,5 +41,5 @@ angular.module('directives.swipe', [])
           });
         }
       }
-    }
+    };
   });

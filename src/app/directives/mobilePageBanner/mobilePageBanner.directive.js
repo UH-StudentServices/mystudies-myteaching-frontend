@@ -37,5 +37,5 @@ angular.module('directives.mobilePageBanner', [
           $scope.newsList = data;
         });
       }
-    }
+    };
   });

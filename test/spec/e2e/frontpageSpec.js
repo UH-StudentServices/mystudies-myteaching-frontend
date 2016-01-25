@@ -17,7 +17,7 @@
 
 var util = require('./util');
 
-describe('Frontpage', function(){
+describe('Frontpage', function() {
 
   function siteNameFinder(siteName) {
     return element(by.cssContainingText('h1', siteName));

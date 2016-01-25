@@ -16,16 +16,16 @@
  */
 
 angular.module('resources.favorites.rss', [])
-  
-  .factory('RSSResource', function($resource){
+
+  .factory('RSSResource', function($resource) {
 
     var favoritesResource = $resource('/api/private/v1/favorites/rss');
 
     function get(url, numberOfItems) {
-      return favoritesResource.get({url : url, limit : numberOfItems}).$promise;
+      return favoritesResource.get({url: url, limit: numberOfItems}).$promise;
     }
 
     return {
       get: get
-    }
+    };
   });

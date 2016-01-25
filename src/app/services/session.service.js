@@ -61,7 +61,7 @@ angular.module('services.session', [
       return getSession().then(function(session) {
         return session.faculty ? session.faculty.code : undefined;
       });
-    }
+    };
 
     return {
       isInRole: isInRole,

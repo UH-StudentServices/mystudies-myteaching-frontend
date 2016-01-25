@@ -15,35 +15,35 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-describe('UnicafeOpenDaysParser', function(){
+describe('UnicafeOpenDaysParser', function() {
 
   var UnicafeOpenDaysParser;
 
   var unicafeDataRegular = {
-    information : {
-      business : {
-        exception : [
-          {from : '1.6',
-           to : '30.8',
-           closed : false}],
-        regular : [
-          {when : ['Ma', 'Ti', 'Ke', 'To', false, false, false]},
-          {when : ['previous', 'previous', 'previous', 'previous', 'Pe', false, false]}
+    information: {
+      business: {
+        exception: [
+          {from: '1.6',
+           to: '30.8',
+           closed: false}],
+        regular: [
+          {when: ['Ma', 'Ti', 'Ke', 'To', false, false, false]},
+          {when: ['previous', 'previous', 'previous', 'previous', 'Pe', false, false]}
         ]
       }
     }
   };
 
   var unicafeDataException = {
-    information : {
-      business : {
-        exception : [
-          {from : '1.6',
-            to : '30.8',
-            closed : true}],
-        regular : [
-          {when : ['Ma', 'Ti', 'Ke', 'To', false, false, false]},
-          {when : ['previous', 'previous', 'previous', 'previous', 'Pe', false, false]}
+    information: {
+      business: {
+        exception: [
+          {from: '1.6',
+            to: '30.8',
+            closed: true}],
+        regular: [
+          {when: ['Ma', 'Ti', 'Ke', 'To', false, false, false]},
+          {when: ['previous', 'previous', 'previous', 'previous', 'Pe', false, false]}
         ]
       }
     }
@@ -71,18 +71,20 @@ describe('UnicafeOpenDaysParser', function(){
   }));
 
   it('Should show the restaurant is regularly open from monday to friday', function() {
-    _.each([monday, tuesday, wednesday, thursday, friday], function (m) {
+    _.each([monday, tuesday, wednesday, thursday, friday], function(m) {
       expect(UnicafeOpenDaysParser.isRestaurantClosed(unicafeDataRegular, m)).toEqual(false);
-    })
+    });
   });
 
   it('Should show the restaurant is regularly closed from saturday to sunday', function() {
-    _.each([saturday, sunday], function(d){
-      expect(UnicafeOpenDaysParser.isRestaurantClosed(unicafeDataRegular, moment(d, 'DD.M'))).toEqual(true);
-    })
+    _.each([saturday, sunday], function(d) {
+      expect(UnicafeOpenDaysParser.isRestaurantClosed(unicafeDataRegular, moment(d, 'DD.M')))
+        .toEqual(true);
+    });
   });
 
   it('Should show the restaurant is closed by exception during 1.6 - 30.8', function() {
-    expect(UnicafeOpenDaysParser.isRestaurantClosed(unicafeDataException, moment('20.8', 'DD.M'))).toEqual(true);
+    expect(UnicafeOpenDaysParser.isRestaurantClosed(unicafeDataException, moment('20.8', 'DD.M')))
+      .toEqual(true);
   });
 });

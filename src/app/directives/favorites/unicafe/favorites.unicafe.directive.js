@@ -20,42 +20,50 @@ angular.module('directives.favorites.unicafe', [
   'resources.favorites.unicafe'
 ])
 
-  .factory('UnicafeOpenDaysParser', function(){
+  .factory('UnicafeOpenDaysParser', function() {
     function isRestaurantClosed(menuData, nowMoment) {
       var closed = false;
+
       try {
-        var exception = menuData.information.business.exception;
-        var reqular = menuData.information.business.regular;
-        var toDay = _.capitalize(nowMoment.locale('FI').format('dd'));
+        var exception = menuData.information.business.exception,
+            reqular = menuData.information.business.regular,
+            toDay = _.capitalize(nowMoment.locale('FI').format('dd'));
 
         if(exception && exception.length > 0) {
           closed = closed || _.some(exception, function(e) {
             return e.closed && nowMoment.isBetween(moment(e.from, 'DD.M'), moment(e.to, 'DD.M'));
           });
         }
+
         if(reqular && reqular.length > 0) {
-          closed = closed || _.every(_.flatten(_.map(reqular, 'when')), function(d) {return d !== toDay})
+          closed = closed || _.every(_.flatten(_.map(reqular, 'when')), function(d) {
+            return d !== toDay;
+          });
         }
-      } catch(e) {}
+      } catch(e) {
+        //wtf?
+      }
+
       return closed;
     }
 
     return {
-      isRestaurantClosed : isRestaurantClosed
-    }
-
+      isRestaurantClosed: isRestaurantClosed
+    };
   })
 
-  .directive('favoritesUnicafe', function($cookies, UnicafeResource, FavoritesResource, UnicafeOpenDaysParser) {
+  .directive('favoritesUnicafe', function($cookies, UnicafeResource,
+                                          FavoritesResource, UnicafeOpenDaysParser) {
     return {
-      restrict : 'E',
+      restrict: 'E',
       templateUrl: 'app/directives/favorites/unicafe/favorites.unicafe.html',
       replace: true,
-      scope : {
-        data : '='
+      scope: {
+        data: '='
       },
-      link : function($scope) {
+      link: function($scope) {
         var langKey = $cookies.get('NG_TRANSLATE_LANG_KEY').split('"').join('');
+
         $scope.languageSuffix = langKey !== 'fi' ? '_' + langKey : '';
         $scope.restaurantOptions = [];
         $scope.selectedRestaurant = $scope.data.restaurantId;
@@ -63,13 +71,13 @@ angular.module('directives.favorites.unicafe', [
 
         $scope.isSelected = function isSelected(id) {
           return id == $scope.selectedRestaurant;
-        }
+        };
 
         $scope.restaurantSelected = function restaurantSelected(restaurant) {
           $scope.selectedRestaurant = restaurant;
           $scope.loading = true;
           FavoritesResource
-            .updateUnicafeFavorite({id : $scope.data.id, restaurantId : restaurant})
+            .updateUnicafeFavorite({id: $scope.data.id, restaurantId: restaurant})
             .then(_.partial(updateMenu, restaurant));
         };
 
@@ -80,22 +88,31 @@ angular.module('directives.favorites.unicafe', [
             $scope.menu = _.find(menuData.data, function(data) {
               return moment().diff(moment(data.date, 'DD.MM'), 'days') === 0;
             }).data;
-          }).finally(function getMenuFinally(){
+          }).finally(function getMenuFinally() {
             $scope.loading = false;
           });
         }
 
         updateMenu($scope.data.restaurantId);
 
-        UnicafeResource.getRestaurantOptions().then(function getRestaurantsSuccess(restaurantOptions) {
+        UnicafeResource.getRestaurantOptions().then(function(restaurantOptions) {
           _.each(restaurantOptions, function(area) {
-            $scope.restaurantOptions.push({ id: 0, name: area.name, isDisabled: true, selected: false });
+            $scope.restaurantOptions.push({
+              id: 0,
+              name: area.name,
+              isDisabled: true,
+              selected: false
+            });
+
             _.each(area.restaurants, function(restaurant) {
-              $scope.restaurantOptions.push({ id: restaurant.id, name: restaurant.name, isDisabled: false});
+              $scope.restaurantOptions.push({
+                id: restaurant.id,
+                name: restaurant.name,
+                isDisabled: false
+              });
             });
           });
         });
-
       }
-    }
+    };
   });

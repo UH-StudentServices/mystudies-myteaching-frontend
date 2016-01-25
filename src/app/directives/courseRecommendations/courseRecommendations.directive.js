@@ -16,19 +16,16 @@
  */
 
 angular.module('directives.courseRecommendations', ['resources.courseRecommendations'])
-
-
 .directive('courseRecommendations', function() {
-    return {
-      restrict : 'E',
-      replace : true,
-      templateUrl: 'app/directives/courseRecommendations/courseRecommendations.html',
-      controller: function($scope, CourseRecommendationsResource) {
-
-        CourseRecommendationsResource.getCourseRecommendations().then(function(courseRecommendations) {
+  return {
+    restrict: 'E',
+    replace: true,
+    templateUrl: 'app/directives/courseRecommendations/courseRecommendations.html',
+    controller: function($scope, CourseRecommendationsResource) {
+      CourseRecommendationsResource.getCourseRecommendations()
+        .then(function(courseRecommendations) {
           $scope.courseRecommendations = courseRecommendations;
         });
-
-      }
     }
-  })
+  };
+});

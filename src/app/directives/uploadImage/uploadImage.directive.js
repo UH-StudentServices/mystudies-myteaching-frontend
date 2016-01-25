@@ -20,16 +20,17 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
   .constant('MaxImageDimensionsDesktop', 2000)
   .constant('MaxImageDimensionsMobile', 1000)
   .constant('ImageSourceMedia', {
-    WEBCAM : 'webcam',
-    FILE_SYSTEM : 'fileSystem'
+    WEBCAM: 'webcam',
+    FILE_SYSTEM: 'fileSystem'
   })
 
-  .factory('MaxImageDimensions', function(BrowserUtil, MaxImageDimensionsDesktop, MaxImageDimensionsMobile) {
+  .factory('MaxImageDimensions', function(BrowserUtil, MaxImageDimensionsDesktop,
+                                          MaxImageDimensionsMobile) {
     return {
-      get : function() {
+      get: function() {
         return BrowserUtil.isMobile() ?  MaxImageDimensionsMobile : MaxImageDimensionsDesktop;
       }
-    }
+    };
   })
 
   .constant('startImageCropperEvent', 'startImageCropperEvent')
@@ -37,36 +38,36 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
   .service('ResizeImage', function(MaxImageDimensions) {
 
     function getDimensions(image) {
-      var width = image.videoWidth ? image.videoWidth : image.width;
-      var height = image.videoHeight ? image.videoHeight : image.height;
-
-      var dimensions = {width : width, height : height};
-
-      var currentMaxDimension = Math.max(width, height);
-      var maxImageDimensions = MaxImageDimensions.get();
+      var width = image.videoWidth ? image.videoWidth : image.width,
+          height = image.videoHeight ? image.videoHeight : image.height,
+          dimensions = {width: width, height: height},
+          currentMaxDimension = Math.max(width, height),
+          maxImageDimensions = MaxImageDimensions.get();
 
       if(currentMaxDimension > maxImageDimensions) {
         var factor = maxImageDimensions / currentMaxDimension;
+
         dimensions.resizedWidth = width * factor;
         dimensions.resizedHeight = height * factor;
       }
+
       return dimensions;
     }
 
     return function(image) {
-      var dimensions = getDimensions(image);
-      var canvas = document.createElement("canvas");
-
-      var sWidth = dimensions.width;
-      var sHeight = dimensions.height;
-      var dWidth = dimensions.resizedWidth ? dimensions.resizedWidth : dimensions.width;
-      var dHeight = dimensions.resizedHeight ? dimensions.resizedHeight : dimensions.height;
+      var dimensions = getDimensions(image),
+          canvas = document.createElement('canvas'),
+          sWidth = dimensions.width,
+          sHeight = dimensions.height,
+          dWidth = dimensions.resizedWidth ? dimensions.resizedWidth : dimensions.width,
+          dHeight = dimensions.resizedHeight ? dimensions.resizedHeight : dimensions.height;
 
       canvas.width = dWidth;
       canvas.height = dHeight;
       canvas.getContext('2d').drawImage(image, 0, 0, sWidth, sHeight, 0, 0, dWidth, dHeight);
+
       return canvas.toDataURL();
-    }
+    };
   })
 
   .directive('uploadImage', function($modal,
@@ -80,14 +81,13 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/uploadImage/uploadImage.html',
-      scope : {
-        uploadCallback : '=',
-        cancelCallback : '=',
-        cropperWidth : '=',
-        cropperHeight : '='
+      scope: {
+        uploadCallback: '=',
+        cancelCallback: '=',
+        cropperWidth: '=',
+        cropperHeight: '='
       },
       link: function($scope) {
-
         $scope.$on(startImageCropperEvent, function(event, image, imageSourceMedia) {
           openImageCropper(image, imageSourceMedia);
         });
@@ -103,29 +103,37 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
             windowClass: 'crop-image-modal',
             resolve: {
               image: ['$q', function($q) {
-                var deferred = $q.defer();
+                var deferred = $q.defer(),
+                    img;
+
                 if(typeof croppedImage === 'string') {
-                  var img = new Image();
+                  img = new Image();
+
                   img.src = croppedImage;
                   img.onload = function() {
-                    deferred.resolve(ResizeImage(img));
-                  }
+                    deferred.resolve(new ResizeImage(img));
+                  };
                 } else {
-                  deferred.resolve(ResizeImage(croppedImage));
+                  deferred.resolve(new ResizeImage(croppedImage));
                 }
+
                 return deferred.promise;
               }],
-              imageSourceMedia : function() {
+              imageSourceMedia: function() {
                 return imageSourceMedia;
               },
-              cropDimensions : function() {
+              cropDimensions: function() {
                 return {
-                  width : $scope.cropperWidth ? $scope.cropperWidth : 510,
-                  height : $scope.cropperHeight ? $scope.cropperHeight : 510
-                }
+                  width: $scope.cropperWidth ? $scope.cropperWidth : 510,
+                  height: $scope.cropperHeight ? $scope.cropperHeight : 510
+                };
               },
-              uploadCallback : function() {return $scope.uploadCallback },
-              cancelCallback : function() {return $scope.cancelCallback }
+              uploadCallback: function() {
+                return $scope.uploadCallback;
+              },
+              cancelCallback: function() {
+                return $scope.cancelCallback;
+              }
             }
           });
         }
@@ -140,7 +148,7 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
           var reader = new FileReader();
 
           reader.onload = function(event) {
-            openImageCropper(event.target.result, ImageSourceMedia.FILE_SYSTEM)
+            openImageCropper(event.target.result, ImageSourceMedia.FILE_SYSTEM);
           };
 
           reader.onerror = function(error) {
@@ -150,7 +158,7 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
           reader.readAsDataURL(file);
         };
       }
-    }
+    };
   })
 
   .controller('CropImageController', function($scope,
@@ -180,17 +188,19 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
       return angular.element('.crop-image > img');
     }
 
-    var cropBoxSquareWidth = $window.innerWidth > cropDimensions.width ? cropDimensions.width : $window.innerWidth;
-    var cropBoxSquareHeight = $window.innerHeight > cropDimensions.height ? cropDimensions.height :  $window.innerHeight;
-
-    var left = $window.innerWidth / 2 - cropBoxSquareWidth / 2;
-    var top = $window.innerHeight / 2 - cropBoxSquareHeight / 2;
+    var cropBoxSquareWidth = $window.innerWidth > cropDimensions.width ?
+          cropDimensions.width :
+          $window.innerWidth,
+        cropBoxSquareHeight = $window.innerHeight > cropDimensions.height ?
+          cropDimensions.height :
+          $window.innerHeight,
+        left = $window.innerWidth / 2 - cropBoxSquareWidth / 2,
+        top = $window.innerHeight / 2 - cropBoxSquareHeight / 2;
 
     $scope.message = {
-      key : 'upload.privacyMessage',
-      messageType : MessageTypes.INFO
-    }
-
+      key: 'upload.privacyMessage',
+      messageType: MessageTypes.INFO
+    };
 
     $scope.imgLoaded = function() {
       cropperElement().cropper({
@@ -208,7 +218,7 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
             height: cropBoxSquareHeight,
             left: left,
             top: top
-          })
+          });
         }
       });
     };
@@ -229,6 +239,5 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
     $scope.cancel = function() {
       closeCropper();
       cancelCallback();
-    }
-  })
-;
+    };
+  });

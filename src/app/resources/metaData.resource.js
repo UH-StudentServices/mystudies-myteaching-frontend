@@ -20,8 +20,8 @@ angular.module('resources.metaData', [])
   .factory('MetaDataResource', function($resource) {
 
     var metaDataResource = $resource('/api/private/v1/page-meta-data?url=:pageUrl', {}, {
-        getMetaData: {method: 'GET'}
-      }
+      getMetaData: {method: 'GET'}
+    }
     );
 
     function getMetaData(pageUrl) {
@@ -30,5 +30,5 @@ angular.module('resources.metaData', [])
 
     return {
       getMetaData: getMetaData
-    }
+    };
   });

@@ -79,6 +79,6 @@ angular.module('resources.userSettings', [])
       updateUserAvatar: updateUserAvatar,
       deleteUserAvatar: deleteUserAvatar,
       selectUserBackground: selectUserBackground
-    }
+    };
 
   });

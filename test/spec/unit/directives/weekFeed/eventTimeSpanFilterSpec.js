@@ -15,7 +15,7 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-describe('Event time span filter', function (){
+describe('Event time span filter', function() {
 
   var eventTimeSpanFilter;
 
@@ -25,38 +25,46 @@ describe('Event time span filter', function (){
     eventTimeSpanFilter = $filter('eventTimeSpan');
   }));
 
-  it('Will show startdate if dates are identical', inject(function($filter){
-    var startDate = moment([2014, 2, 12, 13, 40]);
-    var endDate = moment([2014, 2, 12, 13, 40]);
-    var result = eventTimeSpanFilter(startDate, endDate);
+  it('Will show startdate if dates are identical', inject(function($filter) {
+    var startDate = moment([2014, 2, 12, 13, 40]),
+        endDate = moment([2014, 2, 12, 13, 40]),
+        result = eventTimeSpanFilter(startDate, endDate);
+
     expect(result).toEqual('12.03.2014 13:40');
   }));
 
-  it('Will show startdate without hours if dates are identical and hours are not included', inject(function($filter){
-    var startDate = moment([2014, 2, 12]);
-    var endDate = moment([2014, 2, 12]);
-    var result = eventTimeSpanFilter(startDate, endDate);
-    expect(result).toEqual('12.03.2014');
-  }));
+  it('Will show startdate without hours if dates are identical and hours are not included',
+    inject(function($filter) {
+      var startDate = moment([2014, 2, 12]),
+          endDate = moment([2014, 2, 12]),
+          result = eventTimeSpanFilter(startDate, endDate);
 
-  it('Will show startdate with hours span if dates are identical with different hours', inject(function($filter){
-    var startDate = moment([2014, 2, 12, 13, 40]);
-    var endDate = moment([2014, 2, 12, 14, 40]);
-    var result = eventTimeSpanFilter(startDate, endDate);
-    expect(result).toEqual('12.03.2014 13:40 - 14:40');
-  }));
+      expect(result).toEqual('12.03.2014');
+    }));
 
-  it('Will show full time span if dates are not identical', inject(function($filter){
-    var startDate = moment([2014, 2, 12, 13, 40]);
-    var endDate = moment([2014, 2, 13, 15, 40]);
-    var result = eventTimeSpanFilter(startDate, endDate);
+  it('Will show startdate with hours span if dates are identical with different hours',
+    inject(function($filter) {
+      var startDate = moment([2014, 2, 12, 13, 40]),
+          endDate = moment([2014, 2, 12, 14, 40]),
+          result = eventTimeSpanFilter(startDate, endDate);
+
+      expect(result).toEqual('12.03.2014 13:40 - 14:40');
+    }));
+
+  it('Will show full time span if dates are not identical', inject(function($filter) {
+    var startDate = moment([2014, 2, 12, 13, 40]),
+        endDate = moment([2014, 2, 13, 15, 40]),
+        result = eventTimeSpanFilter(startDate, endDate);
+
     expect(result).toEqual('12.03.2014 13:40 - 13.03.2014 15:40');
   }));
 
-  it('Will show full time span without hours if dates are not identical and hours are not included', inject(function($filter){
-    var startDate = moment([2014, 2, 12]);
-    var endDate = moment([2014, 2, 13]);
-    var result = eventTimeSpanFilter(startDate, endDate);
-    expect(result).toEqual('12.03.2014 - 13.03.2014');
-  }));
+  it('Will show full time span without hours if dates are not identical and hours are not included',
+    inject(function($filter) {
+      var startDate = moment([2014, 2, 12]),
+          endDate = moment([2014, 2, 13]),
+          result = eventTimeSpanFilter(startDate, endDate);
+
+      expect(result).toEqual('12.03.2014 - 13.03.2014');
+    }));
 });

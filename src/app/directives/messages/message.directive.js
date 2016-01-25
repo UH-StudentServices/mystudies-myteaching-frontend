@@ -18,19 +18,19 @@
 angular.module('directives.message', [])
 
   .constant('MessageTypes', {
-    ERROR : 'error',
-    INFO : 'info',
-    STATUS : 'status'
+    ERROR: 'error',
+    INFO: 'info',
+    STATUS: 'status'
   })
 
   .directive('message', function() {
     return {
-      restrict : 'E',
+      restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/messages/message.html',
-      scope : {
-        message : '=',
-        close : '='
+      scope: {
+        message: '=',
+        close: '='
       }
-    }
+    };
   });

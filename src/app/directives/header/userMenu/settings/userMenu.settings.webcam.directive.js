@@ -33,8 +33,8 @@ angular.module('webcam', ['utils.browser'])
       },
       link: function postLink($scope, element) {
         var videoElem = null,
-          videoStream = null,
-          placeholder = null;
+            videoStream = null,
+            placeholder = null;
 
         $scope.config = $scope.config || {};
 
@@ -62,6 +62,7 @@ angular.module('webcam', ['utils.browser'])
             videoElem.mozSrcObject = stream;
           } else {
             var vendorURL = window.URL || window.webkitURL;
+
             videoElem.src = vendorURL.createObjectURL(stream);
           }
 
@@ -78,6 +79,7 @@ angular.module('webcam', ['utils.browser'])
         // called when any error happens
         var onFailure = function onFailure(err) {
           _removeDOMElement(placeholder);
+
           if (console && console.log) {
             console.log('The following error occured: ', err);
           }
@@ -113,6 +115,7 @@ angular.module('webcam', ['utils.browser'])
           }
 
           var mediaConstraint = {video: true, audio: false};
+
           navigator.getMedia(mediaConstraint, onSuccess, onFailure);
 
           /* Start streaming the webcam data when the video element can play

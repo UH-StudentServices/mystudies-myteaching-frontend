@@ -25,6 +25,7 @@ angular.module('services.userPreferences', [])
 
     function getPreferences() {
       var preferences = localStorageService.get(userPreferencesKey);
+
       return preferences ? angular.fromJson(preferences) : {};
     }
 
@@ -34,6 +35,7 @@ angular.module('services.userPreferences', [])
 
     function addProperty(key, value) {
       var preferences = getPreferences();
+
       preferences[key] = value;
       setPreferences(preferences);
     }
@@ -41,5 +43,5 @@ angular.module('services.userPreferences', [])
     return {
       getPreferences: getPreferences,
       addProperty: addProperty
-    }
+    };
   });

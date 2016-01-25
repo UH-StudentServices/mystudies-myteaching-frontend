@@ -32,5 +32,5 @@ angular.module('directives.avatarImage', ['services.state'])
           return $scope.imgSrc.indexOf('/api') === -1;
         };
       }
-    }
+    };
   });

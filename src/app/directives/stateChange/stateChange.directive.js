@@ -19,9 +19,11 @@ angular.module('directives.stateChange', [
   'services.state',
   'services.session'])
 
-  .service('StateChangeService', function(Role, SessionService, $q, localStorageService, State, $window) {
+  .service('StateChangeService', function(Role, SessionService, $q,
+                                          localStorageService, State, $window) {
     function isStateChangeAvailable() {
       var defer = $q.defer();
+
       SessionService.getSession().then(function getSessionSuccess(session) {
         if(session.roles.length > 1) {
           defer.resolve(true);
@@ -29,6 +31,7 @@ angular.module('directives.stateChange', [
           defer.resolve(false);
         }
       });
+
       return defer.promise;
     }
 
@@ -37,7 +40,7 @@ angular.module('directives.stateChange', [
     }
 
     function changeState(state) {
-      switch (state){
+      switch (state) {
         case State.MY_TEACHINGS:
           localStorageService.cookie.set('SESSION_ROLE', Role.TEACHER);
           changeView(State.MY_TEACHINGS);
@@ -54,17 +57,16 @@ angular.module('directives.stateChange', [
     }
 
     return {
-      isStateChangeAvailable : isStateChangeAvailable,
-      changeState : changeState
-    }
-
+      isStateChangeAvailable: isStateChangeAvailable,
+      changeState: changeState
+    };
   })
 
   .directive('stateChange', function(StateChangeService) {
     return {
-      restrict : 'A',
-      link : function($scope) {
-        $scope.changeState = StateChangeService.changeState
+      restrict: 'A',
+      link: function($scope) {
+        $scope.changeState = StateChangeService.changeState;
       }
-    }
-  })
+    };
+  });

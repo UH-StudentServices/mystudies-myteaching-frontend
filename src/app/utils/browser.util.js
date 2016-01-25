@@ -22,11 +22,10 @@ angular.module('utils.browser', [])
   .service('BrowserUtil', function($window) {
 
     function supportsCamera() {
-
-      navigator.getMedia = ( navigator.getUserMedia ||
-      navigator.webkitGetUserMedia ||
-      navigator.mozGetUserMedia ||
-      navigator.msGetUserMedia);
+      navigator.getMedia = navigator.getUserMedia ||
+        navigator.webkitGetUserMedia ||
+        navigator.mozGetUserMedia ||
+        navigator.msGetUserMedia;
 
       return navigator.getMedia ? true : false;
     }
@@ -43,5 +42,5 @@ angular.module('utils.browser', [])
       supportsCamera: supportsCamera,
       isMobile: isMobile,
       isMac: isMac
-    }
+    };
   });

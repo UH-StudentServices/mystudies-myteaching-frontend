@@ -15,14 +15,15 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-describe('RSS feed favorite', function(){
+describe('RSS feed favorite', function() {
 
   var util = require('../util');
   var feedUrl = 'http://www.helsinki.fi';
 
   var favoritesListElementFinder = element.all(by.repeater('favorite in favorites'));
   var addNewFavoriteButtonElementFinder = element(by.css('a.add-favorite-button'));
-  var selectRSSFavoriteTypeElementFinder = element(by.cssContainingText('.add-favorite-container a', 'RSS feed'));
+  var selectRSSFavoriteTypeElementFinder = element(
+    by.cssContainingText('.add-favorite-container a', 'RSS feed'));
   var searchRSSFeedElementFinder = element(by.css('.add-favorite-container'))
     .element(by.model('searchString'));
   var editButtonFinder = element(by.css('#favorites .edit-link'));
@@ -45,7 +46,7 @@ describe('RSS feed favorite', function(){
       util.waitUntilPresent(searchResultsFinder);
       firstSearchResultFinder.click();
       expect(favoritesListElementFinder.count()).toEqual(count + 1);
-    })
+    });
   });
 
   it('Is posssible to remove an RSS feed', function() {

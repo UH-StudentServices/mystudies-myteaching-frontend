@@ -20,6 +20,7 @@
     "Hammer": false,
     "inject": false,
     "it", false,
+    "jasmine", false,
     "Modernizr": false,
     "moment": false,
     "sprintf": false,

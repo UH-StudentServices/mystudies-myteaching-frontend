@@ -41,5 +41,5 @@ angular.module('services.news', ['resources.news'])
 
     return {
       getNews: getNews
-    }
+    };
   });

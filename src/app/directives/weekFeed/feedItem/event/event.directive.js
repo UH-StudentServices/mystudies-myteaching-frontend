@@ -21,17 +21,17 @@ angular.module('directives.weekFeed.feedItem.event',[
 
   .directive('event', function(LocationService, EventUriService) {
     return {
-      restrict : 'E',
-      replace : true,
-      templateUrl : 'app/directives/weekFeed/feedItem/event/event.html',
-      scope : {
+      restrict: 'E',
+      replace: true,
+      templateUrl: 'app/directives/weekFeed/feedItem/event/event.html',
+      scope: {
         feedItem: '=',
         showCourseImage: '='
       },
-      link : function($scope) {
-
+      link: function($scope) {
         $scope.openReittiopas = function openReittiopas(feedItem) {
           var addressFromCookie = LocationService.getUserAddressFromCookie();
+
           if (addressFromCookie) {
             window.location = EventUriService.getReittiopasUri(feedItem, addressFromCookie);
           } else {
@@ -43,20 +43,20 @@ angular.module('directives.weekFeed.feedItem.event',[
           }
         };
       }
-    }
+    };
   })
 
   .directive('eventTitle', function() {
     return {
-      restrict : 'E',
-      replace : true,
-      templateUrl : 'app/directives/weekFeed/feedItem/event/eventTitle.html'
-    }
+      restrict: 'E',
+      replace: true,
+      templateUrl: 'app/directives/weekFeed/feedItem/event/eventTitle.html'
+    };
   })
 
   .filter('eventTimeSpan', function() {
-    var dateString = 'DD.MM.YYYY';
-    var hoursString = 'HH:mm';
+    var dateString = 'DD.MM.YYYY',
+        hoursString = 'HH:mm';
 
     function momentDateHasHours(momentDate) {
       return _.isArray(momentDate._i) && momentDate._i.length > 3;
@@ -95,10 +95,11 @@ angular.module('directives.weekFeed.feedItem.event',[
 
       if (startDate.diff(endDate) === 0) {
         return formatMomentDate(startDate);
-      } else if (startDate.year() == endDate.year() && startDate.dayOfYear() === endDate.dayOfYear()) {
+      } else if (startDate.year() == endDate.year() &&
+                 startDate.dayOfYear() === endDate.dayOfYear()) {
         return formatMomentDateTimeSpan(startDate, endDate);
       } else {
         return formatMomentDateSpan(startDate, endDate);
       }
-    }
+    };
   });

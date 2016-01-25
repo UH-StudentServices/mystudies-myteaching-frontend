@@ -25,10 +25,10 @@ angular.module('services.state', [
     MY_STUDIES: 'opintoni',
     MY_TEACHINGS: 'opetukseni',
     ADMIN: 'admin',
-    ACCESS_DENIED : 'accessDenied'
+    ACCESS_DENIED: 'accessDenied'
   })
 
-  .factory('StateService', function ($state, $location, State, Configuration, Role) {
+  .factory('StateService', function($state, $location, State, Configuration, Role) {
 
     var stateMatches = function(state, name) {
       if (state.name === name) {
@@ -42,6 +42,7 @@ angular.module('services.state', [
 
     var getRootStateName = function getRootStateName() {
       var rootStateName = '';
+
       if(stateMatches($state.current, State.MY_STUDIES)) {
         rootStateName = State.MY_STUDIES;
       } else if (stateMatches($state.current, State.MY_TEACHINGS)) {
@@ -79,6 +80,7 @@ angular.module('services.state', [
 
     var getDefaultStateForUser = function getDefaultStateForUser(session) {
       var defaultRole = _.first(session.roles);
+
       if(defaultRole === Role.TEACHER) {
         return State.MY_TEACHINGS;
       } else if (defaultRole === Role.STUDENT) {
@@ -86,12 +88,12 @@ angular.module('services.state', [
       } else {
         return State.ACCESS_DENIED;
       }
-    }
+    };
 
     return {
       getRootStateName: getRootStateName,
-      getStateFromDomain : getStateFromDomain,
-      getDefaultStateForUser : getDefaultStateForUser
-    }
+      getStateFromDomain: getStateFromDomain,
+      getDefaultStateForUser: getDefaultStateForUser
+    };
 
   });

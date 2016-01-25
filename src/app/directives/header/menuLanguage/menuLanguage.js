@@ -28,26 +28,22 @@ angular.module('directives.menuLanguage', [
       templateUrl: 'app/directives/header/menuLanguage/menu_language.html',
       link: function($scope) {
 
-        $scope.changeLanguage = function (languageKey) {
-          $translate.use(languageKey).then(function translationUseSuccess(){
+        $scope.changeLanguage = function(languageKey) {
+          $translate.use(languageKey).then(function translationUseSuccess() {
             $window.location.reload();
           });
         };
 
-        var languageOptions = [
-          {
-            nativeName: 'English',
-            languageCode: 'en'
-          },
-          {
-            nativeName: 'Svenska',
-            languageCode: 'sv'
-          },
-          {
-            nativeName: 'Suomi',
-            languageCode: 'fi'
-          }
-        ];
+        var languageOptions = [{
+          nativeName: 'English',
+          languageCode: 'en'
+        }, {
+          nativeName: 'Svenska',
+          languageCode: 'sv'
+        }, {
+          nativeName: 'Suomi',
+          languageCode: 'fi'
+        }];
 
         $scope.selectedLanguage = LanguageService.getCurrent();
 
@@ -59,7 +55,7 @@ angular.module('directives.menuLanguage', [
           } else {
             return [languageOptions[2], languageOptions[1]];
           }
-        }
+        };
       }
     };
   });

@@ -19,14 +19,14 @@ angular.module('directives.editLink',
   ['services.state'])
   .directive('editLink', function(StateService, State) {
     return {
-      restrict : 'E',
-      replace : true,
-      templateUrl : 'app/directives/editLink/editLink.html',
-      scope : {
-        onEdit : '&',
-        onExitEdit : '&'
+      restrict: 'E',
+      replace: true,
+      templateUrl: 'app/directives/editLink/editLink.html',
+      scope: {
+        onEdit: '&',
+        onExitEdit: '&'
       },
-      link : function($scope) {
+      link: function($scope) {
         $scope.editing = false;
         $scope.onClick = function() {
           if($scope.editing) {
@@ -35,7 +35,7 @@ angular.module('directives.editLink',
             $scope.onEdit();
           }
           $scope.editing = !$scope.editing;
-        }
+        };
       }
-    }
+    };
   });

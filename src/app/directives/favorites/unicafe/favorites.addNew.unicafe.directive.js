@@ -19,29 +19,31 @@ angular.module('directives.favorites.addNew.unicafe',
   ['resources.favorites',
     'resources.favorites.unicafe'])
 
-  .directive('addNewUnicafeFavorite', function(UnicafeResource, FavoritesResource, newFavoriteAddedEvent) {
+  .directive('addNewUnicafeFavorite', function(UnicafeResource, FavoritesResource,
+                                               newFavoriteAddedEvent) {
     return {
-      restrict : 'E',
+      restrict: 'E',
       templateUrl: 'app/directives/favorites/unicafe/favorites.addNew.unicafe.html',
       replace: true,
-      scope : true,
-      link : function($scope) {
+      scope: true,
+      link: function($scope) {
         $scope.loading = true;
 
-        UnicafeResource.getRestaurantOptions().then(function getRestaurantsSuccess(restaurantOptions) {
-          $scope.areas = restaurantOptions;
-          $scope.loading = false;
-        });
+        UnicafeResource.getRestaurantOptions()
+          .then(function getRestaurantsSuccess(restaurantOptions) {
+            $scope.areas = restaurantOptions;
+            $scope.loading = false;
+          });
 
         $scope.addUnicafeFavorite = function addUnicafeFavorite(restaurant) {
           if(restaurant.id > 0) {
-            FavoritesResource.saveUnicafeFavorite({restaurantId : restaurant.id}).then(function saveUnicafeSuccess(){
-              $scope.$emit(newFavoriteAddedEvent, $scope.favorite.type);
-              $scope.hidePopover();
-            });
+            FavoritesResource.saveUnicafeFavorite({restaurantId: restaurant.id})
+              .then(function saveUnicafeSuccess() {
+                $scope.$emit(newFavoriteAddedEvent, $scope.favorite.type);
+                $scope.hidePopover();
+              });
           }
-        }
-
+        };
       }
-    }
+    };
   });

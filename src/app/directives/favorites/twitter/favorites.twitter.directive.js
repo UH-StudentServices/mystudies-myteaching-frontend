@@ -26,7 +26,6 @@ angular.module('directives.favorites.twitter', [])
         data: '='
       },
       link: function($scope) {
-
         $scope.$watch('favorites.length', function() {
           if ($window.twttr) {
             $timeout(function() {
@@ -35,7 +34,7 @@ angular.module('directives.favorites.twitter', [])
           }
         });
 
-        if (!document.getElementById('twitter-wjs')) {
+        if(!document.getElementById('twitter-wjs')) {
           $window.twttr = (function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
 
@@ -45,8 +44,8 @@ angular.module('directives.favorites.twitter', [])
               js.src = 'https://platform.twitter.com/widgets.js';
               fjs.parentNode.insertBefore(js, fjs);
             }
-          })(document, "script", "twitter-wjs");
+          })(document, 'script', 'twitter-wjs');
         }
       }
-    }
+    };
   });

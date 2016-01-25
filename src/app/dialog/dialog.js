@@ -1,6 +1,6 @@
 angular.module('opintoniDialog', ['ui.bootstrap.modal'])
 
-  .factory('Dialog', function($modal, $rootScope){
+  .factory('Dialog', function($modal, $rootScope) {
 
     function modalDialog(translationKey, okKey, cancelKey, okCallback, cancelCallback) {
       var scope = $rootScope.$new();
@@ -11,14 +11,14 @@ angular.module('opintoniDialog', ['ui.bootstrap.modal'])
         if(okCallback) {
           okCallback(event);
         }
-      }
+      };
 
       scope.cancelCallback = function(event) {
         modalInstance.close();
         if(cancelCallback) {
           cancelCallback(event);
         }
-      }
+      };
 
       scope.translationKey = translationKey;
       scope.okKey = okKey;
@@ -35,9 +35,9 @@ angular.module('opintoniDialog', ['ui.bootstrap.modal'])
 
 
     return {
-      modalDialog : modalDialog
-    }
+      modalDialog: modalDialog
+    };
 
 
-  })
+  });
 

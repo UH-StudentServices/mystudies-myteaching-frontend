@@ -19,16 +19,18 @@ angular.module('services.attainments', ['resources.attainments', 'utils.moment']
 
   .constant('monthsCount', 6)
 
-  .factory('AttainmentsService', function(AttainmentsResource, dateArrayToUTCMomentObject, monthsCount) {
-
-    var now = moment();
-    var studyAttainmentsPromise;
+  .factory('AttainmentsService', function(AttainmentsResource, dateArrayToUTCMomentObject,
+                                          monthsCount) {
+    var now = moment(),
+        studyAttainmentsPromise;
 
     function getStudyAttainments() {
       if(!studyAttainmentsPromise) {
         studyAttainmentsPromise = AttainmentsResource.getStudyAttainments().then(function(data) {
-          return _.map(data, function (attainment) {
-            attainment.attainmentDate = dateArrayToUTCMomentObject(attainment.attainmentDate).local();
+          return _.map(data, function(attainment) {
+            attainment.attainmentDate = dateArrayToUTCMomentObject(attainment.attainmentDate)
+              .local();
+
             return attainment;
           });
         });
@@ -40,20 +42,21 @@ angular.module('services.attainments', ['resources.attainments', 'utils.moment']
       return getStudyAttainments().then(function(attainments) {
         return _.filter(attainments, function(attainment) {
           var diff = now.diff(attainment.attainmentDate, 'months');
+
           return diff >= 0 && diff < monthsCount;
         });
-      })
+      });
     };
 
     function hasStudyAttainments() {
       return getStudyAttainments().then(function(attainments) {
         return attainments && attainments.length > 0;
-      })
+      });
     }
 
     return {
-      getLastStudyAttainments : getLastStudyAttainments,
-      hasStudyAttainments : hasStudyAttainments
-    }
+      getLastStudyAttainments: getLastStudyAttainments,
+      hasStudyAttainments: hasStudyAttainments
+    };
 
   });

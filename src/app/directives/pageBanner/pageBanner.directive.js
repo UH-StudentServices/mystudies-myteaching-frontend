@@ -40,7 +40,7 @@ angular.module('directives.pageBanner', [
 
         $scope.newsUrlClick = function() {
           AnalyticsService.trackFlammaNewsUrlClick();
-        }
+        };
       }
-    }
+    };
   });

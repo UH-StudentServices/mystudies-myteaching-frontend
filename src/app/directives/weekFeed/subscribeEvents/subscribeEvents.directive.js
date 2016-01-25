@@ -63,20 +63,24 @@ angular.module('directives.subscribeEvents', [
         function getOrCreateCalendarFeed() {
           var deferred = $q.defer();
 
-          CalendarFeedResource.getCalendarFeed().$promise.then(function getCalendarFeedSuccess(calendarFeed) {
-            deferred.resolve(calendarFeed);
-          }, function getCalendarFeedFail() {
-            CalendarFeedResource.saveCalendarFeed().$promise.then(function saveCalendarFeedSuccess(calendarFeed) {
-              AnalyticsService.trackCalendarSubscribe();
+          CalendarFeedResource.getCalendarFeed().$promise
+            .then(function getCalendarFeedSuccess(calendarFeed) {
               deferred.resolve(calendarFeed);
-            })
-          });
+            }, function getCalendarFeedFail() {
+              CalendarFeedResource.saveCalendarFeed().$promise
+                .then(function saveCalendarFeedSuccess(calendarFeed) {
+                  AnalyticsService.trackCalendarSubscribe();
+                  deferred.resolve(calendarFeed);
+                });
+            });
+
           return deferred.promise;
         }
 
         $scope.onClick = function() {
           getOrCreateCalendarFeed().then(function(calendarFeed) {
-            $scope.calendarFeedUrl = DomainUtil.getDomain() + calendarFeed.feedUrl + '/' + $rootScope.userLang;
+            $scope.calendarFeedUrl = DomainUtil.getDomain() + calendarFeed.feedUrl +
+              '/' + $rootScope.userLang;
           });
         };
 
@@ -95,7 +99,7 @@ angular.module('directives.subscribeEvents', [
           $timeout(function() {
             $scope.copyToClipboardFail = false;
           }, MessageTimeouts.FAIL);
-        }
+        };
       }
-    }
+    };
   });

@@ -24,6 +24,7 @@ angular.module('services.courses', ['resources.courses', 'utils.moment'])
 
     function filterUpcomingEnrollments(enrollments) {
       var now = moment();
+
       return _.filter(enrollments, function(enrollment) {
         return enrollment.startDate.isAfter(now, 'day');
       });
@@ -35,7 +36,7 @@ angular.module('services.courses', ['resources.courses', 'utils.moment'])
         enrollment.endDate = dateArrayToUTCMomentObject(enrollment.endDate);
 
         return enrollment;
-      })
+      });
     }
 
     function getStudentCoursesPromise() {
@@ -71,9 +72,9 @@ angular.module('services.courses', ['resources.courses', 'utils.moment'])
     }
 
     return {
-      getStudentCourses : getStudentCourses,
-      getTeacherCourses : getTeacherCourses,
-      getUpcomingTeacherCourses : getUpcomingTeacherCourses
-    }
+      getStudentCourses: getStudentCourses,
+      getTeacherCourses: getTeacherCourses,
+      getUpcomingTeacherCourses: getUpcomingTeacherCourses
+    };
 
   });

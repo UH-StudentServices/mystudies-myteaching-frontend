@@ -24,7 +24,8 @@ angular.module('directives.searchBar', [
   'template/typeahead/typeahead-popup.html',
   'directives.focus'
 ])
-  .directive('searchBar', function($document, SearchService, MessageService, SearchEvents, AnalyticsService) {
+  .directive('searchBar', function($document, SearchService, MessageService,
+                                   SearchEvents, AnalyticsService) {
     return {
       restrict: 'E',
       replace: true,
@@ -66,5 +67,5 @@ angular.module('directives.searchBar', [
           $scope.searchTerm = '';
         };
       }
-    }
+    };
   });

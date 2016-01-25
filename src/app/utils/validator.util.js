@@ -21,6 +21,7 @@ angular.module('utils.validator', [])
 
     function isUrl(url) {
       var regExp = /^(?:(http|https):\/\/)?(?:[\w-]+\.)+[a-z]{2,6}/;
+
       return regExp.test(url);
     }
 
@@ -40,6 +41,6 @@ angular.module('utils.validator', [])
 
 
     return {
-      convertValidUrl : convertValidUrl
-    }
-  })
+      convertValidUrl: convertValidUrl
+    };
+  });

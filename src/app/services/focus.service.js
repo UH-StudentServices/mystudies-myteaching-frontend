@@ -18,7 +18,10 @@
 angular.module('services.focus', [])
 
   .factory('Focus', function($timeout) {
-    var focusableQuery ='a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]';
+    var focusableQuery = 'a[href], area[href], input:not([disabled]), select:not([disabled])' +
+      ', textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex]' +
+      ', *[contenteditable]';
+
     var currentFocusElement, storedFocusElement;
 
     $('body').on('focusin', function(event) {
@@ -30,14 +33,14 @@ angular.module('services.focus', [])
         if(e && typeof e.focus === 'function') {
           e.focus();
         } else if(e && typeof e === 'string') {
-          $(e).filter(':visible').first().focus()
+          $(e).filter(':visible').first().focus();
         }
       }, 0);
     }
 
     return {
-      setFocus : setFocus,
-      focusNext : function() {
+      setFocus: setFocus,
+      focusNext: function() {
         if(currentFocusElement) {
           var focusables = $(focusableQuery).filter(':visible');
           var index = focusables.index(currentFocusElement);
@@ -47,12 +50,12 @@ angular.module('services.focus', [])
           }
         }
       },
-      storeFocus : function() {
+      storeFocus: function() {
         storedFocusElement = currentFocusElement;
       },
-      revertFocus : function() {
+      revertFocus: function() {
         setFocus(storedFocusElement);
       }
-    }
+    };
 
   });
