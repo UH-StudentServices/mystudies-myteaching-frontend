@@ -17,11 +17,15 @@
 
 <div class="page-navigation hide-mobile-only">
     <div class="wrapper">
-        <nav role="navigation">
+        <nav>
             <ul class="main-menu">
-                <li class="main-menu__home"><a ui-sref="init" class="active"></a></li>
+                <li class="main-menu__home">
+                    <a ui-sref="init" class="active"></a>
+                </li>
                 <li ng-repeat="link in primaryLinks">
-                    <a href="{{ link.href[userLang] }}" target="_blank"><span>{{link.key | translate}}</span></a>
+                    <a href="{{ link.href[userLang] }}" target="_blank">
+                        <span>{{link.key | translate}}</span>
+                    </a>
                 </li>
             </ul>
         </nav>

@@ -22,10 +22,11 @@ angular.module('services.session', [
 ])
   .constant('Role', {
     TEACHER: 'TEACHER',
-    STUDENT: 'STUDENT'
+    STUDENT: 'STUDENT',
+    ADMIN: 'ADMIN'
   })
 
-  .factory('SessionService', function SessionService(SessionResource) {
+  .factory('SessionService', function SessionService($q, SessionResource) {
 
     var sessionPromise;
 
@@ -36,20 +37,18 @@ angular.module('services.session', [
       return sessionPromise;
     };
 
-    var isInAnyRole = function isInAnyRole(roleNames, session) {
-      if (_.isUndefined(session.roles)) {
-        return false;
-      }
-      return !_.isUndefined(_.find(roleNames, function(roleName) {
-        return isInRole(roleName, session);
-      }));
+    var isInAnyRole = function isInAnyRole(roleNames) {
+      return $q
+        .all(_.map(roleNames, isInRole))
+        .then(_.some);
     };
 
-    var isInRole = function isInRole(roleName, session) {
-      if (_.isUndefined(session.roles)) {
+    var isInRole = function isInRole(roleName) {
+      return getSession().then(function(session) {
+        return _.invoke(session, 'roles.indexOf', roleName) > -1;
+      }, function() {
         return false;
-      }
-      return session.roles.indexOf(roleName) !== -1;
+      });
     };
 
     var reloadSession = function getSession() {

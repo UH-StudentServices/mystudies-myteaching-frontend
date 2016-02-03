@@ -23,9 +23,7 @@ angular.module('resources.stateInterceptor', [
   .run(function($rootScope, $state, SessionService, State) {
 
     function authorizeState(stateRoles) {
-      return SessionService.getSession().then(function(session) {
-        return SessionService.isInAnyRole(stateRoles, session);
-      });
+      return SessionService.isInAnyRole(stateRoles);
     }
 
     $rootScope.$on('$stateChangeStart', function(event, toState) {

@@ -55,7 +55,8 @@
     "contact": "kontaktinformation"
   },
   "primaryLinks": {
-    "oodi": "Weboodi"
+    "oodi": "Weboodi",
+    "courseSearch": "Sök undervisning"
   },
   "opintoni": {
     "feedback": {
