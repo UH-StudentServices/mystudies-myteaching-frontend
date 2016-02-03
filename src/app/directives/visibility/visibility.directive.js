@@ -57,7 +57,7 @@ angular.module('directives.visibility', [
   };
 })
 
-.directive('adminRoleOnly', function($animate, SessionService) {
+.directive('adminRoleOnly', function($animate, SessionService, Role) {
   return {
     multiElement: true,
     transclude: 'element',
@@ -68,11 +68,13 @@ angular.module('directives.visibility', [
       session: '='
     },
     link: function($scope, $element, $attr, ctrl, $transclude) {
-      if(SessionService.isInRole('ADMIN', $scope.session)) {
-        $transclude(function(clone) {
-          $animate.enter(clone, $element.parent(), $element);
-        });
-      }
+      SessionService.isInRole(Role.ADMIN).then(function(isAdmin) {
+        if(isAdmin) {
+          $transclude(function(clone) {
+            $animate.enter(clone, $element.parent(), $element);
+          });
+        }
+      });
     }
   };
 });

@@ -53,6 +53,7 @@ angular.module('opintoniApp', [
   'directives.feedback',
   'directives.visibility',
   'directives.courseRecommendations',
+  'directives.pageNavigation',
 
   'controllers.main',
   'directives.tour',

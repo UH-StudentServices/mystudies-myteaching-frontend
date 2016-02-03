@@ -17,13 +17,14 @@
 
 'use strict';
 
-angular.module('directives.pageHeader', ['constants.externalLinks'])
-  .directive('pageHeader', function(pageHeaderLinks) {
+angular.module('directives.pageNavigation', ['constants.externalLinks'])
+  .directive('pageNavigation', function() {
     return {
       restrict: 'E',
-      templateUrl: 'app/directives/header/pageHeader/page_header.html',
-      link: function($scope) {
-        $scope.pageHeaderLinks = pageHeaderLinks;
+      templateUrl: 'app/directives/header/pageNavigation/pageNavigation.html',
+      scope : {},
+      controller: function($scope, primaryLinks) {
+        $scope.primaryLinks = primaryLinks;
       }
     };
   });

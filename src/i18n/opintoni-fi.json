@@ -55,7 +55,8 @@
     "contact": "yhteystiedot"
   },
   "primaryLinks": {
-    "oodi": "Weboodi"
+    "oodi": "Weboodi",
+    "courseSearch": "Hae opetusta"
   },
   "opintoni": {
     "feedback": {

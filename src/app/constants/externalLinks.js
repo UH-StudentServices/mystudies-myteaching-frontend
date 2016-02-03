@@ -31,6 +31,14 @@ angular.module('constants.externalLinks', [])
         sv: 'https://weboodi.helsinki.fi/hy/frame.jsp?Kieli=2&valittuKieli=2',
         en: 'https://weboodi.helsinki.fi/hy/frame.jsp?Kieli=6&valittuKieli=6'
       }
+    },
+    {
+      key: 'primaryLinks.courseSearch',
+      href: {
+        fi: 'https://courses.helsinki.fi/fi/search',
+        sv: 'https://courses.helsinki.fi/sv/search',
+        en: 'https://courses.helsinki.fi/search'
+      }
     }
   ])
 

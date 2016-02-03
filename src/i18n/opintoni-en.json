@@ -55,7 +55,8 @@
     "contact": "contact information"
   },
   "primaryLinks": {
-    "oodi": "Weboodi"
+    "oodi": "Weboodi",
+    "courseSearch": "Course search"
   },
   "opintoni": {
     "feedback": {
