@@ -44,11 +44,13 @@ angular.module('services.session', [
     };
 
     var isInRole = function isInRole(roleName) {
-      return getSession().then(function(session) {
-        return _.invoke(session, 'roles.indexOf', roleName) > -1;
-      }, function() {
-        return false;
-      });
+      return getSession()
+        .then(function(session) {
+          return _.invoke(session, 'roles.indexOf', roleName) > -1;
+        })
+        .catch(function(){
+          return false;
+        });
     };
 
     var reloadSession = function getSession() {
