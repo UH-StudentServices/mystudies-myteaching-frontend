@@ -43,6 +43,7 @@ angular.module('directives.weekFeed', [
 
     function getItems(items, feedItemTimeCondition, feedItemSortCondition) {
       var filteredFeedItems = $filter('filterFeedItems')(items, feedItemTimeCondition);
+
       return $filter('sortFeedItems')(filteredFeedItems, feedItemSortCondition);
     }
 

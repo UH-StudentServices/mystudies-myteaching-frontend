@@ -48,7 +48,7 @@ angular.module('services.session', [
         .then(function(session) {
           return _.invoke(session, 'roles.indexOf', roleName) > -1;
         })
-        .catch(function(){
+        .catch(function() {
           return false;
         });
     };

@@ -22,7 +22,7 @@ angular.module('directives.pageNavigation', ['constants.externalLinks'])
     return {
       restrict: 'E',
       templateUrl: 'app/directives/header/pageNavigation/pageNavigation.html',
-      scope : {},
+      scope: {},
       controller: function($scope, primaryLinks) {
         $scope.primaryLinks = primaryLinks;
       }

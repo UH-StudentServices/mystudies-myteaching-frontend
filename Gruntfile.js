@@ -349,6 +349,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('gruntify-eslint');
 
   grunt.registerTask('serve', [
+    'eslint',
     'clean:server',
     'concurrent:serve',
     'browserSync',
