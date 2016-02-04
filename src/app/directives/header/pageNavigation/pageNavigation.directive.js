@@ -23,8 +23,9 @@ angular.module('directives.pageNavigation', ['constants.externalLinks'])
       restrict: 'E',
       templateUrl: 'app/directives/header/pageNavigation/pageNavigation.html',
       scope: {},
-      controller: function($scope, primaryLinks) {
+      controller: function($scope, primaryLinks, LanguageService) {
         $scope.primaryLinks = primaryLinks;
+        $scope.userLang = LanguageService.getCurrent();
       }
     };
   });
