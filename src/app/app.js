@@ -59,7 +59,8 @@ angular.module('opintoniApp', [
   'directives.tour',
   'directives.pageBanner',
   'directives.mobilePageBanner',
-  'ui.calendar'
+  'ui.calendar',
+  'utils.loader'
 ])
   .constant('preferredLanguage', 'fi')
 
@@ -147,11 +148,11 @@ angular.module('opintoniApp', [
             });
             return deferred.promise;
           },
-          courses: function(CoursesService) {
-            return CoursesService.getStudentCourses();
+          getCourses: function(CoursesService) {
+            return CoursesService.getStudentCourses;
           },
-          events: function(EventsResource) {
-            return EventsResource.getStudentEvents();
+          getEvents: function(EventsResource) {
+            return EventsResource.getStudentEvents;
           }
         }
       })
@@ -181,11 +182,11 @@ angular.module('opintoniApp', [
 
             return deferred.promise;
           },
-          courses: function(CoursesService) {
-            return CoursesService.getTeacherCourses();
+          getCourses: function(CoursesService) {
+            return CoursesService.getTeacherCourses;
           },
-          events: function(EventsResource) {
-            return EventsResource.getTeacherEvents();
+          getEvents: function(EventsResource) {
+            return EventsResource.getTeacherEvents;
           }
         }
       })
@@ -209,11 +210,11 @@ angular.module('opintoniApp', [
             document.title = title;
             return title;
           },
-          courses: function(CoursesService) {
-            return CoursesService.getTeacherCourses();
+          getCourses: function(CoursesService) {
+            return CoursesService.getTeacherCourses;
           },
-          events: function(EventsResource) {
-            return EventsResource.getTeacherEvents();
+          getEvents: function(EventsResource) {
+            return EventsResource.getTeacherEvents;
           }
         }
       })

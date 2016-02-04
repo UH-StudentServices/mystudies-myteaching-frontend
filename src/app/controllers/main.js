@@ -34,23 +34,20 @@ angular.module('controllers.main', [
   'services.focus'
 ])
 
-
   .controller('MainCtrl', function(
     $scope,
     StateService,
     State,
     userSettings,
     session,
-    courses,
-    events) {
+    getCourses,
+    getEvents) {
 
     $scope.currentStateName = StateService.getRootStateName();
     $scope.State = State;
     $scope.userSettings = userSettings;
     $scope.showApp = session !== undefined;
     $scope.session = session;
-    $scope.courses = courses;
-    $scope.events = events;
-
-
+    $scope.courses = getCourses();
+    $scope.events = getEvents();
   });

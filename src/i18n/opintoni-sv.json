@@ -20,7 +20,8 @@
     "readMore" : "läs mer",
     "yes"  : "ja",
     "no" : "nej",
-    "introduction" : "introduktion"
+    "introduction" : "introduktion",
+    "loadingContent" : "Loading content... (sv)"
   },
   "abbreviations": {
     "credits": "sp"

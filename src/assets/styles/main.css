@@ -3986,3 +3986,16 @@ a.text-neutral {
   letter-spacing: .01em; }
   .login-page__read-more:hover {
     color: #0098d0; }
+
+.content-loader {
+  min-height: 150px; }
+  .content-loader .block-ui-overlay {
+    opacity: 1; }
+  .content-loader .block-ui-message-container {
+    top: 0; }
+
+.content-loader__loader {
+  padding: 1em;
+  color: #0098d0;
+  border-top: 1px solid #EBEBEB;
+  border-bottom: 1px solid #EBEBEB; }

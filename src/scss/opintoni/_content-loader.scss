@@ -1,0 +1,18 @@
+.content-loader {
+  min-height: 150px;
+
+  .block-ui-overlay {
+    opacity: 1;
+  }
+
+  .block-ui-message-container {
+    top: 0;
+  }
+}
+
+.content-loader__loader {
+  padding: 1em;
+  color: $blue;
+  @include border-side("top");
+  @include border-side("bottom");
+}
