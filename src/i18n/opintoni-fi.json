@@ -20,7 +20,8 @@
     "readMore" : "lue lisää",
     "yes" : "kyllä",
     "no" : "ei",
-    "introduction" : "esittely"
+    "introduction" : "esittely",
+    "loadingContent" : "Sisältöä ladataan..."
   },
   "abbreviations": {
     "credits": "op"

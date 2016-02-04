@@ -33,24 +33,28 @@
           </li>
       </ul>
 
-    <message
-        class="messages--light"
-        ng-show="message"
-        message="message">
-    </message>
+      <div block-ui="weekFeed" class="content-loader">
 
-    <ul class="week-feed-items">
-      <li ng-repeat="feedItem in feedItems | limitTo:numberOfVisibleItems">
-        <item feed-item="feedItem" first="$first" tab-options="selectedTab"></item>
-      </li>
-    </ul>
+          <message ng-if="message && selectedTab !== Tabs.CALENDAR"
+                   class="messages--light"
+                   ng-show="message"
+                   message="message">
+          </message>
 
-    <event-calendar events="events" ng-if="selectedTab === Tabs.CALENDAR"></event-calendar>
+          <ul class="week-feed-items">
+              <li ng-repeat="feedItem in feedItems | limitTo:numberOfVisibleItems">
+                  <item feed-item="feedItem" first="$first" tab-options="selectedTab"></item>
+              </li>
+          </ul>
 
-    <div class="week-feed-actions">
-      <button class="button--light button" ng-click="showMore()" ng-show="showMoreVisible()">{{ "buttons.showMore" | translate }}</button>
-      <subscribe-events ng-show="selectedTab === Tabs.UPCOMING_EVENTS || selectedTab === Tabs.CALENDAR"></subscribe-events>
-    </div>
+          <event-calendar events="events" ng-if="selectedTab === Tabs.CALENDAR"></event-calendar>
+
+          <div class="week-feed-actions">
+              <button class="button--light button" ng-click="showMore()" ng-if="showMoreVisible()">{{ "buttons.showMore" | translate }}</button>
+              <subscribe-events ng-if="selectedTab === Tabs.UPCOMING_EVENTS || selectedTab === Tabs.CALENDAR"></subscribe-events>
+          </div>
+
+      </div>
   </div>
 
 </div>

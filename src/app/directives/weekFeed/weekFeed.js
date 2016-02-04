@@ -24,7 +24,8 @@ angular.module('directives.weekFeed', [
   'directives.eventCalendar',
   'directives.weekFeed.feedItem',
   'services.userPreferences',
-  'services.state'
+  'services.state',
+  'utils.loader'
 ])
 
   .constant('FeedItemTimeCondition', {
@@ -193,7 +194,11 @@ angular.module('directives.weekFeed', [
     }
   })
 
+  .constant('InitialVisibleItems', 5)
+  .constant('LoaderKey', 'weekFeed')
+
   .directive('weekFeed', function(
+    $q,
     $filter,
     State,
     StateService,
@@ -202,56 +207,76 @@ angular.module('directives.weekFeed', [
     MessageTypes,
     WeekFeedMessageKeys,
     UserPreferencesService,
-    AnalyticsService) {
+    AnalyticsService,
+    InitialVisibleItems,
+    Loader,
+    LoaderKey) {
 
     return {
       restrict: 'E',
       templateUrl: 'app/directives/weekFeed/weekFeed.html',
       scope: {
-        courses: '=',
-        events: '='
+        coursesPromise: '=',
+        eventsPromise: '='
       },
       link: function($scope) {
-        var currentStateName = StateService.getRootStateName();
+        var currentStateName = StateService.getRootStateName()
+          , tabs = _.pick(Tabs, TabConfiguration[currentStateName]);
 
-        $scope.State = State;
+        function updateFeedItems() {
+          $scope.feedItems = $scope.selectedTab.getItems($scope.courses, $scope.events);
+          updateMessage();
+        }
+
+        function updateMessage() {
+          if(!$scope.feedItems.length) {
+            $scope.message = {
+              messageType: MessageTypes.INFO,
+              key: _.get(WeekFeedMessageKeys, [$scope.selectedTab.key, MessageTypes.INFO])
+            };
+          } else {
+            $scope.message = null;
+          }
+        }
+
+        function getFirstTab() {
+          return _.find($scope.tabs, {key: _.get(TabConfiguration, [currentStateName, '0'])});
+        }
+
+        function getPreferredTab() {
+          return _.find($scope.tabs, {
+            key: UserPreferencesService.getPreferences().selectedTab
+          }) || getFirstTab();
+        }
+
         $scope.Tabs = Tabs;
-        $scope.tabs = [];
+        $scope.tabs = tabs;
         $scope.feedItems = [];
-        $scope.numberOfVisibleItems = 5;
+        $scope.numberOfVisibleItems = InitialVisibleItems;
+        $scope.MessageTypes = MessageTypes;
+        $scope.selectedTab = getPreferredTab();
 
-        _.each(TabConfiguration[currentStateName], function(tabKey) {
-          $scope.tabs.push(Tabs[tabKey]);
-        });
+        Loader.start(LoaderKey);
 
-        $scope.selectedTab = _.find($scope.tabs, {
-          key: UserPreferencesService.getPreferences().selectedTab
-        }) || $scope.tabs[0];
-
-        $scope.feedItems = $scope.selectedTab.getItems($scope.courses, $scope.events);
+        $q.all([$scope.coursesPromise, $scope.eventsPromise])
+          .then(function(coursesAndEvents) {
+            $scope.courses = coursesAndEvents[0];
+            $scope.events = coursesAndEvents[1];
+            updateFeedItems();
+            Loader.stop(LoaderKey);
+          });
 
         $scope.header = $filter('translate')(currentStateName === State.MY_STUDIES ?
           'weekFeed.nowStudying' :
           'weekFeed.nowTeaching');
 
         $scope.selectTab = function selectTab(selectedTab) {
-          $scope.numberOfVisibleItems = 5;
+          $scope.numberOfVisibleItems = InitialVisibleItems;
           $scope.selectedTab = selectedTab;
-          $scope.feedItems = $scope.selectedTab.getItems($scope.courses, $scope.events);
+          updateFeedItems();
           UserPreferencesService.addProperty('selectedTab', selectedTab.key);
           AnalyticsService.trackShowWeekFeedTab(selectedTab.key);
         };
-
-        $scope.$watch('selectedTab', function() {
-          if($scope.feedItems.length === 0 && $scope.selectedTab.key !== 'CALENDAR') {
-            $scope.message = {
-              messageType: MessageTypes.INFO,
-              key: WeekFeedMessageKeys[$scope.selectedTab.key][MessageTypes.INFO]
-            };
-          } else {
-            $scope.message = null;
-          }
-        });
 
         $scope.showMore = function showMore() {
           $scope.numberOfVisibleItems += 5;

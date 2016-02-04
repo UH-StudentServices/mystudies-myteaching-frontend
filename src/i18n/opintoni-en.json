@@ -20,7 +20,8 @@
     "readMore" : "read more",
     "yes" : "yes",
     "no" : "no",
-    "introduction" : "introduction"
+    "introduction" : "introduction",
+    "loadingContent" : "Loading content..."
   },
   "abbreviations": {
     "credits": "cr"
