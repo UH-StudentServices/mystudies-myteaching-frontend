@@ -1,4 +1,6 @@
 .content-loader {
+  $loader_color: $blue;
+
   min-height: 150px;
 
   .block-ui-overlay {
@@ -8,11 +10,11 @@
   .block-ui-message-container {
     top: 0;
   }
-}
 
-.content-loader__loader {
-  padding: 1em;
-  color: $blue;
-  @include border-side("top");
-  @include border-side("bottom");
+  &__loader {
+    padding: 1em;
+    color: $loader_color;
+    @include border-side("top");
+    @include border-side("bottom");
+  }
 }

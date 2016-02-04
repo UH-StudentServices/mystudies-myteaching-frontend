@@ -3993,9 +3993,8 @@ a.text-neutral {
     opacity: 1; }
   .content-loader .block-ui-message-container {
     top: 0; }
-
-.content-loader__loader {
-  padding: 1em;
-  color: #0098d0;
-  border-top: 1px solid #EBEBEB;
-  border-bottom: 1px solid #EBEBEB; }
+  .content-loader__loader {
+    padding: 1em;
+    color: #0098d0;
+    border-top: 1px solid #EBEBEB;
+    border-bottom: 1px solid #EBEBEB; }

@@ -229,20 +229,24 @@ angular.module('directives.weekFeed', [
         }
 
         function updateMessage() {
-          if($scope.feedItems.length === 0) {
+          if(!$scope.feedItems.length) {
             $scope.message = {
               messageType: MessageTypes.INFO,
               key: _.get(WeekFeedMessageKeys, [$scope.selectedTab.key, MessageTypes.INFO])
             };
           } else {
-            $scope.message = undefined;
+            $scope.message = null;
           }
+        }
+
+        function getFirstTab() {
+          return _.find($scope.tabs, {key: _.get(TabConfiguration, [currentStateName, '0'])});
         }
 
         function getPreferredTab() {
           return _.find($scope.tabs, {
             key: UserPreferencesService.getPreferences().selectedTab
-          }) || _.first($scope.tabs);
+          }) || getFirstTab();
         }
 
         $scope.Tabs = Tabs;
