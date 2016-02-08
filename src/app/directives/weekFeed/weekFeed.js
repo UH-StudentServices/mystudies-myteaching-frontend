@@ -40,7 +40,12 @@ angular.module('directives.weekFeed', [
     'START_DATE_ASC': 'START_DATE_ASC'
   })
 
-  .factory('Tabs', function($filter, FeedItemTimeCondition, FeedItemSortCondition, MessageTypes, WeekFeedMessageKeys) {
+  .factory('Tabs', function(
+    $filter,
+    FeedItemTimeCondition,
+    FeedItemSortCondition,
+    MessageTypes,
+    WeekFeedMessageKeys) {
 
     function getItems(items, feedItemTimeCondition, feedItemSortCondition) {
       var filteredFeedItems = $filter('filterFeedItems')(items, feedItemTimeCondition);
@@ -63,12 +68,12 @@ angular.module('directives.weekFeed', [
         message = {
           messageType: MessageTypes.ERROR,
           key: _.get(WeekFeedMessageKeys, [selectedTab, MessageTypes.ERROR])
-        }
+        };
       } else if(!items.length) {
         message = {
           messageType: MessageTypes.INFO,
           key: _.get(WeekFeedMessageKeys, [selectedTab, MessageTypes.INFO])
-        }
+        };
       }
 
       return message;
@@ -81,7 +86,7 @@ angular.module('directives.weekFeed', [
         getItems: function(courses, events) {
           return getItems(events, FeedItemTimeCondition.UPCOMING, FeedItemSortCondition.NONE);
         },
-        getMessage : eventsMessage,
+        getMessage: eventsMessage,
         showFirstItemImage: true
       },
       'COURSES': {
@@ -91,7 +96,7 @@ angular.module('directives.weekFeed', [
           return getItems(_.filter(courses, {isExam: false}),
             FeedItemTimeCondition.ALL, FeedItemSortCondition.NONE);
         },
-        getMessage : coursesMessage
+        getMessage: coursesMessage
       },
       'STUDENT_EXAMS': {
         key: 'STUDENT_EXAMS',
@@ -100,7 +105,7 @@ angular.module('directives.weekFeed', [
           return getItems(_.filter(events, {type: 'EXAM'}),
             FeedItemTimeCondition.UPCOMING, FeedItemSortCondition.NONE);
         },
-        getMessage : eventsMessage
+        getMessage: eventsMessage
       },
       'TEACHER_EXAMS': {
         key: 'TEACHER_EXAMS',
@@ -109,7 +114,7 @@ angular.module('directives.weekFeed', [
           return getItems(_.filter(courses, {isExam: true}),
             FeedItemTimeCondition.UPCOMING, FeedItemSortCondition.NONE);
         },
-        getMessage : coursesMessage
+        getMessage: coursesMessage
       },
       'CURRENT_TEACHER_COURSES': {
         key: 'CURRENT_TEACHER_COURSES',
@@ -118,7 +123,7 @@ angular.module('directives.weekFeed', [
           return getItems(_.filter(courses, {isExam: false}),
             FeedItemTimeCondition.CURRENT, FeedItemSortCondition.START_DATE_ASC);
         },
-        getMessage : coursesMessage
+        getMessage: coursesMessage
       },
       'PAST_TEACHER_COURSES': {
         key: 'PAST_TEACHER_COURSES',
@@ -126,7 +131,7 @@ angular.module('directives.weekFeed', [
         getItems: function(courses, events) {
           return getItems(courses, FeedItemTimeCondition.PAST, FeedItemSortCondition.NONE);
         },
-        getMessage : coursesMessage
+        getMessage: coursesMessage
       },
       'CALENDAR': {
         key: 'CALENDAR',
@@ -134,7 +139,7 @@ angular.module('directives.weekFeed', [
         getItems: function(courses, events) {
           return [];
         },
-        getMessage : eventsMessage
+        getMessage: eventsMessage
       }
     };
   })
@@ -264,7 +269,10 @@ angular.module('directives.weekFeed', [
 
         function updateFeedItems() {
           $scope.feedItems = $scope.selectedTab.getItems($scope.courses, $scope.events);
-          $scope.message = $scope.selectedTab.getMessage($scope.courses, $scope.events, $scope.selectedTab.key);
+          $scope.message = $scope.selectedTab.getMessage(
+            $scope.courses,
+            $scope.events,
+            $scope.selectedTab.key);
         }
 
         function getFirstTab() {
@@ -277,11 +285,11 @@ angular.module('directives.weekFeed', [
           }) || getFirstTab();
         }
 
-        function wrapPromises(promises) {
-          return _.map(promises, function(promise){
+        function mapToResolved(promises) {
+          return _.map(promises, function(promise) {
             return promise.catch(function() {
               return true;
-            })
+            });
           });
         }
 
@@ -296,7 +304,7 @@ angular.module('directives.weekFeed', [
           return coursesPromise.then(function(courses) {
             $scope.courses = courses;
             return courses;
-          })
+          });
         }
 
         $scope.Tabs = Tabs;
@@ -308,7 +316,7 @@ angular.module('directives.weekFeed', [
 
         Loader.start(LoaderKey);
 
-        $q.all(wrapPromises([updateCourses(), updateEvents()]))
+        $q.all(mapToResolved([updateCourses(), updateEvents()]))
           .finally(function() {
             updateFeedItems();
             Loader.stop(LoaderKey);
