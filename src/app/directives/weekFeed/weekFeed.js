@@ -40,12 +40,38 @@ angular.module('directives.weekFeed', [
     'START_DATE_ASC': 'START_DATE_ASC'
   })
 
-  .factory('Tabs', function($filter, FeedItemTimeCondition, FeedItemSortCondition) {
+  .factory('Tabs', function($filter, FeedItemTimeCondition, FeedItemSortCondition, MessageTypes, WeekFeedMessageKeys) {
 
     function getItems(items, feedItemTimeCondition, feedItemSortCondition) {
       var filteredFeedItems = $filter('filterFeedItems')(items, feedItemTimeCondition);
 
       return $filter('sortFeedItems')(filteredFeedItems, feedItemSortCondition);
+    }
+
+    function eventsMessage(courses, events, selectedTab) {
+      return getMessage(events, selectedTab);
+    }
+
+    function coursesMessage(courses, events, selectedTab) {
+      return getMessage(courses, selectedTab);
+    }
+
+    function getMessage(items, selectedTab) {
+      var message;
+
+      if(!items) {
+        message = {
+          messageType: MessageTypes.ERROR,
+          key: _.get(WeekFeedMessageKeys, [selectedTab, MessageTypes.ERROR])
+        }
+      } else if(!items.length) {
+        message = {
+          messageType: MessageTypes.INFO,
+          key: _.get(WeekFeedMessageKeys, [selectedTab, MessageTypes.INFO])
+        }
+      }
+
+      return message;
     }
 
     return {
@@ -55,6 +81,7 @@ angular.module('directives.weekFeed', [
         getItems: function(courses, events) {
           return getItems(events, FeedItemTimeCondition.UPCOMING, FeedItemSortCondition.NONE);
         },
+        getMessage : eventsMessage,
         showFirstItemImage: true
       },
       'COURSES': {
@@ -63,7 +90,8 @@ angular.module('directives.weekFeed', [
         getItems: function(courses, events) {
           return getItems(_.filter(courses, {isExam: false}),
             FeedItemTimeCondition.ALL, FeedItemSortCondition.NONE);
-        }
+        },
+        getMessage : coursesMessage
       },
       'STUDENT_EXAMS': {
         key: 'STUDENT_EXAMS',
@@ -71,7 +99,8 @@ angular.module('directives.weekFeed', [
         getItems: function(courses, events) {
           return getItems(_.filter(events, {type: 'EXAM'}),
             FeedItemTimeCondition.UPCOMING, FeedItemSortCondition.NONE);
-        }
+        },
+        getMessage : eventsMessage
       },
       'TEACHER_EXAMS': {
         key: 'TEACHER_EXAMS',
@@ -79,7 +108,8 @@ angular.module('directives.weekFeed', [
         getItems: function(courses, events) {
           return getItems(_.filter(courses, {isExam: true}),
             FeedItemTimeCondition.UPCOMING, FeedItemSortCondition.NONE);
-        }
+        },
+        getMessage : coursesMessage
       },
       'CURRENT_TEACHER_COURSES': {
         key: 'CURRENT_TEACHER_COURSES',
@@ -87,21 +117,24 @@ angular.module('directives.weekFeed', [
         getItems: function(courses, events) {
           return getItems(_.filter(courses, {isExam: false}),
             FeedItemTimeCondition.CURRENT, FeedItemSortCondition.START_DATE_ASC);
-        }
+        },
+        getMessage : coursesMessage
       },
       'PAST_TEACHER_COURSES': {
         key: 'PAST_TEACHER_COURSES',
         translateKey: 'general.pastTeaching',
         getItems: function(courses, events) {
           return getItems(courses, FeedItemTimeCondition.PAST, FeedItemSortCondition.NONE);
-        }
+        },
+        getMessage : coursesMessage
       },
       'CALENDAR': {
         key: 'CALENDAR',
         translateKey: 'navigationTab.calendar',
         getItems: function(courses, events) {
           return [];
-        }
+        },
+        getMessage : eventsMessage
       }
     };
   })
@@ -191,6 +224,10 @@ angular.module('directives.weekFeed', [
     'PAST_TEACHER_COURSES': {
       info: 'weekFeed.noPastTeacherCourses',
       error: 'weekFeed.errors.errorLoadingCourses'
+    },
+    'CALENDAR': {
+      info: 'weekFeed.noEvents',
+      error: 'weekFeed.errors.errorLoadingEvents'
     }
   })
 
@@ -221,22 +258,13 @@ angular.module('directives.weekFeed', [
       },
       link: function($scope) {
         var currentStateName = StateService.getRootStateName()
-          , tabs = _.pick(Tabs, TabConfiguration[currentStateName]);
+          , tabs = _.pick(Tabs, TabConfiguration[currentStateName])
+          , coursesPromise = $scope.coursesPromise
+          , eventsPromise = $scope.eventsPromise;
 
         function updateFeedItems() {
           $scope.feedItems = $scope.selectedTab.getItems($scope.courses, $scope.events);
-          updateMessage();
-        }
-
-        function updateMessage() {
-          if(!$scope.feedItems.length) {
-            $scope.message = {
-              messageType: MessageTypes.INFO,
-              key: _.get(WeekFeedMessageKeys, [$scope.selectedTab.key, MessageTypes.INFO])
-            };
-          } else {
-            $scope.message = null;
-          }
+          $scope.message = $scope.selectedTab.getMessage($scope.courses, $scope.events, $scope.selectedTab.key);
         }
 
         function getFirstTab() {
@@ -249,6 +277,28 @@ angular.module('directives.weekFeed', [
           }) || getFirstTab();
         }
 
+        function wrapPromises(promises) {
+          return _.map(promises, function(promise){
+            return promise.catch(function() {
+              return true;
+            })
+          });
+        }
+
+        function updateEvents() {
+          return eventsPromise.then(function(events) {
+            $scope.events = events;
+            return events;
+          });
+        }
+
+        function updateCourses() {
+          return coursesPromise.then(function(courses) {
+            $scope.courses = courses;
+            return courses;
+          })
+        }
+
         $scope.Tabs = Tabs;
         $scope.tabs = tabs;
         $scope.feedItems = [];
@@ -258,10 +308,8 @@ angular.module('directives.weekFeed', [
 
         Loader.start(LoaderKey);
 
-        $q.all([$scope.coursesPromise, $scope.eventsPromise])
-          .then(function(coursesAndEvents) {
-            $scope.courses = coursesAndEvents[0];
-            $scope.events = coursesAndEvents[1];
+        $q.all(wrapPromises([updateCourses(), updateEvents()]))
+          .finally(function() {
             updateFeedItems();
             Loader.stop(LoaderKey);
           });
