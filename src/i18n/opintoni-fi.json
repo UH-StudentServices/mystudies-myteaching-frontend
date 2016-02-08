@@ -108,6 +108,7 @@
     "noPastEvents": "sinulla ei ole menneitä tapahtumia.",
     "noCourses": "Et ole ilmoittautunut kursseille WebOodissa.",
     "noExams": "Sinulla ei ole tulevia tenttejä.",
+    "noEvents": "Sinulla ei ole tapahtumia",
     "noCurrentTeacherCourses": "Sinulla ei ole meneillään olevaa opetusta.",
     "noPastTeacherCourses": "Sinulla ei ole päättynyttä opetusta.",
     "courseMaterials": "Siirry kurssin materiaaleihin",
@@ -117,7 +118,8 @@
     "errors": {
       "errorLoadingFutureEvents": "Tulevien tapahtumien haussa tapahtui virhe",
       "errorLoadingExams": "Tenttien haussa tapahtui virhe",
-      "errorLoadingCourses": "Kurssien haussa tapahtui virhe"
+      "errorLoadingCourses": "Kurssien haussa tapahtui virhe",
+      "errorLoadingEvents" : "Tapahtumien haussa tapahtui virhe"
     },
     "subscribeEvents": "tilaa tapahtumat",
     "calendarInstructions": "Näin lisäät tapahtumat kalenteriohjelmiin "
