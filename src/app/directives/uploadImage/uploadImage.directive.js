@@ -35,7 +35,7 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
 
   .constant('startImageCropperEvent', 'startImageCropperEvent')
 
-  .service('ResizeImage', function(MaxImageDimensions) {
+  .service('ResizeImageService', function(MaxImageDimensions) {
 
     function getDimensions(image) {
       var width = image.videoWidth ? image.videoWidth : image.width,
@@ -54,19 +54,21 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
       return dimensions;
     }
 
-    return function(image) {
-      var dimensions = getDimensions(image),
-          canvas = document.createElement('canvas'),
-          sWidth = dimensions.width,
-          sHeight = dimensions.height,
-          dWidth = dimensions.resizedWidth ? dimensions.resizedWidth : dimensions.width,
-          dHeight = dimensions.resizedHeight ? dimensions.resizedHeight : dimensions.height;
+    return {
+      resizeImage: function(image) {
+        var dimensions = getDimensions(image),
+            canvas = document.createElement('canvas'),
+            sWidth = dimensions.width,
+            sHeight = dimensions.height,
+            dWidth = dimensions.resizedWidth ? dimensions.resizedWidth : dimensions.width,
+            dHeight = dimensions.resizedHeight ? dimensions.resizedHeight : dimensions.height;
 
-      canvas.width = dWidth;
-      canvas.height = dHeight;
-      canvas.getContext('2d').drawImage(image, 0, 0, sWidth, sHeight, 0, 0, dWidth, dHeight);
+        canvas.width = dWidth;
+        canvas.height = dHeight;
+        canvas.getContext('2d').drawImage(image, 0, 0, sWidth, sHeight, 0, 0, dWidth, dHeight);
 
-      return canvas.toDataURL();
+        return canvas.toDataURL();
+      }
     };
   })
 
@@ -74,7 +76,7 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
                                      Camera,
                                      UserSettingsService,
                                      BrowserUtil,
-                                     ResizeImage,
+                                     ResizeImageService,
                                      startImageCropperEvent,
                                      ImageSourceMedia) {
     return {
@@ -111,10 +113,10 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
 
                   img.src = croppedImage;
                   img.onload = function() {
-                    deferred.resolve(new ResizeImage(img));
+                    deferred.resolve(ResizeImageService.resizeImage(img));
                   };
                 } else {
-                  deferred.resolve(new ResizeImage(croppedImage));
+                  deferred.resolve(ResizeImageService.resizeImage(croppedImage));
                 }
 
                 return deferred.promise;

@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="avatar-change-type" ng-show="showAvatarChangeType">
-            <upload-image upload-callback="upload" cancel-upload="cancelUpload"></upload-image>
+            <upload-image upload-callback="upload" cancel-callback="cancelUpload"></upload-image>
             <span ng-show="supportsCamera">| <a href="" ng-click="startCamera()">{{'userSettings.changeAvatar.takePicture' | translate}}</a></span>
             | <a href="" ng-click="deleteUserAvatar()">{{'userSettings.changeAvatar.useDefault' | translate}}</a>
         </div>
