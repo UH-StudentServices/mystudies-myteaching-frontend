@@ -60,8 +60,10 @@ angular.module('services.userSettings', ['resources.userSettings'])
       });
     }
 
-    function deleteUserAvatar(id) {
-      return UserSettingsResource.deleteUserAvatar(id);
+    function deleteUserAvatar() {
+      return getUserSettings().then(function(settings) {
+        return UserSettingsResource.deleteUserAvatar(settings.id);
+      });
     }
 
     function showMyStudiesTour() {
