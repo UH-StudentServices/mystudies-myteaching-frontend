@@ -35,7 +35,7 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
 
   .constant('startImageCropperEvent', 'startImageCropperEvent')
 
-  .service('ResizeImageService', function(MaxImageDimensions) {
+  .factory('ResizeImageService', function(MaxImageDimensions) {
 
     function getDimensions(image) {
       var width = image.videoWidth ? image.videoWidth : image.width,
