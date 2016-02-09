@@ -44,7 +44,7 @@ angular.module('directives.userMenu.settings.avatar', ['directives.imgLoad',
         $scope.supportsCamera = BrowserUtil.supportsCamera();
 
         $scope.deleteUserAvatar = function() {
-          UserSettingsService.deleteUserAvatar($scope.userSettings.id)
+          UserSettingsService.deleteUserAvatar()
             .then(function deleteUserAvatarSuccess() {
               AnalyticsService.trackRemoveAvatar();
               $scope.$emit(userAvatarUpdatedEvent);

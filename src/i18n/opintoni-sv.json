@@ -106,9 +106,10 @@
     "allEvents": "Alla händelser",
     "noEvents": "Inga händelser",
     "noUpcomingEvents": "Du har inga kommande händelser.",
-    "noPastEvents": "Du har inga tidigare hädelser.",
+    "noPastEvents": "Du har inga tidigare händelser.",
     "noCourses" : "Du har inte gjort någon kursanmälan i WebOodi",
     "noExams" : "Du har inga kommande tentamina",
+    "noEvents" : "Du har inga händelser",
     "noCurrentTeacherCourses": "Du har inga aktuella kurser.",
     "noPastTeacherCourses": "Du har inga avslutade kurser.",
     "courseMaterials": "Gå till kursmaterial",
@@ -118,7 +119,9 @@
     "errors": {
       "errorLoadingFutureEvents": "Kommande händelser kunde inte laddas",
       "errorLoadingExams": "Tentamina kunde inte laddas",
-      "errorLoadingCourses": "Kurserna kunde inte laddas"
+      "errorLoadingCourses": "Kurserna kunde inte laddas",
+      "errorLoadingEvents" : "Händelser kunde inte laddas"
+
     },
     "subscribeEvents" : "beställ händelser",
     "calendarInstructions" : "Så här importerar du händelser till kalenderprogram"

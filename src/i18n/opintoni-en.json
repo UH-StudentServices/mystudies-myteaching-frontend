@@ -109,6 +109,7 @@
     "noPastEvents": "you have no past events.",
     "noCourses": "You have not registered for any courses.",
     "noExams": "You have no upcoming exams.",
+    "noEvents": "You have no events",
     "noCurrentTeacherCourses": "You have no current courses.",
     "noPastTeacherCourses": "You have no past courses.",
     "courseMaterials": "Go to course materials",
@@ -118,7 +119,8 @@
     "errors": {
       "errorLoadingFutureEvents": "Future events could not be loaded",
       "errorLoadingExams": "Exams could not be loaded",
-      "errorLoadingCourses": "Courses could not be loaded"
+      "errorLoadingCourses": "Courses could not be loaded",
+      "errorLoadingEvents" : "Events could not be leaded"
     },
     "subscribeEvents" : "subscribe events",
     "calendarInstructions" : "How to import events to calendar applications"

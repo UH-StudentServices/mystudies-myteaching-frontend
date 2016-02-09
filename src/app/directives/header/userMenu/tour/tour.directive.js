@@ -60,17 +60,16 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
     };
   })
 
-  .service('TourElementSelectorByMedia', function(BrowserUtil) {
-    //This is usable for shared elements between mobile and normal
-    function generateSelectorByMedia(selector) {
-      if(BrowserUtil.isMobile()) {
-        return '.show-mobile-only ' + selector;
-      } else {
-        return '.hide-mobile-only ' + selector;
+  .factory('TourElementSelectorByMedia', function(BrowserUtil) {
+    return {
+      selectorByMedia: function(selector) {
+        if(BrowserUtil.isMobile()) {
+          return '.show-mobile-only ' + selector;
+        } else {
+          return '.hide-mobile-only ' + selector;
+        }
       }
-    }
-
-    return generateSelectorByMedia;
+    };
   })
 
   .directive('tour', function(StartTourEvent, $rootScope, $timeout, Dialog) {
@@ -136,21 +135,21 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
             },
             {
               type: 'element',
-              selector: new TourElementSelectorByMedia('.tour-element__search'),
+              selector: TourElementSelectorByMedia.selectorByMedia('.tour-element__search'),
               heading: translate('tour.common.search.heading'),
               text: translate('tour.common.search.text'),
               placement: 'bottom'
             },
             {
               type: 'element',
-              selector: new TourElementSelectorByMedia('.tour-element__notifications'),
+              selector: TourElementSelectorByMedia.selectorByMedia('.tour-element__notifications'),
               heading: translate('tour.common.notifications.heading'),
               text: translate('tour.common.notifications.text'),
               placement: 'bottom'
             },
             {
               type: 'element',
-              selector: new TourElementSelectorByMedia('.new-todo-item'),
+              selector: TourElementSelectorByMedia.selectorByMedia('.new-todo-item'),
               heading: translate('tour.common.todoItems.heading'),
               text: translate('tour.common.todoItems.text'),
               placement: 'bottom'
@@ -221,7 +220,7 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
             },
             {
               type: 'element',
-              selector: new TourElementSelectorByMedia('.tour-element__search'),
+              selector: TourElementSelectorByMedia.selectorByMedia('.tour-element__search'),
               heading: translate('tour.common.search.heading'),
               text: translate('tour.common.search.text'),
               placement: 'bottom',
@@ -229,14 +228,14 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
             },
             {
               type: 'element',
-              selector: new TourElementSelectorByMedia('.tour-element__notifications'),
+              selector: TourElementSelectorByMedia.selectorByMedia('.tour-element__notifications'),
               heading: translate('tour.common.notifications.heading'),
               text: translate('tour.common.notifications.text'),
               placement: 'bottom'
             },
             {
               type: 'element',
-              selector: new TourElementSelectorByMedia('.new-todo-item'),
+              selector: TourElementSelectorByMedia.selectorByMedia('.new-todo-item'),
               heading: translate('tour.common.todoItems.heading'),
               text: translate('tour.common.todoItems.text'),
               placement: 'bottom'
