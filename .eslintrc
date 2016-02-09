@@ -32,7 +32,6 @@
       "VariableDeclarator": 2,
       "SwitchCase": 1
     }],
-    "max-len": [2, 100, 2],
-    new-cap: [2, {"capIsNew": false}]
+    "max-len": [2, 100, 2]
   }
 }
