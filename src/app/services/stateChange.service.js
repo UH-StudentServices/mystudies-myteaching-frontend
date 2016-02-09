@@ -27,16 +27,15 @@ angular.module('services.stateChange', [
                                           StateService,
                                           State) {
     function isStateChangeAvailable() {
-      var defer = $q.defer();
-
-      SessionService.getSession().then(function getSessionSuccess(session) {
-        defer.resolve(
-          _.every(
+      return SessionService.getSession()
+        .then(function getSessionSuccess(session) {
+          return _.every(
             [Role.TEACHER, Role.STUDENT],
-            _.partial(_.includes, session.roles)));
-      });
-
-      return defer.promise;
+            _.partial(_.includes, session.roles));
+        })
+        .catch(function() {
+          return false;
+        });
     }
 
     function changeStateAvailableTo() {
