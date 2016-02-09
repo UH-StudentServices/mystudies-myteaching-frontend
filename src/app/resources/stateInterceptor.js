@@ -17,8 +17,7 @@
 
 angular.module('resources.stateInterceptor', [
   'services.session',
-  'services.state',
-  'directives.stateChange'])
+  'services.state'])
 
   .run(function($rootScope, $state, SessionService, State) {
 

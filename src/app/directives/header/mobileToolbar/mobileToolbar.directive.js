@@ -19,14 +19,11 @@ angular.module('directives.mobileToolbar', [
   'constants.externalLinks',
   'services.state',
   'directives.logoutLink',
-  'directives.stateChange',
+  'services.stateChange',
   'directives.userMenu',
   'directives.mobileMenu'])
 
-  .directive('mobileToolbar', function(StateChangeService,
-                                       StateService,
-                                       State,
-                                       pageHeaderLinks,
+  .directive('mobileToolbar', function(pageHeaderLinks,
                                        mobileReturnLinks,
                                        primaryLinks) {
     return {
@@ -50,14 +47,6 @@ angular.module('directives.mobileToolbar', [
         $scope.toggleReturnLinks = function() {
           $scope.showReturnLinks = !$scope.showReturnLinks;
         };
-
-        StateChangeService.isStateChangeAvailable().then(function(stateChangeAvailable) {
-          if(stateChangeAvailable) {
-            $scope.changeStateTo = StateService.getRootStateName() === State.MY_STUDIES ?
-              State.MY_TEACHINGS :
-              State.MY_STUDIES;
-          }
-        });
 
         $scope.pageHeaderLinks = pageHeaderLinks;
         $scope.mobileReturnLinks = mobileReturnLinks;

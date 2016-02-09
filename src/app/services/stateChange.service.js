@@ -15,31 +15,46 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.stateChange', [
+angular.module('services.stateChange', [
   'services.state',
   'services.session'])
 
-  .service('StateChangeService', function(Role, SessionService, $q,
-                                          localStorageService, State, $window) {
+  .factory('StateChangeService', function($q,
+                                          $window,
+                                          Role,
+                                          SessionService,
+                                          localStorageService,
+                                          StateService,
+                                          State) {
     function isStateChangeAvailable() {
-      var defer = $q.defer();
+      return SessionService.getSession()
+        .then(function getSessionSuccess(session) {
+          return _.every(
+            [Role.TEACHER, Role.STUDENT],
+            _.partial(_.includes, session.roles));
+        })
+        .catch(function() {
+          return false;
+        });
+    }
 
-      SessionService.getSession().then(function getSessionSuccess(session) {
-        if(session.roles.length > 1) {
-          defer.resolve(true);
+    function changeStateAvailableTo() {
+      return isStateChangeAvailable().then(function(stateChangeAvailable) {
+        if(stateChangeAvailable) {
+          return StateService.getRootStateName() === State.MY_STUDIES ?
+            State.MY_TEACHINGS :
+            State.MY_STUDIES;
         } else {
-          defer.resolve(false);
+          return null;
         }
       });
-
-      return defer.promise;
     }
 
     function changeView(stateName) {
       $window.location = '/redirect?state=' + stateName;
     }
 
-    function changeState(state) {
+    function changeStateTo(state) {
       switch (state) {
         case State.MY_TEACHINGS:
           localStorageService.cookie.set('SESSION_ROLE', Role.TEACHER);
@@ -56,17 +71,16 @@ angular.module('directives.stateChange', [
       }
     }
 
-    return {
-      isStateChangeAvailable: isStateChangeAvailable,
-      changeState: changeState
-    };
-  })
+    function changeState() {
+      changeStateAvailableTo().then(function(state) {
+        if(state) {
+          changeStateTo(state);
+        }
+      });
+    }
 
-  .directive('stateChange', function(StateChangeService) {
     return {
-      restrict: 'A',
-      link: function($scope) {
-        $scope.changeState = StateChangeService.changeState;
-      }
+      changeStateAvailableTo: changeStateAvailableTo,
+      changeState: changeState
     };
   });
