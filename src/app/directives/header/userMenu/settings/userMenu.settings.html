@@ -39,8 +39,8 @@
                 <a href="" ng-click="openPortfolio()"><i class="hy hy-profile"></i>{{'userSettings.portfolio' | translate | capitalize}}</a>
             </li>
 
-            <li class="divider-with-margin" role="menuitem" ng-show="changeStateTo">
-                <a href="" state-change ng-click="changeState(changeStateTo)"><i class="hy hy-avatar"></i>{{ changeStateTo + ".pageHeaderBranding" | translate }}</a>
+            <li class="divider-with-margin" role="menuitem" ng-show="changeStateAvailableTo">
+                <a href="" ng-click="changeState()"><i class="hy hy-avatar"></i>{{ changeStateAvailableTo + ".pageHeaderBranding" | translate }}</a>
             </li>
 
             <li admin-role-only session="session" class="divider-with-margin" role="menuitem">
