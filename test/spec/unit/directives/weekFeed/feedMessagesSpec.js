@@ -26,9 +26,7 @@ describe('FeedMessages', function() {
     };
   }
 
-  function expectedEmptyMessage() {
-    return null;
-  }
+  function expectedEmptyMessage() {}
 
   beforeEach(inject(function(_FeedMessages_, _MessageTypes_, _WeekFeedMessageKeys_, Tabs) {
     FeedMessages = _FeedMessages_;

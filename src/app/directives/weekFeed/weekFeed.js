@@ -55,8 +55,6 @@ angular.module('directives.weekFeed', [
     function getCalendarMessage(courses, events, filteredItems, selectedTab) {
       if(!events) {
         return getMessage(MessageTypes.ERROR, selectedTab);
-      } else {
-        return null;
       }
     }
 
@@ -65,8 +63,6 @@ angular.module('directives.weekFeed', [
         return getMessage(MessageTypes.ERROR, selectedTab);
       } else if(!filteredItems.length) {
         return getMessage(MessageTypes.INFO, selectedTab);
-      } else {
-        return null;
       }
     }
 
@@ -90,9 +86,9 @@ angular.module('directives.weekFeed', [
     FeedItemSortCondition,
     FeedMessages) {
 
-    var getEventsMessage = FeedMessages.getEventsMessage;
-    var getCoursesMessage = FeedMessages.getCoursesMessage;
-    var getCalendarMessage = FeedMessages.getCalendarMessage;
+    var getEventsMessage = FeedMessages.getEventsMessage,
+        getCoursesMessage = FeedMessages.getCoursesMessage,
+        getCalendarMessage = FeedMessages.getCalendarMessage;
 
     function getItems(items, feedItemTimeCondition, feedItemSortCondition) {
       var filteredFeedItems = $filter('filterFeedItems')(items, feedItemTimeCondition);
