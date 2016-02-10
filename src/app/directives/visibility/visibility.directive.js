@@ -55,25 +55,25 @@ angular.module('directives.visibility', [
         limitVisibility: '='
       },
       link: function($scope, $element, $attr, ctrl, $transclude) {
-        $q.all(
-          _.map(
-            _.map($scope.limitVisibility, function(limit) {
-              if(Visibility[limit]) {
-                return Visibility[limit];
-              }
-              throw 'limitVisibility directive: Invalid Visibility argument';
-            }),
-            function(limitFunction) {
-              return limitFunction($q, StateService, State, SessionService, Role, Configuration);
-            }
-          )
-        ).then(function visibilitiesResolved(visibilities) {
+        $q.all(_.map(limitArgumentsToFunctions(), function(limitFunction) {
+          return limitFunction($q, StateService, State, SessionService, Role, Configuration);
+        }))
+        .then(function visibilitiesResolved(visibilities) {
           if(_.every(visibilities, Boolean)) {
             $transclude(function(clone) {
               $animate.enter(clone, $element.parent(), $element);
             });
           }
         });
+
+        function limitArgumentsToFunctions() {
+          return _.map($scope.limitVisibility, function(limit) {
+            if(Visibility[limit]) {
+              return Visibility[limit];
+            }
+            throw 'limitVisibility directive: Invalid Visibility argument ' + limit;
+          });
+        }
       }
     };
   }
