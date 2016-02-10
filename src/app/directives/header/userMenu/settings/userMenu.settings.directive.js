@@ -27,7 +27,8 @@ angular.module('directives.userMenu.settings', [
   'webcam',
   'utils.browser',
   'directives.avatarImage',
-  'directives.userName'
+  'directives.userName',
+  'directives.visibility'
 ])
   .constant('userAvatarUpdatedEvent', 'USER_AVATAR_UPDATED_EVENT')
 

@@ -19,62 +19,62 @@ angular.module('directives.visibility', [
   'services.state',
   'services.session'])
 
+.constant('Visibility', {
+  TEACHER_ONLY:
+    function teacherOnly($q, StateService, State, SessionService, Role, Configuration) {
+      return $q.resolve(StateService.getRootStateName() === State.MY_TEACHINGS);
+    },
+  STUDENT_ONLY:
+    function studentOnly($q, StateService, State, SessionService, Role, Configuration) {
+      return $q.resolve(StateService.getRootStateName() === State.MY_STUDIES);
+    },
+  ADMIN_ONLY:
+    function adminOnly($q, StateService, State, SessionService, Role, Configuration) {
+      return SessionService.isInRole(Role.ADMIN);
+    },
+  DEV_AND_QA_ONLY:
+    function devAndQaOnly($q, StateService, State, SessionService, Role, Configuration) {
+      return $q.resolve(Configuration.environment !== 'prod');
+    }
+})
+
 /**
 * Implemented based on ngIf directive
 * https://github.com/angular/angular.js/blob/master/src/ng/directive/ngIf.js#L3
 */
-.directive('teacherOnly', function($animate, StateService, State) {
-  return {
-    multiElement: true,
-    transclude: 'element',
-    priority: 600,
-    terminal: true,
-    restrict: 'A',
-    link: function($scope, $element, $attr, ctrl, $transclude) {
-      if(StateService.getRootStateName() === State.MY_TEACHINGS) {
-        $transclude(function(clone) {
-          $animate.enter(clone, $element.parent(), $element);
-        });
-      }
-    }
-  };
-})
+.directive('limitVisibility',
+  function($q, $animate, Visibility, StateService, State, SessionService, Role, Configuration) {
 
-.directive('studentOnly', function($animate, StateService, State) {
-  return {
-    multiElement: true,
-    transclude: 'element',
-    priority: 600,
-    terminal: true,
-    restrict: 'A',
-    link: function($scope, $element, $attr, ctrl, $transclude) {
-      if(StateService.getRootStateName() === State.MY_STUDIES) {
-        $transclude(function(clone) {
-          $animate.enter(clone, $element.parent(), $element);
+    return {
+      multiElement: true,
+      transclude: 'element',
+      priority: 600,
+      terminal: true,
+      restrict: 'A',
+      scope: {
+        limitVisibility: '='
+      },
+      link: function($scope, $element, $attr, ctrl, $transclude) {
+        $q.all(_.map(limitArgumentsToFunctions(), function(limitFunction) {
+          return limitFunction($q, StateService, State, SessionService, Role, Configuration);
+        }))
+        .then(function visibilitiesResolved(visibilities) {
+          if(_.every(visibilities, Boolean)) {
+            $transclude(function(clone) {
+              $animate.enter(clone, $element.parent(), $element);
+            });
+          }
         });
-      }
-    }
-  };
-})
 
-.directive('adminRoleOnly', function($animate, SessionService, Role) {
-  return {
-    multiElement: true,
-    transclude: 'element',
-    priority: 600,
-    terminal: true,
-    restrict: 'A',
-    scope: {
-      session: '='
-    },
-    link: function($scope, $element, $attr, ctrl, $transclude) {
-      SessionService.isInRole(Role.ADMIN).then(function(isAdmin) {
-        if(isAdmin) {
-          $transclude(function(clone) {
-            $animate.enter(clone, $element.parent(), $element);
+        function limitArgumentsToFunctions() {
+          return _.map($scope.limitVisibility, function(limit) {
+            if(Visibility[limit]) {
+              return Visibility[limit];
+            }
+            throw 'limitVisibility directive: Invalid Visibility argument ' + limit;
           });
         }
-      });
-    }
-  };
-});
+      }
+    };
+  }
+);

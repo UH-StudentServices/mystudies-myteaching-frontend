@@ -48,7 +48,6 @@ angular.module('opintoniApp', [
 
   'directives.menuLanguage',
   'directives.dropdown',
-  'directives.onlyDev',
   'directives.editLink',
   'directives.feedback',
   'directives.visibility',

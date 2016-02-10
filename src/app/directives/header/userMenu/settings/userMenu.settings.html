@@ -35,7 +35,7 @@
             <li class="divider-with-margin" role="menuitem" ng-show="session.faculty">
                 <a href="{{ session.faculty.uri }}" target="_blank"><i class="hy hy-units-and-faculties"></i>{{ "faculties." + session.faculty.code | translate }}</a>
             </li>
-            <li only-dev class="divider-with-margin" role="menuitem">
+            <li limit-visibility="['DEV_AND_QA_ONLY']" class="divider-with-margin" role="menuitem">
                 <a href="" ng-click="openPortfolio()"><i class="hy hy-profile"></i>{{'userSettings.portfolio' | translate | capitalize}}</a>
             </li>
 
@@ -43,7 +43,7 @@
                 <a href="" ng-click="changeState()"><i class="hy hy-avatar"></i>{{ changeStateAvailableTo + ".pageHeaderBranding" | translate }}</a>
             </li>
 
-            <li admin-role-only session="session" class="divider-with-margin" role="menuitem">
+            <li limit-visibility="['ADMIN_ONLY']" session="session" class="divider-with-margin" role="menuitem">
                 <a href="#/admin"><i class="hy hy-modify"></i>{{'admin.pageHeaderBranding' | translate }}</a>
             </li>
 
