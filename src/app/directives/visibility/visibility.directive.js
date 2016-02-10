@@ -20,19 +20,19 @@ angular.module('directives.visibility', [
   'services.session'])
 
 .constant('Visibility', {
-  'TEACHER_ONLY':
+  TEACHER_ONLY:
     function teacherOnly($q, StateService, State, SessionService, Role, Configuration) {
       return $q.resolve(StateService.getRootStateName() === State.MY_TEACHINGS);
     },
-  'STUDENT_ONLY':
+  STUDENT_ONLY:
     function studentOnly($q, StateService, State, SessionService, Role, Configuration) {
       return $q.resolve(StateService.getRootStateName() === State.MY_STUDIES);
     },
-  'ADMIN_ONLY':
+  ADMIN_ONLY:
     function adminOnly($q, StateService, State, SessionService, Role, Configuration) {
       return SessionService.isInRole(Role.ADMIN);
     },
-  'DEV_AND_QA_ONLY':
+  DEV_AND_QA_ONLY:
     function devAndQaOnly($q, StateService, State, SessionService, Role, Configuration) {
       return $q.resolve(Configuration.environment !== 'prod');
     }
@@ -58,7 +58,7 @@ angular.module('directives.visibility', [
         $q.all(
           _.map(
             _.map($scope.limitVisibility, function(limit) {
-              if(Visibility.hasOwnProperty(limit)) {
+              if(Visibility[limit]) {
                 return Visibility[limit];
               }
               throw 'limitVisibility directive: Invalid Visibility argument';
