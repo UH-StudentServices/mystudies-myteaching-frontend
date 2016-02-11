@@ -274,8 +274,7 @@ module.exports = function(grunt) {
       ],
       test: [
         'sass:main',
-        'buildTemplates',
-        'eslint'
+        'buildTemplates'
       ],
       dist: [
         'sass:main',
@@ -359,7 +358,8 @@ module.exports = function(grunt) {
   grunt.registerTask('test', [
     'clean:server',
     'concurrent:test',
-    'karma:unit'
+    'karma:unit',
+    'eslint'
   ]);
 
   grunt.registerTask('e2e', [

@@ -40,43 +40,60 @@ angular.module('directives.weekFeed', [
     'START_DATE_ASC': 'START_DATE_ASC'
   })
 
+  .factory('FeedMessages', function(
+    MessageTypes,
+    WeekFeedMessageKeys) {
+
+    function getEventsMessage(courses, events, filteredItems, selectedTab) {
+      return getItemsMessage(events, filteredItems, selectedTab);
+    }
+
+    function getCoursesMessage(courses, events, filteredItems, selectedTab) {
+      return getItemsMessage(courses, filteredItems, selectedTab);
+    }
+
+    function getCalendarMessage(courses, events, filteredItems, selectedTab) {
+      if(!events) {
+        return getMessage(MessageTypes.ERROR, selectedTab);
+      }
+    }
+
+    function getItemsMessage(items, filteredItems, selectedTab) {
+      if(!items) {
+        return getMessage(MessageTypes.ERROR, selectedTab);
+      } else if(!filteredItems.length) {
+        return getMessage(MessageTypes.INFO, selectedTab);
+      }
+    }
+
+    function getMessage(messageType, selectedTab) {
+      return {
+        messageType: messageType,
+        key: _.get(WeekFeedMessageKeys, [selectedTab, messageType])
+      };
+    }
+
+    return {
+      getEventsMessage: getEventsMessage,
+      getCoursesMessage: getCoursesMessage,
+      getCalendarMessage: getCalendarMessage
+    };
+  })
+
   .factory('Tabs', function(
     $filter,
     FeedItemTimeCondition,
     FeedItemSortCondition,
-    MessageTypes,
-    WeekFeedMessageKeys) {
+    FeedMessages) {
+
+    var getEventsMessage = FeedMessages.getEventsMessage,
+        getCoursesMessage = FeedMessages.getCoursesMessage,
+        getCalendarMessage = FeedMessages.getCalendarMessage;
 
     function getItems(items, feedItemTimeCondition, feedItemSortCondition) {
       var filteredFeedItems = $filter('filterFeedItems')(items, feedItemTimeCondition);
 
       return $filter('sortFeedItems')(filteredFeedItems, feedItemSortCondition);
-    }
-
-    function eventsMessage(courses, events, selectedTab) {
-      return getMessage(events, selectedTab);
-    }
-
-    function coursesMessage(courses, events, selectedTab) {
-      return getMessage(courses, selectedTab);
-    }
-
-    function getMessage(items, selectedTab) {
-      var message;
-
-      if(!items) {
-        message = {
-          messageType: MessageTypes.ERROR,
-          key: _.get(WeekFeedMessageKeys, [selectedTab, MessageTypes.ERROR])
-        };
-      } else if(!items.length) {
-        message = {
-          messageType: MessageTypes.INFO,
-          key: _.get(WeekFeedMessageKeys, [selectedTab, MessageTypes.INFO])
-        };
-      }
-
-      return message;
     }
 
     return {
@@ -86,7 +103,7 @@ angular.module('directives.weekFeed', [
         getItems: function(courses, events) {
           return getItems(events, FeedItemTimeCondition.UPCOMING, FeedItemSortCondition.NONE);
         },
-        getMessage: eventsMessage,
+        getMessage: getEventsMessage,
         showFirstItemImage: true
       },
       'COURSES': {
@@ -96,7 +113,7 @@ angular.module('directives.weekFeed', [
           return getItems(_.filter(courses, {isExam: false}),
             FeedItemTimeCondition.ALL, FeedItemSortCondition.NONE);
         },
-        getMessage: coursesMessage
+        getMessage: getCoursesMessage
       },
       'STUDENT_EXAMS': {
         key: 'STUDENT_EXAMS',
@@ -105,7 +122,7 @@ angular.module('directives.weekFeed', [
           return getItems(_.filter(events, {type: 'EXAM'}),
             FeedItemTimeCondition.UPCOMING, FeedItemSortCondition.NONE);
         },
-        getMessage: eventsMessage
+        getMessage: getEventsMessage
       },
       'TEACHER_EXAMS': {
         key: 'TEACHER_EXAMS',
@@ -114,7 +131,7 @@ angular.module('directives.weekFeed', [
           return getItems(_.filter(courses, {isExam: true}),
             FeedItemTimeCondition.UPCOMING, FeedItemSortCondition.NONE);
         },
-        getMessage: coursesMessage
+        getMessage: getCoursesMessage
       },
       'CURRENT_TEACHER_COURSES': {
         key: 'CURRENT_TEACHER_COURSES',
@@ -123,7 +140,7 @@ angular.module('directives.weekFeed', [
           return getItems(_.filter(courses, {isExam: false}),
             FeedItemTimeCondition.CURRENT, FeedItemSortCondition.START_DATE_ASC);
         },
-        getMessage: coursesMessage
+        getMessage: getCoursesMessage
       },
       'PAST_TEACHER_COURSES': {
         key: 'PAST_TEACHER_COURSES',
@@ -131,7 +148,7 @@ angular.module('directives.weekFeed', [
         getItems: function(courses, events) {
           return getItems(courses, FeedItemTimeCondition.PAST, FeedItemSortCondition.NONE);
         },
-        getMessage: coursesMessage
+        getMessage: getCoursesMessage
       },
       'CALENDAR': {
         key: 'CALENDAR',
@@ -139,7 +156,7 @@ angular.module('directives.weekFeed', [
         getItems: function(courses, events) {
           return [];
         },
-        getMessage: eventsMessage
+        getMessage: getCalendarMessage
       }
     };
   })
@@ -272,6 +289,7 @@ angular.module('directives.weekFeed', [
           $scope.message = $scope.selectedTab.getMessage(
             $scope.courses,
             $scope.events,
+            $scope.feedItems,
             $scope.selectedTab.key);
         }
 
