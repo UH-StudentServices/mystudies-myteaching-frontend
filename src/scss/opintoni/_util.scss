@@ -31,7 +31,6 @@
   .show-mobile-only-with-ipad-mini { display: none !important; }
 }
 
-
 .right {
   float: right;
 }
@@ -42,6 +41,10 @@
 
 .clickable {
   cursor: pointer;
+}
+
+.text-transform-capitalize {
+  text-transform: capitalize;
 }
 
 @mixin linear-gradient-from-left($from-color, $to-color) {
