@@ -13,43 +13,54 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
-  -->
+-->
 
 <div dropdown class="user-settings" close-callback="resetMenu()">
-    <div class="dropdown-toggle">
-        <a
-                href=""
-                class="user-menu__actions--action"
-                ng-class="{active : showMenu}"
-                aria-label="{{ 'userSettings.title' | translate }}"
-                role="button">
+  <div class="dropdown-toggle">
+    <a tabindex="0"
+       class="user-menu__actions--action"
+       ng-class="{active : showMenu}"
+       aria-label="{{::('userSettings.title' | translate)}}"
+       role="button">
 
-            <avatar-image class="user-avatar__small" img-src="session.avatarUrl" img-alt="session.name"></avatar-image>
-        </a>
-    </div>
-    <div role="menu" class="user-settings__menu dropdown-content">
-        <ul>
-            <li class="divider change-avatar" role="menuitem">
-                <avatar></avatar>
-            </li>
-            <li class="divider-with-margin" role="menuitem" ng-show="session.faculty">
-                <a href="{{ session.faculty.uri }}" target="_blank"><i class="hy hy-units-and-faculties"></i>{{ "faculties." + session.faculty.code | translate }}</a>
-            </li>
-            <li limit-visibility="['DEV_AND_QA_ONLY']" class="divider-with-margin" role="menuitem">
-                <a href="" ng-click="openPortfolio()"><i class="hy hy-profile"></i>{{'userSettings.portfolio' | translate | capitalize}}</a>
-            </li>
+    <avatar-image class="user-avatar__small" img-src="session.avatarUrl" img-alt="session.name"></avatar-image>
+  </a>
+</div>
+<div role="menu" class="user-settings__menu dropdown-content">
+  <ul>
+    <li class="divider change-avatar" role="menuitem">
+      <avatar></avatar>
+    </li>
+    <li class="divider-with-margin" role="menuitem" ng-show="session.faculty">
+      <a href="{{ session.faculty.uri }}" target="_blank">
+        <i class="hy hy-units-and-faculties"></i>
+        {{ "faculties." + session.faculty.code | translate }}
+      </a>
+    </li>
+    <li limit-visibility="['DEV_AND_QA_ONLY']" class="divider-with-margin" role="menuitem">
+      <a tabindex="0" ng-click="openPortfolio()">
+        <i class="hy hy-profile"></i>
+        {{::('userSettings.portfolio' | translate | capitalize)}}
+      </a>
+    </li>
 
-            <li class="divider-with-margin" role="menuitem" ng-show="changeStateAvailableTo">
-                <a href="" ng-click="changeState()"><i class="hy hy-avatar"></i>{{ changeStateAvailableTo + ".pageHeaderBranding" | translate }}</a>
-            </li>
+    <li class="divider-with-margin" role="menuitem" ng-show="changeStateAvailableTo">
+      <a tabindex="0" ng-click="changeState()">
+        <i class="hy hy-avatar"></i>
+        {{ changeStateAvailableTo + ".pageHeaderBranding" | translate }}
+      </a>
+    </li>
 
-            <li limit-visibility="['ADMIN_ONLY']" session="session" class="divider-with-margin" role="menuitem">
-                <a href="#/admin"><i class="hy hy-modify"></i>{{'admin.pageHeaderBranding' | translate }}</a>
-            </li>
+    <li limit-visibility="['ADMIN_ONLY']" session="session" class="divider-with-margin" role="menuitem">
+      <a href="#/admin">
+        <i class="hy hy-modify"></i>
+        {{::('admin.pageHeaderBranding' | translate)}}
+      </a>
+    </li>
 
-            <li class="divider-with-margin show-mobile-only" role="menuitem">
-                <logout-link></logout-link>
-            </li>
-        </ul>
-    </div>
+    <li class="divider-with-margin show-mobile-only" role="menuitem">
+      <logout-link></logout-link>
+    </li>
+  </ul>
+</div>
 </div>

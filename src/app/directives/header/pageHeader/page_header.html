@@ -13,33 +13,33 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
-  -->
+-->
 
 <div class="page-header">
-    <mobile-toolbar></mobile-toolbar>
-    <div class="wrapper">
-        <div class="page-header__branding">
-            <ul class="inline-list">
-                <li>
-                    <a href="http://www.helsinki.fi/yliopisto/">
-                        <img src="/app/assets/icons/logo.svg" class="logo--header">
-                    </a>
-                </li>
-                <li>
-                    <h1 class="site-name__header">{{ currentStateName + ".pageHeaderBranding" | translate }}</h1>
-                </li>
-            </ul>
-        </div>
-        <div class="page-header__links hide-mobile-only" >
-            <ul class="page-header__links-list">
-                <li ng-repeat="link in pageHeaderLinks">
-                    <a class="page-header__link" href="{{link.href}}" target="_blank">{{ link.key | translate }}</a>
-                </li>
-                <li class="divider">|</li>
-                <li>
-                    <menu-language></menu-language>
-                </li>
-            </ul>
-        </div>
+  <mobile-toolbar></mobile-toolbar>
+  <div class="wrapper">
+    <div class="page-header__branding">
+      <ul class="inline-list">
+        <li>
+          <a href="http://www.helsinki.fi/yliopisto/">
+            <img src="/app/assets/icons/logo.svg" class="logo--header">
+          </a>
+        </li>
+        <li>
+          <h1 class="site-name__header" translate="{{currentStateName + '.pageHeaderBranding'}}"></h1>
+        </li>
+      </ul>
     </div>
+    <div class="page-header__links hide-mobile-only" >
+      <ul class="page-header__links-list">
+        <li ng-repeat="link in pageHeaderLinks">
+          <a class="page-header__link" href="{{link.href}}" target="_blank" translate="{{::link.key}}"></a>
+        </li>
+        <li class="divider">|</li>
+        <li>
+          <menu-language></menu-language>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

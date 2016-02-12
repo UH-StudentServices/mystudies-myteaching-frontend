@@ -13,9 +13,9 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
-  -->
+-->
 
 <div class="useful-link-title">
-    <div class="useful-link-title__arrow"></div>
-    <input ui-keypress="{'enter':'enterFn()'}" ng-model="model" placeholder="{{'usefulLinks.linkDescription' | translate | capitalize}}">
+  <div class="useful-link-title__arrow"></div>
+  <input ui-keypress="{'enter':'enterFn()'}" ng-model="model" placeholder="{{::('usefulLinks.linkDescription' | translate | capitalize)}}">
 </div>

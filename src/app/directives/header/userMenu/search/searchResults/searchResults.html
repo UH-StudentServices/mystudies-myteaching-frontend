@@ -13,31 +13,32 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
-  -->
+-->
 
 <div class="l-page island wrapper" ng-show="showResults">
 
-    <div id="search-results-wrapper">
-        <div class="header border-bottom">
-            <h1>{{ 'searchResults.hitsFound' | translate : {hitCount: results.length} }}</h1>
-            <a href="" ng-click="close()">{{ 'searchResults.close' | translate }}<i class="hy hy-remove"></i></a>
-        </div>
-        <br />
-        <ul class="tag-list--tabs">
-          <li 
-            ng-repeat="category in categories()"
-            ng-click="selectCategory(category)"
-            ng-class="categoryClasses(category)">{{ 'toolbar.search.categories.' + category | translate }} ({{ resultsBySource[category].length }})</li>
-        </ul>
-
-        <section class="hits">
-            <article ng-repeat="result in results" class="hit box-data border-bottom">
-                <h3><a href="{{ result.link }}" target="_blank">{{ result.title }}</a></h3>
-
-                <p class="info">{{ result.date }} | {{ result.link }} </p>
-
-                <p class="snippet">{{ result.text | limitTo: 500}} </p>
-            </article>
-        </section>
+  <div id="search-results-wrapper">
+    <div class="header border-bottom">
+      <h1>{{ 'searchResults.hitsFound' | translate : {hitCount: results.length} }}</h1>
+      <a href="" ng-click="close()" translate="searchResults.close">
+        <i class="hy hy-remove"></i>
+      </a>
     </div>
+    <br />
+    <ul class="tag-list--tabs">
+      <li ng-repeat="category in categories()"
+          ng-click="selectCategory(category)"
+          ng-class="categoryClasses(category)">{{'toolbar.search.categories.' + category | translate }} ({{ resultsBySource[category].length }})</li>
+    </ul>
+
+    <section class="hits">
+      <article ng-repeat="result in results" class="hit box-data border-bottom">
+        <h3><a href="{{ result.link }}" target="_blank">{{ result.title }}</a></h3>
+
+        <p class="info">{{ result.date }} | {{ result.link }} </p>
+
+        <p class="snippet">{{ result.text | limitTo: 500}} </p>
+      </article>
+    </section>
+  </div>
 </div>

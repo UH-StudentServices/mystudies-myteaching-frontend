@@ -13,36 +13,38 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
-  -->
+-->
 
 <div class="page-banner-container">
-    <div class="page-banner">
-        <div class="page-banner__content wrapper">
-            <div class="page-banner__content-right">
-                <todo-items></todo-items>
+  <div class="page-banner">
+    <div class="page-banner__content wrapper">
+      <div class="page-banner__content-right">
+        <todo-items></todo-items>
+      </div>
+      <div class="page-banner__content-left">
+        <flex-slider slide="news in newsList track by $index"
+                     control-nav="false"
+                     slideshow-speed="14000">
+          <li>
+            <div class="page-banner">
+              <div class="page-banner__content wrapper">
+                <div class="page-banner__content-left">
+                  <h1>{{ news.title }}</h1>
+                  <p>{{ news.content }}</p>
+                  <div class="list-of-links theme-dark">
+                    <a class="list-of-links__link"
+                       href="{{ news.url }}"
+                       target="_blank"
+                       translate="pageBanner.newsButtonLabel">
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="page-banner__content-left">
-                <flex-slider slide="news in newsList track by $index"
-                             control-nav="false"
-                             slideshow-speed="14000">
-                    <li>
-                        <div class="page-banner">
-                            <div class="page-banner__content wrapper">
-                                <div class="page-banner__content-left">
-                                    <h1>{{ news.title }}</h1>
-                                    <p>{{ news.content }}</p>
-                                    <div class="list-of-links theme-dark">
-                                        <a class="list-of-links__link" href="{{ news.url }}" target="_blank">
-                                            {{ 'pageBanner.newsButtonLabel' | translate }}
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </flex-slider>
-            </div>
-        </div>
-        <user-background></user-background>
+          </li>
+        </flex-slider>
+      </div>
     </div>
+    <user-background></user-background>
+  </div>
 </div>

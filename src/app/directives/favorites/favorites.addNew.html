@@ -16,18 +16,18 @@
   -->
 
 <article class="favorites-list__item add-new">
-    <a class="add-favorite-button island"
-       role="button"
-       aria-label="{{'favorites.addNew' | translate}}"
-       href=""
-       class="island"
-       ng-click="showPopover()"
-       ns-popover
-       ns-popover-template="app/directives/favorites/favorites.addNew.popover.html"
-       ns-popover-trigger="click"
-       ns-popover-placement="bottom|center"
-       ns-popover-timeout="20000">
-        <h4 class="add-favorite-button__title hide-mobile-only">{{'favorites.addNew' | translate}}</h4>
-        <span class="add-favorite-button__plus">+</span>
-    </a>
+  <a class="add-favorite-button island"
+     role="button"
+     aria-label="{{::('favorites.addNew' | translate)}}"
+     href=""
+     class="island"
+     ng-click="showPopover()"
+     ns-popover
+     ns-popover-template="app/directives/favorites/favorites.addNew.popover.html"
+     ns-popover-trigger="click"
+     ns-popover-placement="bottom|center"
+     ns-popover-timeout="20000">
+    <h4 class="add-favorite-button__title hide-mobile-only" translate="favorites.addNew"></h4>
+    <span class="add-favorite-button__plus">+</span>
+  </a>
 </article>

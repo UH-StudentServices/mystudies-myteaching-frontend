@@ -16,9 +16,9 @@
   -->
 
 <div class="page-banner__change-background" dropdown>
-    <a href="" ng-click="changeBackground()" class="dropdown-toggle"><i class="hy hy-camera"></i></a>
-    <div class="dropdown-content page-banner__change-background-menu">
-        <upload-image upload-callback="upload" cropper-width="900" cropper-height="400"></upload-image>
-        | <a href="" ng-click="openChooseBGModal()">{{ 'pageBanner.chooseDefaultBackground' | translate }}</a>
-    </div>
+  <a href="" ng-click="changeBackground()" class="dropdown-toggle"><i class="hy hy-camera"></i></a>
+  <div class="dropdown-content page-banner__change-background-menu">
+    <upload-image upload-callback="upload" cropper-width="900" cropper-height="400"></upload-image>
+    | <a tabindex="0" ng-click="openChooseBGModal()" translate="pageBanner.chooseDefaultBackground"></a>
+  </div>
 </div>

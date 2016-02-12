@@ -13,22 +13,22 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
-  -->
+-->
 
 <div class="page-navigation hide-mobile-only">
-    <div class="wrapper">
-        <nav>
-            <ul class="main-menu">
-                <li class="main-menu__home">
-                    <a tabindex="0" ui-sref="init" class="active"></a>
-                </li>
-                <li ng-repeat="link in primaryLinks">
-                    <a href="{{ link.href[userLang] }}" target="_blank">
-                        <span>{{link.key | translate}}</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <user-menu></user-menu>
-    </div>
+  <div class="wrapper">
+    <nav>
+      <ul class="main-menu">
+        <li class="main-menu__home">
+          <a tabindex="0" ui-sref="init" class="active"></a>
+        </li>
+        <li ng-repeat="link in primaryLinks">
+          <a href="{{ link.href[userLang] }}" target="_blank">
+            <span translate="{{::link.key}}"></span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <user-menu></user-menu>
+  </div>
 </div>

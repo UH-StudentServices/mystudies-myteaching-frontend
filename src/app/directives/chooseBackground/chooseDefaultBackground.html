@@ -16,43 +16,43 @@
   -->
 
 <div class="choose-background-container">
-    <div class="choose-background" role="dialog" aria-label="{{'userSettings.ariaLabels.chooseBackgroundImage' | translate}}">
-        <div class="choose-background__image">
-            <flex-slider
-                    id="chooseBackground"
-                    animation="fade"
-                    control-nav="false"
-                    animation-loop="false"
-                    slideshow="false"
-                    slide="backgroundImage in backgroundImages"
-                    start="init($slider)"
-                    sync="#chooseBackgroundThumbs .flexslider"
-                    after="change($slider)">
-                <li class="choose-background__image--container">
-                    <img ng-src="/api/public/v1/images/backgrounds/{{backgroundImage}}">
-                </li>
-            </flex-slider>
-        </div>
-        <div class="choose-background__thumbnails">
-            <flex-slider
-                    id="chooseBackgroundThumbs"
-                    animation="slide"
-                    control-nav="false"
-                    animation-loop="false"
-                    slideshow="false"
-                    slide="backgroundImage in backgroundImages"
-                    slideshow="false"
-                    as-nav-for="#chooseBackground .flexslider"
-                    item-margin="10"
-                    item-width="100">
-                <li>
-                    <img ng-src="/api/public/v1/images/backgrounds/{{backgroundImage}}">
-                </li>
-            </flex-slider>
-        </div>
+  <div class="choose-background" role="dialog" aria-label="{{::('userSettings.ariaLabels.chooseBackgroundImage' | translate)}}">
+    <div class="choose-background__image">
+      <flex-slider
+              id="chooseBackground"
+              animation="fade"
+              control-nav="false"
+              animation-loop="false"
+              slideshow="false"
+              slide="backgroundImage in backgroundImages"
+              start="init($slider)"
+              sync="#chooseBackgroundThumbs .flexslider"
+              after="change($slider)">
+        <li class="choose-background__image--container">
+            <img ng-src="/api/public/v1/images/backgrounds/{{backgroundImage}}">
+        </li>
+      </flex-slider>
     </div>
-    <div class="modal__actions">
-        <a href="" ng-click="ok()">{{'general.save' | translate | capitalize}}</a>
-        <a href="" ng-click="cancel()">{{'general.cancel' | translate | capitalize}}</a>
+    <div class="choose-background__thumbnails">
+      <flex-slider
+              id="chooseBackgroundThumbs"
+              animation="slide"
+              control-nav="false"
+              animation-loop="false"
+              slideshow="false"
+              slide="backgroundImage in backgroundImages"
+              slideshow="false"
+              as-nav-for="#chooseBackground .flexslider"
+              item-margin="10"
+              item-width="100">
+        <li>
+            <img ng-src="/api/public/v1/images/backgrounds/{{backgroundImage}}">
+        </li>
+      </flex-slider>
     </div>
+  </div>
+  <div class="modal__actions text-transform-capitalize">
+    <a href="" ng-click="ok()" translate="general.save"></a>
+    <a href="" ng-click="cancel()" translate="general.cancel"></a>
+  </div>
 </div>

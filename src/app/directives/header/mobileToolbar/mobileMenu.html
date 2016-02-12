@@ -13,23 +13,23 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
-  -->
+-->
 
 <div class="mobile-menu" dropdown>
-    <a class="dropdown-toggle" href="">
-        <i class="hy hy-hamburger" ng-hide="showToolbar"></i>
-    </a>
+  <a class="dropdown-toggle" href="">
+    <i class="hy hy-hamburger" ng-hide="showToolbar"></i>
+  </a>
 
-    <div class="dropdown-content" role="navigation">
+  <div class="dropdown-content" role="navigation">
 
-        <ul class="mobile-menu__links mobile-menu__links--dark">
-            <li ng-repeat="link in pageHeaderLinks">
-                <a href="{{link.href}}" target="_blank">{{ link.key | translate | capitalize }}</a>
-            </li>
-        </ul>
+    <ul class="mobile-menu__links mobile-menu__links--dark">
+      <li ng-repeat="link in pageHeaderLinks">
+        <a href="{{link.href}}" target="_blank">{{::(link.key | translate | capitalize)}}</a>
+      </li>
+    </ul>
 
-        <ul class="mobile-menu__links mobile-menu__links--light mobile-menu__actions">
-            <li><start-tour start-tour-text="{{'general.introduction' | translate}}"></start-tour></li>
-        </ul>
-    </div>
+    <ul class="mobile-menu__links mobile-menu__links--light mobile-menu__actions">
+      <li><start-tour start-tour-text="{{::('general.introduction' | translate)}}"></start-tour></li>
+    </ul>
+  </div>
 </div>

@@ -13,31 +13,34 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
-  -->
+-->
 
 <div class="box-data">
-    <div class="box-data__date hide-mobile-only">
-        <span class="date-day" style="text-transform: uppercase">{{ feedItem.startDate | momentFormat:'ddd' }}</span>
-    </div>
+  <div class="box-data__date hide-mobile-only">
+    <span class="date-day" style="text-transform: uppercase">{{ feedItem.startDate | momentFormat:'ddd' }}</span>
+  </div>
 
-    <div class="box-data__content">
-        {{ feedItem.startDate | eventTimeSpan:feedItem.endDate}}
-    </div>
+  <div class="box-data__content">
+    {{ feedItem.startDate | eventTimeSpan:feedItem.endDate}}
+  </div>
 
-    <div class="box-data__title">
-        <a href="{{feedItem.courseUri}}" ng-if="feedItem.courseUri">
-            <event-title></event-title>
-        </a>
-        <event-title ng-if="!feedItem.courseUri"></event-title>
-    </div>
+  <div class="box-data__title">
+    <a href="{{feedItem.courseUri}}" ng-if="feedItem.courseUri">
+      <event-title></event-title>
+    </a>
+    <event-title ng-if="!feedItem.courseUri"></event-title>
+  </div>
 
-    <div class="box-data__content">
-        <span class="event-location">{{ feedItem.locations }}</span>
-        <span class="event-location-links">
-            <a ng-if="feedItem.googleMapsUri" href="{{feedItem.googleMapsUri}}" target="_blank">{{ 'weekFeed.showOnMap' | translate }}</a>
-            <a ng-if="feedItem.reittiopasEnabled" ng-click="openReittiopas(feedItem)" href="">{{ 'weekFeed.showRoute' | translate }}
-                <span ng-show="feedItem.loadingLocation"><i class="hy hy-spinner hy-spin"></i></span>
-            </a>
+  <div class="box-data__content">
+    <span class="event-location">{{ feedItem.locations }}</span>
+    <span class="event-location-links">
+      <a ng-if="feedItem.googleMapsUri" href="{{feedItem.googleMapsUri}}" target="_blank" translate="weekFeed.showOnMap"></a>
+      <a ng-if="feedItem.reittiopasEnabled" ng-click="openReittiopas(feedItem)" tabindex="0">
+        {{::('weekFeed.showRoute' | translate)}}
+        <span ng-show="feedItem.loadingLocation">
+          <i class="hy hy-spinner hy-spin"></i>
         </span>
-    </div>
+      </a>
+    </span>
+  </div>
 </div>
