@@ -175,6 +175,14 @@
   }
 }
 
+.enrollment__cancelled {
+  background-color: $brown;
+  color: $white;
+  text-transform: uppercase;
+  padding: 0.1em 0.4em;
+  margin-left: 1em;
+}
+
 .week-feed-actions {
   @include clearfix;
   button {

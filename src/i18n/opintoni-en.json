@@ -123,7 +123,8 @@
       "errorLoadingEvents" : "Events could not be leaded"
     },
     "subscribeEvents" : "subscribe events",
-    "calendarInstructions" : "How to import events to calendar applications"
+    "calendarInstructions" : "How to import events to calendar applications",
+    "cancelled" : "canceled"
   },
   "attainments": {
     "attainments": "Completed studies",

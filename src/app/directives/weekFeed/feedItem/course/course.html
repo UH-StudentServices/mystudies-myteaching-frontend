@@ -29,6 +29,7 @@
           {{ feedItem.name }}
         </a>
         <span ng-if="feedItem.coursePageUri === null">{{ feedItem.name }}</span>
+        <span ng-if="feedItem.isCancelled" class="enrollment__cancelled" translate="weekFeed.cancelled"></span>
       </div>
 
       <div class="course-meta">
