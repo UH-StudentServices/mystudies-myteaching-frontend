@@ -124,7 +124,8 @@
 
     },
     "subscribeEvents" : "beställ händelser",
-    "calendarInstructions" : "Så här importerar du händelser till kalenderprogram"
+    "calendarInstructions" : "Så här importerar du händelser till kalenderprogram",
+    "cancelled" : "canceled (sv)"
   },
   "attainments": {
     "attainments": "Prestationer",

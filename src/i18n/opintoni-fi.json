@@ -122,7 +122,8 @@
       "errorLoadingEvents" : "Tapahtumien haussa tapahtui virhe"
     },
     "subscribeEvents": "tilaa tapahtumat",
-    "calendarInstructions": "Näin lisäät tapahtumat kalenteriohjelmiin "
+    "calendarInstructions": "Näin lisäät tapahtumat kalenteriohjelmiin ",
+    "cancelled" : "peruttu"
   },
   "attainments": {
     "attainments": "Suoritetut",

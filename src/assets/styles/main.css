@@ -2262,6 +2262,13 @@ a.text-neutral {
   .event .event-location-links > *:first-child, .enrollment .event-location-links > *:first-child {
     margin-right: 0.5em; }
 
+.enrollment__cancelled {
+  background-color: #974822;
+  color: #FFF;
+  text-transform: uppercase;
+  padding: 0.1em 0.4em;
+  margin-left: 1em; }
+
 .week-feed-actions:before, .week-feed-actions:after {
   content: "";
   display: table; }
