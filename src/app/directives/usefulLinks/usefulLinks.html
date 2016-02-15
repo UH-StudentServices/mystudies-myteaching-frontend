@@ -13,60 +13,68 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
-  -->
+-->
 
 <div class="useful-links" id="useful-links">
-    <div class="edit-link-wrapper">
-        <h3 class="ui-component__title">{{ "usefulLinks.title" | translate }}</h3>
-        <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
+  <div class="edit-link-wrapper">
+    <h3 class="ui-component__title" translate="usefulLinks.title"></h3>
+    <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
+  </div>
+
+  <ul role="list"
+      class="list-of-links--dark"
+      dnd-list="usefulLinks"
+      dnd-allowed-types="['usefulLink']">
+    <li ng-repeat="link in usefulLinks"
+        role="listitem"
+        dnd-draggable="link"
+        dnd-type="'usefulLink'"
+        dnd-moved="updateOrder($index)"
+        dnd-effect-allowed="move">
+      <a ng-hide="editMode" href="{{link.url}}" target="_blank">{{ link.description | renderUsefulLinkDescription:link.type }}</a>
+      <editable-useful-link ng-show="editMode"
+                            useful-link="link"
+                            editable="link.type === UsefulLinkType.USER_DEFINED">
+      </editable-useful-link>
+      <span ng-show="editMode && !link.edit" class="useful-links__delete-link" ng-click="deleteLink(link)" role="button">
+        <i class="hy hy-remove"></i>
+      </span>
+    </li>
+  </ul>
+
+  <div ng-show="editMode && !editLink" class="new-useful-link-container">
+    <div class="new-useful-link">
+      <form name="newLinkUrlForm">
+        <input ng-model="newLink.url"
+               type="text"
+               ng-change="searchPageTitle(newLink.url)"
+               placeholder="{{::('usefulLinks.addNewLink' | translate | capitalize)}}"
+               ui-keypress="{'enter':'addNewUsefulLink()'}">
+      </form>
+      <span ng-show="pageTitleSearchState === SearchState.SEARCHING">
+        <i class="hy hy-spinner hy-spin"></i>
+      </span>
+      <a ng-show="newLink.url" href="" ng-click="clearSearch()">
+        <i class="hy hy-close"></i>
+      </a>
+      <a class="new-useful-link__add-button" href="" ng-click="addNewUsefulLink()">
+        <i class="hy hy-plus"></i>
+      </a>
     </div>
-    <ul role="list"
-        class="list-of-links--dark"
-        dnd-list="usefulLinks"
-        dnd-allowed-types="['usefulLink']">
-        <li
-            ng-repeat="link in usefulLinks"
-            role="listitem"
-            dnd-draggable="link"
-            dnd-type="'usefulLink'"
-            dnd-moved="updateOrder($index)"
-            dnd-effect-allowed="move">
-            <a ng-hide="editMode" href="{{link.url}}" target="_blank">{{ link.description | renderUsefulLinkDescription:link.type }}</a>
-            <editable-useful-link
-                ng-show="editMode"
-                useful-link="link"
-                editable="link.type === UsefulLinkType.USER_DEFINED">
-            </editable-useful-link>
-            <span ng-show="editMode && !link.edit" class="useful-links__delete-link" ng-click="deleteLink(link)" role="button"><i class="hy hy-remove"></i></span>
-        </li>
-    </ul>
-    <div ng-show="editMode && !editLink" class="new-useful-link-container">
-        <div class="new-useful-link">
-            <form name="newLinkUrlForm">
-                <input
-                    ng-model="newLink.url"
-                    type="text"
-                    ng-change="searchPageTitle(newLink.url)"
-                    placeholder="{{'usefulLinks.addNewLink' | translate | capitalize}}"
-                    ui-keypress="{'enter':'addNewUsefulLink()'}">
-            </form>
-            <span ng-show="pageTitleSearchState === SearchState.SEARCHING"><i class="hy hy-spinner hy-spin"></i></span>
-            <a ng-show="newLink.url" href="" ng-click="clearSearch()"><i class="hy hy-close"></i></a>
-            <a class="new-useful-link__add-button" href="" ng-click="addNewUsefulLink()"><i class="hy hy-plus"></i></a>
-        </div>
-        <useful-link-title
-            ng-show="pageTitleSearchState === SearchState.SHOW_RESULTS"
-            model="newLink.description"
-            enter-fn="addNewUsefulLink">
-        </useful-link-title>
-    </div>
-    <div limit-visibility="['STUDENT_ONLY']" class="useful-links__fixed">
-        <h4><a href="{{getStudentServicesLinks()}}" target="_blank">{{'usefulLinks.studentServices' | translate }}</a></h4>
-    </div>
-    <div class="useful-links__fixed">
-        <h4 ng-if="userLang ==='fi'"><a href="http://www.helsinki.fi/helpdesk" target="_blank">Helpdesk</a></h4>
-        <h4 ng-if="userLang ==='sv'"><a href="http://www.helsinki.fi/helpdesk/sve/" target="_blank">Helpdesk</a></h4>
-        <h4 ng-if="userLang ==='en'"><a href="http://www.helsinki.fi/helpdesk/eng/" target="_blank">Helpdesk</a></h4>
-        <p>helpdesk@helsinki.fi</p>
-    </div>
+    <useful-link-title ng-show="pageTitleSearchState === SearchState.SHOW_RESULTS"
+                       model="newLink.description"
+                       enter-fn="addNewUsefulLink">
+    </useful-link-title>
+  </div>
+
+  <div limit-visibility="['STUDENT_ONLY']" class="useful-links__fixed">
+    <h4><a href="{{getStudentServicesLinks()}}" target="_blank" translate="usefulLinks.studentServices"></a></h4>
+  </div>
+
+  <div class="useful-links__fixed">
+    <h4 ng-if="userLang ==='fi'"><a href="http://www.helsinki.fi/helpdesk" target="_blank">Helpdesk</a></h4>
+    <h4 ng-if="userLang ==='sv'"><a href="http://www.helsinki.fi/helpdesk/sve/" target="_blank">Helpdesk</a></h4>
+    <h4 ng-if="userLang ==='en'"><a href="http://www.helsinki.fi/helpdesk/eng/" target="_blank">Helpdesk</a></h4>
+    <p>helpdesk@helsinki.fi</p>
+  </div>
 </div>

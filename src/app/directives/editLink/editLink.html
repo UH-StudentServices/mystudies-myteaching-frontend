@@ -16,7 +16,7 @@
   -->
 
 <a class="edit-link" href="" ng-click="onClick()" visibility-private>
-    <span ng-hide="editing">{{'general.edit' | translate | capitalize}}</span>
-    <span ng-show="editing">{{'general.done' | translate | capitalize}}</span>
-    <i class="fa" ng-class="{'fa-close' : editing, 'fa-gear' : !editing}"></i>
+  <span ng-hide="editing" translate="general.edit" class="text-transform-capitalize"></span>
+  <span ng-show="editing" translate="general.done" class="text-transform-capitalize"></span>
+  <i class="fa" ng-class="{'fa-close' : editing, 'fa-gear' : !editing}"></i>
 </a>

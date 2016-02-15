@@ -13,13 +13,13 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
-  -->
+-->
 
-<h2 class="error-page__title">{{'errorPage.accessDenied.title' | translate | capitalize}}</h2>
+<h2 class="error-page__title text-transform-capitalize" translate="errorPage.accessDenied.title"></h2>
 <div>
-    <div class="error-page__description">
-        <p>{{'errorPage.accessDenied.description' | translate | capitalize}}</p>
-        <p ng-bind-html="'landerPage.' + currentStateName +'.login.alternativeLogin' | translate:loginUrls"></p>
-    </div>
-    <img class="error-page__image" src="/app/assets/images/errors/403.png">
+  <div class="error-page__description">
+    <p class="text-transform-capitalize" translate="errorPage.accessDenied.description"></p>
+    <p ng-bind-html="'landerPage.' + currentStateName +'.login.alternativeLogin' | translate:loginUrls"></p>
+  </div>
+  <img class="error-page__image" src="/app/assets/images/errors/403.png">
 </div>

@@ -317,6 +317,9 @@
 .clickable {
   cursor: pointer; }
 
+.text-transform-capitalize {
+  text-transform: capitalize; }
+
 /*
  * This file is part of MystudiesMyteaching application.
  *

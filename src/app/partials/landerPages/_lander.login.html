@@ -13,19 +13,23 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
-  -->
+-->
 
 <div class="login-page-wrapper">
-    <h2 class="login-page__title">{{'landerPage.' + currentStateName + '.login.title' | translate | capitalize}}</h2>
+  <h2 class="login-page__title">{{'landerPage.' + currentStateName + '.login.title' | translate | capitalize}}</h2>
 
-    <div class="login-page__intro">
-        <p>{{'landerPage.' + currentStateName + '.login.intro' | translate }}</p>
-        <p><a class="login-page__login-link button-internal--dark" href="{{ loginUrl }}">{{ 'landerPage.' + currentStateName + '.login.goToLogin' | translate }}</a></p>
-        <p ng-bind-html="'landerPage.' + currentStateName +'.login.alternativeLogin' | translate:loginUrls"></p>
-        <p><a class="login-page__read-more" href="https://courses.helsinki.fi/">{{ 'landerPage.readMore' | translate }}</a></p>
-    </div>
+  <div class="login-page__intro">
+    <p>{{'landerPage.' + currentStateName + '.login.intro' | translate }}</p>
+    <p>
+      <a class="login-page__login-link button-internal--dark" href="{{ loginUrl }}">{{ 'landerPage.' + currentStateName + '.login.goToLogin' | translate }}</a>
+    </p>
+    <p ng-bind-html="'landerPage.' + currentStateName +'.login.alternativeLogin' | translate:loginUrls"></p>
+    <p>
+      <a class="login-page__read-more" href="https://courses.helsinki.fi/" translate="landerPage.readMore"></a>
+    </p>
+  </div>
 
-    <div class="lander-bg">
-        <div class="gradient-overlay"></div>
-    </div>
+  <div class="lander-bg">
+    <div class="gradient-overlay"></div>
+  </div>
 </div>

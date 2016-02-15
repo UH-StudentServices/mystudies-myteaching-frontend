@@ -13,37 +13,37 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
-  -->
+-->
 
 <div>
-    <div ng-show="!cameraOn">
-        <div ng-show="!showAvatarChangeType">
+  <div ng-show="!cameraOn">
+    <div ng-show="!showAvatarChangeType">
 
-            <avatar-image class="user-avatar__large" img-src="session.avatarUrl" img-alt="session.name"></avatar-image>
-            <div class="change-avatar__details">
-                <h5>{{ session.name }}</h5>
-                <div>
-                    <span ng-if="currentState === State.MY_STUDIES">{{'general.student' | translate | capitalize}}</span>
-                    <span ng-if="currentState === State.MY_TEACHINGS">{{'general.teacher' | translate | capitalize}}</span>
-                </div>
-                <a href="" ng-click="showAvatarChangeType = !showAvatarChangeType">{{'userSettings.changeAvatar.title' | translate}}</a>
-            </div>
+      <avatar-image class="user-avatar__large" img-src="session.avatarUrl" img-alt="session.name"></avatar-image>
+      <div class="change-avatar__details">
+        <h5>{{ session.name }}</h5>
+        <div class="text-transform-capitalize">
+          <span ng-if="currentState === State.MY_STUDIES" translate="general.student"></span>
+          <span ng-if="currentState === State.MY_TEACHINGS" translate="general.teacher"></span>
         </div>
-        <div class="avatar-change-type" ng-show="showAvatarChangeType">
-            <upload-image upload-callback="upload" cancel-callback="cancelUpload"></upload-image>
-            <span ng-show="supportsCamera">| <a href="" ng-click="startCamera()">{{'userSettings.changeAvatar.takePicture' | translate}}</a></span>
-            | <a href="" ng-click="deleteUserAvatar()">{{'userSettings.changeAvatar.useDefault' | translate}}</a>
-        </div>
+        <a href="" ng-click="showAvatarChangeType = !showAvatarChangeType" translate="userSettings.changeAvatar.title"></a>
+      </div>
     </div>
-    <div ng-show="cameraOn">
-        <div class="webcam-container">
-            <div class="camera-actions">
-                <a href="" class="tag" ng-click="takeSnapshot()">{{'userSettings.changeAvatar.takePicture' | translate}}</a>
-                <a href="" ng-click="stopCamera()">{{'userSettings.changeAvatar.cancelPicture' | translate}}</a>
-            </div>
-            <webcam channel="avatarChannel" on-streaming="onStreaming()">
-                <div class="frame"></div>
-            </webcam>
-        </div>
+    <div class="avatar-change-type" ng-show="showAvatarChangeType">
+      <upload-image upload-callback="upload" cancel-callback="cancelUpload"></upload-image>
+      <span ng-show="supportsCamera">| <a href="" ng-click="startCamera()" translate="userSettings.changeAvatar.takePicture"></a></span>
+      | <a href="" ng-click="deleteUserAvatar()" tranlate="userSettings.changeAvatar.useDefault"></a>
     </div>
+  </div>
+  <div ng-show="cameraOn">
+    <div class="webcam-container">
+      <div class="camera-actions">
+        <a href="" class="tag" ng-click="takeSnapshot()" translate="userSettings.changeAvatar.takePicture"></a>
+        <a href="" ng-click="stopCamera()" translate="userSettings.changeAvatar.cancelPicture"></a>
+      </div>
+      <webcam channel="avatarChannel" on-streaming="onStreaming()">
+        <div class="frame"></div>
+      </webcam>
+    </div>
+  </div>
 </div>

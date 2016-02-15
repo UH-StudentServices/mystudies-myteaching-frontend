@@ -14,47 +14,43 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
-  -->
+-->
 
 <div role="article" id="week-feed">
   <div class="ui-component ui-component--events">
-
     <h2 class="ui-component__title"><span ng-bind="header"></span></h2>
-    
-    <div class="text-label title-stricken">{{ "general.show" | translate | capitalize }}</div>
 
-      <ul class="tag-list--tabs" role="tablist">
-          <li ng-repeat="tab in tabs"
-            ng-class="getTabClasses(tab)"
-            ng-click="selectTab(tab)"
-            role="tab"
-            class="clickable">
-            <a>{{ tab.translateKey | translate | capitalize }}</a>
-          </li>
+    <div class="text-label title-stricken text-transform-capitalize" translate="general.show"></div>
+
+    <ul class="tag-list--tabs" role="tablist">
+      <li ng-repeat="tab in tabs"
+          ng-class="getTabClasses(tab)"
+          ng-click="selectTab(tab)"
+          role="tab"
+          class="clickable">
+        <a>{{ tab.translateKey | translate | capitalize }}</a>
+      </li>
+    </ul>
+
+    <div block-ui="weekFeed" class="content-loader">
+      <message ng-if="message"
+               class="messages--light"
+               ng-show="message"
+               message="message">
+      </message>
+
+      <ul class="week-feed-items">
+        <li ng-repeat="feedItem in feedItems | limitTo:numberOfVisibleItems">
+          <item feed-item="feedItem" first="$first" tab-options="selectedTab"></item>
+        </li>
       </ul>
 
-      <div block-ui="weekFeed" class="content-loader">
+      <event-calendar events="events" ng-if="selectedTab === Tabs.CALENDAR"></event-calendar>
 
-          <message ng-if="message"
-                   class="messages--light"
-                   ng-show="message"
-                   message="message">
-          </message>
-
-          <ul class="week-feed-items">
-              <li ng-repeat="feedItem in feedItems | limitTo:numberOfVisibleItems">
-                  <item feed-item="feedItem" first="$first" tab-options="selectedTab"></item>
-              </li>
-          </ul>
-
-          <event-calendar events="events" ng-if="selectedTab === Tabs.CALENDAR"></event-calendar>
-
-          <div class="week-feed-actions">
-              <button class="button--light button" ng-click="showMore()" ng-if="showMoreVisible()">{{ "buttons.showMore" | translate }}</button>
-              <subscribe-events ng-if="selectedTab === Tabs.UPCOMING_EVENTS || selectedTab === Tabs.CALENDAR"></subscribe-events>
-          </div>
-
+      <div class="week-feed-actions">
+        <button class="button--light button" ng-click="showMore()" ng-if="showMoreVisible()" translate="buttons.showMore"></button>
+        <subscribe-events ng-if="selectedTab === Tabs.UPCOMING_EVENTS || selectedTab === Tabs.CALENDAR"></subscribe-events>
       </div>
+    </div>
   </div>
-
 </div>

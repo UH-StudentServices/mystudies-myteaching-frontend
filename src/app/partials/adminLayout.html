@@ -13,27 +13,23 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
-  -->
+-->
 
 <div ng-show="showApp">
-    <header class="l-header">
-        <page-header></page-header>
-        <page-navigation></page-navigation>
-        <global-messages></global-messages>
-    </header>
+  <header class="l-header">
+    <page-header></page-header>
+    <page-navigation></page-navigation>
+    <global-messages></global-messages>
+  </header>
 
-    <search-bar class="show-mobile-only"></search-bar>
-    <search-results></search-results>
+  <search-bar class="show-mobile-only"></search-bar>
+  <search-results></search-results>
 
-    
+  <div class="l-page island wrapper">
+    <h1 translate="admin.pageHeaderBranding"></h1>
+    <admin-feedback></admin-feedback>
+  </div>
 
-    <div class="l-page island wrapper">
-      <h1>{{ 'admin.pageHeaderBranding' | translate }}</h1>
-
-      <admin-feedback></admin-feedback>
-
-    </div>
-
-    <feedback></feedback>
-    <footer class="l-footer island" ng-include="'app/partials/_page_footer.html'"></footer>
+  <feedback></feedback>
+  <footer class="l-footer island" ng-include="'app/partials/_page_footer.html'"></footer>
 </div>

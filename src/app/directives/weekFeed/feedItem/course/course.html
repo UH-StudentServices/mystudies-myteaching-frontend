@@ -13,31 +13,30 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
-  -->
+-->
 
 <article class="enrollment">
-    <div>
+  <div>
+    <div class="image-container" style="background-image: url('{{feedItem.imageUri}}')"></div>
 
-        <div class="image-container" style="background-image: url('{{feedItem.imageUri}}')"></div>
+    <div class="info-container">
+      <div class="box-data__content">
+        {{ feedItem.startDate | eventDateSpan:feedItem.endDate }}
+      </div>
 
-        <div class="info-container">
-            <div class="box-data__content">
-                {{ feedItem.startDate | eventDateSpan:feedItem.endDate }}
-            </div>
+      <div class="box-data__title">
+        <a ng-if="feedItem.coursePageUri !== null" href="{{ feedItem.coursePageUri }}" target="_blank">
+          {{ feedItem.name }}
+        </a>
+        <span ng-if="feedItem.coursePageUri === null">{{ feedItem.name }}</span>
+      </div>
 
-            <div class="box-data__title">
-                <a ng-if="feedItem.coursePageUri !== null" href="{{ feedItem.coursePageUri }}" target="_blank">
-                    {{ feedItem.name }}
-                </a>
-                <span ng-if="feedItem.coursePageUri === null">{{ feedItem.name }}</span>
-            </div>
-
-            <div class="course-meta">
-                {{ feedItem.code }}, {{ 'codes.courseTypes.' +  feedItem.typeCode | translate }}<span ng-if="feedItem.credits !== null"> ({{ feedItem.credits }}{{ "abbreviations.credits" | translate }})</span><span ng-repeat="teacher in feedItem.teachers">, {{ teacher }}</span>
-
-                <course-materials-link></course-materials-link>
-
-            </div>
-        </div>
+      <div class="course-meta">
+        {{ feedItem.code }}, {{ 'codes.courseTypes.' +  feedItem.typeCode | translate }}
+        <span ng-if="feedItem.credits !== null">({{ feedItem.credits }}{{::("abbreviations.credits" | translate)}})</span>
+        <span ng-repeat="teacher in feedItem.teachers">, {{ teacher }}</span>
+        <course-materials-link></course-materials-link>
+      </div>
     </div>
+  </div>
 </article>

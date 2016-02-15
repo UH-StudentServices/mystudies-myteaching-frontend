@@ -13,35 +13,35 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
-  -->
+-->
 
 <div dropdown class="user-notifications" open-callback="isOpen = true" close-callback="isOpen = false">
-    <div class="dropdown-toggle" ng-click="markRead()">
-        <div class="icon tour-element__notifications">
-            <div ng-show="unreadCount > 0" class="circled-number">{{ unreadCount }}</div>
-            <a href=""
-               class="user-menu__actions--action"
-               aria-label="{{ 'userNotifications.title' | translate }}"
-               role="button">
-                <span class="hy hy-notification" title="{{ 'toolbar.icons.notifications' | translate }}"></span>
-            </a>
+  <div class="dropdown-toggle" ng-click="markRead()">
+    <div class="icon tour-element__notifications">
+      <div ng-show="unreadCount > 0" class="circled-number">{{ unreadCount }}</div>
+      <a tabindex="0"
+         class="user-menu__actions--action"
+         aria-label="{{::('userNotifications.title' | translate)}}"
+         role="button">
+      <span class="hy hy-notification" title="{{::('toolbar.icons.notifications' | translate)}}"></span>
+    </a>
+  </div>
+</div>
+<div class="user-settings__menu dropdown-content">
+  <ul>
+    <li ng-show="userNotifications.length === 0" translate="userNotifications.noNotifications" class="text-transform-capitalize"></li>
+    <li class="divider" ng-repeat="userNotification in userNotifications">
+      <div class="user-avatar" ng-class="{'default' : userNotification.avatarUri.indexOf('png') !== -1}">
+        <img ng-src="{{ userNotification.avatarUri }}">
+      </div>
+      <div class="content">
+        <div ng-if="isOpen" class="course-name">
+          <a href="{{ userNotification.notificationUri }}" ng-bind="userNotification.courseName" data-ellipsis></a>
         </div>
-    </div>
-    <div class="user-settings__menu dropdown-content">
-        <ul>
-            <li ng-show="userNotifications.length === 0">{{ 'userNotifications.noNotifications' | translate | capitalize }}</li>
-            <li class="divider" ng-repeat="userNotification in userNotifications">
-                <div class="user-avatar" ng-class="{'default' : userNotification.avatarUri.indexOf('png') !== -1}">
-                    <img ng-src="{{ userNotification.avatarUri }}">
-                </div>
-                <div class="content">
-                    <div ng-if="isOpen" class="course-name">
-                        <a href="{{ userNotification.notificationUri }}" ng-bind="userNotification.courseName" data-ellipsis></a>
-                    </div>
-                    <div ng-if="isOpen" class="notification-message" ng-bind="userNotification.message" data-ellipsis></div>
-                    <div class="notification-time">{{ userNotification.timeFromNow }}</div>
-                </div>
-            </li>
-        </ul>
-    </div>
+        <div ng-if="isOpen" class="notification-message" ng-bind="userNotification.message" data-ellipsis></div>
+        <div class="notification-time">{{ userNotification.timeFromNow }}</div>
+      </div>
+    </li>
+  </ul>
+</div>
 </div>

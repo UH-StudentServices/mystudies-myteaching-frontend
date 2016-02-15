@@ -16,18 +16,18 @@
   -->
 
 <div class="admin-feedback">
-  <h3>{{ 'admin.feedback' | translate }}</h3>
-  
+  <h3 translate="admin.feedback"></h3>
+
   <table class="table-simple feedback-table">
     <tr>
-      <th>{{ 'admin.feedbackProcessed' | translate }}</th>
-      <th>{{ 'admin.feedback' | translate }}</th>
-      <th>{{ 'admin.emailReply' | translate }}</th>
-      <th>{{ 'admin.timestamp' | translate }}</th>
-      <th>{{ 'admin.faculty' | translate }}</th>
-      <th>{{ 'admin.state' | translate }}</th>
-      <th>{{ 'admin.userAgent' | translate }}</th>
-      <th>{{ 'admin.comment' | translate }}</th>
+      <th translate="admin.feedbackProcessed"></th>
+      <th translate="admin.feedback"></th>
+      <th translate="admin.emailReply"></th>
+      <th translate="admin.timestamp"></th>
+      <th translate="admin.faculty"></th>
+      <th translate="admin.state"></th>
+      <th translate="admin.userAgent"></th>
+      <th translate="admin.comment"></th>
     </tr>
     <tr ng-repeat="feedback in feedbackItems">
       <td>
@@ -50,16 +50,17 @@
         <a class="feedback-edit-toggle button--action theme-transparent"
            tabindex="0"
            ng-click="toggleCommentEditMode(feedback, $index)"
-           ng-show="!feedback.commentEditMode">{{ 'general.edit' | translate }}</a>
+           ng-show="!feedback.commentEditMode"
+           translate="general.edit"></a>
         <div class="feedback-highlight-overlay" ng-show="feedback.commentEditMode"></div>
         <div class="feedback-comment-edit-controls" ng-show="feedback.commentEditMode">
           <textarea cols="10" rows="5" class="feedback-comment-edit-controls__comment-content" ng-model="feedback.stagedComment"></textarea>
           <div class="button-group--small">
             <a class="button" tabindex="0" ng-click="saveComment(feedback)">
-              <span ng-show="!feedback.inflightUpdate">{{ 'general.save' | translate }}</span>
+              <span ng-show="!feedback.inflightUpdate" translate="general.save"></span>
               <span ng-show="feedback.inflightUpdate" class="hy hy-spinner hy-spin"></span>
             </a>
-            <a class="button" tabindex="0" ng-click="toggleCommentEditMode(feedback)">{{ 'general.cancel' | translate }}</a>
+            <a class="button" tabindex="0" ng-click="toggleCommentEditMode(feedback)" translate="general.cancel"></a>
           </div>
         </div>
       </td>
@@ -67,13 +68,13 @@
   </table>
 
   <ul class="pager">
-    <li class="pager__first" ng-click="selectPage(0)"><a tabindex="0">{{ 'admin.first' | translate }}</a></li>
-    <li class="pager__previous" ng-click="previousPage()"><a tabindex="0">{{ 'tour.common.previous' | translate }}</a></li>
-    
+    <li class="pager__first" ng-click="selectPage(0)"><a tabindex="0" translate="admin.first"></a></li>
+    <li class="pager__previous" ng-click="previousPage()"><a tabindex="0" translate="tour.common.previous"></a></li>
+
     <li class="pager__page" ng-repeat="index in pageIndexes" ng-class="pageClasses(index)"><a  tabindex="0" ng-click="selectPage(index)">{{ index + 1 }}</a></li>
-    
-    <li class="pager__next" ng-click="nextPage()"><a  tabindex="0">{{ 'tour.common.next' | translate }}</a></li>
-    <li class="pager__last" ng-click="selectPage(pageIndexes.length - 1)"><a  tabindex="0">{{ 'admin.last' | translate }}</a></li>
-    <li class="pager__page"><a  tabindex="0" href="/api/admin/v1/feedback/csv">{{ 'admin.downloadCsv' | translate }}</a></li>
+
+    <li class="pager__next" ng-click="nextPage()"><a  tabindex="0" translate="tour.common.next"></a></li>
+    <li class="pager__last" ng-click="selectPage(pageIndexes.length - 1)"><a  tabindex="0" translate="admin.last"></a></li>
+    <li class="pager__page"><a  tabindex="0" href="/api/admin/v1/feedback/csv" translate="admin.downloadCsv"></a></li>
   </ul>
 </div>
