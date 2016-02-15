@@ -31,9 +31,9 @@ describe('Useful links', function() {
     var linkTitle = util.uniqueId();
     var editedString = '_edited';
     var editUsefulLinksElementFinder = element(
-      by.cssContainingText('#useful-links a.edit-link', 'Edit'));
+      by.cssContainingText('#useful-links a.edit-link', 'edit'));
     var editUsefulLinksDoneElementFinder = element(
-      by.cssContainingText('#useful-links a.edit-link', 'Done'));
+      by.cssContainingText('#useful-links a.edit-link', 'done'));
     var newUsefulLinkContainerElementFinder =  element(
       by.css('.new-useful-link-container'));
     var newLinkTitleElementFinder = newUsefulLinkContainerElementFinder.element(
