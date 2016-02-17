@@ -17,7 +17,11 @@
 
 'use strict';
 
-angular.module('directives.pageNavigation', ['constants.externalLinks'])
+angular.module('directives.pageNavigation', [
+  'constants.externalLinks',
+  'directives.analytics'
+  ])
+
   .directive('pageNavigation', function() {
     return {
       restrict: 'E',
