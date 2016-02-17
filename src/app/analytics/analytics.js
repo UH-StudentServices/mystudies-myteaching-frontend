@@ -15,7 +15,7 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('opintoniAnalytics', [])
+ angular.module('opintoniAnalytics', [])
 
   /*
   * Analytics must be injected at least once.
@@ -31,10 +31,10 @@ angular.module('opintoniAnalytics', [])
   .config(function(AnalyticsProvider) {
     if (window.configuration) {
       AnalyticsProvider.setAccount(
-        {
-          tracker: window.configuration.googleAnalyticsAccount,
-          trackEvent: true
-        });
+      {
+        tracker: window.configuration.googleAnalyticsAccount,
+        trackEvent: true
+      });
       AnalyticsProvider.trackPages(true);
       AnalyticsProvider.useAnalytics(true);
       AnalyticsProvider.ignoreFirstPageLoad(true);
@@ -72,107 +72,120 @@ angular.module('opintoniAnalytics', [])
     'FLAMMA_NEWS': 'flammaNews'
   })
 
- .factory('AnalyticsService', function(Analytics, EventCategories, EventActions, EventLabels) {
+  .factory('AnalyticsService', function(Analytics, EventCategories, EventActions, EventLabels) {
 
-   function trackAddFavorite(favoriteType) {
-     Analytics.trackEvent(EventCategories.FAVORITES, EventActions.ADD, favoriteType);
-   }
+    function trackEvent(eventCategory, eventAction, value) {
+      validateEventInput(eventCategory, eventAction);
+      Analytics.trackEvent(eventCategory, eventAction, value);
+    }
 
-   function trackRemoveFavorite(favoriteType) {
-     Analytics.trackEvent(EventCategories.FAVORITES,  EventActions.REMOVE, favoriteType);
-   }
+    function validateEventInput(eventCategory, eventAction) {
+      if(!EventCategories[eventCategory]) {
+        throw 'Invalid Analytics eventCategory: ' + eventCategory;
+      }
+      if(!EventActions[eventAction]) {
+        throw 'Invalid Analytics eventAction: ' + eventAction;
+      }
+    }
 
-   function trackAddUsefulLink() {
-     Analytics.trackEvent(EventCategories.USEFUL_LINKS, EventActions.ADD);
-   }
+    function trackAddFavorite(favoriteType) {
+      Analytics.trackEvent(EventCategories.FAVORITES, EventActions.ADD, favoriteType);
+    }
 
-   function trackRemoveUsefulLink() {
-     Analytics.trackEvent(EventCategories.USEFUL_LINKS, EventActions.REMOVE);
-   }
+    function trackRemoveFavorite(favoriteType) {
+      Analytics.trackEvent(EventCategories.FAVORITES,  EventActions.REMOVE, favoriteType);
+    }
 
-   function trackAddTodoItem() {
-     Analytics.trackEvent(EventCategories.TODO_ITEMS, EventActions.ADD);
-   }
+    function trackAddUsefulLink() {
+      Analytics.trackEvent(EventCategories.USEFUL_LINKS, EventActions.ADD);
+    }
 
-   function trackRemoveTodoItem() {
-     Analytics.trackEvent(EventCategories.TODO_ITEMS, EventActions.REMOVE);
-   }
+    function trackRemoveUsefulLink() {
+      Analytics.trackEvent(EventCategories.USEFUL_LINKS, EventActions.REMOVE);
+    }
 
-   function trackTodoItemMarkAsDone() {
-     Analytics.trackEvent(EventCategories.TODO_ITEMS, EventActions.MARK_AS_DONE);
-   }
+    function trackAddTodoItem() {
+      Analytics.trackEvent(EventCategories.TODO_ITEMS, EventActions.ADD);
+    }
 
-   function trackFlammaNewsUrlClick() {
-     Analytics.trackEvent(EventCategories.EXTERNAL_LINK, EventActions.CLICK,
-                          EventLabels.FLAMMA_NEWS);
-   }
+    function trackRemoveTodoItem() {
+      Analytics.trackEvent(EventCategories.TODO_ITEMS, EventActions.REMOVE);
+    }
 
-   function trackSearch() {
-     Analytics.trackEvent(EventCategories.SITE_ACTIONS, EventActions.SEARCH);
-   }
+    function trackTodoItemMarkAsDone() {
+      Analytics.trackEvent(EventCategories.TODO_ITEMS, EventActions.MARK_AS_DONE);
+    }
 
-   function trackStartTour() {
-     Analytics.trackEvent(EventCategories.SITE_ACTIONS, EventActions.START_TOUR);
-   }
+    function trackFlammaNewsUrlClick() {
+      Analytics.trackEvent(EventCategories.EXTERNAL_LINK, EventActions.CLICK,
+        EventLabels.FLAMMA_NEWS);
+    }
 
-   function trackNotificationMarkAsRead() {
-     Analytics.trackEvent(EventCategories.SITE_ACTIONS, EventActions.MARK_NOTIFICATION_AS_READ);
-   }
+    function trackSearch() {
+      Analytics.trackEvent(EventCategories.SITE_ACTIONS, EventActions.SEARCH);
+    }
 
-   function trackUploadBackground() {
-     Analytics.trackEvent(EventCategories.BACKGROUND_IMAGE, EventActions.UPLOAD);
-   }
+    function trackStartTour() {
+      Analytics.trackEvent(EventCategories.SITE_ACTIONS, EventActions.START_TOUR);
+    }
 
-   function trackChangeDefaultBackground(selectedBackgroundImageName) {
-     Analytics.trackEvent(EventCategories.BACKGROUND_IMAGE, EventActions.CHOOSE_DEFAULT,
-                          selectedBackgroundImageName);
-   }
+    function trackNotificationMarkAsRead() {
+      Analytics.trackEvent(EventCategories.SITE_ACTIONS, EventActions.MARK_NOTIFICATION_AS_READ);
+    }
 
-   function trackAddAvatar(avatarImageSourceMedia) {
-     Analytics.trackEvent(EventCategories.AVATAR_IMAGE, EventActions.ADD, avatarImageSourceMedia);
-   }
+    function trackUploadBackground() {
+      Analytics.trackEvent(EventCategories.BACKGROUND_IMAGE, EventActions.UPLOAD);
+    }
 
-   function trackRemoveAvatar() {
-     Analytics.trackEvent(EventCategories.AVATAR_IMAGE, EventActions.REMOVE);
-   }
+    function trackChangeDefaultBackground(selectedBackgroundImageName) {
+      Analytics.trackEvent(EventCategories.BACKGROUND_IMAGE, EventActions.CHOOSE_DEFAULT,
+        selectedBackgroundImageName);
+    }
 
-   function trackSendFeedback() {
-     Analytics.trackEvent(EventCategories.SITE_ACTIONS, EventActions.FEEDBACK);
-   }
+    function trackAddAvatar(avatarImageSourceMedia) {
+      Analytics.trackEvent(EventCategories.AVATAR_IMAGE, EventActions.ADD, avatarImageSourceMedia);
+    }
 
-   function trackCalendarSubscribe() {
-     Analytics.trackEvent(EventCategories.SITE_ACTIONS, EventActions.SUBSCRIBE_CALENDAR);
-   }
+    function trackRemoveAvatar() {
+      Analytics.trackEvent(EventCategories.AVATAR_IMAGE, EventActions.REMOVE);
+    }
 
-   function trackShowWeekFeedTab(tab) {
-     Analytics.trackEvent(EventCategories.SITE_ACTIONS, EventActions.SHOW_WEEK_FEED_TAB, tab);
-   }
+    function trackSendFeedback() {
+      Analytics.trackEvent(EventCategories.SITE_ACTIONS, EventActions.FEEDBACK);
+    }
 
-   function trackShowCalendarView(view) {
-     Analytics.trackEvent(EventCategories.SITE_ACTIONS, EventActions.SHOW_CALENDAR_VIEW, view);
-   }
+    function trackCalendarSubscribe() {
+      Analytics.trackEvent(EventCategories.SITE_ACTIONS, EventActions.SUBSCRIBE_CALENDAR);
+    }
 
+    function trackShowWeekFeedTab(tab) {
+      Analytics.trackEvent(EventCategories.SITE_ACTIONS, EventActions.SHOW_WEEK_FEED_TAB, tab);
+    }
 
-   return {
-     trackAddFavorite: trackAddFavorite,
-     trackRemoveFavorite: trackRemoveFavorite,
-     trackAddUsefulLink: trackAddUsefulLink,
-     trackRemoveUsefulLink: trackRemoveUsefulLink,
-     trackAddTodoItem: trackAddTodoItem,
-     trackRemoveTodoItem: trackRemoveTodoItem,
-     trackTodoItemMarkAsDone: trackTodoItemMarkAsDone,
-     trackFlammaNewsUrlClick: trackFlammaNewsUrlClick,
-     trackSearch: trackSearch,
-     trackStartTour: trackStartTour,
-     trackNotificationMarkAsRead: trackNotificationMarkAsRead,
-     trackUploadBackground: trackUploadBackground,
-     trackChangeDefaultBackground: trackChangeDefaultBackground,
-     trackAddAvatar: trackAddAvatar,
-     trackRemoveAvatar: trackRemoveAvatar,
-     trackSendFeedback: trackSendFeedback,
-     trackCalendarSubscribe: trackCalendarSubscribe,
-     trackShowWeekFeedTab: trackShowWeekFeedTab,
-     trackShowCalendarView: trackShowCalendarView
-   };
- });
+    function trackShowCalendarView(view) {
+      Analytics.trackEvent(EventCategories.SITE_ACTIONS, EventActions.SHOW_CALENDAR_VIEW, view);
+    }
 
+    return {
+      trackEvent: trackEvent,
+      trackAddFavorite: trackAddFavorite,
+      trackRemoveFavorite: trackRemoveFavorite,
+      trackAddUsefulLink: trackAddUsefulLink,
+      trackRemoveUsefulLink: trackRemoveUsefulLink,
+      trackAddTodoItem: trackAddTodoItem,
+      trackRemoveTodoItem: trackRemoveTodoItem,
+      trackTodoItemMarkAsDone: trackTodoItemMarkAsDone,
+      trackFlammaNewsUrlClick: trackFlammaNewsUrlClick,
+      trackSearch: trackSearch,
+      trackStartTour: trackStartTour,
+      trackNotificationMarkAsRead: trackNotificationMarkAsRead,
+      trackUploadBackground: trackUploadBackground,
+      trackChangeDefaultBackground: trackChangeDefaultBackground,
+      trackAddAvatar: trackAddAvatar,
+      trackRemoveAvatar: trackRemoveAvatar,
+      trackSendFeedback: trackSendFeedback,
+      trackCalendarSubscribe: trackCalendarSubscribe,
+      trackShowWeekFeedTab: trackShowWeekFeedTab,
+      trackShowCalendarView: trackShowCalendarView
+    };
+  });
