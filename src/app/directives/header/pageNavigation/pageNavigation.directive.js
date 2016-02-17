@@ -20,7 +20,7 @@
 angular.module('directives.pageNavigation', [
   'constants.externalLinks',
   'directives.analytics'
-  ])
+])
 
   .directive('pageNavigation', function() {
     return {

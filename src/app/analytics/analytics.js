@@ -31,10 +31,10 @@
   .config(function(AnalyticsProvider) {
     if (window.configuration) {
       AnalyticsProvider.setAccount(
-      {
-        tracker: window.configuration.googleAnalyticsAccount,
-        trackEvent: true
-      });
+        {
+          tracker: window.configuration.googleAnalyticsAccount,
+          trackEvent: true
+        });
       AnalyticsProvider.trackPages(true);
       AnalyticsProvider.useAnalytics(true);
       AnalyticsProvider.ignoreFirstPageLoad(true);

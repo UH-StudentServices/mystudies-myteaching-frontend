@@ -28,7 +28,7 @@ angular.module('directives.analytics', [
         analyticsEvent: '='
       },
       link: function($scope, element) {
-        element.bind("click", function(){
+        element.bind('click', function() {
           AnalyticsService.trackEvent(
             $scope.analyticsEvent.eventCategory,
             $scope.analyticsEvent.eventAction,
