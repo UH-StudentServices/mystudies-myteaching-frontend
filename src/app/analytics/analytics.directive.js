@@ -15,21 +15,23 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-'use strict';
-
-angular.module('directives.pageNavigation', [
-  'constants.externalLinks',
-  'directives.analytics'
+angular.module('directives.analytics', [
+  'opintoniAnalytics'
 ])
 
-  .directive('pageNavigation', function() {
+  .directive('analyticsEvent', function(AnalyticsService) {
     return {
-      restrict: 'E',
-      templateUrl: 'app/directives/header/pageNavigation/pageNavigation.html',
-      scope: {},
-      controller: function($scope, primaryLinks, LanguageService) {
-        $scope.primaryLinks = primaryLinks;
-        $scope.userLang = LanguageService.getCurrent();
+      restrict: 'A',
+      scope: {
+        analyticsEvent: '='
+      },
+      link: function($scope, element) {
+        element.on('click', function() {
+          AnalyticsService.trackEvent(
+            $scope.analyticsEvent.eventCategory,
+            $scope.analyticsEvent.eventAction,
+            $scope.analyticsEvent.value);
+        });
       }
     };
   });

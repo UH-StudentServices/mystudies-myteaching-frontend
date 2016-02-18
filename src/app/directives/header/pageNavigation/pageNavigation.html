@@ -23,7 +23,14 @@
           <a tabindex="0" ui-sref="init" class="active"></a>
         </li>
         <li ng-repeat="link in primaryLinks">
-          <a href="{{ link.href[userLang] }}" target="_blank">
+          <a 
+            href="{{ ::link.href[userLang] }}"
+            target="_blank"
+            analytics-event="{
+              eventCategory: 'EXTERNAL_LINK',
+              eventAction: 'CLICK',
+              value: link.href[userLang]}">
+
             <span translate="{{::link.key}}"></span>
           </a>
         </li>
