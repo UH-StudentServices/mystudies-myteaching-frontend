@@ -21,7 +21,7 @@
     "yes"  : "ja",
     "no" : "nej",
     "introduction" : "introduktion",
-    "loadingContent" : "Loading content... (sv)"
+    "loadingContent" : "Hämtar innehåll..."
   },
   "abbreviations": {
     "credits": "sp"
@@ -80,12 +80,12 @@
     "timestamp": "Tidsstämpel",
     "first": "första",
     "last": "sista",
-    "emailReply" : "User wants reply to email (sv)",
-    "faculty" : "Faculty (sv)",
+    "emailReply" : "Användaren vill ha svaret till e-post",
+    "faculty" : "Fakultet",
     "state" : "state (sv)",
     "userAgent" : "userAgent (sv)",
-    "feedbackProcessed": "Processed (sv)",
-    "comment": "Comment (sv)"
+    "feedbackProcessed": "Behandlad",
+    "comment": "Kommentera"
   },
   "navigationTab": {
     "frontPage": "Framsidan",
@@ -125,7 +125,7 @@
     },
     "subscribeEvents" : "beställ händelser",
     "calendarInstructions" : "Så här importerar du händelser till kalenderprogram",
-    "cancelled" : "canceled (sv)"
+    "cancelled" : "Annullerad"
   },
   "attainments": {
     "attainments": "Prestationer",
@@ -169,7 +169,7 @@
       "uploadFile": "Ladda up fil",
       "takePicture": "Ta bild",
       "useDefault": "Anfand standard bild",
-      "cancelPicture": "Annulera"
+      "cancelPicture": "Annullera"
     },
     "changeBackground": "Byt bakgrundsbild",
     "portfolio": "portfolio",
@@ -192,7 +192,7 @@
     "readMore": "läs mer...",
     "addNew": "lägg till",
     "rss": {
-      "rssFeedSearch": "Feed url (sv)",
+      "rssFeedSearch": "Feed url",
       "numberOfItems": "Antal synliga notiser",
       "1item": "1 notis",
       "3items": "3 notiser"
@@ -382,7 +382,7 @@
     "emailReply" : "Jag vill gärna ha svar på min feedback"
   },
   "upload" : {
-    "privacyMessage" : "den uppladdade bilden används också i andra HUs tjänster (t.ex. Opinder) och bilden ska har en publik länk."
+    "privacyMessage" : "den uppladdade bilden används också i andra HUs tjänster (t.ex. Opinder) och bilden får en publik länk."
   },
   "eventCalendar" : {
     "day" : "dag",
