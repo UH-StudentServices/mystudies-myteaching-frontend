@@ -15,8 +15,6 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-'use strict';
-
 angular.module('directives.analytics', [
   'opintoniAnalytics'
 ])
@@ -28,7 +26,7 @@ angular.module('directives.analytics', [
         analyticsEvent: '='
       },
       link: function($scope, element) {
-        element.bind('click', function() {
+        element.on('click', function() {
           AnalyticsService.trackEvent(
             $scope.analyticsEvent.eventCategory,
             $scope.analyticsEvent.eventAction,
