@@ -24,7 +24,7 @@
         </li>
         <li ng-repeat="link in primaryLinks">
           <a 
-            href="{{ link.href[userLang] }}"
+            href="{{ ::link.href[userLang] }}"
             target="_blank"
             analytics-event="{
               eventCategory: 'EXTERNAL_LINK',
