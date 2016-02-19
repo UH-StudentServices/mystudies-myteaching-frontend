@@ -343,6 +343,9 @@ ul {
 input {
   border-radius: 0; }
 
+a {
+  cursor: pointer; }
+
 /*
  * This file is part of MystudiesMyteaching application.
  *

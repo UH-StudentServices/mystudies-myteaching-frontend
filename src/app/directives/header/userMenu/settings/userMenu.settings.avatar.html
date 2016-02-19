@@ -26,20 +26,20 @@
           <span ng-if="currentState === State.MY_STUDIES" translate="general.student"></span>
           <span ng-if="currentState === State.MY_TEACHINGS" translate="general.teacher"></span>
         </div>
-        <a href="" ng-click="showAvatarChangeType = !showAvatarChangeType" translate="userSettings.changeAvatar.title"></a>
+        <a tabindex="0" ng-click="showAvatarChangeType = !showAvatarChangeType" translate="userSettings.changeAvatar.title"></a>
       </div>
     </div>
     <div class="avatar-change-type" ng-show="showAvatarChangeType">
       <upload-image upload-callback="upload" cancel-callback="cancelUpload"></upload-image>
-      <span ng-show="supportsCamera">| <a href="" ng-click="startCamera()" translate="userSettings.changeAvatar.takePicture"></a></span>
-      | <a href="" ng-click="deleteUserAvatar()" tranlate="userSettings.changeAvatar.useDefault"></a>
+      <span ng-show="supportsCamera">| <a tabindex="0" ng-click="startCamera()" translate="userSettings.changeAvatar.takePicture"></a></span>
+      | <a tabindex="0" ng-click="deleteUserAvatar()" tranlate="userSettings.changeAvatar.useDefault"></a>
     </div>
   </div>
   <div ng-show="cameraOn">
     <div class="webcam-container">
       <div class="camera-actions">
-        <a href="" class="tag" ng-click="takeSnapshot()" translate="userSettings.changeAvatar.takePicture"></a>
-        <a href="" ng-click="stopCamera()" translate="userSettings.changeAvatar.cancelPicture"></a>
+        <a tabindex="0" class="tag" ng-click="takeSnapshot()" translate="userSettings.changeAvatar.takePicture"></a>
+        <a tabindex="0" ng-click="stopCamera()" translate="userSettings.changeAvatar.cancelPicture"></a>
       </div>
       <webcam channel="avatarChannel" on-streaming="onStreaming()">
         <div class="frame"></div>

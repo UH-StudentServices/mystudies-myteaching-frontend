@@ -19,7 +19,7 @@
   <div class="media media--responsive">
 
     <div ng-if="event.imageMainURL" class="media__image box-story__image">
-      <a href="">
+      <a tabindex="0">
         <img ng-src="{{ event.imageMainURL }}" alt="" height="150" width="240" />
       </a>
     </div>
@@ -28,11 +28,11 @@
 
       <div class="box-story__topical">
         <span class="box-story__date">{{ event.datestart | date:'dd.MM.yyyy' }} - {{ event.dateEnd | date:'dd.MM.yyyy' }}</span>
-        <a href="" class="box-story__tag">{{ event.type }}</a>
+        <a tabindex="0" class="box-story__tag">{{ event.type }}</a>
       </div>
 
       <h4 class="box-story__title">
-        <a href="">{{ event.title }}, {{ event.courseTitle }}</a>
+        <a tabindex="0">{{ event.title }}, {{ event.courseTitle }}</a>
       </h4>
 
       <div ng-if="course.description" class="box-story__content">

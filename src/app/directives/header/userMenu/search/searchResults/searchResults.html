@@ -20,7 +20,7 @@
   <div id="search-results-wrapper">
     <div class="header border-bottom">
       <h1>{{ 'searchResults.hitsFound' | translate : {hitCount: results.length} }}</h1>
-      <a href="" ng-click="close()" translate="searchResults.close">
+      <a tabindex="0" ng-click="close()" translate="searchResults.close">
         <i class="hy hy-remove"></i>
       </a>
     </div>

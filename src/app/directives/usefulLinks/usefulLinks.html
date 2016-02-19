@@ -54,10 +54,10 @@
       <span ng-show="pageTitleSearchState === SearchState.SEARCHING">
         <i class="hy hy-spinner hy-spin"></i>
       </span>
-      <a ng-show="newLink.url" href="" ng-click="clearSearch()">
+      <a ng-show="newLink.url" tabindex="0" ng-click="clearSearch()">
         <i class="hy hy-close"></i>
       </a>
-      <a class="new-useful-link__add-button" href="" ng-click="addNewUsefulLink()">
+      <a class="new-useful-link__add-button" tabindex="0" ng-click="addNewUsefulLink()">
         <i class="hy hy-plus"></i>
       </a>
     </div>
