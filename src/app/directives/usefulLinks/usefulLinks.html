@@ -21,6 +21,10 @@
     <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
   </div>
 
+  <div limit-visibility="['STUDENT_ONLY']" class="useful-links__fixed">
+    <h4><a href="{{getStudentServicesLinks()}}" target="_blank" translate="usefulLinks.studentServices"></a></h4>
+  </div>
+
   <ul role="list"
       class="list-of-links--dark"
       dnd-list="usefulLinks"
@@ -65,10 +69,6 @@
                        model="newLink.description"
                        enter-fn="addNewUsefulLink">
     </useful-link-title>
-  </div>
-
-  <div limit-visibility="['STUDENT_ONLY']" class="useful-links__fixed">
-    <h4><a href="{{getStudentServicesLinks()}}" target="_blank" translate="usefulLinks.studentServices"></a></h4>
   </div>
 
   <div class="useful-links__fixed">

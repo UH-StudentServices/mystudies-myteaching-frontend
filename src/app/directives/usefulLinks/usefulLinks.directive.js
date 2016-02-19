@@ -45,7 +45,7 @@ angular.module('directives.usefulLinks', [
   .filter('renderUsefulLinkDescription', function($filter) {
     return function(description, type) {
       if(type === 'DEFAULT') {
-        return $filter('capitalize')($filter('translate')(description));
+        return $filter('upperFirst')($filter('translate')(description));
       } else {
         return description;
       }
