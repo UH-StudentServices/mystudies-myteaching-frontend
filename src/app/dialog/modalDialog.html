@@ -1,7 +1,15 @@
 <div>
   {{::(translationKey | translate)}}
-  <div class="modal__actions text-transform-capitalize">
-    <a tabindex="0" ng-click="okCallback($event)" translate="{{::okKey}}"></a>
-    <a tabindex="0" ng-click="cancelCallback($event)" translate="{{::cancelKey}}"></a>
+  <div class="modal__actions">
+    <a tabindex="0"
+       ng-click="okCallback($event)"
+       class="text-transform-capitalize"
+       translate="{{::okKey}}">
+    </a>
+    <a tabindex="0"
+       ng-click="cancelCallback($event)"
+       class="text-transform-capitalize"
+       translate="{{::cancelKey}}">
+    </a>
   </div>
 </div>

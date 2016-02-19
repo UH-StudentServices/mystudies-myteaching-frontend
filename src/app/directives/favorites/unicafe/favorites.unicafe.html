@@ -20,9 +20,15 @@
     <i class="hy hy-5x hy-spinner hy-spin center"></i>
   </div>
   <div class="unicafe-favorite" ng-if="!loading">
-    <h4 translate="favorites.unicafe.lunchMenu" class="text-transform-capitalize"></h4>
-    <div ng-show="closed" translate="favorites.unicafe.closed" class="text-transform-capitalize"></div>
-    <div ng-show="!closed && menu.length === 0" translate="favorites.unicafe.notAvailable" class="text-transform-capitalize"></div>
+    <h4 translate="favorites.unicafe.lunchMenu" class="text-transform-capitalize-block"></h4>
+    <div ng-show="closed"
+         translate="favorites.unicafe.closed"
+         class="text-transform-capitalize-block">
+    </div>
+    <div ng-show="!closed && menu.length === 0"
+         translate="favorites.unicafe.notAvailable"
+         class="text-transform-capitalize-block">
+    </div>
     <ul class="unicafe-favorite__menu">
       <li ng-repeat="menuItem in menu" class="margin-bottom-10">
         {{ menuItem['name' + languageSuffix] }}

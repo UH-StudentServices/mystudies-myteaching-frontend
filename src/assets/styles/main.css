@@ -318,7 +318,14 @@
   cursor: pointer; }
 
 .text-transform-capitalize {
-  text-transform: capitalize; }
+  display: inline-block; }
+  .text-transform-capitalize:first-letter {
+    text-transform: capitalize; }
+
+.text-transform-capitalize-block {
+  display: block; }
+  .text-transform-capitalize-block:first-letter {
+    text-transform: capitalize; }
 
 /*
  * This file is part of MystudiesMyteaching application.

@@ -29,7 +29,10 @@
 </div>
 <div class="user-settings__menu dropdown-content">
   <ul>
-    <li ng-show="userNotifications.length === 0" translate="userNotifications.noNotifications" class="text-transform-capitalize"></li>
+    <li ng-show="userNotifications.length === 0"
+        translate="userNotifications.noNotifications"
+        class="text-transform-capitalize-block">
+    </li>
     <li class="divider" ng-repeat="userNotification in userNotifications">
       <div class="user-avatar" ng-class="{'default' : userNotification.avatarUri.indexOf('png') !== -1}">
         <img ng-src="{{ userNotification.avatarUri }}">

@@ -22,9 +22,15 @@
       <avatar-image class="user-avatar__large" img-src="session.avatarUrl" img-alt="session.name"></avatar-image>
       <div class="change-avatar__details">
         <h5>{{ session.name }}</h5>
-        <div class="text-transform-capitalize">
-          <span ng-if="currentState === State.MY_STUDIES" translate="general.student"></span>
-          <span ng-if="currentState === State.MY_TEACHINGS" translate="general.teacher"></span>
+        <div>
+          <span ng-if="currentState === State.MY_STUDIES"
+                translate="general.student"
+                class="text-transform-capitalize">
+          </span>
+          <span ng-if="currentState === State.MY_TEACHINGS"
+                translate="general.teacher"
+                class="text-transform-capitalize">
+          </span>
         </div>
         <a tabindex="0" ng-click="showAvatarChangeType = !showAvatarChangeType" translate="userSettings.changeAvatar.title"></a>
       </div>

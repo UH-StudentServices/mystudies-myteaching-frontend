@@ -44,7 +44,19 @@
 }
 
 .text-transform-capitalize {
-  text-transform: capitalize;
+  @include capitalize-first-letter(inline-block);
+}
+
+.text-transform-capitalize-block {
+  @include capitalize-first-letter(block);
+}
+
+@mixin capitalize-first-letter($display) {
+  &:first-letter {
+    text-transform: capitalize;
+  }
+
+  display: $display;
 }
 
 @mixin linear-gradient-from-left($from-color, $to-color) {
