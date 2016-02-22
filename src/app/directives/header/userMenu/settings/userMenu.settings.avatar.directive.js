@@ -45,7 +45,7 @@ angular.module('directives.userMenu.settings.avatar', ['directives.imgLoad',
 
         $scope.toggleChangeAvatar = function() {
           $scope.showAvatarChangeType = !$scope.showAvatarChangeType;
-        }
+        };
 
         $scope.supportsCamera = BrowserUtil.supportsCamera();
 
