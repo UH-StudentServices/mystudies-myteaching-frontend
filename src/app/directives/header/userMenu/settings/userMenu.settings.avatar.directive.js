@@ -41,6 +41,12 @@ angular.module('directives.userMenu.settings.avatar', ['directives.imgLoad',
           $scope.resetMenu();
         }
 
+        $scope.showAvatarChangeType = false;
+
+        $scope.toggleChangeAvatar = function() {
+          $scope.showAvatarChangeType = !$scope.showAvatarChangeType;
+        }
+
         $scope.supportsCamera = BrowserUtil.supportsCamera();
 
         $scope.deleteUserAvatar = function() {

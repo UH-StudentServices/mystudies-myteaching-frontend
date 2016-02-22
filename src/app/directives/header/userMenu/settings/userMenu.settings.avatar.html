@@ -32,13 +32,13 @@
                 class="text-transform-capitalize">
           </span>
         </div>
-        <a tabindex="0" ng-click="showAvatarChangeType = !showAvatarChangeType" translate="userSettings.changeAvatar.title"></a>
+        <a tabindex="0" ng-click="toggleChangeAvatar()" translate="userSettings.changeAvatar.title"></a>
       </div>
     </div>
     <div class="avatar-change-type" ng-show="showAvatarChangeType">
       <upload-image upload-callback="upload" cancel-callback="cancelUpload"></upload-image>
       <span ng-show="supportsCamera">| <a tabindex="0" ng-click="startCamera()" translate="userSettings.changeAvatar.takePicture"></a></span>
-      | <a tabindex="0" ng-click="deleteUserAvatar()" tranlate="userSettings.changeAvatar.useDefault"></a>
+      | <a tabindex="0" ng-click="deleteUserAvatar()" translate="userSettings.changeAvatar.useDefault"></a>
     </div>
   </div>
   <div ng-show="cameraOn">
