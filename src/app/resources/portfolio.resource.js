@@ -18,12 +18,13 @@
 angular.module('resources.portfolio', ['services.state'])
 
   .constant('PortfolioRole', {
-    STUDENT : 'student',
-    TEACHER : 'teacher'
+    STUDENT: 'student',
+    TEACHER: 'teacher'
   })
 
   .factory('PortfolioResource', function($resource, StateService, State, PortfolioRole) {
-    var portfolioRole = StateService.getRootStateName() === State.MY_STUDIES ? PortfolioRole.STUDENT : PortfolioRole.TEACHER,
+    var portfolioRole = StateService.getRootStateName() === State.MY_STUDIES ?
+        PortfolioRole.STUDENT : PortfolioRole.TEACHER,
         portfolioResource = $resource('/api/private/v1/portfolio/' + portfolioRole);
 
     function createPortfolio() {
