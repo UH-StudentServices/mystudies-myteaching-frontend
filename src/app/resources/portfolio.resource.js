@@ -15,11 +15,17 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('resources.portfolio', [])
+angular.module('resources.portfolio', ['services.state'])
 
-  .factory('PortfolioResource', function($resource) {
+  .constant('PortfolioRole', {
+    STUDENT: 'student',
+    TEACHER: 'teacher'
+  })
 
-    var portfolioResource = $resource('/api/private/v1/portfolio');
+  .factory('PortfolioResource', function($resource, StateService, State, PortfolioRole) {
+    var portfolioRole = StateService.getRootStateName() === State.MY_STUDIES ?
+        PortfolioRole.STUDENT : PortfolioRole.TEACHER,
+        portfolioResource = $resource('/api/private/v1/portfolio/' + portfolioRole);
 
     function createPortfolio() {
       return portfolioResource.save().$promise;
