@@ -149,34 +149,14 @@ $favorite-size-large: 340px;
   min-height: 120px !important;
 }
 
-@mixin favorites-in-three-columns() {
-  float: left;
-  width: 33%;
-  margin: 0;
-
-  > * {
-    overflow-y: auto;
-    overflow-x: hidden;
-    box-sizing: border-box;
-    display: block;
-    margin-bottom: 1em;
-  }
-}
-
-@mixin favorite-size($size) {
-  > * {
-    height: $size;
-    width: $size;
-  }
-}
-
 .favorites-container .dropzone .itemlist > li {
 
   margin-bottom: 26px;
 
   @include breakpoint($small) {
     height: 380px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
     width: 33.33%;
     padding: 20px 40px 20px 0;
   }
