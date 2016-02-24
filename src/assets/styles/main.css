@@ -2971,7 +2971,8 @@ a.text-neutral {
   @media (min-width: 48em) {
     .favorites-container .dropzone .itemlist > li {
       height: 380px;
-      float: left;
+      display: inline-block;
+      vertical-align: top;
       width: 33.33%;
       padding: 20px 40px 20px 0; } }
   @media (min-width: 62.5em) {
