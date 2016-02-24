@@ -150,19 +150,18 @@ $favorite-size-large: 340px;
 }
 
 .favorites-container .dropzone .itemlist > li {
-
-  margin-bottom: 26px;
+  padding-top: 20px;
 
   @include breakpoint($small) {
     height: 380px;
     display: inline-block;
     vertical-align: top;
     width: 33.33%;
-    padding: 20px 40px 20px 0;
+    padding-right: 40px;
   }
 
   @include breakpoint($medium) {
-    padding: 20px 80px 20px 0;
+    padding-right: 80px;
   }
 
   .add-new {

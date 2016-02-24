@@ -2967,17 +2967,17 @@ a.text-neutral {
   min-height: 120px !important; }
 
 .favorites-container .dropzone .itemlist > li {
-  margin-bottom: 26px; }
+  padding-top: 20px; }
   @media (min-width: 48em) {
     .favorites-container .dropzone .itemlist > li {
       height: 380px;
       display: inline-block;
       vertical-align: top;
       width: 33.33%;
-      padding: 20px 40px 20px 0; } }
+      padding-right: 40px; } }
   @media (min-width: 62.5em) {
     .favorites-container .dropzone .itemlist > li {
-      padding: 20px 80px 20px 0; } }
+      padding-right: 80px; } }
   .favorites-container .dropzone .itemlist > li .add-new {
     border: 1px solid #EBEBEB; }
     @media (min-width: 48em) {
