@@ -325,7 +325,8 @@
         "goToLogin": "Kirjaudu"
       }
     },
-    "readMore": "Lue lisää"
+    "readMore": "Lue lisää",
+    "courseSearch": "Hae opetusta kirjautumatta"
   },
   "upcomingCourses": {
     "title": "Tuleva opetus"

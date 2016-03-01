@@ -327,7 +327,8 @@
         "goToLogin": "Logga in"
       }
     },
-    "readMore": "Läs mera"
+    "readMore": "Läs mera",
+    "courseSearch": "Sök undervisning utan att logga in"
   },
   "upcomingCourses": {
     "title": "Kommande undervisning"
