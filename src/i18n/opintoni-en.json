@@ -326,8 +326,9 @@
         "goToLogin": "Login"
       }
     },
-    "readMore": "Read more"
-  },
+    "readMore": "Read more",
+    "courseSearch": "Search for courses without logging in"
+},
   "upcomingCourses": {
     "title": "Upcoming courses"
   },

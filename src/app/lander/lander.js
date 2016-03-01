@@ -15,7 +15,13 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('opintoniLander', [])
+angular.module('opintoniLander', ['services.language'])
+
+  .constant('COURSE_SEARCH_URL', {
+    en: 'https://courses.helsinki.fi/search',
+    sv: 'https://courses.helsinki.fi/sv/search',
+    fi: 'https://courses.helsinki.fi/fi/search '
+  })
 
   .config(function($stateProvider) {
     $stateProvider
@@ -25,7 +31,7 @@ angular.module('opintoniLander', [])
         views: {
           'content@': {
             templateUrl: 'app/partials/landerPages/_lander.html',
-            controller: function($scope, state, Configuration) {
+            controller: function($scope, state, Configuration, LanguageService, COURSE_SEARCH_URL) {
               $scope.currentStateName = state;
               $scope.loginUrl = !state || state === 'opintoni' ?
                 Configuration.loginUrlStudent :
@@ -35,6 +41,8 @@ angular.module('opintoniLander', [])
                 loginUrlStudent: Configuration.studentAppUrl,
                 loginUrlTeacher: Configuration.teacherAppUrl
               };
+
+              $scope.courseSearchUrl = COURSE_SEARCH_URL[LanguageService.getCurrent()];
             }
           }
         }
