@@ -2041,6 +2041,17 @@ a.text-neutral {
       width: 330px;
       min-width: 15em; } }
 
+.user-settings__menu-item {
+  padding: 0 !important;
+  margin: 0 1em;
+  border-bottom: 1px solid #EBEBEB;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0; }
+  .user-settings__menu-item a {
+    padding: 1em 0;
+    display: block; }
+
 .user-notifications .user-avatar {
   width: 70px;
   height: 70px;
