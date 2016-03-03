@@ -38,10 +38,10 @@ describe('Visibility directive', function() {
   function getCompiledElement() {
     var element = angular.element(
       '<div>' +
-      '<span class="student-only" limit-visibility="[\'STUDENT_ONLY\']">Student only</span>' +
-      '<span class="dev-and-qa-only" limit-visibility="[\'STUDENT_ONLY\', \'DEV_AND_QA_ONLY\']">' +
+      '<span class="student-only" limit-visibility="[\'MY_STUDIES_ONLY\']">Student only</span>' +
+      '<span class="dev-and-qa-only" limit-visibility="[\'MY_STUDIES_ONLY\', \'DEV_AND_QA_ONLY\']">' +
       'Dev and QA only</span>' +
-      '<span class="teacher-only" limit-visibility="[\'TEACHER_ONLY\']">Teacher only</span>' +
+      '<span class="teacher-only" limit-visibility="[\'MY_TEACHINGS_ONLY\']">Teacher only</span>' +
       '</div>');
     var compiledElement = compile(element)(scope);
 
