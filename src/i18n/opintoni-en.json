@@ -176,6 +176,7 @@
     },
     "changeBackground": "change background image",
     "portfolio": "portfolio",
+    "universityPortfolio": "academic portfolio",
     "ariaLabels" : {
       "chooseBackgroundImage" : "choose background image"
     }

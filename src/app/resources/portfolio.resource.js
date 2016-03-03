@@ -17,27 +17,24 @@
 
 angular.module('resources.portfolio', ['services.state'])
 
-  .constant('PortfolioRole', {
-    STUDENT: 'student',
-    TEACHER: 'teacher'
-  })
+  .factory('PortfolioResource', function($resource) {
 
-  .factory('PortfolioResource', function($resource, StateService, State, PortfolioRole) {
-    var portfolioRole = StateService.getRootStateName() === State.MY_STUDIES ?
-        PortfolioRole.STUDENT : PortfolioRole.TEACHER,
-        portfolioResource = $resource('/api/private/v1/portfolio/' + portfolioRole);
+    var studentPortfolioResource = $resource('/api/private/v1/portfolio/student');
+    var teacherPortfolioResource = $resource('/api/private/v1/portfolio/teacher');
 
-    function createPortfolio() {
-      return portfolioResource.save().$promise;
+    function createPortfolio(resource) {
+      return resource.save().$promise;
     }
 
-    function getPortfolio() {
-      return portfolioResource.get().$promise;
+    function getPortfolio(resource) {
+      return resource.get().$promise;
     }
 
     return {
-      createPortfolio: createPortfolio,
-      getPortfolio: getPortfolio
+      createStudentPortfolio: _.partial(createPortfolio, studentPortfolioResource),
+      getStudentPortfolio: _.partial(getPortfolio, studentPortfolioResource),
+      createTeacherPortfolio: _.partial(createPortfolio, teacherPortfolioResource),
+      getTeacherPortfolio: _.partial(getPortfolio, teacherPortfolioResource),
     };
 
   });

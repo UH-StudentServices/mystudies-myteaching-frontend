@@ -175,6 +175,7 @@
     },
     "changeBackground": "vaihda taustakuva",
     "portfolio": "portfolio",
+    "universityPortfolio": "yliopistoportfolio",
     "ariaLabels": {
       "chooseBackgroundImage": "valitse taustakuva"
     }
