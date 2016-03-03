@@ -1546,7 +1546,8 @@ button.icon {
       color: #FFF; } }
 
 .menu-language li {
-  margin-left: 0.8em; }
+  margin-left: 0.8em;
+  vertical-align: baseline; }
 
 @media (max-width: 767px) {
   .menu-language {

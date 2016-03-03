@@ -85,6 +85,7 @@ $headerHeight: 70px;
 .menu-language {
   li {
     margin-left: 0.8em;
+    vertical-align: baseline;
   }
 
   @include breakpoint($mobile-only) {
