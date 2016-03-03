@@ -3856,9 +3856,6 @@ a.text-neutral {
     font-size: 0.875rem; }
   .event-calendar .fc-day-grid-event, .event-calendar .fc-time-grid-event {
     border-radius: 0; }
-  .event-calendar .fc-event-container .fc-content {
-    font-size: 9px;
-    font-size: 0.5625rem; }
   .event-calendar .fc-left .fc-button {
     transition-duration: 0.1s;
     transition-property: all;
