@@ -972,9 +972,8 @@ button.icon {
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 .logo--header {
-  vertical-align: middle;
-  height: 100%;
-  width: 45px !important; }
+  width: 45px !important;
+  height: 45px !important; }
 
 .logo--footer {
   display: none;
@@ -1484,80 +1483,78 @@ button.icon {
  * You should have received a copy of the GNU General Public License
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
-@media (max-width: 767px) {
-  .page-header__branding {
-    padding: 0.5em 2em;
-    border-top: 1px solid #424242;
-    border-bottom: 1px solid #424242;
-    background-color: #222; } }
-
 @media (min-width: 48em) {
   .page-header {
-    background-color: #222;
-    height: 70px; }
-    .page-header:before, .page-header:after {
-      content: "";
-      display: table; }
-    .page-header:after {
-      clear: both; }
+    background-color: #222; } }
+
+.page-header .wrapper {
+  position: relative;
+  height: 70px;
+  background-color: #222; }
+  @media (max-width: 767px) {
     .page-header .wrapper {
-      height: 100%;
-      padding: 0 1em; }
-  .page-header__branding {
-    height: 100%;
-    float: left;
-    background-color: #222;
-    line-height: 100%; }
-    .page-header__branding ul, .page-header__branding li {
-      height: 100%; }
-    .page-header__branding a {
-      display: inline-block;
-      height: 100%; }
-    .page-header__branding h1 {
-      line-height: 70px; }
-  .page-header__links {
-    float: right;
-    height: 100%; }
-    .page-header__links ul, .page-header__links li {
-      height: 100%; }
-    .page-header__links .divider {
-      line-height: 70px; }
-  .page-header__links-list {
-    float: right; }
-    .page-header__links-list > * {
-      margin-left: 3px;
-      margin-right: 3px; }
-      .page-header__links-list > *:first-child {
-        margin-left: 0; }
-      .page-header__links-list > *:last-child {
-        margin-right: 0; }
-    .page-header__links-list > li {
-      display: inline-block;
-      margin-right: 0.8em; }
-  .page-header__link {
-    font-size: 11px;
-    font-size: 0.6875rem;
-    font-weight: 600;
-    color: #979797;
-    text-decoration: none;
-    text-transform: uppercase;
-    line-height: 70px; }
-    .page-header__link:hover, .page-header__link:focus, .page-header__link:active {
-      color: #FFF; } }
+      border-top: 1px solid #424242; } }
 
-.menu-language li {
-  margin-left: 0.8em;
-  vertical-align: baseline; }
-
-@media (max-width: 767px) {
-  .menu-language {
-    padding: 0 1em; }
-    .menu-language li {
-      margin-left: 1.5em; } }
+.page-header__branding {
+  background-color: #222;
+  left: 1em;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -transform: translateY(-50%);
+  position: absolute;
+  top: 50%; }
+  .page-header__branding li {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 1em; }
 
 @media (min-width: 48em) {
-  .menu-language__item, .menu-language__item:hover, .menu-language__item:focus, .menu-language__item:active {
-    color: #FFF; } }
+  .page-header__links {
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -transform: translateY(-50%);
+    position: absolute;
+    top: 50%;
+    right: 0; }
+    .page-header__links li {
+      display: inline-block;
+      margin-right: 0.8em; }
+    .page-header__links a {
+      font-size: 11px;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      color: #979797;
+      text-decoration: none;
+      text-transform: uppercase; }
+      .page-header__links a:hover, .page-header__links a:focus, .page-header__links a:active {
+        color: #FFF; } }
+
+.menu-language li {
+  display: inline-block;
+  text-transform: uppercase; }
+  @media (max-width: 767px) {
+    .menu-language li a {
+      margin-left: 1em;
+      font-size: 14px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #222;
+      text-decoration: none;
+      text-transform: uppercase; }
+      .menu-language li a:hover, .menu-language li a:focus, .menu-language li a:active {
+        color: #666; } }
+  @media (min-width: 48em) {
+    .menu-language li a {
+      font-size: 11px;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      color: #FFF;
+      text-decoration: none;
+      text-transform: uppercase; }
+      .menu-language li a:hover, .menu-language li a:focus, .menu-language li a:active {
+        color: #FFF; } }
 
 /*
  * This file is part of MystudiesMyteaching application.
