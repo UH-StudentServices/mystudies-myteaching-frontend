@@ -19,7 +19,7 @@
   <mobile-toolbar></mobile-toolbar>
   <div class="wrapper">
     <div class="page-header__branding">
-      <ul class="inline-list">
+      <ul>
         <li>
           <a href="http://www.helsinki.fi/yliopisto/">
             <img src="/app/assets/icons/logo.svg" class="logo--header">
@@ -31,9 +31,9 @@
       </ul>
     </div>
     <div class="page-header__links hide-mobile-only" >
-      <ul class="page-header__links-list">
+      <ul>
         <li ng-repeat="link in pageHeaderLinks">
-          <a class="page-header__link" href="{{link.href}}" target="_blank" translate="{{::link.key}}"></a>
+          <a href="{{link.href}}" target="_blank" translate="{{::link.key}}"></a>
         </li>
         <li class="divider">|</li>
         <li>
