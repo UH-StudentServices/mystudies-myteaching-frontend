@@ -49,12 +49,6 @@
     border-radius: 0;
   }
 
-  .fc-event-container {
-    .fc-content {
-      @include font-size(9px);
-    }
-  }
-
   .fc-left .fc-button {
     @include button;
     @include font-size(15px);

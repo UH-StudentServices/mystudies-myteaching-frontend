@@ -19,11 +19,11 @@
 // Logo
 // --------------------------------------------------
 
+$header-logo-size: 45px !important;
 
 .logo--header {
-  vertical-align: middle;
-  height: 100%;
-  width: 45px !important;
+  width: $header-logo-size;
+  height: $header-logo-size;
 }
 
 .logo--footer {

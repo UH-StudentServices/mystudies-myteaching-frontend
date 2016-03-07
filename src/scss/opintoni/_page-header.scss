@@ -17,88 +17,58 @@
 
 $headerHeight: 70px;
 
-@include breakpoint($mobile-only) {
-  .page-header__branding {
-    $border : 1px solid $darkgray;
-    padding: 0.5em 2em;
-    border-top: $border;
-    border-bottom: $border;
+.page-header {
+  @include breakpoint($small) {
     background-color: $black;
+  }
+
+  .wrapper {
+    position: relative;
+    height: $headerHeight;
+    background-color: $black;
+    @include breakpoint($mobile-only) {
+      border-top: 1px solid $darkgray;
+    }
+  }
+}
+
+.page-header__branding {
+  background-color: $black;
+  left: 1em;
+  @include vertically-center;
+  li {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 1em;
   }
 }
 
 @include breakpoint($small) {
-  .page-header {
-    @include clearfix;
-    background-color: $black;
-    height: $headerHeight;
-
-    .wrapper {
-      height: 100%;
-      padding: 0 1em;
-    }
-  }
-
-  .page-header__branding {
-    height: 100%;
-    float: left;
-    background-color: $black;
-    line-height: 100%;
-    ul, li {
-      height: 100%;
-    }
-    a {
-      display: inline-block;
-      height: 100%;
-    }
-    h1 {
-      line-height: $headerHeight;
-    }
-  }
   .page-header__links {
-    float: right;
-    height: 100%;
-    ul, li {
-      height: 100%;
-    }
-    .divider {
-      line-height: $headerHeight;
-    }
-  }
-
-  .page-header__links-list {
-    @include inline-list-size-variant;
-    float: right;
-
-    > li {
+    @include vertically-center;
+    right: 0;
+    li {
       display: inline-block;
       margin-right: 0.8em;
     }
-  }
-
-  .page-header__link {
-    @include link-label($color-active: $white);
-    line-height: $headerHeight;
+    a {
+      @include link-label($color-active: $white);
+    }
   }
 }
 
 .menu-language {
   li {
-    margin-left: 0.8em;
-  }
-
-  @include breakpoint($mobile-only) {
-    padding: 0 1em;
-    li {
-      margin-left: 1.5em;
-    }
-  }
-}
-
-.menu-language__item {
-  @include breakpoint($small) {
-    &, &:hover, &:focus, &:active {
-      color: $white;
+    display: inline-block;
+    text-transform: uppercase;
+    a {
+      @include breakpoint($mobile-only) {
+        margin-left: 1em;
+        @include link-label($color-default: $black, $font-size: 14px);
+      }
+      @include breakpoint($small) {
+        @include link-label($color-default: $white, $color-active: $white);
+      }
     }
   }
 }

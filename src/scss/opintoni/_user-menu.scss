@@ -113,6 +113,19 @@ $time-color: rgb(109, 109, 109);
   }
 }
 
+.user-settings__menu-item {
+  // Override the @extend .dropdown-menu so that we don't have to rewrite all of it.
+  padding: 0 !important;
+  margin: 0 1em;
+  @include border-bottom;
+
+  a {
+    padding: 1em 0;
+    display: block;
+  }
+}
+
+
 .user-notifications {
 
   .user-avatar {

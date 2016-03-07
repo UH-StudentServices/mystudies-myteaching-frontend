@@ -27,13 +27,6 @@ angular.module('directives.menuLanguage', [
       restrict: 'E',
       templateUrl: 'app/directives/header/menuLanguage/menu_language.html',
       link: function($scope) {
-
-        $scope.changeLanguage = function(languageKey) {
-          $translate.use(languageKey).then(function translationUseSuccess() {
-            $window.location.reload();
-          });
-        };
-
         var languageOptions = [{
           nativeName: 'English',
           languageCode: 'en'
@@ -44,6 +37,12 @@ angular.module('directives.menuLanguage', [
           nativeName: 'Suomi',
           languageCode: 'fi'
         }];
+
+        $scope.changeLanguage = function(languageKey) {
+          $translate.use(languageKey).then(function translationUseSuccess() {
+            $window.location.reload();
+          });
+        };
 
         $scope.selectedLanguage = LanguageService.getCurrent();
 
