@@ -20,7 +20,7 @@ angular.module('services.portfolio', ['resources.portfolio'])
   .factory('PortfolioService', function(PortfolioResource) {
 
     function createPortfolio(role) {
-      if (role == 'teacher') {
+      if (role === 'teacher') {
         return PortfolioResource.createTeacherPortfolio();
       } else {
         return PortfolioResource.createStudentPortfolio();
@@ -28,7 +28,7 @@ angular.module('services.portfolio', ['resources.portfolio'])
     }
 
     function getPortfolio(role) {
-      if (role == 'teacher') {
+      if (role === 'teacher') {
         return PortfolioResource.getTeacherPortfolio();
       } else {
         return PortfolioResource.getStudentPortfolio();

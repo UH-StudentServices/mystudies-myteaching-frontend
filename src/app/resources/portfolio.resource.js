@@ -19,8 +19,8 @@ angular.module('resources.portfolio', ['services.state'])
 
   .factory('PortfolioResource', function($resource) {
 
-    var studentPortfolioResource = $resource('/api/private/v1/portfolio/student');
-    var teacherPortfolioResource = $resource('/api/private/v1/portfolio/teacher');
+    var studentPortfolioResource = $resource('/api/private/v1/portfolio/student'),
+        teacherPortfolioResource = $resource('/api/private/v1/portfolio/teacher');
 
     function createPortfolio(resource) {
       return resource.save().$promise;
