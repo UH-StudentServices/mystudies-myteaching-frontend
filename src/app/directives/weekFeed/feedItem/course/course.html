@@ -25,7 +25,7 @@
       </div>
 
       <div class="box-data__title">
-        <a ng-if="feedItem.coursePageUri !== null" href="{{ feedItem.coursePageUri }}" target="_blank">
+        <a ng-if="feedItem.coursePageUri !== null" href="{{ feedItem.coursePageUri }}">
           {{ feedItem.name }}
         </a>
         <span ng-if="feedItem.coursePageUri === null">{{ feedItem.name }}</span>

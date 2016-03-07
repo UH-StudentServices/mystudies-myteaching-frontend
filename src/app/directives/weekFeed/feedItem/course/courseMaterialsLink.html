@@ -17,11 +17,11 @@
 
 <div class="course-material" ng-if="feedItem.hasMaterial && (feedItem.courseMaterialUri || feedItem.moodleUri)">
   <a target="_blank" ng-if="feedItem.moodleUri" href="{{feedItem.moodleUri}}">
-    {{::('weekFeed.courseMaterialsMoodle' | translate)}}
+    {{::('weekFeed.courseMaterialsMoodle' | translate)}}
     <i class="hy hy-link-arrow"></i>
   </a>
-  <a target="_blank" ng-if="!feedItem.moodleUri && feedItem.courseMaterialUri" href="{{feedItem.courseMaterialUri}}">
-    {{::('weekFeed.courseMaterials' | translate)}}
+  <a ng-if="!feedItem.moodleUri && feedItem.courseMaterialUri" href="{{feedItem.courseMaterialUri}}">
+    {{::('weekFeed.courseMaterials' | translate)}}
     <i class="hy hy-link-arrow"></i>
   </a>
 </div>
