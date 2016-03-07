@@ -22,8 +22,8 @@
         <global-messages></global-messages>
     </header>
 
-    <student-tour limit-visibility="['STUDENT_ONLY']"></student-tour>
-    <teacher-tour limit-visibility="['TEACHER_ONLY']"></teacher-tour>
+    <student-tour limit-visibility="['MY_STUDIES_ONLY']"></student-tour>
+    <teacher-tour limit-visibility="['MY_TEACHINGS_ONLY']"></teacher-tour>
 
     <search-bar class="show-mobile-only"></search-bar>
     <search-results></search-results>
@@ -36,14 +36,14 @@
         <div class="l-multi-col-content-wrapper">
             <div class="l-content-primary-wrapper">
                 <week-feed courses-promise="courses" events-promise="events"></week-feed>
-                <attainments limit-visibility="['STUDENT_ONLY']"></attainments>
+                <attainments limit-visibility="['MY_STUDIES_ONLY']"></attainments>
             </div>
 
             <div class="l-content-secondary-wrapper" role="navigation">
                 <div class="ui-component">
                     <useful-links></useful-links>
-                    <upcoming-courses limit-visibility="['TEACHER_ONLY']"></upcoming-courses>
-                    <course-recommendations limit-visibility="['DEV_AND_QA_ONLY', 'STUDENT_ONLY']"></course-recommendations>
+                    <upcoming-courses limit-visibility="['MY_TEACHINGS_ONLY']"></upcoming-courses>
+                    <course-recommendations limit-visibility="['DEV_AND_QA_ONLY', 'MY_STUDIES_ONLY']"></course-recommendations>
                 </div>
             </div>
         </div>

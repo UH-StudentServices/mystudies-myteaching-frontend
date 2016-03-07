@@ -67,12 +67,12 @@ angular.module('directives.userMenu.settings', [
           $scope.session = session;
         });
 
-        $scope.openPortfolio = function() {
-          PortfolioService.getPortfolio().then(function getPortfolioSuccess(portfolio) {
+        $scope.openPortfolio = function(role) {
+          PortfolioService.getPortfolio(role).then(function getPortfolioSuccess(portfolio) {
             $window.location.href = portfolio.url;
           }, function getPortfolioFail(data) {
             if (data.status === 404) {
-              PortfolioService.createPortfolio().then(function createPortfolioSuccess(portfolio) {
+              PortfolioService.createPortfolio(role).then(function createPortfolioSuccess(portfolio) {
                 $window.location.href = portfolio.url;
               });
             }

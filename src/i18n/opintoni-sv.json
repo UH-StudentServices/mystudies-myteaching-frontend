@@ -177,6 +177,7 @@
     },
     "changeBackground": "Byt bakgrundsbild",
     "portfolio": "portfolio",
+    "universityPortfolio": "universitetsportfolion",
     "ariaLabels": {
       "chooseBackgroundImage": "Välj bakgrundsbild"
     }

@@ -37,10 +37,16 @@
         {{ "faculties." + session.faculty.code | translate }}
       </a>
     </li>
-    <li limit-visibility="['DEV_AND_QA_ONLY']" class="user-settings__menu-item" role="menuitem">
-      <a tabindex="0" ng-click="openPortfolio()">
+    <li limit-visibility="['DEV_AND_QA_ONLY', 'STUDENT_ONLY']" class="user-settings__menu-item" role="menuitem">
+      <a tabindex="0" ng-click="openPortfolio('student')">
         <i class="hy hy-profile"></i>
         {{::('userSettings.portfolio' | translate | capitalize)}}
+      </a>
+    </li>
+    <li limit-visibility="['DEV_AND_QA_ONLY', 'TEACHER_ONLY']" class="user-settings__menu-item" role="menuitem">
+      <a tabindex="0" ng-click="openPortfolio('teacher')">
+        <i class="hy hy-profile"></i>
+        {{::('userSettings.universityPortfolio' | translate | capitalize)}}
       </a>
     </li>
 

@@ -20,13 +20,21 @@ angular.module('directives.visibility', [
   'services.session'])
 
 .constant('Visibility', {
-  TEACHER_ONLY:
+  MY_TEACHINGS_ONLY:
     function teacherOnly($q, StateService, State, SessionService, Role, Configuration) {
       return $q.resolve(StateService.getRootStateName() === State.MY_TEACHINGS);
     },
-  STUDENT_ONLY:
+  MY_STUDIES_ONLY:
     function studentOnly($q, StateService, State, SessionService, Role, Configuration) {
       return $q.resolve(StateService.getRootStateName() === State.MY_STUDIES);
+    },
+  TEACHER_ONLY:
+    function teacherOnly($q, StateService, State, SessionService, Role, Configuration) {
+      return SessionService.isInRole(Role.TEACHER);
+    },
+  STUDENT_ONLY:
+    function teacherOnly($q, StateService, State, SessionService, Role, Configuration) {
+      return SessionService.isInRole(Role.STUDENT);
     },
   ADMIN_ONLY:
     function adminOnly($q, StateService, State, SessionService, Role, Configuration) {
