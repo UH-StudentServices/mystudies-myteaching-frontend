@@ -28,7 +28,7 @@ angular.module('resources.favorites.rss', [])
     }
 
     function findFeed(url) {
-      return findRssFeedResource.get({url: url}).$promise;
+      return findRssFeedResource.query({url: url}).$promise;
     }
 
     return {

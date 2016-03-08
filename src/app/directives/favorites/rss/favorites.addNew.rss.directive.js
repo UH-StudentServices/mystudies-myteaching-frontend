@@ -44,8 +44,8 @@ angular.module('directives.favorites.addNew.rss',
         $scope.visibleItems = 3;
 
         function findFeedSuccess(feed) {
-          if(feed && feed.title && feed.url) {
-            $scope.searchResults = [feed];
+          if(feed) {
+            $scope.searchResults = feed;
           } else {
             findFeedFailed();
           }
