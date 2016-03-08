@@ -17,7 +17,8 @@
 
 angular.module('directives.favorites.addNew.rss',
   ['resources.favorites',
-   'services.favorites.rss'])
+   'services.favorites.rss',
+   'utils.validator'])
 
   .filter('stripHTML', function() {
     return function(input) {
@@ -27,8 +28,11 @@ angular.module('directives.favorites.addNew.rss',
 
   .constant('minSearchStringLength', 3)
 
-  .directive('addNewRssFavorite', function(RSSService, FavoritesResource,
-                                           newFavoriteAddedEvent, minSearchStringLength) {
+  .directive('addNewRssFavorite', function(RSSService,
+                                           FavoritesResource,
+                                           newFavoriteAddedEvent,
+                                           minSearchStringLength,
+                                           ValidatorUtils) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/rss/favorites.addNew.rss.html',
@@ -39,44 +43,55 @@ angular.module('directives.favorites.addNew.rss',
         $scope.loading = false;
         $scope.visibleItems = 3;
 
-        function searchWithUrl(searchUrl) {
-          return RSSService.getFeedTitle(searchUrl)
-            .then(function(title) {
-              if(title) {
-                return [{title: title, url: searchUrl}];
-              } else {
-                return null;
-              }
-            });
+        function findFeedSuccess(feed) {
+          if(feed && feed.title && feed.url) {
+            $scope.searchResults = [feed];
+          } else {
+            findFeedFailed();
+          }
         }
+
+        function findFeedFailed() {
+          $scope.searchResults = null;
+        }
+
 
         function search(feedUrl) {
           $scope.loading = true;
           $scope.searchResults = undefined;
-          searchWithUrl(feedUrl)
-            .then(function(searchResults) {
-              $scope.searchResults = searchResults;
-            })
+          RSSService.findFeed(feedUrl)
+            .then(findFeedSuccess)
+            .catch(findFeedFailed)
             .finally(function() {
               $scope.loading = false;
             });
         }
 
-        $scope.search = _.debounce(search, 500);
+        function convertUrl(validFn, url) {
+          var validUrl = ValidatorUtils.convertValidUrl(url);
+
+          if(validUrl) {
+            validFn(validUrl);
+          }
+        }
+
+        function addFeed(feedUrl) {
+          $scope.favorite.url = feedUrl;
+          $scope.favorite.visibleItems = $scope.visibleItems;
+          FavoritesResource.saveRSSFavorite($scope.favorite).then(function() {
+            $scope.$emit(newFavoriteAddedEvent,
+                $scope.favorite.type + '_' + $scope.favorite.visibleItems);
+            $scope.hidePopover();
+          });
+        }
+
+        $scope.search = _.debounce(_.partial(convertUrl, search), 500);
 
         $scope.clearSearch = function() {
           $scope.searchString = '';
         };
 
-        $scope.addFeed = function(feedUrl) {
-          $scope.favorite.url = feedUrl;
-          $scope.favorite.visibleItems = $scope.visibleItems;
-          FavoritesResource.saveRSSFavorite($scope.favorite).then(function() {
-            $scope.$emit(newFavoriteAddedEvent,
-              $scope.favorite.type + '_' + $scope.favorite.visibleItems);
-            $scope.hidePopover();
-          });
-        };
+        $scope.addFeed = _.partial(convertUrl, addFeed);
 
         $scope.addFeedOnEnter = function() {
           $scope.addFeed($scope.searchString);
