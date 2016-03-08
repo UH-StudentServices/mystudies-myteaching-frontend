@@ -36,8 +36,8 @@
       </div>
     </div>
     <div class="avatar-change-type" ng-show="showAvatarChangeType">
-      <upload-image upload-callback="upload" cancel-callback="cancelUpload"></upload-image>
-      <span ng-show="supportsCamera">| <a tabindex="0" ng-click="startCamera()" translate="userSettings.changeAvatar.takePicture"></a></span>
+      <upload-image upload-callback="upload" cancel-callback="cancelUpload" crop-to-square="true"></upload-image>
+      <span ng-show="supportsCamera">&nbsp;| <a tabindex="0" ng-click="startCamera()" translate="userSettings.changeAvatar.takePicture"></a></span>
       | <a tabindex="0" ng-click="deleteUserAvatar()" translate="userSettings.changeAvatar.useDefault"></a>
     </div>
   </div>
