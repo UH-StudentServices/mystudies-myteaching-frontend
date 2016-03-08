@@ -19,13 +19,20 @@ angular.module('resources.favorites.rss', [])
 
   .factory('RSSResource', function($resource) {
 
-    var favoritesResource = $resource('/api/private/v1/favorites/rss');
+    var rssFeedResource = $resource('/api/private/v1/favorites/rss'),
+        findRssFeedResource = $resource('/api/private/v1/favorites/rss/find');
+
 
     function get(url, numberOfItems) {
-      return favoritesResource.get({url: url, limit: numberOfItems}).$promise;
+      return rssFeedResource.get({url: url, limit: numberOfItems}).$promise;
+    }
+
+    function findFeed(url) {
+      return findRssFeedResource.get({url: url}).$promise;
     }
 
     return {
-      get: get
+      get: get,
+      findFeed: findFeed
     };
   });

@@ -34,15 +34,13 @@ angular.module('services.favorites.rss', ['resources.favorites.rss', 'utils.mome
       });
     }
 
-    function getFeedTitle(feedUrl) {
-      return RSSResource.get(feedUrl, 1).then(function(feed) {
-        return feed.title;
-      });
+    function findFeed(feedUrl) {
+      return RSSResource.findFeed(feedUrl);
     }
 
     return {
       get: get,
-      getFeedTitle: getFeedTitle
+      findFeed: findFeed
     };
 
   });
