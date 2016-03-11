@@ -45,7 +45,7 @@
         </li>
       </ul>
 
-      <event-calendar events="events" ng-if="selectedTab === Tabs.CALENDAR"></event-calendar>
+      <event-calendar events="events" ng-if="events && selectedTab === Tabs.CALENDAR"></event-calendar>
 
       <div class="week-feed-actions">
         <button class="button--light button" ng-click="showMore()" ng-if="showMoreVisible()" translate="buttons.showMore"></button>
