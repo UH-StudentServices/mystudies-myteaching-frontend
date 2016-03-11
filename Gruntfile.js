@@ -61,8 +61,6 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     application: {
-      // configurable paths
-      app: require('./bower.json').appPath || 'app',
       dist: 'dist'
     },
     watch: {
@@ -93,7 +91,7 @@ module.exports = function(grunt) {
         }
       },
       options: {
-        startPath: '/app/',
+        startPath: '/',
         watchTask: true,
         host: 'local.student.helsinki.fi',
         open: 'external',
@@ -102,13 +100,9 @@ module.exports = function(grunt) {
           baseDir: 'src',
           middleware: [proxyMiddleware,
             modRewrite([
-              '^/app/$ http://localhost:3000/ [P]',
-              '^/app/locallog.html http://localhost:3000/locallog.html [P]',
-              '^/app/app/ http://localhost:3000/app/ [P]',
-              '^/app/bower_components/ http://localhost:3000/bower_components/ [P]',
-              '^/app/assets/ http://localhost:3000/assets/ [P]',
-              '^/app/i18n/ http://localhost:3000/i18n/ [P]',
-              '^/proxy/hyyravintolat http://messi.hyyravintolat.fi/publicapi [P]'])
+              '^/proxy/hyyravintolat http://messi.hyyravintolat.fi/publicapi [P]',
+              '^[^\\.]*$ /index.html [L]'
+            ])
           ]
         }
       }
@@ -305,10 +299,10 @@ module.exports = function(grunt) {
             browser: 'chrome',
             params: {
               student: {
-                loginUrl: 'http://local.student.helsinki.fi:3000/app/locallog.html'
+                loginUrl: 'http://local.student.helsinki.fi:3000/locallog.html'
               },
               teacher: {
-                loginUrl: 'http://local.teacher.helsinki.fi:3000/app/locallog.html'
+                loginUrl: 'http://local.teacher.helsinki.fi:3000/locallog.html'
               }
             }
           }
@@ -320,10 +314,10 @@ module.exports = function(grunt) {
             browser: 'phantomjs',
             params: {
               student: {
-                loginUrl: 'https://opi-1.student.helsinki.fi/app/locallog.html'
+                loginUrl: 'https://opi-1.student.helsinki.fi/locallog.html'
               },
               teacher: {
-                loginUrl: 'https://opi-1.teacher.helsinki.fi/app/locallog.html'
+                loginUrl: 'https://opi-1.teacher.helsinki.fi/locallog.html'
               }
             }
           }

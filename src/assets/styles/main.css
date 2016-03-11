@@ -3123,7 +3123,7 @@ a.text-neutral {
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("/app/assets/images/bg/ruokalista.png");
+  background-image: url("/assets/images/bg/ruokalista.png");
   color: #FFF;
   overflow-y: hidden !important; }
   @media (max-width: 767px) {

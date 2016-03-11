@@ -78,6 +78,8 @@ angular.module('opintoniApp', [
     paginationTemplateProvider,
     preferredLanguage) {
 
+    $locationProvider.html5Mode(true);
+
     $httpProvider.interceptors.push('HttpInterceptor');
 
     paginationTemplateProvider.setPath('app/opintoni/views/partials/_dir_pagination.html');
