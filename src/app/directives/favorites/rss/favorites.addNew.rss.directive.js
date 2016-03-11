@@ -94,7 +94,11 @@ angular.module('directives.favorites.addNew.rss',
         $scope.addFeed = _.partial(convertUrl, addFeed);
 
         $scope.addFeedOnEnter = function() {
-          $scope.addFeed($scope.searchString);
+          var urlToAdd = _.get($scope, ['searchResults', '0', 'url']);
+
+          if(urlToAdd) {
+            $scope.addFeed(urlToAdd);
+          }
         };
       }
     };
