@@ -18,8 +18,8 @@
 <div class="link-list">
   <h3 class="text-transform-capitalize-block" translate="courseRecommendations.title"></h3>
   <div block-ui="recommendations" class="content-loader">
-    <ul class="list-of-links--light link-list__links">
-      <li ng-repeat="courseRecommendation in courseRecommendations">
+    <ul class="link-list__links">
+      <li ng-repeat="courseRecommendation in courseRecommendations track by courseRecommendation.title">
         <a href="{{::courseRecommendation.link}}">{{::courseRecommendation.title}}</a>
       </li>
     </ul>

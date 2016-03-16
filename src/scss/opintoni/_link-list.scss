@@ -25,6 +25,7 @@
   }
 
   &__links {
+    @extend ul.list-of-links--light;
     @include border-top;
   }
 
