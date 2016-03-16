@@ -17,7 +17,7 @@
 
 <div class="link-list" role="article" ng-if="upcomingCourses.length > 0">
   <h3 translate="upcomingCourses.title"></h3>
-  <ul class="list-of-links--light">
+  <ul class="link-list__links">
     <li ng-repeat="upcomingCourse in upcomingCourses">
       <a ng-if="upcomingCourse.coursePageUri" href="{{ upcomingCourse.coursePageUri }}">
         {{ upcomingCourse.name }}

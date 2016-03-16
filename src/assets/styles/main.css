@@ -226,6 +226,106 @@
   .item-list--bar > li:last-child {
     border-bottom-width: 0; }
 
+/*
+ section: 6.2
+ title: List of links
+ description:
+*/
+/*
+ section: 6.2.1
+ title: List of links, normal
+ template: 6_2_1_list-of-links--light
+ description:
+*/
+ul.list-of-links--light li > a, .link-list__links li > a, ul.list-of-links--dark li > a {
+  font-weight: 600;
+  font-style: normal;
+  margin-bottom: 2px; }
+
+ul.list-of-links--light li > a, .link-list__links li > a {
+  border-bottom: 1px solid #EBEBEB;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif, Nimbus Sans L;
+  font-size: 15px;
+  font-size: 0.9375rem;
+  display: block;
+  line-height: normal;
+  overflow: hidden;
+  padding-bottom: 0.8em;
+  padding-left: 0;
+  padding-right: 2em;
+  padding-top: 0.8em;
+  position: relative; }
+  ul.list-of-links--light li > a:after, .link-list__links li > a:after {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "hy-icons";
+    content: "";
+    color: inherit;
+    font-weight: 200;
+    height: 100%;
+    margin-top: -0.5em;
+    position: absolute;
+    right: 0;
+    top: 50%; }
+  a:hover ul.list-of-links--light li > a:after, a:hover .link-list__links li > a:after, ul.list-of-links--light li > a:hover:after, .link-list__links li > a:hover:after {
+    color: #005479; }
+
+/*
+ section: 6.2.2
+ title: List of links, dark theme
+ template: 6_2_2_list-of-links--dark
+ description:
+*/
+ul.list-of-links--dark li > a {
+  border-bottom: 1px solid #EBEBEB;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif, Nimbus Sans L;
+  font-size: 15px;
+  font-size: 0.9375rem;
+  display: block;
+  line-height: normal;
+  overflow: hidden;
+  padding-bottom: 0.8em;
+  padding-left: 0;
+  padding-right: 2em;
+  padding-top: 0.8em;
+  position: relative;
+  background: #0098d0;
+  border: none;
+  color: #FFF;
+  overflow: visible;
+  padding-left: 1em;
+  padding-right: 3em; }
+  ul.list-of-links--dark li > a:after {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "hy-icons";
+    content: "";
+    color: inherit;
+    font-weight: 200;
+    height: 100%;
+    margin-top: -0.5em;
+    position: absolute;
+    right: 0;
+    top: 50%; }
+  a:hover ul.list-of-links--dark li > a:after, ul.list-of-links--dark li > a:hover:after {
+    color: #005479; }
+  ul.list-of-links--dark li > a:after {
+    transition-duration: 0.1s;
+    transition-property: padding;
+    background-color: #0882B3;
+    color: #FFF;
+    line-height: 2.8em;
+    margin-top: 0;
+    padding-left: 1em;
+    padding-right: 1em;
+    top: 0; }
+  ul.list-of-links--dark li > a:hover {
+    background-color: #005479;
+    color: #FFF; }
+    a:hover ul.list-of-links--dark li > a:hover:after, ul.list-of-links--dark li > a:hover:after {
+      background: #003146;
+      color: #FFF; }
+
 /* Application custom styles */
 /*
  * This file is part of MystudiesMyteaching application.
@@ -3691,10 +3791,6 @@ a.text-neutral {
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 .link-list h3 {
-  border-bottom: 1px solid #EBEBEB;
-  border-left: 0;
-  border-right: 0;
-  border-top: 0;
   font-size: 17px;
   font-size: 1.0625rem;
   font-weight: normal;
@@ -3702,7 +3798,13 @@ a.text-neutral {
   color: #979797;
   padding: 1.5em 0; }
 
-.link-list .link-list__no-link {
+.link-list__links {
+  border-top: 1px solid #EBEBEB;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0; }
+
+.link-list__no-link {
   border-bottom: 1px solid #EBEBEB;
   font-family: "Open Sans", Helvetica, Arial, sans-serif, Nimbus Sans L;
   font-size: 15px;
@@ -3715,7 +3817,7 @@ a.text-neutral {
   padding-right: 2em;
   padding-top: 0.8em;
   position: relative; }
-  .link-list .link-list__no-link:after {
+  .link-list__no-link:after {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: "hy-icons";
@@ -3727,9 +3829,9 @@ a.text-neutral {
     position: absolute;
     right: 0;
     top: 50%; }
-  a:hover .link-list .link-list__no-link:after, .link-list .link-list__no-link:hover:after {
+  a:hover .link-list__no-link:after, .link-list__no-link:hover:after {
     color: #005479; }
-  .link-list .link-list__no-link:after {
+  .link-list__no-link:after {
     content: none; }
 
 /*
@@ -4016,6 +4118,8 @@ a.text-neutral {
 
 .content-loader {
   min-height: 150px; }
+  .content-loader .block-ui-container {
+    z-index: 1; }
   .content-loader .block-ui-overlay {
     opacity: 1; }
   .content-loader .block-ui-message-container {

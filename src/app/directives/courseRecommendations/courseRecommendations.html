@@ -15,12 +15,13 @@
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<div class="link-list" ng-if="courseRecommendations.length > 0">
+<div class="link-list">
   <h3 class="text-transform-capitalize-block" translate="courseRecommendations.title"></h3>
-
-  <ul class="list-of-links--light">
-    <li ng-repeat="courseRecommendation in courseRecommendations">
-      <a href="{{courseRecommendation.link}}">{{courseRecommendation.title}}</a>
-    </li>
-  </ul>
+  <div block-ui="recommendations" class="content-loader">
+    <ul class="link-list__links">
+      <li ng-repeat="courseRecommendation in courseRecommendations track by courseRecommendation.title">
+        <a href="{{::courseRecommendation.link}}">{{::courseRecommendation.title}}</a>
+      </li>
+    </ul>
+  </div>
 </div>

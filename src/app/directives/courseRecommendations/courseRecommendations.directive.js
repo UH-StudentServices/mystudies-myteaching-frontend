@@ -16,16 +16,28 @@
  */
 
 angular.module('directives.courseRecommendations', ['resources.courseRecommendations'])
-.directive('courseRecommendations', function() {
-  return {
-    restrict: 'E',
-    replace: true,
-    templateUrl: 'app/directives/courseRecommendations/courseRecommendations.html',
-    controller: function($scope, CourseRecommendationsResource) {
-      CourseRecommendationsResource.getCourseRecommendations()
-        .then(function(courseRecommendations) {
-          $scope.courseRecommendations = courseRecommendations;
-        });
-    }
-  };
-});
+
+  .constant('RECOMMENDATIONS_LOADER_KEY', 'recommendations')
+
+  .directive('courseRecommendations', function() {
+    return {
+      restrict: 'E',
+      replace: true,
+      templateUrl: 'app/directives/courseRecommendations/courseRecommendations.html',
+      scope: {},
+      controller: function($scope,
+                           CourseRecommendationsResource,
+                           Loader,
+                           RECOMMENDATIONS_LOADER_KEY) {
+        Loader.start(RECOMMENDATIONS_LOADER_KEY);
+
+        CourseRecommendationsResource.getCourseRecommendations()
+          .then(function(courseRecommendations) {
+            $scope.courseRecommendations = courseRecommendations;
+          })
+          .finally(function() {
+            Loader.stop(RECOMMENDATIONS_LOADER_KEY);
+          });
+      }
+    };
+  });

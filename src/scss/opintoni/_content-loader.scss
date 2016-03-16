@@ -3,6 +3,10 @@
 
   min-height: 150px;
 
+  .block-ui-container {
+    z-index: 1;
+  }
+
   .block-ui-overlay {
     opacity: 1;
   }
