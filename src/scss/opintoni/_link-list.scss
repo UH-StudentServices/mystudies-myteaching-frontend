@@ -17,14 +17,18 @@
 
 .link-list {
   h3 {
-    @include border-bottom;
     @include font-size(17px);
     font-weight: normal;
     text-transform: none;
     color: $silver;
     padding: 1.5em 0;
   }
-  .link-list__no-link {
+
+  &__links {
+    @include border-top;
+  }
+
+  &__no-link {
     @include button-internal;
     &:after {
       content: none;

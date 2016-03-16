@@ -3691,10 +3691,6 @@ a.text-neutral {
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 .link-list h3 {
-  border-bottom: 1px solid #EBEBEB;
-  border-left: 0;
-  border-right: 0;
-  border-top: 0;
   font-size: 17px;
   font-size: 1.0625rem;
   font-weight: normal;
@@ -3702,7 +3698,13 @@ a.text-neutral {
   color: #979797;
   padding: 1.5em 0; }
 
-.link-list .link-list__no-link {
+.link-list__links {
+  border-top: 1px solid #EBEBEB;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0; }
+
+.link-list__no-link {
   border-bottom: 1px solid #EBEBEB;
   font-family: "Open Sans", Helvetica, Arial, sans-serif, Nimbus Sans L;
   font-size: 15px;
@@ -3715,7 +3717,7 @@ a.text-neutral {
   padding-right: 2em;
   padding-top: 0.8em;
   position: relative; }
-  .link-list .link-list__no-link:after {
+  .link-list__no-link:after {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: "hy-icons";
@@ -3727,9 +3729,9 @@ a.text-neutral {
     position: absolute;
     right: 0;
     top: 50%; }
-  a:hover .link-list .link-list__no-link:after, .link-list .link-list__no-link:hover:after {
+  a:hover .link-list__no-link:after, .link-list__no-link:hover:after {
     color: #005479; }
-  .link-list .link-list__no-link:after {
+  .link-list__no-link:after {
     content: none; }
 
 /*
@@ -4016,6 +4018,8 @@ a.text-neutral {
 
 .content-loader {
   min-height: 150px; }
+  .content-loader .block-ui-container {
+    z-index: 9; }
   .content-loader .block-ui-overlay {
     opacity: 1; }
   .content-loader .block-ui-message-container {
