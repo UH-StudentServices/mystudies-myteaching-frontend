@@ -37,6 +37,7 @@
     <link rel="stylesheet" type="text/css" href="bower_components/flexslider/flexslider.css">
     <link rel="stylesheet" type="text/css" href="bower_components/cropper/dist/cropper.css">
     <link rel="stylesheet" type="text/css" href="app/vendor/ng-joyride/ng-joyride.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/add-to-homescreen/style/addtohomescreen.css">
     <link rel="stylesheet" type="text/css" href="bower_components/Styleguide-icons/css/icons.css">
     <link rel="stylesheet" type="text/css" href="bower_components/Styleguide-icons/css/main.css">
     <!-- endbuild -->
@@ -68,12 +69,6 @@
     <meta name="msapplication-square310x310logo" content="assets/icons/mobile-icons/mstile-310x310.png" />
     <meta name="msapplication-square70x70logo" content="assets/icons/mobile-icons/mstile-70x70.png" />
     <meta name="msapplication-TileColor" content="#ffffff" />
-
-    <link rel="stylesheet" type="text/css" href="bower_components/add-to-homescreen/style/addtohomescreen.css">
-    <script src="bower_components/add-to-homescreen/src/addtohomescreen.js"></script>
-    <script>
-      addToHomescreen({maxDisplayCount:1});
-    </script>
 
   </head>
   <body>
@@ -132,7 +127,7 @@
     <script type="text/javascript" src="bower_components/fullcalendar/dist/lang/sv.js"></script>
 
     <script type="text/javascript" src="bower_components/angular-block-ui/dist/angular-block-ui.min.js"></script>
-
+    <script src="bower_components/add-to-homescreen/src/addtohomescreen.js"></script>
     <!-- endbuild -->
 
 
@@ -271,6 +266,10 @@
 
     <script src="app/dialog/dialog.js"></script>
     <!-- endbuild -->
+
+    <script>
+      addToHomescreen({maxDisplayCount:1});
+    </script>
 
 </body>
 </html>
