@@ -3638,6 +3638,7 @@ a.text-neutral {
   top: 0;
   height: 100%;
   width: 3em;
+  color: #FFF;
   background-color: #0098d0; }
   .new-useful-link__add-button:link, .new-useful-link__add-button:hover, .new-useful-link__add-button:active, .new-useful-link__add-button:visited {
     color: #FFF; }

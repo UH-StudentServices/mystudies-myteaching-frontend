@@ -168,9 +168,8 @@
   top: 0;
   height: 100%;
   width: 3em;
-
+  color: $white;
   background-color: $blue;
-
   @include all-link-states {
     color: $white;
   }
