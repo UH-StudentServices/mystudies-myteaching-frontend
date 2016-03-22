@@ -72,13 +72,6 @@ angular.module('directives.eventCalendar', [])
               next: 'calendar-next'
             },
             defaultView: CalendarViews.WEEK,
-            eventClick: function(calEvent) {
-              if(calEvent.url) {
-                $window.open(calEvent.url, '_blank');
-              }
-
-              return false;
-            },
             viewRender: function(view) {
               AnalyticsService.trackShowCalendarView(view.name);
             },
