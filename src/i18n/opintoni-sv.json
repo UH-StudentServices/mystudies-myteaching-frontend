@@ -82,8 +82,8 @@
     "last": "sista",
     "emailReply" : "Användaren vill ha svaret till e-post",
     "faculty" : "Fakultet",
-    "state" : "state (sv)",
-    "userAgent" : "userAgent (sv)",
+    "state" : "status",
+    "userAgent" : "userAgent",
     "feedbackProcessed": "Behandlad",
     "comment": "Kommentera"
   },
