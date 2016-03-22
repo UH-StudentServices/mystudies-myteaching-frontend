@@ -22,12 +22,11 @@
 }
 
 .login-page-wrapper {
-  width: 350px;
+  max-width: 350px;
 }
 
 .login-page__title {
   color: $white;
-  font-size: 3.5rem;
 }
 
 .login-page__intro {

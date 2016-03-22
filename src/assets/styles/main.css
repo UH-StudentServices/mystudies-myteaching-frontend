@@ -1948,7 +1948,7 @@ button.icon {
  * You should have received a copy of the GNU General Public License
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
-.site-name__header {
+.site-name--header {
   color: #FFF;
   font-size: 15px;
   font-size: 0.9375rem;
@@ -1958,7 +1958,7 @@ button.icon {
   padding-bottom: 0;
   margin-bottom: 0; }
 
-.site-name__footer {
+.site-name--footer {
   color: #FFF;
   font-size: 16px;
   font-size: 1rem; }
@@ -4073,11 +4073,10 @@ a.text-neutral {
   display: none; }
 
 .login-page-wrapper {
-  width: 350px; }
+  max-width: 350px; }
 
 .login-page__title {
-  color: #FFF;
-  font-size: 3.5rem; }
+  color: #FFF; }
 
 .login-page__intro {
   color: #FFF;
