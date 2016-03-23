@@ -4143,7 +4143,6 @@ a.text-neutral {
       max-width: 250px; } }
 
 .help-icon {
-  display: inline-block;
   font-size: 20px;
   position: relative;
   top: 3px; }
