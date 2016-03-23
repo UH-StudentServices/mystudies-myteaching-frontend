@@ -30,11 +30,6 @@ angular.module('services.userSettings', ['resources.userSettings'])
       return settingsPromise;
     }
 
-    function reloadUserSettings() {
-      settingsPromise = UserSettingsResource.getUserSettings();
-      return settingsPromise;
-    }
-
     function getAvailableBackgrounds() {
       if (!availableBackgroundsPromise) {
         availableBackgroundsPromise = UserSettingsResource.getAvailableBackgrounds();
@@ -78,23 +73,28 @@ angular.module('services.userSettings', ['resources.userSettings'])
       });
     }
 
-    function markStudentTourShown() {
-      return getUserSettings().then(function(settings) {
+    function updateUserSettings(updateObject) {
+      settingsPromise = getUserSettings().then(function(settings) {
         return UserSettingsResource.updateUserSettings(_.assign(settings,
-          {showMyStudiesTour: false}));
+          updateObject));
       });
+      return settingsPromise;
+    }
+
+    function markStudentTourShown() {
+      return updateUserSettings({showMyStudiesTour: false});
     }
 
     function markTeacherTourShown() {
-      return getUserSettings().then(function(settings) {
-        return UserSettingsResource.updateUserSettings(_.assign(settings,
-          {showMyTeachingTour: false}));
-      });
+      return updateUserSettings({showMyTeachingTour: false});
+    }
+
+    function setShowBanner(showBanner) {
+      return updateUserSettings({showBanner: showBanner});
     }
 
     return {
       getUserSettings: getUserSettings,
-      reloadUserSettings: reloadUserSettings,
       getAvailableBackgrounds: getAvailableBackgrounds,
       selectUserBackground: selectUserBackground,
       uploadUserBackground: uploadUserBackground,
@@ -103,6 +103,7 @@ angular.module('services.userSettings', ['resources.userSettings'])
       showMyStudiesTour: showMyStudiesTour,
       showMyTeachingTour: showMyTeachingTour,
       markStudentTourShown: markStudentTourShown,
-      markTeacherTourShown: markTeacherTourShown
+      markTeacherTourShown: markTeacherTourShown,
+      setShowBanner: setShowBanner
     };
   });

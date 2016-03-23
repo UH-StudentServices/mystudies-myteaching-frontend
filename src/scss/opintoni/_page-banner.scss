@@ -15,7 +15,7 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-$change-background-button-size : 50px;
+$page-banner-toggle-size: 50px;
 
 .page-banner-container {
 
@@ -124,16 +124,32 @@ $change-background-button-size : 50px;
   bottom: 1px;
   @include breakpoint($mobile-only) {
     z-index: 9;
-    bottom: -$change-background-button-size;
+    bottom: -$page-banner-toggle-size;
   }
 }
 
 .page-banner__change-background {
-  width: $change-background-button-size;
-  height: $change-background-button-size;
-  background-color: $white;
+  width: $page-banner-toggle-size;
+  height: $page-banner-toggle-size;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+@mixin page-banner-button($color, $background-color) {
+  width: $page-banner-toggle-size;
+  height: $page-banner-toggle-size;
   display: block;
   position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: $background-color;
+  color: $color;
+  text-align: center;
+  z-index: 3;
+  @include all-link-states {
+    color: $color;
+  }
   @include breakpoint($mobile-only) {
     float: right;
   }
@@ -141,15 +157,46 @@ $change-background-button-size : 50px;
     margin-left: auto;
     margin-right: auto;
   }
-  i {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    @include transform(translate(-50%, -50%));
-    &:before {
-      @include font-size(23px);
-    }
+}
+
+.page-banner__button {
+  @include page-banner-button($white, $blue);
+}
+
+.page-banner__button--light {
+  @include page-banner-button($blue, $white);
+}
+
+@mixin page-banner-button-icon($icon, $size) {
+  position: absolute;
+  display: block;
+  &:before {
+    font-size: $size;
+    @include hy-icon($icon);
   }
+}
+
+.page-banner__button-icon--arrow {
+  @include page-banner-button-icon("\EA03", 18px);
+  top: 14px;
+}
+
+.page-banner__button-icon--arrow-up {
+  @extend .page-banner__button-icon--arrow;
+  @include transform(rotate(270deg));
+  left: 17px;
+}
+
+.page-banner__button-icon--arrow-down {
+  @extend .page-banner__button-icon--arrow;
+  @include transform(rotate(90deg));
+  left: 14px;
+}
+
+.page-banner__button-icon--camera {
+  @include page-banner-button-icon("\EA07", 24px);
+  left: 13px;
+  top: 14px;
 }
 
 .page-banner__change-background-menu {
@@ -160,13 +207,15 @@ $change-background-button-size : 50px;
   white-space: nowrap;
   padding: 1em;
   @include breakpoint($small) {
-    top: $change-background-button-size + 20px;
+    top: $page-banner-toggle-size + 20px;
   }
   @include breakpoint($mobile-only) {
-    top: $change-background-button-size;
+    top: $page-banner-toggle-size;
     right: 0;
     border: 1px solid $lightsilver !important;
   }
 }
 
-
+.page-banner-toggle--banner-hidden {
+  @include border-top();
+}

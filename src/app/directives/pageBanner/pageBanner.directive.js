@@ -29,7 +29,7 @@ angular.module('directives.pageBanner', [
       replace: 'true',
       scope: {},
       templateUrl: 'app/directives/pageBanner/pageBanner.html',
-      link: function($scope) {
+      controller: function($scope) {
 
         $scope.currentStateName = StateService.getRootStateName();
         $scope.newsList = [];
@@ -40,6 +40,38 @@ angular.module('directives.pageBanner', [
 
         $scope.newsUrlClick = function() {
           AnalyticsService.trackFlammaNewsUrlClick();
+        };
+
+        this.setShowBanner = function(showBanner) {
+          $scope.showBanner = showBanner;
+        };
+      }
+    };
+  })
+
+  .directive('pageBannerToggle', function(UserSettingsService) {
+    return {
+      restrict: 'E',
+      replace: true,
+      require: '^^pageBanner',
+      scope: {},
+      templateUrl: 'app/directives/pageBanner/pageBannerToggle.html',
+      link: function($scope, element, attrs, pageBannerCtrl) {
+
+        function setShowBanner(showBanner) {
+          $scope.showBanner = showBanner;
+          pageBannerCtrl.setShowBanner(showBanner);
+        }
+
+        UserSettingsService.getUserSettings().then(function(userSettings) {
+          setShowBanner(userSettings.showBanner);
+        });
+
+        $scope.toggleShowBanner = function() {
+          var showBanner = !$scope.showBanner;
+
+          UserSettingsService.setShowBanner(showBanner)
+            .then(_.partial(setShowBanner, showBanner));
         };
       }
     };

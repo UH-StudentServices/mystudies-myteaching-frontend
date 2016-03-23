@@ -1437,27 +1437,88 @@ button.icon {
 .page-banner__change-background {
   width: 50px;
   height: 50px;
-  background-color: #FFF;
-  display: block;
+  margin-left: auto;
+  margin-right: auto;
   position: relative; }
+
+.page-banner__button {
+  width: 50px;
+  height: 50px;
+  display: block;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #0098d0;
+  color: #FFF;
+  text-align: center;
+  z-index: 3; }
+  .page-banner__button:link, .page-banner__button:hover, .page-banner__button:active, .page-banner__button:visited {
+    color: #FFF; }
   @media (max-width: 767px) {
-    .page-banner__change-background {
+    .page-banner__button {
       float: right; } }
   @media (min-width: 48em) {
-    .page-banner__change-background {
+    .page-banner__button {
       margin-left: auto;
       margin-right: auto; } }
-  .page-banner__change-background i {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -transform: translate(-50%, -50%); }
-    .page-banner__change-background i:before {
-      font-size: 23px;
-      font-size: 1.4375rem; }
+
+.page-banner__button--light {
+  width: 50px;
+  height: 50px;
+  display: block;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #FFF;
+  color: #0098d0;
+  text-align: center;
+  z-index: 3; }
+  .page-banner__button--light:link, .page-banner__button--light:hover, .page-banner__button--light:active, .page-banner__button--light:visited {
+    color: #0098d0; }
+  @media (max-width: 767px) {
+    .page-banner__button--light {
+      float: right; } }
+  @media (min-width: 48em) {
+    .page-banner__button--light {
+      margin-left: auto;
+      margin-right: auto; } }
+
+.page-banner__button-icon--arrow, .page-banner__button-icon--arrow-up, .page-banner__button-icon--arrow-down {
+  position: absolute;
+  display: block;
+  top: 14px; }
+  .page-banner__button-icon--arrow:before, .page-banner__button-icon--arrow-up:before, .page-banner__button-icon--arrow-down:before {
+    font-size: 18px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "hy-icons";
+    content: ""; }
+
+.page-banner__button-icon--arrow-up {
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  -transform: rotate(270deg);
+  left: 17px; }
+
+.page-banner__button-icon--arrow-down {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -transform: rotate(90deg);
+  left: 14px; }
+
+.page-banner__button-icon--camera {
+  position: absolute;
+  display: block;
+  left: 13px;
+  top: 14px; }
+  .page-banner__button-icon--camera:before {
+    font-size: 24px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "hy-icons";
+    content: ""; }
 
 .page-banner__change-background-menu {
   font-size: 13px;
@@ -1492,6 +1553,12 @@ button.icon {
       top: 50px;
       right: 0;
       border: 1px solid #EBEBEB !important; } }
+
+.page-banner-toggle--banner-hidden {
+  border-top: 1px solid #EBEBEB;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0; }
 
 /*
  * This file is part of MystudiesMyteaching application.
