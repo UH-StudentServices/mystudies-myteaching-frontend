@@ -121,7 +121,7 @@
       "errorLoadingCourses": "Kurssien haussa tapahtui virhe",
       "errorLoadingEvents" : "Tapahtumien haussa tapahtui virhe"
     },
-    "subscribeEvents": "tilaa tapahtumat",
+    "subscribeEvents": "Lisää kalenteriisi",
     "calendarInstructions": "Näin lisäät tapahtumat kalenteriohjelmiin ",
     "cancelled" : "peruttu"
   },
