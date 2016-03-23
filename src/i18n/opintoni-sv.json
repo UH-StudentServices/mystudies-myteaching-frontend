@@ -396,6 +396,7 @@
     "month" : "månad"
   },
   "courseRecommendations" : {
-    "title" : "potentiellt intressanta kurser"
+    "title" : "potentiellt intressanta kurser",
+    "disclaimer" : "Kurslistan nedan baserar på dina studieprestationer. Listan är personlig och ingen annan ser det. Vänligen kolla förutsättningar och den rätta studierätten innan du anmäler dig till kursen."
   }
 }
