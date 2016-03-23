@@ -1,0 +1,11 @@
+.course-recommendations__title {
+  display: inline-block;
+  margin-right: 1em;
+  word-wrap: break-word;
+  @include breakpoint($small) {
+    max-width: 180px;
+  }
+  @include breakpoint($medium) {
+    max-width: 250px;
+  }
+}

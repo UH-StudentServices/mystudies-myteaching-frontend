@@ -2505,32 +2505,32 @@ a.text-neutral {
  * You should have received a copy of the GNU General Public License
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
-.dropdown-menu, .page-banner__change-background-menu, .user-settings__menu {
+.dropdown-menu, .page-banner__change-background-menu, .user-settings__menu, .help-icon__popover {
   border: 1px solid #EBEBEB;
   background-color: #FFF; }
-  .dropdown-menu.ng-hide-remove.ng-hide-remove-active, .ng-hide-remove.ng-hide-remove-active.page-banner__change-background-menu, .ng-hide-remove.ng-hide-remove-active.user-settings__menu {
+  .dropdown-menu.ng-hide-remove.ng-hide-remove-active, .ng-hide-remove.ng-hide-remove-active.page-banner__change-background-menu, .ng-hide-remove.ng-hide-remove-active.user-settings__menu, .ng-hide-remove.ng-hide-remove-active.help-icon__popover {
     transition: all linear 0.4s; }
-  .dropdown-menu.ng-hide-add, .ng-hide-add.page-banner__change-background-menu, .ng-hide-add.user-settings__menu {
+  .dropdown-menu.ng-hide-add, .ng-hide-add.page-banner__change-background-menu, .ng-hide-add.user-settings__menu, .ng-hide-add.help-icon__popover {
     opacity: 1; }
-  .dropdown-menu.ng-hide-add-active, .ng-hide-add-active.page-banner__change-background-menu, .ng-hide-add-active.user-settings__menu {
+  .dropdown-menu.ng-hide-add-active, .ng-hide-add-active.page-banner__change-background-menu, .ng-hide-add-active.user-settings__menu, .ng-hide-add-active.help-icon__popover {
     opacity: 0; }
-  .dropdown-menu.ng-hide-remove, .ng-hide-remove.page-banner__change-background-menu, .ng-hide-remove.user-settings__menu {
+  .dropdown-menu.ng-hide-remove, .ng-hide-remove.page-banner__change-background-menu, .ng-hide-remove.user-settings__menu, .ng-hide-remove.help-icon__popover {
     opacity: 0; }
-  .dropdown-menu.ng-hide-remove-active, .ng-hide-remove-active.page-banner__change-background-menu, .ng-hide-remove-active.user-settings__menu {
+  .dropdown-menu.ng-hide-remove-active, .ng-hide-remove-active.page-banner__change-background-menu, .ng-hide-remove-active.user-settings__menu, .ng-hide-remove-active.help-icon__popover {
     opacity: 1; }
-  .dropdown-menu a, .page-banner__change-background-menu a, .user-settings__menu a {
+  .dropdown-menu a, .page-banner__change-background-menu a, .user-settings__menu a, .help-icon__popover a {
     color: #0098d0; }
-  .dropdown-menu li, .page-banner__change-background-menu li, .user-settings__menu li {
+  .dropdown-menu li, .page-banner__change-background-menu li, .user-settings__menu li, .help-icon__popover li {
     padding: 1em;
     font-size: 0.8em; }
-    .dropdown-menu li:last-child, .page-banner__change-background-menu li:last-child, .user-settings__menu li:last-child {
+    .dropdown-menu li:last-child, .page-banner__change-background-menu li:last-child, .user-settings__menu li:last-child, .help-icon__popover li:last-child {
       border: 0; }
-  .dropdown-menu li.divider, .page-banner__change-background-menu li.divider, .user-settings__menu li.divider {
+  .dropdown-menu li.divider, .page-banner__change-background-menu li.divider, .user-settings__menu li.divider, .help-icon__popover li.divider {
     border-bottom: 1px solid #EBEBEB;
     border-left: 0;
     border-right: 0;
     border-top: 0; }
-  .dropdown-menu li.divider-with-margin, .page-banner__change-background-menu li.divider-with-margin, .user-settings__menu li.divider-with-margin {
+  .dropdown-menu li.divider-with-margin, .page-banner__change-background-menu li.divider-with-margin, .user-settings__menu li.divider-with-margin, .help-icon__popover li.divider-with-margin {
     padding: 1em 0;
     margin: 0 1em;
     border-bottom: 1px solid #EBEBEB;
@@ -2538,12 +2538,12 @@ a.text-neutral {
     border-right: 0;
     border-top: 0; }
   @media (min-width: 48em) {
-    .dropdown-menu, .page-banner__change-background-menu, .user-settings__menu {
+    .dropdown-menu, .page-banner__change-background-menu, .user-settings__menu, .help-icon__popover {
       z-index: 12;
       position: absolute;
       right: 0; } }
   @media (max-width: 767px) {
-    .dropdown-menu, .page-banner__change-background-menu, .user-settings__menu {
+    .dropdown-menu, .page-banner__change-background-menu, .user-settings__menu, .help-icon__popover {
       border: 0; } }
 
 /*
@@ -2856,17 +2856,17 @@ a.text-neutral {
     width: 300px; }
     .search-bar input:focus {
       outline: 0; }
-  .search-bar .dropdown-menu, .search-bar .page-banner__change-background-menu, .search-bar .user-settings__menu {
+  .search-bar .dropdown-menu, .search-bar .page-banner__change-background-menu, .search-bar .user-settings__menu, .search-bar .help-icon__popover {
     position: absolute;
     width: 100%;
     z-index: 2; }
-    .search-bar .dropdown-menu li, .search-bar .page-banner__change-background-menu li, .search-bar .user-settings__menu li {
+    .search-bar .dropdown-menu li, .search-bar .page-banner__change-background-menu li, .search-bar .user-settings__menu li, .search-bar .help-icon__popover li {
       margin: 0 10px; }
-      .search-bar .dropdown-menu li:not(:last-child), .search-bar .page-banner__change-background-menu li:not(:last-child), .search-bar .user-settings__menu li:not(:last-child) {
+      .search-bar .dropdown-menu li:not(:last-child), .search-bar .page-banner__change-background-menu li:not(:last-child), .search-bar .user-settings__menu li:not(:last-child), .search-bar .help-icon__popover li:not(:last-child) {
         border-bottom: 1px solid #EBEBEB; }
-      .search-bar .dropdown-menu li:hover, .search-bar .page-banner__change-background-menu li:hover, .search-bar .user-settings__menu li:hover {
+      .search-bar .dropdown-menu li:hover, .search-bar .page-banner__change-background-menu li:hover, .search-bar .user-settings__menu li:hover, .search-bar .help-icon__popover li:hover {
         cursor: pointer; }
-        .search-bar .dropdown-menu li:hover a, .search-bar .page-banner__change-background-menu li:hover a, .search-bar .user-settings__menu li:hover a {
+        .search-bar .dropdown-menu li:hover a, .search-bar .page-banner__change-background-menu li:hover a, .search-bar .user-settings__menu li:hover a, .search-bar .help-icon__popover li:hover a {
           color: #005479; }
 
 /*
@@ -4130,3 +4130,55 @@ a.text-neutral {
     color: #0098d0;
     border-top: 1px solid #EBEBEB;
     border-bottom: 1px solid #EBEBEB; }
+
+.course-recommendations__title {
+  display: inline-block;
+  margin-right: 1em;
+  word-wrap: break-word; }
+  @media (min-width: 48em) {
+    .course-recommendations__title {
+      max-width: 180px; } }
+  @media (min-width: 62.5em) {
+    .course-recommendations__title {
+      max-width: 250px; } }
+
+.help-icon {
+  display: inline-block;
+  font-size: 20px;
+  position: relative;
+  top: 3px; }
+
+.help-icon__popover {
+  font-size: 13px;
+  font-size: 0.8125rem;
+  position: relative;
+  background-color: #FFF;
+  border: 1px solid #EBEBEB !important;
+  padding: 1em;
+  right: -15px;
+  top: 5px; }
+  .help-icon__popover:after, .help-icon__popover:before {
+    bottom: 100%;
+    border-style: solid;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none; }
+  .help-icon__popover:after {
+    border-bottom-color: #FFF;
+    border-width: 12px;
+    right: 12px; }
+  .help-icon__popover:before {
+    border-bottom-color: #EBEBEB;
+    border-width: 13px;
+    right: 11px; }
+  @media (max-width: 767px) {
+    .help-icon__popover {
+      width: 200px; } }
+  @media (min-width: 48em) {
+    .help-icon__popover {
+      width: 300px; } }
