@@ -157,6 +157,9 @@ angular.module('opintoniApp', [
           getEvents: function(EventsResource) {
             return EventsResource.getStudentEvents;
           }
+        },
+        onEnter: function onEnter(ngAddToHomescreen) {
+          ngAddToHomescreen({maxDisplayCount: 1});
         }
       })
       .state('opetukseni', {
@@ -191,6 +194,9 @@ angular.module('opintoniApp', [
           getEvents: function(EventsResource) {
             return EventsResource.getTeacherEvents;
           }
+        },
+        onEnter: function onEnter(ngAddToHomescreen) {
+          ngAddToHomescreen({maxDisplayCount: 1});
         }
       })
       .state('admin', {
