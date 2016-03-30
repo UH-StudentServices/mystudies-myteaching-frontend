@@ -30,6 +30,7 @@ angular.module('opintoniApp', [
   'angularUtils.directives.dirPagination',
   'ngAria',
   'ngJoyRide',
+  'ngAddToHomescreen',
   'angular-google-analytics',
   'ui.utils',
   'opintoniAnalytics',
@@ -64,7 +65,10 @@ angular.module('opintoniApp', [
 ])
   .constant('preferredLanguage', 'fi')
 
-  .run(function($rootScope, LanguageService) {
+  .run(function($rootScope, $location, LanguageService, ngAddToHomescreen) {
+    if ($location.path() !== '/info/login') {
+      ngAddToHomescreen({maxDisplayCount: 1});
+    }
     $rootScope.userLang = LanguageService.getCurrent();
     moment.locale($rootScope.userLang);
   })
