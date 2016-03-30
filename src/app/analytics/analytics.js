@@ -23,7 +23,7 @@
   */
   .run(function(Analytics, SessionService, StateService) {
     SessionService.getFacultyCode().then(function(facultyCode) {
-      Analytics.set('dimension1', StateService.getRootStateName());
+      Analytics.set('dimension1', StateService.getStateFromDomain());
       Analytics.set('dimension2', facultyCode);
     });
   })

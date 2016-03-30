@@ -121,7 +121,7 @@
       "errorLoadingCourses": "Kurssien haussa tapahtui virhe",
       "errorLoadingEvents" : "Tapahtumien haussa tapahtui virhe"
     },
-    "subscribeEvents": "tilaa tapahtumat",
+    "subscribeEvents": "Lisää kalenteriisi",
     "calendarInstructions": "Näin lisäät tapahtumat kalenteriohjelmiin ",
     "cancelled" : "peruttu"
   },
@@ -394,6 +394,7 @@
     "month": "kuukausi"
   },
   "courseRecommendations" : {
-    "title" : "mahdollisesti kiinnostavia kursseja"
+    "title" : "mahdollisesti kiinnostavia kursseja",
+    "disclaimer" : "Alla oleva kurssilista perustuu opintosuorituksiisi, joita on verrattu muiden opiskelijoiden suorituksiin. Lista on henkilökohtainen eikä kukaan muu näe sitä. Tarkista kurssin esitietovaatimukset ja vaadittava opiskeluoikeus ennen ilmoittautumista."
   }
 }

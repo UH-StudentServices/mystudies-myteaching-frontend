@@ -19,6 +19,8 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
 
   .constant('MaxImageDimensionsDesktop', 2000)
   .constant('MaxImageDimensionsMobile', 1000)
+  .constant('AvatarImageSize', 510)
+  .constant('CropperMargin', 30)
   .constant('ImageSourceMedia', {
     WEBCAM: 'webcam',
     FILE_SYSTEM: 'fileSystem'
@@ -73,12 +75,15 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
   })
 
   .directive('uploadImage', function($modal,
+                                     $window,
                                      Camera,
                                      UserSettingsService,
                                      BrowserUtil,
                                      ResizeImageService,
                                      startImageCropperEvent,
-                                     ImageSourceMedia) {
+                                     ImageSourceMedia,
+                                     AvatarImageSize,
+                                     CropperMargin) {
     return {
       restrict: 'E',
       replace: true,
@@ -87,7 +92,8 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
         uploadCallback: '=',
         cancelCallback: '=',
         cropperWidth: '=',
-        cropperHeight: '='
+        cropperHeight: '=',
+        cropToSquare: '='
       },
       link: function($scope) {
         $scope.$on(startImageCropperEvent, function(event, image, imageSourceMedia) {
@@ -125,9 +131,25 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
                 return imageSourceMedia;
               },
               cropDimensions: function() {
+                var cropBoxWidth = $scope.cropperWidth ? $scope.cropperWidth : AvatarImageSize,
+                    cropBoxHeight = $scope.cropperHeight ? $scope.cropperHeight : AvatarImageSize;
+
+                // Add some margin for better UI
+                if ($window.innerWidth < cropBoxWidth + CropperMargin) {
+                  cropBoxWidth = $window.innerWidth - CropperMargin;
+                }
+                if ($window.innerHeight < cropBoxWidth + CropperMargin) {
+                  cropBoxHeight = $window.innerHeight - CropperMargin;
+                }
+
+                if ($scope.cropToSquare) {
+                  cropBoxWidth = Math.min(cropBoxWidth, cropBoxHeight);
+                  cropBoxHeight = Math.min(cropBoxWidth, cropBoxHeight);
+                }
+
                 return {
-                  width: $scope.cropperWidth ? $scope.cropperWidth : 510,
-                  height: $scope.cropperHeight ? $scope.cropperHeight : 510
+                  width: cropBoxWidth,
+                  height: cropBoxHeight
                 };
               },
               uploadCallback: function() {
@@ -173,7 +195,8 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
                                               cropDimensions,
                                               uploadCallback,
                                               cancelCallback,
-                                              MessageTypes) {
+                                              MessageTypes,
+                                              CropperMargin) {
 
     $scope.image = image;
     $scope.submitting = false;
@@ -190,14 +213,8 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
       return angular.element('.crop-image > img');
     }
 
-    var cropBoxSquareWidth = $window.innerWidth > cropDimensions.width ?
-          cropDimensions.width :
-          $window.innerWidth,
-        cropBoxSquareHeight = $window.innerHeight > cropDimensions.height ?
-          cropDimensions.height :
-          $window.innerHeight,
-        left = $window.innerWidth / 2 - cropBoxSquareWidth / 2,
-        top = $window.innerHeight / 2 - cropBoxSquareHeight / 2;
+    var left = $window.innerWidth / 2 - cropDimensions.width / 2,
+        top = $window.innerHeight / 2 - cropDimensions.height / 2;
 
     $scope.message = {
       key: 'upload.privacyMessage',
@@ -216,8 +233,8 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
         touchDragZoom: false,
         built: function() {
           cropperElement().cropper('setCropBoxData', {
-            width: cropBoxSquareWidth,
-            height: cropBoxSquareHeight,
+            width: cropDimensions.width,
+            height: cropDimensions.height,
             left: left,
             top: top
           });

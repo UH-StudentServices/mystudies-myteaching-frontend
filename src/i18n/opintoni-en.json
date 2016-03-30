@@ -122,7 +122,7 @@
       "errorLoadingCourses": "Courses could not be loaded",
       "errorLoadingEvents" : "Events could not be leaded"
     },
-    "subscribeEvents" : "subscribe events",
+    "subscribeEvents" : "Add to calendar",
     "calendarInstructions" : "How to import events to calendar applications",
     "cancelled" : "canceled"
   },
@@ -395,6 +395,7 @@
     "month" : "month"
   },
   "courseRecommendations" : {
-    "title" : "potentially interesting courses"
+    "title" : "potentially interesting courses",
+    "disclaimer" : "This course list is based on your completed studies, which has been compared to other students’ completed studies. The list is personal and no one else sees it. Please check the pre-requisites the required study right before enrolling to a course."
   }
 }
