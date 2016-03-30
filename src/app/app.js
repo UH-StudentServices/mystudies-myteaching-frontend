@@ -65,10 +65,7 @@ angular.module('opintoniApp', [
 ])
   .constant('preferredLanguage', 'fi')
 
-  .run(function($rootScope, $location, LanguageService, ngAddToHomescreen) {
-    if ($location.path() !== '/info/login') {
-      ngAddToHomescreen({maxDisplayCount: 1});
-    }
+  .run(function($rootScope, LanguageService) {
     $rootScope.userLang = LanguageService.getCurrent();
     moment.locale($rootScope.userLang);
   })
