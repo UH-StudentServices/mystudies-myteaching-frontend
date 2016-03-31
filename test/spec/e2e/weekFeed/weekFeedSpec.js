@@ -34,7 +34,7 @@ describe('Week feed', function() {
   function selectTab(tabName) {
     tabSelector().filter(function(elem) {
       return elem.getText().then(function(text) {
-        return text == tabName;
+        return text === tabName;
       });
     }).click();
   }

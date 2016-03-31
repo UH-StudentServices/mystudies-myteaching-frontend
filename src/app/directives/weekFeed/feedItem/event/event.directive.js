@@ -95,7 +95,7 @@ angular.module('directives.weekFeed.feedItem.event',[
 
       if (startDate.diff(endDate) === 0) {
         return formatMomentDate(startDate);
-      } else if (startDate.year() == endDate.year() &&
+      } else if (startDate.year() === endDate.year() &&
                  startDate.dayOfYear() === endDate.dayOfYear()) {
         return formatMomentDateTimeSpan(startDate, endDate);
       } else {

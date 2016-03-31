@@ -32,6 +32,7 @@
       "VariableDeclarator": 2,
       "SwitchCase": 1
     }],
-    "max-len": [2, 120, 2]
+    "max-len": [2, 120, 2],
+    "eqeqeq": [2, "smart"]
   }
 }
