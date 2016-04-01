@@ -58,7 +58,6 @@ angular.module('opintoniApp', [
   'controllers.main',
   'directives.tour',
   'directives.pageBanner',
-  'directives.mobilePageBanner',
   'directives.helpIcon',
   'ui.calendar',
   'utils.loader'

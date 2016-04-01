@@ -28,8 +28,7 @@
     <search-bar class="show-mobile-only"></search-bar>
     <search-results></search-results>
 
-    <page-banner class="hide-mobile-only"></page-banner>
-    <mobile-page-banner class="show-mobile-only"></mobile-page-banner>
+    <page-banner show-banner="showBanner"></page-banner>
 
     <div class="l-page island wrapper">
 
@@ -41,6 +40,7 @@
 
             <div class="l-content-secondary-wrapper" role="navigation">
                 <div class="ui-component">
+                    <todo-items ng-if="!showBanner" class="todo-items--secondary todo-items--light"></todo-items>
                     <useful-links></useful-links>
                     <upcoming-courses limit-visibility="['MY_TEACHINGS_ONLY']"></upcoming-courses>
                     <course-recommendations limit-visibility="['DEV_AND_QA_ONLY', 'MY_STUDIES_ONLY']"></course-recommendations>

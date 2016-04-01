@@ -27,7 +27,9 @@ angular.module('directives.pageBanner', [
     return {
       restrict: 'E',
       replace: 'true',
-      scope: {},
+      scope: {
+        showBanner: '='
+      },
       templateUrl: 'app/directives/pageBanner/pageBanner.html',
       link: function($scope) {
 
@@ -40,6 +42,22 @@ angular.module('directives.pageBanner', [
 
         $scope.newsUrlClick = function() {
           AnalyticsService.trackFlammaNewsUrlClick();
+        };
+      }
+    };
+  })
+
+  .directive('pageBannerToggle', function(UserSettingsService) {
+    return {
+      restrict: 'E',
+      replace: true,
+      scope: {
+        showBanner: '='
+      },
+      templateUrl: 'app/directives/pageBanner/pageBannerToggle.html',
+      link: function($scope) {
+        $scope.toggleShowBanner = function() {
+          UserSettingsService.setShowBanner(!$scope.showBanner);
         };
       }
     };

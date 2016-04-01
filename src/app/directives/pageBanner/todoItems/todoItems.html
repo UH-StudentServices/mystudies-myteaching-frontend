@@ -15,42 +15,42 @@
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<div class="todo-items-container">
-  <div class="todo-items">
-    <div class="box" ng-if="todoItems.length === 0 && todoItemsLoaded">
-      <h2 translate="todoItems.title"></h2>
-      <div translate="todoItems.listIsEmpty"></div>
-      <div class="icon"><span class="hy hy-5x hy-todo-list"></span></div>
-    </div>
-    <ul class="box" ng-if="todoItems.length > 0">
-      <li class="todo-item {{todoItem.status | lowercase }}"
-          ng-repeat="todoItem in todoItems | orderBy: '-createdDate'"
-          swipe
-          swipe-left-callback="removeTodoItem"
-          swipe-right-callback="markAsDone"
-          swipe-object="todoItem">
-        {{ todoItem.content }}
-        <span class="todo-action hy hy-done todo-action__done"
+<div class="todo-items">
+
+  <div class="todo-items__box" ng-if="todoItems.length === 0 && todoItemsLoaded">
+    <h2 class="todo-items__title" translate="todoItems.title"></h2>
+    <div translate="todoItems.listIsEmpty"></div>
+    <div class="todo-items__icon"><span class="hy hy-5x hy-todo-list"></span></div>
+  </div>
+
+  <ul class="todo-items__box" ng-if="todoItems.length > 0">
+    <li class="todo-items__list-item {{todoItem.status | lowercase }}"
+        ng-repeat="todoItem in todoItems | orderBy: '-createdDate'"
+        swipe
+        swipe-left-callback="removeTodoItem"
+        swipe-right-callback="markAsDone"
+        swipe-object="todoItem">
+      {{ todoItem.content }}
+        <span class="todo-items__action todo-items__action--done hy hy-done"
               ng-click="markAsDone(todoItem)">
         </span>
-        <span class="todo-action hy hy-remove todo-action__remove"
+        <span class="todo-items__action todo-items__action--remove hy hy-remove"
               ng-click="removeTodoItem(todoItem)">
         </span>
-      </li>
-    </ul>
+    </li>
+  </ul>
 
-    <div class="new-todo-item">
-      <div class="input-container">
-        <input ng-model="newTodoItem.content"
-               ui-keypress="{'enter':'addTodoItem()'}"
-               type="text"
-               placeholder="{{::('todoItems.addNew' | translate)}}"
-               aria-label="{{::('todoItems.addNew' | translate)}}">
-      </div>
-      <button class="add-icon hy hy-plus"
-              ng-click="addTodoItem()"
-              aria-label="{{::('todoItems.ariaLabels.addNewButton' | translate)}}">
-      </button>
+  <div class="todo-items__new-item">
+    <div class="todo-items__new-item-input-container">
+      <input ng-model="newTodoItem.content"
+             ui-keypress="{'enter':'addTodoItem()'}"
+             type="text"
+             placeholder="{{::('todoItems.addNew' | translate)}}"
+             aria-label="{{::('todoItems.addNew' | translate)}}">
     </div>
+    <button class="todo-items__new-item-add-icon hy hy-plus"
+            ng-click="addTodoItem()"
+            aria-label="{{::('todoItems.ariaLabels.addNewButton' | translate)}}">
+    </button>
   </div>
 </div>
