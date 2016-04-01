@@ -70,7 +70,7 @@ angular.module('directives.favorites.unicafe', [
         $scope.loading = true;
 
         $scope.isSelected = function isSelected(id) {
-          return id == $scope.selectedRestaurant;
+          return id === $scope.selectedRestaurant;
         };
 
         $scope.restaurantSelected = function restaurantSelected(restaurant) {
