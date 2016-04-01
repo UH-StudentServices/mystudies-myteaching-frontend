@@ -19,12 +19,24 @@ angular.module('services.userSettings', ['resources.userSettings'])
 
   .factory('UserSettingsService', function(UserSettingsResource) {
 
-    var settingsPromise;
-    var availableBackgroundsPromise;
+    var settingsPromise,
+        availableBackgroundsPromise,
+        Rx = window.Rx,
+        userSettingsSubject = new Rx.BehaviorSubject(),
+        showBannerSubject = userSettingsSubject.map(function(userSettings) {
+          return userSettings.showBanner;
+        });
+
+    function publishUserSettings(userSettings) {
+      userSettingsSubject.onNext(userSettings);
+      return userSettings;
+    }
 
     function getUserSettings() {
       if (!settingsPromise) {
-        settingsPromise = UserSettingsResource.getUserSettings();
+        settingsPromise = UserSettingsResource
+          .getUserSettings()
+          .then(publishUserSettings);
       }
 
       return settingsPromise;
@@ -39,13 +51,19 @@ angular.module('services.userSettings', ['resources.userSettings'])
 
     function selectUserBackground(filename) {
       return getUserSettings().then(function(settings) {
-        settingsPromise = UserSettingsResource.selectUserBackground(settings.id, filename);
+        settingsPromise =
+          UserSettingsResource.selectUserBackground(settings.id, filename)
+            .then(publishUserSettings);
+        return settingsPromise;
       });
     }
 
     function uploadUserBackground(imageBase64) {
       return getUserSettings().then(function(userSettings) {
-        settingsPromise =  UserSettingsResource.uploadUserBackground(userSettings.id, imageBase64);
+        settingsPromise =
+          UserSettingsResource.uploadUserBackground(userSettings.id, imageBase64)
+            .then(publishUserSettings);
+        return settingsPromise;
       });
     }
 
@@ -74,10 +92,12 @@ angular.module('services.userSettings', ['resources.userSettings'])
     }
 
     function updateUserSettings(updateObject) {
-      settingsPromise = getUserSettings().then(function(settings) {
-        return UserSettingsResource.updateUserSettings(_.assign(settings,
-          updateObject));
-      });
+      settingsPromise = getUserSettings()
+        .then(function(settings) {
+          return UserSettingsResource.updateUserSettings(_.assign(settings, updateObject));
+        })
+        .then(publishUserSettings);
+
       return settingsPromise;
     }
 
@@ -93,6 +113,10 @@ angular.module('services.userSettings', ['resources.userSettings'])
       return updateUserSettings({showBanner: showBanner});
     }
 
+    function getShowBannerSubject() {
+      return showBannerSubject;
+    }
+
     return {
       getUserSettings: getUserSettings,
       getAvailableBackgrounds: getAvailableBackgrounds,
@@ -104,6 +128,7 @@ angular.module('services.userSettings', ['resources.userSettings'])
       showMyTeachingTour: showMyTeachingTour,
       markStudentTourShown: markStudentTourShown,
       markTeacherTourShown: markTeacherTourShown,
-      setShowBanner: setShowBanner
+      setShowBanner: setShowBanner,
+      getShowBannerSubject: getShowBannerSubject
     };
   });

@@ -16,106 +16,112 @@
  */
 
 $page-banner-toggle-size: 50px;
+$page-banner-toggle-size-mobile: 25px;
 
-.page-banner-container {
-
+.page-banner {
   position: relative;
 
-  .flexslider-container {
+  &--open {
     @include breakpoint($small) {
       height: $page-banner-height;
     }
   }
 
+  .list-of-links--dark a {
+    @include breakpoint($small) {
+      display: inline-block;
+      padding-right: 4em;
+    }
+  }
+
   .flexslider {
-    border: none;
     margin: 0;
-
-    @include breakpoint($small) {
-      height: 100%;
-      h1 {
-        max-height: 180px;
-      }
-
-      p {
-        max-height: 110px;
-      }
-    }
   }
+}
 
-  .page-banner {
-    position: relative;
+.page-banner--pager {
+  @extend .wrapper;
+  position: relative;
+  left: 1em;
+  top: 1em;
+  z-index: 10;
 
-    .page-banner__content {
-      @include clearfix;
-      position: relative;
-      z-index: 1;
-    }
-
-    p {
-      color: $darkgray;
-    }
-
+  .flex-control-nav {
     @include breakpoint($mobile-only) {
-      .page-banner__image {
-        height: $page-banner-height-mobile;
-      }
-      .page-banner__content-left {
-        text-align: center;
-        padding: 2rem 1rem;
-      }
-    ;
+      display: none;
     }
-
     @include breakpoint($small) {
-      h1 {
-        color: $white;
-        text-shadow: 0 1px 2px $black;
-      }
-      p {
-        color: $white;
-        text-shadow: 0 1px 2px $black;
-      }
-      .page-banner__image {
-        height: $page-banner-height;
-      }
-      .page-banner__content {
-        padding: 2.5rem 1rem;
-      }
-      .page-banner__content-left {
-        @include grid-span(8, 1);
-        @include breakpoint($page-content-max-width-only) {
-          margin-left: 30px;
-          width: 60%;
-        }
-      }
-      .page-banner__content-right {
-        @include grid-span(4, 9);
-      }
-      .list-of-links--dark li > a {
-        display: inline-block !important;
-        position: absolute;
-        bottom: 0;
-        padding-right: 4em !important;
-      }
+      top: 0;
+      text-align: left;
     }
   }
 
-  .page-banner__image {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-    background-size: cover;
+  .flex-control-paging li a {
+    $pager-control-size: 7px;
+    border-radius: 0;
+    width: $pager-control-size;
+    height: $pager-control-size;
+    background-color: $blue;
+    &.flex-active {
+      background-color: $black;
+    }
+  }
+}
+
+
+
+.page-banner__news-item-container, .page-banner__todo-items-container {
+  @extend .wrapper;
+  position: relative;
+}
+
+.page-banner__news-item {
+  @include breakpoint($mobile-only) {
+    padding: 3em;
+    text-align: center;
   }
 
-  .page-banner__image-cover {
-    width: 80%;
-    height: 100%;
-    @include linear-gradient-from-left(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
+  @include breakpoint($small) {
+    max-width: 60%;
+    position: relative;
+    top: 1.5em;
+    left: 1em;
   }
+}
+
+.page-banner__title {
+  max-height: 180px;
+  @include breakpoint($small) {
+    color: $white;
+    text-shadow: 0 1px 2px $black;
+  }
+}
+
+.page-banner__text {
+  max-height: 100px;
+  @include breakpoint($small) {
+    color: $white;
+    text-shadow: 0 1px 2px $black;
+  }
+}
+
+.page-banner__image {
+  position: absolute;
+  top: 0;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: $page-banner-height;
+  @include breakpoint($mobile-only) {
+    height: $page-banner-height-mobile;
+  }
+}
+
+.page-banner__image-cover {
+  width: 80%;
+  height: 100%;
+  @include linear-gradient-from-left(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
 }
 
 .page-banner__change-background-container {
@@ -131,14 +137,15 @@ $page-banner-toggle-size: 50px;
 .page-banner__change-background {
   width: $page-banner-toggle-size;
   height: $page-banner-toggle-size;
-  margin-left: auto;
-  margin-right: auto;
   position: relative;
+  @include breakpoint($small) {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 @mixin page-banner-button($color, $background-color) {
   width: $page-banner-toggle-size;
-  height: $page-banner-toggle-size;
   display: block;
   position: relative;
   margin-left: auto;
@@ -152,10 +159,12 @@ $page-banner-toggle-size: 50px;
   }
   @include breakpoint($mobile-only) {
     float: right;
+    height: $page-banner-toggle-size-mobile;
   }
   @include breakpoint($small) {
     margin-left: auto;
     margin-right: auto;
+    height: $page-banner-toggle-size;
   }
 }
 
@@ -164,7 +173,12 @@ $page-banner-toggle-size: 50px;
 }
 
 .page-banner__button--light {
-  @include page-banner-button($blue, $white);
+  @include breakpoint($mobile-only) {
+    @include page-banner-button($blue, transparent);
+  }
+  @include breakpoint($small) {
+    @include page-banner-button($blue, $white);
+  }
 }
 
 @mixin page-banner-button-icon($icon, $size) {
@@ -178,7 +192,9 @@ $page-banner-toggle-size: 50px;
 
 .page-banner__button-icon--arrow {
   @include page-banner-button-icon("\EA03", 18px);
-  top: 14px;
+  @include breakpoint($small) {
+    top: 14px;
+  }
 }
 
 .page-banner__button-icon--arrow-up {
@@ -201,21 +217,34 @@ $page-banner-toggle-size: 50px;
 
 .page-banner__change-background-menu {
   @extend .dropdown-menu;
-  @include triangle-with-border(12px, 12px);
   @include font-size(13px);
   position: absolute;
   white-space: nowrap;
   padding: 1em;
   @include breakpoint($small) {
+    @include triangle-with-border(12px, 12px);
     top: $page-banner-toggle-size + 20px;
   }
   @include breakpoint($mobile-only) {
+    @include triangle-with-border(12px, 12px, $white, $lightsilver, left);
     top: $page-banner-toggle-size;
-    right: 0;
+    left: 0;
     border: 1px solid $lightsilver !important;
   }
 }
 
-.page-banner-toggle--banner-hidden {
-  @include border-top();
+.page-banner-toggle {
+  width: 100%;
+
+  @include breakpoint($mobile-only) {
+    @include border-top;
+  }
+
+  @include breakpoint($small) {
+    position: absolute;
+    bottom: -$page-banner-toggle-size;
+    &--banner-hidden {
+      @include border-top;
+    }
+  }
 }
