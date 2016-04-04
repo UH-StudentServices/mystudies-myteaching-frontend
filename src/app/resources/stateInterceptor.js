@@ -15,7 +15,7 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('resources.stateInterceptor', [
+angular.module('resources.stateInterceptor', [
   'services.session',
   'services.state'])
 
@@ -29,7 +29,7 @@ angular.module('resources.stateInterceptor', [
       if(toState.data && toState.data.roles) {
         authorizeState(toState.data.roles).then(function(authorized) {
           if(!authorized) {
-            $state.go(State.ACCESS_DENIED);
+            $state.go(State.ACCESS_DENIED, {}, {reload: true});
           }
           event.preventDefault();
         });
