@@ -58,14 +58,14 @@ angular.module('services.eventUri', ['services.location'])
 
       if (BrowserUtil.isMobile()) {
         return sprintf(
-          'http://m.reittiopas.fi/fi/index.php?txtFrom=%s&txtTo=%s&minute=%s&hour=%s&day=%s' +
-          '&month=%s&year=2015&timetype=arrival&search=Hae+Reitti&cmargin=3&wspeed=70' +
+          'http://m.reittiopas.fi/fi/index.php?txtFrom=%s&txtTo=%s&minute=%02s&hour=%s&day=%s' +
+          '&month=%s&year=%s&timetype=arrival&search=Hae+Reitti&cmargin=3&wspeed=70' +
           '&route-type=fastest&stz=0&bus=bus&tram=tram&metro=metro&train=train&uline=uline' +
           '&service=service&nroutes=3&is-now=OFF',
           fromAddress.substr(0, fromAddress.indexOf(',')), to, minutes, hours, date, month, year);
       } else {
         return sprintf(
-          'http://www.reittiopas.fi/fi/?from=%s&to=%s&minute=%s&hour=%s&day=%s&month=%s&year=%s' +
+          'http://www.reittiopas.fi/fi/?from=%s&to=%s&minute=%02s&hour=%s&day=%s&month=%s&year=%s' +
           '&timetype=arrival',
           fromAddress, to, minutes, hours, date, month, year);
       }
