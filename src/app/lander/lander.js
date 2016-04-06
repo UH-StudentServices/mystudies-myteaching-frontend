@@ -51,18 +51,15 @@ angular.module('opintoniLander', ['services.language'])
         },
         resolve: {
           pageTitle: function($q, $translate, state) {
-            var deferred = $q.defer(),
-                titleString = !state || state === 'opintoni' ?
-                  'opintoni.pageHeaderBranding' :
-                  'opetukseni.pageHeaderBranding';
+            var titleString = !state || state === 'opintoni' ?
+              'opintoni.pageHeaderBranding' :
+              'opetukseni.pageHeaderBranding';
 
-            $translate(titleString)
+            return $translate(titleString)
               .then(function translateHeaderSuccess(title) {
                 document.title = title;
-                deferred.resolve(title);
+                return title;
               });
-
-            return deferred.promise;
           }
         }
       })
