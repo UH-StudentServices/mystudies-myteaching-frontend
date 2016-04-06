@@ -23,7 +23,10 @@ angular.module('opintoniLander', ['services.language'])
     fi: 'https://courses.helsinki.fi/fi/search '
   })
 
-  .config(function($stateProvider) {
+  .config(function(
+    $stateProvider,
+    $translateProvider) {
+
     $stateProvider
       .state('lander', {
         parent: 'getState',
@@ -44,6 +47,22 @@ angular.module('opintoniLander', ['services.language'])
 
               $scope.courseSearchUrl = COURSE_SEARCH_URL[LanguageService.getCurrent()];
             }
+          }
+        },
+        resolve: {
+          pageTitle: function($q, $translate, state) {
+            var deferred = $q.defer(),
+                titleString = !state || state === 'opintoni' ?
+                  'opintoni.pageHeaderBranding' :
+                  'opetukseni.pageHeaderBranding';
+
+            $translate(titleString)
+              .then(function translateHeaderSuccess(title) {
+                document.title = title;
+                deferred.resolve(title);
+              });
+
+            return deferred.promise;
           }
         }
       })
