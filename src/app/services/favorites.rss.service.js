@@ -28,7 +28,7 @@ angular.module('services.favorites.rss', ['resources.favorites.rss', 'utils.mome
       return RSSResource.get(feedUrl, numberOfItems).then(function(feed) {
         feed.momentDate = convertDate(feed.date);
         _.each(feed.entries, function(entry) {
-          entry.momentDate = convertDate(feed.date);
+          entry.momentDate = convertDate(entry.date);
         });
         return feed;
       });
