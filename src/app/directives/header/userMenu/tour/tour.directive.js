@@ -235,7 +235,7 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
             },
             {
               type: 'element',
-              selector: TourElementSelectorByMedia.selectorByMedia('.new-todo-item'),
+              selector: '.tour-element__todo',
               heading: translate('tour.common.todoItems.heading'),
               text: translate('tour.common.todoItems.text'),
               placement: 'bottom'
