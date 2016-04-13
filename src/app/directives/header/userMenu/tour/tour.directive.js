@@ -60,7 +60,7 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
     };
   })
 
-  .factory('TourElementSelectorByMedia', function(BrowserUtil) {
+  .factory('TourElementSelectorByMedia', function(BrowserUtil) {
     return {
       selectorByMedia: function(selector) {
         if(BrowserUtil.isMobile()) {
@@ -149,7 +149,7 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
             },
             {
               type: 'element',
-              selector: TourElementSelectorByMedia.selectorByMedia('.new-todo-item'),
+              selector: '.tour-element__todo',
               heading: translate('tour.common.todoItems.heading'),
               text: translate('tour.common.todoItems.text'),
               placement: 'bottom'
@@ -159,7 +159,7 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
               selector: '#week-feed',
               heading: translate('tour.student.weekFeed.heading'),
               text: translate('tour.student.weekFeed.text'),
-              placement: 'top'
+              placement: 'bottom'
             },
             {
               type: 'element',

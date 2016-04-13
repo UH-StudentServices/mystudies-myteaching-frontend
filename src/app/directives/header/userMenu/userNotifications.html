@@ -15,9 +15,9 @@
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<div dropdown class="user-notifications" open-callback="isOpen = true" close-callback="isOpen = false">
+<div dropdown class="user-notifications tour-element__notifications" open-callback="isOpen = true" close-callback="isOpen = false">
   <div class="dropdown-toggle" ng-click="markRead()">
-    <div class="icon tour-element__notifications">
+    <div class="icon">
       <div ng-show="unreadCount > 0" class="circled-number">{{ unreadCount }}</div>
       <a tabindex="0"
          class="user-menu__actions--action"
