@@ -39,26 +39,3 @@ a.text-neutral {
   margin-bottom: .5em;
   text-transform: uppercase;
 }
-
-
-
-// Adds a line on the right hand side of a text.
-.title-stricken {
-  display: table;
-
-  &:after {
-    // Couldn't get 1px height linear gradient to work :(
-    background-image: url('../images/ui/bg_line.png');
-    background-position: 0 50%;
-    background-repeat: repeat-x;
-    content: '';
-    display: table-cell;
-    width: 100%;
-  }
-
-  // Creates the space between the text and the border.
-  &:after {
-    background-clip: padding-box;
-    border-left: .5em solid transparent;
-  }
-}

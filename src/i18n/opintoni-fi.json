@@ -21,7 +21,10 @@
     "yes" : "kyllä",
     "no" : "ei",
     "introduction" : "esittely",
-    "loadingContent" : "Sisältöä ladataan..."
+    "loadingContent" : "Sisältöä ladataan...",
+    "current": "Meneillään",
+    "upcoming": "Tuleva",
+    "past": "Päättynyt"
   },
   "abbreviations": {
     "credits": "op"
@@ -104,26 +107,29 @@
     "nowStudying": "Nyt opinnoissani",
     "timetable": "Aikataulu",
     "allEvents": "Kaikki tapahtumat",
-    "noUpcomingEvents": "sinulla ei ole tulevia tapahtumia.",
     "noPastEvents": "sinulla ei ole menneitä tapahtumia.",
     "noCourses": "Et ole ilmoittautunut kursseille WebOodissa.",
-    "noExams": "Sinulla ei ole tulevia tenttejä.",
+    "noExams": "Sinulla ei ole tenttejä.",
+    "noPastExams": "Sinulla ei ole päättyneitä tenttejä.",
     "noEvents": "Sinulla ei ole tapahtumia",
     "noCurrentTeacherCourses": "Sinulla ei ole meneillään olevaa opetusta.",
+    "noUpcomingTeacherCourses": "Sinulla ei ole tulevaa opetusta.",
     "noPastTeacherCourses": "Sinulla ei ole päättynyttä opetusta.",
     "courseMaterials": "Siirry kurssin materiaaleihin",
     "courseMaterialsMoodle": "Siirry Moodleen",
     "showRoute": "Näytä reitti",
     "showOnMap": "Näytä kartalla",
     "errors": {
-      "errorLoadingFutureEvents": "Tulevien tapahtumien haussa tapahtui virhe",
       "errorLoadingExams": "Tenttien haussa tapahtui virhe",
       "errorLoadingCourses": "Kurssien haussa tapahtui virhe",
       "errorLoadingEvents" : "Tapahtumien haussa tapahtui virhe"
     },
     "subscribeEvents": "Lisää kalenteriisi",
     "calendarInstructions": "Näin lisäät tapahtumat kalenteriohjelmiin ",
-    "cancelled" : "peruttu"
+    "cancelled" : "peruttu",
+    "calendarCustom": {
+      "list": "Lista"
+    }
   },
   "attainments": {
     "attainments": "Suoritetut",

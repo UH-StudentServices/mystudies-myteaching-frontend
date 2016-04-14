@@ -48,37 +48,50 @@ angular.module('directives.eventCalendar', [])
       restrict: 'E',
       templateUrl: 'app/directives/weekFeed/eventCalendar/eventCalendar.html',
       scope: {
-        events: '='
+        events: '=',
+        calendarView: '='
       },
       replace: true,
-      controller: function($scope) {
-        $scope.uiConfig = {
-          calendar: {
-            lang: moment.locale(),
-            allDaySlot: false,
-            eventRender: function(event, element) {
-              element.attr('title', event.tooltip);
-            },
-            header: {
-              left: CalendarViews.DAY + ' ' + CalendarViews.WEEK + ' ' + CalendarViews.MONTH,
-              center: 'title',
-              right: 'today prev,next'
-            },
-            columnFormat: 'dd',
-            timeFormat: 'HH:mm',
-            slotLabelFormat: 'HH:mm',
-            buttonIcons: {
-              prev: 'calendar-prev',
-              next: 'calendar-next'
-            },
-            defaultView: CalendarViews.WEEK,
-            viewRender: function(view) {
-              AnalyticsService.trackShowCalendarView(view.name);
-            },
-            weekNumbers: true,
-            scrollTime: '08:00:00'
-          }
-        };
+      controller: function($scope, $translate) {
+        $translate('weekFeed.calendarCustom.list').then(function(listText) {
+          $scope.uiConfig = {
+            calendar: {
+              lang: moment.locale(),
+              allDaySlot: false,
+              eventRender: function(event, element) {
+                element.attr('title', event.tooltip);
+              },
+              customButtons: {
+                myCustomButton: {
+                  text: listText,
+                  click: function() {
+                    $scope.$emit('changeWeekFeedSubTab', {
+                      subTab: 'SCHEDULE_LIST'
+                    });
+                  }
+                }
+              },
+              header: {
+                left: 'myCustomButton ' + CalendarViews.DAY + ' ' + CalendarViews.WEEK + ' ' + CalendarViews.MONTH,
+                center: 'title',
+                right: 'today prev,next'
+              },
+              columnFormat: 'dd',
+              timeFormat: 'HH:mm',
+              slotLabelFormat: 'HH:mm',
+              buttonIcons: {
+                prev: 'calendar-prev',
+                next: 'calendar-next'
+              },
+              defaultView: CalendarViews[$scope.calendarView],
+              viewRender: function(view) {
+                AnalyticsService.trackShowCalendarView(view.name);
+              },
+              weekNumbers: true,
+              scrollTime: '08:00:00'
+            }
+          };
+        });
 
         $scope.eventSources = [];
 

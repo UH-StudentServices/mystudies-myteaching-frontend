@@ -1,4 +1,3 @@
-
 <!--
   ~ This file is part of MystudiesMyteaching application.
   ~
@@ -20,15 +19,23 @@
   <div class="ui-component ui-component--events">
     <h2 class="ui-component__title"><span ng-bind="header"></span></h2>
 
-    <div class="text-label title-stricken text-transform-capitalize-block" translate="general.show"></div>
-
-    <ul class="tag-list--tabs" role="tablist">
+    <ul class="horizontal-tabs" role="tablist">
       <li ng-repeat="tab in tabs"
           ng-class="getTabClasses(tab)"
           ng-click="selectTab(tab)"
           role="tab"
           class="clickable">
         <a>{{ tab.translateKey | translate | capitalize }}</a>
+      </li>
+    </ul>
+
+    <ul class="tag-list--tabs" role="tablist" ng-hide="hideSubTabs">
+      <li ng-repeat="subTab in subTabs"
+          ng-class="getSubTabClasses(subTab)"
+          ng-click="selectSubTab(subTab)"
+          role="tab"
+          class="clickable">
+        <a>{{ subTab.translateKey | translate | capitalize }}</a>
       </li>
     </ul>
 
@@ -40,16 +47,16 @@
       </message>
 
       <ul class="week-feed-items">
-        <li ng-repeat="feedItem in feedItems | limitTo:numberOfVisibleItems">
+        <li ng-repeat="feedItem in feedItems | limitTo:numberOfVisibleItems">
           <item feed-item="feedItem" first="$first" tab-options="selectedTab"></item>
         </li>
       </ul>
 
-      <event-calendar events="events" ng-if="events && selectedTab === Tabs.CALENDAR"></event-calendar>
+      <event-calendar events="events" calendar-view="calendarView" ng-if="events && hideSubTabs"></event-calendar>
 
       <div class="week-feed-actions">
         <button class="button--light button" ng-click="showMore()" ng-if="showMoreVisible()" translate="buttons.showMore"></button>
-        <subscribe-events ng-if="selectedTab === Tabs.UPCOMING_EVENTS || selectedTab === Tabs.CALENDAR"></subscribe-events>
+        <subscribe-events ng-if="selectedTab === Tabs.UPCOMING_EVENTS || selectedTab === Tabs.CALENDAR"></subscribe-events>
       </div>
     </div>
   </div>

@@ -2037,19 +2037,6 @@ a.text-neutral {
   margin-bottom: .5em;
   text-transform: uppercase; }
 
-.title-stricken {
-  display: table; }
-  .title-stricken:after {
-    background-image: url("../images/ui/bg_line.png");
-    background-position: 0 50%;
-    background-repeat: repeat-x;
-    content: '';
-    display: table-cell;
-    width: 100%; }
-  .title-stricken:after {
-    background-clip: padding-box;
-    border-left: .5em solid transparent; }
-
 /*
  * This file is part of MystudiesMyteaching application.
  *
@@ -2288,6 +2275,9 @@ a.text-neutral {
  * You should have received a copy of the GNU General Public License
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
+#week-feed .horizontal-tabs {
+  margin-bottom: 3em; }
+
 #week-feed .tag-list--tabs {
   margin-bottom: 1em; }
   #week-feed .tag-list--tabs:before, #week-feed .tag-list--tabs:after {
@@ -2296,7 +2286,7 @@ a.text-neutral {
   #week-feed .tag-list--tabs:after {
     clear: both; }
   #week-feed .tag-list--tabs li {
-    margin-right: 0.5em;
+    margin-right: 0.4em;
     margin-bottom: 0.5em; }
 
 @media (max-width: 767px) {
@@ -3908,10 +3898,6 @@ a.text-neutral {
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 .event-calendar {
-  border-top: 1px solid #EBEBEB;
-  border-left: 0;
-  border-right: 0;
-  border-bottom: 0;
   padding-bottom: 1em; }
   .event-calendar h2 {
     font-size: 20px;
@@ -3945,6 +3931,9 @@ a.text-neutral {
     padding: 0.9em 1em;
     font-size: 15px;
     font-size: 0.9375rem;
+    height: 1.7em;
+    margin-left: 0;
+    margin-right: 0.4em;
     background-image: none;
     border-radius: 0;
     text-shadow: none;
@@ -3958,6 +3947,7 @@ a.text-neutral {
   .event-calendar .fc-right .fc-button {
     font-size: 15px;
     font-size: 0.9375rem;
+    height: 1.7em;
     padding: 0 0.7em;
     background: transparent;
     border-radius: 0; }
@@ -3993,9 +3983,6 @@ a.text-neutral {
         width: 100%; }
       .event-calendar .fc-right, .event-calendar .fc-center {
         margin-top: 0.5em; } }
-  @media (min-width: 48em) {
-    .event-calendar {
-      padding-top: 1em; } }
   .event-calendar .fc-today {
     background-color: #e5f3f9; }
 
