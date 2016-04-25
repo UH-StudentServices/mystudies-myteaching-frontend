@@ -4,8 +4,10 @@ describe('FeedMessages', function() {
       FeedMessages,
       WeekFeedMessageKeys,
       eventsTab,
+      eventsSubTab,
       coursesTab,
-      calendarTab,
+      coursesSubTab,
+      calendarSubTab,
       testEvent = {},
       testCourse = {};
 
@@ -19,10 +21,10 @@ describe('FeedMessages', function() {
     };
   }
 
-  function expectedInfoMessage(selectedTab) {
+  function expectedInfoMessage(selectedTab, selectedSubTab) {
     return {
       messageType: MessageTypes.INFO,
-      key: WeekFeedMessageKeys[selectedTab].info
+      key: WeekFeedMessageKeys[selectedTab].info[selectedSubTab]
     };
   }
 
@@ -32,9 +34,11 @@ describe('FeedMessages', function() {
     FeedMessages = _FeedMessages_;
     MessageTypes = _MessageTypes_;
     WeekFeedMessageKeys = _WeekFeedMessageKeys_;
-    eventsTab = Tabs.UPCOMING_EVENTS.key;
+    eventsTab = Tabs.SCHEDULE.key;
+    eventsSubTab = Tabs.SCHEDULE.subTabs.SCHEDULE_LIST.key;
     coursesTab = Tabs.COURSES.key;
-    calendarTab = Tabs.CALENDAR.key;
+    coursesSubTab = Tabs.COURSES.subTabs.UPCOMING_COURSES.key;
+    calendarSubTab = Tabs.SCHEDULE.subTabs.CALENDAR_WEEK.key;
   }));
 
   it('getEventsMessage will return error message if events cannot be fetched', function() {
@@ -42,7 +46,8 @@ describe('FeedMessages', function() {
       [],
       null,
       [],
-      eventsTab))
+      eventsTab,
+      eventsSubTab))
       .toEqual(expectedErrorMessage(eventsTab));
   });
 
@@ -51,8 +56,9 @@ describe('FeedMessages', function() {
       [],
       [],
       [],
-      eventsTab))
-      .toEqual(expectedInfoMessage(eventsTab));
+      eventsTab,
+      eventsSubTab))
+      .toEqual(expectedInfoMessage(eventsTab, eventsSubTab));
   });
 
   it('getEventsMessage will return null if events are found', function() {
@@ -79,8 +85,8 @@ describe('FeedMessages', function() {
       [],
       [],
       [],
-      coursesTab))
-      .toEqual(expectedInfoMessage(coursesTab));
+      coursesTab, coursesSubTab))
+      .toEqual(expectedInfoMessage(coursesTab, coursesSubTab));
   });
 
   it('getCoursesMessage will return null if courses are found', function() {
@@ -97,8 +103,9 @@ describe('FeedMessages', function() {
       [],
       null,
       [],
-      calendarTab))
-      .toEqual(expectedErrorMessage(calendarTab));
+      eventsTab,
+      calendarSubTab))
+      .toEqual(expectedErrorMessage(eventsTab));
   });
 
   it('getCalendarMessage will return return null if events' +
@@ -107,7 +114,7 @@ describe('FeedMessages', function() {
       [],
       [],
       [],
-      calendarTab))
+      eventsTab))
       .toEqual(expectedEmptyMessage());
   });
 
@@ -116,7 +123,7 @@ describe('FeedMessages', function() {
       [],
       [],
       [testEvent],
-      calendarTab))
+      calendarSubTab))
       .toEqual(expectedEmptyMessage());
   });
 });
