@@ -21,7 +21,10 @@
     "yes" : "yes",
     "no" : "no",
     "introduction" : "introduction",
-    "loadingContent" : "Loading content..."
+    "loadingContent" : "Loading content...",
+    "current": "Current",
+    "upcoming": "Upcoming",
+    "past": "Past"
   },
   "abbreviations": {
     "credits": "cr"
@@ -105,26 +108,29 @@
     "timetable": "Timetable",
     "allEvents": "All events",
     "noEvents": "No events",
-    "noUpcomingEvents": "you have no upcoming events.",
     "noPastEvents": "you have no past events.",
     "noCourses": "You have not registered for any courses.",
-    "noExams": "You have no upcoming exams.",
+    "noExams": "You have no exams.",
+    "noPastExams": "You have no past exams.",
     "noEvents": "You have no events",
     "noCurrentTeacherCourses": "You have no current courses.",
+    "noUpcomingTeacherCourses": "You have no upcoming courses.",
     "noPastTeacherCourses": "You have no past courses.",
     "courseMaterials": "Go to course materials",
     "courseMaterialsMoodle": "Go to Moodle",
     "showRoute": "Show route",
     "showOnMap": "Show on map",
     "errors": {
-      "errorLoadingFutureEvents": "Future events could not be loaded",
       "errorLoadingExams": "Exams could not be loaded",
       "errorLoadingCourses": "Courses could not be loaded",
       "errorLoadingEvents" : "Events could not be leaded"
     },
     "subscribeEvents" : "Add to calendar",
     "calendarInstructions" : "How to import events to calendar applications",
-    "cancelled" : "canceled"
+    "cancelled" : "canceled",
+    "calendarCustom": {
+      "list": "list"
+    }
   },
   "attainments": {
     "attainments": "Completed studies",

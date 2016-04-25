@@ -15,12 +15,18 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+.horizontal-tabs {
+  #week-feed & {
+    margin-bottom: 3em;
+  }
+}
+
 .tag-list--tabs {
   #week-feed & {
     @include clearfix();
     margin-bottom: 1em;
     li {
-      margin-right: 0.5em;
+      margin-right: 0.4em;
       margin-bottom: 0.5em;
     }
   }
