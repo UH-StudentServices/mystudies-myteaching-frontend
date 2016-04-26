@@ -13,43 +13,42 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
-  -->
+-->
 
 <div ng-show="showApp">
-    <header class="l-header">
-        <page-header></page-header>
-        <page-navigation></page-navigation>
-        <global-messages></global-messages>
-    </header>
+  <header class="l-header">
+    <page-header></page-header>
+    <page-navigation></page-navigation>
+    <global-messages></global-messages>
+  </header>
 
-    <student-tour limit-visibility="['MY_STUDIES_ONLY']"></student-tour>
-    <teacher-tour limit-visibility="['MY_TEACHINGS_ONLY']"></teacher-tour>
+  <student-tour limit-visibility="['MY_STUDIES_ONLY']"></student-tour>
+  <teacher-tour limit-visibility="['MY_TEACHINGS_ONLY']"></teacher-tour>
 
-    <search-bar class="show-mobile-only"></search-bar>
-    <search-results></search-results>
+  <search-bar class="show-mobile-only"></search-bar>
+  <search-results></search-results>
 
-    <page-banner show-banner="showBanner"></page-banner>
+  <page-banner show-banner="showBanner"></page-banner>
 
-    <div class="l-page island wrapper">
+  <div class="l-page island wrapper">
+    <div class="l-multi-col-content-wrapper">
+      <div class="l-content-primary-wrapper">
+        <week-feed courses-promise="courses" events-promise="events"></week-feed>
+        <attainments limit-visibility="['MY_STUDIES_ONLY']"></attainments>
+      </div>
 
-        <div class="l-multi-col-content-wrapper">
-            <div class="l-content-primary-wrapper">
-                <week-feed courses-promise="courses" events-promise="events"></week-feed>
-                <attainments limit-visibility="['MY_STUDIES_ONLY']"></attainments>
-            </div>
-
-            <div class="l-content-secondary-wrapper" role="navigation">
-                <div class="ui-component">
-                    <todo-items ng-if="!showBanner" class="todo-items--secondary todo-items--light"></todo-items>
-                    <useful-links></useful-links>
-                    <upcoming-courses limit-visibility="['MY_TEACHINGS_ONLY']"></upcoming-courses>
-                    <course-recommendations limit-visibility="['MY_STUDIES_ONLY']"></course-recommendations>
-                </div>
-            </div>
+      <div class="l-content-secondary-wrapper" role="navigation">
+        <div class="ui-component">
+          <todo-items ng-if="!showBanner" class="todo-items--secondary todo-items--light"></todo-items>
+          <useful-links></useful-links>
+          <upcoming-courses limit-visibility="['MY_TEACHINGS_ONLY']"></upcoming-courses>
+          <course-recommendations limit-visibility="['MY_STUDIES_ONLY']"></course-recommendations>
         </div>
-        <favorites></favorites>
+      </div>
     </div>
+    <favorites></favorites>
+  </div>
 
-    <feedback></feedback>
-    <footer class="l-footer island" ng-include="'app/partials/_page_footer.html'"></footer>
+  <feedback></feedback>
+  <footer class="l-footer island" ng-include="'app/partials/_page_footer.html'"></footer>
 </div>
