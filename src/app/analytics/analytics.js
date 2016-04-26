@@ -45,6 +45,7 @@
   .constant('EventCategories', {
     'AVATAR_IMAGE': 'avatarImage',
     'BACKGROUND_IMAGE': 'backgroundImage',
+    'COURSE_RECOMMENDATION_LINK': 'courseRecommendationLink',
     'EXTERNAL_LINK': 'externalLink',
     'FAVORITES': 'favorites',
     'SITE_ACTIONS': 'siteActions',
@@ -132,6 +133,8 @@
       trackShowWeekFeedTab:
         _.partial(submitAnalyticsEvent, EventCategories.SITE_ACTIONS, EventActions.SHOW_WEEK_FEED_TAB),
       trackShowCalendarView:
-        _.partial(submitAnalyticsEvent, EventCategories.SITE_ACTIONS, EventActions.SHOW_CALENDAR_VIEW)
+        _.partial(submitAnalyticsEvent, EventCategories.SITE_ACTIONS, EventActions.SHOW_CALENDAR_VIEW),
+      trackCourseRecommendationLinkClick:
+        _.partial(submitAnalyticsEvent, EventCategories.COURSE_RECOMMENDATION_LINK, EventActions.CLICK),
     };
   });
