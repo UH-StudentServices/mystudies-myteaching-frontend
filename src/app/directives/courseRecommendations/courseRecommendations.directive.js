@@ -15,7 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.courseRecommendations', ['resources.courseRecommendations'])
+angular.module('directives.courseRecommendations', ['resources.courseRecommendations',
+                                                    'opintoniAnalytics'])
 
   .constant('RECOMMENDATIONS_LOADER_KEY', 'recommendations')
 
@@ -28,7 +29,12 @@ angular.module('directives.courseRecommendations', ['resources.courseRecommendat
       controller: function($scope,
                            CourseRecommendationsResource,
                            Loader,
-                           RECOMMENDATIONS_LOADER_KEY) {
+                           RECOMMENDATIONS_LOADER_KEY,
+                           AnalyticsService) {
+        $scope.trackRecommendationLinkClick = function(courseName) {
+          AnalyticsService.trackCourseRecommendationLinkClick(courseName);
+        };
+
         Loader.start(RECOMMENDATIONS_LOADER_KEY);
 
         CourseRecommendationsResource.getCourseRecommendations()

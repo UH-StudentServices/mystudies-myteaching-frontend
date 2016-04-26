@@ -23,7 +23,10 @@
   <div block-ui="recommendations" class="content-loader">
     <ul class="link-list__links">
       <li ng-repeat="courseRecommendation in courseRecommendations track by courseRecommendation.title">
-        <a href="{{::courseRecommendation.link}}">{{::courseRecommendation.title}}</a>
+        <a href="{{::courseRecommendation.link}}"
+           ng-click="trackRecommendationLinkClick(courseRecommendation.title)">
+          {{::courseRecommendation.title}}
+        </a>
       </li>
     </ul>
   </div>

@@ -43,29 +43,30 @@
   })
 
   .constant('EventCategories', {
-    'FAVORITES': 'favorites',
-    'USEFUL_LINKS': 'usefulLinks',
-    'TODO_ITEMS': 'todoItems',
     'AVATAR_IMAGE': 'avatarImage',
     'BACKGROUND_IMAGE': 'backgroundImage',
+    'COURSE_RECOMMENDATION_LINK': 'courseRecommendationLink',
     'EXTERNAL_LINK': 'externalLink',
-    'SITE_ACTIONS': 'siteActions'
+    'FAVORITES': 'favorites',
+    'SITE_ACTIONS': 'siteActions',
+    'TODO_ITEMS': 'todoItems',
+    'USEFUL_LINKS': 'usefulLinks'
   })
 
   .constant('EventActions', {
-    'CLICK': 'click',
     'ADD': 'add',
-    'REMOVE': 'remove',
     'CHOOSE_DEFAULT': 'chooseDefault',
-    'UPLOAD': 'upload',
-    'MARK_AS_DONE': 'markAsDone',
-    'SEARCH': 'search',
-    'START_TOUR': 'startTour',
-    'MARK_NOTIFICATION_AS_READ': 'markNotificationAsRead',
+    'CLICK': 'click',
     'FEEDBACK': 'feedback',
-    'SUBSCRIBE_CALENDAR': 'subscribeCalendar',
+    'MARK_AS_DONE': 'markAsDone',
+    'MARK_NOTIFICATION_AS_READ': 'markNotificationAsRead',
+    'REMOVE': 'remove',
+    'SEARCH': 'search',
+    'SHOW_CALENDAR_VIEW': 'showCalendarView',
     'SHOW_WEEK_FEED_TAB': 'showWeekFeedTab',
-    'SHOW_CALENDAR_VIEW': 'showCalendarView'
+    'START_TOUR': 'startTour',
+    'SUBSCRIBE_CALENDAR': 'subscribeCalendar',
+    'UPLOAD': 'upload'
   })
 
   .constant('EventLabels', {
@@ -132,6 +133,8 @@
       trackShowWeekFeedTab:
         _.partial(submitAnalyticsEvent, EventCategories.SITE_ACTIONS, EventActions.SHOW_WEEK_FEED_TAB),
       trackShowCalendarView:
-        _.partial(submitAnalyticsEvent, EventCategories.SITE_ACTIONS, EventActions.SHOW_CALENDAR_VIEW)
+        _.partial(submitAnalyticsEvent, EventCategories.SITE_ACTIONS, EventActions.SHOW_CALENDAR_VIEW),
+      trackCourseRecommendationLinkClick:
+        _.partial(submitAnalyticsEvent, EventCategories.COURSE_RECOMMENDATION_LINK, EventActions.CLICK),
     };
   });
