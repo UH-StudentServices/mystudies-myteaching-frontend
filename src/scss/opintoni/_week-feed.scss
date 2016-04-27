@@ -24,9 +24,12 @@
 .tag-list--tabs {
   #week-feed & {
     display: flex;
+    align-items: stretch;
     margin-bottom: 1em;
 
     li {
+      display: flex;
+      align-items: center;
       margin-right: 0.4em;
       margin-bottom: 0.5em;
     }
@@ -35,6 +38,20 @@
 
 .weekfeed__subscribe {
   margin-left: auto;
+
+  &__button {
+    padding: 0 !important;
+    border: 0 !important;
+    line-height: inherit !important;
+
+    &:hover {
+      background-color: initial !important;
+    }
+
+    &:active, &:focus {
+      outline: none !important;
+    }
+  }
 }
 
 @mixin mobile-exam-border($left-position) {

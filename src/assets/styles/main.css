@@ -2277,13 +2277,24 @@ a.text-neutral {
 
 #week-feed .tag-list--tabs {
   display: flex;
+  align-items: stretch;
   margin-bottom: 1em; }
   #week-feed .tag-list--tabs li {
+    display: flex;
+    align-items: center;
     margin-right: 0.4em;
     margin-bottom: 0.5em; }
 
 .weekfeed__subscribe {
   margin-left: auto; }
+  .weekfeed__subscribe__button {
+    padding: 0 !important;
+    border: 0 !important;
+    line-height: inherit !important; }
+    .weekfeed__subscribe__button:hover {
+      background-color: initial !important; }
+    .weekfeed__subscribe__button:active, .weekfeed__subscribe__button:focus {
+      outline: none !important; }
 
 @media (max-width: 767px) {
   .week-feed-items li .event.exam {

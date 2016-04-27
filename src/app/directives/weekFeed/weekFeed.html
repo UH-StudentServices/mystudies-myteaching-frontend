@@ -37,7 +37,9 @@
           class="clickable">
         <a>{{ subTab.translateKey | translate | capitalize }}</a>
       </li>
-      <subscribe-events ng-if="!hideSubTabs"></subscribe-events>
+      <li class="weekfeed__subscribe">
+        <subscribe-events ng-if="!hideSubTabs"></subscribe-events>
+      </li>
     </ul>
 
     <div block-ui="weekFeed" class="content-loader">
