@@ -29,7 +29,6 @@ angular.module('controllers.main', [
   'directives.weekFeed',
   'directives.usefulLinks',
   'directives.searchResults',
-  'directives.upcomingCourses',
   'directives.admin.feedback',
   'services.focus'
 ])

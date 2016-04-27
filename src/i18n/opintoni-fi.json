@@ -333,9 +333,6 @@
     "readMore": "Lue lisää",
     "courseSearch": "Hae opetusta kirjautumatta"
   },
-  "upcomingCourses": {
-    "title": "Tuleva opetus"
-  },
   "codes": {
     "courseTypes": {
       "3": "Harjoittelu",
