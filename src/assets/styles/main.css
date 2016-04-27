@@ -83,14 +83,12 @@
 
 .regional-rule-top {
   border-top: 1px solid #EBEBEB;
-  background: transparent url("../images/bg_shadow.png") no-repeat top center;
   background-size: 100% auto;
   margin-top: 30px;
   padding-top: 30px; }
 
 .regional-rule-bottom {
   border-bottom: 1px solid #EBEBEB;
-  background: transparent url("../images/bg_shadow.png") no-repeat top center;
   background-size: 100% auto; }
 
 .horizontal-rule-top {
@@ -810,7 +808,6 @@ button.icon {
 
 .l-aside {
   border-top: 1px solid #EBEBEB;
-  background: transparent url("../images/bg_shadow.png") no-repeat top center;
   background-size: 100% auto;
   background-image: url("../images/ui/bg_shadow.png"); }
   .l-aside:before, .l-aside:after {
@@ -2279,15 +2276,14 @@ a.text-neutral {
   margin-bottom: 3em; }
 
 #week-feed .tag-list--tabs {
+  display: flex;
   margin-bottom: 1em; }
-  #week-feed .tag-list--tabs:before, #week-feed .tag-list--tabs:after {
-    content: "";
-    display: table; }
-  #week-feed .tag-list--tabs:after {
-    clear: both; }
   #week-feed .tag-list--tabs li {
     margin-right: 0.4em;
     margin-bottom: 0.5em; }
+
+.weekfeed__subscribe {
+  margin-left: auto; }
 
 @media (max-width: 767px) {
   .week-feed-items li .event.exam {

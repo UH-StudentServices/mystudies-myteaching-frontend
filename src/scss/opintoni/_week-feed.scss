@@ -23,13 +23,18 @@
 
 .tag-list--tabs {
   #week-feed & {
-    @include clearfix();
+    display: flex;
     margin-bottom: 1em;
+
     li {
       margin-right: 0.4em;
       margin-bottom: 0.5em;
     }
   }
+}
+
+.weekfeed__subscribe {
+  margin-left: auto;
 }
 
 @mixin mobile-exam-border($left-position) {
