@@ -23,8 +23,7 @@ angular.module('resources.calendarFeed', [])
 
     return {
       getCalendarFeed: calendarFeedResource.get,
-      saveCalendarFeed: calendarFeedResource.save,
-      deleteCalendarFeed: calendarFeedResource.delete
+      saveCalendarFeed: calendarFeedResource.save
     };
 
   });
