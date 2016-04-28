@@ -17,22 +17,8 @@
 
 angular.module('directives.subscribeEvents', [
   'resources.calendarFeed',
-  'utils.browser',
   'utils.domain',
-  'directives.clipboard'])
-
-  .constant('InstructionLinks', {
-    OUTLOOK: {
-      'fi': 'http://www.helsinki.fi/helpdesk/3294#outlook',
-      'en': 'http://www.helsinki.fi/helpdesk/3294/eng#outlook',
-      'sv': 'http://www.helsinki.fi/helpdesk/3294/sve#outlook'
-    },
-    GOOGLE: {
-      'fi': 'https://support.google.com/calendar/answer/37100?hl=fi',
-      'en': 'https://support.google.com/calendar/answer/37100?hl=en',
-      'sv': 'https://support.google.com/calendar/answer/37100?hl=sv'
-    }
-  })
+  'directives.popover'])
 
   .constant({
     'MessageTimeouts': {
@@ -42,13 +28,9 @@ angular.module('directives.subscribeEvents', [
   })
 
   .directive('subscribeEvents', function(CalendarFeedResource,
-                                         InstructionLinks,
                                          $rootScope,
                                          $q,
-                                         BrowserUtil,
                                          DomainUtil,
-                                         $timeout,
-                                         MessageTimeouts,
                                          AnalyticsService) {
     return {
       rescrict: 'E',
@@ -56,9 +38,8 @@ angular.module('directives.subscribeEvents', [
       templateUrl: 'app/directives/weekFeed/subscribeEvents/subscribeEvents.html',
       scope: {},
       controller: function($scope) {
-        $scope.InstructionLinks = InstructionLinks;
         $scope.userLang = $rootScope.userLang;
-        $scope.showCopyToClipboard = !BrowserUtil.isMobile();
+        $scope.showPopover = false;
 
         function getOrCreateCalendarFeed() {
           var deferred = $q.defer();
@@ -78,27 +59,14 @@ angular.module('directives.subscribeEvents', [
         }
 
         $scope.onClick = function() {
-          getOrCreateCalendarFeed().then(function(calendarFeed) {
-            $scope.calendarFeedUrl = DomainUtil.getDomain() + calendarFeed.feedUrl +
-              '/' + $rootScope.userLang;
-          });
-        };
+          $scope.showPopover = !$scope.showPopover;
 
-        $scope.copyToClipboardSuccessCallback = function() {
-          $scope.copyToClipboardSuccess = true;
-
-          $timeout(function() {
-            $scope.copyToClipboardSuccess = false;
-          }, MessageTimeouts.SUCCESS);
-        };
-
-        $scope.copyToClipboardErrorCallback = function() {
-          $scope.copyToClipboardFailMessageKeySuffix = BrowserUtil.isMac() ? 'Mac' : 'Other';
-          $scope.copyToClipboardFail = true;
-
-          $timeout(function() {
-            $scope.copyToClipboardFail = false;
-          }, MessageTimeouts.FAIL);
+          if($scope.showPopover) {
+            getOrCreateCalendarFeed().then(function(calendarFeed) {
+              $scope.calendarFeedUrl = DomainUtil.getDomain() + calendarFeed.feedUrl +
+                '/' + $rootScope.userLang;
+            });
+          }
         };
       }
     };

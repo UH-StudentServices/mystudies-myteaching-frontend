@@ -15,14 +15,10 @@
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<span>
+<div>
   <button class="weekfeed__subscribe__button button--dark button text-transform-capitalize"
           ng-click="onClick()"
-          ns-popover
-          ns-popover-template="app/directives/weekFeed/subscribeEvents/subscribeEvents.popover.html"
-          ns-popover-trigger="click"
-          ns-popover-placement="bottom|left"
-          ns-popover-timeout="20000"
           translate="weekFeed.subscribeEvents">
   </button>
-</span>
+  <popover ng-if="showPopover" calendar-feed-url="calendarFeedUrl"><popover>
+</div>

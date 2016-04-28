@@ -37,6 +37,7 @@
 }
 
 .weekfeed__subscribe {
+  position: relative;
   margin-left: auto;
 
   &__button {
@@ -220,13 +221,33 @@
 }
 
 .subscribe-events-popover {
+  $triangle-size: 10px;
+
+  position: absolute;
+  top: calc(100% + #{$triangle-size});
+  right: 0;
+  z-index: 1;
+  color: $silver;
   background-color: $white;
-  margin-top: 10px;
   @include border;
   @include tab-shadow;
 
   @include breakpoint($mobile-only) {
     width: 300px;
+  }
+
+  @include triangle($triangle-size);
+
+  &::before {
+    top: -$triangle-size;
+    right: 1em;
+    left: auto;
+  }
+
+  &::after {
+    top: -($triangle-size - 1px);
+    right: 1em;
+    left: auto;
   }
 }
 
@@ -243,16 +264,10 @@
 .subscribe-events-popover__content {
   @include font-size(14px);
   padding: 1.5em 1em 1em 1em;
-}
 
-.subscribe-events-popover__arrow {
-  @include triangle(10px);
-  position: absolute;
-  top: 10px;
-  left: 70px;
-  display: block;
-  width: 0;
-  height: 0;
+  a {
+    color: $blue !important;
+  }
 }
 
 .subscribe-events-popover__instructions {
