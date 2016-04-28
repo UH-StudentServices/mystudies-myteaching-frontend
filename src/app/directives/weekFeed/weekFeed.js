@@ -32,6 +32,7 @@ angular.module('directives.weekFeed', [
     'ALL': 'ALL',
     'UPCOMING': 'UPCOMING',
     'CURRENT': 'CURRENT',
+    'CURRENT_OR_UPCOMING': 'CURRENT_OR_UPCOMING',
     'TODAY': 'TODAY',
     'PAST': 'PAST'
   })
@@ -114,7 +115,7 @@ angular.module('directives.weekFeed', [
             hideSubTabs: false,
             translateKey: 'weekFeed.calendarCustom.list',
             getItems: function(courses, events) {
-              return getItems(events, FeedItemTimeCondition.UPCOMING, FeedItemSortCondition.NONE);
+              return getItems(events, FeedItemTimeCondition.CURRENT_OR_UPCOMING, FeedItemSortCondition.NONE);
             },
             getMessage: getEventsMessage,
           },
@@ -334,6 +335,10 @@ angular.module('directives.weekFeed', [
             return nowMoment.isBetween(startDate, endDate) ||
               nowMoment.isSame(startDate) ||
               nowMoment.isSame(endDate);
+          });
+        case FeedItemTimeCondition.CURRENT_OR_UPCOMING:
+          return _.filter(items, function(item) {
+            return nowMoment.isBefore(item.endDate);
           });
         case FeedItemTimeCondition.PAST:
           return _.filter(items, function(item) {
