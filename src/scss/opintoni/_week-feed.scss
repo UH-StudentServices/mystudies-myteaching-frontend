@@ -227,6 +227,7 @@
   position: absolute;
   top: calc(100% + #{$triangle-size});
   right: 0;
+  max-width: 350px;
   z-index: 1;
   color: $silver;
   background-color: $white;

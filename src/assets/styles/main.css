@@ -2441,6 +2441,7 @@ a.text-neutral {
   position: absolute;
   top: calc(100% + 10px);
   right: 0;
+  max-width: 350px;
   z-index: 1;
   color: #979797;
   background-color: #FFF;
