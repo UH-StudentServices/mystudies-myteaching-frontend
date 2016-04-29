@@ -199,10 +199,7 @@
     "readMore": "lue lisää...",
     "addNew": "lisää uusi",
     "rss": {
-      "rssFeedSearch": "RSS-syötteen osoite",
-      "numberOfItems": "Näytettävien uutisten määrä",
-      "1item": "1 uutinen",
-      "3items": "3 uutista"
+      "rssFeedSearch": "RSS-syötteen osoite"
     },
     "link": {
       "linkPlaceholder": "URL suosikkisivulle"

@@ -17,18 +17,6 @@
 
 <div>
   <div class="bar">
-    <div class="form-type-radio rss-feed-visible-items">
-      {{::('favorites.rss.numberOfItems' | translate) }}<br>
-      <input id="rss-1" type="radio"
-             ng-model="visibleItems"
-             value="1">
-      <label for="rss-1" translate="favorites.rss.1item"></label>
-      <input id="rss-2"
-             type="radio"
-             ng-model="visibleItems"
-             value="3">
-      <label for="rss-2" translate="favorites.rss.3items"></label>
-    </div>
     <add-new-favorite-search
         search-fn="search"
         clear-search-fn="clearSearch"
