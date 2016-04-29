@@ -38,34 +38,37 @@ angular.module('directives.subscribeEvents', [
       templateUrl: 'app/directives/weekFeed/subscribeEvents/subscribeEvents.html',
       scope: {},
       controller: function($scope) {
+        var cachedCalendarFeedBaseUrl;
+
         $scope.userLang = $rootScope.userLang;
         $scope.showPopover = false;
 
         function getOrCreateCalendarFeed() {
-          var deferred = $q.defer();
-
-          CalendarFeedResource.getCalendarFeed().$promise
-            .then(function getCalendarFeedSuccess(calendarFeed) {
-              deferred.resolve(calendarFeed);
-            }, function getCalendarFeedFail() {
-              CalendarFeedResource.saveCalendarFeed().$promise
-                .then(function saveCalendarFeedSuccess(calendarFeed) {
-                  AnalyticsService.trackCalendarSubscribe();
-                  deferred.resolve(calendarFeed);
-                });
+          return CalendarFeedResource.getCalendarFeed()
+            .catch(function() {
+              return CalendarFeedResource.saveCalendarFeed();
+            })
+            .then(function(calendarFeed) {
+              AnalyticsService.trackCalendarSubscribe();
+              cachedCalendarFeedBaseUrl = DomainUtil.getDomain() + calendarFeed.feedUrl + '/';
+              return calendarFeed;
             });
+        }
 
-          return deferred.promise;
+        function localizedCalendarFeedUrl() {
+          $scope.calendarFeedUrl = cachedCalendarFeedBaseUrl + $rootScope.userLang;
+          return $scope.calendarFeedUrl;
         }
 
         $scope.onClick = function() {
           $scope.showPopover = !$scope.showPopover;
 
           if($scope.showPopover) {
-            getOrCreateCalendarFeed().then(function(calendarFeed) {
-              $scope.calendarFeedUrl = DomainUtil.getDomain() + calendarFeed.feedUrl +
-                '/' + $rootScope.userLang;
-            });
+            return $q(function(resolve, reject) {
+              return cachedCalendarFeedBaseUrl ? resolve() : reject();
+            })
+            .catch(getOrCreateCalendarFeed)
+            .then(localizedCalendarFeedUrl);
           }
         };
       }

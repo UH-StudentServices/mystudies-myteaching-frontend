@@ -18,12 +18,14 @@
 angular.module('resources.calendarFeed', [])
 
   .factory('CalendarFeedResource', function($resource) {
-
     var calendarFeedResource = $resource('/api/private/v1/calendar');
 
     return {
-      getCalendarFeed: calendarFeedResource.get,
-      saveCalendarFeed: calendarFeedResource.save
+      getCalendarFeed: function() {
+        return calendarFeedResource.get().$promise;
+      },
+      saveCalendarFeed: function() {
+        return calendarFeedResource.save().$promise;
+      }
     };
-
   });
