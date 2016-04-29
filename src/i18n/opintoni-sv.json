@@ -201,10 +201,7 @@
     "readMore": "läs mer...",
     "addNew": "lägg till",
     "rss": {
-      "rssFeedSearch": "Feed url",
-      "numberOfItems": "Antal synliga notiser",
-      "1item": "1 notis",
-      "3items": "3 notiser"
+      "rssFeedSearch": "Feed url"
     },
     "link": {
       "linkPlaceholder": "urlen till favorit hemsidan"

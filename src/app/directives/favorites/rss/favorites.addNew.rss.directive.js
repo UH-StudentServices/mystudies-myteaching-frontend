@@ -41,7 +41,6 @@ angular.module('directives.favorites.addNew.rss',
       link: function($scope) {
         $scope.searchString = '';
         $scope.loading = false;
-        $scope.visibleItems = 3;
 
         function findFeedSuccess(feed) {
           if(feed) {
@@ -77,10 +76,9 @@ angular.module('directives.favorites.addNew.rss',
 
         function addFeed(feedUrl) {
           $scope.favorite.url = feedUrl;
-          $scope.favorite.visibleItems = $scope.visibleItems;
           FavoritesResource.saveRSSFavorite($scope.favorite).then(function() {
             $scope.$emit(newFavoriteAddedEvent,
-                $scope.favorite.type + '_' + $scope.favorite.visibleItems);
+                $scope.favorite.type);
             $scope.hidePopover();
           });
         }

@@ -20,11 +20,12 @@ angular.module('resources.favorites.rss', [])
   .factory('RSSResource', function($resource) {
 
     var rssFeedResource = $resource('/api/private/v1/favorites/rss'),
-        findRssFeedResource = $resource('/api/private/v1/favorites/rss/find');
+        findRssFeedResource = $resource('/api/private/v1/favorites/rss/find'),
+        NUMBER_OF_ITEMS = 3;
 
 
-    function get(url, numberOfItems) {
-      return rssFeedResource.get({url: url, limit: numberOfItems}).$promise;
+    function get(url) {
+      return rssFeedResource.get({url: url, limit: NUMBER_OF_ITEMS}).$promise;
     }
 
     function findFeed(url) {
