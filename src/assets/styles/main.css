@@ -2278,7 +2278,8 @@ a.text-neutral {
 #week-feed .tag-list--tabs {
   display: flex;
   align-items: stretch;
-  margin-bottom: 1em; }
+  margin-bottom: 1em;
+  min-height: 1em; }
   #week-feed .tag-list--tabs li {
     display: flex;
     align-items: center;
