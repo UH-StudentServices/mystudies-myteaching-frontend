@@ -38,9 +38,8 @@ angular.module('directives.favorites.rss',[
           $scope.feedDateLocalized = feedData.momentDate.format('l');
           $scope.feedLink = feedData.link;
 
-          $scope.feed = feedData;          
+          $scope.feed = feedData;
         });
-      
       }
     };
   });
