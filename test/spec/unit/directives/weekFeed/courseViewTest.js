@@ -21,7 +21,8 @@ describe('CourseView', function() {
       FeedItemTimeCondition,
       FeedItemSortCondition,
       emptyCoursesInput = [],
-      coursesInput;
+      coursesInput,
+      nowMoment = moment('2010-01-22');
 
   beforeEach(module('directives.weekFeed'));
 
@@ -37,7 +38,7 @@ describe('CourseView', function() {
       {realisationId: '2', parentId: null, startDate: moment('2010-01-22'), endDate: moment('2010-01-23')},
       {realisationId: '41', parentId: '4', startDate: moment('2010-01-19'), endDate: moment('2010-01-20')},
       {realisationId: '51', parentId: '5', startDate: moment('2010-01-18'), endDate: moment('2010-01-19')},
-      {realisationId: '52', parentId: '5', startDate: moment('2010-01-25'), endDate: moment('2010-01-24')},
+      {realisationId: '52', parentId: '5', startDate: moment('2010-01-25'), endDate: moment('2010-01-26')},
       {realisationId: '5', parentId: null, startDate: moment('2010-01-26'), endDate: moment('2010-01-27')}
     ];
   }));
@@ -64,24 +65,32 @@ describe('CourseView', function() {
 
   it('Will sort past courses by startdate descending', function() {
     var courses = CourseView.getCourses(coursesInput, FeedItemTimeCondition.PAST,
-      FeedItemSortCondition.START_DATE_DESC, moment('2010-01-22'));
+      FeedItemSortCondition.START_DATE_DESC, nowMoment);
 
     expect(getRealisationIds(courses)).toEqual(['1', '12', '41', '5', '51']);
   });
 
   it('Will sort current courses by startdate ascending', function() {
     var courses = CourseView.getCourses(coursesInput, FeedItemTimeCondition.CURRENT,
-      FeedItemSortCondition.START_DATE_ASC, moment('2010-01-22'));
+      FeedItemSortCondition.START_DATE_ASC, nowMoment);
 
     expect(getRealisationIds(courses)).toEqual(['1', '11', '2']);
   });
 
   it('Will sort upcoming courses by startdate ascending', function() {
     var courses = CourseView.getCourses(coursesInput, FeedItemTimeCondition.UPCOMING,
-      FeedItemSortCondition.START_DATE_ASC, moment('2010-01-22'));
+      FeedItemSortCondition.START_DATE_ASC, nowMoment);
 
     expect(getRealisationIds(courses)).toEqual(['3', '1', '5', '52']);
   });
+
+  it('Will sort not ended courses by startdate ascending', function() {
+    var courses = CourseView.getCourses(coursesInput, FeedItemTimeCondition.NOT_ENDED,
+      FeedItemSortCondition.START_DATE_ASC, nowMoment);
+
+    expect(getRealisationIds(courses)).toEqual(['1', '11', '2', '3', '5', '52']);
+  });
+
 
   it('Will tag courses that have parent as children', function() {
     var courses = CourseView.getCourses(coursesInput, FeedItemTimeCondition.ALL, FeedItemSortCondition.START_DATE_DESC);
