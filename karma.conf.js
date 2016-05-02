@@ -52,6 +52,7 @@ module.exports = function(config) {
       'src/bower_components/angular-flexslider/angular-flexslider.js',
       'src/bower_components/angular-mocks/angular-mocks.js',
       'src/bower_components/angular-block-ui/dist/angular-block-ui.min.js',
+      'src/bower_components/angular-click-outside/clickoutside.directive.js',
       'src/app/app.js',
       'src/app/services/**/*.js',
       'src/app/filters/*.js',
