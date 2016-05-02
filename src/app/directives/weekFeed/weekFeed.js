@@ -114,7 +114,7 @@ angular.module('directives.weekFeed', [
     }
 
     function addChildCourseToGroup(group, course, groupsByParentId, groups) {
-      if(group) {
+      if(group && group.children) {
         group.children.push(course);
       } else {
         createNewCourseGroup(course.parentId, null, [course], groupsByParentId, groups);
