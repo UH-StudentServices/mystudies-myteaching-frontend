@@ -15,8 +15,8 @@
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<section class="favorites-list__item rss-feed" ng-class="getFeedClasses()" data-feed-url="{{data.url}}">
-  <div ng-if="feed">
+<section class="favorites-list__item rss-feed" data-feed-url="{{data.url}}">
+  
     <div class="box-story__topical rss-header">
       <span class="box-story__date" ng-bind="feedDateLocalized"></span>
       <a class="box-story__tag" href="{{ feedLink }}" target="_blank" title="{{ feedTitle }}"><span>{{ feedTitle }}</span></a>
@@ -26,26 +26,6 @@
           <h4 class="rss-feed__item-title"><a href="{{feedItem.link}}" target="_blank">{{feedItem.title}}</a></h4>
           <div class="rss-feed__date">{{feedItem.momentDate | convertDateFormat:'l LT'}}</div>
       </article>
-    </div>
-  </div>
-
-  <div ng-if="singleFeedItem" class="box-story">
-      <a href="{{singleFeedItem.link}}" target="_blank" class="box-story__link-wrapper" >
-          <div class="single-item-image-container" ng-style="getSingleItemStyle()">
-          </div>
-          <div class="box-story__topical rss-header">
-            <span class="box-story__date" ng-bind="feedDateLocalized"></span>
-            <a class="box-story__tag" href="{{ feedLink }}" target="_blank">
-              <span>{{ feedTitle }}</span>
-            </a>
-          </div>
-          <h4 class="rss-feed__item-title">
-              <a href="{{ singleFeedItem.link }}" target="_blank">{{ singleFeedItem.title }}</a>
-          </h4>
-          <div class="box-story__content">
-              {{ metaData.description }}
-          </div>
-      </a>
     </div>
   
 </section>

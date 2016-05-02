@@ -19,13 +19,13 @@ angular.module('services.favorites.rss', ['resources.favorites.rss', 'utils.mome
 
   .factory('RSSService', function(RSSResource, dateArrayToMomentObject) {
 
-    function get(feedUrl, numberOfItems) {
+    function get(feedUrl) {
 
       function convertDate(d) {
         return dateArrayToMomentObject(_.slice(d, 0, 5));
       }
 
-      return RSSResource.get(feedUrl, numberOfItems).then(function(feed) {
+      return RSSResource.get(feedUrl).then(function(feed) {
         feed.momentDate = convertDate(feed.date);
         _.each(feed.entries, function(entry) {
           entry.momentDate = convertDate(entry.date);

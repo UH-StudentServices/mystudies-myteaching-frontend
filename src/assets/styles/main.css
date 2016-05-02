@@ -83,14 +83,12 @@
 
 .regional-rule-top {
   border-top: 1px solid #EBEBEB;
-  background: transparent url("../images/bg_shadow.png") no-repeat top center;
   background-size: 100% auto;
   margin-top: 30px;
   padding-top: 30px; }
 
 .regional-rule-bottom {
   border-bottom: 1px solid #EBEBEB;
-  background: transparent url("../images/bg_shadow.png") no-repeat top center;
   background-size: 100% auto; }
 
 .horizontal-rule-top {
@@ -810,7 +808,6 @@ button.icon {
 
 .l-aside {
   border-top: 1px solid #EBEBEB;
-  background: transparent url("../images/bg_shadow.png") no-repeat top center;
   background-size: 100% auto;
   background-image: url("../images/ui/bg_shadow.png"); }
   .l-aside:before, .l-aside:after {
@@ -2279,15 +2276,27 @@ a.text-neutral {
   margin-bottom: 3em; }
 
 #week-feed .tag-list--tabs {
-  margin-bottom: 1em; }
-  #week-feed .tag-list--tabs:before, #week-feed .tag-list--tabs:after {
-    content: "";
-    display: table; }
-  #week-feed .tag-list--tabs:after {
-    clear: both; }
+  display: flex;
+  align-items: stretch;
+  margin-bottom: 1em;
+  min-height: 1em; }
   #week-feed .tag-list--tabs li {
+    display: flex;
+    align-items: center;
     margin-right: 0.4em;
     margin-bottom: 0.5em; }
+
+.weekfeed__subscribe {
+  position: relative;
+  margin-left: auto; }
+  .weekfeed__subscribe__button {
+    padding: 0 !important;
+    border: 0 !important;
+    line-height: inherit !important; }
+    .weekfeed__subscribe__button:hover {
+      background-color: initial !important; }
+    .weekfeed__subscribe__button:active, .weekfeed__subscribe__button:focus {
+      outline: none !important; }
 
 @media (max-width: 767px) {
   .week-feed-items li .event.exam {
@@ -2434,13 +2443,46 @@ a.text-neutral {
   margin-right: 1em; }
 
 .subscribe-events-popover {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  max-width: 350px;
+  z-index: 1;
+  color: #979797;
   background-color: #FFF;
-  margin-top: 10px;
   border: 1px solid #EBEBEB;
   box-shadow: 1px 1px 2px -1px rgba(0, 0, 0, 0.25); }
   @media (max-width: 767px) {
     .subscribe-events-popover {
       width: 300px; } }
+  .subscribe-events-popover:before {
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: -10px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #EBEBEB; }
+  .subscribe-events-popover:after {
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: -9px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #FFF; }
+  .subscribe-events-popover::before {
+    top: -10px;
+    right: 1em;
+    left: auto; }
+  .subscribe-events-popover::after {
+    top: -9px;
+    right: 1em;
+    left: auto; }
 
 .subscribe-events-popover__link {
   border-bottom: 1px solid #EBEBEB;
@@ -2459,34 +2501,8 @@ a.text-neutral {
   font-size: 14px;
   font-size: 0.875rem;
   padding: 1.5em 1em 1em 1em; }
-
-.subscribe-events-popover__arrow {
-  position: absolute;
-  top: 10px;
-  left: 70px;
-  display: block;
-  width: 0;
-  height: 0; }
-  .subscribe-events-popover__arrow:before {
-    content: "";
-    position: absolute;
-    left: -5px;
-    top: -10px;
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 10px solid #EBEBEB; }
-  .subscribe-events-popover__arrow:after {
-    content: "";
-    position: absolute;
-    left: -5px;
-    top: -9px;
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 10px solid #FFF; }
+  .subscribe-events-popover__content a {
+    color: #0098d0 !important; }
 
 .subscribe-events-popover__instructions {
   margin-top: 1em; }
@@ -3319,9 +3335,6 @@ a.text-neutral {
   @media (min-width: 75em) {
     .add-favorite-search-result {
       height: 300px; } }
-
-.rss-feed-visible-items {
-  margin: 10px; }
 
 .unisport .unisport-header {
   width: 100%;

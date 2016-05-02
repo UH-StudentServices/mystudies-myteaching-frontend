@@ -202,10 +202,7 @@
     "readMore": "read more...",
     "addNew": "add new",
     "rss": {
-      "rssFeedSearch": "Feed url",
-      "numberOfItems": "Number of visible feed items",
-      "1item": "1 item",
-      "3items": "3 items"
+      "rssFeedSearch": "Feed url"
     },
     "link": {
       "linkPlaceholder": "URL to favorite website"

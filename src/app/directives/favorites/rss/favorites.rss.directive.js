@@ -32,34 +32,15 @@ angular.module('directives.favorites.rss',[
 
         var feedUrl = $scope.data.url;
 
-        RSSService.get(feedUrl, $scope.data.visibleItems).then(function getFeedSuccess(feedData) {
+        RSSService.get(feedUrl).then(function getFeedSuccess(feedData) {
 
           $scope.feedTitle = feedData.title ? feedData.title : feedUrl;
           $scope.feedDateLocalized = feedData.momentDate.format('l');
           $scope.feedLink = feedData.link;
 
-          if($scope.data.visibleItems === 1 && feedData.entries && feedData.entries.length > 0) {
-            MetaDataResource.getMetaData(feedData.entries[0].link).then(
-              function getPageMetaDataSuccess(metaData) {
-                $scope.singleFeedItem = feedData.entries[0];
-                $scope.metaData = metaData;
-              });
-          } else {
-            $scope.feed = feedData;
-          }
+          $scope.feed = feedData;          
         });
-
-        $scope.getFeedClasses = function getFeedClasses() {
-          return {
-            'single': !_.isUndefined($scope.singleFeedItem)
-          };
-        };
-
-        $scope.getSingleItemStyle = function getSingleItemStyle() {
-          return {
-            background: 'url(' + $scope.metaData.image + ') no-repeat center center'
-          };
-        };
+      
       }
     };
   });

@@ -36,6 +36,7 @@ angular.module('opintoniApp', [
   'opintoniAnalytics',
   'opintoniErrors',
   'opintoniLander',
+  'angular-click-outside',
 
   'services.session',
   'services.userSettings',
