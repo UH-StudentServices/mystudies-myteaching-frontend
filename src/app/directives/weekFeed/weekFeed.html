@@ -37,6 +37,9 @@
           class="clickable">
         <a>{{ subTab.translateKey | translate | capitalize }}</a>
       </li>
+      <li class="weekfeed__subscribe">
+        <subscribe-events ng-if="!hideSubTabs"></subscribe-events>
+      </li>
     </ul>
 
     <div block-ui="weekFeed" class="content-loader">
@@ -55,8 +58,8 @@
       <event-calendar events="events" calendar-view="calendarView" ng-if="events && hideSubTabs"></event-calendar>
 
       <div class="week-feed-actions">
-        <button class="button--light button" ng-click="showMore()" ng-if="showMoreVisible()" translate="buttons.showMore"></button>
-        <subscribe-events ng-if="selectedTab === Tabs.UPCOMING_EVENTS || selectedTab === Tabs.CALENDAR"></subscribe-events>
+        <button class="button--light button" ng-click="showMore()" ng-if="showMoreVisible()" translate="buttons.showMore">
+        </button>
       </div>
     </div>
   </div>
