@@ -33,10 +33,11 @@
       </div>
 
       <div class="course-meta">
-        {{ feedItem.code }}, {{ 'codes.courseTypes.' +  feedItem.typeCode | translate }}
-        <span ng-if="feedItem.credits !== null">({{ feedItem.credits }}{{::("abbreviations.credits" | translate)}})</span>
-        <span ng-repeat="teacher in feedItem.teachers">, {{ teacher }}</span>
-        <course-materials-link></course-materials-link>
+        <span ng-if="!feedItem.showAsChild">{{ ::feedItem.code }}, </span>
+        <span>{{ ::('codes.courseTypes.' +  feedItem.typeCode | translate ) }}</span>
+        <span ng-if="feedItem.credits !== null && !feedItem.showAsChild">({{::feedItem.credits }}{{::("abbreviations.credits" | translate)}})</span>
+        <span class="course-meta__teacher" ng-repeat="teacher in feedItem.teachers">, {{ ::teacher }}</span>
+        <course-materials-link compact="feedItem.showAsChild" feed-item="feedItem"></course-materials-link>
       </div>
     </div>
   </div>
