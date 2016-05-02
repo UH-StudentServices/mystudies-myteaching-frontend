@@ -180,6 +180,12 @@ angular.module('directives.weekFeed', [
           _.forEach(group.children, function(child) {
             child.showAsChild = true;
           });
+
+          var lastChild = _.last(group.children);
+
+          if(lastChild) {
+            lastChild.showAsLastChild = true;
+          }
         }
       });
 

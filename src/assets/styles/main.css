@@ -2318,97 +2318,102 @@ a.text-neutral {
 .event .bar {
   padding: 0; }
 
-.event.exam .box-data__date, .enrollment.exam .box-data__date {
-  background-color: #fca311; }
-
-.event > *, .enrollment > * {
-  margin: 0.5em 0; }
-  .event > *:before, .event > *:after, .enrollment > *:before, .enrollment > *:after {
-    content: "";
-    display: table; }
-  .event > *:after, .enrollment > *:after {
-    clear: both; }
-
-.event .box-data__title, .enrollment .box-data__title {
-  padding: 0.3em 0; }
-  .event .box-data__title h4, .enrollment .box-data__title h4 {
-    padding: 0; }
-
-.event .image-container, .enrollment .image-container {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  min-height: 200px;
-  width: 100%;
-  display: inline-block;
-  margin-right: 1em; }
+.event, .enrollment {
+  padding-bottom: 1em; }
+  .event.exam .box-data__date, .enrollment.exam .box-data__date {
+    background-color: #fca311; }
+  .event .box-data__title, .enrollment .box-data__title {
+    font-size: 16px;
+    font-size: 1rem;
+    padding: 0.3em 0; }
+  .event .box-data__content, .enrollment .box-data__content {
+    font-size: 16px;
+    font-size: 1rem;
+    color: #666; }
+  .event .image-container, .enrollment .image-container {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 200px;
+    display: inline-block;
+    margin-right: 1em; }
+    @media (max-width: 767px) {
+      .event .image-container, .enrollment .image-container {
+        width: 100%; } }
+    @media (min-width: 48em) {
+      .event .image-container, .enrollment .image-container {
+        width: 40%; } }
+  .event .info-container, .enrollment .info-container {
+    position: relative;
+    vertical-align: top;
+    display: inline-block; }
+    @media (max-width: 767px) {
+      .event .info-container, .enrollment .info-container {
+        width: 100%; } }
+    @media (min-width: 48em) {
+      .event .info-container, .enrollment .info-container {
+        width: 50%;
+        min-height: 200px;
+        padding-bottom: 75px; } }
+  .event .course-meta__teacher, .enrollment .course-meta__teacher {
+    margin-right: 1em; }
+  .event .course-material--compact, .enrollment .course-material--compact {
+    display: inline-block; }
+  .event .course-material--full, .enrollment .course-material--full {
+    padding: 0.5em 0;
+    border-bottom: 1px solid #EBEBEB;
+    border-top: 1px solid #EBEBEB;
+    font-weight: 600; }
+    @media (max-width: 767px) {
+      .event .course-material--full, .enrollment .course-material--full {
+        margin-top: 0.5em; } }
+    @media (min-width: 48em) {
+      .event .course-material--full, .enrollment .course-material--full {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0; } }
+    .event .course-material--full a, .enrollment .course-material--full a {
+      font-size: 14px;
+      font-size: 0.875rem;
+      display: block; }
+    .event .course-material--full .hy-link-arrow, .enrollment .course-material--full .hy-link-arrow {
+      float: right; }
+  .event .event-location, .enrollment .event-location {
+    margin-right: 1em;
+    margin-bottom: 0.3em;
+    display: inline-block; }
+  .event .event-location-links, .enrollment .event-location-links {
+    white-space: nowrap; }
+    .event .event-location-links > *:first-child, .enrollment .event-location-links > *:first-child {
+      margin-right: 0.5em; }
   @media (min-width: 48em) {
-    .event .image-container, .enrollment .image-container {
-      width: 200px; } }
-  @media (min-width: 62.5em) {
-    .event .image-container, .enrollment .image-container {
-      width: 250px; } }
+    .feed-item--child .event, .feed-item--child .enrollment {
+      padding-left: 1.5em;
+      border-left: 1px solid #EBEBEB;
+      border-bottom: 0;
+      border-right: 0;
+      border-top: 0; } }
+  .feed-item--child .event .image-container, .feed-item--child .enrollment .image-container {
+    height: 80px;
+    width: 20%;
+    max-width: 80px; }
+  .feed-item--child .event .info-container, .feed-item--child .enrollment .info-container {
+    min-height: 80px;
+    padding-bottom: 0;
+    width: 70%; }
+  .feed-item--child .event .course-meta, .feed-item--child .enrollment .course-meta {
+    position: static; }
+  .feed-item--last-child .event, .feed-item--last-child .enrollment {
+    padding-bottom: 0; }
 
-.event .info-container, .enrollment .info-container {
-  position: relative;
-  vertical-align: top;
-  width: 100%;
-  display: inline-block; }
-  @media (max-width: 767px) {
-    .event .info-container, .enrollment .info-container {
-      margin-top: 1em; } }
-  @media (min-width: 48em) {
-    .event .info-container, .enrollment .info-container {
-      width: 250px;
-      min-height: 200px;
-      padding-bottom: 75px; } }
-  @media (min-width: 62.5em) {
-    .event .info-container, .enrollment .info-container {
-      width: 290px; } }
-  @media (min-width: 75em) {
-    .event .info-container, .enrollment .info-container {
-      width: 400px; } }
-
-.event .course-material, .enrollment .course-material {
-  padding: 0.5em 0;
+.feed-item--last-child {
+  padding-bottom: 1em;
+  margin-bottom: 1em;
   border-bottom: 1px solid #EBEBEB;
-  border-top: 1px solid #EBEBEB;
-  font-weight: 600; }
-  @media (max-width: 767px) {
-    .event .course-material, .enrollment .course-material {
-      margin-top: 0.5em; } }
-  @media (min-width: 48em) {
-    .event .course-material, .enrollment .course-material {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0; } }
-  .event .course-material a, .enrollment .course-material a {
-    font-size: 14px;
-    font-size: 0.875rem;
-    display: block; }
-  .event .course-material .hy-link-arrow, .enrollment .course-material .hy-link-arrow {
-    float: right; }
-
-@media (min-width: 48em) {
-  .event .course-meta, .enrollment .course-meta {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0; }
-    .event .course-meta .course-material, .enrollment .course-meta .course-material {
-      position: relative;
-      margin-top: 0.5em; } }
-
-.event .event-location, .enrollment .event-location {
-  margin-right: 1em;
-  margin-bottom: 0.3em;
-  display: inline-block; }
-
-.event .event-location-links, .enrollment .event-location-links {
-  white-space: nowrap; }
-  .event .event-location-links > *:first-child, .enrollment .event-location-links > *:first-child {
-    margin-right: 0.5em; }
+  border-left: 0;
+  border-right: 0;
+  border-top: 0; }
 
 .enrollment__cancelled {
   background-color: #974822;

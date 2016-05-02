@@ -118,6 +118,8 @@
     "noPastTeacherCourses": "Du har inga avslutade kurser.",
     "courseMaterials": "Gå till kursmaterial",
     "courseMaterialsMoodle": "Gå till Moodle",
+    "courseMaterialsShort": "Material",
+    "courseMaterialsMoodleShort": "Moodle",
     "showRoute": "Visa vägen",
     "showOnMap": "Visa på karta",
     "errors": {

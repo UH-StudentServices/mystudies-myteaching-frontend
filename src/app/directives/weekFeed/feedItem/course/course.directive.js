@@ -36,6 +36,10 @@ angular.module('directives.weekFeed.feedItem.course',[
     return {
       restrict: 'E',
       replace: true,
+      scope: {
+        compact: '=',
+        feedItem: '='
+      },
       templateUrl: 'app/directives/weekFeed/feedItem/course/courseMaterialsLink.html'
     };
   })
