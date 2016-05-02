@@ -31,9 +31,9 @@ angular.module('directives.weekFeed', [
   .constant('FeedItemTimeCondition', {
     'ALL': 'ALL',
     'UPCOMING': 'UPCOMING',
+    'NOT_ENDED': 'NOT_ENDED',
     'CURRENT': 'CURRENT',
     'CURRENT_OR_UPCOMING': 'CURRENT_OR_UPCOMING',
-    'TODAY': 'TODAY',
     'PAST': 'PAST'
   })
 
@@ -311,23 +311,13 @@ angular.module('directives.weekFeed', [
         key: 'STUDENT_EXAMS',
         translateKey: 'general.exams',
         subTabs: {
-          'CURRENT_EXAMS': {
-            key: 'CURRENT_EXAMS',
-            hideSubTabs: false,
-            translateKey: 'general.current',
-            getItems: function(courses, events) {
-              return getItems(_.filter(events, {type: 'EXAM'}),
-                FeedItemTimeCondition.TODAY, FeedItemSortCondition.START_DATE_ASC);
-            },
-            getMessage: getEventsMessage
-          },
           'UPCOMING_EXAMS': {
             key: 'UPCOMING_EXAMS',
             hideSubTabs: false,
             translateKey: 'general.upcoming',
             getItems: function(courses, events) {
               return getItems(_.filter(events, {type: 'EXAM'}),
-                FeedItemTimeCondition.UPCOMING, FeedItemSortCondition.START_DATE_ASC);
+                FeedItemTimeCondition.NOT_ENDED, FeedItemSortCondition.START_DATE_ASC);
             },
             getMessage: getEventsMessage
           },
@@ -383,23 +373,13 @@ angular.module('directives.weekFeed', [
         key: 'TEACHER_EXAMS',
         translateKey: 'general.exams',
         subTabs: {
-          'CURRENT_TEACHER_EXAMS': {
-            key: 'CURRENT_TEACHER_EXAMS',
-            hideSubTabs: false,
-            translateKey: 'general.current',
-            getItems: function(courses, events) {
-              return CourseView.getCourses(_.filter(courses, {isExam: true}),
-                FeedItemTimeCondition.TODAY, FeedItemSortCondition.START_DATE_ASC);
-            },
-            getMessage: getCoursesMessage
-          },
           'UPCOMING_TEACHER_EXAMS': {
             key: 'UPCOMING_TEACHER_EXAMS',
             hideSubTabs: false,
             translateKey: 'general.upcoming',
             getItems: function(courses, events) {
               return CourseView.getCourses(_.filter(courses, {isExam: true}),
-                FeedItemTimeCondition.UPCOMING, FeedItemSortCondition.START_DATE_ASC);
+                FeedItemTimeCondition.NOT_ENDED, FeedItemSortCondition.START_DATE_ASC);
             },
             getMessage: getCoursesMessage
           },
@@ -441,6 +421,10 @@ angular.module('directives.weekFeed', [
         case FeedItemTimeCondition.UPCOMING:
           return _.filter(items, function(item) {
             return nowMoment.isBefore(item.startDate);
+          });
+        case FeedItemTimeCondition.NOT_ENDED:
+          return _.filter(items, function(item) {
+            return !nowMoment.isAfter(item.endDate);
           });
         case FeedItemTimeCondition.TODAY:
           return _.filter(items, function(item) {
