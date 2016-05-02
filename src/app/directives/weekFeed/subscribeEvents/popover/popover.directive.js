@@ -15,7 +15,7 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.popover', [
+angular.module('directives.weekfeed.calendarSubscription.popover', [
   'utils.browser',
   'directives.clipboard'])
 
@@ -39,7 +39,7 @@ angular.module('directives.popover', [
     }
   })
 
-  .directive('popover', function(InstructionLinks,
+  .directive('calendarSubscriptionPopover', function(InstructionLinks,
                                  $rootScope,
                                  $q,
                                  BrowserUtil,

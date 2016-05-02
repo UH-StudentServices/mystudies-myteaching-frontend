@@ -18,7 +18,7 @@
 angular.module('directives.subscribeEvents', [
   'resources.calendarFeed',
   'utils.domain',
-  'directives.popover'])
+  'directives.weekfeed.calendarSubscription.popover'])
 
   .constant({
     'MessageTimeouts': {
