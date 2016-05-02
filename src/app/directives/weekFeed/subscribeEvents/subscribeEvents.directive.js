@@ -18,6 +18,7 @@
 angular.module('directives.subscribeEvents', [
   'resources.calendarFeed',
   'utils.domain',
+  'angular-click-outside',
   'directives.weekfeed.calendarSubscription.popover'])
 
   .constant({
@@ -59,6 +60,10 @@ angular.module('directives.subscribeEvents', [
           $scope.calendarFeedUrl = cachedCalendarFeedBaseUrl + $rootScope.userLang;
           return $scope.calendarFeedUrl;
         }
+
+        $scope.closePopover = function() {
+          $scope.showPopover = false;
+        };
 
         $scope.onClick = function() {
           $scope.showPopover = !$scope.showPopover;

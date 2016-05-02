@@ -40,11 +40,11 @@ angular.module('directives.weekfeed.calendarSubscription.popover', [
   })
 
   .directive('calendarSubscriptionPopover', function(InstructionLinks,
-                                 $rootScope,
-                                 $q,
-                                 BrowserUtil,
-                                 $timeout,
-                                 MessageTimeouts) {
+                                                     $rootScope,
+                                                     $q,
+                                                     BrowserUtil,
+                                                     $timeout,
+                                                     MessageTimeouts) {
     return {
       rescrict: 'E',
       replace: true,

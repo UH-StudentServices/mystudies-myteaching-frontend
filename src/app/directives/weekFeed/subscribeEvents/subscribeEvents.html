@@ -20,5 +20,10 @@
           ng-click="onClick()"
           translate="weekFeed.subscribeEvents">
   </button>
-  <calendar-subscription-popover ng-if="showPopover" calendar-feed-url="calendarFeedUrl"><calendar-subscription-popover>
+  <calendar-subscription-popover ng-if="showPopover"
+                                 calendar-feed-url="calendarFeedUrl"
+                                 click-outside="closePopover()"
+                                 outside-if-not="weekfeed__subscribe__button"
+                                 class="weekfeed__calendar-subscription-popover">
+  <calendar-subscription-popover>
 </div>
