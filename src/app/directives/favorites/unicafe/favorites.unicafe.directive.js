@@ -20,6 +20,12 @@ angular.module('directives.favorites.unicafe', [
   'resources.favorites.unicafe'
 ])
 
+  .constant('UnicafeUrl', {
+    'fi': 'http://www.hyyravintolat.fi/#/',
+    'sv': 'http://www.hyyravintolat.fi/sv/#/',
+    'en': 'http://www.hyyravintolat.fi/en/#/'
+  })
+
   .factory('UnicafeOpenDaysParser', function() {
     function isRestaurantClosed(menuData, nowMoment) {
       var closed = false;
@@ -40,9 +46,7 @@ angular.module('directives.favorites.unicafe', [
             return d !== toDay;
           });
         }
-      } catch(e) {
-        //wtf?
-      }
+      } catch(e) {}
 
       return closed;
     }
@@ -52,8 +56,12 @@ angular.module('directives.favorites.unicafe', [
     };
   })
 
-  .directive('favoritesUnicafe', function($cookies, UnicafeResource,
-                                          FavoritesResource, UnicafeOpenDaysParser) {
+  .directive('favoritesUnicafe', function($cookies,
+                                          UnicafeResource,
+                                          FavoritesResource,
+                                          UnicafeOpenDaysParser,
+                                          UnicafeUrl,
+                                          LanguageService) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/unicafe/favorites.unicafe.html',
@@ -68,6 +76,7 @@ angular.module('directives.favorites.unicafe', [
         $scope.restaurantOptions = [];
         $scope.selectedRestaurant = $scope.data.restaurantId;
         $scope.loading = true;
+        $scope.unicafeUrl = _.get(UnicafeUrl, LanguageService.getCurrent());
 
         $scope.isSelected = function isSelected(id) {
           return id === $scope.selectedRestaurant;

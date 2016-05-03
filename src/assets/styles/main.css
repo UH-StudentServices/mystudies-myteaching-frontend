@@ -2053,23 +2053,76 @@ a.text-neutral {
  * You should have received a copy of the GNU General Public License
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
-.unicafe-favorite h4 {
-  margin-bottom: 0.4em; }
+.unicafe-favorite {
+  position: relative;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("/assets/images/bg/ruokalista.png");
+  background-color: #424242;
+  color: #FFF;
+  overflow-y: hidden !important; }
+  @media (max-width: 767px) {
+    .unicafe-favorite {
+      height: 300px; } }
+  .unicafe-favorite h4 {
+    font-size: 1.8rem;
+    color: #FFF;
+    margin-bottom: 0.4em; }
+  .unicafe-favorite .unicafe-favorite__menu {
+    overflow-y: auto; }
+    @media (max-width: 767px) {
+      .unicafe-favorite .unicafe-favorite__menu {
+        padding-bottom: 3em; } }
+    @media (min-width: 48em) {
+      .unicafe-favorite .unicafe-favorite__menu {
+        height: 100px; } }
+    @media (min-width: 62.5em) {
+      .unicafe-favorite .unicafe-favorite__menu {
+        height: 150px; } }
+    @media (min-width: 75em) {
+      .unicafe-favorite .unicafe-favorite__menu {
+        height: 200px; } }
+  .unicafe-favorite .unicafe-favorite__select-container {
+    display: flex;
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+    right: 1em;
+    height: 45px; }
+  .unicafe-favorite .unicafe-favorite__restaurant-link {
+    flex-basis: 45px;
+    margin-left: 5px;
+    height: 100%;
+    background-color: #0098d0;
+    position: relative;
+    color: #FFF; }
+  .unicafe-favorite .unicafe-favorite__restaurant-link-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -transform: translate(-50%, -50%); }
+  .unicafe-favorite .unicafe-favorite__select {
+    background-color: #FFF;
+    flex-grow: 1;
+    border: 1px solid #EBEBEB; }
+    .unicafe-favorite .unicafe-favorite__select select {
+      padding: 2px 0 2px 2px;
+      overflow: hidden;
+      border: none;
+      color: #666;
+      height: 45px;
+      padding: 0 1em !important; }
+      .unicafe-favorite .unicafe-favorite__select select option:disabled {
+        color: black;
+        font-weight: bold; }
 
-.unicafe-favorite .restaurant-select option:disabled {
-  color: black;
-  font-weight: bold; }
-
-.unicafe-favorite select option:disabled {
-  color: black;
-  font-weight: bold; }
-
-.unicafe-favorite .unicafe-meta-data {
+.unicafe-favorite__meta-data {
   font-style: italic;
   font-size: 0.8em; }
-
-.unicafe-favorite .select-icon {
-  pointer-events: none; }
 
 /*
  * This file is part of MystudiesMyteaching application.
@@ -3264,51 +3317,6 @@ a.text-neutral {
 
 .add-favorite-button__title {
   font-size: 2rem; }
-
-.favorites-container .unicafe {
-  position: relative;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url("/assets/images/bg/ruokalista.png");
-  background-color: #424242;
-  color: #FFF;
-  overflow-y: hidden !important; }
-  @media (max-width: 767px) {
-    .favorites-container .unicafe {
-      height: 300px; } }
-  .favorites-container .unicafe h4 {
-    font-size: 1.8rem;
-    color: #FFF; }
-  .favorites-container .unicafe .unicafe-favorite__menu {
-    overflow-y: auto; }
-    @media (max-width: 767px) {
-      .favorites-container .unicafe .unicafe-favorite__menu {
-        padding-bottom: 3em; } }
-    @media (min-width: 48em) {
-      .favorites-container .unicafe .unicafe-favorite__menu {
-        height: 100px; } }
-    @media (min-width: 62.5em) {
-      .favorites-container .unicafe .unicafe-favorite__menu {
-        height: 150px; } }
-    @media (min-width: 75em) {
-      .favorites-container .unicafe .unicafe-favorite__menu {
-        height: 200px; } }
-  .favorites-container .unicafe .unicafe-favorite__select-container {
-    position: absolute;
-    bottom: 1em;
-    left: 1em;
-    right: 1em;
-    background-color: #FFF;
-    border: 1px solid #EBEBEB; }
-    .favorites-container .unicafe .unicafe-favorite__select-container select {
-      padding: 2px 0 2px 2px;
-      overflow: hidden;
-      width: 100%;
-      border: none;
-      color: #666;
-      height: 35px;
-      padding: 0 1em !important; }
 
 .add-favorite-search {
   padding: 0 0 0 1em; }

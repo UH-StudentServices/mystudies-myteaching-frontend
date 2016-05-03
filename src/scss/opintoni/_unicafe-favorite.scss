@@ -1,0 +1,106 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.unicafe-favorite {
+
+  $select-height: 45px;
+
+  position: relative;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('/assets/images/bg/ruokalista.png');
+  background-color: $darkgray;
+  color: $white;
+  overflow-y: hidden !important;
+
+  @include breakpoint($mobile-only) {
+    height: 300px;
+  }
+
+  h4 {
+    font-size: 1.8rem;
+    color: $white;
+    margin-bottom: 0.4em;
+  }
+
+  .unicafe-favorite__menu {
+    overflow-y: auto;
+
+    @include breakpoint($mobile-only) {
+      padding-bottom: 3em;
+    }
+    @include breakpoint($small) {
+      height: 100px;
+    }
+    @include breakpoint($medium) {
+      height: 150px;
+    }
+    @include breakpoint($large) {
+      height: 200px;
+    }
+  }
+
+  .unicafe-favorite__select-container {
+    display: flex;
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+    right: 1em;
+    height: $select-height;
+  }
+
+  .unicafe-favorite__restaurant-link {
+    flex-basis: $select-height;
+    margin-left: 5px;
+    height: 100%;
+    background-color: $blue;
+    position: relative;
+    color: $white;
+  }
+
+  .unicafe-favorite__restaurant-link-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include transform(translate(-50%, -50%));
+  }
+
+  .unicafe-favorite__select {
+    background-color: $white;
+    flex-grow: 1;
+    @include border;
+
+    select {
+      padding: 2px 0 2px 2px;
+      overflow: hidden;
+      border: none;
+      color: $gray;
+      height: $select-height;
+      padding: 0 1em !important;
+      option:disabled {
+        color: black;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.unicafe-favorite__meta-data {
+  font-style: italic;
+  font-size: 0.8em;
+}
