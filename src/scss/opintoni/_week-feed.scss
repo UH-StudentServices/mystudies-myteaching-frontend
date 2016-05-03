@@ -33,6 +33,7 @@
       align-items: center;
       margin-right: 0.4em;
       margin-bottom: 0.5em;
+      transition: none; // workaround for an angular-animate bug where stale items are briefly shown with new items
     }
   }
 }

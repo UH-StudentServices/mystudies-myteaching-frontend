@@ -2287,7 +2287,8 @@ a.text-neutral {
     display: flex;
     align-items: center;
     margin-right: 0.4em;
-    margin-bottom: 0.5em; }
+    margin-bottom: 0.5em;
+    transition: none; }
 
 .weekfeed__subscribe {
   position: relative;
