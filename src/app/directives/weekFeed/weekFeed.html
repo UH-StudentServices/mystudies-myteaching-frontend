@@ -37,7 +37,7 @@
           class="clickable">
         <a>{{ subTab.translateKey | translate | capitalize }}</a>
       </li>
-      <li class="weekfeed__subscribe">
+      <li class="weekfeed__subscribe" ng-if="selectedTab.key === 'SCHEDULE'">
         <subscribe-events ng-if="!hideSubTabs"></subscribe-events>
       </li>
     </ul>
