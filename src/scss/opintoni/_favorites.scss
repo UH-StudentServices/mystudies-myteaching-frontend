@@ -312,63 +312,6 @@ $favorite-size-large: 340px;
   font-size: 2rem;
 }
 
-.favorites-container .unicafe {
-
-  position: relative;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url('/assets/images/bg/ruokalista.png');
-  background-color: $darkgray;
-  color: $white;
-  overflow-y: hidden !important;
-
-  @include breakpoint($mobile-only) {
-    height: 300px;
-  }
-
-  h4 {
-    font-size: 1.8rem;
-    color: $white;
-  }
-
-  .unicafe-favorite__menu {
-    overflow-y: auto;
-
-    @include breakpoint($mobile-only) {
-      padding-bottom: 3em;
-    }
-    @include breakpoint($small) {
-      height: 100px;
-    }
-    @include breakpoint($medium) {
-      height: 150px;
-    }
-    @include breakpoint($large) {
-      height: 200px;
-    }
-  }
-
-  .unicafe-favorite__select-container {
-    position: absolute;
-    bottom: 1em;
-    left: 1em;
-    right: 1em;
-    background-color: $white;
-    @include border;
-
-    select {
-      padding: 2px 0 2px 2px;
-      overflow: hidden;
-      width: 100%;
-      border: none;
-      color: $gray;
-      height: 35px;
-      padding: 0 1em !important;
-    }
-  }
-}
-
 .add-favorite-search {
   input[type="text"], input[type="url"] {
     border: 0;
