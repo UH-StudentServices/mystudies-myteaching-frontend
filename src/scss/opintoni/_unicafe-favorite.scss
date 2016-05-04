@@ -45,12 +45,6 @@
       padding-bottom: 3em;
     }
     @include breakpoint($small) {
-      height: 100px;
-    }
-    @include breakpoint($medium) {
-      height: 150px;
-    }
-    @include breakpoint($large) {
       height: 200px;
     }
   }
@@ -66,6 +60,7 @@
 
   .unicafe-favorite__restaurant-link {
     flex-basis: $select-height;
+    min-width: $select-height;
     margin-left: 5px;
     height: 100%;
     background-color: $blue;
@@ -86,12 +81,11 @@
     @include border;
 
     select {
-      padding: 2px 0 2px 2px;
       overflow: hidden;
       border: none;
       color: $gray;
       height: $select-height;
-      padding: 0 1em !important;
+      padding: 0 0 0 3px !important;
       option:disabled {
         color: black;
         font-weight: bold;

@@ -2076,12 +2076,6 @@ a.text-neutral {
         padding-bottom: 3em; } }
     @media (min-width: 48em) {
       .unicafe-favorite .unicafe-favorite__menu {
-        height: 100px; } }
-    @media (min-width: 62.5em) {
-      .unicafe-favorite .unicafe-favorite__menu {
-        height: 150px; } }
-    @media (min-width: 75em) {
-      .unicafe-favorite .unicafe-favorite__menu {
         height: 200px; } }
   .unicafe-favorite .unicafe-favorite__select-container {
     display: flex;
@@ -2092,6 +2086,7 @@ a.text-neutral {
     height: 45px; }
   .unicafe-favorite .unicafe-favorite__restaurant-link {
     flex-basis: 45px;
+    min-width: 45px;
     margin-left: 5px;
     height: 100%;
     background-color: #0098d0;
@@ -2110,12 +2105,11 @@ a.text-neutral {
     flex-grow: 1;
     border: 1px solid #EBEBEB; }
     .unicafe-favorite .unicafe-favorite__select select {
-      padding: 2px 0 2px 2px;
       overflow: hidden;
       border: none;
       color: #666;
       height: 45px;
-      padding: 0 1em !important; }
+      padding: 0 0 0 3px !important; }
       .unicafe-favorite .unicafe-favorite__select select option:disabled {
         color: black;
         font-weight: bold; }
