@@ -251,7 +251,7 @@
   position: absolute;
   top: calc(100% + #{$triangle-size});
   right: 0;
-  max-width: 350px;
+  max-width: 400px;
   z-index: 1;
   color: $silver;
   background-color: $white;
@@ -259,7 +259,7 @@
   @include tab-shadow;
 
   @include breakpoint($mobile-only) {
-    width: 300px;
+    width: 90vw;
   }
 
   @include triangle($triangle-size);
