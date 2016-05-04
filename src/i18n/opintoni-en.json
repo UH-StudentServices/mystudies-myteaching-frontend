@@ -24,7 +24,8 @@
     "loadingContent" : "Loading content...",
     "current": "Current",
     "upcoming": "Upcoming",
-    "past": "Past"
+    "past": "Past",
+    "frontpage": "frontpage"
   },
   "abbreviations": {
     "credits": "cr"

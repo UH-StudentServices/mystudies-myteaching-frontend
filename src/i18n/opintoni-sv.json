@@ -24,7 +24,8 @@
     "loadingContent" : "Hämtar innehåll...",
     "current": "Nuvarande",
     "upcoming": "Kommande",
-    "past": "Avslutad"
+    "past": "Avslutad",
+    "frontpage": "frontpage (sv)"
   },
   "abbreviations": {
     "credits": "sp"

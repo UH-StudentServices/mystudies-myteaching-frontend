@@ -25,7 +25,8 @@ angular.module('directives.mobileToolbar', [
 
   .directive('mobileToolbar', function(pageHeaderLinks,
                                        mobileReturnLinks,
-                                       primaryLinks) {
+                                       primaryLinks,
+                                       LanguageService) {
     return {
       restrict: 'E',
       replace: true,
@@ -51,6 +52,7 @@ angular.module('directives.mobileToolbar', [
         $scope.pageHeaderLinks = pageHeaderLinks;
         $scope.mobileReturnLinks = mobileReturnLinks;
         $scope.primaryLinks = primaryLinks;
+        $scope.userLang = LanguageService.getCurrent();
       }
     };
   });

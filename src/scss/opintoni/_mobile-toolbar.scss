@@ -68,6 +68,10 @@
 
 .mobile-menu__links--light {
   background-color: $white;
+
+  li {
+    border-top: 1px solid $lightsilver;
+  }
 }
 
 .mobile-menu__actions {
@@ -152,5 +156,10 @@
         top: -5px;
       }
     }
+  }
+
+  .hy {
+    @include font-size(18px);
+    vertical-align: top;
   }
 }

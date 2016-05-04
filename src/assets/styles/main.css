@@ -1070,6 +1070,8 @@ button.icon {
 
 .mobile-menu__links--light {
   background-color: #FFF; }
+  .mobile-menu__links--light li {
+    border-top: 1px solid #EBEBEB; }
 
 .mobile-menu__actions li {
   padding: 1em; }
@@ -1156,6 +1158,11 @@ button.icon {
   -transform: translate(-50%, -50%); }
   .mobile-toolbar .dropdown-toggle .icon .circled-number {
     top: -5px; }
+
+.mobile-toolbar .hy {
+  font-size: 18px;
+  font-size: 1.125rem;
+  vertical-align: top; }
 
 /*
  * This file is part of MystudiesMyteaching application.

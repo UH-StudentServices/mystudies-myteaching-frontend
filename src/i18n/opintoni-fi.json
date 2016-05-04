@@ -24,7 +24,8 @@
     "loadingContent" : "Sisältöä ladataan...",
     "current": "Meneillään",
     "upcoming": "Tuleva",
-    "past": "Päättynyt"
+    "past": "Päättynyt",
+    "frontpage": "etusivu"
   },
   "abbreviations": {
     "credits": "op"
