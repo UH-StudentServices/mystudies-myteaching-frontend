@@ -17,7 +17,7 @@
 
 <div class="subscribe-events-popover">
   <div class="subscribe-events-popover__link">
-    <span id="calendar-feed-url" ng-show="calendarFeedUrl">{{calendarFeedUrl}}</span>
+    <span id="calendar-feed-url" ng-show="calendarFeedUrl">{{::calendarFeedUrl}}</span>
     <span ng-hide="calendarFeedUrl"><i class="hy hy-spinner hy-spin"></i></span>
   </div>
   <div class="subscribe-events-popover__content">
@@ -33,7 +33,9 @@
          {{::('general.copyToClipboard' | translate)}}
       </a>
       <span ng-show="copyToClipboardSuccess" translate="general.copyToClipboardSuccess"></span>
-      <span ng-show="copyToClipboardFail">{{ 'general.copyToClipboardFail' + copyToClipboardFailMessageKeySuffix | translate }}</span>
+      <span ng-show="copyToClipboardFail">
+        {{::(('general.copyToClipboardFail' + copyToClipboardFailMessageKeySuffix) | translate) }}
+      </span>
     </div>
     <div class="subscribe-events-popover__instructions">
       {{::('weekFeed.calendarInstructions' | translate | capitalize)}}
