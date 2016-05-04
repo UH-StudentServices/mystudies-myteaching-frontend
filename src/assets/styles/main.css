@@ -83,14 +83,12 @@
 
 .regional-rule-top {
   border-top: 1px solid #EBEBEB;
-  background: transparent url("../images/bg_shadow.png") no-repeat top center;
   background-size: 100% auto;
   margin-top: 30px;
   padding-top: 30px; }
 
 .regional-rule-bottom {
   border-bottom: 1px solid #EBEBEB;
-  background: transparent url("../images/bg_shadow.png") no-repeat top center;
   background-size: 100% auto; }
 
 .horizontal-rule-top {
@@ -810,7 +808,6 @@ button.icon {
 
 .l-aside {
   border-top: 1px solid #EBEBEB;
-  background: transparent url("../images/bg_shadow.png") no-repeat top center;
   background-size: 100% auto;
   background-image: url("../images/ui/bg_shadow.png"); }
   .l-aside:before, .l-aside:after {
@@ -2562,9 +2559,10 @@ a.text-neutral {
     color: #0098d0 !important; }
 
 .subscribe-events-popover__instructions {
-  margin-top: 1em; }
+  margin-top: 1em;
+  line-height: 1.3; }
   .subscribe-events-popover__instructions a {
-    margin-left: 1em; }
+    margin-right: 1em; }
 
 .week-feed-items {
   margin-bottom: 1em; }
