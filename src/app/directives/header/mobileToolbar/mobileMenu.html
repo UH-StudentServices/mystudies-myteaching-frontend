@@ -29,6 +29,24 @@
     </ul>
 
     <ul class="mobile-menu__links mobile-menu__links--light mobile-menu__actions">
+      <li>
+        <a tabindex="0"
+           ui-sref="init"
+           class="active">
+          <span class="hy hy-home"></span>
+          {{::('general.frontpage' | translate | capitalize)}}
+        </a>
+      </li>
+      <li ng-repeat="link in primaryLinks">
+        <a href="{{ ::link.href[userLang] }}"
+           target="_blank"
+           analytics-event="{
+               eventCategory: 'EXTERNAL_LINK',
+               eventAction: 'CLICK',
+               value: link.href[userLang]}">
+          <span translate="{{::link.key}}"></span>
+        </a>
+      </li>
       <li><start-tour start-tour-text="{{::('general.introduction' | translate)}}"></start-tour></li>
     </ul>
   </div>
