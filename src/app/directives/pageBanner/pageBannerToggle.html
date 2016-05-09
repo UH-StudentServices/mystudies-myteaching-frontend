@@ -17,8 +17,7 @@
 
 <div class="page-banner-toggle" ng-class="{'page-banner-toggle--banner-hidden' : !showBanner}">
   <a tabindex="0" class="page-banner__button" ng-click="toggleShowBanner()">
-    <span
-      ng-class="{'page-banner__button-icon--arrow-up' : showBanner, 'page-banner__button-icon--arrow-down' : !showBanner}">
-    </span>
+    <span ng-if="showBanner" title="{{::('banner.tooltip.hide' | translate)}}" class="page-banner__button-icon--arrow-up"></span>
+    <span ng-if="!showBanner" title="{{::('banner.tooltip.show' | translate)}}" class="page-banner__button-icon--arrow-down"></span>
   </a>
 </div>

@@ -63,6 +63,12 @@
     "oodi": "Weboodi",
     "courseSearch": "Hae opetusta"
   },
+  "banner": {
+    "tooltip": {
+        "hide": "Piilota tiedotteet",
+        "show": "Näytä tiedotteet"
+    }
+  },
   "opintoni": {
     "feedback": {
       "bannerHeading": "ANNA PALAUTETTA OPINTONI-SIVUSTA",

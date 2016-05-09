@@ -63,6 +63,12 @@
     "oodi": "Weboodi",
     "courseSearch": "Course search"
   },
+  "banner": {
+    "tooltip": {
+        "hide": "Hide notifications",
+        "show": "Show notifications"
+    }
+  },
   "opintoni": {
     "feedback": {
       "bannerHeading": "GIVE FEEDBACK ON MY STUDIES",

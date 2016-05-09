@@ -63,6 +63,12 @@
     "oodi": "Weboodi",
     "courseSearch": "Sök undervisning"
   },
+  "banner": {
+    "tooltip": {
+        "hide": "Dölja meddelanden",
+        "show": "Visa meddelanden"
+    }
+  },
   "opintoni": {
     "feedback": {
       "bannerHeading": "GE FEEDBACK PÅ MINA STUDIER",
