@@ -871,6 +871,12 @@ button.icon {
   margin-bottom: 3em;
   margin-top: 1em; }
 
+@media (max-width: 767px) {
+  .ui-component__title {
+    text-align: center;
+    font-size: 28px;
+    font-size: 1.75rem; } }
+
 /*
  * This file is part of MystudiesMyteaching application.
  *
@@ -1303,7 +1309,7 @@ button.icon {
   .page-banner__news-item {
     max-width: 60%;
     position: relative;
-    top: 1.5em;
+    top: 2em;
     left: 1em; } }
 
 .page-banner__title {
@@ -3463,7 +3469,6 @@ a.text-neutral {
 .useful-links h3 {
   font-size: 20px;
   font-size: 1.25rem;
-  width: 70%;
   margin-bottom: 16px; }
 
 .useful-links ul[dnd-list], .useful-links li[dnd-list] {
@@ -3759,9 +3764,18 @@ a.text-neutral {
   position: relative; }
 
 .edit-link {
-  position: absolute;
   right: 0;
-  bottom: 0.5em; }
+  position: absolute;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -transform: translateY(-50%);
+  position: absolute;
+  top: 50%; }
+  @media (min-width: 48em) {
+    .edit-link .hy {
+      position: relative;
+      top: 2px; } }
 
 /*
  * This file is part of MystudiesMyteaching application.

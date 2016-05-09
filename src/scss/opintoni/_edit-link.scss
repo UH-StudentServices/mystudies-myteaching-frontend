@@ -20,7 +20,14 @@
 }
 
 .edit-link {
-  position: absolute;
   right: 0;
-  bottom: 0.5em;
+  position: absolute;
+  @include vertically-center;
+
+  @include breakpoint($small) {
+    .hy {
+      position: relative;
+      top: 2px;
+    }
+  }
 }

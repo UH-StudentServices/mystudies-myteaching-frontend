@@ -85,7 +85,7 @@ $page-banner-toggle-size-mobile: 25px;
   @include breakpoint($small) {
     max-width: 60%;
     position: relative;
-    top: 1.5em;
+    top: 2em;
     left: 1em;
   }
 }

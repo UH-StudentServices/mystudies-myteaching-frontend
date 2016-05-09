@@ -16,7 +16,9 @@
   -->
 
 <a class="edit-link" tabindex="0" ng-click="onClick()" visibility-private>
-  <span ng-hide="editing" translate="general.edit" class="text-transform-capitalize"></span>
-  <span ng-show="editing" translate="general.done" class="text-transform-capitalize"></span>
-  <i class="fa" ng-class="{'fa-close' : editing, 'fa-gear' : !editing}"></i>
+  <span class="hide-mobile-only">
+    <span ng-hide="editing" translate="general.edit" class="text-transform-capitalize"></span>
+    <span ng-show="editing" translate="general.done" class="text-transform-capitalize"></span>
+  </span>
+  <i class="hy" ng-class="{'hy-done' : editing, 'hy-modify' : !editing}"></i>
 </a>
