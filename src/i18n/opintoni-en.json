@@ -235,7 +235,6 @@
     }
   },
   "todoItems": {
-    "title": "To do list",
     "listIsEmpty": "Your to do list is empty",
     "addNew": "Add new todo item...",
     "check": "Mark as done",

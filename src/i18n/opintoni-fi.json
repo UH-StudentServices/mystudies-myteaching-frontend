@@ -234,7 +234,6 @@
     }
   },
   "todoItems": {
-    "title": "Muistilista",
     "listIsEmpty": "Muistilistasi on vielä tyhjä",
     "addNew": "Uusi tehtävä...",
     "check": "Merkitse tehdyksi",

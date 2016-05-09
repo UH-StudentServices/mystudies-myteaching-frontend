@@ -2775,12 +2775,6 @@ a.text-neutral {
 .todo-items__icon {
   text-align: center; }
 
-.todo-items--dark .todo-items__title {
-  color: #FFF; }
-
-.todo-items--light .todo-items__title {
-  color: #666; }
-
 .todo-items__box {
   padding: 20px;
   overflow-y: scroll; }

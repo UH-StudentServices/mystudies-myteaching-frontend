@@ -142,10 +142,6 @@ $todo-item-background-color-light: $white;
   text-align: center;
 }
 
-.todo-items__title {
-  @include todo-item-font-color;
-}
-
 .todo-items__box {
   .todo-items--dark & {
     background-color: $todo-item-background-color-dark;
