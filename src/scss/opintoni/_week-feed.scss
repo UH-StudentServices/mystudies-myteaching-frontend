@@ -15,9 +15,45 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-.horizontal-tabs {
-  #week-feed & {
-    margin-bottom: 3em;
+.week-feed__tabs {
+  display:flex;
+  align-items: flex-start;
+
+  text-transform: uppercase;
+  margin-bottom: 1em;
+  font-weight: 600;
+
+  @keyframes active-in {
+    from {border-color: $lightsilver;}
+    to {border-color: $darkblue;}
+  }
+
+  @keyframes active-out {
+    from {border-color: $darkblue;}
+    to {border-color: $lightsilver;}
+  }
+
+  li {
+    flex: 1 0 90px;
+    border-bottom: 2px solid;
+    border-color: $lightsilver;
+    text-align: center;
+    line-height: 2;
+    animation-name: active-out;
+    animation-duration: 0.3s;
+
+    &:focus {
+      outline: none;
+    }
+
+    &.is-active {
+      a {
+        color: $darkblue;
+      }
+      animation-name: active-in;
+      animation-duration: 0.3s;
+      border-color: $darkblue;
+    }
   }
 }
 
