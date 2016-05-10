@@ -2336,12 +2336,8 @@ a.text-neutral {
  * You should have received a copy of the GNU General Public License
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
-.week-feed-tabs {
+.week-feed__tabs {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-content: flex-start;
   align-items: flex-start;
   text-transform: uppercase;
   margin-bottom: 1em;
@@ -2358,23 +2354,21 @@ a.text-neutral {
     border-color: #005479; }
   to {
     border-color: #EBEBEB; } }
-  .week-feed-tabs li {
-    flex-grow: 1;
-    flex-shrink: 0;
-    flex-basis: 90px;
+  .week-feed__tabs li {
+    flex: 1 0 90px;
     border-bottom: 2px solid;
     border-color: #EBEBEB;
     text-align: center;
-    line-height: 2em;
+    line-height: 2;
     animation-name: active-out;
     animation-duration: 0.3s; }
-    .week-feed-tabs li:focus {
+    .week-feed__tabs li:focus {
       outline: none; }
-    .week-feed-tabs li.is-active {
+    .week-feed__tabs li.is-active {
       animation-name: active-in;
       animation-duration: 0.3s;
       border-color: #005479; }
-      .week-feed-tabs li.is-active a {
+      .week-feed__tabs li.is-active a {
         color: #005479; }
 
 #week-feed .tag-list--tabs {

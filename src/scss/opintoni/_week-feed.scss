@@ -15,12 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-.week-feed-tabs {
+.week-feed__tabs {
   display:flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-content: flex-start;
   align-items: flex-start;
 
   text-transform: uppercase;
@@ -38,13 +34,11 @@
   }
 
   li {
-    flex-grow: 1;
-    flex-shrink: 0;
-    flex-basis: 90px;
+    flex: 1 0 90px;
     border-bottom: 2px solid;
     border-color: $lightsilver;
     text-align: center;
-    line-height: 2em;
+    line-height: 2;
     animation-name: active-out;
     animation-duration: 0.3s;
 
