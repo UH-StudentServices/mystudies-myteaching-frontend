@@ -60,6 +60,7 @@ angular.module('opintoniApp', [
   'directives.tour',
   'directives.pageBanner',
   'directives.helpIcon',
+  'directives.popover',
   'ui.calendar',
   'utils.loader'
 ])

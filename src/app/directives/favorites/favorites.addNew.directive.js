@@ -20,7 +20,7 @@ angular.module('directives.favorites.addNew', [
   'directives.favorites.addNew.unicafe',
   'directives.favorites.addNew.twitter',
   'directives.favorites.addNew.unisport',
-  'nsPopover',
+  'directives.popover',
   'services.focus'])
 
   .constant('availableFavoriteTypes', ['RSS', 'UNICAFE', 'TWITTER'])
@@ -89,9 +89,17 @@ angular.module('directives.favorites.addNew', [
           }
         };
 
-        $scope.showPopover = function() {
-          setFocus();
-          resetPopover();
+        $scope.togglePopover = function() {
+          $scope.displayPopover = !$scope.displayPopover;
+
+          if($scope.displayPopover) {
+            setFocus();
+            resetPopover();
+          }
+        };
+
+        $scope.closePopover = function() {
+          $scope.displayPopover = false;
         };
 
         $scope.selectFavoriteType = function(favoriteType) {

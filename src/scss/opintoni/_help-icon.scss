@@ -1,6 +1,6 @@
 $icon-size: 20px;
 $tooltip-width: 300px;
-$tooltip-width-mobile: 200px;
+$tooltip-width-mobile: 250px;
 
 .help-icon {
   font-size: $icon-size;
@@ -8,20 +8,21 @@ $tooltip-width-mobile: 200px;
   top: 3px;
 }
 
-.help-icon__popover {
-  @extend .dropdown-menu;
-  @include triangle-with-border(12px, 12px);
-  @include font-size(13px);
-  position: relative;
-  background-color: $white;
-  border: 1px solid $lightsilver !important;
-  padding: 1em;
-  right: -15px;
-  top: 5px;
+.help-icon-popover-container {
+  right: -15px !important;
+  width: $tooltip-width-mobile;
+
+
   @include breakpoint($mobile-only) {
     width: $tooltip-width-mobile;
   }
+
   @include breakpoint($small) {
     width: $tooltip-width;
   }
+}
+
+.help-icon__popover {
+  @include font-size(13px);
+  padding: 1em;
 }

@@ -15,18 +15,9 @@
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<div>
-  <button class="weekfeed__subscribe__button button--dark button text-transform-capitalize"
-          ng-click="onClick()"
-          translate="weekFeed.subscribeEvents">
-  </button>
-  <popover template="app/directives/weekFeed/subscribeEvents/popover/popover.html"
-           override-class="subscribe-events-popover-container"
-           ng-if="showPopover"
-           id="weekfeed-popover"
-           trigger-selector="weekfeed__subscribe__button"
-           target-selector=".weekfeed__subscribe"
-           on-click-outside="closePopover()"
-           on-click-trigger="onClick()">
-  </popover>
+<div class="popover-wrapper {{::overrideClass}}"
+     id="{{::id}}"
+     ng-show="showPopover"
+     click-outside="closePopover()"
+     outside-if-not="{{::triggerSelector}}, popover-wrapper">
 </div>
