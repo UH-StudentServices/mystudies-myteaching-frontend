@@ -83,14 +83,12 @@
 
 .regional-rule-top {
   border-top: 1px solid #EBEBEB;
-  background: transparent url("../images/bg_shadow.png") no-repeat top center;
   background-size: 100% auto;
   margin-top: 30px;
   padding-top: 30px; }
 
 .regional-rule-bottom {
   border-bottom: 1px solid #EBEBEB;
-  background: transparent url("../images/bg_shadow.png") no-repeat top center;
   background-size: 100% auto; }
 
 .horizontal-rule-top {
@@ -810,7 +808,6 @@ button.icon {
 
 .l-aside {
   border-top: 1px solid #EBEBEB;
-  background: transparent url("../images/bg_shadow.png") no-repeat top center;
   background-size: 100% auto;
   background-image: url("../images/ui/bg_shadow.png"); }
   .l-aside:before, .l-aside:after {
@@ -2541,6 +2538,10 @@ a.text-neutral {
 @media (max-width: 767px) {
   .subscribe-events-popover-container {
     width: 90vw; } }
+
+@media (min-width: 48em) {
+  .subscribe-events-popover-container {
+    width: 400px; } }
 
 .subscribe-events-popover__link {
   border-bottom: 1px solid #EBEBEB;

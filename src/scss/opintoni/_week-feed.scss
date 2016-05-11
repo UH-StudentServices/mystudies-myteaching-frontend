@@ -284,6 +284,10 @@
   @include breakpoint($mobile-only) {
     width: 90vw;
   }
+
+  @include breakpoint($small) {
+    width: 400px;
+  }
 }
 
 .subscribe-events-popover__link {
