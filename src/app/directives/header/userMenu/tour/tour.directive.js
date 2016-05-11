@@ -31,7 +31,7 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
 
     function getElementTemplate(content, isEnd) {
       var tpl = _.template('<div id="pop-over-text" class="popover-text"><%= content %></div>' +
-        '<a class="skipBtn" aria-label="<%= skipText %>"></a><ul class="list-of-links--dark">' +
+        '<a class="skipBtn__corner skipBtn" aria-label="<%= skipText %>"></a><ul class="list-of-links--dark">' +
         '<li><a class="nextBtn"><span><%= nextText %></span></a></li></ul></div></div>');
 
       return tpl({
@@ -41,11 +41,12 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
 
     function getTitleTemplate() {
       var tpl = _.template('<div><h3 class="popover-title">{{heading}}</h3>' +
-        '<a class="skipBtn" aria-label="<%= skipText %>"></a>' +
+        '<a class="skipBtn__corner skipBtn" aria-label="<%= skipText %>"></a>' +
         '<div class="popover-text" ng-bind-html="content"></div><ul class="list-of-links--dark">' +
-        '<li><a class="nextBtn"><span><%= startText %></span></a></li></ul></div>');
+        '<li><a class="nextBtn"><span><%= startText %></span></a></li>' +
+        '<li><a class="skipBtn"><span><%= finishText %></span></a></li></ul></div>');
 
-      return tpl({skipText: skipText(), startText: startText()});
+      return tpl({skipText: skipText(), startText: startText(), finishText: finishText()});
     }
 
     function getNextButtonText(isEnd) {

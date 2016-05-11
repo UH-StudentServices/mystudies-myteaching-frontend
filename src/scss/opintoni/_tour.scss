@@ -92,6 +92,11 @@ $joyride-z-index: 999;
 
   .list-of-links--dark {
     padding: 1rem;
+    > li {
+      display: inline;
+      padding-right: 10px;
+    }
+
     > li a {
       cursor: pointer;
       display: inline-block;
@@ -101,7 +106,7 @@ $joyride-z-index: 999;
     }
   }
 
-  .skipBtn {
+  .skipBtn__corner {
     border: 0;
     position: absolute;
     top: 0.5rem;
