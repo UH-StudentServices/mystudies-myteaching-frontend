@@ -3184,7 +3184,7 @@ a.text-neutral {
     white-space: nowrap; }
   .favorites-container .dropzone .itemlist > li .rss-feed .rss-content {
     overflow-y: auto;
-    max-height: 340px; }
+    max-height: 330px; }
     @media (min-width: 48em) {
       .favorites-container .dropzone .itemlist > li .rss-feed .rss-content {
         overflow-y: auto; } }
