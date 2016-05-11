@@ -78,6 +78,7 @@ angular.module('opintoniApp', [
     $locationProvider,
     $translateProvider,
     $cookiesProvider,
+    $compileProvider,
     paginationTemplateProvider,
     preferredLanguage) {
 
@@ -88,6 +89,8 @@ angular.module('opintoniApp', [
     paginationTemplateProvider.setPath('app/opintoni/views/partials/_dir_pagination.html');
 
     $urlRouterProvider.otherwise('/init');
+
+    $compileProvider.debugInfoEnabled(false);
 
     $stateProvider
       .state('root', {
