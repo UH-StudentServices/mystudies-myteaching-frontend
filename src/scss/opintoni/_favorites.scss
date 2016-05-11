@@ -166,10 +166,6 @@ $favorite-size-large: 340px;
 
   .add-new {
     @include border;
-
-    @include breakpoint($small) {
-      overflow-y: auto;
-    }
   }
 
   .rss-feed {
@@ -197,7 +193,7 @@ $favorite-size-large: 340px;
       background-size: cover;
       margin-bottom: 5px;
     }
-    
+
   }
 
   .twitter {
@@ -229,43 +225,42 @@ $favorite-size-large: 340px;
   }
 }
 
-.add-favorite-container {
-  @include border;
-  @include tab-shadow;
-  background-color: $white;
-  position: relative;
-  top: -20px;
+.favorites-list-popover-container {
+  top: calc(50% + 3rem) !important;
+  left: 0;
+  max-width: none !important;
+
+  @include breakpoint($mobile-only) {
+    margin: 0 10%;
+  }
 
   @include breakpoint($small) {
-    top: -130px;
+    margin: 0;
   }
-}
 
-.add-favorite-arrow {
-  @include triangle(10px);
-  position: relative;
-  left: -5px;
-  display: block;
-  width: 0;
-  height: 0;
-  margin-left: auto;
-  margin-right: auto;
+  &::before {
+    transform: translate(50%,0);
+    right: 50% !important;
+  }
+
+  &::after {
+    transform: translate(50%,0);
+    right: 50% !important;
+  }
 }
 
 .add-favorite {
-  overflow: hidden;
-  width: 250px;
   height: 250px;
+
   @include breakpoint($small) {
-    width: 280px;
     height: 280px;
   }
+
   @include breakpoint($medium) {
-    width: 320px;
     height: 320px;
   }
+
   @include breakpoint($large) {
-    width: 350px;
     height: 350px;
   }
 }
@@ -284,9 +279,9 @@ $favorite-size-large: 340px;
       cursor: auto;
 
       a {
-        color: grey;  
+        color: grey;
       }
-      
+
     }
   }
 }

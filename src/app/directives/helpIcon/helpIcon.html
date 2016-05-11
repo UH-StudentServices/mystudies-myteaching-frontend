@@ -1,10 +1,12 @@
 <span class="help-icon">
   <a tabindex="0"
-     ns-popover
-     ns-popover-template="app/directives/helpIcon/helpIcon.popover.html"
-     ns-popover-trigger="click"
-     ns-popover-placement="bottom|right"
-     ns-popover-timeout="20000">
+     class="help-icon-popover-trigger">
     <span class="hy hy-question"></span>
   </a>
+  <popover template="app/directives/helpIcon/helpIcon.popover.html"
+           override-class="help-icon-popover-container"
+           id="help-icon-popover"
+           trigger-selector="help-icon-popover-trigger"
+           target-selector=".help-icon-popover-trigger">
+  </popover>
 </span>

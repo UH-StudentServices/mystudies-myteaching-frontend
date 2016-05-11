@@ -18,8 +18,9 @@
 angular.module('directives.subscribeEvents', [
   'resources.calendarFeed',
   'utils.domain',
-  'angular-click-outside',
-  'directives.weekfeed.calendarSubscription.popover'])
+  'utils.browser',
+  'directives.clipboard',
+  'directives.popover'])
 
   .constant({
     'MessageTimeouts': {
@@ -28,11 +29,28 @@ angular.module('directives.subscribeEvents', [
     }
   })
 
+  .constant('InstructionLinks', {
+    OUTLOOK: {
+      'fi': 'http://www.helsinki.fi/helpdesk/3294#outlook',
+      'en': 'http://www.helsinki.fi/helpdesk/3294/eng#outlook',
+      'sv': 'http://www.helsinki.fi/helpdesk/3294/sve#outlook'
+    },
+    GOOGLE: {
+      'fi': 'https://support.google.com/calendar/answer/37100?hl=fi',
+      'en': 'https://support.google.com/calendar/answer/37100?hl=en',
+      'sv': 'https://support.google.com/calendar/answer/37100?hl=sv'
+    }
+  })
+
   .directive('subscribeEvents', function(CalendarFeedResource,
                                          $rootScope,
                                          $q,
                                          DomainUtil,
-                                         AnalyticsService) {
+                                         AnalyticsService,
+                                         InstructionLinks,
+                                         BrowserUtil,
+                                         $timeout,
+                                         MessageTimeouts) {
     return {
       rescrict: 'E',
       replace: true,
@@ -43,6 +61,26 @@ angular.module('directives.subscribeEvents', [
 
         $scope.userLang = $rootScope.userLang;
         $scope.showPopover = false;
+        $scope.InstructionLinks = InstructionLinks;
+        $scope.userLang = $rootScope.userLang;
+        $scope.showCopyToClipboard = !BrowserUtil.isMobile();
+
+        $scope.copyToClipboardSuccessCallback = function() {
+          $scope.copyToClipboardSuccess = true;
+
+          $timeout(function() {
+            $scope.copyToClipboardSuccess = false;
+          }, MessageTimeouts.SUCCESS);
+        };
+
+        $scope.copyToClipboardErrorCallback = function() {
+          $scope.copyToClipboardFailMessageKeySuffix = BrowserUtil.isMac() ? 'Mac' : 'Other';
+          $scope.copyToClipboardFail = true;
+
+          $timeout(function() {
+            $scope.copyToClipboardFail = false;
+          }, MessageTimeouts.FAIL);
+        };
 
         function getOrCreateCalendarFeed() {
           return CalendarFeedResource.getCalendarFeed()

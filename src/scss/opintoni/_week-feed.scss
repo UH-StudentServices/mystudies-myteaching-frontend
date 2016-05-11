@@ -75,7 +75,6 @@
 }
 
 .weekfeed__subscribe {
-  position: relative;
   margin-left: auto;
 
   &__button {
@@ -281,35 +280,9 @@
   }
 }
 
-.subscribe-events-popover {
-  $triangle-size: 10px;
-
-  position: absolute;
-  top: calc(100% + #{$triangle-size});
-  right: 0;
-  max-width: 400px;
-  z-index: 1;
-  color: $silver;
-  background-color: $white;
-  @include border;
-  @include tab-shadow;
-
+.subscribe-events-popover-container {
   @include breakpoint($mobile-only) {
     width: 90vw;
-  }
-
-  @include triangle($triangle-size);
-
-  &::before {
-    top: -$triangle-size;
-    right: 1em;
-    left: auto;
-  }
-
-  &::after {
-    top: -($triangle-size - 1px);
-    right: 1em;
-    left: auto;
   }
 }
 
@@ -319,17 +292,10 @@
   color: $silver;
   padding: 1em;
   font-weight: 600;
-  background-color: $white;
-  word-wrap: break-word;
 }
 
 .subscribe-events-popover__content {
-  @include font-size(14px);
   padding: 1.5em 1em 1em 1em;
-
-  a {
-    color: $blue !important;
-  }
 }
 
 .subscribe-events-popover__instructions {

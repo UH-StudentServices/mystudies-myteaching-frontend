@@ -46,7 +46,6 @@ module.exports = function(config) {
       'src/bower_components/angular-aria/angular-aria.js',
       'src/bower_components/lodash/lodash.js',
       'src/bower_components/angular-drag-and-drop-lists/angular-drag-and-drop-lists.js',
-      'src/bower_components/nsPopover/src/nsPopover.js',
       'src/bower_components/angular-google-analytics/dist/angular-google-analytics.min.js',
       'src/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
       'src/bower_components/angular-flexslider/angular-flexslider.js',

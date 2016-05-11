@@ -1,4 +1,4 @@
-angular.module('directives.helpIcon', [])
+angular.module('directives.helpIcon', ['directives.popover'])
 
   .directive('helpIcon', function() {
     return {
