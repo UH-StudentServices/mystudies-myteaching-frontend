@@ -176,7 +176,7 @@ $favorite-size-large: 340px;
 
     .rss-content {
       overflow-y: auto;
-      max-height: 330px;
+      max-height: 319px;
 
       @include breakpoint($small) {
         overflow-y: auto;
