@@ -55,9 +55,30 @@ angular.module('directives.pageBanner', [
         showBanner: '='
       },
       templateUrl: 'app/directives/pageBanner/pageBannerToggle.html',
-      link: function($scope) {
+      controller: function($scope, $translate) {
+        if ($scope.showBanner) {
+          $translate('banner.tooltip.hide').then(function(tooltip) {
+            $scope.tooltip = tooltip;
+          });
+        }
+        else {
+          $translate('banner.tooltip.show').then(function(tooltip) {
+            $scope.tooltip = tooltip;
+          });
+        }
+
         $scope.toggleShowBanner = function() {
           UserSettingsService.setShowBanner(!$scope.showBanner);
+          if (!$scope.showBanner) {
+            $translate('banner.tooltip.hide').then(function(tooltip) {
+              $scope.tooltip = tooltip;
+            });
+          }
+          else {
+            $translate('banner.tooltip.show').then(function(tooltip) {
+              $scope.tooltip = tooltip;
+            });
+          }
         };
       }
     };
