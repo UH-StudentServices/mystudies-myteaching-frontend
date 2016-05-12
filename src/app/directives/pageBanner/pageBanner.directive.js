@@ -60,8 +60,7 @@ angular.module('directives.pageBanner', [
           $translate('banner.tooltip.hide').then(function(tooltip) {
             $scope.tooltip = tooltip;
           });
-        }
-        else {
+        } else {
           $translate('banner.tooltip.show').then(function(tooltip) {
             $scope.tooltip = tooltip;
           });
@@ -73,8 +72,7 @@ angular.module('directives.pageBanner', [
             $translate('banner.tooltip.hide').then(function(tooltip) {
               $scope.tooltip = tooltip;
             });
-          }
-          else {
+          } else {
             $translate('banner.tooltip.show').then(function(tooltip) {
               $scope.tooltip = tooltip;
             });
