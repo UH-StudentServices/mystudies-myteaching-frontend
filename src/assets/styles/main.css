@@ -83,12 +83,14 @@
 
 .regional-rule-top {
   border-top: 1px solid #EBEBEB;
+  background: transparent url("../images/bg_shadow.png") no-repeat top center;
   background-size: 100% auto;
   margin-top: 30px;
   padding-top: 30px; }
 
 .regional-rule-bottom {
   border-bottom: 1px solid #EBEBEB;
+  background: transparent url("../images/bg_shadow.png") no-repeat top center;
   background-size: 100% auto; }
 
 .horizontal-rule-top {
@@ -808,6 +810,7 @@ button.icon {
 
 .l-aside {
   border-top: 1px solid #EBEBEB;
+  background: transparent url("../images/bg_shadow.png") no-repeat top center;
   background-size: 100% auto;
   background-image: url("../images/ui/bg_shadow.png"); }
   .l-aside:before, .l-aside:after {
@@ -1049,9 +1052,12 @@ button.icon {
 .mobile-menu__links li {
   position: relative;
   padding: 0.7em 1em; }
-  .mobile-menu__links li i {
-    margin-right: 1em; }
+  .mobile-menu__links li .hy {
+    position: absolute;
+    left: 0; }
   .mobile-menu__links li a {
+    position: relative;
+    padding-left: 2.5em;
     font-size: 13px;
     font-size: 0.8125rem; }
 

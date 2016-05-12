@@ -33,11 +33,14 @@
     position: relative;
     padding: 0.7em 1em;
 
-    i {
-      margin-right: 1em;
+    .hy {
+      position: absolute;
+      left: 0;
     }
 
     a {
+      position: relative;
+      padding-left: 2.5em;
       @include font-size(13px);
     }
   }
