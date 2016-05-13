@@ -1338,11 +1338,8 @@ button.icon {
 .page-banner__image-cover {
   width: 80%;
   height: 100%;
-  background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.6), transparent);
   /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(right, rgba(0, 0, 0, 0.6), transparent);
   /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(right, rgba(0, 0, 0, 0.6), transparent);
   /* For Firefox 3.6 to 15 */
   background: linear-gradient(to right, rgba(0, 0, 0, 0.6), transparent);
   /* Standard syntax */ }
@@ -2089,6 +2086,8 @@ a.text-neutral {
       .unicafe-favorite .unicafe-favorite__menu {
         height: 200px; } }
   .unicafe-favorite .unicafe-favorite__select-container {
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
     position: absolute;
     bottom: 1em;
@@ -2096,7 +2095,9 @@ a.text-neutral {
     right: 1em;
     height: 45px; }
   .unicafe-favorite .unicafe-favorite__restaurant-link {
-    flex-basis: 45px;
+    -webkit-flex-basis: 45px;
+        -ms-flex-preferred-size: 45px;
+            flex-basis: 45px;
     min-width: 45px;
     margin-left: 5px;
     height: 100%;
@@ -2113,7 +2114,9 @@ a.text-neutral {
     -transform: translate(-50%, -50%); }
   .unicafe-favorite .unicafe-favorite__select {
     background-color: #FFF;
-    flex-grow: 1;
+    -webkit-flex-grow: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
     border: 1px solid #EBEBEB; }
     .unicafe-favorite .unicafe-favorite__select select {
       overflow: hidden;
@@ -2334,11 +2337,21 @@ a.text-neutral {
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 .week-feed__tabs {
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  align-items: flex-start;
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   text-transform: uppercase;
   margin-bottom: 1em;
   font-weight: 600; }
+
+@-webkit-keyframes active-in {
+  from {
+    border-color: #EBEBEB; }
+  to {
+    border-color: #005479; } }
 
 @keyframes active-in {
   from {
@@ -2346,36 +2359,56 @@ a.text-neutral {
   to {
     border-color: #005479; } }
 
+@-webkit-keyframes active-out {
+  from {
+    border-color: #005479; }
+  to {
+    border-color: #EBEBEB; } }
+
 @keyframes active-out {
   from {
     border-color: #005479; }
   to {
     border-color: #EBEBEB; } }
   .week-feed__tabs li {
-    flex: 1 0 90px;
+    -webkit-flex: 1 0 90px;
+        -ms-flex: 1 0 90px;
+            flex: 1 0 90px;
     border-bottom: 2px solid;
     border-color: #EBEBEB;
     text-align: center;
     line-height: 2;
-    animation-name: active-out;
-    animation-duration: 0.3s; }
+    -webkit-animation-name: active-out;
+            animation-name: active-out;
+    -webkit-animation-duration: 0.3s;
+            animation-duration: 0.3s; }
     .week-feed__tabs li:focus {
       outline: none; }
     .week-feed__tabs li.is-active {
-      animation-name: active-in;
-      animation-duration: 0.3s;
+      -webkit-animation-name: active-in;
+              animation-name: active-in;
+      -webkit-animation-duration: 0.3s;
+              animation-duration: 0.3s;
       border-color: #005479; }
       .week-feed__tabs li.is-active a {
         color: #005479; }
 
 #week-feed .tag-list--tabs {
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  align-items: stretch;
+  -webkit-align-items: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
   margin-bottom: 1em;
   min-height: 1em; }
   #week-feed .tag-list--tabs li {
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
     margin-right: 0.4em;
     margin-bottom: 0.5em;
     transition: none; }
@@ -2933,14 +2966,16 @@ a.text-neutral {
         width: 100%; } }
   .search-bar label {
     top: 50%;
-    transform: translate(0, -50%);
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
     position: absolute;
     left: 10px;
     cursor: pointer;
     color: #0098d0; }
   .search-bar .clear {
     top: 50%;
-    transform: translate(0, -50%);
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
     position: absolute;
     right: 10px;
     cursor: pointer;
@@ -3195,9 +3230,6 @@ a.text-neutral {
   .favorites-container .dropzone .itemlist > li .rss-feed .single-item-image-container {
     width: 100%;
     height: 200px;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
     margin-bottom: 5px; }
   .favorites-container .dropzone .itemlist > li .twitter {
@@ -3231,10 +3263,12 @@ a.text-neutral {
     .favorites-list-popover-container {
       margin: 0; } }
   .favorites-list-popover-container::before {
-    transform: translate(50%, 0);
+    -webkit-transform: translate(50%, 0);
+            transform: translate(50%, 0);
     right: 50% !important; }
   .favorites-list-popover-container::after {
-    transform: translate(50%, 0);
+    -webkit-transform: translate(50%, 0);
+            transform: translate(50%, 0);
     right: 50% !important; }
 
 .add-favorite {
@@ -3834,7 +3868,8 @@ a.text-neutral {
   .feedback__box-default .content, .feedback__box-submitted .content {
     position: absolute;
     top: 50%;
-    transform: translate(0, -50%);
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
     width: 100%; }
 
 .feedback__box-default {
@@ -4052,11 +4087,8 @@ a.text-neutral {
   .lander-bg .gradient-overlay {
     width: 100%;
     height: 100%;
-    background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.8), transparent);
     /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(right, rgba(0, 0, 0, 0.8), transparent);
     /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(right, rgba(0, 0, 0, 0.8), transparent);
     /* For Firefox 3.6 to 15 */
     background: linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent);
     /* Standard syntax */ }

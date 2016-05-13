@@ -75,7 +75,7 @@ module.exports = function(grunt) {
           'src/scss/styleguide_additions/**/*.{scss,sass}',
           'src/app/**/*.html',
           'src/app/**/*.js'],
-        tasks: ['sass:main', 'buildTemplates', 'eslint']
+        tasks: ['sass:main', 'autoprefixer', 'buildTemplates', 'eslint']
       }
     },
     browserSync: {
@@ -124,6 +124,16 @@ module.exports = function(grunt) {
       src: ['src/app/**/*.js', 'test/spec/**/*.js', '*.js'],
       options: {
         quiet: true
+      }
+    },
+    autoprefixer: {
+      options: {
+        browsers: ['last 2 versions']
+      },
+      main: {
+        files: {
+          'src/assets/styles/main.css': 'src/assets/styles/main.css'
+        }
       }
     },
     sass: {
@@ -264,6 +274,7 @@ module.exports = function(grunt) {
     concurrent: {
       serve: [
         'sass:main',
+        'autoprefixer',
         'buildTemplates'
       ],
       test: [
