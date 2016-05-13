@@ -25,8 +25,7 @@ var fs = require('fs'),
     _ = require('lodash'),
     proxy,
     proxyPaths,
-    proxyMiddleware,
-    useminAutoprefixer;
+    proxyMiddleware;
 
 proxy = httpProxy.createProxyServer({
   target: 'http://localhost:8080/'
@@ -49,12 +48,6 @@ proxyMiddleware = function(req, res, next) {
   }
 };
 
-// usemin custom step
-useminAutoprefixer = {
-  name: 'autoprefixer',
-  createConfig: require('grunt-usemin/lib/config/cssmin').createConfig // Reuse cssmins createConfig
-};
-
 module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
   require('time-grunt')(grunt);
@@ -75,7 +68,7 @@ module.exports = function(grunt) {
           'src/scss/styleguide_additions/**/*.{scss,sass}',
           'src/app/**/*.html',
           'src/app/**/*.js'],
-        tasks: ['sass:main', 'autoprefixer', 'buildTemplates', 'eslint']
+        tasks: ['cssDev', 'buildTemplates', 'eslint']
       }
     },
     browserSync: {
@@ -126,14 +119,26 @@ module.exports = function(grunt) {
         quiet: true
       }
     },
-    autoprefixer: {
-      options: {
-        browsers: ['last 2 versions']
+    postcss: {
+      dev: {
+        options: {
+          map: true,
+          processors: [
+            require('autoprefixer')({browsers: ['last 2 versions']})
+          ]
+        },
+        src: 'src/assets/styles/main.css',
+        dest: 'src/assets/styles/main.css'
       },
-      main: {
-        files: {
-          'src/assets/styles/main.css': 'src/assets/styles/main.css'
-        }
+      prod: {
+        options: {
+          map: false,
+          processors: [
+            require('autoprefixer')({browsers: ['last 2 versions']})
+          ]
+        },
+        src: 'src/assets/styles/main.css',
+        dest: 'src/assets/styles/main.css'
       }
     },
     sass: {
@@ -177,9 +182,9 @@ module.exports = function(grunt) {
             steps: {
               js: ['concat', 'uglifyjs'],
               // Let cssmin concat files so it corrects relative paths to fonts and images
-              css: ['cssmin', useminAutoprefixer]
+              css: ['cssmin']
             },
-            post: {}
+            post: {} // this empty obj is required for usemin to work
           }
         }
       }
@@ -273,16 +278,15 @@ module.exports = function(grunt) {
     },
     concurrent: {
       serve: [
-        'sass:main',
-        'autoprefixer',
+        'cssDev',
         'buildTemplates'
       ],
       test: [
-        'sass:main',
+        'cssProd',
         'buildTemplates'
       ],
       dist: [
-        'sass:main',
+        'cssProd',
         'compass:styleguide',
         'buildTemplates'
       ]
@@ -375,6 +379,16 @@ module.exports = function(grunt) {
     'protractor:dev'
   ]);
 
+  grunt.registerTask('cssDev', [
+    'sass',
+    'postcss:dev'
+  ]);
+
+  grunt.registerTask('cssProd', [
+    'sass',
+    'postcss:prod'
+  ]);
+
   grunt.registerTask('buildMinified', [
     'exec:bowerInstall',
     'test',
@@ -385,7 +399,6 @@ module.exports = function(grunt) {
     'copy:distMinified',
     'ngAnnotate',
     'cssmin',
-    'autoprefixer',
     'uglify',
     'filerev',
     'usemin',
