@@ -17,8 +17,9 @@
 
 <div class="course-material"
      ng-class="{'course-material--full': !compact, 'course-material--compact': compact}"
-     ng-show="feedItem.hasMaterial && (feedItem.courseMaterialUri || feedItem.moodleUri)">
-  <a target="_blank" ng-if="feedItem.moodleUri" href="{{feedItem.moodleUri}}">
+     ng-show="feedItem.courseMaterial"
+     ng-switch="feedItem.courseMaterial.courseMaterialType">
+  <a target="_blank" ng-switch-when="MOODLE" href="{{feedItem.courseMaterial.courseMaterialUri}}">
     <span ng-if="!compact">
       {{::('weekFeed.courseMaterialsMoodle' | translate)}}
       <i class="hy hy-link-arrow"></i>
@@ -27,7 +28,7 @@
       {{::('weekFeed.courseMaterialsMoodleShort' | translate)}}
     </span>
   </a>
-  <a ng-if="!feedItem.moodleUri && feedItem.courseMaterialUri" href="{{feedItem.courseMaterialUri}}">
+  <a ng-switch-when="COURSE_PAGE" href="{{feedItem.courseMaterial.courseMaterialUri}}">
     <span ng-if="!compact">
       {{::('weekFeed.courseMaterials' | translate)}}
       <i class="hy hy-link-arrow"></i>
