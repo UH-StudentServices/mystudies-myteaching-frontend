@@ -1344,11 +1344,8 @@ button.icon {
 .page-banner__image-cover {
   width: 80%;
   height: 100%;
-  background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.6), transparent);
   /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(right, rgba(0, 0, 0, 0.6), transparent);
   /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(right, rgba(0, 0, 0, 0.6), transparent);
   /* For Firefox 3.6 to 15 */
   background: linear-gradient(to right, rgba(0, 0, 0, 0.6), transparent);
   /* Standard syntax */ }
@@ -2095,6 +2092,7 @@ a.text-neutral {
       .unicafe-favorite .unicafe-favorite__menu {
         height: 200px; } }
   .unicafe-favorite .unicafe-favorite__select-container {
+    display: -ms-flexbox;
     display: flex;
     position: absolute;
     bottom: 1em;
@@ -2102,7 +2100,8 @@ a.text-neutral {
     right: 1em;
     height: 45px; }
   .unicafe-favorite .unicafe-favorite__restaurant-link {
-    flex-basis: 45px;
+    -ms-flex-preferred-size: 45px;
+        flex-basis: 45px;
     min-width: 45px;
     margin-left: 5px;
     height: 100%;
@@ -2119,7 +2118,8 @@ a.text-neutral {
     -transform: translate(-50%, -50%); }
   .unicafe-favorite .unicafe-favorite__select {
     background-color: #FFF;
-    flex-grow: 1;
+    -ms-flex-positive: 1;
+        flex-grow: 1;
     border: 1px solid #EBEBEB; }
     .unicafe-favorite .unicafe-favorite__select select {
       overflow: hidden;
@@ -2340,8 +2340,10 @@ a.text-neutral {
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 .week-feed__tabs {
+  display: -ms-flexbox;
   display: flex;
-  align-items: flex-start;
+  -ms-flex-align: start;
+      align-items: flex-start;
   text-transform: uppercase;
   margin-bottom: 1em;
   font-weight: 600; }
@@ -2358,7 +2360,8 @@ a.text-neutral {
   to {
     border-color: #EBEBEB; } }
   .week-feed__tabs li {
-    flex: 1 0 90px;
+    -ms-flex: 1 0 90px;
+        flex: 1 0 90px;
     border-bottom: 2px solid;
     border-color: #EBEBEB;
     text-align: center;
@@ -2375,13 +2378,17 @@ a.text-neutral {
         color: #005479; }
 
 #week-feed .tag-list--tabs {
+  display: -ms-flexbox;
   display: flex;
-  align-items: stretch;
+  -ms-flex-align: stretch;
+      align-items: stretch;
   margin-bottom: 1em;
   min-height: 1em; }
   #week-feed .tag-list--tabs li {
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -ms-flex-align: center;
+        align-items: center;
     margin-right: 0.4em;
     margin-bottom: 0.5em;
     transition: none; }
@@ -3201,9 +3208,6 @@ a.text-neutral {
   .favorites-container .dropzone .itemlist > li .rss-feed .single-item-image-container {
     width: 100%;
     height: 200px;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
     margin-bottom: 5px; }
   .favorites-container .dropzone .itemlist > li .twitter {
@@ -4058,11 +4062,8 @@ a.text-neutral {
   .lander-bg .gradient-overlay {
     width: 100%;
     height: 100%;
-    background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.8), transparent);
     /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(right, rgba(0, 0, 0, 0.8), transparent);
     /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(right, rgba(0, 0, 0, 0.8), transparent);
     /* For Firefox 3.6 to 15 */
     background: linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent);
     /* Standard syntax */ }
