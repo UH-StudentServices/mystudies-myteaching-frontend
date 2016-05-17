@@ -345,8 +345,11 @@ $tablist-single-row: min-width 28.75em;
   padding: 1.5em 1em 1em 1em;
 }
 
+.subscribe-events-popover__copy2clipboard {
+  margin-bottom: 1.5em;
+}
+
 .subscribe-events-popover__instructions {
-  margin-top: 1.5em;
   line-height: 1.3;
 
   a {

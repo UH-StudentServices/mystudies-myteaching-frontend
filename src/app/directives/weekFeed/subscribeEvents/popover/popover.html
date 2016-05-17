@@ -21,11 +21,10 @@
     <span ng-hide="calendarFeedUrl"><i class="hy hy-spinner hy-spin"></i></span>
   </div>
   <div class="subscribe-events-popover__content">
-    <div>
+    <div class="subscribe-events-popover__copy2clipboard" ng-show="showCopyToClipboard">
       <a id="subscribe-events-trigger"
          tabindex="0"
          class="text-transform-capitalize"
-         ng-show="showCopyToClipboard"
          clipboard
          clipboard-value-selector="#calendar-feed-url"
          clipboard-success-callback="copyToClipboardSuccessCallback"
