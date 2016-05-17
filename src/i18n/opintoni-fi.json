@@ -124,8 +124,10 @@
     "noPastTeacherCourses": "Sinulla ei ole päättynyttä opetusta.",
     "courseMaterials": "Siirry kurssin materiaaleihin",
     "courseMaterialsMoodle": "Siirry Moodleen",
+    "courseMaterialsWiki": "Siirry Wikiin",
     "courseMaterialsShort": "Materiaalit",
     "courseMaterialsMoodleShort": "Moodle",
+    "courseMaterialsWikiShort": "Wiki",
     "showRoute": "Näytä reitti",
     "showOnMap": "Näytä kartalla",
     "errors": {
