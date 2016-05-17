@@ -125,8 +125,10 @@
     "noPastTeacherCourses": "You have no past courses.",
     "courseMaterials": "Go to course materials",
     "courseMaterialsMoodle": "Go to Moodle",
+    "courseMaterialsWiki": "Go to wiki",
     "courseMaterialsShort": "Materials",
     "courseMaterialsMoodleShort": "Moodle",
+    "courseMaterialsWikiShort": "Wiki",
     "showRoute": "Show route",
     "showOnMap": "Show on map",
     "errors": {

@@ -19,22 +19,8 @@
      ng-class="{'course-material--full': !compact, 'course-material--compact': compact}"
      ng-show="feedItem.courseMaterial"
      ng-switch="feedItem.courseMaterial.courseMaterialType">
-  <a target="_blank" ng-switch-when="MOODLE" href="{{::feedItem.courseMaterial.courseMaterialUri}}">
-    <span ng-if="!compact">
-      {{::('weekFeed.courseMaterialsMoodle' | translate)}}
-      <i class="hy hy-link-arrow"></i>
-    </span>
-    <span ng-if="compact">
-      {{::('weekFeed.courseMaterialsMoodleShort' | translate)}}
-    </span>
-  </a>
-  <a ng-switch-when="COURSE_PAGE" href="{{::feedItem.courseMaterial.courseMaterialUri}}">
-    <span ng-if="!compact">
-      {{::('weekFeed.courseMaterials' | translate)}}
-      <i class="hy hy-link-arrow"></i>
-    </span>
-    <span ng-if="compact">
-      {{::('weekFeed.courseMaterialsShort' | translate)}}
-    </span>
+  <a target="_blank" href="{{::feedItem.courseMaterial.courseMaterialUri}}">
+    {{::(getCourseMaterialLinkTitle(feedItem.courseMaterial.courseMaterialType))}}
+    <i class="hy hy-link-arrow" ng-if="!compact"></i>
   </a>
 </div>

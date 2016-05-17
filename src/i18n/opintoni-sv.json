@@ -125,8 +125,10 @@
     "noPastTeacherCourses": "Du har inga avslutade kurser.",
     "courseMaterials": "Gå till kursmaterial",
     "courseMaterialsMoodle": "Gå till Moodle",
+    "courseMaterialsWiki" : "Gå till wiki",
     "courseMaterialsShort": "Material",
     "courseMaterialsMoodleShort": "Moodle",
+    "courseMaterialsWikiShort": "Wiki",
     "showRoute": "Visa vägen",
     "showOnMap": "Visa på karta",
     "errors": {

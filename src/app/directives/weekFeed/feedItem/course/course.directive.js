@@ -18,21 +18,41 @@
 angular.module('directives.weekFeed.feedItem.course',[
 ])
 
+  .constant('CourseMaterialTranslationKeys', {
+    'COURSE_PAGE': 'weekFeed.courseMaterials',
+    'MOODLE': 'weekFeed.courseMaterialsMoodle',
+    'WIKI': 'weekFeed.courseMaterialsWiki'
+  })
+
+  .constant('CourseMaterialTranslationKeysShort', {
+    'COURSE_PAGE': 'weekFeed.courseMaterialsShort',
+    'MOODLE': 'weekFeed.courseMaterialsMoodleShort',
+    'WIKI': 'weekFeed.courseMaterialsWikiShort'
+  })
+
+
   .directive('course', function() {
+
     return {
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/weekFeed/feedItem/course/course.html',
       scope: {
         feedItem: '='
-      },
-      link: function($scope) {
-
       }
     };
   })
 
-  .directive('courseMaterialsLink', function() {
+  .directive('courseMaterialsLink', function($filter,
+                                             CourseMaterialTranslationKeys,
+                                             CourseMaterialTranslationKeysShort) {
+
+    function getTranslationKey(courseMaterialType, compact) {
+      var keys = compact ? CourseMaterialTranslationKeysShort : CourseMaterialTranslationKeys;
+
+      return keys[courseMaterialType];
+    }
+
     return {
       restrict: 'E',
       replace: true,
@@ -40,7 +60,12 @@ angular.module('directives.weekFeed.feedItem.course',[
         compact: '=',
         feedItem: '='
       },
-      templateUrl: 'app/directives/weekFeed/feedItem/course/courseMaterialsLink.html'
+      templateUrl: 'app/directives/weekFeed/feedItem/course/courseMaterialsLink.html',
+      link: function($scope) {
+        $scope.getCourseMaterialLinkTitle = function(courseMaterialType) {
+          return $filter('translate')(getTranslationKey(courseMaterialType, $scope.compact));
+        };
+      }
     };
   })
 
