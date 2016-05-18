@@ -283,7 +283,7 @@
       },
       "weekFeed": {
         "heading": "Nyt opinnoissani",
-        "text": "Nyt opinnoissani näyttää kurssit ja tentit, joihin olet ilmoittautunut WebOodissa. Välilehtiä on kolme: seuraavat tapahtumat, kurssit ja tentit. Opintoni-sivu näyttää sen välilehden, joka jäi auki viimeksi sivulla käydessäsi. Kurssin nimeä klikkaamalla pääset kurssisivulle. Huomaa, että kaikilla kursseilla ei vielä ole kurssisivua."
+        "text": "Nyt opinnoissani näyttää kurssit ja tentit, joihin olet ilmoittautunut WebOodissa. Välilehtiä on kolme: Aikataulu, kurssit ja tentit. Opintoni-sivu näyttää sen välilehden, joka jäi auki viimeksi sivulla käydessäsi. Kurssin nimeä klikkaamalla pääset kurssisivulle. Huomaa, että kaikilla kursseilla ei vielä ole kurssisivua."
       }
     },
     "teacher": {
@@ -293,7 +293,7 @@
       },
       "weekFeed": {
         "heading": "Nyt opetuksessani",
-        "text": "Nyt opetuksessani näyttää kurssit ja tentit, joihit sinut on merkitty opettajaksi Oodissa. Välilehtiä on neljä: seuraavat tapahtumat, opetus, tentit ja päättynyt opetus. Opetukseni-sivu näyttää sen välilehden, joka jäi auki viimeksi sivulla käydessäsi. Kurssin nimeä klikkaamalla pääset kurssisivullesi, jos sellainen on sinulle generoitu."
+        "text": "Nyt opetuksessani näyttää kurssit ja tentit, joihit sinut on merkitty opettajaksi Oodissa. Välilehtiä on kolme: Aikataulu, opetus ja tentit. Opetukseni-sivu näyttää sen välilehden, joka jäi auki viimeksi sivulla käydessäsi. Kurssin nimeä klikkaamalla pääset kurssisivullesi, jos sellainen on sinulle generoitu."
       }
     },
     "ariaLabels": {
