@@ -284,7 +284,7 @@
       },
       "weekFeed": {
         "heading": "Now in my studies",
-        "text": "Now in my studies shows the courses and examinations for which you have registered in WebOodi. There are three tabs: next events, courses, and exams. My studies displays the tab that remained open the last time you visited the page. Clicking the course name will direct you the course page. Please note that every course does not yet have a course page."
+        "text": "Now in my studies shows the courses and examinations for which you have registered in WebOodi. There are three tabs: timetable, courses, and exams. My studies displays the tab that remained open the last time you visited the page. Clicking the course name will direct you the course page. Please note that every course does not yet have a course page."
       }
     },
     "teacher": {
@@ -294,7 +294,7 @@
       },
       "weekFeed": {
         "heading": "Now in my teaching",
-        "text": "Now in my teaching shows the courses and examinations for which you have registered in WebOodi. There are four tabs: upcoming events, teaching, exams, and past teaching. My teaching displays the tab that remained open the last time you visited the page. Clicking the course name will direct you to your course page if one has been generated."
+        "text": "Now in my teaching shows the courses and examinations for which you have registered in WebOodi. There are three tabs: timetable, teaching, and exams. My teaching displays the tab that remained open the last time you visited the page. Clicking the course name will direct you to your course page if one has been generated."
       }
     },
    "ariaLabels" : {
