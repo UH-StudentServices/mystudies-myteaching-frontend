@@ -285,7 +285,7 @@
       },
       "weekFeed": {
         "heading": "Nu i mina studier",
-        "text": "Nu i mina studier visar de kurser och tentamina som du har anmält dig till i WebOodi. De finns tre flikar: kommande händelser, kurser och tentamina. Mina studier visar den flik som förblev öppen senaste gången du besökte sidan. Du riktas till kurssidan när du klickar på kursens namn. Observera att varje kurs ännu inte har en kurssida."
+        "text": "Nu i mina studier visar de kurser och tentamina som du har anmält dig till i WebOodi. De finns tre flikar: tidsschema, kurser och tentamina. Mina studier visar den flik som förblev öppen senaste gången du besökte sidan. Du riktas till kurssidan när du klickar på kursens namn. Observera att varje kurs ännu inte har en kurssida."
       }
     },
     "teacher": {
@@ -295,7 +295,7 @@
       },
       "weekFeed": {
         "heading": "Nu i min undervisning",
-        "text": "Nu i min undervisning visar de kurser och tentamina som du är som lärare i WebOodi. De finns fyra flikar: kommande händelser, undervisning, tentamina och avslutad undervisning. Min undervisning visar den flik som förblev öppen senaste gången du besökte sidan. Om kurssidan har genererats till dig, riktas du till kurssidan när du klickar på kursens namn."
+        "text": "Nu i min undervisning visar de kurser och tentamina som du är som lärare i WebOodi. De finns tre flikar: tidsschema, undervisning och tentamina. Min undervisning visar den flik som förblev öppen senaste gången du besökte sidan. Om kurssidan har genererats till dig, riktas du till kurssidan när du klickar på kursens namn."
       }
     },
     "ariaLabels" : {
