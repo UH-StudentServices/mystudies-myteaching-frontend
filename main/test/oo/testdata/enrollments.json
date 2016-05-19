@@ -1,0 +1,104 @@
+[
+    {
+        "code": "6000009",
+        "name": "TVT-ajokortti, Käyttäytymistieteellisen tiedekunnan opiskelijoille (TVT7)",
+        "imageUri": null,
+        "coursePageUri": null,
+        "webOodiUri": "https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=1&avattavaSivu=opettaptied&OpetTap=102414285",
+        "startDate": [
+            2015,
+            4,
+            13
+        ],
+        "endDate": [
+            2015,
+            4,
+            13
+        ]
+    },
+    {
+        "code": "6000009",
+        "name": "TVT-ajokortti, Käyttäytymistieteellisen tiedekunnan opiskelijoille (TVT7)",
+        "imageUri": null,
+        "coursePageUri": null,
+        "webOodiUri": "https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=1&avattavaSivu=opettaptied&OpetTap=102414285",
+        "startDate": [
+            2015,
+            4,
+            13
+        ],
+        "endDate": [
+            2015,
+            4,
+            13
+        ]
+    },
+    {
+        "code": "6000009",
+        "name": "TVT-ajokortti, Käyttäytymistieteellisen tiedekunnan opiskelijoille (TVT7)",
+        "imageUri": null,
+        "coursePageUri": null,
+        "webOodiUri": "https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=1&avattavaSivu=opettaptied&OpetTap=102414285",
+        "startDate": [
+            2015,
+            4,
+            13
+        ],
+        "endDate": [
+            2015,
+            4,
+            13
+        ]
+    },
+    {
+        "code": "61123",
+        "name": "Oppilaantuntemus, ryhmä A",
+        "imageUri": null,
+        "coursePageUri": null,
+        "webOodiUri": "https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=1&avattavaSivu=opettaptied&OpetTap=102221635",
+        "startDate": [
+            2015,
+            1,
+            13
+        ],
+        "endDate": [
+            2015,
+            2,
+            10
+        ]
+    },
+    {
+        "code": "61123",
+        "name": "Oppilaantuntemus",
+        "imageUri": null,
+        "coursePageUri": null,
+        "webOodiUri": "https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=1&avattavaSivu=opettaptied&OpetTap=102221630",
+        "startDate": [
+            2014,
+            10,
+            27
+        ],
+        "endDate": [
+            2015,
+            2,
+            12
+        ]
+    },
+    {
+        "code": "61159",
+        "name": "Johdatus kasvatuspsykologiaan",
+        "imageUri": null,
+        "coursePageUri": null,
+        "webOodiUri": "https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=1&avattavaSivu=opettaptied&OpetTap=102045093",
+        "startDate": [
+            2014,
+            10,
+            27
+        ],
+        "endDate": [
+            2014,
+            12,
+            8
+        ]
+    }
+]

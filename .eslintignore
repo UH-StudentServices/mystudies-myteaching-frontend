@@ -1,2 +1,3 @@
-src/app/vendor
-src/app/templates.js
+main/src/app/vendor
+main/dist
+main/src/app/templates.js

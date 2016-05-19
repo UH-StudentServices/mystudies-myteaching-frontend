@@ -15,11 +15,17 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* Imports from styleguide */
+var util = require('./util');
 
-@import "src/bower_components/Styleguide/sass/variables/breakpoints";
-@import "src/bower_components/Styleguide/sass/variables/colors";
-@import "src/bower_components/Styleguide/sass/variables/typography";
-@import "src/bower_components/Styleguide/sass/mixins/mixins";
-@import "src/bower_components/Styleguide/sass/objects/lists";
-@import "src/bower_components/Styleguide/sass/components/list-of-links";
+describe('Frontpage', function() {
+
+  function siteNameFinder(siteName) {
+    return element(by.cssContainingText('h1', siteName));
+  }
+
+  it('Will load the my studies frontpage', function() {
+    util.loginStudent();
+    expect(siteNameFinder('My studies').isPresent()).toEqual(true);
+  });
+
+});
