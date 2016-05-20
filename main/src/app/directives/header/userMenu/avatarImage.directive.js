@@ -29,7 +29,7 @@ angular.module('directives.avatarImage', ['services.state'])
         $scope.isTeacher = StateService.getRootStateName() === State.MY_TEACHINGS;
 
         $scope.isDefault = function() {
-          return $scope.imgSrc.indexOf('/api') === -1;
+          return $scope.imgSrc ? $scope.imgSrc.indexOf('/api') === -1 : true;
         };
       }
     };

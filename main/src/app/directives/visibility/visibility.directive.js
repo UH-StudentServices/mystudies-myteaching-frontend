@@ -17,32 +17,41 @@
 
 angular.module('directives.visibility', [
   'services.state',
-  'services.session'])
+  'services.session',
+  'utils.browser'])
 
 .constant('Visibility', {
   MY_TEACHINGS_ONLY:
-    function teacherOnly($q, StateService, State, SessionService, Role, Configuration) {
+    function teacherOnly($q, StateService, State, SessionService, Role, Configuration, BrowserUtil) {
       return $q.resolve(StateService.getRootStateName() === State.MY_TEACHINGS);
     },
   MY_STUDIES_ONLY:
-    function studentOnly($q, StateService, State, SessionService, Role, Configuration) {
+    function studentOnly($q, StateService, State, SessionService, Role, Configuration, BrowserUtil) {
       return $q.resolve(StateService.getRootStateName() === State.MY_STUDIES);
     },
   TEACHER_ONLY:
-    function teacherOnly($q, StateService, State, SessionService, Role, Configuration) {
+    function teacherOnly($q, StateService, State, SessionService, Role, Configuration, BrowserUtil) {
       return SessionService.isInRole(Role.TEACHER);
     },
   STUDENT_ONLY:
-    function teacherOnly($q, StateService, State, SessionService, Role, Configuration) {
+    function teacherOnly($q, StateService, State, SessionService, Role, Configuration, BrowserUtil) {
       return SessionService.isInRole(Role.STUDENT);
     },
   ADMIN_ONLY:
-    function adminOnly($q, StateService, State, SessionService, Role, Configuration) {
+    function adminOnly($q, StateService, State, SessionService, Role, Configuration, BrowserUtil) {
       return SessionService.isInRole(Role.ADMIN);
     },
   DEV_AND_QA_ONLY:
-    function devAndQaOnly($q, StateService, State, SessionService, Role, Configuration) {
+    function devAndQaOnly($q, StateService, State, SessionService, Role, Configuration, BrowserUtil) {
       return $q.resolve(Configuration.environment !== 'prod');
+    },
+  MOBILE_ONLY:
+    function mobileOnly($q, StateService, State, SessionService, Role, Configuration, BrowserUtil) {
+      return $q.resolve(BrowserUtil.isMobile());
+    },
+  DESKTOP_ONLY:
+    function desktopOnly($q, StateService, State, SessionService, Role, Configuration, BrowserUtil) {
+      return $q.resolve(!BrowserUtil.isMobile());
     }
 })
 
@@ -51,7 +60,7 @@ angular.module('directives.visibility', [
 * https://github.com/angular/angular.js/blob/master/src/ng/directive/ngIf.js#L3
 */
 .directive('limitVisibility',
-  function($q, $animate, Visibility, StateService, State, SessionService, Role, Configuration) {
+  function($q, $animate, $compile, Visibility, StateService, State, SessionService, Role, Configuration, BrowserUtil) {
 
     return {
       multiElement: true,
@@ -63,16 +72,38 @@ angular.module('directives.visibility', [
         limitVisibility: '='
       },
       link: function($scope, $element, $attr, ctrl, $transclude) {
-        $q.all(_.map(limitArgumentsToFunctions(), function(limitFunction) {
-          return limitFunction($q, StateService, State, SessionService, Role, Configuration);
-        }))
-        .then(function visibilitiesResolved(visibilities) {
+
+        var element, childScope;
+
+        $scope.browser = BrowserUtil.browser;
+
+        function evaluateVisibility() {
+          $q.all(_.map(limitArgumentsToFunctions(), function(limitFunction) {
+            return limitFunction($q, StateService, State, SessionService, Role, Configuration, BrowserUtil);
+          }))
+          .then(render);
+        }
+
+        function render(visibilities) {
           if(_.every(visibilities, Boolean)) {
-            $transclude(function(clone) {
-              $animate.enter(clone, $element.parent(), $element);
-            });
+            if (!childScope) {
+              $transclude(function(clone, newScope) {
+                element = clone;
+                childScope = newScope;
+                $animate.enter(clone, $element.parent(), $element);
+              });
+            }
+          } else {
+            if (element) {
+              element.remove();
+              element = null;
+            }
+            if (childScope) {
+              childScope.$destroy();
+              childScope = null;
+            }
           }
-        });
+        }
 
         function limitArgumentsToFunctions() {
           return _.map($scope.limitVisibility, function(limit) {
@@ -82,6 +113,13 @@ angular.module('directives.visibility', [
             throw 'limitVisibility directive: Invalid Visibility argument ' + limit;
           });
         }
+
+        evaluateVisibility();
+
+        $scope.$watch('browser.deviceCategory', function(newValue) {
+          evaluateVisibility();
+        });
+
       }
     };
   }

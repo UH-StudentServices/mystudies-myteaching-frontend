@@ -21,6 +21,9 @@ angular.module('utils.browser', [])
 
   .service('BrowserUtil', function($window) {
 
+    var browser = $window.matchMedia('(max-width: 767px)')
+      .matches ? {deviceCategory: 'MOBILE'} : {deviceCategory: 'DESKTOP'};
+
     function supportsCamera() {
       navigator.getMedia = navigator.getUserMedia ||
         navigator.webkitGetUserMedia ||
@@ -30,15 +33,22 @@ angular.module('utils.browser', [])
       return navigator.getMedia ? true : false;
     }
 
+    function setDeviceCategory() {
+      browser.deviceCategory = isMobile() ? 'MOBILE' : 'DESKTOP';
+    }
+
     function isMobile() {
-      return $window.matchMedia('(max-width: 47.9375em)').matches;
+      return $window.matchMedia('(max-width: 767px)').matches;
     }
 
     function isMac() {
       return navigator.platform.match(/(Mac|iPhone|iPad)/i) ? true : false;
     }
 
+    window.addEventListener('resize', setDeviceCategory);
+
     return {
+      browser: browser,
       supportsCamera: supportsCamera,
       isMobile: isMobile,
       isMac: isMac
