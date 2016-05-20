@@ -30,12 +30,17 @@ buildscript {
 }
 
 apply plugin: 'com.moowork.grunt'
+
+grunt {
+    workDir = file("${project.projectDir}/main")
+}
+
 apply plugin: 'distribution'
 
 distributions {
     main {
         contents {
-            from { 'dist/' }
+            from { 'main/dist/' }
         }
     }
 }

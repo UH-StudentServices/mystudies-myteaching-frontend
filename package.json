@@ -45,7 +45,7 @@
     "karma-phantomjs-launcher": "0.1.4",
     "karma-requirejs": "0.2.2",
     "karma-script-launcher": "0.1.0",
-    "load-grunt-tasks": "2.0.0",
+    "load-grunt-tasks": "^3.5.0",
     "lodash": "2.4.1",
     "node-uuid": "^1.4.3",
     "protractor": "^2.0.0",

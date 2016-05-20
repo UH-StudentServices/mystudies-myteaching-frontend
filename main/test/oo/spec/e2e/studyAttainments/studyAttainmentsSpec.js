@@ -15,13 +15,16 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* Portfolio application main stylesheet */
+var util = require('../util');
 
-@import "src/bower_components/breakpoint-sass/stylesheets/breakpoint.scss";
-@import "src/bower_components/singularity/stylesheets/singularitygs.scss";
+describe('studyAttainments', function() {
 
-/* Styleguide elements required by the application */
-@import "styleguide/styleguide";
+  beforeEach(util.loginStudent);
 
-/* Application custom styles */
-@import "opintoni/opintoni";
+  var attainmentsFinder = element.all(by.repeater('attainment in attainments'));
+
+  it('Will show a list of studyattainments', function() {
+    expect(attainmentsFinder.count()).toBeGreaterThan(0);
+  });
+
+});

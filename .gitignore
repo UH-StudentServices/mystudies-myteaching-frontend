@@ -1,5 +1,4 @@
 node_modules
-src/bower_components
 bower_components
 e2e_screenshots
 .idea/
@@ -9,8 +8,8 @@ e2e_screenshots
 *.ipr
 *.iws
 build/
-src/app/templates.js
-src/assets/styles/main.css
+main/src/app/templates.js
+main/src/assets/styles/main.css
 .sass-cache/
-dist/
+main/dist/
 .DS_Store

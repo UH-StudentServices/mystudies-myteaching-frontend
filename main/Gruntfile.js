@@ -25,7 +25,42 @@ var fs = require('fs'),
     _ = require('lodash'),
     proxy,
     proxyPaths,
-    proxyMiddleware;
+    proxyMiddleware,
+    gruntPlugins;
+
+
+// Grunt plugins must loaded manually since load-grunt-tasks doesn't know
+// how to load node_modules from parent dir as of this writing
+// (see https://github.com/sindresorhus/load-grunt-tasks/issues/47)
+gruntPlugins = [
+  'grunt-browser-sync',
+  'grunt-build-control',
+  'grunt-concurrent',
+  'grunt-contrib-clean',
+  'grunt-contrib-compass',
+  'grunt-contrib-concat',
+  'grunt-contrib-copy',
+  'grunt-contrib-cssmin',
+  'grunt-contrib-htmlmin',
+  'grunt-contrib-imagemin',
+  'grunt-contrib-uglify',
+  'grunt-contrib-watch',
+  'grunt-exec',
+  'grunt-filerev',
+  'grunt-html2js',
+  'grunt-karma',
+  'grunt-modernizr',
+  'grunt-ng-annotate',
+  'grunt-ng-constant',
+  'grunt-postcss',
+  'grunt-protractor-runner',
+  'grunt-sass',
+  'grunt-svgmin',
+  'grunt-text-replace',
+  'grunt-usemin',
+  'grunt-wiredep',
+  'gruntify-eslint'
+];
 
 proxy = httpProxy.createProxyServer({
   target: 'http://localhost:8080/'
@@ -49,7 +84,10 @@ proxyMiddleware = function(req, res, next) {
 };
 
 module.exports = function(grunt) {
-  require('load-grunt-tasks')(grunt);
+  gruntPlugins.forEach(function(plugin) {
+    grunt.loadTasks('../node_modules/' + plugin + '/tasks');
+  });
+
   require('time-grunt')(grunt);
 
   grunt.initConfig({
@@ -67,7 +105,8 @@ module.exports = function(grunt) {
           'src/scss/styleguide/**/*.{scss,sass}',
           'src/scss/styleguide_additions/**/*.{scss,sass}',
           'src/app/**/*.html',
-          'src/app/**/*.js'],
+          'src/app/**/*.js'
+        ],
         tasks: ['cssDev', 'buildTemplates', 'eslint']
       }
     },
@@ -91,6 +130,9 @@ module.exports = function(grunt) {
         port: 3000,
         server: {
           baseDir: 'src',
+          routes: {
+            '/bower_components': '../bower_components'
+          },
           middleware: [proxyMiddleware,
             modRewrite([
               '^/proxy/hyyravintolat http://messi.hyyravintolat.fi/publicapi [P]',
@@ -156,7 +198,7 @@ module.exports = function(grunt) {
         options: {
           cssDir: 'src/assets/styles/styleguide',
           require: ['toolkit', 'sass-globbing', 'breakpoint', 'singularitygs'],
-          sassDir: 'src/bower_components/Styleguide/sass'
+          sassDir: '../bower_components/Styleguide/sass'
         }
       }
     },
@@ -231,10 +273,9 @@ module.exports = function(grunt) {
         {
           flatten: true,
           expand: true,
-          cwd: 'src',
+          cwd: '..',
           src: 'bower_components/Styleguide-icons/fonts/*',
           dest: '<%= application.dist %>/assets/fonts'
-
         },
         {
           flatten: true,
@@ -256,9 +297,14 @@ module.exports = function(grunt) {
             '*.html',
             'app/**',
             'assets/**',
-            'i18n/**',
-            'bower_components/**'
+            'i18n/**'
           ]
+        },
+        {
+          expand: true,
+          cwd: '..',
+          dest: '<%= application.dist %>',
+          src: ['bower_components/**']
         }]
       }
     },
@@ -350,11 +396,12 @@ module.exports = function(grunt) {
       }
     },
     exec: {
-      bowerInstall: 'bower install'
+      bowerInstall: {
+        cmd: 'bower install',
+        cwd: '..'
+      }
     }
   });
-
-  grunt.loadNpmTasks('gruntify-eslint');
 
   grunt.registerTask('serve', [
     'eslint',
