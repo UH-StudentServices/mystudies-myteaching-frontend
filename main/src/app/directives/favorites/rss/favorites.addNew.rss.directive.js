@@ -79,7 +79,6 @@ angular.module('directives.favorites.addNew.rss',
           FavoritesResource.saveRSSFavorite($scope.favorite).then(function() {
             $scope.$emit(newFavoriteAddedEvent,
                 $scope.favorite.type);
-            $scope.hidePopover();
           });
         }
 

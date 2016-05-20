@@ -40,7 +40,6 @@ angular.module('directives.favorites.addNew.unicafe',
             FavoritesResource.saveUnicafeFavorite({restaurantId: restaurant.id})
               .then(function saveUnicafeSuccess() {
                 $scope.$emit(newFavoriteAddedEvent, $scope.favorite.type);
-                $scope.hidePopover();
               });
           }
         };

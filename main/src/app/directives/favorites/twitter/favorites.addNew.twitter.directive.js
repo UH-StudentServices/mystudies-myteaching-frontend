@@ -41,7 +41,6 @@ angular.module('directives.favorites.addNew.twitter',
           FavoritesResource.saveTwitterFavorite(insertTwitterFavoriteRequest).then(function() {
             $scope.$emit(newFavoriteAddedEvent,
               $scope.favorite.type + '_' + twitterFeedTypes.USER_TIMELINE);
-            $scope.hidePopover();
           });
         };
       }

@@ -28,7 +28,6 @@ angular.module('directives.favorites.addNew.unisport',
             $scope.$emit(newFavoriteAddedEvent, $scope.favorite.type);
           });
         }
-        $scope.hidePopover();
       }
     };
   });
