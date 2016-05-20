@@ -29,7 +29,7 @@ var fs = require('fs'),
     gruntPlugins;
 
 
-// Grunt plugins must loaded manually since load-grunt-tasks doesn't know
+// Grunt plugins must be loaded manually since load-grunt-tasks doesn't know
 // how to load node_modules from parent dir as of this writing
 // (see https://github.com/sindresorhus/load-grunt-tasks/issues/47)
 gruntPlugins = [
