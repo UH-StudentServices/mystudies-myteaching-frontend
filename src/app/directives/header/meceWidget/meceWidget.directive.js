@@ -15,19 +15,20 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.userMenu',
-  ['directives.searchBar',
-    'directives.searchIcon',
-    'directives.userMenu.settings',
-    'directives.userNotifications',
-    'directives.header.meceWidget',
-    'directives.visibility',
-    'ngFileUpload'])
-  .directive('userMenu', function() {
+angular.module('directives.header.meceWidget', [
+  'services.userSettings'])
+
+  .directive('meceWidget', function(UserSettingsService) {
+
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'app/directives/header/userMenu/userMenu.html',
-      link: function($scope) {}
+      templateUrl: 'app/directives/header/meceWidget/meceWidget.html',
+      link: function($scope) {
+        UserSettingsService.getUserSettings()
+          .then(function getUserSettingsSuccess(settings) {
+            $scope.meceToken = settings.meceJWTToken;
+          });
+      }
     };
   });
