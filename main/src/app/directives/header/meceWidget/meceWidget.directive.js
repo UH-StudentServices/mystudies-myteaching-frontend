@@ -15,22 +15,20 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.avatarImage', ['services.state'])
-  .directive('avatarImage', function(StateService, State) {
+angular.module('directives.header.meceWidget', [
+  'services.userSettings'])
+
+  .directive('meceWidget', function(UserSettingsService) {
+
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'app/directives/header/userMenu/avatarImage.html',
-      scope: {
-        imgSrc: '=',
-        imgAlt: '='
-      },
+      templateUrl: 'app/directives/header/meceWidget/meceWidget.html',
       link: function($scope) {
-        $scope.isTeacher = StateService.getRootStateName() === State.MY_TEACHINGS;
-
-        $scope.isDefault = function() {
-          return $scope.imgSrc ? $scope.imgSrc.indexOf('/api') === -1 : true;
-        };
+        UserSettingsService.getUserSettings()
+          .then(function getUserSettingsSuccess(settings) {
+            $scope.meceToken = settings.meceJWTToken;
+          });
       }
     };
   });
