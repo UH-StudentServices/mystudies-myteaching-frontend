@@ -21,8 +21,9 @@ angular.module('utils.browser', [])
 
   .service('BrowserUtil', function($window) {
 
-    var browser = $window.matchMedia('(max-width: 767px)')
-      .matches ? {deviceCategory: 'MOBILE'} : {deviceCategory: 'DESKTOP'};
+    var MOBILE_MAX_WIDTH = 767,
+        browser = $window.matchMedia('(max-width: ' + MOBILE_MAX_WIDTH + 'px)')
+        .matches ? {deviceCategory: 'MOBILE'} : {deviceCategory: 'DESKTOP'};
 
     function supportsCamera() {
       navigator.getMedia = navigator.getUserMedia ||
@@ -38,7 +39,7 @@ angular.module('utils.browser', [])
     }
 
     function isMobile() {
-      return $window.matchMedia('(max-width: 767px)').matches;
+      return $window.matchMedia('(max-width: ' + MOBILE_MAX_WIDTH + 'px)').matches;
     }
 
     function isMac() {
