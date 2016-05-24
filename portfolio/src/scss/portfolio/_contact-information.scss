@@ -1,0 +1,119 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+$facebook-blue: #3b5998;
+$youtube-red: #e52d27;
+$twitter-blue: #4099ff;
+
+.contact-information {
+  position: relative;
+
+  .edit-link {
+    position: absolute;
+    right: 0;
+  }
+  .contact-details {
+    .name {
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 1em;
+    }
+    .phone-number {
+      margin-bottom: 0.2em;
+    }
+  }
+
+  .block {
+    margin-bottom: 5px;
+    padding: 20px 10px;
+    border: 1px solid $lightsilver;
+    position: relative;
+    a {
+      font-weight: 600;
+    }
+    &.link {
+      padding: 0;
+      a {
+        padding-left: 10px;
+        line-height: 4em;
+        display: block;
+      }
+    }
+  }
+
+  .useful-links__edit-link-url {
+    padding: 0;
+    margin: 0;
+    border: none;
+    input {
+      padding-right: 3em;
+    }
+  }
+
+  .edit-contact-details {
+    input {
+      margin-bottom: 0.5em;
+      width: 100%;
+      display: block;
+    }
+  }
+
+  .list-of-links__link.edit {
+    word-break: break-all;
+  }
+
+  .some-link-icon {
+    display: inline-block;
+    line-height: 4em;
+    color: white;
+    width: 4em;
+    text-align: center;
+    position: absolute;
+    right: 0;
+    height: 4em;
+    top: 0;
+    &.fa-facebook {
+      background-color: $facebook-blue;
+    }
+    &.fa-twitter {
+      background-color: $twitter-blue;
+    }
+    &.fa-youtube {
+      background-color: $youtube-red;
+    }
+  }
+
+  .some-link-edit-icon {
+    position: absolute;
+    right: 1.5em;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .editing {
+    li {
+      background-color: $gray;
+      > a {
+        padding: 0 3em 0 1em;
+      }
+    }
+  }
+}
+
+.contact-information__title {
+  margin-bottom: 0.5em;
+}

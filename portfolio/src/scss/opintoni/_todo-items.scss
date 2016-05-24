@@ -1,0 +1,164 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.todo-items {
+  $todo-item-done-color: #b3b3b3;
+  margin-top: 10px;
+  color: #fff;
+
+  @include breakpoint($small) {
+    margin-top: 0 !important;
+    width: 32%;
+    float: right;
+    top: -400px;
+    position: relative;
+    @include breakpoint($page-content-max-width-only) {
+      margin-right: 30px;
+    }
+  }
+
+  .box {
+    height: 196px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    margin: 1em;
+    padding: 20px;
+    overflow: auto;
+    border: 0 transparent;
+    position: relative;
+
+    @include breakpoint($mobile-only) {
+      margin-top: 20px;
+      height: 180px;
+    }
+
+    @include breakpoint($small) {
+      margin: 0;
+      height: 260px;
+    }
+
+    h2 {
+      color: $white;
+      padding-bottom: 0;
+    }
+
+    .icon {
+      text-align: center;
+      @include breakpoint($small) {
+        margin-top: 20px;
+      }
+    }
+
+    li {
+      position: relative;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 10px 60px 10px 0px;
+      word-wrap: break-word;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+      &:first-child {
+        padding-top: 0;
+      }
+
+      .todo-action {
+        @include vertically-center;
+        cursor: pointer;
+        &.todo-action__done {
+          right: 35px;
+        }
+        &.todo-action__remove {
+          right: 10px;
+        }
+      }
+
+      &.done {
+        color: $todo-item-done-color;
+        .todo-action__done {
+          cursor: default;
+        }
+        .todo-action__remove {
+          color: $white;
+        }
+      }
+
+      .vertically-centered {
+        position: absolute;
+        top: 50%;
+        @include transform(translateY(-50%));
+      }
+    }
+  }
+
+  .new-todo-item {
+    position: relative;
+    margin: 0 1em;
+
+    @include breakpoint($small) {
+      padding: 0;
+      margin: 10px 0 0 0;
+      height: 4em;
+      line-height: 4em;
+    }
+
+    .input-container {
+      overflow: hidden;
+      margin-right: 4em;
+      input {
+        width: 100%;
+        height: 4em;
+        border: none;
+        padding: 0 20px;
+        color: $gray;
+        background-color: rgba(255, 255, 255, 0.8);
+        &:focus {
+          background: #ffffff;
+        }
+        @include input-placeholder {
+          color: rgb(151, 151, 151);
+        }
+      }
+    }
+
+    .add-icon {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 4em;
+      height: 4em;
+      text-align: center;
+      background-color: $blue;
+      .fa-plus {
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+.todo-items-container {
+  @include breakpoint($small) {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 0;
+    padding: 1em;
+    position: absolute;
+    max-width: 1280px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+  }
+}

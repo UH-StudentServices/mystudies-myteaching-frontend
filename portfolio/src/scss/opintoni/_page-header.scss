@@ -1,0 +1,74 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+$headerHeight: 70px;
+
+.page-header {
+  @include breakpoint($small) {
+    background-color: $black;
+  }
+
+  .wrapper {
+    position: relative;
+    height: $headerHeight;
+    background-color: $black;
+    @include breakpoint($mobile-only) {
+      border-top: 1px solid $darkgray;
+    }
+  }
+}
+
+.page-header__branding {
+  background-color: $black;
+  left: 1em;
+  @include vertically-center;
+  li {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 1em;
+  }
+}
+
+@include breakpoint($small) {
+  .page-header__links {
+    @include vertically-center;
+    right: 0;
+    li {
+      display: inline-block;
+      margin-right: 0.8em;
+    }
+    a {
+      @include link-label($color-active: $white);
+    }
+  }
+}
+
+.menu-language {
+  li {
+    display: inline-block;
+    text-transform: uppercase;
+    a {
+      @include breakpoint($mobile-only) {
+        margin-left: 1em;
+        @include link-label($color-default: $black, $font-size: 14px);
+      }
+      @include breakpoint($small) {
+        @include link-label($color-default: $white, $color-active: $white);
+      }
+    }
+  }
+}

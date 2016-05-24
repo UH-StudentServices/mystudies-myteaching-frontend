@@ -1,0 +1,84 @@
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<section class="ui-component">
+  <div class="edit-link-wrapper">
+    <h2 class="ui-component__title border-bottom" translate="attainments.attainments"></h2>
+    <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
+  </div>
+
+  <ul ng-if="editing">
+    <li class="study-attainment" ng-repeat="attainment in allAttainments">
+      <div class="box-data border-bottom">
+
+        <div class="box-data__content visibility-container clickable" ng-click="toggleVisibility(attainment)">
+          <i ng-if="isVisible(attainment)" class="fa fa-eye"></i>
+          <i ng-if="!isVisible(attainment)" class="fa fa-eye-slash"></i>
+        </div>
+
+        <div class="box-data__box" ng-class="{'box-data__grade' : attainment.grade >= 0}">
+          <span>{{ attainment.grade }}</span>
+        </div>
+
+        <div class="box-data__content">
+          {{ attainment.attainmentDate | momentFormat:'DD.MM.YYYY' }}
+        </div>
+
+        <div class="box-data__title">
+          <a ng-if="attainment.courseUri" href="{{attainment.courseUri}}">{{ attainment.learningOpportunityName }}</a>
+          <span ng-if="!attainment.courseUri">{{ attainment.learningOpportunityName }}</span>
+          <span ng-if="attainment.credits">, {{ attainment.credits }} op</span>
+        </div>
+
+        <div class="box-data__content">
+          {{::("general.teachers" | translate | capitalize)}}: <span ng-repeat="teacher in attainment.teachers">{{ teacher.shortName }}</span>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <ul ng-if="!editing">
+    <li class="study-attainment" ng-repeat="attainment in attainments | limitTo:numberOfVisibleAttainments">
+      <div class="box-data border-bottom">
+
+        <div class="box-data__box" ng-class="{'box-data__grade' : attainment.grade >= 0}">
+          <span>{{ attainment.grade }}</span>
+        </div>
+
+        <div class="box-data__content">
+          {{ attainment.attainmentDate | momentFormat:'DD.MM.YYYY' }}
+        </div>
+
+        <div class="box-data__title">
+          <a ng-if="attainment.courseUri" href="{{attainment.courseUri}}">{{ attainment.learningOpportunityName }}</a>
+          <span ng-if="!attainment.courseUri">{{ attainment.learningOpportunityName }}</span>
+          <span ng-if="attainment.credits">, {{ attainment.credits }} op</span>
+        </div>
+
+        <div class="box-data__content">
+          {{::("general.teachers" | translate | capitalize)}}: <span ng-repeat="teacher in attainment.teachers">{{ teacher.shortName }}</span>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <button class="margin-top-10"
+          ng-click="showMoreClick()"
+          ng-show="showMoreVisible()"
+          translate="buttons.showMore">
+  </button>
+
+  <visibility-toggle component-id="ATTAINMENTS"></visibility-toggle>
+</section>

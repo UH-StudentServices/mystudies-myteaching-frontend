@@ -1,0 +1,84 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.portfolio-intro {
+  h2 {
+    margin-bottom: 0.5em;
+
+    .portfolio-visibility {
+      font-size: 12pt;
+      color: #666;
+    }
+  }
+}
+
+.portfolio-intro__content {
+  padding: 3em 1em;
+  position: relative;
+
+  @include breakpoint($mobile-only) {
+    padding: 1em;
+  }
+}
+
+.portfolio-intro__title, .portfolio-intro__intro {
+  @include breakpoint($small) {
+    color: $white;
+    text-shadow: 0 1px 2px $black;
+  }
+}
+
+.portfolio-user-image {
+
+  width: 50px;
+  height: 50px;
+
+  @include breakpoint($small) {
+    width: 100px;
+    height: 100px;
+  }
+
+  @include breakpoint($medium) {
+    width: 150px;
+    height: 150px;
+  }
+
+  .user-avatar {
+    background-color: $lila;
+  }
+}
+
+.portfolio-intro__left {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.portfolio-intro__right {
+  display: inline-block;
+  @include breakpoint($small) {
+    width: 300px;
+    margin-left: 1em;
+  }
+
+  @include breakpoint($medium) {
+    width: 450px;
+  }
+
+  @include breakpoint($large) {
+    width: 600px;
+  }
+}

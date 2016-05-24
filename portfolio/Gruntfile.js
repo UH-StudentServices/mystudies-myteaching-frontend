@@ -17,20 +17,13 @@
 
 'use strict';
 
-var fs = require('fs'),
-    httpProxy = require('http-proxy'),
-    modRewrite = require('connect-modrewrite'),
-    urlUtil = require('url'),
-    _ = require('lodash'),
-    proxy,
-    proxyPaths,
-    proxyMiddleware,
-    gruntPlugins;
+var httpProxy = require('http-proxy');
+var modRewrite = require('connect-modrewrite');
 
 // Grunt plugins must be loaded manually since load-grunt-tasks doesn't know
 // how to load node_modules from parent dir as of this writing
 // (see https://github.com/sindresorhus/load-grunt-tasks/issues/47)
-gruntPlugins = [
+var gruntPlugins = [
   'grunt-browser-sync',
   'grunt-build-control',
   'grunt-concurrent',
@@ -60,21 +53,12 @@ gruntPlugins = [
   'gruntify-eslint'
 ];
 
-proxy = httpProxy.createProxyServer({
-  target: 'http://localhost:8080/'
+var proxy = httpProxy.createProxyServer({
+  target: 'http://localhost:8080'
 });
 
-proxyPaths = [
-  '/api',
-  '/login',
-  '/logout',
-  '/redirect',
-  '/files'];
-
-proxyMiddleware = function(req, res, next) {
-  var path = urlUtil.parse(req.url).pathname;
-
-  if (_.any(proxyPaths, function(p) {return path.indexOf(p) === 0;})) {
+var proxyMiddleware = function(req, res, next) {
+  if (req.url.indexOf('api') !== -1) {
     proxy.web(req, res);
   } else {
     next();
@@ -96,15 +80,13 @@ module.exports = function(grunt) {
       options: {
         spawn: false
       },
-      dev: {
+      sass: {
         files: [
           'src/scss/main.scss',
+          'src/scss/portfolio/**/*.{scss,sass}',
           'src/scss/opintoni/**/*.{scss,sass}',
           'src/scss/styleguide/**/*.{scss,sass}',
-          'src/scss/styleguide_additions/**/*.{scss,sass}',
-          'src/app/**/*.html',
-          'src/app/**/*.js'
-        ],
+          'src/app/**/*.html'],
         tasks: ['cssDev', 'buildTemplates', 'eslint']
       }
     },
@@ -112,20 +94,19 @@ module.exports = function(grunt) {
       dev: {
         bsFiles: {
           src: [
-            'src/index.html',
-            'src/**/*.json',
-            'src/assets/styles/**/*.css',
+            'src/**/*.html',
             'src/app/**/*.js',
+            'src/assets/styles/**/*.css',
             'src/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg,ico}'
           ]
         }
       },
       options: {
-        startPath: '/',
+        startPath: '/portfolio/olli-opiskelija',
         watchTask: true,
         host: 'local.student.helsinki.fi',
         open: 'external',
-        port: 3000,
+        port: 3002,
         server: {
           baseDir: 'src',
           routes: {
@@ -133,8 +114,8 @@ module.exports = function(grunt) {
           },
           middleware: [proxyMiddleware,
             modRewrite([
-              '^/proxy/hyyravintolat http://messi.hyyravintolat.fi/publicapi [P]',
-              '^[^\\.]*$ /index.html [L]'
+              '^[^\\.]*$ /index.html [L]',
+              '^/portfolio* http://localhost:3002/ [P]'
             ])
           ]
         }
@@ -203,7 +184,7 @@ module.exports = function(grunt) {
     concat: {
       // not used since Uglify task does concat,
       // but still available if needed
-      //    dist: {}usemin
+      //    dist: {}
     },
     filerev: {
       dist: {
@@ -221,10 +202,9 @@ module.exports = function(grunt) {
           html: {
             steps: {
               js: ['concat', 'uglifyjs'],
-              // Let cssmin concat files so it corrects relative paths to fonts and images
               css: ['cssmin']
             },
-            post: {} // this empty obj is required for usemin to work
+            post: {}
           }
         }
       }
@@ -239,7 +219,7 @@ module.exports = function(grunt) {
     },
     htmlmin: {
       dist: {
-        options: {
+        options: {                                 // Target options
           removeComments: true,
           collapseWhitespace: true,
           keepClosingSlash: true
@@ -261,10 +241,11 @@ module.exports = function(grunt) {
           cwd: 'src',
           dest: '<%= application.dist %>',
           src: [
-            'index.html',
+            '*.html',
+            'app/**/*.html',
             'assets/images/**/*.{png,jpg,gif,webp,ico}',
+            'assets/fonts/*',
             'assets/icons/**/*',
-            'assets/swf/*',
             'i18n/*'
           ]
         },
@@ -275,15 +256,7 @@ module.exports = function(grunt) {
           src: 'bower_components/Styleguide-icons/fonts/*',
           dest: '<%= application.dist %>/assets/fonts'
         },
-        {
-          flatten: true,
-          expand: true,
-          cwd: 'src',
-          src: ['app/vendor/ng-file-upload/FileAPI.min.js',
-                 'app/vendor/ng-file-upload/FileAPI.flash.swf'],
-          dest: '<%= application.dist %>/app'
-
-        }]
+        ]
       },
       dist: {
         files: [{
@@ -309,8 +282,8 @@ module.exports = function(grunt) {
     html2js: {
       options: {
         singleModule: true,
-        module: 'opintoniApp',
-        existingModule: true,
+        module: 'templates',
+        existingModule: false,
         rename: function(moduleName) {
           return moduleName.replace('../.tmp/src/', '');
         }
@@ -335,16 +308,6 @@ module.exports = function(grunt) {
         'buildTemplates'
       ]
     },
-    karma: {
-      unit: {
-        configFile: 'karma.conf.js',
-        singleRun: true
-      },
-      local: {
-        configFile: 'karma.conf.js',
-        autoWatch: true
-      }
-    },
     protractor: {
       options: {
         configFile: 'protractor.conf.js',
@@ -357,12 +320,7 @@ module.exports = function(grunt) {
           args: {
             browser: 'chrome',
             params: {
-              student: {
-                loginUrl: 'http://local.student.helsinki.fi:3000/locallog.html'
-              },
-              teacher: {
-                loginUrl: 'http://local.teacher.helsinki.fi:3000/locallog.html'
-              }
+              baseUrl: 'http://localhost:3001'
             }
           }
         }
@@ -372,12 +330,7 @@ module.exports = function(grunt) {
           args: {
             browser: 'phantomjs',
             params: {
-              student: {
-                loginUrl: 'https://opi-1.student.helsinki.fi/locallog.html'
-              },
-              teacher: {
-                loginUrl: 'https://opi-1.teacher.helsinki.fi/locallog.html'
-              }
+              baseUrl: ''
             }
           }
         }
@@ -398,6 +351,12 @@ module.exports = function(grunt) {
         cmd: 'bower install',
         cwd: '..'
       }
+    },
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js',
+        singleRun: true
+      }
     }
   });
 
@@ -406,14 +365,7 @@ module.exports = function(grunt) {
     'clean:server',
     'concurrent:serve',
     'browserSync',
-    'watch:dev'
-  ]);
-
-  grunt.registerTask('test', [
-    'clean:server',
-    'concurrent:test',
-    'karma:unit',
-    'eslint'
+    'watch:sass'
   ]);
 
   grunt.registerTask('e2e', [
@@ -434,9 +386,17 @@ module.exports = function(grunt) {
     'postcss:prod'
   ]);
 
+  grunt.registerTask('test', [
+    'clean:server',
+    'concurrent:test',
+    'htmlmin',
+    'html2js',
+    'karma:unit',
+    'eslint'
+  ]);
+
   grunt.registerTask('buildMinified', [
     'exec:bowerInstall',
-    'test',
     'clean:dist',
     'useminPrepare',
     'concurrent:dist',
@@ -453,6 +413,7 @@ module.exports = function(grunt) {
   grunt.registerTask('build', [
     'exec:bowerInstall',
     'test',
+    'buildTemplates',
     'clean:dist',
     'copy:dist'
   ]);

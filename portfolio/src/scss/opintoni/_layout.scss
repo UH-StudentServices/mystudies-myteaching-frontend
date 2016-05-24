@@ -1,0 +1,77 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+//
+// Layout
+// --------------------------------------------------
+
+
+.l-toolbar {
+  @include clearfix;
+}
+
+.l-header {
+  @include clearfix;
+}
+
+.l-banner {
+  @include clearfix;
+}
+
+.l-page {
+  @include clearfix;
+}
+
+.l-aside {
+  @include clearfix;
+  @include line-break($lightsilver);
+  // Overrides original 'images' path.
+  background-image: url('../images/ui/bg_shadow.png');
+}
+
+.l-footer {
+  @include clearfix;
+  background-color: $black;
+  color: $white;
+  margin-top: 10em;
+}
+
+// Content regions
+.l-multi-col-content-wrapper {
+  @include clearfix;
+}
+.l-content-primary-wrapper {}
+.l-content-secondary-wrapper {}
+
+@include breakpoint($small) {
+  .l-content-primary-wrapper    { @include grid-span(8, 1); }
+  .l-content-secondary-wrapper  { @include grid-span(4, 9); }
+}
+
+@include breakpoint($medium) {
+  .l-content-primary-wrapper    { @include grid-span(7, 1); }
+  .l-content-secondary-wrapper  { @include grid-span(4, 9); }
+}
+
+.clear {
+  clear: both;
+}
+
+.ui-component {
+  margin-bottom: 3em;
+  margin-top: 1em;
+}

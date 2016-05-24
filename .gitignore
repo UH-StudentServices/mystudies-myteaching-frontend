@@ -9,7 +9,10 @@ e2e_screenshots
 *.iws
 build/
 main/src/app/templates.js
+portfolio/src/app/templates.js
 main/src/assets/styles/main.css
+portfolio/src/assets/styles/main.css
 .sass-cache/
 main/dist/
+portfolio/dist
 .DS_Store

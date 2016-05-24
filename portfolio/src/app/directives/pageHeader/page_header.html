@@ -1,0 +1,48 @@
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<div class="page-header">
+  <div class="wrapper">
+    <div class="page-header__branding">
+      <ul>
+        <li>
+          <a href="http://www.helsinki.fi/yliopisto/">
+            <img src="/portfolio/assets/icons/logo.svg" class="logo--header">
+          </a>
+        </li>
+        <li><h1 class="site-name__header" translate="students.pageHeaderBranding" limit-visibility="{roles: ['STUDENT']}"></h1></li>
+        <li><h1 class="site-name__header" translate="teachers.pageHeaderBranding" limit-visibility="{roles: ['TEACHER']}"></h1></li>
+      </ul>
+    </div>
+    <div class="page-header__links hide-mobile-only" >
+      <ul>
+        <li ng-repeat="link in pageHeaderLinks">
+          <a class="page-header__link"
+             href="{{link.href}}"
+             target="_blank"
+             translate="{{link.key}}">
+          </a>
+        </li>
+        <li class="divider">|</li>
+        <li>
+          <menu-language></menu-language>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+

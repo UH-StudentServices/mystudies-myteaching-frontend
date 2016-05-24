@@ -1,0 +1,80 @@
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<header class="l-header">
+  <page-header></page-header>
+</header>
+
+<navigation></navigation>
+<preview-message></preview-message>
+
+<div class="l-banner">
+  <intro></intro>
+</div>
+
+<div class="l-page island wrapper">
+  <div limit-visibility="{roles: ['STUDENT']}" class="l-multi-col-content-wrapper">
+    <div class="l-content-primary-wrapper">
+      <studies limit-visibility="{portfolioComponent: 'STUDIES'}"
+               summary-data="portfolio.summary"
+               portfolio-id="{{::portfolio.id}}"
+               class="tour-element__studies">
+      </studies>
+
+      <degrees limit-visibility="{portfolioComponent: 'DEGREES'}"
+               degrees-data="portfolio.degrees"
+               portfolio-id="{{::portfolio.id}}">
+      </degrees>
+
+      <free-text-content limit-visibility="{portfolioComponent: 'FREE_TEXT_CONTENT'}"
+                         free-text-content-data="portfolio.freeTextContent">
+      </free-text-content>
+    </div>
+
+    <div class="l-content-secondary-wrapper">
+      <credits limit-visibility="{portfolioComponent: 'CREDITS'}" portfolio-id="{{::portfolio.id}}"></credits>
+      <contact-information limit-visibility="{portfolioComponent: 'CONTACT_INFORMATION'}"
+                           contact-information-data="portfolio.contactInformation"
+                           portfolio-id="{{::portfolio.id}}">
+      </contact-information>
+    </div>
+  </div>
+
+  <attainments limit-visibility="{roles: ['STUDENT'], portfolioComponent: 'ATTAINMENTS'}"
+               portfolio-id="{{::portfolio.id}}">
+  </attainments>
+
+  <work-experience limit-visibility="{roles: ['STUDENT'], portfolioComponent: 'WORK_EXPERIENCE'}">
+  </work-experience>
+
+  <language-proficiencies limit-visibility="{roles: ['STUDENT'], portfolioComponent: 'LANGUAGE_PROFICIENCIES'}"
+                          language-proficiencies-data="portfolio.languageProficiencies">
+  </language-proficiencies>
+
+  <favorites limit-visibility="{roles: ['STUDENT'], portfolioComponent: 'FAVORITES'}"
+             favorites-data="portfolio.favorites">
+  </favorites>
+
+  <free-text-content limit-visibility="{roles: ['TEACHER'], portfolioComponent: 'FREE_TEXT_CONTENT'}"
+                     free-text-content-data="portfolio.freeTextContent">
+  </free-text-content>
+</div>
+
+<portfolio-tour tour-disabled="true"></portfolio-tour>
+
+<feedback visibility-private></feedback>
+<footer class="l-footer island" ng-include="'app/partials/_page_footer.html'"></footer>

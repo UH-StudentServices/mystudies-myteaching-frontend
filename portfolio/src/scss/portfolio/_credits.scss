@@ -1,0 +1,37 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.credits {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("/portfolio/assets/images/work-experience-bg.jpg") no-repeat;
+  text-align: center;
+  padding: 20px 0px;
+}
+
+.credits__item {
+  color: $white;
+}
+
+.credits__value {
+  font-size: 128px;
+  line-height: 128px;
+  font-weight: bold;
+}
+
+.credits__label {
+  font-weight: bold;
+  text-transform: uppercase;
+}

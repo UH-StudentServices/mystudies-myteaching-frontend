@@ -1,0 +1,86 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.modal-backdrop {
+  width: 100%;
+  height: 100%;
+  background-color: $black;
+  position: fixed;
+  top: 0;
+  opacity: 0.4;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  z-index: 10000;
+}
+
+.modal-dialog {
+  width: 100%;
+  height: 100%;
+}
+
+.modal.confirm .modal-dialog {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.8);
+  height: auto;
+  color: $white;
+  @include font-size(13px);
+  padding: 1em;
+  @include breakpoint($small) {
+    position: relative;
+    position: relative;
+    width: 300px;
+    top: 50%;
+    left: 50%;
+    @include transform(translate(-50%, -50%));
+  }
+}
+
+.modal-content {
+  width: 100%;
+  height: 100%;
+}
+
+.modal__actions {
+  position: relative;
+  text-align: center;
+  z-index: 3;
+  margin-top: -120px;
+
+  .modal.confirm & {
+    margin-top: 3em;
+    margin-bottom: 0.5em;
+  }
+
+  @include breakpoint($mobile-only) {
+    margin-top: 20px;
+  }
+  a, button {
+    color: $white !important;
+    padding: 0.5em 2em;
+    background-color: $blue;
+    &:hover {
+      background-color: $darkblue;
+    }
+  }
+}
+

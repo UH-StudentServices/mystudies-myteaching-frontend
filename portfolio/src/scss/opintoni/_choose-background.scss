@@ -1,0 +1,150 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@mixin flexslider-navigation-overrides {
+
+  $navi-left: 0;
+  $navi-right: 0;
+
+  .flex-direction-nav a {
+    line-height: 0;
+    font-size: 0;
+    color: transparent;
+    opacity: 1;
+    background-color: $black;
+    bottom: 50% !important;
+    top: auto;
+  }
+
+  .flex-direction-nav a:before {
+    @include font-size(15px);
+    color: $blue;
+    text-shadow: none;
+    top: 50%;
+    left: 12px;
+    position: absolute;
+    display: block;
+
+  }
+  .flex-direction-nav a.flex-next:before {
+    left: 18px;
+  }
+  .flex-direction-nav .flex-prev {
+    left: $navi-left;
+  }
+  .flex-direction-nav .flex-next {
+    right: $navi-right;
+  }
+  .flexslider:hover .flex-direction-nav .flex-prev {
+    opacity: 1;
+    left: $navi-left;
+  }
+  .flexslider:hover .flex-direction-nav .flex-next {
+    opacity: 1;
+    right: $navi-right;
+  }
+}
+
+@include breakpoint($mobile-only) {
+  .modal {
+    top: 25%;
+    width: 100%;
+    left: 0;
+  }
+}
+
+.choose-background-container {
+  height: 100%;
+}
+
+.choose-background {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  @include breakpoint($mobile-only) {
+    height: 60%;
+  }
+  overflow: hidden;
+  .flexslider {
+    margin-bottom: 0;
+    border-color: $black;
+    background-color: $black;
+  }
+}
+
+.choose-background__image {
+  height: 100%;
+  position: relative;
+  @include flexslider-navigation-overrides;
+
+  .flexslider-container, .flexslider {
+    height: 100%;
+  }
+
+}
+
+.choose-background__image--container {
+  .flexslider {
+    border: 0;
+  }
+}
+
+.choose-background__thumbnails {
+  .flexslider {
+    border-top-width: 10px;
+    border-bottom-width: 10px;
+    .slides li {
+      cursor: pointer;
+      margin: 0 5px;
+      &:first-child {
+        margin-left: 0;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    .flex-active-slide {
+      border: 2px solid $blue;
+    }
+  }
+  .flex-direction-nav a {
+    display: none !important;
+  }
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  width: 100%;
+}
+
+.choose-background__actions {
+  position: relative;
+  text-align: center;
+  z-index: 3;
+  margin-top: -120px;
+
+  @include breakpoint($mobile-only) {
+    margin-top: 20px;
+  }
+  a {
+    color: $white !important;
+    padding: 0.5em 2em;
+    background-color: $blue;
+    &:hover {
+      background-color: $darkblue;
+    }
+  }
+}

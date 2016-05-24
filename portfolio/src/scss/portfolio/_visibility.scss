@@ -1,0 +1,51 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  clear: both;
+  margin-top: 1em;
+  cursor: pointer;
+  @include user-select(none);
+
+  .dropdown-toggle {
+    position: relative;
+    width: 150px;
+    padding: 0px 50px 0px 10px;
+    color: $white;
+    background-color: $limegreen;
+    line-height: 32px;
+    &:after {
+      border: 8px solid transparent;
+      border-top: 8px solid $white;
+      content: ' ';
+      position: absolute;
+      right: 10px;
+      top: 13px;
+    }
+  }
+}
+
+.dropdown-content {
+  @extend .dropdown-menu;
+  @include triangle-with-border(12px, 150px);
+  width: 200px;
+  top: 50px;
+  left: 0;
+  color: $blue;
+}
