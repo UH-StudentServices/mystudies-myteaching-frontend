@@ -1,0 +1,122 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+$tagColorEditingColor: #797979;
+
+.ui-component__studies {
+
+  position: relative;
+
+  .keyword-list {
+    @include breakpoint($medium) {
+      margin-left: 33%;
+    }
+
+    margin: 1em 0;
+
+    &__topical {
+      @include font-weight-medium;
+      overflow: hidden;
+
+      border: none;
+      display: inline-block;
+
+      margin-bottom: 1em;
+      margin-right: 1em;
+    }
+
+    &__tag {
+      @include tag-label;
+
+      display: inline-block;
+      text-transform: uppercase;
+
+      border: 1px solid $lightsilver;
+    }
+
+    &__tag--editing {
+      &:before {
+        border: 1px solid transparent;
+        border-right-color: $tagColorEditingColor;
+
+        border-width: 14px 10px;
+        content: " ";
+        pointer-events: none;
+        position: absolute;
+
+        top: 0;
+        height: 0;
+        width: 0;
+
+        left: -20px;
+      }
+
+      border-left: none;
+      color: $white;
+      height: 28px;
+      margin-left: 12px;
+      padding: 0.1em 0.5em 0 1em;
+      position: relative;
+
+      display: inline-block;
+      text-transform: uppercase;
+
+      background-color: $tagColorEditingColor;
+
+      .fa-close {
+        cursor: pointer;
+        margin-left: 5px;
+      }
+    }
+  }
+
+  .tag-ball:before {
+    @include border;
+    border-color: darken($lightsilver, 10%);
+    border-radius: 50%;
+    content: " ";
+    height: 6px;
+    left: 0;
+    margin-top: -3px;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    width: 6px;
+    z-index: 10;
+  }
+
+  &__summary--editing {
+    margin-top: 10px;
+  }
+}
+
+.keywords-container {
+  margin-top: 10px;
+
+  &__new-keyword {
+    margin-bottom: 5px;
+
+    &__label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    &__input {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,81 @@
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<section class="ui-component editable-wrapper">
+
+  <div class="edit-link-wrapper">
+    <h2 class="ui-component__title border-bottom" translate="workExperience.title"></h2>
+    <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
+  </div>
+
+  <ul class="work-experience" ng-class="{editing : editing}">
+    <li ng-repeat="workExperienceItem in workExperience | orderBy : orderWorkExperience : true track by workExperienceItem.id">
+      <div class="work-experience__item">
+        <div class="work-experience__content">
+          <div class="work-experience__employer">
+            {{workExperienceItem.employer}}
+          </div>
+          <div class="work-experience__job-title-container">
+            <div class="work-experience__title">
+              {{workExperienceItem.jobTitle}}
+            </div>
+            <div class="work-experience__text">
+              {{workExperienceItem.startDate | momentFormat:'M/YYYY'}} -
+              {{workExperienceItem.endDate | momentFormat:'M/YYYY'}}
+            </div>
+          </div>
+        </div>
+        <div class="work-experience__remove" ng-show="editing" ng-click="removeWorkExperience(workExperienceItem)"></div>
+      </div>
+    </li>
+
+    <li ng-show="jobSearch">
+      <div class="work-experience__item job-search">
+        <div class="work-experience__content">
+          <div class="work-experience__job-title-container">
+            <div class="work-experience__title text-transform-capitalize-block"
+                 translate="workExperience.jobSearch">
+            </div>
+            <div class="work-experience__text">
+              {{jobSearch.contactEmail}}
+            </div>
+          </div>
+        </div>
+        <div class="work-experience__remove" ng-show="editing" ng-click="removeJobSearch()"></div>
+      </div>
+    </li>
+
+    <li visibility-private>
+      <div class="work-experience__add-new">
+        <a class="add-favorite-button island"
+           role="button"
+           aria-label="{{::('favorites.addNew' | translate)}}"
+           tabindex="0"
+           ng-click="showPopover()"
+           ns-popover
+           ns-popover-template="app/directives/workExperience/workExperience.addNew.popover.html"
+           ns-popover-trigger="click"
+           ns-popover-placement="bottom|center"
+           ns-popover-timeout="20000">
+          <h4 class="add-favorite-button__title hide-mobile-only" translate="workExperience.addNew"></h4>
+          <span class="add-favorite-button__plus">+</span>
+        </a>
+      </div>
+    </li>
+  </ul>
+  <visibility-toggle component-id="WORK_EXPERIENCE"></visibility-toggle>
+</section>

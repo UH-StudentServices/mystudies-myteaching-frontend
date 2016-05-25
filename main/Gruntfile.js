@@ -1,4 +1,3 @@
-
 /*
  * This file is part of MystudiesMyteaching application.
  *
@@ -27,7 +26,6 @@ var fs = require('fs'),
     proxyPaths,
     proxyMiddleware,
     gruntPlugins;
-
 
 // Grunt plugins must be loaded manually since load-grunt-tasks doesn't know
 // how to load node_modules from parent dir as of this writing

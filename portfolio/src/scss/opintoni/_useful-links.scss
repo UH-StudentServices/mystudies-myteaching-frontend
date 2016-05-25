@@ -1,0 +1,233 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.useful-links {
+  position: relative;
+}
+
+.useful-links h3 {
+  @include font-size(20px);
+  width: 70%;
+  margin-bottom: 16px;
+}
+
+.useful-links ul[dnd-list], .useful-links li[dnd-list] {
+  position: relative;
+}
+
+.useful-links li[dnd-list] {
+  display: block;
+}
+
+.useful-links .dndDraggingSource {
+  display: none;
+}
+
+.useful-links .dndDragging {
+  opacity: 0.7;
+}
+
+.useful-links .dndPlaceholder {
+  background-color: #ddd !important;
+  display: block;
+  position: relative;
+  height: 50px;
+}
+
+.useful-links__edit {
+  display: block;
+  text-align: right;
+  margin-bottom: 0.5em;
+}
+
+.useful-links li {
+  position: relative;
+  margin-bottom: 2px;
+}
+
+.useful-links__delete-link {
+  color: $white;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  right: 1em;
+  @include transform(translate(0, -50%));
+}
+
+.useful-links__edit-link-url {
+  position: relative;
+  background-color: $white;
+  border: 2px solid $lightsilver;
+  margin-bottom: 2px;
+  padding: 0.8em 3em 0.8em 1em;
+  input {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    width: 100%;
+  }
+
+  a {
+    position: absolute;
+    right: 1em;
+    top: 50%;
+    @include transform(translate(0, -50%));
+  }
+
+}
+
+.useful-links__edit-link {
+  @include button-internal--dark;
+  @include font-weight-medium;
+
+  display: table;
+  width: 100%;
+  background-color: $lightgray !important;
+
+  .hy-list {
+    display: table-cell;
+    vertical-align: middle;
+    width: 15px;
+  }
+
+  &:after {
+    display: none;
+  }
+
+  span {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 20px;
+    @include breakpoint($mobile-only) {
+      margin-left: 0;
+    }
+  }
+
+  span i {
+    margin-left: 0.5em;
+    display: none;
+  }
+
+  @mixin show-editable-link() {
+    span {
+      cursor: pointer;
+      background-color: $gray;
+      i {
+        display: inline;
+      }
+    }
+  }
+
+  @include breakpoint($mobile-only) {
+    &.editable {
+      @include show-editable-link;
+    }
+  }
+
+  &.editable:hover {
+    @include show-editable-link;
+  }
+}
+
+.new-useful-link {
+  position: relative;
+  padding: 0.7em 0 0.7em 1em;
+  border: 2px solid $lightsilver;
+  margin-bottom: 2px;
+
+  form {
+    display: inline;
+    margin: 0;
+    padding: 0;
+  }
+
+  input {
+    border: 0;
+    width: 70%;
+  }
+}
+
+.new-useful-link__add-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 3em;
+
+  background-color: $blue;
+
+  @include all-link-states {
+    color: $white;
+  }
+
+  i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include transform(translate(-50%, -50%));
+  }
+}
+
+.useful-link-title {
+  @include border;
+  @include tab-shadow;
+  @include ng-show-fade;
+  background-color: $white;
+  position: absolute;
+  margin-top: -0.5em;
+  margin-left: 0.5em;
+  padding: 0.5em;
+  width: 85%;
+  z-index: 2;
+  input {
+    border: 0;
+    width: 100%;
+    color: $blue;
+  }
+}
+
+.useful-link-title__arrow {
+  @include triangle(10px);
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 0;
+  height: 0;
+}
+
+.useful-links__fixed {
+  padding: 1em;
+  background-color: $blue;
+  color: $white;
+  margin-bottom: 2px;
+
+  h4 {
+    padding-bottom: 0;
+  }
+
+  a {
+    @include all-link-states {
+      color: $white;
+    }
+  }
+
+  p {
+    margin-bottom: 0;
+    font-family: $font-family-bodytext;
+  }
+}

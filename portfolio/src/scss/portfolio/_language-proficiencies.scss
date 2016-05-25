@@ -1,0 +1,215 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@mixin progression-levels($background-color, $border-color) {
+  &.-level-1 {
+    background-image: linear-gradient(162deg, transparent 50%, $border-color 50%),
+        linear-gradient(90deg, $border-color 50%, transparent 50%);
+  }
+
+  &.-level-2 {
+    background-image: linear-gradient(234deg, transparent 50%, $border-color 50%),
+        linear-gradient(90deg, $border-color 50%, transparent 50%);
+  }
+
+  &.-level-3 {
+    background-image: linear-gradient(90deg, transparent 50%, $background-color 50%),
+        linear-gradient(126deg, $border-color 50%, transparent 50%);
+  }
+
+  &.-level-4 {
+    background-image: linear-gradient(90deg, transparent 50%, $background-color 50%),
+        linear-gradient(18deg, transparent 50%, $border-color 50%)
+  }
+}
+
+@mixin language-proficiency-select-control {
+  position: relative;
+  outline: 0;
+
+  .editing & {
+    cursor: pointer;
+  }
+}
+
+.language-proficiency-list {
+  display: flex;
+
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  @include breakpoint($medium) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  &__add-new-container {
+    @include flex-container(center, stretch);
+    width: 300px;
+    height: 100px;
+    flex: 0 0 auto;
+    margin: 0 2px 1px 0;
+    border-bottom: 1px solid $lightsilver;
+  }
+
+  &__add-new {
+    @include flex-container(center, center);
+    flex: 1 1 auto;
+    font-size: 3em;
+    color: $blue;
+
+    &:hover {
+      color: $darkblue;
+    }
+
+    &::before {
+      content: '+';
+    }
+  }
+}
+
+.language-proficiency-item {
+  $background-color-edit: #797979;
+  @include flex-container(flex-start, center);
+  flex: 0 0 auto;
+  width: 300px;
+  min-height: 100px;
+  margin: 0 2px 1px 0;
+  border-bottom: 1px solid $lightsilver;
+
+  .editing & {
+    background-color: $background-color-edit;
+    color: $white;
+  }
+
+  &__content {
+    padding: 20px;
+    flex: 1 1 auto;
+  }
+
+  &__remove {
+    align-self: flex-start;
+    padding: 0.3em 0.5em 0 0;
+    color: $white;
+
+    &:hover {
+      color: $white;
+
+      .hy-remove {
+        font-weight: 600;
+      }
+    }
+  }
+
+  &__language-name {
+    @include flex-container(space-between, center);
+    @include language-proficiency-select-control;
+    font-weight: 600;
+    margin-bottom: 0.3em;
+  }
+
+  &__proficiency {
+    @include flex-container(space-between, center);
+    @include language-proficiency-select-control;
+  }
+
+  &__select-container {
+    position: absolute;
+    top: 2em;
+    left: 0;
+    right: 0;
+    z-index: 1;
+
+    &::before {
+      content: '';
+      width: 0;
+      height: 0;
+      position: absolute;
+      left: 16px;
+      top: -7px;
+      z-index: 2;
+      border-bottom: 8px solid $white;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+    }
+  }
+
+  &__select {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 0.2em 0.5em;
+    border: 1px solid $lightsilver;
+    z-index: 1;
+    background-color: $white;
+    box-shadow: 1px 1px 1px $lightsilver;
+
+    &-item {
+      border-bottom: 1px solid $lightsilver;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &-link {
+        display: block;
+        padding: 0.5em 0;
+        font-size: 0.8em;
+        color: $blue;
+      }
+    }
+  }
+}
+
+.proficiency-visualizer-container {
+  flex: 0 0 auto;
+  padding: 20px 20px 20px;
+  margin: 0;
+}
+
+.proficiency-visualizer {
+  $background-color-edit: #797979;
+  $border-color: #f8f8f8;
+  $border-color-edit: #666;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: $background-color-edit;
+  position: relative;
+
+  &__inner-circle {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 30px;
+    height: 30px;
+    z-index: 1;
+    background-color: $white;
+    border-radius: 50%;
+
+    .editing & {
+      background-color: $background-color-edit;
+    }
+  }
+
+  @include progression-levels($background-color-edit, $border-color);
+
+  .editing & {
+    background-color: $white;
+    @include progression-levels($white, $border-color-edit);
+  }
+}

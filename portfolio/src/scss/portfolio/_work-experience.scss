@@ -1,0 +1,206 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+$work-experience-width-small : 240px;
+$work-experience-width-medium : 300px;
+$work-experience-width-large : 340px;
+$work-experience-height : 170px;
+$work-experience-summary-tag-color: $blue;
+$work-experience-summary-text-color: $white;
+
+ul.work-experience {
+  > li {
+    margin-top: 1em;
+    @include breakpoint($small) {
+      width: 33%;
+      height: $work-experience-height;
+      display: inline-block;
+    }
+  }
+}
+
+
+.work-experience__item, .work-experience__add-new {
+  height: $work-experience-height;
+
+  @include breakpoint($small) {
+    float: left;
+    width: $work-experience-width-small;
+  }
+
+  @include breakpoint($medium) {
+    width: $work-experience-width-medium;
+  }
+
+  @include breakpoint($large) {
+    width: $work-experience-width-large;
+  }
+}
+
+.work-experience__item {
+  color: $white;
+  position: relative;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("/portfolio/assets/images/work-experience-bg.jpg");
+  background-color: $black;
+}
+
+.work-experience__content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.5);
+  .job-search & {
+    background-color: $blue--active;
+    .work-experience.editing & {
+      background-color: $darkblue;
+    }
+  }
+  .work-experience.editing & {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: $silver;
+  }
+}
+
+
+.work-experience__employer {
+  position: absolute;
+  top: 1em;
+  left: 1em;
+}
+
+.work-experience__job-title-container {
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+  top: 50%;
+  @include transform(translateY(-50%));
+}
+
+.work-experience__title {
+  font-weight: 700;
+  margin-bottom: 0.2em;
+}
+
+.work-experience__text {
+  @include font-size(11px);
+}
+
+.work-experience__add-new {
+  @include border;
+  position: relative;
+}
+
+.work-experience__remove {
+  background-color: $blue;
+  cursor: pointer;
+  width: 3em;
+  height: 3em;
+  position: absolute;
+  top: 0;
+  right: 0;
+  &:before {
+    content : "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include transform(translate(-50%, -50%));
+    @include font-awesome("\f00d");
+  }
+}
+
+.add-favorite-container {
+  &.add-work-experience {
+    top: -$work-experience-height / 2 + 15 !important;
+  }
+}
+
+.add-favorite {
+  .add-work-experience & {
+    height: auto !important;
+    min-height: 150px;
+  }
+}
+
+.add-favorite-step {
+  .add-work-experience & {
+    li {
+      font-size: 0.9em;
+      padding: 0.8em 0.5em !important;
+    }
+
+    li.job-search a {
+      &:before {
+        content : "";
+        display: inline-block;
+        margin-right: 1em;
+        position: relative;
+        top: 2px;
+        width: 1em;
+        height: 1em;
+        background-color: $blue--active;
+      }
+    }
+  }
+}
+
+.add-work-experience form {
+  padding: 1em;
+  .form-type-text {
+    float: none;
+    width: 100%;
+    label {
+      font-size: 0.9rem;
+      line-height: 1.5rem;
+      padding: 0;
+    }
+    input {
+      width: 100%;
+    }
+  }
+
+  input[type="submit"] {
+    margin-top: 1em;
+    padding: 0.5em 1em;
+  }
+}
+
+.work-experience-summary__item {
+  text-transform: uppercase;
+  color: $work-experience-summary-text-color;
+  background: rgba($work-experience-summary-tag-color, 0.6);
+  padding: 1em;
+  font-weight: 600;
+  display: inline-block;
+  margin-right: 0.2em;
+  margin-bottom: 0.2em;
+}
+
+.work-experience-summary__contact-email {
+  text-transform: none;
+  margin-top: 0.5em;
+  @include font-size(12px);
+}
+
+.work-experience-summary__job-search {
+  width: 100%;
+  padding-bottom: 1.5em;
+}
+
+

@@ -1,0 +1,48 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.page-banner-container {
+  min-height: $page-banner-height;
+}
+
+.page-banner .page-banner__image {
+  min-height: $page-banner-height;
+  height: 100% !important;
+  @include breakpoint($mobile-only) {
+    position: relative !important;
+  }
+}
+
+.page-banner-summary__wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.page-banner-summary {
+  position: absolute;
+  top: 3em;
+
+  @include breakpoint($mobile-only) {
+    width: 70%;
+    left: 50%;
+    @include transform(translateX(-50%));
+  }
+  @include breakpoint($small) {
+    width: 20em;
+    right: 1em;
+  }
+}

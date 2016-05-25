@@ -1,0 +1,46 @@
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<form name="addNewWorkExperienceForm">
+  <div class="form-type-text">
+    <label class="text-transform-capitalize" for="jobTitleInput" translate="workExperience.jobTitle"></label>
+    <input id="jobTitleInput" type="text" ng-model="newWorkExperience.jobTitle" required>
+  </div>
+  <div class="form-type-text">
+    <label class="text-transform-capitalize" for="employerInput" translate="workExperience.employer"></label>
+    <input id="employerInput" type="text" ng-model="newWorkExperience.employer" required>
+  </div>
+  <div class="form-type-text">
+    <label class="text-transform-capitalize" for="startDateInput" translate="workExperience.startDate"></label>
+    <input id="startDateInput"
+           date-input="MM/YYYY"
+           ng-model="newWorkExperience.startDate"
+           required>
+  </div>
+  <div class="form-type-text">
+    <label class="text-transform-capitalize" for="endDateInput" translate="workExperience.endDate"></label>
+    <input id="endDateInput"
+           date-input="MM/YYYY"
+           ng-model="newWorkExperience.endDate"
+           >
+  </div>
+  <input class="form-submit"
+         ng-click="addWorkExperience()"
+         type="submit"
+         ng-disabled="!addNewWorkExperienceForm.$valid"
+         value="{{::('general.add' | translate | capitalize)}}">
+</form>

@@ -1,5 +1,5 @@
 // Check for required properties
-['base_url', 'username', 'password'].collect { "opintoni_artifactory_$it" }.each {
+["base_url", "username", "password"].collect { "opintoni_artifactory_$it" }.each {
     if (!project.hasProperty(it)) {
         def msg = """
       |Missing project property: $it
@@ -25,28 +25,36 @@ buildscript {
     }
     dependencies {
         classpath "net.researchgate:gradle-release:2.0.0"
-        classpath "com.moowork.gradle:gradle-grunt-plugin:0.10"
+        classpath "com.moowork.gradle:gradle-node-plugin:0.12"
     }
 }
 
-apply plugin: 'com.moowork.grunt'
+apply plugin: "com.moowork.node"
 
-grunt {
-    workDir = file("${project.projectDir}/main")
+node {
+    download = false
+
+    nodeModulesDir = file("${project.projectDir}")
 }
 
-apply plugin: 'distribution'
+apply plugin: "distribution"
 
 distributions {
     main {
         contents {
-            from { 'main/dist/' }
+            into("main") {
+                from { "main/dist/" }
+            }
+
+            into("portfolio") {
+                from { "portfolio/dist/" }
+            }
         }
     }
 }
 
-apply plugin: 'net.researchgate.release'
-group 'fi.helsinki.opintoni'
+apply plugin: "net.researchgate.release"
+group "fi.helsinki.opintoni"
 version version
 
 repositories {
@@ -60,7 +68,7 @@ repositories {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.4'
+    gradleVersion = "2.4"
 }
 
 apply plugin: "maven-publish"
@@ -73,7 +81,7 @@ publishing {
     publications {
         maven(MavenPublication) {
             groupId group
-            artifactId 'opintoni-app-frontend'
+            artifactId "opintoni-app-frontend"
             artifact distTar
         }
     }
@@ -87,7 +95,7 @@ publishing {
                 password opintoni_artifactory_password
             }
 
-            if (version.endsWith('SNAPSHOT')) {
+            if (version.endsWith("SNAPSHOT")) {
                 url "${opintoni_artifactory_base_url}/libs-snapshot-local"
             } else {
                 url "${opintoni_artifactory_base_url}/libs-release-local"
@@ -96,24 +104,25 @@ publishing {
     }
 }
 
-def env = project.getProperty('environment')
+def env = project.getProperty("environment")
 
 task storeDeployInformationToFile << {
     def props = new Properties()
     file("gradle.properties").withInputStream { stream -> props.load(stream) }
 
     def deployProps = [VERSION: props["version"], ENVIRONMENT: env]
-    def content = deployProps.collect { key, value -> "$key=$value" }.join('\n')
+    def content = deployProps.collect { key, value -> "$key=$value" }.join("\n")
     file("ci-deploy.properties").write(content)
 }
 
 createReleaseTag.dependsOn storeDeployInformationToFile
 
-grunt_build.dependsOn 'installGrunt'
-grunt_buildMinified.dependsOn 'installGrunt'
+npm_run_build.dependsOn "npmInstall"
+npm_run_dist.dependsOn "npmInstall"
+
 if(env == "prod" || env == "qa") {
-    distTar.dependsOn grunt_buildMinified
+    distTar.dependsOn npm_run_dist
 } else {
-    distTar.dependsOn grunt_build
+    distTar.dependsOn npm_run_build
 }
 

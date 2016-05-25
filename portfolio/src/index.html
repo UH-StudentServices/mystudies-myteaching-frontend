@@ -1,0 +1,192 @@
+<!doctype html>
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <base href="/portfolio/">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- build:css assets/styles/main.css -->
+    <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="stylesheet" href="assets/styles/styleguide/main.css">
+    <link rel="stylesheet" type="text/css" href="../bower_components/ng-joyride/ng-joyride.css">
+    <link rel="stylesheet" type="text/css" href="../bower_components/embed-js/dist/embed.min.css">
+    <link rel="stylesheet" type="text/css" href="../bower_components/Styleguide-icons/css/icons.css">
+    <link rel="stylesheet" type="text/css" href="../bower_components/Styleguide-icons/css/main.css">
+    <!-- endbuild -->
+
+    <!-- External stylesheets -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+
+    <link rel="icon" href="assets/images/ui/hy_favicon.ico" type="image/x-icon">
+
+    <link rel="apple-touch-icon" href="assets/icons/mobile-icons/apple-touch-icon-114x114.png" sizes="114x114" />
+    <link rel="apple-touch-icon" href="assets/icons/mobile-icons/apple-touch-icon-120x120.png" sizes="120x120" />
+    <link rel="apple-touch-icon" href="assets/icons/mobile-icons/apple-touch-icon-144x144.png" sizes="144x144" />
+    <link rel="apple-touch-icon" href="assets/icons/mobile-icons/apple-touch-icon-152x152.png" sizes="152x152" />
+    <link rel="apple-touch-icon" href="assets/icons/mobile-icons/apple-touch-icon-57x57.png" sizes="57x57" />
+    <link rel="apple-touch-icon" href="assets/icons/mobile-icons/apple-touch-icon-60x60.png" sizes="60x60" />
+    <link rel="apple-touch-icon" href="assets/icons/mobile-icons/apple-touch-icon-72x72.png" sizes="72x72" />
+    <link rel="apple-touch-icon" href="assets/icons/mobile-icons/apple-touch-icon-76x76.png" sizes="76x76" />
+    <link rel="apple-touch-icon-precomposed" href="assets/icons/mobile-icons/apple-touch-icon-precomposed.png" />
+    <link rel="apple-touch-icon" href="assets/icons/mobile-icons/apple-touch-icon.png" />
+    <link rel="icon" href="assets/icons/mobile-icons/favicon-160x160.png" type="image/png" sizes="160x160" />
+    <link rel="icon" href="assets/icons/mobile-icons/favicon-16x16.png" type="image/png" sizes="16x16" />
+    <link rel="icon" href="assets/icons/mobile-icons/favicon-196x196.png" type="image/png" sizes="196x196" />
+    <link rel="icon" href="assets/icons/mobile-icons/favicon-32x32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="assets/icons/mobile-icons/favicon-96x96.png" type="image/png" sizes="96x96" />
+    <link rel="shortcut icon" href="assets/images/ui/hy_favicon.ico" />
+    <meta name="msapplication-TileImage144x144logo" content="assets/icons/mobile-icons/mstile-144x144.png" />
+    <meta name="msapplication-square150x150logo" content="assets/icons/mobile-icons/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="assets/icons/mobile-icons/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="assets/icons/mobile-icons/mstile-310x310.png" />
+    <meta name="msapplication-square70x70logo" content="assets/icons/mobile-icons/mstile-70x70.png" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+
+</head>
+<body ng-app="opintoniPortfolioApp">
+<!--[if lt IE 9]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div ui-view></div>
+
+<script src="/api/public/v1/configuration"></script>
+
+<!-- build:js app/vendor.js -->
+<script src="../bower_components/modernizr/modernizr.js"></script>
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/angular/angular.js"></script>
+<script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="../bower_components/angular-resource/angular-resource.js"></script>
+<script src="../bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="../bower_components/angular-translate/angular-translate.js"></script>
+<script src="../bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+<script src="../bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+<script src="../bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+<script src="../bower_components/angular-animate/angular-animate.js"></script>
+<script src="../bower_components/angular-ui-utils/ui-utils.js"></script>
+<script src="../bower_components/moment/min/moment-with-locales.min.js"></script>
+<script src="../bower_components/angular-aria/angular-aria.js"></script>
+<script src="../bower_components/lodash/lodash.js"></script>
+<script src="../bower_components/angular-google-analytics/dist/angular-google-analytics.min.js"></script>
+<script src="../bower_components/nsPopover/src/nsPopover.js"></script>
+<script src="../bower_components/angular-drag-and-drop-lists/angular-drag-and-drop-lists.min.js"></script>
+<script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../bower_components/rxjs/dist/rx.js"></script>
+<script src="../bower_components/rxjs/dist/rx.binding.js"></script>
+<script src="../bower_components/embed-js/dist/embed.min.js"></script>
+<script src="../bower_components/es6-promise-polyfill/promise.min.js"></script>
+<!-- endbuild -->
+
+<!-- build:js app/app.js -->
+<script src="app/app.js"></script>
+<script src="app/templates.js"></script>
+<script src="app/errors/errors.js"></script>
+<script src="app/directives/contactInformation/contactInformation.directive.js"></script>
+<script src="app/directives/credits/credits.directive.js"></script>
+<script src="app/directives/dateInput/dateInput.directive.js"></script>
+<script src="app/directives/degrees/degrees.directive.js"></script>
+<script src="app/directives/degrees/editDegrees.directive.js"></script>
+<script src="app/directives/degrees/showDegrees.directive.js"></script>
+<script src="app/directives/dropdown/dropdown.directive.js"></script>
+<script src="app/directives/focus/focus.js"></script>
+<script src="app/directives/attainments/attainments.directive.js"></script>
+<script src="app/directives/pageHeader/pageHeader.js"></script>
+<script src="app/directives/intro/intro.directive.js"></script>
+<script src="app/directives/menuLanguage/menuLanguage.js"></script>
+<script src="app/directives/editLink/editLink.directive.js"></script>
+<script src="app/directives/visibility/visibility.directive.js"></script>
+<script src="app/directives/studies/keywords.directive.js"></script>
+<script src="app/directives/studies/studies.directive.js"></script>
+<script src="app/directives/studies/summary.directive.js"></script>
+<script src="app/directives/inputUppercase/inputUppercase.directive.js"></script>
+<script src="app/directives/favorites/favorites.directive.js"></script>
+<script src="app/directives/favorites/favorites.addNew.directive.js"></script>
+<script src="app/directives/favorites/removeFavorite.directive.js"></script>
+<script src="app/directives/favorites/link/favorites.link.directive.js"></script>
+<script src="app/directives/favorites/link/favorites.addNew.link.directive.js"></script>
+<script src="app/directives/favorites/twitter/favorites.twitter.directive.js"></script>
+<script src="app/directives/favorites/twitter/favorites.addNew.twitter.directive.js"></script>
+<script src="app/directives/workExperience/workExperience.directive.js"></script>
+<script src="app/directives/navigation/navigation.directive.js"></script>
+<script src="app/directives/avatarImage/avatarImage.directive.js"></script>
+<script src="app/directives/preview/previewButton.directive.js"></script>
+<script src="app/directives/preview/previewMessage.directive.js"></script>
+<script src="app/directives/freeTextContent/freeTextContent.directive.js"></script>
+<script src="app/directives/freeTextContent/editFreeTextContent.directive.js"></script>
+<script src="app/directives/addNewComponent/addNewComponent.directive.js"></script>
+<script src="app/directives/embed/embed.directive.js"></script>
+<script src="app/directives/languageProficiencies/languageProficiencies.directive.js"></script>
+<script src="app/directives/feedback/feedback.directive.js"></script>
+
+<script src="app/constants/externalLinks.js"></script>
+<script src="app/filters/formatting.js"></script>
+<script src="app/filters/moment.filter.js"></script>
+<script src="app/language/language.service.js"></script>
+
+<script src="app/controllers/main.js"></script>
+
+<script src="app/resources/contactInformation.resource.js"></script>
+<script src="app/resources/credits.resource.js"></script>
+<script src="app/resources/degree.resource.js"></script>
+<script src="app/resources/session.resource.js"></script>
+<script src="app/resources/portfolio.resource.js"></script>
+<script src="app/resources/keyword.resource.js"></script>
+<script src="app/resources/favorites.resource.js"></script>
+<script src="app/resources/favorites.link.resource.js"></script>
+<script src="app/resources/summary.resource.js"></script>
+<script src="app/resources/userSettings.resource.js"></script>
+<script src="app/resources/workExperience.resource.js"></script>
+<script src="app/resources/attainment.resource.js"></script>
+<script src="app/resources/visibility.resource.js"></script>
+<script src="app/resources/httpInterceptor.js"></script>
+<script src="app/resources/freeTextContent.resource.js"></script>
+<script src="app/resources/languageProficiencies.resource.js"></script>
+<script src="app/resources/feedback.resource.js"></script>
+
+<script src="app/services/contactInformation.service.js"></script>
+<script src="app/services/credits.service.js"></script>
+<script src="app/services/degree.service.js"></script>
+<script src="app/services/session.service.js"></script>
+<script src="app/services/portfolio.service.js"></script>
+<script src="app/services/state.service.js"></script>
+<script src="app/services/keyword.service.js"></script>
+<script src="app/services/focus.service.js"></script>
+<script src="app/services/configuration.service.js"></script>
+<script src="app/services/favorites.service.js"></script>
+<script src="app/services/summary.service.js"></script>
+<script src="app/services/userSettings.service.js"></script>
+<script src="app/services/workExperience.service.js"></script>
+<script src="app/services/visibility.service.js"></script>
+<script src="app/services/preview.service.js"></script>
+<script src="app/services/freeTextContent.service.js"></script>
+<script src="app/services/portfolioRole.service.js"></script>
+<script src="app/services/languageProficiencies.service.js"></script>
+
+<script src="app/utils/browser.util.js"></script>
+<script src="app/utils/moment.util.js"></script>
+
+<!-- endbuild -->
+
+</body>
+</html>

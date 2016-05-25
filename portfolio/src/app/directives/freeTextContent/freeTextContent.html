@@ -1,0 +1,46 @@
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<div class="ui-component">
+  <div ng-repeat="freeTextContent in freeTextContents" class="free-text-content ui-component">
+
+    <div class="edit-link-wrapper">
+      <edit-link on-edit="editFreeTextContent(freeTextContent)"
+                 on-exit-edit="updateFreeTextContent()"
+                 set-edit-state="{{freeTextContentToEdit === freeTextContent}}">
+      </edit-link>
+    </div>
+    <div ng-if="freeTextContentToEdit !== freeTextContent">
+      <div class="free-text-content__title-container">
+        <h3 class="free-text-content__title">{{freeTextContent.title}}</h3>
+      </div>
+      <p class="free-text-content__text user-text" embed="freeTextContent.text"></p>
+    </div>
+    <edit-free-text-content
+      ng-if="freeTextContentToEdit === freeTextContent"
+      free-text-content="freeTextContentToEdit"
+      on-ok="updateFreeTextContent()"
+      on-remove="deleteFreeTextContent()">
+    </edit-free-text-content>
+  </div>
+
+  <div class="add-free-text-content ui-component" visibility-private>
+    <add-new-component ng-click="insertFreeTextContent()"></add-new-component>
+  </div>
+
+  <visibility-toggle component-id="FREE_TEXT_CONTENT"></visibility-toggle>
+</div>

@@ -1,0 +1,79 @@
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<ul role="list">
+  <li ng-repeat="degree in degrees | orderBy: '-dateOfDegree'"
+      role="listitem"
+      class="editable">
+    <div class="box-data">
+      <i class="fa fa-bars hide-mobile-only"></i>
+
+      <div class="lyre-icon"></div>
+      <div class="box-data__content">
+        <span class="editable-content" ng-show="!degree.dateOfDegreeEdit">
+          <span ng-click="editDateOfDegree(degree)">
+            {{ degree.dateOfDegree | momentFormat:'DD.MM.YYYY'}}
+            <i class="fa fa-pencil"></i>
+          </span>
+        </span>
+        <span class="editable-content-active" ng-if="degree.dateOfDegreeEdit">
+          <input date-input focus="degree.dateOfDegreeEdit" ng-model="degree.dateOfDegree" ui-keypress="{'enter':'exitDateOfDegreeEdit(degree)'}">
+          <i ng-click="exitDateOfDegreeEdit(degree)" class="fa fa-check"></i>
+        </span>
+      </div>
+
+      <div class="box-data__title">
+        <span class="editable-content" ng-show="!degree.titleEdit">
+          <span ng-click="editTitle(degree)">{{ degree.title }}<i class="fa fa-pencil"></i></span>
+        </span>
+        <span class="editable-content-active" ng-show="degree.titleEdit">
+          <input focus="degree.titleEdit" ng-model="degree.title" ui-keypress="{'enter':'exitTitleEdit(degree)'}">
+          <i ng-click="exitTitleEdit(degree)" class="fa fa-check"></i>
+        </span>
+      </div>
+
+      <div class="box-data__content">
+        <span class="editable-content" ng-show="!degree.descriptionEdit">
+          <span ng-click="editDescription(degree)">{{ degree.description }}<i class="fa fa-pencil"></i></span>
+        </span>
+        <span class="editable-content-active" ng-show="degree.descriptionEdit">
+          <input focus="degree.descriptionEdit"
+                 ng-model="degree.description"
+                 ui-keypress="{'enter':'exitDescriptionEdit(degree)'}"
+                 placeholder="{{::('degrees.descriptionPlaceholder' | translate)}}">
+          <i ng-click="exitDescriptionEdit(degree)" class="fa fa-check"></i>
+        </span>
+      </div>
+      <i class="fa fa-close" ng-click="removeDegree(degree)"></i>
+    </div>
+  </li>
+</ul>
+
+<div class="new-degree">
+  <div class="input-container">
+    <input ng-model="newDegree.title"
+           ui-keypress="{'enter':'addDegree(newDegree)'}"
+           focus="editing"
+           type="text"
+           placeholder="{{::('degrees.addNewPlaceholder' | translate)}}"
+           aria-label="{{::('degrees.addNewPlaceholder' | translate)}}">
+  </div>
+  <button class="add-icon fa fa-plus"
+          ng-click="addDegree(newDegree)"
+          aria-label="{{::('degrees.addNewPlaceholder' | translate)}}">
+  </button>
+</div>

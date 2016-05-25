@@ -1,0 +1,99 @@
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<section class="ui-component editable-wrapper">
+  <div class="edit-link-wrapper">
+    <h2 class="ui-component__title border-bottom" translate="languages.title"></h2>
+    <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
+  </div>
+
+  <ul class="language-proficiency-list" ng-class="{editing : editing}">
+    <li ng-repeat="languageProficiency in languageProficiencies track by languageProficiency.language"
+        class="language-proficiency-item"
+        data-id="{{::languageProficiency.id}}">
+        <figure class="proficiency-visualizer-container">
+          <div class="proficiency-visualizer -level-{{languageProficiency.proficiency}}">
+            <div class="proficiency-visualizer__inner-circle"></div>
+          </div>
+        </figure>
+
+        <div class="language-proficiency-item__content">
+          <div class="language-proficiency-item__language-name"
+               ng-click="toggleLanguageSelect(this)"
+               role="button"
+               aria-pressed="{{editing && languageSelectVisible}}"
+               tabindex="0">
+            <span translate="languages.code.{{languageProficiency.language}}"></span>
+            <i class="hy hy-drop-down" role="presentational" ng-show="editing"></i>
+            <div ng-show="editing && languageSelectVisible" class="language-proficiency-item__select-container">
+              <ul class="language-proficiency-item__select" role="listbox">
+                <li role="option"
+                    ng-repeat="lang in availableLanguages |
+                               filter:excludeOtherProficiencyLanguages(languageProficiency.language) |
+                               orderBy:translatedLanguageName(languageProficiency.language)"
+                    class="language-proficiency-item__select-item">
+                  <a tabindex="0"
+                     class="language-proficiency-item__select-item-link"
+                     translate="languages.code.{{lang}}"
+                     ng-click="updateLanguage(languageProficiency, lang)">
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="language-proficiency-item__proficiency"
+               ng-click="toggleProficiencySelect(this)"
+               role="button"
+               aria-pressed="{{editing && proficiencySelectVisible}}"
+               tabindex="0">
+            <span translate="languages.proficiency.{{languageProficiency.proficiency}}"></span>
+            <i class="hy hy-drop-down" role="presentational" ng-show="editing"></i>
+            <div ng-show="editing && proficiencySelectVisible" class="language-proficiency-item__select-container">
+              <ul class="language-proficiency-item__select" role="listbox">
+                <li role="option"
+                    ng-repeat="pr in proficiencies"
+                    class="language-proficiency-item__select-item">
+                  <a tabindex="0"
+                     class="language-proficiency-item__select-item-link"
+                     translate="languages.proficiency.{{pr}}"
+                     ng-click="updateProficiency(languageProficiency, pr)">
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <a tabindex="0"
+           class="language-proficiency-item__remove"
+           aria-label="{{::('general.remove' | translate)}}"
+           ng-show="editing"
+           ng-click="remove(languageProficiency)">
+          <i class="hy hy-remove"></i>
+        </a>
+    </li>
+    <li class="language-proficiency-list__add-new-container" ng-show="editing">
+      <a class="language-proficiency-list__add-new"
+         tabindex="0"
+         aria-label="{{::('general.add' | translate)}}"
+         ng-click="addNew()"></a>
+    </li>
+  </ul>
+
+  <visibility-toggle component-id="LANGUAGE_PROFICIENCIES"></visibility-toggle>
+</section>

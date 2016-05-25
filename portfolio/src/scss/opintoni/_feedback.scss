@@ -1,0 +1,112 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.feedback-container {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 10;
+  color: $white;
+
+  &.form {
+    left: 20px;
+    @include breakpoint($small) {
+      left: auto;
+      width: 400px;
+    }
+  }
+}
+
+.feedback__box-default, .feedback__box-submitted {
+  height: 50px;
+  width: 50px;
+  @include breakpoint($small) {
+    height: 100px;
+    width: 100px;
+  }
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  .content {
+    position: absolute;
+    @include center-vertical;
+    width: 100%;
+  }
+}
+
+.feedback__box-default {
+  background-color: $black;
+}
+
+.feedback__box-submitted {
+  background-color: $limegreen;
+}
+
+.feedback__box-form {
+  width: 100%;
+  background-color: $black;
+  padding: 20px;
+
+  textarea {
+    background-color: transparent;
+    border: none;
+    color: $white;
+    resize: none;
+    padding: 0;
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  .actions {
+    margin-top: 15px;
+    input[type="submit"] {
+      background-color: transparent;
+      padding: 0;
+      &:hover {
+        background-color: transparent;
+      }
+      &:disabled {
+        opacity: 0.5;
+      }
+    }
+    .cancel {
+      cursor: pointer;
+      float: right;
+    }
+  }
+
+  input[type="checkbox"] {
+    -webkit-appearance : checkbox;
+    margin-right: 0.5em;
+  }
+
+  input[type="email"] {
+    color: $black;
+    @include font-size(12px);
+    padding: 0.3em;
+    border: 1px solid $black;
+    width: 100%;
+    &.ng-invalid:not(.ng-pristine) {
+      border: 1px solid $red;
+    }
+  }
+
+  label {
+    @include font-size(12px);
+  }
+}

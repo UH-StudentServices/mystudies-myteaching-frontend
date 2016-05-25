@@ -1,0 +1,176 @@
+{
+  "general": {
+    "edit": "muokkaa",
+    "done": "valmis",
+    "add" : "lisää",
+    "remove" : "poista"
+  },
+  "students": {
+    "pageHeaderBranding": "opiskelijat"
+  },
+  "teachers": {
+    "pageHeaderBranding": "opettajat"
+  },
+  "pageHeaderLinks": {
+    "email": "sähköposti",
+    "flamma": "flamma",
+    "moodle": "moodle",
+    "library": "kirjasto",
+    "contact": "yhteystiedot"
+  },
+  "toolbar": {
+    "helsinkiUniversity": "Helsingin Yliopisto"
+  },
+  "visibility": {
+    "PRIVATE": "yksityinen",
+    "RESTRICTED": "rajoitettu",
+    "PUBLIC": "julkinen"
+  },
+  "keywords": {
+    "title": "Avainsanat",
+    "addNew": "lisää uusi avainsana"
+  },
+  "favorites": {
+    "types": {
+      "LINK": "Linkki verkkosivulle",
+      "TWITTER": "Twitter-aikajana"
+    },
+    "title": "suosikit",
+    "readMore": "lue lisää...",
+    "addNew": "lisää uusi",
+    "link": {
+      "linkPlaceholder": "URL suosikkisivulle"
+    },
+    "twitter": {
+      "twitterPlaceholder": "Twitter-käyttäjänimi, esim. helsinkiuni"
+    },
+    "submitButton": "Lisää",
+    "cancelButton": "Peruuta",
+    "ariaLabels": {
+      "clearSearch": "tyhjennä haku",
+      "searchResults": "hakutulokset"
+    }
+  },
+  "tour" : {
+    "start": "aloita",
+    "skip": "ohita",
+    "next": "seuraava",
+    "previous": "edellinen",
+    "finish": "lopeta",
+    "intro": {
+      "heading": "Portfolion esittelyn otsikko",
+      "text": "Portfolion esittelyn kuvaus"
+    },
+    "studies": {
+      "heading": "Opintojen esittelyn otsikko",
+      "text": "Opintojen esittelyn kuvaus"
+    }
+  },
+  "contactInformation": {
+    "title": "Ota yhteyttä",
+    "addPhoneNumber": "Lisää puhelinnumero",
+    "addEmail": "Lisää sähköposti",
+    "phoneNumber": "Puh.",
+    "FACEBOOK": "Facebook",
+    "YOUTUBE": "Youtube",
+    "TWITTER": "Twitter"
+  },
+  "degrees": {
+    "title": "Tutkinnot",
+    "descriptionPlaceholder": "Lisää kuvaus",
+    "addNewPlaceholder": "Lisää uusi tutkinto"
+  },
+  "studies": {
+    "title": "Opinnot"
+  },
+  "workExperience" : {
+    "title": "työkokemus",
+    "addNew": "lisää uusi",
+    "addWorkExperienceItem": "lisää työkokemus",
+    "jobSearch": "haen työpaikkaa",
+    "jobTitle": "nimike",
+    "employer": "työnantaja",
+    "startDate": "alkupäivämäärä (kk.vvvv)",
+    "endDate": "loppupäivämäärä (kk.vvvv)",
+    "contactEmail": "sähköpostiosoite"
+  },
+  "attainments": {
+    "attainments": "Suoritetut",
+    "seeMoreLink": "katso loput suoritukset WebOodista"
+  },
+  "buttons": {
+    "showMore": "Näytä lisää"
+  },
+  "credits": {
+    "title": "Opiskelun mittarit",
+    "totalCredits": "Opintopistettä suoritettu"
+  },
+  "errorPage" : {
+    "notFound" : {
+      "title" : "Sivua ei löytynyt",
+      "description" : "Etsimääsi sivua ei löytynyt."
+    },
+    "maintenance" : {
+      "title" : "huoltokatko",
+      "description" : "sivu on poissa käytöstä huoltotöiden vuoksi."
+    }
+  },
+  "preview" : {
+    "enterPreview" : "esikatsele",
+    "info" : "tältä portfoliosi näyttää muille jos olet määritellyt sen julkiseksi.",
+    "exit" : "sulje esikatselu"
+  },
+  "freeTextContent" : {
+    "defaultTitle" : "Oma osio",
+    "defaultText" : "Tämä on itse luomani osio"
+  },
+  "feedback": {
+    "title": "Palaute",
+    "submit": "Lähetä",
+    "submitted": "Kiitos",
+    "emailReply" : "Haluan vastauksen palautteeseeni"
+  },
+  "languages": {
+    "title": "Kielitaito",
+    "proficiency": {
+      "1": "Perusteet",
+      "2": "Kohtalainen",
+      "3": "Hyvä",
+      "4": "Erinomainen",
+      "5": "Äidinkieli"
+    },
+    "code": {
+      "af": "Afrikaans",
+      "ar": "Arabia",
+      "zh": "Kiina",
+      "cs": "Tsekki",
+      "da": "Tanska",
+      "nl": "Hollanti",
+      "en": "Englanti",
+      "et": "Viro",
+      "fi": "Suomi",
+      "fr": "Ranska",
+      "de": "Saksa",
+      "el": "Kreikka",
+      "hi": "Hindi",
+      "hu": "Unkari",
+      "is": "Islanti",
+      "it": "Italia",
+      "ja": "Japani",
+      "ko": "Korea",
+      "la": "Latina",
+      "lv": "Latvia",
+      "lt": "Liettua",
+      "no": "Norja",
+      "pl": "Puola",
+      "pt": "Portugali",
+      "ru": "Venäjä",
+      "se": "Saame",
+      "sk": "Slovakki",
+      "sl": "Sloveeni",
+      "es": "Espanja",
+      "sv": "Ruotsi",
+      "tr": "Turkki"
+    }
+  }
+}

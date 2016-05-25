@@ -1,0 +1,129 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+//
+// Carousel
+// --------------------------------------------------
+
+
+
+// Calculate carousel height based on banner and carousel controls dimensions.
+// banner height - carousel controls height - carousel top and bottom margin.
+// @see styles/_variables.scss
+$carousel-height: $page-banner-height - (1.5 * $base-font-size) - (2 * $base-font-size);
+
+.carousel {
+  height: $carousel-height;
+  width: 100%;
+}
+
+.carousel-slide {
+  color: $gray;
+  padding-left: 1em;
+  padding-right: 1em;
+  text-align: center;
+
+  @include breakpoint($small) {
+    height: $carousel-height;
+    position: relative; // .carousel-slide__cta requires this
+    padding-left: 0;
+    padding-right: 0;
+    text-align: left;
+  }
+}
+
+.carousel-slide__main {
+  // Prevents carousel title and description flowing over the call-to-action
+  // button.
+  @include breakpoint($small) {
+    height: $carousel-height - (3 * $base-font-size);
+    overflow: hidden;
+  }
+}
+
+.carousel-slide__title {
+  @include font-size(32px);
+  letter-spacing: -0.05em;
+  line-height: 1;
+  margin-bottom: .25em;
+  margin-top: .5em;
+  word-wrap: break-word;
+
+  @include breakpoint($small)   { @include font-size(65px); margin-top: 0;}
+  @include breakpoint($medium)  { @include font-size(70px); }
+}
+
+.carousel-slide__desc  {
+  @include font-size(18px);
+  line-height: 1.2;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  padding-bottom: 0;
+
+  @include breakpoint($small) { @include font-size(20px); }
+}
+
+.carousel-slide__cta {
+  @include breakpoint($small) {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+  }
+
+  // Quick & dirty hacks.
+  .list-of-links__link { display: inline-block; }
+  .list-of-links__link > span { padding-right: 1em; }
+}
+
+
+
+// Carousel controls
+// Overrides for angular-carousel.css
+$carousel-indicator-size: .5em;
+
+.carousel-controls {
+  margin: 1em;
+
+  @include breakpoint($small) {
+    margin: 0 0 1em;
+  }
+
+  // Structure
+  .rn-carousel-indicator span {
+    display: block;
+    float: left;
+    height: $carousel-indicator-size;
+    margin-left: $carousel-indicator-size / 2;
+    margin-right: $carousel-indicator-size / 2;
+    overflow: hidden;
+    width: $carousel-indicator-size;
+
+    &:first-child { margin-left: 0; }
+    &:last-child { margin-right: 0; }
+  }
+
+  // Skin
+  .rn-carousel-indicator span {
+    background-color: $blue;
+    color: $blue; // Renders • character invisible
+
+    &.active {
+      background-color: $black;
+      color: $black;
+    }
+  }
+}

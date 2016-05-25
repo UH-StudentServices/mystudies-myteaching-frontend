@@ -1,0 +1,176 @@
+{
+  "general": {
+    "edit": "edit",
+    "done": "done",
+    "add" : "add",
+    "remove" : "remove"
+  },
+  "students": {
+    "pageHeaderBranding": "students"
+  },
+  "teachers": {
+    "pageHeaderBranding": "teachers"
+  },
+  "pageHeaderLinks": {
+    "email": "email",
+    "flamma": "flamma",
+    "moodle": "moodle",
+    "library": "library",
+    "contact": "contact"
+  },
+  "toolbar": {
+    "helsinkiUniversity": "University of Helsinki"
+  },
+  "visibility": {
+    "PRIVATE": "private",
+    "RESTRICTED": "restricted",
+    "PUBLIC": "public"
+  },
+  "keywords": {
+    "title": "Keywords",
+    "addNew": "add new keyword"
+  },
+  "favorites": {
+    "types": {
+      "LINK": "Website link",
+      "TWITTER": "Twitter timeline"
+    },
+    "title": "favorites",
+    "readMore": "read more...",
+    "addNew": "add new",
+    "link": {
+      "linkPlaceholder": "URL to favorite website"
+    },
+    "twitter": {
+      "twitterPlaceholder": "Twitter username, eg. helsinkiuni"
+    },
+    "submitButton": "add",
+    "cancelButton": "cancel",
+    "ariaLabels": {
+      "clearSearch": "clear search",
+      "searchResults": "search results"
+    }
+  },
+  "tour" : {
+    "start": "start",
+    "skip": "skip",
+    "next": "next",
+    "previous": "previous",
+    "finish": "finish",
+    "intro": {
+      "heading": "Portfolio tour intro title",
+      "text": "Portfolio tour intro text"
+    },
+    "studies": {
+      "heading": "Portfolio studies intro title",
+      "text": "Portfolio studies intro text"
+    }
+  },
+  "contactInformation": {
+    "title": "Contact me",
+    "addPhoneNumber": "Add phone number",
+    "addEmail": "Add email",
+    "phoneNumber": "Mobile:",
+    "FACEBOOK": "Facebook",
+    "YOUTUBE": "Youtube",
+    "TWITTER": "Twitter"
+  },
+  "degrees": {
+    "title": "Degrees",
+    "descriptionPlaceholder": "Add description",
+    "addNewPlaceholder": "Add new degree"
+  },
+  "studies": {
+    "title": "Studies"
+  },
+  "workExperience" : {
+    "title": "work experience",
+    "addNew": "add new",
+    "addWorkExperienceItem": "add work experience",
+    "jobSearch": "looking for work",
+    "jobTitle": "job title",
+    "employer": "employer",
+    "startDate": "start date (mm.yyyy)",
+    "endDate": "end date (m.yyyy)",
+    "contactEmail": "contact email"
+  },
+  "attainments": {
+    "attainments": "Completed studies",
+    "seeMoreLink": "see a list of your completed studies in WebOodi"
+  },
+  "buttons": {
+    "showMore": "Show more"
+  },
+  "credits": {
+    "title": "Study meters",
+    "totalCredits": "ECTS credits"
+  },
+  "errorPage" : {
+    "notFound" : {
+      "title" : "Page not found",
+      "description" : "page you are looking for does not exist."
+    },
+    "maintenance" : {
+      "title" : "under maintenance",
+      "description" : "page is currently under maintenance."
+    }
+  },
+  "preview" : {
+    "enterPreview" : "preview",
+    "info" : "this is how your portfolio looks to others if it is published.",
+    "exit" : "close preview"
+  },
+  "freeTextContent" : {
+    "defaultTitle" : "Own section",
+    "defaultText" : "This is my own custom portfolio section."
+  },
+  "feedback": {
+    "title": "Feedback",
+    "submit": "Submit",
+    "submitted": "Thanks",
+    "emailReply" : "I want a reply to my feedback"
+  },
+  "languages": {
+    "title": "Languages",
+    "proficiency": {
+      "1": "Basic",
+      "2": "Moderate",
+      "3": "Good",
+      "4": "Excellent",
+      "5": "Native"
+    },
+    "code": {
+      "af": "Afrikaans",
+      "ar": "Arabic",
+      "zh": "Chinese",
+      "cs": "Czech",
+      "da": "Danish",
+      "nl": "Dutch",
+      "en": "English",
+      "et": "Estonian",
+      "fi": "Finnish",
+      "fr": "French",
+      "de": "German",
+      "el": "Greek",
+      "hi": "Hindi",
+      "hu": "Hungarian",
+      "is": "Icelandic",
+      "it": "Italian",
+      "ja": "Japanese",
+      "ko": "Korean",
+      "la": "Latin",
+      "lv": "Latvian",
+      "lt": "Lithuanian",
+      "no": "Norwegian",
+      "pl": "Polish",
+      "pt": "Portuguese",
+      "ru": "Russian",
+      "se": "Sami",
+      "sk": "Slovak",
+      "sl": "Slovene",
+      "es": "Spanish",
+      "sv": "Swedish",
+      "tr": "Turkish"
+    }
+  }
+}

@@ -1,0 +1,99 @@
+.free-text-content {
+  position: relative;
+  .edit-link {
+    top: 0.5em;
+  }
+}
+
+.free-text-content__title-container {
+  height: 3.5em;
+  padding-bottom: 0.2em;
+  @include border-bottom;
+}
+
+.free-text-content__title {
+  display: inline-block;
+  padding: 0.1em 0.5em 0.1em 0;
+}
+
+.free-text-content__text, .edit-free-text-content__edit-text {
+  margin-top: 0.2em;
+}
+
+.free-text-content__text .ejs-video-player {
+  iframe {
+    width: 100%;
+    height: 100%;
+  }
+  // or 170px?
+  height: 225px;
+  margin-left: auto;
+  margin-right: auto;
+
+  // Custom breakpoints for mobile video embeds
+  @include breakpoint(25em, 'no-query' '.lt-ie9') {
+    width: 400px;
+    height: 225px;
+  }
+
+  // Custom breakpoints for mobile video embeds
+  @include breakpoint(40em, 'no-query' '.lt-ie9') {
+    width: 608px;
+    height: 342px;
+  }
+
+  @include breakpoint($small) {
+    width: 400px;
+    height: 225px;
+  }
+
+  @include breakpoint($medium) {
+    width: 608px;
+    height: 342px;
+  }
+
+}
+
+.edit-free-text-content__edit-text {
+  height: 200px;
+}
+
+.add-free-text-content {
+  position: relative;
+  height: 150px;
+  @include border;
+}
+
+.edit-free-text-content {
+  .free-text-content__title {
+    &:hover {
+      cursor: pointer;
+      background-color: $gray;
+      color: $white;
+      &:after {
+        position: absolute;
+        font-weight: normal;
+        margin-top: -0.5em;
+        @include font-size(14px);
+        @include hy-icon("\EA10");
+      }
+    }
+  }
+  .favorites-list__remove {
+    display: inline-block;
+    position: relative;
+    margin-left: 0.5em;
+    vertical-align: top;
+  }
+}
+
+.edit-free-text-content__edit-title {
+  display: inline-block;
+  padding: 0;
+  font-size: 32px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 1.1em;
+  width: 80%;
+}
