@@ -1,5 +1,5 @@
 // Check for required properties
-["base_url", "username", "password"].collect { "opintoni_artifactory_$it" }.each {
+['base_url', 'username', 'password'].collect { "opintoni_artifactory_$it" }.each {
     if (!project.hasProperty(it)) {
         def msg = """
       |Missing project property: $it
@@ -42,12 +42,12 @@ apply plugin: "distribution"
 distributions {
     main {
         contents {
-            into("main") {
-                from { "main/dist/" }
+            into('main') {
+                from { 'main/dist/' }
             }
 
-            into("portfolio") {
-                from { "portfolio/dist/" }
+            into('portfolio') {
+                from { 'portfolio/dist/' }
             }
         }
     }
@@ -95,7 +95,7 @@ publishing {
                 password opintoni_artifactory_password
             }
 
-            if (version.endsWith("SNAPSHOT")) {
+            if (version.endsWith('SNAPSHOT')) {
                 url "${opintoni_artifactory_base_url}/libs-snapshot-local"
             } else {
                 url "${opintoni_artifactory_base_url}/libs-release-local"
@@ -104,14 +104,14 @@ publishing {
     }
 }
 
-def env = project.getProperty("environment")
+def env = project.getProperty('environment')
 
 task storeDeployInformationToFile << {
     def props = new Properties()
     file("gradle.properties").withInputStream { stream -> props.load(stream) }
 
     def deployProps = [VERSION: props["version"], ENVIRONMENT: env]
-    def content = deployProps.collect { key, value -> "$key=$value" }.join("\n")
+    def content = deployProps.collect { key, value -> "$key=$value" }.join('\n')
     file("ci-deploy.properties").write(content)
 }
 
