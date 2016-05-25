@@ -5,6 +5,7 @@
   "private": true,
   "devDependencies": {
     "autoprefixer": "^6.3.6",
+    "concurrently": "^2.1.0",
     "connect-modrewrite": "^0.8.1",
     "eslint": "^1.10.3",
     "eslint-config-defaults": "^9.0.0",
@@ -59,6 +60,9 @@
     "node": ">=0.10.0"
   },
   "scripts": {
+    "build": "grunt build --gruntfile main/Gruntfile.js && grunt build --gruntfile portfolio/Gruntfile.js",
+    "dev": "concurrently 'grunt serve --gruntfile main/Gruntfile.js' 'grunt serve --gruntfile portfolio/Gruntfile.js'",
+    "dist": "grunt buildMinified --gruntfile main/Gruntfile.js && grunt buildMinified --gruntfile portfolio/Gruntfile.js",
     "postinstall": "node_modules/protractor/bin/webdriver-manager update"
   }
 }

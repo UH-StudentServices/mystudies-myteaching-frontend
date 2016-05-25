@@ -105,7 +105,7 @@ module.exports = function(grunt) {
         startPath: '/portfolio/olli-opiskelija',
         watchTask: true,
         host: 'local.student.helsinki.fi',
-        open: 'external',
+        open: false,
         port: 3002,
         server: {
           baseDir: 'src',
