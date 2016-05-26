@@ -47,7 +47,7 @@ angular.module('directives.pageBanner', [
     };
   })
 
-  .directive('pageBannerToggle', function(UserSettingsService) {
+  .directive('pageBannerToggle', function($location, $anchorScroll, UserSettingsService) {
     return {
       restrict: 'E',
       replace: true,
@@ -76,6 +76,9 @@ angular.module('directives.pageBanner', [
             $translate('banner.tooltip.show').then(function(tooltip) {
               $scope.tooltip = tooltip;
             });
+
+            $location.hash('top');
+            $anchorScroll();
           }
         };
       }
