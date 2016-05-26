@@ -94,7 +94,7 @@ module.exports = function(grunt) {
       dev: {
         bsFiles: {
           src: [
-            'src/**/*.html',
+            'src/index.html',
             'src/app/**/*.js',
             'src/assets/styles/**/*.css',
             'src/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg,ico}'
@@ -241,10 +241,8 @@ module.exports = function(grunt) {
           cwd: 'src',
           dest: '<%= application.dist %>',
           src: [
-            '*.html',
-            'app/**/*.html',
+            'index.html',
             'assets/images/**/*.{png,jpg,gif,webp,ico}',
-            'assets/fonts/*',
             'assets/icons/**/*',
             'i18n/*'
           ]
@@ -255,7 +253,7 @@ module.exports = function(grunt) {
           cwd: '..',
           src: 'bower_components/Styleguide-icons/fonts/*',
           dest: '<%= application.dist %>/assets/fonts'
-        },
+        }
         ]
       },
       dist: {
