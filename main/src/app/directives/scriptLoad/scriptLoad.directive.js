@@ -15,20 +15,24 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.header.meceWidget', [
-  'directives.scriptLoad',
-  'services.userSettings'])
+angular.module('directives.scriptLoad', [])
 
-  .directive('meceWidget', function(UserSettingsService) {
+  .directive('scriptLoad', function() {
+    var isRendered = false;
 
     return {
       restrict: 'E',
-      templateUrl: 'app/directives/header/meceWidget/meceWidget.html',
-      link: function($scope) {
-        UserSettingsService.getUserSettings()
-          .then(function getUserSettingsSuccess(settings) {
-            $scope.meceToken = settings.meceJWTToken;
-          });
+      scope: {
+        scriptSrc: '@'
+      },
+      link: function($scope, el, attrs, ctrl, transclude) {
+        if(!isRendered) {
+          isRendered = true;
+          var script = document.createElement('script');
+          script.type = 'text/javascript';
+          script.src = $scope.scriptSrc;
+          el.append(script);
+        }
       }
     };
   });
