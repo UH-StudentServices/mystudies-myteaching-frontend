@@ -25,12 +25,12 @@ angular.module('directives.scriptLoad', [])
       scope: {
         scriptSrc: '@'
       },
-      link: function($scope, el, attrs, ctrl, transclude) {
+      link: function(scope, el) {
         if(!isRendered) {
           isRendered = true;
           var script = document.createElement('script');
           script.type = 'text/javascript';
-          script.src = $scope.scriptSrc;
+          script.src = scope.scriptSrc;
           el.append(script);
         }
       }
