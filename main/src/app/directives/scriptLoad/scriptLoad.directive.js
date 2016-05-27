@@ -25,13 +25,15 @@ angular.module('directives.scriptLoad', [])
       scope: {
         scriptSrc: '@'
       },
-      link: function(scope, el) {
+      link: function(scope) {
         if(!isRendered) {
           isRendered = true;
           var script = document.createElement('script');
+
           script.type = 'text/javascript';
           script.src = scope.scriptSrc;
-          el.append(script);
+          script.async = true;
+          document.getElementsByTagName('head')[0].appendChild(script);
         }
       }
     };
