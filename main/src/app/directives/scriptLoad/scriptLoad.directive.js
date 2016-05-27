@@ -32,8 +32,7 @@ angular.module('directives.scriptLoad', [])
 
           script.type = 'text/javascript';
           script.src = scope.scriptSrc;
-          script.async = true;
-          document.getElementsByTagName('head')[0].appendChild(script);
+          document.head.appendChild(script);
         }
       }
     };
