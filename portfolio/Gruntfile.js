@@ -83,9 +83,9 @@ module.exports = function(grunt) {
       sass: {
         files: [
           'src/scss/main.scss',
-          'src/scss/portfolio/**/*.{scss,sass}',
-          'src/scss/opintoni/**/*.{scss,sass}',
-          'src/scss/styleguide/**/*.{scss,sass}',
+          '../main/src/scss/opintoni/**/*.scss',
+          'src/scss/portfolio/**/*.scss',
+          'src/scss/styleguide/**/*.scss',
           'src/app/**/*.html'],
         tasks: ['cssDev', 'buildTemplates', 'eslint']
       }

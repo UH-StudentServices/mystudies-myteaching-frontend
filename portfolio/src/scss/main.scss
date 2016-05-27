@@ -18,12 +18,12 @@
 @import "../bower_components/breakpoint-sass/stylesheets/breakpoint.scss";
 @import "../bower_components/singularity/stylesheets/singularitygs.scss";
 
-/* Styleguide elements required by the application */
+// Styleguide
 @import "styleguide/styleguide";
 
-/* Styles copied directly from Opintoni */
-@import "opintoni/opintoni";
+// Styles from main frontend
+@import "../main/src/scss/opintoni/opintoni";
 
-/* Porfolio specific styles */
+// porfolio-specific styles
 @import "portfolio/portfolio";
 
