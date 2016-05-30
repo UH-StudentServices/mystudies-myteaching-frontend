@@ -59,6 +59,7 @@ module.exports = function(config) {
       'src/app/controllers/*.js',
       'src/app/resources/*.js',
       'src/app/utils/*.js',
+      '../common/src/app/**/*.js',
       'test/testdata/*.json',
       'test/spec/unit/**/*.js'
     ],

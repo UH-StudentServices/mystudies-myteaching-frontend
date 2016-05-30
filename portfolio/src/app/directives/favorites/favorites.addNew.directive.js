@@ -18,7 +18,7 @@
 angular.module('directives.favorites.addNew', [
   'directives.favorites.addNew.link',
   'directives.favorites.addNew.twitter',
-  'nsPopover',
+  'directives.popover',
   'services.focus'])
 
   .constant('availableFavoriteTypes', ['LINK', 'TWITTER'])
@@ -74,14 +74,21 @@ angular.module('directives.favorites.addNew', [
       replace: true,
       scope: {},
       link: function($scope) {
-
         $scope.favorite = {};
         $scope.availableFavoriteTypes = availableFavoriteTypes;
         $scope.displayPopover = false;
 
-        $scope.showPopover = function() {
-          setFocus();
-          resetPopover();
+        $scope.togglePopover = function() {
+          $scope.displayPopover = !$scope.displayPopover;
+
+          if($scope.displayPopover) {
+            setFocus();
+            resetPopover();
+          }
+        };
+
+        $scope.closePopover = function() {
+          $scope.displayPopover = false;
         };
 
         $scope.selectFavoriteType = function(favoriteType) {

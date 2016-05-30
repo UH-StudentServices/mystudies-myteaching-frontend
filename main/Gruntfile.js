@@ -116,6 +116,7 @@ module.exports = function(grunt) {
             'src/**/*.json',
             'src/assets/styles/**/*.css',
             'src/app/**/*.js',
+            '../common/src/app/**/*.js',
             'src/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg,ico}'
           ]
         }
@@ -129,7 +130,8 @@ module.exports = function(grunt) {
         server: {
           baseDir: 'src',
           routes: {
-            '/bower_components': '../bower_components'
+            '/bower_components': '../bower_components',
+            '/common': '../common'
           },
           middleware: [proxyMiddleware,
             modRewrite([
@@ -248,8 +250,13 @@ module.exports = function(grunt) {
           expand: true,
           cwd: 'src/app',
           src: ['**/*.html'],
-          dest: '.tmp/src/app'}
-        ]
+          dest: '.tmp/src/app'
+        }, {
+          expand: true,
+          cwd: '../common/src/app',
+          src: ['**/*.html'],
+          dest: '.tmp/src/app'
+        }]
       }
     },
     // Put files not handled in other tasks here
@@ -294,6 +301,7 @@ module.exports = function(grunt) {
           src: [
             '*.html',
             'app/**',
+            '../../common/src/app/**',
             'assets/**',
             'i18n/**'
           ]
