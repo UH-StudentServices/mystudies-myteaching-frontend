@@ -34,7 +34,7 @@ function login(role, username, password, siteName) {
 
   browser.wait(function() {
     return element(userNameInputLocator).isPresent();
-  }, 12000);
+  }, 20000);
   element(userNameInputLocator).sendKeys(username);
   element(passwordInputLocator).sendKeys(password);
   element(submitInputLocator).click();
