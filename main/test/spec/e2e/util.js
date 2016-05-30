@@ -34,7 +34,7 @@ function login(role, username, password, siteName) {
 
   browser.wait(function() {
     return element(userNameInputLocator).isPresent();
-  }, 10000);
+  }, 12000);
   element(userNameInputLocator).sendKeys(username);
   element(passwordInputLocator).sendKeys(password);
   element(submitInputLocator).click();
@@ -125,20 +125,13 @@ function firstVisibleElement(locator) {
   }).first();
 }
 
-function hasClass(element, cls) {
-  return element.getAttribute('class').then(function(classes) {
-    return classes.split(' ').indexOf(cls) !== -1;
-  });
-};
-
 module.exports = {
   login: login,
-  loginStudent: _.partial(login, 'student', 'teststudent', 'password', 'My studies'),
+  loginStudent: _.partial(login, 'student', 'opiskelija', 'password', 'My studies'),
   loginTeacher: _.partial(login, 'teacher', 'testteacher', 'password', 'My teaching'),
   waitUntilPresent: waitUntilPresent,
   waitUntilNotPresent: waitUntilNotPresent,
   waitUntilVisible: waitUntilVisible,
   uniqueId: uniqueId,
-  firstVisibleElement: firstVisibleElement,
-  hasClass: hasClass
+  firstVisibleElement: firstVisibleElement
 };

@@ -19,36 +19,27 @@ var util = require('../util');
 
 describe('Week feed', function() {
 
-  var upcomingEventsTabName = 'Timetable';
-  var coursesTabName = 'Courses';
-  var examsTabName = 'Exams';
+  var upcomingEventsTabName = 'TIMETABLE';
+  var coursesTabName = 'COURSES';
+  var examsTabName = 'EXAMS';
 
   var feedSelector = element.all(by.repeater('feedItem in feedItems'));
 
-  function tabSelector() {
-    return element
-      .all(by.css('#week-feed'))
-      .all(by.repeater('tab in tabs'));
-  }
-
   function selectTab(tabName) {
-    tabSelector().filter(function(elem) {
-      return elem.getText().then(function(text) {
-        return text === tabName;
-      });
-    }).click();
-  }
-
-  function getActiveTab() {
-    return tabSelector()
-      .filter(function(tab) {
-        return util.hasClass(tab, 'active');
+    element
+      .all(by.css('.week-feed__tabs'))
+      .all(by.repeater('tab in tabs'))
+      .filter(function(elem) {
+        return elem.getText().then(function(text) {
+          return text === tabName;
+        });
       })
-      .first();
+      .first()
+      .click();
   }
 
   function expectActiveTab(tabName) {
-    expect(getActiveTab().getText()).toEqual(tabName);
+    expect(element(by.css('.week-feed__tabs > .is-active')).getText()).toEqual(tabName);
   }
 
   describe('week feed', function() {
