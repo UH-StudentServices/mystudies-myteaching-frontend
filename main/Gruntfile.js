@@ -314,9 +314,9 @@ module.exports = function(grunt) {
         },
         {
           expand: true,
-          cwd: '../common/src',
+          cwd: '..',
           dest: '<%= application.dist %>',
-          src: ['app/**']
+          src: ['common/src/app/**']
         }]
       }
     },
