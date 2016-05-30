@@ -272,7 +272,6 @@ module.exports = function(grunt) {
           src: [
             '*.html',
             'app/**',
-            '../../common/src/app/**',
             'assets/**',
             'i18n/**'
           ]
@@ -282,6 +281,12 @@ module.exports = function(grunt) {
           cwd: '..',
           dest: '<%= application.dist %>',
           src: ['bower_components/**']
+        },
+        {
+          expand: true,
+          cwd: '../common/src',
+          dest: '<%= application.dist %>',
+          src: ['app/**']
         }]
       }
     },
