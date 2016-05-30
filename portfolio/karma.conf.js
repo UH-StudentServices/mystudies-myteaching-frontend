@@ -36,6 +36,7 @@ module.exports = function(config) {
       '../bower_components/rxjs/dist/rx.js',
       '../bower_components/rxjs/dist/rx.binding.js',
       'src/app/**/*.js',
+      '../common/src/app/**/*.js',
       'test/spec/unit/**/*.js'
     ],
 

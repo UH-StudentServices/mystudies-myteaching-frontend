@@ -3,6 +3,9 @@ angular.module('directives.addNewComponent', [])
     return {
       restrict: 'E',
       replace: true,
+      scope: {
+        onClick: '&?'
+      },
       templateUrl: 'app/directives/addNewComponent/addNewComponent.html'
     };
   });

@@ -16,12 +16,15 @@
 -->
 
 <article class="favorites-list__item add-new">
-    <add-new-component
-        ng-click="showPopover()"
-        ns-popover
-        ns-popover-template="app/directives/favorites/favorites.addNew.popover.html"
-        ns-popover-trigger="click"
-        ns-popover-placement="bottom|center"
-        ns-popover-timeout="20000">
-    </add-new-component>
+  <add-new-component on-click="togglePopover()"></add-new-component>
+
+  <popover template="app/directives/favorites/favorites.addNew.popover.html"
+           override-class="favorites-list-popover-container"
+           ng-if="displayPopover"
+           id="add-favorite-popover"
+           trigger-selector="add-favorite-button"
+           target-selector=".add-favorite-button"
+           on-click-trigger="togglePopover()"
+           on-click-outside="closePopover()">
+  </popover>
 </article>

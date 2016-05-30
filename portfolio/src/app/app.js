@@ -26,6 +26,7 @@ angular.module('opintoniPortfolioApp',
    'ui.utils',
    'portfolioErrors',
    'resources.httpInterceptor',
+   'angular-click-outside',
    'templates',
 
    'controllers.main',
@@ -52,6 +53,7 @@ angular.module('opintoniPortfolioApp',
    'directives.embed',
    'directives.languageProficiencies',
    'directives.feedback',
+   'directives.popover',
 
    'filters.formatting',
 
