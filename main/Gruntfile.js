@@ -43,7 +43,6 @@ gruntPlugins = [
   'grunt-contrib-imagemin',
   'grunt-contrib-uglify',
   'grunt-contrib-watch',
-  'grunt-exec',
   'grunt-filerev',
   'grunt-html2js',
   'grunt-karma',
@@ -406,12 +405,6 @@ module.exports = function(grunt) {
           dest: '.tmp/concat/app'
         }]
       }
-    },
-    exec: {
-      bowerInstall: {
-        cmd: 'bower install',
-        cwd: '..'
-      }
     }
   });
 
@@ -449,7 +442,6 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('buildMinified', [
-    'exec:bowerInstall',
     'test',
     'clean:dist',
     'useminPrepare',
@@ -465,7 +457,6 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build', [
-    'exec:bowerInstall',
     'test',
     'clean:dist',
     'copy:dist'
