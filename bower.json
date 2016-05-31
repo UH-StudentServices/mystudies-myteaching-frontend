@@ -46,8 +46,7 @@
     "angular-click-outside": "~2.7.1",
     "ng-joyride": "https://github.com/dejanberic/ng-joyride.git#b16dc4e6727d92861842df962cdc588e4a0c6ace",
     "embed-js": "~3.7.4",
-    "es6-promise-polyfill": "~1.1.1",
-    "nsPopover": "~0.6.8"
+    "es6-promise-polyfill": "~1.1.1"
   },
   "devDependencies": {
     "angular-mocks": "1.4.4",
