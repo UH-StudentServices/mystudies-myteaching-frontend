@@ -19,6 +19,12 @@ var ScreenShotReporter = require('protractor-screenshot-reporter');
 
 exports.config = {
   specs: ['test/spec/e2e/**/*.js'],
+
+  capabilities: {
+    'browserName': 'phantomjs',
+    'phantomjs.cli.args': ['--web-security=false', '--ignore-ssl-errors=true']
+  },
+
   onPrepare: function() {
     // Add a screenshot reporter and store screenshots to `/tmp/screnshots`:
     jasmine.getEnv().addReporter(new ScreenShotReporter({
