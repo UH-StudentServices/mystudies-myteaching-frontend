@@ -207,13 +207,18 @@ $tablist-single-row: min-width 28.75em;
 
     @include breakpoint($small) {
       width: 50%;
-      min-height: $item-height;
+      height: $item-height;
       padding-bottom: 75px;
     }
   }
 
-  .course-meta__teacher {
-    margin-right: 1em;
+  .course-meta {
+    max-height: 5.5em;
+    overflow: hidden;
+
+    &__teacher {
+      margin-right: 1em;
+    }
   }
 
   .course-material {
@@ -271,7 +276,7 @@ $tablist-single-row: min-width 28.75em;
       max-width: $child-item-size;
     }
     .info-container {
-      min-height: $child-item-size;
+      height: $child-item-size;
       padding-bottom: 0;
       width: 70%;
     }
