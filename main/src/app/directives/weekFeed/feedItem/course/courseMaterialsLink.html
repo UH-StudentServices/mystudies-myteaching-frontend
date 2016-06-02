@@ -17,8 +17,7 @@
 
 <div class="course-material"
      ng-class="{'course-material--full': !compact, 'course-material--compact': compact}"
-     ng-show="feedItem.courseMaterial"
-     ng-switch="feedItem.courseMaterial.courseMaterialType">
+     ng-show="feedItem.courseMaterial">
   <a target="_blank" href="{{::feedItem.courseMaterial.courseMaterialUri}}">
     {{::(getCourseMaterialLinkTitle(feedItem.courseMaterial.courseMaterialType))}}
     <i class="hy hy-link-arrow" ng-if="!compact"></i>
