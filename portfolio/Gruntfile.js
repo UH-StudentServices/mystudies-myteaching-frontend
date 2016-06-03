@@ -136,7 +136,7 @@ module.exports = function(grunt) {
       server: '.tmp'
     },
     eslint: {
-      src: ['src/app/**/*.js', 'test/spec/**/*.js', '*.js'],
+      src: ['src/app/**/*.js', 'test/spec/**/*.js', '*.js', '../common/**/*.js'],
       options: {
         quiet: true
       }
