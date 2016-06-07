@@ -32,11 +32,8 @@
         <span ng-if="feedItem.isCancelled" class="enrollment__cancelled" translate="weekFeed.cancelled"></span>
       </div>
 
-      <div class="course-meta">
-        <span ng-if="!feedItem.showAsChild">{{ ::feedItem.code }}, </span>
-        <span>{{ ::('codes.courseTypes.' +  feedItem.typeCode | translate ) }}</span>
-        <span ng-if="feedItem.credits !== null && !feedItem.showAsChild">({{::feedItem.credits }}{{::("abbreviations.credits" | translate)}})</span>
-        <span class="course-meta__teacher" ng-repeat="teacher in feedItem.teachers">, {{ ::teacher }}</span>
+      <div class="course-info">
+        <span class="course-info__basics">{{::courseInfo}}</span>
         <course-materials-link compact="feedItem.showAsChild" feed-item="feedItem"></course-materials-link>
       </div>
     </div>
