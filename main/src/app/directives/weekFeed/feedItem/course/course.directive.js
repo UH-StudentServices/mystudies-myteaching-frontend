@@ -31,7 +31,7 @@ angular.module('directives.weekFeed.feedItem.course',[
   })
 
 
-  .directive('course', function() {
+  .directive('course', function($translate) {
 
     return {
       restrict: 'E',
@@ -39,6 +39,17 @@ angular.module('directives.weekFeed.feedItem.course',[
       templateUrl: 'app/directives/weekFeed/feedItem/course/course.html',
       scope: {
         feedItem: '='
+      },
+      link: function(scope) {
+        var feedItem = scope.feedItem,
+            courseCode = feedItem.showAsChild ? '' : feedItem.code,
+            courseType = $translate.instant('codes.courseTypes.' + feedItem.typeCode),
+            courseCredits = feedItem.credits && !feedItem.showAsChild ?
+              feedItem.credits + $translate.instant('abbreviations.credits') :
+              '',
+            courseTeachers = feedItem.teachers.join(', ');
+
+        scope.courseInfo = [courseCode, courseType, courseCredits, courseTeachers].filter(Boolean).join(', ');
       }
     };
   })

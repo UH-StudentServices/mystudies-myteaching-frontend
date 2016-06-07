@@ -213,11 +213,11 @@ $tablist-single-row: min-width 28.75em;
     }
   }
 
-  .course-meta {
+  .course-info {
     max-height: 5.5em;
     overflow: hidden;
 
-    &__teacher {
+    &__basics {
       margin-right: 1em;
     }
   }
@@ -281,7 +281,7 @@ $tablist-single-row: min-width 28.75em;
       padding-bottom: 0;
       width: 70%;
     }
-    .course-meta {
+    .course-info {
       position: static;
     }
   }
