@@ -62,7 +62,7 @@
     "bower:install": "bower install",
     "build": "grunt build --gruntfile main/Gruntfile.js && grunt build --gruntfile portfolio/Gruntfile.js",
     "dev": "concurrently 'grunt serve --gruntfile main/Gruntfile.js' 'grunt serve --gruntfile portfolio/Gruntfile.js'",
-    "dist": "grunt buildMinified --gruntfile main/Gruntfile.js && grunt buildMinified --gruntfile portfolio/Gruntfile.js",
+    "dist": "npm rebuild node-sass && grunt buildMinified --gruntfile main/Gruntfile.js && grunt buildMinified --gruntfile portfolio/Gruntfile.js",
     "postinstall": "concurrently 'npm run webdriver:update' 'npm run bower:install'",
     "webdriver:update": "node_modules/protractor/bin/webdriver-manager update"
   }
