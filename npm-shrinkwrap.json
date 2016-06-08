@@ -380,6 +380,11 @@
       "from": "boom@>=2.0.0 <3.0.0",
       "resolved": "https://registry.npmjs.org/boom/-/boom-2.10.1.tgz"
     },
+    "bower": {
+      "version": "1.7.9",
+      "from": "bower@latest",
+      "resolved": "https://registry.npmjs.org/bower/-/bower-1.7.9.tgz"
+    },
     "bower-config": {
       "version": "0.5.2",
       "from": "bower-config@>=0.5.0 <0.6.0",

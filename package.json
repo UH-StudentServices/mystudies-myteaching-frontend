@@ -5,6 +5,7 @@
   "private": true,
   "devDependencies": {
     "autoprefixer": "^6.3.6",
+    "bower": "^1.7.9",
     "concurrently": "^2.1.0",
     "connect-modrewrite": "^0.8.1",
     "eslint": "^1.10.3",
