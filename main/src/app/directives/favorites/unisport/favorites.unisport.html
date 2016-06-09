@@ -19,9 +19,28 @@
 
   <div class="unisport-header">
     <img src="/assets/images/favorites/unisport.png" />
-
   </div>
   
-  <iframe class="unisport-iframe" ng-src="{{ unisportUrl }}"></iframe>
-  
+  <div ng-if="authorizationUrl" class="authorization">
+    <span class="hy hy-info-stroke" title=""></span>
+    <span translate="favorites.unisport.authorizationRequired"></span>
+    <a href="{{ authorizationUrl }}" translate="favorites.unisport.authorizationButton" class="button"></a>
+  </div>
+
+  <ul class="events">
+    <li ng-repeat="event in events">
+      <div class="event-name">
+        {{ event.name }}
+      </div>
+      <div class="info-row">
+        <div class="heading" translate="general.time"></div>
+        <div class="content">{{ event.timeRange }}</div>
+      </div>
+      <div class="info-row">
+        <div class="heading"  translate="general.location"></div>
+        <div class="content">{{ event.venue }}</div>
+      </div>
+    </li>
+  </ul>
+
 </section>

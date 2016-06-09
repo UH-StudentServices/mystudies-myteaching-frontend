@@ -361,12 +361,56 @@ $favorite-size-large: 340px;
       }
     }
 
-    .unisport-iframe {
-      width: 100%;
-      height: 100%;
-      margin-top: -100px;
-      padding-top: 100px;
-      border: none;
+    .authorization {
+      padding: 10px;
+
+      a {
+        margin-top: 1em;
+      }
     }
+
+  .events {
+    display: flex;
+    flex-direction: column;
+    height: 260px;
+    overflow-y: auto;
+    font-size: 0.9em;
+
+    li {
+      display: flex;
+      flex-direction: column;
+      flex: 1 0 auto;
+      margin-top: 1em;
+      justify-content: center;
+      border-bottom: 1px solid $lightsilver;
+      padding-bottom: 1em;
+
+      div {
+        display: flex;
+      }
+
+      .event-name {
+        flex: 1 100%;
+        justify-content: center;
+        color: $blue;
+        margin-bottom: 0.2em;
+      }
+
+      .info-row {
+        flex-direction: row;
+        flex: 1 100%;
+        margin-top: 0.2em;
+
+        .heading {
+          flex: 1;
+        }
+        .content {
+          flex: 3;
+        }
+      }
+    }
+
+  }
+  
 }
 

@@ -25,7 +25,9 @@
     "current": "Current",
     "upcoming": "Upcoming",
     "past": "Past",
-    "frontpage": "frontpage"
+    "frontpage": "frontpage",
+    "time": "Time",
+    "location": "Location"
   },
   "abbreviations": {
     "credits": "cr"
@@ -220,6 +222,10 @@
       "notAvailable" : "lunch menu not available",
       "closed" : "restaurant is closed",
       "lunchMenu" : "lunch menu"
+    },
+    "unisport": {
+      "authorizationRequired": "Jotta varaustietosi voidaan näyttää sinun täytyy antaa unisportille lupa välittää varaustietosi opintoni sovellukselle. Varaustietoja ei tallenneta eikä niitä luovuteta millekkään taholle. Siirry Unisport sivustolle antamaan lupa klikkaamalla alla olevaa painiketta. (en)",
+      "authorizationButton": "Siirry Unisporttiin (en)"
     },
     "twitter": {
       "twitterPlaceholder": "Twitter username, eg. helsinkiuni"
