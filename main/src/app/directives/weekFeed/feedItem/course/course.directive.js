@@ -45,11 +45,13 @@ angular.module('directives.weekFeed.feedItem.course',[
             courseCode = feedItem.showAsChild ? '' : feedItem.code,
             courseType = $translate.instant('codes.courseTypes.' + feedItem.typeCode),
             courseCredits = feedItem.credits && !feedItem.showAsChild ?
-              feedItem.credits + $translate.instant('abbreviations.credits') :
+              '(' + feedItem.credits + $translate.instant('abbreviations.credits') + ')' :
               '',
             courseTeachers = feedItem.teachers.join(', ');
 
-        scope.courseInfo = [courseCode, courseType, courseCredits, courseTeachers].filter(Boolean).join(', ');
+        scope.courseInfo = [courseCode, courseType + ' ' + courseCredits, courseTeachers]
+          .filter(Boolean)
+          .join(', ');
       }
     };
   })
