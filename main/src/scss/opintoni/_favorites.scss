@@ -361,7 +361,7 @@ $favorite-size-large: 340px;
       }
     }
 
-    .authorization {
+    .authorization-url-container {
       padding: 10px;
 
       a {
@@ -370,12 +370,14 @@ $favorite-size-large: 340px;
     }
 
   .events {
+    display: flex;
     flex-direction: column;
     height: 260px;
     overflow-y: auto;
     font-size: 0.9em;
 
     li {
+      display: flex;
       flex-direction: column;
       flex: 1 0 auto;
       margin-top: 1em;
@@ -385,6 +387,7 @@ $favorite-size-large: 340px;
     }
 
     &__event-name {
+      display: flex;
       flex: 1 100%;
       justify-content: center;
       color: $blue;
@@ -392,6 +395,7 @@ $favorite-size-large: 340px;
     }
 
     &__info-row {
+      display: flex;
       flex-direction: row;
       flex: 1 100%;
       margin-top: 0.2em;

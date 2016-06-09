@@ -21,24 +21,24 @@
     <img src="/assets/images/favorites/unisport.png" />
   </div>
   
-  <div ng-if="authorizationUrl" class="authorization">
+  <div ng-if="authorizationUrl" class="authorization-url-container">
     <span class="hy hy-info-stroke" title=""></span>
     <span translate="favorites.unisport.authorizationRequired"></span>
-    <a href="{{ authorizationUrl }}" translate="favorites.unisport.authorizationButton" class="button"></a>
+    <a href="{{ ::authorizationUrl }}" translate="favorites.unisport.authorizationButton" class="button"></a>
   </div>
 
-  <ul class="events display-flex">
-    <li ng-repeat="event in events" class="display-flex">
-      <div class="events__event-name display-flex">
-        {{ event.name }}
+  <ul class="events">
+    <li ng-repeat="event in events">
+      <div class="events__event-name">
+        <a href="{{ ::event.url }}">{{ ::event.name }}</a>
       </div>
-      <div class="events__info-row display-flex">
-        <div class="events__info-row__heading display-flex" translate="general.time"></div>
-        <div class="events__info-row__content display-flex">{{ event.timeRange }}</div>
+      <div class="events__info-row">
+        <div class="events__info-row__heading" translate="general.time"></div>
+        <div class="events__info-row__content">{{ ::event.timeRange }}</div>
       </div>
-      <div class="events__info-row display-flex">
-        <div class="events__info-row__heading display-flex"  translate="general.location"></div>
-        <div class="events__info-row__content display-flex">{{ event.venue }}</div>
+      <div class="events__info-row">
+        <div class="events__info-row__heading"  translate="general.location"></div>
+        <div class="events__info-row__content">{{ ::event.venue }}</div>
       </div>
     </li>
   </ul>
