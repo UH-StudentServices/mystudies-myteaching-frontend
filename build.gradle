@@ -32,9 +32,7 @@ buildscript {
 apply plugin: "com.moowork.node"
 
 node {
-    version = '5.9.0'
-    npmVersion = '3.7.3'
-    download = true
+    download = false
 
     nodeModulesDir = file("${project.projectDir}")
 }
