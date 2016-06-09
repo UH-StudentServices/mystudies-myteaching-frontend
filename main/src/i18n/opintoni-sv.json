@@ -25,7 +25,9 @@
     "current": "Nuvarande",
     "upcoming": "Kommande",
     "past": "Avslutad",
-    "frontpage": "Framsidan"
+    "frontpage": "Framsidan",
+    "time": "Tid",
+    "location": "Plats"
   },
   "abbreviations": {
     "credits": "sp"
@@ -221,6 +223,10 @@
       "notAvailable" : "lunchmeny inte tillgängligt",
       "closed" : "restaurangen är stängd",
       "lunchMenu" : "lunchmeny"
+    },
+    "unisport": {
+      "authorizationRequired": "Jotta varaustietosi voidaan näyttää sinun täytyy antaa unisportille lupa välittää varaustietosi opintoni sovellukselle. Varaustietoja ei tallenneta eikä niitä luovuteta millekkään taholle. Siirry Unisport sivustolle antamaan lupa klikkaamalla alla olevaa painiketta. (sv)",
+      "authorizationButton": "Siirry Unisporttiin (sv)"
     },
     "twitter": {
       "twitterPlaceholder": "Twitter användernamn, t.ex helsinkiuni"

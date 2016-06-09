@@ -25,7 +25,9 @@
     "current": "Meneillään",
     "upcoming": "Tuleva",
     "past": "Päättynyt",
-    "frontpage": "etusivu"
+    "frontpage": "etusivu",
+    "time": "Aika",
+    "location": "Paikka"
   },
   "abbreviations": {
     "credits": "op"
@@ -219,6 +221,10 @@
       "notAvailable": "lounaslista ei saatavilla",
       "closed": "ravintola suljettu",
       "lunchMenu": "lounaslista"
+    },
+    "unisport": {
+      "authorizationRequired": "Jotta varaustietosi voidaan näyttää sinun täytyy antaa unisportille lupa välittää varaustietosi opintoni sovellukselle. Varaustietoja ei tallenneta eikä niitä luovuteta millekkään taholle. Siirry Unisport sivustolle antamaan lupa klikkaamalla alla olevaa painiketta.",
+      "authorizationButton": "Siirry Unisporttiin"
     },
     "twitter": {
       "twitterPlaceholder": "Twitter-käyttäjänimi, esim. helsinkiuni"

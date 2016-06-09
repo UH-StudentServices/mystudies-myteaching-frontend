@@ -16,10 +16,10 @@
  */
 
 angular.module('directives.favorites.unisport', [
-  'services.language'
+  'resources.favorites.unisport'
 ])
 
-  .directive('favoritesUnisport', function($sce, LanguageService) {
+  .directive('favoritesUnisport', function(UnisportResource) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/unisport/favorites.unisport.html',
@@ -28,11 +28,21 @@ angular.module('directives.favorites.unisport', [
         data: '='
       },
       link: function($scope) {
-        var unisportUrlTemplateCompiled = _.template($scope.data.url);
 
-        $scope.unisportUrl = $sce.trustAsResourceUrl(unisportUrlTemplateCompiled({
-          'userLanguage': LanguageService.getCurrent()
-        }));
+        UnisportResource.getUserReservations().then(function getUserReservationsSuccess(data) {
+          $scope.events = _(data.events).map(function(event) {
+            event.timeRange = getEventTimeRange(event.startTime, event.endTime);
+            return event;
+          }).value();
+          $scope.authorizationUrl = data.authorizationUrl;
+        });
+
+        function getEventTimeRange(startTime, endTime) {
+          var startTime = moment(startTime),
+              endTime = moment(endTime);
+
+          return startTime.format('D.M.YYYY HH.mm') + ' - ' + endTime.format('HH.mm');
+        }
       }
     };
   });
