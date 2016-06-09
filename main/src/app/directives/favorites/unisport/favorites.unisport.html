@@ -27,18 +27,18 @@
     <a href="{{ authorizationUrl }}" translate="favorites.unisport.authorizationButton" class="button"></a>
   </div>
 
-  <ul class="events">
-    <li ng-repeat="event in events">
-      <div class="event-name">
+  <ul class="events display-flex">
+    <li ng-repeat="event in events" class="display-flex">
+      <div class="events__event-name display-flex">
         {{ event.name }}
       </div>
-      <div class="info-row">
-        <div class="heading" translate="general.time"></div>
-        <div class="content">{{ event.timeRange }}</div>
+      <div class="events__info-row display-flex">
+        <div class="events__info-row__heading display-flex" translate="general.time"></div>
+        <div class="events__info-row__content display-flex">{{ event.timeRange }}</div>
       </div>
-      <div class="info-row">
-        <div class="heading"  translate="general.location"></div>
-        <div class="content">{{ event.venue }}</div>
+      <div class="events__info-row display-flex">
+        <div class="events__info-row__heading display-flex"  translate="general.location"></div>
+        <div class="events__info-row__content display-flex">{{ event.venue }}</div>
       </div>
     </li>
   </ul>
