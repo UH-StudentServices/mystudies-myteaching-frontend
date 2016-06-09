@@ -40,6 +40,7 @@ angular.module('directives.favorites.unisport', [
         function getEventTimeRange(startTime, endTime) {
           var startTime = moment(startTime),
               endTime = moment(endTime);
+
           return startTime.format('D.M.YYYY HH.mm') + ' - ' + endTime.format('HH.mm');
         }
       }
