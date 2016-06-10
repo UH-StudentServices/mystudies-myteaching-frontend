@@ -24,6 +24,7 @@ angular.module('directives.header.meceWidget', [
     return {
       restrict: 'E',
       templateUrl: 'app/directives/header/meceWidget/meceWidget.html',
+      replace: true,
       link: function($scope) {
         UserSettingsService.getUserSettings()
           .then(function getUserSettingsSuccess(settings) {
