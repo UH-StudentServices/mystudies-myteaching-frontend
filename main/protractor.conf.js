@@ -23,7 +23,7 @@ exports.config = {
   capabilities: {
     'browserName': 'phantomjs',
     'phantomjs.cli.args': ['--web-security=false', '--ignore-ssl-errors=true'],
-    'phantom.binary.path': '../node_modules/.bin/phantomjs'
+    'phantomjs.binary.path': '../node_modules/.bin/phantomjs'
   },
 
   onPrepare: function() {
