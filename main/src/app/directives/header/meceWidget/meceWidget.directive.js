@@ -28,7 +28,7 @@ angular.module('directives.header.meceWidget', [
       replace: true,
       link: function($scope) {
 
-        $scope.currentLanguage = LanguageService.getCurrent();       
+        $scope.currentLanguage = LanguageService.getCurrent();
 
         UserSettingsService.getUserSettings()
           .then(function getUserSettingsSuccess(settings) {
