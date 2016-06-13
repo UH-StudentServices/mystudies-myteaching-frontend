@@ -17,15 +17,19 @@
 
 angular.module('directives.header.meceWidget', [
   'directives.scriptLoad',
-  'services.userSettings'])
+  'services.userSettings',
+  'services.language'])
 
-  .directive('meceWidget', function(UserSettingsService) {
+  .directive('meceWidget', function(UserSettingsService, LanguageService) {
 
     return {
       restrict: 'E',
       templateUrl: 'app/directives/header/meceWidget/meceWidget.html',
       replace: true,
       link: function($scope) {
+
+        $scope.currentLanguage = LanguageService.getCurrent();       
+
         UserSettingsService.getUserSettings()
           .then(function getUserSettingsSuccess(settings) {
             $scope.meceToken = settings.meceJWTToken;
