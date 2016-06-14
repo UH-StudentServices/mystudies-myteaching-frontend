@@ -62,14 +62,12 @@
     <meta name="msapplication-TileColor" content="#ffffff" />
 
 </head>
-<body ng-app="opintoniPortfolioApp">
+<body>
 <!--[if lt IE 9]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 
 <div ui-view></div>
-
-<script src="/api/public/v1/configuration"></script>
 
 <!-- build:js app/vendor.js -->
 <script src="../../bower_components/modernizr/modernizr.js"></script>
@@ -99,6 +97,7 @@
 <!-- endbuild -->
 
 <!-- build:js app/app.js -->
+<script src="../../common/src/app/bootstrap.js"></script>
 <script src="app/app.js"></script>
 <script src="app/templates.js"></script>
 <script src="app/errors/errors.js"></script>
@@ -173,7 +172,7 @@
 <script src="app/services/state.service.js"></script>
 <script src="app/services/keyword.service.js"></script>
 <script src="app/services/focus.service.js"></script>
-<script src="app/services/configuration.service.js"></script>
+<script src="../../common/src/app/services/configuration.service.js"></script>
 <script src="app/services/favorites.service.js"></script>
 <script src="app/services/summary.service.js"></script>
 <script src="app/services/userSettings.service.js"></script>
