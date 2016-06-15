@@ -64,6 +64,7 @@
     "build": "grunt build --gruntfile main/Gruntfile.js && grunt build --gruntfile portfolio/Gruntfile.js",
     "dev": "concurrently 'grunt serve --gruntfile main/Gruntfile.js' 'grunt serve --gruntfile portfolio/Gruntfile.js'",
     "dist": "grunt buildMinified --gruntfile main/Gruntfile.js && grunt buildMinified --gruntfile portfolio/Gruntfile.js",
+    "lint": "eslint common/** main/** portfolio/**",
     "postinstall": "concurrently 'npm run webdriver:update' 'npm run bower:install'",
     "predist": "npm rebuild node-sass",
     "webdriver:update": "node_modules/protractor/bin/webdriver-manager update"
