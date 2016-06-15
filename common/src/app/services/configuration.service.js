@@ -18,7 +18,5 @@
 angular.module('services.configuration', [])
 
   .factory('Configuration', function($window) {
-
-    return $window.configuration;
-
+    return $window.configuration ? $window.configuration : {};
   });

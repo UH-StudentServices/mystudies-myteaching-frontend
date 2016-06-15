@@ -16,7 +16,7 @@
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<html class="no-js" ng-app="opintoniApp">
+<html class="no-js">
   <head>
     <meta charset="utf-8">
     <base href="/">
@@ -80,7 +80,6 @@
     <div ui-view="content"></div>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbz5Uz3fJ2kmOxdFlp8R60zetyb__o7po"></script>
-    <script src="/api/public/v1/configuration"></script>
     <script src="https://mece.it.helsinki.fi/dist/mece.client.min.js"></script>
 
     <!-- build:js app/vendor.js -->
@@ -135,9 +134,8 @@
     <script src="app/vendor/ng-addToHomescreen/ng-addToHomescreen.js"></script>
     <!-- endbuild -->
 
-
-
     <!-- build:js app/app.js -->
+    <script src="../../common/src/app/bootstrap.js"></script>
     <script src="app/app.js"></script>
     <script src="app/templates.js"></script>
     <script src="app/errors/errors.js"></script>
@@ -238,7 +236,7 @@
     <script src="app/resources/usefulLinks.resource.js"></script>
     <script src="app/resources/courseRecommendations.resource.js"></script>
 
-    <script src="app/services/configuration.service.js"></script>
+    <script src="../../common/src/app/services/configuration.service.js"></script>
     <script src="app/services/eventUri.service.js"></script>
     <script src="app/services/language.service.js"></script>
     <script src="app/services/location.service.js"></script>
@@ -273,7 +271,7 @@
 
     <script src="app/dialog/dialog.js"></script>
     <!-- endbuild -->
-    
+
 
 </body>
 </html>
