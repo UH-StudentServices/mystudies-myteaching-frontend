@@ -42,14 +42,14 @@ angular.module('directives.popover', ['angular-click-outside'])
           el.append(compiledTmpl);
         });
 
-        if(['relative', 'absolute'].indexOf(targetPos) < 0) {
+        if (['relative', 'absolute'].indexOf(targetPos) < 0) {
           targetEl.style.position = 'relative';
         }
 
         _.assign(scope, {
           showPopover: scope.onClickTrigger ? true : false,
           closePopover: function() {
-            if(scope.onClickOutside) {
+            if (scope.onClickOutside) {
               scope.onClickOutside();
             } else {
               scope.showPopover = false;
@@ -61,7 +61,7 @@ angular.module('directives.popover', ['angular-click-outside'])
           }
         });
 
-        if(!scope.onClickTrigger) {
+        if (!scope.onClickTrigger) {
           triggerEl = document.querySelector('.' + scope.triggerSelector) ||
                       document.querySelector('#' + scope.triggerSelector);
 

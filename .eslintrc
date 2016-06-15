@@ -33,6 +33,7 @@
       "SwitchCase": 1
     }],
     "max-len": [2, 120, 2],
-    "eqeqeq": [2, "smart"]
+    "eqeqeq": [2, "smart"],
+    "space-after-keywords": 2
   }
 }

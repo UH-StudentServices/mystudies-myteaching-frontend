@@ -31,7 +31,7 @@
         angular.element(document).ready(function() {
           angular.bootstrap(document, [NG_APP_NAME]);
 
-          if(!res && location.pathname !== RESOLVED_ERROR_PAGE_PATH) {
+          if (!res && location.pathname !== RESOLVED_ERROR_PAGE_PATH) {
             location.pathname = RESOLVED_ERROR_PAGE_PATH;
           }
         });
@@ -50,7 +50,7 @@
           });
       };
 
-  if(location.pathname !== RESOLVED_ERROR_PAGE_PATH) {
+  if (location.pathname !== RESOLVED_ERROR_PAGE_PATH) {
     fetchConf().then(bootstrap);
   } else {
     bootstrap();
