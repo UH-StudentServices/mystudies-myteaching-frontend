@@ -23,7 +23,7 @@ angular.module('directives.favorites.addNew', [
   'directives.popover',
   'services.focus'])
 
-  .constant('availableFavoriteTypes', ['RSS', 'UNICAFE', 'TWITTER', 'UNISPORT'])
+  .constant('availableFavoriteTypes', ['RSS', 'UNICAFE', 'TWITTER'])
   .constant('newFavoriteAddedEvent', 'NEW_FAVORITE_ADDED')
 
   .directive('addNewFavoriteSearch', function() {
