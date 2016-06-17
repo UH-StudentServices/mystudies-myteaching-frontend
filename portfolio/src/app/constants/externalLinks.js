@@ -17,14 +17,6 @@
 
 angular.module('constants.externalLinks', [])
 
-  .constant('pageHeaderLinks', [
-    {key: 'pageHeaderLinks.email', href: 'http://www.helsinki.fi/office365'},
-    {key: 'pageHeaderLinks.flamma', href: 'http://flamma.helsinki.fi'},
-    {key: 'pageHeaderLinks.library', href: 'http://www.helsinki.fi/kirjasto/fi/etusivu/'}
-  ])
-
   .constant('primaryLinks', [
     {key: 'navigationTab.list', href: '', active: true}
-  ])
-
-  .constant('mobileReturnLinks', []);
+  ]);

@@ -16,6 +16,7 @@
  */
 
 angular.module('directives.mobileToolbar', [
+  'constants.commonExternalLinks',
   'constants.externalLinks',
   'services.state',
   'directives.logoutLink',

@@ -15,16 +15,12 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-'use strict';
+angular.module('constants.commonExternalLinks', [])
 
-angular.module('directives.pageHeader', ['constants.commonExternalLinks', 'constants.externalLinks'])
-  .directive('pageHeader', function(primaryLinks, pageHeaderLinks) {
-    return {
-      restrict: 'E',
-      templateUrl: 'app/directives/pageHeader/page_header.html',
-      link: function($scope) {
-        $scope.primaryLinks = primaryLinks;
-        $scope.pageHeaderLinks = pageHeaderLinks;
-      }
-    };
-  });
+  .constant('pageHeaderLinks', [
+    {key: 'pageHeaderLinks.email', href: 'http://www.helsinki.fi/office365'},
+    {key: 'pageHeaderLinks.flamma', href: 'http://flamma.helsinki.fi'},
+    {key: 'pageHeaderLinks.library', href: 'http://www.helsinki.fi/kirjasto/fi/etusivu/'}
+  ])
+
+  .constant('mobileReturnLinks', []);
