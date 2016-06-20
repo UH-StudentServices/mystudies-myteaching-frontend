@@ -1,19 +1,12 @@
-<div class="mece__widget dropdown-toggle">
-    <div id="mece" style="max-width: 20px;">
-        <div id="mece-icon-div"> </div>
-        <div id                                 = "mece-content-div"
-             class                              = "dialog"
-             mece-polling-interval              = "5000"
-             mece-window-top-offset             = "30"
-             mece-window-top-offset-collapsed   = "70"
-             mece-window-left-offset            = "-130"
-             mece-window-width                  = "300"
-             mece-window-height                 = "350"
-             mece-position                      = "relative"
-             mece-collapse-width                = "450"
-             mece-domain                        = "https://ohtu-testi.it.helsinki.fi"
-             mece-language                      = "{{ ::currentLanguage }}"
-             mece-token                         = "{{ ::meceToken }}">
-        </div>
+<div class="user-menu__item mece__widget dropdown-toggle user-notifications">
+  <div id="mece">
+    <div id="mece-icon-div" class="icon"></div>
+    <div id="mece-content-div"
+         class="dialog"
+         mece-polling-interval="10000"
+         mece-domain="https://ohtu-testi.it.helsinki.fi"
+         mece-language="{{ ::currentLanguage }}"
+         mece-token="{{ ::meceToken }}">
     </div>
+  </div>
 </div>
