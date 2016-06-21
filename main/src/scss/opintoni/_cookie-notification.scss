@@ -15,21 +15,25 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('constants.commonExternalLinks', [])
+.cookie-notification {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 1em;
+  background-color: $black;
+  color: $white;
+  z-index: 10;
 
-  .constant('pageHeaderLinks', [
-    {key: 'pageHeaderLinks.email', href: 'http://www.helsinki.fi/office365'},
-    {key: 'pageHeaderLinks.flamma', href: 'http://flamma.helsinki.fi'},
-    {key: 'pageHeaderLinks.library', href: 'http://www.helsinki.fi/kirjasto/fi/etusivu/'}
-  ])
+  &__content {
+    padding-right: 0.5em;
+    line-height: 1.4;
+  }
 
-  .constant('mobileReturnLinks', [])
-
-  .constant('privacyPolicyLink', {
-    key: 'cookieNotification.readMore',
-    href: {
-      fi: 'https://www.helsinki.fi/fi/yliopisto/tietoa-sivustosta',
-      sv: 'https://www.helsinki.fi/sv/universitetet/information-om-webbplatsen',
-      en: 'https://www.helsinki.fi/en/university/about-the-website'
-    }
-  });
+  &__dismiss {
+    display: inline-block !important;
+    padding: 0.5em 1em !important;
+  }
+}

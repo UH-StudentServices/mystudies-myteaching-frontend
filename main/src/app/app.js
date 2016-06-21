@@ -61,6 +61,7 @@ angular.module('opintoniApp', [
   'directives.pageBanner',
   'directives.helpIcon',
   'directives.popover',
+  'directives.cookieNotification',
   'ui.calendar',
   'utils.loader'
 ])

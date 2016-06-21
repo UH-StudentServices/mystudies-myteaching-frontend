@@ -27,7 +27,8 @@
     "past": "Past",
     "frontpage": "frontpage",
     "time": "Time",
-    "location": "Location"
+    "location": "Location",
+    "ok": "Ok"
   },
   "abbreviations": {
     "credits": "cr"
@@ -411,5 +412,9 @@
   "courseRecommendations" : {
     "title" : "potentially interesting courses",
     "disclaimer" : "This course list is based on your completed studies, which has been compared to other students’ completed studies. The list is personal and no one else sees it. Please check the pre-requisites the required study right before enrolling to a course."
+  },
+  "cookieNotification": {
+    "notification": "This website uses cookies to ensure you get the best experience on our website.",
+    "readMore": "You can read more here"
   }
 }
