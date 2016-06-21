@@ -16,7 +16,8 @@
  */
 
 angular.module('controllers.main', [])
-  .controller('MainCtrl', function($scope, portfolio) {
+  .controller('MainCtrl', function($scope, portfolio, userSettings) {
     $scope.portfolio = portfolio;
+    $scope.userSettings = userSettings;
     document.title = portfolio.ownerName;
   });

@@ -48,6 +48,7 @@
     <favorites></favorites>
   </div>
 
-  <feedback></feedback>
+  <feedback ng-if="userSettings.cookieConsent"></feedback>
+  <cookie-notification ng-if="!userSettings.cookieConsent"></cookie-notification>
   <footer class="l-footer island" ng-include="'app/partials/_page_footer.html'"></footer>
 </div>

@@ -54,6 +54,7 @@ angular.module('opintoniPortfolioApp',
    'directives.languageProficiencies',
    'directives.feedback',
    'directives.popover',
+   'directives.cookieNotification',
 
    'filters.formatting',
 
@@ -105,8 +106,6 @@ angular.module('opintoniPortfolioApp',
         userSettings: function(StateService, State, UserSettingsService, session) {
           if(StateService.getCurrent() === State.PRIVATE) {
             return UserSettingsService.getUserSettings();
-          } else {
-            return undefined;
           }
         },
         portfolio: function($stateParams, PortfolioService, $state, userSettings, portfolioRole) {

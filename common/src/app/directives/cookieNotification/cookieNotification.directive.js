@@ -15,16 +15,25 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-'use strict';
+angular.module('directives.cookieNotification', ['constants.commonExternalLinks',
+                                                 'services.language',
+                                                 'resources.userSettings'])
 
-angular.module('directives.pageHeader', ['constants.commonExternalLinks', 'constants.externalLinks'])
-  .directive('pageHeader', function(primaryLinks, pageHeaderLinks) {
+  .directive('cookieNotification', function(privacyPolicyLink, LanguageService, UserSettingsService) {
     return {
       restrict: 'E',
-      templateUrl: 'app/directives/pageHeader/page_header.html',
-      link: function($scope) {
-        $scope.primaryLinks = primaryLinks;
-        $scope.pageHeaderLinks = pageHeaderLinks;
+      replace: 'true',
+      templateUrl: 'app/directives/cookieNotification/cookieNotification.html',
+      scope: {},
+      link: function(scope, el) {
+        scope.privacyPolicyLink = privacyPolicyLink;
+        scope.userLang = LanguageService.getCurrent();
+
+        scope.dismiss = function() {
+          UserSettingsService.acceptCookies().then(function() {
+            el.remove();
+          });
+        };
       }
     };
   });

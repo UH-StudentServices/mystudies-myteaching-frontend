@@ -27,7 +27,8 @@
     "past": "Päättynyt",
     "frontpage": "etusivu",
     "time": "Aika",
-    "location": "Paikka"
+    "location": "Paikka",
+    "ok": "Ok"
   },
   "abbreviations": {
     "credits": "op"
@@ -410,5 +411,9 @@
   "courseRecommendations" : {
     "title" : "mahdollisesti kiinnostavia kursseja",
     "disclaimer" : "Alla oleva kurssilista perustuu opintosuorituksiisi, joita on verrattu muiden opiskelijoiden suorituksiin. Lista on henkilökohtainen eikä kukaan muu näe sitä. Tarkista kurssin esitietovaatimukset ja vaadittava opiskeluoikeus ennen ilmoittautumista."
+  },
+  "cookieNotification": {
+    "notification": "Jotta sivusto toimisi mahdollisimman hyvin, käytämme evästeitä.",
+    "readMore": "Lue lisää"
   }
 }

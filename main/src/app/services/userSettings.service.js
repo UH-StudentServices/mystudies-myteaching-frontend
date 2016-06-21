@@ -117,7 +117,12 @@ angular.module('services.userSettings', ['resources.userSettings'])
       return showBannerSubject;
     }
 
+    function acceptCookies() {
+      return updateUserSettings({cookieConsent: true});
+    }
+
     return {
+      acceptCookies: acceptCookies,
       getUserSettings: getUserSettings,
       getAvailableBackgrounds: getAvailableBackgrounds,
       selectUserBackground: selectUserBackground,

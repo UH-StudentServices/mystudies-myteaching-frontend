@@ -3,7 +3,8 @@
     "edit": "edit",
     "done": "done",
     "add" : "add",
-    "remove" : "remove"
+    "remove" : "remove",
+    "ok": "Ok"
   },
   "students": {
     "pageHeaderBranding": "students"
@@ -129,6 +130,10 @@
     "submit": "Submit",
     "submitted": "Thanks",
     "emailReply" : "I want a reply to my feedback"
+  },
+  "cookieNotification": {
+    "notification": "This website uses cookies to ensure you get the best experience on our website.",
+    "readMore": "You can read more here"
   },
   "languages": {
     "title": "Languages",

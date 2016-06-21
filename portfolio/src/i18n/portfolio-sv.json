@@ -3,7 +3,8 @@
     "edit": "redigera",
     "done": "färdig",
     "add" : "lägg till",
-    "remove" : "radera"
+    "remove" : "radera",
+    "ok": "Ok"
   },
   "students": {
     "pageHeaderBranding": "studerande"
@@ -129,6 +130,10 @@
     "submit": "Skicka",
     "submitted": "Tack",
     "emailReply" : "Jag vill gärna ha svar på min feedback"
+  },
+  "cookieNotification": {
+    "notification": "Denna webbplats använder cookies för att erbjuda dig den bästa upplevelsen.",
+    "readMore": "Du kan läsa mer här"
   },
   "languages": {
     "title": "Språk",
