@@ -85,7 +85,8 @@ module.exports = function(grunt) {
           '../main/src/scss/opintoni/**/*.scss',
           'src/scss/portfolio/**/*.scss',
           'src/scss/styleguide/**/*.scss',
-          'src/app/**/*.html'],
+          'src/app/**/*.html',
+          '../common/src/app/**/*.html'],
         tasks: ['cssDev', 'buildTemplates', 'eslint']
       }
     },
@@ -94,6 +95,7 @@ module.exports = function(grunt) {
         bsFiles: {
           src: [
             'src/index.html',
+            'src/**/*.json',
             'src/app/**/*.js',
             '../common/src/app/**/*.js',
             'src/assets/styles/**/*.css',

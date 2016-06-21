@@ -98,11 +98,10 @@ module.exports = function(grunt) {
       dev: {
         files: [
           'src/scss/main.scss',
-          'src/scss/opintoni/**/*.{scss,sass}',
-          'src/scss/styleguide/**/*.{scss,sass}',
-          'src/scss/styleguide_additions/**/*.{scss,sass}',
+          'src/scss/opintoni/**/*.scss',
+          'src/scss/styleguide/**/*.scss',
           'src/app/**/*.html',
-          'src/app/**/*.js'
+          '../common/src/app/**/*.html'
         ],
         tasks: ['cssDev', 'buildTemplates', 'eslint']
       }
@@ -114,8 +113,8 @@ module.exports = function(grunt) {
             'src/index.html',
             'src/**/*.json',
             'src/assets/styles/**/*.css',
-            'src/app/**/*.js',
-            '../common/src/app/**/*.js',
+            'src/app/**/*.{js,html}',
+            '../common/src/app/**/*.{js,html}',
             'src/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg,ico}'
           ]
         }
