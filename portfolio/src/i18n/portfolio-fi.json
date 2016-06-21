@@ -3,7 +3,8 @@
     "edit": "muokkaa",
     "done": "valmis",
     "add" : "lisää",
-    "remove" : "poista"
+    "remove" : "poista",
+    "ok": "Ok"
   },
   "students": {
     "pageHeaderBranding": "opiskelijat"
@@ -129,6 +130,10 @@
     "submit": "Lähetä",
     "submitted": "Kiitos",
     "emailReply" : "Haluan vastauksen palautteeseeni"
+  },
+  "cookieNotification": {
+    "notification": "Jotta sivusto toimisi mahdollisimman hyvin, käytämme evästeitä.",
+    "readMore": "Lue lisää"
   },
   "languages": {
     "title": "Kielitaito",

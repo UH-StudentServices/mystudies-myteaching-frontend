@@ -25,11 +25,16 @@ angular.module('services.userSettings', ['resources.userSettings'])
       if(!userSettingsPromise) {
         userSettingsPromise = UserSettingsResource.getUserSettings();
       }
+
       return userSettingsPromise;
     }
 
-    function updateUserSettings(userSettings) {
-      userSettingsPromise = UserSettingsResource.updateUserSettings(userSettings);
+    function updateUserSettings(updateObject) {
+      userSettingsPromise = getUserSettings()
+        .then(function(settings) {
+          return UserSettingsResource.updateUserSettings(_.assign(settings, updateObject));
+        });
+
       return userSettingsPromise;
     }
 
@@ -40,13 +45,15 @@ angular.module('services.userSettings', ['resources.userSettings'])
     }
 
     function markPortfolioTourAsShown() {
-      return getUserSettings().then(function(userSettings) {
-        userSettings.showPortfolioTour = false;
-        return updateUserSettings(userSettings);
-      });
+      return updateUserSettings({showPortfolioTour: false});
+    }
+
+    function acceptCookies() {
+      return updateUserSettings({cookieConsent: true});
     }
 
     return {
+      acceptCookies: acceptCookies,
       getUserSettings: getUserSettings,
       updateUserSettings: updateUserSettings,
       showPortfolioTour: showPortfolioTour,

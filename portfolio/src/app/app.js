@@ -54,6 +54,7 @@ angular.module('opintoniPortfolioApp',
    'directives.languageProficiencies',
    'directives.feedback',
    'directives.popover',
+   'directives.cookieNotification',
 
    'filters.formatting',
 

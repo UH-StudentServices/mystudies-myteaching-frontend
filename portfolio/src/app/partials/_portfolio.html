@@ -76,5 +76,7 @@
 
 <portfolio-tour tour-disabled="true"></portfolio-tour>
 
-<feedback visibility-private></feedback>
+<feedback visibility-private ng-if="userSettings.cookieConsent"></feedback>
+<cookie-notification visibility-private ng-if="!userSettings.cookieConsent"></cookie-notification>
+
 <footer class="l-footer island" ng-include="'app/partials/_page_footer.html'"></footer>
