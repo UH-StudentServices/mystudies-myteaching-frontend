@@ -26,15 +26,11 @@ angular.module('directives.cookieNotification', ['constants.commonExternalLinks'
       templateUrl: 'app/directives/cookieNotification/cookieNotification.html',
       scope: {},
       link: function(scope, el) {
-        var acceptCookies = function() {
-          return UserSettingsService.acceptCookies();
-        };
-
         scope.privacyPolicyLink = privacyPolicyLink;
         scope.userLang = LanguageService.getCurrent();
 
         scope.dismiss = function() {
-          acceptCookies().then(function() {
+          UserSettingsService.acceptCookies().then(function() {
             el.remove();
           });
         };
