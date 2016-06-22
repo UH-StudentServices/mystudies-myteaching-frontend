@@ -39,7 +39,7 @@ angular.module('directives.attainments', [
 
         AttainmentsService.getLastStudyAttainments().then(function(attainments) {
           $scope.attainments = attainments;
-          if($scope.attainments.length === 0) {
+          if ($scope.attainments.length === 0) {
             $scope.message = {
               messageType: MessageTypes.INFO,
               key: 'attainments.noAttainmentsFromLastSixMonths'

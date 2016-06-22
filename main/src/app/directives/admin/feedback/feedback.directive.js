@@ -25,7 +25,7 @@ angular.module('directives.admin.feedback', [
       var metadataJSON = JSON.parse(metadata),
           facultyCode = metadataJSON.faculty;
 
-      if(facultyCode) {
+      if (facultyCode) {
         return $filter('translate')('faculties.' + facultyCode);
       } else {
         return '';
@@ -46,7 +46,7 @@ angular.module('directives.admin.feedback', [
       var metadataJSON = JSON.parse(metadata),
           state = metadataJSON.state;
 
-      if(state) {
+      if (state) {
         return $filter('translate')(state + '.pageHeaderBranding');
       } else {
         return '';
@@ -91,7 +91,7 @@ angular.module('directives.admin.feedback', [
 
         FeedbackResource.getFeedback().then(function getFeedbackSuccess(feedback) {
           allItems = feedback.reverse();
-          for(var i = 0; i < Math.ceil(allItems.length / ITEMS_PER_PAGE); i++) {
+          for (var i = 0; i < Math.ceil(allItems.length / ITEMS_PER_PAGE); i++) {
             $scope.pageIndexes.push(i);
           }
           $scope.selectPage(0);
@@ -106,14 +106,14 @@ angular.module('directives.admin.feedback', [
         };
 
         $scope.previousPage = function previousPage() {
-          if($scope.previousPageEnabled()) {
+          if ($scope.previousPageEnabled()) {
             $scope.activePage--;
             $scope.selectPage($scope.activePage);
           }
         };
 
         $scope.nextPage = function nextPage() {
-          if($scope.nextPageEnabled()) {
+          if ($scope.nextPageEnabled()) {
             $scope.activePage++;
             $scope.selectPage($scope.activePage);
           }
@@ -160,7 +160,7 @@ angular.module('directives.admin.feedback', [
         $scope.saveComment = function saveComment(feedback) {
           var newComment = feedback.stagedComment;
 
-          if(feedback.comment !== newComment) {
+          if (feedback.comment !== newComment) {
             feedback.inflightUpdate = true;
             feedback.comment = newComment;
             updateFeedback(feedback).then(function() {

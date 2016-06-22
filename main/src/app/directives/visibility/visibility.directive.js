@@ -85,7 +85,7 @@ angular.module('directives.visibility', [
         }
 
         function render(visibilities) {
-          if(_.every(visibilities, Boolean)) {
+          if (_.every(visibilities, Boolean)) {
             if (!childScope) {
               $transclude(function(clone, newScope) {
                 element = clone;
@@ -107,7 +107,7 @@ angular.module('directives.visibility', [
 
         function limitArgumentsToFunctions() {
           return _.map($scope.limitVisibility, function(limit) {
-            if(Visibility[limit]) {
+            if (Visibility[limit]) {
               return Visibility[limit];
             }
             throw 'limitVisibility directive: Invalid Visibility argument ' + limit;

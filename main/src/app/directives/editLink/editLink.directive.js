@@ -29,7 +29,7 @@ angular.module('directives.editLink',
       link: function($scope) {
         $scope.editing = false;
         $scope.onClick = function() {
-          if($scope.editing) {
+          if ($scope.editing) {
             $scope.onExitEdit();
           } else {
             $scope.onEdit();

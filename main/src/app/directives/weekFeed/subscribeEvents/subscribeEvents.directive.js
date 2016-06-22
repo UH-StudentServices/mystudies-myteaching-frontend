@@ -106,7 +106,7 @@ angular.module('directives.subscribeEvents', [
         $scope.onClick = function() {
           $scope.showPopover = !$scope.showPopover;
 
-          if($scope.showPopover) {
+          if ($scope.showPopover) {
             return $q(function(resolve, reject) {
               return cachedCalendarFeedBaseUrl ? resolve() : reject();
             })

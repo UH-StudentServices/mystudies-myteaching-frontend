@@ -25,7 +25,7 @@ angular.module('services.attainments', ['resources.attainments', 'utils.moment']
         studyAttainmentsPromise;
 
     function getStudyAttainments() {
-      if(!studyAttainmentsPromise) {
+      if (!studyAttainmentsPromise) {
         studyAttainmentsPromise = AttainmentsResource.getStudyAttainments().then(function(data) {
           return _.map(data, function(attainment) {
             attainment.attainmentDate = dateArrayToUTCMomentObject(attainment.attainmentDate)

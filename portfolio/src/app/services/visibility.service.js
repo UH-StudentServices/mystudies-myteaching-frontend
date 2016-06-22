@@ -41,7 +41,7 @@ angular.module('services.visibility', ['services.portfolio', 'resources.visibili
     function insertOrUpdateComponentVisibility(componentId, visibility, portfolio) {
       var visibilityToUpdate = _.find(portfolio.componentVisibilities, {key: componentId});
 
-      if(!visibilityToUpdate) {
+      if (!visibilityToUpdate) {
         portfolio.componentVisibilities.push(createComponentPermission(componentId, visibility));
       } else {
         visibilityToUpdate.visibility = visibility;

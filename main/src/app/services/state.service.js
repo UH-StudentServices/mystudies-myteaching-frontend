@@ -43,7 +43,7 @@ angular.module('services.state', [
     var getRootStateName = function getRootStateName() {
       var rootStateName = '';
 
-      if(stateMatches($state.current, State.MY_STUDIES)) {
+      if (stateMatches($state.current, State.MY_STUDIES)) {
         rootStateName = State.MY_STUDIES;
       } else if (stateMatches($state.current, State.MY_TEACHINGS)) {
         rootStateName = State.MY_TEACHINGS;
@@ -57,13 +57,13 @@ angular.module('services.state', [
     var getStateFromDomain = function getStateFromDomain() {
       var host = $location.host();
 
-      if(configurationPropertyContains('studentAppUrl', host)) {
+      if (configurationPropertyContains('studentAppUrl', host)) {
         return State.MY_STUDIES;
-      } else if(configurationPropertyContains('teacherAppUrl', host)) {
+      } else if (configurationPropertyContains('teacherAppUrl', host)) {
         return State.MY_TEACHINGS;
-      } else if(domainContainsString('student', host)) {
+      } else if (domainContainsString('student', host)) {
         return State.MY_STUDIES;
-      } else if(domainContainsString('teacher', host)) {
+      } else if (domainContainsString('teacher', host)) {
         return State.MY_TEACHINGS;
       } else {
         return undefined;
@@ -81,7 +81,7 @@ angular.module('services.state', [
     var getDefaultStateForUser = function getDefaultStateForUser(session) {
       var defaultRole = _.first(session.roles);
 
-      if(defaultRole === Role.TEACHER) {
+      if (defaultRole === Role.TEACHER) {
         return State.MY_TEACHINGS;
       } else if (defaultRole === Role.STUDENT) {
         return State.MY_STUDIES;

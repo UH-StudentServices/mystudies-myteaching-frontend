@@ -29,7 +29,7 @@ angular.module('services.workExperience', [
         jobSearchSubject;
 
     function workExperienceArrayDatesToMoment(workExperience) {
-      if(workExperience) {
+      if (workExperience) {
         workExperience.startDate = dateArrayToMomentObject(workExperience.startDate);
         workExperience.endDate = dateArrayToMomentObject(workExperience.endDate);
       }
@@ -109,7 +109,7 @@ angular.module('services.workExperience', [
     }
 
     function getWorkExperienceSubject() {
-      if(!workExperienceSubject) {
+      if (!workExperienceSubject) {
         workExperienceSubject = new Rx.BehaviorSubject();
         getWorkExperience()
           .then(publishWorkExperience);
@@ -119,7 +119,7 @@ angular.module('services.workExperience', [
     }
 
     function getJobSearchSubject() {
-      if(!jobSearchSubject) {
+      if (!jobSearchSubject) {
         jobSearchSubject = new Rx.BehaviorSubject();
         getJobSearch()
           .then(publishJobSearch);

@@ -98,11 +98,11 @@ angular.module('directives.eventCalendar', [])
         function getEventTitle(event) {
           var title = event.title;
 
-          if(event.source === 'COURSE_PAGE') {
+          if (event.source === 'COURSE_PAGE') {
             title += ', ' + event.courseTitle;
           }
 
-          if(event.locations) {
+          if (event.locations) {
             title += ', ' + event.locations;
           }
 

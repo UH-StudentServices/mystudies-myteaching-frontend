@@ -25,14 +25,14 @@ angular.module('opintoniDialog', ['ui.bootstrap.modal'])
 
       scope.okCallback = function(event) {
         modalInstance.close();
-        if(okCallback) {
+        if (okCallback) {
           okCallback(event);
         }
       };
 
       scope.cancelCallback = function(event) {
         modalInstance.close();
-        if(cancelCallback) {
+        if (cancelCallback) {
           cancelCallback(event);
         }
       };

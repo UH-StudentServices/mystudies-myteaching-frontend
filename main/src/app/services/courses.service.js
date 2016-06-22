@@ -40,7 +40,7 @@ angular.module('services.courses', ['resources.courses', 'utils.moment'])
     }
 
     function getStudentCoursesPromise() {
-      if(!studentCoursesPromise) {
+      if (!studentCoursesPromise) {
         studentCoursesPromise = CoursesResource.getStudentCourses();
       }
 
@@ -48,7 +48,7 @@ angular.module('services.courses', ['resources.courses', 'utils.moment'])
     }
 
     function getTeacherCoursesPromise() {
-      if(!teacherCoursesPromise) {
+      if (!teacherCoursesPromise) {
         teacherCoursesPromise = CoursesResource.getTeacherCourses();
       }
 

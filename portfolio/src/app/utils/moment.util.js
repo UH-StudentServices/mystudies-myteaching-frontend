@@ -29,7 +29,7 @@ angular.module('utils.moment', [])
           }
           return value;
         }));
-      } else if(input) {
+      } else if (input) {
         return convertFn(input);
       }
     }
@@ -54,7 +54,7 @@ angular.module('utils.moment', [])
 
   .service('momentDateToLocalDateArray', function() {
     return function convert(date) {
-      if(!date) {
+      if (!date) {
         return null;
       }
 

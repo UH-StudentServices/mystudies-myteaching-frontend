@@ -121,7 +121,7 @@ angular.module('opintoniApp', [
           toState: function(StateService, session) {
             var stateFromDomain = StateService.getStateFromDomain();
 
-            if(stateFromDomain) {
+            if (stateFromDomain) {
               return stateFromDomain;
             } else {
               return StateService.getDefaultStateForUser(session);

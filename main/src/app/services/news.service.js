@@ -23,8 +23,8 @@ angular.module('services.news', ['resources.news'])
 
     function getNews(currentStateName) {
       return SessionService.getSession().then(function(data) {
-        if(_.isUndefined(promise)) {
-          if(data.openUniversity) {
+        if (_.isUndefined(promise)) {
+          if (data.openUniversity) {
             promise = NewsResource.getStudentOpenUniversityNews();
           } else {
             if (currentStateName === State.MY_STUDIES) {

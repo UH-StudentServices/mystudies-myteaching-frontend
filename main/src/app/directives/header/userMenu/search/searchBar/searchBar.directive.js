@@ -61,7 +61,7 @@ angular.module('directives.searchBar', [
         };
 
         $scope.clear = function() {
-          if(!$scope.searchTerm) {
+          if (!$scope.searchTerm) {
             MessageService.broadcast(SearchEvents.TOGGLE_SEARCH_CLICKED, false);
           }
           $scope.searchTerm = '';

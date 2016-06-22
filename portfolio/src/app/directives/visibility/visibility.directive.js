@@ -25,7 +25,7 @@ angular.module('directives.visibility',
     return {
       restrict: 'A',
       link: function($scope, $element) {
-        if(StateService.getCurrent() !== State.PRIVATE || PreviewService.isPreview()) {
+        if (StateService.getCurrent() !== State.PRIVATE || PreviewService.isPreview()) {
           $element.remove();
         }
       }
@@ -125,7 +125,7 @@ angular.module('directives.visibility',
           function isLimitedByRole() {
             var roleLimits = _.get($scope, ['limitVisibility', 'roles']);
 
-            if(roleLimits) {
+            if (roleLimits) {
               return $q.when(!_.some(roleLimits, function(role) {
                 return VisibilityRoles[role](PortfolioRoleService, PortfolioRole);
               }));
@@ -147,9 +147,9 @@ angular.module('directives.visibility',
           function isComponentHidden(visibility) {
             var preview = PreviewService.isPreview();
 
-            if(preview && visibility === Visibility.PRIVATE) {
+            if (preview && visibility === Visibility.PRIVATE) {
               return true;
-            } else if(visibility === Visibility.PRIVATE &&
+            } else if (visibility === Visibility.PRIVATE &&
               StateService.getCurrent() !== State.PRIVATE) {
               return true;
             } else {
@@ -157,7 +157,7 @@ angular.module('directives.visibility',
             }
           }
           $q.all([isLimitedByRole(), isLimitedByPortfolioComponentVisibility()]).then(function(limits) {
-            if(!_.some(limits, Boolean)) {
+            if (!_.some(limits, Boolean)) {
               $transclude(function(clone) {
                 $animate.enter(clone, $element.parent(), $element);
               });

@@ -22,7 +22,7 @@ angular.module('services.userSettings', ['resources.userSettings'])
     var userSettingsPromise;
 
     function getUserSettings() {
-      if(!userSettingsPromise) {
+      if (!userSettingsPromise) {
         userSettingsPromise = UserSettingsResource.getUserSettings();
       }
 

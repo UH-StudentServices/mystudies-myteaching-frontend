@@ -43,7 +43,7 @@ angular.module('directives.favorites.addNew.rss',
         $scope.loading = false;
 
         function findFeedSuccess(feed) {
-          if(feed) {
+          if (feed) {
             $scope.searchResults = feed;
           } else {
             findFeedFailed();
@@ -69,7 +69,7 @@ angular.module('directives.favorites.addNew.rss',
         function convertUrl(validFn, url) {
           var validUrl = ValidatorUtils.convertValidUrl(url);
 
-          if(validUrl) {
+          if (validUrl) {
             validFn(validUrl);
           }
         }
@@ -93,7 +93,7 @@ angular.module('directives.favorites.addNew.rss',
         $scope.addFeedOnEnter = function() {
           var urlToAdd = _.get($scope, ['searchResults', '0', 'url']);
 
-          if(urlToAdd) {
+          if (urlToAdd) {
             $scope.addFeed(urlToAdd);
           }
         };

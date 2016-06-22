@@ -69,10 +69,10 @@ angular.module('directives.attainments', [
         };
 
         $scope.toggleVisibility = function toggleVisibility(attainment) {
-          if(!_.isUndefined($scope.whitelist)) {
+          if (!_.isUndefined($scope.whitelist)) {
             var index = $scope.whitelist.indexOf(attainment.studyAttainmentId);
 
-            if(index !== -1) {
+            if (index !== -1) {
               $scope.whitelist.splice(index, 1);
             } else {
               $scope.whitelist.push(attainment.studyAttainmentId);

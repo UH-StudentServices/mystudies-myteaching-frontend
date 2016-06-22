@@ -26,9 +26,9 @@ angular.module('resources.stateInterceptor', [
     }
 
     $rootScope.$on('$stateChangeStart', function(event, toState) {
-      if(toState.data && toState.data.roles) {
+      if (toState.data && toState.data.roles) {
         authorizeState(toState.data.roles).then(function(authorized) {
-          if(!authorized) {
+          if (!authorized) {
             $state.go(State.ACCESS_DENIED, {}, {reload: true});
           }
           event.preventDefault();

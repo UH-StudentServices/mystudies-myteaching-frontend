@@ -104,14 +104,14 @@ angular.module('opintoniPortfolioApp',
           });
         },
         userSettings: function(StateService, State, UserSettingsService, session) {
-          if(StateService.getCurrent() === State.PRIVATE) {
+          if (StateService.getCurrent() === State.PRIVATE) {
             return UserSettingsService.getUserSettings();
           }
         },
         portfolio: function($stateParams, PortfolioService, $state, userSettings, portfolioRole) {
           return PortfolioService.findPortfolioByPath(portfolioRole, $stateParams.path)
             .catch(function findPortfolioFail(error) {
-              if(error.status === 404) {
+              if (error.status === 404) {
                 $state.go('notFound');
               }
             });

@@ -47,9 +47,9 @@ angular.module('directives.menuLanguage', [
         $scope.selectedLanguage = LanguageService.getCurrent();
 
         $scope.getLanguageOptions = function getLanguageOptions(userLanguage) {
-          if(userLanguage === 'fi') {
+          if (userLanguage === 'fi') {
             return [languageOptions[0], languageOptions[1]];
-          } else if(userLanguage === 'sv') {
+          } else if (userLanguage === 'sv') {
             return [languageOptions[0], languageOptions[2]];
           } else {
             return [languageOptions[2], languageOptions[1]];

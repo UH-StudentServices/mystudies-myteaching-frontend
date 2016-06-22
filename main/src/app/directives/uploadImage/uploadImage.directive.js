@@ -46,7 +46,7 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
           currentMaxDimension = Math.max(width, height),
           maxImageDimensions = MaxImageDimensions.get();
 
-      if(currentMaxDimension > maxImageDimensions) {
+      if (currentMaxDimension > maxImageDimensions) {
         var factor = maxImageDimensions / currentMaxDimension;
 
         dimensions.resizedWidth = width * factor;
@@ -114,7 +114,7 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
                 var deferred = $q.defer(),
                     img;
 
-                if(typeof croppedImage === 'string') {
+                if (typeof croppedImage === 'string') {
                   img = new Image();
 
                   img.src = croppedImage;

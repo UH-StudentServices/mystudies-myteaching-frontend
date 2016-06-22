@@ -31,7 +31,7 @@ angular.module('directives.globalMessages',
       addErrorMessage: function(err) {
         var messageQuery = {messageType: MessageTypes.ERROR, active: true};
 
-        if(!_.find(messages, messageQuery)) {
+        if (!_.find(messages, messageQuery)) {
           addMessage(_.extend(messageQuery, {key: 'globalMessages.errors.genericError'}));
         }
       },
@@ -49,7 +49,7 @@ angular.module('directives.globalMessages',
   .factory('httpRequestInterceptor', function($q, globalMessagesService) {
     return {
       'responseError': function(err) {
-        if(err.config && err.config.url &&
+        if (err.config && err.config.url &&
            err.config.url.indexOf('/api/') > -1 && err.status !== 404) {
           globalMessagesService.addErrorMessage(err);
         }

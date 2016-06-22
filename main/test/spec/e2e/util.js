@@ -50,7 +50,7 @@ function dismissTour() {
   var dismisButtonFinder = element(by.css('.ng-joyride-title .skipBtn'));
 
   return dismisButtonFinder.isPresent().then(function(isPresent) {
-    if(isPresent) {
+    if (isPresent) {
       dismisButtonFinder.click();
     }
   });
@@ -59,7 +59,7 @@ function dismissTour() {
 function waitUntilPresent(elementFinder) {
   var predicateFunction;
 
-  if(typeof elementFinder.count === 'function') {
+  if (typeof elementFinder.count === 'function') {
     predicateFunction = function() {
       return elementFinder.count().then(function(count) {
         return count > 0;
@@ -76,7 +76,7 @@ function waitUntilPresent(elementFinder) {
 function waitUntilNotPresent(elementFinder) {
   var predicateFunction;
 
-  if(typeof elementFinder.count === 'function') {
+  if (typeof elementFinder.count === 'function') {
     predicateFunction = function() {
       return elementFinder.count().then(function(count) {
         return count === 0;
@@ -96,7 +96,7 @@ function waitUntilNotPresent(elementFinder) {
 function waitUntilVisible(elementFinder) {
   var predicateFunction;
 
-  if(typeof elementFinder.count === 'function') {
+  if (typeof elementFinder.count === 'function') {
     predicateFunction = function() {
       return elementFinder.filter(function(e) {
         return e.isDisplayed();

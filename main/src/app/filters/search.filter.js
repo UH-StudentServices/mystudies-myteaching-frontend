@@ -26,7 +26,7 @@ angular.module('filters.search', [])
 
   .filter('fromSearchResultSource', function() {
     return function(searchResults, selectedResultSource) {
-      if(_.isUndefined(selectedResultSource)) {
+      if (_.isUndefined(selectedResultSource)) {
         return searchResults;
       } else {
         return _.filter(searchResults, function(searchResult) {

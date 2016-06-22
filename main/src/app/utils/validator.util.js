@@ -26,8 +26,8 @@ angular.module('utils.validator', [])
     }
 
     function convertValidUrl(url) {
-      if(isUrl(url)) {
-        if(/http:\/\/|https:\/\//.test(url)) {
+      if (isUrl(url)) {
+        if (/http:\/\/|https:\/\//.test(url)) {
           return url;
         } else {
           return 'http://' + url;

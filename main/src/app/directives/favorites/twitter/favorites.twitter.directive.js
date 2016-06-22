@@ -34,7 +34,7 @@ angular.module('directives.favorites.twitter', [])
           }
         });
 
-        if(!document.getElementById('twitter-wjs')) {
+        if (!document.getElementById('twitter-wjs')) {
           $window.twttr = (function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
 

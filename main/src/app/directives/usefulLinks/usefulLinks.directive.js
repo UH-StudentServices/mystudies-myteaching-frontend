@@ -44,7 +44,7 @@ angular.module('directives.usefulLinks', [
 
   .filter('renderUsefulLinkDescription', function($filter) {
     return function(description, type) {
-      if(type === 'DEFAULT') {
+      if (type === 'DEFAULT') {
         return $filter('upperFirst')($filter('translate')(description));
       } else {
         return description;
@@ -121,7 +121,7 @@ angular.module('directives.usefulLinks', [
         function searchPageTitle(url) {
           var validUrl = ValidatorUtils.convertValidUrl(url);
 
-          if(validUrl) {
+          if (validUrl) {
             $scope.newLink.url = validUrl;
             setSearchState(SearchState.SEARCHING);
             UsefulLinksResource
@@ -144,7 +144,7 @@ angular.module('directives.usefulLinks', [
         $scope.addNewUsefulLink = function() {
           var newLink = $scope.newLink;
 
-          if(newLink.url && newLink.description) {
+          if (newLink.url && newLink.description) {
             UsefulLinksResource.save({
               url: newLink.url,
               description: newLink.description

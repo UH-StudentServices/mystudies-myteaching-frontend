@@ -30,9 +30,9 @@ angular.module('services.focus', [])
 
     function setFocus(e) {
       $timeout(function() {
-        if(e && typeof e.focus === 'function') {
+        if (e && typeof e.focus === 'function') {
           e.focus();
-        } else if(e && typeof e === 'string') {
+        } else if (e && typeof e === 'string') {
           $(e).filter(':visible').first().focus();
         }
       }, 0);
@@ -41,11 +41,11 @@ angular.module('services.focus', [])
     return {
       setFocus: setFocus,
       focusNext: function() {
-        if(currentFocusElement) {
+        if (currentFocusElement) {
           var focusables = $(focusableQuery).filter(':visible');
           var index = focusables.index(currentFocusElement);
 
-          if(focusables.length > index + 1) {
+          if (focusables.length > index + 1) {
             setFocus(focusables.get(index + 1));
           }
         }

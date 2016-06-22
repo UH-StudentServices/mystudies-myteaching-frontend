@@ -46,7 +46,7 @@ angular.module('directives.favorites.addNew.link',
         };
 
         $scope.addLinkFavorite = function addLinkFavorite() {
-          if(!_.isUndefined($scope.metaData)) {
+          if (!_.isUndefined($scope.metaData)) {
             FavoritesService.saveLinkFavorite($scope.metaData).then(function saveLinkSuccess() {
               $scope.$emit(newFavoriteAddedEvent);
               $scope.hidePopover();

@@ -64,7 +64,7 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
   .factory('TourElementSelectorByMedia', function(BrowserUtil) {
     return {
       selectorByMedia: function(selector) {
-        if(BrowserUtil.isMobile()) {
+        if (BrowserUtil.isMobile()) {
           return '.show-mobile-only ' + selector;
         } else {
           return '.hide-mobile-only ' + selector;

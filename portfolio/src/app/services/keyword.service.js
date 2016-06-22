@@ -35,7 +35,7 @@ angular.module('services.keyword', ['services.portfolio', 'resources.keyword'])
     }
 
     function getKeywordsSubject() {
-      if(!keywordsSubject) {
+      if (!keywordsSubject) {
         keywordsSubject = new Rx.BehaviorSubject();
         PortfolioService.getPortfolio()
         .then(_.partialRight(_.get, 'keywords'))

@@ -30,7 +30,7 @@ angular.module('services.eventUri', ['services.location'])
     function getPlace(building) {
       var place = building.street;
 
-      if(building.zipCode) {
+      if (building.zipCode) {
         place += '+' + building.zipCode;
       }
 

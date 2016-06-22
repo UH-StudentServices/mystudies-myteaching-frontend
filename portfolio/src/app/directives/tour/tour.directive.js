@@ -68,7 +68,7 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser'])
   .factory('TourElementSelectorByMedia', function(BrowserUtil) {
     //This is usable for shared elements between mobile and normal
     function generateSelectorByMedia(selector) {
-      if(BrowserUtil.isMobile()) {
+      if (BrowserUtil.isMobile()) {
         return '.show-mobile-only ' + selector;
       } else {
         return '.hide-mobile-only ' + selector;

@@ -44,20 +44,20 @@ angular.module('directives.favorites.addNew', [
 
         return function($scope) {
           $scope.search = _.debounce(function(searchString) {
-            if($scope.favoriteSearchForm.$valid && $scope.searchFn) {
+            if ($scope.favoriteSearchForm.$valid && $scope.searchFn) {
               $scope.searchFn(searchString);
             }
           }, 1000);
 
           $scope.onKeyPress = function($event) {
-            if($event.which === 13 && $scope.enterFn && $scope.favoriteSearchForm.$valid) {
+            if ($event.which === 13 && $scope.enterFn && $scope.favoriteSearchForm.$valid) {
               $scope.enterFn();
             }
           };
 
           $scope.clearSearch = function() {
             $scope.searchString = '';
-            if($scope.clearSearchFn) {
+            if ($scope.clearSearchFn) {
               $scope.clearSearchFn();
             }
           };
@@ -80,7 +80,7 @@ angular.module('directives.favorites.addNew', [
         $scope.displayPopover = false;
 
         $scope.getFavoriteTypeClasses = function getFavoriteTypeClasses(favoriteType) {
-          if(favoriteType === 'UNISPORT') {
+          if (favoriteType === 'UNISPORT') {
             return {
               disabled: !_.isUndefined(_.find($scope.favorites, {'type': 'UNISPORT'}))
             };
@@ -92,7 +92,7 @@ angular.module('directives.favorites.addNew', [
         $scope.togglePopover = function() {
           $scope.displayPopover = !$scope.displayPopover;
 
-          if($scope.displayPopover) {
+          if ($scope.displayPopover) {
             setFocus();
             resetPopover();
           }

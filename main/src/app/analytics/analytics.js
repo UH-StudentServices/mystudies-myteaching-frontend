@@ -85,10 +85,10 @@
     }
 
     function validateEventInput(eventCategory, eventAction) {
-      if(!eventCategory) {
+      if (!eventCategory) {
         throw 'Invalid Analytics eventCategory: ' + eventCategory;
       }
-      if(!eventAction) {
+      if (!eventAction) {
         throw 'Invalid Analytics eventAction: ' + eventAction;
       }
     }

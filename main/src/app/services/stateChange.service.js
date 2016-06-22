@@ -40,7 +40,7 @@ angular.module('services.stateChange', [
 
     function changeStateAvailableTo() {
       return isStateChangeAvailable().then(function(stateChangeAvailable) {
-        if(stateChangeAvailable) {
+        if (stateChangeAvailable) {
           return StateService.getRootStateName() === State.MY_STUDIES ?
             State.MY_TEACHINGS :
             State.MY_STUDIES;
@@ -73,7 +73,7 @@ angular.module('services.stateChange', [
 
     function changeState() {
       changeStateAvailableTo().then(function(state) {
-        if(state) {
+        if (state) {
           changeStateTo(state);
         }
       });

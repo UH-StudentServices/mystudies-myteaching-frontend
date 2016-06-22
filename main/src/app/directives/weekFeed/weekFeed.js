@@ -106,15 +106,15 @@ angular.module('directives.weekFeed', [
     }
 
     function addParentCourseToGroup(group, course, hasChildren, groupsByParentId, groups) {
-      if(group) {
+      if (group) {
         group.parent = course;
-      } else if(!hasChildren) {
+      } else if (!hasChildren) {
         createNewCourseGroup(course.realisationId, course, [], groupsByParentId, groups);
       }
     }
 
     function addChildCourseToGroup(group, course, groupsByParentId, groups) {
-      if(group && group.children) {
+      if (group && group.children) {
         group.children.push(course);
       } else {
         createNewCourseGroup(course.parentId, null, [course], groupsByParentId, groups);
@@ -130,7 +130,7 @@ angular.module('directives.weekFeed', [
           hasChildren;
 
       _.forEach(courses, function(course) {
-        if(course.parentId) {
+        if (course.parentId) {
           addChildCourseToGroup(
             groupsByParentId[course.parentId],
             course,
@@ -154,7 +154,7 @@ angular.module('directives.weekFeed', [
           parentsById = _.mapKeys(parents, 'realisationId');
 
       _.forEach(courseGroups, function(group) {
-        if(!group.parent) {
+        if (!group.parent) {
           group.parent = _.get(parentsById, group.groupId);
         }
       });
@@ -165,7 +165,7 @@ angular.module('directives.weekFeed', [
       var courses = [];
 
       _.forEach(groups, function(group) {
-        if(group.parent) {
+        if (group.parent) {
           courses.push(group.parent);
         }
         courses = courses.concat(group.children);
@@ -176,14 +176,14 @@ angular.module('directives.weekFeed', [
 
     function tagChildCourses(groups) {
       _.forEach(groups, function(group) {
-        if(group.parent) {
+        if (group.parent) {
           _.forEach(group.children, function(child) {
             child.showAsChild = true;
           });
 
           var lastChild = _.last(group.children);
 
-          if(lastChild) {
+          if (lastChild) {
             lastChild.showAsLastChild = true;
           }
         }

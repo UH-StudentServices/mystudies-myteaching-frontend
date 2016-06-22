@@ -36,7 +36,7 @@ angular.module('directives.favorites.addNew.unicafe',
           });
 
         $scope.addUnicafeFavorite = function addUnicafeFavorite(restaurant) {
-          if(restaurant.id > 0) {
+          if (restaurant.id > 0) {
             FavoritesResource.saveUnicafeFavorite({restaurantId: restaurant.id})
               .then(function saveUnicafeSuccess() {
                 $scope.$emit(newFavoriteAddedEvent, $scope.favorite.type);

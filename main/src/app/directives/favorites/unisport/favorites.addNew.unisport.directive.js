@@ -23,7 +23,7 @@ angular.module('directives.favorites.addNew.unisport',
       restrict: 'E',
       scope: true,
       link: function($scope) {
-        if(_.isUndefined(_.find($scope.favorites, {'type': 'UNISPORT'}))) {
+        if (_.isUndefined(_.find($scope.favorites, {'type': 'UNISPORT'}))) {
           FavoritesResource.saveUnisportFavorite().then(function addUnisportFavoriteSuccess() {
             $scope.$emit(newFavoriteAddedEvent, $scope.favorite.type);
           });

@@ -35,18 +35,18 @@ angular.module('directives.favorites.unicafe', [
             reqular = menuData.information.business.regular,
             toDay = _.capitalize(nowMoment.locale('FI').format('dd'));
 
-        if(exception && exception.length > 0) {
+        if (exception && exception.length > 0) {
           closed = closed || _.some(exception, function(e) {
             return e.closed && nowMoment.isBetween(moment(e.from, 'DD.M'), moment(e.to, 'DD.M'));
           });
         }
 
-        if(reqular && reqular.length > 0) {
+        if (reqular && reqular.length > 0) {
           closed = closed || _.every(_.flatten(_.map(reqular, 'when')), function(d) {
             return d !== toDay;
           });
         }
-      } catch(e) {}
+      } catch (e) {}
 
       return closed;
     }

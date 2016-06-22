@@ -54,7 +54,7 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
               return _.some(updateBatch, 'length');
             },
             update = function(languageProficiency) {
-              if(languageProficiency.id) {
+              if (languageProficiency.id) {
                 updateBatch.updatedLanguageProficiencies = updateBatch.updatedLanguageProficiencies
                   .filter(function(el) {
                     return el.id !== languageProficiency.id;
@@ -82,7 +82,7 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
                 return !el.id;
               });
 
-            if(shouldUpdate()) {
+            if (shouldUpdate()) {
               LanguageProficienciesService.save(updateBatch).then(function(savedProficiencies) {
                 $scope.languageProficiencies = orderByProficiency(savedProficiencies);
               });
@@ -92,14 +92,14 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
           },
 
           toggleLanguageSelect: function(scope) {
-            if($scope.editing) {
+            if ($scope.editing) {
               scope.proficiencySelectVisible = false;
               scope.languageSelectVisible = !scope.languageSelectVisible;
             }
           },
 
           toggleProficiencySelect: function(scope) {
-            if($scope.editing) {
+            if ($scope.editing) {
               scope.languageSelectVisible = false;
               scope.proficiencySelectVisible = !scope.proficiencySelectVisible;
             }
@@ -120,27 +120,27 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
           addNew: function() {
             var newEntry = newLanguageProficiency();
 
-            if(newEntry) {
+            if (newEntry) {
               $scope.languageProficiencies.push(newEntry);
             }
           },
 
           updateLanguage: function(languageProficiency, language) {
-            if(languageProficiency.language !== language) {
+            if (languageProficiency.language !== language) {
               languageProficiency.language = language;
               update(languageProficiency);
             }
           },
 
           updateProficiency: function(languageProficiency, proficiency) {
-            if(languageProficiency.proficiency !== proficiency) {
+            if (languageProficiency.proficiency !== proficiency) {
               languageProficiency.proficiency = proficiency;
               update(languageProficiency);
             }
           },
 
           remove: function(languageProficiency) {
-            if(languageProficiency.id) {
+            if (languageProficiency.id) {
               updateBatch.deletedIds = _.union(updateBatch.deletedIds, [languageProficiency.id]);
             }
 

@@ -26,7 +26,7 @@ angular.module('directives.scriptLoad', [])
         scriptSrc: '@'
       },
       link: function(scope) {
-        if(!isRendered) {
+        if (!isRendered) {
           isRendered = true;
           var script = document.createElement('script');
 

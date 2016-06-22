@@ -37,7 +37,7 @@ angular.module('directives.editLink', [])
         $scope.$watch('setEditState', setEditState);
 
         $scope.onClick = function() {
-          if($scope.editing) {
+          if ($scope.editing) {
             $scope.onExitEdit();
           } else {
             $scope.onEdit();

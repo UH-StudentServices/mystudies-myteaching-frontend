@@ -48,7 +48,7 @@ angular.module('directives.usefulLinks.editableLink', [
         }
 
         $scope.editUsefulLink = function() {
-          if($scope.editable) {
+          if ($scope.editable) {
             $scope.usefulLink.edit = true;
             $rootScope.$broadcast(closeEditUsefulLinkEvent, $scope.usefulLink);
             setFocusOnEdit();
@@ -56,7 +56,7 @@ angular.module('directives.usefulLinks.editableLink', [
         };
 
         $scope.saveUsefulLink = function() {
-          if($scope.usefulLink.url && $scope.usefulLink.description) {
+          if ($scope.usefulLink.url && $scope.usefulLink.description) {
             UsefulLinksResource
               .update(_.omit($scope.usefulLink, 'edit'))
               .then(function() {
@@ -67,7 +67,7 @@ angular.module('directives.usefulLinks.editableLink', [
         };
 
         $rootScope.$on(closeEditUsefulLinkEvent, function(event, link) {
-          if(link !== $scope.usefulLink) {
+          if (link !== $scope.usefulLink) {
             exitEditUsefulLink();
           }
         });
