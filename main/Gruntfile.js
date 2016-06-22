@@ -269,6 +269,7 @@ module.exports = function(grunt) {
             'index.html',
             'assets/images/**/*.{png,jpg,gif,webp,ico}',
             'assets/icons/**/*',
+            'assets/scripts/**/*',
             'assets/swf/*',
             'i18n/*'
           ]
