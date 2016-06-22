@@ -79,7 +79,7 @@ module.exports = function(grunt) {
       options: {
         spawn: false
       },
-      sass: {
+      dev: {
         files: [
           'src/scss/main.scss',
           '../main/src/scss/opintoni/**/*.scss',
@@ -371,7 +371,7 @@ module.exports = function(grunt) {
     'clean:server',
     'concurrent:serve',
     'browserSync',
-    'watch:sass'
+    'watch:dev'
   ]);
 
   grunt.registerTask('e2e', [
