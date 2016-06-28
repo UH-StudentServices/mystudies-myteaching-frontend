@@ -1,4 +1,5 @@
 main/src/app/vendor
+main/src/assets/scripts
 main/dist
 main/src/app/templates.js
 portfolio/src/app/vendor
