@@ -34,14 +34,6 @@
 
 @mixin triangle-with-border($size, $offset, $color : $white, $border-color : $lightsilver, $align:right) {
 
-  @mixin align-triangle($align, $offset) {
-    @if $align == "right"  {
-      right: $offset;
-    } @else if $align == "left" {
-      left: $offset
-    }
-  }
-
   &:after, &:before {
     bottom: 100%;
     border-style: solid;
@@ -66,6 +58,14 @@
     border-width: $size + 1;
 
     @include align-triangle($align, $offset - 1);
+  }
+}
+
+@mixin align-triangle($align, $offset) {
+  @if $align == "right"  {
+    right: $offset;
+  } @else if $align == "left" {
+    left: $offset
   }
 }
 
