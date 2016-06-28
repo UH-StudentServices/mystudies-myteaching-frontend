@@ -43,7 +43,8 @@ angular.module('directives.eventCalendar', [])
     CalendarViews,
     EventColorService,
     $window,
-    AnalyticsService) {
+    AnalyticsService,
+    LanguageService) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/weekFeed/eventCalendar/eventCalendar.html',
@@ -56,7 +57,7 @@ angular.module('directives.eventCalendar', [])
         $translate('weekFeed.calendarCustom.list').then(function(listText) {
           $scope.uiConfig = {
             calendar: {
-              lang: moment.locale(),
+              lang: LanguageService.getCurrent(),
               allDaySlot: false,
               eventRender: function(event, element) {
                 element.attr('title', event.tooltip);
