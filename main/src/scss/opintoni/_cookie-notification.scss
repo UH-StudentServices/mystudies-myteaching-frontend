@@ -16,20 +16,28 @@
  */
 
 .cookie-notification {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: table;
   position: fixed;
   bottom: 0;
-  width: 100%;
+  left: 0;
+  width: 100vw;
   padding: 1em;
   background-color: $black;
   color: $white;
   z-index: 10;
 
+  &__content, &__actions {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
   &__content {
     padding-right: 0.5em;
     line-height: 1.4;
+  }
+
+  &__actions {
+    text-align: right;
   }
 
   &__dismiss {
