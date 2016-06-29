@@ -178,7 +178,8 @@
     "tuhat": "Tuhat -tietojen käsittely",
     "researchGate": "ResearchGate",
     "optimePortal": "Optime Portal",
-    "courseCatalogs": "Opinto-oppaat"
+    "courseCatalogs": "Opinto-oppaat",
+    "generalInformation": "Yleistietoa"
   },
   "notificationsMenu": {
     "title": "Ilmoitukset"
