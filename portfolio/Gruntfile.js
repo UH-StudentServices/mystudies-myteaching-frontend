@@ -76,9 +76,6 @@ module.exports = function(grunt) {
       dist: 'dist'
     },
     watch: {
-      options: {
-        spawn: false
-      },
       dev: {
         files: [
           'src/scss/main.scss',
@@ -89,7 +86,11 @@ module.exports = function(grunt) {
           '../common/src/app/**/*.{js,html}',
           'src/**/*.json'
         ],
-        tasks: ['cssDev', 'buildTemplates', 'eslint']
+        tasks: ['cssDev', 'buildTemplates', 'eslint'],
+        options: {
+          spawn: false,
+          interrupt: true
+        }
       }
     },
     browserSync: {
