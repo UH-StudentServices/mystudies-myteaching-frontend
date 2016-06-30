@@ -416,7 +416,7 @@
     "disclaimer" : "This course list is based on your completed studies, which has been compared to other students’ completed studies. The list is personal and no one else sees it. Please check the pre-requisites the required study right before enrolling to a course."
   },
   "cookieNotification": {
-    "notification": "This website uses cookies to ensure you get the best experience on our website.",
-    "readMore": "You can read more here"
+    "notification": "This website uses cookies to improve your experience.",
+    "readMore": "Read more"
   }
 }
