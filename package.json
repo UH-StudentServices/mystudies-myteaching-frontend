@@ -51,7 +51,6 @@
     "lodash": "2.4.1",
     "node-uuid": "^1.4.3",
     "phantomjs-prebuilt": "^2.1.5",
-    "protractor": "^2.0.0",
     "protractor-screenshot-reporter": "0.0.5",
     "requirejs": "~2.1",
     "time-grunt": "1.0.0",
@@ -70,7 +69,7 @@
     "postinstall": "concurrently 'npm run webdriver:update' 'npm run bower:install'",
     "predist": "npm rebuild node-sass",
     "test": "concurrently 'grunt test --gruntfile main/Gruntfile.js' 'grunt test --gruntfile portfolio/Gruntfile.js'",
-    "webdriver:update": "node_modules/protractor/bin/webdriver-manager update",
+    "webdriver:update": "node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update",
     "inject:newrelic": "mv main/dist/index.html main/dist/index.html.tmp && cat main/dist/index.html.tmp | htmlinjectscript \"assets/scripts/newrelic.js\" > main/dist/index.html && rm main/dist/index.html.tmp"
   }
 }
