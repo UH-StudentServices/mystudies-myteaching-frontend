@@ -65,6 +65,7 @@
     "dev": "concurrently 'grunt serve --gruntfile main/Gruntfile.js' 'grunt serve --gruntfile portfolio/Gruntfile.js'",
     "distqa": "grunt buildMinified --gruntfile main/Gruntfile.js && grunt buildMinified --gruntfile portfolio/Gruntfile.js",
     "distprod": "grunt buildMinified --gruntfile main/Gruntfile.js && grunt buildMinified --gruntfile portfolio/Gruntfile.js && npm run inject:newrelic",
+    "e2e": "grunt e2e --gruntfile main/Gruntfile.js",
     "lint": "eslint common/** main/** portfolio/**",
     "postinstall": "concurrently 'npm run webdriver:update' 'npm run bower:install'",
     "predist": "npm rebuild node-sass",
