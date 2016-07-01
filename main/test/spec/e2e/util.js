@@ -125,6 +125,10 @@ function firstVisibleElement(locator) {
   }).first();
 }
 
+function scrollTo(scrollPos) {
+  return browser.executeScript('window.scrollTo(0,' + scrollPos + ');');
+}
+
 module.exports = {
   login: login,
   loginStudent: _.partial(login, 'student', 'opiskelija', 'password', 'My studies'),
@@ -133,5 +137,6 @@ module.exports = {
   waitUntilNotPresent: waitUntilNotPresent,
   waitUntilVisible: waitUntilVisible,
   uniqueId: uniqueId,
-  firstVisibleElement: firstVisibleElement
+  firstVisibleElement: firstVisibleElement,
+  scrollTo: scrollTo
 };

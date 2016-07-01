@@ -40,21 +40,25 @@ describe('RSS feed favorite', function() {
 
   it('Is possible to add an RSS feed', function() {
     favoritesListElementFinder.count().then(function(count) {
-      addNewFavoriteButtonElementFinder.click();
-      selectRSSFavoriteTypeElementFinder.click();
-      searchRSSFeedElementFinder.sendKeys(feedUrl);
-      util.waitUntilPresent(searchResultsFinder);
-      firstSearchResultFinder.click();
-      expect(favoritesListElementFinder.count()).toEqual(count + 1);
+      util.scrollTo(2500).then(function() {
+        addNewFavoriteButtonElementFinder.click();
+        selectRSSFavoriteTypeElementFinder.click();
+        searchRSSFeedElementFinder.sendKeys(feedUrl);
+        util.waitUntilPresent(searchResultsFinder);
+        firstSearchResultFinder.click();
+        expect(favoritesListElementFinder.count()).toEqual(count + 1);
+      });
     });
   });
 
   it('Is posssible to remove an RSS feed', function() {
     favoritesListElementFinder.count().then(function(count) {
-      editButtonFinder.click();
-      util.waitUntilPresent(removeButtonFinder);
-      removeButtonFinder.first().click();
-      expect(favoritesListElementFinder.count()).toEqual(count - 1);
+      util.scrollTo(1200).then(function() {
+        editButtonFinder.click();
+        util.waitUntilPresent(removeButtonFinder);
+        removeButtonFinder.first().click();
+        expect(favoritesListElementFinder.count()).toEqual(count - 1);
+      });
     });
   });
 });
