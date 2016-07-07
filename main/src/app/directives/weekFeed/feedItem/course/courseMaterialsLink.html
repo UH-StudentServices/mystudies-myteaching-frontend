@@ -18,8 +18,28 @@
 <div class="course-material"
      ng-class="{'course-material--full': !compact, 'course-material--compact': compact}"
      ng-show="feedItem.courseMaterial">
-  <a target="_blank" href="{{::feedItem.courseMaterial.courseMaterialUri}}">
-    {{::(getCourseMaterialLinkTitle(feedItem.courseMaterial.courseMaterialType))}}
+  <a target="_blank"
+     href="{{::feedItem.courseMaterial.courseMaterialUri}}"
+     ng-if="!isMoodleAndNotCompact()">
+    {{::courseMaterialLinkTitle}}
     <i class="hy hy-link-arrow" ng-if="!compact"></i>
   </a>
+
+  <div ng-if="isMoodleAndNotCompact()" class="course-material-link-container--moodle">
+    <a target="_blank"
+       href="{{::feedItem.courseMaterial.courseMaterialUri}}"
+       class="course-material-link-container--moodle__main-link">
+      {{::courseMaterialLinkTitle}}
+    </a>
+
+    <div class="course-material-link-container--moodle__actions">
+      <help-icon translation-key="weekFeed.courseMaterialsMoodleHelp"></help-icon>
+
+      <a target="_blank"
+         href="{{::feedItem.courseMaterial.courseMaterialUri}}"
+         class="course-material-link-container--moodle__secondary-link">
+        <i class="hy hy-link-arrow" ng-if="!compact"></i>
+      </a>
+    </div>
+  </div>
 </div>

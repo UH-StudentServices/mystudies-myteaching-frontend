@@ -8,6 +8,10 @@ $tooltip-width-mobile: 250px;
   top: 3px;
 }
 
+.help-icon-popover-trigger {
+  font-size: inherit !important;
+}
+
 .help-icon-popover-container {
   right: -15px !important;
   width: $tooltip-width-mobile;

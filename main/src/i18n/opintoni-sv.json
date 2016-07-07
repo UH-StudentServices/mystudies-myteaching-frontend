@@ -132,6 +132,7 @@
     "courseMaterialsShort": "Material",
     "courseMaterialsMoodleShort": "Moodle",
     "courseMaterialsWikiShort": "Wiki",
+    "courseMaterialsMoodleHelp": "Du hittar den eventuella kursnyckeln genom att logga in på kurssidan",
     "showRoute": "Visa vägen",
     "showOnMap": "Visa på karta",
     "errors": {

@@ -291,6 +291,21 @@ $tablist-single-row: min-width 28.75em;
   }
 }
 
+.course-material-link-container--moodle,
+.course-material-link-container--moodle__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.course-material-link-container--moodle__secondary-link {
+  margin-left: 0.5em;
+}
+
+.course-material-link-container--moodle__main-link {
+  flex: 1 0 auto;
+}
+
 .feed-item--last-child {
   padding-bottom: 1em;
   margin-bottom: 1em;
