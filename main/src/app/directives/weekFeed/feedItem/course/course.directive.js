@@ -15,7 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.weekFeed.feedItem.course',[
+angular.module('directives.weekFeed.feedItem.course', [
+  'directives.helpIcon'
 ])
 
   .constant('CourseMaterialTranslationKeys', {
@@ -30,6 +31,11 @@ angular.module('directives.weekFeed.feedItem.course',[
     'WIKI': 'weekFeed.courseMaterialsWikiShort'
   })
 
+  .constant('CourseMaterialTypes', {
+    'COURSE_PAGE': 'COURSE_PAGE',
+    'MOODLE': 'MOODLE',
+    'WIKI': 'WIKI'
+  })
 
   .directive('course', function($translate) {
 
@@ -58,12 +64,17 @@ angular.module('directives.weekFeed.feedItem.course',[
 
   .directive('courseMaterialsLink', function($filter,
                                              CourseMaterialTranslationKeys,
-                                             CourseMaterialTranslationKeysShort) {
+                                             CourseMaterialTranslationKeysShort,
+                                             CourseMaterialTypes) {
 
     function getTranslationKey(courseMaterialType, compact) {
       var keys = compact ? CourseMaterialTranslationKeysShort : CourseMaterialTranslationKeys;
 
       return keys[courseMaterialType];
+    }
+
+    function getCourseMaterialLinkTitle(courseMaterialType, isCompact) {
+      return $filter('translate')(getTranslationKey(courseMaterialType, isCompact));
     }
 
     return {
@@ -75,8 +86,11 @@ angular.module('directives.weekFeed.feedItem.course',[
       },
       templateUrl: 'app/directives/weekFeed/feedItem/course/courseMaterialsLink.html',
       link: function($scope) {
-        $scope.getCourseMaterialLinkTitle = function(courseMaterialType) {
-          return $filter('translate')(getTranslationKey(courseMaterialType, $scope.compact));
+        $scope.courseMaterialType = $scope.feedItem.courseMaterial.courseMaterialType;
+        $scope.courseMaterialLinkTitle = getCourseMaterialLinkTitle($scope.courseMaterialType, $scope.compact);
+
+        $scope.isMoodleAndNotCompact = function() {
+          return $scope.courseMaterialType === CourseMaterialTypes.MOODLE && !$scope.compact;
         };
       }
     };

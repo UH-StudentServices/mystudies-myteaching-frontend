@@ -131,6 +131,7 @@
     "courseMaterialsShort": "Materiaalit",
     "courseMaterialsMoodleShort": "Moodle",
     "courseMaterialsWikiShort": "Wiki",
+    "courseMaterialsMoodleHelp": "Löydät mahdollisen kurssiavaimen kirjautumalla kurssisivulle",
     "showRoute": "Näytä reitti",
     "showOnMap": "Näytä kartalla",
     "errors": {

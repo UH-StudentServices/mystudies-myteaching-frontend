@@ -132,6 +132,7 @@
     "courseMaterialsShort": "Materials",
     "courseMaterialsMoodleShort": "Moodle",
     "courseMaterialsWikiShort": "Wiki",
+    "courseMaterialsMoodleHelp": "You will find the possible enrolment key by logging into the course page",
     "showRoute": "Show route",
     "showOnMap": "Show on map",
     "errors": {
