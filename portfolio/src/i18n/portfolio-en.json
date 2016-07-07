@@ -129,7 +129,7 @@
     "title": "Feedback",
     "submit": "Submit",
     "submitted": "Thanks",
-    "emailReply" : "I want a reply to my feedback"
+    "anonymous" : "I wish to be anonymous"
   },
   "cookieNotification": {
     "notification": "This website uses cookies to ensure you get the best experience on our website.",

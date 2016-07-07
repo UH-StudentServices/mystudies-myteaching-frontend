@@ -93,7 +93,7 @@
     "timestamp": "Timestamp",
     "first": "first",
     "last": "last",
-    "emailReply" : "User wants reply to email",
+    "email" : "email",
     "faculty" : "Faculty",
     "state" : "state",
     "userAgent" : "userAgent",
@@ -402,7 +402,7 @@
     "title": "Feedback",
     "submit": "Submit",
     "submitted": "Thanks",
-    "emailReply" : "I want a reply to my feedback"
+    "anonymous" : "I wish to be anonymous"
   },
   "upload" : {
     "privacyMessage" : "the uploaded picture is automatically used in other UH services (e.g. Opinder), and the picture will have a public link."

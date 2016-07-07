@@ -129,7 +129,7 @@
     "title": "Palaute",
     "submit": "Lähetä",
     "submitted": "Kiitos",
-    "emailReply" : "Haluan vastauksen palautteeseeni"
+    "anonymous" : "Haluan antaa palautteeni nimettömänä"
   },
   "cookieNotification": {
     "notification": "Jotta sivusto toimisi mahdollisimman hyvin, käytämme evästeitä.",

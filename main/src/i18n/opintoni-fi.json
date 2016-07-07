@@ -93,7 +93,7 @@
     "timestamp": "Aikaleima",
     "first": "ensimmäinen",
     "last": "viimeinen",
-    "emailReply" : "Käyttäjä haluaa vastauksen sähköpostiin",
+    "email" : "sähköposti",
     "faculty" : "Tiedekunta",
     "state" : "tila",
     "userAgent" : "userAgent",
@@ -401,7 +401,7 @@
     "title": "Palaute",
     "submit": "Lähetä",
     "submitted": "Kiitos",
-    "emailReply" : "Haluan vastauksen palautteeseeni"
+    "anonymous" : "Haluan antaa palautteeni nimettömänä"
   },
   "upload": {
     "privacyMessage": "lataamaasi kuvaa käytetään automaattisesti myös muissa HY:n palveluissa (esimerkiksi Opinderissa) ja kuvalle muodostuu julkinen linkki."
