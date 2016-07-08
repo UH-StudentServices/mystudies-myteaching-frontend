@@ -33,15 +33,10 @@
       <form novalidate name="feedbackForm">
         <textarea rows="8" ng-model="content" focus="showForm" maxlength="2000" required></textarea>
         <div>
-          <input id="feedBackEmailReplyCheck" type="checkbox" ng-model="emailReply"/>
-          <label for="feedBackEmailReplyCheck" translate="feedback.emailReply" class="text-transform-capitalize">
+          <input id="anonymousFeedbackToggle" type="checkbox" ng-model="isAnonymous">
+          <label for="anonymousFeedbackToggle" translate="feedback.anonymous" class="text-transform-capitalize">
           </label>
         </div>
-        <input ng-required="emailReply"
-               type="email"
-               ng-model="email"
-               ng-show="emailReply"
-               placeholder="{{::('general.emailAddress' | translate | capitalize)}}">
         <div class="actions">
           <span ng-click="cancel()" class="hy hy-remove cancel"></span>
           <input ng-disabled="!feedbackForm.$valid" ng-click="submit()" type="submit" value="{{::('feedback.submit' | translate)}}" />

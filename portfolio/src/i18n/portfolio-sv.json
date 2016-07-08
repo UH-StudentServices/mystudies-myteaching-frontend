@@ -129,7 +129,7 @@
     "title": "Feedback",
     "submit": "Skicka",
     "submitted": "Tack",
-    "emailReply" : "Jag vill gärna ha svar på min feedback"
+    "anonymous" : "Jag vill vara anonym"
   },
   "cookieNotification": {
     "notification": "Denna webbplats använder cookies för att erbjuda dig den bästa upplevelsen.",

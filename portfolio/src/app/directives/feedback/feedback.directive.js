@@ -35,8 +35,7 @@ angular.module('directives.feedback', [
           $scope.showForm = false;
           $scope.showSubmittedState = false;
           $scope.content = '';
-          $scope.emailReply = false;
-          $scope.email = undefined;
+          $scope.isAnonymous = false;
         }
 
         function submittedState() {
@@ -61,15 +60,18 @@ angular.module('directives.feedback', [
             SessionService
               .getSession()
               .then(function(session) {
-                return _.get(session, 'faculty.code');
+                return {
+                  facultyCode: session.faculty.code,
+                  email: session.email
+                };
               })
-              .then(function(faculty) {
+              .then(function(sessionData) {
                 return {
                   content: $scope.content,
-                  email: $scope.email,
+                  email: $scope.isAnonymous ? '' : sessionData.email,
                   metadata: {
                     userAgent: $window.navigator.userAgent,
-                    faculty: faculty,
+                    faculty: sessionData.facultyCode,
                     state: 'portfolio',
                     role: PortfolioRoleService.getPortfolioRoleFromDomain()
                   }

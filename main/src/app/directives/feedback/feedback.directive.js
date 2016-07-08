@@ -32,8 +32,7 @@ angular.module('directives.feedback', [
           $scope.showForm = false;
           $scope.showSubmittedState = false;
           $scope.content = '';
-          $scope.emailReply = false;
-          $scope.email = undefined;
+          $scope.isAnonymous = false;
         }
 
         function submittedState() {
@@ -58,18 +57,21 @@ angular.module('directives.feedback', [
             SessionService
               .getSession()
               .then(function(session) {
-                return _.get(session, 'faculty.code');
+                return {
+                  facultyCode: session.faculty.code,
+                  email: session.email
+                };
               })
-              .then(function(faculty) {
-                var insertFeedbackRequest = {};
-
-                insertFeedbackRequest.content = $scope.content;
-                insertFeedbackRequest.metadata = {
-                  'userAgent': $window.navigator.userAgent,
-                  'faculty': faculty,
-                  'state': StateService.getRootStateName()};
-                insertFeedbackRequest.email = $scope.email;
-                return insertFeedbackRequest;
+              .then(function(sessionData) {
+                return {
+                  content: $scope.content,
+                  email: $scope.isAnonymous ? '' : sessionData.email,
+                  metadata: {
+                    userAgent: $window.navigator.userAgent,
+                    faculty: sessionData.facultyCode,
+                    state: StateService.getRootStateName()
+                  }
+                };
               })
               .then(FeedbackResource.save)
               .then(function() {
