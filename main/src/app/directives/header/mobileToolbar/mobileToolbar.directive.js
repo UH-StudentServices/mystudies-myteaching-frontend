@@ -28,7 +28,8 @@ angular.module('directives.mobileToolbar', [
   .directive('mobileToolbar', function(pageHeaderLinks,
                                        mobileReturnLinks,
                                        primaryLinks,
-                                       LanguageService) {
+                                       LanguageService,
+                                       $state) {
     return {
       restrict: 'E',
       replace: true,
@@ -38,6 +39,7 @@ angular.module('directives.mobileToolbar', [
         $scope.showShortcuts = false;
         $scope.showReturnLinks = false;
         $scope.changeRoleTo = null;
+        $scope.isLander = $state.is('login');
 
         $scope.toggleToolbar = function() {
           $scope.showToolbar = !$scope.showToolbar;

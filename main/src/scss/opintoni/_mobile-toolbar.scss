@@ -95,6 +95,8 @@
 
 
 .mobile-toolbar {
+  background-color: $white;
+
   .table-list {
     height: 3em;
     @include border-bottom;
