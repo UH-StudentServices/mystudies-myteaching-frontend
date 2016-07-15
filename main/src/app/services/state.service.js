@@ -65,8 +65,6 @@ angular.module('services.state', [
         return State.MY_STUDIES;
       } else if (domainContainsString('teacher', host)) {
         return State.MY_TEACHINGS;
-      } else {
-        return undefined;
       }
     };
 

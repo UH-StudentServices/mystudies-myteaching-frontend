@@ -13,14 +13,14 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
-  -->
+-->
 
 <div limit-visibility="['MOBILE_ONLY']" class="mobile-toolbar" ng-class="{'dropdown-visible' : dropdownVisible}">
-    <div class="table-list">
-        <li><menu-language></menu-language></li>
-    </div>
-    <div>
-        <user-menu></user-menu>
-        <mobile-menu></mobile-menu>
-    </div>
+  <div class="table-list">
+    <li><menu-language></menu-language></li>
+  </div>
+  <div ng-if="isLander === false">
+    <user-menu></user-menu>
+    <mobile-menu></mobile-menu>
+  </div>
 </div>

@@ -22,8 +22,9 @@ angular.module('utils.browser', [])
   .service('BrowserUtil', function($window) {
 
     var MOBILE_MAX_WIDTH = 767,
-        browser = $window.matchMedia('(max-width: ' + MOBILE_MAX_WIDTH + 'px)')
-        .matches ? {deviceCategory: 'MOBILE'} : {deviceCategory: 'DESKTOP'};
+        RESIZE_DEBOUNCE_DELAY = 200,
+        Rx = window.Rx,
+        viewportSizeSubject = new Rx.BehaviorSubject(getViewportSize());
 
     function supportsCamera() {
       navigator.getMedia = navigator.getUserMedia ||
@@ -34,8 +35,8 @@ angular.module('utils.browser', [])
       return navigator.getMedia ? true : false;
     }
 
-    function setDeviceCategory() {
-      browser.deviceCategory = isMobile() ? 'MOBILE' : 'DESKTOP';
+    function getViewportSize() {
+      return isMobile() ? 'MOBILE' : 'DESKTOP';
     }
 
     function isMobile() {
@@ -46,11 +47,13 @@ angular.module('utils.browser', [])
       return navigator.platform.match(/(Mac|iPhone|iPad)/i) ? true : false;
     }
 
-    window.addEventListener('resize', setDeviceCategory);
+    window.addEventListener('resize', _.debounce(function() {
+      viewportSizeSubject.onNext(getViewportSize());
+    }, RESIZE_DEBOUNCE_DELAY));
 
     return {
-      browser: browser,
-      supportsCamera: supportsCamera,
+      viewportSizeSubject: viewportSizeSubject,
+      supportamera: supportsCamera,
       isMobile: isMobile,
       isMac: isMac
     };

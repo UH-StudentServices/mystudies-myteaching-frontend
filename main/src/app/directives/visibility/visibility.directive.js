@@ -73,9 +73,9 @@ angular.module('directives.visibility', [
       },
       link: function($scope, $element, $attr, ctrl, $transclude) {
 
-        var element, childScope;
-
-        $scope.browser = BrowserUtil.browser;
+        var element,
+            childScope,
+            viewportSizeChangesSubscription = BrowserUtil.viewportSizeSubject.subscribe(evaluateVisibility);
 
         function evaluateVisibility() {
           $q.all(_.map(limitArgumentsToFunctions(), function(limitFunction) {
@@ -113,13 +113,6 @@ angular.module('directives.visibility', [
             throw 'limitVisibility directive: Invalid Visibility argument ' + limit;
           });
         }
-
-        evaluateVisibility();
-
-        $scope.$watch('browser.deviceCategory', function(newValue) {
-          evaluateVisibility();
-        });
-
       }
     };
   }
