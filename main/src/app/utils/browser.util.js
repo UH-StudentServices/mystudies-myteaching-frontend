@@ -24,7 +24,7 @@ angular.module('utils.browser', [])
     var MOBILE_MAX_WIDTH = 767,
         RESIZE_DEBOUNCE_DELAY = 200,
         Rx = window.Rx,
-        viewportSize = new Rx.BehaviorSubject(getViewportSize());
+        viewportSizeSubject = new Rx.BehaviorSubject(getViewportSize());
 
     function supportsCamera() {
       navigator.getMedia = navigator.getUserMedia ||
@@ -48,11 +48,11 @@ angular.module('utils.browser', [])
     }
 
     window.addEventListener('resize', _.debounce(function() {
-      viewportSize.onNext(getViewportSize());
+      viewportSizeSubject.onNext(getViewportSize());
     }, RESIZE_DEBOUNCE_DELAY));
 
     return {
-      viewportSize: viewportSize,
+      viewportSizeSubject: viewportSizeSubject,
       supportamera: supportsCamera,
       isMobile: isMobile,
       isMac: isMac

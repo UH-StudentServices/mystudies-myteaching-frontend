@@ -75,7 +75,7 @@ angular.module('directives.visibility', [
 
         var element,
             childScope,
-            viewportSizeChanges = BrowserUtil.viewportSize.subscribe(evaluateVisibility);
+            viewportSizeChangesSubscription = BrowserUtil.viewportSizeSubject.subscribe(evaluateVisibility);
 
         function evaluateVisibility() {
           $q.all(_.map(limitArgumentsToFunctions(), function(limitFunction) {
