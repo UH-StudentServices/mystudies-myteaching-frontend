@@ -52,6 +52,8 @@ module.exports = function(config) {
       '../bower_components/angular-mocks/angular-mocks.js',
       '../bower_components/angular-block-ui/dist/angular-block-ui.min.js',
       '../bower_components/angular-click-outside/clickoutside.directive.js',
+      '../bower_components/rxjs/dist/rx.all.js',
+      '../bower_components/rxjs/dist/rx.binding.js',
       'src/app/app.js',
       'src/app/services/**/*.js',
       'src/app/filters/*.js',
