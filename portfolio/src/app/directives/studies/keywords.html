@@ -17,16 +17,26 @@
 
 <div class="keywords-container">
   <div ng-if="editing">
-    <div class="keywords-container__new-keyword">
-      <label class="keywords-container__new-keyword__label" translate="keywords.title"></label>
-      <input class="keywords-container__new-keyword__input"
-             ng-model="newKeyword.title"
-             ui-keypress="{'enter':'addKeyword(newKeyword.title)'}"
-             type="text"
-             placeholder="{{::('keywords.addNew' | translate | capitalize)}}"
-             aria-label="{{::('keywords.addNew' | translate | capitalize)}}"
-             maxlength="50"
-             input-uppercase>
+    <div>
+      <label class="keywords-label"
+             translate="keywords.title"
+             for="add-new-portfolio-keyword">
+      </label>
+
+      <div class="keywords-input-container">
+        <input class="keywords-input-container__input"
+               id="add-new-portfolio-keyword"
+               ng-model="newKeyword.title"
+               ui-keypress="{'enter':'addKeyword(newKeyword.title)'}"
+               type="text"
+               placeholder="{{::('keywords.addNew' | translate | capitalize)}}"
+               aria-label="{{::('keywords.addNew' | translate | capitalize)}}"
+               maxlength="50"
+               input-uppercase>
+        <button class="keywords-input-container__btn fa fa-plus"
+                ng-click="addKeyword(newKeyword.title)">
+        </button>
+      </div>
     </div>
     <div ng-include="'app/directives/studies/keywordItems.html'"></div>
   </div>
