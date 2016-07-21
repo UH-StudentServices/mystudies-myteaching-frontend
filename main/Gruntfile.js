@@ -289,7 +289,6 @@ module.exports = function(grunt) {
           src: ['app/vendor/ng-file-upload/FileAPI.min.js',
                  'app/vendor/ng-file-upload/FileAPI.flash.swf'],
           dest: '<%= application.dist %>/app'
-
         }]
       },
       dist: {

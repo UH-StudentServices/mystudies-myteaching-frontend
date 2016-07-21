@@ -18,15 +18,14 @@
 $todo-item-done-color: #b3b3b3;
 $todo-item-color-dark: $white;
 $todo-item-background-color-dark: rgba(0, 0, 0, 0.5);
-$todo-item-color-light: $gray;
-$todo-item-background-color-light: $white;
+$todo-item-color-with-bg: $white;
 
 @mixin todo-item-font-color {
   .todo-items--dark & {
     color: $todo-item-color-dark;
   }
-  .todo-items--light & {
-    color: $todo-item-color-light;
+  .todo-items--with-bg & {
+    color: $todo-item-color-with-bg;
   }
 }
 
@@ -53,8 +52,8 @@ $todo-item-background-color-light: $white;
     color: $todo-item-color-dark;
   }
 
-  &--light {
-    color: $todo-item-color-light;
+  &--with-bg {
+    color: $todo-item-color-with-bg;
   }
 }
 
@@ -88,7 +87,7 @@ $todo-item-background-color-light: $white;
     }
   }
 
-  .todo-items--light & {
+  .todo-items--with-bg & {
     @include border;
   }
 }
@@ -113,7 +112,7 @@ $todo-item-background-color-light: $white;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
 
-  .todo-items--light & {
+  .todo-items--with-bg & {
     @include border-bottom;
   }
 
@@ -143,13 +142,36 @@ $todo-item-background-color-light: $white;
 }
 
 .todo-items__box {
+  position: relative;
+
   .todo-items--dark & {
     background-color: $todo-item-background-color-dark;
   }
 
-  .todo-items--light & {
-    background-color: $todo-item-background-color-light;
+  .todo-items--with-bg & {
     @include border;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left:0;
+      width: 100%;
+      height: 100%;
+      background: url('../images/bg/todo-list-bg.jpg') no-repeat;
+      z-index: -2;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left:0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba($black, 0.4);
+      z-index: -1;
+    }
   }
 
   padding: 20px;
