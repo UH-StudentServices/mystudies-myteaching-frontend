@@ -154,7 +154,15 @@ $joyride-z-index: 999;
   &.left {
     margin-left: -10px;
   }
+}
 
+.skipBtn {
+  ul & {
+    padding-left: 3em !important;
+    padding-right: 3em !important;
+  }
 
-
+  &::after {
+    content: none !important;
+  }
 }
