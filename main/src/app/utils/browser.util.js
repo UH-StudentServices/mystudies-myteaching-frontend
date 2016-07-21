@@ -53,7 +53,7 @@ angular.module('utils.browser', [])
 
     return {
       viewportSizeSubject: viewportSizeSubject,
-      supportamera: supportsCamera,
+      supportsCamera: supportsCamera,
       isMobile: isMobile,
       isMac: isMac
     };
