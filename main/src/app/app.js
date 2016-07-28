@@ -183,15 +183,10 @@ angular.module('opintoniApp', [
         },
         resolve: {
           pageTitle: function($q, $translate) {
-            var deferred = $q.defer();
-
-            $translate('opetukseni.pageHeaderBranding')
+            return $translate('opetukseni.pageHeaderBranding')
               .then(function translateHeaderSuccess(title) {
                 document.title = title;
-                deferred.resolve(title);
               });
-
-            return deferred.promise;
           },
           getCourses: function(CoursesService) {
             return CoursesService.getTeacherCourses;
