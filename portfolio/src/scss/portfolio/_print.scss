@@ -1,0 +1,10 @@
+@include breakpoint(print) {
+  .cookie-notification, .l-header, .navigation,
+  .edit-link, .visibility-toggle, .add-favorite-button,
+  .keywords-input-container, .new-degree, .favorites-list__remove,
+  .popover-wrapper, .language-proficiency-list__add-new ,
+  .work-experience__add-new, .add-free-text-content, .favorites-list__item-wrapper,
+  .page-footer__social-links, .page-footer__links {
+    display: none !important;
+  }
+}
