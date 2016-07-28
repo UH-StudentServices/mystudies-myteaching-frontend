@@ -61,19 +61,21 @@
 
     <li visibility-private>
       <div class="work-experience__add-new">
-        <a class="add-favorite-button island"
+        <a class="add-favorite-button add-work-experience island"
            role="button"
            aria-label="{{::('favorites.addNew' | translate)}}"
            tabindex="0"
-           ng-click="showPopover()"
-           ns-popover
-           ns-popover-template="app/directives/workExperience/workExperience.addNew.popover.html"
-           ns-popover-trigger="click"
-           ns-popover-placement="bottom|center"
-           ns-popover-timeout="20000">
+           ng-click="showPopover()">
           <h4 class="add-favorite-button__title hide-mobile-only" translate="workExperience.addNew"></h4>
           <span class="add-favorite-button__plus">+</span>
         </a>
+        <popover template="app/directives/workExperience/workExperience.addNew.popover.html"
+                 id="add-work-experience-popover"
+                 ng-if="displayPopover"
+                 trigger-selector="add-work-experience"
+                 target-selector=".add-work-experience"
+                 on-click-trigger="showPopover()"
+                 on-click-outside="hidePopover()">
       </div>
     </li>
   </ul>

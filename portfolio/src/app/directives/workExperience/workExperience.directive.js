@@ -48,6 +48,7 @@ angular.module('directives.workExperience',
                            OrderWorkExperience) {
         $scope.AddWorkExperienceSteps = AddWorkExperienceSteps;
         $scope.step = AddWorkExperienceSteps.SELECT_TYPE;
+        $scope.displayPopover = false;
 
         $scope.edit = function() {
           $scope.editing = true;
@@ -77,6 +78,14 @@ angular.module('directives.workExperience',
           WorkExperienceService.deleteJobSearch($scope.jobSearch);
         };
 
+        $scope.showPopover = function() {
+          $scope.displayPopover = true;
+        };
+
+        $scope.hidePopover = function() {
+          $scope.displayPopover = false;
+        };
+
         $scope.orderWorkExperience = OrderWorkExperience;
 
         WorkExperienceService.getWorkExperienceSubject()
@@ -101,13 +110,13 @@ angular.module('directives.workExperience',
         hidePopover: '='
       },
       controller: function($scope, WorkExperienceService, ResetAddWorkExperienceEvent) {
-
         function createNewWorkExperience() {
           return {
             startDate: moment(),
             endDate: null
           };
         }
+
         $scope.newWorkExperience = createNewWorkExperience();
 
         $scope.addWorkExperience = function() {
@@ -134,6 +143,7 @@ angular.module('directives.workExperience',
       },
       controller: function($scope, WorkExperienceService, ResetAddWorkExperienceEvent) {
         $scope.newJobSearch = {};
+
         $scope.addJobSearch = function() {
           WorkExperienceService.saveJobSearch($scope.newJobSearch).then(function() {
             $scope.newJobSearch = {};
