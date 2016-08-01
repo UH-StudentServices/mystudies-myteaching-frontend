@@ -18,6 +18,7 @@
 .portfolio-intro {
   h2 {
     margin-bottom: 0.5em;
+    margin-left: 0.5em;
 
     .portfolio-visibility {
       font-size: 12pt;
@@ -32,6 +33,11 @@
 
   @include breakpoint($mobile-only) {
     padding: 1em;
+
+    .edit-link {
+      right: -15%;
+      top: 35%;
+    }
   }
 }
 
