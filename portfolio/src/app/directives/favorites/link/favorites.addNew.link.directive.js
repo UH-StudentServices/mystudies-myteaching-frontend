@@ -49,7 +49,7 @@ angular.module('directives.favorites.addNew.link',
           if (!_.isUndefined($scope.metaData)) {
             FavoritesService.saveLinkFavorite($scope.metaData).then(function saveLinkSuccess() {
               $scope.$emit(newFavoriteAddedEvent);
-              $scope.hidePopover();
+              $scope.closePopover();
             });
           }
         };
