@@ -41,7 +41,7 @@ angular.module('directives.favorites.addNew.twitter',
 
           FavoritesService.saveTwitterFavorite(insertTwitterFavoriteRequest).then(function() {
             $scope.$emit(newFavoriteAddedEvent);
-            $scope.hidePopover();
+            $scope.closePopover();
           });
         };
       }
