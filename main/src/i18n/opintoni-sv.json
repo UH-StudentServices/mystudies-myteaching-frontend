@@ -403,7 +403,7 @@
     "title": "Feedback",
     "submit": "Skicka",
     "submitted": "Tack",
-    "anonymous" : "Jag vill vara anonym"
+    "anonymous" : "Ge feedback anonymt"
   },
   "upload" : {
     "privacyMessage" : "den uppladdade bilden används också i andra HUs tjänster (t.ex. Opinder) och bilden får en publik länk."
