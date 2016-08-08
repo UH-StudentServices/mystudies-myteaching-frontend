@@ -138,7 +138,7 @@
     "errors": {
       "errorLoadingExams": "Exams could not be loaded",
       "errorLoadingCourses": "Courses could not be loaded",
-      "errorLoadingEvents" : "Events could not be leaded"
+      "errorLoadingEvents" : "Events could not be loaded"
     },
     "subscribeEvents" : "Add to calendar",
     "calendarInstructions" : "How to import events to calendar applications",
