@@ -61,6 +61,7 @@
     "angular-cookies": "1.4.4",
     "jquery": "2.1.3",
     "fullcalendar": "~2.4.0",
-    "Styleguide-icons": "5.0.4"
+    "Styleguide-icons": "5.0.4",
+    "moment": "2.14.1"
   }
 }
