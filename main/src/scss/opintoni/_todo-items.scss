@@ -33,6 +33,7 @@ $todo-item-color-with-bg: $white;
   width: 100%;
   position: relative;
   z-index: 10;
+  will-change: transform;
 
   &--banner {
     padding: 1em;
@@ -54,6 +55,25 @@ $todo-item-color-with-bg: $white;
 
   &--with-bg {
     color: $todo-item-color-with-bg;
+  }
+
+  transition: 0.8s linear all;
+  will-change: transform;
+
+  .page-banner--visible.ng-enter & {
+    transform: scale(0.1);
+  }
+
+  .page-banner--visible.ng-enter-active & {
+    transform: scale(1);
+  }
+
+  .page-banner--visible.ng-leave & {
+    transform: scale(1);
+  }
+
+  .page-banner--visible.ng-leave-active & {
+    transform: scale(0.1);
   }
 }
 

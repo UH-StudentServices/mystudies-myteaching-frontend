@@ -20,7 +20,8 @@
 angular.module('directives.pageBanner', [
   'services.news',
   'angular-flexslider',
-  'dibari.angular-ellipsis'
+  'dibari.angular-ellipsis',
+  'ngAnimate'
 ])
 
   .directive('pageBanner', function($filter, NewsService, StateService, AnalyticsService) {
@@ -47,7 +48,7 @@ angular.module('directives.pageBanner', [
     };
   })
 
-  .directive('pageBannerToggle', function($location, $anchorScroll, UserSettingsService) {
+  .directive('pageBannerToggle', function($location, $anchorScroll, UserSettingsService, $translate) {
     return {
       restrict: 'E',
       replace: true,
@@ -55,27 +56,23 @@ angular.module('directives.pageBanner', [
         showBanner: '='
       },
       templateUrl: 'app/directives/pageBanner/pageBannerToggle.html',
-      controller: function($scope, $translate) {
+      link: function($scope) {
+        var hideTooltip = $translate.instant('banner.tooltip.hide'),
+            showTooltip = $translate.instant('banner.tooltip.show');
+
         if ($scope.showBanner) {
-          $translate('banner.tooltip.hide').then(function(tooltip) {
-            $scope.tooltip = tooltip;
-          });
+          $scope.tooltip = hideTooltip;
         } else {
-          $translate('banner.tooltip.show').then(function(tooltip) {
-            $scope.tooltip = tooltip;
-          });
+          $scope.tooltip = showTooltip;
         }
 
         $scope.toggleShowBanner = function() {
           UserSettingsService.setShowBanner(!$scope.showBanner);
+
           if (!$scope.showBanner) {
-            $translate('banner.tooltip.hide').then(function(tooltip) {
-              $scope.tooltip = tooltip;
-            });
+            $scope.tooltip = hideTooltip;
           } else {
-            $translate('banner.tooltip.show').then(function(tooltip) {
-              $scope.tooltip = tooltip;
-            });
+            $scope.tooltip = showTooltip;
 
             $location.hash('top');
             $anchorScroll();
