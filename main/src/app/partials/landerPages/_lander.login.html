@@ -21,7 +21,7 @@
   <div class="login-page__intro">
     <p>{{'landerPage.' + currentStateName + '.login.intro' | translate }}</p>
     <p>
-      <a class="login-page__login-link button-internal--dark" target="_self" href="{{ loginUrl }}">{{ 'landerPage.' + currentStateName + '.login.goToLogin' | translate }}</a>
+      <a class="login-page__login-link button-internal--dark" ng-click="redirectToLogin()">{{ 'landerPage.' + currentStateName + '.login.goToLogin' | translate }}</a>
     </p>
     <p ng-bind-html="'landerPage.' + currentStateName +'.login.alternativeLogin' | translate:loginUrls"></p>
     <p>

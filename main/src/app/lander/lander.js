@@ -34,18 +34,8 @@ angular.module('opintoniLander', ['services.language'])
         views: {
           'content@': {
             templateUrl: 'app/partials/landerPages/_lander.html',
-            controller: function($scope, state, Configuration, LanguageService, COURSE_SEARCH_URL) {
+            controller: function($scope, state) {
               $scope.currentStateName = state;
-              $scope.loginUrl = !state || state === 'opintoni' ?
-                Configuration.loginUrlStudent :
-                Configuration.loginUrlTeacher;
-
-              $scope.loginUrls = {
-                loginUrlStudent: Configuration.studentAppUrl,
-                loginUrlTeacher: Configuration.teacherAppUrl
-              };
-
-              $scope.courseSearchUrl = COURSE_SEARCH_URL[LanguageService.getCurrent()];
             }
           }
         },
@@ -67,6 +57,26 @@ angular.module('opintoniLander', ['services.language'])
       .state('login', {
         parent: 'lander',
         url: '/login',
-        templateUrl: 'app/partials/landerPages/_lander.login.html'
+        templateUrl: 'app/partials/landerPages/_lander.login.html',
+        controller: function($scope, state, Configuration, LanguageService, COURSE_SEARCH_URL, $window) {
+          var loginUrl = !state || state === 'opintoni' ?
+            Configuration.loginUrlStudent :
+            Configuration.loginUrlTeacher;
+
+          $scope.loginUrls = {
+            loginUrlStudent: Configuration.studentAppUrl,
+            loginUrlTeacher: Configuration.teacherAppUrl
+          };
+
+          // This seemingly unnecessary redirect function (why not just use href?)
+          // is needed because when the app is running in standalone mode (as when launched from homescreen),
+          // using an href that points to a different domain opens a separate browser window, leaving standalone
+          // window and defeating the whole point of having a standalone version available.
+          $scope.redirectToLogin = function() {
+            $window.location = loginUrl;
+          };
+
+          $scope.courseSearchUrl = COURSE_SEARCH_URL[LanguageService.getCurrent()];
+        }
       });
   });
