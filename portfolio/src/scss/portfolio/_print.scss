@@ -4,7 +4,41 @@
   .keywords-input-container, .new-degree, .favorites-list__remove,
   .popover-wrapper, .language-proficiency-list__add-new ,
   .work-experience__add-new, .add-free-text-content, .favorites-list__item-wrapper,
-  .page-footer__social-links, .page-footer__links {
+  .page-footer__social-links, .page-footer__links, .feedback-container,
+  .work-experience > li:last-child {
     display: none !important;
+  }
+
+  h2 {
+    page-break-after: avoid;
+  }
+
+  ul, img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  .portfolio-user-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .page-banner .page-banner__image {
+    position: absolute !important;
+  }
+
+  .portfolio-intro__content {
+    padding: 3em 1em;
+  }
+
+  .portfolio-intro__title, .portfolio-intro__intro {
+    color: $white;
+  }
+
+  .portfolio-intro__right {
+    margin-left: 1em;
   }
 }
