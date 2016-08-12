@@ -26,9 +26,7 @@ $banner-transition-duration: 0.8s;
   transition: $banner-transition-duration linear height;
 
   &--open {
-    @include breakpoint($small) {
-      height: $page-banner-height;
-    }
+    height: $page-banner-height;
   }
 
   &--visible {
