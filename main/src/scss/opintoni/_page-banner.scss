@@ -17,13 +17,36 @@
 
 $page-banner-toggle-size: 50px;
 $page-banner-toggle-size-mobile: 25px;
+$banner-transition-duration: 0.6s;
 
 .page-banner {
   position: relative;
+  will-change: height;
+  height: 0;
+  transition: $banner-transition-duration linear height;
 
   &--open {
-    @include breakpoint($small) {
-      height: $page-banner-height;
+    height: $page-banner-height;
+  }
+
+  &--visible {
+    transition: $banner-transition-duration ease-in-out opacity;
+    will-change: opacity;
+
+    &.ng-enter {
+      opacity: 0;
+    }
+
+    &.ng-enter.ng-enter-active {
+      opacity: 1;
+    }
+
+    &.ng-leave {
+      opacity: 1;
+    }
+
+    &.ng-leave.ng-leave-active {
+      opacity: 0;
     }
   }
 
@@ -68,8 +91,6 @@ $page-banner-toggle-size-mobile: 25px;
     }
   }
 }
-
-
 
 .page-banner__news-item-container, .page-banner__todo-items-container {
   @extend .wrapper;

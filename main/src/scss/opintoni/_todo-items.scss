@@ -19,6 +19,7 @@ $todo-item-done-color: #b3b3b3;
 $todo-item-color-dark: $white;
 $todo-item-background-color-dark: rgba(0, 0, 0, 0.5);
 $todo-item-color-with-bg: $white;
+$container-transition-duration: 0.6s;
 
 @mixin todo-item-font-color {
   .todo-items--dark & {
@@ -33,6 +34,7 @@ $todo-item-color-with-bg: $white;
   width: 100%;
   position: relative;
   z-index: 10;
+  will-change: transform;
 
   &--banner {
     padding: 1em;
@@ -54,6 +56,25 @@ $todo-item-color-with-bg: $white;
 
   &--with-bg {
     color: $todo-item-color-with-bg;
+  }
+
+  transition: $container-transition-duration linear all;
+  will-change: transform;
+
+  .page-banner--visible.ng-enter & {
+    transform: scale(0.1);
+  }
+
+  .page-banner--visible.ng-enter-active & {
+    transform: scale(1);
+  }
+
+  .page-banner--visible.ng-leave & {
+    transform: scale(1);
+  }
+
+  .page-banner--visible.ng-leave-active & {
+    transform: scale(0.1);
   }
 }
 
