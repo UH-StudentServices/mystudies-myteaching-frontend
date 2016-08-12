@@ -17,12 +17,13 @@
 
 $page-banner-toggle-size: 50px;
 $page-banner-toggle-size-mobile: 25px;
+$banner-transition-duration: 0.8s;
 
 .page-banner {
   position: relative;
   will-change: height;
   height: 0;
-  transition: 0.8s linear height;
+  transition: $banner-transition-duration linear height;
 
   &--open {
     @include breakpoint($small) {
@@ -31,7 +32,7 @@ $page-banner-toggle-size-mobile: 25px;
   }
 
   &--visible {
-    transition: 0.8s ease-in-out opacity;
+    transition: $banner-transition-duration ease-in-out opacity;
     will-change: opacity;
 
     &.ng-enter {
