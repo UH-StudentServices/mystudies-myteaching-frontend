@@ -33,6 +33,7 @@ angular.module('directives.header.meceWidget', [
         UserSettingsService.getUserSettings()
           .then(function getUserSettingsSuccess(settings) {
             $scope.meceToken = settings.meceJWTToken;
+            $scope.meceDomain = settings.meceDomain;
             window.meceClientApp.startClient();
           });
       }
