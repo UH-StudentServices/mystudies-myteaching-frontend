@@ -1,12 +1,9 @@
 <div class="user-menu__item mece__widget dropdown-toggle user-notifications">
-  <div id="mece">
-    <div id="mece-icon-div" class="icon"></div>
-    <div id="mece-content-div"
-         class="dialog"
-         mece-polling-interval="10000"
-         mece-domain="https://ohtu-testi.it.helsinki.fi"
-         mece-language="{{ ::currentLanguage }}"
-         mece-token="{{ ::meceToken }}">
-    </div>
+  <div id="mece"
+       data-polling-interval="10000"
+       data-domain="{{ ::meceDomain }}"
+       mece-language="{{ ::currentLanguage }}"
+       mece-token="{{ ::meceToken }}"
+       data-host="opintoni">
   </div>
 </div>
