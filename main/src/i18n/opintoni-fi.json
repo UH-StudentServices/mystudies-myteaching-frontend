@@ -227,8 +227,8 @@
       "lunchMenu": "lounaslista"
     },
     "unisport": {
-      "authorizationRequired": "Jotta varaustietosi voidaan näyttää sinun täytyy antaa unisportille lupa välittää varaustietosi opintoni sovellukselle. Varaustietoja ei tallenneta eikä niitä luovuteta millekkään taholle. Siirry Unisport sivustolle antamaan lupa klikkaamalla alla olevaa painiketta.",
-      "authorizationButton": "Siirry Unisporttiin"
+      "authorizationRequired": "Unisport-Suosikki näyttää varauksesi. Varaustietoja ei tallenneta eikä niitä luovuteta kolmansille osapuolille. Siirry Unisportin sivustolle ja anna lupa varaustietojesi välittämiseen Opintoni-sivulle.",
+      "authorizationButton": "Unisport"
     },
     "twitter": {
       "twitterPlaceholder": "Twitter-käyttäjänimi, esim. helsinkiuni"
