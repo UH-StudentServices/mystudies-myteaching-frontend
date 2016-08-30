@@ -229,8 +229,8 @@
       "lunchMenu" : "lunchmeny"
     },
     "unisport": {
-      "authorizationRequired": "Jotta varaustietosi voidaan näyttää sinun täytyy antaa unisportille lupa välittää varaustietosi opintoni sovellukselle. Varaustietoja ei tallenneta eikä niitä luovuteta millekkään taholle. Siirry Unisport sivustolle antamaan lupa klikkaamalla alla olevaa painiketta. (sv)",
-      "authorizationButton": "Siirry Unisporttiin (sv)"
+      "authorizationRequired": "Unisport-Favorit visar dina bokningar. Bokningsuppgifter sparas inte eller överlämnas inte till tredje part. Gå till Unisports sida och ge tillstånd till utlämnade av dina bokningsuppgifter.",
+      "authorizationButton": "Unisport"
     },
     "twitter": {
       "twitterPlaceholder": "Twitter användernamn, t.ex helsinkiuni"
