@@ -27,6 +27,11 @@
     <a href="{{ ::authorizationUrl }}" translate="favorites.unisport.authorizationButton" class="button"></a>
   </div>
 
+  <div ng-if="!authorizationUrl && events.length === 0" class="authorization-url-container">
+    <span class="hy hy-info-stroke" title=""></span>
+    <span translate="favorites.unisport.noReservations"></span>
+  </div>
+
   <ul class="events">
     <li ng-repeat="event in events">
       <div class="events__event-name">
