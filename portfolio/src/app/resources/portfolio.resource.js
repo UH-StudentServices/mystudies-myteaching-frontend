@@ -31,7 +31,12 @@ angular.module('resources.portfolio', ['services.state'])
 
     function update(portfolio) {
       return updatePortfolioResource
-        .update({currentState: StateService.getCurrent()}, portfolio).$promise;
+        .update({currentState: StateService.getCurrent()}, {
+          id: portfolio.id,
+          intro: portfolio.intro,
+          ownerName: portfolio.ownerName,
+          visibility: portfolio.visibility
+        }).$promise;
     }
 
     return {
