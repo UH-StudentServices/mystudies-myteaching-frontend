@@ -230,7 +230,8 @@
     },
     "unisport": {
       "authorizationRequired": "Unisport-Favorit visar dina bokningar. Bokningsuppgifter sparas inte eller överlämnas inte till tredje part. Gå till Unisports sida och ge tillstånd till utlämnade av dina bokningsuppgifter.",
-      "authorizationButton": "Unisport"
+      "authorizationButton": "Unisport",
+      "noReservations": "Inga bokningar"
     },
     "twitter": {
       "twitterPlaceholder": "Twitter användernamn, t.ex helsinkiuni"
