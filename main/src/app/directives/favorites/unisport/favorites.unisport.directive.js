@@ -35,9 +35,8 @@ angular.module('directives.favorites.unisport', [
             return event;
           }).value();
           if (!_.isNull(data.authorizationUrl)) {
-            $scope.authorizationUrl =  data.authorizationUrl + '?redirectTarget=';
+            $scope.authorizationUrl =  data.authorizationUrl + '?redirectTarget=' + window.location.origin;
           }
-
         });
 
         function getEventTimeRange(startTime, endTime) {
