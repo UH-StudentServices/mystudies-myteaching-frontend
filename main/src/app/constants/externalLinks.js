@@ -33,5 +33,13 @@ angular.module('constants.externalLinks', [])
         sv: 'https://courses.helsinki.fi/sv/search',
         en: 'https://courses.helsinki.fi/search'
       }
+    },
+    {
+      key: 'primaryLinks.opinder',
+      href: {
+        fi: 'https://opinder.helsinki.fi',
+        sv: 'https://opinder.helsinki.fi',
+        en: 'https://opinder.helsinki.fi'
+      }
     }
   ]);
