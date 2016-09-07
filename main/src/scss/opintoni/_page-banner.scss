@@ -27,6 +27,9 @@ $banner-transition-duration: 0.6s;
 
   &--open {
     height: $page-banner-height;
+    @include breakpoint($mobile-only) {
+      height: $page-banner-height-mobile;
+    }
   }
 
   &--visible {
@@ -136,7 +139,7 @@ $banner-transition-duration: 0.6s;
   width: 100%;
   height: $page-banner-height;
   @include breakpoint($mobile-only) {
-    height: $page-banner-height-mobile;
+    height: $page-banner-image-height-mobile;
   }
 }
 
