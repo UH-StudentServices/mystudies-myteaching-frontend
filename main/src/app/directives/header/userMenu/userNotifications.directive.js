@@ -36,7 +36,7 @@ angular.module('directives.userNotifications', [
         }
 
         function getNotificationIds() {
-          return _.pluck($scope.userNotifications, 'notificationId');
+          return _.map($scope.userNotifications, 'notificationId');
         }
 
         function loadUserNotifications() {
