@@ -17,7 +17,7 @@
 
 'use strict';
 
-angular.module('directives.todoItems', ['resources.todoItems', 'directives.swipe'])
+angular.module('directives.todoItems', ['resources.todoItems', 'directives.swipe', 'ngAnimate'])
   .constant('Status', {
     OPEN: 'OPEN',
     DONE: 'DONE'

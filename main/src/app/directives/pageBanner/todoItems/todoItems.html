@@ -16,28 +16,29 @@
 -->
 
 <div class="todo-items tour-element__todo">
+  <div class="todo-items__bg-img-container">
+    <div class="todo-items__box" ng-if="todoItems.length === 0 && todoItemsLoaded">
+      <div translate="todoItems.listIsEmpty"></div>
+      <div class="todo-items__icon"><span class="hy hy-5x hy-todo-list"></span></div>
+    </div>
 
-  <div class="todo-items__box" ng-if="todoItems.length === 0 && todoItemsLoaded">
-    <div translate="todoItems.listIsEmpty"></div>
-    <div class="todo-items__icon"><span class="hy hy-5x hy-todo-list"></span></div>
+    <ul class="todo-items__box" ng-if="todoItems.length > 0">
+      <li class="todo-items__list-item {{todoItem.status | lowercase }}"
+          ng-repeat="todoItem in todoItems | orderBy: '-createdDate'"
+          swipe
+          swipe-left-callback="removeTodoItem"
+          swipe-right-callback="markAsDone"
+          swipe-object="todoItem">
+        {{ todoItem.content }}
+          <span class="todo-items__action todo-items__action--done hy hy-done"
+                ng-click="markAsDone(todoItem)">
+          </span>
+          <span class="todo-items__action todo-items__action--remove hy hy-remove"
+                ng-click="removeTodoItem(todoItem)">
+          </span>
+      </li>
+    </ul>
   </div>
-
-  <ul class="todo-items__box" ng-if="todoItems.length > 0">
-    <li class="todo-items__list-item {{todoItem.status | lowercase }}"
-        ng-repeat="todoItem in todoItems | orderBy: '-createdDate'"
-        swipe
-        swipe-left-callback="removeTodoItem"
-        swipe-right-callback="markAsDone"
-        swipe-object="todoItem">
-      {{ todoItem.content }}
-        <span class="todo-items__action todo-items__action--done hy hy-done"
-              ng-click="markAsDone(todoItem)">
-        </span>
-        <span class="todo-items__action todo-items__action--remove hy hy-remove"
-              ng-click="removeTodoItem(todoItem)">
-        </span>
-    </li>
-  </ul>
 
   <div class="todo-items__new-item">
     <div class="todo-items__new-item-input-container">

@@ -17,7 +17,17 @@
 
 $page-banner-toggle-size: 50px;
 $page-banner-toggle-size-mobile: 25px;
-$banner-transition-duration: 0.6s;
+$banner-transition-duration: 0.5s;
+
+@mixin banner-transition-delay {
+  @include breakpoint($mobile-only) {
+    transition-delay: 0;
+  }
+
+  @include breakpoint($small) {
+    transition-delay: $banner-transition-duration;
+  }
+}
 
 .page-banner {
   position: relative;
@@ -27,6 +37,8 @@ $banner-transition-duration: 0.6s;
 
   &--open {
     height: $page-banner-height;
+    @include banner-transition-delay;
+
     @include breakpoint($mobile-only) {
       height: $page-banner-height-mobile;
     }
@@ -37,6 +49,7 @@ $banner-transition-duration: 0.6s;
     will-change: opacity;
 
     &.ng-enter {
+      @include banner-transition-delay;
       opacity: 0;
     }
 
