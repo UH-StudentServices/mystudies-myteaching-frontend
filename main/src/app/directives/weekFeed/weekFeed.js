@@ -39,8 +39,8 @@ angular.module('directives.weekFeed', [
 
   .constant('FeedItemSortCondition', {
     'NONE': 'NONE',
-    'START_DATE_ASC': 'START_DATE_ASC',
-    'START_DATE_DESC': 'START_DATE_DESC'
+    'START_DATE_ASC': 'asc',
+    'START_DATE_DESC': 'desc'
   })
 
   .factory('FeedMessages', function(
@@ -90,116 +90,79 @@ angular.module('directives.weekFeed', [
     };
   })
 
-  .factory('CourseView', function($filter) {
-
-    function CourseGroup(groupId, parent, children) {
-      this.parent = parent;
-      this.children = children;
-      this.groupId = groupId;
-    }
-
-    function createNewCourseGroup(groupId, parent, children, groupsById, groups) {
-      var newGroup = new CourseGroup(groupId, parent, children);
-
-      groupsById[groupId] = newGroup;
-      groups.push(newGroup);
-    }
-
-    function addParentCourseToGroup(group, course, hasChildren, groupsByParentId, groups) {
-      if (group) {
-        group.parent = course;
-      } else if (!hasChildren) {
-        createNewCourseGroup(course.realisationId, course, [], groupsByParentId, groups);
-      }
-    }
-
-    function addChildCourseToGroup(group, course, groupsByParentId, groups) {
-      if (group && group.children) {
-        group.children.push(course);
-      } else {
-        createNewCourseGroup(course.parentId, null, [course], groupsByParentId, groups);
-      }
-    }
-
-    function groupCourses(courses) {
-      var groupsByParentId = {},
-          groups = [],
-          courseParentsWithChildren = _.filter(courses, function(course) {
-            return !course.parentId && _.some(courses, {parentId: course.realisationId});
-          }),
-          hasChildren;
-
-      _.forEach(courses, function(course) {
-        if (course.parentId) {
-          addChildCourseToGroup(
-            groupsByParentId[course.parentId],
-            course,
-            groupsByParentId,
-            groups);
-        } else {
-          hasChildren = _.some(courseParentsWithChildren, {realisationId: course.realisationId});
-          addParentCourseToGroup(
-            groupsByParentId[course.realisationId],
-            course,
-            hasChildren,
-            groupsByParentId,
-            groups);
-        }
-      });
-      return groups;
-    }
-
-    function addParentsToGroups(courseGroups, courses) {
-      var parents = _.filter(courses, {parentId: null}),
-          parentsById = _.mapKeys(parents, 'realisationId');
-
-      _.forEach(courseGroups, function(group) {
-        if (!group.parent) {
-          group.parent = _.get(parentsById, group.groupId);
-        }
-      });
-      return courseGroups;
-    }
-
-    function flattenGroups(groups) {
-      var courses = [];
-
-      _.forEach(groups, function(group) {
-        if (group.parent) {
-          courses.push(group.parent);
-        }
-        courses = courses.concat(group.children);
-      });
-
-      return courses;
-    }
-
-    function tagChildCourses(groups) {
-      _.forEach(groups, function(group) {
-        if (group.parent) {
-          _.forEach(group.children, function(child) {
-            child.showAsChild = true;
-          });
-
-          var lastChild = _.last(group.children);
-
-          if (lastChild) {
-            lastChild.showAsLastChild = true;
-          }
-        }
-      });
-
-      return groups;
-    }
+  .factory('CourseView', function(FeedItemSortCondition, FeedItemTimeCondition, FeedItemTimeFilter) {
 
     function getCourses(courses, feedItemTimeCondition, feedItemSortCondition, now) {
-      var filteredFeedItems = $filter('filterFeedItems')(courses, feedItemTimeCondition, now),
-          sortedFeedItems = $filter('sortFeedItems')(filteredFeedItems, feedItemSortCondition),
-          groups = groupCourses(sortedFeedItems),
-          groupsWithParents = addParentsToGroups(groups, courses),
-          groupsWithTaggedChildCourses = tagChildCourses(groupsWithParents);
+      var sortedCourses = [];
 
-      return flattenGroups(groupsWithTaggedChildCourses);
+      courses = _.filter(courses, function(course) {
+        return filterCourse(course, courses, feedItemTimeCondition, now);
+      });
+
+      var sortedRootNodes = _(courses)
+        .filter(function(course) {return course.parentId === null || isRootlessOrphan(course, courses); })
+        .value()
+        .sort(function(a, b) { return compareRootCourses(a, b, courses, feedItemSortCondition); });
+
+      _.each(sortedRootNodes, function(rootNode) {
+        sortedCourses.push(rootNode);
+        var lastChild = _(courses)
+          .filter(function(child) { return child.parentId && rootNode.realisationId === child.rootId; })
+          .orderBy(function(child) { return child.startDate; }, feedItemSortCondition)
+          .each(function(child) {
+            child.showAsChild = true;
+            sortedCourses.push(child);
+          })
+          .value()
+          .slice(-1)[0];
+
+        if (lastChild) {
+          lastChild.showAsLastChild = true;
+        }
+
+      });
+
+      return sortedCourses;
+    }
+
+    function isRootlessOrphan(course, courses) {
+      return _.find(courses, {'realisationId': course.rootId}) === undefined;
+    }
+
+    function compareRootCourses(a, b, courses, feedItemSortCondition) {
+
+      var aNodes = _.filter(courses, function(course) {
+        return course.rootId === a.realisationId && course.realisationId !== a.realisationId;
+      });
+      var bNodes = _.filter(courses, function(course) {
+        return course.rootId === b.realisationId && course.realisationId !== b.realisationId;
+      });
+
+      if (feedItemSortCondition === FeedItemSortCondition.START_DATE_ASC) {
+        var aMin = _.minBy(aNodes, function(course) { return course.startDate; }),
+            bMin = _.minBy(bNodes, function(course) { return course.startDate; }),
+            aMinDate = aMin ? aMin.startDate : a.startDate,
+            bMinDate = bMin ? bMin.startDate : b.startDate;
+
+        return aMinDate - bMinDate;
+
+      } else {
+        var aMax = _.maxBy(aNodes, function(course) { return course.startDate; }),
+            bMax = _.maxBy(bNodes, function(course) { return course.startDate; }),
+            aMaxDate = aMax ? aMax.startDate : a.startDate,
+            bMaxDate = bMax ? bMax.startDate : b.startDate;
+
+        return  bMaxDate - aMaxDate;
+      }
+    }
+
+    function filterCourse(item, courses, timeCondition, now) {
+      return _(courses)
+          .filter(function(child) {
+            return child.rootId === item.realisationId && child.realisationId !== item.realisationId;
+          })
+          .some(function(child) { return filterCourse(child, courses, timeCondition, now); }) ||
+          FeedItemTimeFilter.isInTimeFrame(item, timeCondition, now);
     }
 
     return {
@@ -411,45 +374,43 @@ angular.module('directives.weekFeed', [
     ]
   })
 
-  .filter('filterFeedItems', function(FeedItemTimeCondition) {
-    return function(items, filterType, now) {
+  .factory('FeedItemTimeFilter', function(FeedItemTimeCondition) {
+    function isInTimeFrame(item, timeCondition, now) {
       var nowMoment = now || moment.utc();
 
-      switch (filterType) {
+      switch (timeCondition) {
         case FeedItemTimeCondition.ALL:
-          return items;
+          return true;
         case FeedItemTimeCondition.UPCOMING:
-          return _.filter(items, function(item) {
-            return nowMoment.isBefore(item.startDate);
-          });
+          return nowMoment.isBefore(item.startDate);
         case FeedItemTimeCondition.NOT_ENDED:
-          return _.filter(items, function(item) {
-            return !nowMoment.isAfter(item.endDate);
-          });
+          return !nowMoment.isAfter(item.endDate);
         case FeedItemTimeCondition.TODAY:
-          return _.filter(items, function(item) {
-            return nowMoment.startOf('day').isSame(item.startDate.startOf('day'));
-          });
+          return nowMoment.startOf('day').isSame(item.startDate.startOf('day'));
         case FeedItemTimeCondition.CURRENT:
-          return _.filter(items, function(item) {
-            var startDate = item.startDate,
-                endDate = item.endDate;
-
-            return nowMoment.isBetween(startDate, endDate) ||
-              nowMoment.isSame(startDate) ||
-              nowMoment.isSame(endDate);
-          });
+          return nowMoment.isBetween(item.startDate, item.endDate) ||
+            nowMoment.isSame(item.startDate) ||
+            nowMoment.isSame(item.endDate);
         case FeedItemTimeCondition.CURRENT_OR_UPCOMING:
-          return _.filter(items, function(item) {
-            return nowMoment.isBefore(item.endDate);
-          });
+          return nowMoment.isBefore(item.endDate);
         case FeedItemTimeCondition.PAST:
-          return _.filter(items, function(item) {
-            return nowMoment.isAfter(item.endDate);
-          });
+          return nowMoment.isAfter(item.endDate);
         default:
-          // FIXME: error, anyone?
+          return true;
       }
+    }
+
+    return {
+      isInTimeFrame: isInTimeFrame
+    };
+
+  })
+
+  .filter('filterFeedItems', function(FeedItemTimeCondition, FeedItemTimeFilter) {
+    return function(items, timeCondition, now) {
+      return _.filter(items, function(item) {
+        return FeedItemTimeFilter.isInTimeFrame(item, timeCondition, now);
+      });
     };
   })
 
