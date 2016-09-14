@@ -120,10 +120,8 @@ createReleaseTag.dependsOn storeDeployInformationToFile
 npm_run_build.dependsOn "npmInstall"
 npm_run_dist.dependsOn "npmInstall"
 
-if(env == "prod") {
-    distTar.dependsOn npm_run_distprod
-} else if(env == "qa") {
-    distTar.dependsOn npm_run_distqa
+if(env != "dev") {
+    distTar.dependsOn npm_run_dist
 } else {
     distTar.dependsOn npm_run_build
 }

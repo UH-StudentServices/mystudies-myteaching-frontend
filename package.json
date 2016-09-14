@@ -38,7 +38,6 @@
     "grunt-usemin": "^3.1.1",
     "grunt-wiredep": "^3.0.1",
     "gruntify-eslint": "^1.3.0",
-    "html-inject-script": "^1.1.0",
     "http-proxy": "^1.11.1",
     "karma": "^1.1.0",
     "karma-chrome-launcher": "^1.0.1",
@@ -63,14 +62,12 @@
     "bower:install": "bower install",
     "build": "grunt build --gruntfile main/Gruntfile.js && grunt build --gruntfile portfolio/Gruntfile.js",
     "dev": "concurrently 'grunt serve --gruntfile main/Gruntfile.js' 'grunt serve --gruntfile portfolio/Gruntfile.js'",
-    "distqa": "grunt buildMinified --gruntfile main/Gruntfile.js && grunt buildMinified --gruntfile portfolio/Gruntfile.js",
-    "distprod": "grunt buildMinified --gruntfile main/Gruntfile.js && grunt buildMinified --gruntfile portfolio/Gruntfile.js && npm run inject:newrelic",
+    "dist": "grunt buildMinified --gruntfile main/Gruntfile.js && grunt buildMinified --gruntfile portfolio/Gruntfile.js",
     "e2e": "grunt e2e --gruntfile main/Gruntfile.js",
     "lint": "eslint common/** main/** portfolio/**",
     "postinstall": "concurrently 'npm run webdriver:update' 'npm run bower:install'",
     "predist": "npm rebuild node-sass",
     "test": "concurrently 'grunt test --gruntfile main/Gruntfile.js' 'grunt test --gruntfile portfolio/Gruntfile.js'",
-    "webdriver:update": "node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update",
-    "inject:newrelic": "mv main/dist/index.html main/dist/index.html.tmp && cat main/dist/index.html.tmp | htmlinjectscript \"assets/scripts/newrelic.js\" > main/dist/index.html && rm main/dist/index.html.tmp"
+    "webdriver:update": "node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update"
   }
 }
