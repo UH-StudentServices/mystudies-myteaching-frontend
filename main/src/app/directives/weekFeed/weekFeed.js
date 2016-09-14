@@ -99,28 +99,26 @@ angular.module('directives.weekFeed', [
         return filterCourse(course, courses, feedItemTimeCondition, now);
       });
 
-      var sortedRootNodes = _(courses)
+      _(courses)
         .filter(function(course) {return course.parentId === null || isRootlessOrphan(course, courses); })
         .value()
-        .sort(function(a, b) { return compareRootCourses(a, b, courses, feedItemSortCondition); });
+        .sort(function(a, b) { return compareRootCourses(a, b, courses, feedItemSortCondition); })
+        .forEach(function(rootNode) {
+          sortedCourses.push(rootNode);
+          var lastChild = _(courses)
+            .filter(function(child) { return child.parentId && rootNode.realisationId === child.rootId; })
+            .orderBy(function(child) { return child.startDate; }, feedItemSortCondition)
+            .each(function(child) {
+              child.showAsChild = true;
+              sortedCourses.push(child);
+            })
+            .value()
+            .slice(-1)[0];
 
-      _.each(sortedRootNodes, function(rootNode) {
-        sortedCourses.push(rootNode);
-        var lastChild = _(courses)
-          .filter(function(child) { return child.parentId && rootNode.realisationId === child.rootId; })
-          .orderBy(function(child) { return child.startDate; }, feedItemSortCondition)
-          .each(function(child) {
-            child.showAsChild = true;
-            sortedCourses.push(child);
-          })
-          .value()
-          .slice(-1)[0];
-
-        if (lastChild) {
-          lastChild.showAsLastChild = true;
-        }
-
-      });
+          if (lastChild) {
+            lastChild.showAsLastChild = true;
+          }
+        });
 
       return sortedCourses;
     }
