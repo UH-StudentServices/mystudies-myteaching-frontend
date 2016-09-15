@@ -15,34 +15,18 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+.page-banner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .page-banner-container {
-  min-height: $page-banner-height;
+  height: $page-banner-height;
 }
 
 .page-banner .page-banner__image {
   min-height: $page-banner-height;
   height: 100% !important;
-  @include breakpoint($mobile-only) {
-    position: relative !important;
-  }
-}
-
-.page-banner-summary__wrapper {
-  position: relative;
-  z-index: 1;
-}
-
-.page-banner-summary {
-  position: absolute;
-  top: 3em;
-
-  @include breakpoint($mobile-only) {
-    width: 70%;
-    left: 50%;
-    @include transform(translateX(-50%));
-  }
-  @include breakpoint($small) {
-    width: 20em;
-    right: 1em;
-  }
 }
