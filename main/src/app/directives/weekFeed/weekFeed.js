@@ -93,65 +93,55 @@ angular.module('directives.weekFeed', [
   .factory('CourseView', function(FeedItemSortCondition, FeedItemTimeCondition, FeedItemTimeFilter) {
 
     function getCourses(courses, feedItemTimeCondition, feedItemSortCondition, now) {
-      var sortedCourses = [];
-
       courses = _.filter(courses, function(course) {
         return filterCourse(course, courses, feedItemTimeCondition, now);
       });
 
-      _(courses)
-        .filter(function(course) {return course.parentId === null || isRootlessOrphan(course, courses); })
-        .value()
-        .sort(function(a, b) { return compareRootCourses(a, b, courses, feedItemSortCondition); })
-        .forEach(function(rootNode) {
-          sortedCourses.push(rootNode);
-          var lastChild = _(courses)
-            .filter(function(child) { return child.parentId && rootNode.realisationId === child.rootId; })
-            .orderBy(function(child) { return child.startDate; }, feedItemSortCondition)
-            .each(function(child) {
-              child.showAsChild = true;
-              sortedCourses.push(child);
-            })
-            .value()
-            .slice(-1)[0];
-
-          if (lastChild) {
-            lastChild.showAsLastChild = true;
-          }
-        });
-
-      return sortedCourses;
+      return _(courses)
+        .filter(function(course) {return isRootNode(course, courses); })
+        .map(function(rootNode) { return setRootNodeChildren(rootNode, courses, feedItemSortCondition); })
+        .orderBy(function(rootNode) { return sortRootNode(rootNode, feedItemSortCondition); }, feedItemSortCondition)
+        .map(function(rootNode) {
+          return [rootNode].concat(rootNode.children);
+        })
+        .flatten()
+        .value();
     }
 
-    function isRootlessOrphan(course, courses) {
-      return _.find(courses, {'realisationId': course.rootId}) === undefined;
+    function setRootNodeChildren(rootNode, courses, feedItemSortCondition) {
+      rootNode.children = _(courses)
+        .filter(function(child) { return child.parentId && rootNode.realisationId === child.rootId; })
+        .orderBy(function(child) { return child.startDate; }, feedItemSortCondition)
+        .map(tagAsChild)
+        .value();
+      tagLastChild(rootNode.children);
+      return rootNode;
     }
 
-    function compareRootCourses(a, b, courses, feedItemSortCondition) {
+    function sortRootNode(rootNode, feedItemSortCondition) {
+      var findMinOrMax = feedItemSortCondition === FeedItemSortCondition.START_DATE_ASC ? _.minBy : _.maxBy,
+          minOrMaxChild = findMinOrMax(rootNode.children, getStartDate);
 
-      var aNodes = _.filter(courses, function(course) {
-        return course.rootId === a.realisationId && course.realisationId !== a.realisationId;
-      });
-      var bNodes = _.filter(courses, function(course) {
-        return course.rootId === b.realisationId && course.realisationId !== b.realisationId;
-      });
+      return minOrMaxChild ? minOrMaxChild.startDate : rootNode.startDate;
+    }
 
-      if (feedItemSortCondition === FeedItemSortCondition.START_DATE_ASC) {
-        var aMin = _.minBy(aNodes, function(course) { return course.startDate; }),
-            bMin = _.minBy(bNodes, function(course) { return course.startDate; }),
-            aMinDate = aMin ? aMin.startDate : a.startDate,
-            bMinDate = bMin ? bMin.startDate : b.startDate;
+    function getStartDate(course) { return course.startDate; }
 
-        return aMinDate - bMinDate;
+    function tagAsChild(child) {
+      child.showAsChild = true;
+      return child;
+    }
 
-      } else {
-        var aMax = _.maxBy(aNodes, function(course) { return course.startDate; }),
-            bMax = _.maxBy(bNodes, function(course) { return course.startDate; }),
-            aMaxDate = aMax ? aMax.startDate : a.startDate,
-            bMaxDate = bMax ? bMax.startDate : b.startDate;
+    function tagLastChild(children) {
+      var lastChild = _.last(children);
 
-        return  bMaxDate - aMaxDate;
+      if (lastChild) {
+        lastChild.showAsLastChild = true;
       }
+    }
+
+    function isRootNode(course, courses) {
+      return course.parentId === null || _.find(courses, {'realisationId': course.rootId}) === undefined;
     }
 
     function filterCourse(item, courses, timeCondition, now) {
