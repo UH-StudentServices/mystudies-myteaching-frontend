@@ -18,14 +18,20 @@
 
 <html class="no-js">
   <head>
-    <meta charset="utf-8">
     <base href="/">
-    <title></title>
+    <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileImage144x144logo" content="assets/icons/mobile-icons/mstile-144x144.png" />
+    <meta name="msapplication-square150x150logo" content="assets/icons/mobile-icons/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="assets/icons/mobile-icons/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="assets/icons/mobile-icons/mstile-310x310.png" />
+    <meta name="msapplication-square70x70logo" content="assets/icons/mobile-icons/mstile-70x70.png" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <title></title>
 
     <!-- build:css assets/styles/vendor.css -->
     <link rel="stylesheet" href="../../bower_components/angular-carousel/dist/angular-carousel.css" />
@@ -66,12 +72,10 @@
     <link rel="icon" href="assets/icons/mobile-icons/favicon-32x32.png" type="image/png" sizes="32x32" />
     <link rel="icon" href="assets/icons/mobile-icons/favicon-96x96.png" type="image/png" sizes="96x96" />
     <link rel="shortcut icon" href="assets/images/ui/hy_favicon.ico" />
-    <meta name="msapplication-TileImage144x144logo" content="assets/icons/mobile-icons/mstile-144x144.png" />
-    <meta name="msapplication-square150x150logo" content="assets/icons/mobile-icons/mstile-150x150.png" />
-    <meta name="msapplication-wide310x150logo" content="assets/icons/mobile-icons/mstile-310x150.png" />
-    <meta name="msapplication-square310x310logo" content="assets/icons/mobile-icons/mstile-310x310.png" />
-    <meta name="msapplication-square70x70logo" content="assets/icons/mobile-icons/mstile-70x70.png" />
-    <meta name="msapplication-TileColor" content="#ffffff" />
+
+    <!-- build:js app/newrelic.js -->
+    <script src="../../common/src/app/newrelic.js"></script>
+    <!-- endbuild -->
   </head>
   <body>
     <!--[if lt IE 9]>

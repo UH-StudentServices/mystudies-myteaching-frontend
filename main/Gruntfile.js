@@ -211,6 +211,7 @@ module.exports = function(grunt) {
         src: [
           'dist/app/app.js',
           'dist/app/vendor.js',
+          'dist/app/newrelic.js',
           'dist/assets/styles/*.css']
       }
     },
@@ -270,7 +271,6 @@ module.exports = function(grunt) {
             'index.html',
             'assets/images/**/*.{png,jpg,gif,webp,ico}',
             'assets/icons/**/*',
-            'assets/scripts/**/*',
             'assets/swf/*',
             'i18n/*'
           ]
