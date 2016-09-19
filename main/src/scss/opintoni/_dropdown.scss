@@ -42,11 +42,9 @@
     @include border-bottom;
   }
 
-  @include breakpoint($small) {
-    z-index: 12;
-    position: absolute;
-    right: 0;
-  }
+  z-index: 12;
+  position: absolute;
+  right: 0;
 
   @include breakpoint($mobile_only) {
     border: 0;

@@ -16,40 +16,65 @@
  */
 
 .portfolio-intro {
-  h2 {
-    margin-bottom: 0.5em;
-    margin-left: 0.5em;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  padding: 3em 2em;
+  overflow-y: auto;
+  overflow-x: hidden;
 
-    .portfolio-visibility {
-      font-size: 12pt;
-      color: #666;
-    }
+  @include breakpoint($large) {
+    width: $page-content-max-width;
+  }
+
+  h2 {
+    margin: 0;
+    padding: 0;
   }
 }
 
-.portfolio-intro__content {
-  padding: 3em 1em;
+.portfolio-intro__owner {
+  display: flex;
+  align-items: flex-start;
+  flex: 1 1 50%;
+  padding-bottom: 0.5em;
+  padding-right: 2em;
   position: relative;
 
-  @include breakpoint($mobile-only) {
-    padding: 1em;
-
-    .edit-link {
-      right: -15%;
-      top: 35%;
-    }
+  @include breakpoint($small) {
+    padding-right: 1em;
   }
+
+  .edit-link-wrapper {
+    display: inline-block;
+  }
+
+  .edit-link {
+    min-width: 50%;
+    left: 105%;
+    top: 50%;
+  }
+}
+
+.portfolio-intro__keywords {
+  flex: 0 1 auto;
+  z-index: 1;
 }
 
 .portfolio-intro__title, .portfolio-intro__intro {
-  @include breakpoint($small) {
-    color: $white;
-    text-shadow: 0 1px 2px $black;
-  }
+  color: $white;
+  text-shadow: 0 1px 2px $black;
+}
+
+.portfolio-intro__avatar {
+  flex: 0 0 auto;
+  margin-right: 5%;
 }
 
 .portfolio-user-image {
-
   width: 50px;
   height: 50px;
 
@@ -65,26 +90,5 @@
 
   .user-avatar {
     background-color: $lila;
-  }
-}
-
-.portfolio-intro__left {
-  display: inline-block;
-  vertical-align: top;
-}
-
-.portfolio-intro__right {
-  display: inline-block;
-  @include breakpoint($small) {
-    width: 300px;
-    margin-left: 1em;
-  }
-
-  @include breakpoint($medium) {
-    width: 450px;
-  }
-
-  @include breakpoint($large) {
-    width: 600px;
   }
 }

@@ -13,35 +13,36 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
-  -->
+-->
 
-<div class="page-banner-container portfolio-intro">
-    <div class="page-banner">
-        <div class="page-banner-summary__wrapper wrapper">
-          <div class="page-banner-summary">
-            <keywords-summary limit-visibility="{portfolioComponent: 'STUDIES'}"></keywords-summary>
-            <work-experience-summary limit-visibility="{portfolioComponent: 'WORK_EXPERIENCE'}"></work-experience-summary>
-          </div>
-        </div>
-        <div class="page-banner__image" ng-style="userBackgroundStyle" role="banner">
-            <div class="page-banner__image-cover"></div>
-        </div>
-        <div class="wrapper">
-          <div class="portfolio-intro__content">
-            <div class="portfolio-intro__left">
-              <avatar-image ></avatar-image>
-            </div>
-            <div class="portfolio-intro__right">
-              <div class="edit-link-wrapper">
-                <h2 class="portfolio-intro__title">{{::portfolio.ownerName}}</h2>
-                <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
-              </div>
-              <div class="editable-wrapper">
-                <p class="portfolio-intro__intro user-text" ng-hide="editing" ng-bind="portfolio.intro"></p>
-                <textarea maxlength="150" ng-show="editing" ng-model="portfolio.intro"></textarea>
-              </div>
-            </div>
-          </div>
-        </div>
+<div class="page-banner-container" role="banner">
+  <div class="page-banner">
+    <div class="page-banner__image" ng-style="userBackgroundStyle">
+      <div class="page-banner__image-cover"></div>
     </div>
+    <div class="portfolio-intro">
+      <div class="portfolio-intro__owner">
+        <div class="portfolio-intro__avatar">
+          <avatar-image></avatar-image>
+        </div>
+        <div class="portfolio-intro__owner-details">
+          <div class="edit-link-wrapper">
+            <h2 class="portfolio-intro__title">{{::portfolio.ownerName}}</h2>
+            <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
+          </div>
+          <div class="editable-wrapper">
+            <p class="portfolio-intro__intro user-text" ng-hide="editing" ng-bind="portfolio.intro"></p>
+            <textarea maxlength="150" ng-show="editing" ng-model="portfolio.intro"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-intro__keywords">
+        <div>
+          <keywords-summary limit-visibility="{portfolioComponent: 'STUDIES'}"></keywords-summary>
+          <work-experience-summary limit-visibility="{portfolioComponent: 'WORK_EXPERIENCE'}"></work-experience-summary>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
