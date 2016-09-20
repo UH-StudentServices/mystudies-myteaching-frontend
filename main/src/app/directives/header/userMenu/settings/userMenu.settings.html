@@ -50,13 +50,6 @@
       </a>
     </li>
 
-    <li class="user-settings__menu-item" role="menuitem" ng-show="changeStateAvailableTo">
-      <a tabindex="0" ng-click="changeState()">
-        <i class="hy hy-avatar"></i>
-        {{ changeStateAvailableTo + ".pageHeaderBranding" | translate }}
-      </a>
-    </li>
-
     <li limit-visibility="['ADMIN_ONLY']" session="session" class="user-settings__menu-item" role="menuitem">
       <a ui-sref="admin">
         <i class="hy hy-modify"></i>

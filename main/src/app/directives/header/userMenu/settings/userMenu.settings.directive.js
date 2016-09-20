@@ -22,8 +22,6 @@ angular.module('directives.userMenu.settings', [
   'services.userSettings',
   'services.portfolio',
   'services.session',
-  'services.stateChange',
-  'services.state',
   'directives.userMenu.settings.avatar',
   'webcam',
   'utils.browser',
@@ -40,9 +38,6 @@ angular.module('directives.userMenu.settings', [
                                   UserSettingsService,
                                   PortfolioService,
                                   SessionService,
-                                  StateChangeService,
-                                  State,
-                                  StateService,
                                   BrowserUtil
                                   ) {
     return {
@@ -55,13 +50,6 @@ angular.module('directives.userMenu.settings', [
         $scope.showAvatarChangeType = false;
         $scope.cameraOn = false;
         $scope.supportsCamera = BrowserUtil.supportsCamera();
-        $scope.changeState = StateChangeService.changeState;
-        $scope.State = State;
-        $scope.currentState = StateService.getRootStateName();
-
-        StateChangeService.changeStateAvailableTo().then(function(state) {
-          $scope.changeStateAvailableTo = state;
-        });
 
         SessionService.getSession().then(function getSessionSuccess(session) {
           $scope.session = session;
