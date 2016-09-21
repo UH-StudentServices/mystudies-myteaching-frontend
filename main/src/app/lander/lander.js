@@ -23,6 +23,12 @@ angular.module('opintoniLander', ['services.language'])
     fi: 'https://courses.helsinki.fi/fi/search '
   })
 
+  .constant('LIBRARY_URL', {
+    en: 'http://www.helsinki.fi/kirjasto/en/home/',
+    sv: 'http://www.helsinki.fi/kirjasto/sv/hem/',
+    fi: 'http://www.helsinki.fi/kirjasto/fi/etusivu/'
+  })
+
   .config(function(
     $stateProvider,
     $translateProvider) {
@@ -34,8 +40,9 @@ angular.module('opintoniLander', ['services.language'])
         views: {
           'content@': {
             templateUrl: 'app/partials/landerPages/_lander.html',
-            controller: function($scope, state) {
+            controller: function($scope, state, LanguageService, LIBRARY_URL) {
               $scope.currentStateName = state;
+              $scope.libraryUrl = LIBRARY_URL[LanguageService.getCurrent()];
             }
           }
         },
