@@ -19,15 +19,17 @@
   <div class="ui-component ui-component--events">
     <h2 class="ui-component__title"><span ng-bind="header"></span></h2>
 
-    <ul class="week-feed__tabs" role="tablist">
-      <li ng-repeat="tab in tabs"
-          ng-class="getTabClasses(tab)"
-          ng-click="selectTab(tab)"
-          role="tab"
-          class="clickable">
-        <a>{{ tab.translateKey | translate | capitalize }}</a>
-      </li>
-    </ul>
+    <scrollable-tab-bar tab-selector=".week-feed__tabs li">
+      <ul class="week-feed__tabs" role="tablist">
+        <li ng-repeat="tab in tabs"
+            ng-class="getTabClasses(tab)"
+            ng-click="selectTab(tab)"
+            role="tab"
+            class="clickable">
+          <a>{{ tab.translateKey | translate | capitalize }}</a>
+        </li>
+      </ul>
+    </scrollable-tab-bar>
     <ul class="tag-list--tabs" role="tablist" ng-hide="hideSubTabs">
       <li ng-repeat="subTab in subTabs"
           ng-class="getSubTabClasses(subTab)"
