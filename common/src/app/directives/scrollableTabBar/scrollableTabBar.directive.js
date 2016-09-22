@@ -27,9 +27,11 @@ angular.module('directives.scrollableTabBar', [])
       },
       link: function(scope, el, attrs) {
         function onResize() {
-          scope.showScrollControls = tabContainer.scrollWidth > tabContainer.clientWidth;
-          disableScrollCtrlsIfScrollPosAtEnd();
-          determineScrollStep();
+          scope.$applyAsync(function() {
+            scope.showScrollControls = tabContainer.scrollWidth > tabContainer.clientWidth;
+            disableScrollCtrlsIfScrollPosAtEnd();
+            determineScrollStep();
+          });
         }
 
         function scrollBy(combinator) {
@@ -38,9 +40,11 @@ angular.module('directives.scrollableTabBar', [])
         }
 
         function disableScrollCtrlsIfScrollPosAtEnd() {
-          _.assign(scope, {
-            disableLeftScroll: !tabContainer.scrollLeft,
-            disableRightScroll: tabContainer.scrollLeft === tabContainer.scrollWidth - tabContainer.clientWidth
+          scope.$applyAsync(function() {
+            _.assign(scope, {
+              disableLeftScroll: !tabContainer.scrollLeft,
+              disableRightScroll: tabContainer.scrollLeft === tabContainer.scrollWidth - tabContainer.clientWidth
+            });
           });
         }
 
