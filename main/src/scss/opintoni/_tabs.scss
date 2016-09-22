@@ -1,0 +1,47 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.tab-bar {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1em;
+
+  &__tab-container {
+    flex: 1 1 auto;
+    overflow: hidden;
+  }
+
+  &__scroller {
+    background-color: $blue;
+    color: $white;
+    font-family: "hy-icons";
+
+    &::before {
+      content: "\EA03";
+      display: inline-block;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    &.-previous::before {
+      transform: rotate(180deg);
+    }
+
+    &[disabled] {
+      background-color: rgba($gray, 0.3);
+    }
+  }
+}

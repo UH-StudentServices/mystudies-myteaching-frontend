@@ -17,13 +17,13 @@
 
 $tablist-multi-row: max-width 28.74em;
 $tablist-single-row: min-width 28.75em;
+$first-and-last-tab-padding: 0.2em;
 
 .week-feed__tabs {
   display: flex;
   align-items: flex-start;
 
   text-transform: uppercase;
-  margin-bottom: 1em;
   font-weight: 600;
 
   @keyframes active-in {
@@ -56,6 +56,14 @@ $tablist-single-row: min-width 28.75em;
       animation-name: active-in;
       animation-duration: 0.3s;
       border-color: $darkblue;
+    }
+
+    &:last-child {
+      padding-right: $first-and-last-tab-padding;
+    }
+
+    &:first-child {
+      padding-left: $first-and-last-tab-padding;
     }
   }
 }
