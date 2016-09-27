@@ -29,8 +29,11 @@ angular.module('directives.scrollableTabBar', [])
         function onResize() {
           scope.$applyAsync(function() {
             scope.showScrollControls = tabContainer.scrollWidth > tabContainer.clientWidth;
-            disableScrollCtrlsIfScrollPosAtEnd();
-            determineScrollStep();
+
+            if (scope.showScrollControls) {
+              disableScrollCtrlsIfScrollPosAtEnd();
+              determineScrollStep();
+            }
           });
         }
 
@@ -50,15 +53,15 @@ angular.module('directives.scrollableTabBar', [])
 
         function determineScrollStep() {
           var tab = el[0].querySelector(attrs.tabSelector),
-              tabMinWidth = parseInt($window.getComputedStyle(tab).getPropertyValue('flex-basis'));
+              tabWidth = parseInt($window.getComputedStyle(tab).getPropertyValue('width'));
 
-          if (tabMinWidth) {
-            SCROLL_STEP = tabMinWidth;
+          if (tabWidth) {
+            SCROLL_STEP = tabWidth;
           }
         }
 
         var DEBOUNCE_DELAY = 200,
-            SCROLL_STEP = 10,
+            SCROLL_STEP = 50,
             tabContainer = el[0].querySelector('.tab-bar__tab-container'),
             debouncedResizeHandler = _.debounce(onResize, DEBOUNCE_DELAY);
 
