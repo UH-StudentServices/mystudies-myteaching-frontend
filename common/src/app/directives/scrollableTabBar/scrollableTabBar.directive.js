@@ -17,7 +17,7 @@
 
 angular.module('directives.scrollableTabBar', [])
 
-  .directive('scrollableTabBar', function($window) {
+  .directive('scrollableTabBar', function($window, $timeout) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/scrollableTabBar/scrollableTabBar.html',
@@ -76,7 +76,7 @@ angular.module('directives.scrollableTabBar', [])
           scrollRight: _.partial(scrollBy, _.add)
         });
 
-        _.defer(onResize);
+        $timeout(onResize, DEBOUNCE_DELAY);
       }
     };
   });
