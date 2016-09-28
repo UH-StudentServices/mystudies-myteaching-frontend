@@ -19,6 +19,7 @@
   display: flex;
   justify-content: space-around;
   margin-bottom: 1em;
+  overflow: hidden;
 
   &__tab-container {
     flex: 1 1 auto;
@@ -26,6 +27,7 @@
   }
 
   &__scroller {
+    flex: 0 0 auto;
     background-color: $blue;
     color: $white;
     font-family: "hy-icons";
