@@ -25,9 +25,11 @@ angular.module('resources.httpInterceptor', ['services.state'])
 
   .factory('HttpInterceptor', function HttpInterceptor($q,
                                                        $cookies,
+                                                       $injector,
                                                        Configuration,
                                                        $location,
-                                                       ErrorPages) {
+                                                       ErrorPages,
+                                                       State) {
 
     function redirectToErrorPage(errorPage) {
       $location.path('/error/' + errorPage);
@@ -71,11 +73,19 @@ angular.module('resources.httpInterceptor', ['services.state'])
       $location.path('/info/login');
     }
 
-    function handleForbidden() {
+    function handleRedirect() {
       if (newUser()) {
         redirectToLander();
       } else {
         redirectToLogin();
+      }
+    }
+
+    function handleForbidden() {
+      var StateService = $injector.get('StateService');
+
+      if (!StateService.currentOrParentStateMatches(State.ERROR)) {
+        handleRedirect();
       }
     }
 
