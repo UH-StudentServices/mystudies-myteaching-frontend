@@ -24,12 +24,12 @@ angular.module('directives.scrollableTabBar', [])
       transclude: true,
       scope: {
         tabSelector: '@',
-        scrollerDisplayThreshold: '@'
+        outermostTabPadding: '@'
       },
       link: function(scope, el, attrs) {
         function onResize() {
           scope.$applyAsync(function() {
-            scope.showScrollControls = tabContainer.scrollWidth - scrollerDisplayThreshold > tabContainer.clientWidth;
+            scope.showScrollControls = tabContainer.scrollWidth - outermostTabPadding > tabContainer.clientWidth;
 
             if (scope.showScrollControls) {
               disableScrollCtrlsIfScrollPosAtEnd();
@@ -71,7 +71,7 @@ angular.module('directives.scrollableTabBar', [])
             DEFAULT_SCROLLER_DISPLAY_THRESHOLD = 6, // this should equal horizontal tab padding on first/last tabs
             tabContainer = el[0].querySelector('.tab-bar__tab-container'),
             debouncedResizeHandler = _.debounce(onResize, DEBOUNCE_DELAY),
-            scrollerDisplayThreshold = attrs.scrollerDisplayThreshold || DEFAULT_SCROLLER_DISPLAY_THRESHOLD;
+            outermostTabPadding = attrs.outermostTabPadding || DEFAULT_SCROLLER_DISPLAY_THRESHOLD;
 
         angular.element($window).on('resize', debouncedResizeHandler);
 
