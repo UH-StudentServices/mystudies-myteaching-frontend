@@ -17,7 +17,7 @@
 
 $tablist-multi-row: max-width 28.74em;
 $tablist-single-row: min-width 28.75em;
-$first-and-last-tab-padding: 0.2em;
+$horizontal-tab-padding: 0.4em;
 
 .week-feed__tabs {
   display: flex;
@@ -39,6 +39,7 @@ $first-and-last-tab-padding: 0.2em;
   li {
     flex: 1 0 auto;
     min-width: 90px;
+    padding: 0 $horizontal-tab-padding;
     border-bottom: 2px solid;
     border-color: $lightsilver;
     text-align: center;
@@ -55,17 +56,10 @@ $first-and-last-tab-padding: 0.2em;
       a {
         color: $darkblue;
       }
+
       animation-name: active-in;
       animation-duration: 0.3s;
       border-color: $darkblue;
-    }
-
-    &:last-child {
-      padding-right: $first-and-last-tab-padding;
-    }
-
-    &:first-child {
-      padding-left: $first-and-last-tab-padding;
     }
   }
 }
