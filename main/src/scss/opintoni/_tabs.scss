@@ -15,11 +15,18 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+$page-content-padding: 1em;
+
 .tab-bar {
   display: flex;
   justify-content: space-around;
   margin-bottom: 1em;
   overflow: hidden;
+
+  &--full-width {
+    transform: translateX(-$page-content-padding);
+    width: 100vw;
+  }
 
   &__tab-container {
     flex: 1 1 auto;
@@ -45,7 +52,7 @@
     }
 
     &[disabled] {
-      background-color: rgba($gray, 0.3);
+      visibility: hidden;
     }
   }
 }

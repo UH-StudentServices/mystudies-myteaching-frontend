@@ -23,12 +23,13 @@ angular.module('directives.scrollableTabBar', [])
       templateUrl: 'app/directives/scrollableTabBar/scrollableTabBar.html',
       transclude: true,
       scope: {
-        tabSelector: '@'
+        tabSelector: '@',
+        scrollerDisplayThreshold: '@'
       },
       link: function(scope, el, attrs) {
         function onResize() {
           scope.$applyAsync(function() {
-            scope.showScrollControls = tabContainer.scrollWidth > tabContainer.clientWidth;
+            scope.showScrollControls = tabContainer.scrollWidth - scrollerDisplayThreshold > tabContainer.clientWidth;
 
             if (scope.showScrollControls) {
               disableScrollCtrlsIfScrollPosAtEnd();
@@ -60,10 +61,17 @@ angular.module('directives.scrollableTabBar', [])
           }
         }
 
+        function useFullWidthLayout() {
+          return scope.showScrollControls && $window.matchMedia(MOBILE_ONLY_BREAKPOINT_VALUE).matches;
+        }
+
         var DEBOUNCE_DELAY = 200,
             SCROLL_STEP = 50,
+            MOBILE_ONLY_BREAKPOINT_VALUE = '(max-width: 48em)',
+            DEFAULT_SCROLLER_DISPLAY_THRESHOLD = 6, // this should equal horizontal tab padding on first/last tabs
             tabContainer = el[0].querySelector('.tab-bar__tab-container'),
-            debouncedResizeHandler = _.debounce(onResize, DEBOUNCE_DELAY);
+            debouncedResizeHandler = _.debounce(onResize, DEBOUNCE_DELAY),
+            scrollerDisplayThreshold = attrs.scrollerDisplayThreshold || DEFAULT_SCROLLER_DISPLAY_THRESHOLD;
 
         angular.element($window).on('resize', debouncedResizeHandler);
 
@@ -73,7 +81,8 @@ angular.module('directives.scrollableTabBar', [])
 
         _.assign(scope, {
           scrollLeft: _.partial(scrollBy, _.subtract),
-          scrollRight: _.partial(scrollBy, _.add)
+          scrollRight: _.partial(scrollBy, _.add),
+          useFullWidthLayout: useFullWidthLayout
         });
 
         $timeout(onResize, DEBOUNCE_DELAY);
