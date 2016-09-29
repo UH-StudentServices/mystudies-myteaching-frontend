@@ -73,7 +73,7 @@ angular.module('directives.weekFeed.feedItem.course', [
       return keys[courseMaterialType];
     }
 
-    function getCourseMaterialLinkTitle(courseMaterialType, isCompact) {
+    function getCourseMaterialLinkTitle(courseMaterialType, isCompact) {
       return $filter('translate')(getTranslationKey(courseMaterialType, isCompact));
     }
 
@@ -86,8 +86,10 @@ angular.module('directives.weekFeed.feedItem.course', [
       },
       templateUrl: 'app/directives/weekFeed/feedItem/course/courseMaterialsLink.html',
       link: function($scope) {
-        $scope.courseMaterialType = $scope.feedItem.courseMaterial.courseMaterialType;
-        $scope.courseMaterialLinkTitle = getCourseMaterialLinkTitle($scope.courseMaterialType, $scope.compact);
+        if ($scope.feedItem.courseMaterial) {
+          $scope.courseMaterialType = $scope.feedItem.courseMaterial.courseMaterialType;
+          $scope.courseMaterialLinkTitle = getCourseMaterialLinkTitle($scope.courseMaterialType, $scope.compact);
+        }
 
         $scope.isMoodleAndNotCompact = function() {
           return $scope.courseMaterialType === CourseMaterialTypes.MOODLE && !$scope.compact;
