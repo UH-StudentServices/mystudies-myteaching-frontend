@@ -25,19 +25,24 @@ angular.module('services.state', [
     MY_STUDIES: 'opintoni',
     MY_TEACHINGS: 'opetukseni',
     ADMIN: 'admin',
-    ACCESS_DENIED: 'accessDenied'
+    ACCESS_DENIED: 'accessDenied',
+    ERROR: 'error'
   })
 
   .factory('StateService', function($state, $location, State, Configuration, Role) {
 
     var stateMatches = function(state, name) {
-      if (state.name === name) {
+      if (state === name || state.name === name) {
         return true;
       } else if (state.parent) {
         return stateMatches(state.parent, name);
       } else {
         return false;
       }
+    };
+
+    var currentOrParentStateMatches = function(stateToMatch) {
+      return stateMatches($state.current, stateToMatch);
     };
 
     var getRootStateName = function getRootStateName() {
@@ -91,7 +96,8 @@ angular.module('services.state', [
     return {
       getRootStateName: getRootStateName,
       getStateFromDomain: getStateFromDomain,
-      getDefaultStateForUser: getDefaultStateForUser
+      getDefaultStateForUser: getDefaultStateForUser,
+      currentOrParentStateMatches: currentOrParentStateMatches
     };
 
   });
