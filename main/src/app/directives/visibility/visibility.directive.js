@@ -43,7 +43,12 @@ angular.module('directives.visibility', [
     },
   DEV_AND_QA_ONLY:
     function devAndQaOnly($q, StateService, State, SessionService, Role, Configuration, BrowserUtil) {
-      return $q.resolve(Configuration.environment !== 'prod');
+      var env = Configuration.environment;
+
+      return $q.resolve(
+          env === 'local' ||
+          env === 'dev' ||
+          env === 'qa');
     },
   MOBILE_ONLY:
     function mobileOnly($q, StateService, State, SessionService, Role, Configuration, BrowserUtil) {
