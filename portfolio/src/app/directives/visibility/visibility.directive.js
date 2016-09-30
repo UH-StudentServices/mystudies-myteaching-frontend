@@ -62,23 +62,25 @@ angular.module('directives.visibility',
       restrict: 'E',
       replace: true,
       scope: {
-        componentId: '@'
+        componentId: '@',
+        sectionName: '@'
       },
       templateUrl: 'app/directives/visibility/visibilityToggle.html',
-      link: function($scope) {
-        var componentId = $scope.componentId;
+      link: function(scope) {
+        var componentId = scope.componentId,
+            sectionName = scope.sectionName;
 
-        $scope.Visibility = Visibility;
+        scope.Visibility = Visibility;
 
-        VisibilityService.getComponentVisibility(componentId)
+        VisibilityService.getComponentVisibility(componentId, sectionName)
           .then(function(visibility) {
-            $scope.visibility = visibility;
+            scope.visibility = visibility;
           });
 
-        $scope.setVisibility = function(visibility) {
-          VisibilityService.setComponentVisibility(componentId, visibility)
+        scope.setVisibility = function(visibility) {
+          VisibilityService.setComponentVisibility(componentId, sectionName, visibility)
             .then(function(visibility) {
-              $scope.visibility = visibility;
+              scope.visibility = visibility;
             });
         };
       }
@@ -120,10 +122,9 @@ angular.module('directives.visibility',
           limitVisibility: '='
         },
 
-        link: function($scope, $element, $attr, ctrl, $transclude) {
-
+        link: function(scope, $element, $attr, ctrl, $transclude) {
           function isLimitedByRole() {
-            var roleLimits = _.get($scope, ['limitVisibility', 'roles']);
+            var roleLimits = _.get(scope, ['limitVisibility', 'roles']);
 
             if (roleLimits) {
               return $q.when(!_.some(roleLimits, function(role) {
@@ -132,14 +133,15 @@ angular.module('directives.visibility',
             } else {
               return $q.when(false);
             }
-
           }
 
           function isLimitedByPortfolioComponentVisibility() {
-            var component = _.get($scope, ['limitVisibility', 'portfolioComponent']);
+            var visibilityConf = scope.limitVisibility,
+                component = visibilityConf.portfolioComponent,
+                section = visibilityConf.sectionName;
 
-            return component ?
-              VisibilityService.getComponentVisibility(component)
+            return component || section ?
+              VisibilityService.getComponentVisibility(component, section)
                 .then(isComponentHidden) :
               $q.when(false);
           }
@@ -156,6 +158,7 @@ angular.module('directives.visibility',
               return false;
             }
           }
+
           $q.all([isLimitedByRole(), isLimitedByPortfolioComponentVisibility()]).then(function(limits) {
             if (!_.some(limits, Boolean)) {
               $transclude(function(clone) {

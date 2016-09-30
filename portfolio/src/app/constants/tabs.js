@@ -15,12 +15,27 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('controllers.main', ['constants.portfolioTabs', 'portfolioAnalytics'])
-  .controller('MainCtrl', function(AnalyticsService, $scope, portfolioTabs, portfolio, userSettings) {
-    $scope.portfolio = portfolio;
-    $scope.userSettings = userSettings;
-    $scope.portfolioTabs = portfolioTabs;
-
-    document.title = portfolio.ownerName;
-    AnalyticsService.trackPageView();
-  });
+angular.module('constants.portfolioTabs', [])
+  .constant('portfolioTabs', [
+    {
+      key: 'tabs.basicInformation',
+      name: 'BASIC_INFORMATION',
+      templateUrl: 'app/partials/tabs/_basic_information.html',
+      activeByDefault: true
+    },
+    {
+      key: 'tabs.research',
+      name: 'RESEARCH',
+      templateUrl: 'app/partials/tabs/_research.html'
+    },
+    {
+      key: 'tabs.teaching',
+      name: 'TEACHING',
+      templateUrl: 'app/partials/tabs/_teaching.html'
+    },
+    {
+      key: 'tabs.administration',
+      name: 'ADMINISTRATION',
+      templateUrl: 'app/partials/tabs/_administration.html'
+    }
+  ]);

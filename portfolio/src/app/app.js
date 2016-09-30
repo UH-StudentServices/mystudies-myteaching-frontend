@@ -30,6 +30,8 @@ angular.module('opintoniPortfolioApp',
    'angular-click-outside',
    'templates',
 
+   'constants.portfolioTabs',
+
    'controllers.main',
 
    'directives.visibility',
@@ -56,6 +58,7 @@ angular.module('opintoniPortfolioApp',
    'directives.feedback',
    'directives.popover',
    'directives.cookieNotification',
+   'directives.tabSet',
 
    'filters.formatting',
 

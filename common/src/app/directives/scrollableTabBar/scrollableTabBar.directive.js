@@ -24,7 +24,8 @@ angular.module('directives.scrollableTabBar', [])
       transclude: true,
       scope: {
         tabSelector: '@',
-        outermostTabPadding: '@'
+        outermostTabPadding: '@',
+        useFullWidthOnMobile: '='
       },
       link: function(scope, el, attrs) {
         function onResize() {
@@ -53,7 +54,7 @@ angular.module('directives.scrollableTabBar', [])
         }
 
         function determineScrollStep() {
-          var tab = el[0].querySelector(attrs.tabSelector),
+          var tab = el[0].querySelector(tabSelector),
               tabWidth = parseInt($window.getComputedStyle(tab).getPropertyValue('width'));
 
           if (tabWidth) {
@@ -62,14 +63,18 @@ angular.module('directives.scrollableTabBar', [])
         }
 
         function useFullWidthLayout() {
-          return scope.showScrollControls && $window.matchMedia(MOBILE_ONLY_BREAKPOINT_VALUE).matches;
+          return scope.useFullWidthOnMobile &&
+            scope.showScrollControls &&
+            $window.matchMedia(MOBILE_ONLY_BREAKPOINT_VALUE).matches;
         }
 
         var DEBOUNCE_DELAY = 200,
             SCROLL_STEP = 50,
             MOBILE_ONLY_BREAKPOINT_VALUE = '(max-width: 48em)',
+            DEFAULT_TAB_SELECTOR = '.tab-set__tab',
             DEFAULT_SCROLLER_DISPLAY_THRESHOLD = 6, // this should equal horizontal tab padding on first/last tabs
             tabContainer = el[0].querySelector('.tab-bar__tab-container'),
+            tabSelector = attrs.tabSelector || DEFAULT_TAB_SELECTOR,
             debouncedResizeHandler = _.debounce(onResize, DEBOUNCE_DELAY),
             outermostTabPadding = attrs.outermostTabPadding || DEFAULT_SCROLLER_DISPLAY_THRESHOLD;
 

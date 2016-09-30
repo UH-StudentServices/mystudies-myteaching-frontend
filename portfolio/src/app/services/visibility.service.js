@@ -23,38 +23,56 @@ angular.module('services.visibility', ['services.portfolio', 'resources.visibili
   })
 
   .factory('VisibilityService', function($q, PortfolioService, VisibilityResource, Visibility) {
+    function componentVisibilitySearchCriteria(componentId, section) {
+      var searchCriteria = {};
 
-    function createComponentPermission(componentId, visibility) {
-      return {component: componentId, visibility: visibility};
+      if (componentId) {
+        searchCriteria.component = componentId;
+      }
+
+      if (section) {
+        searchCriteria.teacherPortfolioSection = section;
+      }
+
+      return searchCriteria;
     }
 
-    function getComponentVisibility(componentId) {
+    function createComponentPermission(componentId, section, visibility) {
+      return _.assign(componentVisibilitySearchCriteria(componentId, section), {visibility: visibility});
+    }
+
+    function getComponentVisibility(componentId, section) {
       return PortfolioService.getPortfolio()
         .then(function(portfolio) {
-          return _.find(portfolio.componentVisibilities, {component: componentId});
+          return _.find(portfolio.componentVisibilities,
+            componentVisibilitySearchCriteria(componentId, section));
         })
         .then(function(visibility) {
           return _.get(visibility, 'visibility', Visibility.PRIVATE);
         });
     }
 
-    function insertOrUpdateComponentVisibility(componentId, visibility, portfolio) {
-      var visibilityToUpdate = _.find(portfolio.componentVisibilities, {key: componentId});
+    function insertOrUpdateComponentVisibility(componentId, section, visibility, portfolio) {
+      var visibilityToUpdate = _.find(portfolio.componentVisibilities,
+        componentVisibilitySearchCriteria(componentId, section));
 
       if (!visibilityToUpdate) {
-        portfolio.componentVisibilities.push(createComponentPermission(componentId, visibility));
+        portfolio.componentVisibilities.push(
+          createComponentPermission(componentId, section, visibility));
       } else {
         visibilityToUpdate.visibility = visibility;
       }
+
       return visibility;
     }
 
-    function setComponentVisibility(componentId, visibility) {
-
+    function setComponentVisibility(componentId, section, visibility) {
       return PortfolioService.getPortfolio().then(function(portfolio) {
         return VisibilityResource
-          .setComponentVisibility(portfolio.id, createComponentPermission(componentId, visibility))
-          .then(_.partial(insertOrUpdateComponentVisibility, componentId, visibility, portfolio));
+          .setComponentVisibility(portfolio.id,
+            createComponentPermission(componentId, section, visibility))
+          .then(_.partial(
+            insertOrUpdateComponentVisibility, componentId, section, visibility, portfolio));
       });
     }
 
@@ -62,5 +80,4 @@ angular.module('services.visibility', ['services.portfolio', 'resources.visibili
       getComponentVisibility: getComponentVisibility,
       setComponentVisibility: setComponentVisibility
     };
-
   });

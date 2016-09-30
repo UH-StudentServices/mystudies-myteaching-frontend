@@ -177,5 +177,11 @@
       "sv": "Ruotsi",
       "tr": "Turkki"
     }
+  },
+  "tabs": {
+    "basicInformation": "Perustiedot",
+    "research": "Tutkimus",
+    "teaching": "Opetus ja ohjaus",
+    "administration": "Hallintotehtävät ja muu toiminta"
   }
 }
