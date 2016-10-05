@@ -4,11 +4,13 @@ angular.module('portfolioAnalytics', [])
   .constant('TRACK_PAGE_TITLE', 'Portfolio')
   .constant('ANALYTICS_STATE_DIMENSION', 'dimension3')
 
-  .config(function(AnalyticsProvider) {
-    if (window.configuration) {
+  .config(function(AnalyticsProvider, ConfigurationProvider) {
+    var analyticsAccount =  ConfigurationProvider.$get().googleAnalyticsAccount;
+
+    if (analyticsAccount) {
       AnalyticsProvider.setAccount(
         {
-          tracker: window.configuration.googleAnalyticsAccount,
+          tracker: analyticsAccount,
           trackEvent: true
         });
 

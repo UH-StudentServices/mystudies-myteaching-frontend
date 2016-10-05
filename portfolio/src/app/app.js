@@ -25,7 +25,6 @@ angular.module('opintoniPortfolioApp',
    'pascalprecht.translate',
    'ui.utils',
    'angular-google-analytics',
-   'portfolioAnalytics',
    'portfolioErrors',
    'resources.httpInterceptor',
    'angular-click-outside',
@@ -67,7 +66,7 @@ angular.module('opintoniPortfolioApp',
    'services.keyword',
    'services.configuration',
    'services.portfolioRole',
-
+   'portfolioAnalytics',
    'utils.moment'])
 
   .constant('preferredLanguage', 'en')
