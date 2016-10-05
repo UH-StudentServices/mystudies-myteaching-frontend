@@ -15,77 +15,76 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-$work-experience-width-small : 240px;
-$work-experience-width-medium : 300px;
-$work-experience-width-large : 340px;
+$work-experience-width : 238px;
 $work-experience-height : 170px;
 $work-experience-summary-tag-color: $blue;
 $work-experience-summary-text-color: $white;
 
 ul.work-experience {
   > li {
-    margin-top: 1em;
-    @include breakpoint($small) {
-      width: 33%;
-      height: $work-experience-height;
-      display: inline-block;
-    }
+    width: 100%;
+    display: block;
   }
 }
 
-
 .work-experience__item, .work-experience__add-new {
-  height: $work-experience-height;
-
-  @include breakpoint($small) {
-    float: left;
-    width: $work-experience-width-small;
-  }
-
-  @include breakpoint($medium) {
-    width: $work-experience-width-medium;
-  }
-
-  @include breakpoint($large) {
-    width: $work-experience-width-large;
-  }
+  width: 100%;
+  float: left;
 }
 
 .work-experience__item {
   color: $white;
   position: relative;
+
+  @include breakpoint($small) {
+    margin-top: 2em;
+    height: $work-experience-height;
+  }
+
+  @include breakpoint($mobile-only) {
+    margin-bottom: 30px;
+  }
+
+}
+
+.work-experience__banner {
+  height: $work-experience-height;
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url("/portfolio/assets/images/work-experience-bg.jpg");
   background-color: $black;
-}
+  display: inline-block;
+  float: left;
 
-.work-experience__content {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  background-color: rgba(0, 0, 0, 0.5);
-  .job-search & {
-    background-color: $blue--active;
+  @include breakpoint($small) {
+    width: $work-experience-width;
+  }
+
+  @include breakpoint($mobile-only) {
+    width: 100%;
+  }
+
+  .work-experience__banner-content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    .job-search & {
+      background-color: $blue--active;
+      .work-experience.editing & {
+        background-color: $darkblue;
+      }
+    }
     .work-experience.editing & {
-      background-color: $darkblue;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: $silver;
     }
   }
-  .work-experience.editing & {
-    background-color: rgba(0, 0, 0, 0.8);
-    color: $silver;
-  }
 }
 
-
-.work-experience__employer {
-  position: absolute;
-  top: 1em;
-  left: 1em;
-}
-
-.work-experience__job-title-container {
+.work-experience__employer-container {
   text-align: center;
   text-transform: uppercase;
   position: relative;
@@ -93,7 +92,28 @@ ul.work-experience {
   @include transform(translateY(-50%));
 }
 
+.work-experience__description-container {
+  color: $black;
+  display: inline-block;
+  float: left;
+
+  @include border-bottom;
+
+  @include breakpoint($small) {
+    height: 100%;
+    width: calc(100% - 2em - #{$work-experience-width});
+    margin-left: 2em;
+  }
+
+  @include breakpoint($mobile-only) {
+    width: 100%;
+    margin-top: 1em;
+  }
+
+}
+
 .work-experience__title {
+  text-transform: uppercase;
   font-weight: 700;
   margin-bottom: 0.2em;
 }
@@ -102,9 +122,29 @@ ul.work-experience {
   @include font-size(11px);
 }
 
+.work-experience__description {
+  p {
+    font-size: 1rem;
+  }
+
+  height: calc(100% - 5em);
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @include breakpoint($mobile-only) {
+    margin-bottom: 1em;
+  }
+}
+
+.work-experience__url {
+  position: absolute;
+  bottom: 1em;
+}
+
 .work-experience__add-new {
   @include border;
   position: relative;
+  margin-top: 2em;
 }
 
 .work-experience__remove {

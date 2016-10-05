@@ -91,9 +91,12 @@
     "jobSearch": "haen työpaikkaa",
     "jobTitle": "nimike",
     "employer": "työnantaja",
+    "employerUrl": "työnantajan webosoite",
+    "text": "kuvausteksti",
     "startDate": "alkupäivämäärä (kk.vvvv)",
     "endDate": "loppupäivämäärä (kk.vvvv)",
-    "contactEmail": "sähköpostiosoite"
+    "contactEmail": "sähköpostiosoite",
+    "jobSearchHeadline": "otsikko"
   },
   "attainments": {
     "attainments": "Suoritetut",

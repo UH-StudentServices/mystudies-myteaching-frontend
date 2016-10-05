@@ -23,20 +23,30 @@
   </div>
 
   <ul class="work-experience" ng-class="{editing : editing}">
-    <li ng-repeat="workExperienceItem in workExperience | orderBy : orderWorkExperience : true track by workExperienceItem.id">
+    <li ng-repeat="workExperienceItem in workExperience | orderBy : orderWorkExperience : true track by workExperienceItem.id">
       <div class="work-experience__item">
-        <div class="work-experience__content">
-          <div class="work-experience__employer">
-            {{workExperienceItem.employer}}
+        <div class="work-experience__banner">
+          <div class="work-experience__banner-content">
+            <div class="work-experience__employer-container">
+              <div class="work-experience__title">
+                {{workExperienceItem.employer}}
+              </div>
+              <div class="work-experience__text">
+                {{workExperienceItem.startDate | momentFormat:'M/YYYY'}} -
+                {{workExperienceItem.endDate | momentFormat:'M/YYYY'}}
+              </div>
+            </div>
           </div>
-          <div class="work-experience__job-title-container">
-            <div class="work-experience__title">
-              {{workExperienceItem.jobTitle}}
-            </div>
-            <div class="work-experience__text">
-              {{workExperienceItem.startDate | momentFormat:'M/YYYY'}} -
-              {{workExperienceItem.endDate | momentFormat:'M/YYYY'}}
-            </div>
+        </div>
+        <div class="work-experience__description-container">
+          <div class="work-experience__title">
+            {{workExperienceItem.jobTitle}}
+          </div>
+          <div class="work-experience__description">
+            <p>{{workExperienceItem.text}}</p>
+          </div>
+          <div class="work-experience__url">
+            <a href="http://{{workExperienceItem.employerUrl}}">{{workExperienceItem.employerUrl}}</a>
           </div>
         </div>
         <div class="work-experience__remove" ng-show="editing" ng-click="removeWorkExperience(workExperienceItem)"></div>
@@ -45,25 +55,37 @@
 
     <li ng-show="jobSearch">
       <div class="work-experience__item job-search">
-        <div class="work-experience__content">
-          <div class="work-experience__job-title-container">
-            <div class="work-experience__title text-transform-capitalize-block"
-                 translate="workExperience.jobSearch">
+        <div class="work-experience__banner">
+          <div class="work-experience__banner-content">
+            <div class="work-experience__employer-container">
+              <div class="work-experience__title text-transform-capitalize-block"
+                   translate="workExperience.jobSearch" />
+              <div class="work-experience__text">
+                {{jobSearch.contactEmail}}
+              </div>
             </div>
-            <div class="work-experience__text">
-              {{jobSearch.contactEmail}}
-            </div>
+          </div>
+        </div>
+        <div class="work-experience__description-container">
+          <div class="work-experience__title">
+            {{jobSearch.headline}}
+          </div>
+          <div class="work-experience__description">
+            <p>{{jobSearch.text}}</p>
+          </div>
+          <div class="work-experience__url">
+            <a href="mailto:{{jobSearch.contactEmail}}">{{jobSearch.contactEmail}}</a>
           </div>
         </div>
         <div class="work-experience__remove" ng-show="editing" ng-click="removeJobSearch()"></div>
       </div>
     </li>
 
-    <li visibility-private>
+    <li visibility-private ng-show="editing">
       <div class="work-experience__add-new">
         <a class="add-favorite-button add-work-experience island"
            role="button"
-           aria-label="{{::('favorites.addNew' | translate)}}"
+           aria-label="{{::('favorites.addNew' | translate)}}"
            tabindex="0"
            ng-click="showPopover()">
           <h4 class="add-favorite-button__title hide-mobile-only" translate="workExperience.addNew"></h4>

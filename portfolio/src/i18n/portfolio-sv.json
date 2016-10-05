@@ -91,9 +91,12 @@
     "jobSearch": "söker job",
     "jobTitle": "jobbtitel",
     "employer": "arbetsgivare",
+    "employerUrl": "arbetsgivares websidan",
+    "text": "beskrivning",
     "startDate": "startdatum (mm.yyyy)",
     "endDate": "slutdatum (mm.yyyy)",
-    "contactEmail": "contact email"
+    "contactEmail": "contact email",
+    "jobSearchHeadline": "rubrik"
   },
   "attainments": {
     "attainments": "Prestationer",

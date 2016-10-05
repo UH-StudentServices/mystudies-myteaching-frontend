@@ -28,6 +28,9 @@
              portfolio-id="{{::portfolio.id}}">
     </degrees>
 
+    <work-experience limit-visibility="{portfolioComponent: 'WORK_EXPERIENCE'}">
+    </work-experience>
+
     <free-text-content limit-visibility="{portfolioComponent: 'FREE_TEXT_CONTENT'}">
     </free-text-content>
   </div>
@@ -44,9 +47,6 @@
 <attainments limit-visibility="{portfolioComponent: 'ATTAINMENTS'}"
              portfolio-id="{{::portfolio.id}}">
 </attainments>
-
-<work-experience limit-visibility="{portfolioComponent: 'WORK_EXPERIENCE'}">
-</work-experience>
 
 <language-proficiencies limit-visibility="{portfolioComponent: 'LANGUAGE_PROFICIENCIES'}"
                         language-proficiencies-data="portfolio.languageProficiencies">

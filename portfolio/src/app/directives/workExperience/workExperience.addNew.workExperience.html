@@ -38,9 +38,19 @@
            ng-model="newWorkExperience.endDate"
            >
   </div>
+
+  <div class="form-type-text">
+    <label class="text-transform-capitalize" for="textInput" translate="workExperience.text"></label>
+    <input id="textInput" type="text" ng-model="newWorkExperience.text">
+  </div>
+  <div class="form-type-text">
+    <label class="text-transform-capitalize" for="employerUrlInput" translate="workExperience.employerUrl"></label>
+    <input id="employerUrlInput" type="text" ng-model="newWorkExperience.employerUrl">
+  </div>
+
   <input class="form-submit"
          ng-click="addWorkExperience()"
          type="submit"
          ng-disabled="!addNewWorkExperienceForm.$valid"
-         value="{{::('general.add' | translate | capitalize)}}">
+         value="{{::('general.add' | translate | capitalize)}}">
 </form>
