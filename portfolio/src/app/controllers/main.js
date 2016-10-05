@@ -16,8 +16,9 @@
  */
 
 angular.module('controllers.main', [])
-  .controller('MainCtrl', function($scope, portfolio, userSettings) {
+  .controller('MainCtrl', function(AnalyticsService, $scope, portfolio, userSettings) {
     $scope.portfolio = portfolio;
     $scope.userSettings = userSettings;
     document.title = portfolio.ownerName;
+    AnalyticsService.trackPageView();
   });
