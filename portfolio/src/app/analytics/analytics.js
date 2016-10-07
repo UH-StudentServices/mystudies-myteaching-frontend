@@ -1,4 +1,4 @@
-angular.module('portfolioAnalytics', [])
+angular.module('portfolioAnalytics', ['services.configuration'])
 
   .constant('PORTFOLIO_PATH', '/portfolio')
   .constant('TRACK_PAGE_TITLE', 'Portfolio')
