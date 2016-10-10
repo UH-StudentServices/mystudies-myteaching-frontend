@@ -17,52 +17,6 @@
 
 $tablist-multi-row: max-width 28.74em;
 $tablist-single-row: min-width 28.75em;
-$horizontal-tab-padding: 0.4em;
-
-.week-feed__tabs {
-  display: flex;
-  align-items: flex-start;
-
-  text-transform: uppercase;
-  font-weight: 600;
-
-  @keyframes active-in {
-    from {border-color: $lightsilver;}
-    to {border-color: $darkblue;}
-  }
-
-  @keyframes active-out {
-    from {border-color: $darkblue;}
-    to {border-color: $lightsilver;}
-  }
-
-  li {
-    flex: 1 0 auto;
-    min-width: 90px;
-    padding: 0 $horizontal-tab-padding;
-    border-bottom: 2px solid;
-    border-color: $lightsilver;
-    text-align: center;
-    line-height: 2;
-    white-space: nowrap;
-    animation-name: active-out;
-    animation-duration: 0.3s;
-
-    &:focus {
-      outline: none;
-    }
-
-    &.is-active {
-      a {
-        color: $darkblue;
-      }
-
-      animation-name: active-in;
-      animation-duration: 0.3s;
-      border-color: $darkblue;
-    }
-  }
-}
 
 .tag-list--tabs {
   #week-feed & {

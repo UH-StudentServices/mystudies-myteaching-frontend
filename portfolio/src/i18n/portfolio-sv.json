@@ -177,5 +177,11 @@
       "sv": "Svenska",
       "tr": "Turkiska"
     }
+  },
+  "tabs": {
+    "basicInformation": "Basuppgifter",
+    "research": "Forskning och vetenskaplig verksamhet",
+    "teaching": "Undervisning och handledning",
+    "administration": "Förvaltningsuppgifter och andra uppgifter"
   }
 }

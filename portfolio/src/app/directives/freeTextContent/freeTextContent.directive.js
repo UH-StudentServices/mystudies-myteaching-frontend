@@ -9,10 +9,11 @@ angular.module('directives.freeTextContent', [
         defaultText = $filter('translate')('freeTextContent.defaultText');
 
     return {
-      defaultFreeTextContent: function() {
+      defaultFreeTextContent: function(section) {
         return {
           title: defaultTitle,
-          text: defaultText
+          text: defaultText,
+          portfolioSection: section
         };
       }
     };
@@ -25,36 +26,46 @@ angular.module('directives.freeTextContent', [
       replace: true,
       templateUrl: 'app/directives/freeTextContent/freeTextContent.html',
       scope: {
-        freeTextContentData: '&'
+        portfolioSection: '@'
       },
-      link: function($scope) {
-        $scope.freeTextContents = $scope.freeTextContentData();
+      link: function(scope) {
+        function refreshContent(freeTextContent) {
+          scope.freeTextContents = freeTextContent;
 
-        $scope.editFreeTextContent = function(freeTextContent) {
-          $scope.freeTextContentToEdit = freeTextContent;
+          return freeTextContent;
+        }
+
+        scope.freeTextContents = FreeTextContentService
+          .getFreeTextContent(scope.portfolioSection)
+          .then(refreshContent);
+
+        scope.editFreeTextContent = function(freeTextContent) {
+          scope.freeTextContentToEdit = freeTextContent;
         };
 
-        $scope.insertFreeTextContent = function() {
+        scope.insertFreeTextContent = function() {
           FreeTextContentService
-            .insertFreeTextContent(FreeTextContentFactory.defaultFreeTextContent())
+            .insertFreeTextContent(FreeTextContentFactory
+              .defaultFreeTextContent(scope.portfolioSection), scope.portfolioSection)
+            .then(refreshContent)
             .then(function(freeTextContent) {
-              $scope.freeTextContents.push(freeTextContent);
-              $scope.freeTextContentToEdit = freeTextContent;
+              scope.freeTextContentToEdit = freeTextContent;
             });
         };
 
-        $scope.updateFreeTextContent = function() {
-          FreeTextContentService.updateFreeTextContent($scope.freeTextContentToEdit)
+        scope.updateFreeTextContent = function() {
+          FreeTextContentService.updateFreeTextContent(scope.freeTextContentToEdit, scope.portfolioSection)
+            .then(refreshContent)
             .then(function() {
-              $scope.freeTextContentToEdit = null;
+              scope.freeTextContentToEdit = null;
             });
         };
 
-        $scope.deleteFreeTextContent = function() {
-          FreeTextContentService.deleteFreeTextContent($scope.freeTextContentToEdit)
+        scope.deleteFreeTextContent = function() {
+          FreeTextContentService.deleteFreeTextContent(scope.freeTextContentToEdit, scope.portfolioSection)
+            .then(refreshContent)
             .then(function() {
-              _.remove($scope.freeTextContents, {id: $scope.freeTextContentToEdit.id});
-              $scope.freeTextContentToEdit = null;
+              scope.freeTextContentToEdit = null;
             });
         };
       }

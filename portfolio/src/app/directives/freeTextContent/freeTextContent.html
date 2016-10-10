@@ -16,7 +16,7 @@
 -->
 
 <div class="ui-component">
-  <div ng-repeat="freeTextContent in freeTextContents" class="free-text-content ui-component">
+  <div ng-repeat="freeTextContent in freeTextContents track by $index" class="free-text-content ui-component">
 
     <div class="edit-link-wrapper">
       <edit-link on-edit="editFreeTextContent(freeTextContent)"
@@ -30,11 +30,10 @@
       </div>
       <p class="free-text-content__text user-text" embed="freeTextContent.text"></p>
     </div>
-    <edit-free-text-content
-      ng-if="freeTextContentToEdit === freeTextContent"
-      free-text-content="freeTextContentToEdit"
-      on-ok="updateFreeTextContent()"
-      on-remove="deleteFreeTextContent()">
+    <edit-free-text-content ng-if="freeTextContentToEdit === freeTextContent"
+                            free-text-content="freeTextContentToEdit"
+                            on-ok="updateFreeTextContent()"
+                            on-remove="deleteFreeTextContent()">
     </edit-free-text-content>
   </div>
 
@@ -42,5 +41,6 @@
     <add-new-component on-click="insertFreeTextContent()"></add-new-component>
   </div>
 
-  <visibility-toggle component-id="FREE_TEXT_CONTENT"></visibility-toggle>
+  <visibility-toggle component-id="FREE_TEXT_CONTENT" section-name="{{::portfolioSection}}">
+  </visibility-toggle>
 </div>

@@ -177,5 +177,11 @@
       "sv": "Swedish",
       "tr": "Turkish"
     }
+  },
+  "tabs": {
+    "basicInformation": "Basic information",
+    "research": "Research and scientific activities",
+    "teaching": "Teaching and supervision",
+    "administration": "Administration and other activities"
   }
 }

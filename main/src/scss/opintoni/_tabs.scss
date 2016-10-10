@@ -16,6 +16,7 @@
  */
 
 $page-content-padding: 1em;
+$horizontal-tab-padding: 0.4em;
 
 .tab-bar {
   display: flex;
@@ -53,6 +54,77 @@ $page-content-padding: 1em;
 
     &[disabled] {
       visibility: hidden;
+    }
+  }
+}
+
+.tab-content {
+  transition: opacity 0.5s;
+
+  &.fade-in {
+    opacity: 1;
+  }
+
+  &.fade-out {
+    opacity: 0;
+  }
+
+  &__content-area {
+    position: relative;
+  }
+
+  &__visibility-toggle {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -1em;
+  }
+}
+
+.tab-set {
+  display: flex;
+  align-items: flex-start;
+
+  text-transform: uppercase;
+  font-weight: 600;
+
+  @keyframes active-in {
+    from {border-color: $lightsilver;}
+    to {border-color: $darkblue;}
+  }
+
+  @keyframes active-out {
+    from {border-color: $darkblue;}
+    to {border-color: $lightsilver;}
+  }
+
+  &__tab {
+    flex: 1 0 auto;
+    min-width: 90px;
+    padding: 0 $horizontal-tab-padding;
+    border-bottom: 2px solid;
+    border-color: $lightsilver;
+    text-align: center;
+    line-height: 2;
+    white-space: nowrap;
+    animation-name: active-out;
+    animation-duration: 0.3s;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:only-child {
+      display: none;
+    }
+
+    &.is-active {
+      a {
+        color: $darkblue;
+      }
+
+      animation-name: active-in;
+      animation-duration: 0.3s;
+      border-color: $darkblue;
     }
   }
 }
