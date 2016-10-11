@@ -151,16 +151,14 @@
   }
 
   .dropdown-toggle {
-    .icon {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      @include transform(translate(-50%, -50%));
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-      .circled-number {
-        top: -5px;
-      }
+    .circled-number {
+      top: -5px;
     }
+
   }
 
   .hy {
