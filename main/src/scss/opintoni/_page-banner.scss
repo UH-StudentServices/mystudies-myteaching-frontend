@@ -47,6 +47,8 @@ $banner-transition-duration: 0.5s;
   &--visible {
     transition: $banner-transition-duration ease-in-out opacity;
     will-change: opacity;
+    z-index: 4;
+    position: relative;
 
     &.ng-enter {
       @include banner-transition-delay;
@@ -174,10 +176,10 @@ $banner-transition-duration: 0.5s;
 }
 
 .page-banner__change-background {
-  width: $page-banner-toggle-size;
   height: $page-banner-toggle-size;
   position: relative;
   @include breakpoint($small) {
+    width: $page-banner-toggle-size;
     margin-left: auto;
     margin-right: auto;
   }
@@ -265,7 +267,7 @@ $banner-transition-duration: 0.5s;
     top: $page-banner-toggle-size + 20px;
   }
   @include breakpoint($mobile-only) {
-    @include triangle-with-border(12px, 12px, $white, $lightsilver, left);
+    @include triangle-with-border(12px, 12px, $white, $lightsilver, right);
     top: $page-banner-toggle-size;
     left: 0;
     border: 1px solid $lightsilver !important;
