@@ -11,7 +11,7 @@ angular.module('directives.demoMessage', ['directives.message'])
         environments: '='
       },
       link: function(scope) {
-        if(_.includes(scope.environments, Configuration.environment)) {
+        if (_.includes(scope.environments, Configuration.environment)) {
           scope.message = {
             messageType: MessageTypes.INFO,
             key: DEMO_MESSAGE_KEY
