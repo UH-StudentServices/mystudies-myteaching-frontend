@@ -21,25 +21,25 @@ angular.module('services.workExperience', [
 
   .factory('WorkExperienceService', function(PortfolioService,
                                              WorkExperienceResource,
-                                             dateArrayToMomentObject,
-                                             momentDateToLocalDateArray) {
+                                             dateArrayToMomentObject) {
 
     var Rx = window.Rx,
         workExperienceSubject,
         jobSearchSubject;
+
+    function formatDates(workExperiences) {
+      return _.map(workExperiences, function(job) {
+        job.startDate = dateArrayToMomentObject(job.startDate);
+        job.endDate = dateArrayToMomentObject(job.endDate);
+        return job;
+      });
+    }
 
     function workExperienceArrayDatesToMoment(workExperience) {
       if (workExperience) {
         workExperience.startDate = dateArrayToMomentObject(workExperience.startDate);
         workExperience.endDate = dateArrayToMomentObject(workExperience.endDate);
       }
-
-      return workExperience;
-    }
-
-    function workExperienceMomentsToArrays(workExperience) {
-      workExperience.startDate = momentDateToLocalDateArray(workExperience.startDate);
-      workExperience.endDate = momentDateToLocalDateArray(workExperience.endDate);
       return workExperience;
     }
 
@@ -72,33 +72,11 @@ angular.module('services.workExperience', [
         .then(_.partialRight(_.map, workExperienceArrayDatesToMoment));
     }
 
-    function addToWorkExperience(newItem) {
-      return workExperienceSubject.getValue().concat(newItem);
-    }
-
-    function saveWorkExperience(workExperience) {
-      return PortfolioService.getPortfolio()
-        .then(getPortfolioId)
-        .then(_.partial(WorkExperienceResource.saveWorkExperience,
-              workExperienceMomentsToArrays(workExperience)))
-        .then(workExperienceArrayDatesToMoment)
-        .then(addToWorkExperience)
-        .then(publishWorkExperience);
-    }
-
     function saveJobSearch(jobSearch) {
       return PortfolioService.getPortfolio()
         .then(getPortfolioId)
         .then(_.partial(WorkExperienceResource.saveJobSearch, jobSearch))
         .then(publishJobSearch);
-    }
-
-    function deleteWorkExperience(workExperience) {
-      return PortfolioService.getPortfolio()
-        .then(getPortfolioId)
-        .then(_.partial(WorkExperienceResource.deleteWorkExperience, workExperience.id))
-        .then(_.partialRight(_.map, workExperienceArrayDatesToMoment))
-        .then(publishWorkExperience);
     }
 
     function deleteJobSearch(jobSearch) {
@@ -114,27 +92,29 @@ angular.module('services.workExperience', [
         getWorkExperience()
           .then(publishWorkExperience);
       }
-
       return workExperienceSubject;
     }
 
     function getJobSearchSubject() {
-      if (!jobSearchSubject) {
+      if (!jobSearchSubject) {
         jobSearchSubject = new Rx.BehaviorSubject();
         getJobSearch()
           .then(publishJobSearch);
       }
-
       return jobSearchSubject;
     }
 
+    function updateWorkExperience(portfolioId, updateWorkExperience) {
+      return WorkExperienceResource.updateWorkExperience(portfolioId, updateWorkExperience).then(formatDates);
+    }
+
     return {
+      formatDates: formatDates,
       getWorkExperienceSubject: getWorkExperienceSubject,
       getJobSearchSubject: getJobSearchSubject,
       saveJobSearch: saveJobSearch,
-      saveWorkExperience: saveWorkExperience,
-      deleteWorkExperience: deleteWorkExperience,
-      deleteJobSearch: deleteJobSearch
+      deleteJobSearch: deleteJobSearch,
+      updateWorkExperience: updateWorkExperience
     };
   });
 

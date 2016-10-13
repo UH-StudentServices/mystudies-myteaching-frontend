@@ -15,167 +15,81 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.workExperience',
-  ['services.workExperience',
-   'filters.moment',
-   'directives.dateInput'])
+angular.module('directives.workExperience', [
+  'services.workExperience',
+  'filters.moment',
+  'directives.showWorkExperience',
+  'directives.editWorkExperience'
+])
 
-  .constant('AddWorkExperienceSteps', {
-    SELECT_TYPE: 'selectType',
-    ADD_WORK_EXPERIENCE: 'addWorkExperience',
-    ADD_JOB_SEARCH: 'addJobSearch'
-  })
+.factory('OrderWorkExperience', function() {
+  return function(workExperience) {
+    return workExperience.startDate.unix();
+  };
+})
 
-  .constant('ResetAddWorkExperienceEvent', 'resetAddWorkExperienceEvent')
+.directive('workExperience', function(WorkExperienceService, momentDateToLocalDateArray) {
+  return {
+    restrict: 'E',
+    replace: true,
+    scope: {
+      workExperienceData: '&',
+      portfolioId: '@'
+    },
+    templateUrl: 'app/directives/workExperience/workExperience.html',
+    link: function($scope) {
+      $scope.editing = false;
+      $scope.workExperience = WorkExperienceService.formatDates($scope.workExperienceData());
 
-  .factory('OrderWorkExperience', function() {
-    return function(workExperience) {
-      return workExperience.startDate.unix();
-    };
-  })
+      WorkExperienceService.getJobSearchSubject().subscribe(function(jobSearch) {
+        $scope.jobSearch = jobSearch;
+      });
 
-  .directive('workExperience', function() {
-    return {
-      restrict: 'E',
-      replace: true,
-      scope: {},
-      templateUrl: 'app/directives/workExperience/workExperience.html',
-      controller: function($scope,
-                           $q,
-                           WorkExperienceService,
-                           AddWorkExperienceSteps,
-                           ResetAddWorkExperienceEvent,
-                           OrderWorkExperience) {
-        $scope.AddWorkExperienceSteps = AddWorkExperienceSteps;
-        $scope.step = AddWorkExperienceSteps.SELECT_TYPE;
-        $scope.displayPopover = false;
+      $scope.edit = function() {
+        $scope.editing = true;
+      };
 
-        $scope.edit = function() {
-          $scope.editing = true;
-        };
-
-        $scope.exitEdit = function() {
-          $scope.editing = false;
-        };
-
-        $scope.addWorkExperience = function() {
-          $scope.step = AddWorkExperienceSteps.ADD_WORK_EXPERIENCE;
-        };
-
-        $scope.addJobSearch = function() {
-          $scope.step = AddWorkExperienceSteps.ADD_JOB_SEARCH;
-        };
-
-        $scope.$on(ResetAddWorkExperienceEvent, function() {
-          $scope.step = AddWorkExperienceSteps.SELECT_TYPE;
-        });
-
-        $scope.removeWorkExperience = function(workExperience) {
-          WorkExperienceService.deleteWorkExperience(workExperience);
-        };
-
-        $scope.removeJobSearch = function() {
+      $scope.exitEdit = function() {
+        if ($scope.jobSearch !== null) {
+          WorkExperienceService.saveJobSearch($scope.jobSearch);
+        } else {
           WorkExperienceService.deleteJobSearch($scope.jobSearch);
-        };
-
-        $scope.showPopover = function() {
-          $scope.displayPopover = true;
-        };
-
-        $scope.hidePopover = function() {
-          $scope.displayPopover = false;
-        };
-
-        $scope.orderWorkExperience = OrderWorkExperience;
-
-        WorkExperienceService.getWorkExperienceSubject()
-          .subscribe(function(workExperience) {
-            $scope.workExperience = workExperience;
-          });
-
-        WorkExperienceService.getJobSearchSubject()
-          .subscribe(function(jobSearch) {
-            $scope.jobSearch = jobSearch;
-          });
-      }
-    };
-  })
-
-  .directive('addWorkExperience', function() {
-    return {
-      restrict: 'E',
-      replace: true,
-      templateUrl: 'app/directives/workExperience/workExperience.addNew.workExperience.html',
-      scope: {
-        hidePopover: '='
-      },
-      controller: function($scope, WorkExperienceService, ResetAddWorkExperienceEvent) {
-        function createNewWorkExperience() {
-          return {
-            startDate: moment(),
-            endDate: null
-          };
         }
 
-        $scope.newWorkExperience = createNewWorkExperience();
+        var updateWorkExperience = angular.copy($scope.workExperience);
 
-        $scope.addWorkExperience = function() {
-          var workExperience = angular.copy($scope.newWorkExperience);
+        _.forEach(updateWorkExperience, function(job) {
+          job.startDate = momentDateToLocalDateArray(job.startDate);
+          job.endDate = momentDateToLocalDateArray(job.endDate);
+        });
 
-          WorkExperienceService.saveWorkExperience(workExperience).then(function() {
-            $scope.newWorkExperience = createNewWorkExperience();
-            $scope.hidePopover();
-            $scope.$emit(ResetAddWorkExperienceEvent);
-          });
-        };
-      }
-    };
+        WorkExperienceService.updateWorkExperience($scope.portfolioId, updateWorkExperience).then(function(data) {
+          $scope.workExperience = data;
+          $scope.editing = false;
+        });
+      };
+    },
+  }
+})
 
-  })
+.directive('workExperienceSummary', function() {
+  return {
+    restrict: 'E',
+    replace: true,
+    templateUrl: 'app/directives/workExperience/workExperienceSummary.html',
+    scope: {},
+    controller: function($scope,
+                         WorkExperienceService,
+                         OrderWorkExperience) {
+      WorkExperienceService.getWorkExperienceSubject().subscribe(function(workExperience) {
+        $scope.workExperience = workExperience;
+      });
 
-  .directive('addJobSearch', function() {
-    return {
-      restrict: 'E',
-      replace: true,
-      templateUrl: 'app/directives/workExperience/workExperience.addNew.jobSearch.html',
-      scope: {
-        hidePopover: '='
-      },
-      controller: function($scope, WorkExperienceService, ResetAddWorkExperienceEvent) {
-        $scope.newJobSearch = {};
+      WorkExperienceService.getJobSearchSubject().subscribe(function(jobSearch) {
+        $scope.jobSearch = jobSearch;
+      });
 
-        $scope.addJobSearch = function() {
-          WorkExperienceService.saveJobSearch($scope.newJobSearch).then(function() {
-            $scope.newJobSearch = {};
-            $scope.hidePopover();
-            $scope.$emit(ResetAddWorkExperienceEvent);
-          });
-        };
-      }
-    };
-  })
-
-  .directive('workExperienceSummary', function() {
-    return {
-      restrict: 'E',
-      replace: true,
-      templateUrl: 'app/directives/workExperience/workExperienceSummary.html',
-      scope: {
-      },
-      controller: function($scope,
-                           WorkExperienceService,
-                           OrderWorkExperience) {
-        WorkExperienceService.getWorkExperienceSubject()
-          .subscribe(function(workExperience) {
-            $scope.workExperience = workExperience;
-          });
-
-        WorkExperienceService.getJobSearchSubject()
-          .subscribe(function(jobSearch) {
-            $scope.jobSearch = jobSearch;
-          });
-
-        $scope.orderWorkExperience = OrderWorkExperience;
-      }
-    };
-  });
+      $scope.orderWorkExperience = OrderWorkExperience;
+    }
+  };
+});

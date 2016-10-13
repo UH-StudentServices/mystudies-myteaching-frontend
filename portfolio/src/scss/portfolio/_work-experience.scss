@@ -73,13 +73,19 @@ ul.work-experience {
 
     .job-search & {
       background-color: $blue--active;
-      .work-experience.editing & {
+      .work-experience .editable & {
         background-color: $darkblue;
       }
     }
-    .work-experience.editing & {
+    .work-experience .editable & {
       background-color: rgba(0, 0, 0, 0.8);
       color: $silver;
+    }
+
+    .editable-content-active {
+      input {
+        width: 90%;
+      }
     }
   }
 }
@@ -110,6 +116,13 @@ ul.work-experience {
     margin-top: 1em;
   }
 
+  .editable-content {
+    color: $silver !important;
+  }
+
+  .editable-content:hover {
+    color: $white !important;
+  }
 }
 
 .work-experience__title {
@@ -127,6 +140,10 @@ ul.work-experience {
     font-size: 1rem;
   }
 
+  textarea {
+    height: 100%;
+  }
+
   height: calc(100% - 5em);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -142,6 +159,31 @@ ul.work-experience {
 }
 
 .work-experience__add-new {
+  .input-container {
+    overflow: hidden;
+    margin-right: 40px;
+    input {
+      width: 100%;
+      height: 40px;
+      border: 1px solid $lightsilver;
+      padding: 0 20px;
+    }
+  }
+
+  .add-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    background-color: $blue;
+    color: $white;
+    .fa-plus {
+      color: #ffffff;
+    }
+  }
+
   @include border;
   position: relative;
   margin-top: 2em;
@@ -150,8 +192,8 @@ ul.work-experience {
 .work-experience__remove {
   background-color: $blue;
   cursor: pointer;
-  width: 3em;
-  height: 3em;
+  width: 40px;
+  height:40px;
   position: absolute;
   top: 0;
   right: 0;
@@ -162,62 +204,6 @@ ul.work-experience {
     left: 50%;
     @include transform(translate(-50%, -50%));
     @include font-awesome("\f00d");
-  }
-}
-
-.add-favorite-container {
-  &.add-work-experience {
-    top: -$work-experience-height / 2 + 15 !important;
-  }
-}
-
-.add-favorite {
-  .add-work-experience & {
-    height: auto !important;
-    min-height: 150px;
-  }
-}
-
-.add-favorite-step {
-  .add-work-experience & {
-    li {
-      font-size: 0.9em;
-      padding: 0.8em 0.5em !important;
-    }
-
-    li.job-search a {
-      &:before {
-        content : "";
-        display: inline-block;
-        margin-right: 1em;
-        position: relative;
-        top: 2px;
-        width: 1em;
-        height: 1em;
-        background-color: $blue--active;
-      }
-    }
-  }
-}
-
-.add-work-experience form {
-  padding: 1em;
-  .form-type-text {
-    float: none;
-    width: 100%;
-    label {
-      font-size: 0.9rem;
-      line-height: 1.5rem;
-      padding: 0;
-    }
-    input {
-      width: 100%;
-    }
-  }
-
-  input[type="submit"] {
-    margin-top: 1em;
-    padding: 0.5em 1em;
   }
 }
 
@@ -242,5 +228,3 @@ ul.work-experience {
   width: 100%;
   padding-bottom: 1.5em;
 }
-
-
