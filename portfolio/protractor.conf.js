@@ -19,12 +19,20 @@ var ScreenShotReporter = require('protractor-screenshot-reporter');
 
 exports.config = {
   specs: ['test/spec/e2e/**/*.js'],
+
+  capabilities: {
+    'browserName': 'phantomjs',
+    'phantomjs.cli.args': ['--web-security=false', '--ignore-ssl-errors=true'],
+    'phantomjs.binary.path': '../node_modules/.bin/phantomjs'
+  },
+
   onPrepare: function() {
     // Add a screenshot reporter and store screenshots to `/tmp/screnshots`:
     jasmine.getEnv().addReporter(new ScreenShotReporter({
       baseDirectory: 'e2e_screenshots',
       takeScreenShotsOnlyForFailedSpecs: true
     }));
+
     browser.driver.manage().window().setSize(1200, 768);
   }
 };
