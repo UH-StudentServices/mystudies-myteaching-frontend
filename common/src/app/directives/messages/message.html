@@ -15,29 +15,6 @@
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<header class="l-header">
-  <demo-message environments="['demo']"></demo-message>
-  <page-header></page-header>
-</header>
-
-<navigation></navigation>
-<preview-message></preview-message>
-
-<intro></intro>
-
-<div class="l-page island wrapper">
-  <div limit-visibility="{roles: ['STUDENT']}">
-    <div ng-include="'app/partials/_student.html'"></div>
-  </div>
-
-  <div limit-visibility="{roles: ['TEACHER']}">
-    <div ng-include="'app/partials/_teacher.html'"></div>
-  </div>
+<div class="messages" ng-class="message.messageType">
+  <p><span translate="{{message.key}}"></span><span ng-click="close(message)" class="hy hy-remove" ng-if="close"></span></p>
 </div>
-
-<portfolio-tour tour-disabled="true"></portfolio-tour>
-
-<feedback visibility-private ng-if="userSettings.cookieConsent"></feedback>
-<cookie-notification visibility-private ng-if="!userSettings.cookieConsent"></cookie-notification>
-
-<footer class="l-footer island" ng-include="'app/partials/_page_footer.html'"></footer>

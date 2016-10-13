@@ -247,7 +247,8 @@
   "globalMessages": {
     "errors": {
       "genericError": "Det uppstår problem med tjänsten för tillfället. Vissa funktioner fungerar inte kanske som de ska."
-    }
+    },
+    "demoEnvNotice": "Obs! Detta är en demomiljö och information är inte korrekt. För rätt information gå till <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>"
   },
   "todoItems": {
     "listIsEmpty": "Din uppgiftslista är tom",

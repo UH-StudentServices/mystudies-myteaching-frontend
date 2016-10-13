@@ -183,5 +183,8 @@
     "research": "Tutkimus",
     "teaching": "Opetus ja ohjaus",
     "administration": "Hallintotehtävät ja muu toiminta"
+  },
+  "globalMessages": {
+    "demoEnvNotice": "Huomio! Tämä on demoympäristö, jossa tiedot eivät ole oikeita. Oikeat tiedot ovat osoitteessa <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>"
   }
 }
