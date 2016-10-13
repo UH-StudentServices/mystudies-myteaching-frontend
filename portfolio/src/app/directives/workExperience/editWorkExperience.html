@@ -142,14 +142,16 @@
   </li>
 
   <li visibility-private class="work-experience__add-new" ng-hide="jobSearch">
-    <div class="input-container">
+    <div class="input-container" ng-form name="addJobSearchForm">
       <input ng-model="newJobSearch.contactEmail"
+             type="email" name="contactEmail" required
              ui-keypress="{'enter':'addJobSearch(newJobSearch)'}"
-             type="text"
              placeholder="{{::('workExperience.addJobSearch' | translate)}}"
              aria-label="{{::('workExperience.addJobSearch' | translate)}}"/>
     </div>
     <button class="add-icon fa fa-plus"
+            ng-class="{'form-error': !addJobSearchForm.contactEmail.$valid}"
+            ng-disabled="!addJobSearchForm.contactEmail.$valid"
             ng-click="addJobSearch(newJobSearch)"
             aria-label="{{::('workExperience.addNew' | translate)}}">
     </button>

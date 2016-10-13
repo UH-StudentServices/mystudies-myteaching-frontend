@@ -94,10 +94,11 @@ angular.module('directives.editWorkExperience', [
       };
 
       $scope.addJobSearch = function(jobSearch) {
-        console.log(jobSearch);
-        jobSearch.headline = $translate.instant('workExperience.jobSearchHeadline');
-        $scope.jobSearch = jobSearch;
-        $scope.newJobSearch = {};
+        if (jobSearch) {
+          jobSearch.headline = $translate.instant('workExperience.jobSearchHeadline');
+          $scope.jobSearch = jobSearch;
+          $scope.newJobSearch = {};
+        }
       };
 
       $scope.removeJobSearch = function() {

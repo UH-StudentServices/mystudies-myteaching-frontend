@@ -179,8 +179,9 @@ ul.work-experience {
     text-align: center;
     background-color: $blue;
     color: $white;
-    .fa-plus {
-      color: #ffffff;
+
+    &.form-error {
+      background-color: $gray;
     }
   }
 
