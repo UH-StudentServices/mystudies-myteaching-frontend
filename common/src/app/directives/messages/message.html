@@ -16,5 +16,5 @@
 -->
 
 <div class="messages" ng-class="message.messageType">
-  <p>{{message.key | translate | capitalize}} <span ng-click="close(message)" class="hy hy-remove" ng-if="close"></span></p>
+  <p><span translate="{{::message.key}}"></span><span ng-click="close(message)" class="hy hy-remove" ng-if="close"></span></p>
 </div>

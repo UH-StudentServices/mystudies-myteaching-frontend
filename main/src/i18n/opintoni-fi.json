@@ -245,7 +245,8 @@
   "globalMessages": {
     "errors": {
       "genericError": "Palvelun toiminnassa on havaittu ongelmia. Jotkut ominaisuudet saattavat olla pois käytöstä."
-    }
+    },
+    "demoEnvNotice": "Huomio! Tämä on demoympäristö, jossa tiedot eivät ole oikeita. Oikeat tiedot ovat osoitteessa <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>"
   },
   "todoItems": {
     "listIsEmpty": "Muistilistasi on vielä tyhjä",
