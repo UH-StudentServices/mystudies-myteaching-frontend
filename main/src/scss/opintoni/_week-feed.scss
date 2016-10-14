@@ -352,3 +352,9 @@ $tablist-single-row: min-width 28.75em;
 #week-feed .messages {
   margin-bottom: 1em;
 }
+
+// Fast fixes for printable calendars
+// Multirow events in the calendar. See https://code.google.com/p/fullcalendar/issues/detail?id=1992
+.fc-day-grid-event > .fc-content {
+  white-space: normal;
+}

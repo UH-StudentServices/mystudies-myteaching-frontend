@@ -57,6 +57,7 @@ angular.module('directives.eventCalendar', [])
         $translate('weekFeed.calendarCustom.list').then(function(listText) {
           $scope.uiConfig = {
             calendar: {
+              height: 900,
               lang: LanguageService.getCurrent(),
               allDaySlot: false,
               eventRender: function(event, element) {
@@ -89,7 +90,8 @@ angular.module('directives.eventCalendar', [])
                 AnalyticsService.trackShowCalendarView(view.name);
               },
               weekNumbers: true,
-              scrollTime: '08:00:00'
+              scrollTime: '08:00:00',
+              displayEventEnd: true
             }
           };
         });
