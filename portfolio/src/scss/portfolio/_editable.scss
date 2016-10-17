@@ -45,28 +45,29 @@
       }
     }
 
-    .editable-content-active {
-      position: relative;
-      input {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        background-color: $white;
-        font-weight: normal;
-        width: 100%;
-        padding-right: 2.5em;
-      }
+  }
+}
 
-      .fa-check {
-        position: absolute;
-        right: 1em;
-        top: 50%;
-        @include transform(translateY(-50%));
-        color: $blue;
-        &:hover {
-          cursor: pointer;
-        }
-      }
+.editable-content-active {
+  position: relative;
+  input {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: $white;
+    font-weight: normal;
+    width: 100%;
+    padding-right: 2.5em;
+  }
+
+  .fa-check {
+    position: absolute;
+    right: 1em;
+    top: 50%;
+    @include transform(translateY(-50%));
+    color: $blue;
+    &:hover {
+      cursor: pointer;
     }
   }
 }

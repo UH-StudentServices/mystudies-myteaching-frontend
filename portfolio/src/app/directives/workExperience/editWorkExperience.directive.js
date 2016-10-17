@@ -81,6 +81,22 @@ angular.module('directives.editWorkExperience', [
         job.employerUrlEdit = false;
       };
 
+      $scope.enterContactEmailEdit = function() {
+        $scope.editContactEmail = true;
+      };
+
+      $scope.exitContactEmailEdit = function() {
+        $scope.editContactEmail = false;
+      };
+
+      $scope.enterJobHeadlineEdit = function() {
+        $scope.editJobSearchHeadline = true;
+      };
+
+      $scope.exitJobHeadlineEdit = function() {
+        $scope.editJobSearchHeadline = false;
+      };
+
       $scope.addWorkExperience = function(job) {
         job.startDate = moment();
         job.jobTitle = $translate.instant('workExperience.jobTitle');

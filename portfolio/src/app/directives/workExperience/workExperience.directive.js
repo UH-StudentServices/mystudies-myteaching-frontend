@@ -69,7 +69,7 @@ angular.module('directives.workExperience', [
         });
       };
     },
-  }
+  };
 })
 
 .directive('workExperienceSummary', function() {

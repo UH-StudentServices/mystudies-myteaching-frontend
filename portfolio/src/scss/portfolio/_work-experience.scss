@@ -102,6 +102,7 @@ ul.work-experience {
   color: $black;
   display: inline-block;
   float: left;
+  position: relative;
 
   @include border-bottom;
 
@@ -112,6 +113,7 @@ ul.work-experience {
   }
 
   @include breakpoint($mobile-only) {
+    height: 150px;
     width: 100%;
     margin-top: 1em;
   }
@@ -122,6 +124,12 @@ ul.work-experience {
 
   .editable-content:hover {
     color: $white !important;
+  }
+
+  .editable-content-active {
+    input {
+      width: 90%;
+    }
   }
 }
 
@@ -155,6 +163,7 @@ ul.work-experience {
 
 .work-experience__url {
   position: absolute;
+  width: 100%;
   bottom: 1em;
 }
 

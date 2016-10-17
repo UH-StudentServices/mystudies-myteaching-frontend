@@ -98,28 +98,59 @@
     </div>
   </li>
 
-  <li ng-show="jobSearch">
+  <li ng-show="jobSearch" class="editable">
     <div class="work-experience__item job-search">
       <div class="work-experience__banner">
         <div class="work-experience__banner-content">
           <div class="work-experience__employer-container">
-            <div class="work-experience__title text-transform-capitalize-block"
-                 translate="workExperience.jobSearch" />
+            <div class="work-experience__title text-transform-capitalize-block">
+               <span class="editable-content">
+                 <span translate="workExperience.jobSearch" />
+               </span>
+            </div>
             <div class="work-experience__text">
-              {{jobSearch.contactEmail}}
+              <span class="editable-content" ng-show="!editContactEmail">
+                <span ng-click="enterContactEmailEdit()">
+                  {{jobSearch.contactEmail}}<i class="fa fa-pencil"></i>
+                </span>
+              </span>
+              <span class="editable-content-active" ng-show="editContactEmail">
+                <input ng-model="jobSearch.contactEmail"
+                       ui-keypress="{'enter':'exitContactEmailEdit()'}" />
+                <i ng-click="exitContactEmailEdit()" class="fa fa-check"></i>
+              </span>
             </div>
           </div>
         </div>
       </div>
       <div class="work-experience__description-container">
         <div class="work-experience__title">
-          {{jobSearch.headline}}
+          <span class="editable-content" ng-show="!editJobSearchHeadline">
+            <span ng-click="enterJobHeadlineEdit()">
+              {{jobSearch.headline}}<i class="fa fa-pencil"></i>
+            </span>
+          </span>
+          <span class="editable-content-active" ng-show="editJobSearchHeadline">
+            <input focus="editJobSearchHeadline" ng-model="jobSearch.headline"
+                   ui-keypress="{'enter':'exitJobHeadlineEdit()'}" />
+            <i ng-click="exitJobHeadlineEdit()" class="fa fa-check"></i>
+          </span>
         </div>
         <div class="work-experience__description">
-          <p>{{jobSearch.text}}</p>
+          <textarea placeholder="{{'workExperience.descriptionPlaceholder'|translate}}"
+                    ng-model="jobSearch.text"></textarea>
         </div>
         <div class="work-experience__url">
-          <a href="mailto:{{jobSearch.contactEmail}}">{{jobSearch.contactEmail}}</a>
+          <span class="editable-content" ng-show="!editContactEmail">
+            <span ng-click="enterContactEmailEdit()">
+              {{jobSearch.contactEmail}}<i class="fa fa-pencil"></i>
+            </span>
+          </span>
+          <span class="editable-content-active" ng-show="editContactEmail">
+            <input focus="editContactEmail" ng-model="jobSearch.contactEmail"
+                   ui-keypress="{'enter':'exitContactEmailEdit()'}" />
+            <i ng-click="exitContactEmailEdit()" class="fa fa-check"></i>
+          </span>
         </div>
       </div>
       <div class="work-experience__remove" ng-show="editing" ng-click="removeJobSearch()"></div>

@@ -31,7 +31,7 @@ angular.module('resources.workExperience', ['services.state'])
 
     function jobSearchResource(portfolioId) {
       return $resource('/api/' + StateService.getCurrent() + '/v1/portfolio/' +
-        portfolioId + '/jobsearch/:id', {id: '@id'});
+        portfolioId + '/jobsearch', {});
     }
 
     function saveJobSearch(jobSearch, portfolioId) {
