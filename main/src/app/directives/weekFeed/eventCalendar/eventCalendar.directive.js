@@ -24,7 +24,7 @@ angular.module('directives.eventCalendar', [])
   })
 
   .service('EventColorService', function() {
-    var colors = ['#0098d0', '#0882B3', '#888888', ' #424242'];
+    var colors = ['#0098d0', '#005479', '#888888', ' #424242'];
 
     return {
       getColor: function(identifier) {
