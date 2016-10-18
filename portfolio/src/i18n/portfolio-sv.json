@@ -189,6 +189,12 @@
     "teaching": "Undervisning och handledning",
     "administration": "Förvaltningsuppgifter och andra uppgifter"
   },
+  "teachingTabAccordions": {
+    "development": "Utveckling av undervisningen",
+    "practices": "Undervisnings- och handledningsmetoder",
+    "materials": "Användning och utveckling av läromedel",
+    "collaborativeDevelopment": "Den gemensamma utvecklingen av undervisningen"
+  },
   "globalMessages": {
     "demoEnvNotice": "Obs! Detta är en demomiljö och information är inte korrekt. För rätt information gå till <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>"
   }

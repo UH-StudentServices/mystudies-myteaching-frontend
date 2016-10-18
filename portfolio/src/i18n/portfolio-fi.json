@@ -189,6 +189,12 @@
     "teaching": "Opetus ja ohjaus",
     "administration": "Hallintotehtävät ja muu toiminta"
   },
+  "teachingTabAccordions": {
+    "development": "Opetuksen kehittäminen",
+    "practices": "Opetus- ja ohjauskäytännöt",
+    "materials": "Oppimateriaalin käyttö ja kehittäminen",
+    "collaborativeDevelopment": "Yhteisöllisen opetuksen kehittäminen"
+  },
   "globalMessages": {
     "demoEnvNotice": "Huomio! Tämä on demoympäristö, jossa tiedot eivät ole oikeita. Oikeat tiedot ovat osoitteessa <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>"
   }
