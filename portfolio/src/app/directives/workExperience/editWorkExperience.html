@@ -24,41 +24,41 @@
           <div class="work-experience__employer-container">
             <div class="work-experience__title">
               <span class="editable-content" ng-show="!workExperienceItem.employerEdit">
-                <span ng-click="editEmployer(workExperienceItem)">
+                <a ng-click="editEmployer(workExperienceItem)">
                   {{workExperienceItem.employer}}<i class="fa fa-pencil"></i>
-                </span>
+                </a>
               </span>
               <span class="editable-content-active" ng-show="workExperienceItem.employerEdit">
                 <input focus="workExperienceItem.employerEdit" ng-model="workExperienceItem.employer"
                        ui-keypress="{'enter':'exitEmployerEdit(workExperienceItem)'}" />
-                <i ng-click="exitEmployerEdit(workExperienceItem)" class="fa fa-check"></i>
+                <a ng-click="exitEmployerEdit(workExperienceItem)"><i class="fa fa-check"></i></a>
               </span>
             </div>
             <div class="work-experience__text">
               <span class="editable-content" ng-show="!workExperienceItem.startDateEdit">
-                <span ng-click="editStartDate(workExperienceItem)">
+                <a ng-click="editStartDate(workExperienceItem)">
                   {{workExperienceItem.startDate | momentFormat:'M/YYYY'}}
                   <i class="fa fa-pencil"></i>
-                </span>
+                </a>
               </span>
               <span class="editable-content-active" ng-if="workExperienceItem.startDateEdit">
                 <input focus="workExperienceItem.startDateEdit"
                        date-input="MM/YYYY" ng-model="workExperienceItem.startDate"
                        ui-keypress="{'enter':'exitStartDateEdit(workExperienceItem)'}">
-                <i ng-click="exitStartDateEdit(workExperienceItem)" class="fa fa-check"></i>
+                <a ng-click="exitStartDateEdit(workExperienceItem)"><i class="fa fa-check"></i></a>
               </span>
               -
               <span class="editable-content" ng-show="!workExperienceItem.endDateEdit">
-                <span ng-click="editEndDate(workExperienceItem)">
+                <a ng-click="editEndDate(workExperienceItem)">
                   {{workExperienceItem.endDate | momentFormat:'M/YYYY'}}
                   <i class="fa fa-pencil"></i>
-                </span>
+                </a>
               </span>
               <span class="editable-content-active" ng-if="workExperienceItem.endDateEdit">
                 <input focus="workExperienceItem.endDateEdit"
                        date-input="MM/YYYY" ng-model="workExperienceItem.endDate"
                        ui-keypress="{'enter':'exitEndDateEdit(workExperienceItem)'}">
-                <i ng-click="exitEndDateEdit(workExperienceItem)" class="fa fa-check"></i>
+                <a ng-click="exitEndDateEdit(workExperienceItem)"><i class="fa fa-check"></i></a>
               </span>
             </div>
           </div>
@@ -67,14 +67,14 @@
       <div class="work-experience__description-container">
         <div class="work-experience__title">
           <span class="editable-content" ng-show="!workExperienceItem.jobTitleEdit">
-            <span ng-click="editJobTitle(workExperienceItem)">
+            <a ng-click="editJobTitle(workExperienceItem)">
               {{workExperienceItem.jobTitle}}<i class="fa fa-pencil"></i>
-            </span>
+            </a>
           </span>
           <span class="editable-content-active" ng-show="workExperienceItem.jobTitleEdit">
             <input focus="workExperienceItem.jobTitleEdit" ng-model="workExperienceItem.jobTitle"
                    ui-keypress="{'enter':'exitJobTitleEdit(workExperienceItem)'}" />
-            <i ng-click="exitJobTitleEdit(workExperienceItem)" class="fa fa-check"></i>
+            <a ng-click="exitJobTitleEdit(workExperienceItem)"><i class="fa fa-check"></i></a>
           </span>
         </div>
         <div class="work-experience__description">
@@ -83,18 +83,18 @@
         </div>
         <div class="work-experience__url">
           <span class="editable-content" ng-show="!workExperienceItem.employerUrlEdit">
-            <span ng-click="editEmployerUrl(workExperienceItem)">
+            <a ng-click="editEmployerUrl(workExperienceItem)">
               {{workExperienceItem.employerUrl}}<i class="fa fa-pencil"></i>
-            </span>
+            </a>
           </span>
           <span class="editable-content-active" ng-show="workExperienceItem.employerUrlEdit">
             <input focus="workExperienceItem.employerUrlEdit" ng-model="workExperienceItem.employerUrl"
                    ui-keypress="{'enter':'exitEmployerUrlEdit(workExperienceItem)'}" />
-            <i ng-click="exitEmployerUrlEdit(workExperienceItem)" class="fa fa-check"></i>
+            <a ng-click="exitEmployerUrlEdit(workExperienceItem)"><i class="fa fa-check"></i></a>
           </span>
         </div>
       </div>
-      <div class="work-experience__remove" ng-show="editing" ng-click="removeWorkExperience(workExperienceItem)"></div>
+      <button class="work-experience__remove" ng-show="editing" ng-click="removeWorkExperience(workExperienceItem)"></button>
     </div>
   </li>
 
@@ -110,14 +110,14 @@
             </div>
             <div class="work-experience__text">
               <span class="editable-content" ng-show="!editContactEmail">
-                <span ng-click="enterContactEmailEdit()">
+                <a ng-click="enterContactEmailEdit()">
                   {{jobSearch.contactEmail}}<i class="fa fa-pencil"></i>
-                </span>
+                </a>
               </span>
               <span class="editable-content-active" ng-show="editContactEmail">
                 <input ng-model="jobSearch.contactEmail"
                        ui-keypress="{'enter':'exitContactEmailEdit()'}" />
-                <i ng-click="exitContactEmailEdit()" class="fa fa-check"></i>
+                <a ng-click="exitContactEmailEdit()"><i class="fa fa-check"></i></a>
               </span>
             </div>
           </div>
@@ -126,14 +126,14 @@
       <div class="work-experience__description-container">
         <div class="work-experience__title">
           <span class="editable-content" ng-show="!editJobSearchHeadline">
-            <span ng-click="enterJobHeadlineEdit()">
+            <a ng-click="enterJobHeadlineEdit()">
               {{jobSearch.headline}}<i class="fa fa-pencil"></i>
-            </span>
+            </a>
           </span>
           <span class="editable-content-active" ng-show="editJobSearchHeadline">
             <input focus="editJobSearchHeadline" ng-model="jobSearch.headline"
                    ui-keypress="{'enter':'exitJobHeadlineEdit()'}" />
-            <i ng-click="exitJobHeadlineEdit()" class="fa fa-check"></i>
+            <a ng-click="exitJobHeadlineEdit()"><i class="fa fa-check"></i></a>
           </span>
         </div>
         <div class="work-experience__description">
@@ -142,18 +142,18 @@
         </div>
         <div class="work-experience__url">
           <span class="editable-content" ng-show="!editContactEmail">
-            <span ng-click="enterContactEmailEdit()">
+            <a ng-click="enterContactEmailEdit()">
               {{jobSearch.contactEmail}}<i class="fa fa-pencil"></i>
-            </span>
+            </a>
           </span>
           <span class="editable-content-active" ng-show="editContactEmail">
             <input focus="editContactEmail" ng-model="jobSearch.contactEmail"
                    ui-keypress="{'enter':'exitContactEmailEdit()'}" />
-            <i ng-click="exitContactEmailEdit()" class="fa fa-check"></i>
+            <a ng-click="exitContactEmailEdit()"><i class="fa fa-check"></i></a>
           </span>
         </div>
       </div>
-      <div class="work-experience__remove" ng-show="editing" ng-click="removeJobSearch()"></div>
+      <button class="work-experience__remove" ng-show="editing" ng-click="removeJobSearch()"></button>
     </div>
   </li>
 

@@ -22,8 +22,6 @@ angular.module('directives.showWorkExperience', [])
 .directive('showWorkExperience', function() {
   return {
     restrict: 'E',
-    templateUrl: 'app/directives/workExperience/showWorkExperience.html',
-    link: function($scope) {
-    }
+    templateUrl: 'app/directives/workExperience/showWorkExperience.html'
   };
 });

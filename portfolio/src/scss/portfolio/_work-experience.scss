@@ -82,6 +82,10 @@ ul.work-experience {
       color: $silver;
     }
 
+    .editable-content a {
+      color: $white;
+    }
+
     .editable-content-active {
       input {
         width: 90%;
@@ -118,7 +122,7 @@ ul.work-experience {
     margin-top: 1em;
   }
 
-  .editable-content {
+  .editable-content a {
     color: $silver !important;
   }
 
