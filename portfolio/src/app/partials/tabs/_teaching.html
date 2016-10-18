@@ -21,8 +21,43 @@
       <visibility-toggle section-name="TEACHING"></visibility-toggle>
     </div>
 
-    <free-text-content limit-visibility="{portfolioComponent: 'FREE_TEXT_CONTENT', sectionName: 'TEACHING'}"
-                       portfolio-section="TEACHING">
-    </free-text-content>
+    <accordion heading-key="teachingTabAccordions.development">
+      <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
+                                            sectionName: 'TEACHING',
+                                            instanceName: 'ASSESSMENT'}"
+                         portfolio-section="TEACHING"
+                         instance-name="ASSESSMENT">
+      </free-text-content>
+
+      <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
+                                            sectionName: 'TEACHING',
+                                            instanceName: 'FEEDBACK'}"
+                         portfolio-section="TEACHING"
+                         instance-name="FEEDBACK">
+      </free-text-content>
+
+      <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
+                                            sectionName: 'TEACHING',
+                                            instanceName: 'PEDAGOGIC_THINKING'}"
+                         portfolio-section="TEACHING"
+                         instance-name="PEDAGOGIC_THINKING">
+      </free-text-content>
+
+      <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
+                                            sectionName: 'TEACHING',
+                                            instanceName: 'PEDAGOGIC_TRAINING'}"
+                         portfolio-section="TEACHING"
+                         instance-name="PEDAGOGIC_TRAINING">
+      </free-text-content>
+    </accordion>
+
+    <accordion heading-key="teachingTabAccordions.practices">
+    </accordion>
+
+    <accordion heading-key="teachingTabAccordions.materials">
+    </accordion>
+
+    <accordion heading-key="teachingTabAccordions.collaborativeDevelopment">
+    </accordion>
   </div>
 </div>

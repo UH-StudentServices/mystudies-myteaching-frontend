@@ -6,19 +6,13 @@ angular.module('services.freeTextContent', ['resources.freeTextContent', 'servic
       return PortfolioService.getPortfolio().then(_.property('id'));
     }
 
-    function getFreeTextContent(section) {
+    function getFreeTextContent(searchCriteria) {
       return PortfolioService.getPortfolio().then(function(portfolio) {
-        if (section) {
-          return portfolio.freeTextContent.filter(function(el) {
-            return el.portfolioSection === section;
-          });
-        } else {
-          return portfolio.freeTextContent;
-        }
+        return portfolio.freeTextContent.filter(_.matches(searchCriteria));
       });
     }
 
-    function updateCachedPortfolio(freeTextContent, section, remove) {
+    function updateCachedPortfolio(freeTextContent, visibilityDescriptor, remove) {
       return PortfolioService.getPortfolio().then(function(portfolio) {
         var idx = _.findIndex(portfolio.freeTextContent, _.pick(freeTextContent, 'id'));
 
@@ -30,31 +24,31 @@ angular.module('services.freeTextContent', ['resources.freeTextContent', 'servic
           portfolio.freeTextContent.push(freeTextContent);
         }
 
-        return getFreeTextContent(section);
+        return getFreeTextContent(visibilityDescriptor);
       });
     }
 
-    function insertFreeTextContent(freeTextContent, section) {
+    function insertFreeTextContent(freeTextContent, visibilityDescriptor) {
       return getPortfolioId().then(function(portfolioId) {
         return FreeTextContentResource.insertFreeTextContent(portfolioId, freeTextContent);
       }).then(function(freeTextContent) {
-        return updateCachedPortfolio(freeTextContent, section);
+        return updateCachedPortfolio(freeTextContent, visibilityDescriptor);
       });
     }
 
-    function updateFreeTextContent(freeTextContent, section) {
+    function updateFreeTextContent(freeTextContent, visibilityDescriptor) {
       return getPortfolioId().then(function(portfolioId) {
         return FreeTextContentResource.updateFreeTextContent(portfolioId, freeTextContent);
       }).then(function(freeTextContent) {
-        return updateCachedPortfolio(freeTextContent, section);
+        return updateCachedPortfolio(freeTextContent, visibilityDescriptor);
       });
     }
 
-    function deleteFreeTextContent(freeTextContent, section) {
+    function deleteFreeTextContent(freeTextContent, visibilityDescriptor) {
       return getPortfolioId().then(function(portfolioId) {
         return FreeTextContentResource.deleteFreeTextContent(portfolioId, freeTextContent);
       }).then(function() {
-        return updateCachedPortfolio(freeTextContent, section, true);
+        return updateCachedPortfolio(freeTextContent, visibilityDescriptor, true);
       });
     }
 

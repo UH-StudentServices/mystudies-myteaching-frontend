@@ -9,12 +9,11 @@ angular.module('directives.freeTextContent', [
         defaultText = $filter('translate')('freeTextContent.defaultText');
 
     return {
-      defaultFreeTextContent: function(section) {
-        return {
+      defaultFreeTextContent: function(visibilityDescriptor) {
+        return _.assign({}, visibilityDescriptor, {
           title: defaultTitle,
-          text: defaultText,
-          portfolioSection: section
-        };
+          text: defaultText
+        });
       }
     };
   })
@@ -26,16 +25,22 @@ angular.module('directives.freeTextContent', [
       replace: true,
       templateUrl: 'app/directives/freeTextContent/freeTextContent.html',
       scope: {
-        portfolioSection: '@'
+        portfolioSection: '@',
+        instanceName: '@'
       },
       link: function(scope) {
+        var visibilityDescriptor = {
+          portfolioSection: scope.portfolioSection || null,
+          instanceName: scope.instanceName || null
+        };
+
         function refreshContent(freeTextContent) {
           scope.freeTextContents = freeTextContent;
           return freeTextContent;
         }
 
         scope.freeTextContents = FreeTextContentService
-          .getFreeTextContent(scope.portfolioSection)
+          .getFreeTextContent(visibilityDescriptor)
           .then(refreshContent);
 
         scope.editFreeTextContent = function(freeTextContent) {
@@ -45,7 +50,7 @@ angular.module('directives.freeTextContent', [
         scope.insertFreeTextContent = function() {
           FreeTextContentService
             .insertFreeTextContent(FreeTextContentFactory
-              .defaultFreeTextContent(scope.portfolioSection), scope.portfolioSection)
+              .defaultFreeTextContent(visibilityDescriptor), visibilityDescriptor)
             .then(refreshContent)
             .then(function(freeTextContent) {
               scope.freeTextContentToEdit = freeTextContent[freeTextContent.length -1];
@@ -53,7 +58,7 @@ angular.module('directives.freeTextContent', [
         };
 
         scope.updateFreeTextContent = function() {
-          FreeTextContentService.updateFreeTextContent(scope.freeTextContentToEdit, scope.portfolioSection)
+          FreeTextContentService.updateFreeTextContent(scope.freeTextContentToEdit, visibilityDescriptor)
             .then(refreshContent)
             .then(function() {
               scope.freeTextContentToEdit = null;
@@ -61,7 +66,7 @@ angular.module('directives.freeTextContent', [
         };
 
         scope.deleteFreeTextContent = function() {
-          FreeTextContentService.deleteFreeTextContent(scope.freeTextContentToEdit, scope.portfolioSection)
+          FreeTextContentService.deleteFreeTextContent(scope.freeTextContentToEdit, visibilityDescriptor)
             .then(refreshContent)
             .then(function() {
               scope.freeTextContentToEdit = null;

@@ -17,43 +17,43 @@
 
 <div class="l-multi-col-content-wrapper">
   <div class="l-content-primary-wrapper">
-    <studies limit-visibility="{portfolioComponent: 'STUDIES'}"
+    <studies limit-visibility="{componentId: 'STUDIES'}"
              summary-data="portfolio.summary"
              portfolio-id="{{::portfolio.id}}"
              class="tour-element__studies">
     </studies>
 
-    <degrees limit-visibility="{portfolioComponent: 'DEGREES'}"
+    <degrees limit-visibility="{componentId: 'DEGREES'}"
              degrees-data="portfolio.degrees"
              portfolio-id="{{::portfolio.id}}">
     </degrees>
 
-    <work-experience limit-visibility="{portfolioComponent: 'WORK_EXPERIENCE'}"
+    <work-experience limit-visibility="{componentId: 'WORK_EXPERIENCE'}"
                      work-experience-data="portfolio.workExperience"
                      portfolio-id="{{::portfolio.id}}">
     </work-experience>
 
-    <free-text-content limit-visibility="{portfolioComponent: 'FREE_TEXT_CONTENT'}">
+    <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT'}">
     </free-text-content>
   </div>
 
   <div class="l-content-secondary-wrapper">
-    <credits limit-visibility="{portfolioComponent: 'CREDITS'}" portfolio-id="{{::portfolio.id}}"></credits>
-    <contact-information limit-visibility="{portfolioComponent: 'CONTACT_INFORMATION'}"
+    <credits limit-visibility="{componentId: 'CREDITS'}" portfolio-id="{{::portfolio.id}}"></credits>
+    <contact-information limit-visibility="{componentId: 'CONTACT_INFORMATION'}"
                          contact-information-data="portfolio.contactInformation"
                          portfolio-id="{{::portfolio.id}}">
     </contact-information>
   </div>
 </div>
 
-<attainments limit-visibility="{portfolioComponent: 'ATTAINMENTS'}"
+<attainments limit-visibility="{componentId: 'ATTAINMENTS'}"
              portfolio-id="{{::portfolio.id}}">
 </attainments>
 
-<language-proficiencies limit-visibility="{portfolioComponent: 'LANGUAGE_PROFICIENCIES'}"
+<language-proficiencies limit-visibility="{componentId: 'LANGUAGE_PROFICIENCIES'}"
                         language-proficiencies-data="portfolio.languageProficiencies">
 </language-proficiencies>
 
-<favorites limit-visibility="{portfolioComponent: 'FAVORITES'}"
+<favorites limit-visibility="{componentId: 'FAVORITES'}"
            favorites-data="portfolio.favorites">
 </favorites>
