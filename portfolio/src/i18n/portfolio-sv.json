@@ -203,7 +203,17 @@
     "publications": "Pedagogiska publikationer"
   },
   "practicesAccordionComponents": {
+    "internationality": "Internationalitet",
+    "supervision": "Handledning",
     "courses": "Kurser"
+  },
+  "materialsAccordionComponents": {
+    "researchBased": "Forskningsbaserade läromedel",
+    "cooperation": "Samarbete"
+  },
+  "collaborativeDevelopmentAccordionComponents": {
+    "teachingCollaboration": "Undervisningssamarbete",
+    "multidisciplinaryCooperation": "Mångdisciplinärt samarbete"
   },
   "globalMessages": {
     "demoEnvNotice": "Obs! Detta är en demomiljö och information är inte korrekt. För rätt information gå till <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>"

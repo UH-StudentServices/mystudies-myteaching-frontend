@@ -203,7 +203,17 @@
     "publications": "Pedagogical publications"
   },
   "practicesAccordionComponents": {
+    "internationality": "Internationality",
+    "supervision": "Supervision",
     "courses": "Courses"
+  },
+  "materialsAccordionComponents": {
+    "researchBased": "Reasearch-based learning materials",
+    "cooperation": "Cooperation"
+  },
+  "collaborativeDevelopmentAccordionComponents": {
+    "teachingCollaboration": "Collaboration in teaching",
+    "multidisciplinaryCooperation": "Multidisciplinary cooperation"
   },
   "globalMessages": {
     "demoEnvNotice": "Notice! This is a demo environment and the information is not correct. For the correct information go to <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>"

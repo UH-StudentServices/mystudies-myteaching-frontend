@@ -203,7 +203,17 @@
     "publications": "Pedagogiset julkaisut"
   },
   "practicesAccordionComponents": {
+    "internationality": "Kansainvälisyys",
+    "supervision": "Ohjaus",
     "courses": "Kurssit"
+  },
+  "materialsAccordionComponents": {
+    "researchBased": "Tutkimukseen perustuvat oppimateriaalit",
+    "cooperation": "Yhteistyö"
+  },
+  "collaborativeDevelopmentAccordionComponents": {
+    "teachingCollaboration": "Opetusyhteistyö",
+    "multidisciplinaryCooperation": "Monitieteinen yhteistyö"
   },
   "globalMessages": {
     "demoEnvNotice": "Huomio! Tämä on demoympäristö, jossa tiedot eivät ole oikeita. Oikeat tiedot ovat osoitteessa <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>"
