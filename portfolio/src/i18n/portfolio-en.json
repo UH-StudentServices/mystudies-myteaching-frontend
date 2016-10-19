@@ -195,6 +195,16 @@
     "materials": "Use and development of learning materials",
     "collaborativeDevelopment": "Collaborative development of teaching"
   },
+  "developmentAccordionComponents": {
+    "assessment": "Assessment of learning",
+    "feedback": "Student feedback",
+    "thinking": "Pedagogical thinking",
+    "training": "Pedagogical training",
+    "publications": "Pedagogical publications"
+  },
+  "practicesAccordionComponents": {
+    "courses": "Courses"
+  },
   "globalMessages": {
     "demoEnvNotice": "Notice! This is a demo environment and the information is not correct. For the correct information go to <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>"
   }

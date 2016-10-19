@@ -195,6 +195,16 @@
     "materials": "Användning och utveckling av läromedel",
     "collaborativeDevelopment": "Den gemensamma utvecklingen av undervisningen"
   },
+  "developmentAccordionComponents": {
+    "assessment": "Utvärderingsmetoder",
+    "feedback": "Insamling av respons",
+    "thinking": "Pedagogiskt tänkande",
+    "training": "Pedagogisk utbildning",
+    "publications": "Pedagogiska publikationer"
+  },
+  "practicesAccordionComponents": {
+    "courses": "Kurser"
+  },
   "globalMessages": {
     "demoEnvNotice": "Obs! Detta är en demomiljö och information är inte korrekt. För rätt information gå till <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>"
   }
