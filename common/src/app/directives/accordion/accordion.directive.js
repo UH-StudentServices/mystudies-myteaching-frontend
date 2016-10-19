@@ -26,7 +26,7 @@ angular.module('directives.accordion', [])
         headingKey: '@'
       },
       link: function(scope, el) {
-        var CONTENT_AREA_SELECTOR = '.accordion__content',
+        var CONTENT_AREA_SELECTOR = '.accordion__contents',
             contentHolder = el.find(CONTENT_AREA_SELECTOR);
 
         function toggle() {
