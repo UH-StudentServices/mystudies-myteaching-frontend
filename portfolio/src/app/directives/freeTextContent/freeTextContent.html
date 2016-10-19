@@ -32,12 +32,13 @@
     </div>
     <edit-free-text-content ng-if="freeTextContentToEdit === freeTextContent"
                             free-text-content="freeTextContentToEdit"
+                            heading-key="{{headingKey}}"
                             on-ok="updateFreeTextContent()"
                             on-remove="deleteFreeTextContent()">
     </edit-free-text-content>
   </div>
 
-  <div class="add-free-text-content ui-component" visibility-private>
+  <div class="add-free-text-content ui-component" visibility-private ng-if="!disableAddNew">
     <add-new-component on-click="insertFreeTextContent()"></add-new-component>
   </div>
 
