@@ -15,14 +15,17 @@
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<div>
-  <div limit-visibility="{sectionName: 'BASIC_INFORMATION'}" class="tab-content__content-area">
-    <div class="tab-content__visibility-toggle">
-      <visibility-toggle section-name="BASIC_INFORMATION"></visibility-toggle>
-    </div>
+<section class="accordion" ng-class="{'is-open': isOpen}">
+  <header>
+    <a class="accordion__title" tabindex="0" ng-click="toggle()">
+      <div class="accordion__title__status-indicator">
+        <span class="accordion-status hy hy-arrow"></span>
+      </div>
+      <div class="accordion__title__content">
+        <h3>{{ ::(headingKey | translate) }}</h3>
+      </div>
+    </a>
+  </header>
 
-    <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT', sectionName: 'BASIC_INFORMATION'}"
-                       portfolio-section="BASIC_INFORMATION">
-    </free-text-content>
-  </div>
-</div>
+  <div class="accordion__contents" ng-transclude></div>
+</section>

@@ -1,0 +1,49 @@
+.accordion {
+  margin-bottom: 1em;
+
+  &__title {
+    display: flex;
+    color: $white;
+
+    &__status-indicator {
+      display: flex;
+      align-items: center;
+      flex: 0 0 auto;
+      padding: 1em;
+      background-color: $darkblue;
+
+      :hover & {
+        color: $white;
+      }
+    }
+
+    &__content {
+      display: flex;
+      align-items: center;
+      flex: 1 1 auto;
+      padding: 0.5em 1em;
+      background-color: $blue;
+
+      h3 {
+        padding: 0;
+        font-size: 1rem;
+        color: inherit;
+      }
+    }
+  }
+
+  &__contents {
+    display: none;
+    padding: 1em;
+    background: linear-gradient($white, $white 70%, darken($white, 2%));
+  }
+
+  &-status {
+    transform: rotate(0deg);
+    transition: transform 0.2s;
+
+    .is-open & {
+      transform: rotate(90deg);
+    }
+  }
+}

@@ -1,20 +1,42 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 angular.module('directives.freeTextContent', [
   'services.freeTextContent',
   'directives.editFreeText',
   'directives.editLink'])
 
-  .factory('FreeTextContentFactory', function($filter) {
+  .factory('FreeTextContentFactory', function($translate) {
 
-    var defaultTitle = $filter('translate')('freeTextContent.defaultTitle'),
-        defaultText = $filter('translate')('freeTextContent.defaultText');
+    var defaultTitle = $translate.instant('freeTextContent.defaultTitle'),
+        defaultText = $translate.instant('freeTextContent.defaultText');
 
     return {
-      defaultFreeTextContent: function(section) {
-        return {
+      defaultFreeTextContent: function(visibilityDescriptor) {
+        return _.assign({}, visibilityDescriptor, {
           title: defaultTitle,
-          text: defaultText,
-          portfolioSection: section
-        };
+          text: defaultText
+        });
+      },
+      fixedFreeTextContent: function(visibilityDescriptor, headingKey) {
+        return _.assign({}, visibilityDescriptor, {
+          title: $translate.instant(headingKey),
+          text: defaultText
+        });
       }
     };
   })
@@ -26,26 +48,46 @@ angular.module('directives.freeTextContent', [
       replace: true,
       templateUrl: 'app/directives/freeTextContent/freeTextContent.html',
       scope: {
-        portfolioSection: '@'
+        portfolioSection: '@',
+        instanceName: '@',
+        singleEntry: '@?',
+        headingKey: '@?'
       },
-      link: function(scope) {
+      link: function(scope, el ,attrs) {
+        var visibilityDescriptor = {
+          portfolioSection: scope.portfolioSection || null,
+          instanceName: scope.instanceName || null
+        };
+
         function refreshContent(freeTextContent) {
           scope.freeTextContents = freeTextContent;
           return freeTextContent;
         }
 
+        function conditionalFixedEntry(freeTextContent) {
+          if (!freeTextContent.length && scope.headingKey) {
+            scope.insertFreeTextContent(true);
+          }
+        }
+
+        scope.disableAddNew = 'singleEntry' in attrs;
+
         scope.freeTextContents = FreeTextContentService
-          .getFreeTextContent(scope.portfolioSection)
-          .then(refreshContent);
+          .getFreeTextContent(visibilityDescriptor)
+          .then(refreshContent)
+          .then(conditionalFixedEntry);
 
         scope.editFreeTextContent = function(freeTextContent) {
           scope.freeTextContentToEdit = freeTextContent;
         };
 
-        scope.insertFreeTextContent = function() {
+        scope.insertFreeTextContent = function(useFixedEntry) {
+          var entry = useFixedEntry ?
+            FreeTextContentFactory.fixedFreeTextContent(visibilityDescriptor, scope.headingKey) :
+            FreeTextContentFactory.defaultFreeTextContent(visibilityDescriptor);
+
           FreeTextContentService
-            .insertFreeTextContent(FreeTextContentFactory
-              .defaultFreeTextContent(scope.portfolioSection), scope.portfolioSection)
+            .insertFreeTextContent(entry, visibilityDescriptor)
             .then(refreshContent)
             .then(function(freeTextContent) {
               scope.freeTextContentToEdit = freeTextContent[freeTextContent.length -1];
@@ -53,7 +95,7 @@ angular.module('directives.freeTextContent', [
         };
 
         scope.updateFreeTextContent = function() {
-          FreeTextContentService.updateFreeTextContent(scope.freeTextContentToEdit, scope.portfolioSection)
+          FreeTextContentService.updateFreeTextContent(scope.freeTextContentToEdit, visibilityDescriptor)
             .then(refreshContent)
             .then(function() {
               scope.freeTextContentToEdit = null;
@@ -61,7 +103,7 @@ angular.module('directives.freeTextContent', [
         };
 
         scope.deleteFreeTextContent = function() {
-          FreeTextContentService.deleteFreeTextContent(scope.freeTextContentToEdit, scope.portfolioSection)
+          FreeTextContentService.deleteFreeTextContent(scope.freeTextContentToEdit, visibilityDescriptor)
             .then(refreshContent)
             .then(function() {
               scope.freeTextContentToEdit = null;

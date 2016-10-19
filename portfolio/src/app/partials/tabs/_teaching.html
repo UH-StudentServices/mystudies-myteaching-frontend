@@ -21,8 +21,56 @@
       <visibility-toggle section-name="TEACHING"></visibility-toggle>
     </div>
 
-    <free-text-content limit-visibility="{portfolioComponent: 'FREE_TEXT_CONTENT', sectionName: 'TEACHING'}"
-                       portfolio-section="TEACHING">
-    </free-text-content>
+    <accordion heading-key="teachingTabAccordions.development">
+      <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
+                                            sectionName: 'TEACHING',
+                                            instanceName: 'ASSESSMENT'}"
+                         portfolio-section="TEACHING"
+                         instance-name="ASSESSMENT"
+                         heading-key="developmentAccordionComponents.assessment"
+                         single-entry>
+      </free-text-content>
+
+      <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
+                                            sectionName: 'TEACHING',
+                                            instanceName: 'FEEDBACK'}"
+                         portfolio-section="TEACHING"
+                         instance-name="FEEDBACK"
+                         heading-key="developmentAccordionComponents.feedback"
+                         single-entry>
+      </free-text-content>
+
+      <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
+                                            sectionName: 'TEACHING',
+                                            instanceName: 'PEDAGOGIC_THINKING'}"
+                         portfolio-section="TEACHING"
+                         instance-name="PEDAGOGIC_THINKING"
+                         heading-key="developmentAccordionComponents.thinking"
+                         single-entry>
+      </free-text-content>
+
+      <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
+                                            sectionName: 'TEACHING',
+                                            instanceName: 'PEDAGOGIC_TRAINING'}"
+                         portfolio-section="TEACHING"
+                         instance-name="PEDAGOGIC_TRAINING"
+                         heading-key="developmentAccordionComponents.training"
+                         single-entry>
+      </free-text-content>
+
+      <h3 translate="developmentAccordionComponents.publications"></h3>
+    </accordion>
+
+    <accordion heading-key="teachingTabAccordions.practices">
+      <h3 translate="practicesAccordionComponents.courses"></h3>
+    </accordion>
+
+    <accordion heading-key="teachingTabAccordions.materials">
+      <h3></h3>
+    </accordion>
+
+    <accordion heading-key="teachingTabAccordions.collaborativeDevelopment">
+      <h3></h3>
+    </accordion>
   </div>
 </div>

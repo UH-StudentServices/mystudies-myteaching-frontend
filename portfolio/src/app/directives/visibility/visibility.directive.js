@@ -63,22 +63,22 @@ angular.module('directives.visibility',
       replace: true,
       scope: {
         componentId: '@',
-        sectionName: '@'
+        sectionName: '@',
+        instanceName: '@'
       },
       templateUrl: 'app/directives/visibility/visibilityToggle.html',
       link: function(scope) {
-        var componentId = scope.componentId,
-            sectionName = scope.sectionName;
+        var visibilityDescriptor = _.pick(scope, ['componentId', 'sectionName', 'instanceName']);
 
         scope.Visibility = Visibility;
 
-        VisibilityService.getComponentVisibility(componentId, sectionName)
+        VisibilityService.getComponentVisibility(visibilityDescriptor)
           .then(function(visibility) {
             scope.visibility = visibility;
           });
 
         scope.setVisibility = function(visibility) {
-          VisibilityService.setComponentVisibility(componentId, sectionName, visibility)
+          VisibilityService.setComponentVisibility(visibilityDescriptor, visibility)
             .then(function(visibility) {
               scope.visibility = visibility;
             });
@@ -136,12 +136,11 @@ angular.module('directives.visibility',
           }
 
           function isLimitedByPortfolioComponentVisibility() {
-            var visibilityConf = scope.limitVisibility,
-                component = visibilityConf.portfolioComponent,
-                section = visibilityConf.sectionName;
+            var visibilityDescriptor = _.pick(scope.limitVisibility,
+              ['componentId', 'sectionName', 'instanceName']);
 
-            return component || section ?
-              VisibilityService.getComponentVisibility(component, section)
+            return _.some(visibilityDescriptor) ?
+              VisibilityService.getComponentVisibility(visibilityDescriptor)
                 .then(isComponentHidden) :
               $q.when(false);
           }
