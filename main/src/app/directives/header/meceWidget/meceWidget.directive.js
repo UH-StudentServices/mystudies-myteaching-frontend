@@ -20,7 +20,7 @@ angular.module('directives.header.meceWidget', [
   'services.userSettings',
   'services.language'])
 
-  .directive('meceWidget', function(UserSettingsService, LanguageService) {
+  .directive('meceWidget', function(UserSettingsService, LanguageService) {
 
     return {
       restrict: 'E',
