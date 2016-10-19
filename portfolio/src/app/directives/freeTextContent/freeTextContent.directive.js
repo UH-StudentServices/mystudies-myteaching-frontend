@@ -70,6 +70,12 @@ angular.module('directives.freeTextContent', [
           }
         }
 
+        function setEditableEntry(freeTextContent) {
+          if (!scope.headingKey) {
+            scope.freeTextContentToEdit = freeTextContent[freeTextContent.length - 1];
+          }
+        }
+
         scope.disableAddNew = 'singleEntry' in attrs;
 
         scope.freeTextContents = FreeTextContentService
@@ -89,9 +95,7 @@ angular.module('directives.freeTextContent', [
           FreeTextContentService
             .insertFreeTextContent(entry, visibilityDescriptor)
             .then(refreshContent)
-            .then(function(freeTextContent) {
-              scope.freeTextContentToEdit = freeTextContent[freeTextContent.length -1];
-            });
+            .then(setEditableEntry);
         };
 
         scope.updateFreeTextContent = function() {
