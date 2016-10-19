@@ -22,34 +22,33 @@ angular.module('resources.workExperience', ['services.state'])
     function workExperienceResource(portfolioId) {
       return $resource('/api/' + StateService.getCurrent() + '/v1/portfolio/' +
         portfolioId + '/workexperience/:id', {id: '@id'},
-        {'delete': {method: 'DELETE', isArray: true}});
+        {
+          'delete': {method: 'DELETE', isArray: true},
+          'update': {method: 'POST', isArray: true}
+        }
+      );
     }
 
     function jobSearchResource(portfolioId) {
       return $resource('/api/' + StateService.getCurrent() + '/v1/portfolio/' +
-        portfolioId + '/jobsearch/:id', {id: '@id'});
-    }
-
-    function saveWorkExperience(workExperience, portfolioId) {
-      return workExperienceResource(portfolioId).save(workExperience).$promise;
+        portfolioId + '/jobsearch', {});
     }
 
     function saveJobSearch(jobSearch, portfolioId) {
       return jobSearchResource(portfolioId).save(jobSearch).$promise;
     }
 
-    function deleteWorkExperience(workExperienceId, portfolioId) {
-      return workExperienceResource(portfolioId).delete({id: workExperienceId}).$promise;
-    }
-
-    function deleteJobSearch(jobSearch, portfolioId) {
+    function deleteJobSearch(jobSearch, portfolioId) {
       return jobSearchResource(portfolioId).delete(jobSearch).$promise;
     }
 
+    function updateWorkExperience(portfolioId, updateWorkExperience) {
+      return workExperienceResource(portfolioId).update(updateWorkExperience).$promise;
+    }
+
     return {
-      saveWorkExperience: saveWorkExperience,
       saveJobSearch: saveJobSearch,
-      deleteWorkExperience: deleteWorkExperience,
-      deleteJobSearch: deleteJobSearch
+      deleteJobSearch: deleteJobSearch,
+      updateWorkExperience: updateWorkExperience
     };
   });

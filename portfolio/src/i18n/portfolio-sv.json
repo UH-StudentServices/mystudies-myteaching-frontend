@@ -87,13 +87,18 @@
   "workExperience" : {
     "title": "arbetslivserfarenhet",
     "addNew": "lägg till",
-    "addWorkExperienceItem": "lägg till arbetslivserfarenhet",
+    "addWorkExperience": "Lägg till arbetslivserfarenhet",
+    "addJobSearch": "Lägg till söker job epost",
     "jobSearch": "söker job",
     "jobTitle": "jobbtitel",
     "employer": "arbetsgivare",
+    "employerUrl": "arbetsgivares websidan",
+    "text": "beskrivning",
+    "descriptionPlaceholder": "Lägg till beskrivning",
     "startDate": "startdatum (mm.yyyy)",
     "endDate": "slutdatum (mm.yyyy)",
-    "contactEmail": "contact email"
+    "contactEmail": "contact email",
+    "jobSearchHeadline": "rubrik"
   },
   "attainments": {
     "attainments": "Prestationer",
