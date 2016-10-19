@@ -31,7 +31,6 @@ angular.module('directives.freeTextContent', [
       link: function(scope) {
         function refreshContent(freeTextContent) {
           scope.freeTextContents = freeTextContent;
-
           return freeTextContent;
         }
 
@@ -49,7 +48,7 @@ angular.module('directives.freeTextContent', [
               .defaultFreeTextContent(scope.portfolioSection), scope.portfolioSection)
             .then(refreshContent)
             .then(function(freeTextContent) {
-              scope.freeTextContentToEdit = freeTextContent;
+              scope.freeTextContentToEdit = freeTextContent[freeTextContent.length -1];
             });
         };
 
