@@ -256,10 +256,6 @@
       "addNewButton": "Lisää uusi tehtävä -painike"
     }
   },
-  "userNotifications": {
-    "title": "Ilmoitukset",
-    "noNotifications": "Ei ilmoituksia."
-  },
   "tour": {
     "common": {
       "closeConfirm" : "Haluatko sulkea palvelun esittelyn?",
