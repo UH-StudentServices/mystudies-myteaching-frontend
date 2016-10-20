@@ -257,10 +257,6 @@
       "addNewButton": "Add new todo item button"
     }
   },
-  "userNotifications": {
-    "title": "Notifications",
-    "noNotifications" : "No notifications."
-  },
   "tour" : {
     "common": {
       "closeConfirm" : "Do you want to close the introduction tour?",

@@ -19,7 +19,6 @@ angular.module('directives.userMenu',
   ['directives.searchBar',
     'directives.searchIcon',
     'directives.userMenu.settings',
-    'directives.userNotifications',
     'directives.header.meceWidget',
     'directives.visibility',
     'ngFileUpload'])

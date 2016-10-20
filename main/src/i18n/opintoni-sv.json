@@ -258,10 +258,6 @@
       "addNewButton": "Skapa en ny todo -knapp"
     }
   },
-  "userNotifications": {
-    "title": "",
-    "noNotifications" : "Inga notifikationer."
-  },
   "tour" : {
     "common": {
       "closeConfirm" : "Vill du stänga introduktionsturen?",
