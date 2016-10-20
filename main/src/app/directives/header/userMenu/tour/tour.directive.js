@@ -81,16 +81,6 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
         startTour: '='
       },
       link: function($scope) {
-        function clickInsidePopover(event, popoverElement) {
-          var offset = popoverElement.offset(),
-              width = popoverElement.width(),
-              height = popoverElement.height();
-
-          return event.pageX >= offset.left &&
-            event.pageX <= offset.left + width && event.pageY >= offset.top &&
-            event.pageY <= offset.top + height;
-        }
-
         function showEndTourDialog() {
           Dialog.modalDialog(
             'tour.common.closeConfirm',
