@@ -61,14 +61,10 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
     };
   })
 
-  .factory('TourElementSelectorByMedia', function(BrowserUtil) {
+  .factory('TourElementSelector', function(BrowserUtil) {
     return {
-      selectorByMedia: function(selector) {
-        if (BrowserUtil.isMobile()) {
-          return '.show-mobile-only ' + selector;
-        } else {
-          return '.hide-mobile-only ' + selector;
-        }
+      selectorByViewportWidth: function(desktopSelector, mobileSelector) {
+        return BrowserUtil.isMobile() ? mobileSelector : desktopSelector;
       }
     };
   })
@@ -85,16 +81,6 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
         startTour: '='
       },
       link: function($scope) {
-        function clickInsidePopover(event, popoverElement) {
-          var offset = popoverElement.offset(),
-              width = popoverElement.width(),
-              height = popoverElement.height();
-
-          return event.pageX >= offset.left &&
-            event.pageX <= offset.left + width && event.pageY >= offset.top &&
-            event.pageY <= offset.top + height;
-        }
-
         function showEndTourDialog() {
           Dialog.modalDialog(
             'tour.common.closeConfirm',
@@ -115,7 +101,7 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
   })
 
   .directive('studentTour', function(TourTemplate, $templateCache, UserSettingsService,
-                                     TourElementSelectorByMedia) {
+                                     TourElementSelector) {
 
     $templateCache.put('studentTourTitleTemplate.html', TourTemplate.getTitleTemplate());
 
@@ -136,14 +122,15 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
             },
             {
               type: 'element',
-              selector: TourElementSelectorByMedia.selectorByMedia('.tour-element__search'),
+              selector: TourElementSelector.selectorByViewportWidth('.tour-element__search',
+                '.tour-element__search > .dropdown-toggle'),
               heading: translate('tour.common.search.heading'),
               text: translate('tour.common.search.text'),
               placement: 'bottom'
             },
             {
               type: 'element',
-              selector: TourElementSelectorByMedia.selectorByMedia('.tour-element__notifications'),
+              selector: '.tour-element__notifications',
               heading: translate('tour.common.notifications.heading'),
               text: translate('tour.common.notifications.text'),
               placement: 'bottom'
@@ -199,7 +186,7 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
   })
 
   .directive('teacherTour', function(TourTemplate, $templateCache, UserSettingsService,
-                                     TourElementSelectorByMedia) {
+                                     TourElementSelector) {
 
     $templateCache.put('teacherTourTitleTemplate.html', TourTemplate.getTitleTemplate());
 
@@ -221,7 +208,8 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
             },
             {
               type: 'element',
-              selector: TourElementSelectorByMedia.selectorByMedia('.tour-element__search'),
+              selector: TourElementSelector.selectorByViewportWidth('.tour-element__search',
+                '.tour-element__search > .dropdown-toggle'),
               heading: translate('tour.common.search.heading'),
               text: translate('tour.common.search.text'),
               placement: 'bottom',
@@ -229,7 +217,7 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
             },
             {
               type: 'element',
-              selector: TourElementSelectorByMedia.selectorByMedia('.tour-element__notifications'),
+              selector: '.tour-element__notifications',
               heading: translate('tour.common.notifications.heading'),
               text: translate('tour.common.notifications.text'),
               placement: 'bottom'
