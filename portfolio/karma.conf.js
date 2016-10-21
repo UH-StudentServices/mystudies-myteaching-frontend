@@ -38,7 +38,7 @@ module.exports = function(config) {
       '../bower_components/angular-sanitize/angular-sanitize.js',
       '../bower_components/angular-ui-utils/ui-utils.js',
       'src/app/**/*.js',
-      '../common/src/app/**/*.js',
+      '../common/src/app/**/!(bootstrap).js',
       'test/spec/unit/**/*.js'
     ],
 
