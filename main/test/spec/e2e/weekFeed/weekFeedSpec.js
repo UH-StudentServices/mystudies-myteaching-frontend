@@ -27,7 +27,7 @@ describe('Week feed', function() {
 
   function selectTab(tabName) {
     element
-      .all(by.css('.week-feed__tabs'))
+      .all(by.css('.tab-set'))
       .all(by.repeater('tab in tabs'))
       .filter(function(elem) {
         return elem.getText().then(function(text) {
@@ -39,7 +39,7 @@ describe('Week feed', function() {
   }
 
   function expectActiveTab(tabName) {
-    expect(element(by.css('.week-feed__tabs > .is-active')).getText()).toEqual(tabName);
+    expect(element(by.css('.tab-set > .is-active')).getText()).toEqual(tabName);
   }
 
   describe('week feed', function() {
@@ -51,11 +51,13 @@ describe('Week feed', function() {
       expectActiveTab(upcomingEventsTabName);
       expect(feedSelector.count()).toBeGreaterThan(0);
     });
+
     it('Will show courses when clicking courses tab.', function() {
       selectTab(coursesTabName);
       expectActiveTab(coursesTabName);
       expect(feedSelector.count()).toBeGreaterThan(0);
     });
+
     it('Will show exams when clicking exams tab.', function() {
       selectTab(examsTabName);
       expectActiveTab(examsTabName);

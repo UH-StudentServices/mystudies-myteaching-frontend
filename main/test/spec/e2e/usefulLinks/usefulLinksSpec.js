@@ -27,17 +27,14 @@ describe('Useful links', function() {
   });
 
   describe('Edit useful links', function() {
-    var linkUrl = util.uniqueId('http://www.usefullink') + '.fi';
-    var linkTitle = util.uniqueId();
-    var editedString = '_edited';
-    var editUsefulLinksElementFinder = element(
-      by.cssContainingText('#useful-links a.edit-link', 'edit'));
-    var editUsefulLinksDoneElementFinder = element(
-      by.cssContainingText('#useful-links a.edit-link', 'done'));
-    var newUsefulLinkContainerElementFinder =  element(
-      by.css('.new-useful-link-container'));
-    var newLinkTitleElementFinder = newUsefulLinkContainerElementFinder.element(
-      by.css('.useful-link-title input'));
+    var linkUrl = util.uniqueId('http://www.usefullink') + '.fi',
+        linkTitle = util.uniqueId(),
+        editUsefulLinksElementFinder = element(by.cssContainingText('#useful-links a.edit-link', 'edit')),
+        editUsefulLinksDoneElementFinder = element(by.cssContainingText('#useful-links a.edit-link', 'done')),
+        newUsefulLinkContainerElementFinder =  element(by.css('.new-useful-link-container')),
+        newLinkTitleElementFinder = newUsefulLinkContainerElementFinder.element(by.css('.useful-link-title input')),
+        EDITED = '_edited',
+        SCROLL_OFFSET = 1200;
 
     function findUsefulLinkToEdit(linkTitle) {
       return usefulLinksElementFinder.filter(function(e) {
@@ -62,46 +59,49 @@ describe('Useful links', function() {
     });
 
     it('Is possible to edit useful link', function() {
-      editUsefulLinksElementFinder.click();
-      findUsefulLinkToEdit(linkTitle).then(function(e) {
+      util.scrollTo(SCROLL_OFFSET).then(function() {
+        editUsefulLinksElementFinder.click();
+        findUsefulLinkToEdit(linkTitle).then(function(e) {
+          var urlInput = e.element(by.model('usefulLink.url'));
+          var titleInput = e.element(by.css('.useful-link-title input'));
 
-        var urlInput = e.element(by.model('usefulLink.url'));
-        var titleInput = e.element(by.css('.useful-link-title input'));
-
-        e.element(by.css('span[ng-click="editUsefulLink()"]'))
-          .click()
-          .then(function() {
-            return urlInput.sendKeys(editedString);
-          })
-          .then(function() {
-            return titleInput.sendKeys(editedString);
-          })
-          .then(function() {
-            return e.element(by.css('a .hy-done')).click();
-          })
-          .then(function() {
-            return editUsefulLinksDoneElementFinder.click();
-          })
-          .then(function() {
-            expect(element(by.cssContainingText('a',
-              linkTitle + editedString)).isPresent()).toEqual(true);
-          });
+          e.element(by.css('span[ng-click="editUsefulLink()"]'))
+            .click()
+            .then(function() {
+              return urlInput.sendKeys(EDITED);
+            })
+            .then(function() {
+              return titleInput.sendKeys(EDITED);
+            })
+            .then(function() {
+              return e.element(by.css('a .hy-done')).click();
+            })
+            .then(function() {
+              return editUsefulLinksDoneElementFinder.click();
+            })
+            .then(function() {
+              expect(element(by.cssContainingText('a',
+                linkTitle + EDITED)).isPresent()).toEqual(true);
+            });
+        });
       });
     });
 
     it('Is possible to delete useful link', function() {
-      editUsefulLinksElementFinder.click();
+      util.scrollTo(SCROLL_OFFSET).then(function() {
+        editUsefulLinksElementFinder.click();
 
-      findUsefulLinkToEdit(linkTitle).then(function(e) {
-        e.element(by.css('.hy-remove'))
-          .click()
-          .then(function() {
-            return editUsefulLinksDoneElementFinder.click();
-          })
-          .then(function() {
-            expect(element(by.cssContainingText('a',
-              linkTitle + editedString)).isPresent()).toEqual(false);
-          });
+        findUsefulLinkToEdit(linkTitle).then(function(e) {
+          e.element(by.css('.hy-remove'))
+            .click()
+            .then(function() {
+              return editUsefulLinksDoneElementFinder.click();
+            })
+            .then(function() {
+              expect(element(by.cssContainingText('a',
+                linkTitle + EDITED)).isPresent()).toEqual(false);
+            });
+        });
       });
     });
   });
