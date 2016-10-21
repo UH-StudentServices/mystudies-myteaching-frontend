@@ -24,6 +24,7 @@ $favorite-size-large: 340px;
 }
 
 .favorites-list__item {
+  height: 100%;
   position: relative;
 }
 
@@ -97,10 +98,6 @@ $favorite-size-large: 340px;
       width: calc(33.33% - (160px/3));
     };
   }
-}
-
-.favorites-container .dropzone li section {
-  height: 100%;
 }
 
 /**
@@ -217,7 +214,6 @@ $favorite-size-large: 340px;
 // _add-favorites.scss
 
 .favorites-list__item.add-new {
-  height: 100%;
   @include breakpoint($mobile-only) {
     height: 100px;
   }
