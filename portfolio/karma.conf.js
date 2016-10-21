@@ -46,7 +46,7 @@ module.exports = function(config) {
     exclude: [],
 
     // web server port
-    port: 9876,
+    port: 9875,
 
     // level of logging
     // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
