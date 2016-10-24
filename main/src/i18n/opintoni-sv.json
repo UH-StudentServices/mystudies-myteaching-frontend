@@ -145,6 +145,7 @@
     "subscribeEvents" : "Lägg till kalender",
     "calendarInstructions" : "Så här importerar du händelser till kalenderprogram",
     "cancelled" : "Annullerad",
+    "official": "Administratör",
     "calendarCustom": {
       "list": "Lista"
     }

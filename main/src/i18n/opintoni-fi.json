@@ -143,6 +143,7 @@
     "subscribeEvents": "Lisää kalenteriisi",
     "calendarInstructions": "Näin lisäät tapahtumat kalenteriohjelmiin ",
     "cancelled" : "peruttu",
+    "official": "Virkailija",
     "calendarCustom": {
       "list": "Lista"
     }

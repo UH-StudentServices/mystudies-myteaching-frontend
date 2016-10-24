@@ -249,6 +249,23 @@ $tablist-single-row: min-width 28.75em;
   }
 }
 
+.enrollment-tag {
+  color: $white;
+  text-transform: uppercase;
+  padding: 0.1em 0.4em;
+  margin-left: 1em;
+
+  &--cancelled {
+    @extend .enrollment-tag;
+    background-color: $brown;
+  }
+
+  &--official {
+    @extend .enrollment-tag;
+    background-color: $green;
+  }
+}
+
 .course-material-link-container--moodle,
 .course-material-link-container--moodle__actions {
   display: flex;
@@ -268,14 +285,6 @@ $tablist-single-row: min-width 28.75em;
   padding-bottom: 1em;
   margin-bottom: 1em;
   @include border-bottom;
-}
-
-.enrollment__cancelled {
-  background-color: $brown;
-  color: $white;
-  text-transform: uppercase;
-  padding: 0.1em 0.4em;
-  margin-left: 1em;
 }
 
 .week-feed-actions {

@@ -37,7 +37,11 @@ angular.module('directives.weekFeed.feedItem.course', [
     'WIKI': 'WIKI'
   })
 
-  .directive('course', function($translate) {
+  .constant('TeacherRoles', {
+    'OFFICIAL': 'official'
+  })
+
+  .directive('course', function($translate, TeacherRoles) {
 
     return {
       restrict: 'E',
@@ -58,6 +62,10 @@ angular.module('directives.weekFeed.feedItem.course', [
         scope.courseInfo = [courseCode, courseType + ' ' + courseCredits, courseTeachers]
           .filter(Boolean)
           .join(', ');
+
+        scope.isOfficial = function(feedItem) {
+          return feedItem.teacherRole === TeacherRoles.OFFICIAL;
+        }
       }
     };
   })
