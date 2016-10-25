@@ -86,7 +86,7 @@ angular.module('directives.dropdown', [])
           }
         }
 
-        angular.element($document[0].body).bind('click touchend', _.debounce(checkCloseDropdown, 100));
+        angular.element($document[0].body).bind('click', checkCloseDropdown);
       }
     };
   });
