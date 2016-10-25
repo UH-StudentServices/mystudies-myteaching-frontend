@@ -430,9 +430,9 @@ angular.module('directives.weekFeed', [
     },
     'COURSES': {
       info: {
-        'CURRENT_COURSES': 'weekFeed.noCourses',
-        'UPCOMING_COURSES': 'weekFeed.noCourses',
-        'PAST_COURSES': 'weekFeed.noCourses'
+        'CURRENT_COURSES': 'weekFeed.noOngoingCourses',
+        'UPCOMING_COURSES': 'weekFeed.noUpcomingCourses',
+        'PAST_COURSES': 'weekFeed.noPastCourses'
       },
       error: 'weekFeed.errors.errorLoadingCourses'
     },
