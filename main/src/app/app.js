@@ -24,9 +24,7 @@ angular.module('opintoniApp', [
   'ngCookies',
   'pascalprecht.translate',
   'ngAnimate',
-  'ngTouch',
   'ngSanitize',
-  'angular-carousel',
   'angularUtils.directives.dirPagination',
   'ngAria',
   'ngJoyRide',
@@ -69,9 +67,10 @@ angular.module('opintoniApp', [
 ])
   .constant('preferredLanguage', 'fi')
 
-  .run(function($rootScope, LanguageService) {
+  .run(function($rootScope, $window, LanguageService) {
     $rootScope.userLang = LanguageService.getCurrent();
     moment.locale($rootScope.userLang);
+    $window.FastClick.attach($window.document.body);
   })
 
   .config(function(

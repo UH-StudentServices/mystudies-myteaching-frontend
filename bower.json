@@ -12,7 +12,6 @@
     "angular-translate-loader-static-files": "~2.11.0",
     "angular-translate-storage-cookie": "~2.11.0",
     "angular-local-storage": "0.1.5",
-    "angular-carousel": "~0.3.7",
     "angular-utils-pagination": "~0.5.0",
     "angular-animate": "1.4.4",
     "angular-touch": "1.4.4",
@@ -47,7 +46,8 @@
     "es6-promise-polyfill": "~1.1.1",
     "moment": "~2.14.1",
     "moment-timezone": "~0.5.5",
-    "mece-client": "https://github.com/UniversityofHelsinki/mece-client.git#v1.0"
+    "mece-client": "https://github.com/UniversityofHelsinki/mece-client.git#v1.0",
+    "fastclick": "~1.0.6"
   },
   "devDependencies": {
     "angular-mocks": "1.4.4",
