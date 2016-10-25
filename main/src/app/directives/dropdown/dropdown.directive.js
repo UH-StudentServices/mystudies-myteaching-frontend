@@ -86,7 +86,7 @@ angular.module('directives.dropdown', [])
           }
         }
 
-        angular.element($document[0].body).bind('click', checkCloseDropdown);
+        angular.element($document[0].body).on('click', checkCloseDropdown);
       }
     };
   });
