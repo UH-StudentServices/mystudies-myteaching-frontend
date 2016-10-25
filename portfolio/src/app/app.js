@@ -137,9 +137,10 @@ angular.module('opintoniPortfolioApp',
     $cookiesProvider.defaults.domain = '.helsinki.fi';
   })
 
-  .run(function($rootScope, $translate, LanguageService) {
+  .run(function($rootScope, $window, LanguageService) {
     var language = LanguageService.getCurrent();
 
     $rootScope.userLang = language;
     moment.locale(language);
+    $window.FastClick.attach($window.document.body);
   });

@@ -73,7 +73,7 @@ angular.module('directives.dropdown', [])
           }
         });
 
-        angular.element($document[0].body).bind('click', function(event) {
+        function checkCloseDropdown(event) {
           var target = angular.element(event.target),
               contentClicked = target.inheritedData('dropdowncontent' + id),
               toggleClicked = target.inheritedData('dropdowntoggle' + id);
@@ -84,7 +84,9 @@ angular.module('directives.dropdown', [])
             toggleElement.removeClass('active');
             applyCloseCallback();
           }
-        });
+        }
+
+        angular.element($document[0].body).on('click', checkCloseDropdown);
       }
     };
   });
