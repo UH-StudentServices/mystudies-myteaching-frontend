@@ -65,7 +65,7 @@ angular.module('directives.weekFeed.feedItem.course', [
 
         scope.isOfficial = function(feedItem) {
           return feedItem.teacherRole === TeacherRoles.OFFICIAL;
-        }
+        };
       }
     };
   })
