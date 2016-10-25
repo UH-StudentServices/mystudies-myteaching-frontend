@@ -144,6 +144,7 @@
     "subscribeEvents" : "Add to calendar",
     "calendarInstructions" : "How to import events to calendar applications",
     "cancelled" : "canceled",
+    "official": "Official",
     "calendarCustom": {
       "list": "list"
     }
