@@ -59,7 +59,7 @@ angular.module('opintoniPortfolioApp',
    'directives.popover',
    'directives.cookieNotification',
    'directives.tabSet',
-   'directives.infoMessage',
+   'directives.stickyMessage',
    'directives.accordion',
 
    'filters.formatting',

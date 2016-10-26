@@ -41,3 +41,11 @@ $info-bg-color: $lightsilver;
 .messages .hy-remove {
   margin-left: 1em;
 }
+
+.sticky-message {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 10001;
+  @include clearfix;
+}
