@@ -35,7 +35,7 @@ angular.module('directives.stickyMessage', ['directives.message', 'services.conf
             key: scope.messageKey
           };
 
-          el.Stickyfill(); // eslint-disable-line
+          el.Stickyfill(); // eslint-disable-line new-cap
         }
       }
     };
