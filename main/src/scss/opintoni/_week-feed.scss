@@ -22,7 +22,7 @@ $tablist-single-row: min-width 28.75em;
   #week-feed & {
     display: flex;
     align-items: stretch;
-    margin-bottom: 1em;
+    margin: 1em 0;
 
     @include breakpoint($tablist-multi-row) {
       flex-wrap: wrap;
