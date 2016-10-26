@@ -15,12 +15,11 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('controllers.main', ['constants.portfolioTabs', 'portfolioAnalytics'])
-  .controller('MainCtrl', function(AnalyticsService, $scope, portfolioTabs, portfolio, userSettings) {
+angular.module('controllers.main', ['constants.portfolioTabs'])
+  .controller('MainCtrl', function($scope, portfolioTabs, portfolio, userSettings) {
     $scope.portfolio = portfolio;
     $scope.userSettings = userSettings;
     $scope.portfolioTabs = portfolioTabs;
 
     document.title = portfolio.ownerName;
-    AnalyticsService.trackPageView();
   });
