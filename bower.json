@@ -47,7 +47,8 @@
     "moment": "~2.14.1",
     "moment-timezone": "~0.5.5",
     "mece-client": "https://github.com/UniversityofHelsinki/mece-client.git#v1.0",
-    "fastclick": "~1.0.6"
+    "fastclick": "~1.0.6",
+    "Stickyfill": "~1.1.4"
   },
   "devDependencies": {
     "angular-mocks": "1.4.4",
