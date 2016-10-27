@@ -28,42 +28,50 @@ angular.module('directives.studies', [
     replace: true,
     scope: {
       summaryData: '&',
-      portfolioId: '@'
+      portfolioId: '@',
+      headingKey: '@'
     },
     templateUrl: 'app/directives/studies/studies.html',
-    link: function($scope) {
-      var portfolioId = $scope.portfolioId;
+    link: function(scope) {
+      var portfolioId = scope.portfolioId,
+          DEFAULT_HEADING_KEY = 'studies.title';
 
-      $scope.summary = $scope.summaryData();
+      function edit() {
+        scope.editing = true;
+      }
 
-      KeywordService.getKeywordsSubject()
-        .subscribe(function(keywords) {
-          $scope.keywords = keywords;
-        });
-
-      $scope.edit = function() {
-        $scope.editing = true;
-      };
-
-      $scope.exitEdit = function() {
+      function exitEdit() {
         var updateKeywordsRequest = {
-              keywords: $scope.keywords
-            }, updateSummaryRequest = {
-              summary: $scope.summary
+              keywords: scope.keywords
+            },
+            updateSummaryRequest = {
+              summary: scope.summary
             };
 
         _.forEach(updateKeywordsRequest.keywords, function(keyword, index) {
           keyword.orderIndex = index;
         });
 
-        $scope.editing = false;
+        scope.editing = false;
 
         SummaryService.updateSummary(portfolioId, updateSummaryRequest);
         KeywordService.updateKeywords(portfolioId, updateKeywordsRequest)
           .then(function(keywords) {
-            $scope.keywords = keywords;
+            scope.keywords = keywords;
           });
-      };
+      }
+
+      _.assign(scope, {
+        summary: scope.summaryData(),
+        headingKey: scope.headingKey || DEFAULT_HEADING_KEY,
+        edit: edit,
+        exitEdit: exitEdit
+      });
+
+      KeywordService.getKeywordsSubject()
+        .subscribe(function(keywords) {
+          scope.keywords = keywords;
+        });
     }
   };
 });

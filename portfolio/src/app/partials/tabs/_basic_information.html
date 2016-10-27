@@ -21,6 +21,13 @@
       <visibility-toggle section-name="BASIC_INFORMATION"></visibility-toggle>
     </div>
 
+    <studies limit-visibility="{componentId: 'STUDIES'}"
+             summary-data="portfolio.summary"
+             portfolio-id="{{::portfolio.id}}"
+             heading-key="personalInformation.title"
+             class="tour-element__studies">
+    </studies>
+
     <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT', sectionName: 'BASIC_INFORMATION'}"
                        portfolio-section="BASIC_INFORMATION">
     </free-text-content>

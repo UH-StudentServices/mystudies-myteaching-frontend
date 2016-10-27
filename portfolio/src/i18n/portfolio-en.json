@@ -217,5 +217,8 @@
   },
   "globalMessages": {
     "demoEnvNotice": "Notice! This is a demo environment and the information is not correct. For the correct information go to <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>"
+  },
+  "personalInformation": {
+    "title": "Personal information"
   }
 }

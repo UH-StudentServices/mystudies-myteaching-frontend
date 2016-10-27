@@ -217,5 +217,8 @@
   },
   "globalMessages": {
     "demoEnvNotice": "Obs! Detta är en demomiljö och information är inte korrekt. För rätt information gå till <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>"
+  },
+  "personalInformation": {
+    "title": "Personalia"
   }
 }

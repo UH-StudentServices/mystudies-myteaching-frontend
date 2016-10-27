@@ -17,7 +17,9 @@
 
 <section class="ui-component ui-component__studies">
   <div class="edit-link-wrapper">
-    <h2 class="ui-component__title border-bottom ng-binding" translate="studies.title"></h2>
+    <h2 class="ui-component__title border-bottom ng-binding">
+      {{ ::(headingKey | translate) }}
+    </h2>
     <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
   </div>
   <div class="content">
