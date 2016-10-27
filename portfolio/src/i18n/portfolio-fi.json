@@ -87,8 +87,8 @@
   "workExperience" : {
     "title": "työkokemus",
     "addNew": "lisää uusi",
-    "addWorkExperience": "Lisää työkokemus",
-    "addJobSearch": "Lisää haen työpaikkaa sähköpostiosoite",
+    "addWorkExperience": "Lisää työnantaja",
+    "addJobSearch": "Lisää sähköpostiosoite (haen työpaikkaa)",
     "jobSearch": "haen työpaikkaa",
     "jobTitle": "nimike",
     "employer": "työnantaja",

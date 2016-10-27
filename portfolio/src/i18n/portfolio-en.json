@@ -87,8 +87,8 @@
   "workExperience" : {
     "title": "work experience",
     "addNew": "add new",
-    "addWorkExperience": "Add work experience",
-    "addJobSearch": "Add looking for work email",
+    "addWorkExperience": "Add employer",
+    "addJobSearch": "Add email (looking for work)",
     "jobSearch": "looking for work",
     "jobTitle": "job title",
     "employer": "employer",

@@ -87,8 +87,8 @@
   "workExperience" : {
     "title": "arbetslivserfarenhet",
     "addNew": "lägg till",
-    "addWorkExperience": "Lägg till arbetslivserfarenhet",
-    "addJobSearch": "Lägg till söker job epost",
+    "addWorkExperience": "Lägg till arbetsgivare",
+    "addJobSearch": "Lägg till e-post (om du söker jobbet)",
     "jobSearch": "söker job",
     "jobTitle": "jobbtitel",
     "employer": "arbetsgivare",
