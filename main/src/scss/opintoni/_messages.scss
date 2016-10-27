@@ -29,6 +29,10 @@ $info-bg-color: $lightsilver;
 }
 
 .messages.messages--light {
+  span {
+    color: inherit;
+  }
+
   &.error {
     @include message-properties($error-color, $error-bg-color, '\f071');
   }
