@@ -43,7 +43,7 @@
         {{::('userSettings.portfolio' | translate | capitalize)}}
       </a>
     </li>
-    <li limit-visibility="['DEV_AND_QA_ONLY', 'TEACHER_ONLY', 'MY_TEACHINGS_ONLY']" class="user-settings__menu-item" role="menuitem">
+    <li limit-visibility="['TEACHER_ONLY', 'MY_TEACHINGS_ONLY']" class="user-settings__menu-item" role="menuitem">
       <a tabindex="0" ng-click="openPortfolio('teacher')">
         <i class="hy hy-profile"></i>
         {{::('userSettings.universityPortfolio' | translate | capitalize)}}
