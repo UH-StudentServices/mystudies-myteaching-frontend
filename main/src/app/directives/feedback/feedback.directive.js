@@ -25,6 +25,7 @@ angular.module('directives.feedback', [
     return {
       restrict: 'E',
       replace: true,
+      scope: {},
       templateUrl: 'app/directives/feedback/feedback.html',
       controller: function($scope) {
         function initialState() {
@@ -57,10 +58,13 @@ angular.module('directives.feedback', [
             SessionService
               .getSession()
               .then(function(session) {
-                return {
-                  facultyCode: session.faculty.code,
+                var facultyCode = session.faculty && session.faculty.code;
+
+                return _.assign({
                   email: session.email
-                };
+                }, facultyCode ? {
+                  facultyCode: facultyCode
+                } : {});
               })
               .then(function(sessionData) {
                 return {
