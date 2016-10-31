@@ -32,6 +32,11 @@
                             language-proficiencies-data="portfolio.languageProficiencies">
     </language-proficiencies>
 
+    <work-experience limit-visibility="{componentId: 'WORK_EXPERIENCE'}"
+                     work-experience-data="portfolio.workExperience"
+                     portfolio-id="{{::portfolio.id}}">
+    </work-experience>
+
     <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT', sectionName: 'BASIC_INFORMATION'}"
                        portfolio-section="BASIC_INFORMATION">
     </free-text-content>
