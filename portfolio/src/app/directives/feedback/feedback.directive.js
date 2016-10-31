@@ -60,10 +60,13 @@ angular.module('directives.feedback', [
             SessionService
               .getSession()
               .then(function(session) {
-                return {
-                  facultyCode: session.faculty.code,
+                var facultyCode = session.faculty && session.faculty.code;
+
+                return _.assign({
                   email: session.email
-                };
+                }, facultyCode ? {
+                  facultyCode: facultyCode
+                } : {});
               })
               .then(function(sessionData) {
                 return {
