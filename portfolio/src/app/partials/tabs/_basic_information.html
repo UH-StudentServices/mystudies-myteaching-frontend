@@ -37,6 +37,11 @@
                      portfolio-id="{{::portfolio.id}}">
     </work-experience>
 
+    <degrees limit-visibility="{componentId: 'DEGREES'}"
+             degrees-data="portfolio.degrees"
+             portfolio-id="{{::portfolio.id}}">
+    </degrees>
+
     <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT', sectionName: 'BASIC_INFORMATION'}"
                        portfolio-section="BASIC_INFORMATION">
     </free-text-content>
