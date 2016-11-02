@@ -90,7 +90,7 @@ angular.module('directives.admin.feedback', [
         $scope.pageIndexes = [];
 
         FeedbackResource.getFeedback().then(function getFeedbackSuccess(feedback) {
-          allItems = feedback.reverse();
+          allItems = feedback;
           for (var i = 0; i < Math.ceil(allItems.length / ITEMS_PER_PAGE); i++) {
             $scope.pageIndexes.push(i);
           }
