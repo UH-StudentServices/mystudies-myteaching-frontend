@@ -57,7 +57,9 @@
         </li>
       </ul>
 
-      <event-calendar events="events" calendar-view="calendarView" ng-if="events && hideSubTabs"></event-calendar>
+      <event-calendar-inline ng-if="events && hideSubTabs && !fullScreenCalendar"></event-calendar-inline>
+
+      <event-calendar-fullscreen ng-if="events && hideSubTabs && fullScreenCalendar"></event-calendar-fullscreen>
 
       <div class="week-feed-actions">
         <button class="button--light button" ng-click="showMore()" ng-if="showMoreVisible()" translate="buttons.showMore">

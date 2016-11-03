@@ -48,7 +48,8 @@ angular.module('directives.eventCalendar', [])
       templateUrl: 'app/directives/weekFeed/eventCalendar/eventCalendar.html',
       scope: {
         events: '=',
-        calendarView: '='
+        calendarView: '=',
+        fullScreen: '='
       },
       replace: true,
       controller: function($scope, $translate) {
@@ -72,7 +73,9 @@ angular.module('directives.eventCalendar', [])
                 }
               },
               header: {
-                left: 'myCustomButton ' + CalendarViews.DAY + ' ' + CalendarViews.WEEK + ' ' + CalendarViews.MONTH,
+                left: $scope.fullScreen ?
+                  CalendarViews.DAY + ' ' + CalendarViews.WEEK + ' ' + CalendarViews.MONTH :
+                  'myCustomButton ' + CalendarViews.DAY + ' ' + CalendarViews.WEEK + ' ' + CalendarViews.MONTH,
                 center: 'title',
                 right: 'today prev,next'
               },

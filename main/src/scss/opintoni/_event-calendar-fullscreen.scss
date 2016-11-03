@@ -1,0 +1,41 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.event-calendar-fullscreen {
+  .l-footer {
+    margin-top: 6em;
+  }
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding: 4em 6em 4em;
+  z-index: 10001;   /* mece notification bell icon is 10000 */
+  background-color: white;
+  overflow-y: auto;
+}
+
+.event-calendar-fullscreen-close-button {
+  position: absolute;
+  top: 5em;
+  right: 6em;
+  color: $blue;
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
