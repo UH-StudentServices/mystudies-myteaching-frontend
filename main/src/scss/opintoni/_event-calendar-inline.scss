@@ -24,14 +24,15 @@
 }
 
 .event-calendar-inline-fullscreen-button {
+  img {
+    width: 2em;
+    height: 2em;
+  }
   position: absolute;
   top: 0px;
   right: 0px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-family: "hy-icons";
-  font-size: 2em;
-  color: $blue;
+  width: 2em;
+  height: 2em;
   background: transparent;
   border: 0;
   padding: 0;

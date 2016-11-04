@@ -117,4 +117,8 @@
   .fc-today{
     background-color: $today-color;
   }
+
+  :focus {
+    outline: 0;
+  }
 }

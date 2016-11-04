@@ -16,9 +16,11 @@
   -->
 
 <div class="event-calendar-fullscreen">
-  <h2 translate="weekFeed.timetable"></h2>
-  <hr>
-  <event-calendar events="events" calendar-view="calendarView" full-screen="true"></event-calendar>
-  <button class="event-calendar-fullscreen-close-button" aria-label="close full-screen calendar" ng-click="showInline()" translate="general.close"></button>
+  <div class="event-calendar-wrapper">
+    <h2 translate="weekFeed.timetable"></h2>
+    <hr>
+    <event-calendar events="events" calendar-view="calendarView" full-screen="true"></event-calendar>
+    <button class="event-calendar-fullscreen-close-button" aria-label="close full-screen calendar" ng-click="showInline()" translate="general.close"></button>
+  </div>
   <footer class="l-footer island" ng-include="'app/partials/_page_footer.html'">
 </div>
