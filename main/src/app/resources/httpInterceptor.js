@@ -17,7 +17,7 @@
 
 'use strict';
 
-angular.module('resources.httpInterceptor', ['services.state'])
+angular.module('resources.httpInterceptor', ['services.state', 'services.configuration'])
 
   .constant('ErrorPages', {
     'MAINTENANCE': 'maintenance'
@@ -29,7 +29,9 @@ angular.module('resources.httpInterceptor', ['services.state'])
                                                        Configuration,
                                                        $location,
                                                        ErrorPages,
-                                                       State) {
+                                                       State,
+                                                       $window,
+                                                       ConfigurationProperties) {
 
     function redirectToErrorPage(errorPage) {
       $location.path('/error/' + errorPage);
@@ -38,12 +40,10 @@ angular.module('resources.httpInterceptor', ['services.state'])
     var getStateFromDomain = function getStateFromDomain() {
       var host = $location.host();
 
-      if (configurationPropertyContains('studentAppUrl', host)) {
-        return 'opintoni';
-      } else if (configurationPropertyContains('teacherAppUrl', host)) {
-        return 'opetukseni';
-      } else {
-        return undefined;
+      if (configurationPropertyContains(ConfigurationProperties.STUDENT_APP_URL, host)) {
+        return State.MY_STUDIES;
+      } else if (configurationPropertyContains(ConfigurationProperties.TEACHER_APP_URL, host)) {
+        return State.MY_TEACHINGS;
       }
     };
 
@@ -56,13 +56,9 @@ angular.module('resources.httpInterceptor', ['services.state'])
     }
 
     function redirectToLogin() {
-      var state = getStateFromDomain();
+      var StateChangeService = $injector.get('StateChangeService');
 
-      if (!state || state === 'opintoni') {
-        window.location.href = Configuration.loginUrlStudent;
-      } else if (state === 'opetukseni') {
-        window.location.href = Configuration.loginUrlTeacher;
-      }
+      StateChangeService.goToLogin();
     }
 
     function newUser() {
@@ -95,6 +91,7 @@ angular.module('resources.httpInterceptor', ['services.state'])
       } else if (response.status === 503) {
         redirectToErrorPage(ErrorPages.MAINTENANCE);
       }
+
       return $q.reject(response);
     }
 
@@ -102,5 +99,4 @@ angular.module('resources.httpInterceptor', ['services.state'])
       response: success,
       responseError: error
     };
-
   });

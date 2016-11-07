@@ -1,0 +1,92 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.local-login {
+  color: $white;
+
+  &__heading {
+    color: inherit;
+  }
+
+  &__form {
+    display: table;
+    table-layout: fixed;
+    border-spacing: 0 0.5em;
+  }
+
+  &__form-row {
+    display: block;
+    margin: 0.5em 0;
+
+    @include breakpoint($small) {
+      display: table-row;
+      margin: 0;
+    }
+  }
+
+  &__label {
+    display: block;
+    vertical-align: middle;
+    padding-right: 0.5em;
+
+    @include breakpoint($small) {
+      display: table-cell;
+    }
+
+    &::after {
+      content: ':';
+    }
+  }
+
+  &__input {
+    display: block;
+
+    @include breakpoint($small) {
+      display: table-cell;
+    }
+  }
+
+  &__submit {
+    margin-top: 1em;
+  }
+
+  &__users-heading {
+    @extend .local-login__heading;
+    margin: 1.5em 0 0.5em;
+    font-size: 1.5em;
+  }
+
+  &__users-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__user {
+    background-color: $white;
+    color: $black;
+    margin: 0 0.5em 0.5em 0;
+    padding: 0.5em;
+
+    &__field-name {
+      font-weight: bold;
+
+      &::after {
+        content: ': ';
+      }
+    }
+  }
+}

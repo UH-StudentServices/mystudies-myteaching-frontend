@@ -18,7 +18,8 @@
 'use strict';
 
 angular.module('services.state', [
-  'services.session'
+  'services.session',
+  'services.configuration'
 ])
 
   .constant('State', {
@@ -29,7 +30,7 @@ angular.module('services.state', [
     ERROR: 'error'
   })
 
-  .factory('StateService', function($state, $location, State, Configuration, Role) {
+  .factory('StateService', function($state, $location, State, Configuration, Role, ConfigurationProperties) {
 
     var stateMatches = function(state, name) {
       if (state === name || state.name === name) {
@@ -62,9 +63,9 @@ angular.module('services.state', [
     var getStateFromDomain = function getStateFromDomain() {
       var host = $location.host();
 
-      if (configurationPropertyContains('studentAppUrl', host)) {
+      if (configurationPropertyContains(ConfigurationProperties.STUDENT_APP_URL, host)) {
         return State.MY_STUDIES;
-      } else if (configurationPropertyContains('teacherAppUrl', host)) {
+      } else if (configurationPropertyContains(ConfigurationProperties.TEACHER_APP_URL, host)) {
         return State.MY_TEACHINGS;
       } else if (domainContainsString('student', host)) {
         return State.MY_STUDIES;

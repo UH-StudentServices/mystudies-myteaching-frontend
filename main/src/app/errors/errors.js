@@ -39,8 +39,8 @@ angular.module('opintoniErrors', [])
         templateUrl: 'app/partials/errorPages/_error.accessdenied.html',
         controller: function($scope, Configuration) {
           $scope.loginUrls = {
-            loginUrlStudent: Configuration.studentAppUrl,
-            loginUrlTeacher: Configuration.teacherAppUrl
+            loginUrlStudent: Configuration.loginUrlStudent,
+            loginUrlTeacher: Configuration.loginUrlTeacher
           };
         }
       })

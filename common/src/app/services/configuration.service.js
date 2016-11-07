@@ -17,6 +17,48 @@
 
 angular.module('services.configuration', [])
 
+  .constant('ConfigurationProperties', {
+    STUDENT_APP_URL: 'studentAppUrl',
+    TEACHER_APP_URL: 'teacherAppUrl'
+  })
+
+  .constant('Environments', {
+    LOCAL: 'local',
+    DEV: 'dev',
+    QA: 'qa',
+    DEMO: 'demo',
+    PROD: 'prod',
+  })
+
+  .constant('DemoUsers', {
+    STUDENTS: [
+      {
+        name: 'Venla Jukola',
+        username: 'doo_9'
+      },
+      {
+        name: 'Juhani Jukola',
+        username: 'doo_10'
+      },
+      {
+        name: 'Kaisa Rajamäki',
+        username: 'doo_11'
+      }
+    ],
+    TEACHERS: [
+      {
+        name: 'Eero Jukola',
+        username: 'doo_8'
+      },
+      {
+        name: 'Juhani Jukola',
+        username: 'doo_10'
+      }
+    ]
+  })
+
+  .constant('DemoEnvPassword', 'password')
+
   .factory('Configuration', function($window) {
     return $window.configuration ? $window.configuration : {};
   });
