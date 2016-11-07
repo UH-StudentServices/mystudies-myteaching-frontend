@@ -25,9 +25,11 @@ angular.module('directives.eventCalendarFullscreen', [
     return {
       restrict: 'E',
       replace: 'true',
-      templateUrl: 'app/directives/weekFeed/eventCalendarFullscreen/eventCalendarFullscreen.html',
-      link: function($scope) {
-        $scope.showInline = $scope.$parent.showInline;
-      }
+      scope: {
+        events: '=',
+        calendarView: '=',
+        onClose: '&'
+      },
+      templateUrl: 'app/directives/weekFeed/eventCalendarFullscreen/eventCalendarFullscreen.html'
     };
   });

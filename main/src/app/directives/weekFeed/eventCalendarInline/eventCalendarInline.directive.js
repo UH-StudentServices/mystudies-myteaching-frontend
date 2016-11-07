@@ -24,10 +24,12 @@ angular.module('directives.eventCalendarInline', [
   .directive('eventCalendarInline', function() {
     return {
       restrict: 'E',
+      scope: {
+        events: '=',
+        calendarView: '=',
+        onShowFullscreen: '&'
+      },
       replace: 'true',
-      templateUrl: 'app/directives/weekFeed/eventCalendarInline/eventCalendarInline.html',
-      link: function($scope) {
-        $scope.showFullscreen = $scope.$parent.showFullscreen;
-      }
+      templateUrl: 'app/directives/weekFeed/eventCalendarInline/eventCalendarInline.html'
     };
   });

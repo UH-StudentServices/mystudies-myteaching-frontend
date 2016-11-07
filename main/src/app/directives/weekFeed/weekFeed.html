@@ -57,9 +57,17 @@
         </li>
       </ul>
 
-      <event-calendar-inline ng-if="events && hideSubTabs && !fullScreenCalendar"></event-calendar-inline>
+      <event-calendar-inline ng-if="events && hideSubTabs && !fullScreenCalendar"
+                             events="events"
+                             calendar-view="calendarView"
+                             on-show-fullscreen="showFullscreen()">
+      </event-calendar-inline>
 
-      <event-calendar-fullscreen ng-if="events && hideSubTabs && fullScreenCalendar"></event-calendar-fullscreen>
+      <event-calendar-fullscreen ng-if="events && hideSubTabs && fullScreenCalendar"
+                                 events="events"
+                                 calendar-view="calendarView"
+                                 on-close="showInline()">
+      </event-calendar-fullscreen>
 
       <div class="week-feed-actions">
         <button class="button--light button" ng-click="showMore()" ng-if="showMoreVisible()" translate="buttons.showMore">
