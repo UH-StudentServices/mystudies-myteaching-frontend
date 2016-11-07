@@ -15,7 +15,7 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
- angular.module('opintoniAnalytics', [])
+angular.module('opintoniAnalytics', [])
 
   /*
   * Analytics must be injected at least once.
@@ -30,11 +30,27 @@
 
   .config(function(AnalyticsProvider) {
     if (window.configuration) {
-      AnalyticsProvider.setAccount(
-        {
-          tracker: window.configuration.googleAnalyticsAccount,
-          trackEvent: true
+      var accountArray = [{
+        tracker: window.configuration.googleAnalyticsAccount,
+        trackEvent: true,
+        name: "OOTracker"
+      }];
+
+      if (window.location.hostname.indexOf('teacher') != -1 && window.configuration.googleAnalyticsAccountTeacher) {
+        accountArray.push({
+          tracker: window.configuration.googleAnalyticsAccountTeacher,
+          trackEvent: true,
+          name: "OOTeacherTracker"
         });
+      }
+      if (window.location.hostname.indexOf('student') != -1 && window.configuration.googleAnalyticsAccountStudent) {
+        accountArray.push({
+          tracker: window.configuration.googleAnalyticsAccountStudent,
+          trackEvent: true,
+          name: "OOStudentTracker"
+        });
+      }
+      AnalyticsProvider.setAccount(accountArray);
       AnalyticsProvider.trackPages(true);
       AnalyticsProvider.useAnalytics(true);
       AnalyticsProvider.ignoreFirstPageLoad(true);
