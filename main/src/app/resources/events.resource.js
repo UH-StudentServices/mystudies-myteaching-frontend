@@ -20,15 +20,15 @@
 angular.module('resources.events', ['services.eventUri', 'utils.moment'])
 
   .factory('EventsResource', function Attainments($resource, EventUriService,
-                                                  dateArrayToUTCMomentObject) {
+                                                  dateArrayToMomentObject) {
     var studentEventsResource = $resource('/api/private/v1/students/enrollments/events');
     var teacherEventsResource = $resource('/api/private/v1/teachers/enrollments/events');
 
     var getEvents = function getEvents(resource) {
       return resource.query().$promise.then(function(data) {
         return _.map(data, function(event) {
-          event.startDate = dateArrayToUTCMomentObject(event.startDate);
-          event.endDate = dateArrayToUTCMomentObject(event.endDate);
+          event.startDate = dateArrayToMomentObject(event.startDate);
+          event.endDate = dateArrayToMomentObject(event.endDate);
           event.googleMapsUri = EventUriService.getGoogleMapsUri(event);
           event.reittiopasEnabled = EventUriService.reittiopasUriCanBeGenerated(event);
           return event;

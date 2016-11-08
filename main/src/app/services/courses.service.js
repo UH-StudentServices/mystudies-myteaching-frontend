@@ -18,7 +18,7 @@
 
 angular.module('services.courses', ['resources.courses', 'utils.moment'])
 
-  .factory('CoursesService', function(CoursesResource, dateArrayToUTCMomentObject) {
+  .factory('CoursesService', function(CoursesResource, dateArrayToMomentObject) {
 
     var teacherCoursesPromise, studentCoursesPromise;
 
@@ -32,8 +32,8 @@ angular.module('services.courses', ['resources.courses', 'utils.moment'])
 
     function convertEnrollmentDates(enrollments) {
       return _.map(enrollments, function(enrollment) {
-        enrollment.startDate = dateArrayToUTCMomentObject(enrollment.startDate);
-        enrollment.endDate = dateArrayToUTCMomentObject(enrollment.endDate);
+        enrollment.startDate = dateArrayToMomentObject(enrollment.startDate);
+        enrollment.endDate = dateArrayToMomentObject(enrollment.endDate);
 
         return enrollment;
       });
