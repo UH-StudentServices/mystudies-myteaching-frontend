@@ -15,14 +15,14 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('portfolioAnalytics', ['provider.analytics.configuration'])
+angular.module('portfolioAnalytics', ['provider.analyticsAccounts'])
 
   .constant('PORTFOLIO_PATH', '/portfolio')
   .constant('TRACK_PAGE_TITLE', 'Portfolio')
   .constant('ANALYTICS_STATE_DIMENSION', 'dimension3')
 
-  .config(function(AnalyticsProvider, AnalyticsConfigurationProvider) {
-    AnalyticsProvider.setAccount(AnalyticsConfigurationProvider.getAccounts());
+  .config(function(AnalyticsProvider, AnalyticsAccountsProvider) {
+    AnalyticsProvider.setAccount(AnalyticsAccountsProvider.$get());
     AnalyticsProvider.trackPages(false);
   })
 

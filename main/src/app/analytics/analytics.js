@@ -15,7 +15,7 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('opintoniAnalytics', ['provider.analytics.configuration'])
+angular.module('opintoniAnalytics', ['provider.analyticsAccounts'])
 
   /*
   * Analytics must be injected at least once.
@@ -28,8 +28,8 @@ angular.module('opintoniAnalytics', ['provider.analytics.configuration'])
     });
   })
 
-  .config(function(AnalyticsProvider, AnalyticsConfigurationProvider) {
-    AnalyticsProvider.setAccount(AnalyticsConfigurationProvider.getAccounts());
+  .config(function(AnalyticsProvider, AnalyticsAccountsProvider) {
+    AnalyticsProvider.setAccount(AnalyticsAccountsProvider.$get());
     AnalyticsProvider.trackPages(true);
     AnalyticsProvider.useAnalytics(true);
     AnalyticsProvider.ignoreFirstPageLoad(true);

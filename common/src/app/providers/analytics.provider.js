@@ -15,31 +15,33 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('provider.analytics.configuration', ['services.configuration'])
-  .constant('TRACKER', {
-    'MAIN': {
+angular.module('provider.analyticsAccounts', ['services.configuration'])
+  .constant('tracker', {
+    'main': {
       'NAME': 'OOtracker',
       'ID': 'googleAnalyticsAccount'
     },
-    'TEACHER': {
+    'teacher': {
       'NAME': 'OOTeacher',
       'ID': 'googleAnalyticsAccountTeacher'
     },
-    'STUDENT': {
+    'student': {
       'NAME': 'OOStudent',
       'ID': 'googleAnalyticsAccountStudent'
     }
   })
 
 
-  .provider('AnalyticsConfiguration', function getAnalyticsConfiguration(TRACKER, ConfigurationProvider) {
+  .provider('AnalyticsAccounts', function getAnalyticsAccounts(tracker, ConfigurationProvider) {
+    var configuration = ConfigurationProvider.$get();
+
     function checkTracker(hostname, trackerConfig) {
-      return window.location.hostname.indexOf(hostname) !== -1 && ConfigurationProvider.$get()[trackerConfig];
+      return window.location.hostname.indexOf(hostname) !== -1 && configuration[trackerConfig];
     }
 
     function addTracker(accountsArray, trackerId, trackerName) {
       accountsArray.push({
-        tracker: ConfigurationProvider.$get()[trackerId],
+        tracker: configuration[trackerId],
         trackEvent: true,
         name: trackerName
       });
@@ -49,20 +51,19 @@ angular.module('provider.analytics.configuration', ['services.configuration'])
       var accountsArray = [];
 
       if (window.configuration) {
-        addTracker(accountsArray, TRACKER.MAIN.ID, TRACKER.MAIN.NAME);
+        addTracker(accountsArray, tracker.main.ID, tracker.main.NAME);
 
-        if (checkTracker('teacher', TRACKER.TEACHER.ID)) {
-          addTracker(accountsArray, TRACKER.TEACHER.ID, TRACKER.TEACHER.NAME);
-        } else if (checkTracker('student', TRACKER.STUDENT.ID)) {
-          addTracker(accountsArray, TRACKER.STUDENT.ID, TRACKER.STUDENT.NAME);
+        if (checkTracker('teacher', tracker.teacher.ID)) {
+          addTracker(accountsArray, tracker.teacher.ID, tracker.teacher.NAME);
+        } else if (checkTracker('student', tracker.student.ID)) {
+          addTracker(accountsArray, tracker.student.ID, tracker.student.NAME);
         }
       }
       return accountsArray;
     }
 
     return {
-      getAccounts: getAccounts,
-      $get: function() {}
+      $get: getAccounts
     };
 
   });

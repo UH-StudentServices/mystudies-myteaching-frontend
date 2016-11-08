@@ -31,7 +31,7 @@ angular.module('opintoniPortfolioApp', [
 
   'constants.portfolioTabs',
 
-  'provider.analytics.configuration',
+  'provider.analyticsAccounts',
 
   'controllers.main',
 
