@@ -67,10 +67,8 @@ angular.module('services.state', [
         return State.MY_STUDIES;
       } else if (configurationPropertyContains(ConfigurationProperties.TEACHER_APP_URL, host)) {
         return State.MY_TEACHINGS;
-      } else if (domainContainsString('student', host)) {
-        return State.MY_STUDIES;
-      } else if (domainContainsString('teacher', host)) {
-        return State.MY_TEACHINGS;
+      } else {
+        throw Error('hostname does not match any configured values');
       }
     };
 
