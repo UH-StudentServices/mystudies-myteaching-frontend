@@ -182,7 +182,6 @@ angular.module('opintoniApp', [
           'content@': {
             templateUrl: 'app/partials/layout.html',
             controller: 'MainCtrl'
-
           }
         },
         resolve: {
