@@ -338,7 +338,7 @@
       "login": {
         "title": "Welcome to My Studies",
         "intro": "My Studies is where you are. It is your own page for courses, interesting content, and other services offered by the University.",
-        "alternativeLogin": "If you are a teacher at the University of Helsinki, please login to <a href=\"{{ loginUrlTeacher }}\">My Teaching.</a>",
+        "alternativeLogin": "If you are a teacher at the University of Helsinki, please <a href=\"{{ loginUrlTeacher }}\">login to My Teaching.</a>",
         "goToLogin": "Login"
       }
     },
@@ -346,7 +346,7 @@
       "login": {
         "title": "Welcome to My Teaching",
         "intro": "My Teaching is where you are. It is your own page for courses, interesting content, and other services offered by the University.",
-        "alternativeLogin": "If you are a student at the University of Helsinki, please login to <a href=\"{{ loginUrlStudent }}\">My Studies</a>.",
+        "alternativeLogin": "If you are a student at the University of Helsinki, please <a href=\"{{ loginUrlStudent }}\">login to My Studies</a>.",
         "goToLogin": "Login"
       }
     },
@@ -421,5 +421,13 @@
   "cookieNotification": {
     "notification": "This website uses cookies to improve your experience.",
     "readMore": "Read more"
+  },
+  "localLogin": {
+    "intro": "Log in and explore the service",
+    "username": "Username",
+    "password": "Password",
+    "name": "Name",
+    "logIn": "Log in",
+    "users": "Available users"
   }
 }
