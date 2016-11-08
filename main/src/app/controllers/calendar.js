@@ -17,19 +17,24 @@
 
 'use strict';
 
-angular.module('directives.eventCalendarInline', [
-  'directives.eventCalendar'
+angular.module('controllers.calendar', [
+  'services.focus'
 ])
 
-  .directive('eventCalendarInline', function() {
-    return {
-      restrict: 'E',
-      scope: {
-        events: '=',
-        calendarView: '=',
-        onShowFullscreen: '&'
-      },
-      replace: 'true',
-      templateUrl: 'app/directives/weekFeed/eventCalendarInline/eventCalendarInline.html'
-    };
+  .controller('CalendarCtrl', function(
+    $scope,
+    StateService,
+    State,
+    session,
+    closeCalendar,
+    getEvents) {
+
+    $scope.currentStateName = StateService.getRootStateName();
+    $scope.State = State;
+    $scope.showApp = session !== undefined;
+    $scope.session = session;
+    $scope.calendarView = 'DAY';  //FIXME: get from preferences
+    $scope.events = getEvents();
+    $scope.closeCalendar = closeCalendar;
+
   });

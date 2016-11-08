@@ -21,8 +21,7 @@ angular.module('directives.weekFeed', [
   'filters.moment',
   'directives.message',
   'directives.subscribeEvents',
-  'directives.eventCalendarInline',
-  'directives.eventCalendarFullscreen',
+  'directives.eventCalendar',
   'directives.weekFeed.feedItem',
   'services.userPreferences',
   'services.state',
@@ -486,7 +485,8 @@ angular.module('directives.weekFeed', [
       templateUrl: 'app/directives/weekFeed/weekFeed.html',
       scope: {
         coursesPromise: '=',
-        eventsPromise: '='
+        eventsPromise: '=',
+        onShowFullscreenCalendar: '&'
       },
       link: function($scope) {
         var currentStateName = StateService.getRootStateName(),
@@ -549,7 +549,6 @@ angular.module('directives.weekFeed', [
         $scope.subTabs = $scope.selectedTab.subTabs;
         $scope.selectedSubTab = getFirstSubTab();
         $scope.hideSubTabs = $scope.selectedSubTab.hideSubTabs;
-        $scope.fullScreenCalendar = false;
 
         Loader.start(LoaderKey);
 
@@ -609,12 +608,9 @@ angular.module('directives.weekFeed', [
           };
         };
 
-        $scope.showFullscreen = function showFullscreen() {
-          $scope.fullScreenCalendar = true;
-        };
-
-        $scope.showInline = function showInline() {
-          $scope.fullScreenCalendar = false;
+        $scope.showFullscreenCalendar = function showFullscreenCalendar() {
+          console.log('weekFeed showFullscreenCalendar called');
+          $scope.onShowFullscreenCalendar();
         };
 
       }

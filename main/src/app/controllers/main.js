@@ -41,6 +41,7 @@ angular.module('controllers.main', [
     session,
     getCourses,
     getEvents,
+    showFullscreenCalendar,
     UserSettingsService) {
 
     $scope.currentStateName = StateService.getRootStateName();
@@ -50,6 +51,7 @@ angular.module('controllers.main', [
     $scope.session = session;
     $scope.courses = getCourses();
     $scope.events = getEvents();
+    $scope.showFullscreenCalendar = showFullscreenCalendar;
 
     UserSettingsService.getShowBannerSubject().subscribe(function(showBanner) {
       $scope.showBanner = showBanner;

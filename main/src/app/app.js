@@ -56,6 +56,7 @@ angular.module('opintoniApp', [
   'directives.stickyMessage',
 
   'controllers.main',
+  'controllers.calendar',
   'directives.tour',
   'directives.pageBanner',
   'directives.helpIcon',
@@ -165,6 +166,12 @@ angular.module('opintoniApp', [
           },
           getEvents: function(EventsResource) {
             return EventsResource.getStudentEvents;
+          },
+          showFullscreenCalendar: function($state) {
+            return function() {
+              console.log('state showFullscreenCalendar called');
+              $state.go('opintoni-calendar');
+            };
           }
         },
         onEnter: function onEnter(ngAddToHomescreen) {
@@ -197,10 +204,81 @@ angular.module('opintoniApp', [
           },
           getEvents: function(EventsResource) {
             return EventsResource.getTeacherEvents;
+          },
+          showFullscreenCalendar: function($state) {
+            return function() {
+              console.log('state showFullscreenCalendar called');
+              $state.go('opetukseni-calendar');
+            };
           }
         },
         onEnter: function onEnter(ngAddToHomescreen) {
           ngAddToHomescreen({maxDisplayCount: 1});
+        }
+      })
+      .state('opintoni-calendar', {
+        url: '/opintoni-calendar',
+        parent: 'root',
+        data: {
+          roles: ['STUDENT'],
+          pageTitle: 'opintoni.title'
+
+        },
+        views: {
+          'content@': {
+            templateUrl: 'app/partials/calendarLayout.html',
+            controller: 'CalendarCtrl'
+          }
+        },
+        resolve: {
+          pageTitle: function($q, $translate) {
+            var deferred = $q.defer();
+
+            $translate('opintoni.pageHeaderBranding').then(function translateHeaderSuccess(title) {
+              document.title = title;
+              deferred.resolve(title);
+            });
+            return deferred.promise;
+          },
+          getEvents: function(EventsResource) {
+            return EventsResource.getStudentEvents;
+          },
+          closeCalendar: function($state) {
+            return function() {
+              $state.go('opintoni');
+            };
+          }
+        }
+      })
+      .state('opetukseni-calendar', {
+        url: '/opetukseni-calendar',
+        parent: 'root',
+        data: {
+          roles: ['TEACHER'],
+          pageTitle: 'opetukseni.title'
+        },
+        views: {
+          'content@': {
+            templateUrl: 'app/partials/calendarLayout.html',
+            controller: 'CalendarCtrl'
+
+          }
+        },
+        resolve: {
+          pageTitle: function($q, $translate) {
+            return $translate('opetukseni.pageHeaderBranding')
+              .then(function translateHeaderSuccess(title) {
+                document.title = title;
+              });
+          },
+          getEvents: function(EventsResource) {
+            return EventsResource.getTeacherEvents;
+          },
+          closeCalendar: function($state) {
+            return function() {
+              $state.go('opetukseni');
+            };
+          }
         }
       })
       .state('admin', {
