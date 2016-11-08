@@ -267,7 +267,7 @@ angular.module('directives.weekFeed', [
             hideSubTabs: false,
             translateKey: 'general.upcoming',
             getItems: function(courses, events) {
-              return getItems(_.filter(courses, {isExam: true}),
+              return CourseView.getCourses(_.filter(courses, {isExam: true}),
                 FeedItemTimeCondition.NOT_ENDED, FeedItemSortCondition.START_DATE_ASC);
             },
             getMessage: getEventsMessage
@@ -277,7 +277,7 @@ angular.module('directives.weekFeed', [
             hideSubTabs: false,
             translateKey: 'general.past',
             getItems: function(courses, events) {
-              return getItems(_.filter(courses, {isExam: true}),
+              return CourseView.getCourses(_.filter(courses, {isExam: true}),
                 FeedItemTimeCondition.PAST, FeedItemSortCondition.START_DATE_ASC);
             },
             getMessage: getEventsMessage

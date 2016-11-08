@@ -19,7 +19,7 @@ angular.module('services.attainments', ['resources.attainments', 'utils.moment']
 
   .constant('monthsCount', 6)
 
-  .factory('AttainmentsService', function(AttainmentsResource, dateArrayToUTCMomentObject,
+  .factory('AttainmentsService', function(AttainmentsResource, dateArrayToMomentObject,
                                           monthsCount) {
     var now = moment(),
         studyAttainmentsPromise;
@@ -28,7 +28,7 @@ angular.module('services.attainments', ['resources.attainments', 'utils.moment']
       if (!studyAttainmentsPromise) {
         studyAttainmentsPromise = AttainmentsResource.getStudyAttainments().then(function(data) {
           return _.map(data, function(attainment) {
-            attainment.attainmentDate = dateArrayToUTCMomentObject(attainment.attainmentDate)
+            attainment.attainmentDate = dateArrayToMomentObject(attainment.attainmentDate)
               .local();
 
             return attainment;

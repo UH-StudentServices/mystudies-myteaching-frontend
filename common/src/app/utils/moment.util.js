@@ -15,6 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 angular.module('utils.moment', [])
 
   .service('convertToMoment', function() {
@@ -27,7 +29,7 @@ angular.module('utils.moment', [])
           }
           return value;
         }));
-      } else {
+      } else if (input) {
         return convertFn(input);
       }
     }
@@ -42,10 +44,16 @@ angular.module('utils.moment', [])
     return convert;
   })
 
-  .service('dateArrayToUTCMomentObject', function(convertToMoment) {
-    function convert(input) {
-      return convertToMoment(input, moment.utc);
-    }
+  .service('momentDateToLocalDateArray', function() {
+    return function convert(date) {
+      if (!date) {
+        return null;
+      }
 
-    return convert;
+      var dateAsArray = _.take(date.toArray(), 3);
+
+      // Month is zero indexed in moment, API requires months to start from one
+      dateAsArray[1] = dateAsArray[1] + 1;
+      return dateAsArray;
+    };
   });
