@@ -58,20 +58,9 @@ angular.module('services.stateChange', [
     }
 
     function changeStateTo(state) {
-      switch (state) {
-        case State.MY_TEACHINGS:
-          localStorageService.cookie.set('SESSION_ROLE', Role.TEACHER);
-          changeView(State.MY_TEACHINGS);
-          break;
-        case State.MY_STUDIES:
-          localStorageService.cookie.set('SESSION_ROLE', Role.STUDENT);
-          changeView(State.MY_STUDIES);
-          break;
-        default:
-          localStorageService.cookie.set('SESSION_ROLE', Role.STUDENT);
-          changeView(State.MY_STUDIES);
-          break;
-      }
+      var targetState = state || State.MY_STUDIES;
+
+      changeView(targetState);
     }
 
     function changeState() {
