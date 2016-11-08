@@ -94,9 +94,8 @@ angular.module('opintoniLander', ['services.language'])
 
           if (Configuration.environment === Environments.DEMO) {
             $scope.users = users;
+            $scope.password = DemoEnvPassword;
           }
-
-          $scope.password = DemoEnvPassword;
         }
       });
   });
