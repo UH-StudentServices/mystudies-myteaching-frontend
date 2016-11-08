@@ -54,6 +54,7 @@
 
   &__input {
     display: block;
+    color: initial;
 
     @include breakpoint($small) {
       display: table-cell;
