@@ -13,9 +13,11 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
--->
+  -->
 
-<div class="calendar" ng-show="showApp">
-  <full-screen-calendar events-promise="events" calendar-view="calendarView" on-close="closeCalendar()"></full-screen-calendar>
-  <footer class="l-footer island" ng-include="'app/partials/_page_footer.html'"></footer>
+<div class="full-screen-calendar">
+  <h2 translate="weekFeed.timetable"></h2>
+  <hr>
+  <event-calendar events="events" calendar-view="calendarView" full-screen="true"></event-calendar>
+  <button class="full-screen-calendar-close-button" aria-label="close full-screen calendar" ng-click="onClose()" translate="general.close"></button>
 </div>

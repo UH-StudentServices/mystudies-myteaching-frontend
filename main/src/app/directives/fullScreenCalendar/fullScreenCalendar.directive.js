@@ -15,9 +15,35 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-.calendar .l-footer {
-  margin-top: 6em;
-  @media print {
-    margin-top: 2em;
-  }
-}
+'use strict';
+
+angular.module('directives.fullScreenCalendar', [
+  'directives.eventCalendar',
+  'utils.loader'
+])
+
+  .directive('fullScreenCalendar', function(
+    Loader,
+    LoaderKey) {
+
+    return {
+      restrict: 'E',
+      replace: 'true',
+      scope: {
+        calendarView: '=',
+        eventsPromise: '=',
+        onClose: '&'
+      },
+      templateUrl: 'app/directives/fullScreenCalendar/fullScreenCalendar.html',
+      link: function($scope) {
+        var eventsPromise = $scope.eventsPromise;
+
+        Loader.start(LoaderKey);
+        $scope.eventsPromise.then(function(events) {
+          $scope.events = events;
+        }).finally(function() {
+          Loader.stop(LoaderKey);
+        });
+      }
+    };
+  });

@@ -609,7 +609,6 @@ angular.module('directives.weekFeed', [
         };
 
         $scope.showFullscreenCalendar = function showFullscreenCalendar() {
-          console.log('weekFeed showFullscreenCalendar called');
           $scope.onShowFullscreenCalendar();
         };
 

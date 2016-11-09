@@ -45,7 +45,7 @@ angular.module('directives.eventCalendar', [])
     LanguageService) {
     return {
       restrict: 'E',
-      templateUrl: 'app/directives/weekFeed/eventCalendar/eventCalendar.html',
+      templateUrl: 'app/directives/eventCalendar/eventCalendar.html',
       scope: {
         events: '=',
         calendarView: '=',
@@ -122,29 +122,38 @@ angular.module('directives.eventCalendar', [])
 
         }
 
-        var sortedEvents = _.sortBy($scope.events, 'realisationId');
+        function updateEventSources() {
+          console.log('updating event sources');
+          var sortedEvents = _.sortBy($scope.events, 'realisationId');
 
-        var calendarEvents = _.map(sortedEvents, function(event) {
+          var calendarEvents = _.map(sortedEvents, function(event) {
 
-          var startMoment =  event.startDate;
-          var endMoment = event.endDate;
-          var title = getEventTitle(event);
+            var startMoment =  event.startDate;
+            var endMoment = event.endDate;
+            var title = getEventTitle(event);
 
-          var calendarEvent = {
-            title: title,
-            start: startMoment.toDate(),
-            end: endMoment.toDate(),
-            color: EventColorService.getColor(event.realisationId),
-            tooltip: title,
-            url: event.moodleUri ? event.moodleUri : event.courseUri
-          };
+            var calendarEvent = {
+              title: title,
+              start: startMoment.toDate(),
+              end: endMoment.toDate(),
+              color: EventColorService.getColor(event.realisationId),
+              tooltip: title,
+              url: event.moodleUri ? event.moodleUri : event.courseUri
+            };
 
-          return calendarEvent;
+            return calendarEvent;
+          });
+
+          $scope.eventSources.length = 0;
+          $scope.eventSources.push(calendarEvents);
+        }
+
+        updateEventSources();
+        $scope.$watch('events', function(newEvents, oldEvents) {
+          if (newEvents !== oldEvents) {
+            updateEventSources();
+          }
         });
-
-        $scope.eventSources.push(calendarEvents);
-
-
       }
     };
   });

@@ -169,7 +169,6 @@ angular.module('opintoniApp', [
           },
           showFullscreenCalendar: function($state) {
             return function() {
-              console.log('state showFullscreenCalendar called');
               $state.go('opintoni-calendar');
             };
           }
@@ -207,7 +206,6 @@ angular.module('opintoniApp', [
           },
           showFullscreenCalendar: function($state) {
             return function() {
-              console.log('state showFullscreenCalendar called');
               $state.go('opetukseni-calendar');
             };
           }

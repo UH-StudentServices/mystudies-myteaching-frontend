@@ -33,6 +33,16 @@
   @include breakpoint($medium) {
     text-align: left;
   }
+
+  @media print {
+    display: none;
+  }
+}
+
+.page-footer__links {
+  @media print {
+    display: none;
+  }
 }
 
 .page-footer__contact {
