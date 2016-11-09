@@ -338,7 +338,7 @@
       "login": {
         "title": "Tervetuloa Opintoni-sivulle",
         "intro": "Opintoni-sivu on siellä missä sinäkin. Se on oma sivusi kursseihin, kiinnostaviin sisältöihin sekä yliopiston muihin palveluihin.",
-        "alternativeLogin": "Jos olet opettaja Helsingin yliopistossa, kirjaudu <a href=\"{{ loginUrlTeacher }}\">Opetukseni-sivulle</a>.",
+        "alternativeLogin": "Jos olet opettaja Helsingin yliopistossa, <a href=\"{{ loginUrlTeacher }}\">kirjaudu Opetukseni-sivulle</a>.",
         "goToLogin": "Kirjaudu"
       }
     },
@@ -346,7 +346,7 @@
       "login": {
         "title": "Tervetuloa Opetukseni-sivulle",
         "intro": "Opetukseni-sivu on siellä missä sinäkin. Se on oma sivusi kursseihin, kiinnostaviin sisältöihin sekä yliopiston muihin palveluihin.",
-        "alternativeLogin": "Jos olet opiskelija Helsingin yliopistossa, kirjaudu <a href=\"{{ loginUrlStudent }}\">Opintoni-sivulle</a>.",
+        "alternativeLogin": "Jos olet opiskelija Helsingin yliopistossa, <a href=\"{{ loginUrlStudent }}\">kirjaudu Opintoni-sivulle</a>.",
         "goToLogin": "Kirjaudu"
       }
     },
@@ -421,5 +421,13 @@
   "cookieNotification": {
     "notification": "Tämä sivusto käyttää evästeitä toimiakseen mahdollisimman hyvin.",
     "readMore": "Lue lisää"
+  },
+  "localLogin": {
+    "intro": "Kirjaudu sisään ja tutustu palveluun",
+    "username": "Käyttäjätunnus",
+    "password": "Salasana",
+    "name": "Nimi",
+    "logIn": "Kirjaudu",
+    "users": "Palvelun käyttäjät"
   }
 }

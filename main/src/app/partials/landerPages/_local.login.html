@@ -1,0 +1,80 @@
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<div class="local-login">
+  <h1 translate="localLogin.intro" class="local-login__heading"></h1>
+
+  <form action="/login" method="POST" class="local-login__form">
+    <div class="local-login__form-row">
+      <label class="local-login__label"
+             translate="localLogin.username"
+             for="username">
+      </label>
+
+      <input type="text"
+             name="username"
+             id="username"
+             class="local-login__input">
+    </div>
+
+    <div class="local-login__form-row">
+      <label class="local-login__label"
+             translate="localLogin.password"
+             for="password">
+      </label>
+
+      <input type="password"
+             name="password"
+             id="password"
+             class="local-login__input">
+    </div>
+
+    <div class="local-login__form-row">
+      <input type="submit"
+             name="submit"
+             value="{{::('localLogin.logIn' | translate)}}"
+             class="local-login__submit">
+    </div>
+  </form>
+
+  <div ng-if="users">
+    <h2 class="local-login__users-heading" translate="localLogin.users"></h2>
+
+    <ul class="local-login__users-list">
+      <li ng-repeat="user in users" class="local-login__user">
+        <div>
+          <span translate="localLogin.name" class="local-login__user__field-name"></span>
+          {{::user.name}}
+        </div>
+
+        <div>
+          <span translate="localLogin.username" class="local-login__user__field-name"></span>
+          {{::user.username}}
+        </div>
+
+        <div>
+          <span translate="localLogin.password" class="local-login__user__field-name"></span>
+          {{::password}}
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="lander-bg">
+    <div class="gradient-overlay"></div>
+  </div>
+</div>

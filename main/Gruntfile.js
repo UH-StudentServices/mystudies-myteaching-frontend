@@ -371,10 +371,10 @@ module.exports = function(grunt) {
             browser: 'chrome',
             params: {
               student: {
-                loginUrl: 'http://local.student.helsinki.fi:3000/locallog.html'
+                loginUrl: 'http://local.student.helsinki.fi:3000/info/local-login'
               },
               teacher: {
-                loginUrl: 'http://local.teacher.helsinki.fi:3000/locallog.html'
+                loginUrl: 'http://local.teacher.helsinki.fi:3000/info/local-login'
               }
             }
           }
@@ -386,10 +386,10 @@ module.exports = function(grunt) {
             browser: 'phantomjs',
             params: {
               student: {
-                loginUrl: 'https://opi-1.student.helsinki.fi/locallog.html'
+                loginUrl: 'https://opi-1.student.helsinki.fi/info/local-login'
               },
               teacher: {
-                loginUrl: 'https://opi-1.teacher.helsinki.fi/locallog.html'
+                loginUrl: 'https://opi-1.teacher.helsinki.fi/info/local-login'
               }
             }
           }

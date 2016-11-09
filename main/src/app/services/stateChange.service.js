@@ -25,7 +25,10 @@ angular.module('services.stateChange', [
                                           SessionService,
                                           localStorageService,
                                           StateService,
-                                          State) {
+                                          State,
+                                          $injector,
+                                          Configuration,
+                                          ConfigurationProperties) {
     function isStateChangeAvailable() {
       return SessionService.getSession()
         .then(function getSessionSuccess(session) {
@@ -55,20 +58,9 @@ angular.module('services.stateChange', [
     }
 
     function changeStateTo(state) {
-      switch (state) {
-        case State.MY_TEACHINGS:
-          localStorageService.cookie.set('SESSION_ROLE', Role.TEACHER);
-          changeView(State.MY_TEACHINGS);
-          break;
-        case State.MY_STUDIES:
-          localStorageService.cookie.set('SESSION_ROLE', Role.STUDENT);
-          changeView(State.MY_STUDIES);
-          break;
-        default:
-          localStorageService.cookie.set('SESSION_ROLE', Role.STUDENT);
-          changeView(State.MY_STUDIES);
-          break;
-      }
+      var targetState = state || State.MY_STUDIES;
+
+      changeView(targetState);
     }
 
     function changeState() {
@@ -79,8 +71,39 @@ angular.module('services.stateChange', [
       });
     }
 
+    function loginPathForState(state) {
+      var loginUrl = state === State.MY_TEACHINGS ? Configuration.loginUrlTeacher : Configuration.loginUrlStudent,
+          appUrl = state === State.MY_TEACHINGS ? Configuration.teacherAppUrl : Configuration.studentAppUrl;
+
+      return loginUrl.replace(appUrl, '');
+    }
+
+    function goToStateOrRedirectOut(url) {
+      var $state = $injector.get('$state'),
+          allStates = $state.get(),
+          stateMatch;
+
+      stateMatch = _.find(allStates, function(el) {
+        return $state.href(el.name) === url;
+      });
+
+      if (stateMatch) {
+        $state.go(stateMatch.name);
+      } else {
+        $window.location.href = url;
+      }
+    }
+
+    function goToLogin() {
+      var state = StateService.getStateFromDomain(),
+          loginPath = loginPathForState(state);
+
+      goToStateOrRedirectOut(loginPath);
+    }
+
     return {
       changeStateAvailableTo: changeStateAvailableTo,
-      changeState: changeState
+      changeState: changeState,
+      goToLogin: goToLogin
     };
   });

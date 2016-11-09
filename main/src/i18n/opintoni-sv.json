@@ -340,7 +340,7 @@
       "login": {
         "title": "Välkommen till Mina studier",
         "intro": "Mina studier finns där du är. Den är din egen sida för kurser, intressant innehåll och universitetets andra tjänster.",
-        "alternativeLogin": "Om du är lärare vid Helsingfors universitet, logga in till <a href=\"{{ loginUrlTeacher }}\">Min undervisning</a>.",
+        "alternativeLogin": "Om du är lärare vid Helsingfors universitet, <a href=\"{{ loginUrlTeacher }}\">logga in till Min undervisning</a>.",
         "goToLogin": "Logga in"
       }
     },
@@ -348,7 +348,7 @@
       "login": {
         "title": "Välkommen till Min undervisning",
         "intro": "Min undervisning finns där du är. Den är din egen sida för kurser, intressant innehåll och universitetets andra tjänster.",
-        "alternativeLogin": "Om du är studerande vid Helsingfors universitet, logga in till <a href=\"{{ loginUrlStudent }}\">Mina studier</a>.",
+        "alternativeLogin": "Om du är studerande vid Helsingfors universitet, <a href=\"{{ loginUrlStudent }}\">logga in till Mina studier</a>.",
         "goToLogin": "Logga in"
       }
     },
@@ -423,5 +423,13 @@
   "cookieNotification": {
     "notification": "Den här webbplatsen använder cookies för att förbättra användbarheten på sidorna.",
     "readMore": "Läs mer"
+  },
+  "localLogin": {
+    "intro": "Logga in och kolla in tjänsten",
+    "username": "Käyttäjätunnus (sv)",
+    "password": "Salasana (sv)",
+    "name": "Nimi (sv)",
+    "logIn": "Kirjaudu (sv)",
+    "users": "Palvelun käyttäjät (sv)"
   }
 }

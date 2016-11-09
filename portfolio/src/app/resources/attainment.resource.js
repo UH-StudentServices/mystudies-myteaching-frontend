@@ -20,7 +20,7 @@
 angular.module('resources.attainment', ['utils.moment'])
 
   .factory('AttainmentResource', function Attainments($resource, StateService,
-                                                      dateArrayToUTCMomentObject) {
+                                                      dateArrayToMomentObject) {
 
     function portfolioAttainmentsPrivateResource() {
       return $resource('/api/private/v1/portfolio/:portfolioId/attainment/whitelist', {}, {
@@ -43,7 +43,7 @@ angular.module('resources.attainment', ['utils.moment'])
       return attainmentsResource.query().$promise.then(function getAllSuccess(data) {
         return _.map(data, function datesToMoment(attainment) {
           attainment.attainmentDate =
-            dateArrayToUTCMomentObject(attainment.attainmentDate).local();
+            dateArrayToMomentObject(attainment.attainmentDate);
           return attainment;
         });
       });
@@ -56,7 +56,7 @@ angular.module('resources.attainment', ['utils.moment'])
       return attainmentsResource.query().$promise.then(function getAllSuccess(data) {
         return _.map(data, function datesToMoment(attainment) {
           attainment.attainmentDate =
-            dateArrayToUTCMomentObject(attainment.attainmentDate).local();
+            dateArrayToMomentObject(attainment.attainmentDate);
           return attainment;
         });
       });

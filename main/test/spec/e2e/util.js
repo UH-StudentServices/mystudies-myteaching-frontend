@@ -15,33 +15,36 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var _ = require('lodash');
-var uuid = require('node-uuid');
-
-function getLoginUrl(role) {
-  return browser.params[role].loginUrl;
-}
+var uuid = require('node-uuid'),
+    _ = require('lodash'),
+    DELAY = 10000;
 
 function login(role, username, password, siteName) {
+  var userNameInputLocator = by.css('input[name="username"]'),
+      passwordInputLocator = by.css('input[name="password"]'),
+      submitInputLocator = by.css('input[type="submit"]'),
+      loginLinkLocator = by.css('.login-page__login-link'),
+      loginUrl = browser.params[role].loginUrl;
 
-  var userNameInputLocator = by.css('input[name="username"]');
-  var passwordInputLocator = by.css('input[name="password"]');
-  var submitInputLocator = by.css('input[type="submit"]');
+  browser.get(loginUrl);
 
-  browser.ignoreSynchronization = true;
-
-  browser.get(getLoginUrl(role));
+  element(loginLinkLocator).isPresent().then(function(isPresent) {
+    if (isPresent) {
+      element(loginLinkLocator).click();
+    }
+  });
 
   browser.wait(function() {
     return element(userNameInputLocator).isPresent();
-  }, 20000);
+  }, 2 * DELAY);
+
   element(userNameInputLocator).sendKeys(username);
   element(passwordInputLocator).sendKeys(password);
   element(submitInputLocator).click();
+
   browser.wait(function() {
     return element(by.cssContainingText('h1', siteName)).isPresent();
-  }, 10000).then(function() {
-    browser.ignoreSynchronization = false;
+  }, DELAY).then(function() {
     dismissTour();
   });
 }
@@ -70,7 +73,7 @@ function waitUntilPresent(elementFinder) {
       return elementFinder.isPresent();
     };
   }
-  return browser.wait(predicateFunction, 10000);
+  return browser.wait(predicateFunction, DELAY);
 }
 
 function waitUntilNotPresent(elementFinder) {
@@ -90,7 +93,7 @@ function waitUntilNotPresent(elementFinder) {
     };
   }
 
-  return browser.wait(predicateFunction, 10000);
+  return browser.wait(predicateFunction, DELAY);
 }
 
 function waitUntilVisible(elementFinder) {
@@ -110,7 +113,7 @@ function waitUntilVisible(elementFinder) {
     };
   }
 
-  return browser.wait(predicateFunction, 10000);
+  return browser.wait(predicateFunction, DELAY);
 }
 
 function uniqueId(str) {

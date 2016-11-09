@@ -36,6 +36,8 @@ angular.module('opintoniApp', [
   'opintoniLander',
   'angular-click-outside',
 
+  'provider.analyticsAccounts',
+
   'services.session',
   'services.userSettings',
   'services.configuration',
@@ -188,7 +190,6 @@ angular.module('opintoniApp', [
           'content@': {
             templateUrl: 'app/partials/layout.html',
             controller: 'MainCtrl'
-
           }
         },
         resolve: {

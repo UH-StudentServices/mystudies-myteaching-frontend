@@ -65,7 +65,8 @@ angular.module('opintoniLander', ['services.language'])
         parent: 'lander',
         url: '/login',
         templateUrl: 'app/partials/landerPages/_lander.login.html',
-        controller: function($scope, state, Configuration, LanguageService, COURSE_SEARCH_URL, $window) {
+        controller: function($scope, state, Configuration, LanguageService, COURSE_SEARCH_URL,
+                             $window, StateChangeService) {
           var loginUrl = !state || state === 'opintoni' ?
             Configuration.loginUrlStudent :
             Configuration.loginUrlTeacher;
@@ -75,15 +76,26 @@ angular.module('opintoniLander', ['services.language'])
             loginUrlTeacher: Configuration.teacherAppUrl
           };
 
-          // This seemingly unnecessary redirect function (why not just use href?)
-          // is needed because when the app is running in standalone mode (as when launched from homescreen),
-          // using an href that points to a different domain opens a separate browser window, leaving standalone
-          // window and defeating the whole point of having a standalone version available.
           $scope.redirectToLogin = function() {
-            $window.location = loginUrl;
+            StateChangeService.goToLogin();
           };
 
           $scope.courseSearchUrl = COURSE_SEARCH_URL[LanguageService.getCurrent()];
+        }
+      })
+
+      .state('localLogin', {
+        parent: 'lander',
+        url: '/local-login',
+        templateUrl: 'app/partials/landerPages/_local.login.html',
+        controller: function($scope, Configuration, Environments, DemoUsers, StateService, State, DemoEnvPassword) {
+          var state = StateService.getStateFromDomain(),
+              users = state === State.MY_TEACHINGS ? DemoUsers.TEACHERS : DemoUsers.STUDENTS;
+
+          if (Configuration.environment === Environments.DEMO) {
+            $scope.users = users;
+            $scope.password = DemoEnvPassword;
+          }
         }
       });
   });

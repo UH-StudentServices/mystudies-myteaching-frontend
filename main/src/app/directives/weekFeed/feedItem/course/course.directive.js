@@ -109,23 +109,19 @@ angular.module('directives.weekFeed.feedItem.course', [
   .filter('eventDateSpan', function() {
 
     function formatMomentDate(momentDate) {
-      return momentDate.format('DD.MM.YYYY');
-    }
-
-    function formatMomentDateSpan(startDate, endDate) {
-      return formatMomentDate(startDate) + ' - ' + formatMomentDate(endDate);
+      if (momentDate) {
+        return momentDate.format('DD.MM.YYYY');
+      }
     }
 
     return function(startDate, endDate) {
+      var formattedStartDate = formatMomentDate(startDate),
+          formattedEndDate = formatMomentDate(endDate);
 
-      /* Dates are UTC but we want to show them as local times */
-      startDate = startDate.local();
-      endDate = endDate.local();
-
-      if (startDate.diff(endDate) === 0) {
-        return formatMomentDate(startDate);
+      if (formattedStartDate && formattedEndDate && formattedStartDate !== formattedEndDate) {
+        return formattedStartDate + ' - ' + formattedEndDate;
       } else {
-        return formatMomentDateSpan(startDate, endDate);
+        return formattedStartDate;
       }
     };
   });
