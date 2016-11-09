@@ -47,8 +47,8 @@ angular.module('opintoniLander', ['services.language'])
           }
         },
         resolve: {
-          pageTitle: function($q, $translate, state) {
-            var titleString = !state || state === 'opintoni' ?
+          pageTitle: function($q, $translate, state, State) {
+            var titleString = !state || state === State.MY_STUDIES ?
               'opintoni.pageHeaderBranding' :
               'opetukseni.pageHeaderBranding';
 
@@ -66,8 +66,8 @@ angular.module('opintoniLander', ['services.language'])
         url: '/login',
         templateUrl: 'app/partials/landerPages/_lander.login.html',
         controller: function($scope, state, Configuration, LanguageService, COURSE_SEARCH_URL,
-                             $window, StateChangeService) {
-          var loginUrl = !state || state === 'opintoni' ?
+                             $window, StateChangeService, State) {
+          var loginUrl = !state || state === State.MY_STUDIES ?
             Configuration.loginUrlStudent :
             Configuration.loginUrlTeacher;
 
