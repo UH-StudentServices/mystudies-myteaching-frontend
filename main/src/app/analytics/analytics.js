@@ -15,7 +15,7 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
- angular.module('opintoniAnalytics', [])
+angular.module('opintoniAnalytics', ['provider.analyticsAccounts'])
 
   /*
   * Analytics must be injected at least once.
@@ -28,18 +28,12 @@
     });
   })
 
-  .config(function(AnalyticsProvider) {
-    if (window.configuration) {
-      AnalyticsProvider.setAccount(
-        {
-          tracker: window.configuration.googleAnalyticsAccount,
-          trackEvent: true
-        });
-      AnalyticsProvider.trackPages(true);
-      AnalyticsProvider.useAnalytics(true);
-      AnalyticsProvider.ignoreFirstPageLoad(true);
-      AnalyticsProvider.setPageEvent('$stateChangeSuccess');
-    }
+  .config(function(AnalyticsProvider, AnalyticsAccountsProvider) {
+    AnalyticsProvider.setAccount(AnalyticsAccountsProvider.$get());
+    AnalyticsProvider.trackPages(true);
+    AnalyticsProvider.useAnalytics(true);
+    AnalyticsProvider.ignoreFirstPageLoad(true);
+    AnalyticsProvider.setPageEvent('$stateChangeSuccess');
   })
 
   .constant('EventCategories', {
