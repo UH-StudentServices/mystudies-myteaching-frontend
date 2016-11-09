@@ -16,7 +16,7 @@
  */
 
 angular.module('provider.analyticsAccounts', ['services.configuration'])
-  .constant('tracker', {
+  .constant('Tracker', {
     'main': {
       'NAME': 'OOtracker',
       'ID': 'googleAnalyticsAccount'
@@ -32,7 +32,7 @@ angular.module('provider.analyticsAccounts', ['services.configuration'])
   })
 
 
-  .provider('AnalyticsAccounts', function getAnalyticsAccounts(tracker, ConfigurationProvider) {
+  .provider('AnalyticsAccounts', function getAnalyticsAccounts(Tracker, ConfigurationProvider) {
     var configuration = ConfigurationProvider.$get();
 
     function checkTracker(hostname, trackerConfig) {
@@ -51,12 +51,12 @@ angular.module('provider.analyticsAccounts', ['services.configuration'])
       var accountsArray = [];
 
       if (window.configuration) {
-        addTracker(accountsArray, tracker.main.ID, tracker.main.NAME);
+        addTracker(accountsArray, Tracker.main.ID, Tracker.main.NAME);
 
-        if (checkTracker('teacher', tracker.teacher.ID)) {
-          addTracker(accountsArray, tracker.teacher.ID, tracker.teacher.NAME);
-        } else if (checkTracker('student', tracker.student.ID)) {
-          addTracker(accountsArray, tracker.student.ID, tracker.student.NAME);
+        if (checkTracker('teacher', Tracker.teacher.ID)) {
+          addTracker(accountsArray, Tracker.teacher.ID, Tracker.teacher.NAME);
+        } else if (checkTracker('student', Tracker.student.ID)) {
+          addTracker(accountsArray, Tracker.student.ID, Tracker.student.NAME);
         }
       }
       return accountsArray;
