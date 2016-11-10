@@ -22,6 +22,9 @@ exports.config = {
 
   capabilities: {
     'browserName': 'phantomjs',
+    'chromeOptions': {
+      'args': ['--start-maximized']
+    },
     'phantomjs.cli.args': ['--web-security=false', '--ignore-ssl-errors=true'],
     'phantomjs.binary.path': '../node_modules/.bin/phantomjs'
   },

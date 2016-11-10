@@ -17,7 +17,8 @@
 
 var uuid = require('node-uuid'),
     _ = require('lodash'),
-    DELAY = 10000;
+    DELAY = 10000,
+    BOOTSTRAP_ALLOWANCE = 1000;
 
 function login(role, username, password, siteName) {
   var userNameInputLocator = by.css('input[name="username"]'),
@@ -26,7 +27,8 @@ function login(role, username, password, siteName) {
       loginLinkLocator = by.css('.login-page__login-link'),
       loginUrl = browser.params[role].loginUrl;
 
-  browser.get(loginUrl);
+  browser.driver.get(loginUrl);
+  browser.driver.sleep(BOOTSTRAP_ALLOWANCE);
 
   element(loginLinkLocator).isPresent().then(function(isPresent) {
     if (isPresent) {
