@@ -52,55 +52,90 @@ angular.module('directives.eventCalendar', [])
       },
       replace: true,
       controller: function($scope, $translate) {
-        $translate('weekFeed.calendarCustom.list').then(function(listText) {
-          $scope.uiConfig = {
-            calendar: {
-              height: 'auto',
-              lang: LanguageService.getCurrent(),
-              allDaySlot: false,
-              eventRender: function(event, element) {
-                element.attr('title', event.tooltip);
-              },
-              customButtons: {
-                myCustomButton: {
-                  text: listText,
-                  click: function() {
-                    $scope.$emit('changeWeekFeedSubTab', {
-                      subTab: 'SCHEDULE_LIST'
-                    });
+        $translate([
+          'weekFeed.calendarCustom.list',
+          'eventCalendar.day',
+          'eventCalendar.week',
+          'eventCalendar.month']).then(function(buttonLabels) {
+            $scope.uiConfig = {
+              calendar: {
+                height: 'auto',
+                lang: LanguageService.getCurrent(),
+                allDaySlot: false,
+                eventRender: function(event, element) {
+                  element.attr('title', event.tooltip);
+                },
+                customButtons: {
+                  listButton: {
+                    text: _.capitalize(buttonLabels['weekFeed.calendarCustom.list']),
+                    click: function() {
+                      $scope.$emit('changeWeekFeedSubTab', {
+                        subTab: 'SCHEDULE_LIST'
+                      });
+                    }
+                  },
+                  dayButton: {
+                    text: _.capitalize(buttonLabels['eventCalendar.day']),
+                    click: function() {
+                      $scope.setActiveButton('dayButton');
+                      $scope.$emit('changeWeekFeedSubTab', {
+                        subTab: 'CALENDAR_DAY'
+                      });
+                    }
+                  },
+                  weekButton: {
+                    text: _.capitalize(buttonLabels['eventCalendar.week']),
+                    click: function() {
+                      $scope.setActiveButton('weekButton');
+                      $scope.$emit('changeWeekFeedSubTab', {
+                        subTab: 'CALENDAR_WEEK'
+                      });
+                    }
+                  },
+                  monthButton: {
+                    text: _.capitalize(buttonLabels['eventCalendar.month']),
+                    click: function() {
+                      $scope.setActiveButton('monthButton');
+                      $scope.$emit('changeWeekFeedSubTab', {
+                        subTab: 'CALENDAR_MONTH'
+                      });
+                    }
                   }
-                }
-              },
-              header: {
-                left: 'myCustomButton ' + CalendarViews.DAY + ' ' + CalendarViews.WEEK + ' ' + CalendarViews.MONTH,
-                center: 'title',
-                right: 'today prev,next'
-              },
-              columnFormat: 'dd',
-              timeFormat: 'HH:mm',
-              slotLabelFormat: 'HH:mm',
-              buttonIcons: {
-                prev: 'calendar-prev',
-                next: 'calendar-next'
-              },
-              defaultView: CalendarViews[$scope.calendarView],
-              viewRender: function(view) {
-                AnalyticsService.trackShowCalendarView(view.name);
-              },
-              weekNumbers: true,
-              minTime: '07:30:00',
-              maxTime: '20:30:00',
-              displayEventEnd: true,
-              hiddenDays: [0],
-              views: {
-                week: {
-                  columnFormat: 'dd DD.MM.'
-                }
-              },
-              firstDay: 1
-            }
-          };
-        });
+                },
+                header: {
+                  left: 'listButton dayButton weekButton monthButton',
+                  center: 'title',
+                  right: 'today prev,next'
+                },
+                columnFormat: 'dd',
+                timeFormat: 'HH:mm',
+                slotLabelFormat: 'HH:mm',
+                buttonIcons: {
+                  prev: 'calendar-prev',
+                  next: 'calendar-next'
+                },
+                defaultView: CalendarViews[$scope.calendarView],
+                viewRender: function(view) {
+                  $scope.setActiveButton({
+                    DAY: 'dayButton',
+                    WEEK: 'weekButton',
+                    MONTH: 'monthButton'}[$scope.calendarView]);
+                  AnalyticsService.trackShowCalendarView(view.name);
+                },
+                weekNumbers: true,
+                minTime: '07:30:00',
+                maxTime: '20:30:00',
+                displayEventEnd: true,
+                hiddenDays: [0],
+                views: {
+                  week: {
+                    columnFormat: 'dd DD.MM.'
+                  }
+                },
+                firstDay: 1
+              }
+            };
+          });
 
         $scope.eventSources = [];
 
@@ -119,28 +154,50 @@ angular.module('directives.eventCalendar', [])
 
         }
 
-        var sortedEvents = _.sortBy($scope.events, 'realisationId');
+        $scope.setActiveButton = function setActiveButton(buttonName) {
+          var leftDiv = $('.fc-left');
 
-        var calendarEvents = _.map(sortedEvents, function(event) {
+          leftDiv.find('.fc-button').removeClass('fc-state-active');
+          leftDiv.find('.fc-' + buttonName + '-button').addClass('fc-state-active');
+        };
 
-          var startMoment =  event.startDate;
-          var endMoment = event.endDate;
-          var title = getEventTitle(event);
+        function updateEventSources() {
+          var sortedEvents = _.sortBy($scope.events, 'realisationId');
 
-          var calendarEvent = {
-            title: title,
-            start: startMoment.toDate(),
-            end: endMoment.toDate(),
-            color: EventColorService.getColor(event.realisationId),
-            tooltip: title,
-            url: event.moodleUri ? event.moodleUri : event.courseUri
-          };
+          var calendarEvents = sortedEvents.map(function(event) {
 
-          return calendarEvent;
+            var startMoment =  event.startDate;
+            var endMoment = event.endDate;
+            var title = getEventTitle(event);
+
+            var calendarEvent = {
+              title: title,
+              start: startMoment.toDate(),
+              end: endMoment.toDate(),
+              color: EventColorService.getColor(event.realisationId),
+              tooltip: title,
+              url: event.moodleUri ? event.moodleUri : event.courseUri
+            };
+
+            return calendarEvent;
+          });
+
+          $scope.eventSources.length = 0;
+          $scope.eventSources.push(calendarEvents);
+        }
+
+        updateEventSources();
+        $scope.$watch('events', function(newEvents, oldEvents) {
+          if (newEvents !== oldEvents) {
+            updateEventSources();
+          }
         });
 
-        $scope.eventSources.push(calendarEvents);
-
+        $scope.$watch('calendarView', function(newView, oldView) {
+          if (newView !== oldView) {
+            uiCalendarConfig.calendars.eventCalendar.fullCalendar('changeView', CalendarViews[newView]);
+          }
+        });
 
       }
     };

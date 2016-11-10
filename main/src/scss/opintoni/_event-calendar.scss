@@ -50,13 +50,12 @@
   .fc-left .fc-button {
     @include button;
     @include font-size(15px);
-    height: 1.7em;
     margin-left: 0;
     margin-right: 0.4em;
     background-image: none;
     border-radius: 0;
     text-shadow: none;
-    padding: 0 0.7em;
+    padding: 0.3em 0.7em 0.4em;
     box-shadow: none;
     &.fc-state-active {
       background-color: $darkblue;
@@ -66,8 +65,7 @@
   .fc-right .fc-button {
     @extend %button--light;
     @include font-size(15px);
-    height: 1.7em;
-    padding: 0 0.7em;
+    padding: 0.3em 0.7em 0.4em;
     background: transparent;
     border-radius: 0;
   }
