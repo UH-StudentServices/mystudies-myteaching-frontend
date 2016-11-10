@@ -61,12 +61,13 @@
       </div>
       <ul role="list"
           class="list-of-links theme-dark">
-        <li ng-repeat="someLink in contactInformation.someLinks | orderBy: 'type'"
+        <li ng-repeat="someLink in contactInformation.someLinks | orderBy: 'type'"
             class="useful-links__link block"
             role="listitem">
-          <a class="list-of-links__link edit editable" ng-hide="someLink.edit">
+          <a class="list-of-links__link edit editable" ng-hide="someLink.edit" ng-click="editSomeLink(someLink)">
             <i class="fa fa-bars hide-mobile-only"></i>
-            <span ng-click="editSomeLink(someLink)">{{ someLink.url }}<i class="fa fa-pencil"></i></span>
+            {{ someLink.url }}
+            <i class="fa fa-pencil"></i>
             <i class="fa fa-{{ someLink.type | lowercase }} some-link-edit-icon"></i>
           </a>
 

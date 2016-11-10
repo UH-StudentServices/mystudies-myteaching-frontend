@@ -20,20 +20,23 @@
   </div>
   <div role="menu" class="dropdown-content">
     <ul>
-      <li class="divider text-transform-capitalize-block"
-          ng-click="setVisibility('PUBLIC')"
+      <li class="divider text-transform-capitalize-block">
+        <a ng-click="setVisibility('PUBLIC')"
           role="menuitem"
           translate="visibility.PUBLIC">
+        </a>
       </li>
-      <li class="divider text-transform-capitalize-block"
-          ng-click="setVisibility('RESTRICTED')"
+      <li class="divider text-transform-capitalize-block">
+        <a ng-click="setVisibility('RESTRICTED')"
           role="menuitem"
           translate="visibility.RESTRICTED">
+        </a>
       </li>
-      <li ng-click="setVisibility('PRIVATE')"
+      <li class="text-transform-capitalize-block">
+        <a ng-click="setVisibility('PRIVATE')"
           role="menuitem"
-          class="text-transform-capitalize-block"
           translate="visibility.PRIVATE">
+        </a>
       </li>
     </ul>
   </div>

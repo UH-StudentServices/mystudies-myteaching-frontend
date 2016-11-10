@@ -25,10 +25,10 @@
     <li class="study-attainment" ng-repeat="attainment in allAttainments">
       <div class="box-data border-bottom">
 
-        <div class="box-data__content visibility-container clickable" ng-click="toggleVisibility(attainment)">
+        <a class="box-data__content visibility-container clickable" ng-click="toggleVisibility(attainment)">
           <i ng-if="isVisible(attainment)" class="fa fa-eye"></i>
           <i ng-if="!isVisible(attainment)" class="fa fa-eye-slash"></i>
-        </div>
+        </a>
 
         <div class="box-data__box" ng-class="{'box-data__grade' : attainment.grade >= 0}">
           <span>{{ attainment.grade }}</span>

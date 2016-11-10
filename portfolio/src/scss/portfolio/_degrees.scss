@@ -46,6 +46,10 @@
       margin-top: 1em;
       position: relative;
 
+      a {
+        color: $white;
+      }
+
       .fa-close {
         @include vertically-center;
         color: $white;
