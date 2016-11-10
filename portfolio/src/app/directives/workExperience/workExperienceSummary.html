@@ -16,14 +16,14 @@
 -->
 
 <div class="work-experience-summary">
-    <ul>
-        <li class="work-experience-summary__item"
-            ng-repeat="workExperienceItem in workExperience | orderBy : orderWorkExperience : true track by workExperienceItem.id">
-            {{::workExperienceItem.employer}}
-        </li>
-    </ul>
-    <div class="work-experience-summary__item work-experience-summary__job-search" ng-if="jobSearch">
-        <div translate="workExperience.jobSearch"></div>
-        <div class="work-experience-summary__contact-email">{{::jobSearch.contactEmail}}</div>
-    </div>
+  <ul class="work-experience-summary__list hide-mobile-only">
+    <li class="work-experience-summary__item"
+        ng-repeat="workExperienceItem in workExperience | orderBy : orderWorkExperience : true track by workExperienceItem.id">
+        {{::workExperienceItem.employer}}
+    </li>
+  </ul>
+  <div class="work-experience-summary__item work-experience-summary__job-search" ng-if="jobSearch">
+    <div translate="workExperience.jobSearch"></div>
+    <div class="work-experience-summary__contact-email">{{::jobSearch.contactEmail}}</div>
+  </div>
 </div>

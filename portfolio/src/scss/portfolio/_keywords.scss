@@ -17,6 +17,12 @@
 
 $keywords-summary-tag-color: $black;
 $keywords-summary-text-color: $white;
+$keywords-summary-max-height: 171px;
+
+.keywords-summary__list {
+  max-height: $keywords-summary-max-height;
+  overflow: hidden;
+}
 
 .keywords-summary__item {
   text-transform: uppercase;

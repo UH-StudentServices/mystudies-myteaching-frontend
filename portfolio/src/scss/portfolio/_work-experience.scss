@@ -17,8 +17,10 @@
 
 $work-experience-width : 238px;
 $work-experience-height : 170px;
+
 $work-experience-summary-tag-color: $blue;
 $work-experience-summary-text-color: $white;
+$work-experience-summary-max-height: 57px;
 
 ul.work-experience {
   > li {
@@ -221,6 +223,11 @@ ul.work-experience {
   }
 }
 
+.work-experience-summary__list{
+  max-height: $work-experience-summary-max-height;
+  overflow: hidden;
+}
+
 .work-experience-summary__item {
   text-transform: uppercase;
   color: $work-experience-summary-text-color;
@@ -241,4 +248,5 @@ ul.work-experience {
 .work-experience-summary__job-search {
   width: 100%;
   padding-bottom: 1.5em;
+  margin: 0;
 }

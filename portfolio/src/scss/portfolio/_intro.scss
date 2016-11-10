@@ -19,15 +19,23 @@
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  flex-wrap: wrap;
+
   width: 100%;
   height: 100%;
-  padding: 3em 2em;
+  padding: 3em 1em;
   overflow-y: auto;
   overflow-x: hidden;
 
   @include breakpoint($large) {
     width: $page-content-max-width;
+  }
+
+  @include breakpoint($small) {
+    flex-direction: row;
+  }
+
+  @include breakpoint($mobile-only) {
+    flex-direction: column;
   }
 
   h2 {
@@ -60,8 +68,15 @@
 }
 
 .portfolio-intro__keywords {
-  flex: 0 1 auto;
   z-index: 1;
+
+  @include breakpoint($small) {
+    flex: 0 1 32%;
+  }
+
+  @include breakpoint($mobile-only) {
+    width: 100%;
+  }
 }
 
 .portfolio-intro__title, .portfolio-intro__intro {
