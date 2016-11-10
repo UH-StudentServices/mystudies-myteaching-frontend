@@ -155,14 +155,16 @@ angular.module('directives.eventCalendar', [])
         }
 
         $scope.setActiveButton = function setActiveButton(buttonName) {
-          $('.fc-left').find('.fc-button').removeClass('fc-state-active');
-          $('.fc-left').find('.fc-' + buttonName + '-button').addClass('fc-state-active');
+          var leftDiv = $('.fc-left');
+
+          leftDiv.find('.fc-button').removeClass('fc-state-active');
+          leftDiv.find('.fc-' + buttonName + '-button').addClass('fc-state-active');
         };
 
         function updateEventSources() {
           var sortedEvents = _.sortBy($scope.events, 'realisationId');
 
-          var calendarEvents = _.map(sortedEvents, function(event) {
+          var calendarEvents = sortedEvents.map(function(event) {
 
             var startMoment =  event.startDate;
             var endMoment = event.endDate;
