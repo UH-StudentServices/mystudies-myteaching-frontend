@@ -34,25 +34,25 @@ angular.module('services.configuration', [])
     STUDENTS: [
       {
         name: 'Venla Jukola',
-        username: 'doo_9'
+        username: 'v_jukola'
       },
       {
         name: 'Juhani Jukola',
-        username: 'doo_10'
+        username: 'j_jukola'
       },
       {
         name: 'Kaisa Rajamäki',
-        username: 'doo_11'
+        username: 'k_rajama'
       }
     ],
     TEACHERS: [
       {
         name: 'Eero Jukola',
-        username: 'doo_8'
+        username: 'e_jukola'
       },
       {
         name: 'Juhani Jukola',
-        username: 'doo_10'
+        username: 'j_jukola'
       }
     ]
   })
