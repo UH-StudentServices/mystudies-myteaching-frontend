@@ -17,8 +17,10 @@
 
 $work-experience-width : 238px;
 $work-experience-height : 170px;
+
 $work-experience-summary-tag-color: $blue;
 $work-experience-summary-text-color: $white;
+$work-experience-summary-max-height: 57px;
 
 ul.work-experience {
   > li {
@@ -222,7 +224,7 @@ ul.work-experience {
 }
 
 .work-experience-summary__list{
-  max-height: 57px;
+  max-height: $work-experience-summary-max-height;
   overflow: hidden;
 }
 
