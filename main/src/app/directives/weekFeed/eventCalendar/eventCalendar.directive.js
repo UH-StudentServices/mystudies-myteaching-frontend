@@ -116,7 +116,10 @@ angular.module('directives.eventCalendar', [])
                 },
                 defaultView: CalendarViews[$scope.calendarView],
                 viewRender: function(view) {
-                  $scope.setActiveButton({DAY: 'dayButton', WEEK: 'weekButton', MONTH: 'monthButton'}[$scope.calendarView]);
+                  $scope.setActiveButton({
+                    DAY: 'dayButton',
+                    WEEK: 'weekButton',
+                    MONTH: 'monthButton'}[$scope.calendarView]);
                   AnalyticsService.trackShowCalendarView(view.name);
                 },
                 weekNumbers: true,
