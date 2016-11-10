@@ -155,13 +155,11 @@ angular.module('directives.eventCalendar', [])
         }
 
         $scope.setActiveButton = function setActiveButton(buttonName) {
-          console.log('setActiveButton: ' + buttonName);
           $('.fc-left').find('.fc-button').removeClass('fc-state-active');
           $('.fc-left').find('.fc-' + buttonName + '-button').addClass('fc-state-active');
         };
 
         function updateEventSources() {
-          console.log('updating event sources; $scope.events=', $scope.events);
           var sortedEvents = _.sortBy($scope.events, 'realisationId');
 
           var calendarEvents = _.map(sortedEvents, function(event) {
