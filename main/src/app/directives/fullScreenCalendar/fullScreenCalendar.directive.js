@@ -22,15 +22,24 @@ angular.module('directives.fullScreenCalendar', [
   'utils.loader'
 ])
 
+  .constant('TabsToCalendarViews', {
+    CALENDAR_DAY: 'DAY',
+    CALENDAR_WEEK: 'WEEK',
+    CALENDAR_MONTH: 'MONTH'
+  })
+
   .directive('fullScreenCalendar', function(
+    $window,
     Loader,
-    LoaderKey) {
+    LoaderKey,
+    UserPreferencesService,
+    AnalyticsService,
+    TabsToCalendarViews) {
 
     return {
       restrict: 'E',
       replace: 'true',
       scope: {
-        calendarView: '=',
         eventsPromise: '=',
         onClose: '&'
       },
@@ -44,6 +53,27 @@ angular.module('directives.fullScreenCalendar', [
         }).finally(function() {
           Loader.stop(LoaderKey);
         });
+
+        $scope.oldScrollX = $window.scrollX;
+        $scope.oldScrollY = $window.scrollY;
+        $window.scrollTo(0,0);
+
+        $scope.calendarView = TabsToCalendarViews[UserPreferencesService.getPreferences().selectedSubTab];
+
+        $scope.$on('changeWeekFeedSubTab', function(evt, params) {
+          $scope.$apply(function() {
+            var tabName = params.subTab;
+
+            $scope.calendarView = TabsToCalendarViews[tabName];
+            UserPreferencesService.addProperty('selectedSubTab', tabName);
+            AnalyticsService.trackShowWeekFeedTab(tabName);
+          });
+        });
+
+        $scope.close = function close() {
+          $scope.onClose();
+          $window.scrollTo($scope.oldScrollX, $scope.oldScrollY);
+        };
       }
     };
   });
