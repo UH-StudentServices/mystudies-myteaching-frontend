@@ -98,6 +98,7 @@ angular.module('directives.editWorkExperience', [
       };
 
       $scope.addWorkExperience = function(job) {
+        job.id = Date.now();
         job.startDate = moment();
         job.jobTitle = $translate.instant('workExperience.jobTitle');
         job.employerUrl = $translate.instant('workExperience.employerUrl');
