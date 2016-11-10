@@ -34,9 +34,7 @@ describe('RSS feed favorite', function() {
     .first()
     .element(by.css('a'));
 
-  beforeEach(function() {
-    util.loginStudent();
-  });
+  beforeEach(util.loginStudent);
 
   it('Is possible to add an RSS feed', function() {
     favoritesListElementFinder.count().then(function(count) {
