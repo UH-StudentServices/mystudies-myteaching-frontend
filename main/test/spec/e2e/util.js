@@ -26,7 +26,7 @@ function login(role, username, password, siteName) {
       loginLinkLocator = by.css('.login-page__login-link'),
       loginUrl = browser.params[role].loginUrl;
 
-  browser.get(loginUrl);
+  browser.driver.get(loginUrl);
 
   element(loginLinkLocator).isPresent().then(function(isPresent) {
     if (isPresent) {
