@@ -59,6 +59,14 @@ angular.module('directives.workExperience', [
         var updateWorkExperience = angular.copy($scope.workExperience);
 
         _.forEach(updateWorkExperience, function(job) {
+          if (!job.startDate.isValid()) {
+            job.startDate = moment();
+          }
+
+          if (job.endDate && !job.endDate.isValid()) {
+            job.endDate = '';
+          }
+
           job.startDate = momentDateToLocalDateArray(job.startDate);
           job.endDate = momentDateToLocalDateArray(job.endDate);
         });

@@ -518,6 +518,12 @@ angular.module('directives.weekFeed', [
           return _.find($scope.selectedTab.subTabs, {});
         }
 
+        function getPreferredSubTab() {
+          return _.find($scope.selectedTab.subTabs, {
+            key: UserPreferencesService.getPreferences().selectedSubTab
+          }) || getFirstSubTab();
+        }
+
         function mapToResolved(promises) {
           return _.map(promises, function(promise) {
             return promise.catch(function() {
@@ -547,8 +553,9 @@ angular.module('directives.weekFeed', [
         $scope.MessageTypes = MessageTypes;
         $scope.selectedTab = getPreferredTab();
         $scope.subTabs = $scope.selectedTab.subTabs;
-        $scope.selectedSubTab = getFirstSubTab();
+        $scope.selectedSubTab = getPreferredSubTab();
         $scope.hideSubTabs = $scope.selectedSubTab.hideSubTabs;
+        $scope.calendarView = $scope.selectedSubTab.calendarView;
 
         Loader.start(LoaderKey);
 
@@ -579,6 +586,7 @@ angular.module('directives.weekFeed', [
           $scope.hideSubTabs = selectedSubTab.hideSubTabs;
           $scope.calendarView = selectedSubTab.calendarView;
           updateFeedItems();
+          UserPreferencesService.addProperty('selectedSubTab', selectedSubTab.key);
           AnalyticsService.trackShowWeekFeedTab(selectedSubTab.key);
         };
 
