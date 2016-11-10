@@ -23,19 +23,9 @@ angular.module('directives.editLink', [])
       templateUrl: 'app/directives/editLink/editLink.html',
       scope: {
         onEdit: '&',
-        onExitEdit: '&',
-        setEditState: '@'
+        onExitEdit: '&'
       },
       link: function($scope) {
-
-        function setEditState(editState) {
-          $scope.editing = editState ? $scope.$eval(editState) : false;
-        }
-
-        setEditState($scope.setEditState);
-
-        $scope.$watch('setEditState', setEditState);
-
         $scope.onClick = function() {
           if ($scope.editing) {
             $scope.onExitEdit();
