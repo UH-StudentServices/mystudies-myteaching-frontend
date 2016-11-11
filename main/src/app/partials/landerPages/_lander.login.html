@@ -16,7 +16,9 @@
 -->
 
 <div class="login-page-wrapper">
-  <h1 class="login-page__title">{{'landerPage.' + currentStateName + '.login.title' | translate | capitalize}}</h1>
+  <h1 class="login-page__title">
+    {{::('landerPage.' + currentStateName + '.login.title' | translate)}}
+  </h1>
 
   <div class="login-page__intro">
     <p>{{'landerPage.' + currentStateName + '.login.intro' | translate }}</p>
