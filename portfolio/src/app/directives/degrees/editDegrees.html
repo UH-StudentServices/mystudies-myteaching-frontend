@@ -25,40 +25,47 @@
       <div class="lyre-icon"></div>
       <div class="box-data__content">
         <span class="editable-content" ng-show="!degree.dateOfDegreeEdit">
-          <span ng-click="editDateOfDegree(degree)">
+          <a tabindex="0" ng-click="editDateOfDegree(degree)">
             {{ degree.dateOfDegree | momentFormat:'DD.MM.YYYY'}}
             <i class="fa fa-pencil"></i>
-          </span>
+          </a>
         </span>
         <span class="editable-content-active" ng-if="degree.dateOfDegreeEdit">
-          <input date-input focus="degree.dateOfDegreeEdit" ng-model="degree.dateOfDegree" ui-keypress="{'enter':'exitDateOfDegreeEdit(degree)'}">
-          <i ng-click="exitDateOfDegreeEdit(degree)" class="fa fa-check"></i>
+          <input date-input focus="degree.dateOfDegreeEdit" ng-model="degree.dateOfDegree"
+                 ui-keypress="{'enter':'exitDateOfDegreeEdit(degree)'}">
+          <a tabindex="0" ng-click="exitDateOfDegreeEdit(degree)"><i class="fa fa-check"></i></a>
         </span>
       </div>
 
       <div class="box-data__title">
         <span class="editable-content" ng-show="!degree.titleEdit">
-          <span ng-click="editTitle(degree)">{{ degree.title }}<i class="fa fa-pencil"></i></span>
+          <a tabindex="0" ng-click="editTitle(degree)">
+            {{ degree.title }}
+            <i class="fa fa-pencil"></i>
+          </a>
         </span>
         <span class="editable-content-active" ng-show="degree.titleEdit">
           <input focus="degree.titleEdit" ng-model="degree.title" ui-keypress="{'enter':'exitTitleEdit(degree)'}">
-          <i ng-click="exitTitleEdit(degree)" class="fa fa-check"></i>
+          <a tabindex="0" ng-click="exitTitleEdit(degree)"><i class="fa fa-check"></i></a>
         </span>
       </div>
 
       <div class="box-data__content">
         <span class="editable-content" ng-show="!degree.descriptionEdit">
-          <span ng-click="editDescription(degree)">{{ degree.description }}<i class="fa fa-pencil"></i></span>
+          <a tabindex="0" ng-click="editDescription(degree)">
+            {{ degree.description }}
+            <i class="fa fa-pencil"></i>
+          </a>
         </span>
         <span class="editable-content-active" ng-show="degree.descriptionEdit">
           <input focus="degree.descriptionEdit"
                  ng-model="degree.description"
                  ui-keypress="{'enter':'exitDescriptionEdit(degree)'}"
                  placeholder="{{::('degrees.descriptionPlaceholder' | translate)}}">
-          <i ng-click="exitDescriptionEdit(degree)" class="fa fa-check"></i>
+          <a tabindex="0" ng-click="exitDescriptionEdit(degree)"><i class="fa fa-check"></i></a>
         </span>
       </div>
-      <i class="fa fa-close" ng-click="removeDegree(degree)"></i>
+      <a tabindex="0" ng-click="removeDegree(degree)"><i class="fa fa-close"></i></a>
     </div>
   </li>
 </ul>

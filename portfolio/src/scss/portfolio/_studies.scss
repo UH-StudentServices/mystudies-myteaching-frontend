@@ -78,6 +78,11 @@ $tagColorEditingColor: #797979;
       background-color: $tagColorEditingColor;
 
       .fa-close {
+        color: $white;
+        &:hover {
+          color: $white;
+        }
+
         cursor: pointer;
         margin-left: 5px;
       }

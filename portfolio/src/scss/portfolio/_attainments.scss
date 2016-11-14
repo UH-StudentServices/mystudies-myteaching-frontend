@@ -21,5 +21,8 @@
     float: left;
     padding: 5px 10px 5px 10px;
     font-size: 2em;
+    &:hover {
+      color: $lightgray;
+    }
   }
 }

@@ -21,13 +21,15 @@
                              clear-search-fn="clearSearch"
                              loading="loading"
                              enter-fn="addLinkFavorite"
-                             placeholder="{{::('favorites.link.linkPlaceholder' | translate | capitalize)}}"
+                             placeholder="{{::('favorites.link.linkPlaceholder' | translate | capitalize)}}"
                              input-type="url"
                              search-string="searchString">
     </add-new-favorite-search>
   </div>
-  <div ng-if="metaData" class="island" ng-click="addLinkFavorite()">
-    <img class="favorite-img" ng-src="{{ metaData.thumbnail_url }}" alt="{{ metaData.title }}">
-    <h4>{{ metaData.title }}</h4>
+  <div ng-if="metaData" class="island">
+    <a tabindex="0" ng-click="addLinkFavorite()">
+      <img class="favorite-img" ng-src="{{ metaData.thumbnail_url }}" alt="{{ metaData.title }}">
+      <h4>{{ metaData.title }}</h4>
+    </a>
   </div>
 </div>

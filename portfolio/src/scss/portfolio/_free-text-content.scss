@@ -86,6 +86,9 @@
       cursor: pointer;
       background-color: $gray;
       color: $white;
+      a {
+        color: $white;
+      }
       &:after {
         position: absolute;
         font-weight: normal;

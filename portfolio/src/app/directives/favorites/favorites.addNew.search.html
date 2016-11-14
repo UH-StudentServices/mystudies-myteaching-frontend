@@ -23,10 +23,11 @@
          ng-change="search(searchString)"
          placeholder="{{placeholder}}">
   <a role="button"
+     tabindex="0"
      ng-if="searchString !== '' && !loading"
      class="fa fa-close"
      ng-click="clearSearch()"
-     aria-label="{{::('favorites.ariaLabels.clearSearch' | translate)}}"></a>
+     aria-label="{{::('favorites.ariaLabels.clearSearch' | translate)}}"></a>
   <span ng-if="loading">
     <i class="fa fa-circle-o-notch fa-spin center"></i>
   </span>
