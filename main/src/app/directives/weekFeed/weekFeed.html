@@ -57,7 +57,10 @@
         </li>
       </ul>
 
-      <event-calendar events="events" calendar-view="calendarView" ng-if="events && hideSubTabs"></event-calendar>
+      <div class="event-calendar-inline" ng-if="events && hideSubTabs">
+        <event-calendar events="events" date="currentDate" calendar-view="calendarView" full-screen="false"></event-calendar>
+        <button class="event-calendar-inline-full-screen-button" aria-label="open full-screen calendar" ng-click="showFullScreenCalendar(currentDate)"><img src="/assets/icons/full_screen.svg" width="1em" height="1em" /></button>
+      </div>
 
       <div class="week-feed-actions">
         <button class="button--light button" ng-click="showMore()" ng-if="showMoreVisible()" translate="buttons.showMore">

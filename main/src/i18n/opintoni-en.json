@@ -8,6 +8,7 @@
     "show": "show",
     "edit": "edit",
     "done": "done",
+    "close": "close",
     "save": "save",
     "cancel": "cancel",
     "copyToClipboard" : "copy to clipboard",
