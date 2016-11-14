@@ -73,7 +73,6 @@
 <div class="new-degree">
   <div class="input-container">
     <input ng-model="newDegree.title"
-           tabindex="0"
            ui-keypress="{'enter':'addDegree(newDegree)'}"
            focus="editing"
            type="text"
@@ -81,7 +80,6 @@
            aria-label="{{::('degrees.addNewPlaceholder' | translate)}}">
   </div>
   <button class="add-icon fa fa-plus"
-          tabindex="0"
           ng-click="addDegree(newDegree)"
           aria-label="{{::('degrees.addNewPlaceholder' | translate)}}">
   </button>

@@ -31,8 +31,8 @@
            type="text"
            ng-model="freeTextContent.title"
            ng-enter="onOk()">
-    <button tabindex="0" ng-if="!headingKey && !editingTitle" ng-click="onRemove()" class="favorites-list__remove"></button>
+    <button ng-if="!headingKey && !editingTitle" ng-click="onRemove()" class="favorites-list__remove"></button>
   </div>
 
-  <textarea class="edit-free-text-content__edit-text" ng-model="freeTextContent.text" tabindex="0"></textarea>
+  <textarea class="edit-free-text-content__edit-text" ng-model="freeTextContent.text"></textarea>
 </div>

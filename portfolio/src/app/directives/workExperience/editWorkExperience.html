@@ -29,7 +29,7 @@
                 </a>
               </span>
               <span class="editable-content-active" ng-show="workExperienceItem.employerEdit">
-                <input focus="workExperienceItem.employerEdit" tabindex="0" ng-model="workExperienceItem.employer"
+                <input focus="workExperienceItem.employerEdit" ng-model="workExperienceItem.employer"
                        ui-keypress="{'enter':'exitEmployerEdit(workExperienceItem)'}" />
                 <a tabindex="0" ng-click="exitEmployerEdit(workExperienceItem)"><i class="fa fa-check"></i></a>
               </span>
@@ -42,7 +42,7 @@
                 </a>
               </span>
               <span class="editable-content-active" ng-if="workExperienceItem.startDateEdit">
-                <input focus="workExperienceItem.startDateEdit" tabindex="0"
+                <input focus="workExperienceItem.startDateEdit"
                        date-input="MM/YYYY" ng-model="workExperienceItem.startDate"
                        ui-keypress="{'enter':'exitStartDateEdit(workExperienceItem)'}">
                 <a tabindex="0" ng-click="exitStartDateEdit(workExperienceItem)"><i class="fa fa-check"></i></a>
@@ -55,7 +55,7 @@
                 </a>
               </span>
               <span class="editable-content-active" ng-if="workExperienceItem.endDateEdit">
-                <input focus="workExperienceItem.endDateEdit" tabindex="0"
+                <input focus="workExperienceItem.endDateEdit"
                        date-input="MM/YYYY" ng-model="workExperienceItem.endDate"
                        ui-keypress="{'enter':'exitEndDateEdit(workExperienceItem)'}">
                 <a tabindex="0" ng-click="exitEndDateEdit(workExperienceItem)"><i class="fa fa-check"></i></a>
@@ -72,14 +72,14 @@
             </a>
           </span>
           <span class="editable-content-active" ng-show="workExperienceItem.jobTitleEdit">
-            <input focus="workExperienceItem.jobTitleEdit" tabindex="0" ng-model="workExperienceItem.jobTitle"
+            <input focus="workExperienceItem.jobTitleEdit" ng-model="workExperienceItem.jobTitle"
                    ui-keypress="{'enter':'exitJobTitleEdit(workExperienceItem)'}" />
             <a tabindex="0" ng-click="exitJobTitleEdit(workExperienceItem)"><i class="fa fa-check"></i></a>
           </span>
         </div>
         <div class="work-experience__description">
           <textarea placeholder="{{'workExperience.descriptionPlaceholder'|translate}}"
-                    ng-model="workExperienceItem.text" tabindex="0"></textarea>
+                    ng-model="workExperienceItem.text" ></textarea>
         </div>
         <div class="work-experience__url">
           <span class="editable-content" ng-show="!workExperienceItem.employerUrlEdit">
@@ -88,14 +88,14 @@
             </a>
           </span>
           <span class="editable-content-active" ng-show="workExperienceItem.employerUrlEdit">
-            <input focus="workExperienceItem.employerUrlEdit" tabindex="0" ng-model="workExperienceItem.employerUrl"
+            <input focus="workExperienceItem.employerUrlEdit" ng-model="workExperienceItem.employerUrl"
                    ui-keypress="{'enter':'exitEmployerUrlEdit(workExperienceItem)'}" />
             <a tabindex="0" ng-click="exitEmployerUrlEdit(workExperienceItem)"><i class="fa fa-check"></i></a>
           </span>
         </div>
       </div>
       <button class="work-experience__remove" ng-show="editing"
-              tabindex="0" ng-click="removeWorkExperience(workExperienceItem)"></button>
+              ng-click="removeWorkExperience(workExperienceItem)"></button>
     </div>
   </li>
 
@@ -116,7 +116,7 @@
                 </a>
               </span>
               <span class="editable-content-active" ng-show="editContactEmail">
-                <input tabindex="0" ng-model="jobSearch.contactEmail"
+                <input ng-model="jobSearch.contactEmail"
                        ui-keypress="{'enter':'exitContactEmailEdit()'}" />
                 <a tabindex="0" ng-click="exitContactEmailEdit()"><i class="fa fa-check"></i></a>
               </span>
@@ -132,14 +132,14 @@
             </a>
           </span>
           <span class="editable-content-active" ng-show="editJobSearchHeadline">
-            <input tabindex="0" focus="editJobSearchHeadline" ng-model="jobSearch.headline"
+            <input focus="editJobSearchHeadline" ng-model="jobSearch.headline"
                    ui-keypress="{'enter':'exitJobHeadlineEdit()'}" />
             <a tabindex="0" ng-click="exitJobHeadlineEdit()"><i class="fa fa-check"></i></a>
           </span>
         </div>
         <div class="work-experience__description">
           <textarea placeholder="{{'workExperience.descriptionPlaceholder'|translate}}"
-                    ng-model="jobSearch.text" tabindex="0"></textarea>
+                    ng-model="jobSearch.text"></textarea>
         </div>
         <div class="work-experience__url">
           <span class="editable-content" ng-show="!editContactEmail">
@@ -148,14 +148,14 @@
             </a>
           </span>
           <span class="editable-content-active" ng-show="editContactEmail">
-            <input focus="editContactEmail" tabindex="0" ng-model="jobSearch.contactEmail"
+            <input focus="editContactEmail" ng-model="jobSearch.contactEmail"
                    ui-keypress="{'enter':'exitContactEmailEdit()'}" />
             <a tabindex="0" ng-click="exitContactEmailEdit()"><i class="fa fa-check"></i></a>
           </span>
         </div>
       </div>
       <button class="work-experience__remove" ng-show="editing"
-              tabindex="0" ng-click="removeJobSearch()"></button>
+              ng-click="removeJobSearch()"></button>
     </div>
   </li>
 
@@ -164,27 +164,25 @@
       <input ng-model="newJob.employer"
              ui-keypress="{'enter':'addWorkExperience(newJob)'}"
              focus="editing"
-             tabindex="0"
              type="text"
              placeholder="{{::('workExperience.addWorkExperience' | translate)}}"
              aria-label="{{::('workExperience.addWorkExperience' | translate)}}"/>
     </div>
     <button class="add-icon fa fa-plus"
             ng-click="addWorkExperience(newJob)"
-            tabindex="0"
             aria-label="{{::('workExperience.addNew' | translate)}}">
     </button>
   </li>
 
   <li visibility-private class="work-experience__add-new" ng-hide="jobSearch">
     <div class="input-container" ng-form name="addJobSearchForm">
-      <input ng-model="newJobSearch.contactEmail" tabindex="0"
+      <input ng-model="newJobSearch.contactEmail"
              type="email" name="contactEmail" required
              ui-keypress="{'enter':'addJobSearch(newJobSearch)'}"
              placeholder="{{::('workExperience.addJobSearch' | translate)}}"
              aria-label="{{::('workExperience.addJobSearch' | translate)}}"/>
     </div>
-    <button class="add-icon fa fa-plus" tabindex="0"
+    <button class="add-icon fa fa-plus"
             ng-class="{'form-error': !addJobSearchForm.contactEmail.$valid}"
             ng-disabled="!addJobSearchForm.contactEmail.$valid"
             ng-click="addJobSearch(newJobSearch)"
