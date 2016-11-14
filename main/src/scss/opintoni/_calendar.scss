@@ -18,6 +18,7 @@
 .calendar .l-footer {
   margin-top: 6em;
   @media print {
-    margin-top: 2em;
+    margin-top: 0;
+    padding-bottom: 0;
   }
 }

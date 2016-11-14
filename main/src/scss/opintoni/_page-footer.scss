@@ -19,8 +19,6 @@
 // Page footer
 // --------------------------------------------------
 
-
-
 .page-footer {}
 
 .page-footer__branding {}
@@ -58,6 +56,13 @@
     @include font-size(14px);
     line-height: 1.2em;
   }
+
+  @media print {
+    margin-bottom: 0;
+    .page-footer__puhelinvaihde {
+      margin-bottom: 0;
+    }
+  }
 }
 
 .page-footer__copyright {
@@ -67,6 +72,10 @@
 
   @include breakpoint($medium) {
     border: 0;
+  }
+
+  @media print {
+    display: none;
   }
 }
 

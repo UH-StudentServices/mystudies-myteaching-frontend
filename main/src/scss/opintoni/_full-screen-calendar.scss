@@ -17,6 +17,9 @@
 
 .full-screen-calendar {
   padding: 4em 6em 0;
+  @media print {
+    padding: 2em 2em 0;
+  }
   width: 100%;
   background-color: white;
 }
