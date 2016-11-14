@@ -20,7 +20,7 @@
     <div class="page-header__branding">
       <ul>
         <li>
-          <a href="http://www.helsinki.fi/yliopisto/">
+          <a href="http://www.helsinki.fi/yliopisto/" tabindex="0">
             <img src="/portfolio/assets/icons/logo.svg" class="logo--header">
           </a>
         </li>
@@ -33,6 +33,7 @@
         <li ng-repeat="link in pageHeaderLinks">
           <a class="page-header__link"
              href="{{link.href}}"
+             tabindex="0"
              target="_blank"
              translate="{{link.key}}">
           </a>
