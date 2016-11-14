@@ -485,7 +485,9 @@ angular.module('directives.weekFeed', [
       templateUrl: 'app/directives/weekFeed/weekFeed.html',
       scope: {
         coursesPromise: '=',
-        eventsPromise: '='
+        eventsPromise: '=',
+        currentDate: '=date',
+        onShowFullScreenCalendar: '&'
       },
       link: function($scope) {
         var currentStateName = StateService.getRootStateName(),
@@ -613,6 +615,11 @@ angular.module('directives.weekFeed', [
           return {
             'active': subTab === $scope.selectedSubTab
           };
+        };
+
+        $scope.showFullScreenCalendar = function showFullScreenCalendar() {
+          $scope.$broadcast('eventCalendar.refreshCurrentDate');
+          $scope.onShowFullScreenCalendar();
         };
 
       }

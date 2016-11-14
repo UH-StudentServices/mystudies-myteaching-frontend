@@ -17,49 +17,29 @@
 
 'use strict';
 
-angular.module('controllers.main', [
-  'directives.userMenu',
-  'directives.attainments',
-  'directives.favorites',
-  'directives.userBackground',
-  'directives.globalMessages',
-  'directives.todoItems',
-  'directives.pageHeader',
-  'directives.mobileToolbar',
-  'directives.weekFeed',
-  'directives.usefulLinks',
-  'directives.searchResults',
-  'directives.admin.feedback',
+angular.module('controllers.calendar', [
+  'directives.fullScreenCalendar',
   'services.focus'
 ])
 
-  .controller('MainCtrl', function(
+  .controller('CalendarCtrl', function(
     $scope,
     StateService,
     State,
-    userSettings,
     session,
-    getCourses,
+    closeCalendar,
     getEvents,
-    getCurrentDate,
-    showFullScreenCalendar,
-    UserSettingsService) {
+    getCurrentDate) {
 
     $scope.currentStateName = StateService.getRootStateName();
     $scope.State = State;
-    $scope.userSettings = userSettings;
     $scope.showApp = session !== undefined;
     $scope.session = session;
-    $scope.courses = getCourses();
     $scope.events = getEvents();
     $scope.currentDate = getCurrentDate();
 
-    $scope.showFullScreenCalendar = function() {
-      showFullScreenCalendar($scope.currentDate);
+    $scope.closeCalendar = function() {
+      closeCalendar($scope.currentDate);
     };
-
-    UserSettingsService.getShowBannerSubject().subscribe(function(showBanner) {
-      $scope.showBanner = showBanner;
-    });
 
   });
