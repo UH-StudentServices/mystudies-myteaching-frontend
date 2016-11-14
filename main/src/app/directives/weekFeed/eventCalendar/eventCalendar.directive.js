@@ -45,12 +45,10 @@ angular.module('directives.eventCalendar', [])
     LanguageService) {
     return {
       restrict: 'E',
-      templateUrl: 'app/directives/eventCalendar/eventCalendar.html',
+      templateUrl: 'app/directives/weekFeed/eventCalendar/eventCalendar.html',
       scope: {
         events: '=',
-        currentDate: '=date',
-        calendarView: '=',
-        fullScreen: '='
+        calendarView: '='
       },
       replace: true,
       controller: function($scope, $translate) {
@@ -105,8 +103,7 @@ angular.module('directives.eventCalendar', [])
                   }
                 },
                 header: {
-                  left: $scope.fullScreen ? 'dayButton weekButton monthButton' :
-                                            'listButton dayButton weekButton monthButton',
+                  left: 'listButton dayButton weekButton monthButton',
                   center: 'title',
                   right: 'today prev,next'
                 },
@@ -135,8 +132,7 @@ angular.module('directives.eventCalendar', [])
                     columnFormat: 'dd DD.MM.'
                   }
                 },
-                firstDay: 1,
-                defaultDate: $scope.currentDate
+                firstDay: 1
               }
             };
           });
@@ -203,22 +199,6 @@ angular.module('directives.eventCalendar', [])
           }
         });
 
-        $scope.$watch('currentDate', function(newDate, oldDate) {
-          // This can be called before the calendar is created...
-          if (uiCalendarConfig.calendars.eventCalendar) {
-            uiCalendarConfig.calendars.eventCalendar.fullCalendar('gotoDate', newDate);
-          }
-        });
-
-        $scope.$on('eventCalendar.refreshCurrentDate', function() {
-          // This can be called before the calendar is created...
-          if (uiCalendarConfig.calendars.eventCalendar) {
-            var newCurrentDate = uiCalendarConfig.calendars.eventCalendar.fullCalendar('getDate');
-
-            // replace contents of moment object using obj.set(newValue.toObject())
-            $scope.currentDate.set(newCurrentDate.toObject());
-          }
-        });
       }
     };
   });
