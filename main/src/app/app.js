@@ -147,6 +147,7 @@ angular.module('opintoniApp', [
           pageTitle: 'opintoni.title'
 
         },
+        params: {currentDate: null},
         views: {
           'content@': {
             templateUrl: 'app/partials/layout.html',
@@ -169,9 +170,14 @@ angular.module('opintoniApp', [
           getEvents: function(EventsResource) {
             return EventsResource.getStudentEvents;
           },
-          showFullscreenCalendar: function($state) {
+          getCurrentDate: function($stateParams) {
             return function() {
-              $state.go('opintoni-calendar');
+              return $stateParams.currentDate ? $stateParams.currentDate : moment();
+            };
+          },
+          showFullScreenCalendar: function($state) {
+            return function(currentDate) {
+              $state.go('opintoni-calendar', {currentDate: currentDate});
             };
           }
         },
@@ -186,6 +192,7 @@ angular.module('opintoniApp', [
           roles: ['TEACHER'],
           pageTitle: 'opetukseni.title'
         },
+        params: {currentDate: null},
         views: {
           'content@': {
             templateUrl: 'app/partials/layout.html',
@@ -205,9 +212,14 @@ angular.module('opintoniApp', [
           getEvents: function(EventsResource) {
             return EventsResource.getTeacherEvents;
           },
-          showFullscreenCalendar: function($state) {
+          getCurrentDate: function($stateParams) {
             return function() {
-              $state.go('opetukseni-calendar');
+              return $stateParams.currentDate ? $stateParams.currentDate : moment();
+            };
+          },
+          showFullScreenCalendar: function($state) {
+            return function(currentDate) {
+              $state.go('opetukseni-calendar', {currentDate: currentDate});
             };
           }
         },
@@ -223,6 +235,7 @@ angular.module('opintoniApp', [
           pageTitle: 'opintoni.title'
 
         },
+        params: {currentDate: null},
         views: {
           'content@': {
             templateUrl: 'app/partials/calendarLayout.html',
@@ -242,9 +255,14 @@ angular.module('opintoniApp', [
           getEvents: function(EventsResource) {
             return EventsResource.getStudentEvents;
           },
-          closeCalendar: function($state) {
+          getCurrentDate: function($stateParams) {
             return function() {
-              $state.go('opintoni');
+              return $stateParams.currentDate ? $stateParams.currentDate : moment();
+            };
+          },
+          closeCalendar: function($state) {
+            return function(currentDate) {
+              $state.go('opintoni', {currentDate: currentDate});
             };
           }
         }
@@ -256,6 +274,7 @@ angular.module('opintoniApp', [
           roles: ['TEACHER'],
           pageTitle: 'opetukseni.title'
         },
+        params: {currentDate: null},
         views: {
           'content@': {
             templateUrl: 'app/partials/calendarLayout.html',
@@ -273,9 +292,14 @@ angular.module('opintoniApp', [
           getEvents: function(EventsResource) {
             return EventsResource.getTeacherEvents;
           },
-          closeCalendar: function($state) {
+          getCurrentDate: function($stateParams) {
             return function() {
-              $state.go('opetukseni');
+              return $stateParams.currentDate ? $stateParams.currentDate : moment();
+            };
+          },
+          closeCalendar: function($state) {
+            return function(currentDate) {
+              $state.go('opetukseni', {currentDate: currentDate});
             };
           }
         }

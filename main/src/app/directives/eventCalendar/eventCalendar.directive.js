@@ -48,6 +48,7 @@ angular.module('directives.eventCalendar', [])
       templateUrl: 'app/directives/eventCalendar/eventCalendar.html',
       scope: {
         events: '=',
+        currentDate: '=date',
         calendarView: '=',
         fullScreen: '='
       },
@@ -134,7 +135,8 @@ angular.module('directives.eventCalendar', [])
                     columnFormat: 'dd DD.MM.'
                   }
                 },
-                firstDay: 1
+                firstDay: 1,
+                defaultDate: $scope.currentDate
               }
             };
           });
@@ -198,6 +200,23 @@ angular.module('directives.eventCalendar', [])
         $scope.$watch('calendarView', function(newView, oldView) {
           if (newView !== oldView) {
             uiCalendarConfig.calendars.eventCalendar.fullCalendar('changeView', CalendarViews[newView]);
+          }
+        });
+
+        $scope.$watch('currentDate', function(newDate, oldDate) {
+          // This can be called before the calendar is created...
+          if (uiCalendarConfig.calendars.eventCalendar) {
+            uiCalendarConfig.calendars.eventCalendar.fullCalendar('gotoDate', newDate);
+          }
+        });
+
+        $scope.$on('eventCalendar.refreshCurrentDate', function() {
+          // This can be called before the calendar is created...
+          if (uiCalendarConfig.calendars.eventCalendar) {
+            var newCurrentDate = uiCalendarConfig.calendars.eventCalendar.fullCalendar('getDate');
+
+            // replace contents of moment object using obj.set(newValue.toObject())
+            $scope.currentDate.set(newCurrentDate.toObject());
           }
         });
       }

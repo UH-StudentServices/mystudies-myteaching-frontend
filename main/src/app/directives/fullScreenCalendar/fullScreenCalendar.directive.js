@@ -41,6 +41,7 @@ angular.module('directives.fullScreenCalendar', [
       replace: 'true',
       scope: {
         eventsPromise: '=',
+        currentDate: '=date',
         onClose: '&'
       },
       templateUrl: 'app/directives/fullScreenCalendar/fullScreenCalendar.html',
@@ -71,6 +72,7 @@ angular.module('directives.fullScreenCalendar', [
         });
 
         $scope.close = function close() {
+          $scope.$broadcast('eventCalendar.refreshCurrentDate');
           $scope.onClose();
           $window.scrollTo($scope.oldScrollX, $scope.oldScrollY);
         };

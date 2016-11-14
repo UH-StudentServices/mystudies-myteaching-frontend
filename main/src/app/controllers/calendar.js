@@ -28,14 +28,18 @@ angular.module('controllers.calendar', [
     State,
     session,
     closeCalendar,
-    getEvents) {
+    getEvents,
+    getCurrentDate) {
 
     $scope.currentStateName = StateService.getRootStateName();
     $scope.State = State;
     $scope.showApp = session !== undefined;
     $scope.session = session;
-    $scope.calendarView = 'DAY';  //FIXME: get from state argument
     $scope.events = getEvents();
-    $scope.closeCalendar = closeCalendar;
+    $scope.currentDate = getCurrentDate();
+
+    $scope.closeCalendar = function() {
+      closeCalendar($scope.currentDate);
+    };
 
   });

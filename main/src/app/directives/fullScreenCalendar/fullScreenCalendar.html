@@ -18,6 +18,6 @@
 <div class="full-screen-calendar">
   <h2 translate="weekFeed.timetable"></h2>
   <hr>
-  <event-calendar events="events" calendar-view="calendarView" full-screen="true"></event-calendar>
-  <button class="full-screen-calendar-close-button" aria-label="close full-screen calendar" ng-click="close()" translate="general.close"></button>
+  <event-calendar events="events" date="currentDate" calendar-view="calendarView" full-screen="true"></event-calendar>
+  <button class="full-screen-calendar-close-button" aria-label="close full-screen calendar" ng-click="close(currentDate)" translate="general.close"></button>
 </div>

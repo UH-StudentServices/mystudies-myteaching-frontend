@@ -486,7 +486,8 @@ angular.module('directives.weekFeed', [
       scope: {
         coursesPromise: '=',
         eventsPromise: '=',
-        onShowFullscreenCalendar: '&'
+        currentDate: '=date',
+        onShowFullScreenCalendar: '&'
       },
       link: function($scope) {
         var currentStateName = StateService.getRootStateName(),
@@ -616,8 +617,9 @@ angular.module('directives.weekFeed', [
           };
         };
 
-        $scope.showFullscreenCalendar = function showFullscreenCalendar() {
-          $scope.onShowFullscreenCalendar();
+        $scope.showFullScreenCalendar = function showFullScreenCalendar() {
+          $scope.$broadcast('eventCalendar.refreshCurrentDate');
+          $scope.onShowFullScreenCalendar();
         };
 
       }
