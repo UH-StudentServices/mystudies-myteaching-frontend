@@ -26,7 +26,6 @@ angular.module('directives.userMenu',
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'app/directives/header/userMenu/userMenu.html',
-      link: function($scope) {}
+      templateUrl: 'app/directives/header/userMenu/userMenu.html'
     };
   });
