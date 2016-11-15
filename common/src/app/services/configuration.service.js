@@ -30,34 +30,78 @@ angular.module('services.configuration', [])
     PROD: 'prod',
   })
 
-  .constant('DemoUsers', {
-    STUDENTS: [
-      {
-        name: 'Venla Jukola',
-        username: 'v_jukola'
-      },
-      {
-        name: 'Juhani Jukola',
-        username: 'j_jukola'
-      },
-      {
-        name: 'Kaisa Rajamäki',
-        username: 'k_rajama'
-      }
-    ],
-    TEACHERS: [
-      {
-        name: 'Eero Jukola',
-        username: 'e_jukola'
-      },
-      {
-        name: 'Juhani Jukola',
-        username: 'j_jukola'
-      }
-    ]
+  .constant('LocalUsers', {
+    demo: {
+      students: [
+        {
+          name: 'Venla Jukola',
+          username: 'v_jukola'
+        },
+        {
+          name: 'Juhani Jukola',
+          username: 'j_jukola'
+        },
+        {
+          name: 'Kaisa Rajamäki',
+          username: 'k_rajama'
+        }
+      ],
+      teachers: [
+        {
+          name: 'Eero Jukola',
+          username: 'e_jukola'
+        },
+        {
+          name: 'Juhani Jukola',
+          username: 'j_jukola'
+        }
+      ]
+    },
+    local: {
+      students: [
+        {
+          name: 'Olli Opiskelija',
+          username: 'opiskelija'
+        },
+        {
+          name: 'Maggie Simpson',
+          username: 'mag_simp'
+        },
+        {
+          name: 'Hybrid User',
+          username: 'hybriduser'
+        },
+        {
+          name: 'Test Student',
+          username: 'teststudent'
+        },
+        {
+          name: 'Test Hybrid User',
+          username: 'testhybriduser'
+        }
+      ],
+      teachers: [
+        {
+          name: 'Olli Opettaja',
+          username: 'opettaja'
+        },
+        {
+          name: 'Hybrid User',
+          username: 'hybriduser'
+        },
+        {
+          name: 'Test Teacher',
+          username: 'testteacher'
+        },
+        {
+          name: 'Test Hybrid User',
+          username: 'testhybriduser'
+        }
+      ]
+    }
   })
 
-  .constant('DemoEnvPassword', 'password')
+  .constant('LocalPassword', 'password')
 
   .factory('Configuration', function($window) {
     return $window.configuration ? $window.configuration : {};
