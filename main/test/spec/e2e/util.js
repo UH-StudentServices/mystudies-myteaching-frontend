@@ -20,29 +20,25 @@ var uuid = require('node-uuid'),
     DELAY = 10000,
     BOOTSTRAP_ALLOWANCE = 1000;
 
-function login(role, username, password, siteName) {
-  var userNameInputLocator = by.css('input[name="username"]'),
-      passwordInputLocator = by.css('input[name="password"]'),
-      submitInputLocator = by.css('input[type="submit"]'),
-      loginLinkLocator = by.css('.login-page__login-link'),
+function login(role, fullName, siteName) {
+  var userLoginLinkLocator = by.linkText(fullName),
+      landerToLoginLinkLocator = by.css('.login-page__login-link'),
       loginUrl = browser.params[role].loginUrl;
 
   browser.driver.get(loginUrl);
   browser.driver.sleep(BOOTSTRAP_ALLOWANCE);
 
-  element(loginLinkLocator).isPresent().then(function(isPresent) {
+  element(landerToLoginLinkLocator).isPresent().then(function(isPresent) {
     if (isPresent) {
-      element(loginLinkLocator).click();
+      element(landerToLoginLinkLocator).click();
     }
   });
 
   browser.wait(function() {
-    return element(userNameInputLocator).isPresent();
+    return element(userLoginLinkLocator).isPresent();
   }, 2 * DELAY);
 
-  element(userNameInputLocator).sendKeys(username);
-  element(passwordInputLocator).sendKeys(password);
-  element(submitInputLocator).click();
+  element(userLoginLinkLocator).click();
 
   browser.wait(function() {
     return element(by.cssContainingText('h1', siteName)).isPresent();
@@ -135,9 +131,7 @@ function scrollTo(scrollPos) {
 }
 
 module.exports = {
-  login: login,
-  loginStudent: _.partial(login, 'student', 'opiskelija', 'password', 'My studies'),
-  loginTeacher: _.partial(login, 'teacher', 'testteacher', 'password', 'My teaching'),
+  loginStudent: _.partial(login, 'student', 'Olli Opiskelija', 'My studies'),
   waitUntilPresent: waitUntilPresent,
   waitUntilNotPresent: waitUntilNotPresent,
   waitUntilVisible: waitUntilVisible,
