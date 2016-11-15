@@ -139,13 +139,31 @@ angular.module('opintoniApp', [
           $state.go(toState);
         }
       })
+      .state('main', {
+        parent: 'root',
+        abstract: true,
+        resolve: {
+          showFullScreenCalendar: function($state) {
+            return function(currentDate) {
+              console.log('showFullScreenCalendar', currentDate);
+              $state.go($state.current.data.calendarState, {currentDate: currentDate});
+            };
+          },
+          closeCalendar: function($state) {
+            return function(currentDate) {
+              console.log('closeCalendar', currentDate);
+              $state.go($state.current.parent, {currentDate: currentDate});
+            };
+          }
+        }
+      })
       .state('opintoni', {
         url: '/opintoni',
-        parent: 'root',
+        parent: 'main',
         data: {
           roles: ['STUDENT'],
-          pageTitle: 'opintoni.title'
-
+          pageTitle: 'opintoni.title',
+          calendarState: 'opintoni-kalenteri'
         },
         params: {currentDate: null},
         views: {
@@ -174,11 +192,6 @@ angular.module('opintoniApp', [
             return function() {
               return $stateParams.currentDate ? $stateParams.currentDate : moment();
             };
-          },
-          showFullScreenCalendar: function($state) {
-            return function(currentDate) {
-              $state.go('opintoni-kalenteri', {currentDate: currentDate});
-            };
           }
         },
         onEnter: function onEnter(ngAddToHomescreen) {
@@ -187,10 +200,11 @@ angular.module('opintoniApp', [
       })
       .state('opetukseni', {
         url: '/opetukseni',
-        parent: 'root',
+        parent: 'main',
         data: {
           roles: ['TEACHER'],
-          pageTitle: 'opetukseni.title'
+          pageTitle: 'opetukseni.title',
+          calendarState: 'opetukseni-kalenteri'
         },
         params: {currentDate: null},
         views: {
@@ -216,11 +230,6 @@ angular.module('opintoniApp', [
             return function() {
               return $stateParams.currentDate ? $stateParams.currentDate : moment();
             };
-          },
-          showFullScreenCalendar: function($state) {
-            return function(currentDate) {
-              $state.go('opetukseni-kalenteri', {currentDate: currentDate});
-            };
           }
         },
         onEnter: function onEnter(ngAddToHomescreen) {
@@ -242,11 +251,6 @@ angular.module('opintoniApp', [
             return function() {
               return $stateParams.currentDate ? $stateParams.currentDate : moment();
             };
-          },
-          closeCalendar: function($state) {
-            return function(currentDate) {
-              $state.go('opintoni', {currentDate: currentDate});
-            };
           }
         }
       })
@@ -264,11 +268,6 @@ angular.module('opintoniApp', [
           getCurrentDate: function($stateParams) {
             return function() {
               return $stateParams.currentDate ? $stateParams.currentDate : moment();
-            };
-          },
-          closeCalendar: function($state) {
-            return function(currentDate) {
-              $state.go('opetukseni', {currentDate: currentDate});
             };
           }
         }
