@@ -155,9 +155,7 @@ angular.module('opintoniApp', [
             };
           },
           getCurrentDate: function($stateParams) {
-            console.log('getCurrentDate', $stateParams, $stateParams.length);
             return function() {
-            console.log('getCurrentDate function', $stateParams, $stateParams.length);
               return $stateParams.currentDate ? $stateParams.currentDate : moment();
             };
           }
