@@ -177,7 +177,7 @@ angular.module('opintoniApp', [
           },
           showFullScreenCalendar: function($state) {
             return function(currentDate) {
-              $state.go('opintoni-calendar', {currentDate: currentDate});
+              $state.go('opintoni-kalenteri', {currentDate: currentDate});
             };
           }
         },
@@ -219,7 +219,7 @@ angular.module('opintoniApp', [
           },
           showFullScreenCalendar: function($state) {
             return function(currentDate) {
-              $state.go('opetukseni-calendar', {currentDate: currentDate});
+              $state.go('opetukseni-kalenteri', {currentDate: currentDate});
             };
           }
         },
@@ -227,14 +227,9 @@ angular.module('opintoniApp', [
           ngAddToHomescreen({maxDisplayCount: 1});
         }
       })
-      .state('opintoni-calendar', {
-        url: '/opintoni-calendar',
-        parent: 'root',
-        data: {
-          roles: ['STUDENT'],
-          pageTitle: 'opintoni.title'
-
-        },
+      .state('opintoni-kalenteri', {
+        url: '/kalenteri',
+        parent: 'opintoni',
         params: {currentDate: null},
         views: {
           'content@': {
@@ -243,18 +238,6 @@ angular.module('opintoniApp', [
           }
         },
         resolve: {
-          pageTitle: function($q, $translate) {
-            var deferred = $q.defer();
-
-            $translate('opintoni.pageHeaderBranding').then(function translateHeaderSuccess(title) {
-              document.title = title;
-              deferred.resolve(title);
-            });
-            return deferred.promise;
-          },
-          getEvents: function(EventsResource) {
-            return EventsResource.getStudentEvents;
-          },
           getCurrentDate: function($stateParams) {
             return function() {
               return $stateParams.currentDate ? $stateParams.currentDate : moment();
@@ -267,31 +250,17 @@ angular.module('opintoniApp', [
           }
         }
       })
-      .state('opetukseni-calendar', {
-        url: '/opetukseni-calendar',
-        parent: 'root',
-        data: {
-          roles: ['TEACHER'],
-          pageTitle: 'opetukseni.title'
-        },
+      .state('opetukseni-kalenteri', {
+        url: '/kalenteri',
+        parent: 'opetukseni',
         params: {currentDate: null},
         views: {
           'content@': {
             templateUrl: 'app/partials/calendarLayout.html',
             controller: 'CalendarCtrl'
-
           }
         },
         resolve: {
-          pageTitle: function($q, $translate) {
-            return $translate('opetukseni.pageHeaderBranding')
-              .then(function translateHeaderSuccess(title) {
-                document.title = title;
-              });
-          },
-          getEvents: function(EventsResource) {
-            return EventsResource.getTeacherEvents;
-          },
           getCurrentDate: function($stateParams) {
             return function() {
               return $stateParams.currentDate ? $stateParams.currentDate : moment();
