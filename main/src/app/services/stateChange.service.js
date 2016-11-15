@@ -107,7 +107,7 @@ angular.module('services.stateChange', [
     }
 
     function reloadUserData() {
-      return $q.all([SessionService.getSession(true), UserSettingsService.getUserSettings(true)])
+      return $q.all([SessionService.getSession(true), UserSettingsService.getUserSettings(true)]);
     }
 
     function logInAs(username) {
