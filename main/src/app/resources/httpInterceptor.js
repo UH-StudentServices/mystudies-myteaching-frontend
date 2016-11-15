@@ -37,16 +37,6 @@ angular.module('resources.httpInterceptor', ['services.state', 'services.configu
       $location.path('/error/' + errorPage);
     }
 
-    var getStateFromDomain = function getStateFromDomain() {
-      var host = $location.host();
-
-      if (configurationPropertyContains(ConfigurationProperties.STUDENT_APP_URL, host)) {
-        return State.MY_STUDIES;
-      } else if (configurationPropertyContains(ConfigurationProperties.TEACHER_APP_URL, host)) {
-        return State.MY_TEACHINGS;
-      }
-    };
-
     function configurationPropertyContains(property, expectedValue) {
       return Configuration[property] && Configuration[property].indexOf(expectedValue) > -1;
     }
