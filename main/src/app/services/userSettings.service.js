@@ -32,8 +32,8 @@ angular.module('services.userSettings', ['resources.userSettings'])
       return userSettings;
     }
 
-    function getUserSettings() {
-      if (!settingsPromise) {
+    function getUserSettings(forceRefresh) {
+      if (!settingsPromise || forceRefresh) {
         settingsPromise = UserSettingsResource
           .getUserSettings()
           .then(publishUserSettings);

@@ -17,77 +17,31 @@
 
 .local-login {
   color: $white;
+  max-width: 400px;
 
   &__heading {
+    padding: 0;
+    margin-bottom: 0.5em;
     color: inherit;
-  }
-
-  &__form {
-    display: table;
-    table-layout: fixed;
-    border-spacing: 0 0.5em;
-  }
-
-  &__form-row {
-    display: block;
-    margin: 0.5em 0;
-
-    @include breakpoint($small) {
-      display: table-row;
-      margin: 0;
-    }
-  }
-
-  &__label {
-    display: block;
-    vertical-align: middle;
-    padding-right: 0.5em;
-
-    @include breakpoint($small) {
-      display: table-cell;
-    }
-
-    &::after {
-      content: ':';
-    }
-  }
-
-  &__input {
-    display: block;
-    color: initial;
-
-    @include breakpoint($small) {
-      display: table-cell;
-    }
-  }
-
-  &__submit {
-    margin-top: 1em;
+    text-transform: uppercase;
   }
 
   &__users-heading {
     @extend .local-login__heading;
-    margin: 1.5em 0 0.5em;
+    margin-bottom: 0.5em;
     font-size: 1.5em;
   }
 
   &__users-list {
-    display: flex;
-    flex-wrap: wrap;
+    margin: 1em 0;
   }
 
   &__user {
-    background-color: $white;
-    color: $black;
-    margin: 0 0.5em 0.5em 0;
-    padding: 0.5em;
+    margin: 0.2em;
+  }
 
-    &__field-name {
-      font-weight: bold;
-
-      &::after {
-        content: ': ';
-      }
-    }
+  &__log-in {
+    display: inline-block;
+    width: 200px;
   }
 }
