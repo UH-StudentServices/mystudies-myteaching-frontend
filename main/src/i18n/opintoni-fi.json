@@ -36,7 +36,6 @@
   },
   "toolbar": {
     "logout": "Kirjaudu ulos",
-    "helsinkiUniversity": "Helsingin Yliopisto",
     "search": {
       "openSearch": "Avaa haku",
       "search": "Hae",
@@ -60,8 +59,15 @@
     "email": "sähköposti",
     "flamma": "flamma",
     "moodle": "moodle",
-    "library": "kirjasto",
-    "contact": "yhteystiedot"
+    "library": "kirjasto"
+  },
+  "pageFooter": {
+    "contact": "yhteystiedot",
+    "helsinkiUniversity": "Helsingin Yliopisto",
+    "addressLine1": "PL33 (Yliopistonkatu 4)",
+    "addressLine2": "00014 Helsingin yliopisto",
+    "telephoneExchange": "puhelinvaihde",
+    "giveFeedback": "anna palautetta"
   },
   "primaryLinks": {
     "oodi": "Weboodi",

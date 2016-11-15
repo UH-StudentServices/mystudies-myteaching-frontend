@@ -36,7 +36,6 @@
   },
   "toolbar": {
     "logout": "Logga ut",
-    "helsinkiUniversity": "Helsingfors universitet",
     "search": {
       "openSearch": "Öppna sök",
       "search": "Sök",
@@ -60,8 +59,15 @@
     "email": "e-post",
     "flamma": "flamma",
     "moodle": "moodle",
-    "library": "bibliotek",
-    "contact": "kontaktinformation"
+    "library": "bibliotek"
+  },
+  "pageFooter": {
+    "contact": "kontaktinformation",
+    "helsinkiUniversity": "Helsingfors universitet",
+    "addressLine1": "PL33 (Universitetsgatan 4)",
+    "addressLine2": "00014 Helsingfors universitet",
+    "telephoneExchange": "växel",
+    "giveFeedback": "ge feedback"
   },
   "primaryLinks": {
     "oodi": "Weboodi",
