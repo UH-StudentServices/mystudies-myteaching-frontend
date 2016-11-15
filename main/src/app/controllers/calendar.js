@@ -22,17 +22,10 @@ angular.module('controllers.calendar', [
 
   .controller('CalendarCtrl', function(
     $scope,
-    StateService,
-    State,
-    session,
     closeCalendar,
     getEvents,
     getCurrentDate) {
 
-    $scope.currentStateName = StateService.getRootStateName();
-    $scope.State = State;
-    $scope.showApp = session !== undefined;
-    $scope.session = session;
     $scope.events = getEvents();
     $scope.currentDate = getCurrentDate();
 
