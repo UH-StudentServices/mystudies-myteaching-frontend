@@ -68,22 +68,17 @@ angular.module('opintoniLander', ['services.language',
         parent: 'lander',
         url: '/login',
         templateUrl: 'app/partials/landerPages/_lander.login.html',
-        controller: function($scope, state, Configuration, LanguageService, COURSE_SEARCH_URL,
-                             $window, LoginService, State) {
-          var loginUrl = !state || state === State.MY_STUDIES ?
-            Configuration.loginUrlStudent :
-            Configuration.loginUrlTeacher;
-
-          $scope.loginUrls = {
-            loginUrlStudent: Configuration.studentAppUrl,
-            loginUrlTeacher: Configuration.teacherAppUrl
-          };
-
-          $scope.redirectToLogin = function() {
-            LoginService.goToLogin();
-          };
-
-          $scope.courseSearchUrl = COURSE_SEARCH_URL[LanguageService.getCurrent()];
+        controller: function($scope, Configuration, LanguageService, COURSE_SEARCH_URL, LoginService) {
+          _.assign($scope, {
+            loginUrls: {
+              loginUrlStudent: Configuration.studentAppUrl,
+              loginUrlTeacher: Configuration.teacherAppUrl
+            },
+            redirectToLogin: function() {
+              LoginService.goToLogin();
+            },
+            courseSearchUrl: COURSE_SEARCH_URL[LanguageService.getCurrent()]
+          });
         }
       })
 
