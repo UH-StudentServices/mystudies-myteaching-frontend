@@ -424,11 +424,6 @@
     "readMore": "Läs mer"
   },
   "localLogin": {
-    "intro": "Logga in och kolla in tjänsten",
-    "username": "Käyttäjätunnus (sv)",
-    "password": "Salasana (sv)",
-    "name": "Nimi (sv)",
-    "logIn": "Kirjaudu (sv)",
-    "users": "Palvelun käyttäjät (sv)"
+    "intro": "Valitse palvelun käyttäjä (sv)"
   }
 }

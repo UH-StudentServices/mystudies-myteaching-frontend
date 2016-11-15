@@ -30,20 +30,21 @@ angular.module('services.session', [
 
     var sessionPromise;
 
-    var getSession = function getSession() {
-      if (_.isUndefined(sessionPromise)) {
+    var getSession = function(forceRefresh) {
+      if (!sessionPromise || forceRefresh) {
         sessionPromise = SessionResource.getSession();
       }
+
       return sessionPromise;
     };
 
-    var isInAnyRole = function isInAnyRole(roleNames) {
+    var isInAnyRole = function(roleNames) {
       return $q
         .all(_.map(roleNames, isInRole))
         .then(_.some);
     };
 
-    var isInRole = function isInRole(roleName) {
+    var isInRole = function(roleName) {
       return getSession()
         .then(function(session) {
           return _.invoke(session, 'roles.indexOf', roleName) > -1;
@@ -53,12 +54,7 @@ angular.module('services.session', [
         });
     };
 
-    var reloadSession = function getSession() {
-      sessionPromise = SessionResource.getSession();
-      return sessionPromise;
-    };
-
-    var getFacultyCode = function getFacultyCode() {
+    var getFacultyCode = function() {
       return getSession().then(function(session) {
         return session.faculty ? session.faculty.code : undefined;
       });
@@ -68,7 +64,6 @@ angular.module('services.session', [
       isInRole: isInRole,
       isInAnyRole: isInAnyRole,
       getSession: getSession,
-      reloadSession: reloadSession,
       getFacultyCode: getFacultyCode
     };
 

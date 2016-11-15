@@ -88,14 +88,15 @@ angular.module('opintoniLander', ['services.language'])
         parent: 'lander',
         url: '/local-login',
         templateUrl: 'app/partials/landerPages/_local.login.html',
-        controller: function($scope, Configuration, Environments, DemoUsers, StateService, State, DemoEnvPassword) {
+        controller: function($scope, Configuration, LocalUsers, StateService, State, StateChangeService) {
           var state = StateService.getStateFromDomain(),
-              users = state === State.MY_TEACHINGS ? DemoUsers.TEACHERS : DemoUsers.STUDENTS;
+              env = Configuration.environment,
+              users = state === State.MY_TEACHINGS ? LocalUsers[env].teachers : LocalUsers[env].students;
 
-          if (Configuration.environment === Environments.DEMO) {
-            $scope.users = users;
-            $scope.password = DemoEnvPassword;
-          }
+          _.assign($scope, {
+            users: users,
+            logInAs: StateChangeService.logInAs
+          });
         }
       });
   });

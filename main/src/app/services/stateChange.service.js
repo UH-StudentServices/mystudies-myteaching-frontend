@@ -21,14 +21,19 @@ angular.module('services.stateChange', [
 
   .factory('StateChangeService', function($q,
                                           $window,
+                                          $http,
+                                          $httpParamSerializerJQLike,
+                                          $state,
                                           Role,
                                           SessionService,
+                                          UserSettingsService,
                                           localStorageService,
                                           StateService,
                                           State,
                                           $injector,
                                           Configuration,
-                                          ConfigurationProperties) {
+                                          ConfigurationProperties,
+                                          LocalPassword) {
     function isStateChangeAvailable() {
       return SessionService.getSession()
         .then(function getSessionSuccess(session) {
@@ -101,9 +106,27 @@ angular.module('services.stateChange', [
       goToStateOrRedirectOut(loginPath);
     }
 
+    function reloadUserData() {
+      return $q.all([SessionService.getSession(true), UserSettingsService.getUserSettings(true)])
+    }
+
+    function logInAs(username) {
+      $http.post('/login', $httpParamSerializerJQLike({
+        username: username,
+        password: LocalPassword
+      }), {
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+      })
+        .then(reloadUserData)
+        .then(StateService.getStateFromDomain)
+        .then($state.go)
+        .catch(_.partial($state.go, State.ACCESS_DENIED));
+    }
+
     return {
       changeStateAvailableTo: changeStateAvailableTo,
       changeState: changeState,
-      goToLogin: goToLogin
+      goToLogin: goToLogin,
+      logInAs: logInAs
     };
   });
