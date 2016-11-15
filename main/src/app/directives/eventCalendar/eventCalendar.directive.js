@@ -204,18 +204,17 @@ angular.module('directives.eventCalendar', [])
         });
 
         $scope.$watch('currentDate', function(newDate, oldDate) {
-          // This can be called before the calendar is created...
-          if (uiCalendarConfig.calendars.eventCalendar) {
-            uiCalendarConfig.calendars.eventCalendar.fullCalendar('gotoDate', newDate);
+          if (newDate !== oldDate) {
+            if (uiCalendarConfig.calendars.eventCalendar) {
+              uiCalendarConfig.calendars.eventCalendar.fullCalendar('gotoDate', newDate);
+            }
           }
         });
 
         $scope.$on('eventCalendar.refreshCurrentDate', function() {
-          // This can be called before the calendar is created...
           if (uiCalendarConfig.calendars.eventCalendar) {
             var newCurrentDate = uiCalendarConfig.calendars.eventCalendar.fullCalendar('getDate');
 
-            // replace contents of moment object using obj.set(newValue.toObject())
             $scope.currentDate.set(newCurrentDate.toObject());
           }
         });
