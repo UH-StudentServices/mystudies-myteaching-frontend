@@ -46,9 +46,9 @@ angular.module('resources.httpInterceptor', ['services.state', 'services.configu
     }
 
     function redirectToLogin() {
-      var StateChangeService = $injector.get('StateChangeService');
+      var LoginService = $injector.get('LoginService');
 
-      StateChangeService.goToLogin();
+      LoginService.goToLogin();
     }
 
     function newUser() {

@@ -15,66 +15,27 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('services.stateChange', [
+angular.module('services.login', [
   'services.state',
-  'services.session'])
+  'services.session',
+  'services.userSettings',
+  'services.configuration',
+  'ngCookies'])
 
-  .factory('StateChangeService', function($q,
-                                          $window,
-                                          $http,
-                                          $httpParamSerializerJQLike,
-                                          $state,
-                                          Role,
-                                          SessionService,
-                                          UserSettingsService,
-                                          localStorageService,
-                                          StateService,
-                                          State,
-                                          $injector,
-                                          Configuration,
-                                          ConfigurationProperties,
-                                          LocalPassword) {
-    function isStateChangeAvailable() {
-      return SessionService.getSession()
-        .then(function getSessionSuccess(session) {
-          return _.every(
-            [Role.TEACHER, Role.STUDENT],
-            _.partial(_.includes, session.roles));
-        })
-        .catch(function() {
-          return false;
-        });
-    }
-
-    function changeStateAvailableTo() {
-      return isStateChangeAvailable().then(function(stateChangeAvailable) {
-        if (stateChangeAvailable) {
-          return StateService.getRootStateName() === State.MY_STUDIES ?
-            State.MY_TEACHINGS :
-            State.MY_STUDIES;
-        } else {
-          return null;
-        }
-      });
-    }
-
-    function changeView(stateName) {
-      $window.location = '/redirect?state=' + stateName;
-    }
-
-    function changeStateTo(state) {
-      var targetState = state || State.MY_STUDIES;
-
-      changeView(targetState);
-    }
-
-    function changeState() {
-      changeStateAvailableTo().then(function(state) {
-        if (state) {
-          changeStateTo(state);
-        }
-      });
-    }
+  .factory('LoginService', function($q,
+                                    $window,
+                                    $http,
+                                    $httpParamSerializerJQLike,
+                                    $state,
+                                    $injector,
+                                    $cookies,
+                                    $translate,
+                                    SessionService,
+                                    UserSettingsService,
+                                    StateService,
+                                    State,
+                                    Configuration,
+                                    LocalPassword) {
 
     function loginPathForState(state) {
       var loginUrl = state === State.MY_TEACHINGS ? Configuration.loginUrlTeacher : Configuration.loginUrlStudent,
@@ -106,8 +67,20 @@ angular.module('services.stateChange', [
       goToStateOrRedirectOut(loginPath);
     }
 
+    function resetUserLang() {
+      var langCookie = $translate.storageKey(),
+          escapedLangInCookie = $cookies.get(langCookie),
+          langInCookie = escapedLangInCookie.replace(/\"/g, '');
+
+      return $translate.use(langInCookie);
+    }
+
     function reloadUserData() {
-      return $q.all([SessionService.getSession(true), UserSettingsService.getUserSettings(true)]);
+      return $q.all([
+        SessionService.getSession(true),
+        UserSettingsService.getUserSettings(true),
+        resetUserLang()
+      ]);
     }
 
     function logInAs(username) {
@@ -124,8 +97,6 @@ angular.module('services.stateChange', [
     }
 
     return {
-      changeStateAvailableTo: changeStateAvailableTo,
-      changeState: changeState,
       goToLogin: goToLogin,
       logInAs: logInAs
     };
