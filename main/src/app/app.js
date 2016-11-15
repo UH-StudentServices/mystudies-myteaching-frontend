@@ -145,13 +145,11 @@ angular.module('opintoniApp', [
         resolve: {
           showFullScreenCalendar: function($state) {
             return function(currentDate) {
-              console.log('showFullScreenCalendar', currentDate);
               $state.go($state.current.data.calendarState, {currentDate: currentDate});
             };
           },
           closeCalendar: function($state) {
             return function(currentDate) {
-              console.log('closeCalendar', currentDate);
               $state.go($state.current.parent, {currentDate: currentDate});
             };
           }
