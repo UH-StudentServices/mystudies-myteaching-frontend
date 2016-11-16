@@ -24,6 +24,35 @@
     display: none !important;
   }
 
+  .full-screen-calendar {
+    padding: 2em 2em 0;
+  }
+
+  .full-screen-calendar__close {
+    display: none;
+  }
+
+  .calendar__footer {
+    margin-top: 0;
+    padding-bottom: 0;
+  }
+
+  .calendar {
+    .page-footer__copyright,  {
+      display: none;
+    }
+  }
+
+  .page-footer__social-links, .page-footer__links {
+    display: none;
+  }
+
+  // These next two are to avoid whitespace at the end of the page, which
+  // otherwise easily results in an extra blank printout page
+  .page-footer__contact, .page-footer__exchange {
+    margin-bottom: 0;
+  }
+
   h2 {
     page-break-after: avoid;
   }

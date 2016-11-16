@@ -157,6 +157,10 @@
       "list": "Lista"
     }
   },
+  "fullScreenCalendar": {
+    "open": "avaa koko ikkunan kalenteri",
+    "close": "sulje koko ikkunan kalenteri"
+  },
   "attainments": {
     "attainments": "Suoritetut",
     "seeMoreLink": "katso kaikki suoritukset WebOodista",

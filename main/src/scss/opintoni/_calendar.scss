@@ -15,10 +15,6 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-.calendar .l-footer {
+.calendar__footer {
   margin-top: 6em;
-  @media print {
-    margin-top: 0;
-    padding-bottom: 0;
-  }
 }

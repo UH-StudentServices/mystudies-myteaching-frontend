@@ -368,19 +368,15 @@ $tablist-single-row: min-width 28.75em;
   white-space: normal;
 }
 
-.event-calendar-inline .fc-center {
+.fc-center {
   margin-top: 3em;
 }
 
-.event-calendar-inline .fc-right {
+.fc-right {
   margin-top: 3em;
 }
 
-.event-calendar-inline-full-screen-button {
-  img {
-    width: 2em;
-    height: 2em;
-  }
+.week-feed-calendar__full-screen-button {
   position: absolute;
   top: 0px;
   right: 0px;
@@ -389,4 +385,9 @@ $tablist-single-row: min-width 28.75em;
   background: transparent;
   border: 0;
   padding: 0;
+}
+
+.week-feed-calendar__full-screen-image {
+  width: 2em;
+  height: 2em;
 }

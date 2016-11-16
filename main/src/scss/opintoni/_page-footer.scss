@@ -31,16 +31,6 @@
   @include breakpoint($medium) {
     text-align: left;
   }
-
-  @media print {
-    display: none;
-  }
-}
-
-.page-footer__links {
-  @media print {
-    display: none;
-  }
 }
 
 .page-footer__contact {
@@ -56,13 +46,6 @@
     @include font-size(14px);
     line-height: 1.2em;
   }
-
-  @media print {
-    margin-bottom: 0;
-    .page-footer__puhelinvaihde {
-      margin-bottom: 0;
-    }
-  }
 }
 
 .page-footer__copyright {
@@ -72,10 +55,6 @@
 
   @include breakpoint($medium) {
     border: 0;
-  }
-
-  @media print {
-    display: none;
   }
 }
 

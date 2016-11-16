@@ -17,17 +17,17 @@
 
 .full-screen-calendar {
   padding: 4em 6em 0;
-  @media print {
-    padding: 2em 2em 0;
-  }
   width: 100%;
-  background-color: white;
+  background-color: $white;
 }
 
-.full-screen-calendar-close-button {
-  @media print {
-    display: none;
-  }
+.full-screen-calendar__title {
+  // colour #ddd copied from fullcalendar.css, to match calendar grid colour
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 0.4em;
+}
+
+.full-screen-calendar__close {
   position: absolute;
   top: 5em;
   right: 6em;

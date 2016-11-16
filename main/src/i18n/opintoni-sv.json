@@ -159,6 +159,10 @@
       "list": "Lista"
     }
   },
+  "fullScreenCalendar": {
+    "open": "öppna hela fönstret kalender",
+    "close": "stänga hela fönstret kalender"
+  },
   "attainments": {
     "attainments": "Prestationer",
     "seeMoreLink": "se en lista över dina prestationer i WebOodi",

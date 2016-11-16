@@ -158,6 +158,10 @@
       "list": "list"
     }
   },
+  "fullScreenCalendar": {
+    "open": "open full window calendar",
+    "close": "close full window calendar"
+  },
   "attainments": {
     "attainments": "Completed studies",
     "seeMoreLink": "see a list of your completed studies in WebOodi",
