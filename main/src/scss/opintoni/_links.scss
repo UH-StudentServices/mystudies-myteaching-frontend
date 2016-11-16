@@ -19,8 +19,6 @@
 // Links
 // --------------------------------------------------
 
-
-
 // Helper mixins.
 @mixin link-label($color-default: $silver, $color-active: $gray, $font-size: 11px) {
   @include font-size($font-size);
