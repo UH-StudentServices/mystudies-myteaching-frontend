@@ -79,6 +79,14 @@
   }
 }
 
+.portfolio-intro__owner-details {
+  width: 100%;
+}
+
+.portfolio-intro__title {
+  line-height: initial;
+}
+
 .portfolio-intro__title, .portfolio-intro__intro {
   color: $white;
   text-shadow: 0 1px 2px $black;
