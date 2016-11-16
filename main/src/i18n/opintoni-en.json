@@ -66,8 +66,8 @@
     "helsinkiUniversity": "University of Helsinki",
     "addressLine1": "PL33 (Yliopistonkatu 4)",
     "addressLine2": "00014 Helsingin yliopisto",
-    "telephoneExchange": "exchange",
-    "giveFeedback": "give feedback"
+    "telephoneExchange": "Exchange",
+    "giveFeedback": "Give feedback"
   },
   "primaryLinks": {
     "oodi": "Weboodi",

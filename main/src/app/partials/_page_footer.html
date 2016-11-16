@@ -32,9 +32,9 @@
     <ul class="list-of-links--light">
       <li><a href="http://www.helsinki.fi/yliopisto/yhteystiedot.html">{{::('pageFooter.contact' | translate | capitalize)}}</a></li>
 
-      <li ng-if="userLang ==='fi'"><a href="https://elomake.helsinki.fi/lomakkeet/59401/lomake.html" target="_blank">{{::('pageFooter.giveFeedback' | translate | capitalize)}}</a></li>
-      <li ng-if="userLang ==='en'"><a href="https://elomake.helsinki.fi/lomakkeet/59401/lomake.html?rinnakkaislomake=eng" target="_blank">{{::('pageFooter.giveFeedback' | translate | capitalize)}}</a></li>
-      <li ng-if="userLang ==='sv'"><a href="https://elomake.helsinki.fi/lomakkeet/59401/lomake.html" target="_blank" >{{::('pageFooter.giveFeedback' | translate | capitalize)}}</a></li>
+      <li ng-if="userLang ==='fi'"><a href="https://elomake.helsinki.fi/lomakkeet/59401/lomake.html" target="_blank">{{::('pageFooter.giveFeedback' | translate)}}</a></li>
+      <li ng-if="userLang ==='en'"><a href="https://elomake.helsinki.fi/lomakkeet/59401/lomake.html?rinnakkaislomake=eng" target="_blank">{{::('pageFooter.giveFeedback' | translate)}}</a></li>
+      <li ng-if="userLang ==='sv'"><a href="https://elomake.helsinki.fi/lomakkeet/59401/lomake.html" target="_blank" >{{::('pageFooter.giveFeedback' | translate)}}</a></li>
       <li><a href="https://flamma.helsinki.fi/portal/home/login">Flamma</a></li>
     </ul>
   </div>
@@ -47,7 +47,7 @@
 
     <h4 class="site-name site-name--footer">{{::('pageFooter.helsinkiUniversity' | translate)}}</h4>
     <p>{{::('pageFooter.addressLine1' | translate)}}<br>{{::('pageFooter.addressLine2' | translate)}}</p>
-    <p class="page-footer__exchange">{{::('pageFooter.telephoneExchange' | translate | capitalize)}}: 02941 911</p>
+    <p class="page-footer__exchange">{{::('pageFooter.telephoneExchange' | translate)}}: 02941 911</p>
   </div>
 
   <!-- Copyright statement -->
