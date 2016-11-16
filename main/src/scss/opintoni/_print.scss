@@ -47,8 +47,6 @@
     display: none;
   }
 
-  // These next two are to avoid whitespace at the end of the page, which
-  // otherwise easily results in an extra blank printout page
   .page-footer__contact, .page-footer__exchange {
     margin-bottom: 0;
   }
