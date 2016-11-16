@@ -104,6 +104,7 @@ angular.module('opintoniApp', [
     $stateProvider
       .state('root', {
         abstract: true,
+        params: {currentDate: null},
         resolve: {
           session: function($q, SessionService, $state) {
             return SessionService.getSession().then(function getSessionSuccess(session) {
@@ -140,35 +141,13 @@ angular.module('opintoniApp', [
           $state.go(toState);
         }
       })
-      .state('main', {
-        parent: 'root',
-        abstract: true,
-        params: {currentDate: null},
-        resolve: {
-          showFullScreenCalendar: function($state) {
-            return function(currentDate) {
-              $state.go($state.current.data.calendarState, {currentDate: currentDate});
-            };
-          },
-          closeCalendar: function($state) {
-            return function(currentDate) {
-              $state.go($state.current.parent, {currentDate: currentDate});
-            };
-          },
-          getCurrentDate: function($stateParams) {
-            return function() {
-              return $stateParams.currentDate ? $stateParams.currentDate : moment();
-            };
-          }
-        }
-      })
       .state('opintoni', {
         url: '/opintoni',
-        parent: 'main',
+        parent: 'root',
         data: {
           roles: ['STUDENT'],
           pageTitle: 'opintoni.title',
-          calendarState: 'opintoni-kalenteri'
+          calendarState: 'opintoniCalendar'
         },
         views: {
           'content@': {
@@ -199,11 +178,11 @@ angular.module('opintoniApp', [
       })
       .state('opetukseni', {
         url: '/opetukseni',
-        parent: 'main',
+        parent: 'root',
         data: {
           roles: ['TEACHER'],
           pageTitle: 'opetukseni.title',
-          calendarState: 'opetukseni-kalenteri'
+          calendarState: 'opetukseniCalendar'
         },
         views: {
           'content@': {
@@ -229,7 +208,7 @@ angular.module('opintoniApp', [
           ngAddToHomescreen({maxDisplayCount: 1});
         }
       })
-      .state('opintoni-kalenteri', {
+      .state('opintoniCalendar', {
         url: '/kalenteri',
         parent: 'opintoni',
         views: {
@@ -239,7 +218,7 @@ angular.module('opintoniApp', [
           }
         }
       })
-      .state('opetukseni-kalenteri', {
+      .state('opetukseniCalendar', {
         url: '/kalenteri',
         parent: 'opetukseni',
         views: {

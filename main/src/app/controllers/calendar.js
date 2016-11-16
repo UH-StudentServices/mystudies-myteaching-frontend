@@ -22,15 +22,8 @@ angular.module('controllers.calendar', [
 
   .controller('CalendarCtrl', function(
     $scope,
-    closeCalendar,
-    getEvents,
-    getCurrentDate) {
+    getEvents) {
 
     $scope.events = getEvents();
-    $scope.currentDate = getCurrentDate();
-
-    $scope.closeCalendar = function() {
-      closeCalendar($scope.currentDate);
-    };
 
   });
