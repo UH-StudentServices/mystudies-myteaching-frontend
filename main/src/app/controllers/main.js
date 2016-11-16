@@ -48,6 +48,7 @@ angular.module('controllers.main', [
     $scope.session = session;
     $scope.courses = getCourses();
     $scope.events = getEvents();
+    $scope.currentYear = moment().year();
 
     UserSettingsService.getShowBannerSubject().subscribe(function(showBanner) {
       $scope.showBanner = showBanner;
