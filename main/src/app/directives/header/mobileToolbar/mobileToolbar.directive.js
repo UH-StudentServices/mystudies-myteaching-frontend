@@ -20,7 +20,6 @@ angular.module('directives.mobileToolbar', [
   'constants.externalLinks',
   'services.state',
   'directives.logoutLink',
-  'services.stateChange',
   'directives.userMenu',
   'directives.mobileMenu',
   'directives.visibility'])

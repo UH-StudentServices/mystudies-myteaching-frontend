@@ -74,7 +74,7 @@ angular.module('directives.userMenu.settings', [
         };
 
         $scope.$on(userAvatarUpdatedEvent, function() {
-          SessionService.reloadSession().then(function getSessionSuccess(session) {
+          SessionService.getSession(true).then(function(session) {
             $scope.session.avatarUrl = session.avatarUrl + '?' + new Date().getTime();
           });
         });

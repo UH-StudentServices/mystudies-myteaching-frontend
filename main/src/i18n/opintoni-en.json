@@ -434,11 +434,6 @@
     "readMore": "Read more"
   },
   "localLogin": {
-    "intro": "Log in and explore the service",
-    "username": "Username",
-    "password": "Password",
-    "name": "Name",
-    "logIn": "Log in",
-    "users": "Available users"
+    "intro": "Pick a user to log in as"
   }
 }

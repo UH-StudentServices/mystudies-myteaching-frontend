@@ -43,6 +43,7 @@ angular.module('opintoniApp', [
   'services.configuration',
   'services.location',
   'services.courses',
+  'services.login',
 
   'resources.httpInterceptor',
   'resources.stateInterceptor',

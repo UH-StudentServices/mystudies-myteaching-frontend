@@ -16,60 +16,20 @@
 -->
 
 <div class="local-login">
-  <h1 translate="localLogin.intro" class="local-login__heading"></h1>
-
-  <form action="/login" method="POST" class="local-login__form">
-    <div class="local-login__form-row">
-      <label class="local-login__label"
-             translate="localLogin.username"
-             for="username">
-      </label>
-
-      <input type="text"
-             name="username"
-             id="username"
-             class="local-login__input">
-    </div>
-
-    <div class="local-login__form-row">
-      <label class="local-login__label"
-             translate="localLogin.password"
-             for="password">
-      </label>
-
-      <input type="password"
-             name="password"
-             id="password"
-             class="local-login__input">
-    </div>
-
-    <div class="local-login__form-row">
-      <input type="submit"
-             name="submit"
-             value="{{::('localLogin.logIn' | translate)}}"
-             class="local-login__submit">
-    </div>
-  </form>
+  <h1 class="local-login__heading">
+    {{::('landerPage.' + currentStateName + '.login.title' | translate)}}
+  </h1>
 
   <div ng-if="users">
-    <h2 class="local-login__users-heading" translate="localLogin.users"></h2>
+    <h2 class="local-login__users-heading" translate="localLogin.intro"></h2>
 
     <ul class="local-login__users-list">
       <li ng-repeat="user in users" class="local-login__user">
-        <div>
-          <span translate="localLogin.name" class="local-login__user__field-name"></span>
-          {{::user.name}}
-        </div>
-
-        <div>
-          <span translate="localLogin.username" class="local-login__user__field-name"></span>
-          {{::user.username}}
-        </div>
-
-        <div>
-          <span translate="localLogin.password" class="local-login__user__field-name"></span>
-          {{::password}}
-        </div>
+        <a ng-click="logInAs(user.username)"
+           class="button local-login__log-in"
+           tabindex="0">
+           {{::user.name}}
+         </a>
       </li>
     </ul>
   </div>

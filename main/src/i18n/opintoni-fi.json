@@ -433,11 +433,6 @@
     "readMore": "Lue lisää"
   },
   "localLogin": {
-    "intro": "Kirjaudu sisään ja tutustu palveluun",
-    "username": "Käyttäjätunnus",
-    "password": "Salasana",
-    "name": "Nimi",
-    "logIn": "Kirjaudu",
-    "users": "Palvelun käyttäjät"
+    "intro": "Valitse palvelun käyttäjä"
   }
 }

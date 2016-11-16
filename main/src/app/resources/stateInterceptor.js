@@ -31,6 +31,7 @@ angular.module('resources.stateInterceptor', [
           if (!authorized) {
             $state.go(State.ACCESS_DENIED, {}, {reload: true});
           }
+
           event.preventDefault();
         });
       }
