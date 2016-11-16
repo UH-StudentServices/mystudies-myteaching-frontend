@@ -22,8 +22,8 @@
 }
 
 .full-screen-calendar__title {
-  // colour #ddd copied from fullcalendar.css, to match calendar grid colour
-  border-bottom: 1px solid #ddd;
+  $fullcalendar-border-color: #ddd;
+  border-bottom: 1px solid $fullcalendar-border-color;
   margin-bottom: 0.4em;
 }
 
