@@ -8,6 +8,7 @@
     "show": "show",
     "edit": "edit",
     "done": "done",
+    "close": "close",
     "save": "save",
     "cancel": "cancel",
     "copyToClipboard" : "copy to clipboard",
@@ -35,7 +36,6 @@
   },
   "toolbar": {
     "logout": "Log out",
-    "helsinkiUniversity": "University of Helsinki",
     "search": {
       "openSearch": "Open search",
       "search": "Search",
@@ -59,8 +59,15 @@
     "email": "email",
     "flamma": "flamma",
     "moodle": "moodle",
-    "library": "library",
-    "contact": "contact information"
+    "library": "library"
+  },
+  "pageFooter": {
+    "contact": "contact information",
+    "helsinkiUniversity": "University of Helsinki",
+    "addressLine1": "PL33 (Yliopistonkatu 4)",
+    "addressLine2": "00014 Helsingin yliopisto",
+    "telephoneExchange": "Exchange",
+    "giveFeedback": "Give feedback"
   },
   "primaryLinks": {
     "oodi": "Weboodi",
@@ -150,6 +157,10 @@
     "calendarCustom": {
       "list": "list"
     }
+  },
+  "fullScreenCalendar": {
+    "open": "open full window calendar",
+    "close": "close full window calendar"
   },
   "attainments": {
     "attainments": "Completed studies",

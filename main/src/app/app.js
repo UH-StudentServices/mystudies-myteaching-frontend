@@ -59,6 +59,7 @@ angular.module('opintoniApp', [
   'directives.stickyMessage',
 
   'controllers.main',
+  'controllers.calendar',
   'directives.tour',
   'directives.pageBanner',
   'directives.helpIcon',
@@ -103,6 +104,7 @@ angular.module('opintoniApp', [
     $stateProvider
       .state('root', {
         abstract: true,
+        params: {currentDate: null},
         resolve: {
           session: function($q, SessionService, $state) {
             return SessionService.getSession().then(function getSessionSuccess(session) {
@@ -144,8 +146,8 @@ angular.module('opintoniApp', [
         parent: 'root',
         data: {
           roles: ['STUDENT'],
-          pageTitle: 'opintoni.title'
-
+          pageTitle: 'opintoni.title',
+          calendarState: 'opintoniCalendar'
         },
         views: {
           'content@': {
@@ -179,7 +181,8 @@ angular.module('opintoniApp', [
         parent: 'root',
         data: {
           roles: ['TEACHER'],
-          pageTitle: 'opetukseni.title'
+          pageTitle: 'opetukseni.title',
+          calendarState: 'opetukseniCalendar'
         },
         views: {
           'content@': {
@@ -203,6 +206,26 @@ angular.module('opintoniApp', [
         },
         onEnter: function onEnter(ngAddToHomescreen) {
           ngAddToHomescreen({maxDisplayCount: 1});
+        }
+      })
+      .state('opintoniCalendar', {
+        url: '/kalenteri',
+        parent: 'opintoni',
+        views: {
+          'content@': {
+            templateUrl: 'app/partials/calendarLayout.html',
+            controller: 'CalendarCtrl'
+          }
+        }
+      })
+      .state('opetukseniCalendar', {
+        url: '/kalenteri',
+        parent: 'opetukseni',
+        views: {
+          'content@': {
+            templateUrl: 'app/partials/calendarLayout.html',
+            controller: 'CalendarCtrl'
+          }
         }
       })
       .state('admin', {

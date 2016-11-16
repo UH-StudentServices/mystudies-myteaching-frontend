@@ -468,6 +468,8 @@ angular.module('directives.weekFeed', [
   .directive('weekFeed', function(
     $q,
     $filter,
+    $state,
+    $stateParams,
     State,
     StateService,
     Tabs,
@@ -555,6 +557,7 @@ angular.module('directives.weekFeed', [
         $scope.selectedSubTab = getPreferredSubTab();
         $scope.hideSubTabs = $scope.selectedSubTab.hideSubTabs;
         $scope.calendarView = $scope.selectedSubTab.calendarView;
+        $scope.currentDate = $stateParams.currentDate ? $stateParams.currentDate : moment();
 
         Loader.start(LoaderKey);
 
@@ -613,6 +616,11 @@ angular.module('directives.weekFeed', [
           return {
             'active': subTab === $scope.selectedSubTab
           };
+        };
+
+        $scope.showFullScreenCalendar = function showFullScreenCalendar() {
+          $scope.$broadcast('eventCalendar.refreshCurrentDate');
+          $state.go($state.current.data.calendarState, {currentDate: $scope.currentDate});
         };
 
       }

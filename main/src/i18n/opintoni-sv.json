@@ -8,6 +8,7 @@
     "show": "visa",
     "save": "spara",
     "cancel": "annullera",
+    "close": "stänga",
     "edit": "redigera",
     "done": "färdig",
     "copyToClipboard" : "kopiera till klippbordet",
@@ -35,7 +36,6 @@
   },
   "toolbar": {
     "logout": "Logga ut",
-    "helsinkiUniversity": "Helsingfors universitet",
     "search": {
       "openSearch": "Öppna sök",
       "search": "Sök",
@@ -59,8 +59,15 @@
     "email": "e-post",
     "flamma": "flamma",
     "moodle": "moodle",
-    "library": "bibliotek",
-    "contact": "kontaktinformation"
+    "library": "bibliotek"
+  },
+  "pageFooter": {
+    "contact": "kontaktinformation",
+    "helsinkiUniversity": "Helsingfors universitet",
+    "addressLine1": "PL33 (Universitetsgatan 4)",
+    "addressLine2": "00014 Helsingfors universitet",
+    "telephoneExchange": "Växel",
+    "giveFeedback": "Ge feedback"
   },
   "primaryLinks": {
     "oodi": "Weboodi",
@@ -151,6 +158,10 @@
     "calendarCustom": {
       "list": "Lista"
     }
+  },
+  "fullScreenCalendar": {
+    "open": "öppna hela fönstret kalender",
+    "close": "stänga hela fönstret kalender"
   },
   "attainments": {
     "attainments": "Prestationer",

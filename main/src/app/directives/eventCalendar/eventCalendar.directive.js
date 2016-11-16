@@ -45,10 +45,12 @@ angular.module('directives.eventCalendar', [])
     LanguageService) {
     return {
       restrict: 'E',
-      templateUrl: 'app/directives/weekFeed/eventCalendar/eventCalendar.html',
+      templateUrl: 'app/directives/eventCalendar/eventCalendar.html',
       scope: {
         events: '=',
-        calendarView: '='
+        currentDate: '=date',
+        calendarView: '=',
+        fullScreen: '='
       },
       replace: true,
       controller: function($scope, $translate) {
@@ -103,7 +105,8 @@ angular.module('directives.eventCalendar', [])
                   }
                 },
                 header: {
-                  left: 'listButton dayButton weekButton monthButton',
+                  left: $scope.fullScreen ? 'dayButton weekButton monthButton' :
+                                            'listButton dayButton weekButton monthButton',
                   center: 'title',
                   right: 'today prev,next'
                 },
@@ -132,7 +135,8 @@ angular.module('directives.eventCalendar', [])
                     columnFormat: 'dd DD.MM.'
                   }
                 },
-                firstDay: 1
+                firstDay: 1,
+                defaultDate: $scope.currentDate
               }
             };
           });
@@ -199,6 +203,21 @@ angular.module('directives.eventCalendar', [])
           }
         });
 
+        $scope.$watch('currentDate', function(newDate, oldDate) {
+          if (newDate !== oldDate) {
+            if (uiCalendarConfig.calendars.eventCalendar) {
+              uiCalendarConfig.calendars.eventCalendar.fullCalendar('gotoDate', newDate);
+            }
+          }
+        });
+
+        $scope.$on('eventCalendar.refreshCurrentDate', function() {
+          if (uiCalendarConfig.calendars.eventCalendar) {
+            var newCurrentDate = uiCalendarConfig.calendars.eventCalendar.fullCalendar('getDate');
+
+            $scope.currentDate.set(newCurrentDate.toObject());
+          }
+        });
       }
     };
   });

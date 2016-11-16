@@ -15,47 +15,15 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-@include breakpoint(print) {
-  .l-content-secondary-wrapper,
-  .fc-button,
-  .l-header,
-  .page-banner__button-icon--arrow-down,
-  .page-banner__button-icon--arrow-up {
-    display: none !important;
-  }
+angular.module('controllers.calendar', [
+  'directives.fullScreenCalendar',
+  'services.focus'
+])
 
-  .full-screen-calendar {
-    padding: 2em 2em 0;
-  }
+  .controller('CalendarCtrl', function(
+    $scope,
+    getEvents) {
 
-  .full-screen-calendar__close {
-    display: none;
-  }
+    $scope.events = getEvents();
 
-  .calendar__footer {
-    margin-top: 0;
-    padding-bottom: 0;
-  }
-
-  .calendar {
-    .page-footer__copyright,  {
-      display: none;
-    }
-  }
-
-  .page-footer__social-links, .page-footer__links {
-    display: none;
-  }
-
-  .page-footer__contact, .page-footer__exchange {
-    margin-bottom: 0;
-  }
-
-  h2 {
-    page-break-after: avoid;
-  }
-
-  ul, img {
-    page-break-inside: avoid;
-  }
-}
+  });

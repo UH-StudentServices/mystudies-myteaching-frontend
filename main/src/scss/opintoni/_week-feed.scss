@@ -367,3 +367,27 @@ $tablist-single-row: min-width 28.75em;
 .fc-day-grid-event > .fc-content {
   white-space: normal;
 }
+
+.fc-center {
+  margin-top: 3em;
+}
+
+.fc-right {
+  margin-top: 3em;
+}
+
+.week-feed-calendar__full-screen-button {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 2em;
+  height: 2em;
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+.week-feed-calendar__full-screen-image {
+  width: 2em;
+  height: 2em;
+}

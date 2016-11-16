@@ -15,47 +15,24 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-@include breakpoint(print) {
-  .l-content-secondary-wrapper,
-  .fc-button,
-  .l-header,
-  .page-banner__button-icon--arrow-down,
-  .page-banner__button-icon--arrow-up {
-    display: none !important;
-  }
+.full-screen-calendar {
+  padding: 4em 6em 0;
+  width: 100%;
+  background-color: $white;
+}
 
-  .full-screen-calendar {
-    padding: 2em 2em 0;
-  }
+.full-screen-calendar__title {
+  $fullcalendar-border-color: #ddd;
+  border-bottom: 1px solid $fullcalendar-border-color;
+  margin-bottom: 0.4em;
+}
 
-  .full-screen-calendar__close {
-    display: none;
-  }
-
-  .calendar__footer {
-    margin-top: 0;
-    padding-bottom: 0;
-  }
-
-  .calendar {
-    .page-footer__copyright,  {
-      display: none;
-    }
-  }
-
-  .page-footer__social-links, .page-footer__links {
-    display: none;
-  }
-
-  .page-footer__contact, .page-footer__exchange {
-    margin-bottom: 0;
-  }
-
-  h2 {
-    page-break-after: avoid;
-  }
-
-  ul, img {
-    page-break-inside: avoid;
-  }
+.full-screen-calendar__close {
+  position: absolute;
+  top: 5em;
+  right: 6em;
+  color: $blue;
+  background: transparent;
+  border: 0;
+  padding: 0;
 }

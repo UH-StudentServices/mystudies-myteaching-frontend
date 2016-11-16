@@ -8,6 +8,7 @@
     "show": "näytä",
     "save": "tallenna",
     "cancel": "peruuta",
+    "close": "sulje",
     "edit": "muokkaa",
     "done": "valmis",
     "copyToClipboard": "kopioi leikepöydälle",
@@ -35,7 +36,6 @@
   },
   "toolbar": {
     "logout": "Kirjaudu ulos",
-    "helsinkiUniversity": "Helsingin Yliopisto",
     "search": {
       "openSearch": "Avaa haku",
       "search": "Hae",
@@ -59,8 +59,15 @@
     "email": "sähköposti",
     "flamma": "flamma",
     "moodle": "moodle",
-    "library": "kirjasto",
-    "contact": "yhteystiedot"
+    "library": "kirjasto"
+  },
+  "pageFooter": {
+    "contact": "yhteystiedot",
+    "helsinkiUniversity": "Helsingin Yliopisto",
+    "addressLine1": "PL33 (Yliopistonkatu 4)",
+    "addressLine2": "00014 Helsingin yliopisto",
+    "telephoneExchange": "Puhelinvaihde",
+    "giveFeedback": "Anna palautetta"
   },
   "primaryLinks": {
     "oodi": "Weboodi",
@@ -149,6 +156,10 @@
     "calendarCustom": {
       "list": "Lista"
     }
+  },
+  "fullScreenCalendar": {
+    "open": "avaa koko ikkunan kalenteri",
+    "close": "sulje koko ikkunan kalenteri"
   },
   "attainments": {
     "attainments": "Suoritetut",
