@@ -13,12 +13,10 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
-  -->
+-->
 
-<div>
-    <ul class="global-messages" ng-show="messages.length > 0">
-        <li ng-repeat="message in messages | filter:{active:true}">
-            <message message="message" close="dismissMessage"></message>
-        </li>
-    </ul>
-</div>
+<ul class="global-messages" ng-show="messages.length">
+  <li ng-repeat="message in messages">
+    <message message="message" close="dismissMessage"></message>
+  </li>
+</ul>
