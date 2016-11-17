@@ -18,43 +18,41 @@
 angular.module('directives.globalMessages',
   ['directives.message'])
 
-  .factory('globalMessagesService', function(MessageTypes) {
+  .factory('GlobalMessagesService', function(MessageTypes, $window) {
     var messages = [],
-        lastUpdate;
-
-    function addMessage(message) {
-      messages.push(message);
-      lastUpdate = new Date().getTime();
-    }
+        Rx = $window.Rx,
+        msgSubject = new Rx.Subject(),
+        errorMsg = {
+          messageType: MessageTypes.ERROR,
+          key: 'globalMessages.errors.genericError'
+        };
 
     return {
-      addErrorMessage: function(err) {
-        var messageQuery = {messageType: MessageTypes.ERROR, active: true};
-
-        if (!_.find(messages, messageQuery)) {
-          addMessage(_.extend(messageQuery, {key: 'globalMessages.errors.genericError'}));
+      addErrorMessage: function() {
+        if (!_.find(messages, errorMsg)) {
+          messages.push(errorMsg);
+          msgSubject.onNext(messages);
         }
       },
-      addStatusMessage: function() {},
-      addInfomessage: function() {},
-      getMessages: function() {
-        return messages;
+      removeErrorMessage: function() {
+        messages = _.without(messages, errorMsg);
+        msgSubject.onNext(messages);
       },
-      getLastUpdate: function() {
-        return lastUpdate;
+      subscribe: function(fn) {
+        return msgSubject.subscribe(fn);
       }
     };
   })
 
-  .factory('httpRequestInterceptor', function($q, globalMessagesService) {
+  .factory('httpRequestInterceptor', function(GlobalMessagesService) {
     return {
-      'responseError': function(err) {
+      responseError: function(err) {
         if (err.config && err.config.url &&
-           err.config.url.indexOf('/api/') > -1 && err.status !== 404) {
-          globalMessagesService.addErrorMessage(err);
+            err.config.url.indexOf('/api/') > -1 && err.status !== 404) {
+          GlobalMessagesService.addErrorMessage();
         }
 
-        return $q.reject(err);
+        return err;
       }
     };
   })
@@ -63,22 +61,26 @@ angular.module('directives.globalMessages',
     $httpProvider.interceptors.push('httpRequestInterceptor');
   })
 
-  .directive('globalMessages', function(globalMessagesService) {
+  .directive('globalMessages', function(GlobalMessagesService, MessageTypes) {
     return {
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/messages/globalMessages.html',
-      link: function($scope) {
-        $scope.messages = [];
-        $scope.$watch(function() {
-          return globalMessagesService.getLastUpdate();
-        }, function() {
-          $scope.messages = globalMessagesService.getMessages();
+      link: function(scope) {
+        GlobalMessagesService.subscribe(function(messages) {
+          scope.$applyAsync(function() {
+            scope.messages = messages;
+          });
         });
 
-        $scope.dismissMessage = function(message) {
-          message.active = false;
-        };
+        _.assign(scope, {
+          messages: [],
+          dismissMessage: function(message) {
+            if (message.messageType === MessageTypes.ERROR) {
+              GlobalMessagesService.removeErrorMessage();
+            }
+          }
+        });
       }
     };
   });
