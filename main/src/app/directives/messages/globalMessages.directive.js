@@ -44,7 +44,7 @@ angular.module('directives.globalMessages',
     };
   })
 
-  .factory('httpRequestInterceptor', function(GlobalMessagesService) {
+  .factory('httpRequestInterceptor', function($q, GlobalMessagesService) {
     return {
       responseError: function(err) {
         if (err.config && err.config.url &&
@@ -52,7 +52,7 @@ angular.module('directives.globalMessages',
           GlobalMessagesService.addErrorMessage();
         }
 
-        return err;
+        return $q.reject(err);
       }
     };
   })
