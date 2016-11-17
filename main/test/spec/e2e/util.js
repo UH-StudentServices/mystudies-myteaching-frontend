@@ -26,6 +26,7 @@ function login(role, fullName, siteName) {
       loginUrl = browser.params[role].loginUrl;
 
   browser.driver.get(loginUrl);
+  browser.driver.manage().deleteAllCookies();
   browser.driver.sleep(BOOTSTRAP_ALLOWANCE);
 
   element(landerToLoginLinkLocator).isPresent().then(function(isPresent) {
