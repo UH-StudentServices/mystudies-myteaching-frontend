@@ -35,7 +35,8 @@ angular.module('services.login', [
                                     StateService,
                                     State,
                                     Configuration,
-                                    LocalPassword) {
+                                    LocalPassword,
+                                    LoginCookie) {
 
     function loginPathForState(state) {
       var loginUrl = state === State.MY_TEACHINGS ? Configuration.loginUrlTeacher : Configuration.loginUrlStudent,
@@ -57,6 +58,22 @@ angular.module('services.login', [
         $state.go(stateMatch.name);
       } else {
         $window.location.href = url;
+      }
+    }
+
+    function isFirstLogin() {
+      return !$cookies.get(LoginCookie);
+    }
+
+    function goToLander() {
+      $state.go(State.LANDER);
+    }
+
+    function goToLoginOrLander() {
+      if (isFirstLogin()) {
+        goToLander();
+      } else {
+        goToLogin();
       }
     }
 
@@ -98,6 +115,7 @@ angular.module('services.login', [
 
     return {
       goToLogin: goToLogin,
+      goToLoginOrLander: goToLoginOrLander,
       logInAs: logInAs
     };
   });

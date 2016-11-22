@@ -24,7 +24,6 @@ angular.module('resources.httpInterceptor', ['services.state', 'services.configu
   })
 
   .factory('HttpInterceptor', function HttpInterceptor($q,
-                                                       $cookies,
                                                        $injector,
                                                        Configuration,
                                                        $location,
@@ -45,33 +44,17 @@ angular.module('resources.httpInterceptor', ['services.state', 'services.configu
       return response;
     }
 
-    function redirectToLogin() {
+    function goToLoginOrLander() {
       var LoginService = $injector.get('LoginService');
 
-      LoginService.goToLogin();
-    }
-
-    function newUser() {
-      return $cookies.get('OPINTONI_HAS_LOGGED_IN') === undefined;
-    }
-
-    function redirectToLander() {
-      $location.path('/info/login');
-    }
-
-    function handleRedirect() {
-      if (newUser()) {
-        redirectToLander();
-      } else {
-        redirectToLogin();
-      }
+      LoginService.goToLoginOrLander();
     }
 
     function handleForbidden() {
       var StateService = $injector.get('StateService');
 
       if (!StateService.currentOrParentStateMatches(State.ERROR)) {
-        handleRedirect();
+        goToLoginOrLander();
       }
     }
 

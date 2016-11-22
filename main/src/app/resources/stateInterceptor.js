@@ -17,23 +17,32 @@
 
 angular.module('resources.stateInterceptor', [
   'services.session',
-  'services.state'])
+  'services.state',
+  'services.login'])
 
-  .run(function($rootScope, $state, SessionService, State) {
+  .run(function($rootScope, $state, SessionService, State, LoginService) {
 
     function authorizeState(stateRoles) {
       return SessionService.isInAnyRole(stateRoles);
     }
 
+    function isLoginOrLander(targetState) {
+      return [State.LOCAL_LOGIN, State.LANDER].indexOf(targetState.name) > -1;
+    }
+
     $rootScope.$on('$stateChangeStart', function(event, toState) {
-      if (toState.data && toState.data.roles) {
-        authorizeState(toState.data.roles).then(function(authorized) {
-          if (!authorized) {
-            $state.go(State.ACCESS_DENIED, {}, {reload: true});
+      if (!isLoginOrLander(toState)) {
+        SessionService.getSession().then(function() {
+          if (toState.data && toState.data.roles) {
+            return authorizeState(toState.data.roles);
           }
 
-          event.preventDefault();
-        });
+          return true;
+        }).then(function(authorized) {
+          if (!authorized) {
+            $state.go(State.ACCESS_DENIED);
+          }
+        }).catch(LoginService.goToLoginOrLander);
       }
     });
   });
