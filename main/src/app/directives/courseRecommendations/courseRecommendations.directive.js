@@ -19,6 +19,8 @@ angular.module('directives.courseRecommendations', ['resources.courseRecommendat
                                                     'opintoniAnalytics'])
 
   .constant('RECOMMENDATIONS_LOADER_KEY', 'recommendations')
+  .constant('RECOMMENDATIONS_DEFAULT_AMOUNT', 5)
+  .constant('RECOMMENDATIONS_MAX_AMOUNT', 20)
 
   .directive('courseRecommendations', function() {
     return {
@@ -30,10 +32,23 @@ angular.module('directives.courseRecommendations', ['resources.courseRecommendat
                            CourseRecommendationsResource,
                            Loader,
                            RECOMMENDATIONS_LOADER_KEY,
+                           RECOMMENDATIONS_DEFAULT_AMOUNT,
+                           RECOMMENDATIONS_MAX_AMOUNT,
                            AnalyticsService) {
+
         $scope.trackRecommendationLinkClick = function(courseName) {
           AnalyticsService.trackCourseRecommendationLinkClick(courseName);
         };
+
+        $scope.limit = RECOMMENDATIONS_DEFAULT_AMOUNT;
+
+        $scope.showMore = function() {
+          $scope.limit = RECOMMENDATIONS_MAX_AMOUNT;
+        }
+
+        $scope.showLess = function() {
+          $scope.limit = RECOMMENDATIONS_DEFAULT_AMOUNT;
+        }
 
         Loader.start(RECOMMENDATIONS_LOADER_KEY);
 
