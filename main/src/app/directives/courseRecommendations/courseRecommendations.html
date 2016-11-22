@@ -22,12 +22,16 @@
   </div>
   <div block-ui="recommendations" class="content-loader">
     <ul class="link-list__links">
-      <li ng-repeat="courseRecommendation in courseRecommendations track by courseRecommendation.title">
-        <a href="{{::courseRecommendation.link}}"
-           ng-click="trackRecommendationLinkClick(courseRecommendation.title)">
-          {{::courseRecommendation.title}}
+      <li ng-repeat="recommendation in courseRecommendations | limitTo: limit as results track by recommendation.title">
+        <a href="{{::recommendation.link}}"
+           ng-click="trackRecommendationLinkClick(recommendation.title)">
+          {{::recommendation.title}}
         </a>
       </li>
     </ul>
+    <a tabindex="0" ng-hide="results.length >= courseRecommendations.length" ng-click="showMore()"
+       translate="courseRecommendations.showMore" class="course-recommendations__show-more-less text-transform-capitalize"/>
+    <a tabindex="0" ng-show="results.length >= courseRecommendations.length" ng-click="showLess()"
+       translate="courseRecommendations.showLess" class="course-recommendations__show-more-less text-transform-capitalize"/>
   </div>
 </div>

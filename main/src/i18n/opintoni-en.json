@@ -427,6 +427,8 @@
   },
   "courseRecommendations" : {
     "title" : "potentially interesting courses",
+    "showMore": "show more",
+    "showLess": "show less",
     "disclaimer" : "This course list is based on your completed studies, which has been compared to other students’ completed studies. The list is personal and no one else sees it. Please check the pre-requisites the required study right before enrolling to a course."
   },
   "cookieNotification": {
