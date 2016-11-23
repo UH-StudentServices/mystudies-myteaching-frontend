@@ -27,7 +27,9 @@ angular.module('services.state', [
     MY_TEACHINGS: 'opetukseni',
     ADMIN: 'admin',
     ACCESS_DENIED: 'accessDenied',
-    ERROR: 'error'
+    ERROR: 'error',
+    LOCAL_LOGIN: 'localLogin',
+    LANDER: 'login'
   })
 
   .factory('StateService', function($state, $location, State, Configuration, Role, ConfigurationProperties) {

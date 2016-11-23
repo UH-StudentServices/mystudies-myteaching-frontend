@@ -22,6 +22,8 @@ angular.module('services.configuration', [])
     TEACHER_APP_URL: 'teacherAppUrl'
   })
 
+  .constant('LoginCookie', 'OPINTONI_HAS_LOGGED_IN')
+
   .constant('Environments', {
     LOCAL: 'local',
     DEV: 'dev',
