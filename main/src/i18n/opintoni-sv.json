@@ -160,8 +160,8 @@
     }
   },
   "fullScreenCalendar": {
-    "open": "öppna hela fönstret kalender",
-    "close": "stänga hela fönstret kalender"
+    "open": "Öppna kalender i hela fönstret",
+    "close": "Stäng hela fönstret"
   },
   "attainments": {
     "attainments": "Prestationer",
