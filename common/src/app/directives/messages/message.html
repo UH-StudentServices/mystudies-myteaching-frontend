@@ -16,6 +16,8 @@
 -->
 
 <div class="messages" ng-class="message.messageType">
-  <span translate="{{::message.key}}"></span>
-  <a ng-click="close(message)" class="hy hy-remove" ng-if="close" tabindex="0"></a>
+  <p>
+    <span translate="{{::message.key}}"></span>
+    <a ng-click="close(message)" class="hy hy-remove" ng-if="close" tabindex="0"></a>
+  </p>
 </div>
