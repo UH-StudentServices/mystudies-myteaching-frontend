@@ -44,11 +44,11 @@ angular.module('directives.courseRecommendations', ['resources.courseRecommendat
 
         $scope.showMore = function() {
           $scope.limit = RECOMMENDATIONS_MAX_AMOUNT;
-        }
+        };
 
         $scope.showLess = function() {
           $scope.limit = RECOMMENDATIONS_DEFAULT_AMOUNT;
-        }
+        };
 
         Loader.start(RECOMMENDATIONS_LOADER_KEY);
 
