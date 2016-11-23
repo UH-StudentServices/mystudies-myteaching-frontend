@@ -158,8 +158,8 @@
     }
   },
   "fullScreenCalendar": {
-    "open": "avaa koko ikkunan kalenteri",
-    "close": "sulje koko ikkunan kalenteri"
+    "open": "Avaa koko ikkunan näkymään",
+    "close": "Sulje koko ikkunan näkymä"
   },
   "attainments": {
     "attainments": "Suoritetut",
