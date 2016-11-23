@@ -159,8 +159,8 @@
     }
   },
   "fullScreenCalendar": {
-    "open": "open full window calendar",
-    "close": "close full window calendar"
+    "open": "Open calendar in full window",
+    "close": "Close full window calendar"
   },
   "attainments": {
     "attainments": "Completed studies",
