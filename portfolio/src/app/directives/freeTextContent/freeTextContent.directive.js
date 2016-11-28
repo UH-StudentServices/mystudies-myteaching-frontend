@@ -104,6 +104,7 @@ angular.module('directives.freeTextContent', [
             .then(function() {
               scope.freeTextContentToEdit = null;
             });
+          return true;
         };
 
         scope.deleteFreeTextContent = function() {

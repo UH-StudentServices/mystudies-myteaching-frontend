@@ -72,6 +72,7 @@ angular.module('directives.contactInformation', ['services.contactInformation'])
               $scope.contactInformation = data;
               $scope.editing = false;
             });
+          return true;
         };
 
         $scope.editSomeLink = function(someLink) {

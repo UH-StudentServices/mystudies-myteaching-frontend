@@ -89,6 +89,8 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
             }
 
             $scope.editing = false;
+
+            return true;
           },
 
           toggleLanguageSelect: function(scope) {

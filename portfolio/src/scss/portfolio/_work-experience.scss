@@ -27,6 +27,12 @@ ul.work-experience {
     width: 100%;
     display: block;
   }
+  .editable-content .ng-invalid {
+    border: 2px solid red;
+  }
+  .editable-content-active .ng-invalid {
+    border: 2px solid red;
+  }
 }
 
 .work-experience__item, .work-experience__add-new {
@@ -250,3 +256,4 @@ ul.work-experience {
   padding-bottom: 1.5em;
   margin: 0;
 }
+

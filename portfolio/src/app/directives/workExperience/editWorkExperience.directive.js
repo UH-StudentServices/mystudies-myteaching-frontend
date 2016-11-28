@@ -74,6 +74,7 @@ angular.module('directives.editWorkExperience', [
       };
 
       $scope.editEmployerUrl = function(job) {
+        console.log(angular.toJson($scope.workExperience));
         job.employerUrlEdit = true;
       };
 
@@ -101,14 +102,16 @@ angular.module('directives.editWorkExperience', [
         job.id = Date.now();
         job.startDate = moment();
         job.endDate = '';
-        job.jobTitle = $translate.instant('workExperience.jobTitle');
-        job.employerUrl = $translate.instant('workExperience.employerUrl');
+        job.jobTitle = '';
+        job.employerUrl = '';
         $scope.workExperience.push(job);
         $scope.newJob = {};
+        $scope.refreshValidity();
       };
 
       $scope.removeWorkExperience = function(job) {
         $scope.workExperience = _.without($scope.workExperience, job);
+        $scope.refreshValidity();  // we might have deleted the only invalid item
       };
 
       $scope.addJobSearch = function(jobSearch) {

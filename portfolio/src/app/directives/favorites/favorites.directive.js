@@ -40,6 +40,7 @@ angular.module('directives.favorites', [
 
         $scope.exitEdit = function() {
           $scope.editMode = false;
+          return true;
         };
 
         function updateFavorites() {

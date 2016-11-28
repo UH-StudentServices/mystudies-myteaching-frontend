@@ -51,6 +51,8 @@ angular.module('directives.attainments', [
           AttainmentResource.updateWhitelist($scope.portfolioId, {
             oodiStudyAttainmentIds: $scope.whitelist
           }).then(updateWhitelistedAttainments);
+
+          return true;
         };
 
         AttainmentResource.getWhitelist($scope.portfolioId).then(function(whitelist) {

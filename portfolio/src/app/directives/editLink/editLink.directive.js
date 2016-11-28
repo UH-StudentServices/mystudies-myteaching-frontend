@@ -23,16 +23,26 @@ angular.module('directives.editLink', [])
       templateUrl: 'app/directives/editLink/editLink.html',
       scope: {
         onEdit: '&',
-        onExitEdit: '&'
+        onExitEdit: '&',
+        onDisabledExitEdit: '&',
+        exitEditDisabled: '='
       },
       link: function($scope) {
         $scope.onClick = function() {
           if ($scope.editing) {
-            $scope.onExitEdit();
+            if ($scope.exitEditDisabled) {
+              if ($scope.onDisabledExitEdit) {
+                $scope.onDisabledExitEdit();
+              }
+            } else {
+              if ($scope.onExitEdit()) {
+                $scope.editing = false;
+              }
+            }
           } else {
             $scope.onEdit();
+            $scope.editing = true;
           }
-          $scope.editing = !$scope.editing;
         };
       }
     };

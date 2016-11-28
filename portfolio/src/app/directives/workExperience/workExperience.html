@@ -19,10 +19,13 @@
 
   <div class="edit-link-wrapper">
     <h2 class="ui-component__title border-bottom" translate="workExperience.title"></h2>
-    <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
+    <edit-link on-edit="edit()"
+      on-exit-edit="exitEdit()"
+      exit-edit-disabled="!workExperienceValid"
+      on-disabled-exit-edit="markAllSubmitted()"></edit-link>
   </div>
 
   <show-work-experience ng-show="!editing"></show-work-experience>
-  <edit-work-experience ng-show="editing"></edit-work-experience>
+  <edit-work-experience ng-show="editing""></edit-work-experience>
   <visibility-toggle component-id="WORK_EXPERIENCE"></visibility-toggle>
 </section>
