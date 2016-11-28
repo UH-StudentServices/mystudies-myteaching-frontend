@@ -95,6 +95,8 @@
     "employerUrlPlaceholder": "työnantajan webosoite",
     "text": "kuvausteksti",
     "descriptionPlaceholder": "Lisää kuvaus",
+    "showMore": "lisää",
+    "showLess": "vähemmän",
     "startDate": "alkupäivämäärä (kk.vvvv)",
     "endDate": "loppupäivämäärä (kk.vvvv)",
     "contactEmail": "sähköpostiosoite",

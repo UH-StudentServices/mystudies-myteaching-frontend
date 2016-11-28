@@ -17,7 +17,7 @@
 
 <ul class="work-experience">
   <li ng-repeat="workExperienceItem in workExperience | orderBy : startDate : true track by workExperienceItem.id">
-    <div class="work-experience__item">
+    <div class="work-experience__item" ng-class="{'showFullItem': workExperienceItem.showFull}">
       <div class="work-experience__banner">
         <div class="work-experience__banner-content">
           <div class="work-experience__employer-container">
@@ -35,10 +35,18 @@
         <div class="work-experience__title">
           {{workExperienceItem.jobTitle}}
         </div>
-        <div class="work-experience__description">
-          <p>{{workExperienceItem.text}}</p>
+        <div class="work-experience__description" ng-hide="workExperienceItem.showFull">
+          <p ng-bind="workExperienceItem.text" data-ellipsis data-ellipsis-append="{{::'workExperience.showMore'|translate}}" data-ellipsis-append-click="showFull(workExperienceItem)"></p>
         </div>
-        <div class="work-experience__url">
+        <div class="work-experience__full-description" ng-show="workExperienceItem.showFull">
+          <p>{{workExperienceItem.text}}
+            <a class="work-experince__description-show-less"
+              aria-label="{{::'workExperience.showLess'|translate}}"
+              tabIndex="0"
+              ng-click="hideFull(workExperienceItem);$event.stopPropagation();">{{::'workExperience.showLess'|translate}}</a>
+          </p>
+        </div>
+        <div class="work-experience__url" ng-class="{'showFullItem': workExperienceItem.showFull}">
           <a href="{{workExperienceItem.employerUrl !== '' ? formatUrl(workExperienceItem.employerUrl) : ''}}" tabindex="0">
           {{workExperienceItem.employerUrl}}</a>
         </div>

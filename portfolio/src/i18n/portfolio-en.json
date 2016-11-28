@@ -95,6 +95,8 @@
     "employerUrlPlaceholder": "employer's website",
     "text": "description",
     "descriptionPlaceholder": "Add description",
+    "showMore": "more",
+    "showLess": "less",
     "startDate": "start date (mm.yyyy)",
     "endDate": "end date (m.yyyy)",
     "contactEmail": "contact email",

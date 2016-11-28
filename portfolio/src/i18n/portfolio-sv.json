@@ -95,6 +95,8 @@
     "employerUrlPlaceholder": "arbetsgivares websidan",
     "text": "beskrivning",
     "descriptionPlaceholder": "Lägg till beskrivning",
+    "showMore": "mer",
+    "showLess": "mindre",
     "startDate": "startdatum (mm.yyyy)",
     "endDate": "slutdatum (mm.yyyy)",
     "contactEmail": "contact email",

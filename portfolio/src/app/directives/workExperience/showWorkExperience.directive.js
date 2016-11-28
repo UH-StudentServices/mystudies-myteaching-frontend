@@ -17,7 +17,9 @@
 
 'use strict';
 
-angular.module('directives.showWorkExperience', [])
+angular.module('directives.showWorkExperience', [
+  'dibari.angular-ellipsis'
+])
 
 .directive('showWorkExperience', function() {
   return {
@@ -36,6 +38,12 @@ angular.module('directives.showWorkExperience', [])
         } else {
           return '';
         }
+      };
+      $scope.showFull = function(workExperienceItem) {
+        workExperienceItem.showFull = true;
+      };
+      $scope.hideFull = function(workExperienceItem) {
+        workExperienceItem.showFull = false;
       };
     }
   };
