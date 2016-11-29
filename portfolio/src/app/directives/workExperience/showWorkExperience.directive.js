@@ -41,9 +41,8 @@ angular.module('directives.showWorkExperience', [
       $scope.showFull = function(workExperienceItem) {
         workExperienceItem.showFull = true;
       };
-      $scope.hideFull = function(workExperienceItem, event) {
+      $scope.hideFull = function(workExperienceItem) {
         workExperienceItem.showFull = false;
-        event.stopPropagation();
       };
     }
   };
