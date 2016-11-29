@@ -4,13 +4,9 @@
     "done": "valmis",
     "add" : "lisää",
     "remove" : "poista",
-    "ok": "Ok"
-  },
-  "students": {
-    "pageHeaderBranding": "opiskelijat"
-  },
-  "teachers": {
-    "pageHeaderBranding": "opettajat"
+    "ok": "Ok",
+    "students": "opiskelijat",
+    "teachers": "opettajat"
   },
   "pageHeaderLinks": {
     "email": "sähköposti",
