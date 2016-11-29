@@ -40,6 +40,7 @@ angular.module('directives.workExperience', [
     link: function($scope) {
       $scope.editing = false;
       $scope.workExperience = WorkExperienceService.formatDates($scope.workExperienceData());
+      $scope.workExperienceValid = true;
 
       WorkExperienceService.getJobSearchSubject().subscribe(function(jobSearch) {
         $scope.jobSearch = jobSearch;
@@ -49,32 +50,46 @@ angular.module('directives.workExperience', [
         $scope.editing = true;
       };
 
+      var isValid = function() {
+        return $scope.workExperience.every(function(job) {
+          return job.employer &&
+                 job.startDate.isValid() &&
+                 (!job.endDate || job.endDate.isValid()) &&
+                 job.jobTitle;
+        });
+      };
+
+      $scope.refreshValidity = _.debounce(function() {
+        $scope.workExperienceValid = isValid();
+      }, 500);
+
       $scope.exitEdit = function() {
+        $scope.markAllSubmitted();
+
         if ($scope.jobSearch !== null) {
           WorkExperienceService.saveJobSearch($scope.jobSearch);
         } else {
           WorkExperienceService.deleteJobSearch($scope.jobSearch);
         }
 
-        var updateWorkExperience = angular.copy($scope.workExperience);
+        if (isValid()) {
+          var updateWorkExperience = angular.copy($scope.workExperience);
 
-        _.forEach(updateWorkExperience, function(job) {
-          if (!job.startDate.isValid()) {
-            job.startDate = moment();
-          }
+          updateWorkExperience.forEach(function(job) {
+            job.startDate = momentDateToLocalDateArray(job.startDate);
+            job.endDate = momentDateToLocalDateArray(job.endDate);
+          });
 
-          if (job.endDate && !job.endDate.isValid()) {
-            job.endDate = '';
-          }
+          WorkExperienceService.updateWorkExperience($scope.portfolioId, updateWorkExperience).then(function(data) {
+            $scope.workExperience = data;
+            $scope.editing = false;
+          });
+          return true;
+        }
+      };
 
-          job.startDate = momentDateToLocalDateArray(job.startDate);
-          job.endDate = momentDateToLocalDateArray(job.endDate);
-        });
-
-        WorkExperienceService.updateWorkExperience($scope.portfolioId, updateWorkExperience).then(function(data) {
-          $scope.workExperience = data;
-          $scope.editing = false;
-        });
+      $scope.markAllSubmitted = function() {
+        $scope.workExperience.forEach(function(job) { job.submitted = true; });
       };
     },
   };

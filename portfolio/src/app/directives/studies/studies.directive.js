@@ -59,6 +59,8 @@ angular.module('directives.studies', [
           .then(function(keywords) {
             scope.keywords = keywords;
           });
+
+        return true;
       }
 
       _.assign(scope, {

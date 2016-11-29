@@ -36,6 +36,7 @@ module.exports = function(config) {
       '../bower_components/rxjs/dist/rx.js',
       '../bower_components/rxjs/dist/rx.binding.js',
       '../bower_components/angular-sanitize/angular-sanitize.js',
+      '../bower_components/angular-ellipsis/src/angular-ellipsis.js',
       '../bower_components/angular-ui-utils/ui-utils.js',
       'src/app/**/*.js',
       '../common/src/app/**/!(bootstrap).js',

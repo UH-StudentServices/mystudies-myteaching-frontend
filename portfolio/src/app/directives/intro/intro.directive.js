@@ -48,6 +48,7 @@ angular.module('directives.intro',
           PortfolioService.updatePortfolio($scope.portfolio).then(function(portfolio) {
             $scope.portfolio = portfolio;
           });
+          return true;
         };
 
         setBackgroundImage();

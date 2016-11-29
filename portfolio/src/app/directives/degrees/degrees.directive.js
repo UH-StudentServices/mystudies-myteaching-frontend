@@ -48,6 +48,8 @@ angular.module('directives.degrees', [
           $scope.degrees = data;
           $scope.editing = false;
         });
+
+        return true;
       };
     }
   };
