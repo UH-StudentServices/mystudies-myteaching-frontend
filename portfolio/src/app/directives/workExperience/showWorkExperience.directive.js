@@ -35,15 +35,15 @@ angular.module('directives.showWorkExperience', [
           } else {
             return 'http://' + url;
           }
-        } else {
-          return '';
         }
+        return '';
       };
       $scope.showFull = function(workExperienceItem) {
         workExperienceItem.showFull = true;
       };
-      $scope.hideFull = function(workExperienceItem) {
+      $scope.hideFull = function(workExperienceItem, event) {
         workExperienceItem.showFull = false;
+        event.stopPropagation();
       };
     }
   };

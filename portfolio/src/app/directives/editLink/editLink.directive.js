@@ -31,13 +31,11 @@ angular.module('directives.editLink', [])
         $scope.onClick = function() {
           if ($scope.editing) {
             if ($scope.exitEditDisabled) {
-              if ($scope.onDisabledExitEdit) {
+              if (typeof $scope.onDisabledExitEdit === 'function') {
                 $scope.onDisabledExitEdit();
               }
-            } else {
-              if ($scope.onExitEdit()) {
-                $scope.editing = false;
-              }
+            } else if ($scope.onExitEdit()) {
+              $scope.editing = false;
             }
           } else {
             $scope.onEdit();

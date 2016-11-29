@@ -50,24 +50,17 @@ angular.module('directives.workExperience', [
         $scope.editing = true;
       };
 
-      $scope.refreshValidity = function() {
-        var valid = true;
+      $scope.refreshValidity = _.debounce(function() {
+        $scope.workExperienceValid = $scope.isValid();
+      }, 500);
 
-        _.forEach($scope.workExperience, function(job) {
-          if (!job.employer) {
-            valid = false;
-          }
-          if (!job.startDate.isValid()) {
-            valid = false;
-          }
-          if (job.endDate && !job.endDate.isValid()) {
-            valid = false;
-          }
-          if (!job.jobTitle) {
-            valid = false;
-          }
+      $scope.isValid = function() {
+        return $scope.workExperience.every(function(job) {
+          return job.employer &&
+                 job.startDate.isValid() &&
+                 (!job.endDate || job.endDate.isValid()) &&
+                 job.jobTitle;
         });
-        $scope.workExperienceValid = valid;
       };
 
       $scope.exitEdit = function() {
@@ -79,12 +72,10 @@ angular.module('directives.workExperience', [
           WorkExperienceService.deleteJobSearch($scope.jobSearch);
         }
 
-        var updateWorkExperience = angular.copy($scope.workExperience);
+        if ($scope.isValid()) {
+          var updateWorkExperience = angular.copy($scope.workExperience);
 
-        $scope.refreshValidity();
-        if ($scope.workExperienceValid) {
-          _.forEach(updateWorkExperience, function(job) {
-            job.submitted = true;
+          updateWorkExperience.forEach(function(job) {
             job.startDate = momentDateToLocalDateArray(job.startDate);
             job.endDate = momentDateToLocalDateArray(job.endDate);
           });
@@ -94,13 +85,11 @@ angular.module('directives.workExperience', [
             $scope.editing = false;
           });
           return true;
-        } else {
-          return false;
         }
       };
 
       $scope.markAllSubmitted = function() {
-        _.forEach($scope.workExperience, function(job) { job.submitted = true; });
+        $scope.workExperience.forEach(function(job) { job.submitted = true; });
       };
     },
   };

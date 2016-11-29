@@ -17,21 +17,23 @@
 
 $work-experience-width : 238px;
 $work-experience-height : 170px;
+$work-experience-invalid-color: red;
 
 $work-experience-summary-tag-color: $blue;
 $work-experience-summary-text-color: $white;
 $work-experience-summary-max-height: 57px;
+
+$work-experience-full-description-vertical-margin: 0.85em;
 
 ul.work-experience {
   > li {
     width: 100%;
     display: block;
   }
-  .editable-content .ng-invalid {
-    border: 2px solid red;
-  }
-  .editable-content-active .ng-invalid {
-    border: 2px solid red;
+  .editable-content, .editable-content-active {
+    .ng-invalid {
+      border: 2px solid $work-experience-invalid-color;
+    }
   }
 }
 
@@ -161,16 +163,15 @@ ul.work-experience {
 .work-experience__description {
   p {
     height: 100%;
-    width: 100%;
     font-size: 1rem;
     margin: 3px 0;
+  }
 
-    .angular-ellipsis-append {
-      color: $blue;
-      &:hover {
-        color: $darkblue;
-        cursor: pointer;
-      }
+  .angular-ellipsis-append {
+    color: $blue;
+    &:hover {
+      color: $darkblue;
+      cursor: pointer;
     }
   }
 
@@ -180,6 +181,7 @@ ul.work-experience {
   }
 
   position: absolute;
+  overflow: hidden;
   top: 2em;
   bottom: 3em;
   left: 0;
@@ -191,12 +193,11 @@ ul.work-experience {
 }
 
 .work-experience__full-description {
-  margin-top: 0.85em;
-  margin-bottom: 0.85em;
+  margin-top: $work-experience-full-description-vertical-margin;
+  margin-bottom: $work-experience-full-description-vertical-margin;
 
   p {
     height: 100%;
-    width: 100%;
     font-size: 1rem;
     margin: 3px 0;
   }

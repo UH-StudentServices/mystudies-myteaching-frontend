@@ -78,7 +78,7 @@
             </a>
           </span>
           <span class="editable-content-active" ng-show="workExperienceItem.jobTitleEdit">
-            <input placeholder="{{'workExperience.jobTitlePlaceholder'|translate}}"
+            <input placeholder="{{::'workExperience.jobTitlePlaceholder'|translate}}"
                    focus="workExperienceItem.jobTitleEdit"
                    ng-model="workExperienceItem.jobTitle"
                    ng-change="refreshValidity()"
@@ -97,7 +97,7 @@
             </a>
           </span>
           <span class="editable-content-active" ng-show="workExperienceItem.employerUrlEdit">
-            <input placeholder="{{'workExperience.employerUrlPlaceholder'|translate}}"
+            <input placeholder="{{::'workExperience.employerUrlPlaceholder'|translate}}"
                    focus="workExperienceItem.employerUrlEdit"
                    ng-model="workExperienceItem.employerUrl"
                    ui-keypress="{'enter':'exitEmployerUrlEdit(workExperienceItem)'}" />

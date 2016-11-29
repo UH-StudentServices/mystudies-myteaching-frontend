@@ -40,7 +40,7 @@ angular.module('directives.editWorkExperience', [
       };
 
       $scope.exitStartDateEdit = function(job) {
-        if (!job.startDate.isValid()) {
+        if (!job.startDate || !job.startDate.isValid()) {
           job.startDate = moment();
         }
         job.startDateEdit = false;
@@ -51,7 +51,7 @@ angular.module('directives.editWorkExperience', [
       };
 
       $scope.exitEndDateEdit = function(job) {
-        if (!job.endDate.isValid()) {
+        if (job.endDate && !job.endDate.isValid()) {
           job.endDate = '';
         }
         job.endDateEdit = false;
@@ -74,7 +74,6 @@ angular.module('directives.editWorkExperience', [
       };
 
       $scope.editEmployerUrl = function(job) {
-        console.log(angular.toJson($scope.workExperience));
         job.employerUrlEdit = true;
       };
 

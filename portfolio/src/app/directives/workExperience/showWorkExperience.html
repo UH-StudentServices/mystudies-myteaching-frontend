@@ -40,14 +40,13 @@
         </div>
         <div class="work-experience__full-description" ng-show="workExperienceItem.showFull">
           <p>{{workExperienceItem.text}}
-            <a class="work-experince__description-show-less"
-              aria-label="{{::'workExperience.showLess'|translate}}"
+            <a aria-label="{{::'workExperience.showLess'|translate}}"
               tabIndex="0"
-              ng-click="hideFull(workExperienceItem);$event.stopPropagation();">{{::'workExperience.showLess'|translate}}</a>
+              ng-click="hideFull(workExperienceItem, $event)">{{::'workExperience.showLess'|translate}}</a>
           </p>
         </div>
         <div class="work-experience__url" ng-class="{'showFullItem': workExperienceItem.showFull}">
-          <a href="{{workExperienceItem.employerUrl !== '' ? formatUrl(workExperienceItem.employerUrl) : ''}}" tabindex="0">
+          <a href="{{workExperienceItem.employerUrl !== '' ? formatUrl(workExperienceItem.employerUrl) : ''}}">
           {{workExperienceItem.employerUrl}}</a>
         </div>
       </div>
