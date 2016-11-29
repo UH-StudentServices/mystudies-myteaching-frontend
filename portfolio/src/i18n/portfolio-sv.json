@@ -4,13 +4,9 @@
     "done": "färdig",
     "add" : "lägg till",
     "remove" : "radera",
-    "ok": "Ok"
-  },
-  "students": {
-    "pageHeaderBranding": "studerande"
-  },
-  "teachers": {
-    "pageHeaderBranding": "lärare"
+    "ok": "Ok",
+    "students": "studerande",
+    "teachers": "lärare"
   },
   "pageHeaderLinks": {
     "email": "e-post",

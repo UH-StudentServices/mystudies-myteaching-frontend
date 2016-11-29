@@ -4,13 +4,9 @@
     "done": "done",
     "add" : "add",
     "remove" : "remove",
-    "ok": "Ok"
-  },
-  "students": {
-    "pageHeaderBranding": "students"
-  },
-  "teachers": {
-    "pageHeaderBranding": "teachers"
+    "ok": "Ok",
+    "students": "students",
+    "teachers": "teachers"
   },
   "pageHeaderLinks": {
     "email": "email",
