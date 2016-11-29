@@ -43,6 +43,7 @@
 
   .editing & {
     cursor: pointer;
+    color: $white;
   }
 }
 
@@ -102,9 +103,9 @@
   }
 
   &__language-name, &__proficiency {
-    color: $white;
+    color: $gray;
     &:hover {
-      color: $white;
+      color: $gray;
     }
   }
 
