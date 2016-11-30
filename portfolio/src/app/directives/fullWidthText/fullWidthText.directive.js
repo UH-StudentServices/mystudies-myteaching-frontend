@@ -40,19 +40,24 @@ angular.module('directives.fullWidthText', [])
             var parentElementWidth = parentElement.width();
             var parentFontSize = getFontSize(parentElement);
             var originalFontSize = getFontSize(element);
-            var newFontSize = (parentElementWidth - margins) / elementWidth * originalFontSize;
+            var newFontSize = Math.round((parentElementWidth - margins) / elementWidth * originalFontSize);
 
             if (attrs.hasOwnProperty('limitToParentFontSize')) {
               newFontSize = Math.min(newFontSize, parentFontSize);
             }
 
-            if (newFontSize !== originalFontSize) {
+            // Calculations often produce slightly too large fonts; if so,
+            // keep reducing font size by 1 until it fits. Typically we
+            // only have to do this once.
+            do {
               setFontSize(element, newFontSize);
-            }
+              elementWidth = element.width();
+              newFontSize = newFontSize - 1;
+            } while (elementWidth > parentElementWidth - margins);
           }
         }
 
-        angular.element($window).on('resize', function() { console.log('resized'); resizeFont(); });
+        angular.element($window).on('resize', resizeFont);
 
         $timeout(resizeFont);
       }

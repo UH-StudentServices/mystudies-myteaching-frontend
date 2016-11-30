@@ -39,6 +39,13 @@ angular.module('directives.attainments', [
         $scope.numberOfVisibleAttainments = 5;
         $scope.attainments = [];
 
+        $scope.formatGrade = function(grade) {
+          if (grade.endsWith('.')) {
+            return grade.substring(0, grade.length - 1);
+          }
+          return grade;
+        };
+
         $scope.edit = function edit() {
           $scope.editing = true;
           AttainmentResource.getAll(9999).then(function attainmentsSuccess(attainments) {
