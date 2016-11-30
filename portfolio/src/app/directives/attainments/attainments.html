@@ -30,8 +30,8 @@
           <i ng-if="!isVisible(attainment)" class="fa fa-eye-slash"></i>
         </a>
 
-        <div class="box-data__box" ng-class="{'box-data__grade' : attainment.grade >= 0}">
-          <span>{{ attainment.grade }}</span>
+        <div class="box-data__grade">
+          <span><p class="study-attainment__grade" full-width-text limit-to-parent-font-size>{{ attainment.grade }}</p></span>
         </div>
 
         <div class="box-data__content">
