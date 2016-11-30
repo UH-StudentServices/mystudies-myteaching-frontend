@@ -46,7 +46,7 @@ angular.module('directives.fullWidthText', [])
               newFontSize = Math.min(newFontSize, parentFontSize);
             }
 
-            if (newFontSize != originalFontSize) {
+            if (newFontSize !== originalFontSize) {
               setFontSize(element, newFontSize);
             }
           }
