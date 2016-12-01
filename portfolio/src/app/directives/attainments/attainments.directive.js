@@ -20,7 +20,7 @@ angular.module('directives.attainments', [
   'resources.attainment',
   'filters.moment',
   'filters.formatting',
-  'directives.editLink',
+  'directives.editLink'
 ])
 
   .directive('attainments', function(AttainmentResource) {
@@ -32,11 +32,23 @@ angular.module('directives.attainments', [
         portfolioId: '@'
       },
       link: function($scope) {
-        var showMoreAddition = 5;
+        var SHOW_MORE_ADDITION = 5,
+            MAX_GRADE_CHAR_COUNT = 4;
 
         $scope.editing = false;
         $scope.numberOfVisibleAttainments = 5;
         $scope.attainments = [];
+
+        $scope.formatGrade = function(grade) {
+          if (grade.endsWith('.')) {
+            return grade.substring(0, grade.length - 1);
+          }
+          return grade;
+        };
+
+        $scope.gradeClass = function(grade) {
+          return Math.max(1, Math.min(MAX_GRADE_CHAR_COUNT, $scope.formatGrade(grade).length));
+        };
 
         $scope.edit = function edit() {
           $scope.editing = true;
@@ -87,7 +99,7 @@ angular.module('directives.attainments', [
         };
 
         $scope.showMoreClick = function showMoreClick() {
-          $scope.numberOfVisibleAttainments += showMoreAddition;
+          $scope.numberOfVisibleAttainments += SHOW_MORE_ADDITION;
         };
 
         updateWhitelistedAttainments();

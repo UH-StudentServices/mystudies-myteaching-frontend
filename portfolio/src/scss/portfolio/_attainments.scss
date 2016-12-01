@@ -15,14 +15,38 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-.study-attainment {
+.study-attainment__item {
+  @extend .box-data, .border-bottom;
+}
 
-  .visibility-container {
-    float: left;
-    padding: 5px 10px 5px 10px;
-    font-size: 2em;
-    &:hover {
-      color: $lightgray;
-    }
+.study-attainment__visibility {
+  @extend .box-data__content, .clickable;
+
+  float: left;
+  padding: 5px 10px 5px 10px;
+  font-size: 2em;
+  &:hover {
+    color: $lightgray;
   }
+}
+
+$study-attainment-grade-font-sizes: 30px, 25px, 20px, 15px;
+$study-attainment-grade-base-name: "study-attainment__grade";
+@for $i from 1 through length($study-attainment-grade-font-sizes) {
+  .#{$study-attainment-grade-base-name}--#{$i} {
+    @extend .box-data__grade;
+    font-size: nth($study-attainment-grade-font-sizes, $i);
+  }
+}
+
+.study-attainment__date {
+  @extend .box-data__content;
+}
+
+.study-attainment__title {
+  @extend .box-data__title;
+}
+
+.study-attainment__teachers {
+  @extend .box-data__content;
 }
