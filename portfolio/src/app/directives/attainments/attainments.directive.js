@@ -20,8 +20,7 @@ angular.module('directives.attainments', [
   'resources.attainment',
   'filters.moment',
   'filters.formatting',
-  'directives.editLink',
-  'directives.fullWidthText'
+  'directives.editLink'
 ])
 
   .directive('attainments', function(AttainmentResource) {
@@ -44,6 +43,14 @@ angular.module('directives.attainments', [
             return grade.substring(0, grade.length - 1);
           }
           return grade;
+        };
+
+        $scope.gradeClass = function(grade) {
+          var formattedGrade = $scope.formatGrade(grade);
+          var prefix = 'study-attainment__grade-';
+          var length = Math.max(1, Math.min(4, formattedGrade.length));
+
+          return prefix + length;
         };
 
         $scope.edit = function edit() {

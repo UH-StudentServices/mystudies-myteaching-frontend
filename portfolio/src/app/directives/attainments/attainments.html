@@ -31,7 +31,7 @@
         </a>
 
         <div class="box-data__grade">
-          <span><p class="study-attainment__grade" full-width-text limit-to-parent-font-size>{{ formatGrade(attainment.grade) }}</p></span>
+          <span class="{{:: gradeClass(attainment.grade) }}">{{:: formatGrade(attainment.grade) }}</span>
         </div>
 
         <div class="box-data__content">
