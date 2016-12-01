@@ -32,7 +32,8 @@ angular.module('directives.attainments', [
         portfolioId: '@'
       },
       link: function($scope) {
-        var showMoreAddition = 5;
+        var SHOW_MORE_ADDITION = 5,
+            MAX_GRADE_CHAR_COUNT = 4;
 
         $scope.editing = false;
         $scope.numberOfVisibleAttainments = 5;
@@ -46,11 +47,7 @@ angular.module('directives.attainments', [
         };
 
         $scope.gradeClass = function(grade) {
-          var formattedGrade = $scope.formatGrade(grade);
-          var prefix = 'study-attainment__grade-';
-          var length = Math.max(1, Math.min(4, formattedGrade.length));
-
-          return prefix + length;
+          return Math.max(1, Math.min(MAX_GRADE_CHAR_COUNT, $scope.formatGrade(grade).length));
         };
 
         $scope.edit = function edit() {
@@ -102,7 +99,7 @@ angular.module('directives.attainments', [
         };
 
         $scope.showMoreClick = function showMoreClick() {
-          $scope.numberOfVisibleAttainments += showMoreAddition;
+          $scope.numberOfVisibleAttainments += SHOW_MORE_ADDITION;
         };
 
         updateWhitelistedAttainments();
