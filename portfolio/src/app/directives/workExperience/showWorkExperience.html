@@ -31,7 +31,7 @@
           </div>
         </div>
       </div>
-      <div class="work-experience__description-container" ng-class="{'showFullItem': workExperienceItem.showFull}">
+      <div class="work-experience__description-container">
         <div class="work-experience__title">
           {{workExperienceItem.jobTitle}}
         </div>
@@ -45,7 +45,7 @@
               ng-click="hideFull(workExperienceItem)">{{::'workExperience.showLess'|translate}}</a>
           </p>
         </div>
-        <div class="work-experience__url" ng-class="{'showFullItem': workExperienceItem.showFull}">
+        <div class="work-experience__url">
           <a href="{{workExperienceItem.employerUrl !== '' ? formatUrl(workExperienceItem.employerUrl) : ''}}">
           {{workExperienceItem.employerUrl}}</a>
         </div>
