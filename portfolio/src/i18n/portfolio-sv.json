@@ -188,30 +188,30 @@
     "administration": "Förvaltningsuppgifter och andra uppgifter"
   },
   "teachingTabAccordions": {
-    "development": "Utveckling av undervisningen",
-    "practices": "Undervisnings- och handledningsmetoder",
-    "materials": "Användning och utveckling av läromedel",
-    "collaborativeDevelopment": "Den gemensamma utvecklingen av undervisningen"
+    "development": "Undervisningserfarenhet",
+    "practices": "Pedagogisk utbildning",
+    "materials": "Läromedel",
+    "collaborativeDevelopment": "Andra undervisningsmeriter"
   },
   "developmentAccordionComponents": {
-    "assessment": "Utvärderingsmetoder",
-    "feedback": "Insamling av respons",
-    "thinking": "Pedagogiskt tänkande",
-    "training": "Pedagogisk utbildning",
-    "publications": "Pedagogiska publikationer"
+    "assessment": "Kursbaserad undervisning",
+    "feedback": "Handledning av examensarbete",
+    "thinking": "Undervisnings- och utvärderingsmetoder",
+    "training": "Insamling och utnyttjande av respons vid utvecklingen av undervisning",
+    "publications": "Pedagogiska tänkande"
   },
   "practicesAccordionComponents": {
-    "internationality": "Internationalitet",
+    "internationality": "Avlagda kurser",
     "supervision": "Handledning",
     "courses": "Kurser"
   },
   "materialsAccordionComponents": {
-    "researchBased": "Forskningsbaserade läromedel",
+    "researchBased": "Förmåga at utveckla och använda läromedel",
     "cooperation": "Samarbete"
   },
   "collaborativeDevelopmentAccordionComponents": {
-    "teachingCollaboration": "Undervisningssamarbete",
-    "multidisciplinaryCooperation": "Mångdisciplinärt samarbete"
+    "teachingCollaboration": "Aktivt deltagande i utvecklings- och kvalitetsarbete",
+    "multidisciplinaryCooperation": "Samarbete och nätverk inom undervisning"
   },
   "globalMessages": {
     "demoEnvNotice": "Obs! Detta är en demomiljö och information är inte korrekt. För rätt information gå till <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>"
