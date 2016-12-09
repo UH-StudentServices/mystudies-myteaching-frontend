@@ -188,30 +188,30 @@
     "administration": "Administration and other activities"
   },
   "teachingTabAccordions": {
-    "development": "Development of teaching",
-    "practices": "Teaching and supervision practices",
-    "materials": "Use and development of learning materials",
-    "collaborativeDevelopment": "Collaborative development of teaching"
+    "development": "Teaching Experience",
+    "practices": "Pedagogical Training",
+    "materials": "Learning materials",
+    "collaborativeDevelopment": "Further Teaching Merits and Accomplishments"
   },
   "developmentAccordionComponents": {
-    "assessment": "Assessment of learning",
-    "feedback": "Student feedback",
-    "thinking": "Pedagogical thinking",
-    "training": "Pedagogical training",
-    "publications": "Pedagogical publications"
+    "assessment": "Courses taught",
+    "feedback": "Supervision of theses",
+    "thinking": "Teaching and assessment practices and methods",
+    "training": "Collection and utilization of feedback from students to develop teaching practices",
+    "publications": "Pedagogical thinking"
   },
   "practicesAccordionComponents": {
-    "internationality": "Internationality",
+    "internationality": "Courses completed",
     "supervision": "Supervision",
     "courses": "Courses"
   },
   "materialsAccordionComponents": {
-    "researchBased": "Reasearch-based learning materials",
+    "researchBased": "Ability to develop and utilize learning materials",
     "cooperation": "Cooperation"
   },
   "collaborativeDevelopmentAccordionComponents": {
-    "teachingCollaboration": "Collaboration in teaching",
-    "multidisciplinaryCooperation": "Multidisciplinary cooperation"
+    "teachingCollaboration": "Active participation in course design and/or study program design",
+    "multidisciplinaryCooperation": "Experience in collaborative teaching"
   },
   "globalMessages": {
     "demoEnvNotice": "Notice! This is a demo environment and the information is not correct. For the correct information go to <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>"
