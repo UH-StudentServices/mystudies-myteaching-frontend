@@ -202,16 +202,17 @@
   },
   "practicesAccordionComponents": {
     "internationality": "Avlagda kurser",
-    "supervision": "Handledning",
     "courses": "Kurser"
   },
   "materialsAccordionComponents": {
-    "researchBased": "Förmåga at utveckla och använda läromedel",
-    "cooperation": "Samarbete"
+    "researchBased": "Förmåga at utveckla och använda läromedel"
   },
   "collaborativeDevelopmentAccordionComponents": {
     "teachingCollaboration": "Aktivt deltagande i utvecklings- och kvalitetsarbete",
-    "multidisciplinaryCooperation": "Samarbete och nätverk inom undervisning"
+    "multidisciplinaryCooperation": "Samarbete och nätverk inom undervisning",
+    "awards": "Priser och utmärkelser",
+    "research": "Pedagogisk forskning",
+    "advising": "Uppdrag som sakkunnig angående undervisning och forskning"
   },
   "globalMessages": {
     "demoEnvNotice": "Obs! Detta är en demomiljö och information är inte korrekt. För rätt information gå till <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>"

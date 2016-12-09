@@ -202,16 +202,17 @@
   },
   "practicesAccordionComponents": {
     "internationality": "Courses completed",
-    "supervision": "Supervision",
     "courses": "Courses"
   },
   "materialsAccordionComponents": {
-    "researchBased": "Ability to develop and utilize learning materials",
-    "cooperation": "Cooperation"
+    "researchBased": "Ability to develop and utilize learning materials"
   },
   "collaborativeDevelopmentAccordionComponents": {
     "teachingCollaboration": "Active participation in course design and/or study program design",
-    "multidisciplinaryCooperation": "Experience in collaborative teaching"
+    "multidisciplinaryCooperation": "Experience in collaborative teaching",
+    "awards": "Teaching-related awards received",
+    "research": "Teaching-related research",
+    "advising": "Teaching and thesis advising -related specialist work"
   },
   "globalMessages": {
     "demoEnvNotice": "Notice! This is a demo environment and the information is not correct. For the correct information go to <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>"

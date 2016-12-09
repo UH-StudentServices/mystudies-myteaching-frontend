@@ -202,16 +202,17 @@
   },
   "practicesAccordionComponents": {
     "internationality": "Käydyt kurssit",
-    "supervision": "Ohjaus",
     "courses": "Kurssit"
   },
   "materialsAccordionComponents": {
-    "researchBased": "Taito tuottaa ja käyttää oppimateriaalia",
-    "cooperation": "Yhteistyö"
+    "researchBased": "Taito tuottaa ja käyttää oppimateriaalia"
   },
   "collaborativeDevelopmentAccordionComponents": {
     "teachingCollaboration": "Aktiivinen osallistuminen opetussuunnitelmatyöhön",
-    "multidisciplinaryCooperation": "Opetusyhteistyö muiden opettajien kanssa"
+    "multidisciplinaryCooperation": "Opetusyhteistyö muiden opettajien kanssa",
+    "awards": "Opetukseen liittyvät palkinnot",
+    "research": "Opetukseen liittyvä tutkimus",
+    "advising": "Opetukseen ja ohjaukseen liittyvät asiantuntijatehtävät"
   },
   "globalMessages": {
     "demoEnvNotice": "Huomio! Tämä on demoympäristö, jossa tiedot eivät ole oikeita. Oikeat tiedot ovat osoitteessa <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>"
