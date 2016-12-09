@@ -150,8 +150,8 @@ angular.module('directives.eventCalendar', [])
             title += ', ' + event.courseTitle;
           }
 
-          if (event.locations) {
-            title += ', ' + event.locations;
+          if (event.location.roomName) {
+            title += ', ' + event.location.roomName;
           }
 
           return title;
