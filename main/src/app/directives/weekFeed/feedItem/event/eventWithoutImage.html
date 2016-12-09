@@ -32,15 +32,18 @@
   </div>
 
   <div class="box-data__content">
-    <span class="event-location">{{ feedItem.location.locationString }}</span>
-    <span class="event-location-links">
-      <a ng-if="feedItem.googleMapsUri" href="{{feedItem.googleMapsUri}}" target="_blank" translate="weekFeed.showOnMap"></a>
-      <a ng-if="feedItem.reittiopasEnabled" ng-click="openReittiopas(feedItem)" tabindex="0">
-        {{::('weekFeed.showRoute' | translate)}}
-        <span ng-show="feedItem.loadingLocation">
-          <i class="hy hy-spinner hy-spin"></i>
-        </span>
-      </a>
-    </span>
+    <div ng-repeat="location in feedItem.locations">
+      <span class="event-location">{{ location.locationString }}</span>
+      <span class="event-location-links">
+        <a ng-if="location.googleMapsUri" href="{{location.googleMapsUri}}"
+           target="_blank" translate="weekFeed.showOnMap"></a>
+        <a ng-if="location.reittiopasEnabled" ng-click="openReittiopas(feedItem.startDate, location)" tabindex="0">
+          {{::('weekFeed.showRoute' | translate)}}
+          <span ng-show="location.loadingLocation">
+            <i class="hy hy-spinner hy-spin"></i>
+          </span>
+        </a>
+      </span>
+    </div>
   </div>
 </div>

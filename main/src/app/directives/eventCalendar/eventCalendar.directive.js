@@ -150,8 +150,12 @@ angular.module('directives.eventCalendar', [])
             title += ', ' + event.courseTitle;
           }
 
-          if (event.location.roomName) {
-            title += ', ' + event.location.roomName;
+          if (event.locations) {
+            event.locations.forEach(function(location) {
+              if (location.roomName) {
+                title += ', ' + location.roomName;
+              }
+            });
           }
 
           return title;
