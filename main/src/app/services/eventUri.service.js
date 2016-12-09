@@ -23,23 +23,23 @@ angular.module('services.eventUri', ['services.location'])
 
   .factory('EventUriService', function(Timezones, LocationService, BrowserUtil) {
 
-    function hasBuilding(event) {
-      return event.building && event.building.street;
+    function hasStreetAddress(event) {
+      return event.location && event.location.streetAddress;
     }
 
-    function getPlace(building) {
-      var place = building.street;
+    function getPlace(location) {
+      var place = location.streetAddress;
 
-      if (building.zipCode) {
-        place += '+' + building.zipCode;
+      if (location.zipCode) {
+        place += '+' + location.zipCode;
       }
 
       return place;
     }
 
     function getGoogleMapsUri(event) {
-      if (hasBuilding(event)) {
-        var encoded = encodeURIComponent(getPlace(event.building));
+      if (hasStreetAddress(event)) {
+        var encoded = encodeURIComponent(getPlace(event.location));
 
         return 'https://www.google.fi/maps/place/' + encoded;
       } else {
@@ -48,7 +48,7 @@ angular.module('services.eventUri', ['services.location'])
     }
 
     function getReittiopasUri(event, fromAddress) {
-      var to = event.building.street,
+      var to = event.location.streetAddress,
           start = event.startDate.tz(Timezones.HELSINKI),
           minutes = start.minute(),
           hours = start.hour(),
@@ -75,7 +75,7 @@ angular.module('services.eventUri', ['services.location'])
       var now = moment().tz(Timezones.HELSINKI),
           start = event.startDate.clone().tz(Timezones.HELSINKI);
 
-      return hasBuilding(event) && now.isBefore(start) && start.diff(now, 'days') < 7;
+      return hasStreetAddress(event) && now.isBefore(start) && start.diff(now, 'days') < 7;
     }
 
     return {

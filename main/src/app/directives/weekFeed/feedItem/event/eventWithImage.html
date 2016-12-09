@@ -30,7 +30,7 @@
   </div>
 
   <div class="box-data__content">
-    <span class="event-location">{{ feedItem.locations }}</span>
+    <span class="event-location">{{ feedItem.location.locationString }}</span>
     <span class="event-location-links">
       <a ng-if="feedItem.googleMapsUri" href="{{feedItem.googleMapsUri}}" target="_blank" translate="weekFeed.showOnMap"></a>
       <a ng-if="feedItem.reittiopasEnabled" ng-click="openReittiopas(feedItem)" tabindex="0">
