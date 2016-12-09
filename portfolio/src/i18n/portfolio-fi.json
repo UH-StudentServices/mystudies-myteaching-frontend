@@ -188,30 +188,30 @@
     "administration": "Hallintotehtävät ja muu toiminta"
   },
   "teachingTabAccordions": {
-    "development": "Opetuksen kehittäminen",
-    "practices": "Opetus- ja ohjauskäytännöt",
-    "materials": "Oppimateriaalin käyttö ja kehittäminen",
-    "collaborativeDevelopment": "Yhteisöllisen opetuksen kehittäminen"
+    "development": "Opetuskokemus",
+    "practices": "Pedagoginen koulutus",
+    "materials": "Oppimateriaalit",
+    "collaborativeDevelopment": "Muut opetusansiot"
   },
   "developmentAccordionComponents": {
-    "assessment": "Arviointikäytännöt",
-    "feedback": "Opiskelijapalaute",
-    "thinking": "Pedagoginen ajattelu",
-    "training": "Pedagoginen koulutus",
-    "publications": "Pedagogiset julkaisut"
+    "assessment": "Kurssimuotoinen opetus",
+    "feedback": "Opinnäytetöiden ohjaus",
+    "thinking": "Opetus- ja arviointimenetelmät",
+    "training": "Palautteen keruu ja hyödyntäminen opetuksen kehittämisessä",
+    "publications": "Pedagoginen ajattelu"
   },
   "practicesAccordionComponents": {
-    "internationality": "Kansainvälisyys",
+    "internationality": "Käydyt kurssit",
     "supervision": "Ohjaus",
     "courses": "Kurssit"
   },
   "materialsAccordionComponents": {
-    "researchBased": "Tutkimukseen perustuvat oppimateriaalit",
+    "researchBased": "Taito tuottaa ja käyttää oppimateriaalia",
     "cooperation": "Yhteistyö"
   },
   "collaborativeDevelopmentAccordionComponents": {
-    "teachingCollaboration": "Opetusyhteistyö",
-    "multidisciplinaryCooperation": "Monitieteinen yhteistyö"
+    "teachingCollaboration": "Aktiivinen osallistuminen opetussuunnitelmatyöhön",
+    "multidisciplinaryCooperation": "Opetusyhteistyö muiden opettajien kanssa"
   },
   "globalMessages": {
     "demoEnvNotice": "Huomio! Tämä on demoympäristö, jossa tiedot eivät ole oikeita. Oikeat tiedot ovat osoitteessa <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>"
