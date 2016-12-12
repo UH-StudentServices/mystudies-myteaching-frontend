@@ -188,26 +188,26 @@
     "administration": "Administration and other activities"
   },
   "teachingTabAccordions": {
-    "development": "Teaching Experience",
-    "practices": "Pedagogical Training",
+    "teachingExperience": "Teaching Experience",
+    "pedagogicalTraining": "Pedagogical Training",
     "materials": "Learning materials",
-    "collaborativeDevelopment": "Further Teaching Merits and Accomplishments"
+    "accomplishments": "Further Teaching Merits and Accomplishments"
   },
-  "developmentAccordionComponents": {
-    "assessment": "Courses taught",
-    "feedback": "Supervision of theses",
-    "thinking": "Teaching and assessment practices and methods",
-    "training": "Collection and utilization of feedback from students to develop teaching practices"
+  "teachingExperienceAccordionComponents": {
+    "courses": "Courses taught",
+    "thesisSupervision": "Supervision of theses",
+    "practices": "Teaching and assessment practices and methods",
+    "feedback": "Collection and utilization of feedback from students to develop teaching practices"
   },
-  "practicesAccordionComponents": {
-    "internationality": "Courses completed"
+  "pedagogicalTrainingAccordionComponents": {
+    "courses": "Courses completed"
   },
   "materialsAccordionComponents": {
-    "researchBased": "Ability to develop and utilize learning materials"
+    "materials": "Ability to develop and utilize learning materials"
   },
-  "collaborativeDevelopmentAccordionComponents": {
-    "teachingCollaboration": "Active participation in course design and/or study program design",
-    "multidisciplinaryCooperation": "Experience in collaborative teaching",
+  "accomplishmentsAccordionComponents": {
+    "curriculumDesign": "Active participation in course design and/or study program design",
+    "collaborativeTeaching": "Experience in collaborative teaching",
     "awards": "Teaching-related awards received",
     "research": "Teaching-related research",
     "advising": "Teaching and thesis advising -related specialist work"

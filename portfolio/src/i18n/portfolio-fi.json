@@ -188,26 +188,26 @@
     "administration": "Hallintotehtävät ja muu toiminta"
   },
   "teachingTabAccordions": {
-    "development": "Opetuskokemus",
-    "practices": "Pedagoginen koulutus",
+    "teachingExperience": "Opetuskokemus",
+    "pedagogicalTraining": "Pedagoginen koulutus",
     "materials": "Oppimateriaalit",
-    "collaborativeDevelopment": "Muut opetusansiot"
+    "accomplishments": "Muut opetusansiot"
   },
-  "developmentAccordionComponents": {
-    "assessment": "Kurssimuotoinen opetus",
-    "feedback": "Opinnäytetöiden ohjaus",
-    "thinking": "Opetus- ja arviointimenetelmät",
-    "training": "Palautteen keruu ja hyödyntäminen opetuksen kehittämisessä"
+  "teachingExperienceAccordionComponents": {
+    "courses": "Kurssimuotoinen opetus",
+    "thesisSupervision": "Opinnäytetöiden ohjaus",
+    "practices": "Opetus- ja arviointimenetelmät",
+    "feedback": "Palautteen keruu ja hyödyntäminen opetuksen kehittämisessä"
   },
-  "practicesAccordionComponents": {
-    "internationality": "Käydyt kurssit"
+  "pedagogicalTrainingAccordionComponents": {
+    "courses": "Käydyt kurssit"
   },
   "materialsAccordionComponents": {
-    "researchBased": "Taito tuottaa ja käyttää oppimateriaalia"
+    "materials": "Taito tuottaa ja käyttää oppimateriaalia"
   },
-  "collaborativeDevelopmentAccordionComponents": {
-    "teachingCollaboration": "Aktiivinen osallistuminen opetussuunnitelmatyöhön",
-    "multidisciplinaryCooperation": "Opetusyhteistyö muiden opettajien kanssa",
+  "accomplishmentsAccordionComponents": {
+    "curriculumDesign": "Aktiivinen osallistuminen opetussuunnitelmatyöhön",
+    "collaborativeTeaching": "Opetusyhteistyö muiden opettajien kanssa",
     "awards": "Opetukseen liittyvät palkinnot",
     "research": "Opetukseen liittyvä tutkimus",
     "advising": "Opetukseen ja ohjaukseen liittyvät asiantuntijatehtävät"

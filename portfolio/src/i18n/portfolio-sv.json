@@ -188,26 +188,26 @@
     "administration": "Förvaltningsuppgifter och andra uppgifter"
   },
   "teachingTabAccordions": {
-    "development": "Undervisningserfarenhet",
-    "practices": "Pedagogisk utbildning",
+    "teachingExperience": "Undervisningserfarenhet",
+    "pedagogicalTraining": "Pedagogisk utbildning",
     "materials": "Läromedel",
-    "collaborativeDevelopment": "Andra undervisningsmeriter"
+    "accomplishments": "Andra undervisningsmeriter"
   },
-  "developmentAccordionComponents": {
-    "assessment": "Kursbaserad undervisning",
-    "feedback": "Handledning av examensarbete",
-    "thinking": "Undervisnings- och utvärderingsmetoder",
-    "training": "Insamling och utnyttjande av respons vid utvecklingen av undervisning"
+  "teachingExperienceAccordionComponents": {
+    "courses": "Kursbaserad undervisning",
+    "thesisSupervision": "Handledning av examensarbete",
+    "practices": "Undervisnings- och utvärderingsmetoder",
+    "feedback": "Insamling och utnyttjande av respons vid utvecklingen av undervisning"
   },
-  "practicesAccordionComponents": {
-    "internationality": "Avlagda kurser"
+  "pedagogicalTrainingAccordionComponents": {
+    "courses": "Avlagda kurser"
   },
   "materialsAccordionComponents": {
-    "researchBased": "Förmåga at utveckla och använda läromedel"
+    "materials": "Förmåga at utveckla och använda läromedel"
   },
-  "collaborativeDevelopmentAccordionComponents": {
-    "teachingCollaboration": "Aktivt deltagande i utvecklings- och kvalitetsarbete",
-    "multidisciplinaryCooperation": "Samarbete och nätverk inom undervisning",
+  "accomplishmentsAccordionComponents": {
+    "curriculumDesign": "Aktivt deltagande i utvecklings- och kvalitetsarbete",
+    "collaborativeTeaching": "Samarbete och nätverk inom undervisning",
     "awards": "Priser och utmärkelser",
     "research": "Pedagogisk forskning",
     "advising": "Uppdrag som sakkunnig angående undervisning och forskning"
