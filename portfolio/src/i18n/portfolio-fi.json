@@ -197,12 +197,10 @@
     "assessment": "Kurssimuotoinen opetus",
     "feedback": "Opinnäytetöiden ohjaus",
     "thinking": "Opetus- ja arviointimenetelmät",
-    "training": "Palautteen keruu ja hyödyntäminen opetuksen kehittämisessä",
-    "publications": "Pedagogiset julkaisut"
+    "training": "Palautteen keruu ja hyödyntäminen opetuksen kehittämisessä"
   },
   "practicesAccordionComponents": {
-    "internationality": "Käydyt kurssit",
-    "courses": "Kurssit"
+    "internationality": "Käydyt kurssit"
   },
   "materialsAccordionComponents": {
     "researchBased": "Taito tuottaa ja käyttää oppimateriaalia"

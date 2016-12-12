@@ -197,12 +197,10 @@
     "assessment": "Courses taught",
     "feedback": "Supervision of theses",
     "thinking": "Teaching and assessment practices and methods",
-    "training": "Collection and utilization of feedback from students to develop teaching practices",
-    "publications": "Pedagogical publications"
+    "training": "Collection and utilization of feedback from students to develop teaching practices"
   },
   "practicesAccordionComponents": {
-    "internationality": "Courses completed",
-    "courses": "Courses"
+    "internationality": "Courses completed"
   },
   "materialsAccordionComponents": {
     "researchBased": "Ability to develop and utilize learning materials"

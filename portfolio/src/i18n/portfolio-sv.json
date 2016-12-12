@@ -197,12 +197,10 @@
     "assessment": "Kursbaserad undervisning",
     "feedback": "Handledning av examensarbete",
     "thinking": "Undervisnings- och utvärderingsmetoder",
-    "training": "Insamling och utnyttjande av respons vid utvecklingen av undervisning",
-    "publications": "Pedagogiska publikationer"
+    "training": "Insamling och utnyttjande av respons vid utvecklingen av undervisning"
   },
   "practicesAccordionComponents": {
-    "internationality": "Avlagda kurser",
-    "courses": "Kurser"
+    "internationality": "Avlagda kurser"
   },
   "materialsAccordionComponents": {
     "researchBased": "Förmåga at utveckla och använda läromedel"
