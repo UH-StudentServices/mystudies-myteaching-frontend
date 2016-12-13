@@ -20,6 +20,10 @@
     {{::('landerPage.' + currentStateName + '.login.title' | translate)}}
   </h1>
 
+  <p>{{::('landerPage.' + currentStateName + '.login.intro' | translate)}}</p>
+
+  <p ng-if="isDemo" translate="localLogin.disclaimer"></p>
+
   <div ng-if="users">
     <h2 class="local-login__users-heading" translate="localLogin.intro"></h2>
 
@@ -33,6 +37,11 @@
       </li>
     </ul>
   </div>
+
+  <a href="https://student.helsinki.fi/info"
+     translate="landerPage.readMore"
+     class="local-login__read-more">
+  </a>
 
   <div class="lander-bg">
     <div class="gradient-overlay"></div>
