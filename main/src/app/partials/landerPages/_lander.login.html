@@ -21,14 +21,20 @@
   </h1>
 
   <div class="login-page__intro">
-    <p>{{'landerPage.' + currentStateName + '.login.intro' | translate }}</p>
+    <p>{{::('landerPage.' + currentStateName + '.login.intro' | translate)}}</p>
+
     <p>
-      <a class="login-page__login-link button-internal--dark" ng-click="redirectToLogin()">{{ 'landerPage.' + currentStateName + '.login.goToLogin' | translate }}</a>
+      <a class="login-page__login-link button-internal--dark" ng-click="redirectToLogin()">
+        {{::('landerPage.' + currentStateName + '.login.goToLogin' | translate)}}
+      </a>
     </p>
+
     <p ng-bind-html="'landerPage.' + currentStateName +'.login.alternativeLogin' | translate:loginUrls"></p>
+
     <p>
       <a href="{{::courseSearchUrl}}" translate="landerPage.courseSearch"></a>
     </p>
+
     <p>
       <a class="login-page__read-more" href="https://courses.helsinki.fi/" translate="landerPage.readMore"></a>
     </p>
