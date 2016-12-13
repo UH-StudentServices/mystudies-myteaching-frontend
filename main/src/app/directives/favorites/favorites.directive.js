@@ -25,26 +25,28 @@ angular.module('directives.favorites', [
   'directives.favorites.unisport',
   'dndLists'
 ])
-  .directive('favorites', function(FavoritesResource, newFavoriteAddedEvent,
-                                   removeFavoriteEvent, AnalyticsService) {
+  .directive('favorites', function(FavoritesResource,
+                                   NewFavoriteAddedEvent,
+                                   RemoveFavoriteEvent,
+                                   AnalyticsService) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/favorites.html',
       scope: {},
-      link: function($scope) {
+      link: function(scope) {
 
-        $scope.editMode = false;
+        scope.editMode = false;
 
-        $scope.edit = function() {
-          $scope.editMode = true;
+        scope.edit = function() {
+          scope.editMode = true;
         };
 
-        $scope.exitEdit = function() {
-          $scope.editMode = false;
+        scope.exitEdit = function() {
+          scope.editMode = false;
         };
 
         function showFavorites(favorites) {
-          $scope.favorites = favorites;
+          scope.favorites = favorites;
         }
 
         function updateFavorites() {
@@ -63,15 +65,15 @@ angular.module('directives.favorites', [
           });
         }
 
-        $scope.$on(newFavoriteAddedEvent, addFavorite);
-        $scope.$on(removeFavoriteEvent, removeFavorite);
+        scope.$on(NewFavoriteAddedEvent, addFavorite);
+        scope.$on(RemoveFavoriteEvent, removeFavorite);
 
         updateFavorites();
 
-        $scope.moved = function moved($index) {
-          $scope.favorites.splice($index, 1);
+        scope.moved = function moved($index) {
+          scope.favorites.splice($index, 1);
           FavoritesResource.updateFavoriteOrder({
-            favoriteIds: _.map($scope.favorites, function extractId(favorite) {
+            favoriteIds: _.map(scope.favorites, function extractId(favorite) {
               return favorite.id;
             })
           });

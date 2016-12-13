@@ -30,7 +30,7 @@ angular.module('directives.favorites.addNew.rss',
 
   .directive('addNewRssFavorite', function(RSSService,
                                            FavoritesResource,
-                                           newFavoriteAddedEvent,
+                                           NewFavoriteAddedEvent,
                                            minSearchStringLength,
                                            ValidatorUtils) {
     return {
@@ -77,7 +77,7 @@ angular.module('directives.favorites.addNew.rss',
         function addFeed(feedUrl) {
           $scope.favorite.url = feedUrl;
           FavoritesResource.saveRSSFavorite($scope.favorite).then(function() {
-            $scope.$emit(newFavoriteAddedEvent,
+            $scope.$emit(NewFavoriteAddedEvent,
                 $scope.favorite.type);
           });
         }
