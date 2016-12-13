@@ -89,7 +89,8 @@ angular.module('opintoniLander', ['services.language',
         controller: function($scope, Configuration, LocalUsers, StateService, State, LoginService, Environments) {
           var state = StateService.getStateFromDomain(),
               envUsers = environmentUsers(Configuration.environment),
-              users = state === State.MY_TEACHINGS ? envUsers.teachers : envUsers.students;
+              users = state === State.MY_TEACHINGS ? envUsers.teachers : envUsers.students,
+              isDemo = Configuration.environment === Environments.DEMO;
 
           function environmentUsers(environment) {
             if (environment === Environments.LOCAL ||
@@ -103,6 +104,7 @@ angular.module('opintoniLander', ['services.language',
           }
 
           _.assign($scope, {
+            isDemo: isDemo,
             users: users,
             logInAs: LoginService.logInAs
           });

@@ -438,6 +438,7 @@
     "readMore": "Läs mer"
   },
   "localLogin": {
-    "intro": "Välja andvändarprofil"
+    "intro": "Välja andvändarprofil",
+    "disclaimer": "Detta är en demomiljö och information är inte korrekt. Logga in och kolla in tjänsten."
   }
 }

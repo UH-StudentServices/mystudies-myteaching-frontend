@@ -33,7 +33,7 @@
   }
 
   &__users-list {
-    margin: 1em 0;
+    margin: 1.5em 0;
   }
 
   &__user {
@@ -43,5 +43,9 @@
   &__log-in {
     display: inline-block;
     width: 200px;
+  }
+
+  &__read-more {
+    @extend .login-page__read-more;
   }
 }

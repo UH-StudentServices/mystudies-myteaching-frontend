@@ -437,6 +437,7 @@
     "readMore": "Read more"
   },
   "localLogin": {
-    "intro": "Pick a user to log in as"
+    "intro": "Pick a user to log in as",
+    "disclaimer": "This is a demo environment and the information is not correct. Log in and explore the service."
   }
 }

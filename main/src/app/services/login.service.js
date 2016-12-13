@@ -36,7 +36,11 @@ angular.module('services.login', [
                                     State,
                                     Configuration,
                                     LocalPassword,
-                                    LoginCookie) {
+                                    LoginCookie,
+                                    Environments) {
+
+    var FEDERATED_LOGIN_ENVS = [Environments.QA, Environments.PROD],
+        isFederatedLoginEnv = FEDERATED_LOGIN_ENVS.indexOf(Configuration.environment) > -1;
 
     function loginPathForState(state) {
       var loginUrl = state === State.MY_TEACHINGS ? Configuration.loginUrlTeacher : Configuration.loginUrlStudent,
@@ -61,6 +65,10 @@ angular.module('services.login', [
       }
     }
 
+    function shouldShowLander() {
+      return isFederatedLoginEnv && isFirstLogin();
+    }
+
     function isFirstLogin() {
       return !$cookies.get(LoginCookie);
     }
@@ -70,7 +78,7 @@ angular.module('services.login', [
     }
 
     function goToLoginOrLander() {
-      if (isFirstLogin()) {
+      if (shouldShowLander()) {
         goToLander();
       } else {
         goToLogin();

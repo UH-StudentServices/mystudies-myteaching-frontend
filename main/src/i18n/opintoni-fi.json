@@ -436,6 +436,7 @@
     "readMore": "Lue lisää"
   },
   "localLogin": {
-    "intro": "Valitse palvelun käyttäjä"
+    "intro": "Valitse palvelun käyttäjä",
+    "disclaimer": "Tämä on demoympäristö, jossa tiedot eivät ole oikeita mutta jossa voit tutustua palveluun."
   }
 }
