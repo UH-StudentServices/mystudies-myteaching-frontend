@@ -3,8 +3,11 @@
     "edit": "muokkaa",
     "done": "valmis",
     "add" : "lisää",
+    "addNew": "lisää uusi",
     "remove" : "poista",
     "ok": "Ok",
+    "showMore": "lisää",
+    "showLess": "vähemmän",
     "students": "opiskelijat",
     "teachers": "opettajat"
   },
@@ -82,7 +85,6 @@
   },
   "workExperience" : {
     "title": "työkokemus",
-    "addNew": "lisää uusi",
     "addWorkExperience": "Lisää työnantaja",
     "addJobSearch": "Lisää sähköpostiosoite (haen työpaikkaa)",
     "jobSearch": "haen työpaikkaa",
@@ -91,12 +93,17 @@
     "employerUrlPlaceholder": "työnantajan web-osoite",
     "text": "kuvausteksti",
     "descriptionPlaceholder": "Lisää kuvaus",
-    "showMore": "lisää",
-    "showLess": "vähemmän",
     "startDate": "alkupäivämäärä (kk.vvvv)",
     "endDate": "loppupäivämäärä (kk.vvvv)",
     "contactEmail": "sähköpostiosoite",
     "jobSearchHeadline": "otsikko"
+  },
+  "samples": {
+    "title": "Näyteet",
+    "addSample": "Lisää näyteen url",
+    "titlePlaceholder": "kuvaus",
+    "urlPlaceholder": "url",
+    "descriptionPlaceholder": "kuvausteksti"
   },
   "attainments": {
     "attainments": "Suoritetut",

@@ -15,27 +15,25 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* Portfolio application styles */
+angular.module('resources.samples', ['services.state'])
 
-@import "common";
-@import "mixins";
-@import "credits";
-@import "editable";
-@import "intro";
-@import "studies";
-@import "keywords";
-@import "degrees";
-@import "edit-link";
-@import "work-experience";
-@import "samples";
-@import "forms";
-@import "attainments";
-@import "buttons";
-@import "visibility";
-@import "contact-information";
-@import "page-banner";
-@import "navigation";
-@import "free-text-content";
-@import "language-proficiencies";
-@import "accordion";
-@import "print";
+  .factory('SamplesResource', function($resource, StateService) {
+
+    function samplesResource(portfolioId) {
+      return $resource('/api/' + StateService.getCurrent() + '/v1/portfolio/' +
+        portfolioId + '/samples/:id', {id: '@id'},
+        {
+          'delete': {method: 'DELETE', isArray: true},
+          'update': {method: 'POST', isArray: true}
+        }
+      );
+    }
+
+    function updateSamples(portfolioId, updateSamples) {
+      return samplesResource(portfolioId).update(updateSamples).$promise;
+    }
+
+    return {
+      updateSamples: updateSamples
+    };
+  });

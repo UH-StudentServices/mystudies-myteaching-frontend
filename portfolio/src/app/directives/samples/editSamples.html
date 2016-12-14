@@ -1,0 +1,92 @@
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<ul class="sample">
+  <li ng-repeat="sampleItem in samples | orderBy: 'title' track by sampleItem.id"
+      class="editable">
+    <div class="sample__item">
+      <div class="sample__banner">
+        <div class="sample__banner-content">
+          <div class="sample__title-container">
+            <div class="sample__title">
+              <span class="editable-content" ng-show="!sampleItem.titleEdit">
+                <a tabindex="0" ng-click="editTitle(sampleItem)" ng-class="{'ng-invalid':!sampleItem.title}">
+                  {{sampleItem.title || ('samples.titlePlaceholder' | translate)}}<i class="fa fa-pencil"></i>
+                </a>
+              </span>
+              <span class="editable-content-active" ng-show="sampleItem.titleEdit">
+                <input focus="sampleItem.titleEdit"
+                       placeholder="{{::'samples.titlePlaceholder'|translate}}"
+                       ng-model="sampleItem.title"
+                       ui-keypress="{'enter':'exitTitleEdit(sampleItem)'}"
+                       ng-change="refreshValidity()"
+                       ng-class="{'ng-invalid':!sampleItem.title}" />
+                <a tabindex="0" ng-click="exitTitleEdit(sampleItem)"><i class="fa fa-check"></i></a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sample__details-container">
+        <div class="sample__url">
+          <span class="editable-content" ng-show="!sampleItem.urlEdit">
+            <a tabindex="0" ng-click="editUrl(sampleItem)">
+              {{sampleItem.url || ('samples.urlPlaceholder' | translate)}}<i class="fa fa-pencil"></i>
+            </a>
+          </span>
+          <span class="editable-content-active" ng-show="sampleItem.urlEdit">
+            <input type="text"
+                   required
+                   placeholder="{{::'samples.urlPlaceholder'|translate}}"
+                   focus="sampleItem.urlEdit"
+                   ng-model="sampleItem.url"
+                   ui-keypress="{'enter':'exitUrlEdit(sampleItem)'}"
+                   ng-change="refreshValidity()"
+                   ng-class="{'ng-invalid':!sampleItem.url}" />
+            <a tabindex="0" ng-click="exitUrlEdit(sampleItem)"><i class="fa fa-check"></i></a>
+          </span>
+        </div>
+        <div class="sample__description">
+          <textarea placeholder="{{::'samples.descriptionPlaceholder'|translate}}"
+                    ng-model="sampleItem.description" ></textarea>
+        </div>
+      </div>
+      <button class="sample__remove" ng-show="editing"
+              ng-click="removeSample(sampleItem)"></button>
+    </div>
+  </li>
+
+  <li visibility-private class="sample__add-new">
+    <div class="input-container" ng-form name="addSampleForm">
+      <input ng-model="newSample.url"
+             ui-keypress="{'enter':'addSample(newSample)'}"
+             focus="editing"
+             type="text"
+             name="url"
+             required
+             placeholder="{{::('samples.addSample' | translate)}}"
+             aria-label="{{::('samples.addSample' | translate)}}"/>
+    </div>
+    <button class="add-icon fa fa-plus"
+            ng-class="{'form-error': !addSampleForm.url.$valid}"
+            ng-disabled="!addSampleForm.url.$valid"
+            ng-click="addSample(newSample)"
+            aria-label="{{::('general.addNew' | translate)}}">
+    </button>
+  </li>
+
+</ul>

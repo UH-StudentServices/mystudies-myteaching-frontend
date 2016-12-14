@@ -3,8 +3,11 @@
     "edit": "edit",
     "done": "done",
     "add" : "add",
+    "addNew": "add new",
     "remove" : "remove",
     "ok": "Ok",
+    "showMore": "more",
+    "showLess": "less",
     "students": "students",
     "teachers": "teachers"
   },
@@ -82,7 +85,6 @@
   },
   "workExperience" : {
     "title": "work experience",
-    "addNew": "add new",
     "addWorkExperience": "Add employer",
     "addJobSearch": "Add email (looking for work)",
     "jobSearch": "looking for work",
@@ -91,12 +93,17 @@
     "employerUrlPlaceholder": "employer's website",
     "text": "description",
     "descriptionPlaceholder": "Add description",
-    "showMore": "more",
-    "showLess": "less",
     "startDate": "start date (mm.yyyy)",
     "endDate": "end date (m.yyyy)",
     "contactEmail": "contact email",
     "jobSearchHeadline": "headline"
+  },
+  "samples": {
+    "title": "Samples",
+    "addSample": "Add sample url",
+    "titlePlaceholder": "description",
+    "urlPlaceholder": "url",
+    "descriptionPlaceholder": "description text"
   },
   "attainments": {
     "attainments": "Completed studies",
