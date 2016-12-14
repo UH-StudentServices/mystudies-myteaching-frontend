@@ -16,7 +16,7 @@
 -->
 
 <ul class="work-experience">
-  <li ng-repeat="workExperienceItem in workExperience | orderBy : startDate : true track by workExperienceItem.id"
+  <li ng-repeat="workExperienceItem in workExperience | orderBy : 'startDate' : true track by workExperienceItem.id"
       class="editable">
     <div class="work-experience__item">
       <div class="work-experience__banner">
