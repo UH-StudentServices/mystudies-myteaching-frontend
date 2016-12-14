@@ -25,11 +25,13 @@
             <div class="work-experience__title">
               <span class="editable-content" ng-show="!workExperienceItem.employerEdit">
                 <a tabindex="0" ng-click="editEmployer(workExperienceItem)" ng-class="{'ng-invalid':!workExperienceItem.employer}">
-                  {{workExperienceItem.employer}}<i class="fa fa-pencil"></i>
+                  {{workExperienceItem.employer || ('workExperience.employer' | translate)}}<i class="fa fa-pencil"></i>
                 </a>
               </span>
               <span class="editable-content-active" ng-show="workExperienceItem.employerEdit">
-                <input focus="workExperienceItem.employerEdit" ng-model="workExperienceItem.employer"
+                <input focus="workExperienceItem.employerEdit"
+                       placeholder="{{::'workExperience.employerPlaceholder'|translate}}"
+                       ng-model="workExperienceItem.employer"
                        ui-keypress="{'enter':'exitEmployerEdit(workExperienceItem)'}"
                        ng-change="refreshValidity()"
                        ng-class="{'ng-invalid':!workExperienceItem.employer}" />
@@ -74,20 +76,21 @@
         <div class="work-experience__title">
           <span class="editable-content" ng-show="!workExperienceItem.jobTitleEdit">
             <a tabindex="0" ng-click="editJobTitle(workExperienceItem)" ng-class="{'ng-invalid':workExperienceItem.submitted && !workExperienceItem.jobTitle}">
-              {{workExperienceItem.jobTitle !== '' ? workExperienceItem.jobTitle : ('workExperience.jobTitlePlaceholder' | translate)}}<i class="fa fa-pencil"></i>
+              {{workExperienceItem.jobTitle || ('workExperience.jobTitlePlaceholder' | translate)}}<i class="fa fa-pencil"></i>
             </a>
           </span>
           <span class="editable-content-active" ng-show="workExperienceItem.jobTitleEdit">
             <input placeholder="{{::'workExperience.jobTitlePlaceholder'|translate}}"
                    focus="workExperienceItem.jobTitleEdit"
                    ng-model="workExperienceItem.jobTitle"
+                   ui-keypress="{'enter':'exitJobTitleEdit(workExperienceItem)'}"
                    ng-change="refreshValidity()"
                    ng-class="{'ng-invalid':!workExperienceItem.jobTitle}"/>
             <a tabindex="0" ng-click="exitJobTitleEdit(workExperienceItem)"><i class="fa fa-check"></i></a>
           </span>
         </div>
         <div class="work-experience__description">
-          <textarea placeholder="{{'workExperience.descriptionPlaceholder'|translate}}"
+          <textarea placeholder="{{::'workExperience.descriptionPlaceholder'|translate}}"
                     ng-model="workExperienceItem.text" ></textarea>
         </div>
         <div class="work-experience__url">
@@ -149,7 +152,7 @@
           </span>
         </div>
         <div class="work-experience__description">
-          <textarea placeholder="{{'workExperience.descriptionPlaceholder'|translate}}"
+          <textarea placeholder="{{::'workExperience.descriptionPlaceholder'|translate}}"
                     ng-model="jobSearch.text"></textarea>
         </div>
         <div class="work-experience__url">
