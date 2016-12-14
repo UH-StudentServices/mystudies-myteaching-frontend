@@ -18,14 +18,14 @@
 angular.module('directives.favorites.addNew.unisport',
   ['resources.favorites',])
 
-  .directive('addNewUnisportFavorite', function(FavoritesResource, newFavoriteAddedEvent) {
+  .directive('addNewUnisportFavorite', function(FavoritesResource, NewFavoriteAddedEvent) {
     return {
       restrict: 'E',
       scope: true,
       link: function($scope) {
         if (_.isUndefined(_.find($scope.favorites, {'type': 'UNISPORT'}))) {
           FavoritesResource.saveUnisportFavorite().then(function addUnisportFavoriteSuccess() {
-            $scope.$emit(newFavoriteAddedEvent, $scope.favorite.type);
+            $scope.$emit(NewFavoriteAddedEvent, $scope.favorite.type);
           });
         }
       }

@@ -15,8 +15,6 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-'use strict';
-
 angular.module('resources.favorites', [])
   .factory('FavoritesResource', function($resource) {
     var favoritesResource = $resource('/api/private/v1/favorites', {'id': '@id'}, {

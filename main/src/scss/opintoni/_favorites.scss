@@ -26,6 +26,10 @@ $favorite-size-large: 340px;
 .favorites-list__item {
   height: 100%;
   position: relative;
+
+  .twitter-timeline {
+    display: none;
+  }
 }
 
 .favorites-list__remove {
@@ -376,7 +380,7 @@ $favorite-size-large: 340px;
       margin-top: 1em;
       justify-content: center;
       border-bottom: 1px solid $lightsilver;
-      padding-bottom: 1em;      
+      padding-bottom: 1em;
     }
 
     &__event-name {

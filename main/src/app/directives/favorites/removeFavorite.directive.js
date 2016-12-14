@@ -16,8 +16,8 @@
  */
 
 angular.module('directives.removeFavorite', [])
-  .constant('removeFavoriteEvent', 'REMOVE_FAVORITE')
-  .directive('removeFavorite', function(removeFavoriteEvent) {
+  .constant('RemoveFavoriteEvent', 'REMOVE_FAVORITE')
+  .directive('removeFavorite', function(RemoveFavoriteEvent) {
     return {
       restrict: 'A',
       link: function($scope, el, attrs) {
@@ -29,7 +29,7 @@ angular.module('directives.removeFavorite', [])
         element.append(screen);
         element.append(closeButton);
         closeButton.bind('click', function() {
-          $scope.$emit(removeFavoriteEvent, favorite.id, favorite.type);
+          $scope.$emit(RemoveFavoriteEvent, favorite.id, favorite.type);
           return false;
         });
       }

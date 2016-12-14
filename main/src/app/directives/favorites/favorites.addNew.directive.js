@@ -24,7 +24,7 @@ angular.module('directives.favorites.addNew', [
   'services.focus'])
 
   .constant('availableFavoriteTypes', ['RSS', 'UNICAFE', 'TWITTER', 'UNISPORT'])
-  .constant('newFavoriteAddedEvent', 'NEW_FAVORITE_ADDED')
+  .constant('NewFavoriteAddedEvent', 'NEW_FAVORITE_ADDED')
 
   .directive('addNewFavoriteSearch', function() {
     return {
@@ -66,7 +66,7 @@ angular.module('directives.favorites.addNew', [
     };
   })
 
-  .directive('addNewFavorite', function(availableFavoriteTypes, newFavoriteAddedEvent, Focus) {
+  .directive('addNewFavorite', function(availableFavoriteTypes, NewFavoriteAddedEvent, Focus) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/favorites.addNew.html',
@@ -107,7 +107,7 @@ angular.module('directives.favorites.addNew', [
           Focus.setFocus('.add-favorite-container input');
         };
 
-        $scope.$on(newFavoriteAddedEvent, function() {
+        $scope.$on(NewFavoriteAddedEvent, function() {
           resetPopover();
         });
 
