@@ -349,7 +349,7 @@
       "login": {
         "title": "Welcome to My Studies",
         "intro": "My Studies is where you are. It is your own page for courses, interesting content, and other services offered by the University.",
-        "alternativeLogin": "If you are a teacher at the University of Helsinki, please <a href=\"{{ loginUrlTeacher }}\">login to My Teaching.</a>",
+        "alternativeLogin": "If you are a teacher at the University of Helsinki, please <a href=\"{{ loginUrlTeacher }}\" target=\"_self\">login to My Teaching.</a>",
         "goToLogin": "Login"
       }
     },
@@ -357,7 +357,7 @@
       "login": {
         "title": "Welcome to My Teaching",
         "intro": "My Teaching is where you are. It is your own page for courses, interesting content, and other services offered by the University.",
-        "alternativeLogin": "If you are a student at the University of Helsinki, please <a href=\"{{ loginUrlStudent }}\">login to My Studies</a>.",
+        "alternativeLogin": "If you are a student at the University of Helsinki, please <a href=\"{{ loginUrlStudent }}\" target=\"_self\">login to My Studies</a>.",
         "goToLogin": "Login"
       }
     },
