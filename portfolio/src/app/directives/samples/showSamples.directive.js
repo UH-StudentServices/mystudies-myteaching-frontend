@@ -15,8 +15,6 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-'use strict';
-
 angular.module('directives.showSamples', [
   'dibari.angular-ellipsis'
 ])
@@ -24,6 +22,9 @@ angular.module('directives.showSamples', [
 .directive('showSamples', function() {
   return {
     restrict: 'E',
+    scope: {
+      samples: '='
+    },
     templateUrl: 'app/directives/samples/showSamples.html',
     link: function($scope) {
       $scope.formatUrl = function(url) {

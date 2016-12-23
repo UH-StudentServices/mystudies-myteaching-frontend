@@ -25,7 +25,7 @@
       on-disabled-exit-edit="markAllSubmitted()"></edit-link>
   </div>
 
-  <show-samples ng-show="!editing"></show-samples>
-  <edit-samples ng-show="editing"></edit-samples>
+  <show-samples ng-show="!editing" samples="samples"></show-samples>
+  <edit-samples ng-show="editing" samples="samples" on-change="refreshValidity()"></edit-samples>
   <visibility-toggle component-id="SAMPLES"></visibility-toggle>
 </section>

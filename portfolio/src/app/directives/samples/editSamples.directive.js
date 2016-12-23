@@ -15,15 +15,19 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-'use strict';
-
 angular.module('directives.editSamples', [])
 
 .directive('editSamples', function($translate) {
   return {
     restrict: 'E',
+    scope: {
+      samples: '=',
+      onChange: '&',
+    },
     templateUrl: 'app/directives/samples/editSamples.html',
     link: function($scope) {
+
+      $scope.newSample = {};
 
       $scope.editTitle = function(sample) {
         sample.titleEdit = true;
@@ -55,12 +59,12 @@ angular.module('directives.editSamples', [])
         sample.description = '';
         $scope.samples.push(sample);
         $scope.newSample = {};
-        $scope.refreshValidity();
+        $scope.onChange();
       };
 
       $scope.removeSample = function(sample) {
         $scope.samples = _.without($scope.samples, sample);
-        $scope.refreshValidity();  // we might have deleted the only invalid item
+        $scope.onChange();  // we might have deleted the only invalid item
       };
 
     }

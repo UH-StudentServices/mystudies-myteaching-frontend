@@ -33,7 +33,7 @@
                        placeholder="{{::'samples.titlePlaceholder'|translate}}"
                        ng-model="sampleItem.title"
                        ui-keypress="{'enter':'exitTitleEdit(sampleItem)'}"
-                       ng-change="refreshValidity()"
+                       ng-change="onChange()"
                        ng-class="{'ng-invalid':!sampleItem.title}" />
                 <a tabindex="0" ng-click="exitTitleEdit(sampleItem)"><i class="fa fa-check"></i></a>
               </span>
@@ -55,7 +55,7 @@
                    focus="sampleItem.urlEdit"
                    ng-model="sampleItem.url"
                    ui-keypress="{'enter':'exitUrlEdit(sampleItem)'}"
-                   ng-change="refreshValidity()"
+                   ng-change="onChange()"
                    ng-class="{'ng-invalid':!sampleItem.url}" />
             <a tabindex="0" ng-click="exitUrlEdit(sampleItem)"><i class="fa fa-check"></i></a>
           </span>
