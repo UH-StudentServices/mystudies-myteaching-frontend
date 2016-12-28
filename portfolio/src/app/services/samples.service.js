@@ -22,42 +22,11 @@ angular.module('services.samples', [
   .factory('SamplesService', function(PortfolioService,
                                       SamplesResource) {
 
-    var Rx = window.Rx,
-        sampleSubject;
-
-    function publishSamples(samples) {
-      sampleSubject.onNext(samples);
-      return samples;
-    }
-
-    function getPortfolioId(portfolio) {
-      return portfolio.id;
-    }
-
-    function getProperty(propName) {
-      return _.partialRight(_.get, propName);
-    }
-
-    function getSamples() {
-      return PortfolioService.getPortfolio()
-        .then(getProperty('samples'));
-    }
-
-    function getSampleSubject() {
-      if (!sampleSubject) {
-        sampleSubject = new Rx.BehaviorSubject();
-        getSamples()
-          .then(publishSamples);
-      }
-      return sampleSubject;
-    }
-
     function updateSamples(portfolioId, updateSamples) {
       return SamplesResource.updateSamples(portfolioId, updateSamples);
     }
 
     return {
-      getSampleSubject: getSampleSubject,
       updateSamples: updateSamples
     };
   });

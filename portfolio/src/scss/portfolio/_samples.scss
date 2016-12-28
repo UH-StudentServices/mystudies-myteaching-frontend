@@ -26,13 +26,19 @@ $sample-summary-max-height: 57px;
 $sample-full-description-vertical-margin: 0.85em;
 
 .sample {
+  &__heading {
+    @extend .ui-component__title, .border-bottom
+  }
+
   > li {
     width: 100%;
     display: block;
   }
 
-  .ng-invalid {
-      border: 2px solid $sample-invalid-color;
+  .editable-content, .editable-content-active {
+    .ng-invalid {
+      border: 2px solid $work-experience-invalid-color;
+    }
   }
 
   &__item, &__add-new {
@@ -150,7 +156,7 @@ $sample-full-description-vertical-margin: 0.85em;
 
   &__description {
     p {
-      font-size: 1rem;
+      font-size: 1em;
       height: 8.5em;
       margin: 0;
     }
