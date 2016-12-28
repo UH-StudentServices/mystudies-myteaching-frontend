@@ -34,7 +34,8 @@ angular.module('directives.workExperience', [
     replace: true,
     scope: {
       workExperienceData: '&',
-      portfolioId: '@'
+      portfolioId: '@',
+      sectionName: '@'
     },
     templateUrl: 'app/directives/workExperience/workExperience.html',
     link: function($scope) {

@@ -24,7 +24,8 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
       restrict: 'E',
       replace: true,
       scope: {
-        languageProficienciesData: '&'
+        languageProficienciesData: '&',
+        sectionName: '@'
       },
       templateUrl: 'app/directives/languageProficiencies/languageProficiencies.html',
       link: function($scope) {
