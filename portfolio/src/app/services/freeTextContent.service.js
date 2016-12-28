@@ -25,6 +25,9 @@ angular.module('services.freeTextContent', ['resources.freeTextContent', 'servic
 
     function getFreeTextContent(searchCriteria) {
       return PortfolioService.getPortfolio().then(function(portfolio) {
+        if (portfolio.freeTextContent == null) {
+          portfolio.freeTextContent = [];
+        }
         return portfolio.freeTextContent.filter(_.matches(searchCriteria));
       });
     }
@@ -38,6 +41,9 @@ angular.module('services.freeTextContent', ['resources.freeTextContent', 'servic
         } else if (idx !== -1 && remove) {
           portfolio.freeTextContent.splice(idx, 1);
         } else {
+          if (portfolio.freeTextContent == null) {
+            portfolio.freeTextContent = [];
+          }
           portfolio.freeTextContent.push(freeTextContent);
         }
 
