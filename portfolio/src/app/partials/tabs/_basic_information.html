@@ -21,7 +21,7 @@
       <visibility-toggle section-name="BASIC_INFORMATION"></visibility-toggle>
     </div>
 
-    <studies limit-visibility="{componentId: 'STUDIES'}"
+    <studies limit-visibility="{componentId: 'STUDIES', sectionName: 'BASIC_INFORMATION'}"
              summary-data="portfolio.summary"
              portfolio-id="{{::portfolio.id}}"
              section-name="BASIC_INFORMATION"
@@ -29,18 +29,18 @@
              class="tour-element__studies">
     </studies>
 
-    <language-proficiencies limit-visibility="{componentId: 'LANGUAGE_PROFICIENCIES'}"
+    <language-proficiencies limit-visibility="{componentId: 'LANGUAGE_PROFICIENCIES', sectionName: 'BASIC_INFORMATION'}"
                             section-name="BASIC_INFORMATION"
                             language-proficiencies-data="portfolio.languageProficiencies">
     </language-proficiencies>
 
-    <work-experience limit-visibility="{componentId: 'WORK_EXPERIENCE'}"
+    <work-experience limit-visibility="{componentId: 'WORK_EXPERIENCE', sectionName: 'BASIC_INFORMATION'}"
                      section-name="BASIC_INFORMATION"
                      work-experience-data="portfolio.workExperience"
                      portfolio-id="{{::portfolio.id}}">
     </work-experience>
 
-    <degrees limit-visibility="{componentId: 'DEGREES'}"
+    <degrees limit-visibility="{componentId: 'DEGREES', sectionName: 'BASIC_INFORMATION'}"
              section-name="BASIC_INFORMATION"
              degrees-data="portfolio.degrees"
              portfolio-id="{{::portfolio.id}}">
