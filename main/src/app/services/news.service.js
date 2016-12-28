@@ -25,7 +25,7 @@ angular.module('services.news', ['resources.news'])
       return SessionService.getSession().then(function(data) {
         if (_.isUndefined(promise)) {
           if (data.openUniversity) {
-            promise = NewsResource.getStudentOpenUniversityNews();
+            promise = NewsResource.getOpenUniversityNews();
           } else {
             if (currentStateName === State.MY_STUDIES) {
               promise = NewsResource.getStudentNews();
