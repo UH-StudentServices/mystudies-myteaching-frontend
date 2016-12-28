@@ -19,7 +19,7 @@
 
 <div class="info-container">
   <div class="box-data__content">
-    {{ feedItem.startDate | eventTimeSpan:feedItem.endDate}}
+    {{ ::feedItem.startDate | eventTimeSpan:feedItem.endDate}}
   </div>
 
   <div class="box-data__title">
@@ -30,14 +30,17 @@
   </div>
 
   <div class="box-data__content">
-    <span class="event-location">{{ feedItem.locations }}</span>
-    <span class="event-location-links">
-      <a ng-if="feedItem.googleMapsUri" href="{{feedItem.googleMapsUri}}" target="_blank" translate="weekFeed.showOnMap"></a>
-      <a ng-if="feedItem.reittiopasEnabled" ng-click="openReittiopas(feedItem)" tabindex="0">
-        {{::('weekFeed.showRoute' | translate)}}
-        <span ng-show="feedItem.loadingLocation"><i class="hy hy-spinner hy-spin"></i></span>
-      </a>
-    </span>
+    <div ng-repeat="location in feedItem.locations" class="event-location">
+      <span class="event-location__name">{{ ::location.locationString }}</span>
+      <span class="event-location__links">
+        <a ng-if="location.googleMapsUri" href="{{location.googleMapsUri}}"
+           target="_blank" translate="weekFeed.showOnMap"></a>
+        <a ng-if="location.reittiopasEnabled" ng-click="openReittiopas(feedItem.startDate, location)" tabindex="0">
+          {{::('weekFeed.showRoute' | translate)}}
+          <span ng-show="location.loadingLocation"><i class="hy hy-spinner hy-spin"></i></span>
+        </a>
+      </span>
+    </div>
   </div>
 
   <course-materials-link compact="feedItem.showAsChild" feed-item="feedItem"></course-materials-link>
