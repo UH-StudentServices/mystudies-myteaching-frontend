@@ -21,7 +21,7 @@
   </div>
 
   <div class="box-data__content">
-    {{ feedItem.startDate | eventTimeSpan:feedItem.endDate}}
+    {{ ::feedItem.startDate | eventTimeSpan:feedItem.endDate}}
   </div>
 
   <div class="box-data__title">
@@ -33,7 +33,7 @@
 
   <div class="box-data__content">
     <div ng-repeat="location in feedItem.locations" class="event-location">
-      <span class="event-location__name">{{ location.locationString }}</span>
+      <span class="event-location__name">{{ ::location.locationString }}</span>
       <span class="event-location__links">
         <a ng-if="location.googleMapsUri" href="{{location.googleMapsUri}}"
            target="_blank" translate="weekFeed.showOnMap"></a>
