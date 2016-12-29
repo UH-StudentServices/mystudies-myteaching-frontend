@@ -35,6 +35,7 @@
     "credits": "cr"
   },
   "toolbar": {
+    "home": "home",
     "logout": "Log out",
     "search": {
       "openSearch": "Open search",

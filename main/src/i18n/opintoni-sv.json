@@ -35,6 +35,7 @@
     "credits": "sp"
   },
   "toolbar": {
+    "home": "hem",
     "logout": "Logga ut",
     "search": {
       "openSearch": "Öppna sök",

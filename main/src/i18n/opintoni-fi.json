@@ -35,6 +35,7 @@
     "credits": "op"
   },
   "toolbar": {
+    "home": "koti",
     "logout": "Kirjaudu ulos",
     "search": {
       "openSearch": "Avaa haku",
