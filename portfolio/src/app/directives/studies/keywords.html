@@ -29,11 +29,12 @@
                ng-model="newKeyword.title"
                ui-keypress="{'enter':'addKeyword(newKeyword.title)'}"
                type="text"
-               placeholder="{{::('keywords.addNew' | translate | capitalize)}}"
-               aria-label="{{::('keywords.addNew' | translate | capitalize)}}"
+               placeholder="{{::('keywords.addNewPlaceholder' | translate)}}"
+               aria-label="{{::('keywords.enterNew' | translate)}}"
                maxlength="50"
                input-uppercase>
         <button class="keywords-input-container__btn fa fa-plus"
+                aria-label="{{::('keywords.addNew' | translate)}}"
                 ng-click="addKeyword(newKeyword.title)">
         </button>
       </div>

@@ -6,7 +6,8 @@
     "remove" : "poista",
     "ok": "Ok",
     "students": "opiskelijat",
-    "teachers": "opettajat"
+    "teachers": "opettajat",
+    "helsinkiUniversity": "Helsingin Yliopisto"
   },
   "pageHeaderLinks": {
     "email": "sähköposti",
@@ -14,6 +15,13 @@
     "moodle": "moodle",
     "library": "kirjasto",
     "contact": "yhteystiedot"
+  },
+  "pageFooter": {
+    "contact": "Yhteystiedot",
+    "addressLine1": "PL33 (Yliopistonkatu 4)",
+    "addressLine2": "00014 Helsingin yliopisto",
+    "telephoneExchange": "Puhelinvaihde",
+    "giveFeedback": "Anna palautetta"
   },
   "toolbar": {
     "home": "koti",
@@ -26,7 +34,9 @@
   },
   "keywords": {
     "title": "Avainsanat",
-    "addNew": "lisää uusi avainsana"
+    "addNewPlaceholder": "Lisää uusi avainsana",
+    "enterNew": "kirjoita uusi avainsana",
+    "addNew": "lisää avainsana"
   },
   "favorites": {
     "types": {

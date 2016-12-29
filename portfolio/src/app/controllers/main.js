@@ -20,6 +20,7 @@ angular.module('controllers.main', ['constants.portfolioTabs'])
     $scope.portfolio = portfolio;
     $scope.userSettings = userSettings;
     $scope.portfolioTabs = portfolioTabs;
+    $scope.currentYear = moment().year();
 
     document.title = portfolio.ownerName;
   });

@@ -30,7 +30,7 @@
   <!-- Links -->
   <div class="page-footer__links">
     <ul class="list-of-links--light">
-      <li><a href="http://www.helsinki.fi/yliopisto/yhteystiedot.html">{{::('pageFooter.contact' | translate | capitalize)}}</a></li>
+      <li><a href="http://www.helsinki.fi/yliopisto/yhteystiedot.html">{{::('pageFooter.contact' | translate)}}</a></li>
 
       <li ng-if="userLang ==='fi'"><a href="https://elomake.helsinki.fi/lomakkeet/59401/lomake.html" target="_blank">{{::('pageFooter.giveFeedback' | translate)}}</a></li>
       <li ng-if="userLang ==='en'"><a href="https://elomake.helsinki.fi/lomakkeet/59401/lomake.html?rinnakkaislomake=eng" target="_blank">{{::('pageFooter.giveFeedback' | translate)}}</a></li>
@@ -42,17 +42,17 @@
   <!-- Contact information -->
   <div class="page-footer__contact">
     <a href="http://www.helsinki.fi/yliopisto/">
-        <img src="/assets/icons/logo.svg" class="logo--footer">
+        <img src="/assets/icons/logo.svg" title="{{::('general.helsinkiUniversity' | translate) }}" class="logo--footer">
     </a>
 
-    <h4 class="site-name site-name--footer">{{::('pageFooter.helsinkiUniversity' | translate)}}</h4>
+    <h4 class="site-name site-name--footer">{{::('general.helsinkiUniversity' | translate)}}</h4>
     <p>{{::('pageFooter.addressLine1' | translate)}}<br>{{::('pageFooter.addressLine2' | translate)}}</p>
     <p class="page-footer__exchange">{{::('pageFooter.telephoneExchange' | translate)}}: 02941 911</p>
   </div>
 
   <!-- Copyright statement -->
   <div class="page-footer__copyright milli text-center">
-    © {{::('pageFooter.helsinkiUniversity' | translate)}} {{currentYear}}
+    © {{::('general.helsinkiUniversity' | translate)}} {{currentYear}}
   </div>
 
 </div>

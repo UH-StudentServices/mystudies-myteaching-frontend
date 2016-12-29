@@ -30,7 +30,8 @@
     "time": "Aika",
     "location": "Paikka",
     "ok": "Ok",
-    "help": "apua"
+    "help": "apua",
+    "helsinkiUniversity": "Helsingin Yliopisto"
   },
   "abbreviations": {
     "credits": "op"
@@ -64,8 +65,7 @@
     "library": "kirjasto"
   },
   "pageFooter": {
-    "contact": "yhteystiedot",
-    "helsinkiUniversity": "Helsingin Yliopisto",
+    "contact": "Yhteystiedot",
     "addressLine1": "PL33 (Yliopistonkatu 4)",
     "addressLine2": "00014 Helsingin yliopisto",
     "telephoneExchange": "Puhelinvaihde",

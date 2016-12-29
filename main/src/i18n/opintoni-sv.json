@@ -30,7 +30,8 @@
     "time": "Tid",
     "location": "Plats",
     "ok": "Ok",
-    "help": "hjälp"
+    "help": "hjälp",
+    "helsinkiUniversity": "Helsingfors universitet"
   },
   "abbreviations": {
     "credits": "sp"
@@ -64,8 +65,7 @@
     "library": "bibliotek"
   },
   "pageFooter": {
-    "contact": "kontaktinformation",
-    "helsinkiUniversity": "Helsingfors universitet",
+    "contact": "Kontaktinformation",
     "addressLine1": "PL33 (Universitetsgatan 4)",
     "addressLine2": "00014 Helsingfors universitet",
     "telephoneExchange": "Växel",

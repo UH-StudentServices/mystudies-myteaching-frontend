@@ -29,8 +29,9 @@
     "frontpage": "frontpage",
     "time": "Time",
     "location": "Location",
-    "ok": "Ok"
-    "help", "help"
+    "ok": "Ok",
+    "help": "help",
+    "helsinkiUniversity": "University of Helsinki"
   },
   "abbreviations": {
     "credits": "cr"
@@ -64,8 +65,7 @@
     "library": "library"
   },
   "pageFooter": {
-    "contact": "contact information",
-    "helsinkiUniversity": "University of Helsinki",
+    "contact": "Contact information",
     "addressLine1": "PL33 (Yliopistonkatu 4)",
     "addressLine2": "00014 Helsingin yliopisto",
     "telephoneExchange": "Exchange",
