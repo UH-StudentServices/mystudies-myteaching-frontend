@@ -29,7 +29,8 @@
     "frontpage": "Framsidan",
     "time": "Tid",
     "location": "Plats",
-    "ok": "Ok"
+    "ok": "Ok",
+    "help": "hjälp"
   },
   "abbreviations": {
     "credits": "sp"
@@ -433,7 +434,8 @@
     "title" : "potentiellt intressanta kurser",
     "showMore": "visa mer",
     "showLess": "visa mindre",
-    "disclaimer" : "Kurslistan nedan baserar på dina studieprestationer. Listan är personlig och ingen annan ser det. Vänligen kolla förutsättningar och den rätta studierätten innan du anmäler dig till kursen."
+    "disclaimer": "disclaimer",
+    "disclaimerText": "Kurslistan nedan baserar på dina studieprestationer. Listan är personlig och ingen annan ser det. Vänligen kolla förutsättningar och den rätta studierätten innan du anmäler dig till kursen."
   },
   "cookieNotification": {
     "notification": "Den här webbplatsen använder cookies för att förbättra användbarheten på sidorna.",

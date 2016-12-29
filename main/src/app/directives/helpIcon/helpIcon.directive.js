@@ -5,7 +5,8 @@ angular.module('directives.helpIcon', ['directives.popover'])
       restrict: 'E',
       replace: true,
       scope: {
-        translationKey: '@'
+        translationKey: '@',
+        ariaLabelTranslationKey: '@',
       },
       templateUrl: 'app/directives/helpIcon/helpIcon.html'
     };

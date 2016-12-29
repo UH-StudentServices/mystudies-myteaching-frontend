@@ -29,7 +29,8 @@
     "frontpage": "etusivu",
     "time": "Aika",
     "location": "Paikka",
-    "ok": "Ok"
+    "ok": "Ok",
+    "help": "apua"
   },
   "abbreviations": {
     "credits": "op"
@@ -431,7 +432,8 @@
     "title" : "mahdollisesti kiinnostavia kursseja",
     "showMore": "näytä lisää",
     "showLess": "näytä vähemmän",
-    "disclaimer" : "Alla oleva kurssilista perustuu opintosuorituksiisi, joita on verrattu muiden opiskelijoiden suorituksiin. Lista on henkilökohtainen eikä kukaan muu näe sitä. Tarkista kurssin esitietovaatimukset ja vaadittava opiskeluoikeus ennen ilmoittautumista."
+    "disclaimer": "vastuuvapauslauseke",
+    "disclaimerText": "Alla oleva kurssilista perustuu opintosuorituksiisi, joita on verrattu muiden opiskelijoiden suorituksiin. Lista on henkilökohtainen eikä kukaan muu näe sitä. Tarkista kurssin esitietovaatimukset ja vaadittava opiskeluoikeus ennen ilmoittautumista."
   },
   "cookieNotification": {
     "notification": "Tämä sivusto käyttää evästeitä toimiakseen mahdollisimman hyvin.",
