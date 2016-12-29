@@ -20,5 +20,7 @@
     <span ng-hide="editing" translate="general.edit" class="text-transform-capitalize"></span>
     <span ng-show="editing" translate="general.done" class="text-transform-capitalize"></span>
   </span>
-  <i class="hy" ng-class="{'hy-done' : editing, 'hy-modify' : !editing}"></i>
+  <i class="hide-mobile-only hy" ng-class="{'hy-done' : editing, 'hy-modify' : !editing}" aria-hidden="true"></i>
+  <i class="show-mobile-only hy hy-modify" ng-hide="editing" aria-label="{{:: ('general.edit' | translate) }}"></i>
+  <i class="show-mobile-only hy hy-done" ng-show="editing" aria-label="{{:: ('general.done' | translate) }}"></i>
 </a>

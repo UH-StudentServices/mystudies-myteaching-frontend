@@ -6,7 +6,8 @@
     "remove" : "remove",
     "ok": "Ok",
     "students": "students",
-    "teachers": "teachers"
+    "teachers": "teachers",
+    "helsinkiUniversity": "University of Helsinki"
   },
   "pageHeaderLinks": {
     "email": "email",
@@ -15,7 +16,15 @@
     "library": "library",
     "contact": "contact"
   },
+  "pageFooter": {
+    "contact": "Contact information",
+    "addressLine1": "PL33 (Yliopistonkatu 4)",
+    "addressLine2": "00014 Helsingin yliopisto",
+    "telephoneExchange": "Exchange",
+    "giveFeedback": "Give feedback"
+  },
   "toolbar": {
+    "home": "home",
     "helsinkiUniversity": "University of Helsinki"
   },
   "visibility": {
@@ -25,7 +34,9 @@
   },
   "keywords": {
     "title": "Keywords",
-    "addNew": "add new keyword"
+    "addNewPlaceholder": "Add new keyword",
+    "enterNew": "enter new keyword",
+    "addNew": "add keyword"
   },
   "favorites": {
     "types": {

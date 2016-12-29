@@ -29,12 +29,15 @@
     "frontpage": "etusivu",
     "time": "Aika",
     "location": "Paikka",
-    "ok": "Ok"
+    "ok": "Ok",
+    "help": "apua",
+    "helsinkiUniversity": "Helsingin Yliopisto"
   },
   "abbreviations": {
     "credits": "op"
   },
   "toolbar": {
+    "home": "koti",
     "logout": "Kirjaudu ulos",
     "search": {
       "openSearch": "Avaa haku",
@@ -62,8 +65,7 @@
     "library": "kirjasto"
   },
   "pageFooter": {
-    "contact": "yhteystiedot",
-    "helsinkiUniversity": "Helsingin Yliopisto",
+    "contact": "Yhteystiedot",
     "addressLine1": "PL33 (Yliopistonkatu 4)",
     "addressLine2": "00014 Helsingin yliopisto",
     "telephoneExchange": "Puhelinvaihde",
@@ -430,7 +432,8 @@
     "title" : "mahdollisesti kiinnostavia kursseja",
     "showMore": "näytä lisää",
     "showLess": "näytä vähemmän",
-    "disclaimer" : "Alla oleva kurssilista perustuu opintosuorituksiisi, joita on verrattu muiden opiskelijoiden suorituksiin. Lista on henkilökohtainen eikä kukaan muu näe sitä. Tarkista kurssin esitietovaatimukset ja vaadittava opiskeluoikeus ennen ilmoittautumista."
+    "disclaimer": "vastuuvapauslauseke",
+    "disclaimerText": "Alla oleva kurssilista perustuu opintosuorituksiisi, joita on verrattu muiden opiskelijoiden suorituksiin. Lista on henkilökohtainen eikä kukaan muu näe sitä. Tarkista kurssin esitietovaatimukset ja vaadittava opiskeluoikeus ennen ilmoittautumista."
   },
   "cookieNotification": {
     "notification": "Tämä sivusto käyttää evästeitä toimiakseen mahdollisimman hyvin.",
