@@ -75,6 +75,7 @@
     "opinder": "Opinder"
   },
   "banner": {
+    "news": "News",
     "tooltip": {
         "hide": "Hide notifications",
         "show": "Show notifications"

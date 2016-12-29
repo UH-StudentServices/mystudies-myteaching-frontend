@@ -75,6 +75,7 @@
     "opinder": "Opinder"
   },
   "banner": {
+    "news": "Uutiset",
     "tooltip": {
         "hide": "Piilota tiedotteet",
         "show": "Näytä tiedotteet"

@@ -21,6 +21,7 @@
       <todo-items class="todo-items--banner todo-items--dark"></todo-items>
     </div>
     <div class="page-banner--pager"></div>
+    <h2 class="visually-hidden">{{:: ('banner.news' | translate) }}</h2>
     <flex-slider slide="news in newsList track by $index"
                  direction-nav="false"
                  controls-container=".page-banner--pager"
@@ -29,8 +30,8 @@
       <li>
         <div class="page-banner__news-item-container">
           <div class="page-banner__news-item">
-            <h1 class="hide-mobile-only ui-component__title page-banner__title" ng-bind="news.title" data-ellipsis></h1>
-            <h2 class="show-mobile-only ui-component__title page-banner__title" ng-bind="news.title" data-ellipsis></h2>
+            <h3 class="hide-mobile-only ui-component__title page-banner__title" ng-bind="news.title" data-ellipsis></h3>
+            <h3 class="show-mobile-only ui-component__title page-banner__title" ng-bind="news.title" data-ellipsis></h3>
             <p class="page-banner__text" ng-bind="news.content" data-ellipsis></p>
             <ul class="list-of-links--dark">
               <li>
