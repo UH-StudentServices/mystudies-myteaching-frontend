@@ -16,6 +16,7 @@
     "contact": "yhteystiedot"
   },
   "toolbar": {
+    "home": "koti",
     "helsinkiUniversity": "Helsingin Yliopisto"
   },
   "visibility": {
