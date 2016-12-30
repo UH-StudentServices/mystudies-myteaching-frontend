@@ -25,7 +25,7 @@
       message="message">
     </message>
 
-    <ul>
+    <ul ng-show="attainments.length">
       <li ng-repeat="attainment in attainments | limitTo:numberOfVisibleAttainments">
         <div class="box-data border-bottom">
           <div class="box-data__date" ng-class="{'box-data__grade' : attainment.grade >= 0}">
