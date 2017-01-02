@@ -30,18 +30,18 @@
     <!-- Links -->
     <div class="page-footer__links">
         <ul class="list-of-links--light">
-            <li><a href="http://www.helsinki.fi/yliopisto/yhteystiedot.html">{{::('pageFooter.contact' | translate)}}</a></li>
+            <li><a href="http://www.helsinki.fi/yliopisto/yhteystiedot.html" tabindex="0">{{::('pageFooter.contact' | translate)}}</a></li>
 
-            <li ng-if="userLang ==='fi'"><a href="https://elomake.helsinki.fi/lomakkeet/59401/lomake.html" target="_blank">{{::('pageFooter.giveFeedback' | translate)}}</a></li>
-            <li ng-if="userLang ==='en'"><a href="https://elomake.helsinki.fi/lomakkeet/59401/lomake.html?rinnakkaislomake=eng" target="_blank">{{::('pageFooter.giveFeedback' | translate)}}</a></li>
-            <li ng-if="userLang ==='sv'"><a href="https://elomake.helsinki.fi/lomakkeet/59401/lomake.html" target="_blank" >{{::('pageFooter.giveFeedback' | translate)}}</a></li>
-            <li><a href="https://flamma.helsinki.fi/portal/home/login">Flamma</a></li>
+            <li ng-if="userLang ==='fi'"><a href="https://elomake.helsinki.fi/lomakkeet/59401/lomake.html" tabindex="0" target="_blank">{{::('pageFooter.giveFeedback' | translate)}}</a></li>
+            <li ng-if="userLang ==='en'"><a href="https://elomake.helsinki.fi/lomakkeet/59401/lomake.html?rinnakkaislomake=eng" tabindex="0" target="_blank">{{::('pageFooter.giveFeedback' | translate)}}</a></li>
+            <li ng-if="userLang ==='sv'"><a href="https://elomake.helsinki.fi/lomakkeet/59401/lomake.html" tabindex="0" target="_blank" >{{::('pageFooter.giveFeedback' | translate)}}</a></li>
+            <li><a href="https://flamma.helsinki.fi/portal/home/login" tabindex="0">Flamma</a></li>
         </ul>
     </div>
 
     <!-- Contact information -->
     <div class="page-footer__contact">
-        <a href="http://www.helsinki.fi/yliopisto/">
+        <a href="http://www.helsinki.fi/yliopisto/" tabindex="0">
             <img src="/portfolio/assets/icons/logo.svg" title="{{::('general.helsinkiUniversity' | translate) }}" class="logo--footer">
         </a>
 
