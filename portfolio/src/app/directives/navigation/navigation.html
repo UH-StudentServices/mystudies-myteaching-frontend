@@ -20,7 +20,10 @@
     <nav>
       <ul class="main-menu">
         <li class="main-menu__home">
-          <a tabindex="0" ng-click="backToFrontpage()" aria-label="{{:: ('toolbar.home' | translate) }}"></a>
+          <a tabindex="0"
+             ng-click="backToFrontpage()"
+             ng-keydown="$event.which === 13 && backToFrontpage()"
+             aria-label="{{:: ('toolbar.home' | translate) }}"></a>
         </li>
       </ul>
     </nav>
