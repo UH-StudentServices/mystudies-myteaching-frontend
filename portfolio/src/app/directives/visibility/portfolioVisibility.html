@@ -22,24 +22,21 @@
     <ul>
       <li class="divider text-transform-capitalize-block">
         <a tabindex="0"
-          ng-click="setVisibility('PUBLIC')"
-          ng-keydown="$event.which === 13 && setVisibility('PUBLIC')"
+          on-enter-or-click="setVisibility('PUBLIC')"
           role="menuitem"
           translate="visibility.PUBLIC">
         </a>
       </li>
       <li class="divider text-transform-capitalize-block">
         <a tabindex="0"
-          ng-click="setVisibility('RESTRICTED')"
-          ng-keydown="$event.which === 13 && setVisibility('RESTRICTED')"
+          on-enter-or-click="setVisibility('RESTRICTED')"
           role="menuitem"
           translate="visibility.RESTRICTED">
         </a>
       </li>
       <li class="text-transform-capitalize-block">
         <a tabindex="0"
-          ng-click="setVisibility('PRIVATE')"
-          ng-keydown="$event.which === 13 && setVisibility('PRIVATE')"
+          on-enter-or-click="setVisibility('PRIVATE')"
           role="menuitem"
           translate="visibility.PRIVATE">
         </a>

@@ -22,15 +22,14 @@
     <ul>
       <li class="divider text-transform-capitalize-block">
         <a tabindex="0"
-          ng-click="setVisibility(Visibility.PUBLIC)"
-          ng-keydown="$event.which === 13 && setVisibility(Visibility.PUBLIC)"
+          on-enter-or-click="setVisibility(Visibility.PUBLIC)"
           role="menuitem"
           translate="visibility.PUBLIC">
         </a>
       </li>
       <li class="text-transform-capitalize-block">
-        <a tabindex="0" ng-click="setVisibility(Visibility.PRIVATE)"
-          ng-keydown="$event.which === 13 && setVisibility(Visibility.PRIVATE)"
+        <a tabindex="0"
+          on-enter-or-click="setVisibility(Visibility.PRIVATE)"
           role="menuitem"
           translate="visibility.PRIVATE">
         </a>

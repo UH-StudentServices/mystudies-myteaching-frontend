@@ -16,8 +16,7 @@
 -->
 
 <a class="edit-link" tabindex="0"
-   ng-click="onClick()"
-   ng-keydown="$event.which === 13 && onClick()"
+   on-enter-or-click="onClick()"
    visibility-private>
   <span class="hide-mobile-only text-transform-capitalize" ng-hide="editing" translate="general.edit"></span>
   <span class="hide-mobile-only text-transform-capitalize" ng-show="editing" ng-class="{'disabled' : exitEditDisabled}" translate="general.done"></span>
