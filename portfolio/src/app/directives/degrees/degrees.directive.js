@@ -33,7 +33,7 @@ angular.module('directives.degrees', [
     link: function($scope) {
       $scope.editing = false;
       $scope.degrees = DegreeService.formatDates($scope.degreesData());
-      $scope.newDegree = {}
+      $scope.newDegree = {};
 
       $scope.edit = function() {
         $scope.editing = true;
