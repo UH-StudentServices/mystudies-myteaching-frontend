@@ -30,7 +30,7 @@
            ng-if="editingTitle"
            type="text"
            ng-model="freeTextContent.title"
-           ng-enter="onOk()">
+           on-enter="onOk()">
     <button ng-if="!headingKey && !editingTitle" ng-click="onRemove()" class="favorites-list__remove"></button>
   </div>
 
