@@ -20,6 +20,7 @@
     {{::('preview.info' | translate | capitalize)}}
     <a tabindex="0"
        ng-click="exitPreview()"
+       ng-keydown="$event.which === 13 && exitPreview()"
        translate="preview.exit"
        class="text-transform-capitalize">
     </a>
