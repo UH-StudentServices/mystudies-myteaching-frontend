@@ -43,7 +43,7 @@ angular.module('directives.onEnterOrClick', [])
         element.on('keydown', function(event) {
           if (event.which === 13) {
             scope.$apply(function() {
-              scope.$eval(attrs.onEnterOrClick);
+              scope.$eval(attrs.onEnter);
             });
             event.preventDefault();
           }
