@@ -34,3 +34,11 @@ $keywords-summary-max-height: 171px;
   margin-right: 0.2em;
   margin-bottom: 0.2em;
 }
+
+.keywords-input-container__btn:focus {
+  outline: auto 5px -webkit-focus-ring-color;
+}
+
+.keywords-input-container {
+  overflow: visible;
+}
