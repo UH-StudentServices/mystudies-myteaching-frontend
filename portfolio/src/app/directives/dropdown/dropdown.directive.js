@@ -54,7 +54,6 @@ angular.module('directives.dropdown', [])
         contentElement.hide();
 
         var doToggle = function() {
-          console.log('toggle');
           contentElement.toggle();
           toggleElement.toggleClass('active');
 
