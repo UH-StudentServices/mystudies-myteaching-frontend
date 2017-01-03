@@ -107,6 +107,9 @@
     &:hover {
       color: $gray;
     }
+    &:focus {
+        outline: auto 5px -webkit-focus-ring-color;
+    }
   }
 
   &__remove {

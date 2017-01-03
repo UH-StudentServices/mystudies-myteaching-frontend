@@ -33,7 +33,7 @@
 
         <div class="language-proficiency-item__content">
           <div class="language-proficiency-item__language-name"
-               ng-click="toggleLanguageSelect(this)"
+               on-enter-or-click="toggleLanguageSelect(this)"
                role="button"
                aria-pressed="{{editing && languageSelectVisible}}"
                tabindex="0">
@@ -49,7 +49,7 @@
                   <a tabindex="0"
                      class="language-proficiency-item__select-item-link"
                      translate="languages.code.{{lang}}"
-                     ng-click="updateLanguage(languageProficiency, lang)">
+                     on-enter-or-click="updateLanguage(languageProficiency, lang)">
                   </a>
                 </li>
               </ul>
@@ -57,7 +57,7 @@
           </div>
 
           <div class="language-proficiency-item__proficiency"
-               ng-click="toggleProficiencySelect(this)"
+               on-enter-or-click="toggleProficiencySelect(this)"
                role="button"
                aria-pressed="{{editing && proficiencySelectVisible}}"
                tabindex="0">
@@ -71,7 +71,7 @@
                   <a tabindex="0"
                      class="language-proficiency-item__select-item-link"
                      translate="languages.proficiency.{{pr}}"
-                     ng-click="updateProficiency(languageProficiency, pr)">
+                     on-enter-or-click="updateProficiency(languageProficiency, pr)">
                   </a>
                 </li>
               </ul>
@@ -83,7 +83,7 @@
            class="language-proficiency-item__remove"
            aria-label="{{::('general.remove' | translate)}}"
            ng-show="editing"
-           ng-click="remove(languageProficiency)">
+           on-enter-or-click="remove(languageProficiency)">
           <i class="hy hy-remove"></i>
         </a>
     </li>
@@ -91,7 +91,7 @@
       <a class="language-proficiency-list__add-new"
          tabindex="0"
          aria-label="{{::('general.add' | translate)}}"
-         ng-click="addNew()"></a>
+         on-enter-or-click="addNew()"></a>
     </li>
   </ul>
 
