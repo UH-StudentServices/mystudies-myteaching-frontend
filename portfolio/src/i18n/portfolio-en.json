@@ -85,6 +85,8 @@
   },
   "degrees": {
     "title": "Degrees",
+    "datePlaceholder": "dd.mm.yyyy",
+    "titlePlaceholder": "Add title",
     "descriptionPlaceholder": "Add description",
     "addNewPlaceholder": "Add new degree"
   },

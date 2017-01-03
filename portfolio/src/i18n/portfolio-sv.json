@@ -85,6 +85,8 @@
   },
   "degrees": {
     "title": "Examen",
+    "datePlaceholder": "dd.mm.yyyy",
+    "titlePlaceholder": "Lägg till examen",
     "descriptionPlaceholder": "Lägg till beskrivning",
     "addNewPlaceholder": "Lägg till examen"
   },

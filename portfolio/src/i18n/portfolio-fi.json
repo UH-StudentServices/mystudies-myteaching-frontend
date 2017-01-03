@@ -85,6 +85,8 @@
   },
   "degrees": {
     "title": "Tutkinnot",
+    "datePlaceholder": "pp.kk.vvvv",
+    "titlePlaceholder": "Lisää tutkinto",
     "descriptionPlaceholder": "Lisää kuvaus",
     "addNewPlaceholder": "Lisää uusi tutkinto"
   },
