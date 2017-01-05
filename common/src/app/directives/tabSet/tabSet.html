@@ -18,11 +18,12 @@
   <scrollable-tab-bar use-full-width-on-mobile="useFullWidthOnMobile">
     <ul class="tab-set" role="tablist">
       <li ng-repeat="tab in tabs track by tab.key"
-          ng-click="selectTab(tab)"
+          on-enter-or-click="selectTab(tab)"
           role="tab"
           ng-class="getTabClasses(tab)"
           limit-visibility="{sectionName: tab.name}"
-          class="tab-set__tab">
+          class="tab-set__tab"
+          tabindex="0">
         <a>{{ ::(tab.key | translate) }}</a>
       </li>
     </ul>
