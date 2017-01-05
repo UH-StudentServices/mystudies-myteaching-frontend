@@ -20,8 +20,7 @@
     <li ng-repeat="languageOption in getLanguageOptions(selectedLanguage)">
       <a tabindex="0" role="button"
          aria-label="{{:: languageOption.nativeName }}"
-         ng-click="changeLanguage(languageOption.languageCode)"
-         ng-keydown="$event.which === 13 && changeLanguage(languageOption.languageCode)">
+         on-enter-or-click="changeLanguage(languageOption.languageCode)">
         <span class="hide-mobile-only">{{:: languageOption.nativeName }}</span>
         <span class="show-mobile-only">{{:: languageOption.languageCode | capitalize }}</span>
       </a>
