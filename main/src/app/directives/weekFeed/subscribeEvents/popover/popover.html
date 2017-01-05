@@ -31,14 +31,19 @@
          clipboard-error-callback="copyToClipboardErrorCallback">
          {{::('general.copyToClipboard' | translate)}}
       </a>
-      <span ng-if="copyToClipboardSuccess" translate="general.copyToClipboardSuccess"></span>
-      <span ng-if="copyToClipboardFail">
+      <span ng-if="copyToClipboardSuccess" class="subscribe-events-popover__message"
+            translate="general.copyToClipboardSuccess"></span>
+      <span ng-if="copyToClipboardFail" class="subscribe-events-popover__message">
         {{::(('general.copyToClipboardFail' + copyToClipboardFailMessageKeySuffix) | translate) }}
       </span>
     </div>
+    <div ng-if="optimeCalendar"
+         class="subscribe-events-popover__instructions subscribe-events-popover__instructions__optime">
+      {{::('weekFeed.optimeInstructions' | translate)}}
+    </div>
     <div class="subscribe-events-popover__instructions">
       <div class="subscribe-events-popover__instructions__intro">
-        {{::('weekFeed.calendarInstructions' | translate | capitalize)}}
+        {{::('weekFeed.calendarInstructions' | translate | capitalize)}}
       </div>
       <a href="{{InstructionLinks.OUTLOOK[userLang]}}" target="_blank">Outlook</a>
       <a href="{{InstructionLinks.GOOGLE[userLang]}}" target="_blank">Google</a>

@@ -154,9 +154,10 @@
       "errorLoadingEvents" : "Händelser kunde inte laddas"
 
     },
-    "subscribeEvents" : "Lägg till kalender",
-    "calendarInstructions" : "Så här importerar du händelser till kalenderprogram",
-    "cancelled" : "Annullerad",
+    "subscribeEvents": "Lägg till kalender",
+    "optimeInstructions": "OBS! Dina kalenderinformation hämtas från Optime, som ger din undervisning schema. Min Undervisning sidan visar för närvarande alla händelser av dina kurser.",
+    "calendarInstructions": "Så här importerar du händelser till kalenderprogram",
+    "cancelled": "Annullerad",
     "official": "Administratör",
     "calendarCustom": {
       "list": "Lista"

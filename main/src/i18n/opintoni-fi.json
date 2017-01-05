@@ -153,6 +153,7 @@
       "errorLoadingEvents" : "Tapahtumien haussa tapahtui virhe"
     },
     "subscribeEvents": "Lisää kalenteriisi",
+    "optimeInstructions": "Huom! Kalenteritietosi haetaan lukujärjestysohjelma Optimesta, joka näyttää oman opetusaikataulusi. Opetukseni-sivu näyttää toistaiseksi opetustapahtumien kaikki tapahtumat.",
     "calendarInstructions": "Näin lisäät tapahtumat kalenteriohjelmiin ",
     "cancelled" : "peruttu",
     "official": "Virkailija",
