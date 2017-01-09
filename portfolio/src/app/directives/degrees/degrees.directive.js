@@ -26,7 +26,8 @@ angular.module('directives.degrees', [
     replace: true,
     scope: {
       degreesData: '&',
-      portfolioId: '@'
+      portfolioId: '@',
+      sectionName: '@'
     },
     templateUrl: 'app/directives/degrees/degrees.html',
     link: function($scope) {

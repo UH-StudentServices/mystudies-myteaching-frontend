@@ -29,16 +29,16 @@ angular.module('directives.weekFeed.feedItem.event',[
         showCourseImage: '='
       },
       link: function($scope) {
-        $scope.openReittiopas = function openReittiopas(feedItem) {
+        $scope.openReittiopas = function openReittiopas(startDate, location) {
           var addressFromCookie = LocationService.getUserAddressFromCookie();
 
           if (addressFromCookie) {
-            window.location = EventUriService.getReittiopasUri(feedItem, addressFromCookie);
+            window.location = EventUriService.getReittiopasUri(startDate, location, addressFromCookie);
           } else {
-            feedItem.loadingLocation = true;
+            location.loadingLocation = true;
             LocationService.getUserAddressFromGeolocation().then(function(data) {
               LocationService.putUserAddressToCookie(data);
-              window.location = EventUriService.getReittiopasUri(feedItem, data);
+              window.location = EventUriService.getReittiopasUri(startDate, location, data);
             });
           }
         };

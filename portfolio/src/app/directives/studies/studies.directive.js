@@ -29,7 +29,8 @@ angular.module('directives.studies', [
     scope: {
       summaryData: '&',
       portfolioId: '@',
-      headingKey: '@'
+      headingKey: '@',
+      sectionName: '@'
     },
     templateUrl: 'app/directives/studies/studies.html',
     link: function(scope) {

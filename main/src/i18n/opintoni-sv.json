@@ -29,12 +29,15 @@
     "frontpage": "Framsidan",
     "time": "Tid",
     "location": "Plats",
-    "ok": "Ok"
+    "ok": "Ok",
+    "help": "hjälp",
+    "helsinkiUniversity": "Helsingfors universitet"
   },
   "abbreviations": {
     "credits": "sp"
   },
   "toolbar": {
+    "home": "hem",
     "logout": "Logga ut",
     "search": {
       "openSearch": "Öppna sök",
@@ -62,8 +65,7 @@
     "library": "bibliotek"
   },
   "pageFooter": {
-    "contact": "kontaktinformation",
-    "helsinkiUniversity": "Helsingfors universitet",
+    "contact": "Kontaktinformation",
     "addressLine1": "PL33 (Universitetsgatan 4)",
     "addressLine2": "00014 Helsingfors universitet",
     "telephoneExchange": "Växel",
@@ -75,6 +77,7 @@
     "opinder": "Opinder"
   },
   "banner": {
+    "news": "Nyheter",
     "tooltip": {
         "hide": "Dölja meddelanden",
         "show": "Visa meddelanden"
@@ -431,7 +434,8 @@
     "title" : "potentiellt intressanta kurser",
     "showMore": "visa mer",
     "showLess": "visa mindre",
-    "disclaimer" : "Kurslistan nedan baserar på dina studieprestationer. Listan är personlig och ingen annan ser det. Vänligen kolla förutsättningar och den rätta studierätten innan du anmäler dig till kursen."
+    "disclaimer": "disclaimer",
+    "disclaimerText": "Kurslistan nedan baserar på dina studieprestationer. Listan är personlig och ingen annan ser det. Vänligen kolla förutsättningar och den rätta studierätten innan du anmäler dig till kursen."
   },
   "cookieNotification": {
     "notification": "Den här webbplatsen använder cookies för att förbättra användbarheten på sidorna.",

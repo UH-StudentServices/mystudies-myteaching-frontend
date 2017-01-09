@@ -25,7 +25,7 @@ angular.module('directives.visibility',
     return {
       restrict: 'A',
       link: function($scope, $element) {
-        if (StateService.getCurrent() !== State.PRIVATE || PreviewService.isPreview()) {
+        if (StateService.getCurrent() !== State.PRIVATE || PreviewService.isPreview()) {
           $element.remove();
         }
       }

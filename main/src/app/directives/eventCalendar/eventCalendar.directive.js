@@ -151,7 +151,11 @@ angular.module('directives.eventCalendar', [])
           }
 
           if (event.locations) {
-            title += ', ' + event.locations;
+            event.locations.forEach(function(location) {
+              if (location.roomName) {
+                title += ', ' + location.roomName;
+              }
+            });
           }
 
           return title;

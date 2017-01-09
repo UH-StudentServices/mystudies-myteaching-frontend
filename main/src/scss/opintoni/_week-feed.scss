@@ -144,7 +144,6 @@ $tablist-single-row: min-width 28.75em;
     background-size: cover;
     height: $item-height;
     display: inline-block;
-    margin-right: 1em;
 
     @include breakpoint($mobile-only) {
       width: 100%;
@@ -165,9 +164,9 @@ $tablist-single-row: min-width 28.75em;
     }
 
     @include breakpoint($small) {
-      width: 50%;
-      height: $item-height;
+      width: 60%;
       padding-bottom: 75px;
+      padding-left: 1em;
     }
   }
 
@@ -191,7 +190,7 @@ $tablist-single-row: min-width 28.75em;
       @include breakpoint($small) {
         position: absolute;
         bottom: 0;
-        left: 0;
+        left: 1em;
         right: 0;
       }
 
@@ -210,12 +209,15 @@ $tablist-single-row: min-width 28.75em;
   }
 
   .event-location {
+    margin-bottom: 0.5em;
+  }
+
+  .event-location__name {
     margin-right: 1em;
-    margin-bottom: 0.3em;
     display: inline-block;
   }
 
-  .event-location-links {
+  .event-location__links {
     white-space: nowrap;
     > *:first-child {
       margin-right: 0.5em;

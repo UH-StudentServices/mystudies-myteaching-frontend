@@ -50,7 +50,7 @@
                message="message">
       </message>
 
-      <ul class="week-feed-items">
+      <ul ng-show="feedItems.length" class="week-feed-items">
         <li ng-repeat="feedItem in feedItems | limitTo:numberOfVisibleItems"
             ng-class="{'feed-item--child': feedItem.showAsChild, 'feed-item--last-child': feedItem.showAsLastChild}">
           <item feed-item="feedItem" first="$first" tab-options="selectedTab"></item>

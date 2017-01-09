@@ -56,7 +56,7 @@ angular.module('directives.freeTextContent', [
       link: function(scope, el ,attrs) {
         var visibilityDescriptor = {
           portfolioSection: scope.portfolioSection || null,
-          instanceName: scope.instanceName || null
+          instanceName: scope.instanceName || null
         };
 
         function refreshContent(freeTextContent) {

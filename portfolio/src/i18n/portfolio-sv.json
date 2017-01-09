@@ -9,7 +9,8 @@
     "showMore": "mer",
     "showLess": "mindre",
     "students": "studerande",
-    "teachers": "lärare"
+    "teachers": "lärare",
+    "helsinkiUniversity": "Helsingfors universitet"
   },
   "pageHeaderLinks": {
     "email": "e-post",
@@ -18,7 +19,15 @@
     "library": "bibliotek",
     "contact": "kontaktinformation"
   },
+  "pageFooter": {
+    "contact": "Kontaktinformation",
+    "addressLine1": "PL33 (Universitetsgatan 4)",
+    "addressLine2": "00014 Helsingfors universitet",
+    "telephoneExchange": "Växel",
+    "giveFeedback": "Ge feedback"
+  },
   "toolbar": {
+    "home": "hem",
     "helsinkiUniversity": "Helsingfors universitet"
   },
   "visibility": {
@@ -28,6 +37,8 @@
   },
   "keywords": {
     "title": "Nyckelord",
+    "addNewPlaceholder": "Lägg till nyckelord",
+    "enterNew": "skriv ett nyckelord",
     "addNew": "lägg till nyckelord"
   },
   "favorites": {

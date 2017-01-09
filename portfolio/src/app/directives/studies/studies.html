@@ -18,7 +18,7 @@
 <section class="ui-component ui-component__studies">
   <div class="edit-link-wrapper">
     <h2 class="ui-component__title border-bottom ng-binding">
-      {{ ::(headingKey | translate) }}
+      {{ ::(headingKey | translate) }}
     </h2>
     <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
   </div>
@@ -26,5 +26,5 @@
     <summary editing="editing" summary="summary"></summary>
     <keywords editing="editing" keywords="keywords"></keywords>
   </div>
-  <visibility-toggle component-id="STUDIES"></visibility-toggle>
+  <visibility-toggle component-id="STUDIES" section-name="{{::sectionName}}"></visibility-toggle>
 </section>

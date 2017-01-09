@@ -26,9 +26,9 @@ angular.module('services.visibility', ['services.portfolio', 'resources.visibili
     function componentVisibilitySearchCriteria(visibilityDescriptor) {
       var searchCriteria = {};
 
-      searchCriteria.component = visibilityDescriptor.componentId || null;
-      searchCriteria.teacherPortfolioSection = visibilityDescriptor.sectionName || null;
-      searchCriteria.instanceName = visibilityDescriptor.instanceName || null;
+      searchCriteria.component = visibilityDescriptor.componentId || null;
+      searchCriteria.teacherPortfolioSection = visibilityDescriptor.sectionName || null;
+      searchCriteria.instanceName = visibilityDescriptor.instanceName || null;
 
       return searchCriteria;
     }

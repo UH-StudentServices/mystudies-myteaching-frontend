@@ -29,12 +29,15 @@
     "frontpage": "frontpage",
     "time": "Time",
     "location": "Location",
-    "ok": "Ok"
+    "ok": "Ok",
+    "help": "help",
+    "helsinkiUniversity": "University of Helsinki"
   },
   "abbreviations": {
     "credits": "cr"
   },
   "toolbar": {
+    "home": "home",
     "logout": "Log out",
     "search": {
       "openSearch": "Open search",
@@ -62,8 +65,7 @@
     "library": "library"
   },
   "pageFooter": {
-    "contact": "contact information",
-    "helsinkiUniversity": "University of Helsinki",
+    "contact": "Contact information",
     "addressLine1": "PL33 (Yliopistonkatu 4)",
     "addressLine2": "00014 Helsingin yliopisto",
     "telephoneExchange": "Exchange",
@@ -75,6 +77,7 @@
     "opinder": "Opinder"
   },
   "banner": {
+    "news": "News",
     "tooltip": {
         "hide": "Hide notifications",
         "show": "Show notifications"
@@ -430,7 +433,8 @@
     "title" : "potentially interesting courses",
     "showMore": "show more",
     "showLess": "show less",
-    "disclaimer" : "This course list is based on your completed studies, which has been compared to other students’ completed studies. The list is personal and no one else sees it. Please check the pre-requisites the required study right before enrolling to a course."
+    "disclaimer": "disclaimer",
+    "disclaimerText": "This course list is based on your completed studies, which has been compared to other students’ completed studies. The list is personal and no one else sees it. Please check the pre-requisites the required study right before enrolling to a course."
   },
   "cookieNotification": {
     "notification": "This website uses cookies to improve your experience.",

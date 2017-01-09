@@ -20,7 +20,7 @@
     <nav>
       <ul class="main-menu">
         <li class="main-menu__home">
-          <a tabindex="0" ui-sref="init" class="active"></a>
+          <a tabindex="0" ui-sref="init" class="active" aria-label="{{:: ('toolbar.home' | translate) }}"></a>
         </li>
         <li ng-repeat="link in primaryLinks">
           <a href="{{ ::link.href[userLang] }}"
