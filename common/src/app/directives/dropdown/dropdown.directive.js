@@ -25,7 +25,6 @@ angular.module('directives.dropdown', [])
     return {
       restrict: 'A',
       link: function($scope, element, attrs) {
-
         function applyCloseCallback() {
           if (attrs.closeCallback) {
             var fn = $parse(attrs.closeCallback);
@@ -36,18 +35,30 @@ angular.module('directives.dropdown', [])
         }
 
         function applyOpenCallback() {
-          if (attrs.openCallback) {
-            var fn = $parse(attrs.openCallback);
+          var fn = $parse(attrs.openCallback);
 
+          if (attrs.openCallback) {
             fn($scope);
             $scope.$apply();
           }
         }
 
-        var id = uniqueId++;
+        /*
+         * Some explaining why this check is necessary:
+         * ng-file-upload library appends an "<input type="file" ngf-select..." element
+         * to the body when "<a ngf-select..." is used for file upload.
+         * It then programmatically clicks the "<input type="file" ngf-select..." element
+         * when a user clicks the "<a ngf-select..." element. This would close the
+         * dropdown if a user clicks on such link in dropdown content, because the programmatically
+         * triggered click happens outside dropdown content.
+         */
+        function isNgfSelectInput(target) {
+          return target.attr('ngf-select') !== undefined;
+        }
 
-        var toggleElement = element.find('.dropdown-toggle');
-        var contentElement = element.find('.dropdown-content');
+        var id = uniqueId++,
+            toggleElement = element.find('.dropdown-toggle'),
+            contentElement = element.find('.dropdown-content');
 
         toggleElement.data('dropdowntoggle' + id, true);
         contentElement.data('dropdowncontent' + id, true);
@@ -66,40 +77,24 @@ angular.module('directives.dropdown', [])
         toggleElement.keydown(function(event) {
           if (event.which === 13) {
             doToggle();
+            event.preventDefault();
           }
         });
 
-        /*
-         Some explaining why this check is necessary:
-         ng-file-upload library appends an "<input type="file" ngf-select..." element
-         to the body when "<a ngf-select..." is used for file upload.
-         It then programmatically clicks the "<input type="file" ngf-select..." element
-         when a user clicks the "<a ngf-select..." element. This would close the
-         dropdown if a user clicks on such link in dropdown content, because the programmatically
-         triggered click happens outside dropdown content.
-         */
-        function isNgfSelectInput(target) {
-          return target.attr('ngf-select') !== undefined;
-        }
+        function checkCloseDropdown(event) {
+          var target = angular.element(event.target),
+              contentClicked = target.inheritedData('dropdowncontent' + id),
+              toggleClicked = target.inheritedData('dropdowntoggle' + id);
 
-        angular.element($document[0].body).bind('click', function(event) {
-          var target = angular.element(event.target);
-          var contentClicked = target.inheritedData('dropdowncontent' + id);
-          var toggleClicked = target.inheritedData('dropdowntoggle' + id);
-
-          function close() {
+          if (!contentClicked && !toggleClicked &&
+              contentElement.is(':visible') && !isNgfSelectInput(target)) {
             contentElement.hide();
             toggleElement.removeClass('active');
             applyCloseCallback();
           }
+        }
 
-          if (contentClicked && attrs.closeOnContentClick !== undefined) {
-            close();
-          } else if (!contentClicked && !toggleClicked &&
-                     contentElement.is(':visible') && !isNgfSelectInput(target)) {
-            close();
-          }
-        });
+        angular.element($document[0].body).on('click', checkCloseDropdown);
       }
     };
   });
