@@ -74,7 +74,7 @@ angular.module('directives.usefulLinks', [
 
         $scope.SearchState = SearchState;
         $scope.UsefulLinkType = UsefulLinkType;
-        $scope.userLang = $rootScope.userLang;
+        $scope.selectedLanguage = $rootScope.selectedLanguage;
 
         setSearchState(SearchState.NO_SEARCH);
 
@@ -82,7 +82,7 @@ angular.module('directives.usefulLinks', [
         $scope.newLink = {};
 
         $scope.getStudentServicesLinks = function() {
-          return StudentServicesLinks[$scope.userLang];
+          return StudentServicesLinks[$scope.selectedLanguage];
         };
 
         $scope.edit = function() {

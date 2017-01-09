@@ -18,7 +18,7 @@
 <div class="cookie-notification">
   <span class="cookie-notification__content">
     {{::('cookieNotification.notification' | translate)}}
-    <a href="{{::privacyPolicyLink.href[userLang]}}">{{::(privacyPolicyLink.key | translate)}}</a>
+    <a href="{{::privacyPolicyLink.href[selectedLanguage]}}">{{::(privacyPolicyLink.key | translate)}}</a>
   </span>
 
   <span class="cookie-notification__actions">

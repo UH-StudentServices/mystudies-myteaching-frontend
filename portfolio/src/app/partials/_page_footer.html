@@ -32,9 +32,9 @@
         <ul class="list-of-links--light">
             <li><a href="http://www.helsinki.fi/yliopisto/yhteystiedot.html" tabindex="0">{{::('pageFooter.contact' | translate)}}</a></li>
 
-            <li ng-if="userLang ==='fi'"><a href="https://elomake.helsinki.fi/lomakkeet/59401/lomake.html" tabindex="0" target="_blank">{{::('pageFooter.giveFeedback' | translate)}}</a></li>
-            <li ng-if="userLang ==='en'"><a href="https://elomake.helsinki.fi/lomakkeet/59401/lomake.html?rinnakkaislomake=eng" tabindex="0" target="_blank">{{::('pageFooter.giveFeedback' | translate)}}</a></li>
-            <li ng-if="userLang ==='sv'"><a href="https://elomake.helsinki.fi/lomakkeet/59401/lomake.html" tabindex="0" target="_blank" >{{::('pageFooter.giveFeedback' | translate)}}</a></li>
+            <li ng-if="selectedLanguage ==='fi'"><a href="https://elomake.helsinki.fi/lomakkeet/59401/lomake.html" tabindex="0" target="_blank">{{::('pageFooter.giveFeedback' | translate)}}</a></li>
+            <li ng-if="selectedLanguage ==='en'"><a href="https://elomake.helsinki.fi/lomakkeet/59401/lomake.html?rinnakkaislomake=eng" tabindex="0" target="_blank">{{::('pageFooter.giveFeedback' | translate)}}</a></li>
+            <li ng-if="selectedLanguage ==='sv'"><a href="https://elomake.helsinki.fi/lomakkeet/59401/lomake.html" tabindex="0" target="_blank" >{{::('pageFooter.giveFeedback' | translate)}}</a></li>
             <li><a href="https://flamma.helsinki.fi/portal/home/login" tabindex="0">Flamma</a></li>
         </ul>
     </div>

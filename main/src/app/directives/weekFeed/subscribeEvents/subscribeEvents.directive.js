@@ -59,10 +59,9 @@ angular.module('directives.subscribeEvents', [
       controller: function($scope) {
         var cachedCalendarFeedBaseUrl;
 
-        $scope.userLang = $rootScope.userLang;
         $scope.showPopover = false;
         $scope.InstructionLinks = InstructionLinks;
-        $scope.userLang = $rootScope.userLang;
+        $scope.selectedLanguage = $rootScope.selectedLanguage;
         $scope.showCopyToClipboard = !BrowserUtil.isMobile();
 
         $scope.copyToClipboardSuccessCallback = function() {
@@ -95,7 +94,7 @@ angular.module('directives.subscribeEvents', [
         }
 
         function localizedCalendarFeedUrl() {
-          $scope.calendarFeedUrl = cachedCalendarFeedBaseUrl + $rootScope.userLang;
+          $scope.calendarFeedUrl = cachedCalendarFeedBaseUrl + $rootScope.selectedLanguage;
           return $scope.calendarFeedUrl;
         }
 

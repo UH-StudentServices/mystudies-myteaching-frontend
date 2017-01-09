@@ -29,7 +29,7 @@ angular.module('directives.pageNavigation', [
       scope: {},
       controller: function($scope, primaryLinks, LanguageService) {
         $scope.primaryLinks = primaryLinks;
-        $scope.userLang = LanguageService.getCurrent();
+        $scope.selectedLanguage = LanguageService.getCurrent();
       }
     };
   });

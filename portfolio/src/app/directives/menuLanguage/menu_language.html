@@ -17,7 +17,7 @@
 
 <div>
     <ul class="menu-language">
-        <li ng-repeat="languageOption in getLanguageOptions(userLang)">
+        <li ng-repeat="languageOption in getLanguageOptions(selectedLanguage)">
             <a tabindex="0" role="button"
                aria-label="{{:: languageOption.nativeName }}"
                on-enter-or-click="changeLanguage(languageOption.languageCode)">

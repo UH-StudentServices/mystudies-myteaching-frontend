@@ -73,8 +73,8 @@ angular.module('opintoniApp', [
   .constant('preferredLanguage', 'fi')
 
   .run(function($rootScope, $window, LanguageService) {
-    $rootScope.userLang = LanguageService.getCurrent();
-    moment.locale($rootScope.userLang);
+    $rootScope.selectedLanguage = LanguageService.getCurrent();
+    moment.locale($rootScope.selectedLanguage);
     $window.FastClick.attach($window.document.body);
   })
 
