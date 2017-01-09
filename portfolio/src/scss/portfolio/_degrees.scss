@@ -84,6 +84,10 @@
     }
   }
 
+  .degree__remove:focus .fa-close {
+    outline: auto 5px -webkit-focus-ring-color;
+  }
+
   .new-degree {
     position: relative;
     margin-top: 1em;
