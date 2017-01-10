@@ -19,6 +19,7 @@
 
 angular.module('directives.pageNavigation', [
   'constants.externalLinks',
+  'services.configuration',
   'directives.analytics'
 ])
 
@@ -27,8 +28,8 @@ angular.module('directives.pageNavigation', [
       restrict: 'E',
       templateUrl: 'app/directives/header/pageNavigation/pageNavigation.html',
       scope: {},
-      controller: function($scope, primaryLinks, LanguageService) {
-        $scope.primaryLinks = primaryLinks;
+      controller: function($scope, primaryLinks, LanguageService, Configuration) {
+        $scope.primaryLinks = primaryLinks[Configuration.environment];
         $scope.userLang = LanguageService.getCurrent();
       }
     };
