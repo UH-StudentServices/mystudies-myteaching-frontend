@@ -21,7 +21,7 @@ angular.module('directives.searchBar', [
   'services.search',
   'services.message',
   'ui.bootstrap.typeahead',
-  'template/typeahead/typeahead-popup.html',
+  'uib/template/typeahead/typeahead-popup.html',
   'directives.focus'
 ])
   .directive('searchBar', function($document, SearchService, MessageService,
