@@ -19,6 +19,7 @@ angular.module('directives.mobileToolbar', [
   'constants.commonExternalLinks',
   'constants.externalLinks',
   'services.state',
+  'services.configuration',
   'directives.logoutLink',
   'directives.userMenu',
   'directives.mobileMenu',
@@ -28,7 +29,8 @@ angular.module('directives.mobileToolbar', [
                                        mobileReturnLinks,
                                        primaryLinks,
                                        LanguageService,
-                                       $state) {
+                                       $state,
+                                       Configuration) {
     return {
       restrict: 'E',
       replace: true,
@@ -54,7 +56,7 @@ angular.module('directives.mobileToolbar', [
 
         $scope.pageHeaderLinks = pageHeaderLinks;
         $scope.mobileReturnLinks = mobileReturnLinks;
-        $scope.primaryLinks = primaryLinks;
+        $scope.primaryLinks = primaryLinks[Configuration.environment];
         $scope.userLang = LanguageService.getCurrent();
       }
     };

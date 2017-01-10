@@ -17,7 +17,104 @@
 
 angular.module('constants.externalLinks', [])
 
-  .constant('primaryLinks', [
+.constant('primaryLinks', {
+  local: [
+    {
+      key: 'primaryLinks.oodi',
+      href: {
+        fi: 'https://weboodi.helsinki.fi/hytest/?Kieli=1&valittuKieli=1',
+        sv: 'https://weboodi.helsinki.fi/hytest/?Kieli=2&valittuKieli=2',
+        en: 'https://weboodi.helsinki.fi/hytest/?Kieli=6&valittuKieli=6'
+      }
+    },
+    {
+      key: 'primaryLinks.courseSearch',
+      href: {
+        fi: 'https://dev.courses.helsinki.fi/fi/search',
+        sv: 'https://dev.courses.helsinki.fi/sv/search',
+        en: 'https://dev.courses.helsinki.fi/search'
+      }
+    },
+    {
+      key: 'primaryLinks.opinder',
+      href: {
+        fi: 'https://opinder1.student.helsinki.fi/',
+        sv: 'https://opinder1.student.helsinki.fi/',
+        en: 'https://opinder1.student.helsinki.fi/'
+      }
+    }
+  ],
+  dev: [
+    {
+      key: 'primaryLinks.oodi',
+      href: {
+        fi: 'https://weboodi.helsinki.fi/hytest/?Kieli=1&valittuKieli=1',
+        sv: 'https://weboodi.helsinki.fi/hytest/?Kieli=2&valittuKieli=2',
+        en: 'https://weboodi.helsinki.fi/hytest/?Kieli=6&valittuKieli=6'
+      }
+    },
+    {
+      key: 'primaryLinks.courseSearch',
+      href: {
+        fi: 'https://dev.courses.helsinki.fi/fi/search',
+        sv: 'https://dev.courses.helsinki.fi/sv/search',
+        en: 'https://dev.courses.helsinki.fi/search'
+      }
+    },
+    {
+      key: 'primaryLinks.opinder',
+      href: {
+        fi: 'https://opinder1.student.helsinki.fi/',
+        sv: 'https://opinder1.student.helsinki.fi/',
+        en: 'https://opinder1.student.helsinki.fi/'
+      }
+    }
+  ],
+  qa: [
+    {
+      key: 'primaryLinks.oodi',
+      href: {
+        fi: 'https://weboodi.helsinki.fi/hytest/?Kieli=1&valittuKieli=1',
+        sv: 'https://weboodi.helsinki.fi/hytest/?Kieli=2&valittuKieli=2',
+        en: 'https://weboodi.helsinki.fi/hytest/?Kieli=6&valittuKieli=6'
+      }
+    },
+    {
+      key: 'primaryLinks.courseSearch',
+      href: {
+        fi: 'https://dev.courses.helsinki.fi/fi/search',
+        sv: 'https://dev.courses.helsinki.fi/sv/search',
+        en: 'https://dev.courses.helsinki.fi/search'
+      }
+    },
+    {
+      key: 'primaryLinks.opinder',
+      href: {
+        fi: 'https://opinder1.student.helsinki.fi/',
+        sv: 'https://opinder1.student.helsinki.fi/',
+        en: 'https://opinder1.student.helsinki.fi/'
+      }
+    }
+  ],
+  demo: [
+    {
+      key: 'primaryLinks.oodi',
+      href: {
+        fi: 'https://weboodi.helsinki.fi/hy/frame.jsp?Kieli=1&valittuKieli=1',
+        sv: 'https://weboodi.helsinki.fi/hy/frame.jsp?Kieli=2&valittuKieli=2',
+        en: 'https://weboodi.helsinki.fi/hy/frame.jsp?Kieli=6&valittuKieli=6'
+      }
+    },
+    {
+      key: 'primaryLinks.courseSearch',
+      href: {
+        fi: 'https://demo.courses.helsinki.fi/fi/search',
+        sv: 'https://demo.courses.helsinki.fi/sv/search',
+        en: 'https://demo.courses.helsinki.fi/search'
+      }
+    }
+  ],
+  prod: [
     {
       key: 'primaryLinks.oodi',
       href: {
@@ -42,4 +139,5 @@ angular.module('constants.externalLinks', [])
         en: 'https://opinder.helsinki.fi'
       }
     }
-  ]);
+  ]
+});
