@@ -154,7 +154,7 @@
       "errorLoadingEvents" : "Events could not be loaded"
     },
     "subscribeEvents" : "Add to calendar",
-    "optimeInstructions": "NB Your calendar information is fetched from Optime, which gives your teaching schedule. My Teaching page shows currently all the events of your courses.",
+    "optimeInstructions": "The link above fetches your teaching schedule from Optime. For now, My teaching displays all the events of your courses.",
     "calendarInstructions" : "How to import events to calendar applications",
     "cancelled" : "canceled",
     "official": "Official",
