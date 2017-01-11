@@ -28,7 +28,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      '../bower_components/jquery/jquery.js',
+      '../bower_components/jquery/dist/jquery.js',
       '../bower_components/angular/angular.js',
       '../bower_components/angular-ui-router/release/angular-ui-router.js',
       '../bower_components/angular-resource/angular-resource.js',
@@ -37,7 +37,6 @@ module.exports = function(config) {
       '../bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js',
       '../bower_components/angular-local-storage/dist/angular-local-storage.js',
       '../bower_components/angular-touch/angular-touch.js',
-      '../bower_components/angular-carousel/dist/angular-carousel.js',
       '../bower_components/angular-animate/angular-animate.js',
       '../bower_components/moment/moment.js',
       '../bower_components/moment/locale/fi.js',
