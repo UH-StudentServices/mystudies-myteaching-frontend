@@ -20,8 +20,10 @@ angular.module('services.languageProficiencies', [
   'resources.languageProficiencies'])
 
   .constant('AvailablePortfolioLanguages', ['af', 'ar', 'zh', 'cs', 'da', 'nl', 'en',
-    'et', 'fi', 'fr', 'de', 'el', 'hi', 'hu', 'is', 'it', 'ja', 'ko', 'la', 'lv', 'lt',
-    'no', 'pl', 'pt', 'ru', 'se', 'sk', 'sl', 'es', 'sv', 'tr'])
+                                            'et', 'fi', 'fr', 'de', 'el', 'hi', 'hu',
+                                            'is', 'it', 'ja', 'ko', 'la', 'lv', 'lt',
+                                            'no', 'pl', 'pt', 'ru', 'se', 'sk', 'sl',
+                                            'es', 'sv', 'tr'])
   .constant('AvailableLanguageProficiencies', [1, 2, 3, 4, 5])
 
   .factory('LanguageProficienciesService', function(PortfolioService,

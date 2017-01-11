@@ -16,7 +16,7 @@
  */
 
 angular.module('directives.chooseBackground', ['ui.bootstrap.modal', 'directives.uploadImage',
-  'services.userSettings', 'directives.userBackground'])
+                                               'services.userSettings', 'directives.userBackground'])
 
   .directive('chooseBackgroundButton', function() {
     return {

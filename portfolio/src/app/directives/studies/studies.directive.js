@@ -43,11 +43,12 @@ angular.module('directives.studies', [
 
       function exitEdit() {
         var updateKeywordsRequest = {
-              keywords: scope.keywords
-            },
-            updateSummaryRequest = {
-              summary: scope.summary
-            };
+          keywords: scope.keywords
+        };
+
+        var updateSummaryRequest = {
+          summary: scope.summary
+        };
 
         _.forEach(updateKeywordsRequest.keywords, function(keyword, index) {
           keyword.orderIndex = index;

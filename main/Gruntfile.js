@@ -133,10 +133,10 @@ module.exports = function(grunt) {
             '/common': '../common'
           },
           middleware: [proxyMiddleware,
-            modRewrite([
-              '^/proxy/hyyravintolat http://messi.hyyravintolat.fi/publicapi [P]',
-              '^[^\\.]*$ /index.html [L]'
-            ])
+                       modRewrite([
+                        '^/proxy/hyyravintolat http://messi.hyyravintolat.fi/publicapi [P]',
+                        '^[^\\.]*$ /index.html [L]'
+                       ])
           ]
         }
       }
@@ -287,7 +287,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: 'src',
           src: ['app/vendor/ng-file-upload/FileAPI.min.js',
-                 'app/vendor/ng-file-upload/FileAPI.flash.swf'],
+                'app/vendor/ng-file-upload/FileAPI.flash.swf'],
           dest: '<%= application.dist %>/app'
         }]
       },
