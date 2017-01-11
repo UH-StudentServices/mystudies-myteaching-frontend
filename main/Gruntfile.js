@@ -73,7 +73,7 @@ proxyPaths = [
 proxyMiddleware = function(req, res, next) {
   var path = urlUtil.parse(req.url).pathname;
 
-  if (_.any(proxyPaths, function(p) {return path.indexOf(p) === 0;})) {
+  if (proxyPaths.some(function(p) {return path.indexOf(p) === 0;})) {
     proxy.web(req, res);
   } else {
     next();
