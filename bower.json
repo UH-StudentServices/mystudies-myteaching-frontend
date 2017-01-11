@@ -35,7 +35,7 @@
     "font-awesome": "^4.7.0",
     "fullcalendar": "^3.1.0",
     "hammerjs": "^2.0.8",
-    "jquery": "^3.1.1",
+    "jquery": "^2.2.4",
     "karma-read-json": "^1.1.0",
     "lodash": "^4.17.4",
     "mece-client": "https://github.com/UniversityofHelsinki/mece-client.git#v1.0",
@@ -55,5 +55,13 @@
     "singularity": "^1.7.1",
     "Styleguide": "https://github.com/UniversityofHelsinki/Styleguide.git#release-1.0.7",
     "Styleguide-icons": "https://github.com/UniversityofHelsinki/Styleguide-icons.git#5.0.4"
+  },
+  "resolutions": {
+    "angular": "^1.6.1",
+    "angular-cookies": "^1.6.1",
+    "fullcalendar": "^3.1.0",
+    "jquery": "^2.2.4",
+    "moment": "^2.17.1",
+    "Styleguide-icons": "5.0.4"
   }
 }
