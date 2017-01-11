@@ -22,14 +22,13 @@ angular.module('directives.userMenu.settings.avatar', ['directives.imgLoad',
     STOP: 'STOP_WEBCAM'
   })
 
-  .directive('avatar', function($modal,
-                                  userAvatarUpdatedEvent,
-                                  startImageCropperEvent,
-                                  Camera,
-                                  UserSettingsService,
-                                  BrowserUtil,
-                                  ImageSourceMedia,
-                                  AnalyticsService) {
+  .directive('avatar', function(userAvatarUpdatedEvent,
+                                startImageCropperEvent,
+                                Camera,
+                                UserSettingsService,
+                                BrowserUtil,
+                                ImageSourceMedia,
+                                AnalyticsService) {
     return {
       restrict: 'E',
       replace: true,

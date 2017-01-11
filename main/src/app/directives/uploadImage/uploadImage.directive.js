@@ -74,7 +74,7 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
     };
   })
 
-  .directive('uploadImage', function($modal,
+  .directive('uploadImage', function($uibModal,
                                      $window,
                                      Camera,
                                      UserSettingsService,
@@ -101,7 +101,7 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
         });
 
         function openImageCropper(croppedImage, imageSourceMedia) {
-          $modal.open({
+          $uibModal.open({
             templateUrl: 'app/directives/uploadImage/uploadImage.cropper.html',
             controller: 'CropImageController',
             size: 'lg',
@@ -186,7 +186,7 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
   })
 
   .controller('CropImageController', function($scope,
-                                              $modalInstance,
+                                              $uibModalInstance,
                                               $timeout,
                                               $window,
                                               UserSettingsService,
@@ -202,7 +202,7 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
     $scope.submitting = false;
 
     function closeCropper() {
-      $modalInstance.dismiss();
+      $uibModalInstance.dismiss();
     }
 
     function getCanvasDataURL() {

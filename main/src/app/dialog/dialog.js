@@ -17,7 +17,7 @@
 
 angular.module('opintoniDialog', ['ui.bootstrap.modal'])
 
-  .factory('Dialog', function($modal, $rootScope) {
+  .factory('Dialog', function($uibModal, $rootScope) {
 
     function modalDialog(translationKey, okKey, cancelKey, okCallback, cancelCallback) {
       var scope = $rootScope.$new();
@@ -41,7 +41,7 @@ angular.module('opintoniDialog', ['ui.bootstrap.modal'])
       scope.okKey = okKey;
       scope.cancelKey = cancelKey;
 
-      modalInstance = $modal.open({
+      modalInstance = $uibModal.open({
         templateUrl: 'app/dialog/modalDialog.html',
         scope: scope,
         windowClass: 'confirm',

@@ -24,10 +24,10 @@ angular.module('directives.chooseBackground', ['ui.bootstrap.modal', 'directives
       replace: true,
       templateUrl: 'app/directives/chooseBackground/chooseBackgroundButton.html',
       scope: {},
-      controller: function($scope, $modal, $rootScope, UserSettingsService,
+      controller: function($scope, $uibModal, $rootScope, UserSettingsService,
                            backgroundChangeEvent, AnalyticsService) {
         $scope.openChooseBGModal = function() {
-          $modal.open({
+          $uibModal.open({
             templateUrl: 'app/directives/chooseBackground/chooseDefaultBackground.html',
             controller: 'ChooseDefaultBackgroundController',
             size: 'lg',
@@ -47,7 +47,7 @@ angular.module('directives.chooseBackground', ['ui.bootstrap.modal', 'directives
   })
 
   .controller('ChooseDefaultBackgroundController', function($scope,
-                                                            $modalInstance,
+                                                            $uibModalInstance,
                                                             UserSettingsService,
                                                             $q,
                                                             $rootScope,
@@ -78,12 +78,12 @@ angular.module('directives.chooseBackground', ['ui.bootstrap.modal', 'directives
       UserSettingsService.selectUserBackground(getSelectedBackgroundImageName()).then(function() {
         AnalyticsService.trackChangeDefaultBackground(selectedBackgroundImageName);
         $rootScope.$broadcast(backgroundChangeEvent);
-        $modalInstance.dismiss();
+        $uibModalInstance.dismiss();
       });
     };
 
     $scope.cancel = function() {
-      $modalInstance.dismiss();
+      $uibModalInstance.dismiss();
     };
 
     $scope.init = function(slider) {
