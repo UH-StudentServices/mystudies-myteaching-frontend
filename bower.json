@@ -19,7 +19,7 @@
     "angular-resource": "^1.6.1",
     "angular-sanitize": "^1.6.1",
     "angular-touch": "^1.6.1",
-    "angular-translate": "^2.13.1",
+    "angular-translate": "2.13.1",
     "angular-translate-loader-static-files": "^2.13.1",
     "angular-translate-storage-cookie": "^2.13.1",
     "angular-ui-calendar": "^1.0.2",
