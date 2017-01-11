@@ -3774,7 +3774,8 @@
           "dependencies": {
             "json3": {
               "version": "3.3.2",
-              "from": "json3@3.3.2"
+              "from": "json3@3.3.2",
+              "resolved": "https://registry.npmjs.org/json3/-/json3-3.3.2.tgz"
             }
           }
         },
