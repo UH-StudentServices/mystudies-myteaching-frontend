@@ -85,6 +85,7 @@ angular.module('opintoniApp', [
     $translateProvider,
     $cookiesProvider,
     $compileProvider,
+    $qProvider,
     paginationTemplateProvider,
     preferredLanguage) {
 
@@ -100,6 +101,8 @@ angular.module('opintoniApp', [
     $urlRouterProvider.otherwise('/init');
 
     $compileProvider.debugInfoEnabled(false);
+
+    $qProvider.errorOnUnhandledRejections(false);
 
     $stateProvider
       .state('root', {
