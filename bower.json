@@ -25,8 +25,6 @@
     "angular-ui-calendar": "^1.0.2",
     "angular-ui-router": "^0.3.2",
     "angular-ui-utils": "bower",
-    "angular-utils-pagination": "~0.5.0",
-    "angularUtils-pagination": "angular-utils-pagination#^0.11.1",
     "bootstrap": "^3.3.7",
     "clipboard": "^1.5.16",
     "compass-mixins": "^1.0.2",

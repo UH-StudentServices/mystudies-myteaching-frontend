@@ -38,7 +38,6 @@ module.exports = function(config) {
       '../bower_components/angular-local-storage/dist/angular-local-storage.js',
       '../bower_components/angular-touch/angular-touch.js',
       '../bower_components/angular-carousel/dist/angular-carousel.js',
-      '../bower_components/angular-utils-pagination/dirPagination.js',
       '../bower_components/angular-animate/angular-animate.js',
       '../bower_components/moment/moment.js',
       '../bower_components/moment/locale/fi.js',
