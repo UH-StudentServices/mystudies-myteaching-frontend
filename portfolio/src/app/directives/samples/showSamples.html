@@ -31,13 +31,18 @@
       </div>
       <div class="sample__details-container">
         <div class="sample__description" ng-hide="sampleItem.showFull">
-          <p ng-bind="sampleItem.description" data-ellipsis data-ellipsis-append="{{::' '+('general.showMore'|translate)}}" data-ellipsis-append-click="showFull(sampleItem)"></p>
+          <p ng-bind="sampleItem.description"
+             data-ellipsis
+             data-ellipsis-append="{{::' '+('general.showMore'|translate)}}"
+             data-ellipsis-append-click="showFull(sampleItem)"></p>
         </div>
         <div class="sample__full-description" ng-show="sampleItem.showFull">
           <p>{{sampleItem.description}}
-            <a aria-label="{{::'general.showLess'|translate}}"
-              tabIndex="0"
-              ng-click="hideFull(sampleItem)">{{::'general.showLess'|translate}}</a>
+            <a role="button"
+               href=""
+               aria-label="{{::'general.showLess'|translate}}"
+               tabIndex="0"
+               ng-click="hideFull(sampleItem)">{{::'general.showLess'|translate}}</a>
           </p>
         </div>
       </div>

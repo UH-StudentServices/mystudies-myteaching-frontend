@@ -24,7 +24,7 @@
           <div class="sample__title-container">
             <div class="sample__title">
               <span class="editable-content" ng-show="!sampleItem.titleEdit">
-                <a tabindex="0" ng-click="editTitle(sampleItem)" ng-class="{'ng-invalid':!sampleItem.title}">
+                <a role="button" href="" ng-click="editTitle(sampleItem)" ng-class="{'ng-invalid':!sampleItem.title}">
                   {{sampleItem.title || ('samples.titlePlaceholder' | translate)}}<i class="fa fa-pencil"></i>
                 </a>
               </span>
@@ -35,7 +35,7 @@
                        ui-keypress="{'enter':'exitTitleEdit(sampleItem)'}"
                        ng-change="onChange()"
                        ng-class="{'ng-invalid':!sampleItem.title}" />
-                <a tabindex="0" ng-click="exitTitleEdit(sampleItem)"><i class="fa fa-check"></i></a>
+                <a role="button" href="" ng-click="exitTitleEdit(sampleItem)"><i class="fa fa-check"></i></a>
               </span>
             </div>
           </div>
@@ -44,7 +44,7 @@
       <div class="sample__details-container">
         <div class="sample__url">
           <span class="editable-content" ng-show="!sampleItem.urlEdit">
-            <a tabindex="0" ng-click="editUrl(sampleItem)">
+            <a role="button" href="" ng-click="editUrl(sampleItem)">
               {{sampleItem.url || ('samples.urlPlaceholder' | translate)}}<i class="fa fa-pencil"></i>
             </a>
           </span>
@@ -57,7 +57,7 @@
                    ui-keypress="{'enter':'exitUrlEdit(sampleItem)'}"
                    ng-change="onChange()"
                    ng-class="{'ng-invalid':!sampleItem.url}" />
-            <a tabindex="0" ng-click="exitUrlEdit(sampleItem)"><i class="fa fa-check"></i></a>
+            <a role="button" href="" ng-click="exitUrlEdit(sampleItem)"><i class="fa fa-check"></i></a>
           </span>
         </div>
         <div class="sample__description">
