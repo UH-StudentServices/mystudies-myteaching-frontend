@@ -33,7 +33,7 @@
         <span class="editable-content-active" ng-if="degree.dateOfDegreeEdit">
           <input date-input focus="degree.dateOfDegreeEdit" ng-model="degree.dateOfDegree"
                  ui-keypress="{'enter':'exitDateOfDegreeEdit(degree)'}"
-                 placeholder="{{::('degrees.datePlaceHolder' | translate) }}">
+                 placeholder="{{::('degrees.datePlaceholder' | translate) }}">
           <a role="button" href="" ng-click="exitDateOfDegreeEdit(degree)"><i class="fa fa-check"></i></a>
         </span>
       </div>
@@ -41,7 +41,7 @@
       <div class="box-data__title">
         <span class="editable-content" ng-show="!degree.titleEdit">
           <a role="button" href="" ng-click="editTitle(degree)">
-            {{ degree.title || ('degrees.titlePlaceHolder' | translate) }}
+            {{ degree.title || ('degrees.titlePlaceholder' | translate) }}
             <i class="fa fa-pencil"></i>
           </a>
         </span>
