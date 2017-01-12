@@ -1,7 +1,6 @@
 {
-  "name": "opintoni",
-  "version": "0.0.0",
-  "description": "Description for opintoni",
+  "name": "@helsinkiuni/my-studies",
+  "version": "0.0.1",
   "private": true,
   "devDependencies": {
     "autoprefixer": "^6.6.1",
