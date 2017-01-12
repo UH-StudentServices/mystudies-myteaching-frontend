@@ -10,30 +10,35 @@
     "afterEach": false,
     "angular": false,
     "beforeEach": false,
-    "browser", false,
-    "by", false,
-    "Clipboard", false,
-    "describe", false,
-    "element", false,
-    "expect", false,
+    "browser": false,
+    "by": false,
+    "Clipboard": false,
+    "describe": false,
+    "element": false,
+    "expect": false,
     "google": false,
     "Hammer": false,
     "inject": false,
-    "it", false,
-    "jasmine", false,
+    "it": false,
+    "jasmine": false,
     "Modernizr": false,
     "moment": false,
     "sprintf": false,
-    "twttr", true
+    "twttr": true
   },
   "rules": {
     "dot-location": [2, "property"],
     "indent": [2, 2, {
       "VariableDeclarator": 2,
-      "SwitchCase": 1
+      "SwitchCase": 1,
+      "ArrayExpression": "first",
+      "FunctionExpression": {
+        "parameters": "first"
+      },
+      "ObjectExpression": "first"
     }],
     "max-len": [2, 120, 2],
     "eqeqeq": [2, "smart"],
-    "space-after-keywords": 2
+    "keyword-spacing": 2
   }
 }
