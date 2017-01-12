@@ -25,7 +25,7 @@ angular.module('directives.menuLanguage', [
 
     return {
       restrict: 'E',
-      templateUrl: 'app/directives/header/menuLanguage/menu_language.html',
+      templateUrl: 'app/directives/menuLanguage/menu_language.html',
       link: function($scope) {
         var languageOptions = [{
           nativeName: 'English',

@@ -107,6 +107,7 @@
     &:hover {
       color: $gray;
     }
+    @include default-focus;
   }
 
   &__remove {

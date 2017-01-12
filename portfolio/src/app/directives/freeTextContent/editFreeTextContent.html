@@ -18,7 +18,7 @@
 <div class="edit-free-text-content">
   <div class="free-text-content__title-container">
     <h3 class="free-text-content__title is-editable" ng-if="!headingKey && !editingTitle">
-      <a tabindex="0" ng-click="editTitle()">
+      <a role="button" href="" ng-click="editTitle()">
         {{freeTextContent.title}}
       </a>
     </h3>
@@ -30,7 +30,7 @@
            ng-if="editingTitle"
            type="text"
            ng-model="freeTextContent.title"
-           ng-enter="onOk()">
+           ui-keypress="{'enter':'onOk()'}">
     <button ng-if="!headingKey && !editingTitle" ng-click="onRemove()" class="favorites-list__remove"></button>
   </div>
 
