@@ -25,7 +25,7 @@
       <div class="lyre-icon"></div>
       <div class="box-data__content">
         <span class="editable-content" ng-show="!degree.dateOfDegreeEdit">
-          <a tabindex="0" on-enter-or-click="editDateOfDegree(degree)">
+          <a role="button" href="" ng-click="editDateOfDegree(degree)">
             {{ (degree.dateOfDegree ? (degree.dateOfDegree | momentFormat:'DD.MM.YYYY') : ('degrees.datePlaceholder' | translate)) }}
             <i class="fa fa-pencil"></i>
           </a>
@@ -34,13 +34,13 @@
           <input date-input focus="degree.dateOfDegreeEdit" ng-model="degree.dateOfDegree"
                  ui-keypress="{'enter':'exitDateOfDegreeEdit(degree)'}"
                  placeholder="{{::('degrees.datePlaceHolder' | translate) }}">
-          <a tabindex="0" on-enter-or-click="exitDateOfDegreeEdit(degree)"><i class="fa fa-check"></i></a>
+          <a role="button" href="" ng-click="exitDateOfDegreeEdit(degree)"><i class="fa fa-check"></i></a>
         </span>
       </div>
 
       <div class="box-data__title">
         <span class="editable-content" ng-show="!degree.titleEdit">
-          <a tabindex="0" on-enter-or-click="editTitle(degree)">
+          <a role="button" href="" ng-click="editTitle(degree)">
             {{ degree.title || ('degrees.titlePlaceHolder' | translate) }}
             <i class="fa fa-pencil"></i>
           </a>
@@ -50,13 +50,13 @@
                  ng-model="degree.title"
                  ui-keypress="{'enter':'exitTitleEdit(degree)'}"
                  placeholder="{{::('degrees.titlePlaceholder' | translate) }}">
-          <a tabindex="0" on-enter-or-click="exitTitleEdit(degree)"><i class="fa fa-check"></i></a>
+          <a role="button" href="" ng-click="exitTitleEdit(degree)"><i class="fa fa-check"></i></a>
         </span>
       </div>
 
       <div class="box-data__content">
         <span class="editable-content" ng-show="!degree.descriptionEdit">
-          <a tabindex="0" on-enter-or-click="editDescription(degree)">
+          <a role="button" href="" ng-click="editDescription(degree)">
             {{ (degree.description || ('degrees.descriptionPlaceholder' | translate)) }}
             <i class="fa fa-pencil"></i>
           </a>
@@ -66,10 +66,10 @@
                  ng-model="degree.description"
                  ui-keypress="{'enter':'exitDescriptionEdit(degree)'}"
                  placeholder="{{::('degrees.descriptionPlaceholder' | translate)}}">
-          <a tabindex="0" on-enter-or-click="exitDescriptionEdit(degree)"><i class="fa fa-check"></i></a>
+          <a role="button" href="" ng-click="exitDescriptionEdit(degree)"><i class="fa fa-check"></i></a>
         </span>
       </div>
-      <a class="degree__remove" tabindex="0" on-enter-or-click="removeDegree(degree)"><i class="fa fa-close"></i></a>
+      <a class="degree__remove" role="button" href="" ng-click="removeDegree(degree)"><i class="fa fa-close"></i></a>
     </div>
   </li>
 </ul>
@@ -84,7 +84,7 @@
            aria-label="{{::('degrees.addNewPlaceholder' | translate)}}">
   </div>
   <button class="add-icon fa fa-plus"
-          on-enter-or-click="addDegree(newDegree)"
+          ng-click="addDegree(newDegree)"
           aria-label="{{::('degrees.addNewPlaceholder' | translate)}}">
   </button>
 </div>

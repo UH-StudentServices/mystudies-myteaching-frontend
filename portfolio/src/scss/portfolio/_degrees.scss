@@ -85,7 +85,7 @@
   }
 
   .degree__remove:focus .fa-close {
-    outline: auto 5px -webkit-focus-ring-color;
+    outline: auto 5px $focus-color;
   }
 
   .new-degree {

@@ -102,7 +102,7 @@ angular.module('directives.subscribeEvents', [
               return CalendarFeedResource.saveCalendarFeed();
             })
             .then(function(calendarFeed) {
-              cachedCalendarFeedUrl = DomainUtil.getDomain() + calendarFeed.feedUrl + '/' + $rootScope.userLang;
+              cachedCalendarFeedUrl = DomainUtil.getDomain() + calendarFeed.feedUrl + '/' + $rootScope.selectedLanguage;
               return $scope.calendarFeedUrl = cachedCalendarFeedUrl;
             });
         }

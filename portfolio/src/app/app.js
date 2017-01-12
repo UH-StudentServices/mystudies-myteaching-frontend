@@ -35,7 +35,6 @@ angular.module('opintoniPortfolioApp', [
 
   'controllers.main',
 
-  'directives.onEnterOrClick',
   'directives.visibility',
   'directives.attainments',
   'directives.pageHeader',

@@ -36,7 +36,7 @@ $keywords-summary-max-height: 171px;
 }
 
 .keywords-input-container__btn:focus {
-  outline: auto 5px -webkit-focus-ring-color;
+  outline: auto 5px $focus-color;
 }
 
 .keywords-input-container {

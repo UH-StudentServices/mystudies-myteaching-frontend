@@ -15,6 +15,12 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+$focus-color: lighten($blue, 20%);
+
+:focus {
+  outline: auto 5px $focus-color;
+}
+
 ul {
   margin: 0;
   padding: 0;
@@ -28,6 +34,6 @@ a {
   cursor: pointer;
 
   &:focus {
-    outline: auto 5px -webkit-focus-ring-color;
+    outline: auto 5px $focus-color;
   }
 }

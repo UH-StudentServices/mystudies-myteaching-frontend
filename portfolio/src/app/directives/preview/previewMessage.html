@@ -18,8 +18,9 @@
 <div class="messages info" ng-show="showMessage">
   <p>
     {{::('preview.info' | translate | capitalize)}}
-    <a tabindex="0"
-       on-enter-or-click="exitPreview()"
+    <a role="link"
+       href=""
+       ng-click="exitPreview()"
        translate="preview.exit"
        class="text-transform-capitalize">
     </a>
