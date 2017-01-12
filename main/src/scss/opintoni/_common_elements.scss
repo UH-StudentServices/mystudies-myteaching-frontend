@@ -15,16 +15,6 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-$focus-color: lighten($blue, 20%);
-@mixin default-focus-outline {
-  outline: auto 5px $focus-color;
-}
-@mixin default-focus {
-  &:focus {
-    @include default-focus-outline;
-  }
-}
-
 @include default-focus;
 
 ul {
