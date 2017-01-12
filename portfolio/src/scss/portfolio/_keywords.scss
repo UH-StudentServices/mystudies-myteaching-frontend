@@ -35,8 +35,8 @@ $keywords-summary-max-height: 171px;
   margin-bottom: 0.2em;
 }
 
-.keywords-input-container__btn:focus {
-  outline: auto 5px $focus-color;
+.keywords-input-container__btn {
+  @include default-focus;
 }
 
 .keywords-input-container {

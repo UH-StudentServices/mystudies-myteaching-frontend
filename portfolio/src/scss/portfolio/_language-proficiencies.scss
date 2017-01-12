@@ -107,9 +107,7 @@
     &:hover {
       color: $gray;
     }
-    &:focus {
-        outline: auto 5px $focus-color;
-    }
+    @include default-focus;
   }
 
   &__remove {

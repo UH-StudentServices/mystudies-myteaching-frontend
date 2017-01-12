@@ -90,7 +90,6 @@ describe('Language proficiencies directive', function() {
 
     module('templates');
     module('directives.editLink');
-    module('directives.onEnterOrClick');
 
     inject(function(_$compile_, _$rootScope_, _LanguageProficienciesService_) {
       $compile = _$compile_;

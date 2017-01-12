@@ -85,7 +85,7 @@
   }
 
   .degree__remove:focus .fa-close {
-    outline: auto 5px $focus-color;
+    @include default-focus-outline;
   }
 
   .new-degree {
@@ -113,7 +113,7 @@
       background-color: $blue;
       color: $white;
       .fa-plus {
-        color: #ffffff;
+        color: $white;
       }
     }
   }

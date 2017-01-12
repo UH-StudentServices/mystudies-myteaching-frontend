@@ -16,10 +16,16 @@
  */
 
 $focus-color: lighten($blue, 20%);
-
-:focus {
+@mixin default-focus-outline {
   outline: auto 5px $focus-color;
 }
+@mixin default-focus {
+  &:focus {
+    @include default-focus-outline;
+  }
+}
+
+@include default-focus;
 
 ul {
   margin: 0;
@@ -33,7 +39,5 @@ input {
 a {
   cursor: pointer;
 
-  &:focus {
-    outline: auto 5px $focus-color;
-  }
+  @include default-focus;
 }
