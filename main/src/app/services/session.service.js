@@ -31,7 +31,7 @@ angular.module('services.session', [
     var sessionPromise;
 
     var getSession = function(forceRefresh) {
-      if (!sessionPromise || forceRefresh) {
+      if (!sessionPromise || forceRefresh) {
         sessionPromise = SessionResource.getSession();
       }
 

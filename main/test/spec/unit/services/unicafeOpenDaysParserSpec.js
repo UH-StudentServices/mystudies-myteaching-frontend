@@ -39,8 +39,8 @@ describe('UnicafeOpenDaysParser', function() {
       business: {
         exception: [
           {from: '1.6',
-            to: '30.8',
-            closed: true}],
+           to: '30.8',
+           closed: true}],
         regular: [
           {when: ['Ma', 'Ti', 'Ke', 'To', false, false, false]},
           {when: ['previous', 'previous', 'previous', 'previous', 'Pe', false, false]}

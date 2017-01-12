@@ -36,6 +36,6 @@ exports.config = {
       takeScreenShotsOnlyForFailedSpecs: true
     }));
 
-    browser.driver.manage().window().setSize(2000, 1500);
+    browser.driver.manage().window().maximize();
   }
 };

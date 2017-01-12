@@ -16,8 +16,7 @@
  */
 
 angular.module('directives.userMenu.settings', [
-  'template/modal/backdrop.html',
-  'template/modal/window.html',
+  'uib/template/modal/window.html',
   'angular-flexslider',
   'services.userSettings',
   'services.portfolio',
