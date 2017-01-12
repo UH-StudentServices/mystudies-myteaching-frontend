@@ -28,6 +28,7 @@ angular.module('directives.contactInformation', ['services.contactInformation'])
       replace: true,
       scope: {
         contactInformationData: '&',
+        ownerName: '@',
         portfolioId: '@'
       },
       templateUrl: 'app/directives/contactInformation/contactInformation.html',
@@ -60,10 +61,8 @@ angular.module('directives.contactInformation', ['services.contactInformation'])
         }
 
         $scope.exitEdit = function() {
-          var updateContactInformationRequest = {};
+          var updateContactInformationRequest = _.extend({}, $scope.contactInformation);
 
-          updateContactInformationRequest.phoneNumber = $scope.contactInformation.phoneNumber;
-          updateContactInformationRequest.email = $scope.contactInformation.email;
           updateContactInformationRequest.someLinks =
             selectFilledSomeLinks($scope.contactInformation.someLinks);
           ContactInformationService
@@ -74,6 +73,14 @@ angular.module('directives.contactInformation', ['services.contactInformation'])
             });
           return true;
         };
+
+        $scope.reset = function() {
+          ContactInformationService
+            .resetEmployeeContactInformation($scope.portfolioId)
+            .then(function(data) {
+              $scope.contactInformation = data;
+            });
+        }
 
         $scope.editSomeLink = function(someLink) {
           someLink.edit = true;

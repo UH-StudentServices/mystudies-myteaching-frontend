@@ -27,13 +27,13 @@ $twitter-blue: #4099ff;
     right: 0;
   }
   .contact-details {
-    .name {
+    &__name {
       font-weight: 600;
       text-transform: uppercase;
       margin-bottom: 1em;
     }
-    .phone-number {
-      margin-bottom: 0.2em;
+    &__field {
+      margin-bottom: 0.5em;
     }
   }
 
