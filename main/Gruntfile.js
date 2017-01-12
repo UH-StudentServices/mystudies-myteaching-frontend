@@ -21,7 +21,6 @@ var fs = require('fs'),
     httpProxy = require('http-proxy'),
     modRewrite = require('connect-modrewrite'),
     urlUtil = require('url'),
-    _ = require('lodash'),
     proxy,
     proxyPaths,
     proxyMiddleware,
@@ -73,7 +72,7 @@ proxyPaths = [
 proxyMiddleware = function(req, res, next) {
   var path = urlUtil.parse(req.url).pathname;
 
-  if (_.any(proxyPaths, function(p) {return path.indexOf(p) === 0;})) {
+  if (proxyPaths.some(function(p) {return path.indexOf(p) === 0;})) {
     proxy.web(req, res);
   } else {
     next();
@@ -133,10 +132,10 @@ module.exports = function(grunt) {
             '/common': '../common'
           },
           middleware: [proxyMiddleware,
-            modRewrite([
-              '^/proxy/hyyravintolat http://messi.hyyravintolat.fi/publicapi [P]',
-              '^[^\\.]*$ /index.html [L]'
-            ])
+                       modRewrite([
+                        '^/proxy/hyyravintolat http://messi.hyyravintolat.fi/publicapi [P]',
+                        '^[^\\.]*$ /index.html [L]'
+                       ])
           ]
         }
       }
@@ -287,7 +286,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: 'src',
           src: ['app/vendor/ng-file-upload/FileAPI.min.js',
-                 'app/vendor/ng-file-upload/FileAPI.flash.swf'],
+                'app/vendor/ng-file-upload/FileAPI.flash.swf'],
           dest: '<%= application.dist %>/app'
         }]
       },

@@ -17,7 +17,7 @@
 
 angular.module('directives.favorites.addNew.unicafe',
   ['resources.favorites',
-    'resources.favorites.unicafe'])
+   'resources.favorites.unicafe'])
 
   .directive('addNewUnicafeFavorite', function(UnicafeResource, FavoritesResource,
                                                NewFavoriteAddedEvent) {

@@ -15,22 +15,14 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-'use strict';
+angular.module('resources.optimeCalendar', [])
 
-angular.module('directives.pageNavigation', [
-  'constants.externalLinks',
-  'services.configuration',
-  'directives.analytics'
-])
+  .factory('OptimeCalendarResource', function($resource) {
+    var optimeCalendarResource = $resource('/api/private/v1/optime/calendar');
 
-  .directive('pageNavigation', function() {
     return {
-      restrict: 'E',
-      templateUrl: 'app/directives/header/pageNavigation/pageNavigation.html',
-      scope: {},
-      controller: function($scope, primaryLinks, LanguageService, Configuration) {
-        $scope.primaryLinks = primaryLinks[Configuration.environment];
-        $scope.selectedLanguage = LanguageService.getCurrent();
+      getCalendarUrl: function() {
+        return optimeCalendarResource.get().$promise;
       }
     };
   });

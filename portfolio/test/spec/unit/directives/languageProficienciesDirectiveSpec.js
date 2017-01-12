@@ -73,8 +73,10 @@ describe('Language proficiencies directive', function() {
   beforeEach(function() {
     module('directives.languageProficiencies', function($provide) {
       $provide.constant('AvailablePortfolioLanguages', ['af', 'ar', 'zh', 'cs', 'da', 'nl', 'en',
-            'et', 'fi', 'fr', 'de', 'el', 'hi', 'hu', 'is', 'it', 'ja', 'ko', 'lv', 'lt', 'no',
-            'pl', 'pt', 'ru', 'sk', 'sl', 'es', 'sv', 'tr']);
+                                                        'et', 'fi', 'fr', 'de', 'el', 'hi', 'hu',
+                                                        'is', 'it', 'ja', 'ko', 'lv', 'lt', 'no',
+                                                        'pl', 'pt', 'ru', 'sk', 'sl', 'es', 'sv',
+                                                        'tr']);
       $provide.constant('AvailableLanguageProficiencies', [1, 2, 3, 4, 5]);
       $provide.constant('LanguageProficienciesService', {
         save: jasmine.createSpy('LanguageProficienciesService.save').and.returnValue({

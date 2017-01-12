@@ -25,7 +25,6 @@ angular.module('opintoniApp', [
   'pascalprecht.translate',
   'ngAnimate',
   'ngSanitize',
-  'angularUtils.directives.dirPagination',
   'ngAria',
   'ngJoyRide',
   'ngAddToHomescreen',
@@ -86,7 +85,7 @@ angular.module('opintoniApp', [
     $translateProvider,
     $cookiesProvider,
     $compileProvider,
-    paginationTemplateProvider,
+    $qProvider,
     preferredLanguage) {
 
     $locationProvider.html5Mode({
@@ -96,11 +95,11 @@ angular.module('opintoniApp', [
 
     $httpProvider.interceptors.push('HttpInterceptor');
 
-    paginationTemplateProvider.setPath('app/opintoni/views/partials/_dir_pagination.html');
-
     $urlRouterProvider.otherwise('/init');
 
     $compileProvider.debugInfoEnabled(false);
+
+    $qProvider.errorOnUnhandledRejections(false);
 
     $stateProvider
       .state('root', {

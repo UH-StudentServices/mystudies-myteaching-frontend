@@ -118,10 +118,10 @@ module.exports = function(grunt) {
             '/common': '../common'
           },
           middleware: [proxyMiddleware,
-            modRewrite([
-              '^[^\\.]*$ /index.html [L]',
-              '^/portfolio* http://localhost:3002/ [P]'
-            ])
+                       modRewrite([
+                        '^[^\\.]*$ /index.html [L]',
+                        '^/portfolio* http://localhost:3002/ [P]'
+                       ])
           ]
         }
       }
