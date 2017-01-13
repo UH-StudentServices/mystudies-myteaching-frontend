@@ -30,7 +30,7 @@ angular.module('directives.pageNavigation', [
       scope: {},
       controller: function($scope, primaryLinks, LanguageService, Configuration) {
         $scope.primaryLinks = primaryLinks[Configuration.environment];
-        $scope.userLang = LanguageService.getCurrent();
+        $scope.selectedLanguage = LanguageService.getCurrent();
       }
     };
   });

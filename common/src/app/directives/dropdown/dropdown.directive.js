@@ -64,12 +64,20 @@ angular.module('directives.dropdown', [])
         contentElement.data('dropdowncontent' + id, true);
         contentElement.hide();
 
-        toggleElement.bind('click', function() {
+        var doToggle = function() {
           contentElement.toggle();
           toggleElement.toggleClass('active');
 
           if (toggleElement.hasClass('active')) {
             applyOpenCallback();
+          }
+        };
+
+        toggleElement.click(doToggle);
+        toggleElement.keydown(function(event) {
+          if (event.which === 13) {
+            doToggle();
+            event.preventDefault();
           }
         });
 

@@ -17,7 +17,7 @@
 
 <div dropdown class="user-settings" close-callback="resetMenu()">
   <div class="dropdown-toggle">
-    <a tabindex="0"
+    <a href=""
        class="user-menu__actions--action"
        ng-class="{active : showMenu}"
        aria-label="{{::('userSettings.title' | translate)}}"
@@ -38,13 +38,13 @@
       </a>
     </li>
     <li limit-visibility="['STUDENT_ONLY', 'MY_STUDIES_ONLY']" class="user-settings__menu-item" role="menuitem">
-      <a tabindex="0" ng-click="openPortfolio('student')">
+      <a href="" ng-click="openPortfolio('student')">
         <i class="hy hy-profile"></i>
         {{::('userSettings.portfolio' | translate | capitalize)}}
       </a>
     </li>
     <li limit-visibility="['TEACHER_ONLY', 'MY_TEACHINGS_ONLY']" class="user-settings__menu-item" role="menuitem">
-      <a tabindex="0" ng-click="openPortfolio('teacher')">
+      <a href="" ng-click="openPortfolio('teacher')">
         <i class="hy hy-profile"></i>
         {{::('userSettings.universityPortfolio' | translate | capitalize)}}
       </a>

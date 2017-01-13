@@ -64,7 +64,7 @@
         <li ng-repeat="someLink in contactInformation.someLinks | orderBy: 'type'"
             class="useful-links__link block"
             role="listitem">
-          <a tabindex="0" class="list-of-links__link edit editable" ng-hide="someLink.edit" ng-click="editSomeLink(someLink)">
+          <a role="button" href="" class="list-of-links__link edit editable" ng-hide="someLink.edit" ng-click="editSomeLink(someLink)">
             <i class="fa fa-bars hide-mobile-only"></i>
             {{ someLink.url }}
             <i class="fa fa-pencil"></i>
@@ -73,7 +73,7 @@
 
           <div class="useful-links__edit-link-url" ng-show="someLink.edit">
             <input focus="someLink.edit" ng-model="someLink.url" ui-keypress="{'enter':'exitSomeLinkEdit(someLink)'}">
-            <a tabindex="0" ng-click="exitSomeLinkEdit(someLink)"><i class="fa fa-check"></i></a>
+            <a role="button" href="" ng-click="exitSomeLinkEdit(someLink)"><i class="fa fa-check"></i></a>
           </div>
         </li>
       </ul>

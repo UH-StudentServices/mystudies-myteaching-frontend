@@ -84,6 +84,10 @@
     }
   }
 
+  .degree__remove:focus .fa-close {
+    @include default-focus-outline;
+  }
+
   .new-degree {
     position: relative;
     margin-top: 1em;
@@ -109,7 +113,7 @@
       background-color: $blue;
       color: $white;
       .fa-plus {
-        color: #ffffff;
+        color: $white;
       }
     }
   }

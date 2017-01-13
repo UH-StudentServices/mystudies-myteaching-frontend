@@ -63,10 +63,9 @@ angular.module('directives.subscribeEvents', [
       controller: function($scope) {
         var cachedCalendarFeedUrl;
 
-        $scope.userLang = $rootScope.userLang;
         $scope.showPopover = false;
         $scope.InstructionLinks = InstructionLinks;
-        $scope.userLang = $rootScope.userLang;
+        $scope.selectedLanguage = $rootScope.selectedLanguage;
         $scope.showCopyToClipboard = !BrowserUtil.isMobile();
 
         $scope.copyToClipboardSuccessCallback = function() {
@@ -103,7 +102,7 @@ angular.module('directives.subscribeEvents', [
               return CalendarFeedResource.saveCalendarFeed();
             })
             .then(function(calendarFeed) {
-              cachedCalendarFeedUrl = DomainUtil.getDomain() + calendarFeed.feedUrl + '/' + $rootScope.userLang;
+              cachedCalendarFeedUrl = DomainUtil.getDomain() + calendarFeed.feedUrl + '/' + $rootScope.selectedLanguage;
               return $scope.calendarFeedUrl = cachedCalendarFeedUrl;
             });
         }
