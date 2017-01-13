@@ -40,9 +40,10 @@
         </div>
         <div class="work-experience__full-description" ng-show="workExperienceItem.showFull">
           <p>{{workExperienceItem.text}}
-            <a aria-label="{{::'general.showLess'|translate}}"
-              tabIndex="0"
-              ng-click="hideFull(workExperienceItem)">{{::'general.showLess'|translate}}</a>
+            <a role="button"
+               href=""
+               aria-label="{{::'general.showLess'|translate}}"
+               ng-click="hideFull(workExperienceItem)">{{::'general.showLess'|translate}}</a>
           </p>
         </div>
         <div class="work-experience__url">
