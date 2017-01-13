@@ -36,7 +36,10 @@ $sample-full-description-vertical-margin: 0.85em;
   }
 
   &__title-content, &__url-content {
-    @extend .editable-content
+    @extend .editable-content;
+    &-input {
+      width: 90%
+    }
   }
 
   &__title-content--active, &__url-content--active {
@@ -46,6 +49,21 @@ $sample-full-description-vertical-margin: 0.85em;
   &__title-content, &__url-content, &__title-content--active, &__url-content--active {
     .ng-invalid {
       border: 2px solid $sample-invalid-color;
+    }
+  }
+
+  &__title-content {
+    &-button {
+      color: $white;
+    }
+  }
+
+  &__url-content {
+    &-button {
+      color: $silver !important;
+      &:hover {
+        color: $white !important;
+      }
     }
   }
 
@@ -103,16 +121,6 @@ $sample-full-description-vertical-margin: 0.85em;
       background-color: rgba(0, 0, 0, 0.8);
       color: $silver;
     }
-
-    .editable-content a {
-      color: $white;
-    }
-
-    .editable-content-active {
-      input {
-        width: 90%;
-      }
-    }
   }
 
   &__title-container {
@@ -145,20 +153,6 @@ $sample-full-description-vertical-margin: 0.85em;
     @include breakpoint($mobile-only) {
       width: 100%;
       margin-top: 1em;
-    }
-
-    .editable-content a {
-      color: $silver !important;
-    }
-
-    .editable-content a:hover {
-      color: $white !important;
-    }
-
-    .editable-content-active {
-      input {
-        width: 90%;
-      }
     }
   }
 
