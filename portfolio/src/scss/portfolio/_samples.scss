@@ -125,7 +125,7 @@ $sample-full-description-vertical-margin: 0.85em;
     text-transform: uppercase;
     position: relative;
     top: 50%;
-    @include transform(translateY(-50%));
+    transform: translateY(-50%);
   }
 
   &__title {
@@ -189,7 +189,6 @@ $sample-full-description-vertical-margin: 0.85em;
 
     p {
       height: 100%;
-      font-size: 1rem;
       margin: 3px 0;
     }
 
@@ -253,7 +252,7 @@ $sample-full-description-vertical-margin: 0.85em;
       position: absolute;
       top: 50%;
       left: 50%;
-      @include transform(translate(-50%, -50%));
+      transform: translate(-50%, -50%);
       @include font-awesome("\f00d");
     }
   }
