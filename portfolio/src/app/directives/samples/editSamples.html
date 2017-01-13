@@ -23,12 +23,12 @@
         <div class="sample__banner-content">
           <div class="sample__title-container">
             <div class="sample__title">
-              <span class="editable-content" ng-show="!sampleItem.titleEdit">
+              <span class="sample__title-content" ng-show="!sampleItem.titleEdit">
                 <a role="button" href="" ng-click="editTitle(sampleItem)" ng-class="{'ng-invalid':!sampleItem.title}">
                   {{sampleItem.title || ('samples.titlePlaceholder' | translate)}}<i class="fa fa-pencil"></i>
                 </a>
               </span>
-              <span class="editable-content-active" ng-show="sampleItem.titleEdit">
+              <span class="sample__title-content--active" ng-show="sampleItem.titleEdit">
                 <input focus="sampleItem.titleEdit"
                        placeholder="{{::'samples.titlePlaceholder'|translate}}"
                        ng-model="sampleItem.title"
@@ -43,12 +43,12 @@
       </div>
       <div class="sample__details-container">
         <div class="sample__url">
-          <span class="editable-content" ng-show="!sampleItem.urlEdit">
+          <span class="sample__url-content" ng-show="!sampleItem.urlEdit">
             <a role="button" href="" ng-click="editUrl(sampleItem)">
               {{sampleItem.url || ('samples.urlPlaceholder' | translate)}}<i class="fa fa-pencil"></i>
             </a>
           </span>
-          <span class="editable-content-active" ng-show="sampleItem.urlEdit">
+          <span class="sample__url-content--active" ng-show="sampleItem.urlEdit">
             <input type="text"
                    required
                    placeholder="{{::'samples.urlPlaceholder'|translate}}"

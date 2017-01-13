@@ -35,9 +35,17 @@ $sample-full-description-vertical-margin: 0.85em;
     display: block;
   }
 
-  .editable-content, .editable-content-active {
+  &__title-content, &__url-content {
+    @extend .editable-content
+  }
+
+  &__title-content--active, &__url-content--active {
+    @extend .editable-content-active
+  }
+
+  &__title-content, &__url-content, &__title-content--active, &__url-content--active {
     .ng-invalid {
-      border: 2px solid $work-experience-invalid-color;
+      border: 2px solid $sample-invalid-color;
     }
   }
 
