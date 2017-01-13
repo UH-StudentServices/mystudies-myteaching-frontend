@@ -20,8 +20,7 @@
 
     <div class="edit-link-wrapper">
       <edit-link on-edit="editFreeTextContent(freeTextContent)"
-                 on-exit-edit="updateFreeTextContent()"
-                 set-edit-state="{{freeTextContentToEdit === freeTextContent}}">
+                 on-exit-edit="updateFreeTextContent()">
       </edit-link>
     </div>
     <div ng-if="freeTextContentToEdit !== freeTextContent">

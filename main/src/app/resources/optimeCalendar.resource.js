@@ -15,24 +15,14 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var ScreenShotReporter = require('protractor-screenshot-reporter');
+angular.module('resources.optimeCalendar', [])
 
-exports.config = {
-  specs: ['test/spec/e2e/**/*.js'],
+  .factory('OptimeCalendarResource', function($resource) {
+    var optimeCalendarResource = $resource('/api/private/v1/optime/calendar');
 
-  capabilities: {
-    'browserName': 'phantomjs',
-    'phantomjs.cli.args': ['--web-security=false', '--ignore-ssl-errors=true'],
-    'phantomjs.binary.path': '../node_modules/.bin/phantomjs'
-  },
-
-  onPrepare: function() {
-    // Add a screenshot reporter and store screenshots to `/tmp/screnshots`:
-    jasmine.getEnv().addReporter(new ScreenShotReporter({
-      baseDirectory: 'e2e_screenshots',
-      takeScreenShotsOnlyForFailedSpecs: true
-    }));
-
-    browser.driver.manage().window().maximize();
-  }
-};
+    return {
+      getCalendarUrl: function() {
+        return optimeCalendarResource.get().$promise;
+      }
+    };
+  });

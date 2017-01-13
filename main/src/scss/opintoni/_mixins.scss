@@ -101,3 +101,12 @@
   &:link, &:hover, &:active, &:visited {@content}
 }
 
+@mixin default-focus-outline {
+  outline: auto 5px $focus-color;
+}
+
+@mixin default-focus {
+  &:focus {
+    @include default-focus-outline;
+  }
+}

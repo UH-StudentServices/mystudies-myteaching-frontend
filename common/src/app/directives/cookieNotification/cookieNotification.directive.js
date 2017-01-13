@@ -27,7 +27,7 @@ angular.module('directives.cookieNotification', ['constants.commonExternalLinks'
       scope: {},
       link: function(scope, el) {
         scope.privacyPolicyLink = privacyPolicyLink;
-        scope.userLang = LanguageService.getCurrent();
+        scope.selectedLanguage = LanguageService.getCurrent();
 
         scope.dismiss = function() {
           UserSettingsService.acceptCookies().then(function() {

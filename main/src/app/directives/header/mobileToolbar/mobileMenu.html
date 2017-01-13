@@ -38,12 +38,12 @@
         </a>
       </li>
       <li ng-repeat="link in primaryLinks">
-        <a href="{{ ::link.href[userLang] }}"
+        <a href="{{ ::link.href[selectedLanguage] }}"
            target="_blank"
            analytics-event="{
                eventCategory: 'EXTERNAL_LINK',
                eventAction: 'CLICK',
-               value: link.href[userLang]}">
+               value: link.href[selectedLanguage]}">
           <span translate="{{::link.key}}"></span>
         </a>
       </li>

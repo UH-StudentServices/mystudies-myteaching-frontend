@@ -17,7 +17,7 @@
 
 angular.module('directives.intro',
   ['services.portfolio',
-    'directives.editLink'])
+   'directives.editLink'])
   .directive('intro', function(PortfolioService) {
     return {
       restrict: 'E',

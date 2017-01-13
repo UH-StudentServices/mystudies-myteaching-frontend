@@ -141,7 +141,7 @@ angular.module('opintoniPortfolioApp', [
   .run(function($rootScope, $window, LanguageService) {
     var language = LanguageService.getCurrent();
 
-    $rootScope.userLang = language;
+    $rootScope.selectedLanguage = language;
     moment.locale(language);
     $window.FastClick.attach($window.document.body);
   });

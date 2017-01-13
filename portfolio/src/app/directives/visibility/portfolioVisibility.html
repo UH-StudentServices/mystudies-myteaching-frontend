@@ -16,24 +16,27 @@
 -->
 
 <div dropdown close-on-content-click class="dropdown">
-  <div class="dropdown-toggle text-transform-capitalize-block" translate="{{'visibility.' + portfolio.visibility}}">
+  <div class="dropdown-toggle text-transform-capitalize-block" translate="{{'visibility.' + portfolio.visibility}}" tabindex="0">
   </div>
   <div role="menu" class="dropdown-content">
     <ul>
       <li class="divider text-transform-capitalize-block">
-        <a tabindex="0" ng-click="setVisibility('PUBLIC')"
+        <a href=""
+          ng-click="setVisibility('PUBLIC')"
           role="menuitem"
           translate="visibility.PUBLIC">
         </a>
       </li>
       <li class="divider text-transform-capitalize-block">
-        <a tabindex="0" ng-click="setVisibility('RESTRICTED')"
+        <a href=""
+          ng-click="setVisibility('RESTRICTED')"
           role="menuitem"
           translate="visibility.RESTRICTED">
         </a>
       </li>
       <li class="text-transform-capitalize-block">
-        <a tabindex="0" ng-click="setVisibility('PRIVATE')"
+        <a href=""
+          ng-click="setVisibility('PRIVATE')"
           role="menuitem"
           translate="visibility.PRIVATE">
         </a>

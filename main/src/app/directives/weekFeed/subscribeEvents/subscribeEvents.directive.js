@@ -17,6 +17,8 @@
 
 angular.module('directives.subscribeEvents', [
   'resources.calendarFeed',
+  'resources.optimeCalendar',
+  'services.session',
   'utils.domain',
   'utils.browser',
   'directives.clipboard',
@@ -43,6 +45,8 @@ angular.module('directives.subscribeEvents', [
   })
 
   .directive('subscribeEvents', function(CalendarFeedResource,
+                                         OptimeCalendarResource,
+                                         SessionService, Role,
                                          $rootScope,
                                          $q,
                                          DomainUtil,
@@ -57,12 +61,11 @@ angular.module('directives.subscribeEvents', [
       templateUrl: 'app/directives/weekFeed/subscribeEvents/subscribeEvents.html',
       scope: {},
       controller: function($scope) {
-        var cachedCalendarFeedBaseUrl;
+        var cachedCalendarFeedUrl;
 
-        $scope.userLang = $rootScope.userLang;
         $scope.showPopover = false;
         $scope.InstructionLinks = InstructionLinks;
-        $scope.userLang = $rootScope.userLang;
+        $scope.selectedLanguage = $rootScope.selectedLanguage;
         $scope.showCopyToClipboard = !BrowserUtil.isMobile();
 
         $scope.copyToClipboardSuccessCallback = function() {
@@ -82,21 +85,42 @@ angular.module('directives.subscribeEvents', [
           }, MessageTimeouts.FAIL);
         };
 
-        function getOrCreateCalendarFeed() {
+        function getOrCreateCalendarFeedUrl() {
+          SessionService.isInRole(Role.TEACHER).then(function(isTeacher) {
+            AnalyticsService.trackCalendarSubscribe();
+            if (isTeacher) {
+              return getOptimeCalendarUrl();
+            } else {
+              return getMyStudiesTeachingCalendarUrl();
+            }
+          });
+        }
+
+        function getMyStudiesTeachingCalendarUrl() {
           return CalendarFeedResource.getCalendarFeed()
             .catch(function() {
               return CalendarFeedResource.saveCalendarFeed();
             })
             .then(function(calendarFeed) {
-              AnalyticsService.trackCalendarSubscribe();
-              cachedCalendarFeedBaseUrl = DomainUtil.getDomain() + calendarFeed.feedUrl + '/';
-              return calendarFeed;
+              cachedCalendarFeedUrl = DomainUtil.getDomain() + calendarFeed.feedUrl + '/' + $rootScope.selectedLanguage;
+              return $scope.calendarFeedUrl = cachedCalendarFeedUrl;
             });
         }
 
-        function localizedCalendarFeedUrl() {
-          $scope.calendarFeedUrl = cachedCalendarFeedBaseUrl + $rootScope.userLang;
-          return $scope.calendarFeedUrl;
+        function getOptimeCalendarUrl() {
+          return OptimeCalendarResource.getCalendarUrl()
+            .catch(function() {
+              return getMyStudiesTeachingCalendarUrl();
+            })
+            .then(function(calendarInfo) {
+              if (calendarInfo.url) {
+                cachedCalendarFeedUrl = calendarInfo.url;
+                $scope.optimeCalendar = true;
+                return $scope.calendarFeedUrl = cachedCalendarFeedUrl;
+              } else {
+                return getMyStudiesTeachingCalendarUrl();
+              }
+            });
         }
 
         $scope.closePopover = function() {
@@ -108,10 +132,9 @@ angular.module('directives.subscribeEvents', [
 
           if ($scope.showPopover) {
             return $q(function(resolve, reject) {
-              return cachedCalendarFeedBaseUrl ? resolve() : reject();
+              return cachedCalendarFeedUrl ? resolve() : reject();
             })
-            .catch(getOrCreateCalendarFeed)
-            .then(localizedCalendarFeedUrl);
+            .catch(getOrCreateCalendarFeedUrl);
           }
         };
       }
