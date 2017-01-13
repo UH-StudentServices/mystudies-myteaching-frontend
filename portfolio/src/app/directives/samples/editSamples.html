@@ -79,8 +79,9 @@
   </li>
 
   <li visibility-private class="sample__add-new">
-    <div class="input-container" ng-form name="addSampleForm">
-      <input ng-model="newSample.url"
+    <div class="sample__add-new-container" ng-form name="addSampleForm">
+      <input class="sample__add-new-input"
+             ng-model="newSample.url"
              ui-keypress="{'enter':'addSample(newSample)'}"
              focus="editing"
              type="text"
@@ -89,7 +90,7 @@
              placeholder="{{::('samples.addSample' | translate)}}"
              aria-label="{{::('samples.addSample' | translate)}}"/>
     </div>
-    <button class="add-icon fa fa-plus"
+    <button class="sample__add-new-button fa fa-plus"
             ng-class="{'form-error': !addSampleForm.url.$valid}"
             ng-disabled="!addSampleForm.url.$valid"
             ng-click="addSample(newSample)"
