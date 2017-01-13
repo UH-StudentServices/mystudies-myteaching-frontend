@@ -74,13 +74,13 @@ angular.module('directives.contactInformation', ['services.contactInformation'])
           return true;
         };
 
-        $scope.reset = function() {
+        $scope.reload = function() {
           ContactInformationService
-            .resetEmployeeContactInformation($scope.portfolioId)
+            .getEmployeeContactInformation($scope.portfolioId)
             .then(function(data) {
               $scope.contactInformation = data;
             });
-        }
+        };
 
         $scope.editSomeLink = function(someLink) {
           someLink.edit = true;

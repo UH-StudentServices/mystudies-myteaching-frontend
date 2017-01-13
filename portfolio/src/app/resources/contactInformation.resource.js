@@ -25,9 +25,9 @@ angular.module('resources.contactInformation', [])
       return $resource(
         CONTACT_INFORMATION_RESOURCE_URL, {}, {
           update: {method: 'POST'},
-          resetEmployeeContactInformation: {
-            method: 'POST',
-            url: CONTACT_INFORMATION_RESOURCE_URL + '/teacher/reset',
+          getEmployeeContactInformation: {
+            method: 'GET',
+            url: CONTACT_INFORMATION_RESOURCE_URL + '/teacher',
             params: {
               currentState: '@currentState',
               portfolioId: '@portfolioId'
@@ -41,14 +41,14 @@ angular.module('resources.contactInformation', [])
         updateContactInformationRequest).$promise;
     }
 
-    function resetEmployeeContactInformation(portfolioId) {
-      return resource().resetEmployeeContactInformation({
+    function getEmployeeContactInformation(portfolioId) {
+      return resource().getEmployeeContactInformation({
         currentState: StateService.getCurrent(),
         portfolioId: portfolioId}).$promise;
     }
 
     return {
       updateContactInformation: updateContactInformation,
-      resetEmployeeContactInformation: resetEmployeeContactInformation
+      getEmployeeContactInformation: getEmployeeContactInformation
     };
   });

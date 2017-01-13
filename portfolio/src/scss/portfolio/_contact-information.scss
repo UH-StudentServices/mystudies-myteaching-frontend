@@ -22,6 +22,10 @@ $twitter-blue: #4099ff;
 .contact-information {
   position: relative;
 
+  .edit-link-wrapper {
+    margin-bottom: 1em;
+  }
+
   .edit-link {
     position: absolute;
     right: 0;
@@ -35,6 +39,10 @@ $twitter-blue: #4099ff;
     &__field {
       margin-bottom: 0.5em;
     }
+
+    a {
+      font-weight: 600;
+    }
   }
 
   .block {
@@ -42,9 +50,6 @@ $twitter-blue: #4099ff;
     padding: 20px 10px;
     border: 1px solid $lightsilver;
     position: relative;
-    a {
-      font-weight: 600;
-    }
     &.link {
       padding: 0;
       a {
@@ -69,6 +74,7 @@ $twitter-blue: #4099ff;
       margin-bottom: 0.5em;
       width: 100%;
       display: block;
+      @include border;
     }
   }
 
@@ -109,6 +115,7 @@ $twitter-blue: #4099ff;
       background-color: $gray;
       > a {
         padding: 0 3em 0 1em;
+        color: $white;
       }
     }
   }

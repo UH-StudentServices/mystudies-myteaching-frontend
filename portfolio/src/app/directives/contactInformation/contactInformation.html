@@ -100,18 +100,22 @@
                    placeholder="{{::('contactInformation.addWorkNumber' | translate)}}">
             <input ng-model="contactInformation.workMobile"
                    placeholder="{{::('contactInformation.addWorkMobile' | translate)}}">
+            <a
+              role="button"
+              tabindex="0"
+              ng-click="reload()"
+              translate="contactInformation.reload">
+            </a>
           </div>
 
         </div>
       </div>
-      <button ng-click="reset()" translate="contactInformation.reset"></button>
       <ul role="list"
-          class="list-of-links theme-dark">
+          class="contact-information__edit-links-list">
         <li ng-repeat="someLink in contactInformation.someLinks | orderBy: 'type'"
-            class="useful-links__link block"
+            class="block"
             role="listitem">
           <a role="button" href="" class="list-of-links__link edit editable" ng-hide="someLink.edit" ng-click="editSomeLink(someLink)">
-            <i class="fa fa-bars hide-mobile-only"></i>
             {{ someLink.url }}
             <i class="fa fa-pencil"></i>
             <i class="fa fa-{{ someLink.type | lowercase }} some-link-edit-icon"></i>
