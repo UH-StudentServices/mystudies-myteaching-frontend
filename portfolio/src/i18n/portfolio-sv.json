@@ -3,8 +3,11 @@
     "edit": "redigera",
     "done": "färdig",
     "add" : "lägg till",
+    "addNew": "lägg till",
     "remove" : "radera",
     "ok": "Ok",
+    "showMore": "mer",
+    "showLess": "mindre",
     "students": "studerande",
     "teachers": "lärare",
     "helsinkiUniversity": "Helsingfors universitet"
@@ -95,7 +98,6 @@
   },
   "workExperience" : {
     "title": "arbetslivserfarenhet",
-    "addNew": "lägg till",
     "addWorkExperience": "Lägg till arbetsgivare",
     "addJobSearch": "Lägg till e-post (om du söker jobbet)",
     "jobSearch": "söker job",
@@ -106,10 +108,19 @@
     "employerUrlPlaceholder": "arbetsgivares websidan",
     "text": "beskrivning",
     "descriptionPlaceholder": "Lägg till beskrivning",
+    "startDate": "startdatum (mm.yyyy)",
+    "endDate": "slutdatum (mm.yyyy)",
     "showMore": "mer",
     "showLess": "mindre",
     "contactEmail": "contact email",
     "jobSearchHeadline": "rubrik"
+  },
+  "samples": {
+    "title": "Prover",
+    "addSample": "Lägg till prov url",
+    "titlePlaceholder": "beskrivning",
+    "urlPlaceholder": "url",
+    "descriptionPlaceholder": "beskrivningstext"
   },
   "attainments": {
     "attainments": "Prestationer",

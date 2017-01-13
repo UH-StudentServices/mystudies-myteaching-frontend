@@ -1,0 +1,50 @@
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<ul class="sample">
+  <li ng-repeat="sampleItem in samples | orderBy: 'title' track by sampleItem.id">
+    <div class="sample__item" ng-class="{'showFullItem': sampleItem.showFull}">
+      <div class="sample__banner">
+        <a class="sample__banner-link" href="{{formatUrl(sampleItem.url)}}" title="{{sampleItem.title}}">
+          <div class="sample__banner-content">
+            <div class="sample__title-container">
+              <div class="sample__title">
+                {{sampleItem.title}}
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="sample__details-container">
+        <div class="sample__description" ng-hide="sampleItem.showFull">
+          <p ng-bind="sampleItem.description"
+             data-ellipsis
+             data-ellipsis-append="{{::' '+('general.showMore'|translate)}}"
+             data-ellipsis-append-click="showFull(sampleItem)"></p>
+        </div>
+        <div class="sample__full-description" ng-show="sampleItem.showFull">
+          <p>{{sampleItem.description}}
+            <a role="button"
+               href=""
+               aria-label="{{::'general.showLess'|translate}}"
+               ng-click="hideFull(sampleItem)">{{::'general.showLess'|translate}}</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>

@@ -16,7 +16,7 @@
   -->
 
 <ul class="work-experience">
-  <li ng-repeat="workExperienceItem in workExperience | orderBy : startDate : true track by workExperienceItem.id">
+  <li ng-repeat="workExperienceItem in workExperience | orderBy : 'startDate' : true track by workExperienceItem.id">
     <div class="work-experience__item" ng-class="{'showFullItem': workExperienceItem.showFull}">
       <div class="work-experience__banner">
         <div class="work-experience__banner-content">
@@ -36,13 +36,14 @@
           {{workExperienceItem.jobTitle}}
         </div>
         <div class="work-experience__description" ng-hide="workExperienceItem.showFull">
-          <p ng-bind="workExperienceItem.text" data-ellipsis data-ellipsis-append="{{::' '+('workExperience.showMore'|translate)}}" data-ellipsis-append-click="showFull(workExperienceItem)"></p>
+          <p ng-bind="workExperienceItem.text" data-ellipsis data-ellipsis-append="{{::' '+('general.showMore'|translate)}}" data-ellipsis-append-click="showFull(workExperienceItem)"></p>
         </div>
         <div class="work-experience__full-description" ng-show="workExperienceItem.showFull">
           <p>{{workExperienceItem.text}}
-            <a aria-label="{{::'workExperience.showLess'|translate}}"
-              tabIndex="0"
-              ng-click="hideFull(workExperienceItem)">{{::'workExperience.showLess'|translate}}</a>
+            <a role="button"
+               href=""
+               aria-label="{{::'general.showLess'|translate}}"
+               ng-click="hideFull(workExperienceItem)">{{::'general.showLess'|translate}}</a>
           </p>
         </div>
         <div class="work-experience__url">
