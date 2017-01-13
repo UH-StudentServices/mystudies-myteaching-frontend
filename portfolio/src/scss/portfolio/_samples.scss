@@ -27,7 +27,7 @@ $sample-full-description-vertical-margin: 0.85em;
 
 .sample {
   &__heading {
-    @extend .ui-component__title, .border-bottom
+    @extend .ui-component__title, .border-bottom;
   }
 
   > li {
@@ -37,33 +37,30 @@ $sample-full-description-vertical-margin: 0.85em;
 
   &__title-content, &__url-content {
     @extend .editable-content;
+
+    &--active {
+      @extend .editable-content-active;
+    }
+
     &-input {
-      width: 90%
+      width: 90%;
+    }
+    &-button:hover {
+      color: $white;
     }
   }
 
-  &__title-content--active, &__url-content--active {
-    @extend .editable-content-active
+  &__title-content-button {
+    color: $white;
+  }
+
+  &__url-content-button {
+    color: $silver;
   }
 
   &__title-content, &__url-content, &__title-content--active, &__url-content--active {
     .ng-invalid {
       border: 2px solid $sample-invalid-color;
-    }
-  }
-
-  &__title-content {
-    &-button {
-      color: $white;
-    }
-  }
-
-  &__url-content {
-    &-button {
-      color: $silver !important;
-      &:hover {
-        color: $white !important;
-      }
     }
   }
 
