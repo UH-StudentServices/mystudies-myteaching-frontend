@@ -16,7 +16,7 @@
 -->
 
 <ul class="work-experience">
-  <li ng-repeat="workExperienceItem in workExperience | orderBy : startDate : true track by workExperienceItem.id"
+  <li ng-repeat="workExperienceItem in workExperience | orderBy : 'startDate' : true track by workExperienceItem.id"
       class="editable">
     <div class="work-experience__item">
       <div class="work-experience__banner">
@@ -29,7 +29,9 @@
                 </a>
               </span>
               <span class="editable-content-active" ng-show="workExperienceItem.employerEdit">
-                <input focus="workExperienceItem.employerEdit" ng-model="workExperienceItem.employer"
+                <input focus="workExperienceItem.employerEdit"
+                       placeholder="{{::'workExperience.employerPlaceholder'|translate}}"
+                       ng-model="workExperienceItem.employer"
                        ui-keypress="{'enter':'exitEmployerEdit(workExperienceItem)'}"
                        ng-change="refreshValidity()"
                        ng-class="{'ng-invalid':!workExperienceItem.employer}"
@@ -85,13 +87,14 @@
                    focus="workExperienceItem.jobTitleEdit"
                    ui-keypress="{'enter':'exitJobTitleEdit(workExperienceItem)'}"
                    ng-model="workExperienceItem.jobTitle"
+                   ui-keypress="{'enter':'exitJobTitleEdit(workExperienceItem)'}"
                    ng-change="refreshValidity()"
                    ng-class="{'ng-invalid':!workExperienceItem.jobTitle}"/>
             <a role="button" href="" ng-click="exitJobTitleEdit(workExperienceItem)"><i class="fa fa-check"></i></a>
           </span>
         </div>
         <div class="work-experience__description">
-          <textarea placeholder="{{'workExperience.descriptionPlaceholder'|translate}}"
+          <textarea placeholder="{{::'workExperience.descriptionPlaceholder'|translate}}"
                     ng-model="workExperienceItem.text" ></textarea>
         </div>
         <div class="work-experience__url">
@@ -109,8 +112,7 @@
           </span>
         </div>
       </div>
-      <button class="work-experience__remove" ng-show="editing"
-              ng-click="removeWorkExperience(workExperienceItem)"></button>
+      <button class="work-experience__remove" ng-click="removeWorkExperience(workExperienceItem)"></button>
     </div>
   </li>
 
@@ -153,7 +155,7 @@
           </span>
         </div>
         <div class="work-experience__description">
-          <textarea placeholder="{{'workExperience.descriptionPlaceholder'|translate}}"
+          <textarea placeholder="{{::'workExperience.descriptionPlaceholder'|translate}}"
                     ng-model="jobSearch.text"></textarea>
         </div>
         <div class="work-experience__url">
@@ -203,7 +205,7 @@
             ng-class="{'form-error': !addJobSearchForm.contactEmail.$valid}"
             ng-disabled="!addJobSearchForm.contactEmail.$valid"
             ng-click="addJobSearch(newJobSearch)"
-            aria-label="{{::('workExperience.addNew' | translate)}}">
+            aria-label="{{::('general.addNew' | translate)}}">
     </button>
   </li>
 

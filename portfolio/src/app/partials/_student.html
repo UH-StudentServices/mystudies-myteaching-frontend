@@ -33,6 +33,11 @@
                      portfolio-id="{{::portfolio.id}}">
     </work-experience>
 
+    <samples limit-visibility="{componentId: 'SAMPLES'}"
+             samples-data="portfolio.samples"
+             portfolio-id="{{::portfolio.id}}">
+    </samples>
+
     <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT'}">
     </free-text-content>
   </div>

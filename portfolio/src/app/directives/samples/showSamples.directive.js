@@ -15,14 +15,17 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.showWorkExperience', [
+angular.module('directives.showSamples', [
   'dibari.angular-ellipsis'
 ])
 
-.directive('showWorkExperience', function() {
+.directive('showSamples', function() {
   return {
     restrict: 'E',
-    templateUrl: 'app/directives/workExperience/showWorkExperience.html',
+    scope: {
+      samples: '='
+    },
+    templateUrl: 'app/directives/samples/showSamples.html',
     link: function($scope) {
       $scope.formatUrl = function(url) {
         if (url) {
@@ -36,11 +39,11 @@ angular.module('directives.showWorkExperience', [
         }
         return '';
       };
-      $scope.showFull = function(workExperienceItem) {
-        workExperienceItem.showFull = true;
+      $scope.showFull = function(sampleItem) {
+        sampleItem.showFull = true;
       };
-      $scope.hideFull = function(workExperienceItem) {
-        workExperienceItem.showFull = false;
+      $scope.hideFull = function(sampleItem) {
+        sampleItem.showFull = false;
       };
     }
   };
