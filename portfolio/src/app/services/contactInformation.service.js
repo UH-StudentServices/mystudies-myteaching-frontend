@@ -23,7 +23,12 @@ angular.module('services.contactInformation', ['resources.contactInformation'])
         .updateContactInformation(portfolioId, updateContactInformationRequest);
     }
 
+    function getEmployeeContactInformation(portfolioId) {
+      return ContactInformationResource.getEmployeeContactInformation(portfolioId);
+    }
+
     return {
-      updateContactInformation: updateContactInformation
+      updateContactInformation: updateContactInformation,
+      getEmployeeContactInformation: getEmployeeContactInformation
     };
   });

@@ -81,10 +81,20 @@
     "title": "Kontakta mig",
     "addPhoneNumber": "Lägg till telefonnummer",
     "addEmail": "Lägg til epost",
+    "addTitle": "Add title (sv)",
+    "addFaculty": "Add faculty (sv)",
+    "addFinancialUnit": "Add financial unit (sv)",
+    "addWorkAddress": "Add work address (sv)",
+    "addWorkPostcode": "Add work postcode (sv)",
+    "addWorkNumber": "Add work number (sv)",
+    "addWorkMobile": "Add work mobile (sv)",
+    "reload": "Reset contact information (sv)",
     "phoneNumber": "Telefon:",
     "FACEBOOK": "Facebook",
     "YOUTUBE": "Youtube",
-    "TWITTER": "Twitter"
+    "TWITTER": "Twitter",
+    "TUHAT": "Tuhat",
+    "RESEARCH_GATE": "ResearchGate"
   },
   "degrees": {
     "title": "Examen",

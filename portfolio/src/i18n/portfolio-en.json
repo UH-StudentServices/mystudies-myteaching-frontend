@@ -81,10 +81,20 @@
     "title": "Contact me",
     "addPhoneNumber": "Add phone number",
     "addEmail": "Add email",
+    "addTitle": "Add title",
+    "addFaculty": "Add faculty",
+    "addFinancialUnit": "Add financial unit",
+    "addWorkAddress": "Add work address",
+    "addWorkPostcode": "Add work postcode",
+    "addWorkNumber": "Add work number",
+    "addWorkMobile": "Add work mobile",
+    "reload": "Reload contact information",
     "phoneNumber": "Mobile:",
     "FACEBOOK": "Facebook",
     "YOUTUBE": "Youtube",
-    "TWITTER": "Twitter"
+    "TWITTER": "Twitter",
+    "TUHAT": "Tuhat",
+    "RESEARCH_GATE": "ResearchGate"
   },
   "degrees": {
     "title": "Degrees",

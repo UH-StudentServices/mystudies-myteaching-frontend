@@ -24,14 +24,38 @@
   <div ng-show="!editing">
     <div class="block">
       <div class="contact-details">
-        <div class="name">{{ portfolio.ownerName }}</div>
-        <div ng-show="contactInformation.phoneNumber"
-             class="phone-number">
-          {{::('contactInformation.phoneNumber' | translate)}} {{ contactInformation.phoneNumber }}
+        <div class="contact-details__name">{{::ownerName}}</div>
+        <div limit-visibility="{roles: ['STUDENT']}">
+          <div class="contact-details__field" ng-show="contactInformation.phoneNumber">
+            {{::('contactInformation.phoneNumber' | translate)}} {{ contactInformation.phoneNumber }}
+          </div>
+          <div class="contact-details__field" ng-show="contactInformation.email">
+            <a href="mailto:{{ contactInformation.email }}">{{ contactInformation.email }}</a>
+          </div>
         </div>
-        <div ng-show="contactInformation.email"
-             class="email">
-          <a href="mailto:{{ contactInformation.email }}">{{ contactInformation.email }}</a>
+        <div limit-visibility="{roles: ['TEACHER']}">
+          <div class="contact-details__field" ng-show="contactInformation.title">
+            {{ contactInformation.title }}
+          </div>
+          <div class="contact-details__field" ng-show="contactInformation.faculty">
+            {{ contactInformation.faculty }}
+          </div>
+          <div class="contact-details__field" ng-show="contactInformation.financialUnit">
+            {{ contactInformation.financialUnit }}
+          </div>
+          <div class="contact-details__field" ng-show="contactInformation.workAddress">
+            {{ contactInformation.workAddress }} <span ng-show="contactInformation.workPostcode">, {{ contactInformation.workPostcode }}</span>
+          </div>
+          <div class="contact-details__field" ng-show="contactInformation.email">
+            <a href="mailto:{{ contactInformation.email }}">{{ contactInformation.email }}</a>
+          </div>
+          <div class="contact-details__field" ng-show="contactInformation.workNumber">
+            {{::('contactInformation.phoneNumber' | translate)}} {{ contactInformation.workNumber }}
+          </div>
+          <div class="contact-details__field" ng-show="contactInformation.workMobile">
+            {{::('contactInformation.phoneNumber' | translate)}} {{ contactInformation.workMobile }}
+          </div>
+
         </div>
       </div>
     </div>
@@ -40,7 +64,7 @@
           role="listitem"
           class="block link">
         <a href="{{ someLink.url }}" tabindex="0" target="_blank">{{ 'contactInformation.' + someLink.type | translate }}
-          <i class="fa fa-{{ someLink.type | lowercase }} some-link-icon"></i>
+          <i class="social-media-link-icon social-media-link-icon--{{ someLink.type | lowercase }}"></i>
         </a>
       </li>
     </ul>
@@ -53,22 +77,48 @@
           <div class="name">{{ portfolio.ownerName }}</div>
         </div>
         <div class="edit-contact-details">
-          <input ng-model="contactInformation.phoneNumber"
-                 placeholder="{{::('contactInformation.addPhoneNumber' | translate)}}">
-          <input ng-model="contactInformation.email"
-                 placeholder="{{::('contactInformation.addEmail' | translate)}}">
+          <div limit-visibility="{roles: ['STUDENT']}">
+            <input ng-model="contactInformation.phoneNumber"
+                   placeholder="{{::('contactInformation.addPhoneNumber' | translate)}}">
+            <input ng-model="contactInformation.email"
+                   placeholder="{{::('contactInformation.addEmail' | translate)}}">
+          </div>
+          <div limit-visibility="{roles: ['TEACHER']}">
+            <input ng-model="contactInformation.title"
+                   placeholder="{{::('contactInformation.addTitle' | translate)}}">
+            <input ng-model="contactInformation.faculty"
+                   placeholder="{{::('contactInformation.addFaculty' | translate)}}">
+            <input ng-model="contactInformation.financialUnit"
+                   placeholder="{{::('contactInformation.addFinancialUnit' | translate)}}">
+            <input ng-model="contactInformation.workAddress"
+                   placeholder="{{::('contactInformation.addWorkAddress' | translate)}}">
+            <input ng-model="contactInformation.workPostcode"
+                   placeholder="{{::('contactInformation.addWorkPostcode' | translate)}}">
+            <input ng-model="contactInformation.email"
+                   placeholder="{{::('contactInformation.addEmail' | translate)}}">
+            <input ng-model="contactInformation.workNumber"
+                   placeholder="{{::('contactInformation.addWorkNumber' | translate)}}">
+            <input ng-model="contactInformation.workMobile"
+                   placeholder="{{::('contactInformation.addWorkMobile' | translate)}}">
+            <a
+              role="button"
+              href=""
+              ng-click="reloadEmployeeContactInformation()"
+              translate="contactInformation.reload">
+            </a>
+          </div>
+
         </div>
       </div>
       <ul role="list"
-          class="list-of-links theme-dark">
+          class="contact-information__edit-links-list">
         <li ng-repeat="someLink in contactInformation.someLinks | orderBy: 'type'"
-            class="useful-links__link block"
+            class="block"
             role="listitem">
           <a role="button" href="" class="list-of-links__link edit editable" ng-hide="someLink.edit" ng-click="editSomeLink(someLink)">
-            <i class="fa fa-bars hide-mobile-only"></i>
             {{ someLink.url }}
             <i class="fa fa-pencil"></i>
-            <i class="fa fa-{{ someLink.type | lowercase }} some-link-edit-icon"></i>
+            <i class="social-media-link-icon social-media-link-icon--edit social-media-link-icon--{{ someLink.type | lowercase }}"></i>
           </a>
 
           <div class="useful-links__edit-link-url" ng-show="someLink.edit">

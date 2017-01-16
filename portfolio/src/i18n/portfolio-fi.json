@@ -81,10 +81,20 @@
     "title": "Ota yhteyttä",
     "addPhoneNumber": "Lisää puhelinnumero",
     "addEmail": "Lisää sähköposti",
+    "addTitle": "Lisää nimike",
+    "addFaculty": "Lisää tiedekunta",
+    "addFinancialUnit": "Lisää yksikkö",
+    "addWorkAddress": "Lisää työosoite",
+    "addWorkPostcode": "Lisää postinumero",
+    "addWorkNumber": "Lisää puhelinnumero",
+    "addWorkMobile": "Lisää matkapuhelinnumero",
+    "reload": "Hae yhteystiedot uudelleen",
     "phoneNumber": "Puh.",
     "FACEBOOK": "Facebook",
     "YOUTUBE": "Youtube",
-    "TWITTER": "Twitter"
+    "TWITTER": "Twitter",
+    "TUHAT": "Tuhat",
+    "RESEARCH_GATE": "ResearchGate"
   },
   "degrees": {
     "title": "Tutkinnot",

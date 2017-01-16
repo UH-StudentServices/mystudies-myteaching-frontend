@@ -15,19 +15,36 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.contactInformation', ['services.contactInformation'])
+angular.module('directives.contactInformation', ['services.contactInformation', 'services.portfolioRole'])
 
   .constant('SomeLinkType', {
     FACEBOOK: 'FACEBOOK',
     YOUTUBE: 'YOUTUBE',
-    TWITTER: 'TWITTER'
+    TWITTER: 'TWITTER',
+    TUHAT: 'TUHAT',
+    RESEARCH_GATE: 'RESEARCH_GATE'
   })
-  .directive('contactInformation', function(ContactInformationService, SomeLinkType) {
+
+  .factory('StudentSocialMediaLinks', function(SomeLinkType) {
+    return [SomeLinkType.TWITTER, SomeLinkType.FACEBOOK, SomeLinkType.YOUTUBE];
+  })
+
+  .factory('TeacherSocialMediaLinks', function(SomeLinkType) {
+    return [SomeLinkType.TWITTER, SomeLinkType.TUHAT, SomeLinkType.RESEARCH_GATE];
+  })
+
+  .directive('contactInformation', function(ContactInformationService,
+                                            SomeLinkType,
+                                            PortfolioRole,
+                                            PortfolioRoleService,
+                                            TeacherSocialMediaLinks,
+                                            StudentSocialMediaLinks) {
     return {
       restrict: 'E',
       replace: true,
       scope: {
         contactInformationData: '&',
+        ownerName: '@',
         portfolioId: '@'
       },
       templateUrl: 'app/directives/contactInformation/contactInformation.html',
@@ -37,15 +54,14 @@ angular.module('directives.contactInformation', ['services.contactInformation'])
         $scope.contactInformation.someLinks = $scope.contactInformation.someLinks || [];
 
         function addDefaultSomeLinkTypes() {
-          if (!_.find($scope.contactInformation.someLinks, {type: SomeLinkType.FACEBOOK})) {
-            $scope.contactInformation.someLinks.push({type: SomeLinkType.FACEBOOK});
-          }
-          if (!_.find($scope.contactInformation.someLinks, {type: SomeLinkType.YOUTUBE})) {
-            $scope.contactInformation.someLinks.push({type: SomeLinkType.YOUTUBE});
-          }
-          if (!_.find($scope.contactInformation.someLinks, {type: SomeLinkType.TWITTER})) {
-            $scope.contactInformation.someLinks.push({type: SomeLinkType.TWITTER});
-          }
+          var defaultSocialMediaLinks = PortfolioRoleService.isInRole(PortfolioRole.TEACHER) ?
+            TeacherSocialMediaLinks : StudentSocialMediaLinks;
+
+          defaultSocialMediaLinks.forEach(function(socialMediaLinkType) {
+            if (!_.find($scope.contactInformation.someLinks, {type: socialMediaLinkType})) {
+              $scope.contactInformation.someLinks.push({type: socialMediaLinkType});
+            }
+          });
         }
 
         $scope.edit = function() {
@@ -60,10 +76,8 @@ angular.module('directives.contactInformation', ['services.contactInformation'])
         }
 
         $scope.exitEdit = function() {
-          var updateContactInformationRequest = {};
+          var updateContactInformationRequest = _.assign({}, $scope.contactInformation);
 
-          updateContactInformationRequest.phoneNumber = $scope.contactInformation.phoneNumber;
-          updateContactInformationRequest.email = $scope.contactInformation.email;
           updateContactInformationRequest.someLinks =
             selectFilledSomeLinks($scope.contactInformation.someLinks);
           ContactInformationService
@@ -73,6 +87,14 @@ angular.module('directives.contactInformation', ['services.contactInformation'])
               $scope.editing = false;
             });
           return true;
+        };
+
+        $scope.reloadEmployeeContactInformation = function() {
+          ContactInformationService
+            .getEmployeeContactInformation($scope.portfolioId)
+            .then(function(data) {
+              _.assign($scope.contactInformation, _.omit(data, 'someLinks'));
+            });
         };
 
         $scope.editSomeLink = function(someLink) {

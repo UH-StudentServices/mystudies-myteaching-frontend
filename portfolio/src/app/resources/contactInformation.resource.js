@@ -17,21 +17,38 @@
 
 angular.module('resources.contactInformation', [])
 
-  .factory('ContactInformationResource', function($resource, StateService) {
+  .constant('CONTACT_INFORMATION_RESOURCE_URL', '/api/:currentState/v1/portfolio/:portfolioId/contactinformation')
+
+  .factory('ContactInformationResource', function($resource, StateService, CONTACT_INFORMATION_RESOURCE_URL) {
 
     function resource() {
-      return $resource('/api/' + StateService.getCurrent() +
-        '/v1/portfolio/:portfolioId/contactinformation', {}, {
-          update: {method: 'POST'}
+      return $resource(
+        CONTACT_INFORMATION_RESOURCE_URL, {}, {
+          update: {method: 'POST'},
+          getEmployeeContactInformation: {
+            method: 'GET',
+            url: CONTACT_INFORMATION_RESOURCE_URL + '/teacher',
+            params: {
+              currentState: '@currentState',
+              portfolioId: '@portfolioId'
+            }
+          }
         });
     }
 
     function updateContactInformation(portfolioId, updateContactInformationRequest) {
-      return resource().update({portfolioId: portfolioId},
+      return resource().update({currentState: StateService.getCurrent(), portfolioId: portfolioId},
         updateContactInformationRequest).$promise;
     }
 
+    function getEmployeeContactInformation(portfolioId) {
+      return resource().getEmployeeContactInformation({
+        currentState: StateService.getCurrent(),
+        portfolioId: portfolioId}).$promise;
+    }
+
     return {
-      updateContactInformation: updateContactInformation
+      updateContactInformation: updateContactInformation,
+      getEmployeeContactInformation: getEmployeeContactInformation
     };
   });
