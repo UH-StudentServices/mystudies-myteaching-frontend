@@ -89,11 +89,11 @@ angular.module('directives.contactInformation', ['services.contactInformation', 
           return true;
         };
 
-        $scope.reload = function() {
+        $scope.reloadEmployeeContactInformation = function() {
           ContactInformationService
             .getEmployeeContactInformation($scope.portfolioId)
             .then(function(data) {
-              $scope.contactInformation = data;
+              _.assign($scope.contactInformation, _.omit(data, 'someLinks'));
             });
         };
 
