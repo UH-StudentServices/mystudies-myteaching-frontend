@@ -30,7 +30,7 @@ $tuhat-unicode: "\EA17";
 @mixin social-media-icon($unicode, $background-color) {
   background-color: $background-color;
 
-  &:before {
+  &::before {
     @include hy-icon($unicode);
   }
 
@@ -113,7 +113,7 @@ $tuhat-unicode: "\EA17";
     right: 0;
     top: 0;
 
-    &:before {
+    &::before {
       font-size: 1.3em;
     }
 

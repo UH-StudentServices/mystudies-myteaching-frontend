@@ -57,7 +57,7 @@ angular.module('directives.contactInformation', ['services.contactInformation', 
           var defaultSocialMediaLinks = PortfolioRoleService.isInRole(PortfolioRole.TEACHER) ?
             TeacherSocialMediaLinks : StudentSocialMediaLinks;
 
-          _.forEach(defaultSocialMediaLinks, function(socialMediaLinkType) {
+          defaultSocialMediaLinks.forEach(function(socialMediaLinkType) {
             if (!_.find($scope.contactInformation.someLinks, {type: socialMediaLinkType})) {
               $scope.contactInformation.someLinks.push({type: socialMediaLinkType});
             }
@@ -76,7 +76,7 @@ angular.module('directives.contactInformation', ['services.contactInformation', 
         }
 
         $scope.exitEdit = function() {
-          var updateContactInformationRequest = _.extend({}, $scope.contactInformation);
+          var updateContactInformationRequest = _.assign({}, $scope.contactInformation);
 
           updateContactInformationRequest.someLinks =
             selectFilledSomeLinks($scope.contactInformation.someLinks);
