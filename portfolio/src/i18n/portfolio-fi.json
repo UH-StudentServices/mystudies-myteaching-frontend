@@ -89,7 +89,9 @@
     "phoneNumber": "Puh.",
     "FACEBOOK": "Facebook",
     "YOUTUBE": "Youtube",
-    "TWITTER": "Twitter"
+    "TWITTER": "Twitter",
+    "TUHAT": "Tuhat",
+    "RESEARCH_GATE": "ResearchGate"
   },
   "degrees": {
     "title": "Tutkinnot",
