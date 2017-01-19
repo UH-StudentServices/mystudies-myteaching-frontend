@@ -93,7 +93,9 @@ angular.module('directives.contactInformation', ['services.contactInformation', 
           ContactInformationService
             .getEmployeeContactInformation($scope.portfolioId)
             .then(function(data) {
-              _.assign($scope.contactInformation, _.omit(data, 'someLinks'));
+              _.assign($scope.contactInformation, _.omitBy(data, function(value, key) {
+                return key === 'someLinks' || !value;
+              }));
             });
         };
 
