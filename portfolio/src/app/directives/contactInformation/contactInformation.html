@@ -49,9 +49,6 @@
           <div class="contact-details__field" ng-show="contactInformation.email">
             <a href="mailto:{{ contactInformation.email }}">{{ contactInformation.email }}</a>
           </div>
-          <div class="contact-details__field" ng-show="contactInformation.workNumber">
-            {{::('contactInformation.phoneNumber' | translate)}} {{ contactInformation.workNumber }}
-          </div>
           <div class="contact-details__field" ng-show="contactInformation.workMobile">
             {{::('contactInformation.phoneNumber' | translate)}} {{ contactInformation.workMobile }}
           </div>
@@ -96,8 +93,6 @@
                    placeholder="{{::('contactInformation.addWorkPostcode' | translate)}}">
             <input ng-model="contactInformation.email"
                    placeholder="{{::('contactInformation.addEmail' | translate)}}">
-            <input ng-model="contactInformation.workNumber"
-                   placeholder="{{::('contactInformation.addWorkNumber' | translate)}}">
             <input ng-model="contactInformation.workMobile"
                    placeholder="{{::('contactInformation.addWorkMobile' | translate)}}">
             <a
