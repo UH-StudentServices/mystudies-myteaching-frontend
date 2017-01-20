@@ -18,34 +18,59 @@
 $tablist-multi-row: max-width 28.74em;
 $tablist-single-row: min-width 28.75em;
 
-.tag-list--tabs {
-  #week-feed & {
-    display: flex;
-    align-items: stretch;
-    margin: 1em 0;
+.weekfeed__sub-tabs {
+  display: flex;
+  align-items: stretch;
+  margin: 1em 0;
 
-    @include breakpoint($tablist-multi-row) {
-      flex-wrap: wrap;
-      min-height: 3em; // this is needed for iOS Safari to calculate container height
-    }
+  @include breakpoint($tablist-multi-row) {
+    flex-wrap: wrap;
+    min-height: 3em; // this is needed for iOS Safari to calculate container height
+  }
 
-    @include breakpoint($tablist-single-row) {
-      flex-wrap: nowrap;
-      min-height: 1em; // this is needed for iOS Safari to calculate container height
-    }
+  @include breakpoint($tablist-single-row) {
+    flex-wrap: nowrap;
+    min-height: 1em; // this is needed for iOS Safari to calculate container height
+  }
 
-    li {
-      display: flex;
-      line-height: normal;
-      align-items: center;
-      margin-right: 0.4em;
-      margin-bottom: 0.5em;
-      transition: none; // workaround for an angular-animate bug where stale items are briefly shown with new items
-    }
+}
+
+.weekfeed__sub-tab {
+  @include font-size(15px);
+
+  display: flex;
+  line-height: normal;
+  align-items: center;
+  margin-right: 0.4em;
+  margin-bottom: 0.5em;
+  transition: none; // workaround for an angular-animate bug where stale items are briefly shown with new items
+
+  float: left;
+  list-style: none;
+  background-color: $blue;
+  color: $white;
+  display: inline-block;
+  padding: 0.3em 0.7em 0.4em;
+  transition-property: background-color;
+  transition-duration: 0.1s;
+
+  &.active {
+    background-color: $darkblue;
+  }
+
+  &:hover {
+    background-color: $darkblue;
+  }
+
+  a, a:hover, a:active, a:focus {
+    color: $white;
   }
 }
 
-.weekfeed__subscribe {
+.weekfeed-subscribe {
+  @extend .weekfeed__sub-tab;
+
+  padding: 0;
   @include breakpoint($tablist-multi-row) {
     flex: 10 1 auto;
     margin-left: none;
@@ -58,23 +83,9 @@ $tablist-single-row: min-width 28.75em;
     width: auto;
   }
 
-  &__button-container {
-    width: 100%;
-  }
-
   &__button {
     width: 100%;
-    padding: 0 !important;
-    border: 0 !important;
-    line-height: inherit !important;
-
-    &:hover {
-      background-color: initial !important;
-    }
-
-    &:active, &:focus {
-      outline: none !important;
-    }
+    padding: 0.3em 0.7em 0.4em;
   }
 }
 

@@ -94,7 +94,7 @@
         font-weight: normal;
         margin-top: -0.5em;
         @include font-size(14px);
-        @include hy-icon("\EA10");
+        @include icon($icon-edit);
       }
     }
   }

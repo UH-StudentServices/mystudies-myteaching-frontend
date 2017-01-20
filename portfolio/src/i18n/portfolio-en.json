@@ -22,10 +22,10 @@
   },
   "pageFooter": {
     "contact": "Contact information",
+    "library": "Library",
     "addressLine1": "PL33 (Yliopistonkatu 4)",
     "addressLine2": "00014 Helsingin yliopisto",
-    "telephoneExchange": "Exchange",
-    "giveFeedback": "Give feedback"
+    "telephoneExchange": "Exchange"
   },
   "toolbar": {
     "home": "home",

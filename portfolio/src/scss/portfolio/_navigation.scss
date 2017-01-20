@@ -15,27 +15,56 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+$navigationHeight: 60px;
+
 .navigation {
-  height: 60px;
+  height: $navigationHeight;
   position: relative;
   z-index: 2;
-}
 
-.navigation .wrapper {
-  height: 100%;
-  padding: 0 1em;
-  position: relative;
-}
+  ul.menu {
+    margin: 0;
+  }
 
-.main-menu__home {
-  a {
-    color: $darkblue;
+  nav {
+    height: 100%;
+  }
+
+  .wrapper {
+    height: 100%;
+    @include breakpoint($small) {
+      padding: 0 1em;
+    }
+  }
+
+  @include breakpoint($mobile-only) {
+    .main-menu {
+      ul.menu {
+        height: 100%;
+      }
+
+      li.main-menu__front {
+        border: none;
+        left: 1em;
+        top: 50%;
+
+        > a {
+          font-size: 0;
+          padding: 0;
+
+          &:after {
+            @include icon($icon-home);
+            @include font-size(16px);
+          }
+        }
+      }
+    }
   }
 }
 
 .navigation__right {
   @include vertically-center;
-  right: 0;
+  right: 1em;
 
   > button {
     margin-right: 0.5em;

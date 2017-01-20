@@ -16,44 +16,62 @@
   -->
 
 <!-- app/views/partials/_page_footer.html -->
-<div class="page-footer clearfix wrapper">
+<div class="l-footer">
+  <div class="l-footer__subregion">
 
-    <!-- Social media links -->
-    <div class="page-footer__social-links">
-        <ul class="inline-list">
-            <li><a class="s-some s-some--facebook" href="http://www.facebook.com/helsinginyliopisto" target="_blank">Facebook</a></li>
-            <li><a class="s-some s-some--twitter" href="http://www.twitter.com/helsinkiuni" target="_blank">Twitter</a></li>
-            <li><a class="s-some s-some--youtube" href="http://www.youtube.com/universityofhelsinki" target="_blank">Youtube</a></li>
-            <li><a class="s-some s-some--linkedin" href="http://www.linkedin.com/company/university-of-helsinki" target="_blank">LinkedIn</a></li>
-        </ul>
-    </div>
-    <!-- Links -->
-    <div class="page-footer__links">
-        <ul class="list-of-links--light">
-            <li><a href="http://www.helsinki.fi/yliopisto/yhteystiedot.html">{{::('pageFooter.contact' | translate)}}</a></li>
-
-            <li ng-if="selectedLanguage ==='fi'"><a href="https://elomake.helsinki.fi/lomakkeet/59401/lomake.html" tabindex="0" target="_blank">{{::('pageFooter.giveFeedback' | translate)}}</a></li>
-            <li ng-if="selectedLanguage ==='en'"><a href="https://elomake.helsinki.fi/lomakkeet/59401/lomake.html?rinnakkaislomake=eng" tabindex="0" target="_blank">{{::('pageFooter.giveFeedback' | translate)}}</a></li>
-            <li ng-if="selectedLanguage ==='sv'"><a href="https://elomake.helsinki.fi/lomakkeet/59401/lomake.html" tabindex="0" target="_blank" >{{::('pageFooter.giveFeedback' | translate)}}</a></li>
-            <li><a href="https://flamma.helsinki.fi/portal/home/login" tabindex="0">Flamma</a></li>
-        </ul>
+    <div class="l-footer__column theme-sub">
+      <div class="logo-block">
+        <div class="logo-block__logo">
+          <a href="http://www.helsinki.fi/yliopisto/" aria-label="{{::('general.helsinkiUniversity' | translate) }}"
+             class="logo theme-big"></a>
+        </div>
+        <div class="logo-block__content">
+          <h4>{{::('general.helsinkiUniversity' | translate)}}</h4>
+          <p>{{::('pageFooter.addressLine1' | translate)}}<br>{{::('pageFooter.addressLine2' | translate)}}</p>
+          <p>{{::('pageFooter.telephoneExchange' | translate)}}:
+            <a class="is-tel" href="tel:+3582941911">02941 911</a>
+          </p>
+        </div>
+      </div>
     </div>
 
-    <!-- Contact information -->
-    <div class="page-footer__contact">
-        <a href="http://www.helsinki.fi/yliopisto/">
-            <img src="/portfolio/assets/icons/logo.svg" title="{{::('general.helsinkiUniversity' | translate) }}" class="logo--footer">
+    <div class="l-footer__column">
+      <div class="list-of-links--condensed theme-footer">
+        <a class="list-of-links__link button--action icon--arrow-right theme-transparent"
+           href="http://www.helsinki.fi/yliopisto/yhteystiedot.html">
+          {{::('pageFooter.contact' | translate)}}
         </a>
-
-        <h4 class="site-name site-name--footer">{{::('general.helsinkiUniversity' | translate)}}</h4>
-        <p>{{::('pageFooter.addressLine1' | translate)}}<br>{{::('pageFooter.addressLine2' | translate)}}</p>
-        <p class="page-footer__exchange">{{::('pageFooter.telephoneExchange' | translate)}}: 02941 911</p>
+        <a class="list-of-links__link button--action icon--arrow-right theme-transparent"
+           href="http://www.helsinki.fi/kirjasto">
+          {{::('pageFooter.library' | translate)}}
+        </a>
+        <a class="list-of-links__link button--action icon--arrow-right theme-transparent"
+           href="http://www.helsinki.fi/yliopisto/yhteystiedot.html">
+          Flamma
+        </a>
+      </div>
     </div>
 
-    <!-- Copyright statement -->
-    <div class="page-footer__copyright milli text-center">
-        © {{::('general.helsinkiUniversity' | translate)}} {{currentYear}}
+    <div class="l-footer__column theme-center">
+      <div class="button-group">
+        <a class="button--icon icon--facebook" href="http://www.facebook.com/helsinginyliopisto"
+           target="_blank" aria-label="Facebook"></a>
+        <a class="button--icon icon--twitter" href="http://www.twitter.com/helsinkiuni"
+           target="_blank" aria-label="Twitter"></a>
+        <a class="button--icon icon--youtube" href="http://www.youtube.com/universityofhelsinki"
+           target="_blank" aria-label="Youtube"></a>
+        <a class="button--icon icon--linkedin" href="http://www.linkedin.com/company/university-of-helsinki"
+           target="_blank" aria-label="LinkedIn"></a>
+        <a class="button--icon icon--instagram" href="https://www.instagram.com/universityofhelsinki"
+           target="_blank" aria-label="Instagram"></a>
+      </div>
     </div>
 
+  </div>
+
+  <div class="l-footer__copyright">
+    <p>
+      © {{::('general.helsinkiUniversity' | translate)}} {{currentYear}}
+    </p>
+  </div>
 </div>
-

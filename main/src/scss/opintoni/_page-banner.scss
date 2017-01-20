@@ -68,7 +68,7 @@ $banner-transition-duration: 0.5s;
     }
   }
 
-  .list-of-links--dark a {
+  .list-of-links__link {
     @include breakpoint($small) {
       display: inline-block;
       padding-right: 4em;
@@ -227,7 +227,7 @@ $banner-transition-duration: 0.5s;
   display: block;
   &:before {
     font-size: $size;
-    @include hy-icon($icon);
+    @include icon($icon);
   }
 }
 

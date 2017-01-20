@@ -90,13 +90,13 @@
   .fc-icon-calendar-prev {
     @include transform(rotate(180deg));
     &:before {
-      @include hy-icon("\EA1B");
+      @include icon($icon-link-arrow);
     }
   }
 
   .fc-icon-calendar-next {
     &:before {
-      @include hy-icon("\EA1B");
+      @include icon($icon-link-arrow);
     }
   }
 

@@ -20,7 +20,15 @@
 @import "../bower_components/Styleguide/sass/variables/breakpoints";
 @import "../bower_components/Styleguide/sass/variables/colors";
 @import "../bower_components/Styleguide/sass/variables/typography";
-@import "../bower_components/Styleguide/sass/mixins/mixins";
-@import "../bower_components/Styleguide/sass/objects/lists";
+@import "../bower_components/Styleguide/sass/icons/icons";
+@import "../bower_components/Styleguide/sass/mixins/typography";
+@import "../bower_components/Styleguide/sass/mixins/thematic-breaks";
+@import "../bower_components/Styleguide/sass/mixins/utility";
+@import "../bower_components/Styleguide/sass/mixins/box-shadow";
+@import "../bower_components/Styleguide/sass/mixins/button";
+@import "../bower_components/Styleguide/sass/mixins/border";
+@import "../bower_components/Styleguide/sass/mixins/arrow";
+@import "../bower_components/Styleguide/sass/mixins/tag";
+@import "../bower_components/Styleguide/sass/objects/misc";
 @import "../bower_components/Styleguide/sass/components/list-of-links";
 @import "../bower_components/Styleguide/sass/components/box/box-data";

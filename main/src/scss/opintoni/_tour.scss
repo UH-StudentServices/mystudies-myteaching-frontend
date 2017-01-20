@@ -81,6 +81,7 @@ $joyride-z-index: 999;
     background-color: transparent;
     color: $white;
   }
+
   .popover-text {
     @include font-size(13px);
     padding: 0 1rem 1rem 1rem;
@@ -90,14 +91,15 @@ $joyride-z-index: 999;
     padding: 0 !important;
   }
 
-  .list-of-links--dark {
-    padding: 1rem;
-    > li {
+  .popover-buttons {
+    padding: 1em;
+
+    .popover-buttons__button {
       display: inline;
-      padding-right: 10px;
+      padding-right: 1em;
     }
 
-    > li a {
+    .button--action, .button {
       cursor: pointer;
       display: inline-block;
       padding-left: 2em;
@@ -118,7 +120,7 @@ $joyride-z-index: 999;
     }
     &:before {
       font-family: "hy-icons";
-      content : "\EA32";
+      content: $icon-remove;
     }
   }
 }

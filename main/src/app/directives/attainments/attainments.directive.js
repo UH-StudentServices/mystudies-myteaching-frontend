@@ -24,7 +24,13 @@ angular.module('directives.attainments', [
   'directives.message'
 ])
 
-  .directive('attainments', function(AttainmentsService, MessageTypes) {
+  .constant('OodiLinks', {
+    fi: 'https://weboodi.helsinki.fi/hy/frame.jsp?Kieli=1&valittuKieli=1',
+    sv: 'https://weboodi.helsinki.fi/hy/frame.jsp?Kieli=2&valittuKieli=2',
+    en: 'https://weboodi.helsinki.fi/hy/frame.jsp?Kieli=6&valittuKieli=6'
+  })
+
+  .directive('attainments', function(AttainmentsService, MessageTypes, $rootScope, OodiLinks) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/attainments/attainments.html',
@@ -32,6 +38,10 @@ angular.module('directives.attainments', [
 
         $scope.hasAttainments = false;
         $scope.numberOfVisibleAttainments = 3;
+
+        $scope.getOodiLink = function() {
+          return OodiLinks[$rootScope.userLang];
+        };
 
         AttainmentsService.hasStudyAttainments().then(function(hasAttainments) {
           $scope.hasAttainments = hasAttainments;

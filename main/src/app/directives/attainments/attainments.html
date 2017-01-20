@@ -17,38 +17,40 @@
   -->
 
 <div class="ui-component attainments" role="article" ng-if="hasAttainments">
-    <h2 class="ui-component__title border-bottom" translate="attainments.attainments"></h2>
+  <h2 class="ui-component__title border-bottom" translate="attainments.attainments"></h2>
 
-    <message
-      class="messages--light"
-      ng-show="message"
-      message="message">
-    </message>
+  <message
+    class="messages--light"
+    ng-show="message"
+    message="message">
+  </message>
 
-    <ul ng-show="attainments.length">
-      <li ng-repeat="attainment in attainments | limitTo:numberOfVisibleAttainments">
-        <div class="box-data border-bottom">
-          <div class="box-data__date" ng-class="{'box-data__grade' : attainment.grade >= 0}">
-            <span>{{ attainment.grade }}</span>
-          </div>
-
-          <div class="box-data__content">
-            {{ attainment.attainmentDate | momentFormat:'DD.MM.YYYY' }}
-          </div>
-
-          <div class="box-data__title">
-            <span>{{ attainment.learningOpportunityName }}</span>
-            <span ng-if="attainment.credits">, {{ attainment.credits }} op</span>
-          </div>
-
-          <div class="box-data__content">
-            {{::("general.teachers" | translate | capitalize) }}: <span ng-repeat="teacher in attainment.teachers">{{ teacher.shortName }}</span>
-          </div>
+  <ul ng-show="attainments.length">
+    <li ng-repeat="attainment in attainments | limitTo:numberOfVisibleAttainments">
+      <div class="box-data border-bottom">
+        <div class="box-data__date" ng-class="{'box-data__grade' : attainment.grade >= 0}">
+          <span>{{ attainment.grade }}</span>
         </div>
-      </li>
-    </ul>
 
-    <div class="margin-top-10">
-      <a href="http://weboodi.helsinki.fi" target="_blank" translate="attainments.seeMoreLink" class="text-transform-capitalize"></a>
-    </div>
+        <div class="box-data__content">
+          {{ attainment.attainmentDate | momentFormat:'DD.MM.YYYY' }}
+        </div>
+
+        <div class="box-data__title">
+          <span>{{ attainment.learningOpportunityName }}</span>
+          <span ng-if="attainment.credits">, {{ attainment.credits }} op</span>
+        </div>
+
+        <div class="box-data__content">
+          {{::("general.teachers" | translate | capitalize) }}:
+          <span ng-repeat="teacher in attainment.teachers">{{ teacher.shortName }}</span>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <div class="margin-top-10">
+    <a href="{{getOodiLink()}}" target="_blank" translate="attainments.seeMoreLink"
+       class="button--action icon--arrow-right theme-transparent"></a>
+  </div>
 </div>

@@ -19,6 +19,7 @@
   display: inline-block;
   margin-right: 1em;
   word-wrap: break-word;
+  padding-left: 10px;
   @include breakpoint($small) {
     max-width: 180px;
   }
@@ -28,6 +29,50 @@
 }
 
 .course-recommendations__show-more-less {
-  padding: 0.8em 0;
   float: right;
+}
+
+.course-recommendations__list {
+  border-top: 1px solid $lightsilver;
+  margin-bottom: 1em;
+}
+
+// .theme-transparent done right TODO: This is coming to Styleguide as .theme-transparent-alt
+.course-recommendations__link {
+  background-color: transparent;
+  color: $blue;
+  padding-left: 0;
+  border-bottom: 1px solid $lightsilver;
+
+  &:hover {
+    background-color: $blue;
+  }
+
+  a:hover,
+  &:hover {
+    color: $white;
+  }
+
+  &:before {
+    display: none;
+  }
+
+  &:after {
+    color: $blue;
+    margin-left: 15px;
+    right: 0;
+    width: auto;
+  }
+
+  &:hover,
+  &:before {
+    background-color: transparent;
+  }
+
+  a:hover,
+  &:hover,
+  &:hover:after {
+    color: $darkblue;
+  }
+
 }
