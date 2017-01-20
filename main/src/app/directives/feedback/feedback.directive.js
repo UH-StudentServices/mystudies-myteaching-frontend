@@ -21,7 +21,7 @@ angular.module('directives.feedback', [
   'services.state'])
 
   .directive('feedback', function(FeedbackResource, $timeout, $window, SessionService,
-                                  StateService, AnalyticsService) {
+                                  StateService, AnalyticsService, LanguageService) {
     return {
       restrict: 'E',
       replace: true,
@@ -73,7 +73,8 @@ angular.module('directives.feedback', [
                   metadata: {
                     userAgent: $window.navigator.userAgent,
                     faculty: sessionData.facultyCode,
-                    state: StateService.getRootStateName()
+                    state: StateService.getRootStateName(),
+                    lang: LanguageService.getCurrent()
                   }
                 };
               })
