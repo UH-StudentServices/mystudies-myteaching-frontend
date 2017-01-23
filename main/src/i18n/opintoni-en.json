@@ -265,7 +265,8 @@
     "errors": {
       "genericError": "Service has some problems at the moment. Some features may not work."
     },
-    "demoEnvNotice": "Notice! This is a demo environment and the information is not correct. For the correct information go to <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>"
+    "demoEnvNoticeMyStudies": "Notice! This is a demo environment and the information is not correct. For the correct information go to <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>",
+    "demoEnvNoticeMyTeaching": "Notice! This is a demo environment and the information is not correct. For the correct information go to <a href='http://teacher.helsinki.fi'>http://teacher.helsinki.fi</a>"
   },
   "todoItems": {
     "listIsEmpty": "Your to do list is empty",

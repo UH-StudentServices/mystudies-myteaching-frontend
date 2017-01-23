@@ -247,7 +247,8 @@
     "advising": "Uppdrag som sakkunnig angående undervisning och forskning"
   },
   "globalMessages": {
-    "demoEnvNotice": "Obs! Detta är en demomiljö och information är inte korrekt. För rätt information gå till <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>"
+    "demoEnvNoticeMyStudies": "Obs! Detta är en demomiljö och information är inte korrekt. För rätt information gå till <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>",
+    "demoEnvNoticeMyTeaching": "Obs! Detta är en demomiljö och information är inte korrekt. För rätt information gå till <a href='http://teacher.helsinki.fi'>http://teacher.helsinki.fi</a>",
   },
   "personalInformation": {
     "title": "Personalia"

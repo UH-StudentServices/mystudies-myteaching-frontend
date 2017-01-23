@@ -264,7 +264,8 @@
     "errors": {
       "genericError": "Palvelun toiminnassa on havaittu ongelmia. Jotkut ominaisuudet saattavat olla pois käytöstä."
     },
-    "demoEnvNotice": "Huomio! Tämä on demoympäristö, jossa tiedot eivät ole oikeita. Oikeat tiedot ovat osoitteessa <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>"
+    "demoEnvNoticeMyStudies": "Huomio! Tämä on demoympäristö, jossa tiedot eivät ole oikeita. Oikeat tiedot ovat osoitteessa <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>",
+    "demoEnvNoticeMyTeaching": "Huomio! Tämä on demoympäristö, jossa tiedot eivät ole oikeita. Oikeat tiedot ovat osoitteessa <a href='http://teacher.helsinki.fi'>http://teacher.helsinki.fi</a>"
   },
   "todoItems": {
     "listIsEmpty": "Muistilistasi on vielä tyhjä",
