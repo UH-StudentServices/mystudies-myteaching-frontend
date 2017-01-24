@@ -29,15 +29,21 @@ angular.module('services.state', ['services.session',
         portfolioRole = PortfolioRoleService.getActiveRole();
 
     function resolve(session, lang) {
-      currentState = session.portfolioPathsByRoleAndLang[portfolioRole][lang][0] === $location.path() ?
-        State.PRIVATE :
-        State.RESTRICTED;
+      if (session) {
+        currentState = session.portfolioPathsByRoleAndLang[portfolioRole][lang][0] === $location.path() ?
+          State.PRIVATE :
+          State.RESTRICTED;
+      }
+
+      return currentState;
+    }
+
+    function getCurrent() {
+      return currentState;
     }
 
     return {
       resolve: resolve,
-      getCurrent: function() {
-        return currentState;
-      }
+      getCurrent: getCurrent
     };
   });

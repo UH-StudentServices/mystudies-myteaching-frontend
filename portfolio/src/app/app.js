@@ -102,19 +102,18 @@ angular.module('opintoniPortfolioApp', [
       templateUrl: 'app/partials/_portfolio.html',
       controller: 'MainCtrl',
       resolve: {
-        session: function(SessionService, StateService, $stateParams) {
-          return SessionService.getSession().then(function getSessionSuccess(session) {
-            return StateService.resolve(session, $stateParams.lang);
-          }, function getSessionFail() {
-            return null;
-          });
+        session: function(SessionService) {
+          return SessionService.getSession();
         },
-        userSettings: function(StateService, State, UserSettingsService, session) {
-          if (StateService.getCurrent() === State.PRIVATE) {
+        state: function(StateService, $stateParams, session) {
+          return StateService.resolve(session, $stateParams.lang);
+        },
+        userSettings: function(StateService, State, UserSettingsService, state) {
+          if (state === State.PRIVATE) {
             return UserSettingsService.getUserSettings();
           }
         },
-        portfolio: function(PortfolioService, $state, $stateParams, userSettings) {
+        portfolio: function(PortfolioService, $state, $stateParams) {
           return PortfolioService.findPortfolioByPath($stateParams.lang, $stateParams.userpath)
             .catch(function findPortfolioFail(error) {
               if (error.status === 404) {

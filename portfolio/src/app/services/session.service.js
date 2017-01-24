@@ -24,7 +24,9 @@ angular.module('services.session', [
 
     function getSession() {
       if (!sessionPromise) {
-        sessionPromise = SessionResource.getSession();
+        sessionPromise = SessionResource.getSession().catch(function() {
+          return null;
+        });
       }
 
       return sessionPromise;
