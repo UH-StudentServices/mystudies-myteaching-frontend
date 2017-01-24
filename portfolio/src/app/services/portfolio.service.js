@@ -15,18 +15,22 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('services.portfolio', ['resources.portfolio'])
+angular.module('services.portfolio', ['resources.portfolio',
+                                      'services.portfolioRole'])
 
-  .factory('PortfolioService' , function(PortfolioResource) {
+  .factory('PortfolioService' , function(PortfolioResource,
+                                         PortfolioRoleService) {
     var portfolioPromise;
 
-    function findPortfolioByPath(portfolioRole, path) {
-      portfolioPromise = PortfolioResource.find(portfolioRole, path);
+    function findPortfolioByPath(lang, userpath) {
+      portfolioPromise = PortfolioResource.find(PortfolioRoleService.getActiveRole(), lang, userpath);
+
       return portfolioPromise;
     }
 
     function updatePortfolio(portfolio) {
       portfolioPromise = PortfolioResource.update(portfolio);
+
       return portfolioPromise;
     }
 

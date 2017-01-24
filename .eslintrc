@@ -24,6 +24,7 @@
     "Modernizr": false,
     "moment": false,
     "sprintf": false,
+    "spyOn": false,
     "twttr": true
   },
   "rules": {

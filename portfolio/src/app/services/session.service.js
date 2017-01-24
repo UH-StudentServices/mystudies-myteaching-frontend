@@ -15,8 +15,6 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-'use strict';
-
 angular.module('services.session', [
   'resources.session'
 ])
@@ -28,11 +26,11 @@ angular.module('services.session', [
       if (!sessionPromise) {
         sessionPromise = SessionResource.getSession();
       }
+
       return sessionPromise;
     }
 
     return {
       getSession: getSession
     };
-
   });

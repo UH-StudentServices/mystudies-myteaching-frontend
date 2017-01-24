@@ -19,14 +19,19 @@ angular.module('resources.portfolio', ['services.state'])
 
   .factory('PortfolioResource', function($resource, StateService) {
 
-    var findPortfolioResource = $resource('/api/:currentState/v1/portfolio/:portfolioRole/:path'),
+    var findPortfolioResource = $resource('/api/:currentState/v1/portfolio/:portfolioRole/:lang/:userPath'),
         updatePortfolioResource =  $resource('/api/:currentState/v1/portfolio/:id', {id: '@id'}, {
           'update': {method: 'PUT'}
         });
 
-    function find(portfolioRole, path) {
+    function find(portfolioRole, portfolioLang, userPath) {
       return findPortfolioResource
-        .get({currentState: StateService.getCurrent(), portfolioRole: portfolioRole, path: path}).$promise;
+        .get({
+          currentState: StateService.getCurrent(),
+          portfolioRole: portfolioRole,
+          lang: portfolioLang,
+          userPath: userPath
+        }).$promise;
     }
 
     function update(portfolio) {

@@ -73,6 +73,7 @@ angular.module('opintoniPortfolioApp', [
   'services.keyword',
   'services.configuration',
   'services.portfolioRole',
+
   'utils.moment'
 ])
 
@@ -97,16 +98,13 @@ angular.module('opintoniPortfolioApp', [
     $compileProvider.debugInfoEnabled(false);
 
     $stateProvider.state('site', {
-      url: '/:path',
+      url: '/:lang/:userpath',
       templateUrl: 'app/partials/_portfolio.html',
       controller: 'MainCtrl',
       resolve: {
-        portfolioRole: function(PortfolioRoleService) {
-          return PortfolioRoleService.getPortfolioRoleFromDomain();
-        },
-        session: function(SessionService, StateService, $stateParams, portfolioRole) {
+        session: function(SessionService, StateService, $stateParams) {
           return SessionService.getSession().then(function getSessionSuccess(session) {
-            return StateService.resolveCurrent(session, portfolioRole, $stateParams.path);
+            return StateService.resolve(session, $stateParams.lang);
           }, function getSessionFail() {
             return null;
           });
@@ -116,8 +114,8 @@ angular.module('opintoniPortfolioApp', [
             return UserSettingsService.getUserSettings();
           }
         },
-        portfolio: function($stateParams, PortfolioService, $state, userSettings, portfolioRole) {
-          return PortfolioService.findPortfolioByPath(portfolioRole, $stateParams.path)
+        portfolio: function(PortfolioService, $state, $stateParams, userSettings) {
+          return PortfolioService.findPortfolioByPath($stateParams.lang, $stateParams.userpath)
             .catch(function findPortfolioFail(error) {
               if (error.status === 404) {
                 $state.go('notFound');
@@ -131,6 +129,7 @@ angular.module('opintoniPortfolioApp', [
       prefix: 'i18n/portfolio-',
       suffix: '.json'
     });
+
     $translateProvider.useCookieStorage();
     $translateProvider.useSanitizeValueStrategy('escaped');
     $translateProvider.preferredLanguage(preferredLanguage);

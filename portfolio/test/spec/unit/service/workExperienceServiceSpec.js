@@ -19,20 +19,23 @@ describe('WorkExperienceService', function() {
   var $httpBackend,
       $q,
       $rootScope,
+      $location,
       WorkExperienceService,
       PortfolioService,
       StateService,
-      session = {},
+      session,
       portfolioId = 1,
-      apiUrl = '/api/private/v1/portfolio/',
+      privateApiBasePath = '/api/private/v1/portfolio/',
       portfolioRole = 'student',
-      portfolioPath = 'olli.opiskelija',
+      userPath = 'olli-opiskelija',
+      portfolioLang = 'en',
+      portfolioPath = '/' + [portfolioLang, userPath].join('/'),
       portfolioResponse = {
         id: portfolioId,
         workExperience: [{employer: 'employer'}],
         jobSearch: {contactEmail: 'olli.opiskelija@helsinki.fi'}
       },
-      portfolioApiUrl =  apiUrl + portfolioRole + '/' + portfolioPath;
+      portfolioApiPath =  privateApiBasePath + [portfolioRole, portfolioLang, userPath].join('/');
 
   function filterEmpty(value) {
     return value;
@@ -55,40 +58,52 @@ describe('WorkExperienceService', function() {
     $httpBackend.verifyNoOutstandingRequest();
   }
 
+  function mockLocation() {
+    spyOn($location, 'path').and.returnValue(portfolioPath);
+  }
+
   beforeEach(module('ngResource'));
   beforeEach(module('utils.moment'));
   beforeEach(module('services.workExperience'));
 
-  beforeEach(inject(function(
-    _$rootScope_,
-    _$q_,
-    _$httpBackend_,
-    _WorkExperienceService_,
-    _StateService_,
-    _PortfolioService_) {
-    WorkExperienceService = _WorkExperienceService_;
-    $httpBackend = _$httpBackend_;
-    $q = _$q_;
-    PortfolioService = _PortfolioService_;
-    StateService = _StateService_;
-    $rootScope = _$rootScope_;
+  beforeEach(module('services.portfolioRole', function($provide) {
+    $provide.constant('PortfolioRoleService', {
+      getActiveRole: jasmine.createSpy('PortfolioRoleService.getActiveRole').and.returnValue(portfolioRole)
+    });
   }));
 
   beforeEach(function() {
-    session.portfolioPath = {};
-    session.portfolioPath[portfolioRole] = portfolioPath;
+    session = {
+      portfolioPathsByRoleAndLang: {
+        student: {
+          en: [portfolioPath]
+        }
+      }
+    };
 
-    StateService.resolveCurrent(
+    inject(function(_$rootScope_, _$q_, _$location_, _$httpBackend_, _WorkExperienceService_,
+                    _StateService_, _PortfolioService_) {
+      WorkExperienceService = _WorkExperienceService_;
+      $httpBackend = _$httpBackend_;
+      $q = _$q_;
+      $location = _$location_;
+      PortfolioService = _PortfolioService_;
+      StateService = _StateService_;
+      $rootScope = _$rootScope_;
+
+      mockLocation();
+    });
+
+    StateService.resolve(
       session,
-      portfolioRole,
-      portfolioPath);
+      portfolioLang);
 
-    PortfolioService.findPortfolioByPath(portfolioRole, portfolioPath);
+    PortfolioService.findPortfolioByPath(portfolioLang, userPath);
   });
 
   beforeEach(function() {
     $httpBackend
-      .expect('GET', portfolioApiUrl)
+      .expect('GET', portfolioApiPath)
       .respond(portfolioResponse);
   });
 
