@@ -37,8 +37,8 @@ angular.module('directives.userMenu.settings', [
                                   UserSettingsService,
                                   PortfolioService,
                                   SessionService,
-                                  BrowserUtil
-                                  ) {
+                                  BrowserUtil,
+                                  Role) {
     return {
       restrict: 'E',
       replace: true,
@@ -49,6 +49,10 @@ angular.module('directives.userMenu.settings', [
         $scope.showAvatarChangeType = false;
         $scope.cameraOn = false;
         $scope.supportsCamera = BrowserUtil.supportsCamera();
+        $scope.roles = {
+          teacher: Role.TEACHER,
+          student: Role.STUDENT
+        };
 
         SessionService.getSession().then(function getSessionSuccess(session) {
           $scope.session = session;
@@ -57,7 +61,7 @@ angular.module('directives.userMenu.settings', [
         $scope.openPortfolio = function(role) {
           PortfolioService.getPortfolio(role).then(function getPortfolioSuccess(portfolio) {
             $window.location.href = portfolio.url;
-          }, function getPortfolioFail(data) {
+          }).catch(function getPortfolioFail(data) {
             if (data.status === 404) {
               PortfolioService.createPortfolio(role).then(function createPortfolioSuccess(portfolio) {
                 $window.location.href = portfolio.url;

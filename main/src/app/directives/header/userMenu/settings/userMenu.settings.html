@@ -38,13 +38,13 @@
       </a>
     </li>
     <li limit-visibility="['STUDENT_ONLY', 'MY_STUDIES_ONLY']" class="user-settings__menu-item" role="menuitem">
-      <a href="" ng-click="openPortfolio('student')">
+      <a href="" ng-click="openPortfolio(roles.student)">
         <i class="hy hy-profile"></i>
         {{::('userSettings.portfolio' | translate | capitalize)}}
       </a>
     </li>
     <li limit-visibility="['TEACHER_ONLY', 'MY_TEACHINGS_ONLY']" class="user-settings__menu-item" role="menuitem">
-      <a href="" ng-click="openPortfolio('teacher')">
+      <a href="" ng-click="openPortfolio(roles.teacher)">
         <i class="hy hy-profile"></i>
         {{::('userSettings.universityPortfolio' | translate | capitalize)}}
       </a>

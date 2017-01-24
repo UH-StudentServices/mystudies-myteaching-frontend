@@ -15,12 +15,13 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('services.portfolio', ['resources.portfolio'])
+angular.module('services.portfolio', ['services.session',
+                                      'resources.portfolio'])
 
-  .factory('PortfolioService', function(PortfolioResource) {
+  .factory('PortfolioService', function(PortfolioResource, Role) {
 
     function createPortfolio(role) {
-      if (role === 'teacher') {
+      if (role === Role.TEACHER) {
         return PortfolioResource.createTeacherPortfolio();
       } else {
         return PortfolioResource.createStudentPortfolio();
@@ -28,7 +29,7 @@ angular.module('services.portfolio', ['resources.portfolio'])
     }
 
     function getPortfolio(role) {
-      if (role === 'teacher') {
+      if (role === Role.TEACHER) {
         return PortfolioResource.getTeacherPortfolio();
       } else {
         return PortfolioResource.getStudentPortfolio();
