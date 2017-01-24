@@ -24,10 +24,10 @@ angular.module('resources.portfolio', ['services.state'])
           'update': {method: 'PUT'}
         });
 
-    function find(portfolioRole, portfolioLang, userPath) {
+    function find(state, portfolioRole, portfolioLang, userPath) {
       return findPortfolioResource
         .get({
-          currentState: StateService.getCurrent(),
+          currentState: state,
           portfolioRole: portfolioRole,
           lang: portfolioLang,
           userPath: userPath

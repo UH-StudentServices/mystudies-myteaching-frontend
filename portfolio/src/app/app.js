@@ -113,8 +113,8 @@ angular.module('opintoniPortfolioApp', [
             return UserSettingsService.getUserSettings();
           }
         },
-        portfolio: function(PortfolioService, $state, $stateParams) {
-          return PortfolioService.findPortfolioByPath($stateParams.lang, $stateParams.userpath)
+        portfolio: function(PortfolioService, $state, $stateParams, state) {
+          return PortfolioService.findPortfolioByPath(state, $stateParams.lang, $stateParams.userpath)
             .catch(function findPortfolioFail(error) {
               if (error.status === 404) {
                 $state.go('notFound');

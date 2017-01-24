@@ -22,8 +22,8 @@ angular.module('services.portfolio', ['resources.portfolio',
                                          PortfolioRoleService) {
     var portfolioPromise;
 
-    function findPortfolioByPath(lang, userpath) {
-      portfolioPromise = PortfolioResource.find(PortfolioRoleService.getActiveRole(), lang, userpath);
+    function findPortfolioByPath(state, lang, userpath) {
+      portfolioPromise = PortfolioResource.find(state, PortfolioRoleService.getActiveRole(), lang, userpath);
 
       return portfolioPromise;
     }

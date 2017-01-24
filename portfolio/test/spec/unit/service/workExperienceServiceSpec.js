@@ -26,6 +26,7 @@ describe('WorkExperienceService', function() {
       session,
       portfolioId = 1,
       privateApiBasePath = '/api/private/v1/portfolio/',
+      state = 'private',
       portfolioRole = 'student',
       userPath = 'olli-opiskelija',
       portfolioLang = 'en',
@@ -98,7 +99,7 @@ describe('WorkExperienceService', function() {
       session,
       portfolioLang);
 
-    PortfolioService.findPortfolioByPath(portfolioLang, userPath);
+    PortfolioService.findPortfolioByPath(state, portfolioLang, userPath);
   });
 
   beforeEach(function() {
