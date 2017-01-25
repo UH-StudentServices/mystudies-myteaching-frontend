@@ -13,21 +13,15 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
--->
+  -->
 
-<div class="navigation" visibility-private>
-  <div class="wrapper">
-    <nav>
-      <ul class="main-menu">
-        <li class="main-menu__home">
-          <a href="" ng-click="backToFrontpage()" aria-label="{{:: ('toolbar.home' | translate) }}"></a>
-        </li>
-      </ul>
-    </nav>
-    <div class="navigation__right">
-      <language-selector></language-selector>
-      <preview-button></preview-button>
-      <portfolio-visibility></portfolio-visibility>
-    </div>
-  </div>
-</div>
+<ul class="lang-selector__lang-list">
+  <li ng-repeat="lang in availableLangs">
+    <a href=""
+       role="button"
+       class="lang-selector__lang-btn"
+       translate="languages.code.{{::lang}}">
+    </a>
+  </li>
+</ul>
+

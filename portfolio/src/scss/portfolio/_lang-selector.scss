@@ -15,28 +15,34 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* Portfolio application styles */
+ .lang-selector {
+  display: inline-block;
+  position: relative;
+  margin-right: 1em;
 
-@import "common";
-@import "mixins";
-@import "credits";
-@import "editable";
-@import "intro";
-@import "studies";
-@import "keywords";
-@import "degrees";
-@import "edit-link";
-@import "work-experience";
-@import "samples";
-@import "forms";
-@import "attainments";
-@import "buttons";
-@import "visibility";
-@import "contact-information";
-@import "page-banner";
-@import "navigation";
-@import "free-text-content";
-@import "language-proficiencies";
-@import "accordion";
-@import "lang-selector";
-@import "print";
+  &__btn {
+    text-transform: uppercase;
+  }
+
+  &__lang-menu {
+    left: 0;
+    right: auto;
+
+    &::before, &::after {
+      left: 1em !important;
+    }
+  }
+
+  &__lang-list li {
+    @include border-bottom;
+
+    &:last-child {
+      border: none;
+    }
+  }
+
+  &__lang-btn {
+    display: block;
+    padding: 1em;
+  }
+ }

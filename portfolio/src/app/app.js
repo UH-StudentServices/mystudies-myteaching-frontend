@@ -63,6 +63,7 @@ angular.module('opintoniPortfolioApp', [
   'directives.tabSet',
   'directives.stickyMessage',
   'directives.accordion',
+  'directives.languageSelector',
 
   'filters.formatting',
 
