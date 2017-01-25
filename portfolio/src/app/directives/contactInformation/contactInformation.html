@@ -44,7 +44,8 @@
             {{ contactInformation.financialUnit }}
           </div>
           <div class="contact-details__field" ng-show="contactInformation.workAddress">
-            {{ contactInformation.workAddress }} <span ng-show="contactInformation.workPostcode">, {{ contactInformation.workPostcode }}</span>
+            {{ contactInformation.workAddress }}
+            <span ng-show="contactInformation.workPostcode">, {{ contactInformation.workPostcode }}</span>
           </div>
           <div class="contact-details__field" ng-show="contactInformation.email">
             <a href="mailto:{{ contactInformation.email }}">{{ contactInformation.email }}</a>
@@ -58,10 +59,10 @@
     </div>
     <ul role="list">
       <li ng-repeat="someLink in contactInformation.someLinks | orderBy: 'type'"
-          role="listitem"
-          class="block link">
-        <a href="{{ someLink.url }}" tabindex="0" target="_blank">{{ 'contactInformation.' + someLink.type | translate }}
-          <i class="social-media-link-icon social-media-link-icon--{{ someLink.type | lowercase }}"></i>
+          role="listitem" class="">
+        <a href="{{ someLink.url }}" tabindex="0" target="_blank" aria-label="{{ 'contactInformation.' + someLink.type | translate }}"
+           class="button--action icon--{{ someLink.type | lowercase }} contact-information__social-media-link">
+          {{ 'contactInformation.' + someLink.type | translate }}
         </a>
       </li>
     </ul>
