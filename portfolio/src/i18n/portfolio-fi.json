@@ -6,6 +6,7 @@
     "addNew": "lisää uusi",
     "remove" : "poista",
     "ok": "Ok",
+    "cancel": "Peruuta",
     "showMore": "lisää",
     "showLess": "vähemmän",
     "students": "opiskelijat",
@@ -241,5 +242,9 @@
   },
   "personalInformation": {
     "title": "Henkilötiedot"
+  },
+  "languageSelector": {
+    "confirmation": "Tämän portfolion sisältö on kielellä {{ lang }}. Haluatko luoda uuden portfolion eri kielellä?",
+    "selectionPrompt": "Valitse uuden portfolion kieli:"
   }
 }

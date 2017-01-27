@@ -16,16 +16,26 @@
  */
 
 angular.module('directives.languageSelector', ['services.portfolio',
+                                               'services.portfolioRole',
+                                               'services.session',
                                                'directives.popover'])
 
-  .directive('languageSelector', function(PortfolioService) {
+  .directive('languageSelector', function($q, $window, $state, $translate, PortfolioService,
+                                          PortfolioRoleService, SessionService) {
     return {
       restrict: 'E',
       replace: true,
       scope: {},
       templateUrl: 'app/directives/languageSelector/languageSelector.html',
       link: function(scope) {
-        var availableLangs = ['en', 'fi', 'sv'];
+        var supportedLangs = ['en', 'fi', 'sv'],
+            role = PortfolioRoleService.getActiveRole(),
+            portfolio,
+            session;
+
+        function canCreateRolePortfolioInLang(lang) {
+          return Object.keys(session.portfolioPathsByRoleAndLang[role]).indexOf(lang) === -1;
+        }
 
         function togglePopover() {
           scope.displayPopover = !scope.displayPopover;
@@ -35,12 +45,54 @@ angular.module('directives.languageSelector', ['services.portfolio',
           scope.displayPopover = false;
         }
 
-        PortfolioService.getPortfolio().then(function(portfolio) {
+        function confirm() {
+          // use of _.defer is warranted since otherwise ngIf will kick in before angular-click-outside which would
+          // close the popover instead of presenting the user with a different dialog
+          _.defer(function() {
+            scope.hasConfirmed = true;
+            scope.$apply();
+          });
+        }
+
+        function hasMultiplePortfolios(session) {
+          return Object.keys(session.portfolioPathsByRoleAndLang[role]).length > 1;
+        }
+
+        function createAndSwitchToNewPortfolio(lang) {
+          PortfolioService.createPortfolio(role, lang).then(function(newPortfolio) {
+            $window.location.href = newPortfolio.url;
+          });
+        }
+
+        function switchToPortfolioInLang(lang) {
+          if (canCreateRolePortfolioInLang(lang)) {
+            createAndSwitchToNewPortfolio(lang);
+          } else {
+            $state.go('site', {
+              lang: lang
+            });
+          }
+        }
+
+        function translateCurrentLang(lang) {
+          return $translate.instant(['languages', 'code', lang].join('.'));
+        }
+
+        $q.all([PortfolioService.getPortfolio(), SessionService.getSession()]).then(function(data) {
+          portfolio = data[0];
+          session = data[1];
+
           scope = _.assign(scope, {
             currentLang: portfolio.lang,
-            availableLangs: availableLangs,
+            translatedLang: translateCurrentLang(portfolio.lang),
+            supportedLangs: supportedLangs,
+            availableLangs: supportedLangs.filter(canCreateRolePortfolioInLang),
+            hasOnlyOnePortfolio: !hasMultiplePortfolios(session),
             togglePopover: togglePopover,
-            closePopover: closePopover
+            closePopover: closePopover,
+            confirm: confirm,
+            createAndSwitchToNewPortfolio: createAndSwitchToNewPortfolio,
+            switchToPortfolioInLang: switchToPortfolioInLang
           });
         });
       }

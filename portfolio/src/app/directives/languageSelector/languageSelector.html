@@ -16,17 +16,18 @@
   -->
 
 <div class="lang-selector">
-  <button class="button button--light lang-selector__btn"
-          ng-click="togglePopover()">
+  <button class="button button--light lang-selector__trigger-btn"
+          ng-click="togglePopover()"
+          aria-haspopup="true">
     {{::currentLang}}
   </button>
 
   <popover template="app/directives/languageSelector/languageSelector.popover.html"
-           override-class="lang-selector__lang-menu"
+           override-class="lang-selector__content"
            ng-if="displayPopover"
            id="portfolio-lang-selector"
-           trigger-selector="lang-selector__btn"
-           target-selector=".lang-selector__btn"
+           trigger-selector="lang-selector__trigger-btn"
+           target-selector=".lang-selector__trigger-btn"
            on-click-trigger="togglePopover()"
            on-click-outside="closePopover()">
   </popover>

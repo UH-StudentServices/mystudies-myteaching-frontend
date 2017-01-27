@@ -59,10 +59,6 @@ describe('WorkExperienceService', function() {
     $httpBackend.verifyNoOutstandingRequest();
   }
 
-  function mockLocation() {
-    spyOn($location, 'path').and.returnValue(portfolioPath);
-  }
-
   beforeEach(module('ngResource'));
   beforeEach(module('utils.moment'));
   beforeEach(module('services.workExperience'));
@@ -82,22 +78,20 @@ describe('WorkExperienceService', function() {
       }
     };
 
-    inject(function(_$rootScope_, _$q_, _$location_, _$httpBackend_, _WorkExperienceService_,
+    inject(function(_$rootScope_, _$q_, _$httpBackend_, _WorkExperienceService_,
                     _StateService_, _PortfolioService_) {
       WorkExperienceService = _WorkExperienceService_;
       $httpBackend = _$httpBackend_;
       $q = _$q_;
-      $location = _$location_;
       PortfolioService = _PortfolioService_;
       StateService = _StateService_;
       $rootScope = _$rootScope_;
-
-      mockLocation();
     });
 
     StateService.resolve(
       session,
-      portfolioLang);
+      portfolioLang,
+      userPath);
 
     PortfolioService.findPortfolioByPath(state, portfolioLang, userPath);
   });

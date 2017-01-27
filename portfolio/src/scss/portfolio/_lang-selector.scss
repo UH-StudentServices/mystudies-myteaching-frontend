@@ -20,11 +20,11 @@
   position: relative;
   margin-right: 1em;
 
-  &__btn {
+  &__trigger-btn {
     text-transform: uppercase;
   }
 
-  &__lang-menu {
+  &__content {
     left: 0;
     right: auto;
 
@@ -33,7 +33,7 @@
     }
   }
 
-  &__lang-list li {
+  &__lang-list-item {
     @include border-bottom;
 
     &:last-child {
@@ -41,8 +41,32 @@
     }
   }
 
-  &__lang-btn {
+  &__portfolio-link {
     display: block;
     padding: 1em;
   }
+
+  &__prompt {
+    width: 23.8em;
+    padding: 1em;
+  }
  }
+
+.prompt {
+  &__intro {
+    margin-bottom: 1em;
+  }
+
+  &__btn {
+    display: inline-block;
+    margin-right: 0.5em;
+  }
+
+  &__link {
+    @extend .prompt__btn, button.button--light;
+
+    &:hover {
+      color: $white !important;
+    };
+  }
+}

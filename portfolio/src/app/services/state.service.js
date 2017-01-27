@@ -24,13 +24,17 @@ angular.module('services.state', ['services.session',
     'PUBLIC': 'public'
   })
 
-  .factory('StateService', function($location, State, PortfolioRoleService) {
+  .factory('StateService', function(State, PortfolioRoleService) {
     var currentState = State.PUBLIC,
         portfolioRole = PortfolioRoleService.getActiveRole();
 
-    function resolve(session, lang) {
+    function hasPortfolioPathInSessionDescriptor(session, lang, userpath) {
+      return session.portfolioPathsByRoleAndLang[portfolioRole][lang][0] === ['', lang, userpath].join('/');
+    }
+
+    function resolve(session, lang, userpath) {
       if (session) {
-        currentState = session.portfolioPathsByRoleAndLang[portfolioRole][lang][0] === $location.path() ?
+        currentState = hasPortfolioPathInSessionDescriptor(session, lang, userpath) ?
           State.PRIVATE :
           State.RESTRICTED;
       }

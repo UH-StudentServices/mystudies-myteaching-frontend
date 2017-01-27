@@ -107,7 +107,7 @@ angular.module('opintoniPortfolioApp', [
           return SessionService.getSession();
         },
         state: function(StateService, $stateParams, session) {
-          return StateService.resolve(session, $stateParams.lang);
+          return StateService.resolve(session, $stateParams.lang, $stateParams.userpath);
         },
         userSettings: function(StateService, State, UserSettingsService, state) {
           if (state === State.PRIVATE) {

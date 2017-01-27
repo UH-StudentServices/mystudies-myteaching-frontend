@@ -28,6 +28,10 @@ angular.module('services.portfolio', ['resources.portfolio',
       return portfolioPromise;
     }
 
+    function createPortfolio(role, lang) {
+      return PortfolioResource.create(role, lang);
+    }
+
     function updatePortfolio(portfolio) {
       portfolioPromise = PortfolioResource.update(portfolio);
 
@@ -40,6 +44,7 @@ angular.module('services.portfolio', ['resources.portfolio',
 
     return {
       findPortfolioByPath: findPortfolioByPath,
+      createPortfolio: createPortfolio,
       updatePortfolio: updatePortfolio,
       getPortfolio: getPortfolio
     };

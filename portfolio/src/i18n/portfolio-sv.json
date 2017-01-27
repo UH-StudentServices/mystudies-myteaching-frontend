@@ -6,6 +6,7 @@
     "addNew": "lägg till",
     "remove" : "radera",
     "ok": "Ok",
+    "cancel": "Avbryt",
     "showMore": "mer",
     "showLess": "mindre",
     "students": "studerande",
@@ -241,5 +242,9 @@
   },
   "personalInformation": {
     "title": "Personalia"
+  },
+  "languageSelector": {
+    "confirmation": "Tämän portfolion sisältö on kielellä {{ lang }}. Haluatko luoda uuden portfolion eri kielellä? (sv)",
+    "selectionPrompt": "Valitse uuden portfolion kieli: (sv)"
   }
 }
