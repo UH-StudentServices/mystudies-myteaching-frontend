@@ -16,7 +16,13 @@
   -->
 
 <button class="button--light button preview-btn"
-        ng-click="enterPreview()">
-  <span class="preview-btn__text" translate="preview.enterPreview"></span>
-  <span class="preview-btn__icon hy hy-preview"></span>
+        ng-click="enterPreview()"
+        aria-labelledby="portfolio-preview-btn">
+  <span id="portfolio-preview-btn"
+        class="preview-btn__text"
+        translate="preview.enterPreview">
+  </span>
+  <span class="preview-btn__icon hy hy-preview"
+        aria-hidden="true">
+  </span>
 </button>
