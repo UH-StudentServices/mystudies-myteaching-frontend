@@ -53,8 +53,12 @@
   }
 
   &__prompt {
-    width: 23.8em;
+    width: 13em;
     padding: 1em;
+
+    @include breakpoint($small) {
+      width: 23.8em;
+    }
   }
  }
 
