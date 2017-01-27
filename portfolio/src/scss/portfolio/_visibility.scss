@@ -18,6 +18,7 @@
 .dropdown {
   position: relative;
   display: inline-block;
+  vertical-align: bottom;
   clear: both;
   margin-top: 1em;
   cursor: pointer;
@@ -28,7 +29,6 @@
     align-items: center;
     position: relative;
     height: 2em;
-    vertical-align: bottom;
     padding-right: 30px;
     padding-left: 10px;
     color: $white;
