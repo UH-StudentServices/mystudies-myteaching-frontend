@@ -36,9 +36,14 @@
 .navigation__right {
   @include vertically-center;
   right: 0;
+
   > button {
-    margin-right: 1em;
+    margin-right: 0.5em;
     display: inline-block !important;
+
+    @include breakpoint($small) {
+      margin-right: 1em;
+    }
   }
 
   .dropdown {

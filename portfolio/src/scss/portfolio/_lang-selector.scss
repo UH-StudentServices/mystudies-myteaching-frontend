@@ -18,7 +18,13 @@
  .lang-selector {
   display: inline-block;
   position: relative;
-  margin-right: 1em;
+  height: 2em;
+  vertical-align: bottom;
+  margin-right: 0.5em;
+
+  @include breakpoint($small) {
+    margin-right: 1em;
+  }
 
   &__trigger-btn {
     text-transform: uppercase;

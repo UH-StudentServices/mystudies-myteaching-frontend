@@ -24,12 +24,21 @@
   @include user-select(none);
 
   .dropdown-toggle {
+    display: flex;
+    align-items: center;
     position: relative;
-    width: 150px;
-    padding: 0px 50px 0px 10px;
+    height: 2em;
+    vertical-align: bottom;
+    padding-right: 30px;
+    padding-left: 10px;
     color: $white;
     background-color: $limegreen;
-    line-height: 32px;
+
+    @include breakpoint($small) {
+      width: 150px;
+      padding-right: 50px;
+    }
+
     &:after {
       border: 8px solid transparent;
       border-top: 8px solid $white;
