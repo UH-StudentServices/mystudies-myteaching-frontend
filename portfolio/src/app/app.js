@@ -98,7 +98,7 @@ angular.module('opintoniPortfolioApp', [
 
     $compileProvider.debugInfoEnabled(false);
 
-    $stateProvider.state('site', {
+    $stateProvider.state('portfolio', {
       url: '/:lang/:userpath',
       templateUrl: 'app/partials/_portfolio.html',
       controller: 'MainCtrl',

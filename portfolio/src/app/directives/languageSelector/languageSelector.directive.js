@@ -68,7 +68,7 @@ angular.module('directives.languageSelector', ['services.portfolio',
           if (canCreateRolePortfolioInLang(lang)) {
             createAndSwitchToNewPortfolio(lang);
           } else {
-            $state.go('site', {
+            $state.go('portfolio', {
               lang: lang
             });
           }
