@@ -48,7 +48,6 @@
       "TWITTER": "Twitter"
     },
     "title": "favoriter",
-    "readMore": "läs mer...",
     "addNew": "lägg till",
     "link": {
       "linkPlaceholder": "urlen till favorit hemsidan"
@@ -56,8 +55,6 @@
     "twitter": {
       "twitterPlaceholder": "Twitter användarnamn, t.ex helsinkiuni"
     },
-    "submitButton": "lägg",
-    "cancelButton": "avbryt",
     "ariaLabels": {
       "clearSearch": "radar sökningar",
       "searchResults": "sökresultat"

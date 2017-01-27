@@ -48,7 +48,6 @@
       "TWITTER": "Twitter timeline"
     },
     "title": "favorites",
-    "readMore": "read more...",
     "addNew": "add new",
     "link": {
       "linkPlaceholder": "URL to favorite website"
@@ -56,8 +55,6 @@
     "twitter": {
       "twitterPlaceholder": "Twitter username, eg. helsinkiuni"
     },
-    "submitButton": "add",
-    "cancelButton": "cancel",
     "ariaLabels": {
       "clearSearch": "clear search",
       "searchResults": "search results"

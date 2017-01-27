@@ -234,7 +234,6 @@
       "UNISPORT": "Unisports bokningar"
     },
     "title": "favoriter",
-    "readMore": "läs mer...",
     "addNew": "lägg till",
     "rss": {
       "rssFeedSearch": "Feed url"
@@ -255,8 +254,6 @@
     "twitter": {
       "twitterPlaceholder": "Twitter användernamn, t.ex helsinkiuni"
     },
-    "submitButton": "lägg",
-    "cancelButton": "avbryt",
     "ariaLabels": {
       "clearSearch": "återställ",
       "searchResults": "sökresultat"
