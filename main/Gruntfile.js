@@ -95,7 +95,7 @@ module.exports = function(grunt) {
         files: [
           'src/scss/main.scss',
           'src/scss/opintoni/**/*.scss',
-          'src/scss/styleguide/**/*.scss',
+          '../common/src/scss/**/*.scss',
           'src/app/**/*.{js,html}',
           '../common/src/app/**/*.{js,html}',
           'src/**/*.json'
@@ -129,7 +129,8 @@ module.exports = function(grunt) {
           baseDir: 'src',
           routes: {
             '/bower_components': '../bower_components',
-            '/common': '../common'
+            '/common': '../common',
+            '/assets/fonts': '../bower_components/Styleguide/fonts'
           },
           middleware: [proxyMiddleware,
                        modRewrite([
@@ -188,15 +189,6 @@ module.exports = function(grunt) {
       main: {
         files: {
           'src/assets/styles/main.css': 'src/scss/main.scss'
-        }
-      }
-    },
-    compass: {
-      styleguide: {
-        options: {
-          cssDir: 'src/assets/styles/styleguide',
-          require: ['toolkit', 'sass-globbing', 'breakpoint', 'singularitygs'],
-          sassDir: '../bower_components/Styleguide/sass'
         }
       }
     },
@@ -278,7 +270,7 @@ module.exports = function(grunt) {
           flatten: true,
           expand: true,
           cwd: '..',
-          src: 'bower_components/Styleguide-icons/fonts/*',
+          src: 'bower_components/Styleguide/fonts/*',
           dest: '<%= application.dist %>/assets/fonts'
         },
         {
@@ -343,7 +335,6 @@ module.exports = function(grunt) {
       ],
       dist: [
         'cssProd',
-        'compass:styleguide',
         'buildTemplates'
       ]
     },

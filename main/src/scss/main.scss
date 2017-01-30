@@ -21,7 +21,7 @@
 @import "../bower_components/singularity/stylesheets/singularitygs.scss";
 
 /* Styleguide elements required by the application */
-@import "styleguide/styleguide";
+@import "../common/src/scss/styleguide/styleguide";
 
 /* Application custom styles */
 @import "opintoni/opintoni";

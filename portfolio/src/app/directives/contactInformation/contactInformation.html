@@ -61,7 +61,7 @@
       <li ng-repeat="someLink in contactInformation.someLinks | orderBy: 'type'"
           role="listitem" class="">
         <a href="{{ someLink.url }}" tabindex="0" target="_blank" aria-label="{{ 'contactInformation.' + someLink.type | translate }}"
-           class="button--action icon--{{ someLink.type | lowercase }} contact-information__social-media-link">
+           class="button--action social-media-link__icon--{{ someLink.type | lowercase }} contact-information__social-media-link">
           {{ 'contactInformation.' + someLink.type | translate }}
         </a>
       </li>

@@ -37,6 +37,19 @@ $tuhat-bg: $black;
   }
 }
 
+@mixin social-media-link-icon($unicode : "") {
+  font-family: "hy-icons";
+  font-style: normal;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: bottom;
+  @if ($unicode) {
+    content: $unicode;
+  }
+}
+
+
 .contact-information {
   position: relative;
 
@@ -148,58 +161,75 @@ $tuhat-bg: $black;
 
   &::after {
     font-size: 24px;
-  };;
-
-  &.icon--facebook::before {
-    background-color: $facebook-bg;
-  }
-  &.icon--facebook:hover::before {
-    background-color: darken($facebook-bg, 10%);
   }
 
-  &.icon--twitter::before {
-    background-color: $twitter-bg;
-  }
-  &.icon--twitter:hover::before {
-    background-color: darken($twitter-bg, 10%);
-  }
+  &.social-media-link__icon {
+    &--facebook::after {
+      @include social-media-link-icon($icon-facebook);
+    }
+    &--facebook::before {
+      background-color: $facebook-bg;
+    }
+    &--facebook:hover::before {
+      background-color: darken($facebook-bg, 10%);
+    }
 
-  &.icon--youtube::before {
-    background-color: $youtube-bg;
-  }
-  &.icon--youtube:hover::before {
-    background-color: darken($youtube-bg, 10%);
-  }
+    &--twitter::after {
+      @include social-media-link-icon($icon-twitter);
+    }
+    &--twitter::before {
+      background-color: $twitter-bg;
+    }
+    &--twitter:hover::before {
+      background-color: darken($twitter-bg, 10%);
+    }
 
-  &.icon--linkedin::before {
-    background-color: $linkedin-bg;
-  }
-  &.icon--linkedin:hover::before {
-    background-color: darken($linkedin-bg, 10%);
-  }
+    &--youtube::after {
+      @include social-media-link-icon($icon-youtube);
+    }
+    &--youtube::before {
+      background-color: $youtube-bg;
+    }
+    &--youtube:hover::before {
+      background-color: darken($youtube-bg, 10%);
+    }
 
-  &.icon--instagram::before {
-    background-color: $instagram-bg;
-  }
-  &.icon--instagram:hover::before {
-    background-color: darken($instagram-bg, 10%);
-  }
+    &--linkedin::after {
+      @include social-media-link-icon($icon-linkedin);
+    }
+    &--linkedin::before {
+      background-color: $linkedin-bg;
+    }
+    &--linkedin:hover::before {
+      background-color: darken($linkedin-bg, 10%);
+    }
 
-  &.icon--tuhat::after {
-    @include icon($icon-hy-logo);
-  }
-  &.icon--tuhat::before {
-    background-color: $tuhat-bg;
-  }
-  &.icon--tuhat:hover::before {
-    background-color: darken($tuhat-bg, 10%);
-  }
+    &--instagram::after {
+      @include social-media-link-icon($icon-instagram);
+    }
+    &--instagram::before {
+      background-color: $instagram-bg;
+    }
+    &--instagram:hover::before {
+      background-color: darken($instagram-bg, 10%);
+    }
 
-  &.icon--research_gate::before {
-    background: transparent url("../icons/rg_logo_square_brand.png") no-repeat center center;
-  }
-  &.icon--research_gate:hover::before {
-    opacity: 0.9;
+    &--tuhat::after {
+      @include social-media-link-icon($icon-hy-logo);
+    }
+    &--tuhat::before {
+      background-color: $tuhat-bg;
+    }
+    &--tuhat:hover::before {
+      background-color: darken($tuhat-bg, 10%);
+    }
+
+    &--research_gate::before {
+      background: transparent url("../icons/rg_logo_square_brand.png") no-repeat center center;
+    }
+    &--research_gate:hover::before {
+      opacity: 0.9;
+    }
   }
 }
 

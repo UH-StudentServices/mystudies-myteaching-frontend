@@ -98,6 +98,26 @@
 }
 
 // Rescued from the old styleguide TODO
+@mixin button {
+  transition-duration: 0.1s;
+  transition-property: all;
+  @include font-size(15px);
+  background-color: $blue;
+  border: none;
+  color: $white;
+  cursor: pointer;
+  padding: 0.8em 1em;
+
+  &:hover {
+    background-color: $darkblue;
+    color: $white;
+  }
+
+  &:before, &:after {
+    transition-duration: 0.1s;
+    transition-property: all;
+  }
+}
 
 @mixin button-internal {
 	@include border-side(bottom);
