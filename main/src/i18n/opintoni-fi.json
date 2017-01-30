@@ -232,7 +232,6 @@
       "UNISPORT": "Unisport-varaukset"
     },
     "title": "suosikit",
-    "readMore": "lue lisää...",
     "addNew": "lisää uusi",
     "rss": {
       "rssFeedSearch": "RSS-syötteen osoite"
@@ -253,8 +252,6 @@
     "twitter": {
       "twitterPlaceholder": "Twitter-käyttäjänimi, esim. helsinkiuni"
     },
-    "submitButton": "Lisää",
-    "cancelButton": "Peruuta",
     "ariaLabels": {
       "clearSearch": "tyhjennä haku",
       "searchResults": "hakutulokset"

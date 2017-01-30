@@ -15,8 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('services.state',
-  [])
+angular.module('services.state', ['services.session',
+                                  'services.portfolioRole'])
 
   .constant('State', {
     'PRIVATE': 'private',
@@ -24,19 +24,30 @@ angular.module('services.state',
     'PUBLIC': 'public'
   })
 
-  .factory('StateService', function($location, State) {
-    var currentState = State.PUBLIC;
+  .factory('StateService', function(State, PortfolioRoleService) {
+    var currentState = State.PUBLIC,
+        portfolioRole = PortfolioRoleService.getActiveRole();
 
-    function resolveCurrent(session, portfolioRole, currentPath) {
-      currentState = _.get(session, ['portfolioPath', portfolioRole]) === currentPath ?
-        State.PRIVATE :
-        State.RESTRICTED;
+    function hasPortfolioPathInSessionDescriptor(session, lang, userpath) {
+      return session.portfolioPathsByRoleAndLang[portfolioRole][lang][0] === ['', lang, userpath].join('/');
+    }
+
+    function resolve(session, lang, userpath) {
+      if (session) {
+        currentState = hasPortfolioPathInSessionDescriptor(session, lang, userpath) ?
+          State.PRIVATE :
+          State.RESTRICTED;
+      }
+
+      return currentState;
+    }
+
+    function getCurrent() {
+      return currentState;
     }
 
     return {
-      resolveCurrent: resolveCurrent,
-      getCurrent: function() {
-        return currentState;
-      }
+      resolve: resolve,
+      getCurrent: getCurrent
     };
   });

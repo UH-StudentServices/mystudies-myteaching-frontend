@@ -233,7 +233,6 @@
       "UNISPORT": "Unisport timetable"
     },
     "title": "favorites",
-    "readMore": "read more...",
     "addNew": "add new",
     "rss": {
       "rssFeedSearch": "Feed url"
@@ -254,8 +253,6 @@
     "twitter": {
       "twitterPlaceholder": "Twitter username, eg. helsinkiuni"
     },
-    "submitButton": "add",
-    "cancelButton": "cancel",
     "ariaLabels": {
       "clearSearch": "clear search",
       "searchResults": "search results"

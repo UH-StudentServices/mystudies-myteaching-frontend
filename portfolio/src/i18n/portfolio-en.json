@@ -6,6 +6,7 @@
     "addNew": "add new",
     "remove" : "remove",
     "ok": "Ok",
+    "cancel": "Cancel",
     "showMore": "more",
     "showLess": "less",
     "students": "students",
@@ -47,7 +48,6 @@
       "TWITTER": "Twitter timeline"
     },
     "title": "favorites",
-    "readMore": "read more...",
     "addNew": "add new",
     "link": {
       "linkPlaceholder": "URL to favorite website"
@@ -55,8 +55,6 @@
     "twitter": {
       "twitterPlaceholder": "Twitter username, eg. helsinkiuni"
     },
-    "submitButton": "add",
-    "cancelButton": "cancel",
     "ariaLabels": {
       "clearSearch": "clear search",
       "searchResults": "search results"
@@ -252,5 +250,9 @@
   },
   "personalInformation": {
     "title": "Personal information"
+  },
+  "languageSelector": {
+    "confirmation": "The contents of this portfolio are in {{ lang }}. Do you want to create a new portfolio in a different language?",
+    "selectionPrompt": "Please select the language for your new portfolio:"
   }
 }

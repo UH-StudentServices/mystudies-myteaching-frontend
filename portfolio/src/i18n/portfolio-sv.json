@@ -6,6 +6,7 @@
     "addNew": "lägg till",
     "remove" : "radera",
     "ok": "Ok",
+    "cancel": "Avbryt",
     "showMore": "mer",
     "showLess": "mindre",
     "students": "studerande",
@@ -47,7 +48,6 @@
       "TWITTER": "Twitter"
     },
     "title": "favoriter",
-    "readMore": "läs mer...",
     "addNew": "lägg till",
     "link": {
       "linkPlaceholder": "urlen till favorit hemsidan"
@@ -55,8 +55,6 @@
     "twitter": {
       "twitterPlaceholder": "Twitter användarnamn, t.ex helsinkiuni"
     },
-    "submitButton": "lägg",
-    "cancelButton": "avbryt",
     "ariaLabels": {
       "clearSearch": "radar sökningar",
       "searchResults": "sökresultat"
@@ -252,5 +250,9 @@
   },
   "personalInformation": {
     "title": "Personalia"
+  },
+  "languageSelector": {
+    "confirmation": "Tämän portfolion sisältö on kielellä {{ lang }}. Haluatko luoda uuden portfolion eri kielellä? (sv)",
+    "selectionPrompt": "Valitse uuden portfolion kieli: (sv)"
   }
 }

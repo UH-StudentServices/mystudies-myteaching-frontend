@@ -106,7 +106,6 @@ module.exports = function(grunt) {
         }
       },
       options: {
-        startPath: '/portfolio/olli-opiskelija',
         watchTask: true,
         host: 'local.student.helsinki.fi',
         open: false,

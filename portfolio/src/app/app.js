@@ -63,6 +63,7 @@ angular.module('opintoniPortfolioApp', [
   'directives.tabSet',
   'directives.stickyMessage',
   'directives.accordion',
+  'directives.languageSelector',
 
   'filters.formatting',
 
@@ -73,6 +74,7 @@ angular.module('opintoniPortfolioApp', [
   'services.keyword',
   'services.configuration',
   'services.portfolioRole',
+
   'utils.moment'
 ])
 
@@ -96,28 +98,24 @@ angular.module('opintoniPortfolioApp', [
 
     $compileProvider.debugInfoEnabled(false);
 
-    $stateProvider.state('site', {
-      url: '/:path',
+    $stateProvider.state('portfolio', {
+      url: '/:lang/:userpath',
       templateUrl: 'app/partials/_portfolio.html',
       controller: 'MainCtrl',
       resolve: {
-        portfolioRole: function(PortfolioRoleService) {
-          return PortfolioRoleService.getPortfolioRoleFromDomain();
+        session: function(SessionService) {
+          return SessionService.getSession();
         },
-        session: function(SessionService, StateService, $stateParams, portfolioRole) {
-          return SessionService.getSession().then(function getSessionSuccess(session) {
-            return StateService.resolveCurrent(session, portfolioRole, $stateParams.path);
-          }, function getSessionFail() {
-            return null;
-          });
+        state: function(StateService, $stateParams, session) {
+          return StateService.resolve(session, $stateParams.lang, $stateParams.userpath);
         },
-        userSettings: function(StateService, State, UserSettingsService, session) {
-          if (StateService.getCurrent() === State.PRIVATE) {
+        userSettings: function(StateService, State, UserSettingsService, state) {
+          if (state === State.PRIVATE) {
             return UserSettingsService.getUserSettings();
           }
         },
-        portfolio: function($stateParams, PortfolioService, $state, userSettings, portfolioRole) {
-          return PortfolioService.findPortfolioByPath(portfolioRole, $stateParams.path)
+        portfolio: function(PortfolioService, $state, $stateParams, state) {
+          return PortfolioService.findPortfolioByPath(state, $stateParams.lang, $stateParams.userpath)
             .catch(function findPortfolioFail(error) {
               if (error.status === 404) {
                 $state.go('notFound');
@@ -131,6 +129,7 @@ angular.module('opintoniPortfolioApp', [
       prefix: 'i18n/portfolio-',
       suffix: '.json'
     });
+
     $translateProvider.useCookieStorage();
     $translateProvider.useSanitizeValueStrategy('escaped');
     $translateProvider.preferredLanguage(preferredLanguage);
