@@ -16,10 +16,8 @@
  */
 
 .preview-btn {
-  height: 2em;
-  vertical-align: bottom;
 
-  &__text {
+  &--text {
     text-transform: capitalize;
     display: none;
 
@@ -28,7 +26,7 @@
     }
   }
 
-  &__icon {
+  &--icon {
     display: inline-block;
 
     @include breakpoint($small) {

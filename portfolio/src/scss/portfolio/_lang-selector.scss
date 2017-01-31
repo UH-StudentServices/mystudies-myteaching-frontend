@@ -15,16 +15,7 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
- .lang-selector {
-  display: inline-block;
-  position: relative;
-  height: 2em;
-  vertical-align: bottom;
-  margin-right: 0.5em;
-
-  @include breakpoint($small) {
-    margin-right: 1em;
-  }
+.lang-selector {
 
   &__trigger-btn {
     text-transform: uppercase;
@@ -60,7 +51,7 @@
       width: 23.8em;
     }
   }
- }
+}
 
 .prompt {
   &__intro {

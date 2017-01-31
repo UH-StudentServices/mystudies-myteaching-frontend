@@ -62,16 +62,26 @@ $navigationHeight: 60px;
   }
 }
 
-.navigation__right {
+.navigation-right {
   @include vertically-center;
+  display: flex;
   right: 1em;
 
-  > button {
+  &__element {
+    vertical-align: bottom;
+    display: inline-block;
     margin-right: 0.5em;
-    display: inline-block !important;
 
     @include breakpoint($small) {
       margin-right: 1em;
+    }
+
+    > button {
+      height: 28px;
+
+      @include breakpoint($small) {
+        height: 32px;
+      }
     }
   }
 
