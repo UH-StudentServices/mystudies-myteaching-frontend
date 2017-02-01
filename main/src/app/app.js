@@ -85,6 +85,7 @@ angular.module('opintoniApp', [
     $cookiesProvider,
     $compileProvider,
     $qProvider,
+    $sceDelegateProvider,
     preferredLanguage) {
 
     $locationProvider.html5Mode({
@@ -277,4 +278,11 @@ angular.module('opintoniApp', [
 
     $cookiesProvider.defaults.path = '/';
     $cookiesProvider.defaults.domain = '.helsinki.fi';
+
+    $sceDelegateProvider.resourceUrlWhitelist([
+      // Allow same origin resource loads.
+      'self',
+      // Allow loading from embed.ly.
+      'http://api.embed.ly/1/oembed**'
+    ]);
   });
