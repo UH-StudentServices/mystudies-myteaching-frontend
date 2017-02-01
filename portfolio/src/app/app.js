@@ -88,6 +88,7 @@ angular.module('opintoniPortfolioApp', [
     $cookiesProvider,
     $locationProvider,
     $compileProvider,
+    $sceDelegateProvider,
     preferredLanguage) {
 
     $locationProvider.html5Mode(true);
@@ -136,6 +137,13 @@ angular.module('opintoniPortfolioApp', [
 
     $cookiesProvider.defaults.path = '/';
     $cookiesProvider.defaults.domain = '.helsinki.fi';
+
+    $sceDelegateProvider.resourceUrlWhitelist([
+      // Allow same origin resource loads.
+      'self',
+      // Allow loading from embed.ly.
+      'http://api.embed.ly/1/oembed**'
+    ]);
   })
 
   .run(function($rootScope, $window, LanguageService) {
