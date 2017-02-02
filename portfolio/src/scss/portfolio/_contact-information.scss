@@ -38,6 +38,7 @@ $tuhat-bg: $black;
 }
 
 @mixin social-media-link-icon($unicode : "") {
+  font-size: 24px;
   font-family: "hy-icons";
   font-style: normal;
   font-weight: normal;
@@ -159,75 +160,60 @@ $tuhat-bg: $black;
   background-color: transparent;
   color: $blue;
 
-  &::after {
-    font-size: 24px;
-  }
-
   &.social-media-link__icon {
     &--facebook::after {
       @include social-media-link-icon($icon-facebook);
-    }
-    &--facebook::before {
       background-color: $facebook-bg;
     }
-    &--facebook:hover::before {
+    &--facebook:hover::after {
       background-color: darken($facebook-bg, 10%);
     }
 
     &--twitter::after {
       @include social-media-link-icon($icon-twitter);
-    }
-    &--twitter::before {
       background-color: $twitter-bg;
     }
-    &--twitter:hover::before {
+    &--twitter:hover::after {
       background-color: darken($twitter-bg, 10%);
     }
 
     &--youtube::after {
       @include social-media-link-icon($icon-youtube);
-    }
-    &--youtube::before {
       background-color: $youtube-bg;
     }
-    &--youtube:hover::before {
+    &--youtube:hover::after {
       background-color: darken($youtube-bg, 10%);
     }
 
     &--linkedin::after {
       @include social-media-link-icon($icon-linkedin);
-    }
-    &--linkedin::before {
       background-color: $linkedin-bg;
     }
-    &--linkedin:hover::before {
+    &--linkedin:hover::after {
       background-color: darken($linkedin-bg, 10%);
     }
 
     &--instagram::after {
       @include social-media-link-icon($icon-instagram);
-    }
-    &--instagram::before {
       background-color: $instagram-bg;
     }
-    &--instagram:hover::before {
+    &--instagram:hover::after {
       background-color: darken($instagram-bg, 10%);
     }
 
     &--tuhat::after {
       @include social-media-link-icon($icon-hy-logo);
-    }
-    &--tuhat::before {
       background-color: $tuhat-bg;
     }
-    &--tuhat:hover::before {
+    &--tuhat:hover::after {
       background-color: darken($tuhat-bg, 10%);
     }
 
-    &--research_gate::before {
+    &--research_gate::after {
+      @include social-media-link-icon();
       background: transparent url("../icons/rg_logo_square_brand.png") no-repeat center center;
     }
-    &--research_gate:hover::before {
+    &--research_gate:hover::after {
       opacity: 0.9;
     }
   }
