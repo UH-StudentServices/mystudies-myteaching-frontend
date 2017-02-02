@@ -25,8 +25,8 @@
     </div>
     <div ng-if="freeTextContentToEdit !== freeTextContent">
       <div class="free-text-content__title-container">
-        <h2 class="free-text-content__title" ng-if="!headingKey">{{freeTextContent.title}}</h2>
-        <h2 class="free-text-content__title" ng-if="headingKey">
+        <h2 class="ui-component__title" ng-if="!headingKey">{{freeTextContent.title}}</h2>
+        <h2 class="ui-component__title" ng-if="headingKey">
           {{ ::(headingKey | translate) }}
         </h2>
       </div>

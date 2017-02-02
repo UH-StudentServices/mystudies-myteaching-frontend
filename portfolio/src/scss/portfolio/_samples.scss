@@ -26,9 +26,6 @@ $sample-summary-max-height: 57px;
 $sample-full-description-vertical-margin: 0.85em;
 
 .sample {
-  &__heading {
-    @extend .ui-component__title, .border-bottom;
-  }
 
   > li {
     width: 100%;

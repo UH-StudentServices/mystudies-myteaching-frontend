@@ -17,12 +17,12 @@
 
 <div class="edit-free-text-content">
   <div class="free-text-content__title-container">
-    <h2 class="free-text-content__title is-editable" ng-if="!headingKey && !editingTitle">
+    <h2 class="ui-component__title is-editable" ng-if="!headingKey && !editingTitle">
       <a role="button" href="" ng-click="editTitle()">
         {{freeTextContent.title}}
       </a>
     </h2>
-    <h2 class="free-text-content__title" ng-if="headingKey && !editingTitle">
+    <h2 class="ui-component__title" ng-if="headingKey && !editingTitle">
       {{ ::(headingKey | translate) }}
     </h2>
 
