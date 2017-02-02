@@ -84,11 +84,12 @@ $banner-transition-duration: 0.5s;
 .page-banner--pager {
   @extend .wrapper;
   position: relative;
-  left: 1em;
+  padding-left: 1em;
   top: 1em;
   z-index: 10;
 
   .flex-control-nav {
+    width: auto;
     @include breakpoint($mobile-only) {
       display: none;
     }
