@@ -40,7 +40,7 @@ angular.module('directives.mobileToolbar', [
         $scope.showShortcuts = false;
         $scope.showReturnLinks = false;
         $scope.changeRoleTo = null;
-        $scope.isLander = $state.is('login');
+        $scope.isLander = $state.includes('lander');
 
         $scope.toggleToolbar = function() {
           $scope.showToolbar = !$scope.showToolbar;
