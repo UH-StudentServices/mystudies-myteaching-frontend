@@ -81,16 +81,22 @@ angular.module('directives.dropdown', [])
           }
         });
 
+        function close() {
+          contentElement.hide();
+          toggleElement.removeClass('active');
+          applyCloseCallback();
+        }
+
         function checkCloseDropdown(event) {
           var target = angular.element(event.target),
               contentClicked = target.inheritedData('dropdowncontent' + id),
               toggleClicked = target.inheritedData('dropdowntoggle' + id);
 
-          if (!contentClicked && !toggleClicked &&
+          if (contentClicked && attrs.closeOnContentClick !== undefined) {
+            close();
+          } else if (!contentClicked && !toggleClicked &&
               contentElement.is(':visible') && !isNgfSelectInput(target)) {
-            contentElement.hide();
-            toggleElement.removeClass('active');
-            applyCloseCallback();
+            close();
           }
         }
 
