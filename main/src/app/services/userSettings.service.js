@@ -17,7 +17,7 @@
 
 angular.module('services.userSettings', ['resources.userSettings', 'services.configuration'])
 
-  .factory('UserSettingsService', function(UserSettingsResource, Configuration, Environments) {
+  .factory('UserSettingsService', function($q, UserSettingsResource, Configuration, Environments) {
 
     var settingsPromise,
         availableBackgroundsPromise,
@@ -81,7 +81,7 @@ angular.module('services.userSettings', ['resources.userSettings', 'services.con
 
     function showMyStudiesTour() {
       if (Configuration.environment === Environments.DEMO) {
-        return Promise.resolve(true);
+        return $q.resolve(true);
       } else {
         return getUserSettings().then(function(settings) {
           return settings.showMyStudiesTour;
@@ -91,7 +91,7 @@ angular.module('services.userSettings', ['resources.userSettings', 'services.con
 
     function showMyTeachingTour() {
       if (Configuration.environment === Environments.DEMO) {
-        return Promise.resolve(true);
+        return $q.resolve(true);
       } else {
         return getUserSettings().then(function(settings) {
           return settings.showMyTeachingTour;
