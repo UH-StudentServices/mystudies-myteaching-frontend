@@ -15,9 +15,9 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('services.userSettings', ['resources.userSettings'])
+angular.module('services.userSettings', ['resources.userSettings', 'services.configuration'])
 
-  .factory('UserSettingsService', function(UserSettingsResource) {
+  .factory('UserSettingsService', function(UserSettingsResource, Configuration, Environments) {
 
     var settingsPromise,
         availableBackgroundsPromise,
@@ -80,15 +80,23 @@ angular.module('services.userSettings', ['resources.userSettings'])
     }
 
     function showMyStudiesTour() {
-      return getUserSettings().then(function(settings) {
-        return settings.showMyStudiesTour;
-      });
+      if (Configuration.environment === Environments.DEMO) {
+        return Promise.resolve(true);
+      } else {
+        return getUserSettings().then(function(settings) {
+          return settings.showMyStudiesTour;
+        });
+      }
     }
 
     function showMyTeachingTour() {
-      return getUserSettings().then(function(settings) {
-        return settings.showMyTeachingTour;
-      });
+      if (Configuration.environment === Environments.DEMO) {
+        return Promise.resolve(true);
+      } else {
+        return getUserSettings().then(function(settings) {
+          return settings.showMyTeachingTour;
+        });
+      }
     }
 
     function updateUserSettings(updateObject) {
