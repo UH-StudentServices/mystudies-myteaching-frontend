@@ -44,8 +44,4 @@
     display: inline-block;
     width: 200px;
   }
-
-  &__read-more {
-    @extend .login-page__read-more;
-  }
 }
