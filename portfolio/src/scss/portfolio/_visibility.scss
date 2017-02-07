@@ -25,6 +25,7 @@
   @include user-select(none);
 
   .dropdown-toggle {
+    text-transform: capitalize;
     display: flex;
     align-items: center;
     position: relative;
@@ -53,6 +54,7 @@
 .dropdown-content {
   @extend .dropdown-menu;
   @include triangle-with-border(12px, 150px);
+  text-transform: capitalize;
   width: 200px;
   top: 50px;
   left: 0;
