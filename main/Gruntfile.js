@@ -303,6 +303,13 @@ module.exports = function(grunt) {
           src: ['bower_components/**']
         },
         {
+          flatten: true,
+          expand: true,
+          cwd: '..',
+          dest: '<%= application.dist %>/assets/fonts',
+          src: ['bower_components/Styleguide/fonts/*']
+        },
+        {
           expand: true,
           cwd: '..',
           dest: '<%= application.dist %>',
