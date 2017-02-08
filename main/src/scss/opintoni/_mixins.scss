@@ -97,7 +97,7 @@
   }
 }
 
-// Rescued from the old styleguide TODO
+// Rescued from the old styleguide TODO: include these better into the code base
 @mixin button {
   transition-duration: 0.1s;
   transition-property: all;
@@ -178,7 +178,6 @@
 		&:after {
 			background: $darkblue--active;
 			color: $white;
-			// padding-right: 0.5em;
 		}
 	}
 }
