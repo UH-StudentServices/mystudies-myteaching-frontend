@@ -20,7 +20,8 @@
   .fc-button,
   .l-header,
   .page-banner__button-icon--arrow-down,
-  .page-banner__button-icon--arrow-up {
+  .page-banner__button-icon--arrow-up,
+  .l-footer {
     display: none !important;
   }
 
@@ -30,25 +31,6 @@
 
   .full-screen-calendar__close {
     display: none;
-  }
-
-  .calendar__footer {
-    margin-top: 0;
-    padding-bottom: 0;
-  }
-
-  .calendar {
-    .page-footer__copyright,  {
-      display: none;
-    }
-  }
-
-  .page-footer__social-links, .page-footer__links {
-    display: none;
-  }
-
-  .page-footer__contact, .page-footer__exchange {
-    margin-bottom: 0;
   }
 
   h2 {

@@ -26,9 +26,6 @@ $sample-summary-max-height: 57px;
 $sample-full-description-vertical-margin: 0.85em;
 
 .sample {
-  &__heading {
-    @extend .ui-component__title, .border-bottom;
-  }
 
   > li {
     width: 100%;
@@ -253,7 +250,7 @@ $sample-full-description-vertical-margin: 0.85em;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      @include font-awesome("\f00d");
+      @include icon($icon-remove);
     }
   }
 }

@@ -15,6 +15,13 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+@mixin transform($transform) {
+  -webkit-transform: $transform;
+  -moz-transform: $transform;
+  -ms-transform: $transform;
+  -transform: $transform;
+}
+
 @mixin triangle-with-border($size, $offset, $color : $white, $border-color : $lightsilver, $align:right) {
 
   &:after, &:before {
@@ -89,6 +96,93 @@
     clear: both;
   }
 }
+
+// Rescued from the old styleguide TODO: include these better into the code base
+@mixin button {
+  transition-duration: 0.1s;
+  transition-property: all;
+  @include font-size(15px);
+  background-color: $blue;
+  border: none;
+  color: $white;
+  cursor: pointer;
+  padding: 0.8em 1em;
+
+  &:hover {
+    background-color: $darkblue;
+    color: $white;
+  }
+
+  &:before, &:after {
+    transition-duration: 0.1s;
+    transition-property: all;
+  }
+}
+
+@mixin button-internal {
+	@include border-side(bottom);
+	@include font-family-main;
+	@include font-size(15px);
+	display: block;
+	line-height: normal;
+	overflow: hidden;
+	padding-bottom: 0.8em;
+	padding-left: 0;
+	padding-right: 2em;
+	padding-top: 0.8em;
+	position: relative;
+
+	&:after {
+		@include icon($icon-link-arrow);
+		color: inherit;
+		font-weight: 200;
+		height: 100%;
+		margin-top: -0.5em;
+		position: absolute;
+		right: 0;
+		top: 50%;
+	}
+
+	a:hover &:after,
+	&:hover:after {
+		color: $darkblue;
+	}
+}
+
+@mixin button-internal--dark {
+	@include button-internal;
+	background: $blue;
+	border: none;
+	color: $white;
+	overflow: visible;
+	padding-left: 1em;
+	padding-right: 3em;
+
+	&:after {
+		transition-duration: 0.1s;
+		transition-property: padding;
+		background-color: $blue--active;
+		color: $white;
+		line-height: 2.8em;
+		margin-top: 0;
+		padding-left: 1em;
+		padding-right: 1em;
+		top: 0;
+	}
+
+	&:hover {
+		background-color: $darkblue;
+		color: $white;
+
+		a:hover &:after,
+		&:after {
+			background: $darkblue--active;
+			color: $white;
+		}
+	}
+}
+
+// Rescue ends
 
 @mixin input-placeholder {
   ::-webkit-input-placeholder {@content}

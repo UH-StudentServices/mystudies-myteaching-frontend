@@ -42,6 +42,12 @@ angular.module('directives.usefulLinks', [
     'en': 'https://flamma.helsinki.fi/en/services-students/HY054787'
   })
 
+  .constant('HelpdeskLinks', {
+    'fi': 'http://www.helsinki.fi/helpdesk',
+    'sv': 'http://www.helsinki.fi/helpdesk/sve/',
+    'en': 'http://www.helsinki.fi/helpdesk/eng/'
+  })
+
   .filter('renderUsefulLinkDescription', function($filter) {
     return function(description, type) {
       if (type === 'DEFAULT') {
@@ -60,7 +66,8 @@ angular.module('directives.usefulLinks', [
                                      Focus,
                                      AnalyticsService,
                                      ValidatorUtils,
-                                     StudentServicesLinks) {
+                                     StudentServicesLinks,
+                                     HelpdeskLinks) {
     return {
       restrict: 'E',
       replace: true,
@@ -81,8 +88,12 @@ angular.module('directives.usefulLinks', [
         $scope.editMode = false;
         $scope.newLink = {};
 
-        $scope.getStudentServicesLinks = function() {
+        $scope.getStudentServicesLink = function() {
           return StudentServicesLinks[$scope.selectedLanguage];
+        };
+
+        $scope.getHelpdeskLink = function() {
+          return HelpdeskLinks[$scope.selectedLanguage];
         };
 
         $scope.edit = function() {
@@ -96,7 +107,7 @@ angular.module('directives.usefulLinks', [
         };
 
         $scope.deleteLink = function(link) {
-          UsefulLinksResource.deleteLink(link).then(function(usefulLinks) {
+          UsefulLinksResource.deleteLink(link).then(function(usefulLinks) {
             AnalyticsService.trackRemoveUsefulLink();
             Focus.focusNext();
             _.remove($scope.usefulLinks, {id: link.id});

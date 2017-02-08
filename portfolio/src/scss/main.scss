@@ -19,7 +19,7 @@
 @import "../bower_components/singularity/stylesheets/singularitygs.scss";
 
 // Styleguide
-@import "styleguide/styleguide";
+@import "../common/src/scss/styleguide/styleguide";
 
 // Styles from main frontend
 @import "../main/src/scss/opintoni/opintoni";

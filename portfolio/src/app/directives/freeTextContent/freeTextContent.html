@@ -25,10 +25,10 @@
     </div>
     <div ng-if="freeTextContentToEdit !== freeTextContent">
       <div class="free-text-content__title-container">
-        <h3 class="free-text-content__title" ng-if="!headingKey">{{freeTextContent.title}}</h3>
-        <h3 class="free-text-content__title" ng-if="headingKey">
+        <h2 class="ui-component__title" ng-if="!headingKey">{{freeTextContent.title}}</h2>
+        <h2 class="ui-component__title" ng-if="headingKey">
           {{ ::(headingKey | translate) }}
-        </h3>
+        </h2>
       </div>
       <p class="free-text-content__text user-text" embed="freeTextContent.text"></p>
     </div>

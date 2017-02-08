@@ -25,14 +25,8 @@
   }
 
   &__links {
-    @extend ul.list-of-links--light;
+    @extend .list-of-links__link;
     @include border-top;
   }
 
-  &__no-link {
-    @include button-internal;
-    &:after {
-      content: none;
-    }
-  }
 }

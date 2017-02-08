@@ -18,20 +18,23 @@
 <div class="link-list">
   <div>
     <h3 class="course-recommendations__title text-transform-capitalize-block" translate="courseRecommendations.title"></h3>
-    <help-icon translation-key="courseRecommendations.disclaimerText" aria-label-translation-key="courseRecommendations.disclaimer"></help-icon>
+    <help-icon translation-key="courseRecommendations.disclaimerText"
+               aria-label-translation-key="courseRecommendations.disclaimer"></help-icon>
   </div>
   <div block-ui="recommendations" class="content-loader">
-    <ul class="link-list__links">
+    <ul class="list-of-links course-recommendations__list">
       <li ng-repeat="recommendation in courseRecommendations | limitTo: limit as results track by recommendation.title">
-        <a href="{{::recommendation.link}}"
-           ng-click="trackRecommendationLinkClick(recommendation.title)">
+        <a href="{{::recommendation.link}}" ng-click="trackRecommendationLinkClick(recommendation.title)"
+           class="list-of-links__link button--action icon--arrow-right theme-transparent-alt">
           {{::recommendation.title}}
         </a>
       </li>
     </ul>
-    <a tabindex="0" ng-hide="results.length >= courseRecommendations.length" ng-click="showMore()"
-       translate="courseRecommendations.showMore" class="course-recommendations__show-more-less text-transform-capitalize"/>
-    <a tabindex="0" ng-show="results.length >= courseRecommendations.length" ng-click="showLess()"
-       translate="courseRecommendations.showLess" class="course-recommendations__show-more-less text-transform-capitalize"/>
+    <button tabindex="0" ng-hide="results.length >= courseRecommendations.length" ng-click="showMore()"
+       translate="courseRecommendations.showMore"
+       class="button--light button course-recommendations__show-more-less text-transform-capitalize"/>
+    <button tabindex="0" ng-show="results.length >= courseRecommendations.length" ng-click="showLess()"
+       translate="courseRecommendations.showLess"
+       class="button--light button course-recommendations__show-more-less text-transform-capitalize"/>
   </div>
 </div>

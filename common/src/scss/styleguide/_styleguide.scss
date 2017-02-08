@@ -1,0 +1,91 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/* Imports from styleguide */
+
+@import "../bower_components/Styleguide/sass/variables/breakpoints";
+@import "../bower_components/Styleguide/sass/variables/colors";
+@import "../bower_components/Styleguide/sass/variables/typography";
+
+@import "../bower_components/Styleguide/sass/mixins/angular";
+@import "../bower_components/Styleguide/sass/mixins/arrow";
+@import "../bower_components/Styleguide/sass/mixins/border";
+@import "../bower_components/Styleguide/sass/mixins/box-shadow";
+@import "../bower_components/Styleguide/sass/mixins/container";
+@import "../bower_components/Styleguide/sass/mixins/label";
+@import "../bower_components/Styleguide/sass/mixins/link";
+@import "../bower_components/Styleguide/sass/mixins/tag";
+//@import "../bower_components/Styleguide/sass/mixins/text-shadow";
+@import "../bower_components/Styleguide/sass/mixins/thematic-breaks";
+@import "../bower_components/Styleguide/sass/mixins/transition";
+@import "../bower_components/Styleguide/sass/mixins/typography";
+@import "../bower_components/Styleguide/sass/mixins/utility";
+
+@import "../bower_components/Styleguide/sass/icons/icons";
+
+@import "../bower_components/Styleguide/sass/objects/bar";
+@import "../bower_components/Styleguide/sass/objects/button";
+@import "../bower_components/Styleguide/sass/objects/island";
+@import "../bower_components/Styleguide/sass/objects/lists";
+@import "../bower_components/Styleguide/sass/objects/misc";
+@import "../bower_components/Styleguide/sass/objects/textarea";
+
+@import "../bower_components/Styleguide/sass/layouts/common/l-footer";
+@import "../bower_components/Styleguide/sass/layouts/common/l-subregion";
+@import "../bower_components/Styleguide/sass/layouts/common/l-top-bar";
+
+@import "../bower_components/Styleguide/sass/common-elements/common-elements";
+
+//@import "../bower_components/Styleguide/sass/components/accordion";
+//@import "../bower_components/Styleguide/sass/components/author";
+//@import "../bower_components/Styleguide/sass/components/avatar";
+//@import "../bower_components/Styleguide/sass/components/breadcrumbs";
+//@import "../bower_components/Styleguide/sass/components/carousel";
+//@import "../bower_components/Styleguide/sass/components/date";
+//@import "../bower_components/Styleguide/sass/components/feed-listing";
+//@import "../bower_components/Styleguide/sass/components/file";
+//@import "../bower_components/Styleguide/sass/components/form";
+//@import "../bower_components/Styleguide/sass/components/hero";
+//@import "../bower_components/Styleguide/sass/components/horizontal-tabs";
+//@import "../bower_components/Styleguide/sass/components/index";
+//@import "../bower_components/Styleguide/sass/components/job-listing";
+//@import "../bower_components/Styleguide/sass/components/label-row";
+//@import "../bower_components/Styleguide/sass/components/links";
+@import "../bower_components/Styleguide/sass/components/list-of-links";
+@import "../bower_components/Styleguide/sass/components/logo";
+@import "../bower_components/Styleguide/sass/components/main-menu";
+@import "../bower_components/Styleguide/sass/components/messages";
+//@import "../bower_components/Styleguide/sass/components/page-title";
+//@import "../bower_components/Styleguide/sass/components/pager";
+//@import "../bower_components/Styleguide/sass/components/panel";
+//@import "../bower_components/Styleguide/sass/components/post";
+//@import "../bower_components/Styleguide/sass/components/search-form";
+//@import "../bower_components/Styleguide/sass/components/some-links";
+@import "../bower_components/Styleguide/sass/components/table";
+//@import "../bower_components/Styleguide/sass/components/tag-list";
+
+//@import "../bower_components/Styleguide/sass/components/box/box-application";
+//@import "../bower_components/Styleguide/sass/components/box/box-card";
+@import "../bower_components/Styleguide/sass/components/box/box-data";
+//@import "../bower_components/Styleguide/sass/components/box/box-hero";
+//@import "../bower_components/Styleguide/sass/components/box/box-ingress";
+//@import "../bower_components/Styleguide/sass/components/box/box-logo";
+//@import "../bower_components/Styleguide/sass/components/box/box-story";
+//@import "../bower_components/Styleguide/sass/components/box/box-subsection";
+//@import "../bower_components/Styleguide/sass/components/box/box-subtitle";
+
+@import "../bower_components/Styleguide/sass/_states.scss";

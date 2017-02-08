@@ -22,7 +22,7 @@
   </div>
 
   <ul role="list"
-      class="list-of-links--dark"
+      class="list-of-links"
       dnd-list="usefulLinks"
       dnd-allowed-types="['usefulLink']">
     <li ng-repeat="link in usefulLinks"
@@ -31,7 +31,9 @@
         dnd-type="'usefulLink'"
         dnd-moved="updateOrder($index)"
         dnd-effect-allowed="move">
-      <a ng-hide="editMode" href="{{link.url}}" target="_blank">{{ link.description | renderUsefulLinkDescription:link.type }}</a>
+      <a ng-hide="editMode" href="{{link.url}}" target="_blank" class="list-of-links__link button--action icon--arrow-right">
+        {{ link.description | renderUsefulLinkDescription:link.type }}
+      </a>
       <editable-useful-link ng-show="editMode"
                             useful-link="link"
                             editable="link.type === UsefulLinkType.USER_DEFINED">
@@ -48,7 +50,7 @@
         <input ng-model="newLink.url"
                type="text"
                ng-change="searchPageTitle(newLink.url)"
-               placeholder="{{::('usefulLinks.addNewLink' | translate | capitalize)}}"
+               placeholder="{{::('usefulLinks.addNewLink' | translate | capitalize)}}"
                ui-keypress="{'enter':'addNewUsefulLink()'}">
       </form>
       <span ng-show="pageTitleSearchState === SearchState.SEARCHING">
@@ -67,14 +69,19 @@
     </useful-link-title>
   </div>
 
-  <div limit-visibility="['MY_STUDIES_ONLY']" class="useful-links__fixed">
-    <h4><a href="{{getStudentServicesLinks()}}" target="_blank" translate="usefulLinks.studentServices"></a></h4>
-  </div>
+  <ul class="list-of-links">
+    <li limit-visibility="['MY_STUDIES_ONLY']">
+      <a class="list-of-links__link useful-links__fixed-link-button" href="{{getStudentServicesLink()}}" target="_blank">
+        <span class="useful-links__fixed-link-title" translate="usefulLinks.studentServices"></span>
+      </a>
+    </li>
 
-  <div class="useful-links__fixed">
-    <h4 ng-if="selectedLanguage ==='fi'"><a href="http://www.helsinki.fi/helpdesk" target="_blank">Helpdesk</a></h4>
-    <h4 ng-if="selectedLanguage ==='sv'"><a href="http://www.helsinki.fi/helpdesk/sve/" target="_blank">Helpdesk</a></h4>
-    <h4 ng-if="selectedLanguage ==='en'"><a href="http://www.helsinki.fi/helpdesk/eng/" target="_blank">Helpdesk</a></h4>
-    <p>helpdesk@helsinki.fi</p>
-  </div>
+    <li>
+      <a class="list-of-links__link useful-links__fixed-link-button" href="{{getHelpdeskLink()}}" target="_blank">
+        <p class="useful-links__fixed-link-title">Helpdesk</p>
+        <p class="useful-links__fixed-link-info">helpdesk@helsinki.fi</p>
+      </a>
+    </li>
+  </ul>
+
 </div>

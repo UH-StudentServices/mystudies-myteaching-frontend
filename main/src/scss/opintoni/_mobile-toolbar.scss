@@ -114,7 +114,7 @@
       }
       @include mobile-toolbar-toggle;
       &:before {
-        @include hy-icon("\EA32");
+        @include icon($icon-remove);
       }
     }
   }

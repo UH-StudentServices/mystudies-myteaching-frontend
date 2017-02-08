@@ -17,12 +17,13 @@
 
 <div limit-visibility="['DESKTOP_ONLY']" class="page-navigation">
   <div class="wrapper">
-    <nav>
-      <ul class="main-menu">
-        <li class="main-menu__home">
+    <nav class="main-menu">
+      <ul class="menu">
+        <li class="is-lvl1 main-menu__front">
+          <span class="main-menu__home"></span>
           <a tabindex="0" ui-sref="init" class="active" aria-label="{{:: ('toolbar.home' | translate) }}"></a>
         </li>
-        <li ng-repeat="link in primaryLinks">
+        <li ng-repeat="link in primaryLinks" class="is-lvl1">
           <a href="{{ ::link.href[selectedLanguage] }}"
              target="_blank"
              analytics-event="{

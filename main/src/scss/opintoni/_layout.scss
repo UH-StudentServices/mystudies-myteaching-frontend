@@ -43,13 +43,6 @@
   background-image: url('../images/ui/bg_shadow.png');
 }
 
-.l-footer {
-  @include clearfix;
-  background-color: $black;
-  color: $white;
-  margin-top: 10em;
-}
-
 // Content regions
 .l-multi-col-content-wrapper {
   @include clearfix;

@@ -51,7 +51,7 @@ $favorite-size-large: 340px;
     top: 50%;
     left: 50%;
     @include transform(translate(-50%, -50%));
-    @include hy-icon("\EA32");
+    @include icon($icon-remove);
   }
 }
 

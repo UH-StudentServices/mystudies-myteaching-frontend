@@ -15,29 +15,41 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-$facebook-bg: #3b5998;
-$facebook-unicode: "\EA12";
-
-$youtube-bg: #e52d27;
-$youtube-unicode: "\EA3D";
-
-$twitter-bg: #4099ff;
-$twitter-unicode: "\EA39";
+  // Color codes are from the Styleguide
+$facebook-bg: #547bb9;
+$youtube-bg: #e6644a;
+$twitter-bg: #5ea9dd;
+$linkedin-bg: #1483c4;
+$instagram-bg: #125688;
 
 $tuhat-bg: $black;
-$tuhat-unicode: "\EA17";
 
-@mixin social-media-icon($unicode, $background-color) {
+
+@mixin social-media-icon($icon, $background-color) {
   background-color: $background-color;
 
   &::before {
-    @include hy-icon($unicode);
+    @include icon($icon);
   }
 
   &.social-media-link-icon--edit {
     background-color: transparent;
   }
 }
+
+@mixin social-media-link-icon($unicode : "") {
+  font-size: 24px;
+  font-family: "hy-icons";
+  font-style: normal;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: bottom;
+  @if ($unicode) {
+    content: $unicode;
+  }
+}
+
 
 .contact-information {
   position: relative;
@@ -70,14 +82,6 @@ $tuhat-unicode: "\EA17";
     padding: 20px 10px;
     border: 1px solid $lightsilver;
     position: relative;
-    &.link {
-      padding: 0;
-      a {
-        padding-left: 10px;
-        line-height: 4em;
-        display: block;
-      }
-    }
   }
 
   .useful-links__edit-link-url {
@@ -118,15 +122,15 @@ $tuhat-unicode: "\EA17";
     }
 
     &--facebook {
-      @include social-media-icon($facebook-unicode, $facebook-bg);
+      @include social-media-icon($icon-facebook, $facebook-bg);
     }
 
     &--twitter {
-      @include social-media-icon($twitter-unicode, $twitter-bg);
+      @include social-media-icon($icon-twitter, $twitter-bg);
     }
 
     &--youtube {
-      @include social-media-icon($youtube-unicode, $youtube-bg);
+      @include social-media-icon($icon-youtube, $youtube-bg);
     }
 
     &--research_gate {
@@ -134,7 +138,7 @@ $tuhat-unicode: "\EA17";
     }
 
     &--tuhat {
-      @include social-media-icon($tuhat-unicode, $tuhat-bg);
+      @include social-media-icon($icon-hy-logo, $tuhat-bg);
     }
 
   }
@@ -146,6 +150,71 @@ $tuhat-unicode: "\EA17";
         padding: 0 3em 0 1em;
         color: $white;
       }
+    }
+  }
+}
+
+.contact-information__social-media-link {
+  margin-bottom: 5px;
+  border: 1px solid $lightsilver;
+  background-color: transparent;
+  color: $blue;
+
+  &.social-media-link__icon {
+    &--facebook::after {
+      @include social-media-link-icon($icon-facebook);
+      background-color: $facebook-bg;
+    }
+    &--facebook:hover::after {
+      background-color: darken($facebook-bg, 10%);
+    }
+
+    &--twitter::after {
+      @include social-media-link-icon($icon-twitter);
+      background-color: $twitter-bg;
+    }
+    &--twitter:hover::after {
+      background-color: darken($twitter-bg, 10%);
+    }
+
+    &--youtube::after {
+      @include social-media-link-icon($icon-youtube);
+      background-color: $youtube-bg;
+    }
+    &--youtube:hover::after {
+      background-color: darken($youtube-bg, 10%);
+    }
+
+    &--linkedin::after {
+      @include social-media-link-icon($icon-linkedin);
+      background-color: $linkedin-bg;
+    }
+    &--linkedin:hover::after {
+      background-color: darken($linkedin-bg, 10%);
+    }
+
+    &--instagram::after {
+      @include social-media-link-icon($icon-instagram);
+      background-color: $instagram-bg;
+    }
+    &--instagram:hover::after {
+      background-color: darken($instagram-bg, 10%);
+    }
+
+    &--tuhat::after {
+      @include social-media-link-icon($icon-hy-logo);
+      background-color: $tuhat-bg;
+    }
+    &--tuhat:hover::after {
+      background-color: darken($tuhat-bg, 10%);
+    }
+
+    &--research_gate::after {
+      @include social-media-link-icon();
+      background: transparent url("../icons/rg_logo_square_brand.png") no-repeat center center;
+    }
+    &--research_gate:hover::after {
+      opacity: 0.9;
     }
   }
 }

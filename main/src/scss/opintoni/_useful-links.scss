@@ -53,6 +53,10 @@
   margin-bottom: 0.5em;
 }
 
+.useful-links ul {
+  margin-bottom: 2px;
+}
+
 .useful-links li {
   position: relative;
   margin-bottom: 2px;
@@ -208,24 +212,21 @@
   height: 0;
 }
 
-.useful-links__fixed {
-  padding: 1em;
-  background-color: $blue;
-  color: $white;
-  margin-bottom: 2px;
+.useful-links__fixed-link-button {
+  @include button
+  display: block;
+  padding-left: 10px;
+  position: relative;
+}
 
-  h4 {
-    padding-bottom: 0;
-  }
+.useful-links__fixed-link-title {
+  @include font-size(21px);
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
 
-  a {
-    @include all-link-states {
-      color: $white;
-    }
-  }
-
-  p {
-    margin-bottom: 0;
-    font-family: $font-family-bodytext;
-  }
+.useful-links__fixed-link-info {
+  @include font-family-bodytext;
+  margin-bottom: 0;
 }

@@ -15,6 +15,13 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+@mixin transform($transform) {
+  -webkit-transform: $transform;
+  -moz-transform: $transform;
+  -ms-transform: $transform;
+  -transform: $transform;
+}
+
 @mixin user-select ($value) {
   -webkit-user-select: $value;
   -moz-user-select: $value;

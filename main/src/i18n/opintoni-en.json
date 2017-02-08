@@ -66,10 +66,10 @@
   },
   "pageFooter": {
     "contact": "Contact information",
-    "addressLine1": "PL33 (Yliopistonkatu 4)",
+    "library": "Library",
+    "addressLine1": "PL 3 (Fabianinkatu 33)",
     "addressLine2": "00014 Helsingin yliopisto",
-    "telephoneExchange": "Exchange",
-    "giveFeedback": "Give feedback"
+    "telephoneExchange": "Exchange"
   },
   "primaryLinks": {
     "oodi": "Weboodi",
@@ -168,7 +168,7 @@
   },
   "attainments": {
     "attainments": "Completed studies",
-    "seeMoreLink": "see a list of your completed studies in WebOodi",
+    "seeMoreLink": "See a list of your completed studies in WebOodi",
     "noAttainmentsFromLastSixMonths": "No completed studies found from the last six months"
   },
   "usefulLinks": {
