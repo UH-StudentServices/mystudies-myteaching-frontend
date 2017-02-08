@@ -246,11 +246,7 @@ ul.work-experience {
   top: 0;
   right: 0;
   &:before {
-    content : "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    @include transform(translate(-50%, -50%));
+    color: white;
     @include icon($icon-remove);
   }
 }
