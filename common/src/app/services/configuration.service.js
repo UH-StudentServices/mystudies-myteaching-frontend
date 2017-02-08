@@ -80,6 +80,10 @@ angular.module('services.configuration', [])
         {
           name: 'Test Hybrid User',
           username: 'testhybriduser'
+        },
+        {
+          name: 'Test Open Uni Student',
+          username: 'testopenunistudent'
         }
       ],
       teachers: [
