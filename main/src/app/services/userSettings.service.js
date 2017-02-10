@@ -127,7 +127,7 @@ angular.module('services.userSettings', ['resources.userSettings', 'services.con
     }
 
     function markStudentTourShown() {
-      if (Configuration.environment === Environments.LOCAL) {
+      if (Configuration.environment === Environments.DEMO) {
         putDemoTourInfoToCookie(DemoTourCookie.STUDENT);
       } else {
         return updateUserSettings({showMyStudiesTour: false});
@@ -135,7 +135,7 @@ angular.module('services.userSettings', ['resources.userSettings', 'services.con
     }
 
     function markTeacherTourShown() {
-      if (Configuration.environment === Environments.LOCAL) {
+      if (Configuration.environment === Environments.DEMO) {
         putDemoTourInfoToCookie(DemoTourCookie.TEACHER);
       } else {
         return updateUserSettings({showMyTeachingTour: false});
