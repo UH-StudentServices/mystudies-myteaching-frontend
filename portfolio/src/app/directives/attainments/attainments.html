@@ -42,13 +42,16 @@
           </div>
 
           <div class="study-attainment__title">
-            <a ng-if="attainment.courseUri" href="{{::attainment.courseUri}}">{{:: attainment.learningOpportunityName }}</a>
+            <a ng-if="attainment.courseUri" href="{{::attainment.courseUri}}">
+              {{:: attainment.learningOpportunityName }}
+            </a>
             <span ng-if="!attainment.courseUri">{{:: attainment.learningOpportunityName }}</span>
             <span ng-if="attainment.credits">, {{:: attainment.credits }} op</span>
           </div>
 
           <div class="study-attainment__teachers">
-            {{::('general.teachers' | translate | capitalize)}}: <span ng-repeat="teacher in attainment.teachers">{{:: teacher.shortName }}{{:: $last ? '' : ', ' }}</span>
+            {{::('general.teachers' | translate | capitalize)}}:
+            <span ng-repeat="teacher in attainment.teachers">{{:: teacher.shortName }}{{:: $last ? '' : ', ' }}</span>
           </div>
         </div>
 
@@ -72,13 +75,16 @@
           </div>
 
           <div class="study-attainment__title">
-            <a ng-if="attainment.courseUri" href="{{::attainment.courseUri}}" tabindex="0">{{:: attainment.learningOpportunityName }}</a>
+            <a ng-if="attainment.courseUri" href="{{::attainment.courseUri}}">
+              {{:: attainment.learningOpportunityName }}
+            </a>
             <span ng-if="!attainment.courseUri">{{:: attainment.learningOpportunityName }}</span>
             <span ng-if="attainment.credits">, {{:: attainment.credits }} op</span>
           </div>
 
           <div class="study-attainment__teachers">
-            {{::('general.teachers' | translate | capitalize)}}: <span ng-repeat="teacher in attainment.teachers">{{:: teacher.shortName }}{{:: $last ? '' : ', ' }}</span>
+            {{::('general.teachers' | translate | capitalize)}}:
+            <span ng-repeat="teacher in attainment.teachers">{{:: teacher.shortName }}{{:: $last ? '' : ', ' }}</span>
           </div>
         </div>
 

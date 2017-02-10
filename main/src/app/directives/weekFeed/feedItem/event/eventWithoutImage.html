@@ -23,11 +23,11 @@
   <div class="week-feed__box-container">
 
     <div class="box-data__content">
-      {{ ::feedItem.startDate | eventTimeSpan:feedItem.endDate}}
+      {{:: feedItem.startDate | eventTimeSpan:feedItem.endDate}}
     </div>
 
     <div class="box-data__title">
-      <a href="{{feedItem.courseUri}}" ng-if="feedItem.courseUri">
+      <a href="{{:: feedItem.courseUri}}" ng-if="feedItem.courseUri">
         <event-title></event-title>
       </a>
       <event-title ng-if="!feedItem.courseUri"></event-title>
@@ -35,9 +35,9 @@
 
     <div class="box-data__content">
       <div ng-repeat="location in feedItem.locations" class="event-location">
-        <span class="event-location__name">{{ ::location.locationString }}</span>
+        <span class="event-location__name">{{::location.locationString }}</span>
         <span class="event-location__links">
-          <a ng-if="location.googleMapsUri" href="{{location.googleMapsUri}}"
+          <a ng-if="location.googleMapsUri" href="{{:: location.googleMapsUri}}"
              target="_blank" translate="weekFeed.showOnMap"></a>
           <a ng-if="location.reittiopasEnabled" ng-click="openReittiopas(feedItem.startDate, location)" tabindex="0">
             {{::('weekFeed.showRoute' | translate)}}
