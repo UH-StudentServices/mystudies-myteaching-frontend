@@ -22,7 +22,12 @@ angular.module('services.userSettings', ['resources.userSettings', 'services.con
     STUDENT: 'OODemoTourStudent'
   })
 
-  .factory('UserSettingsService', function($q, $cookies, DemoTourCookie, UserSettingsResource, Configuration, Environments) {
+  .factory('UserSettingsService', function($q,
+                                           $cookies,
+                                           DemoTourCookie,
+                                           UserSettingsResource,
+                                           Configuration,
+                                           Environments) {
 
     var settingsPromise,
         availableBackgroundsPromise,
