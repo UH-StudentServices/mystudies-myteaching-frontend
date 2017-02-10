@@ -17,7 +17,12 @@
 
 angular.module('services.userSettings', ['resources.userSettings', 'services.configuration'])
 
-  .factory('UserSettingsService', function($q, UserSettingsResource, Configuration, Environments) {
+  .constant('DemoTourCookie', {
+    TEACHER: 'OODemoTourTeacher',
+    STUDENT: 'OODemoTourStudent'
+  })
+
+  .factory('UserSettingsService', function($q, $cookies, DemoTourCookie, UserSettingsResource, Configuration, Environments) {
 
     var settingsPromise,
         availableBackgroundsPromise,
@@ -81,7 +86,11 @@ angular.module('services.userSettings', ['resources.userSettings', 'services.con
 
     function showMyStudiesTour() {
       if (Configuration.environment === Environments.DEMO) {
-        return $q.resolve(true);
+        if ($cookies.get(DemoTourCookie.STUDENT)) {
+          return $q.resolve(false);
+        } else {
+          return $q.resolve(true);
+        }
       } else {
         return getUserSettings().then(function(settings) {
           return settings.showMyStudiesTour;
@@ -91,7 +100,11 @@ angular.module('services.userSettings', ['resources.userSettings', 'services.con
 
     function showMyTeachingTour() {
       if (Configuration.environment === Environments.DEMO) {
-        return $q.resolve(true);
+        if ($cookies.get(DemoTourCookie.TEACHER)) {
+          return $q.resolve(false);
+        } else {
+          return $q.resolve(true);
+        }
       } else {
         return getUserSettings().then(function(settings) {
           return settings.showMyTeachingTour;
@@ -109,12 +122,24 @@ angular.module('services.userSettings', ['resources.userSettings', 'services.con
       return settingsPromise;
     }
 
+    function putDemoTourInfoToCookie(cookieName) {
+      $cookies.put(cookieName, true);
+    }
+
     function markStudentTourShown() {
-      return updateUserSettings({showMyStudiesTour: false});
+      if (Configuration.environment === Environments.LOCAL) {
+        putDemoTourInfoToCookie(DemoTourCookie.STUDENT);
+      } else {
+        return updateUserSettings({showMyStudiesTour: false});
+      }
     }
 
     function markTeacherTourShown() {
-      return updateUserSettings({showMyTeachingTour: false});
+      if (Configuration.environment === Environments.LOCAL) {
+        putDemoTourInfoToCookie(DemoTourCookie.TEACHER);
+      } else {
+        return updateUserSettings({showMyTeachingTour: false});
+      }
     }
 
     function setShowBanner(showBanner) {
