@@ -30,55 +30,65 @@
           <i ng-if="!isVisible(attainment)" class="fa fa-eye-slash"></i>
         </a>
 
-        <div class="study-attainment__grade--{{:: gradeClass(attainment.grade) }}">
-          <span>{{:: formatGrade(attainment.grade) }}</span>
+        <div class="study-attainment__left">
+          <span class="study-attainment__grade--{{:: gradeClass(attainment.grade) }}">
+            {{:: formatGrade(attainment.grade) }}
+          </span>
         </div>
 
-        <div class="study-attainment__date">
-          {{:: attainment.attainmentDate | momentFormat:'DD.MM.YYYY' }}
+        <div class="study-attainment__container">
+          <div class="study-attainment__date">
+            {{:: attainment.attainmentDate | momentFormat:'DD.MM.YYYY' }}
+          </div>
+
+          <div class="study-attainment__title">
+            <a ng-if="attainment.courseUri" href="{{::attainment.courseUri}}">{{:: attainment.learningOpportunityName }}</a>
+            <span ng-if="!attainment.courseUri">{{:: attainment.learningOpportunityName }}</span>
+            <span ng-if="attainment.credits">, {{:: attainment.credits }} op</span>
+          </div>
+
+          <div class="study-attainment__teachers">
+            {{::('general.teachers' | translate | capitalize)}}: <span ng-repeat="teacher in attainment.teachers">{{:: teacher.shortName }}{{:: $last ? '' : ', ' }}</span>
+          </div>
         </div>
 
-        <div class="study-attainment__title">
-          <a ng-if="attainment.courseUri" href="{{::attainment.courseUri}}">{{:: attainment.learningOpportunityName }}</a>
-          <span ng-if="!attainment.courseUri">{{:: attainment.learningOpportunityName }}</span>
-          <span ng-if="attainment.credits">, {{:: attainment.credits }} op</span>
-        </div>
-
-        <div class="study-attainment__teachers">
-          {{::('general.teachers' | translate | capitalize)}}: <span ng-repeat="teacher in attainment.teachers">{{:: teacher.shortName }}{{:: $last ? '' : ', ' }}</span>
-        </div>
       </div>
     </li>
   </ul>
+
   <ul ng-if="!editing">
     <li class="study-attainment" ng-repeat="attainment in attainments | limitTo:numberOfVisibleAttainments">
       <div class="study-attainment__item">
 
-        <div class="study-attainment__grade--{{:: gradeClass(attainment.grade) }}">
-          <span>{{:: formatGrade(attainment.grade) }}</span>
+        <div class="study-attainment__left">
+          <span class="study-attainment__grade--{{:: gradeClass(attainment.grade) }}">
+            {{:: formatGrade(attainment.grade) }}
+          </span>
         </div>
 
-        <div class="study-attainment__date">
-          {{:: attainment.attainmentDate | momentFormat:'DD.MM.YYYY' }}
+        <div class="study-attainment__container">
+          <div class="study-attainment__date">
+            {{:: attainment.attainmentDate | momentFormat:'DD.MM.YYYY' }}
+          </div>
+
+          <div class="study-attainment__title">
+            <a ng-if="attainment.courseUri" href="{{::attainment.courseUri}}" tabindex="0">{{:: attainment.learningOpportunityName }}</a>
+            <span ng-if="!attainment.courseUri">{{:: attainment.learningOpportunityName }}</span>
+            <span ng-if="attainment.credits">, {{:: attainment.credits }} op</span>
+          </div>
+
+          <div class="study-attainment__teachers">
+            {{::('general.teachers' | translate | capitalize)}}: <span ng-repeat="teacher in attainment.teachers">{{:: teacher.shortName }}{{:: $last ? '' : ', ' }}</span>
+          </div>
         </div>
 
-        <div class="study-attainment__title">
-          <a ng-if="attainment.courseUri" href="{{::attainment.courseUri}}" tabindex="0">{{:: attainment.learningOpportunityName }}</a>
-          <span ng-if="!attainment.courseUri">{{:: attainment.learningOpportunityName }}</span>
-          <span ng-if="attainment.credits">, {{:: attainment.credits }} op</span>
-        </div>
-
-        <div class="study-attainment__teachers">
-          {{::('general.teachers' | translate | capitalize)}}: <span ng-repeat="teacher in attainment.teachers">{{:: teacher.shortName }}{{:: $last ? '' : ', ' }}</span>
-        </div>
       </div>
     </li>
   </ul>
-  <button class="margin-top-10"
-          ng-click="showMoreClick()"
-          ng-show="showMoreVisible()"
-          translate="buttons.showMore">
-  </button>
+
+  <div ng-show="showMoreVisible()">
+    <button class="button button--light" ng-click="showMoreClick()" translate="buttons.showMore"></button>
+  </div>
 
   <visibility-toggle component-id="ATTAINMENTS"></visibility-toggle>
 </section>

@@ -17,6 +17,7 @@
 
 .study-attainment__item {
   @extend .box-data, .border-bottom;
+  padding-top: 15px;
 }
 
 .study-attainment__visibility {
@@ -28,6 +29,10 @@
   &:hover {
     color: $lightgray;
   }
+}
+
+.study-attainment__left {
+  @extend .box-data__left;
 }
 
 $study-attainment-grade-font-sizes: 30px, 25px, 20px, 15px;

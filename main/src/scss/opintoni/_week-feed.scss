@@ -135,7 +135,7 @@ $tablist-single-row: min-width 28.75em;
 
   padding-bottom: 1em;
 
-  &.exam .box-data__date {
+  &.exam .box-data__left {
     background-color: $orange;
   }
 
@@ -371,11 +371,6 @@ $tablist-single-row: min-width 28.75em;
 
 .week-feed-items {
   margin-bottom: 1em;
-  @include breakpoint($small) {
-    .bar .box-data__content {
-      margin-left: 70px;
-    }
-  }
 }
 
 #week-feed .messages {
@@ -414,4 +409,8 @@ $tablist-single-row: min-width 28.75em;
 .week-feed-calendar__full-screen-image {
   width: 2em;
   height: 2em;
+}
+
+.box-data__date.weekday {
+  text-transform: uppercase;
 }
