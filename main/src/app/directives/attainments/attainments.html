@@ -27,24 +27,29 @@
 
   <ul ng-show="attainments.length">
     <li ng-repeat="attainment in attainments | limitTo:numberOfVisibleAttainments">
-      <div class="box-data border-bottom">
-        <div class="box-data__date" ng-class="{'box-data__grade' : attainment.grade >= 0}">
-          <span>{{ attainment.grade }}</span>
+      <div class="attainments__container">
+        <div class="box-data__left">
+          <span class="box-data__grade" ng-class="{'box-data__grade--numeric' : attainment.grade >= 0}">
+            {{:: attainment.grade }}
+          </span>
         </div>
 
-        <div class="box-data__content">
-          {{ attainment.attainmentDate | momentFormat:'DD.MM.YYYY' }}
+        <div class="attainments__content-container">
+          <div class="box-data__content">
+            {{:: attainment.attainmentDate | momentFormat:'DD.MM.YYYY' }}
+          </div>
+
+          <div class="box-data__title">
+            <span>{{:: attainment.learningOpportunityName }}</span>
+            <span ng-if="attainment.credits">, {{:: attainment.credits }} op</span>
+          </div>
+
+          <div class="box-data__content">
+            {{::("general.teachers" | translate | capitalize) }}:
+            <span ng-repeat="teacher in attainment.teachers">{{:: teacher.shortName }}</span>
+          </div>
         </div>
 
-        <div class="box-data__title">
-          <span>{{ attainment.learningOpportunityName }}</span>
-          <span ng-if="attainment.credits">, {{ attainment.credits }} op</span>
-        </div>
-
-        <div class="box-data__content">
-          {{::("general.teachers" | translate | capitalize) }}:
-          <span ng-repeat="teacher in attainment.teachers">{{ teacher.shortName }}</span>
-        </div>
       </div>
     </li>
   </ul>

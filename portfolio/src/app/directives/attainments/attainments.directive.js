@@ -95,7 +95,7 @@ angular.module('directives.attainments', [
         };
 
         $scope.showMoreVisible = function showMoreVisible() {
-          return $scope.numberOfVisibleAttainments <= $scope.attainments.length;
+          return $scope.numberOfVisibleAttainments < $scope.attainments.length;
         };
 
         $scope.showMoreClick = function showMoreClick() {
