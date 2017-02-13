@@ -168,6 +168,7 @@
   "attainments": {
     "attainments": "Suoritetut",
     "seeMoreLink": "Katso kaikki suoritukset WebOodista",
+    "noAttainmentsYet": "Sinulla ei ole vielä rekisteröityjä opintosuorituksia",
     "noAttainmentsFromLastSixMonths": "Ei opintosuorituksia viimeiseltä kuudelta kuukaudelta"
   },
   "usefulLinks": {

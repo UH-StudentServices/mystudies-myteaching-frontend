@@ -88,6 +88,10 @@ angular.module('services.configuration', [])
         {
           name: 'Test Open Uni Student',
           username: 'testopenunistudent'
+        },
+        {
+          name: 'Test New Student',
+          username: 'testnewstudent'
         }
       ],
       teachers: [
