@@ -56,6 +56,10 @@ angular.module('services.configuration', [])
         {
           name: 'Juhani Jukola',
           username: 'j_jukola'
+        },
+        {
+          name: 'Timo Jukola',
+          username: 't_jukola'
         }
       ]
     },
