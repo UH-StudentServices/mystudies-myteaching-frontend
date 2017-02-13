@@ -20,3 +20,21 @@
     margin-top: -1px;
   }
 }
+
+.attainments__container {
+  @extend .box-data;
+  @include border-bottom;
+  padding-top: 15px;
+}
+
+.attainments__content-container div {
+  font-size: 0.875rem;
+}
+
+.box-data__grade {
+  @extend .box-data__date;
+
+  &--numeric {
+    @include font-size(30px);
+  }
+}
