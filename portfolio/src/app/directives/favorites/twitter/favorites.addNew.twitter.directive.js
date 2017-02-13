@@ -15,33 +15,30 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-'use strict';
-
 angular.module('directives.favorites.addNew.twitter',
   ['services.favorites'])
 
-  .constant('twitterFeedTypes', {
+  .constant('TwitterFeedTypes', {
     USER_TIMELINE: 'USER_TIMELINE'
   })
 
-  .directive('addNewTwitterFavorite', function(FavoritesService, twitterFeedTypes,
-                                               newFavoriteAddedEvent) {
+  .directive('addNewTwitterFavorite', function(FavoritesService,
+                                               TwitterFeedTypes,
+                                               NewFavoriteAddedEvent) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/twitter/favorites.addNew.twitter.html',
       replace: true,
       scope: true,
-      controller: function($scope) {
-
-        $scope.addTwitterFavorite = function() {
-          var insertTwitterFavoriteRequest = {};
-
-          insertTwitterFavoriteRequest.feedType = twitterFeedTypes.USER_TIMELINE;
-          insertTwitterFavoriteRequest.value = $scope.twitterUsername;
+      link: function(scope) {
+        scope.addTwitterFavorite = function() {
+          var insertTwitterFavoriteRequest = {
+            feedType: TwitterFeedTypes.USER_TIMELINE,
+            value: scope.twitterUsername
+          };
 
           FavoritesService.saveTwitterFavorite(insertTwitterFavoriteRequest).then(function() {
-            $scope.$emit(newFavoriteAddedEvent);
-            $scope.closePopover();
+            scope.$emit(NewFavoriteAddedEvent);
           });
         };
       }

@@ -17,7 +17,7 @@
 
 angular.module('directives.favorites.twitter', [])
 
-  .directive('favoritesTwitter', function($timeout, $window) {
+  .directive('favoritesTwitter', function($window) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/twitter/favorites.twitter.html',
@@ -25,27 +25,29 @@ angular.module('directives.favorites.twitter', [])
       scope: {
         data: '='
       },
-      link: function($scope) {
+      link: function(scope, el) {
+        var TWITTER_SCRIPT_ID = 'twitter-wjs',
+            TWITTER_WIDGETS_URL = 'https://platform.twitter.com/widgets.js';
 
-        $scope.$watch('favorites.length', function() {
+        scope.$watch('favorites.length', function() {
           if ($window.twttr) {
-            $timeout(function() {
-              twttr.widgets.load();
-            }, 0);
+            twttr.widgets.createTimeline(
+              {
+                sourceType: 'profile',
+                screenName: scope.data.value
+              },
+              el[0]
+            );
           }
         });
 
-        if (!document.getElementById('twitter-wjs')) {
-          $window.twttr = (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
+        if (!document.getElementById(TWITTER_SCRIPT_ID)) {
+          var twitterScript = document.createElement('script'),
+              firstScript = document.getElementsByTagName('script')[0];
 
-            if (!d.getElementById(id)) {
-              js = d.createElement(s);
-              js.id = id;
-              js.src = 'https://platform.twitter.com/widgets.js';
-              fjs.parentNode.insertBefore(js, fjs);
-            }
-          })(document, 'script', 'twitter-wjs');
+          twitterScript.id = TWITTER_SCRIPT_ID;
+          twitterScript.src = TWITTER_WIDGETS_URL;
+          firstScript.parentNode.insertBefore(twitterScript, firstScript);
         }
       }
     };

@@ -15,8 +15,6 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-'use strict';
-
 angular.module('resources.favorites', ['services.state'])
   .factory('FavoritesResource', function($resource, StateService) {
 

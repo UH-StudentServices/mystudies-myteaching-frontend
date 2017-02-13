@@ -19,8 +19,9 @@ angular.module('directives.favorites.addNew.link',
   ['services.favorites',
    'resources.favorites.link'])
 
-  .directive('addNewLinkFavorite', function(EmbedLyResource, FavoritesService,
-                                            newFavoriteAddedEvent) {
+  .directive('addNewLinkFavorite', function(EmbedLyResource,
+                                            FavoritesService,
+                                            NewFavoriteAddedEvent) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/link/favorites.addNew.link.html',
@@ -48,7 +49,7 @@ angular.module('directives.favorites.addNew.link',
         $scope.addLinkFavorite = function addLinkFavorite() {
           if (!_.isUndefined($scope.metaData)) {
             FavoritesService.saveLinkFavorite($scope.metaData).then(function saveLinkSuccess() {
-              $scope.$emit(newFavoriteAddedEvent);
+              $scope.$emit(NewFavoriteAddedEvent);
               $scope.closePopover();
             });
           }
