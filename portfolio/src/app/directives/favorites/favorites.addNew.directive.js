@@ -22,7 +22,7 @@ angular.module('directives.favorites.addNew', [
   'services.focus'])
 
   .constant('availableFavoriteTypes', ['LINK', 'TWITTER'])
-  .constant('newFavoriteAddedEvent', 'NEW_FAVORITE_ADDED')
+  .constant('NewFavoriteAddedEvent', 'NEW_FAVORITE_ADDED')
 
   .directive('addNewFavoriteSearch', function() {
     return {
@@ -38,11 +38,9 @@ angular.module('directives.favorites.addNew', [
         loading: '='
       },
       compile: function(tElement, tAttrs) {
-
         tElement.find('input').attr('type', tAttrs.inputType);
 
         return function($scope) {
-
           $scope.search = _.debounce(function(searchString) {
             if ($scope.favoriteSearchForm.$valid && $scope.searchFn) {
               $scope.searchFn(searchString);
@@ -67,7 +65,7 @@ angular.module('directives.favorites.addNew', [
     };
   })
 
-  .directive('addNewFavorite', function(availableFavoriteTypes, newFavoriteAddedEvent, Focus) {
+  .directive('addNewFavorite', function(availableFavoriteTypes, NewFavoriteAddedEvent, Focus) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/favorites.addNew.html',
@@ -96,7 +94,7 @@ angular.module('directives.favorites.addNew', [
           Focus.setFocus('.add-favorite-container input');
         };
 
-        $scope.$on(newFavoriteAddedEvent, function() {
+        $scope.$on(NewFavoriteAddedEvent, function() {
           resetPopover();
         });
 

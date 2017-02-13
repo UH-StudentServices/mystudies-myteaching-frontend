@@ -23,45 +23,47 @@ angular.module('directives.favorites', [
   'directives.favorites.addNew',
   'dndLists'
 ])
-  .directive('favorites', function(FavoritesService, newFavoriteAddedEvent, removeFavoriteEvent) {
+  .directive('favorites', function(FavoritesService,
+                                   NewFavoriteAddedEvent,
+                                   RemoveFavoriteEvent) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/favorites.html',
       scope: {
         favoritesData: '&'
       },
-      link: function($scope) {
-        $scope.favorites = $scope.favoritesData();
-        $scope.editMode = false;
+      link: function(scope) {
+        scope.favorites = scope.favoritesData();
+        scope.editMode = false;
 
-        $scope.edit = function() {
-          $scope.editMode = true;
+        scope.edit = function() {
+          scope.editMode = true;
         };
 
-        $scope.exitEdit = function() {
-          $scope.editMode = false;
+        scope.exitEdit = function() {
+          scope.editMode = false;
           return true;
         };
 
+        function showFavorites(favorites) {
+          scope.favorites = favorites;
+        }
+
         function updateFavorites() {
-          FavoritesService.getFavorites().then(function(favorites) {
-            $scope.favorites = favorites;
-          });
+          FavoritesService.getFavorites().then(showFavorites);
         }
 
         function removeFavorite(event, favoriteId) {
-          FavoritesService.deleteFavorite(favoriteId).then(function(favorites) {
-            $scope.favorites = favorites;
-          });
+          FavoritesService.deleteFavorite(favoriteId).then(showFavorites);
         }
 
-        $scope.$on(newFavoriteAddedEvent, updateFavorites);
-        $scope.$on(removeFavoriteEvent, removeFavorite);
+        scope.$on(NewFavoriteAddedEvent, updateFavorites);
+        scope.$on(RemoveFavoriteEvent, removeFavorite);
 
-        $scope.moved = function moved($index) {
-          $scope.favorites.splice($index, 1);
+        scope.moved = function moved($index) {
+          scope.favorites.splice($index, 1);
           FavoritesService.updateFavoriteOrder({
-            favoriteIds: _.map($scope.favorites, function extractId(favorite) {
+            favoriteIds: _.map(scope.favorites, function extractId(favorite) {
               return favorite.id;
             })
           });
