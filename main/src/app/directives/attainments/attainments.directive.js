@@ -45,17 +45,24 @@ angular.module('directives.attainments', [
 
         AttainmentsService.hasStudyAttainments().then(function(hasAttainments) {
           $scope.hasAttainments = hasAttainments;
-        });
-
-        AttainmentsService.getLastStudyAttainments().then(function(attainments) {
-          $scope.attainments = attainments;
-          if ($scope.attainments.length === 0) {
+          if (hasAttainments) {
+            AttainmentsService.getLastStudyAttainments().then(function(attainments) {
+              $scope.attainments = attainments;
+              if ($scope.attainments.length === 0) {
+                $scope.message = {
+                  messageType: MessageTypes.INFO,
+                  key: 'attainments.noAttainmentsFromLastSixMonths'
+                };
+              }
+            });
+          } else {
             $scope.message = {
               messageType: MessageTypes.INFO,
-              key: 'attainments.noAttainmentsFromLastSixMonths'
+              key: 'attainments.noAttainmentsYet'
             };
           }
         });
+
       }
     };
   });

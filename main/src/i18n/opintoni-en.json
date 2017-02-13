@@ -169,6 +169,7 @@
   "attainments": {
     "attainments": "Completed studies",
     "seeMoreLink": "See a list of your completed studies in WebOodi",
+    "noAttainmentsYet": "You don't yet have any completed studies",
     "noAttainmentsFromLastSixMonths": "No completed studies found from the last six months"
   },
   "usefulLinks": {

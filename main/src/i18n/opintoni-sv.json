@@ -170,6 +170,7 @@
   "attainments": {
     "attainments": "Prestationer",
     "seeMoreLink": "Se en lista över dina prestationer i WebOodi",
+    "noAttainmentsYet": "Du ännu inte har några studieprestationer",
     "noAttainmentsFromLastSixMonths": "Inga prestationer från de senaste sex månaderna"
   },
   "usefulLinks": {

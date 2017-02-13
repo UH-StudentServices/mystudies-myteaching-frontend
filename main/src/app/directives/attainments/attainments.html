@@ -16,7 +16,7 @@
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<div class="ui-component attainments" role="article" ng-if="hasAttainments">
+<div class="ui-component attainments" role="article">
   <h2 class="ui-component__title border-bottom" translate="attainments.attainments"></h2>
 
   <message
@@ -25,7 +25,7 @@
     message="message">
   </message>
 
-  <ul ng-show="attainments.length">
+  <ul ng-show="attainments.length" ng-if="hasAttainments">
     <li ng-repeat="attainment in attainments | limitTo:numberOfVisibleAttainments">
       <div class="attainments__container">
         <div class="box-data__left">
