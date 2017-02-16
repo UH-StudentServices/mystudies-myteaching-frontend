@@ -37,29 +37,35 @@ angular.module('services.configuration', [])
       students: [
         {
           name: 'Venla Jukola',
-          username: 'v_jukola'
+          username: 'v_jukola',
+          subject: 'subjects.foodScience'
         },
         {
           name: 'Juhani Jukola',
-          username: 'j_jukola'
+          username: 'j_jukola',
+          subject: 'subjects.jurisprudence'
         },
         {
           name: 'Kaisa Rajamäki',
-          username: 'k_rajama'
+          username: 'k_rajama',
+          subject: 'subjects.openUniversity'
         }
       ],
       teachers: [
         {
           name: 'Eero Jukola',
-          username: 'e_jukola'
+          username: 'e_jukola',
+          subject: 'faculties.H30'
         },
         {
           name: 'Juhani Jukola',
-          username: 'j_jukola'
+          username: 'j_jukola',
+          subject: 'faculties.H50'
         },
         {
           name: 'Timo Jukola',
-          username: 't_jukola'
+          username: 't_jukola',
+          subject: 'faculties.A93000'
         }
       ]
     },
@@ -67,49 +73,60 @@ angular.module('services.configuration', [])
       students: [
         {
           name: 'Olli Opiskelija',
-          username: 'opiskelija'
+          username: 'opiskelija',
+          subject: 'faculties.H70'
         },
         {
           name: 'Maggie Simpson',
-          username: 'mag_simp'
+          username: 'mag_simp',
+          subject: 'faculties.H70'
         },
         {
           name: 'Hybrid User',
-          username: 'hybriduser'
+          username: 'hybriduser',
+          subject: 'faculties.H50'
         },
         {
           name: 'Test Student',
-          username: 'teststudent'
+          username: 'teststudent',
+          subject: 'faculties.H70'
         },
         {
           name: 'Test Hybrid User',
-          username: 'testhybriduser'
+          username: 'testhybriduser',
+          subject: 'faculties.H10'
         },
         {
           name: 'Test Open Uni Student',
-          username: 'testopenunistudent'
+          username: 'testopenunistudent',
+          subject: 'faculties.A93000'
         },
         {
           name: 'Test New Student',
-          username: 'testnewstudent'
+          username: 'testnewstudent',
+          subject: 'faculties.H70'
         }
       ],
       teachers: [
         {
           name: 'Olli Opettaja',
-          username: 'opettaja'
+          username: 'opettaja',
+          subject: 'faculties.H30'
         },
         {
           name: 'Hybrid User',
-          username: 'hybriduser'
+          username: 'hybriduser',
+          subject: 'faculties.H50'
         },
         {
           name: 'Test Teacher',
-          username: 'testteacher'
+          username: 'testteacher',
+          subject: 'faculties.H40'
         },
         {
           name: 'Test Hybrid User',
-          username: 'testhybriduser'
+          username: 'testhybriduser',
+          subject: 'faculties.H10'
         }
       ]
     }

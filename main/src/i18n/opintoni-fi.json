@@ -413,6 +413,11 @@
     "A10000": "Teologinen tiedekunta",
     "A70000": "Valtiotieteellinen tiedekunta"
   },
+  "subjects": {
+    "foodScience": "elintarviketieteet",
+    "jurisprudence": "oikeustiede",
+    "openUniversity": "avoin yliopisto"
+  },
   "feedback": {
     "title": "Palaute",
     "submit": "Lähetä",
