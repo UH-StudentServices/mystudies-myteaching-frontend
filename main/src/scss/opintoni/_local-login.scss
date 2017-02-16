@@ -42,6 +42,9 @@
 
   &__log-in {
     display: inline-block;
-    width: 200px;
+    width: 450px;
+    @include breakpoint($mobile-only) {
+      width: 250px;
+    }
   }
 }

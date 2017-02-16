@@ -415,6 +415,11 @@
     "A10000": "Teologiska fakulteten",
     "A70000": "Statsvetenskapliga fakulteten"
   },
+  "subjects": {
+    "foodScience": "livsmedelsvetenskaper",
+    "jurisprudence": "juridik",
+    "openUniversity": "öppna universitetet"
+  },
   "feedback": {
     "title": "Feedback",
     "submit": "Skicka",

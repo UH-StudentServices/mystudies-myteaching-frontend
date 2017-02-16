@@ -414,6 +414,11 @@
     "A10000": "Faculty of Theology",
     "A70000": "Faculty of Social Sciences"
   },
+  "subjects": {
+    "foodScience": "Food Science",
+    "jurisprudence": "Jurisprudence",
+    "openUniversity": "Open University"
+  },
   "feedback": {
     "title": "Feedback",
     "submit": "Submit",
