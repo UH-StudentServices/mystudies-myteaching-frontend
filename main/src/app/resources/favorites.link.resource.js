@@ -22,7 +22,7 @@ angular.module('resources.favorites.link', [])
     var apiKey = Configuration.embedlyApiKey;
 
     function get(url) {
-      return $http.jsonp('//api.embed.ly/1/oembed?key=' + apiKey + '&url=' + encodeURIComponent(url));
+      return $http.jsonp('https://api.embed.ly/1/oembed?key=' + apiKey + '&url=' + encodeURIComponent(url));
     }
 
     return {

@@ -142,7 +142,7 @@ angular.module('opintoniPortfolioApp', [
       // Allow same origin resource loads.
       'self',
       // Allow loading from embed.ly.
-      'http://api.embed.ly/1/oembed**'
+      'https://api.embed.ly/1/oembed**'
     ]);
   })
 
