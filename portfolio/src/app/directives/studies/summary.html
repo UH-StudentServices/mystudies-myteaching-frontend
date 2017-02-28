@@ -18,5 +18,5 @@
 <div>
   <textarea class="ui-component__studies__summary--editing"
     ng-show="editing" ng-model="summary" maxlength="2500"></textarea>
-  <p class="ui-component__studies__summary--view user-text" ng-hide="editing" embed="summary"></p>
+  <p class="ui-component__studies__summary--view user-text" ng-hide="editing" ng-bind-html="summary | embed"></p>
 </div>

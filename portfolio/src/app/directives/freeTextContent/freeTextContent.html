@@ -30,7 +30,10 @@
           {{ ::(headingKey | translate) }}
         </h2>
       </div>
-      <p class="free-text-content__text user-text" embed="freeTextContent.text"></p>
+      <div class="free-text-content__text user-text">
+        <ng-embed embed-data="freeTextContent.text" embed-options="embedOptions"></ng-embed>
+      </div>
+
     </div>
     <edit-free-text-content ng-if="freeTextContentToEdit === freeTextContent"
                             free-text-content="freeTextContentToEdit"
