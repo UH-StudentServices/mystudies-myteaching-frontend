@@ -124,8 +124,8 @@
     "jobSearchHeadline": "otsikko"
   },
   "samples": {
-    "title": "Näyteet",
-    "addSample": "Lisää näyteen url",
+    "title": "Näytteet",
+    "addSample": "Lisää näytteen url",
     "titlePlaceholder": "kuvaus",
     "urlPlaceholder": "url",
     "descriptionPlaceholder": "kuvausteksti"
