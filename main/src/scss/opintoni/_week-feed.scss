@@ -67,28 +67,6 @@ $tablist-single-row: min-width 28.75em;
   }
 }
 
-.weekfeed-subscribe {
-  @extend .weekfeed__sub-tab;
-
-  padding: 0;
-  @include breakpoint($tablist-multi-row) {
-    flex: 10 1 auto;
-    margin-left: none;
-    width: 100%;
-  }
-
-  @include breakpoint($tablist-single-row) {
-    flex: 0 1 auto;
-    margin-left: auto;
-    width: auto;
-  }
-
-  &__button {
-    width: 100%;
-    padding: 0.3em 0.7em 0.4em;
-  }
-}
-
 @mixin mobile-exam-border($left-position) {
   display: block;
   content: "";
@@ -308,6 +286,28 @@ $tablist-single-row: min-width 28.75em;
   }
 }
 
+.weekfeed-subscribe {
+  @extend .weekfeed__sub-tab;
+
+  padding: 0;
+  @include breakpoint($tablist-multi-row) {
+    flex: 10 1 auto;
+    margin-left: none;
+    width: 100%;
+  }
+
+  @include breakpoint($tablist-single-row) {
+    flex: 0 1 auto;
+    margin-left: auto;
+    width: auto;
+  }
+
+  &__button {
+    width: 100%;
+    padding: 0.3em 0.7em 0.4em;
+  }
+}
+
 .subscribe-events-popover-container {
   @include breakpoint($tablist-multi-row) {
     left: 0;
@@ -392,23 +392,29 @@ $tablist-single-row: min-width 28.75em;
 }
 
 .week-feed-calendar {
-  margin-top: 1em;
+  @include breakpoint($small) {
+    margin-top: 1em;
+  }
 }
 
-.week-feed-calendar__full-screen-button {
+.week-feed-calendar__extra-buttons {
   position: absolute;
   top: 0px;
   right: 0px;
-  width: 2em;
-  height: 2em;
+
+  display: flex;
+}
+
+.week-feed-calendar__full-screen-button {
   background: transparent;
   border: 0;
   padding: 0;
+  margin-left: 0.4em;
 }
 
 .week-feed-calendar__full-screen-image {
-  width: 2em;
-  height: 2em;
+  width: 28px;
+  height: 28px;
 }
 
 .box-data__date.weekday {

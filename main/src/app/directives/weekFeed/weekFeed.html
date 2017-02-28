@@ -59,9 +59,13 @@
 
       <div class="week-feed-calendar" ng-if="events && hideSubTabs">
         <event-calendar events="events" date="currentDate" calendar-view="calendarView" full-screen="false"></event-calendar>
-        <a class="week-feed-calendar__full-screen-button" aria-label="{{::('fullScreenCalendar.open' | translate)}}" ng-click="showFullScreenCalendar(currentDate)" tabindex="0">
-          <img class="week-feed-calendar__full-screen-image" src="/assets/icons/full_screen.svg">
-        </a>
+        <div class="week-feed-calendar__extra-buttons hide-mobile-only">
+          <subscribe-events></subscribe-events>
+          <a class="week-feed-calendar__full-screen-button" aria-label="{{::('fullScreenCalendar.open' | translate)}}"
+             ng-click="showFullScreenCalendar(currentDate)" tabindex="0">
+            <img class="week-feed-calendar__full-screen-image" src="/assets/icons/full_screen.svg">
+          </a>
+        </div>
       </div>
 
       <div class="week-feed-actions">
