@@ -31,36 +31,13 @@
   margin-top: 0.2em;
 }
 
-.free-text-content__text .ejs-video-player {
-  iframe {
-    width: 100%;
-    height: 100%;
-  }
-  // or 170px?
-  height: 225px;
-  margin-left: auto;
-  margin-right: auto;
-
-  // Custom breakpoints for mobile video embeds
-  @include breakpoint(25em, 'no-query' '.lt-ie9') {
-    width: 400px;
-    height: 225px;
+.free-text-content__text {
+  .ne-image, .ne-video {
+    white-space: normal;
   }
 
-  // Custom breakpoints for mobile video embeds
-  @include breakpoint(40em, 'no-query' '.lt-ie9') {
-    width: 608px;
-    height: 342px;
-  }
-
-  @include breakpoint($small) {
-    width: 400px;
-    height: 225px;
-  }
-
-  @include breakpoint($medium) {
-    width: 608px;
-    height: 342px;
+  .ne-image-wrapper, .ne-video-player {
+    background-color: $white;
   }
 
 }

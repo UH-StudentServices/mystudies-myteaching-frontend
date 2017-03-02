@@ -76,6 +76,26 @@ angular.module('directives.freeTextContent', [
           }
         }
 
+        scope.embedOptions = {
+          video: {
+            embed: true,
+            width: null,
+            height: null,
+            ytTheme: 'dark',
+            details: false,
+            thumbnailQuality: 'medium',
+            autoPlay: false
+          },
+          code: {
+            highlight: false
+          },
+          gdevAuth: true,
+          tweetEmbed: false,
+          image: {
+            embed: true
+          }
+        };
+
         scope.disableAddNew = 'singleEntry' in attrs;
 
         scope.freeTextContents = FreeTextContentService
