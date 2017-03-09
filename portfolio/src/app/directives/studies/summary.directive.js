@@ -25,6 +25,27 @@ angular.module('directives.summary', [])
         editing: '=',
         summary: '='
       },
-      templateUrl: 'app/directives/studies/summary.html'
+      templateUrl: 'app/directives/studies/summary.html',
+      link: function(scope, el, attr) {
+        scope.embedOptions = {
+          video: {
+            embed: true,
+            width: null,
+            height: null,
+            ytTheme: 'dark',
+            details: false,
+            thumbnailQuality: 'medium',
+            autoPlay: false
+          },
+          code: {
+            highlight: false
+          },
+          gdevAuth: true,
+          tweetEmbed: false,
+          image: {
+            embed: true
+          }
+        };
+      }
     };
   });
