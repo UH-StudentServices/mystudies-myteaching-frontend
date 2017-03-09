@@ -37,9 +37,9 @@ angular.module('directives.usefulLinks', [
   })
 
   .constant('StudentServicesLinks', {
-    'fi': 'https://flamma.helsinki.fi/fi/neuvonta/HY054785',
-    'sv': 'https://flamma.helsinki.fi/sv/radgivning/HY054786',
-    'en': 'https://flamma.helsinki.fi/en/services-students/HY054787'
+    'fi': 'https://guide.student.helsinki.fi/fi/artikkeli/opiskelijaneuvonta',
+    'sv': 'https://guide.student.helsinki.fi/sv/artikel/studentservicen',
+    'en': 'https://guide.student.helsinki.fi/article/student-services'
   })
 
   .constant('HelpdeskLinks', {
