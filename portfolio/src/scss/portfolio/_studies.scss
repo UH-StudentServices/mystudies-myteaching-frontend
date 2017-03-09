@@ -104,8 +104,20 @@ $tagColorEditingColor: #797979;
     z-index: 10;
   }
 
-  &__summary--editing {
+}
+
+.studies__summary {
+  &--editing {
     margin-top: 10px;
+  }
+
+  &--view {
+    .ne-image, .ne-video {
+      white-space: normal;
+    }
+    .ne-image-wrapper, .ne-video-player {
+      background-color: $white;
+    }
   }
 }
 
