@@ -22,9 +22,9 @@ angular.module('constants.externalLinks', [])
     {
       key: 'primaryLinks.oodi',
       href: {
-        fi: 'https://weboodi.helsinki.fi/hytest/?Kieli=1&valittuKieli=1',
-        sv: 'https://weboodi.helsinki.fi/hytest/?Kieli=2&valittuKieli=2',
-        en: 'https://weboodi.helsinki.fi/hytest/?Kieli=6&valittuKieli=6'
+        fi: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=1',
+        sv: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=2',
+        en: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=6'
       }
     },
     {
@@ -33,6 +33,14 @@ angular.module('constants.externalLinks', [])
         fi: 'https://dev.courses.helsinki.fi/fi/search',
         sv: 'https://dev.courses.helsinki.fi/sv/search',
         en: 'https://dev.courses.helsinki.fi/search'
+      }
+    },
+    {
+      key: 'primaryLinks.guide',
+      href: {
+        fi: 'https://dev.guide.student.helsinki.fi/fi',
+        sv: 'https://dev.guide.student.helsinki.fi/sv',
+        en: 'https://dev.guide.student.helsinki.fi'
       }
     },
     {
@@ -48,9 +56,9 @@ angular.module('constants.externalLinks', [])
     {
       key: 'primaryLinks.oodi',
       href: {
-        fi: 'https://weboodi.helsinki.fi/hytest/?Kieli=1&valittuKieli=1',
-        sv: 'https://weboodi.helsinki.fi/hytest/?Kieli=2&valittuKieli=2',
-        en: 'https://weboodi.helsinki.fi/hytest/?Kieli=6&valittuKieli=6'
+        fi: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=1',
+        sv: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=2',
+        en: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=6'
       }
     },
     {
@@ -59,6 +67,14 @@ angular.module('constants.externalLinks', [])
         fi: 'https://dev.courses.helsinki.fi/fi/search',
         sv: 'https://dev.courses.helsinki.fi/sv/search',
         en: 'https://dev.courses.helsinki.fi/search'
+      }
+    },
+    {
+      key: 'primaryLinks.guide',
+      href: {
+        fi: 'https://dev.guide.student.helsinki.fi/fi',
+        sv: 'https://dev.guide.student.helsinki.fi/sv',
+        en: 'https://dev.guide.student.helsinki.fi'
       }
     },
     {
@@ -74,9 +90,9 @@ angular.module('constants.externalLinks', [])
     {
       key: 'primaryLinks.oodi',
       href: {
-        fi: 'https://weboodi.helsinki.fi/hytest/?Kieli=1&valittuKieli=1',
-        sv: 'https://weboodi.helsinki.fi/hytest/?Kieli=2&valittuKieli=2',
-        en: 'https://weboodi.helsinki.fi/hytest/?Kieli=6&valittuKieli=6'
+        fi: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=1',
+        sv: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=2',
+        en: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=6'
       }
     },
     {
@@ -85,6 +101,14 @@ angular.module('constants.externalLinks', [])
         fi: 'https://dev.courses.helsinki.fi/fi/search',
         sv: 'https://dev.courses.helsinki.fi/sv/search',
         en: 'https://dev.courses.helsinki.fi/search'
+      }
+    },
+    {
+      key: 'primaryLinks.guide',
+      href: {
+        fi: 'https://dev.guide.student.helsinki.fi/fi',
+        sv: 'https://dev.guide.student.helsinki.fi/sv',
+        en: 'https://dev.guide.student.helsinki.fi'
       }
     },
     {
@@ -100,9 +124,9 @@ angular.module('constants.externalLinks', [])
     {
       key: 'primaryLinks.oodi',
       href: {
-        fi: 'https://weboodi.helsinki.fi/hy/frame.jsp?Kieli=1&valittuKieli=1',
-        sv: 'https://weboodi.helsinki.fi/hy/frame.jsp?Kieli=2&valittuKieli=2',
-        en: 'https://weboodi.helsinki.fi/hy/frame.jsp?Kieli=6&valittuKieli=6'
+        fi: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=1',
+        sv: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=2',
+        en: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=6'
       }
     },
     {
@@ -112,15 +136,23 @@ angular.module('constants.externalLinks', [])
         sv: 'https://demo.courses.helsinki.fi/sv/search',
         en: 'https://demo.courses.helsinki.fi/search'
       }
+    },
+    {
+      key: 'primaryLinks.guide',
+      href: {
+        fi: 'https://guide.student.helsinki.fi/fi',
+        sv: 'https://guide.student.helsinki.fi/sv',
+        en: 'https://guide.student.helsinki.fi'
+      }
     }
   ],
   prod: [
     {
       key: 'primaryLinks.oodi',
       href: {
-        fi: 'https://weboodi.helsinki.fi/hy/frame.jsp?Kieli=1&valittuKieli=1',
-        sv: 'https://weboodi.helsinki.fi/hy/frame.jsp?Kieli=2&valittuKieli=2',
-        en: 'https://weboodi.helsinki.fi/hy/frame.jsp?Kieli=6&valittuKieli=6'
+        fi: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=1',
+        sv: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=2',
+        en: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=6'
       }
     },
     {
@@ -129,6 +161,14 @@ angular.module('constants.externalLinks', [])
         fi: 'https://courses.helsinki.fi/fi/search',
         sv: 'https://courses.helsinki.fi/sv/search',
         en: 'https://courses.helsinki.fi/search'
+      }
+    },
+    {
+      key: 'primaryLinks.guide',
+      href: {
+        fi: 'https://guide.student.helsinki.fi/fi',
+        sv: 'https://guide.student.helsinki.fi/sv',
+        en: 'https://guide.student.helsinki.fi'
       }
     },
     {
