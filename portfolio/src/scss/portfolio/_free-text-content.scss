@@ -35,7 +35,9 @@
   .ne-image, .ne-video {
     white-space: normal;
   }
-
+  .ne-image {
+    max-height: none;
+  }
   .ne-image-wrapper, .ne-video-player {
     background-color: $white;
   }
