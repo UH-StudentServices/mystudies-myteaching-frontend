@@ -31,7 +31,7 @@
         dnd-type="'usefulLink'"
         dnd-moved="updateOrder($index)"
         dnd-effect-allowed="move">
-      <a ng-hide="editMode" href="{{link.url}}" target="_blank" class="list-of-links__link button--action icon--arrow-right">
+      <a ng-hide="editMode" href="{{link.url}}" class="list-of-links__link button--action icon--arrow-right">
         {{ link.description | renderUsefulLinkDescription:link.type }}
       </a>
       <editable-useful-link ng-show="editMode"
@@ -71,13 +71,13 @@
 
   <ul class="list-of-links">
     <li limit-visibility="['MY_STUDIES_ONLY']">
-      <a class="list-of-links__link useful-links__fixed-link-button" href="{{getStudentServicesLink()}}" target="_blank">
+      <a class="list-of-links__link useful-links__fixed-link-button" href="{{getStudentServicesLink()}}">
         <span class="useful-links__fixed-link-title" translate="usefulLinks.studentServices"></span>
       </a>
     </li>
 
     <li>
-      <a class="list-of-links__link useful-links__fixed-link-button" href="{{getHelpdeskLink()}}" target="_blank">
+      <a class="list-of-links__link useful-links__fixed-link-button" href="{{getHelpdeskLink()}}">
         <p class="useful-links__fixed-link-title">Helpdesk</p>
         <p class="useful-links__fixed-link-info">helpdesk@helsinki.fi</p>
       </a>
