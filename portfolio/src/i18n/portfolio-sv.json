@@ -84,7 +84,7 @@
     "addFinancialUnit": "Lägg till enhet",
     "addWorkAddress": "Lägg till adress",
     "addWorkPostcode": "Lägg till postnummer och adressort",
-    "addWorkNumber": "Add work number (sv)",
+    "addWorkNumber": "Lägg till arbetsnummer",
     "addWorkMobile": "Lägg till telefonnummer",
     "reload": "Uppdatera kontaktuppgifter",
     "phoneNumber": "Tel.",
@@ -252,7 +252,7 @@
     "title": "Personalia"
   },
   "languageSelector": {
-    "confirmation": "Tämän portfolion sisältö on kielellä {{ lang }}. Haluatko luoda uuden portfolion eri kielellä? (sv)",
-    "selectionPrompt": "Valitse uuden portfolion kieli: (sv)"
+    "confirmation": "Denna portfölj är i {{lang}}. Vill du skapa en ny portfölj på ett annat språk?",
+    "selectionPrompt": "Välj språk för din nya portfölj:"
   }
 }
