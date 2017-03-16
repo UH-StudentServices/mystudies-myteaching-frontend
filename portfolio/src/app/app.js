@@ -132,6 +132,7 @@ angular.module('opintoniPortfolioApp', [
     });
 
     $translateProvider.useCookieStorage();
+    $translateProvider.storageKey('OO_LANGUAGE');
     $translateProvider.useSanitizeValueStrategy('escaped');
     $translateProvider.preferredLanguage(preferredLanguage);
 
