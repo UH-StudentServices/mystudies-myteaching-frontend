@@ -15,10 +15,6 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-$favorite-size-small: 240px;
-$favorite-size-medium: 300px;
-$favorite-size-large: 340px;
-
 .favorites-container {
   @include clearfix;
 }
@@ -53,6 +49,25 @@ $favorite-size-large: 340px;
     @include transform(translate(-50%, -50%));
     @include icon($icon-remove);
   }
+}
+
+.twitter-favorite__loading {
+  position: absolute;
+  &-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include transform(translate(-50%,-50%));
+    color: $gray;
+  }
+  border: 2px dashed $gray;
+  border-radius: 10px;
+  top: 50%;
+  left: 50%;
+  width: 85%;
+  height: 85%;
+  @include transform(translate(-50%,-50%));
+  z-index: -1;
 }
 
 .favorites-list__remove-screen {
@@ -151,6 +166,7 @@ $favorite-size-large: 340px;
 
   @include breakpoint($mobile-only) {
     width: 100%;
+    min-height: 6em;
   }
 
   @include breakpoint($small) {

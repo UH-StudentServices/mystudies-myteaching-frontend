@@ -16,6 +16,11 @@
 -->
 
 <section class="favorites-list__item twitter island">
+  <div class="twitter-favorite__loading">
+    <div class="twitter-favorite__loading-text">
+      {{::"favorites.types.TWITTER" | translate}}: @{{::data.value}}
+    </div>
+  </div>
   <article>
     <a class="twitter-timeline"
        href="https://twitter.com/{{::data.value}}"
