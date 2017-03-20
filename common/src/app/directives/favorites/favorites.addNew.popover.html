@@ -16,26 +16,35 @@
 -->
 
 <div class="add-favorite-container">
-  <div class="add-favorite-arrow"></div>
   <div class="add-favorite">
     <div class="add-favorite-step add-favorite-step-type" ng-hide="favorite.type">
       <ul role="list">
-        <li role="listitem" ng-repeat="favoriteType in availableFavoriteTypes" class="bar">
-          <a ng-click="selectFavoriteType(favoriteType)"
-             tabindex="0"
-             translate="{{'favorites.types.' + favoriteType}}">
-          </a>
+        <li role="listitem"
+            ng-repeat="favoriteType in availableFavoriteTypes"
+            class="bar"
+            ng-class="getFavoriteTypeClasses(favoriteType)">
+          <a ng-click="selectFavoriteType(favoriteType)" translate="{{'favorites.types.' + favoriteType}}"></a>
         </li>
       </ul>
     </div>
+
     <div class="add-favorite-step add-favorite-step-details" ng-show="favorite.type">
       <form name="newFavoriteForm">
         <div ng-switch="favorite.type">
           <span ng-switch-when="LINK">
             <add-new-link-favorite favorite="favorite"></add-new-link-favorite>
           </span>
+          <span ng-switch-when="RSS">
+            <add-new-rss-favorite favorite="favorite"></add-new-rss-favorite>
+          </span>
+          <span ng-switch-when="UNICAFE">
+            <add-new-unicafe-favorite favorite="favorite"></add-new-unicafe-favorite>
+          </span>
           <span ng-switch-when="TWITTER">
-            <add-new-twitter-favorite></add-new-twitter-favorite>
+            <add-new-twitter-favorite favorite="favorite"></add-new-twitter-favorite>
+          </span>
+          <span ng-switch-when="UNISPORT">
+            <add-new-unisport-favorite favorite="favorite"></add-new-unisport-favorite>
           </span>
         </div>
       </form>

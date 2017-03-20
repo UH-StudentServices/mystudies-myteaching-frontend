@@ -15,33 +15,35 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.favorites.addNew.unicafe',
-  ['resources.favorites',
-   'resources.favorites.unicafe'])
+angular.module('directives.favorites.addNew.twitter', [
+  'services.favorites',
+  'directives.favorites.addNew'
+])
 
-  .directive('addNewUnicafeFavorite', function(UnicafeResource, FavoritesResource,
+  .constant('TwitterFeedTypes', {
+    USER_TIMELINE: 'USER_TIMELINE'
+  })
+
+  .directive('addNewTwitterFavorite', function(FavoritesService,
+                                               TwitterFeedTypes,
                                                NewFavoriteAddedEvent) {
     return {
       restrict: 'E',
-      templateUrl: 'app/directives/favorites/unicafe/favorites.addNew.unicafe.html',
+      templateUrl: 'app/directives/favorites/twitter/favorites.addNew.twitter.html',
       replace: true,
       scope: true,
-      link: function($scope) {
-        $scope.loading = true;
+      link: function(scope) {
+        scope.addTwitterFavorite = function() {
+          var insertTwitterFavoriteRequest = {
+            feedType: TwitterFeedTypes.USER_TIMELINE,
+            value: scope.twitterUsername
+          };
 
-        UnicafeResource.getRestaurantOptions()
-          .then(function getRestaurantsSuccess(restaurantOptions) {
-            $scope.areas = restaurantOptions;
-            $scope.loading = false;
-          });
-
-        $scope.addUnicafeFavorite = function addUnicafeFavorite(restaurant) {
-          if (restaurant.id > 0) {
-            FavoritesResource.saveUnicafeFavorite({restaurantId: restaurant.id})
-              .then(function saveUnicafeSuccess() {
-                $scope.$emit(NewFavoriteAddedEvent, $scope.favorite.type);
-              });
-          }
+          FavoritesService.saveTwitterFavorite(insertTwitterFavoriteRequest,
+                                               scope.favorite.type + '_' + TwitterFeedTypes.USER_TIMELINE)
+            .then(function() {
+              scope.$emit(NewFavoriteAddedEvent);
+            });
         };
       }
     };

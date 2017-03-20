@@ -25,7 +25,9 @@ angular.module('directives.favorites', [
   'directives.favorites.unisport',
   'dndLists'
 ])
-  .directive('favorites', function(FavoritesResource,
+  .constant('availableFavoriteTypes', ['RSS', 'UNICAFE', 'TWITTER', 'UNISPORT'])
+  .directive('favorites', function(availableFavoriteTypes,
+                                   FavoritesService,
                                    NewFavoriteAddedEvent,
                                    RemoveFavoriteEvent,
                                    AnalyticsService) {
@@ -36,6 +38,7 @@ angular.module('directives.favorites', [
       link: function(scope) {
 
         scope.editMode = false;
+        scope.availableFavoriteTypes = availableFavoriteTypes;
 
         scope.edit = function() {
           scope.editMode = true;
@@ -50,29 +53,23 @@ angular.module('directives.favorites', [
         }
 
         function updateFavorites() {
-          FavoritesResource.getAll().then(showFavorites);
-        }
-
-        function addFavorite(event, favoriteType) {
-          AnalyticsService.trackAddFavorite(favoriteType);
-          updateFavorites();
+          FavoritesService.getFavorites().then(showFavorites);
         }
 
         function removeFavorite(event, favoriteId, favoriteType) {
-          FavoritesResource.deleteFavorite(favoriteId).then(function(favorites) {
-            AnalyticsService.trackRemoveFavorite(favoriteType);
+          FavoritesService.deleteFavorite(favoriteId, favoriteType).then(function(favorites) {
             showFavorites(favorites);
           });
         }
 
-        scope.$on(NewFavoriteAddedEvent, addFavorite);
+        scope.$on(NewFavoriteAddedEvent, updateFavorites);
         scope.$on(RemoveFavoriteEvent, removeFavorite);
 
         updateFavorites();
 
         scope.moved = function moved($index) {
           scope.favorites.splice($index, 1);
-          FavoritesResource.updateFavoriteOrder({
+          FavoritesService.updateFavoriteOrder({
             favoriteIds: _.map(scope.favorites, function extractId(favorite) {
               return favorite.id;
             })

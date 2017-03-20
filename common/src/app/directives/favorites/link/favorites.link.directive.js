@@ -15,16 +15,18 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('filters.moment', [])
+angular.module('directives.favorites.link', [
+])
 
-  .filter('momentFormat', function() {
-    return function(input, format) {
-      return input.format(format);
-    };
-  })
-
-  .filter('convertDateFormat', function() {
-    return function(inputString, outputFormat) {
-      return moment(new Date(inputString)).format(outputFormat);
+  .directive('favoritesLink', function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'app/directives/favorites/link/favorites.link.html',
+      replace: true,
+      scope: {
+        data: '='
+      },
+      link: function($scope) {
+      }
     };
   });

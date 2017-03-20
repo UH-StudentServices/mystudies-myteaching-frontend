@@ -16,12 +16,14 @@
  */
 
 angular.module('directives.favorites.addNew', [
-  'directives.favorites.addNew.link',
+  'directives.favorites.addNew.rss',
+  'directives.favorites.addNew.unicafe',
   'directives.favorites.addNew.twitter',
+  'directives.favorites.addNew.unisport',
+  'directives.favorites.addNew.link',
   'directives.popover',
   'services.focus'])
 
-  .constant('availableFavoriteTypes', ['LINK', 'TWITTER'])
   .constant('NewFavoriteAddedEvent', 'NEW_FAVORITE_ADDED')
 
   .directive('addNewFavoriteSearch', function() {
@@ -59,22 +61,33 @@ angular.module('directives.favorites.addNew', [
               $scope.clearSearchFn();
             }
           };
-
         };
       }
     };
   })
 
-  .directive('addNewFavorite', function(availableFavoriteTypes, NewFavoriteAddedEvent, Focus) {
+  .directive('addNewFavorite', function(NewFavoriteAddedEvent, Focus) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/favorites.addNew.html',
       replace: true,
-      scope: {},
+      scope: {
+        favorites: '=',
+        availableFavoriteTypes: '='
+      },
       link: function($scope) {
         $scope.favorite = {};
-        $scope.availableFavoriteTypes = availableFavoriteTypes;
         $scope.displayPopover = false;
+
+        $scope.getFavoriteTypeClasses = function getFavoriteTypeClasses(favoriteType) {
+          if (favoriteType === 'UNISPORT') {
+            return {
+              disabled: !_.isUndefined(_.find($scope.favorites, {'type': 'UNISPORT'}))
+            };
+          } else {
+            return {};
+          }
+        };
 
         $scope.togglePopover = function() {
           $scope.displayPopover = !$scope.displayPopover;

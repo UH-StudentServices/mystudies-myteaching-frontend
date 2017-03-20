@@ -15,7 +15,12 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('opintoniAnalytics', ['provider.analyticsAccounts'])
+angular.module('opintoniAnalytics', [
+  'provider.analyticsAccounts',
+  'services.session',
+  'services.state',
+  'angular-google-analytics'
+])
 
   /*
   * Analytics must be injected at least once.

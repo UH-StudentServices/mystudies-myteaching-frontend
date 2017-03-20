@@ -15,22 +15,29 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.removeFavorite', [])
-  .constant('RemoveFavoriteEvent', 'REMOVE_FAVORITE')
-  .directive('removeFavorite', function(RemoveFavoriteEvent) {
-    return {
-      restrict: 'A',
-      link: function(scope, el, attrs) {
-        var favorite = scope.$eval(attrs.data),
-            closeButton = $('<div class="favorites-list__remove" role="button"></div>'),
-            screen = $('<div class="favorites-list__remove-screen"></div>'),
-            element = $(el);
+angular.module('directives.favorites.rss', [
+  'services.favorites'
+])
 
-        element.append(screen);
-        element.append(closeButton);
-        closeButton.bind('click', function() {
-          scope.$emit(RemoveFavoriteEvent, favorite.id);
-          return false;
+  .directive('favoritesRss', function(FavoritesService) {
+    return {
+      restrict: 'E',
+      templateUrl: 'app/directives/favorites/rss/favorites.rss.html',
+      replace: true,
+      scope: {
+        data: '='
+      },
+      link: function($scope) {
+
+        var feedUrl = $scope.data.url;
+
+        FavoritesService.getRSSFeed(feedUrl).then(function getFeedSuccess(feedData) {
+
+          $scope.feedTitle = feedData.title ? feedData.title : feedUrl;
+          $scope.feedDateLocalized = feedData.momentDate.format('l');
+          $scope.feedLink = feedData.link;
+
+          $scope.feed = feedData;
         });
       }
     };

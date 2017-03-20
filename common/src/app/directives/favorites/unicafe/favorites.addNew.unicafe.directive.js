@@ -15,32 +15,34 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.favorites.addNew.twitter',
-  ['resources.favorites'])
+angular.module('directives.favorites.addNew.unicafe', [
+  'services.favorites',
+  'directives.favorites.addNew'
+])
 
-  .constant('TwitterFeedTypes', {
-    USER_TIMELINE: 'USER_TIMELINE'
-  })
-
-  .directive('addNewTwitterFavorite', function(FavoritesResource,
-                                               TwitterFeedTypes,
+  .directive('addNewUnicafeFavorite', function(FavoritesService,
                                                NewFavoriteAddedEvent) {
     return {
       restrict: 'E',
-      templateUrl: 'app/directives/favorites/twitter/favorites.addNew.twitter.html',
+      templateUrl: 'app/directives/favorites/unicafe/favorites.addNew.unicafe.html',
       replace: true,
       scope: true,
-      link: function(scope) {
-        scope.addTwitterFavorite = function() {
-          var insertTwitterFavoriteRequest = {
-            feedType: TwitterFeedTypes.USER_TIMELINE,
-            value: scope.twitterUsername
-          };
+      link: function($scope) {
+        $scope.loading = true;
 
-          FavoritesResource.saveTwitterFavorite(insertTwitterFavoriteRequest).then(function() {
-            scope.$emit(NewFavoriteAddedEvent,
-              scope.favorite.type + '_' + TwitterFeedTypes.USER_TIMELINE);
+        FavoritesService.getUnicafeRestaurantOptions()
+          .then(function getRestaurantsSuccess(restaurantOptions) {
+            $scope.areas = restaurantOptions;
+            $scope.loading = false;
           });
+
+        $scope.addUnicafeFavorite = function addUnicafeFavorite(restaurant) {
+          if (restaurant.id > 0) {
+            FavoritesService.saveUnicafeFavorite({restaurantId: restaurant.id}, $scope.favorite.type)
+              .then(function saveUnicafeSuccess() {
+                $scope.$emit(NewFavoriteAddedEvent);
+              });
+          }
         };
       }
     };
