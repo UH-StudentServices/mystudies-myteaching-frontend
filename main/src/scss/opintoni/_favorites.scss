@@ -46,7 +46,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    @include transform(translate(-50%, -50%));
+    transform: translate(-50%, -50%);
     @include icon($icon-remove);
   }
 }
@@ -57,7 +57,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    @include transform(translate(-50%,-50%));
+    transform: translate(-50%,-50%);
     color: $gray;
   }
   border: 2px dashed $gray;
@@ -66,7 +66,7 @@
   left: 50%;
   width: 85%;
   height: 85%;
-  @include transform(translate(-50%,-50%));
+  transform: translate(-50%,-50%);
   z-index: -1;
 }
 
@@ -314,7 +314,7 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  @include transform(translate(-50%, -50%));
+  transform: translate(-50%, -50%);
 }
 
 .add-favorite-button__title {
@@ -424,4 +424,3 @@
   }
 
 }
-

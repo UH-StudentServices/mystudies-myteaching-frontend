@@ -17,6 +17,7 @@
 
 angular.module('directives.favorites.addNew.link', [
   'services.favorites',
+  'resources.favorites.link',
   'directives.favorites.addNew'
 ])
 

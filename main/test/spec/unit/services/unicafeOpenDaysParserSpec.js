@@ -74,7 +74,6 @@ describe('UnicafeOpenDaysParser', function() {
     module('directives.favorites.unicafe');
 
     inject(function(_UnicafeOpenDaysParser_) {
-      debugger;
       UnicafeOpenDaysParser = _UnicafeOpenDaysParser_;
     });
   });
