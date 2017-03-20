@@ -60,6 +60,7 @@ module.exports = function(config) {
       '../bower_components/angular-ui-calendar/src/calendar.js',
       '../bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
       '../bower_components/angular-mocks/angular-mocks.js',
+      '../bower_components/angular-google-analytics/dist/angular-google-analytics.min.js',
       'src/app/errors/errors.js',
       'src/app/dialog/dialog.js',
       'src/app/lander/lander.js',

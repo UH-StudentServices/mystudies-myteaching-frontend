@@ -17,7 +17,7 @@
 
 angular.module('directives.favorites.unicafe', [
   'filters.moment',
-  'resources.favorites.unicafe'
+  'services.favorites'
 ])
 
   .constant('UnicafeUrl', {
@@ -57,8 +57,7 @@ angular.module('directives.favorites.unicafe', [
   })
 
   .directive('favoritesUnicafe', function($cookies,
-                                          UnicafeResource,
-                                          FavoritesResource,
+                                          FavoritesService,
                                           UnicafeOpenDaysParser,
                                           UnicafeUrl,
                                           LanguageService) {
@@ -85,13 +84,13 @@ angular.module('directives.favorites.unicafe', [
         $scope.restaurantSelected = function restaurantSelected(restaurant) {
           $scope.selectedRestaurant = restaurant;
           $scope.loading = true;
-          FavoritesResource
+          FavoritesService
             .updateUnicafeFavorite({id: $scope.data.id, restaurantId: restaurant})
             .then(_.partial(updateMenu, restaurant));
         };
 
         function updateMenu(restaurantId) {
-          UnicafeResource.getRestaurantMenu(restaurantId).then(function getMenuSuccess(menuData) {
+          FavoritesService.getUnicafeRestaurantMenu(restaurantId).then(function getMenuSuccess(menuData) {
             $scope.closed = UnicafeOpenDaysParser.isRestaurantClosed(menuData, moment(new Date()));
             $scope.information = menuData.information;
             $scope.menu = _.find(menuData.data, function(data) {
@@ -104,7 +103,7 @@ angular.module('directives.favorites.unicafe', [
 
         updateMenu($scope.data.restaurantId);
 
-        UnicafeResource.getRestaurantOptions().then(function(restaurantOptions) {
+        FavoritesService.getUnicafeRestaurantOptions().then(function(restaurantOptions) {
           _.each(restaurantOptions, function(area) {
             $scope.restaurantOptions.push({
               id: 0,

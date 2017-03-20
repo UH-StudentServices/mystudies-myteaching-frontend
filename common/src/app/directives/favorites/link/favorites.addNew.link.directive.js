@@ -15,9 +15,11 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.favorites.addNew.link',
-  ['services.favorites',
-   'resources.favorites.link'])
+angular.module('directives.favorites.addNew.link', [
+  'services.favorites',
+  'resources.favorites.link',
+  'directives.favorites.addNew'
+])
 
   .directive('addNewLinkFavorite', function(EmbedLyResource,
                                             FavoritesService,
@@ -48,10 +50,11 @@ angular.module('directives.favorites.addNew.link',
 
         $scope.addLinkFavorite = function addLinkFavorite() {
           if (!_.isUndefined($scope.metaData)) {
-            FavoritesService.saveLinkFavorite($scope.metaData).then(function saveLinkSuccess() {
-              $scope.$emit(NewFavoriteAddedEvent);
-              $scope.closePopover();
-            });
+            FavoritesService.saveLinkFavorite($scope.metaData, $scope.favorite.type)
+              .then(function saveLinkSuccess() {
+                $scope.$emit(NewFavoriteAddedEvent);
+                $scope.closePopover();
+              });
           }
         };
       }

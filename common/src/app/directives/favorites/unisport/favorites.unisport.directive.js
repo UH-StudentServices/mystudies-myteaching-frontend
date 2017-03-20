@@ -16,10 +16,10 @@
  */
 
 angular.module('directives.favorites.unisport', [
-  'resources.favorites.unisport'
+  'services.favorites'
 ])
 
-  .directive('favoritesUnisport', function(UnisportResource) {
+  .directive('favoritesUnisport', function(FavoritesService) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/unisport/favorites.unisport.html',
@@ -29,7 +29,7 @@ angular.module('directives.favorites.unisport', [
       },
       link: function($scope) {
 
-        UnisportResource.getUserReservations().then(function getUserReservationsSuccess(data) {
+        FavoritesService.getUnisportUserReservations().then(function getUserReservationsSuccess(data) {
           $scope.events = _(data.events).map(function(event) {
             event.timeRange = getEventTimeRange(event.startTime, event.endTime);
             return event;

@@ -64,11 +64,19 @@ describe('UnicafeOpenDaysParser', function() {
   var saturday = momentFromNextWeekStart(5);
   var sunday = momentFromNextWeekStart(6);
 
-  beforeEach(module('directives.favorites.unicafe'));
+  beforeEach(function() {
+    module(function($provide) {
+      $provide.constant('AnalyticsService', {trackAddFavorite: function() { }});
+      $provide.constant('SessionService', {getFacultyCode: function() { return {then: function() {}};}});
+      $provide.constant('StateService', {getStateFromDomain: function() { }});
+      $provide.constant('Analytics', {set: function() { }});
+    });
+    module('directives.favorites.unicafe');
 
-  beforeEach(inject(function(_UnicafeOpenDaysParser_) {
-    UnicafeOpenDaysParser = _UnicafeOpenDaysParser_;
-  }));
+    inject(function(_UnicafeOpenDaysParser_) {
+      UnicafeOpenDaysParser = _UnicafeOpenDaysParser_;
+    });
+  });
 
   it('Should show the restaurant is regularly open from monday to friday', function() {
     _.each([monday, tuesday, wednesday, thursday, friday], function(m) {

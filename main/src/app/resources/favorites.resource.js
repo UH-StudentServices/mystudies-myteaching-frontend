@@ -19,7 +19,6 @@ angular.module('resources.favorites', [])
   .factory('FavoritesResource', function($resource) {
     var favoritesResource = $resource('/api/private/v1/favorites', {'id': '@id'}, {
       saveRSSFavorite: {method: 'POST', url: '/api/private/v1/favorites/rss'},
-      saveLinkFavorite: {method: 'POST', url: '/api/private/v1/favorites/link'},
       saveUnicafeFavorite: {method: 'POST', url: '/api/private/v1/favorites/unicafe'},
       updateUnicafeFavorite: {method: 'PUT', url: '/api/private/v1/favorites/unicafe/:id'},
       saveUnisportFavorite: {method: 'POST', url: '/api/private/v1/favorites/unisport'},
@@ -34,17 +33,6 @@ angular.module('resources.favorites', [])
 
     function saveRSSFavorite(rssFavorite) {
       return favoritesResource.saveRSSFavorite(rssFavorite).$promise;
-    }
-
-    function saveLinkFavorite(linkFavorite) {
-      return favoritesResource.saveLinkFavorite({
-        url: linkFavorite.url,
-        providerName: linkFavorite.provider_name,
-        title: linkFavorite.title,
-        thumbnailUrl: linkFavorite.thumbnail_url,
-        thumbnailWidth: linkFavorite.thumbnail_width,
-        thumbnailHeight: linkFavorite.thumbnail_height
-      }).$promise;
     }
 
     function saveUnicafeFavorite(unicafeFavoriteRequest) {
@@ -75,7 +63,6 @@ angular.module('resources.favorites', [])
       getAll: getAll,
       saveRSSFavorite: saveRSSFavorite,
       saveUnisportFavorite: saveUnisportFavorite,
-      saveLinkFavorite: saveLinkFavorite,
       saveUnicafeFavorite: saveUnicafeFavorite,
       updateUnicafeFavorite: updateUnicafeFavorite,
       saveTwitterFavorite: saveTwitterFavorite,

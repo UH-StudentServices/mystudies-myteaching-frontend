@@ -15,32 +15,22 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('services.favorites.rss', ['resources.favorites.rss', 'utils.moment'])
+angular.module('directives.favorites.addNew.unisport', [
+  'services.favorites',
+  'directives.favorites.addNew'
+])
 
-  .factory('RSSService', function(RSSResource, dateArrayToMomentObject) {
-
-    function get(feedUrl) {
-
-      function convertDate(d) {
-        return dateArrayToMomentObject(_.slice(d, 0, 5));
-      }
-
-      return RSSResource.get(feedUrl).then(function(feed) {
-        feed.momentDate = convertDate(feed.date);
-        _.each(feed.entries, function(entry) {
-          entry.momentDate = convertDate(entry.date);
-        });
-        return feed;
-      });
-    }
-
-    function findFeed(feedUrl) {
-      return RSSResource.findFeed(feedUrl);
-    }
-
+  .directive('addNewUnisportFavorite', function(FavoritesService, NewFavoriteAddedEvent) {
     return {
-      get: get,
-      findFeed: findFeed
+      restrict: 'E',
+      scope: true,
+      link: function($scope) {
+        if (_.isUndefined(_.find($scope.favorites, {'type': 'UNISPORT'}))) {
+          FavoritesService.saveUnisportFavorite($scope.favorite.type)
+            .then(function addUnisportFavoriteSuccess() {
+              $scope.$emit(NewFavoriteAddedEvent);
+            });
+        }
+      }
     };
-
   });

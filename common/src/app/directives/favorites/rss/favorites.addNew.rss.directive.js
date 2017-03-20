@@ -15,10 +15,11 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.favorites.addNew.rss',
-  ['resources.favorites',
-   'services.favorites.rss',
-   'utils.validator'])
+angular.module('directives.favorites.addNew.rss', [
+  'services.favorites',
+  'utils.validator',
+  'directives.favorites.addNew'
+])
 
   .filter('stripHTML', function() {
     return function(input) {
@@ -28,8 +29,7 @@ angular.module('directives.favorites.addNew.rss',
 
   .constant('minSearchStringLength', 3)
 
-  .directive('addNewRssFavorite', function(RSSService,
-                                           FavoritesResource,
+  .directive('addNewRssFavorite', function(FavoritesService,
                                            NewFavoriteAddedEvent,
                                            minSearchStringLength,
                                            ValidatorUtils) {
@@ -58,7 +58,7 @@ angular.module('directives.favorites.addNew.rss',
         function search(feedUrl) {
           $scope.loading = true;
           $scope.searchResults = undefined;
-          RSSService.findFeed(feedUrl)
+          FavoritesService.findRSSFeed(feedUrl)
             .then(findFeedSuccess)
             .catch(findFeedFailed)
             .finally(function() {
@@ -76,10 +76,10 @@ angular.module('directives.favorites.addNew.rss',
 
         function addFeed(feedUrl) {
           $scope.favorite.url = feedUrl;
-          FavoritesResource.saveRSSFavorite($scope.favorite).then(function() {
-            $scope.$emit(NewFavoriteAddedEvent,
-                $scope.favorite.type);
-          });
+          FavoritesService.saveRSSFavorite($scope.favorite, $scope.favorite.type)
+            .then(function() {
+              $scope.$emit(NewFavoriteAddedEvent);
+            });
         }
 
         $scope.search = _.debounce(_.partial(convertUrl, search), 500);

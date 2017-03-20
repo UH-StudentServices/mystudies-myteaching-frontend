@@ -23,7 +23,9 @@ angular.module('directives.favorites', [
   'directives.favorites.addNew',
   'dndLists'
 ])
-  .directive('favorites', function(FavoritesService,
+  .constant('availableFavoriteTypes', ['LINK', 'TWITTER'])
+  .directive('favorites', function(availableFavoriteTypes,
+                                   FavoritesService,
                                    NewFavoriteAddedEvent,
                                    RemoveFavoriteEvent) {
     return {
@@ -35,6 +37,7 @@ angular.module('directives.favorites', [
       link: function(scope) {
         scope.favorites = scope.favoritesData();
         scope.editMode = false;
+        scope.availableFavoriteTypes = availableFavoriteTypes;
 
         scope.edit = function() {
           scope.editMode = true;
