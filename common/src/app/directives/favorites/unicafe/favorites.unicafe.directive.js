@@ -36,7 +36,7 @@ angular.module('directives.favorites.unicafe', [
             toDay = _.capitalize(nowMoment.locale('FI').format('dd'));
 
         if (exception && exception.length > 0) {
-          closed = closed || _.some(exception, function(e) {
+          closed = closed || _.some(exception, function(e) {
             return e.closed && nowMoment.isBetween(moment(e.from, 'DD.M'), moment(e.to, 'DD.M'));
           });
         }
@@ -69,7 +69,7 @@ angular.module('directives.favorites.unicafe', [
         data: '='
       },
       link: function($scope) {
-        var langKey = $cookies.get('NG_TRANSLATE_LANG_KEY').split('"').join('');
+        var langKey = $cookies.get('OO_LANGUAGE');
 
         $scope.languageSuffix = langKey !== 'fi' ? '_' + langKey : '';
         $scope.restaurantOptions = [];
