@@ -14,11 +14,8 @@
     "helsinkiUniversity": "Helsingin Yliopisto"
   },
   "pageHeaderLinks": {
-    "email": "sähköposti",
     "flamma": "flamma",
-    "moodle": "moodle",
-    "library": "kirjasto",
-    "contact": "yhteystiedot"
+    "city": "Helsingin kaupunki"
   },
   "pageFooter": {
     "contact": "Yhteystiedot",

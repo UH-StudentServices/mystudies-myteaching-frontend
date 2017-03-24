@@ -15,16 +15,14 @@
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<div>
-  <ul class="menu-language">
-    <li ng-repeat="languageOption in getLanguageOptions(selectedLanguage)">
-      <a role="button"
-         href=""
-         aria-label="{{:: languageOption.nativeName }}"
-         ng-click="changeLanguage(languageOption.languageCode)">
-        <span class="hide-mobile-only">{{:: languageOption.nativeName }}</span>
-        <span class="show-mobile-only">{{:: languageOption.languageCode | capitalize }}</span>
-      </a>
-    </li>
-  </ul>
-</div>
+<ul class="links">
+  <li ng-repeat="languageOption in getLanguageOptions(selectedLanguage)">
+    <a role="button"
+       href=""
+       aria-label="{{:: languageOption.nativeName }}"
+       ng-click="changeLanguage(languageOption.languageCode)" class="links__link">
+      <span class="hide-mobile-only">{{:: languageOption.nativeName }}</span>
+      <span class="show-mobile-only">{{:: languageOption.languageCode | capitalize }}</span>
+    </a>
+  </li>
+</ul>

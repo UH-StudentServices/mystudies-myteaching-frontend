@@ -14,11 +14,8 @@
     "helsinkiUniversity": "University of Helsinki"
   },
   "pageHeaderLinks": {
-    "email": "email",
     "flamma": "flamma",
-    "moodle": "moodle",
-    "library": "library",
-    "contact": "contact"
+    "city": "City of Helsinki"
   },
   "pageFooter": {
     "contact": "Contact information",

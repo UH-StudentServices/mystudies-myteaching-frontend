@@ -18,9 +18,8 @@
 angular.module('constants.commonExternalLinks', [])
 
   .constant('pageHeaderLinks', [
-    {key: 'pageHeaderLinks.email', href: 'http://www.helsinki.fi/office365'},
     {key: 'pageHeaderLinks.flamma', href: 'http://flamma.helsinki.fi'},
-    {key: 'pageHeaderLinks.library', href: 'http://www.helsinki.fi/kirjasto/fi/etusivu/'}
+    {key: 'pageHeaderLinks.city', href: 'http://www.hel.fi/www/helsinki/fi'}
   ])
 
   .constant('mobileReturnLinks', [])

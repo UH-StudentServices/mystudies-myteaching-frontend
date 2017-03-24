@@ -59,10 +59,8 @@
     }
   },
   "pageHeaderLinks": {
-    "email": "email",
     "flamma": "flamma",
-    "moodle": "moodle",
-    "library": "library"
+    "city": "City of Helsinki"
   },
   "pageFooter": {
     "contact": "Contact information",

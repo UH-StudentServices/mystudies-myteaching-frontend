@@ -14,11 +14,8 @@
     "helsinkiUniversity": "Helsingfors universitet"
   },
   "pageHeaderLinks": {
-    "email": "e-post",
     "flamma": "flamma",
-    "moodle": "moodle",
-    "library": "bibliotek",
-    "contact": "kontaktinformation"
+    "city": "Helsingfors stad"
   },
   "pageFooter": {
     "contact": "Kontaktinformation",

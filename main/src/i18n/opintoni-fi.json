@@ -59,10 +59,8 @@
     }
   },
   "pageHeaderLinks": {
-    "email": "sähköposti",
     "flamma": "flamma",
-    "moodle": "moodle",
-    "library": "kirjasto"
+    "city": "Helsingin kaupunki"
   },
   "pageFooter": {
     "contact": "Yhteystiedot",

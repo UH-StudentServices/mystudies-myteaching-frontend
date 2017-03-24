@@ -90,11 +90,7 @@
 .mobile-toolbar {
   position: relative;
   background-color: $white;
-
-  .table-list {
-    height: 3em;
-    @include border-bottom;
-  }
+  height: 42px;
 
   .user-menu {
     margin-bottom: -30px;
@@ -107,7 +103,7 @@
   .dropdown-toggle {
     position: absolute;
     width: 3em;
-    height: 3em;
+    height: 44px;
     &.active {
       > * {
         display: none;
@@ -130,17 +126,17 @@
   }
 
   .user-settings .dropdown-toggle {
-    top: -3em;
+    top: -45px;
     right: 3em;
   }
 
   .search-icon .dropdown-toggle {
-    top: -3em;
+    top: -45px;
     right: 6em;
   }
 
   .mece__widget {
-    top: -3em;
+    top: -45px;
     right: 9em;
     line-height: 3.3em;
     text-align: center;

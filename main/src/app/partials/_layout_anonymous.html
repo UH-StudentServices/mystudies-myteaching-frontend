@@ -19,31 +19,25 @@
 <sticky-message message-key="globalMessages.demoEnvNoticeMyTeaching" environments="['demo']" limit-visibility="['MY_TEACHINGS_ONLY']"></sticky-message>
 
 <header class="l-header">
-  <mobile-toolbar></mobile-toolbar>
-  <div class="page-header">
-    <div class="wrapper">
-      <div class="page-header__branding">
-        <ul>
-          <li>
-            <a href="http://www.helsinki.fi/yliopisto/">
-              <img src="/assets/icons/logo.svg" class="logo--header">
-            </a>
-          </li>
-          <li>
-            <h1 class="site-name--header">{{ currentStateName + ".pageHeaderBranding" | translate }}</h1>
-          </li>
-        </ul>
+  <div class="l-top-bar">
+    <mobile-toolbar></mobile-toolbar>
+    <div class="l-top-bar__subregion">
+      <div class="l-top-bar__main">
+        <div id="block-hy-contact-hy-logo-block">
+          <a href="http://www.helsinki.fi/yliopisto/" class="logo">
+            <h1 class="logo__sitename" translate="general.helsinkiUniversity"></h1>
+          </a>
+        </div>
       </div>
-      <div class="page-header__links hide-mobile-only">
-        <ul class="page-header__links-list">
-          <li><a class="page-header__link" href="http://www.helsinki.fi/office365" target="_blank" translate="pageHeaderLinks.email"></a></li>
-          <li><a class="page-header__link" href="http://flamma.helsinki.fi" target="_blank" translate="pageHeaderLinks.flamma"></a></li>
-          <li><a class="page-header__link" href="{{ ::libraryUrl }}" target="_blank" translate="pageHeaderLinks.library"></a></li>
-          <li class="divider">|</li>
-          <li>
-            <menu-language></menu-language>
-          </li>
-        </ul>
+      <div class="l-top-bar__sub hide-mobile-only">
+        <div id="block-hy-links-hy-links-header-block" class="l-top-bar__subleft">
+          <div class="links">
+            <a href="http://flamma.helsinki.fi" target="_blank" class="links__link" translate="pageHeaderLinks.flamma"></a>
+            <a href="http://www.hel.fi/www/helsinki/fi" target="_blank" class="links__link" translate="pageHeaderLinks.city"></a>
+          </div>
+        </div>
+        <div id="block-locale-language" role="complementary" class="l-top-bar__subright">
+        <menu-language></menu-language>
       </div>
     </div>
   </div>
