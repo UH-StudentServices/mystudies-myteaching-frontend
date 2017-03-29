@@ -15,23 +15,84 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.courseRecommendations', ['resources.courseRecommendations',
-                                                    'opintoniAnalytics'])
+angular.module('directives.courseBrowsingRecommendations', [
+  'resources.courseRecommendations',
+  'opintoniAnalytics'
+])
 
-  .constant('RECOMMENDATIONS_LOADER_KEY', 'recommendations')
+  .constant('RECOMMENDATIONS_BROWSING_LOADER_KEY', 'browsing_recommendations')
   .constant('RECOMMENDATIONS_DEFAULT_AMOUNT', 5)
   .constant('RECOMMENDATIONS_MAX_AMOUNT', 20)
 
-  .directive('courseRecommendations', function() {
+  .directive('courseBrowsingRecommendations', function($window, Loader, RECOMMENDATIONS_BROWSING_LOADER_KEY) {
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'app/directives/courseRecommendations/courseRecommendations.html',
+      templateUrl: 'app/directives/courseRecommendations/courseBrowsingRecommendations.html',
+      scope: {},
+      link: function(scope, el) {
+        var LEIKI_SCRIPT_ID = 'leiki-loader-script',
+            LEIKI_WIDGET_URL = '//suositukset.student.helsinki.fi/focus/widgets/loader/loader-min.js?t=';
+
+        $window._leikiw = $window._leikiw || [];
+        $window._leikiw.push({
+          name: 'kurssi2',
+          server: '//suositukset.student.helsinki.fi/focus',
+          referer: 'https://student.helsinki.fi/opintoni',
+          cid: ' https://student.helsinki.fi/opintoni',
+          isJson: true,
+          jsonCallback: function(data) {
+            Loader.stop(RECOMMENDATIONS_BROWSING_LOADER_KEY);
+            // TODO: Cut away the last part in the actualUrl and get better name/headline
+            scope.courseRecommendations = data.tabs[0].items;
+            scope.$apply();
+          }
+        });
+
+        scope.trackRecommendationLinkClick = function(courseName) {
+          console.log('anal ' + courseName);
+          //AnalyticsService.trackCourseRecommendationLinkClick(courseName);
+        };
+
+        Loader.start(RECOMMENDATIONS_BROWSING_LOADER_KEY);
+
+        if (!document.getElementById(LEIKI_SCRIPT_ID)) {
+          var t = new Date().getTime(),
+              leikiScript = document.createElement('script'),
+              firstScript = document.getElementsByTagName('script')[0];
+
+          t -= t % (1000 * 60 * 60 * 24 * 30);
+
+          leikiScript.id = LEIKI_SCRIPT_ID;
+          leikiScript.type = 'text/javascript';
+          leikiScript.async = true;
+          leikiScript.src = LEIKI_WIDGET_URL + t;
+
+          firstScript.parentNode.insertBefore(leikiScript, firstScript);
+        }
+      }
+    };
+  });
+
+angular.module('directives.courseStudiesRecommendations', [
+  'resources.courseRecommendations',
+  'opintoniAnalytics'
+])
+
+  .constant('RECOMMENDATIONS_STUDIES_LOADER_KEY', 'studies_recommendations')
+  .constant('RECOMMENDATIONS_DEFAULT_AMOUNT', 5)
+  .constant('RECOMMENDATIONS_MAX_AMOUNT', 20)
+
+  .directive('courseStudiesRecommendations', function() {
+    return {
+      restrict: 'E',
+      replace: true,
+      templateUrl: 'app/directives/courseRecommendations/courseStudiesRecommendations.html',
       scope: {},
       controller: function($scope,
                            CourseRecommendationsResource,
                            Loader,
-                           RECOMMENDATIONS_LOADER_KEY,
+                           RECOMMENDATIONS_STUDIES_LOADER_KEY,
                            RECOMMENDATIONS_DEFAULT_AMOUNT,
                            RECOMMENDATIONS_MAX_AMOUNT,
                            AnalyticsService) {
@@ -50,14 +111,14 @@ angular.module('directives.courseRecommendations', ['resources.courseRecommendat
           $scope.limit = RECOMMENDATIONS_DEFAULT_AMOUNT;
         };
 
-        Loader.start(RECOMMENDATIONS_LOADER_KEY);
+        Loader.start(RECOMMENDATIONS_STUDIES_LOADER_KEY);
 
         CourseRecommendationsResource.getCourseRecommendations()
           .then(function(courseRecommendations) {
             $scope.courseRecommendations = courseRecommendations;
           })
           .finally(function() {
-            Loader.stop(RECOMMENDATIONS_LOADER_KEY);
+            Loader.stop(RECOMMENDATIONS_STUDIES_LOADER_KEY);
           });
       }
     };

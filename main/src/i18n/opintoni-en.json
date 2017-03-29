@@ -433,11 +433,17 @@
     "month" : "month"
   },
   "courseRecommendations" : {
-    "title" : "potentially interesting courses",
+    "studies": {
+      "title" : "potentially interesting courses based on your completed studies",
+      "disclaimerText": "This course list is based on your completed studies, which has been compared to other students’ completed studies. The list is personal and no one else sees it. Please check the pre-requisites the required study right before enrolling to a course."
+    },
+    "browsing": {
+      "title": "potentially interesting courses based on your browsing history",
+      "disclaimerText": "."
+    },
     "showMore": "show more",
     "showLess": "show less",
-    "disclaimer": "disclaimer",
-    "disclaimerText": "This course list is based on your completed studies, which has been compared to other students’ completed studies. The list is personal and no one else sees it. Please check the pre-requisites the required study right before enrolling to a course."
+    "disclaimer": "disclaimer"
   },
   "cookieNotification": {
     "notification": "This website uses cookies to improve your experience.",
