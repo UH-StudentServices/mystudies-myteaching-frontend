@@ -18,7 +18,6 @@
 @mixin mobile-toolbar-toggle {
   color: $white;
   background-color: $black;
-  border-left: 1px solid #000000;
   line-height: 3em;
   text-align: center;
   padding: 0;
@@ -90,10 +89,9 @@
 .mobile-toolbar {
   position: relative;
   background-color: $white;
-  height: 42px;
 
   .user-menu {
-    margin-bottom: -30px;
+    margin-bottom: -32px;
 
     > *:last-child {
       margin-bottom: 30px;
@@ -102,13 +100,17 @@
 
   .dropdown-toggle {
     position: absolute;
+    top: -43px;
+
     width: 3em;
     height: 44px;
+
     &.active {
       > * {
         display: none;
       }
       @include mobile-toolbar-toggle;
+      top: -44px;
       &:before {
         @include icon($icon-remove);
       }
@@ -126,17 +128,14 @@
   }
 
   .user-settings .dropdown-toggle {
-    top: -45px;
     right: 3em;
   }
 
   .search-icon .dropdown-toggle {
-    top: -45px;
     right: 6em;
   }
 
   .mece__widget {
-    top: -45px;
     right: 9em;
     line-height: 3.3em;
     text-align: center;
