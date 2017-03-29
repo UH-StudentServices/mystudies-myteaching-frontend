@@ -20,9 +20,8 @@
     <a role="button"
        href=""
        aria-label="{{:: languageOption.nativeName }}"
-       ng-click="changeLanguage(languageOption.languageCode)" class="links__link">
-      <span class="hide-mobile-only">{{:: languageOption.nativeName }}</span>
-      <span class="show-mobile-only">{{:: languageOption.languageCode | capitalize }}</span>
+       ng-click="changeLanguage(languageOption.languageCode)" class="links__link theme-language">
+       <abbr title="{{:: languageOption.nativeName }}">{{:: languageOption.languageCode }}</abbr>
     </a>
   </li>
 </ul>
