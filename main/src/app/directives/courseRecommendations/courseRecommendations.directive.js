@@ -17,6 +17,7 @@
 
 angular.module('directives.courseBrowsingRecommendations', [
   'resources.courseRecommendations',
+  'resources.courses',
   'opintoniAnalytics'
 ])
 
@@ -24,7 +25,11 @@ angular.module('directives.courseBrowsingRecommendations', [
   .constant('RECOMMENDATIONS_DEFAULT_AMOUNT', 5)
   .constant('RECOMMENDATIONS_MAX_AMOUNT', 20)
 
-  .directive('courseBrowsingRecommendations', function($window, Loader, RECOMMENDATIONS_BROWSING_LOADER_KEY) {
+  .directive('courseBrowsingRecommendations', function($window,
+                                                       Loader,
+                                                       CoursesResource,
+                                                       RECOMMENDATIONS_BROWSING_LOADER_KEY,
+                                                       AnalyticsService) {
     return {
       restrict: 'E',
       replace: true,
@@ -42,16 +47,24 @@ angular.module('directives.courseBrowsingRecommendations', [
           cid: ' https://student.helsinki.fi/opintoni',
           isJson: true,
           jsonCallback: function(data) {
-            Loader.stop(RECOMMENDATIONS_BROWSING_LOADER_KEY);
-            // TODO: Cut away the last part in the actualUrl and get better name/headline
-            scope.courseRecommendations = data.tabs[0].items;
-            scope.$apply();
+            if (data.tabs && data.tabs[0].items) {
+              var items = data.tabs[0].items.map(function(leikiItem) {
+                var actualUrlArray = leikiItem.actualUrl.split('/');
+
+                return actualUrlArray[actualUrlArray.length - 2];
+              }).join();
+
+              CoursesResource.getCourseNames(items)
+                .then(function(courseNames) {
+                  Loader.stop(RECOMMENDATIONS_BROWSING_LOADER_KEY);
+                  scope.courseRecommendations = courseNames;
+                });
+            }
           }
         });
 
         scope.trackRecommendationLinkClick = function(courseName) {
-          console.log('anal ' + courseName);
-          //AnalyticsService.trackCourseRecommendationLinkClick(courseName);
+          AnalyticsService.trackCourseRecommendationLinkBrowsingClick(courseName);
         };
 
         Loader.start(RECOMMENDATIONS_BROWSING_LOADER_KEY);

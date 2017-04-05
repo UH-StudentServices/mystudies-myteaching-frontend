@@ -439,8 +439,7 @@
       "disclaimerText": "Kurslistan nedan baserar på dina studieprestationer. Listan är personlig och ingen annan ser det. Vänligen kolla förutsättningar och den rätta studierätten innan du anmäler dig till kursen."
     },
     "browsing": {
-      "title": "potentiellt intressanta kurser baserad på din sökhistorik",
-      "disclaimerText": "."
+      "title": "potentiellt intressanta kurser baserad på din sökhistorik"
     },
     "showMore": "visa mer",
     "showLess": "visa mindre",
