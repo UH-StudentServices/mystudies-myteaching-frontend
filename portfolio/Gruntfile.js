@@ -109,6 +109,7 @@ module.exports = function(grunt) {
         watchTask: true,
         host: 'local.student.helsinki.fi',
         open: false,
+        ghostMode: false,
         port: 3002,
         server: {
           baseDir: 'src',

@@ -122,6 +122,7 @@ module.exports = function(grunt) {
       options: {
         startPath: '/',
         watchTask: true,
+        ghostMode: false,
         host: 'local.student.helsinki.fi',
         open: 'external',
         port: 3000,
