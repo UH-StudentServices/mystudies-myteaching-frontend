@@ -26,6 +26,8 @@ angular.module('directives.visibility',
       restrict: 'A',
       compile: function(el) {
         if (StateService.getCurrent() !== State.PRIVATE || PreviewService.isPreview()) {
+          // Although 'element.remove' removes child elements from the DOM, it does nothing to
+          // prevent them from running 'link'. Explicitly removing child elements seems to do the trick.
           el.remove() && el.children().remove();
         }
       }
