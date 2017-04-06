@@ -21,7 +21,6 @@
           ng-click="selectTab(tab)"
           role="tab"
           ng-class="getTabClasses(tab)"
-          limit-visibility="{sectionName: tab.name}"
           class="tab-set__tab">
         <a>{{ ::(tab.key | translate) }}</a>
       </li>

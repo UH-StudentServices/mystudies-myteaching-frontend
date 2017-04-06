@@ -15,9 +15,15 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.tabSet', ['directives.scrollableTabBar', 'ngAnimate', 'directives.visibility'])
+angular.module('directives.tabSet', ['directives.scrollableTabBar',
+                                     'ngAnimate',
+                                     'directives.visibility',
+                                     'services.visibility',
+                                     'services.state',
+                                     'services.preview'])
 
-  .directive('tabSet', function($compile, $templateCache, $animate) {
+  .directive('tabSet', function($compile, $templateCache, $animate, $q, VisibilityService,
+                                Visibility, PreviewService, StateService, State) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/tabSet/tabSet.html',
@@ -50,19 +56,38 @@ angular.module('directives.tabSet', ['directives.scrollableTabBar', 'ngAnimate',
           };
         }
 
-        function selectDefaultTab() {
-          selectTab(_.find(scope.tabs, function(tab) {
-            return tab.activeByDefault;
-          }));
+        function selectDefaultOrFirstTab(tabs) {
+          selectTab(_.find(tabs, 'activeByDefault') || tabs[0]);
         }
 
-        _.assign(scope, {
-          selectTab: selectTab,
-          tabs: scope.tabDescriptor,
-          getTabClasses: getTabClasses
-        });
+        function initTabs() {
+          var allTabs = scope.tabDescriptor,
+              visibleTabs;
 
-        selectDefaultTab();
+          if (StateService.getCurrent() !== State.PRIVATE || PreviewService.isPreview()) {
+            visibleTabs = allTabs.map(function(tab) {
+              return VisibilityService.getComponentVisibility({sectionName: tab.name}).then(function(visibility) {
+                return visibility === Visibility.PUBLIC ? tab : null;
+              });
+            });
+
+            return $q.all(visibleTabs).then(function(tabs) {
+              return tabs.filter(Boolean);
+            });
+          }
+
+          return $q.resolve(allTabs);
+        }
+
+        initTabs().then(function(tabs) {
+          _.assign(scope, {
+            selectTab: selectTab,
+            tabs: tabs,
+            getTabClasses: getTabClasses
+          });
+
+          selectDefaultOrFirstTab(tabs);
+        });
       }
     };
   });
