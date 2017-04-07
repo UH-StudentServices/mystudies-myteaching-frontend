@@ -18,7 +18,8 @@
 angular.module('directives.courseBrowsingRecommendations', [
   'resources.courseRecommendations',
   'resources.courses',
-  'opintoniAnalytics'
+  'opintoniAnalytics',
+  'services.scriptInjector'
 ])
 
   .constant('RECOMMENDATIONS_BROWSING_LOADER_KEY', 'browsing_recommendations')
@@ -29,7 +30,8 @@ angular.module('directives.courseBrowsingRecommendations', [
                                                        Loader,
                                                        CoursesResource,
                                                        RECOMMENDATIONS_BROWSING_LOADER_KEY,
-                                                       AnalyticsService) {
+                                                       AnalyticsService,
+                                                       ScriptInjectorService) {
     return {
       restrict: 'E',
       replace: true,
@@ -37,7 +39,8 @@ angular.module('directives.courseBrowsingRecommendations', [
       scope: {},
       link: function(scope, el) {
         var LEIKI_SCRIPT_ID = 'leiki-loader-script',
-            LEIKI_WIDGET_URL = '//suositukset.student.helsinki.fi/focus/widgets/loader/loader-min.js?t=';
+            LEIKI_WIDGET_URL = '//suositukset.student.helsinki.fi/focus/widgets/loader/loader-min.js?t=',
+            t = new Date().getTime();
 
         $window._leikiw = $window._leikiw || [];
         $window._leikiw.push({
@@ -68,21 +71,7 @@ angular.module('directives.courseBrowsingRecommendations', [
         };
 
         Loader.start(RECOMMENDATIONS_BROWSING_LOADER_KEY);
-
-        if (!document.getElementById(LEIKI_SCRIPT_ID)) {
-          var t = new Date().getTime(),
-              leikiScript = document.createElement('script'),
-              firstScript = document.getElementsByTagName('script')[0];
-
-          t -= t % (1000 * 60 * 60 * 24 * 30);
-
-          leikiScript.id = LEIKI_SCRIPT_ID;
-          leikiScript.type = 'text/javascript';
-          leikiScript.async = true;
-          leikiScript.src = LEIKI_WIDGET_URL + t;
-
-          firstScript.parentNode.insertBefore(leikiScript, firstScript);
-        }
+        ScriptInjectorService.addScript(LEIKI_SCRIPT_ID, LEIKI_WIDGET_URL + t);
       }
     };
   });
