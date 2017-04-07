@@ -74,6 +74,7 @@ angular.module('opintoniPortfolioApp', [
   'services.keyword',
   'services.configuration',
   'services.portfolioRole',
+  'services.scriptInjector',
 
   'utils.moment'
 ])

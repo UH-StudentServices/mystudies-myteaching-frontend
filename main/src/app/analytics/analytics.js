@@ -45,6 +45,7 @@ angular.module('opintoniAnalytics', [
     'AVATAR_IMAGE': 'avatarImage',
     'BACKGROUND_IMAGE': 'backgroundImage',
     'COURSE_RECOMMENDATION_LINK': 'courseRecommendationLink',
+    'COURSE_RECOMMENDATION_LINK_BROWSING': 'courseRecommendationLinkBrowsing',
     'EXTERNAL_LINK': 'externalLink',
     'FAVORITES': 'favorites',
     'SITE_ACTIONS': 'siteActions',
@@ -135,5 +136,7 @@ angular.module('opintoniAnalytics', [
         _.partial(submitAnalyticsEvent, EventCategories.SITE_ACTIONS, EventActions.SHOW_CALENDAR_VIEW),
       trackCourseRecommendationLinkClick:
         _.partial(submitAnalyticsEvent, EventCategories.COURSE_RECOMMENDATION_LINK, EventActions.CLICK),
+      trackCourseRecommendationLinkBrowsingClick:
+        _.partial(submitAnalyticsEvent, EventCategories.COURSE_RECOMMENDATION_LINK_BROWSING, EventActions.CLICK),
     };
   });

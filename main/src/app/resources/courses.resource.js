@@ -24,13 +24,21 @@ angular.module('resources.courses', [])
     var studentCoursesResource = $resource('/api/private/v1/students/enrollments/courses');
     var teacherCoursesResource = $resource('/api/private/v1/teachers/enrollments/courses');
 
+    var courseNamesResource = $resource('/api/private/v1/courses/names',
+                                        {learningOpportunities: '@learningOpportunities'});
+
     var getCourses = function getCourses(resource) {
       return resource.query().$promise;
     };
 
+    var getCourseNames = function getCourseNames(idString) {
+      return courseNamesResource.query({learningOpportunities: idString}).$promise;
+    };
+
     return {
       getStudentCourses: _.partial(getCourses, studentCoursesResource),
-      getTeacherCourses: _.partial(getCourses, teacherCoursesResource)
+      getTeacherCourses: _.partial(getCourses, teacherCoursesResource),
+      getCourseNames: getCourseNames
     };
 
   });

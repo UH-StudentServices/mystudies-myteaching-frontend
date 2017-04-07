@@ -15,25 +15,25 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.scriptLoad', [])
+angular.module('services.scriptInjector', [])
 
-  .directive('scriptLoad', function() {
-    var isRendered = false;
+.factory('ScriptInjectorService', function($document) {
 
-    return {
-      restrict: 'E',
-      scope: {
-        scriptSrc: '@'
-      },
-      link: function(scope) {
-        if (!isRendered) {
-          isRendered = true;
-          var script = document.createElement('script');
+  function addScript(scriptId, scriptUrl) {
+    if (!$document[0].getElementById(scriptId)) {
+      var newScript = $document[0].createElement('script'),
+          firstScript = $document[0].getElementsByTagName('script')[0];
 
-          script.type = 'text/javascript';
-          script.src = scope.scriptSrc;
-          document.head.appendChild(script);
-        }
-      }
-    };
-  });
+      newScript.id = scriptId;
+      newScript.type = 'text/javascript';
+      newScript.async = true;
+      newScript.src = scriptUrl;
+
+      firstScript.parentNode.insertBefore(newScript, firstScript);
+    }
+  }
+
+  return {
+    addScript: addScript
+  };
+});

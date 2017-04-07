@@ -16,7 +16,6 @@
  */
 
 angular.module('directives.header.meceWidget', [
-  'directives.scriptLoad',
   'services.userSettings',
   'services.language'])
 

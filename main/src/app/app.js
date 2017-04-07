@@ -43,6 +43,7 @@ angular.module('opintoniApp', [
   'services.location',
   'services.courses',
   'services.login',
+  'services.scriptInjector',
 
   'resources.httpInterceptor',
   'resources.stateInterceptor',
@@ -53,7 +54,8 @@ angular.module('opintoniApp', [
   'directives.editLink',
   'directives.feedback',
   'directives.visibility',
-  'directives.courseRecommendations',
+  'directives.courseStudiesRecommendations',
+  'directives.courseBrowsingRecommendations',
   'directives.pageNavigation',
   'directives.stickyMessage',
 

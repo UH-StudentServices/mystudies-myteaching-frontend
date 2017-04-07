@@ -15,9 +15,9 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.favorites.twitter', [])
+angular.module('directives.favorites.twitter', ['services.scriptInjector'])
 
-  .directive('favoritesTwitter', function($window) {
+  .directive('favoritesTwitter', function($window, ScriptInjectorService) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/twitter/favorites.twitter.html',
@@ -41,14 +41,7 @@ angular.module('directives.favorites.twitter', [])
           }
         });
 
-        if (!document.getElementById(TWITTER_SCRIPT_ID)) {
-          var twitterScript = document.createElement('script'),
-              firstScript = document.getElementsByTagName('script')[0];
-
-          twitterScript.id = TWITTER_SCRIPT_ID;
-          twitterScript.src = TWITTER_WIDGETS_URL;
-          firstScript.parentNode.insertBefore(twitterScript, firstScript);
-        }
+        ScriptInjectorService.addScript(TWITTER_SCRIPT_ID, TWITTER_WIDGETS_URL);
       }
     };
   });
