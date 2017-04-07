@@ -33,9 +33,9 @@ angular.module('directives.subscribeEvents', [
 
   .constant('InstructionLinks', {
     OUTLOOK: {
-      'fi': 'http://www.helsinki.fi/helpdesk/3294#outlook',
-      'en': 'http://www.helsinki.fi/helpdesk/3294/eng#outlook',
-      'sv': 'http://www.helsinki.fi/helpdesk/3294/sve#outlook'
+      'fi': 'https://helpdesk.it.helsinki.fi/ohjeet/yhteydenpito-ja-julkaiseminen/kalentereiden-synkronointi',
+      'en': 'https://helpdesk.it.helsinki.fi/en/instructions/collaboration-and-publication/synchronising-calendars',
+      'sv': 'https://helpdesk.it.helsinki.fi/sv/instruktioner/kontakter-och-publicering/kalendersynkronisering'
     },
     GOOGLE: {
       'fi': 'https://support.google.com/calendar/answer/37100?hl=fi',
