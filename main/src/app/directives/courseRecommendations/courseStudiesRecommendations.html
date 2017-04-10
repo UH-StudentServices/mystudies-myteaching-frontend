@@ -23,7 +23,7 @@
   </div>
   <div block-ui="recommendations" class="content-loader">
     <ul class="list-of-links course-recommendations__list">
-      <li ng-repeat="recommendation in courseRecommendations | limitTo: limit as results track by recommendation.title">
+      <li ng-repeat="recommendation in courseRecommendations | limitTo: limit as results track by recommendation.link">
         <a href="{{::recommendation.link}}" ng-click="trackRecommendationLinkClick(recommendation.title)"
            class="list-of-links__link button--action icon--arrow-right theme-transparent-alt">
           {{::recommendation.title}}
