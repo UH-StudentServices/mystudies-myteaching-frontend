@@ -20,7 +20,7 @@
   <div block-ui="recommendations" class="content-loader">
     <ul class="list-of-links course-recommendations__list">
       <li ng-repeat="recommendation in courseRecommendations track by $index">
-        <a href="https://courses.helsinki.fi/{{::recommendation.learningOpportunityId}}"
+        <a href="https://courses.helsinki.fi/{{ ::currentLanguage }}{{::recommendation.learningOpportunityId}}"
            ng-click="trackRecommendationLinkClick(recommendation.learningOpportunityName)"
            class="list-of-links__link button--action icon--arrow-right theme-transparent-alt">
           {{::recommendation.learningOpportunityName}}

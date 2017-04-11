@@ -19,6 +19,7 @@ angular.module('directives.courseBrowsingRecommendations', [
   'resources.courseRecommendations',
   'resources.courses',
   'opintoniAnalytics',
+  'services.language',
   'services.scriptInjector'
 ])
 
@@ -31,6 +32,7 @@ angular.module('directives.courseBrowsingRecommendations', [
                                                        CoursesResource,
                                                        RECOMMENDATIONS_BROWSING_LOADER_KEY,
                                                        AnalyticsService,
+                                                       LanguageService,
                                                        ScriptInjectorService) {
     return {
       restrict: 'E',
@@ -59,6 +61,13 @@ angular.module('directives.courseBrowsingRecommendations', [
 
               CoursesResource.getCourseNames(items)
                 .then(function(courseNames) {
+                  scope.currentLanguage = LanguageService.getCurrent();
+                  if (scope.currentLanguage === 'en') {
+                    scope.currentLanguage = '';
+                  } else {
+                    scope.currentLanguage = scope.currentLanguage + '/';
+                  }
+
                   Loader.stop(RECOMMENDATIONS_BROWSING_LOADER_KEY);
                   scope.courseRecommendations = courseNames;
                 });
