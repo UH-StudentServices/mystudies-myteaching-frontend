@@ -33,11 +33,7 @@ angular.module('services.search', [
 
     function searchCategory(searchTerm) {
       return SearchResource.searchCategory(searchTerm).then(function(data) {
-        var categoryTitles = data.map(function(category) {
-          return category.title;
-        });
-
-        return categoryTitles;
+        return _.map(data, 'title');
       });
     }
 
