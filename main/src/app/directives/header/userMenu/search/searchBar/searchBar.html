@@ -15,24 +15,17 @@
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<div>
   <div ng-show="active" class="search-bar">
     <label role="button" aria-label="{{::('toolbar.search.search' | translate)}}" for="search-input" ng-click="search()"><i class="hy hy-search"></i></label>
     <i role="button" aria-label="{{::('toolbar.search.closeSearch' | translate)}}" class="hy hy-remove clear" ng-click="clear()"></i>
-    <div class="input-container">
-      <form>
-        <input id="search-input"
+    <input id="search-input"
                type="text"
                focus="active"
                ng-model="searchTerm"
                ui-keypress="{'enter':'search()'}"
-               typeahead="categoryTitle for categoryTitle in getCategoryTitles($viewValue)"
+               uib-typeahead="categoryTitle for categoryTitle in getCategoryTitles($viewValue)"
                typeahead-template-url="app/directives/header/userMenu/search/searchBar/autocomplete-tpl.html"
                typeahead-on-select="search()"
                typeahead-focus-first="false"
                autocomplete="off">
-        <input type="submit" value="Submit" style="display: none">
-      </form>
-    </div>
   </div>
-</div>
