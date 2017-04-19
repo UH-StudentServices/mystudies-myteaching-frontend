@@ -56,8 +56,7 @@ angular.module('directives.searchResults', [
 
         $scope.categoryClasses = function categoryClasses(category) {
           return {
-            active: $scope.selectedCategory === category,
-            clickable: $scope.selectedCategory !== category
+            'is-active': $scope.selectedCategory === category
           };
         };
 

@@ -15,52 +15,30 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#search-results-wrapper {
-
+.search-results__wrapper {
   @include breakpoint($small) {
     width: 70%;
   }
+}
 
-  .header {
-    position: relative;
+.search-results__header {
+  position: relative;
+  padding-bottom: 2em;
 
-    @include breakpoint($mobile-only) {
-      text-align: center;
-      padding-bottom: 1em;
-    }
-
-    a {
-      display: block;
-      @include breakpoint($small) {
-        position: absolute;
-        right: 0;
-        bottom: 15px;
-      }
-      i {
-        margin-left: 5px;
-      }
-    }
+  @include breakpoint($mobile-only) {
+    text-align: center;
+    padding-bottom: 1em;
   }
+}
 
-  h1 {
-    display: inline-block;
-    margin-right: 0.2em;
+.search-results__close {
+  display: block;
+  @include breakpoint($small) {
+    position: absolute;
+    right: 0;
+    top: 0;
   }
-
-  .hits {
-    word-wrap: break-word;
-    h3 a {
-      color: $blue;
-      font-weight: 500;
-      font-size: 0.85em;
-    }
-
-    p {
-      margin-bottom: 1em;
-    }
-
-    .info {
-      font-size: 0.85em;
-    }
+  @include breakpoint($mobile-only) {
+    padding-bottom: 8px;
   }
 }
