@@ -16,29 +16,36 @@
 -->
 
 <div class="l-page island wrapper" ng-show="showResults">
+  <div class="search-results__wrapper">
+    <div class="search-results__header">
+      <h2>{{ 'searchResults.hitsFound' | translate : {hitCount: results.length} }}</h2>
 
-  <div id="search-results-wrapper">
-    <div class="header border-bottom">
-      <h1>{{ 'searchResults.hitsFound' | translate : {hitCount: results.length} }}</h1>
-      <a tabindex="0" ng-click="close()" translate="searchResults.close">
-        <i class="hy hy-remove"></i>
-      </a>
+      <a href="" role="button" ng-click="close()"
+         class="search-results__close" translate="searchResults.close"></a>
+
+      <div class="button-group">
+        <div ng-repeat="category in categories()" class="button-group__button">
+          <a href="" role="button" ng-click="selectCategory(category)"
+             class="button--small" ng-class="categoryClasses(category)">
+            {{::'toolbar.search.categories.' + category | translate }}
+            ({{:: resultsBySource[category].length }})
+          </a>
+        </div>
+      </div>
     </div>
-    <br />
-    <ul class="tag-list--tabs">
-      <li ng-repeat="category in categories()"
-          ng-click="selectCategory(category)"
-          ng-class="categoryClasses(category)">{{'toolbar.search.categories.' + category | translate }} ({{ resultsBySource[category].length }})</li>
-    </ul>
 
-    <section class="hits">
-      <article ng-repeat="result in results" class="hit box-data border-bottom">
-        <h3><a href="{{ result.link }}" target="_blank">{{ result.title }}</a></h3>
+    <article ng-repeat="result in results" class="box-story box-story--constrained">
+      <h3 class="box-story__title search-results__title">
+        <a href="{{:: result.link }}" target="_blank">{{:: result.title }}</a>
+      </h3>
+      <div class="box-story__meta">
+        <span class="box-story__date">{{:: result.date }}</span>
+        <span class="box-story__tag">
+          <a href="{{:: result.link }}" target="_blank">{{:: result.link }}</a>
+        </span>
+      </div>
+      <div class="box-story__content">{{:: result.text | limitTo: 500}}</div>
+    </article>
 
-        <p class="info">{{ result.date }} | {{ result.link }} </p>
-
-        <p class="snippet">{{ result.text | limitTo: 500}} </p>
-      </article>
-    </section>
   </div>
 </div>

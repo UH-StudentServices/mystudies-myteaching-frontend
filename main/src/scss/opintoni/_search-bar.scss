@@ -17,7 +17,7 @@
 
 .search-bar {
   position: relative;
-  z-index: 3;
+
   right: 5px;
   @include breakpoint($mobile-only) {
     position: relative;
@@ -59,7 +59,7 @@
   .dropdown-menu {
     position: absolute;
     width: 100%;
-    z-index: 2;
+
     li {
       &:not(:last-child) {
         border-bottom: 1px solid $lightsilver;
