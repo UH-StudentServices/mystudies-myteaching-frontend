@@ -34,24 +34,42 @@ angular.module('directives.degrees', [
       $scope.editing = false;
       $scope.degrees = DegreeService.formatDates($scope.degreesData());
       $scope.newDegree = {};
+      $scope.degreesValid = true;
 
       $scope.edit = function() {
         $scope.editing = true;
       };
 
+      var isValid = function() {
+        return $scope.degrees.every(function(degree) {
+          return degree.title && degree.dateOfDegree.isValid();
+        });
+      };
+
+      $scope.refreshValidity = _.debounce(function() {
+        $scope.degreesValid = isValid();
+      }, 500);
+
+      $scope.markAllSubmitted = function() {
+        $scope.degrees.forEach(function(degree) { degree.submitted = true; });
+      };
+
       $scope.exitEdit = function() {
-        var updateDegrees = angular.copy($scope.degrees);
+        $scope.markAllSubmitted();
 
-        _.forEach(updateDegrees, function(degree) {
-          degree.dateOfDegree = momentDateToLocalDateArray(degree.dateOfDegree);
-        });
+        if (isValid()) {
+          var updateDegrees = angular.copy($scope.degrees);
 
-        DegreeService.updateDegrees($scope.portfolioId, updateDegrees).then(function(data) {
-          $scope.degrees = data;
-          $scope.editing = false;
-        });
+          _.forEach(updateDegrees, function(degree) {
+            degree.dateOfDegree = momentDateToLocalDateArray(degree.dateOfDegree);
+          });
 
-        return true;
+          DegreeService.updateDegrees($scope.portfolioId, updateDegrees).then(function(data) {
+            $scope.degrees = data;
+            $scope.editing = false;
+          });
+          return true;
+        }
       };
     }
   };

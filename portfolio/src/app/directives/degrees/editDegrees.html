@@ -23,7 +23,8 @@
       <div class="degree__container">
         <div class="box-data__date">
           <span class="editable-content" ng-show="!degree.dateOfDegreeEdit">
-            <a role="button" href="" ng-click="editDateOfDegree(degree)">
+            <a role="button" href="" ng-click="editDateOfDegree(degree)"
+              ng-class="{'ng-invalid':!degree.dateOfDegree || !degree.dateOfDegree.isValid()}">
               {{ (degree.dateOfDegree ? (degree.dateOfDegree | momentFormat:'DD.MM.YYYY') :
                ('degrees.datePlaceholder' | translate)) }}
               <i class="hy hy-edit-event"></i>
@@ -32,6 +33,8 @@
           <span class="editable-content-active" ng-if="degree.dateOfDegreeEdit">
             <input date-input focus="degree.dateOfDegreeEdit" ng-model="degree.dateOfDegree"
                    ui-keypress="{'enter':'exitDateOfDegreeEdit(degree)'}"
+                   ng-change="refreshValidity()"
+                   ng-class="{'ng-invalid':!degree.dateOfDegree || !degree.dateOfDegree.isValid()}"
                    placeholder="{{::('degrees.datePlaceholder' | translate) }}">
             <a role="button" href="" ng-click="exitDateOfDegreeEdit(degree)"><i class="fa fa-check"></i></a>
           </span>
@@ -39,7 +42,8 @@
 
         <div class="degree__title">
           <span class="editable-content" ng-show="!degree.titleEdit">
-            <a role="button" href="" ng-click="editTitle(degree)">
+            <a role="button" href="" ng-click="editTitle(degree)"
+              ng-class="{'ng-invalid':!degree.title}">
               {{ degree.title || ('degrees.titlePlaceholder' | translate) }}
               <i class="hy hy-edit-event"></i>
             </a>
@@ -48,7 +52,9 @@
             <input focus="degree.titleEdit"
                    ng-model="degree.title"
                    ui-keypress="{'enter':'exitTitleEdit(degree)'}"
-                   placeholder="{{::('degrees.titlePlaceholder' | translate) }}">
+                   ng-change="refreshValidity()"
+                   placeholder="{{::('degrees.titlePlaceholder' | translate) }}"
+                   ng-class="{'ng-invalid':!degree.title}">
             <a role="button" href="" ng-click="exitTitleEdit(degree)"><i class="fa fa-check"></i></a>
           </span>
         </div>

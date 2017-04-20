@@ -15,6 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+$degree-invalid-color: red;
+
 .new-degree {
   position: relative;
   margin-top: 1em;
@@ -41,7 +43,12 @@
       position: absolute;
       right: 1em;
     }
+  }
 
+  .editable-content, .editable-content-active {
+    .ng-invalid {
+      border: 2px solid $degree-invalid-color;
+    }
   }
 }
 

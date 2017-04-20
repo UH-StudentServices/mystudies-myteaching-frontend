@@ -16,10 +16,15 @@
 -->
 
 <section class="ui-component ui-component__degrees editable-wrapper">
+
   <div class="edit-link-wrapper">
     <h2 class="ui-component__title border-bottom" translate="degrees.title"></h2>
-    <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
+    <edit-link on-edit="edit()"
+      on-exit-edit="exitEdit()"
+      exit-edit-disabled="!degreesValid"
+      on-disabled-exit-edit="markAllSubmitted()"></edit-link>
   </div>
+
   <show-degrees ng-show="!editing"></show-degrees>
   <edit-degrees ng-show="editing"></edit-degrees>
   <visibility-toggle component-id="DEGREES" section-name="{{::sectionName}}"></visibility-toggle>
