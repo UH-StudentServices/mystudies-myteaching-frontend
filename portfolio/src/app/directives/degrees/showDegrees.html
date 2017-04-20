@@ -16,23 +16,23 @@
   -->
 
 <ul role="list">
-    <li ng-repeat="degree in degrees | orderBy: '-dateOfDegree'"
-        role="listitem"
-        class="block">
-        <div class="box-data border-bottom">
-            <div class="lyre-icon"></div>
+  <li class="degree" ng-repeat="degree in degrees | orderBy: '-dateOfDegree'">
+    <div class="degree__item">
+      <div class="degree__lyre"></div>
 
-            <div class="box-data__content">
-                {{ degree.dateOfDegree | momentFormat:'DD.MM.YYYY'}}
-            </div>
-
-            <div class="box-data__title">
-                {{ degree.title }}
-            </div>
-
-            <div class="box-data__content">
-                {{ degree.description }}
-            </div>
+      <div class="degree__container">
+        <div class="degree__date">
+          {{ degree.dateOfDegree | momentFormat:'DD.MM.YYYY'}}
         </div>
-    </li>
+
+        <div class="degree__title">
+          {{ degree.title }}
+        </div>
+
+        <div class="degree_description">
+          {{ degree.description }}
+        </div>
+      </div>
+    </div>
+  </li>
 </ul>
