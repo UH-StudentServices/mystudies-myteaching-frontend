@@ -121,7 +121,7 @@
   },
   "samples": {
     "title": "Samples",
-    "addSample": "Add sample url",
+    "addSample": "Add sample",
     "titlePlaceholder": "description",
     "urlPlaceholder": "url",
     "descriptionPlaceholder": "description text"

@@ -24,11 +24,8 @@
           <div class="sample__title-container">
             <div class="sample__title">
               <span class="sample__title-content" ng-show="!sampleItem.titleEdit">
-                <a class="sample__title-content-button"
-                   role="button"
-                   href=""
-                   ng-click="editTitle(sampleItem)"
-                   ng-class="{'ng-invalid':!sampleItem.title}">
+                <a role="button" href="" ng-click="editTitle(sampleItem)" class="sample__title-content-button"
+                   ng-class="{'ng-invalid':sampleItem.submitted && !sampleItem.title}">
                   {{sampleItem.title || ('samples.titlePlaceholder' | translate)}}<i class="fa fa-pencil"></i>
                 </a>
               </span>
@@ -49,10 +46,8 @@
       <div class="sample__details-container">
         <div class="sample__url">
           <span class="sample__url-content" ng-show="!sampleItem.urlEdit">
-            <a class="sample__url-content-button"
-               role="button"
-               href=""
-               ng-click="editUrl(sampleItem)">
+            <a role="button" href="" ng-click="editUrl(sampleItem)" class="sample__url-content-button"
+               ng-class="{'ng-invalid':sampleItem.submitted && !sampleItem.url}">
               {{sampleItem.url || ('samples.urlPlaceholder' | translate)}}<i class="fa fa-pencil"></i>
             </a>
           </span>
@@ -77,25 +72,11 @@
       <button class="sample__remove" ng-click="removeSample(sampleItem)"></button>
     </div>
   </li>
-
-  <li visibility-private class="sample__add-new">
-    <div class="sample__add-new-container" ng-form name="addSampleForm">
-      <input class="sample__add-new-input"
-             ng-model="newSample.url"
-             ui-keypress="{'enter':'addSample(newSample)'}"
-             focus="editing"
-             type="text"
-             name="url"
-             required
-             placeholder="{{::('samples.addSample' | translate)}}"
-             aria-label="{{::('samples.addSample' | translate)}}"/>
-    </div>
-    <button class="sample__add-new-button fa fa-plus"
-            ng-class="{'form-error': !addSampleForm.url.$valid}"
-            ng-disabled="!addSampleForm.url.$valid"
-            ng-click="addSample(newSample)"
-            aria-label="{{::('general.addNew' | translate)}}">
-    </button>
-  </li>
-
 </ul>
+
+<div class="sample__add-new">
+  <div class="list-of-links">
+    <a class="button--action icon--plus" ng-click="addSample(newSample)">{{::('samples.addSample' | translate)}}</a>
+  </div>
+</div>
+

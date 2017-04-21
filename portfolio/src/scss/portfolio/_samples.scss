@@ -204,19 +204,12 @@ $sample-full-description-vertical-margin: 0.85em;
     position: relative;
     margin-top: 2em;
 
-    &-button {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 40px;
-      height: 40px;
-      text-align: center;
-      background-color: $blue;
-      color: $white;
+    .list-of-links {
+      max-width: 250px;
+    }
 
-      &.form-error {
-        background-color: $gray;
-      }
+    .button--action {
+      margin-top: 1em;
     }
   }
 

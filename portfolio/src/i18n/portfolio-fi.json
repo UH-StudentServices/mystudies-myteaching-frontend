@@ -121,7 +121,7 @@
   },
   "samples": {
     "title": "Näytteet",
-    "addSample": "Lisää näytteen url",
+    "addSample": "Lisää näyte",
     "titlePlaceholder": "kuvaus",
     "urlPlaceholder": "url",
     "descriptionPlaceholder": "kuvausteksti"

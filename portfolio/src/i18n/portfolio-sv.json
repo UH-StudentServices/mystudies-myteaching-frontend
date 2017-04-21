@@ -121,7 +121,7 @@
   },
   "samples": {
     "title": "Prover",
-    "addSample": "Lägg till prov url",
+    "addSample": "Lägg till prov",
     "titlePlaceholder": "beskrivning",
     "urlPlaceholder": "url",
     "descriptionPlaceholder": "beskrivningstext"
