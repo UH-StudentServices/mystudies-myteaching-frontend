@@ -153,8 +153,8 @@
     "exit" : "sulje esikatselu"
   },
   "freeTextContent" : {
-    "defaultTitle" : "Oma osio",
-    "defaultText" : "Tämä on itse luomani osio"
+    "defaultTitle" : "Lisää otsikko",
+    "defaultText" : "Lisää sisältöä"
   },
   "feedback": {
     "title": "Palaute",
