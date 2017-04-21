@@ -42,6 +42,8 @@ angular.module('directives.workExperience', [
       $scope.editing = false;
       $scope.workExperience = WorkExperienceService.formatDates($scope.workExperienceData());
       $scope.workExperienceValid = true;
+      $scope.newJob = {};
+      $scope.newJobSearch = {};
 
       WorkExperienceService.getJobSearchSubject().subscribe(function(jobSearch) {
         $scope.jobSearch = jobSearch;
@@ -51,8 +53,15 @@ angular.module('directives.workExperience', [
         $scope.editing = true;
       };
 
+      var isJobSearchValid = function() {
+        if ($scope.jobSearch !== null) {
+          return $scope.jobSearch.contactEmail;
+        }
+        return true;
+      };
+
       var isValid = function() {
-        return $scope.workExperience.every(function(job) {
+        return isJobSearchValid() && $scope.workExperience.every(function(job) {
           return job.employer &&
                  job.startDate.isValid() &&
                  (!job.endDate || job.endDate.isValid()) &&
@@ -67,13 +76,13 @@ angular.module('directives.workExperience', [
       $scope.exitEdit = function() {
         $scope.markAllSubmitted();
 
-        if ($scope.jobSearch !== null) {
-          WorkExperienceService.saveJobSearch($scope.jobSearch);
-        } else {
-          WorkExperienceService.deleteJobSearch($scope.jobSearch);
-        }
-
         if (isValid()) {
+          if ($scope.jobSearch !== null) {
+            WorkExperienceService.saveJobSearch($scope.jobSearch);
+          } else {
+            WorkExperienceService.deleteJobSearch($scope.jobSearch);
+          }
+
           var updateWorkExperience = angular.copy($scope.workExperience);
 
           updateWorkExperience.forEach(function(job) {
@@ -91,6 +100,9 @@ angular.module('directives.workExperience', [
 
       $scope.markAllSubmitted = function() {
         $scope.workExperience.forEach(function(job) { job.submitted = true; });
+        if ($scope.jobSearch !== null) {
+          $scope.jobSearch.submitted = true;
+        }
       };
     },
   };

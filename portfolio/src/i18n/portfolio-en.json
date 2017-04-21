@@ -103,7 +103,7 @@
   "workExperience" : {
     "title": "work experience",
     "addWorkExperience": "Add employer",
-    "addJobSearch": "Add email (looking for work)",
+    "addJobSearch": "Add looking for work",
     "jobSearch": "looking for work",
     "employerPlaceholder": "employer",
     "startDatePlaceholder": "mm.yyyy",

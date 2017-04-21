@@ -201,25 +201,10 @@ $sample-full-description-vertical-margin: 0.85em;
   }
 
   &__add-new {
-    @include border;
     position: relative;
     margin-top: 2em;
 
-    &-container {
-      @extend .input-container;
-      overflow: hidden;
-      margin-right: 40px;
-    }
-
-    &-input {
-      width: 100%;
-      height: 40px;
-      border: 1px solid $lightsilver;
-      padding: 0 20px;
-    }
-
     &-button {
-      @extend .add-icon;
       position: absolute;
       top: 0;
       right: 0;
@@ -236,6 +221,7 @@ $sample-full-description-vertical-margin: 0.85em;
   }
 
   &__remove {
+    color: white;
     z-index: 2;
     background-color: $blue;
     cursor: pointer;

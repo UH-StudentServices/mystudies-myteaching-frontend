@@ -103,7 +103,7 @@
   "workExperience" : {
     "title": "työkokemus",
     "addWorkExperience": "Lisää työnantaja",
-    "addJobSearch": "Lisää sähköpostiosoite (haen työpaikkaa)",
+    "addJobSearch": "Lisää haen työpaikkaa",
     "jobSearch": "haen työpaikkaa",
     "employerPlaceholder": "työnantaja",
     "startDatePlaceholder": "kk.vvvv",

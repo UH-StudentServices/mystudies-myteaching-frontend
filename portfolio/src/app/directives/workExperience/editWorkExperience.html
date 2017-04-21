@@ -16,21 +16,21 @@
 -->
 
 <ul class="work-experience">
-  <li ng-repeat="workExperienceItem in workExperience | orderBy : 'startDate' : true track by workExperienceItem.id"
-      class="editable">
+  <li ng-repeat="workExperienceItem in workExperience | orderBy : 'startDate' : true track by workExperienceItem.id" class="editable">
     <div class="work-experience__item">
       <div class="work-experience__banner">
         <div class="work-experience__banner-content">
           <div class="work-experience__employer-container">
             <div class="work-experience__title">
               <span class="editable-content" ng-show="!workExperienceItem.employerEdit">
-                <a role="button" href="" ng-click="editEmployer(workExperienceItem)" ng-class="{'ng-invalid':!workExperienceItem.employer}">
-                  {{ (workExperienceItem.employer || ('workExperience.employerPlaceholder' | translate)) }}<i class="fa fa-pencil"></i>
+                <a role="button" href="" ng-click="editEmployer(workExperienceItem)"
+                   ng-class="{'ng-invalid':workExperienceItem.submitted && !workExperienceItem.employer}">
+                  {{ (workExperienceItem.employer || ('workExperience.employerPlaceholder' | translate)) }}
+                  <i class="fa fa-pencil"></i>
                 </a>
               </span>
               <span class="editable-content-active" ng-show="workExperienceItem.employerEdit">
                 <input focus="workExperienceItem.employerEdit"
-                       placeholder="{{::'workExperience.employerPlaceholder'|translate}}"
                        ng-model="workExperienceItem.employer"
                        ui-keypress="{'enter':'exitEmployerEdit(workExperienceItem)'}"
                        ng-change="refreshValidity()"
@@ -41,8 +41,10 @@
             </div>
             <div class="work-experience__text">
               <span class="editable-content" ng-show="!workExperienceItem.startDateEdit">
-                <a role="button" href="" ng-click="editStartDate(workExperienceItem)" ng-class="{'ng-invalid':!workExperienceItem.startDate || !workExperienceItem.startDate.isValid()}">
-                  {{ (workExperienceItem.startDate ? (workExperienceItem.startDate | momentFormat:'M/YYYY') : ('workExperience.startDatePlaceholder' | translate)) }}
+                <a role="button" href="" ng-click="editStartDate(workExperienceItem)"
+                   ng-class="{'ng-invalid':!workExperienceItem.startDate || !workExperienceItem.startDate.isValid()}">
+                  {{ (workExperienceItem.startDate ? (workExperienceItem.startDate | momentFormat:'M/YYYY') :
+                  ('workExperience.startDatePlaceholder' | translate)) }}
                   <i class="fa fa-pencil"></i>
                 </a>
               </span>
@@ -52,13 +54,15 @@
                        ui-keypress="{'enter':'exitStartDateEdit(workExperienceItem)'}"
                        ng-change="refreshValidity()"
                        ng-class="{'ng-invalid':!workExperienceItem.startDate || !workExperienceItem.startDate.isValid()}"
-                       placeholder="{{:: ('workExperience.startDatePlaceholder' | translate) }}">
+                       placeholder="{{:: ('workExperience.startDatePlaceholder' | translate) }}" />
                 <a role="button" href="" ng-click="exitStartDateEdit(workExperienceItem)"><i class="fa fa-check"></i></a>
               </span>
               -
               <span class="editable-content" ng-show="!workExperienceItem.endDateEdit">
-                <a role="button" href="" ng-click="editEndDate(workExperienceItem)" ng-class="{'ng-invalid':workExperienceItem.endDate && !workExperienceItem.endDate.isValid()}">
-                  {{ (workExperienceItem.endDate ? (workExperienceItem.endDate | momentFormat:'M/YYYY') : ('workExperience.endDatePlaceholder' | translate)) }}
+                <a role="button" href="" ng-click="editEndDate(workExperienceItem)"
+                   ng-class="{'ng-invalid':workExperienceItem.endDate && !workExperienceItem.endDate.isValid()}">
+                  {{ (workExperienceItem.endDate ? (workExperienceItem.endDate | momentFormat:'M/YYYY') :
+                  ('workExperience.endDatePlaceholder' | translate)) }}
                   <i class="fa fa-pencil"></i>
                 </a>
               </span>
@@ -68,7 +72,7 @@
                        ui-keypress="{'enter':'exitEndDateEdit(workExperienceItem)'}"
                        ng-change="refreshValidity()"
                        ng-class="{'ng-invalid':workExperienceItem.endDate && !workExperienceItem.endDate.isValid()}"
-                       placeholder="{{:: ('workExperience.endDatePlaceholder' | translate) }}">
+                       placeholder="{{:: ('workExperience.endDatePlaceholder' | translate) }}" />
                 <a role="button" href="" ng-click="exitEndDateEdit(workExperienceItem)"><i class="fa fa-check"></i></a>
               </span>
             </div>
@@ -78,18 +82,19 @@
       <div class="work-experience__description-container">
         <div class="work-experience__title">
           <span class="editable-content" ng-show="!workExperienceItem.jobTitleEdit">
-            <a role="button" href="" ng-click="editJobTitle(workExperienceItem)" ng-class="{'ng-invalid':workExperienceItem.submitted && !workExperienceItem.jobTitle}">
-              {{ workExperienceItem.jobTitle || ('workExperience.jobTitlePlaceholder' | translate)}}<i class="fa fa-pencil"></i>
+            <a role="button" href="" ng-click="editJobTitle(workExperienceItem)"
+               ng-class="{'ng-invalid':workExperienceItem.submitted && !workExperienceItem.jobTitle}">
+              {{ workExperienceItem.jobTitle || ('workExperience.jobTitlePlaceholder' | translate)}}
+              <i class="fa fa-pencil"></i>
             </a>
           </span>
           <span class="editable-content-active" ng-show="workExperienceItem.jobTitleEdit">
-            <input placeholder="{{::'workExperience.jobTitlePlaceholder'|translate}}"
-                   focus="workExperienceItem.jobTitleEdit"
-                   ui-keypress="{'enter':'exitJobTitleEdit(workExperienceItem)'}"
+            <input focus="workExperienceItem.jobTitleEdit"
                    ng-model="workExperienceItem.jobTitle"
                    ui-keypress="{'enter':'exitJobTitleEdit(workExperienceItem)'}"
                    ng-change="refreshValidity()"
-                   ng-class="{'ng-invalid':!workExperienceItem.jobTitle}"/>
+                   ng-class="{'ng-invalid':!workExperienceItem.jobTitle}"
+                   placeholder="{{::'workExperience.jobTitlePlaceholder'|translate}}" />
             <a role="button" href="" ng-click="exitJobTitleEdit(workExperienceItem)"><i class="fa fa-check"></i></a>
           </span>
         </div>
@@ -100,14 +105,15 @@
         <div class="work-experience__url">
           <span class="editable-content" ng-show="!workExperienceItem.employerUrlEdit">
             <a role="button" href="" ng-click="editEmployerUrl(workExperienceItem)">
-              {{workExperienceItem.employerUrl || ('workExperience.employerUrlPlaceholder' | translate)}}<i class="fa fa-pencil"></i>
+              {{workExperienceItem.employerUrl || ('workExperience.employerUrlPlaceholder' | translate)}}
+              <i class="fa fa-pencil"></i>
             </a>
           </span>
           <span class="editable-content-active" ng-show="workExperienceItem.employerUrlEdit">
-            <input placeholder="{{::'workExperience.employerUrlPlaceholder'|translate}}"
-                   focus="workExperienceItem.employerUrlEdit"
+            <input focus="workExperienceItem.employerUrlEdit"
                    ng-model="workExperienceItem.employerUrl"
-                   ui-keypress="{'enter':'exitEmployerUrlEdit(workExperienceItem)'}" />
+                   ui-keypress="{'enter':'exitEmployerUrlEdit(workExperienceItem)'}"
+                   placeholder="{{::'workExperience.employerUrlPlaceholder'|translate}}" />
             <a role="button" href="" ng-click="exitEmployerUrlEdit(workExperienceItem)"><i class="fa fa-check"></i></a>
           </span>
         </div>
@@ -122,21 +128,10 @@
         <div class="work-experience__banner-content">
           <div class="work-experience__employer-container">
             <div class="work-experience__title text-transform-capitalize-block">
-               <span class="editable-content">
-                 <span translate="workExperience.jobSearch" />
-               </span>
+              <span translate="workExperience.jobSearch" />
             </div>
             <div class="work-experience__text">
-              <span class="editable-content" ng-show="!editContactEmail">
-                <a role="button" href="" ng-click="enterContactEmailEdit()">
-                  {{jobSearch.contactEmail}}<i class="fa fa-pencil"></i>
-                </a>
-              </span>
-              <span class="editable-content-active" ng-show="editContactEmail">
-                <input ng-model="jobSearch.contactEmail"
-                       ui-keypress="{'enter':'exitContactEmailEdit()'}" />
-                <a role="button" href="" ng-click="exitContactEmailEdit()"><i class="fa fa-check"></i></a>
-              </span>
+              {{jobSearch.contactEmail}}
             </div>
           </div>
         </div>
@@ -145,7 +140,8 @@
         <div class="work-experience__title">
           <span class="editable-content" ng-show="!editJobSearchHeadline">
             <a role="button" href="" ng-click="enterJobHeadlineEdit()">
-              {{jobSearch.headline}}<i class="fa fa-pencil"></i>
+              {{jobSearch.headline}}
+              <i class="fa fa-pencil"></i>
             </a>
           </span>
           <span class="editable-content-active" ng-show="editJobSearchHeadline">
@@ -160,53 +156,35 @@
         </div>
         <div class="work-experience__url">
           <span class="editable-content" ng-show="!editContactEmail">
-            <a role="button" href="" ng-click="enterContactEmailEdit()">
-              {{jobSearch.contactEmail}}<i class="fa fa-pencil"></i>
+            <a role="button" href="" ng-click="enterContactEmailEdit()"
+               ng-class="{'ng-invalid':jobSearch.submitted && !jobSearch.contactEmail}">
+              {{jobSearch.contactEmail || ('workExperience.contactEmail' | translate)}}
+              <i class="fa fa-pencil"></i>
             </a>
           </span>
           <span class="editable-content-active" ng-show="editContactEmail">
-            <input focus="editContactEmail" ng-model="jobSearch.contactEmail"
-                   ui-keypress="{'enter':'exitContactEmailEdit()'}" />
+            <input focus="editContactEmail"
+                   type="email" required
+                   ng-model="jobSearch.contactEmail"
+                   ui-keypress="{'enter':'exitContactEmailEdit()'}"
+                   ng-class="{'ng-invalid':!jobSearch.contactEmail}"
+                   placeholder="{{::'workExperience.contactEmail'|translate}}" />
             <a role="button" href="" ng-click="exitContactEmailEdit()"><i class="fa fa-check"></i></a>
           </span>
         </div>
       </div>
-      <button class="work-experience__remove" ng-show="editing"
-              ng-click="removeJobSearch()"></button>
+      <button class="work-experience__remove" ng-click="removeJobSearch()"></button>
     </div>
   </li>
-
-  <li visibility-private class="work-experience__add-new">
-    <div class="input-container" ng-form name="addWorkExperienceForm">
-      <input ng-model="newJob.employer"
-             ui-keypress="{'enter':'addWorkExperience(newJob)'}"
-             focus="editing"
-             type="text" name="employer" required
-             placeholder="{{::('workExperience.addWorkExperience' | translate)}}"
-             aria-label="{{::('workExperience.addWorkExperience' | translate)}}"/>
-    </div>
-    <button class="add-icon fa fa-plus"
-            ng-class="{'form-error': !addWorkExperienceForm.employer.$valid}"
-            ng-disabled="!addWorkExperienceForm.employer.$valid"
-            ng-click="addWorkExperience(newJob)"
-            aria-label="{{::('workExperience.addNew' | translate)}}">
-    </button>
-  </li>
-
-  <li visibility-private class="work-experience__add-new" ng-hide="jobSearch">
-    <div class="input-container" ng-form name="addJobSearchForm">
-      <input ng-model="newJobSearch.contactEmail"
-             type="email" name="contactEmail" required
-             ui-keypress="{'enter':'addJobSearch(newJobSearch)'}"
-             placeholder="{{::('workExperience.addJobSearch' | translate)}}"
-             aria-label="{{::('workExperience.addJobSearch' | translate)}}"/>
-    </div>
-    <button class="add-icon fa fa-plus"
-            ng-class="{'form-error': !addJobSearchForm.contactEmail.$valid}"
-            ng-disabled="!addJobSearchForm.contactEmail.$valid"
-            ng-click="addJobSearch(newJobSearch)"
-            aria-label="{{::('general.addNew' | translate)}}">
-    </button>
-  </li>
-
 </ul>
+
+<div class="work-experience__add-new">
+  <div class="list-of-links">
+    <a role="button" href="" class="button--action icon--plus" ng-click="addWorkExperience(newJob)">
+      {{::('workExperience.addWorkExperience' | translate)}}
+    </a>
+    <a role="button" href="" class="button--action icon--plus" ng-click="addJobSearch(newJobSearch)" ng-hide="jobSearch">
+      {{::('workExperience.addJobSearch' | translate)}}
+    </a>
+  </div>
+</div>
