@@ -37,7 +37,7 @@ ul.work-experience {
   }
 }
 
-.work-experience__item, .work-experience__add-new {
+.work-experience__item {
   width: 100%;
   float: left;
 }
@@ -205,19 +205,6 @@ ul.work-experience {
   width: 100%;
   height: 1em;
   margin-bottom: 1em;
-}
-
-.work-experience__add-new {
-  position: relative;
-  margin-top: 2em;
-
-  .list-of-links {
-    max-width: 250px;
-  }
-
-  .button--action {
-    margin-top: 1em;
-  }
 }
 
 .work-experience__remove {
