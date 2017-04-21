@@ -153,8 +153,8 @@
     "exit" : "Stäng förhandsvisning"
   },
   "freeTextContent" : {
-    "defaultTitle" : "Eget avsnitt",
-    "defaultText" : "Detta är mitt eget avsnitt"
+    "defaultTitle" : "Lägg till rubrik",
+    "defaultText" : "Lägg till innehåll"
   },
   "feedback": {
     "title": "Feedback",
