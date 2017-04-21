@@ -153,8 +153,8 @@
     "exit" : "close preview"
   },
   "freeTextContent" : {
-    "defaultTitle" : "Own section",
-    "defaultText" : "This is my own custom portfolio section."
+    "defaultTitle" : "Add title",
+    "defaultText" : "Add content"
   },
   "feedback": {
     "title": "Feedback",
