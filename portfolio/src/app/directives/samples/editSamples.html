@@ -15,61 +15,60 @@
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<ul class="sample">
-  <li ng-repeat="sampleItem in samples | orderBy: 'title' track by sampleItem.id"
-      class="editable">
-    <div class="sample__item">
-      <div class="sample__banner">
-        <div class="sample__banner-content">
-          <div class="sample__title-container">
-            <div class="sample__title">
-              <span class="sample__title-content" ng-show="!sampleItem.titleEdit">
-                <a role="button" href="" ng-click="editTitle(sampleItem)" class="sample__title-content-button"
+<ul class="banner-content">
+  <li ng-repeat="sampleItem in samples | orderBy: 'title' track by sampleItem.id" class="editable">
+    <div class="banner-content__item">
+      <div class="banner-content__banner">
+        <div class="banner-content__backdrop">
+          <div class="banner-content__banner-content">
+            <div class="banner-content__banner-title">
+              <span class="banner-content__editable-content" ng-show="!sampleItem.titleEdit">
+                <a role="button" href="" ng-click="editTitle(sampleItem)"
+                   class="banner-content__editable-content-button"
                    ng-class="{'ng-invalid':sampleItem.submitted && !sampleItem.title}">
-                  {{sampleItem.title || ('samples.titlePlaceholder' | translate)}}<i class="fa fa-pencil"></i>
+                  {{sampleItem.title || ('samples.titlePlaceholder' | translate)}}
+                  <i class="fa fa-pencil"></i>
                 </a>
               </span>
-              <span class="sample__title-content--active" ng-show="sampleItem.titleEdit">
-                <input class="sample__title-content-input"
-                       focus="sampleItem.titleEdit"
-                       placeholder="{{::'samples.titlePlaceholder'|translate}}"
+              <span class="banner-content__editable-content--active" ng-show="sampleItem.titleEdit">
+                <input focus="sampleItem.titleEdit"
                        ng-model="sampleItem.title"
                        ui-keypress="{'enter':'exitTitleEdit(sampleItem)'}"
                        ng-change="onChange()"
-                       ng-class="{'ng-invalid':!sampleItem.title}" />
+                       ng-class="{'ng-invalid':!sampleItem.title}"
+                       placeholder="{{::'samples.titlePlaceholder'|translate}}" />
                 <a role="button" href="" ng-click="exitTitleEdit(sampleItem)"><i class="fa fa-check"></i></a>
               </span>
             </div>
           </div>
         </div>
       </div>
-      <div class="sample__details-container">
-        <div class="sample__url">
-          <span class="sample__url-content" ng-show="!sampleItem.urlEdit">
-            <a role="button" href="" ng-click="editUrl(sampleItem)" class="sample__url-content-button"
-               ng-class="{'ng-invalid':sampleItem.submitted && !sampleItem.url}">
-              {{sampleItem.url || ('samples.urlPlaceholder' | translate)}}<i class="fa fa-pencil"></i>
-            </a>
-          </span>
-          <span class="sample__url-content--active" ng-show="sampleItem.urlEdit">
-            <input class="sample__url-content-input"
-                   type="text"
-                   required
-                   placeholder="{{::'samples.urlPlaceholder'|translate}}"
-                   focus="sampleItem.urlEdit"
-                   ng-model="sampleItem.url"
-                   ui-keypress="{'enter':'exitUrlEdit(sampleItem)'}"
-                   ng-change="onChange()"
-                   ng-class="{'ng-invalid':!sampleItem.url}" />
-            <a role="button" href="" ng-click="exitUrlEdit(sampleItem)"><i class="fa fa-check"></i></a>
-          </span>
-        </div>
-        <div class="sample__description">
+      <div class="banner-content__details-container">
+        <div class="banner-content__description">
           <textarea placeholder="{{::'samples.descriptionPlaceholder'|translate}}"
                     ng-model="sampleItem.description" ></textarea>
         </div>
+        <div class="banner-content__details-row">
+          <span class="banner-content__editable-content" ng-show="!sampleItem.urlEdit">
+            <a role="button" href="" ng-click="editUrl(sampleItem)"
+               class="banner-content__editable-content-button"
+               ng-class="{'ng-invalid':sampleItem.submitted && !sampleItem.url}">
+              {{sampleItem.url || ('samples.urlPlaceholder' | translate)}}
+              <i class="fa fa-pencil"></i>
+            </a>
+          </span>
+          <span class="banner-content__editable-content--active" ng-show="sampleItem.urlEdit">
+            <input focus="sampleItem.urlEdit"
+                   ng-model="sampleItem.url"
+                   ui-keypress="{'enter':'exitUrlEdit(sampleItem)'}"
+                   ng-change="onChange()"
+                   ng-class="{'ng-invalid':!sampleItem.url}"
+                   placeholder="{{::'samples.urlPlaceholder'|translate}}" />
+            <a role="button" href="" ng-click="exitUrlEdit(sampleItem)"><i class="fa fa-check"></i></a>
+          </span>
+        </div>
       </div>
-      <button class="sample__remove" ng-click="removeSample(sampleItem)"></button>
+      <button class="banner-content__remove" ng-click="removeSample(sampleItem)"></button>
     </div>
   </li>
 </ul>
@@ -81,4 +80,3 @@
     </a>
   </div>
 </div>
-
