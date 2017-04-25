@@ -28,7 +28,7 @@
       padding: 2px;
       color: $white;
 
-      .fa-pencil {
+      .hy-edit-event {
         display: none;
         margin-left: 0.5em;
       }
@@ -40,7 +40,7 @@
 
     &:hover {
       cursor: pointer;
-      .fa-pencil {
+      .hy-edit-event {
         display: inline;
       }
     }
@@ -60,7 +60,7 @@
     padding-right: 2.5em;
   }
 
-  .fa-check {
+  .hy-done {
     position: absolute;
     right: 1em;
     top: 50%;

@@ -112,13 +112,13 @@
             role="listitem">
           <a role="button" href="" class="list-of-links__link edit editable" ng-hide="someLink.edit" ng-click="editSomeLink(someLink)">
             {{ someLink.url }}
-            <i class="fa fa-pencil"></i>
+            <i class="hy hy-edit-event"></i>
             <i class="social-media-link-icon social-media-link-icon--edit social-media-link-icon--{{ someLink.type | lowercase }}"></i>
           </a>
 
           <div class="useful-links__edit-link-url" ng-show="someLink.edit">
             <input focus="someLink.edit" ng-model="someLink.url" ui-keypress="{'enter':'exitSomeLinkEdit(someLink)'}">
-            <a role="button" href="" ng-click="exitSomeLinkEdit(someLink)"><i class="fa fa-check"></i></a>
+            <a role="button" href="" ng-click="exitSomeLinkEdit(someLink)"><i class="hy hy-done"></i></a>
           </div>
         </li>
       </ul>
