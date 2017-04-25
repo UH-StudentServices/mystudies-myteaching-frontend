@@ -57,21 +57,6 @@
       "searchResults": "sökresultat"
     }
   },
-  "tour" : {
-    "start": "börja",
-    "skip": "hoppa över",
-    "next": "följande",
-    "previous": "föregående",
-    "finish": "sluta",
-    "intro": {
-      "heading": "Titlen för portföljens introduktion",
-      "text": "Beskrivningen för portföljens introduktion"
-    },
-    "studies": {
-      "heading": "Titlen för introduktion till studier",
-      "text": "Beskrivningen för introduktion till studier"
-    }
-  },
   "contactInformation": {
     "title": "Kontakta mig",
     "addPhoneNumber": "Lägg till telefonnummer",

@@ -57,21 +57,6 @@
       "searchResults": "hakutulokset"
     }
   },
-  "tour" : {
-    "start": "aloita",
-    "skip": "ohita",
-    "next": "seuraava",
-    "previous": "edellinen",
-    "finish": "lopeta",
-    "intro": {
-      "heading": "Portfolion esittelyn otsikko",
-      "text": "Portfolion esittelyn kuvaus"
-    },
-    "studies": {
-      "heading": "Opintojen esittelyn otsikko",
-      "text": "Opintojen esittelyn kuvaus"
-    }
-  },
   "contactInformation": {
     "title": "Ota yhteyttä",
     "addPhoneNumber": "Lisää puhelinnumero",
