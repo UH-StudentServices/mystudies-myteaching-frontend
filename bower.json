@@ -31,7 +31,6 @@
     "cropper": "^2.3.4",
     "es6-promise-polyfill": "^1.1.1",
     "fastclick": "^1.0.6",
-    "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.8",
     "jquery": "^2.2.4",
     "karma-read-json": "^1.1.0",
@@ -53,7 +52,7 @@
     "breakpoint-sass": "^2.7.1",
     "singularity": "^1.7.1",
     "normalize.css": "^5.0.0",
-    "Styleguide": "https://github.com/UniversityofHelsinki/Styleguide.git#release-1.2.0",
+    "Styleguide": "https://github.com/UniversityofHelsinki/Styleguide.git#release-1.3.1",
     "Styleguide-icons": "https://github.com/UniversityofHelsinki/Styleguide-icons.git#5.0.4"
   },
   "resolutions": {

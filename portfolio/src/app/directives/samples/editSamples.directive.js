@@ -26,7 +26,6 @@ angular.module('directives.editSamples', [])
     },
     templateUrl: 'app/directives/samples/editSamples.html',
     link: function($scope) {
-
       $scope.newSample = {};
 
       $scope.editTitle = function(sample) {

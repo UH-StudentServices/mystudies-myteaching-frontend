@@ -38,16 +38,6 @@ angular.module('services.userSettings', ['resources.userSettings'])
       return userSettingsPromise;
     }
 
-    function showPortfolioTour() {
-      return getUserSettings().then(function(userSettings) {
-        return userSettings.showPortfolioTour;
-      });
-    }
-
-    function markPortfolioTourAsShown() {
-      return updateUserSettings({showPortfolioTour: false});
-    }
-
     function acceptCookies() {
       return updateUserSettings({cookieConsent: true});
     }
@@ -55,9 +45,7 @@ angular.module('services.userSettings', ['resources.userSettings'])
     return {
       acceptCookies: acceptCookies,
       getUserSettings: getUserSettings,
-      updateUserSettings: updateUserSettings,
-      showPortfolioTour: showPortfolioTour,
-      markPortfolioTourAsShown: markPortfolioTourAsShown
+      updateUserSettings: updateUserSettings
     };
 
   });

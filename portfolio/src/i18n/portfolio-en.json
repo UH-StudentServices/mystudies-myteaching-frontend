@@ -57,21 +57,6 @@
       "searchResults": "search results"
     }
   },
-  "tour" : {
-    "start": "start",
-    "skip": "skip",
-    "next": "next",
-    "previous": "previous",
-    "finish": "finish",
-    "intro": {
-      "heading": "Portfolio tour intro title",
-      "text": "Portfolio tour intro text"
-    },
-    "studies": {
-      "heading": "Portfolio studies intro title",
-      "text": "Portfolio studies intro text"
-    }
-  },
   "contactInformation": {
     "title": "Contact me",
     "addPhoneNumber": "Add phone number",
@@ -103,7 +88,7 @@
   "workExperience" : {
     "title": "work experience",
     "addWorkExperience": "Add employer",
-    "addJobSearch": "Add email (looking for work)",
+    "addJobSearch": "Add looking for work",
     "jobSearch": "looking for work",
     "employerPlaceholder": "employer",
     "startDatePlaceholder": "mm.yyyy",
@@ -121,7 +106,7 @@
   },
   "samples": {
     "title": "Samples",
-    "addSample": "Add sample url",
+    "addSample": "Add sample",
     "titlePlaceholder": "description",
     "urlPlaceholder": "url",
     "descriptionPlaceholder": "description text"

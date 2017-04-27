@@ -77,14 +77,15 @@ $tagColorEditingColor: #797979;
 
       background-color: $tagColorEditingColor;
 
-      .fa-close {
+      .hy-remove {
         color: $white;
+        cursor: pointer;
+        margin-left: 5px;
+        vertical-align: middle;
+
         &:hover {
           color: $white;
         }
-
-        cursor: pointer;
-        margin-left: 5px;
       }
     }
   }
@@ -102,6 +103,10 @@ $tagColorEditingColor: #797979;
     top: 50%;
     width: 6px;
     z-index: 10;
+  }
+
+  .tag-content {
+    vertical-align: middle;
   }
 
 }

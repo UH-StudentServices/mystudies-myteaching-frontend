@@ -28,7 +28,7 @@ angular.module('directives.workExperience', [
   };
 })
 
-.directive('workExperience', function(WorkExperienceService, momentDateToLocalDateArray) {
+.directive('workExperience', function(WorkExperienceService) {
   return {
     restrict: 'E',
     replace: true,
@@ -39,9 +39,11 @@ angular.module('directives.workExperience', [
     },
     templateUrl: 'app/directives/workExperience/workExperience.html',
     link: function($scope) {
-      $scope.editing = false;
       $scope.workExperience = WorkExperienceService.formatDates($scope.workExperienceData());
+      $scope.editing = false;
       $scope.workExperienceValid = true;
+      $scope.newJob = {};
+      $scope.newJobSearch = {};
 
       WorkExperienceService.getJobSearchSubject().subscribe(function(jobSearch) {
         $scope.jobSearch = jobSearch;
@@ -51,8 +53,15 @@ angular.module('directives.workExperience', [
         $scope.editing = true;
       };
 
+      var isJobSearchValid = function() {
+        if ($scope.jobSearch !== null) {
+          return $scope.jobSearch.contactEmail;
+        }
+        return true;
+      };
+
       var isValid = function() {
-        return $scope.workExperience.every(function(job) {
+        return isJobSearchValid() && $scope.workExperience.every(function(job) {
           return job.employer &&
                  job.startDate.isValid() &&
                  (!job.endDate || job.endDate.isValid()) &&
@@ -67,21 +76,14 @@ angular.module('directives.workExperience', [
       $scope.exitEdit = function() {
         $scope.markAllSubmitted();
 
-        if ($scope.jobSearch !== null) {
-          WorkExperienceService.saveJobSearch($scope.jobSearch);
-        } else {
-          WorkExperienceService.deleteJobSearch($scope.jobSearch);
-        }
-
         if (isValid()) {
-          var updateWorkExperience = angular.copy($scope.workExperience);
+          if ($scope.jobSearch !== null) {
+            WorkExperienceService.saveJobSearch($scope.jobSearch);
+          } else {
+            WorkExperienceService.deleteJobSearch($scope.jobSearch);
+          }
 
-          updateWorkExperience.forEach(function(job) {
-            job.startDate = momentDateToLocalDateArray(job.startDate);
-            job.endDate = momentDateToLocalDateArray(job.endDate);
-          });
-
-          WorkExperienceService.updateWorkExperience($scope.portfolioId, updateWorkExperience).then(function(data) {
+          WorkExperienceService.updateWorkExperience($scope.portfolioId, $scope.workExperience).then(function(data) {
             $scope.workExperience = data;
             $scope.editing = false;
           });
@@ -91,6 +93,9 @@ angular.module('directives.workExperience', [
 
       $scope.markAllSubmitted = function() {
         $scope.workExperience.forEach(function(job) { job.submitted = true; });
+        if ($scope.jobSearch !== null) {
+          $scope.jobSearch.submitted = true;
+        }
       };
     },
   };

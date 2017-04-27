@@ -23,3 +23,21 @@
     background-color: $darkblue;
   }
 }
+
+.add-new-content {
+  position: relative;
+  margin-top: 2em;
+
+  width: 100%;
+  float: left;
+
+  .list-of-links {
+    @include breakpoint($small) {
+      max-width: 238px;
+    }
+  }
+
+  .button--action {
+    margin-top: 1em;
+  }
+}

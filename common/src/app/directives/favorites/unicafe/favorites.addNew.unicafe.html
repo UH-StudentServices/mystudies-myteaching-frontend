@@ -17,7 +17,7 @@
 
 <div class="add-new-rss-feed">
   <div class="loading-container" ng-if="loading">
-    <i class="hy hy-5x hy- fa-spin center"></i>
+    <span class="icon-5x icon--spinner icon-spin center"></i>
   </div>
   <div class="rss-search-result-list" ng-if="!loading">
 
@@ -30,13 +30,9 @@
               class="bar"
               ng-repeat="restaurant in area.restaurants">
             <a tabindex="0" ng-click="addUnicafeFavorite(restaurant)">{{ restaurant.name }}</a>
-
           </li>
         </ul>
       </li>
-
     </ul>
-
-
   </div>
 </div>

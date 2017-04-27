@@ -19,54 +19,51 @@ $sample-width : 238px;
 $sample-height : 170px;
 $sample-invalid-color: red;
 
-$sample-summary-tag-color: $blue;
-$sample-summary-text-color: $white;
-$sample-summary-max-height: 57px;
+$banner-content-description-edit-height: 116px;
 
-$sample-full-description-vertical-margin: 0.85em;
-
-.sample {
-
+.banner-content {
   > li {
     width: 100%;
     display: block;
   }
 
-  &__title-content, &__url-content {
+  &__editable-content {
     @extend .editable-content;
 
     &--active {
       @extend .editable-content-active;
-    }
 
-    &-input {
-      width: 90%;
+      input {
+        width: 90%;
+      }
     }
-    &-button:hover {
+  }
+
+  &__editable-content-button {
+    color: $white;
+
+    &:hover {
       color: $white;
     }
   }
 
-  &__title-content-button {
-    color: $white;
-  }
-
-  &__url-content-button {
+  &__details-container &__editable-content-button {
     color: $silver;
+
+    &:hover {
+      color: $white;
+    }
   }
 
-  &__title-content, &__url-content, &__title-content--active, &__url-content--active {
+  &__editable-content, &__editable-content--active {
     .ng-invalid {
       border: 2px solid $sample-invalid-color;
     }
   }
 
-  &__item, &__add-new {
+  &__item {
     width: 100%;
     float: left;
-  }
-
-  &__item {
     color: $white;
     position: relative;
 
@@ -105,7 +102,7 @@ $sample-full-description-vertical-margin: 0.85em;
     }
   }
 
-  &__banner-content {
+  &__backdrop {
     width: 100%;
     height: 100%;
     position: relative;
@@ -113,11 +110,10 @@ $sample-full-description-vertical-margin: 0.85em;
 
     .editable & {
       background-color: rgba(0, 0, 0, 0.8);
-      color: $silver;
     }
   }
 
-  &__title-container {
+  &__banner-content {
     text-align: center;
     text-transform: uppercase;
     position: relative;
@@ -125,10 +121,13 @@ $sample-full-description-vertical-margin: 0.85em;
     transform: translateY(-50%);
   }
 
-  &__title {
-    text-transform: uppercase;
+  &__banner-title {
     font-weight: 700;
     margin-bottom: 0.2em;
+  }
+
+  &__banner-text {
+    @include font-size(11px);
   }
 
   &__details-container {
@@ -150,11 +149,14 @@ $sample-full-description-vertical-margin: 0.85em;
     }
   }
 
+  &__details-row {
+    margin-bottom: 1em;
+  }
+
   &__description {
     p {
-      font-size: 1em;
-      height: 8.5em;
-      margin: 0;
+      height: calc(#{$sample-height} - 1em);
+      margin-bottom: 1em;
     }
 
     .angular-ellipsis-append {
@@ -166,14 +168,14 @@ $sample-full-description-vertical-margin: 0.85em;
     }
 
     textarea {
-      width: 100%;
-      height: 7em;
+      height: $banner-content-description-edit-height;
       resize: vertical;
-    }
+      margin-bottom: 1em;
 
-    margin-top: 1em;
-    margin-bottom: 1em;
-    width: 100%;
+      @include breakpoint($small) {
+        width: 90%;
+      }
+    }
 
     @include breakpoint($mobile-only) {
       margin-bottom: 1em;
@@ -181,61 +183,13 @@ $sample-full-description-vertical-margin: 0.85em;
   }
 
   &__full-description {
-    margin-top: $sample-full-description-vertical-margin;
-    margin-bottom: $sample-full-description-vertical-margin;
-
     p {
       height: 100%;
-      margin: 3px 0;
-    }
-
-    @include breakpoint($mobile-only) {
-      margin-bottom: 1em;
-    }
-  }
-
-  &__url {
-    width: 100%;
-    height: 1em;
-    margin-bottom: 1em;
-  }
-
-  &__add-new {
-    @include border;
-    position: relative;
-    margin-top: 2em;
-
-    &-container {
-      @extend .input-container;
-      overflow: hidden;
-      margin-right: 40px;
-    }
-
-    &-input {
-      width: 100%;
-      height: 40px;
-      border: 1px solid $lightsilver;
-      padding: 0 20px;
-    }
-
-    &-button {
-      @extend .add-icon;
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 40px;
-      height: 40px;
-      text-align: center;
-      background-color: $blue;
-      color: $white;
-
-      &.form-error {
-        background-color: $gray;
-      }
     }
   }
 
   &__remove {
+    color: white;
     z-index: 2;
     background-color: $blue;
     cursor: pointer;
@@ -245,11 +199,6 @@ $sample-full-description-vertical-margin: 0.85em;
     top: 0;
     right: 0;
     &:before {
-      content : "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
       @include icon($icon-remove);
     }
   }

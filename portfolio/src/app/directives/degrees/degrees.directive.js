@@ -20,7 +20,7 @@ angular.module('directives.degrees', [
   'directives.showDegrees',
   'directives.editDegrees'
 ])
-.directive('degrees', function(DegreeService, momentDateToLocalDateArray) {
+.directive('degrees', function(DegreeService) {
   return {
     restrict: 'E',
     replace: true,
@@ -31,27 +31,40 @@ angular.module('directives.degrees', [
     },
     templateUrl: 'app/directives/degrees/degrees.html',
     link: function($scope) {
-      $scope.editing = false;
       $scope.degrees = DegreeService.formatDates($scope.degreesData());
+
+      $scope.editing = false;
       $scope.newDegree = {};
+      $scope.degreesValid = true;
 
       $scope.edit = function() {
         $scope.editing = true;
       };
 
+      var isValid = function() {
+        return $scope.degrees.every(function(degree) {
+          return degree.title && degree.dateOfDegree.isValid();
+        });
+      };
+
+      $scope.refreshValidity = _.debounce(function() {
+        $scope.degreesValid = isValid();
+      }, 500);
+
+      $scope.markAllSubmitted = function() {
+        $scope.degrees.forEach(function(degree) { degree.submitted = true; });
+      };
+
       $scope.exitEdit = function() {
-        var updateDegrees = angular.copy($scope.degrees);
+        $scope.markAllSubmitted();
 
-        _.forEach(updateDegrees, function(degree) {
-          degree.dateOfDegree = momentDateToLocalDateArray(degree.dateOfDegree);
-        });
-
-        DegreeService.updateDegrees($scope.portfolioId, updateDegrees).then(function(data) {
-          $scope.degrees = data;
-          $scope.editing = false;
-        });
-
-        return true;
+        if (isValid()) {
+          DegreeService.updateDegrees($scope.portfolioId, $scope.degrees).then(function(data) {
+            $scope.degrees = data;
+            $scope.editing = false;
+          });
+          return true;
+        }
       };
     }
   };
