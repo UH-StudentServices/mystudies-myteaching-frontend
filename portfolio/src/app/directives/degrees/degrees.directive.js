@@ -20,7 +20,7 @@ angular.module('directives.degrees', [
   'directives.showDegrees',
   'directives.editDegrees'
 ])
-.directive('degrees', function(DegreeService, momentDateToLocalDateArray) {
+.directive('degrees', function(DegreeService, momentDateToLocalDateArray, $filter) {
   return {
     restrict: 'E',
     replace: true,
@@ -31,8 +31,12 @@ angular.module('directives.degrees', [
     },
     templateUrl: 'app/directives/degrees/degrees.html',
     link: function($scope) {
-      $scope.editing = false;
+      var orderBy = $filter('orderBy');
+
       $scope.degrees = DegreeService.formatDates($scope.degreesData());
+      $scope.degrees = orderBy($scope.degrees, '-dateOfDegree');
+
+      $scope.editing = false;
       $scope.newDegree = {};
       $scope.degreesValid = true;
 
@@ -65,7 +69,7 @@ angular.module('directives.degrees', [
           });
 
           DegreeService.updateDegrees($scope.portfolioId, updateDegrees).then(function(data) {
-            $scope.degrees = data;
+            $scope.degrees = orderBy(data, '-dateOfDegree');
             $scope.editing = false;
           });
           return true;
