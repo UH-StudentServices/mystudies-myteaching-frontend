@@ -17,16 +17,28 @@
 
 angular.module('services.degree', ['resources.degree'])
 
-  .factory('DegreeService', function(DegreeResource, dateArrayToMomentObject) {
+  .factory('DegreeService', function(DegreeResource,
+                                     momentDateToLocalDateArray,
+                                     dateArrayToMomentObject,
+                                     $filter) {
 
     function formatDates(degrees) {
-      return _.map(degrees, function(degree) {
+      var orderBy = $filter('orderBy');
+
+      degrees = _.map(degrees, function(degree) {
         degree.dateOfDegree = dateArrayToMomentObject(degree.dateOfDegree);
         return degree;
       });
+
+      return orderBy(degrees, '-dateOfDegree');
     }
 
-    function updateDegrees(portfolioId, updateDegrees) {
+    function updateDegrees(portfolioId, degrees) {
+      var updateDegrees = angular.copy(degrees);
+
+      _.forEach(updateDegrees, function(degree) {
+        degree.dateOfDegree = momentDateToLocalDateArray(degree.dateOfDegree);
+      });
       return DegreeResource.updateDegrees(portfolioId, updateDegrees).then(formatDates);
     }
 

@@ -28,7 +28,7 @@ angular.module('directives.workExperience', [
   };
 })
 
-.directive('workExperience', function(WorkExperienceService, momentDateToLocalDateArray, $filter) {
+.directive('workExperience', function(WorkExperienceService) {
   return {
     restrict: 'E',
     replace: true,
@@ -39,11 +39,7 @@ angular.module('directives.workExperience', [
     },
     templateUrl: 'app/directives/workExperience/workExperience.html',
     link: function($scope) {
-      var orderBy = $filter('orderBy');
-
       $scope.workExperience = WorkExperienceService.formatDates($scope.workExperienceData());
-      $scope.workExperience = orderBy($scope.workExperience, '-startDate');
-
       $scope.editing = false;
       $scope.workExperienceValid = true;
       $scope.newJob = {};
@@ -87,15 +83,8 @@ angular.module('directives.workExperience', [
             WorkExperienceService.deleteJobSearch($scope.jobSearch);
           }
 
-          var updateWorkExperience = angular.copy($scope.workExperience);
-
-          updateWorkExperience.forEach(function(job) {
-            job.startDate = momentDateToLocalDateArray(job.startDate);
-            job.endDate = momentDateToLocalDateArray(job.endDate);
-          });
-
-          WorkExperienceService.updateWorkExperience($scope.portfolioId, updateWorkExperience).then(function(data) {
-            $scope.workExperience = orderBy(data, '-startDate');
+          WorkExperienceService.updateWorkExperience($scope.portfolioId, $scope.workExperience).then(function(data) {
+            $scope.workExperience = data;
             $scope.editing = false;
           });
           return true;
