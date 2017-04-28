@@ -34,7 +34,7 @@ $time-color: rgb(109, 109, 109);
     padding: 0;
   }
 
-  .hy {
+  .icon--in-menu {
     font-size: 1.2em;
   }
 }
@@ -66,11 +66,7 @@ $time-color: rgb(109, 109, 109);
     }
   }
 
-  .fa {
-    margin-right: 1em;
-  }
-
-  .hy {
+  .in-menu-icon {
     position: relative;
     left: -3px;
     margin-right: 2px;

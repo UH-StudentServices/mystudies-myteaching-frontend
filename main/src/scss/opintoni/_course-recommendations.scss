@@ -15,6 +15,12 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+.course-recommendations__title--container {
+  .icon--question::after {
+    vertical-align: middle;
+  }
+}
+
 .course-recommendations__title {
   display: inline-block;
   margin-right: 1em;

@@ -74,7 +74,7 @@ describe('Useful links', function() {
               return titleInput.sendKeys(EDITED);
             })
             .then(function() {
-              return e.element(by.css('a .hy-done')).click();
+              return e.element(by.css('a .icon--done')).click();
             })
             .then(function() {
               return editUsefulLinksDoneElementFinder.click();
@@ -92,7 +92,7 @@ describe('Useful links', function() {
         editUsefulLinksElementFinder.click();
 
         findUsefulLinkToEdit(linkTitle).then(function(e) {
-          e.element(by.css('.hy-remove'))
+          e.element(by.css('.icon--remove'))
             .click()
             .then(function() {
               return editUsefulLinksDoneElementFinder.click();

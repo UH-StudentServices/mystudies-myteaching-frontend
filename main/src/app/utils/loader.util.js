@@ -3,7 +3,7 @@ angular.module('utils.loader', ['blockUI'])
     '<div class="block-ui-overlay"></div>' +
     '<div class="block-ui-message-container">' +
       '<div class="content-loader__loader">' +
-        '<span class="hy hy-spinner hy-spin"></span>' +
+        '<span class="icon--spinner icon-spin"/>' +
       '</div>' +
     '</div>')
 

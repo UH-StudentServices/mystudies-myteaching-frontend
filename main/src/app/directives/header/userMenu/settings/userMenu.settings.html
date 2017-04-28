@@ -17,49 +17,45 @@
 
 <div dropdown class="user-settings" close-callback="resetMenu()">
   <div class="dropdown-toggle">
-    <a href=""
-       class="user-menu__actions--action"
-       ng-class="{active : showMenu}"
-       aria-label="{{::('userSettings.title' | translate)}}"
-       role="button">
+    <a role="button" href="" aria-label="{{::('userSettings.title' | translate)}}"
+       class="user-menu__actions--action" ng-class="{active : showMenu}">
+      <avatar-image class="user-avatar__small" img-src="session.avatarUrl" img-alt="session.name"></avatar-image>
+    </a>
+  </div>
+  <div role="menu" class="user-settings__menu dropdown-content">
+    <ul>
+      <li class="divider change-avatar" role="menuitem">
+        <avatar></avatar>
+      </li>
+      <li class="user-settings__menu-item" role="menuitem" ng-show="session.faculty">
+        <a href="{{ session.faculty.uri }}" target="_blank">
+          <i class="in-menu-icon icon--units-and-faculties"></i>
+          {{ "faculties." + session.faculty.code | translate }}
+        </a>
+      </li>
+      <li limit-visibility="['STUDENT_ONLY', 'MY_STUDIES_ONLY']" class="user-settings__menu-item" role="menuitem">
+        <a href="" ng-click="openPortfolio(roles.student)">
+          <i class="in-menu-icon icon--profile"></i>
+          {{::('userSettings.portfolio' | translate | capitalize)}}
+        </a>
+      </li>
+      <li limit-visibility="['TEACHER_ONLY', 'MY_TEACHINGS_ONLY']" class="user-settings__menu-item" role="menuitem">
+        <a href="" ng-click="openPortfolio(roles.teacher)">
+          <i class="in-menu-icon icon--profile"></i>
+          {{::('userSettings.universityPortfolio' | translate | capitalize)}}
+        </a>
+      </li>
 
-    <avatar-image class="user-avatar__small" img-src="session.avatarUrl" img-alt="session.name"></avatar-image>
-  </a>
-</div>
-<div role="menu" class="user-settings__menu dropdown-content">
-  <ul>
-    <li class="divider change-avatar" role="menuitem">
-      <avatar></avatar>
-    </li>
-    <li class="user-settings__menu-item" role="menuitem" ng-show="session.faculty">
-      <a href="{{ session.faculty.uri }}" target="_blank">
-        <i class="hy hy-units-and-faculties"></i>
-        {{ "faculties." + session.faculty.code | translate }}
-      </a>
-    </li>
-    <li limit-visibility="['STUDENT_ONLY', 'MY_STUDIES_ONLY']" class="user-settings__menu-item" role="menuitem">
-      <a href="" ng-click="openPortfolio(roles.student)">
-        <i class="hy hy-profile"></i>
-        {{::('userSettings.portfolio' | translate | capitalize)}}
-      </a>
-    </li>
-    <li limit-visibility="['TEACHER_ONLY', 'MY_TEACHINGS_ONLY']" class="user-settings__menu-item" role="menuitem">
-      <a href="" ng-click="openPortfolio(roles.teacher)">
-        <i class="hy hy-profile"></i>
-        {{::('userSettings.universityPortfolio' | translate | capitalize)}}
-      </a>
-    </li>
+      <li limit-visibility="['ADMIN_ONLY']" session="session" class="user-settings__menu-item" role="menuitem">
+        <a ui-sref="admin">
+          <i class="in-menu-icon icon--modify"></i>
+          {{::('admin.pageHeaderBranding' | translate)}}
+        </a>
+      </li>
 
-    <li limit-visibility="['ADMIN_ONLY']" session="session" class="user-settings__menu-item" role="menuitem">
-      <a ui-sref="admin">
-        <i class="hy hy-modify"></i>
-        {{::('admin.pageHeaderBranding' | translate)}}
-      </a>
-    </li>
-
-    <li class="divider-with-margin show-mobile-only" role="menuitem">
-      <logout-link></logout-link>
-    </li>
-  </ul>
-</div>
+      <li class="divider-with-margin show-mobile-only" role="menuitem">
+        <logout-link></logout-link>
+      </li>
+    </ul>
+  </div>
 </div>

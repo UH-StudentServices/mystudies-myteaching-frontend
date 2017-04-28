@@ -39,7 +39,7 @@
                             editable="link.type === UsefulLinkType.USER_DEFINED">
       </editable-useful-link>
       <span ng-show="editMode && !link.edit" class="useful-links__delete-link" ng-click="deleteLink(link)" role="button">
-        <i class="hy hy-remove"></i>
+        <i class="icon-remove"></i>
       </span>
     </li>
   </ul>
@@ -53,14 +53,12 @@
                placeholder="{{::('usefulLinks.addNewLink' | translate | capitalize)}}"
                ui-keypress="{'enter':'addNewUsefulLink()'}">
       </form>
-      <span ng-show="pageTitleSearchState === SearchState.SEARCHING">
-        <i class="hy hy-spinner hy-spin"></i>
-      </span>
+      <span ng-show="pageTitleSearchState === SearchState.SEARCHING" class="icon--spinner icon-spin"/>
       <a ng-show="newLink.url" tabindex="0" ng-click="clearSearch()">
-        <i class="hy hy-close"></i>
+        <i class="icon--close"></i>
       </a>
       <a class="new-useful-link__add-button" tabindex="0" ng-click="addNewUsefulLink()">
-        <i class="hy hy-plus"></i>
+        <i class="icon--plus"></i>
       </a>
     </div>
     <useful-link-title ng-show="pageTitleSearchState === SearchState.SHOW_RESULTS"

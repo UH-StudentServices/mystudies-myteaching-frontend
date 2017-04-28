@@ -23,11 +23,4 @@
   right: 0;
   position: absolute;
   @include vertically-center;
-
-  @include breakpoint($small) {
-    .hy {
-      position: relative;
-      top: 2px;
-    }
-  }
 }

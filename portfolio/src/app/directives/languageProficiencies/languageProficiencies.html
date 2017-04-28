@@ -36,7 +36,7 @@
                ng-click="toggleLanguageSelect(this)"
                aria-pressed="{{editing && languageSelectVisible}}">
             <span translate="languages.code.{{languageProficiency.language}}"></span>
-            <i class="hy hy-drop-down" role="presentational" ng-show="editing"></i>
+            <i class="icon--drop-down" role="presentational" ng-show="editing"></i>
             <div ng-show="editing && languageSelectVisible" class="language-proficiency-item__select-container">
               <ul class="language-proficiency-item__select" role="listbox">
                 <li role="option"
@@ -44,9 +44,7 @@
                                filter:excludeOtherProficiencyLanguages(languageProficiency.language) |
                                orderBy:translatedLanguageName(languageProficiency.language)"
                     class="language-proficiency-item__select-item">
-                  <a role="button"
-                     href=""
-                     class="language-proficiency-item__select-item-link"
+                  <a role="button" href="" class="language-proficiency-item__select-item-link"
                      translate="languages.code.{{lang}}"
                      ng-click="updateLanguage(languageProficiency, lang)">
                   </a>
@@ -59,15 +57,13 @@
                ng-click="toggleProficiencySelect(this)"
                aria-pressed="{{editing && proficiencySelectVisible}}">
             <span translate="languages.proficiency.{{languageProficiency.proficiency}}"></span>
-            <i class="hy hy-drop-down" role="presentational" ng-show="editing"></i>
+            <i class="icon--drop-down" role="presentational" ng-show="editing"></i>
             <div ng-show="editing && proficiencySelectVisible" class="language-proficiency-item__select-container">
               <ul class="language-proficiency-item__select" role="listbox">
                 <li role="option"
                     ng-repeat="pr in proficiencies"
                     class="language-proficiency-item__select-item">
-                  <a role="button"
-                     href=""
-                     class="language-proficiency-item__select-item-link"
+                  <a role="button" href="" class="language-proficiency-item__select-item-link"
                      translate="languages.proficiency.{{pr}}"
                      ng-click="updateProficiency(languageProficiency, pr)">
                   </a>
@@ -77,19 +73,15 @@
           </div>
         </div>
 
-        <a role="button"
-           href=""
-           class="language-proficiency-item__remove"
+        <a role="button" href="" class="language-proficiency-item__remove"
            aria-label="{{::('general.remove' | translate)}}"
            ng-show="editing"
            ng-click="remove(languageProficiency)">
-          <i class="hy hy-remove"></i>
+          <i class="icon--remove"></i>
         </a>
     </li>
     <li class="language-proficiency-list__add-new-container" ng-show="editing">
-      <a class="language-proficiency-list__add-new"
-         role="button"
-         href=""
+      <a role="button" href="" class="language-proficiency-list__add-new"
          aria-label="{{::('general.add' | translate)}}"
          ng-click="addNew()"></a>
     </li>

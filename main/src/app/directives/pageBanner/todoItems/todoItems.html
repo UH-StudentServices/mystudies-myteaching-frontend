@@ -19,7 +19,7 @@
   <div class="todo-items__bg-img-container">
     <div class="todo-items__box" ng-if="todoItems.length === 0 && todoItemsLoaded">
       <div translate="todoItems.listIsEmpty"></div>
-      <div class="todo-items__icon"><span class="hy hy-5x hy-todo-list"></span></div>
+      <div class="todo-items__icon"><span class="icon-5x icon--todo-list"></span></div>
     </div>
 
     <ul class="todo-items__box" ng-if="todoItems.length > 0">
@@ -30,10 +30,10 @@
           swipe-right-callback="markAsDone"
           swipe-object="todoItem">
         {{ todoItem.content }}
-          <span class="todo-items__action todo-items__action--done hy hy-done"
+          <span class="todo-items__action todo-items__action--done icon--done"
                 ng-click="markAsDone(todoItem)">
           </span>
-          <span class="todo-items__action todo-items__action--remove hy hy-remove"
+          <span class="todo-items__action todo-items__action--remove icon--remove"
                 ng-click="removeTodoItem(todoItem)">
           </span>
       </li>
@@ -48,9 +48,9 @@
              placeholder="{{::('todoItems.addNew' | translate)}}"
              aria-label="{{::('todoItems.addNew' | translate)}}">
     </div>
-    <button class="todo-items__new-item-add-icon hy hy-plus"
+    <button class="todo-items__new-item-add-icon icon--plus"
             ng-click="addTodoItem()"
-            aria-label="{{::('todoItems.ariaLabels.addNewButton' | translate)}}">
+            aria-label="{{::('todoItems.ariaLabels.addNewButton' | translate)}}">
     </button>
   </div>
 </div>
