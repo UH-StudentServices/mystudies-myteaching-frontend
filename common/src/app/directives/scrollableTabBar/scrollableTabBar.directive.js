@@ -69,14 +69,14 @@ angular.module('directives.scrollableTabBar', [])
         }
 
         var DEBOUNCE_DELAY = 200,
-            SCROLL_STEP = 50,
+            SCROLL_STEP = 50,
             MOBILE_ONLY_BREAKPOINT_VALUE = '(max-width: 48em)',
             DEFAULT_TAB_SELECTOR = '.tab-set__tab',
             DEFAULT_SCROLLER_DISPLAY_THRESHOLD = 6, // this should equal horizontal tab padding on first/last tabs
             tabContainer = el[0].querySelector('.tab-bar__tab-container'),
-            tabSelector = attrs.tabSelector || DEFAULT_TAB_SELECTOR,
+            tabSelector = attrs.tabSelector || DEFAULT_TAB_SELECTOR,
             debouncedResizeHandler = _.debounce(onResize, DEBOUNCE_DELAY),
-            outermostTabPadding = attrs.outermostTabPadding || DEFAULT_SCROLLER_DISPLAY_THRESHOLD;
+            outermostTabPadding = attrs.outermostTabPadding || DEFAULT_SCROLLER_DISPLAY_THRESHOLD;
 
         angular.element($window).on('resize', debouncedResizeHandler);
 

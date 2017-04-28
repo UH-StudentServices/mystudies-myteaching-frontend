@@ -18,7 +18,7 @@
 var baseUrl = browser.params.baseUrl;
 
 describe('Frontpage', function() {
-  it('Will load the portfolio page', function() {
+  it('Will load the portfolio page', function() {
     browser.get(baseUrl);
     expect(element(by.cssContainingText('h1', 'Portfolio')).isPresent()).toEqual(true);
   });

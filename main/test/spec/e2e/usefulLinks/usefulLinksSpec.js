@@ -21,7 +21,7 @@ describe('Useful links', function() {
 
   var usefulLinksElementFinder = element.all(by.repeater('link in usefulLinks'));
 
-  it('Will show some useful links', function() {
+  it('Will show some useful links', function() {
     util.loginStudent();
     expect(usefulLinksElementFinder.count()).toBeGreaterThan(0);
   });
@@ -39,7 +39,7 @@ describe('Useful links', function() {
     function findUsefulLinkToEdit(linkTitle) {
       return usefulLinksElementFinder.filter(function(e) {
         return e.element(by.cssContainingText('a', linkTitle)).isPresent();
-      }).then(function(e) {
+      }).then(function(e) {
         return e[0];
       });
     }

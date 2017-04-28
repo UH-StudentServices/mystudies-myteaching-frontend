@@ -118,7 +118,7 @@ angular.module('opintoniPortfolioApp', [
         },
         portfolio: function(PortfolioService, $state, $stateParams, state) {
           return PortfolioService.findPortfolioByPath(state, $stateParams.lang, $stateParams.userpath)
-            .catch(function findPortfolioFail(error) {
+            .catch(function findPortfolioFail(error) {
               if (error.status === 404) {
                 $state.go('notFound');
               }
@@ -148,7 +148,7 @@ angular.module('opintoniPortfolioApp', [
     ]);
   })
 
-  .run(function($rootScope, $window, LanguageService) {
+  .run(function($rootScope, $window, LanguageService) {
     var language = LanguageService.getCurrent();
 
     $rootScope.selectedLanguage = language;

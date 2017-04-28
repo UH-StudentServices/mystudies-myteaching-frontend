@@ -17,7 +17,7 @@
 
 <div class="cookie-notification">
   <span class="cookie-notification__content">
-    {{::('cookieNotification.notification' | translate)}}
+    {{::('cookieNotification.notification' | translate)}}
     <a href="{{::privacyPolicyLink.href[selectedLanguage]}}">{{::(privacyPolicyLink.key | translate)}}</a>
   </span>
 
@@ -26,7 +26,7 @@
        href=""
        class="cookie-notification__dismiss button"
        ng-click="dismiss()">
-      {{::('general.ok' | translate)}}
+      {{::('general.ok' | translate)}}
     </a>
   </span>
 </div>

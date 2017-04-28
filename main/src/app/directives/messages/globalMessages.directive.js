@@ -61,7 +61,7 @@ angular.module('directives.globalMessages',
     $httpProvider.interceptors.push('httpRequestInterceptor');
   })
 
-  .directive('globalMessages', function(GlobalMessagesService, MessageTypes) {
+  .directive('globalMessages', function(GlobalMessagesService, MessageTypes) {
     return {
       restrict: 'E',
       replace: true,

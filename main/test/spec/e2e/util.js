@@ -68,7 +68,7 @@ function waitUntilPresent(elementFinder) {
       });
     };
   } else {
-    predicateFunction = function() {
+    predicateFunction = function() {
       return elementFinder.isPresent();
     };
   }
@@ -79,13 +79,13 @@ function waitUntilNotPresent(elementFinder) {
   var predicateFunction;
 
   if (typeof elementFinder.count === 'function') {
-    predicateFunction = function() {
+    predicateFunction = function() {
       return elementFinder.count().then(function(count) {
         return count === 0;
       });
     };
   } else {
-    predicateFunction = function() {
+    predicateFunction = function() {
       return elementFinder.isPresent().then(function(present) {
         return present === false;
       });
@@ -99,7 +99,7 @@ function waitUntilVisible(elementFinder) {
   var predicateFunction;
 
   if (typeof elementFinder.count === 'function') {
-    predicateFunction = function() {
+    predicateFunction = function() {
       return elementFinder.filter(function(e) {
         return e.isDisplayed();
       }).count().then(function(count) {
@@ -107,7 +107,7 @@ function waitUntilVisible(elementFinder) {
       });
     };
   } else {
-    predicateFunction = function() {
+    predicateFunction = function() {
       return elementFinder.isDisplayed();
     };
   }

@@ -79,7 +79,7 @@ describe('WorkExperienceService', function() {
     };
 
     inject(function(_$rootScope_, _$q_, _$httpBackend_, _WorkExperienceService_,
-                    _StateService_, _PortfolioService_) {
+                    _StateService_, _PortfolioService_) {
       WorkExperienceService = _WorkExperienceService_;
       $httpBackend = _$httpBackend_;
       $q = _$q_;
@@ -102,9 +102,9 @@ describe('WorkExperienceService', function() {
       .respond(portfolioResponse);
   });
 
-  describe('Work experience', function() {
+  describe('Work experience', function() {
 
-    it('Will provide work experience data', function() {
+    it('Will provide work experience data', function() {
       getWorkExperienceSubject()
         .subscribe(function(workExperience) {
           expect(workExperience[0].employer)
@@ -117,7 +117,7 @@ describe('WorkExperienceService', function() {
 
   describe('Job search', function() {
 
-    it('Will provide job search data', function() {
+    it('Will provide job search data', function() {
       getJobSearchSubject()
         .subscribe(function(jobSearch) {
           expect(jobSearch.contactEmail)

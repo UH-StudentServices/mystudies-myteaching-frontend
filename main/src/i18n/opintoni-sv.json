@@ -329,7 +329,7 @@
   },
   "searchResults": {
     "title": "Sök",
-    "hitsFound": "Resultat ({{ hitCount }})",
+    "hitsFound": "Resultat ({{ hitCount }})",
     "close": "Stäng sök"
   },
   "pageBanner": {

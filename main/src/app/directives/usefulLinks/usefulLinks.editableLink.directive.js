@@ -24,7 +24,7 @@ angular.module('directives.usefulLinks.editableLink', [
   .constant('closeEditUsefulLinkEvent', 'EXIT_EDIT_USEFUL_LINK_EVENT')
 
   .directive('editableUsefulLink', function($rootScope, closeEditUsefulLinkEvent,
-                                            UsefulLinksResource, Focus) {
+                                            UsefulLinksResource, Focus) {
     return {
       restrict: 'E',
       replace: true,
@@ -33,7 +33,7 @@ angular.module('directives.usefulLinks.editableLink', [
         usefulLink: '=',
         editable: '='
       },
-      link: function($scope, element) {
+      link: function($scope, element) {
         function setFocusOnEdit() {
           Focus.storeFocus();
           Focus.setFocus(element.find('input[ng-model="usefulLink.url"]'));
@@ -59,7 +59,7 @@ angular.module('directives.usefulLinks.editableLink', [
           if ($scope.usefulLink.url && $scope.usefulLink.description) {
             UsefulLinksResource
               .update(_.omit($scope.usefulLink, 'edit'))
-              .then(function() {
+              .then(function() {
                 setFocusOnSave();
                 exitEditUsefulLink();
               });
