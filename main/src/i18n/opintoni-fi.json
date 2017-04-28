@@ -327,7 +327,7 @@
   },
   "searchResults": {
     "title": "Haku",
-    "hitsFound": "Tulokset ({{ hitCount }})",
+    "hitsFound": "Tulokset ({{ hitCount }})",
     "close": "Sulje haku"
   },
   "pageBanner": {

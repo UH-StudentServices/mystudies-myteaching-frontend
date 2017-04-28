@@ -328,7 +328,7 @@
   },
   "searchResults": {
     "title": "Search",
-    "hitsFound": "Results ({{ hitCount }})",
+    "hitsFound": "Results ({{ hitCount }})",
     "close": "Close search"
   },
   "pageBanner": {

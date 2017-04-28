@@ -22,13 +22,14 @@
   </div>
   
   <div ng-if="authorizationUrl" class="authorization-url-container">
-    <span class="hy hy-info-stroke" title=""></span>
+    <span class="icon--info-stroke" title=""></span>
     <span translate="favorites.unisport.authorizationRequired"></span>
-    <a href="{{ ::authorizationUrl }}" translate="favorites.unisport.authorizationButton" class="button"></a>
+    <a href="{{ ::authorizationUrl }}" translate="favorites.unisport.authorizationButton"
+       class="button--action icon--arrow-right"></a>
   </div>
 
   <div ng-if="!authorizationUrl && events.length === 0" class="authorization-url-container">
-    <span class="hy hy-info-stroke" title=""></span>
+    <span class="icon--info-stroke" title=""></span>
     <span translate="favorites.unisport.noReservations"></span>
   </div>
 

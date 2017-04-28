@@ -44,11 +44,11 @@ angular.module('directives.favorites.addNew.link', [
 
         $scope.search = search;
 
-        $scope.clearSearch = function() {
+        $scope.clearSearch = function() {
           $scope.metaData = undefined;
         };
 
-        $scope.addLinkFavorite = function addLinkFavorite() {
+        $scope.addLinkFavorite = function addLinkFavorite() {
           if (!_.isUndefined($scope.metaData)) {
             FavoritesService.saveLinkFavorite($scope.metaData, $scope.favorite.type)
               .then(function saveLinkSuccess() {

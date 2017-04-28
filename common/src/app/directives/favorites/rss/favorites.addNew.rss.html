@@ -22,14 +22,14 @@
         clear-search-fn="clearSearch"
         enter-fn="addFeedOnEnter"
         loading="loading"
-        placeholder="{{::('favorites.rss.rssFeedSearch' | translate | capitalize)}}"
+        placeholder="{{::('favorites.rss.rssFeedSearch' | translate | capitalize)}}"
         input-type="text"
         search-string="searchString">
     </add-new-favorite-search>
   </div>
 
   <div class="add-favorite-search-result">
-    <ul role="list" aria-label="{{::('favorites.ariaLabels.searchResults' | translate)}}">
+    <ul role="list" aria-label="{{::('favorites.ariaLabels.searchResults' | translate)}}">
       <li role="listitem" class="bar" ng-repeat="result in searchResults"><a tabindex="0" ng-click="addFeed(result.url)">{{result.title | stripHTML}}</a></li>
     </ul>
   </div>

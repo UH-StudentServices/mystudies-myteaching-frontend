@@ -23,7 +23,7 @@ describe('Frontpage', function() {
     return element(by.cssContainingText('h1', siteName));
   }
 
-  it('Will load the my studies frontpage', function() {
+  it('Will load the my studies frontpage', function() {
     util.loginStudent();
     expect(siteNameFinder('My studies').isPresent()).toEqual(true);
   });

@@ -21,7 +21,7 @@ describe('Useful links', function() {
 
   var usefulLinksElementFinder = element.all(by.repeater('link in usefulLinks'));
 
-  it('Will show some useful links', function() {
+  it('Will show some useful links', function() {
     util.loginStudent();
     expect(usefulLinksElementFinder.count()).toBeGreaterThan(0);
   });
@@ -39,7 +39,7 @@ describe('Useful links', function() {
     function findUsefulLinkToEdit(linkTitle) {
       return usefulLinksElementFinder.filter(function(e) {
         return e.element(by.cssContainingText('a', linkTitle)).isPresent();
-      }).then(function(e) {
+      }).then(function(e) {
         return e[0];
       });
     }
@@ -74,7 +74,7 @@ describe('Useful links', function() {
               return titleInput.sendKeys(EDITED);
             })
             .then(function() {
-              return e.element(by.css('a .hy-done')).click();
+              return e.element(by.css('a .icon--done')).click();
             })
             .then(function() {
               return editUsefulLinksDoneElementFinder.click();
@@ -92,7 +92,7 @@ describe('Useful links', function() {
         editUsefulLinksElementFinder.click();
 
         findUsefulLinkToEdit(linkTitle).then(function(e) {
-          e.element(by.css('.hy-remove'))
+          e.element(by.css('.icon--remove'))
             .click()
             .then(function() {
               return editUsefulLinksDoneElementFinder.click();

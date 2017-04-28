@@ -94,7 +94,7 @@ angular.module('directives.contactInformation', ['services.contactInformation', 
             .getEmployeeContactInformation($scope.portfolioId)
             .then(function(data) {
               _.assign($scope.contactInformation, _.omitBy(data, function(value, key) {
-                return key === 'someLinks' || !value;
+                return key === 'someLinks' || !value;
               }));
             });
         };

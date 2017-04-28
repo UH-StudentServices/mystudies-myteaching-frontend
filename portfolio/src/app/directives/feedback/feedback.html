@@ -18,13 +18,13 @@
 <div class="feedback-container" ng-class="{form: showForm}">
   <div class="feedback__box-default" ng-show="showDefaultState" ng-click="giveFeedback()">
     <div class="content">
-      <span class="hy hy-2x hy-chat"></span>
+      <span class="icon-2x icon--chat"></span>
       <div class="hide-mobile-only" translate="feedback.title"></div>
     </div>
   </div>
   <div class="feedback__box-submitted" ng-show="showSubmittedState">
     <div class="content">
-      <span class="hy hy-2x hy-done"></span>
+      <span class="icon-2x icon--done"></span>
       <div class="hide-mobile-only" translate="feedback.submitted"></div>
     </div>
   </div>
@@ -38,8 +38,9 @@
           </label>
         </div>
         <div class="actions">
-          <span ng-click="cancel()" class="hy hy-remove cancel"></span>
-          <input ng-disabled="!feedbackForm.$valid" ng-click="submit()" type="submit" value="{{::('feedback.submit' | translate)}}" />
+          <span ng-click="cancel()" class="icon--remove cancel"></span>
+          <input ng-disabled="!feedbackForm.$valid" ng-click="submit()" type="submit"
+                 value="{{::('feedback.submit' | translate)}}" />
         </div>
       </form>
     </div>

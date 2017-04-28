@@ -37,7 +37,7 @@
            target="_blank" translate="weekFeed.showOnMap"></a>
         <a ng-if="location.reittiopasEnabled" ng-click="openReittiopas(feedItem.startDate, location)" tabindex="0">
           {{::('weekFeed.showRoute' | translate)}}
-          <span ng-show="location.loadingLocation"><i class="hy hy-spinner hy-spin"></i></span>
+          <span ng-show="location.loadingLocation" class="icon--spinner icon-spin"/>
         </a>
       </span>
     </div>

@@ -364,7 +364,7 @@ angular.module('directives.weekFeed', [
 
   .factory('FeedItemTimeFilter', function(FeedItemTimeCondition) {
     function isInTimeFrame(item, timeCondition, now) {
-      var nowMoment = now || moment.utc();
+      var nowMoment = now || moment.utc();
 
       switch (timeCondition) {
         case FeedItemTimeCondition.ALL:

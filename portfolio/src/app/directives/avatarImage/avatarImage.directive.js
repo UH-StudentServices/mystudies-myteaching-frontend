@@ -24,7 +24,7 @@ angular.module('directives.avatarImage', ['services.portfolio'])
       scope: {
       },
       controller: function($scope, PortfolioService) {
-        PortfolioService.getPortfolio().then(function(portfolio) {
+        PortfolioService.getPortfolio().then(function(portfolio) {
           $scope.avatarUrl = portfolio.avatarUrl;
           $scope.default = portfolio.avatarUrl.indexOf('/api') === -1;
         });

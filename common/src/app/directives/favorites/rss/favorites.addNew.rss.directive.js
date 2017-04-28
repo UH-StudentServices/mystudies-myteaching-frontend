@@ -50,7 +50,7 @@ angular.module('directives.favorites.addNew.rss', [
           }
         }
 
-        function findFeedFailed() {
+        function findFeedFailed() {
           $scope.searchResults = null;
         }
 

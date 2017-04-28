@@ -31,7 +31,7 @@ angular.module('directives.editFreeText', [])
     link: function(scope) {
       scope.editingTitle = false;
 
-      scope.editTitle = function() {
+      scope.editTitle = function() {
         scope.editingTitle = !scope.editingTitle;
       };
     }

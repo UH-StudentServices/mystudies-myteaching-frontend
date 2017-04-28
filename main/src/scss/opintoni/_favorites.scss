@@ -322,6 +322,10 @@
 }
 
 .add-favorite-search {
+  .icon--search::after, .icon--remove::after {
+    vertical-align: middle;
+  }
+
   input[type="text"], input[type="url"] {
     border: 0;
     width: 80%;

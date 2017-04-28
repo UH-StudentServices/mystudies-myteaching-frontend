@@ -28,7 +28,7 @@
       padding: 2px;
       color: $white;
 
-      .hy-edit-event {
+      .icon--edit-event {
         display: none;
         margin-left: 0.5em;
       }
@@ -40,7 +40,7 @@
 
     &:hover {
       cursor: pointer;
-      .hy-edit-event {
+      .icon--edit-event {
         display: inline;
       }
     }
@@ -60,7 +60,7 @@
     padding-right: 2.5em;
   }
 
-  .hy-done {
+  .icon--done {
     position: absolute;
     right: 1em;
     top: 50%;

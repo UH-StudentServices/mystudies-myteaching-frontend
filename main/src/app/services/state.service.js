@@ -35,7 +35,7 @@ angular.module('services.state', [
   .factory('StateService', function($state, $location, State, Configuration, Role, ConfigurationProperties) {
 
     var stateMatches = function(state, name) {
-      if (state === name || state.name === name) {
+      if (state === name || state.name === name) {
         return true;
       } else if (state.parent) {
         return stateMatches(state.parent, name);

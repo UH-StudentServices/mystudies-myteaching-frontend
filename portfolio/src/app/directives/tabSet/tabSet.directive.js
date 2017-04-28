@@ -57,7 +57,7 @@ angular.module('directives.tabSet', ['directives.scrollableTabBar',
         }
 
         function selectDefaultOrFirstTab(tabs) {
-          selectTab(_.find(tabs, 'activeByDefault') || tabs[0]);
+          selectTab(_.find(tabs, 'activeByDefault') || tabs[0]);
         }
 
         function initTabs() {

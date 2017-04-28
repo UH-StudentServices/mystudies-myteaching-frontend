@@ -32,19 +32,20 @@
     <tr ng-repeat="feedback in feedbackItems">
       <td>
         <div class="form-type-checkbox">
-          <input id="{{ feedback.id }}" type="checkbox" ng-model="feedback.processed" ng-change="feedbackChanged(feedback)" />
+          <input id="{{ feedback.id }}" type="checkbox"
+                 ng-model="feedback.processed" ng-change="feedbackChanged(feedback)" />
           <label ng-if="!isLoading(feedback)" for="{{ feedback.id }}"></label>
           <div class="loading-spinner-container" ng-if="isLoading(feedback)">
-            <span class="hy hy-spinner hy-spin"></span>
+            <span class="icon-5x icon--spinner icon-spin"/>
           </div>
         </div>
       </td>
       <td>{{ feedback.content }}</td>
       <td>{{ feedback.email }}</td>
       <td>{{ feedback.created }}</td>
-      <td>{{ feedback.metadata | faculty }}</td>
-      <td>{{ feedback.metadata | state }}</td>
-      <td>{{ feedback.metadata | userAgent }}</td>
+      <td>{{ feedback.metadata | faculty }}</td>
+      <td>{{ feedback.metadata | state }}</td>
+      <td>{{ feedback.metadata | userAgent }}</td>
       <td class="feedback-table__comment-cell">
         <span ng-bind="feedback.comment"></span>
         <a class="feedback-edit-toggle button--action theme-transparent"
@@ -54,13 +55,15 @@
            translate="general.edit"></a>
         <div class="feedback-highlight-overlay" ng-show="feedback.commentEditMode"></div>
         <div class="feedback-comment-edit-controls" ng-show="feedback.commentEditMode">
-          <textarea cols="10" rows="5" class="feedback-comment-edit-controls__comment-content" ng-model="feedback.stagedComment"></textarea>
+          <textarea cols="10" rows="5" class="feedback-comment-edit-controls__comment-content"
+                    ng-model="feedback.stagedComment"></textarea>
           <div class="button-group--small">
             <a class="button" tabindex="0" ng-click="saveComment(feedback)">
               <span ng-show="!feedback.inflightUpdate" translate="general.save"></span>
-              <span ng-show="feedback.inflightUpdate" class="hy hy-spinner hy-spin"></span>
+              <span ng-show="feedback.inflightUpdate" class="icon-5x icon--spinner icon-spin"></span>
             </a>
-            <a class="button" tabindex="0" ng-click="toggleCommentEditMode(feedback)" translate="general.cancel"></a>
+            <a class="button" tabindex="0" ng-click="toggleCommentEditMode(feedback)"
+               translate="general.cancel"></a>
           </div>
         </div>
       </td>
@@ -68,13 +71,23 @@
   </table>
 
   <ul class="pager">
-    <li class="pager__first" ng-click="selectPage(0)"><a tabindex="0" translate="admin.first"></a></li>
-    <li class="pager__previous" ng-click="previousPage()"><a tabindex="0" translate="tour.common.previous"></a></li>
-
-    <li class="pager__page" ng-repeat="index in pageIndexes" ng-class="pageClasses(index)"><a  tabindex="0" ng-click="selectPage(index)">{{ index + 1 }}</a></li>
-
-    <li class="pager__next" ng-click="nextPage()"><a  tabindex="0" translate="tour.common.next"></a></li>
-    <li class="pager__last" ng-click="selectPage(pageIndexes.length - 1)"><a  tabindex="0" translate="admin.last"></a></li>
-    <li class="pager__page"><a  tabindex="0" href="/api/admin/v1/feedback/csv" translate="admin.downloadCsv"></a></li>
+    <li class="pager__first" ng-click="selectPage(0)">
+      <a tabindex="0" translate="admin.first"></a>
+    </li>
+    <li class="pager__previous" ng-click="previousPage()">
+      <a tabindex="0" translate="tour.common.previous"></a>
+    </li>
+    <li class="pager__page" ng-repeat="index in pageIndexes" ng-class="pageClasses(index)">
+      <a  tabindex="0" ng-click="selectPage(index)">{{ index + 1 }}</a>
+    </li>
+    <li class="pager__next" ng-click="nextPage()">
+      <a  tabindex="0" translate="tour.common.next"></a>
+    </li>
+    <li class="pager__last" ng-click="selectPage(pageIndexes.length - 1)">
+      <a tabindex="0" translate="admin.last"></a>
+    </li>
+    <li class="pager__page">
+      <a  tabindex="0" href="/api/admin/v1/feedback/csv" translate="admin.downloadCsv"></a>
+    </li>
   </ul>
 </div>

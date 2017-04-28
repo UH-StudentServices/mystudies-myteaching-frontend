@@ -17,7 +17,7 @@
 
 <section class="favorites-list__item unicafe-favorite island">
   <div class="loading-container" ng-if="loading">
-    <i class="hy hy-5x hy-spinner hy-spin center"></i>
+    <span class="icon-5x icon--spinner icon-spin"/>
   </div>
   <div ng-if="!loading">
     <h4 translate="favorites.unicafe.lunchMenu" class="text-transform-capitalize-block"></h4>
@@ -47,7 +47,7 @@
       <a href="{{::(unicafeUrl + selectedRestaurant)}}"
          target="_blank"
          class="unicafe-favorite__restaurant-link">
-        <i class="hy hy-link-arrow unicafe-favorite__restaurant-link-icon"></i>
+        <i class="icon--arrow-right unicafe-favorite__restaurant-link-icon"></i>
       </a>
     </div>
   </div>

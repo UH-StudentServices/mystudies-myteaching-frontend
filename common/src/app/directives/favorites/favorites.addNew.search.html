@@ -15,18 +15,22 @@
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<form name="favoriteSearchForm" class="add-favorite-search">
-  <i class="hy hy-search"></i>
-  <input
-      ng-keypress="onKeyPress($event)"
-      role="search"
-      ng-model="searchString"
-      ng-change="search(searchString)"
-      placeholder="{{placeholder}}">
-  <a role="button"
-     ng-if="searchString !== '' && !loading"
-     class="hy hy-remove"
-     ng-click="clearSearch()"
-     aria-label="{{::('favorites.ariaLabels.clearSearch' | translate)}}"></a>
-  <span ng-if="loading"><i class="hy hy-spinner hy-spin center"></i></span>
-</form>
+<div>
+  <form name="favoriteSearchForm" class="add-favorite-search">
+    <i class="icon--search"></i>
+    <input
+        ng-keypress="onKeyPress($event)"
+        role="search"
+        ng-model="searchString"
+        ng-change="search(searchString)"
+        placeholder="{{placeholder}}">
+    <a role="button"
+       ng-if="searchString !== '' && !loading"
+       class="icon--remove"
+       ng-click="clearSearch()"
+       aria-label="{{::('favorites.ariaLabels.clearSearch' | translate)}}"></a>
+  </form>
+  <div class="loading-container" ng-if="loading">
+    <span class="icon-5x icon--spinner icon-spin"/>
+  </div>
+</div>

@@ -27,7 +27,7 @@
                    class="banner-content__editable-content-button"
                    ng-class="{'ng-invalid':sampleItem.submitted && !sampleItem.title}">
                   {{sampleItem.title || ('samples.titlePlaceholder' | translate)}}
-                  <i class="hy hy-edit-event"></i>
+                  <i class="icon--edit-event"></i>
                 </a>
               </span>
               <span class="banner-content__editable-content--active" ng-show="sampleItem.titleEdit">
@@ -37,7 +37,7 @@
                        ng-change="onChange()"
                        ng-class="{'ng-invalid':!sampleItem.title}"
                        placeholder="{{::'samples.titlePlaceholder'|translate}}" />
-                <a role="button" href="" ng-click="exitTitleEdit(sampleItem)"><i class="hy hy-done"></i></a>
+                <a role="button" href="" ng-click="exitTitleEdit(sampleItem)"><i class="icon--done"></i></a>
               </span>
             </div>
           </div>
@@ -54,7 +54,7 @@
                class="banner-content__editable-content-button"
                ng-class="{'ng-invalid':sampleItem.submitted && !sampleItem.url}">
               {{sampleItem.url || ('samples.urlPlaceholder' | translate)}}
-              <i class="hy hy-edit-event"></i>
+              <i class="icon--edit-event"></i>
             </a>
           </span>
           <span class="banner-content__editable-content--active" ng-show="sampleItem.urlEdit">
@@ -64,7 +64,7 @@
                    ng-change="onChange()"
                    ng-class="{'ng-invalid':!sampleItem.url}"
                    placeholder="{{::'samples.urlPlaceholder'|translate}}" />
-            <a role="button" href="" ng-click="exitUrlEdit(sampleItem)"><i class="hy hy-done"></i></a>
+            <a role="button" href="" ng-click="exitUrlEdit(sampleItem)"><i class="icon--done"></i></a>
           </span>
         </div>
       </div>

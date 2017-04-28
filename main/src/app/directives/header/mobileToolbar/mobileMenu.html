@@ -17,14 +17,14 @@
 
 <div class="mobile-menu" dropdown>
   <a class="dropdown-toggle" tabindex="0">
-    <i class="hy hy-hamburger" ng-hide="showToolbar"></i>
+    <i class="icon--hamburger in-menu-icon" ng-hide="showToolbar"></i>
   </a>
 
   <div class="dropdown-content" role="navigation">
 
     <ul class="mobile-menu__links mobile-menu__links--dark">
       <li ng-repeat="link in pageHeaderLinks">
-        <a href="{{link.href}}" target="_blank">{{::(link.key | translate | capitalize)}}</a>
+        <a href="{{link.href}}" target="_blank">{{::(link.key | translate | capitalize)}}</a>
       </li>
     </ul>
 
@@ -33,8 +33,8 @@
         <a tabindex="0"
            ui-sref="init"
            class="active">
-          <span class="hy hy-home"></span>
-          {{::('general.frontpage' | translate | capitalize)}}
+          <span class="icon--home in-menu-icon"></span>
+          {{::('general.frontpage' | translate | capitalize)}}
         </a>
       </li>
       <li ng-repeat="link in primaryLinks">

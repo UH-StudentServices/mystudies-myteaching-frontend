@@ -28,7 +28,7 @@
                    class="banner-content__editable-content-button"
                    ng-class="{'ng-invalid':workExperienceItem.submitted && !workExperienceItem.employer}">
                   {{ (workExperienceItem.employer || ('workExperience.employerPlaceholder' | translate)) }}
-                  <i class="hy hy-edit-event"></i>
+                  <i class="icon--edit-event"></i>
                 </a>
               </span>
               <span class="banner-content__editable-content--active" ng-show="workExperienceItem.employerEdit">
@@ -38,7 +38,9 @@
                        ng-change="refreshValidity()"
                        ng-class="{'ng-invalid':!workExperienceItem.employer}"
                        placeholder="{{:: 'workExperience.employerPlaceholder' | translate }}" />
-                <a role="button" href="" ng-click="exitEmployerEdit(workExperienceItem)"><i class="hy hy-done"></i></a>
+                <a role="button" href="" ng-click="exitEmployerEdit(workExperienceItem)">
+                  <i class="icon--done"></i>
+                </a>
               </span>
             </div>
             <div class="banner-content__banner-text">
@@ -48,7 +50,7 @@
                    ng-class="{'ng-invalid':!workExperienceItem.startDate || !workExperienceItem.startDate.isValid()}">
                   {{ (workExperienceItem.startDate ? (workExperienceItem.startDate | momentFormat:'M/YYYY') :
                   ('workExperience.startDatePlaceholder' | translate)) }}
-                  <i class="hy hy-edit-event"></i>
+                  <i class="icon--edit-event"></i>
                 </a>
               </span>
               <span class="banner-content__editable-content--active" ng-if="workExperienceItem.startDateEdit">
@@ -58,7 +60,9 @@
                        ng-change="refreshValidity()"
                        ng-class="{'ng-invalid':!workExperienceItem.startDate || !workExperienceItem.startDate.isValid()}"
                        placeholder="{{:: ('workExperience.startDatePlaceholder' | translate) }}" />
-                <a role="button" href="" ng-click="exitStartDateEdit(workExperienceItem)"><i class="hy hy-done"></i></a>
+                <a role="button" href="" ng-click="exitStartDateEdit(workExperienceItem)">
+                  <i class="icon--done"></i>
+                </a>
               </span>
               -
               <span class="banner-content__editable-content" ng-show="!workExperienceItem.endDateEdit">
@@ -67,7 +71,7 @@
                    ng-class="{'ng-invalid':workExperienceItem.endDate && !workExperienceItem.endDate.isValid()}">
                   {{ (workExperienceItem.endDate ? (workExperienceItem.endDate | momentFormat:'M/YYYY') :
                   ('workExperience.endDatePlaceholder' | translate)) }}
-                  <i class="hy hy-edit-event"></i>
+                  <i class="icon--edit-event"></i>
                 </a>
               </span>
               <span class="banner-content__editable-content--active" ng-if="workExperienceItem.endDateEdit">
@@ -77,7 +81,9 @@
                        ng-change="refreshValidity()"
                        ng-class="{'ng-invalid':workExperienceItem.endDate && !workExperienceItem.endDate.isValid()}"
                        placeholder="{{:: ('workExperience.endDatePlaceholder' | translate) }}" />
-                <a role="button" href="" ng-click="exitEndDateEdit(workExperienceItem)"><i class="hy hy-done"></i></a>
+                <a role="button" href="" ng-click="exitEndDateEdit(workExperienceItem)">
+                  <i class="icon--done"></i>
+                </a>
               </span>
             </div>
           </div>
@@ -90,7 +96,7 @@
                class="banner-content__editable-content-button"
                ng-class="{'ng-invalid':workExperienceItem.submitted && !workExperienceItem.jobTitle}">
               {{ workExperienceItem.jobTitle || ('workExperience.jobTitlePlaceholder' | translate)}}
-              <i class="hy hy-edit-event"></i>
+              <i class="icon--edit-event"></i>
             </a>
           </span>
           <span class="banner-content__editable-content--active" ng-show="workExperienceItem.jobTitleEdit">
@@ -100,7 +106,9 @@
                    ng-change="refreshValidity()"
                    ng-class="{'ng-invalid':!workExperienceItem.jobTitle}"
                    placeholder="{{::'workExperience.jobTitlePlaceholder'|translate}}" />
-            <a role="button" href="" ng-click="exitJobTitleEdit(workExperienceItem)"><i class="hy hy-done"></i></a>
+            <a role="button" href="" ng-click="exitJobTitleEdit(workExperienceItem)">
+              <i class="icon--done"></i>
+            </a>
           </span>
         </div>
         <div class="banner-content__description">
@@ -112,7 +120,7 @@
             <a role="button" href="" ng-click="editEmployerUrl(workExperienceItem)"
                class="banner-content__editable-content-button">
               {{workExperienceItem.employerUrl || ('workExperience.employerUrlPlaceholder' | translate)}}
-              <i class="hy hy-edit-event"></i>
+              <i class="icon--edit-event"></i>
             </a>
           </span>
           <span class="banner-content__editable-content--active" ng-show="workExperienceItem.employerUrlEdit">
@@ -120,7 +128,9 @@
                    ng-model="workExperienceItem.employerUrl"
                    ui-keypress="{'enter':'exitEmployerUrlEdit(workExperienceItem)'}"
                    placeholder="{{::'workExperience.employerUrlPlaceholder'|translate}}" />
-            <a role="button" href="" ng-click="exitEmployerUrlEdit(workExperienceItem)"><i class="hy hy-done"></i></a>
+            <a role="button" href="" ng-click="exitEmployerUrlEdit(workExperienceItem)">
+              <i class="icon--done"></i>
+            </a>
           </span>
         </div>
       </div>
@@ -146,13 +156,13 @@
             <a role="button" href="" ng-click="enterJobHeadlineEdit()"
                class="banner-content__editable-content-button">
               {{jobSearch.headline}}
-              <i class="hy hy-edit-event"></i>
+              <i class="icon--edit-event"></i>
             </a>
           </span>
           <span class="banner-content__editable-content--active" ng-show="editJobSearchHeadline">
             <input focus="editJobSearchHeadline" ng-model="jobSearch.headline"
                    ui-keypress="{'enter':'exitJobHeadlineEdit()'}" />
-            <a role="button" href="" ng-click="exitJobHeadlineEdit()"><i class="hy hy-done"></i></a>
+            <a role="button" href="" ng-click="exitJobHeadlineEdit()"><i class="icon--done"></i></a>
           </span>
         </div>
         <div class="banner-content__description">
@@ -165,7 +175,7 @@
                class="banner-content__editable-content-button"
                ng-class="{'ng-invalid':jobSearch.submitted && !jobSearch.contactEmail}">
               {{jobSearch.contactEmail || ('workExperience.contactEmail' | translate)}}
-              <i class="hy hy-edit-event"></i>
+              <i class="icon--edit-event"></i>
             </a>
           </span>
           <span class="banner-content__editable-content--active" ng-show="editContactEmail">
@@ -175,7 +185,7 @@
                    ui-keypress="{'enter':'exitContactEmailEdit()'}"
                    ng-class="{'ng-invalid':!jobSearch.contactEmail}"
                    placeholder="{{::'workExperience.contactEmail'|translate}}" />
-            <a role="button" href="" ng-click="exitContactEmailEdit()"><i class="hy hy-done"></i></a>
+            <a role="button" href="" ng-click="exitContactEmailEdit()"><i class="icon--done"></i></a>
           </span>
         </div>
       </div>

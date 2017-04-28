@@ -22,7 +22,7 @@
      href="{{::feedItem.courseMaterial.courseMaterialUri}}"
      ng-if="!isMoodleAndNotCompact()">
     {{::courseMaterialLinkTitle}}
-    <i class="hy hy-link-arrow" ng-if="!compact"></i>
+    <i class="icon--arrow-right" ng-if="!compact"></i>
   </a>
 
   <div ng-if="isMoodleAndNotCompact()" class="course-material-link-container--moodle">
@@ -38,7 +38,7 @@
       <a target="_blank"
          href="{{::feedItem.courseMaterial.courseMaterialUri}}"
          class="course-material-link-container--moodle__secondary-link">
-        <i class="hy hy-link-arrow" ng-if="!compact"></i>
+        <i class="icon--arrow-right" ng-if="!compact"></i>
       </a>
     </div>
   </div>
