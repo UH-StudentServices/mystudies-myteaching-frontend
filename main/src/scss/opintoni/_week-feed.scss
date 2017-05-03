@@ -51,8 +51,6 @@ $tablist-single-row: min-width 28.75em;
   color: $white;
   display: inline-block;
   padding: 0.3em 0.7em 0.4em;
-  transition-property: background-color;
-  transition-duration: 0.1s;
 
   &.active {
     background-color: $darkblue;
