@@ -17,9 +17,12 @@
 
 angular.module('directives.credits', [
   'services.credits',
-  'services.portfolio'
+  'services.portfolio',
+  'services.configuration'
 ])
-.directive('credits', function(CreditsService) {
+.constant('DEMO_CREDITS', 43)
+
+.directive('credits', function(CreditsService, Configuration, Environments, DEMO_CREDITS) {
   return {
     restrict: 'E',
     replace: true,
@@ -28,9 +31,13 @@ angular.module('directives.credits', [
     },
     templateUrl: 'app/directives/credits/credits.html',
     link: function($scope) {
-      CreditsService.getCredits($scope.portfolioId).then(function(credits) {
-        $scope.credits = credits;
-      });
+      if (Configuration.environment === Environments.DEMO) {
+        $scope.credits = {totalCredits: DEMO_CREDITS};
+      } else {
+        CreditsService.getCredits($scope.portfolioId).then(function(credits) {
+          $scope.credits = credits;
+        });
+      }
     }
   };
 });
