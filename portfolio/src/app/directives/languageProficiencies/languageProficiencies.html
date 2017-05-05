@@ -17,7 +17,10 @@
 
 <section class="ui-component editable-wrapper">
   <div class="edit-link-wrapper">
-    <h2 class="ui-component__title border-bottom" translate="languages.title"></h2>
+    <h2 class="ui-component__title border-bottom"
+        translate translate-language="{{::portfolioLang}}">
+      languages.title
+    </h2>
     <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
   </div>
 
@@ -35,7 +38,9 @@
           <div class="language-proficiency-item__language-name"
                ng-click="toggleLanguageSelect(this)"
                aria-pressed="{{editing && languageSelectVisible}}">
-            <span translate="languages.code.{{languageProficiency.language}}"></span>
+            <span translate translate-language="{{::portfolioLang}}">
+              {{'languages.code.' + languageProficiency.language}}
+            </span>
             <i class="icon--drop-down" role="presentational" ng-show="editing"></i>
             <div ng-show="editing && languageSelectVisible" class="language-proficiency-item__select-container">
               <ul class="language-proficiency-item__select" role="listbox">
@@ -45,8 +50,9 @@
                                orderBy:translatedLanguageName(languageProficiency.language)"
                     class="language-proficiency-item__select-item">
                   <a role="button" href="" class="language-proficiency-item__select-item-link"
-                     translate="languages.code.{{lang}}"
+                     translate translate-language="{{::portfolioLang}}"
                      ng-click="updateLanguage(languageProficiency, lang)">
+                     {{'languages.code.' + lang}}
                   </a>
                 </li>
               </ul>
@@ -56,7 +62,9 @@
           <div class="language-proficiency-item__proficiency"
                ng-click="toggleProficiencySelect(this)"
                aria-pressed="{{editing && proficiencySelectVisible}}">
-            <span translate="languages.proficiency.{{languageProficiency.proficiency}}"></span>
+            <span translate translate-language="{{::portfolioLang}}">
+              {{'languages.proficiency.' + languageProficiency.proficiency}}
+            </span>
             <i class="icon--drop-down" role="presentational" ng-show="editing"></i>
             <div ng-show="editing && proficiencySelectVisible" class="language-proficiency-item__select-container">
               <ul class="language-proficiency-item__select" role="listbox">
@@ -64,8 +72,9 @@
                     ng-repeat="pr in proficiencies"
                     class="language-proficiency-item__select-item">
                   <a role="button" href="" class="language-proficiency-item__select-item-link"
-                     translate="languages.proficiency.{{pr}}"
+                     translate translate-language="{{::portfolioLang}}"
                      ng-click="updateProficiency(languageProficiency, pr)">
+                     {{'languages.proficiency.' + pr}}
                   </a>
                 </li>
               </ul>

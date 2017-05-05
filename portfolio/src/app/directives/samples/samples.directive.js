@@ -27,7 +27,8 @@ angular.module('directives.samples', [
     replace: true,
     scope: {
       samplesData: '&',
-      portfolioId: '@'
+      portfolioId: '@',
+      portfolioLang: '@'
     },
     templateUrl: 'app/directives/samples/samples.html',
     link: function($scope) {

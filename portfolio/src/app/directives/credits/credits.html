@@ -17,12 +17,18 @@
 
 <section class="ui-component">
 
-  <h4 class="ui-component__title" translate="credits.title"></h4>
+  <h4 class="ui-component__title"
+      translate translate-language="{{::portfolioLang}}">
+    credits.title
+  </h4>
 
   <div class="credits">
     <div class="credits__item">
       <div class="credits__value">{{:: credits.totalCredits }}</div>
-      <div class="credits__label" translate="credits.totalCredits"></div>
+      <div class="credits__label"
+           translate translate-language="{{::portfolioLang}}">
+        credits.totalCredits
+      </div>
     </div>
   </div>
 

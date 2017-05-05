@@ -27,7 +27,8 @@ angular.module('directives.credits', [
     restrict: 'E',
     replace: true,
     scope: {
-      portfolioId: '@'
+      portfolioId: '@',
+      portfolioLang: '@'
     },
     templateUrl: 'app/directives/credits/credits.html',
     link: function($scope) {

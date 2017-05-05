@@ -116,7 +116,8 @@ angular.module('opintoniPortfolioApp', [
             return UserSettingsService.getUserSettings();
           }
         },
-        portfolio: function(PortfolioService, $state, $stateParams, state) {
+        portfolio: function(PortfolioService, $state, $stateParams, state, $translate) {
+          $translate.fallbackLanguage($stateParams.lang);
           return PortfolioService.findPortfolioByPath(state, $stateParams.lang, $stateParams.userpath)
             .catch(function findPortfolioFail(error) {
               if (error.status === 404) {

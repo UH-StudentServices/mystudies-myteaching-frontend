@@ -25,7 +25,8 @@ angular.module('directives.editFreeText', [])
       freeTextContent: '=',
       onRemove: '&',
       onOk: '&',
-      headingKey: '@'
+      headingKey: '@',
+      portfolioLang: '@'
     },
     templateUrl: 'app/directives/freeTextContent/editFreeTextContent.html',
     link: function(scope) {

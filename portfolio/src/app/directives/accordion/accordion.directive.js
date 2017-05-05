@@ -23,7 +23,8 @@ angular.module('directives.accordion', [])
       templateUrl: 'app/directives/accordion/accordion.html',
       transclude: true,
       scope: {
-        headingKey: '@'
+        headingKey: '@',
+        portfolioLang: '@'
       },
       link: function(scope, el) {
         var CONTENT_AREA_SELECTOR = '.accordion__contents',

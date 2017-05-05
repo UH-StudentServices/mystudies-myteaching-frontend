@@ -29,7 +29,8 @@ angular.module('directives.attainments', [
       replace: true,
       templateUrl: 'app/directives/attainments/attainments.html',
       scope: {
-        portfolioId: '@'
+        portfolioId: '@',
+        portfolioLang: '@'
       },
       link: function($scope) {
         var SHOW_MORE_ADDITION = 5,

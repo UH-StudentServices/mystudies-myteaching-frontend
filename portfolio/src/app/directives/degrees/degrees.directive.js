@@ -27,6 +27,7 @@ angular.module('directives.degrees', [
     scope: {
       degreesData: '&',
       portfolioId: '@',
+      portfolioLang: '@',
       sectionName: '@'
     },
     templateUrl: 'app/directives/degrees/degrees.html',

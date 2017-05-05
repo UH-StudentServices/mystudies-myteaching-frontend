@@ -29,6 +29,7 @@ angular.module('directives.studies', [
     scope: {
       summaryData: '&',
       portfolioId: '@',
+      portfolioLang: '@',
       headingKey: '@',
       sectionName: '@'
     },
