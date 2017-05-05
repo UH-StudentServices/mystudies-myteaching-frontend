@@ -53,7 +53,7 @@ angular.module('directives.attainments', [
 
         $scope.edit = function edit() {
           $scope.editing = true;
-          AttainmentResource.getAll(9999).then(function attainmentsSuccess(attainments) {
+          AttainmentResource.getAll($scope.portfolioLang).then(function attainmentsSuccess(attainments) {
             $scope.allAttainments = attainments;
           });
         };
@@ -73,7 +73,7 @@ angular.module('directives.attainments', [
         });
 
         function updateWhitelistedAttainments() {
-          AttainmentResource.getAllWhitelisted($scope.portfolioId)
+          AttainmentResource.getAllWhitelisted($scope.portfolioId, $scope.portfolioLang)
             .then(function(attainments) {
               $scope.attainments = attainments;
             });
