@@ -27,6 +27,9 @@ angular.module('directives.summary', [])
       },
       templateUrl: 'app/directives/studies/summary.html',
       link: function(scope, el, attr) {
+        // ng-embed can't handle empty strings or nulls.
+        scope.summary = scope.summary || ' ';
+
         scope.embedOptions = {
           video: {
             embed: true,
