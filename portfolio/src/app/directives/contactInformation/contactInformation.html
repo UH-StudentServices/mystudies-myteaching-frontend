@@ -33,7 +33,9 @@
             <span translate translate-language="{{::portfolioLang}}">
               contactInformation.phoneNumber
             </span>&nbsp;
-            {{ contactInfo.phoneNumber }}
+            <span>
+              {{ contactInfo.phoneNumber }}
+            </span>
           </div>
           <div class="contact-details__field" ng-show="contactInfo.email">
             <a href="mailto:{{ contactInfo.email }}">{{ contactInfo.email }}</a>
@@ -60,7 +62,9 @@
             <span translate translate-language="{{::portfolioLang}}">
               contactInformation.phoneNumber
             </span>&nbsp;
-            {{ contactInfo.workMobile }}
+            <span>
+              {{ contactInfo.workMobile }}
+            </span>
           </div>
 
         </div>
