@@ -16,13 +16,17 @@
 -->
 <div class="l-multi-col-content-wrapper">
   <div class="l-content-primary-wrapper">
-    <tab-set tab-descriptor="portfolioTabs" use-full-width-on-mobile="false"></tab-set>
+    <tab-set tab-descriptor="portfolioTabs"
+             use-full-width-on-mobile="false"
+             portfolio-lang="{{::portfolio.lang}}">
+    </tab-set>
   </div>
   <div class="l-content-secondary-wrapper">
     <contact-information limit-visibility="{componentId: 'CONTACT_INFORMATION'}"
                          contact-information-data="portfolio.contactInformation"
                          owner-name="{{::portfolio.ownerName}}"
-                         portfolio-id="{{::portfolio.id}}">
+                         portfolio-id="{{::portfolio.id}}"
+                         portfolio-lang="{{::portfolio.lang}}">
     </contact-information>
   </div>
 </div>

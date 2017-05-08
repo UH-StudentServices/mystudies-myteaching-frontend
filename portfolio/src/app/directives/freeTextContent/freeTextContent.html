@@ -26,8 +26,9 @@
     <div ng-if="freeTextContentToEdit !== freeTextContent">
       <div class="free-text-content__title-container">
         <h2 class="ui-component__title" ng-if="!headingKey">{{freeTextContent.title}}</h2>
-        <h2 class="ui-component__title" ng-if="headingKey">
-          {{ ::(headingKey | translate) }}
+        <h2 class="ui-component__title" ng-if="headingKey"
+            translate translate-language="{{::portfolioLang}}">
+          {{::headingKey}}
         </h2>
       </div>
       <div class="free-text-content__text user-text">
@@ -39,7 +40,8 @@
                             free-text-content="freeTextContentToEdit"
                             heading-key="{{headingKey}}"
                             on-ok="updateFreeTextContent()"
-                            on-remove="deleteFreeTextContent()">
+                            on-remove="deleteFreeTextContent()"
+                            portfolio-lang="{{::portfolioLang}}">
     </edit-free-text-content>
   </div>
 

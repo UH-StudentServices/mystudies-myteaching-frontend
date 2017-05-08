@@ -29,7 +29,8 @@ angular.module('directives.attainments', [
       replace: true,
       templateUrl: 'app/directives/attainments/attainments.html',
       scope: {
-        portfolioId: '@'
+        portfolioId: '@',
+        portfolioLang: '@'
       },
       link: function($scope) {
         var SHOW_MORE_ADDITION = 5,
@@ -52,7 +53,7 @@ angular.module('directives.attainments', [
 
         $scope.edit = function edit() {
           $scope.editing = true;
-          AttainmentResource.getAll(9999).then(function attainmentsSuccess(attainments) {
+          AttainmentResource.getAll($scope.portfolioLang).then(function attainmentsSuccess(attainments) {
             $scope.allAttainments = attainments;
           });
         };
@@ -72,7 +73,7 @@ angular.module('directives.attainments', [
         });
 
         function updateWhitelistedAttainments() {
-          AttainmentResource.getAllWhitelisted($scope.portfolioId)
+          AttainmentResource.getAllWhitelisted($scope.portfolioId, $scope.portfolioLang)
             .then(function(attainments) {
               $scope.attainments = attainments;
             });

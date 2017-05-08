@@ -19,22 +19,26 @@
   <div class="l-content-primary-wrapper">
     <studies limit-visibility="{componentId: 'STUDIES'}"
              summary-data="portfolio.summary"
-             portfolio-id="{{::portfolio.id}}">
+             portfolio-id="{{::portfolio.id}}"
+             portfolio-lang="{{::portfolio.lang}}">
     </studies>
 
     <degrees limit-visibility="{componentId: 'DEGREES'}"
              degrees-data="portfolio.degrees"
-             portfolio-id="{{::portfolio.id}}">
+             portfolio-id="{{::portfolio.id}}"
+             portfolio-lang="{{::portfolio.lang}}">
     </degrees>
 
     <work-experience limit-visibility="{componentId: 'WORK_EXPERIENCE'}"
                      work-experience-data="portfolio.workExperience"
-                     portfolio-id="{{::portfolio.id}}">
+                     portfolio-id="{{::portfolio.id}}"
+                     portfolio-lang="{{::portfolio.lang}}">
     </work-experience>
 
     <samples limit-visibility="{componentId: 'SAMPLES'}"
              samples-data="portfolio.samples"
-             portfolio-id="{{::portfolio.id}}">
+             portfolio-id="{{::portfolio.id}}"
+             portfolio-lang="{{::portfolio.lang}}">
     </samples>
 
     <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT'}">
@@ -42,23 +46,30 @@
   </div>
 
   <div class="l-content-secondary-wrapper">
-    <credits limit-visibility="{componentId: 'CREDITS'}" portfolio-id="{{::portfolio.id}}"></credits>
+    <credits limit-visibility="{componentId: 'CREDITS'}"
+             portfolio-id="{{::portfolio.id}}"
+             portfolio-lang="{{::portfolio.lang}}">
+    </credits>
     <contact-information limit-visibility="{componentId: 'CONTACT_INFORMATION'}"
                          contact-information-data="portfolio.contactInformation"
                          owner-name="{{::portfolio.ownerName}}"
-                         portfolio-id="{{::portfolio.id}}">
+                         portfolio-id="{{::portfolio.id}}"
+                         portfolio-lang="{{::portfolio.lang}}">
     </contact-information>
   </div>
 </div>
 
 <attainments limit-visibility="{componentId: 'ATTAINMENTS'}"
-             portfolio-id="{{::portfolio.id}}">
+             portfolio-id="{{::portfolio.id}}"
+             portfolio-lang="{{::portfolio.lang}}">
 </attainments>
 
 <language-proficiencies limit-visibility="{componentId: 'LANGUAGE_PROFICIENCIES'}"
-                        language-proficiencies-data="portfolio.languageProficiencies">
+                        language-proficiencies-data="portfolio.languageProficiencies"
+                        portfolio-lang="{{::portfolio.lang}}">
 </language-proficiencies>
 
 <favorites limit-visibility="{componentId: 'FAVORITES'}"
-           favorites-data="portfolio.favorites">
+           favorites-data="portfolio.favorites"
+           portfolio-lang="{{::portfolio.lang}}">
 </favorites>

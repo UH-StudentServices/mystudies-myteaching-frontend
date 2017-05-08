@@ -51,7 +51,8 @@ angular.module('directives.freeTextContent', [
         portfolioSection: '@',
         instanceName: '@',
         singleEntry: '@?',
-        headingKey: '@?'
+        headingKey: '@?',
+        portfolioLang: '@'
       },
       link: function(scope, el ,attrs) {
         var visibilityDescriptor = {

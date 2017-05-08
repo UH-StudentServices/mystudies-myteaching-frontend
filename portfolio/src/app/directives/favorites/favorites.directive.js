@@ -32,7 +32,8 @@ angular.module('directives.favorites', [
       restrict: 'E',
       templateUrl: 'app/directives/favorites/favorites.html',
       scope: {
-        favoritesData: '&'
+        favoritesData: '&',
+        portfolioLang: '@'
       },
       link: function(scope) {
         scope.favorites = scope.favoritesData();

@@ -35,6 +35,7 @@ angular.module('directives.workExperience', [
     scope: {
       workExperienceData: '&',
       portfolioId: '@',
+      portfolioLang: '@',
       sectionName: '@'
     },
     templateUrl: 'app/directives/workExperience/workExperience.html',

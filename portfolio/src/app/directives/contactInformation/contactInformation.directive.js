@@ -45,21 +45,22 @@ angular.module('directives.contactInformation', ['services.contactInformation', 
       scope: {
         contactInformationData: '&',
         ownerName: '@',
-        portfolioId: '@'
+        portfolioId: '@',
+        portfolioLang: '@'
       },
       templateUrl: 'app/directives/contactInformation/contactInformation.html',
       link: function($scope) {
         $scope.editing = false;
-        $scope.contactInformation = $scope.contactInformationData() || {};
-        $scope.contactInformation.someLinks = $scope.contactInformation.someLinks || [];
+        $scope.contactInfo = $scope.contactInformationData() || {};
+        $scope.contactInfo.someLinks = $scope.contactInfo.someLinks || [];
 
         function addDefaultSomeLinkTypes() {
           var defaultSocialMediaLinks = PortfolioRoleService.isInRole(PortfolioRole.TEACHER) ?
             TeacherSocialMediaLinks : StudentSocialMediaLinks;
 
           defaultSocialMediaLinks.forEach(function(socialMediaLinkType) {
-            if (!_.find($scope.contactInformation.someLinks, {type: socialMediaLinkType})) {
-              $scope.contactInformation.someLinks.push({type: socialMediaLinkType});
+            if (!_.find($scope.contactInfo.someLinks, {type: socialMediaLinkType})) {
+              $scope.contactInfo.someLinks.push({type: socialMediaLinkType});
             }
           });
         }
@@ -70,20 +71,20 @@ angular.module('directives.contactInformation', ['services.contactInformation', 
         };
 
         function selectFilledSomeLinks(someLinks) {
-          return _.filter($scope.contactInformation.someLinks, function(someLink) {
+          return _.filter($scope.contactInfo.someLinks, function(someLink) {
             return !_.isEmpty(someLink.url);
           });
         }
 
         $scope.exitEdit = function() {
-          var updateContactInformationRequest = _.assign({}, $scope.contactInformation);
+          var updateContactInformationRequest = _.assign({}, $scope.contactInfo);
 
           updateContactInformationRequest.someLinks =
-            selectFilledSomeLinks($scope.contactInformation.someLinks);
+            selectFilledSomeLinks($scope.contactInfo.someLinks);
           ContactInformationService
             .updateContactInformation($scope.portfolioId, updateContactInformationRequest)
             .then(function(data) {
-              $scope.contactInformation = data;
+              $scope.contactInfo = data;
               $scope.editing = false;
             });
           return true;
@@ -93,7 +94,7 @@ angular.module('directives.contactInformation', ['services.contactInformation', 
           ContactInformationService
             .getEmployeeContactInformation($scope.portfolioId)
             .then(function(data) {
-              _.assign($scope.contactInformation, _.omitBy(data, function(value, key) {
+              _.assign($scope.contactInfo, _.omitBy(data, function(value, key) {
                 return key === 'someLinks' || !value;
               }));
             });

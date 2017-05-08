@@ -25,24 +25,28 @@
              summary-data="portfolio.summary"
              portfolio-id="{{::portfolio.id}}"
              section-name="BASIC_INFORMATION"
-             heading-key="personalInformation.title">
+             heading-key="personalInformation.title"
+             portfolio-lang="{{::portfolio.lang}}">
     </studies>
 
     <language-proficiencies limit-visibility="{componentId: 'LANGUAGE_PROFICIENCIES', sectionName: 'BASIC_INFORMATION'}"
                             section-name="BASIC_INFORMATION"
-                            language-proficiencies-data="portfolio.languageProficiencies">
+                            language-proficiencies-data="portfolio.languageProficiencies"
+                            portfolio-lang="{{::portfolio.lang}}">
     </language-proficiencies>
 
     <work-experience limit-visibility="{componentId: 'WORK_EXPERIENCE', sectionName: 'BASIC_INFORMATION'}"
                      section-name="BASIC_INFORMATION"
                      work-experience-data="portfolio.workExperience"
-                     portfolio-id="{{::portfolio.id}}">
+                     portfolio-id="{{::portfolio.id}}"
+                     portfolio-lang="{{::portfolio.lang}}">
     </work-experience>
 
     <degrees limit-visibility="{componentId: 'DEGREES', sectionName: 'BASIC_INFORMATION'}"
              section-name="BASIC_INFORMATION"
              degrees-data="portfolio.degrees"
-             portfolio-id="{{::portfolio.id}}">
+             portfolio-id="{{::portfolio.id}}"
+             portfolio-lang="{{::portfolio.lang}}">
     </degrees>
 
     <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT', sectionName: 'BASIC_INFORMATION'}"

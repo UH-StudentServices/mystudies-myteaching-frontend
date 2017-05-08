@@ -22,8 +22,9 @@
         {{freeTextContent.title}}
       </a>
     </h2>
-    <h2 class="ui-component__title" ng-if="headingKey && !editingTitle">
-      {{ ::(headingKey | translate) }}
+    <h2 class="ui-component__title" ng-if="headingKey && !editingTitle"
+        translate translate-language="{{::portfolioLang}}">
+      {{::headingKey}}
     </h2>
 
     <input class="edit-free-text-content__edit-title"

@@ -22,7 +22,9 @@
         <span class="accordion-status icon--arrow"></span>
       </div>
       <div class="accordion__title__content">
-        <h3>{{ ::(headingKey | translate) }}</h3>
+        <h3 translate translate-language="{{::portfolioLang}}">
+          {{::headingKey}}
+        </h3>
       </div>
     </a>
   </header>

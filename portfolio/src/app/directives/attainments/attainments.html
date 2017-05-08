@@ -17,7 +17,10 @@
 
 <section class="ui-component">
   <div class="edit-link-wrapper">
-    <h2 class="ui-component__title border-bottom" translate="attainments.attainments"></h2>
+    <h2 class="ui-component__title border-bottom"
+        translate translate-language="{{::portfolioLang}}">
+      attainments.attainments
+    </h2>
     <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
   </div>
 
@@ -50,7 +53,9 @@
           </div>
 
           <div class="study-attainment__teachers">
-            {{::('general.teachers' | translate | capitalize)}}:
+            <span translate translate-language="{{::portfolioLang}}" class="text-transform-capitalize">
+              general.teachers
+            </span>:
             <span ng-repeat="teacher in attainment.teachers">{{:: teacher.shortName }}{{:: $last ? '' : ', ' }}</span>
           </div>
         </div>
@@ -83,7 +88,9 @@
           </div>
 
           <div class="study-attainment__teachers">
-            {{::('general.teachers' | translate | capitalize)}}:
+            <span translate translate-language="{{::portfolioLang}}" class="text-transform-capitalize">
+              general.teachers
+            </span>:
             <span ng-repeat="teacher in attainment.teachers">{{:: teacher.shortName }}{{:: $last ? '' : ', ' }}</span>
           </div>
         </div>

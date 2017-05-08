@@ -18,9 +18,12 @@
 'use strict';
 
 angular.module('resources.attainment', ['utils.moment'])
+  .constant('ALL_ATTAINMENTS', 9999)
 
-  .factory('AttainmentResource', function Attainments($resource, StateService,
-                                                      dateArrayToMomentObject) {
+  .factory('AttainmentResource', function Attainments($resource,
+                                                      StateService,
+                                                      dateArrayToMomentObject,
+                                                      ALL_ATTAINMENTS) {
 
     function portfolioAttainmentsPrivateResource() {
       return $resource('/api/private/v1/portfolio/:portfolioId/attainment/whitelist', {}, {
@@ -35,9 +38,10 @@ angular.module('resources.attainment', ['utils.moment'])
       }, whitelistDto).$promise;
     };
 
-    var getAll = function getAll(limit) {
-      var attainmentsResource = $resource('/api/private/v1/studyattainments?limit=:limit', {
-        limit: limit
+    var getAll = function getAll(portfolioLang) {
+      var attainmentsResource = $resource('/api/private/v1/studyattainments', {
+        limit: ALL_ATTAINMENTS,
+        lang: portfolioLang
       });
 
       return attainmentsResource.query().$promise.then(function getAllSuccess(data) {
@@ -49,9 +53,9 @@ angular.module('resources.attainment', ['utils.moment'])
       });
     };
 
-    var getAllWhitelisted = function getAllWhitelisted(portfolioId) {
+    var getAllWhitelisted = function getAllWhitelisted(portfolioId, portfolioLang) {
       var attainmentsResource = $resource('/api/' + StateService.getCurrent() +
-        '/v1/portfolio/:portfolioId/attainment', {portfolioId: portfolioId});
+        '/v1/portfolio/:portfolioId/attainment', {portfolioId: portfolioId, lang: portfolioLang});
 
       return attainmentsResource.query().$promise.then(function getAllSuccess(data) {
         return _.map(data, function datesToMoment(attainment) {

@@ -29,7 +29,8 @@ angular.module('directives.tabSet', ['directives.scrollableTabBar',
       templateUrl: 'app/directives/tabSet/tabSet.html',
       scope: {
         tabDescriptor: '=',
-        useFullWidthOnMobile: '='
+        useFullWidthOnMobile: '=',
+        portfolioLang: '@'
       },
       link: function(scope, el, attrs) {
         var activeTab,
