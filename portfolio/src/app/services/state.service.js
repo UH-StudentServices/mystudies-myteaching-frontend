@@ -29,7 +29,11 @@ angular.module('services.state', ['services.session',
         portfolioRole = PortfolioRoleService.getActiveRole();
 
     function hasPortfolioPathInSessionDescriptor(session, lang, userpath) {
-      return session.portfolioPathsByRoleAndLang[portfolioRole][lang][0] === ['', lang, userpath].join('/');
+      if (session.portfolioPathsByRoleAndLang[portfolioRole]) {
+        return session.portfolioPathsByRoleAndLang[portfolioRole][lang][0] === ['', lang, userpath].join('/');
+      } else {
+        return false;
+      }
     }
 
     function resolve(session, lang, userpath) {
