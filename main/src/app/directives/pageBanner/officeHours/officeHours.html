@@ -1,0 +1,46 @@
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<div class="office-hours">
+  <div class="office-hours__bg-img-container">
+    <div ng-if="edit && loaded" class="office-hours__box">
+      <p translate="officeHours.intro" />
+      <input id="degree-programme" type="text" placeholder="{{('officeHours.degreeProgramme' | translate)}}..."/>
+      <textarea class="office-hours__input" placeholder="{{('officeHours.placeholder' | translate)}}..."
+                ng-model="newOfficeHours.description"/>
+      <div class="office-hours__buttons">
+        <button ng-if="officeHours.description"
+                class="button button-group__button"
+                translate="officeHours.cancel"
+                ng-click="cancel()"></button>
+        <button class="button " translate="officeHours.publish"
+                ng-click="publishOfficeHours()"></button>
+      </div>
+    </div>
+    <div ng-if="!edit && loaded" class="office-hours__box">
+      <p class="text-transform-capitalize" translate="officeHours.heading" />
+      <p>{{officeHours.description}}</p>
+      <div class="button-group office-hours__buttons">
+        <button class="button button-group__button" translate="officeHours.delete"
+                ng-click="deleteOfficeHours()"></button>
+        <button class="button button-group__button" translate="officeHours.edit"
+                ng-click="editOfficeHours()"></button>
+      </div>
+    </div>
+    <div ng-if="!loaded" class="office-hours__box"></div>
+  </div>
+</div>

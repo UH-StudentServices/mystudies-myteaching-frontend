@@ -174,7 +174,6 @@
     "title": "hyödyllistä",
     "healthAndWellbeing": "Terveys ja hyvinvointi",
     "studyingAndTrainingAbroad": "Opiskelu ja harjoittelu ulkomailla",
-    "studentServices": "Opiskelun palvelut",
     "academicAdministration": "Opintohallinto",
     "professionalDevelopment": "Opettajana kehittyminen",
     "addNewLink": "lisää uusi linkki...",
@@ -271,6 +270,16 @@
     "ariaLabels": {
       "addNewButton": "Lisää uusi tehtävä -painike"
     }
+  },
+  "officeHours": {
+    "intro": "Julkaise vastaanottoaikasi valitsemasi koulutusohjelman tai -ohjelmien yhteydessä. Myöhemmin tekemäsi muutokset päivittyvät julkaistuihin vastaanottoaikoihin.",
+    "heading": "julkaistut vastaanottoajat",
+    "delete": "poista",
+    "edit": "muokkaa",
+    "cancel": "peruuta",
+    "publish": "julkaise",
+    "degreeProgramme": "koulutusohjelma",
+    "placeholder": "vastaanottoaikasi"
   },
   "tour": {
     "common": {

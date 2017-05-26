@@ -111,7 +111,7 @@ $banner-transition-duration: 0.5s;
   }
 }
 
-.page-banner__news-item-container, .page-banner__todo-items-container {
+.page-banner__news-item-container, .page-banner__banner-input-container {
   @extend .wrapper;
   position: relative;
 }
