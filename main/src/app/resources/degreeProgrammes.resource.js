@@ -15,26 +15,16 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('resources.officeHours', [])
+angular.module('resources.degreeProgrammes', [])
 
-  .factory('OfficeHoursResource', function OfficeHoursResource($resource) {
-    var officeHoursResource = $resource('/api/private/v1/officehours');
+  .factory('DegreeProgrammesResource', function DegreeProgrammesResource($resource) {
+    var degreeProgrammesResource = $resource('/api/private/v1/degreeprogrammes');
 
-    function getOfficeHours() {
-      return officeHoursResource.get().$promise;
-    }
-
-    function deleteOfficeHours() {
-      return officeHoursResource.delete().$promise;
-    }
-
-    function saveOfficeHours(officehours) {
-      return officeHoursResource.save(officehours).$promise;
+    function getDegreeProgrammes() {
+      return degreeProgrammesResource.query().$promise;
     }
 
     return {
-      getOfficeHours: getOfficeHours,
-      deleteOfficeHours: deleteOfficeHours,
-      saveOfficeHours: saveOfficeHours
+      getDegreeProgrammes: getDegreeProgrammes,
     };
   });

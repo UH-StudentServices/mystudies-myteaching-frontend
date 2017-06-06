@@ -17,39 +17,62 @@
 
 'use strict';
 
-angular.module('directives.officeHours', ['resources.officeHours'])
-  .directive('officeHours', function(OfficeHoursResource) {
+angular.module('directives.officeHours', ['resources.officeHours', 'resources.degreeProgrammes'])
+  .directive('officeHours', function(OfficeHoursResource, DegreeProgrammesResource) {
     return {
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/pageBanner/officeHours/officeHours.html',
       link: function(scope) {
 
-        function loadOfficeHours() {
-          OfficeHoursResource.getOfficeHours().then(function officeHoursLoaded(officeHours) {
-            scope.loaded = true;
-            scope.officeHours = officeHours;
-            if (officeHours.description) {
-              scope.edit = false;
-            }
+        function loadDegreeProgrammes() {
+          DegreeProgrammesResource.getDegreeProgrammes().then(function(degreeProgrammes) {
+            scope.degreeProgrammes = _.cloneDeep(degreeProgrammes);
+            scope.availableDegreeProgrammes = _.cloneDeep(degreeProgrammes);
           });
         };
 
+        function loadOfficeHours() {
+          OfficeHoursResource.getOfficeHours().then(officeHoursLoaded);
+        };
+
+        function officeHoursLoaded(officeHours) {
+          scope.loaded = true;
+          if (officeHours.description) {
+            scope.edit = false;
+          }
+
+          scope.officeHours = {description: officeHours.description, degreeProgrammes: []};
+
+          _.forEach(officeHours.degreeProgrammes, function(programme) {
+            scope.officeHours.degreeProgrammes.push(_.find(scope.degreeProgrammes, ['code', programme.code]));
+          });
+        }
+
+        scope.addDegreeProgramme = function addDegreeProgramme(degreeProgramme) {
+          if (degreeProgramme !== null) {
+            scope.newOfficeHours.degreeProgrammes.push(_.find(scope.degreeProgrammes, ['code', degreeProgramme]));
+            _.remove(scope.availableDegreeProgrammes, ['code', degreeProgramme]);
+          }
+        };
+
+        scope.removeDegreeProgramme = function removeDegreeProgramme(degreeProgramme) {
+          _.remove(scope.newOfficeHours.degreeProgrammes, ['code', degreeProgramme.code]);
+          scope.availableDegreeProgrammes.push(degreeProgramme);
+        };
+
         scope.publishOfficeHours = function publishOfficeHours() {
-          if (scope.newOfficeHours.description) {
-            OfficeHoursResource.saveOfficeHours(scope.newOfficeHours)
-              .then(function officeHoursSaved(officeHours) {
-                scope.edit = false;
-                scope.officeHours = officeHours;
-              });
+          if (scope.newOfficeHours.description && scope.newOfficeHours.degreeProgrammes.length > 0) {
+            OfficeHoursResource.saveOfficeHours(scope.newOfficeHours).then(officeHoursLoaded);
           }
         };
 
         scope.deleteOfficeHours = function deleteOfficeHours() {
+          scope.availableDegreeProgrammes = _.cloneDeep(scope.degreeProgrammes);
           OfficeHoursResource.deleteOfficeHours(scope.officeHours)
             .then(function officeHoursDeleted(officeHours) {
               scope.officeHours = officeHours;
-              scope.newOfficeHours = {description: null};
+              scope.newOfficeHours = {description: null, degreeProgrammes: []};
               scope.edit = true;
             });
         };
@@ -57,16 +80,21 @@ angular.module('directives.officeHours', ['resources.officeHours'])
         scope.editOfficeHours = function editOfficeHours() {
           scope.edit = true;
           scope.newOfficeHours.description = scope.officeHours.description;
+          scope.newOfficeHours.degreeProgrammes = _.cloneDeep(scope.officeHours.degreeProgrammes);
+          _.forEach(scope.newOfficeHours.degreeProgrammes, function(programme) {
+            _.remove(scope.availableDegreeProgrammes, ['code', programme.code]);
+          });
         };
 
         scope.cancel = function cancel() {
           scope.edit = false;
         };
 
-        scope.newOfficeHours = {description: null};
+        scope.newOfficeHours = {description: null, degreeProgrammes: []};
         scope.loaded = false;
         scope.edit = true;
 
+        loadDegreeProgrammes();
         loadOfficeHours();
       }
     };

@@ -20,8 +20,8 @@ $todo-item-color-dark: $white;
 $todo-item-background-color-dark: rgba(0, 0, 0, 0.6);
 $todo-item-color-with-bg: $white;
 $container-transition-duration: 0.5s;
-$container-default-height: 260px;
-$container-mobile-height: 195px;
+$container-default-height: 296px;
+$container-mobile-height: 211px;
 $add-todo-input-height: 64px;
 $add-todo-input-height-with-border: $add-todo-input-height + 2 * 1px;
 $add-todo-input-top-margin: 10px;
@@ -199,10 +199,15 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
   color: $white;
 }
 
+.todo-items__icon {
+  text-align: center;
+}
+
 .todo-items__list-item {
   position: relative;
-  padding: 10px 60px 10px 0px;
   word-wrap: break-word;
+
+  padding: 10px 60px 10px 0px;
 
   .todo-items--banner & {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -214,6 +219,10 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
 
   &.done {
     color: $todo-item-done-color;
+
+    .todo-items__action--done {
+      cursor: default;
+    }
   }
 
   .todo-items__action {
@@ -222,10 +231,6 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
 
     &--done {
       right: 35px;
-
-      .done & {
-        cursor: default;
-      }
     }
 
     &--remove {
@@ -235,22 +240,40 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
   }
 }
 
-.todo-items__icon {
-  text-align: center;
+.office-hours__degree-programme {
+  position: relative;
+  word-wrap: break-word;
+
+  padding: 10px 30px 10px 0px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+  .degree-programme__remove {
+    @include vertically-center;
+    @include todo-item-font-color;
+    right: 10px;
+    cursor: pointer;
+  }
 }
 
-.office-hours__input {
-  height: 90px;
+.office-hours__description {
+  padding: 10px 0px 10px 0px;
+  white-space: pre-wrap;
+}
+
+.office-hours__input-element {
+  margin-bottom: 8px;
+
+  &--text {
+    @extend .office-hours__input-element;
+    height: 90px;
+  }
 }
 
 .office-hours__buttons {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
+  float: right;
 
   button {
     width: 90px;
     text-transform: capitalize;
   }
-
 }

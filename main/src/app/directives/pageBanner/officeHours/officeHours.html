@@ -19,8 +19,23 @@
   <div class="office-hours__bg-img-container">
     <div ng-if="edit && loaded" class="office-hours__box">
       <p translate="officeHours.intro" />
-      <input id="degree-programme" type="text" placeholder="{{('officeHours.degreeProgramme' | translate)}}..."/>
-      <textarea class="office-hours__input" placeholder="{{('officeHours.placeholder' | translate)}}..."
+      <ul class="office-hours__degree-programmes">
+        <li class="office-hours__degree-programme"
+            ng-repeat="programme in newOfficeHours.degreeProgrammes">
+          {{programme.name}}
+          <span class="degree-programme__remove icon--remove"
+                ng-click="removeDegreeProgramme(programme)">
+          </span>
+        </li>
+      </ul>
+      <select name="newDegreeProgramme"
+              class="office-hours__input-element"
+              ng-model="newDegreeProgramme"
+              ng-change="addDegreeProgramme(newDegreeProgramme)"
+              ng-options="programme.code as programme.name for programme in availableDegreeProgrammes | orderBy:'name'">
+        <option value="" >{{('officeHours.degreeProgramme' | translate)}}...</option>
+      </select>
+      <textarea class="office-hours__input-element--text " placeholder="{{('officeHours.placeholder' | translate)}}..."
                 ng-model="newOfficeHours.description"/>
       <div class="office-hours__buttons">
         <button ng-if="officeHours.description"
@@ -33,7 +48,13 @@
     </div>
     <div ng-if="!edit && loaded" class="office-hours__box">
       <p class="text-transform-capitalize" translate="officeHours.heading" />
-      <p>{{officeHours.description}}</p>
+      <ul class="office-hours__degree-programmes">
+        <li class="office-hours__degree-programme"
+            ng-repeat="programme in officeHours.degreeProgrammes">
+          {{programme.name}}
+        </li>
+      </ul>
+      <p class="office-hours__description">{{officeHours.description}}</p>
       <div class="button-group office-hours__buttons">
         <button class="button button-group__button" translate="officeHours.delete"
                 ng-click="deleteOfficeHours()"></button>
