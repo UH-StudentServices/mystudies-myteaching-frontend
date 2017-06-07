@@ -8,6 +8,7 @@
     "show": "show",
     "edit": "edit",
     "done": "done",
+    "delete": "delete",
     "close": "close",
     "save": "save",
     "cancel": "cancel",
@@ -274,9 +275,6 @@
   "officeHours": {
     "intro": "ENG: Julkaise vastaanottoaikasi valitsemasi koulutusohjelman tai -ohjelmien yhteydessä. Myöhemmin tekemäsi muutokset päivittyvät julkaistuihin vastaanottoaikoihin.",
     "heading": "published office hours",
-    "delete": "delete",
-    "edit": "edit",
-    "cancel": "cancel",
     "publish": "publish",
     "degreeProgramme": "degree programme",
     "placeholder": "your office hours"

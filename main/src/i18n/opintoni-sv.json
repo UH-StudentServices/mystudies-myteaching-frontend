@@ -11,6 +11,7 @@
     "close": "stäng",
     "edit": "redigera",
     "done": "färdig",
+    "delete": "radera",
     "copyToClipboard" : "kopiera till klippbordet",
     "copyToClipboardSuccess" : "Kopierad",
     "copyToClipboardFailMac" : "Klicka ⌘-C för att kopiera",
@@ -274,9 +275,6 @@
   "officeHours": {
     "intro": "SV: Julkaise vastaanottoaikasi valitsemasi koulutusohjelman tai -ohjelmien yhteydessä. Myöhemmin tekemäsi muutokset päivittyvät julkaistuihin vastaanottoaikoihin.",
     "heading": "publicerat mottagningstider",
-    "delete": "radera",
-    "edit": "redigera",
-    "cancel": "annullera",
     "publish": "publicera",
     "degreeProgrammes": "utbildningsprogram",
     "placeholder": "dDin mottagningstider"

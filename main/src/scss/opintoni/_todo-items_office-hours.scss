@@ -15,27 +15,18 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-$todo-item-done-color: #b3b3b3;
-$todo-item-color-dark: $white;
-$todo-item-background-color-dark: rgba(0, 0, 0, 0.6);
-$todo-item-color-with-bg: $white;
+$todo-item-color: $white;
+$todo-item-color--done: #b3b3b3;
+$todo-item-background-color: rgba(0, 0, 0, 0.6);
+
 $container-transition-duration: 0.5s;
 $container-default-height: 296px;
 $container-mobile-height: 211px;
+
 $add-todo-input-height: 64px;
 $add-todo-input-height-with-border: $add-todo-input-height + 2 * 1px;
 $add-todo-input-top-margin: 10px;
 $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-input-top-margin;
-
-@mixin todo-item-font-color {
-  .todo-items--banner & {
-    color: $todo-item-color-dark;
-  }
-
-  .todo-items--secondary & {
-    color: $todo-item-color-with-bg;
-  }
-}
 
 @mixin container-height($input-area-height: $add-todo-input-total-height) {
   @include breakpoint($mobile-only) {
@@ -66,7 +57,7 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
 
   &--banner {
     padding: 1em;
-    color: $todo-item-color-dark;
+    color: $todo-item-color;
 
     @include breakpoint($small) {
       padding-top: 2em;
@@ -81,7 +72,7 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
     overflow-y: hidden;
     @include container-height();
 
-    color: $todo-item-color-with-bg;
+    color: $todo-item-color;
 
     &.ng-enter {
       @include container-transition-delay;
@@ -140,7 +131,7 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
     }
 
     .todo-items--banner &, .office-hours--banner & {
-      background-color: $todo-item-background-color-dark;
+      background-color: $todo-item-background-color;
     }
 
     .todo-items--secondary &, .office-hours--secondary & {
@@ -218,7 +209,7 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
   }
 
   &.done {
-    color: $todo-item-done-color;
+    color: $todo-item-color--done;
 
     .todo-items__action--done {
       cursor: default;
@@ -228,14 +219,14 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
   .todo-items__action {
     @include vertically-center;
     cursor: pointer;
+    color: $todo-item-color;
 
     &--done {
-      right: 35px;
+      right: 25px;
     }
 
     &--remove {
-      right: 10px;
-      @include todo-item-font-color;
+      right: 0px;
     }
   }
 }
@@ -249,8 +240,8 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
 
   .degree-programme__remove {
     @include vertically-center;
-    @include todo-item-font-color;
-    right: 10px;
+    color: $todo-item-color;
+    right: 0px;
     cursor: pointer;
   }
 }
@@ -270,7 +261,7 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
 }
 
 .office-hours__buttons {
-  float: right;
+  justify-content: flex-end;
 
   button {
     width: 90px;
