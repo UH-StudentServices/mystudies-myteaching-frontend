@@ -17,8 +17,12 @@
 
 'use strict';
 
-angular.module('directives.officeHours', ['resources.officeHours', 'resources.degreeProgrammes'])
-  .directive('officeHours', function(OfficeHoursResource, DegreeProgrammesResource) {
+angular.module('directives.officeHours', [
+  'resources.officeHours',
+  'resources.degreeProgrammes',
+  'services.session'
+])
+  .directive('officeHours', function(OfficeHoursResource, DegreeProgrammesResource, SessionService) {
     return {
       restrict: 'E',
       replace: true,
@@ -93,6 +97,10 @@ angular.module('directives.officeHours', ['resources.officeHours', 'resources.de
         scope.newOfficeHours = {description: null, degreeProgrammes: []};
         scope.loaded = false;
         scope.edit = true;
+
+        SessionService.getSession().then(function getSessionSuccess(session) {
+          scope.newOfficeHours.name = session.name;
+        });
 
         loadDegreeProgrammes();
         loadOfficeHours();
