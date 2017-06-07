@@ -18,11 +18,10 @@
 'use strict';
 
 angular.module('directives.officeHours', [
-  'resources.officeHours',
-  'resources.degreeProgrammes',
+  'services.officeHours',
   'services.session'
 ])
-  .directive('officeHours', function(OfficeHoursResource, DegreeProgrammesResource, SessionService) {
+  .directive('officeHours', function(OfficeHoursService, SessionService) {
     return {
       restrict: 'E',
       replace: true,
@@ -30,14 +29,14 @@ angular.module('directives.officeHours', [
       link: function(scope) {
 
         function loadDegreeProgrammes() {
-          DegreeProgrammesResource.getDegreeProgrammes().then(function(degreeProgrammes) {
+          OfficeHoursService.loadDegreeProgrammes().then(function(degreeProgrammes) {
             scope.degreeProgrammes = _.cloneDeep(degreeProgrammes);
             scope.availableDegreeProgrammes = _.cloneDeep(degreeProgrammes);
           });
         };
 
         function loadOfficeHours() {
-          OfficeHoursResource.getOfficeHours().then(officeHoursLoaded);
+          OfficeHoursService.loadOfficeHours().then(officeHoursLoaded);
         };
 
         function officeHoursLoaded(officeHours) {
@@ -67,13 +66,13 @@ angular.module('directives.officeHours', [
 
         scope.publishOfficeHours = function publishOfficeHours() {
           if (scope.newOfficeHours.description && scope.newOfficeHours.degreeProgrammes.length > 0) {
-            OfficeHoursResource.saveOfficeHours(scope.newOfficeHours).then(officeHoursLoaded);
+            OfficeHoursService.saveOfficeHours(scope.newOfficeHours).then(officeHoursLoaded);
           }
         };
 
         scope.deleteOfficeHours = function deleteOfficeHours() {
           scope.availableDegreeProgrammes = _.cloneDeep(scope.degreeProgrammes);
-          OfficeHoursResource.deleteOfficeHours(scope.officeHours)
+          OfficeHoursService.deleteOfficeHours()
             .then(function officeHoursDeleted(officeHours) {
               scope.officeHours = officeHours;
               scope.newOfficeHours = {description: null, degreeProgrammes: []};
