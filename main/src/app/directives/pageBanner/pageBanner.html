@@ -17,8 +17,9 @@
 
 <div class="page-banner" ng-class="{'page-banner--open': showBanner}">
   <div ng-if="showBanner" class="page-banner--visible">
-    <div class="page-banner__todo-items-container">
-      <todo-items class="todo-items--banner todo-items--dark"></todo-items>
+    <div class="page-banner__banner-input-container">
+      <todo-items limit-visibility="['MY_STUDIES_ONLY']" class="todo-items--banner"></todo-items>
+      <office-hours limit-visibility="['MY_TEACHINGS_ONLY']" class="office-hours--banner"></office-hours>
     </div>
     <div class="page-banner--pager"></div>
     <h2 class="visually-hidden">{{:: ('banner.news' | translate) }}</h2>

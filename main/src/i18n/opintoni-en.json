@@ -8,6 +8,7 @@
     "show": "show",
     "edit": "edit",
     "done": "done",
+    "delete": "delete",
     "close": "close",
     "save": "save",
     "cancel": "cancel",
@@ -127,7 +128,6 @@
     "nowStudying": "Now in my studies",
     "timetable": "Timetable",
     "allEvents": "All events",
-    "noEvents": "No events",
     "noPastEvents": "you have no past events.",
     "noOngoingCourses": "You have no current courses.",
     "noPastCourses": "You have no past courses.",
@@ -175,7 +175,6 @@
     "title": "useful information",
     "healthAndWellbeing": "Health and wellbeing",
     "studyingAndTrainingAbroad": "Exchange opportunities and traineeships abroad",
-    "studenServices": "Services for students",
     "academicAdministration": "Academic administration",
     "professionalDevelopment": "Professional development",
     "addNewLink": "add new link...",
@@ -272,6 +271,13 @@
     "ariaLabels": {
       "addNewButton": "Add new todo item button"
     }
+  },
+  "officeHours": {
+    "intro": "ENG: Julkaise vastaanottoaikasi valitsemasi koulutusohjelman tai -ohjelmien yhteydessä. Myöhemmin tekemäsi muutokset päivittyvät julkaistuihin vastaanottoaikoihin.",
+    "heading": "published office hours",
+    "publish": "publish",
+    "degreeProgramme": "degree programme",
+    "placeholder": "your office hours"
   },
   "tour" : {
     "common": {

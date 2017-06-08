@@ -15,27 +15,18 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-$todo-item-done-color: #b3b3b3;
-$todo-item-color-dark: $white;
-$todo-item-background-color-dark: rgba(0, 0, 0, 0.5);
-$todo-item-color-with-bg: $white;
+$todo-item-color: $white;
+$todo-item-color--done: #b3b3b3;
+$todo-item-background-color: rgba(0, 0, 0, 0.6);
+
 $container-transition-duration: 0.5s;
-$container-default-height: 260px;
-$container-mobile-height: 195px;
+$container-default-height: 296px;
+$container-mobile-height: 211px;
+
 $add-todo-input-height: 64px;
 $add-todo-input-height-with-border: $add-todo-input-height + 2 * 1px;
 $add-todo-input-top-margin: 10px;
 $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-input-top-margin;
-
-@mixin todo-item-font-color {
-  .todo-items--dark & {
-    color: $todo-item-color-dark;
-  }
-
-  .todo-items--with-bg & {
-    color: $todo-item-color-with-bg;
-  }
-}
 
 @mixin container-height($input-area-height: $add-todo-input-total-height) {
   @include breakpoint($mobile-only) {
@@ -57,7 +48,7 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
   }
 }
 
-.todo-items {
+.todo-items, .office-hours {
   width: 100%;
   position: relative;
   z-index: 10;
@@ -66,6 +57,8 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
 
   &--banner {
     padding: 1em;
+    color: $todo-item-color;
+
     @include breakpoint($small) {
       padding-top: 2em;
       width: 32%;
@@ -78,6 +71,8 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
     margin-bottom: 2em;
     overflow-y: hidden;
     @include container-height();
+
+    color: $todo-item-color;
 
     &.ng-enter {
       @include container-transition-delay;
@@ -97,14 +92,6 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
     }
   }
 
-  &--dark {
-    color: $todo-item-color-dark;
-  }
-
-  &--with-bg {
-    color: $todo-item-color-with-bg;
-  }
-
   .page-banner--visible.ng-enter & {
     @include container-transition-delay;
     transform: scale(0.1);
@@ -121,14 +108,38 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
   .page-banner--visible.ng-leave-active & {
     transform: scale(0.1);
   }
-}
 
-.todo-items__bg-img-container {
-  background-color: rgba(0, 0, 0, 0.1);
+  &__bg-img-container {
+    background-color: rgba(0, 0, 0, 0.1);
 
-  .todo-items--with-bg & {
-    background: url('../images/bg/todo-list-bg.jpg') no-repeat;
+    .todo-items--secondary & {
+      background: url('../images/bg/todo-list-bg.jpg') no-repeat;
+    }
   }
+
+  &__box {
+    position: relative;
+    padding: 20px;
+    overflow-y: auto;
+
+    .todo-items--banner &, .todo-items--secondary & {
+      @include container-height(0);
+    }
+
+    .office-hours--banner &, .office-hours--secondary & {
+      @include container-height();
+    }
+
+    .todo-items--banner &, .office-hours--banner & {
+      background-color: $todo-item-background-color;
+    }
+
+    .todo-items--secondary &, .office-hours--secondary & {
+      @include border;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+  }
+
 }
 
 .todo-items__new-item {
@@ -163,7 +174,7 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
     }
   }
 
-  .todo-items--with-bg & {
+  .todo-items--secondary & {
     @include border;
   }
 }
@@ -179,60 +190,81 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
   color: $white;
 }
 
+.todo-items__icon {
+  text-align: center;
+}
+
 .todo-items__list-item {
   position: relative;
-  padding: 10px 60px 10px 0px;
   word-wrap: break-word;
 
-  .todo-items--dark & {
+  padding: 10px 60px 10px 0px;
+
+  .todo-items--banner & {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
 
-  .todo-items--with-bg & {
+  .todo-items--secondary & {
     @include border-bottom;
   }
 
   &.done {
-    color: $todo-item-done-color;
+    color: $todo-item-color--done;
+
+    .todo-items__action--done {
+      cursor: default;
+    }
   }
 
   .todo-items__action {
     @include vertically-center;
     cursor: pointer;
+    color: $todo-item-color;
 
     &--done {
-      right: 35px;
-
-      .done & {
-        cursor: default;
-      }
+      right: 25px;
     }
 
     &--remove {
-      right: 10px;
-      @include todo-item-font-color;
+      right: 0px;
     }
   }
 }
 
-.todo-items__icon {
-  text-align: center;
+.office-hours__degree-programme {
+  position: relative;
+  word-wrap: break-word;
+
+  padding: 10px 30px 10px 0px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+  .degree-programme__remove {
+    @include vertically-center;
+    color: $todo-item-color;
+    right: 0px;
+    cursor: pointer;
+  }
 }
 
-.todo-items__box {
-  position: relative;
+.office-hours__description {
+  padding: 10px 0px 10px 0px;
+  white-space: pre-wrap;
+}
 
-  .todo-items--dark & {
-    background-color: $todo-item-background-color-dark;
+.office-hours__input-element {
+  margin-bottom: 8px;
+
+  &--text {
+    @extend .office-hours__input-element;
+    height: 90px;
   }
+}
 
-  .todo-items--with-bg & {
-    @include border;
-    background-color: rgba($black, 0.4);
+.office-hours__buttons {
+  justify-content: flex-end;
+
+  button {
+    width: 90px;
+    text-transform: capitalize;
   }
-
-  padding: 20px;
-  overflow-y: auto;
-
-  @include container-height(0);
 }

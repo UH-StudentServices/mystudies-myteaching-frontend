@@ -11,6 +11,7 @@
     "close": "stäng",
     "edit": "redigera",
     "done": "färdig",
+    "delete": "radera",
     "copyToClipboard" : "kopiera till klippbordet",
     "copyToClipboardSuccess" : "Kopierad",
     "copyToClipboardFailMac" : "Klicka ⌘-C för att kopiera",
@@ -127,7 +128,6 @@
     "nowStudying": "Nu i mina studier",
     "timetable": "Tidsschema",
     "allEvents": "Alla händelser",
-    "noEvents": "Inga händelser",
     "noPastEvents": "Du har inga tidigare händelser.",
     "noOngoingCourses": "Du har inga aktuella kurser. ",
     "noPastCourses": "Du har inga avslutade kurser.",
@@ -151,7 +151,6 @@
       "errorLoadingExams": "Tentamina kunde inte laddas",
       "errorLoadingCourses": "Kurserna kunde inte laddas",
       "errorLoadingEvents" : "Händelser kunde inte laddas"
-
     },
     "subscribeEvents": "Lägg till kalender",
     "optimeInstructions": "Länken ovan hämtar din undervisningstidtabell från Optime. För tillfället visar Min undervisning alla kurshändelser.",
@@ -176,7 +175,6 @@
     "title": "Nyttigt",
     "healthAndWellbeing": "Hälsa och välmående",
     "studyingAndTrainingAbroad": "Studier och praktik utomlands ",
-    "studenServices": "Tjänster för studerande",
     "academicAdministration": "Studieadministration",
     "professionalDevelopment": "Utvecklas som lärare",
     "addNewLink": "skapa länk...",
@@ -273,6 +271,13 @@
     "ariaLabels": {
       "addNewButton": "Skapa en ny todo -knapp"
     }
+  },
+  "officeHours": {
+    "intro": "SV: Julkaise vastaanottoaikasi valitsemasi koulutusohjelman tai -ohjelmien yhteydessä. Myöhemmin tekemäsi muutokset päivittyvät julkaistuihin vastaanottoaikoihin.",
+    "heading": "publicerat mottagningstider",
+    "publish": "publicera",
+    "degreeProgrammes": "utbildningsprogram",
+    "placeholder": "dDin mottagningstider"
   },
   "tour" : {
     "common": {

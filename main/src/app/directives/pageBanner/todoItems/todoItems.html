@@ -30,12 +30,12 @@
           swipe-right-callback="markAsDone"
           swipe-object="todoItem">
         {{ todoItem.content }}
-          <span class="todo-items__action todo-items__action--done icon--done"
-                ng-click="markAsDone(todoItem)">
-          </span>
-          <span class="todo-items__action todo-items__action--remove icon--remove"
-                ng-click="removeTodoItem(todoItem)">
-          </span>
+          <a role="button" href=""
+             class="todo-items__action todo-items__action--done icon--done"
+             ng-click="markAsDone(todoItem)"/>
+          <a role="button" href=""
+             class="todo-items__action todo-items__action--remove icon--remove"
+             ng-click="removeTodoItem(todoItem)"/>
       </li>
     </ul>
   </div>

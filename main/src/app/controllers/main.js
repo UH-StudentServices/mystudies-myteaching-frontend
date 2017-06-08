@@ -22,6 +22,7 @@ angular.module('controllers.main', [
   'directives.userBackground',
   'directives.globalMessages',
   'directives.todoItems',
+  'directives.officeHours',
   'directives.pageHeader',
   'directives.mobileToolbar',
   'directives.weekFeed',
