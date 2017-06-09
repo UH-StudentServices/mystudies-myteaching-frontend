@@ -273,11 +273,11 @@
     }
   },
   "officeHours": {
-    "intro": "ENG: Julkaise vastaanottoaikasi valitsemasi koulutusohjelman tai -ohjelmien yhteydessä. Myöhemmin tekemäsi muutokset päivittyvät julkaistuihin vastaanottoaikoihin.",
-    "heading": "published office hours",
+    "intro": "Choose the right degree programme(s) and publish your consultation hours. Any changes you make will be automatically updated to the published consultation hours.",
+    "heading": "published consultation hours",
     "publish": "publish",
     "degreeProgramme": "degree programme",
-    "placeholder": "your office hours"
+    "placeholder": "your consultation hours"
   },
   "tour" : {
     "common": {

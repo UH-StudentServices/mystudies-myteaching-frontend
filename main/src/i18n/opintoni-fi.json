@@ -273,7 +273,7 @@
     }
   },
   "officeHours": {
-    "intro": "Julkaise vastaanottoaikasi valitsemasi koulutusohjelman tai -ohjelmien yhteydessä. Myöhemmin tekemäsi muutokset päivittyvät julkaistuihin vastaanottoaikoihin.",
+    "intro": "Julkaise vastaanottoaikasi valitsemassasi koulutusohjelmassa tai -ohjelmissa. Tekemäsi muutokset päivittyvät automaattisesti julkaistuihin vastaanottoaikoihin.",
     "heading": "julkaistut vastaanottoajat",
     "publish": "julkaise",
     "degreeProgramme": "koulutusohjelma",

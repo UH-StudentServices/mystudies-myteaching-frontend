@@ -273,11 +273,11 @@
     }
   },
   "officeHours": {
-    "intro": "SV: Julkaise vastaanottoaikasi valitsemasi koulutusohjelman tai -ohjelmien yhteydessä. Myöhemmin tekemäsi muutokset päivittyvät julkaistuihin vastaanottoaikoihin.",
-    "heading": "publicerat mottagningstider",
+    "intro": "Välj rätt utbildningsprogram och publicera dina mottagningstider. Ändringar du gör i de publicerade mottagningstiderna uppdateras automatiskt.",
+    "heading": "publicerade mottagningstider",
     "publish": "publicera",
     "degreeProgrammes": "utbildningsprogram",
-    "placeholder": "dDin mottagningstider"
+    "placeholder": "dina mottagningstider"
   },
   "tour" : {
     "common": {
