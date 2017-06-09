@@ -50,6 +50,7 @@
                                orderBy:translatedLanguageName(languageProficiency.language)"
                     class="language-proficiency-item__select-item">
                   <a role="button" href="" class="language-proficiency-item__select-item-link"
+                     id="language-{{::lang}}"
                      translate translate-language="{{::portfolioLang}}"
                      ng-click="updateLanguage(languageProficiency, lang)">
                      {{'languages.code.' + lang}}
@@ -72,6 +73,7 @@
                     ng-repeat="pr in proficiencies"
                     class="language-proficiency-item__select-item">
                   <a role="button" href="" class="language-proficiency-item__select-item-link"
+                     id="proficiency-{{::pr}}"
                      translate translate-language="{{::portfolioLang}}"
                      ng-click="updateProficiency(languageProficiency, pr)">
                      {{'languages.proficiency.' + pr}}

@@ -39,15 +39,13 @@ describe('Language proficiencies directive', function() {
         updateProficiency(el, proficiency);
       },
       updateLanguage = function(el, lang) {
-        var selector = '.language-proficiency-item__select-item-link[translate="languages.code.' +
-          lang + '"]';
+        var selector = '.language-proficiency-item__select-item-link#language-' + lang;
 
         el.querySelector('.language-proficiency-item__language-name').click();
         el.querySelector(selector).click();
       },
       updateProficiency = function(el, proficiency) {
-        var selector = '.language-proficiency-item__select-item-link[translate="languages.proficiency.' +
-          proficiency + '"]';
+        var selector = '.language-proficiency-item__select-item-link#proficiency-' + proficiency;
 
         el.querySelector('.language-proficiency-item__proficiency').click();
         el.querySelector(selector).click();
