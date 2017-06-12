@@ -276,7 +276,7 @@
     "intro": "Välj rätt utbildningsprogram och publicera dina mottagningstider. Ändringar du gör i de publicerade mottagningstiderna uppdateras automatiskt.",
     "heading": "publicerade mottagningstider",
     "publish": "publicera",
-    "degreeProgrammes": "utbildningsprogram",
+    "degreeProgramme": "utbildningsprogram",
     "placeholder": "dina mottagningstider"
   },
   "tour" : {
