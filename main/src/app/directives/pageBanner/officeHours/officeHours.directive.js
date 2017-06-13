@@ -28,15 +28,12 @@ angular.module('directives.officeHours', [
       templateUrl: 'app/directives/pageBanner/officeHours/officeHours.html',
       link: function(scope) {
 
-        function loadDegreeProgrammes() {
+        function initOfficeHours() {
           OfficeHoursService.loadDegreeProgrammes().then(function(degreeProgrammes) {
             scope.degreeProgrammes = _.cloneDeep(degreeProgrammes);
             scope.availableDegreeProgrammes = _.cloneDeep(degreeProgrammes);
+            OfficeHoursService.loadOfficeHours().then(officeHoursLoaded);
           });
-        };
-
-        function loadOfficeHours() {
-          OfficeHoursService.loadOfficeHours().then(officeHoursLoaded);
         };
 
         function officeHoursLoaded(officeHours) {
@@ -75,7 +72,7 @@ angular.module('directives.officeHours', [
           OfficeHoursService.deleteOfficeHours()
             .then(function officeHoursDeleted(officeHours) {
               scope.officeHours = officeHours;
-              scope.newOfficeHours = {description: null, degreeProgrammes: []};
+              scope.newOfficeHours = {description: null, degreeProgrammes: [], name: scope.userName};
               scope.edit = true;
             });
         };
@@ -93,16 +90,16 @@ angular.module('directives.officeHours', [
           scope.edit = false;
         };
 
-        scope.newOfficeHours = {description: null, degreeProgrammes: []};
+        scope.newOfficeHours = {description: null, degreeProgrammes: [], name: null};
         scope.loaded = false;
         scope.edit = true;
 
         SessionService.getSession().then(function getSessionSuccess(session) {
           scope.newOfficeHours.name = session.name;
+          scope.userName = session.name;
         });
 
-        loadDegreeProgrammes();
-        loadOfficeHours();
+        initOfficeHours();
       }
     };
   });
