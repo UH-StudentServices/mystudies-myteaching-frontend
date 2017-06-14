@@ -135,7 +135,8 @@
   "preview" : {
     "enterPreview" : "esikatsele",
     "info" : "tältä portfoliosi näyttää muille jos olet määritellyt sen julkiseksi.",
-    "exit" : "sulje esikatselu"
+    "exit" : "sulje esikatselu",
+    "print": "tulosta"
   },
   "freeTextContent" : {
     "defaultTitle" : "Lisää otsikko",

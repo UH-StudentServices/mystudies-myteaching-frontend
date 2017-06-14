@@ -15,21 +15,16 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.previewMessage', ['services.preview'])
+angular.module('directives.printButton', ['services.preview'])
 
-  .directive('previewMessage', function() {
+  .directive('printButton', function() {
     return {
       restrict: 'E',
       replace: true,
       scope: {},
-      templateUrl: 'app/directives/preview/previewMessage.html',
-      controller: function($scope, PreviewService, $window, $timeout) {
-        $scope.showMessage = PreviewService.isPreview();
-        $scope.exitPreview = PreviewService.exitPreview;
-
-        if (PreviewService.printPreview()) {
-          $timeout($window.print, 1000);
-        }
+      templateUrl: 'app/directives/preview/printButton.html',
+      controller: function($scope, PreviewService) {
+        $scope.print = _.partial(PreviewService.enterPreview, true);
       }
     };
   });

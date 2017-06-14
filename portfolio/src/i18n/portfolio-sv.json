@@ -135,7 +135,8 @@
   "preview" : {
     "enterPreview" : "förhandsvisning",
     "info" : "detta är hur din portfölj ser till andra om det publiceras.",
-    "exit" : "Stäng förhandsvisning"
+    "exit" : "Stäng förhandsvisning",
+    "print": "skriva ut"
   },
   "freeTextContent" : {
     "defaultTitle" : "Lägg till rubrik",

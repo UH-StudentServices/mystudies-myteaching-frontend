@@ -17,32 +17,45 @@
 
 angular.module('services.preview', [])
 
-  .factory('PreviewService', function($location, $window, $timeout) {
+  .factory('PreviewService', function($location, $window) {
 
     function isPreview() {
       return $location.search().preview === 'true';
     }
 
-    function reloadPage() {
-      $timeout(function() {
-        $window.location.reload();
-      }, 0);
+    function printPreview() {
+      return $location.search().print === 'true';
     }
 
-    function enterPreview() {
+    function reloadPage() {
+      _.defer(function() {
+        $window.location.reload();
+      });
+    }
+
+    function enterPreview(print) {
       $location.search('preview', 'true');
+
+      if (print) {
+        $location.search('print', 'true');
+      }
+
       reloadPage();
     }
 
     function exitPreview() {
-      $location.search('preview', undefined);
+      $location.search({
+        preview: null,
+        print: null
+      });
+
       reloadPage();
     }
-
 
     return {
       enterPreview: enterPreview,
       exitPreview: exitPreview,
-      isPreview: isPreview
+      isPreview: isPreview,
+      printPreview: printPreview
     };
   });

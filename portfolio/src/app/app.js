@@ -52,6 +52,7 @@ angular.module('opintoniPortfolioApp', [
   'directives.navigation',
   'directives.dropdown',
   'directives.avatarImage',
+  'directives.printButton',
   'directives.previewButton',
   'directives.previewMessage',
   'directives.freeTextContent',
