@@ -204,3 +204,8 @@
     @include default-focus-outline;
   }
 }
+
+@mixin default-grid-layout {
+  .l-content-primary-wrapper    { @include grid-span(8, 1); }
+  .l-content-secondary-wrapper  { @include grid-span(4, 9); }
+}

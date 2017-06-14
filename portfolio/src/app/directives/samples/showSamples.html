@@ -29,15 +29,19 @@
           </div>
         </a>
       </div>
-      <div class="banner-content__details-container">
-        <div class="banner-content__description" ng-hide="sampleItem.showFull">
+      <div class="banner-content__details-container"
+           ng-class="{'banner-content__show-full-description': sampleItem.showFull}">
+        <div class="banner-content__description">
           <p ng-bind="sampleItem.description" data-ellipsis
              data-ellipsis-append="{{::' '+('general.showMore'|translate)}}"
              data-ellipsis-append-click="showFull(sampleItem)"></p>
         </div>
-        <div class="banner-content__full-description" ng-show="sampleItem.showFull">
+        <div class="banner-content__full-description">
           <p>{{sampleItem.description}}
-            <a role="button" href="" aria-label="{{::'general.showLess'|translate}}"
+            <a class="banner-content__show-less"
+               role="button"
+               href=""
+               aria-label="{{::'general.showLess'|translate}}"
                ng-click="hideFull(sampleItem)">{{::'general.showLess'|translate}}</a>
           </p>
         </div>

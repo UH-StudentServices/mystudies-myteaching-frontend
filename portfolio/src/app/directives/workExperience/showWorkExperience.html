@@ -35,16 +35,21 @@
         <div class="work-experience__title">
           {{workExperienceItem.jobTitle}}
         </div>
-        <div class="banner-content__description" ng-hide="workExperienceItem.showFull">
-          <p ng-bind="workExperienceItem.text" data-ellipsis
-             data-ellipsis-append="{{::' '+('general.showMore'|translate)}}"
-             data-ellipsis-append-click="showFull(workExperienceItem)"></p>
-        </div>
-        <div class="banner-content__full-description" ng-show="workExperienceItem.showFull">
-          <p>{{workExperienceItem.text}}
-            <a role="button" href="" aria-label="{{::'general.showLess'|translate}}"
-               ng-click="hideFull(workExperienceItem)">{{::'general.showLess'|translate}}</a>
-          </p>
+        <div ng-class="{'banner-content__show-full-description': workExperienceItem.showFull}">
+          <div class="banner-content__description">
+            <p ng-bind="workExperienceItem.text" data-ellipsis
+               data-ellipsis-append="{{::' '+('general.showMore'|translate)}}"
+               data-ellipsis-append-click="showFull(workExperienceItem)"></p>
+          </div>
+          <div class="banner-content__full-description">
+            <p>{{workExperienceItem.text}}
+              <a class="banner-content__show-less"
+                 role="button"
+                 href=""
+                 aria-label="{{::'general.showLess'|translate}}"
+                 ng-click="hideFull(workExperienceItem)">{{::'general.showLess'|translate}}</a>
+            </p>
+          </div>
         </div>
         <div class="banner-content__details-row">
           <a href="{{workExperienceItem.employerUrl !== '' ? formatUrl(workExperienceItem.employerUrl) : ''}}">
@@ -70,16 +75,18 @@
         <div class="work-experience__title">
           {{jobSearch.headline}}
         </div>
-        <div class="banner-content__description" ng-hide="jobSearch.showFull">
-          <p ng-bind="jobSearch.text" data-ellipsis
-             data-ellipsis-append="{{::' '+('general.showMore'|translate)}}"
-             data-ellipsis-append-click="showFull(jobSearch)"></p>
-        </div>
-        <div class="banner-content__full-description" ng-show="jobSearch.showFull">
-          <p>{{jobSearch.text}}
-            <a role="button" href="" aria-label="{{::'general.showLess'|translate}}"
-               ng-click="hideFull(jobSearch)">{{::'general.showLess'|translate}}</a>
-          </p>
+        <div ng-class="{'banner-content__show-full-description': jobSearch.showFull}">
+          <div class="banner-content__description">
+            <p ng-bind="jobSearch.text" data-ellipsis
+               data-ellipsis-append="{{::' '+('general.showMore'|translate)}}"
+               data-ellipsis-append-click="showFull(jobSearch)"></p>
+          </div>
+          <div class="banner-content__full-description">
+            <p>{{jobSearch.text}}
+              <a role="button" href="" aria-label="{{::'general.showLess'|translate}}"
+                 ng-click="hideFull(jobSearch)">{{::'general.showLess'|translate}}</a>
+            </p>
+          </div>
         </div>
         <div class="banner-content__details-row">
           <a href="mailto:{{jobSearch.contactEmail}}">{{jobSearch.contactEmail}}</a>

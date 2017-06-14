@@ -27,6 +27,10 @@ $banner-content-description-edit-height: 116px;
     display: block;
   }
 
+  .editable {
+    background-color: transparent;
+  }
+
   &__editable-content {
     @extend .editable-content;
 
@@ -63,7 +67,6 @@ $banner-content-description-edit-height: 116px;
 
   &__item {
     width: 100%;
-    float: left;
     color: $white;
     position: relative;
 
@@ -84,7 +87,7 @@ $banner-content-description-edit-height: 116px;
     background-image: url("/portfolio/assets/images/work-experience-bg.jpg");
     background-color: $black;
     display: inline-block;
-    float: left;
+    vertical-align: top;
 
     @include breakpoint($small) {
       width: $sample-width;
@@ -133,7 +136,6 @@ $banner-content-description-edit-height: 116px;
   &__details-container {
     color: $black;
     display: inline-block;
-    float: left;
     position: relative;
 
     @include border-bottom;
@@ -183,9 +185,18 @@ $banner-content-description-edit-height: 116px;
   }
 
   &__full-description {
+    display: none;
     p {
       height: 100%;
     }
+  }
+
+  &__show-full-description &__full-description {
+    display: block;
+  }
+
+  &__show-full-description &__description {
+    display: none;
   }
 
   &__remove {
