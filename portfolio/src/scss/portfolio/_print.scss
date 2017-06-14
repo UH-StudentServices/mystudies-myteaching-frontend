@@ -82,10 +82,14 @@
 
   h2, p {
     color: $black !important;
-    text-shadow: none !important;
   }
 
-  .ui-component {
+  * {
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+
+  li {
     page-break-inside: avoid;
   }
 
