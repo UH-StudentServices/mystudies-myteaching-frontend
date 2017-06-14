@@ -135,7 +135,8 @@
   "preview" : {
     "enterPreview" : "preview",
     "info" : "this is how your portfolio looks to others if it is published.",
-    "exit" : "close preview"
+    "exit" : "close preview",
+    "print": "print"
   },
   "freeTextContent" : {
     "defaultTitle" : "Add title",
