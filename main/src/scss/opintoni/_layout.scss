@@ -51,13 +51,7 @@
 .l-content-secondary-wrapper {}
 
 @include breakpoint($small) {
-  .l-content-primary-wrapper    { @include grid-span(8, 1); }
-  .l-content-secondary-wrapper  { @include grid-span(4, 9); }
-}
-
-@include breakpoint($medium) {
-  .l-content-primary-wrapper    { @include grid-span(8, 1); }
-  .l-content-secondary-wrapper  { @include grid-span(4, 9); }
+  @include default-grid-layout;
 }
 
 .clear {
