@@ -34,6 +34,7 @@ angular.module('opintoniApp', [
   'opintoniErrors',
   'opintoniLander',
   'angular-click-outside',
+  'as.sortable',
 
   'provider.analyticsAccounts',
 

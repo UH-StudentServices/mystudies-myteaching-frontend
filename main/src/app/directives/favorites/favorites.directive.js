@@ -67,13 +67,15 @@ angular.module('directives.favorites', [
 
         updateFavorites();
 
-        scope.moved = function moved($index) {
-          scope.favorites.splice($index, 1);
-          FavoritesService.updateFavoriteOrder({
-            favoriteIds: _.map(scope.favorites, function extractId(favorite) {
-              return favorite.id;
-            })
-          });
+        scope.sortableOptions = {
+          containment: '.favorites__dropzone',
+          orderChanged: function() {
+            FavoritesService.updateFavoriteOrder({
+              favoriteIds: scope.favorites.map(function(favorite) {
+                return favorite.id;
+              })
+            });
+          }
         };
       }
     };
