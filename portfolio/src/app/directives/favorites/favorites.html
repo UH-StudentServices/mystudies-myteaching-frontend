@@ -43,7 +43,7 @@
         <favorites-link remove-favorite ng-switch-when="LINK" data="favorite"></favorites-link>
         <favorites-twitter remove-favorite ng-switch-when="TWITTER" data="favorite"></favorites-twitter>
       </li>
-      <li class="favorites-list__item-wrapper" visibility-private>
+      <li class="favorites-list__item-wrapper" limit-visibility="PRIVATE">
         <add-new-favorite favorites="favorites" available-favorite-types="availableFavoriteTypes"></add-new-favorite>
       </li>
     </ul>

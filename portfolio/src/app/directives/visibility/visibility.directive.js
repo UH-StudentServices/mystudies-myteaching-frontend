@@ -21,19 +21,6 @@ angular.module('directives.visibility',
    'services.portfolio',
    'services.preview'])
 
-  .directive('visibilityPrivate', function(StateService, State, PreviewService) {
-    return {
-      restrict: 'A',
-      compile: function(el) {
-        if (StateService.getCurrent() !== State.PRIVATE || PreviewService.isPreview()) {
-          // Although 'element.remove' removes child elements from the DOM, it does nothing to
-          // prevent them from running 'link'. Explicitly removing child elements seems to do the trick.
-          el.remove() && el.children().remove();
-        }
-      }
-    };
-  })
-
   .directive('portfolioVisibility', function() {
     return {
       restrict: 'E',
@@ -125,10 +112,22 @@ angular.module('directives.visibility',
         scope: {
           limitVisibility: '='
         },
-
         link: function(scope, $element, $attr, ctrl, $transclude) {
+          var preview = PreviewService.isPreview(),
+              currentState = StateService.getCurrent(),
+              limitVisibility = scope.$eval($attr.limitVisibility) || $attr.limitVisibility;
+
+          function isLimitedByPrivateVisibility() {
+            if (limitVisibility === Visibility.PRIVATE &&
+              (preview || currentState !== State.PRIVATE)) {
+              return $q.when(true);
+            } else {
+              return $q.when(false);
+            }
+          }
+
           function isLimitedByRole() {
-            var roleLimits = _.get(scope, ['limitVisibility', 'roles']);
+            var roleLimits = _.get(limitVisibility, 'roles');
 
             if (roleLimits) {
               return $q.when(!_.some(roleLimits, function(role) {
@@ -140,7 +139,7 @@ angular.module('directives.visibility',
           }
 
           function isLimitedByPortfolioComponentVisibility() {
-            var visibilityDescriptor = _.pick(scope.limitVisibility,
+            var visibilityDescriptor = _.pick(limitVisibility,
               ['componentId', 'sectionName', 'instanceName']);
 
             return _.some(visibilityDescriptor) ?
@@ -150,25 +149,26 @@ angular.module('directives.visibility',
           }
 
           function isComponentHidden(visibility) {
-            var preview = PreviewService.isPreview();
-
             if (preview && visibility === Visibility.PRIVATE) {
               return true;
             } else if (visibility === Visibility.PRIVATE &&
-              StateService.getCurrent() !== State.PRIVATE) {
+              currentState !== State.PRIVATE) {
               return true;
             } else {
               return false;
             }
           }
 
-          $q.all([isLimitedByRole(), isLimitedByPortfolioComponentVisibility()]).then(function(limits) {
-            if (!_.some(limits, Boolean)) {
-              $transclude(function(clone) {
-                $animate.enter(clone, $element.parent(), $element);
-              });
-            }
-          });
+          $q.all([
+            isLimitedByPrivateVisibility(),
+            isLimitedByRole(),
+            isLimitedByPortfolioComponentVisibility()]).then(function(limits) {
+              if (!_.some(limits, Boolean)) {
+                $transclude(function(clone) {
+                  $animate.enter(clone, $element.parent(), $element);
+                });
+              }
+            });
         }
       };
     }
