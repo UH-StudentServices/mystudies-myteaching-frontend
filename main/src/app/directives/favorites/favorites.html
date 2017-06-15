@@ -18,9 +18,11 @@
 <div class="ui-component favorites-container" role="article" id="favorites" ng-class="{'edit-favorites' : editMode}">
 
   <div class="tube">
-    <div class="edit-link-wrapper">
+    <div class="component-header">
       <h2 class="ui-component__title border-bottom" translate="favorites.title"></h2>
-      <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
+      <div class="component-header__actions">
+        <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
+      </div>
     </div>
   </div>
 

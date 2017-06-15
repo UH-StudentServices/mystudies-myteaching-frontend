@@ -17,10 +17,15 @@
 
 <section class="ui-component">
 
-  <h4 class="ui-component__title"
-      translate translate-language="{{::portfolioLang}}">
-    credits.title
-  </h4>
+  <div class="component-header">
+    <h4 class="ui-component__title"
+        translate translate-language="{{::portfolioLang}}">
+      credits.title
+    </h4>
+    <div class="component-header__actions">
+      <visibility-toggle component-id="CREDITS"></visibility-toggle>
+    </div>
+  </div>
 
   <div class="credits">
     <div class="credits__item">
@@ -32,5 +37,4 @@
     </div>
   </div>
 
-  <visibility-toggle component-id="CREDITS"></visibility-toggle>
 </section>

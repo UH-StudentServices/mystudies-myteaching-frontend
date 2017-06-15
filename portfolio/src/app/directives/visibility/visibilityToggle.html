@@ -15,25 +15,13 @@
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<div dropdown close-on-content-click visibility-private class="dropdown visibility-toggle">
-  <div class="dropdown-toggle" translate="{{ 'visibility.' + visibility }}" tabindex="0">
-  </div>
-  <div role="menu" class="dropdown-content">
-    <ul>
-      <li class="divider">
-        <a href=""
-          ng-click="setVisibility(Visibility.PUBLIC)"
-          role="menuitem"
-          translate="visibility.PUBLIC">
-        </a>
-      </li>
-      <li>
-        <a href=""
-          ng-click="setVisibility(Visibility.PRIVATE)"
-          role="menuitem"
-          translate="visibility.PRIVATE">
-        </a>
-      </li>
-    </ul>
-  </div>
-</div>
+<a
+  role="button"
+  href=""
+  class="visibility-toggle"
+  ng-click="toggleVisibility()"
+  title="{{(visibility === Visibility.PUBLIC ? 'visibility.toPrivate' : 'visibility.toPublic') | translate}}"
+  visibility-private>
+  <i
+    ng-class="{'icon--preview' : visibility === Visibility.PUBLIC, 'icon--eye-slash' : visibility === Visibility.PRIVATE }"></i>
+</a>

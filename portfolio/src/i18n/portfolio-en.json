@@ -31,7 +31,9 @@
   "visibility": {
     "PRIVATE": "private",
     "RESTRICTED": "restricted",
-    "PUBLIC": "public"
+    "PUBLIC": "public",
+    "toPublic" : "Change to public",
+    "toPrivate" : "Change to private"
   },
   "keywords": {
     "title": "Keywords",

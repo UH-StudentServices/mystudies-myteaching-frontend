@@ -18,10 +18,16 @@
 <div class="ui-component">
   <div ng-repeat="freeTextContent in freeTextContents track by $index" class="free-text-content ui-component">
 
-    <div class="edit-link-wrapper">
-      <edit-link on-edit="editFreeTextContent(freeTextContent)"
-                 on-exit-edit="updateFreeTextContent()">
-      </edit-link>
+    <div class="component-header">
+      <div class="component-header__actions">
+        <visibility-toggle component-id="FREE_TEXT_CONTENT"
+                           section-name="{{::portfolioSection}}"
+                           instance-name="{{::instanceName}}">
+        </visibility-toggle>
+        <edit-link on-edit="editFreeTextContent(freeTextContent)"
+                   on-exit-edit="updateFreeTextContent()">
+        </edit-link>
+      </div>
     </div>
     <div ng-if="freeTextContentToEdit !== freeTextContent">
       <div class="free-text-content__title-container">
@@ -49,8 +55,4 @@
     <add-new-component on-click="insertFreeTextContent()"></add-new-component>
   </div>
 
-  <visibility-toggle component-id="FREE_TEXT_CONTENT"
-                     section-name="{{::portfolioSection}}"
-                     instance-name="{{::instanceName}}">
-  </visibility-toggle>
 </div>

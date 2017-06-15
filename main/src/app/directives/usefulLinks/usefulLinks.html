@@ -16,10 +16,12 @@
 -->
 
 <div class="useful-links" id="useful-links">
-  <div class="edit-link-wrapper">
+  <div class="component-header">
     <h3 translate="usefulLinks.title"></h3>
-    <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
-  </div>
+    <div class="component-header__actions">
+      <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
+    </div>
+    </div>
 
   <ul role="list"
       class="list-of-links"

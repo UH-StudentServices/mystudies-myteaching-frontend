@@ -31,7 +31,9 @@
   "visibility": {
     "PRIVATE": "privat",
     "RESTRICTED": "begränsad",
-    "PUBLIC": "allmän"
+    "PUBLIC": "allmän",
+    "toPublic" : "Change to public (sv)",
+    "toPrivate" : "Change to private (sv)"
   },
   "keywords": {
     "title": "Nyckelord",
