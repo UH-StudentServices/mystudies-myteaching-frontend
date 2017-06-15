@@ -110,15 +110,14 @@ angular.module('directives.visibility',
         terminal: true,
         restrict: 'A',
         scope: {
-          limitVisibility: '='
         },
         link: function(scope, $element, $attr, ctrl, $transclude) {
           var preview = PreviewService.isPreview(),
               currentState = StateService.getCurrent(),
               limitVisibility = scope.$eval($attr.limitVisibility) || $attr.limitVisibility;
 
-          function isLimitedByPrivateVisibility() {
-            if (limitVisibility === Visibility.PRIVATE &&
+          function isLimitedByPrivateVisibility(visibility) {
+            if (visibility === Visibility.PRIVATE &&
               (preview || currentState !== State.PRIVATE)) {
               return $q.when(true);
             } else {
@@ -144,23 +143,12 @@ angular.module('directives.visibility',
 
             return _.some(visibilityDescriptor) ?
               VisibilityService.getComponentVisibility(visibilityDescriptor)
-                .then(isComponentHidden) :
+                .then(isLimitedByPrivateVisibility) :
               $q.when(false);
           }
 
-          function isComponentHidden(visibility) {
-            if (preview && visibility === Visibility.PRIVATE) {
-              return true;
-            } else if (visibility === Visibility.PRIVATE &&
-              currentState !== State.PRIVATE) {
-              return true;
-            } else {
-              return false;
-            }
-          }
-
           $q.all([
-            isLimitedByPrivateVisibility(),
+            isLimitedByPrivateVisibility(limitVisibility),
             isLimitedByRole(),
             isLimitedByPortfolioComponentVisibility()]).then(function(limits) {
               if (!_.some(limits, Boolean)) {
