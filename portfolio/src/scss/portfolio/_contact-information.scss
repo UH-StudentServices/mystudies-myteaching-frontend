@@ -54,14 +54,10 @@ $tuhat-bg: $black;
 .contact-information {
   position: relative;
 
-  .edit-link-wrapper {
+  .component-header {
     margin-bottom: 1em;
   }
 
-  .edit-link {
-    position: absolute;
-    right: 0;
-  }
   .contact-details {
     &__name {
       font-weight: 600;
@@ -217,8 +213,4 @@ $tuhat-bg: $black;
       opacity: 0.9;
     }
   }
-}
-
-.contact-information__title {
-  margin-bottom: 0.5em;
 }

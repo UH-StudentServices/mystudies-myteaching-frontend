@@ -31,7 +31,9 @@
   "visibility": {
     "PRIVATE": "yksityinen",
     "RESTRICTED": "rajoitettu",
-    "PUBLIC": "julkinen"
+    "PUBLIC": "julkinen",
+    "toPublic" : "Muuta julkiseksi",
+    "toPrivate" : "Muuta yksityiseksi"
   },
   "keywords": {
     "title": "Avainsanat",

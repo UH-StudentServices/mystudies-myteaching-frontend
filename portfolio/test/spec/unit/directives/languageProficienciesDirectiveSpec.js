@@ -58,7 +58,7 @@ describe('Language proficiencies directive', function() {
         updateItem(itemToAdd, lang, proficiency);
       },
       toggleEditMode = function() {
-        directiveElem[0].querySelector('.edit-link-wrapper .edit-link').click();
+        directiveElem[0].querySelector('.component-header .edit-link').click();
       },
       hasPreselectedLanguageSelectable = function(els) {
         var preSelectedLanguages = _.map($scope.portfolio.languageProficiencies, 'language');

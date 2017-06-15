@@ -79,8 +79,10 @@ angular.module('directives.visibility',
             scope.visibility = visibility;
           });
 
-        scope.setVisibility = function(visibility) {
-          VisibilityService.setComponentVisibility(visibilityDescriptor, visibility)
+        scope.toggleVisibility = function() {
+          var newVisibility = scope.visibility === Visibility.PUBLIC ? Visibility.PRIVATE : Visibility.PUBLIC;
+
+          VisibilityService.setComponentVisibility(visibilityDescriptor, newVisibility)
             .then(function(visibility) {
               scope.visibility = visibility;
             });

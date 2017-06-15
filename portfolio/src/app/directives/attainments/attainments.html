@@ -16,12 +16,15 @@
 -->
 
 <section class="ui-component">
-  <div class="edit-link-wrapper">
+  <div class="component-header">
     <h2 class="ui-component__title border-bottom"
         translate translate-language="{{::portfolioLang}}">
       attainments.attainments
     </h2>
-    <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
+    <div class="component-header__actions">
+      <visibility-toggle component-id="ATTAINMENTS"></visibility-toggle>
+      <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
+    </div>
   </div>
 
   <ul ng-if="editing">
@@ -102,6 +105,4 @@
   <div ng-show="showMoreVisible()">
     <button class="button button--light" ng-click="showMoreClick()" translate="buttons.showMore"></button>
   </div>
-
-  <visibility-toggle component-id="ATTAINMENTS"></visibility-toggle>
 </section>

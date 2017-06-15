@@ -17,18 +17,20 @@
 
 <section class="ui-component editable-wrapper">
 
-  <div class="edit-link-wrapper">
+  <div class="component-header">
     <h2 class="ui-component__title border-bottom"
         translate translate-language="{{::portfolioLang}}">
       samples.title
     </h2>
-    <edit-link on-edit="edit()"
-      on-exit-edit="exitEdit()"
-      exit-edit-disabled="!samplesValid"
-      on-disabled-exit-edit="markAllSubmitted()"></edit-link>
+    <div class="component-header__actions">´
+      <visibility-toggle component-id="SAMPLES"></visibility-toggle>
+      <edit-link on-edit="edit()"
+        on-exit-edit="exitEdit()"
+        exit-edit-disabled="!samplesValid"
+        on-disabled-exit-edit="markAllSubmitted()"></edit-link>
+    </div>
   </div>
 
   <show-samples ng-show="!editing" samples="samples"></show-samples>
   <edit-samples ng-show="editing" samples="samples" on-change="refreshValidity()"></edit-samples>
-  <visibility-toggle component-id="SAMPLES"></visibility-toggle>
 </section>

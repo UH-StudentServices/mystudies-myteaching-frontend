@@ -15,6 +15,17 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-.edit-link .disabled {
-  color: $gray;
+.component-header {
+  position: relative;
+
+  .component-header__actions {
+    right: 0;
+    position: absolute;
+    @include vertically-center;
+
+    > * {
+      margin-left: 1em;
+    }
+  }
+
 }

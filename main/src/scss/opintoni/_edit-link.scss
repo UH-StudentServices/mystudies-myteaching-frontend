@@ -15,12 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-.edit-link-wrapper {
-  position: relative;
-}
-
 .edit-link {
-  right: 0;
-  position: absolute;
-  @include vertically-center;
+  .disabled {
+    color: $gray;
+  }
 }

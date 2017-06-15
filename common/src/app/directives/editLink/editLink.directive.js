@@ -28,18 +28,30 @@ angular.module('directives.editLink', [])
         exitEditDisabled: '='
       },
       link: function($scope) {
+
+        function exitEdit() {
+          if (!$scope.exitEditDisabled) {
+            $scope.editing = false;
+            if ($scope.onExitEdit) {
+              $scope.onExitEdit();
+            }
+          } else if ($scope.onDisabledExitEdit) {
+            $scope.onDisabledExitEdit();
+          }
+        }
+
+        function enterEdit() {
+          $scope.editing = true;
+          if ($scope.onEdit) {
+            $scope.onEdit();
+          }
+        }
+
         $scope.onClick = function() {
           if ($scope.editing) {
-            if ($scope.exitEditDisabled) {
-              if (typeof $scope.onDisabledExitEdit === 'function') {
-                $scope.onDisabledExitEdit();
-              }
-            } else if ($scope.onExitEdit()) {
-              $scope.editing = false;
-            }
+            exitEdit();
           } else {
-            $scope.onEdit();
-            $scope.editing = true;
+            enterEdit();
           }
         };
       }

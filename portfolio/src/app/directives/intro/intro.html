@@ -26,9 +26,11 @@
           <avatar-image></avatar-image>
         </div>
         <div class="portfolio-intro__owner-details">
-          <div class="edit-link-wrapper">
+          <div class="component-header">
             <h2 class="portfolio-intro__title">{{::portfolio.ownerName}}</h2>
-            <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
+            <div class="component-header__actions">
+              <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
+            </div>
           </div>
           <div class="editable-wrapper">
             <p class="portfolio-intro__intro user-text" ng-hide="editing" ng-bind="portfolio.intro"></p>

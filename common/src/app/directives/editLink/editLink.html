@@ -13,14 +13,15 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
-  -->
+-->
 
-<a role="button" href="" class="edit-link" ng-click="onClick()" visibility-private>
-  <span class="hide-mobile-only">
-    <span ng-hide="editing" translate="general.edit" class="text-transform-capitalize"></span>
-    <span ng-show="editing" translate="general.done" class="text-transform-capitalize"></span>
-  </span>
-  <span class="hide-mobile-only" ng-class="{'icon--done' : editing, 'icon--modify' : !editing}" aria-hidden="true" />
-  <span class="show-mobile-only icon--modify" ng-hide="editing" aria-label="{{:: ('general.edit' | translate) }}"/>
-  <span class="show-mobile-only icon--done" ng-show="editing" aria-label="{{:: ('general.done' | translate) }}"/>
+<a
+  role="button"
+  href=""
+  class="edit-link"
+  ng-click="onClick()"
+  title="{{(editing ? 'general.done' : 'general.edit') | translate}}"
+  visibility-private>
+  <i
+    ng-class="{'icon--done' : editing, 'icon--edit-event' : !editing, 'disabled' : editing && exitEditDisabled}"></i>
 </a>
