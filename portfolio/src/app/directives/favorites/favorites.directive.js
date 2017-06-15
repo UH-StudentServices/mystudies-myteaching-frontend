@@ -20,8 +20,7 @@ angular.module('directives.favorites', [
   'services.favorites',
   'directives.favorites.link',
   'directives.favorites.twitter',
-  'directives.favorites.addNew',
-  'dndLists'
+  'directives.favorites.addNew'
 ])
   .constant('availableFavoriteTypes', ['LINK', 'TWITTER'])
   .directive('favorites', function(availableFavoriteTypes,
@@ -46,6 +45,7 @@ angular.module('directives.favorites', [
 
         scope.exitEdit = function() {
           scope.editMode = false;
+
           return true;
         };
 
@@ -64,13 +64,15 @@ angular.module('directives.favorites', [
         scope.$on(NewFavoriteAddedEvent, updateFavorites);
         scope.$on(RemoveFavoriteEvent, removeFavorite);
 
-        scope.moved = function moved($index) {
-          scope.favorites.splice($index, 1);
-          FavoritesService.updateFavoriteOrder({
-            favoriteIds: _.map(scope.favorites, function extractId(favorite) {
-              return favorite.id;
-            })
-          });
+        scope.sortableOptions = {
+          containment: '.favorites__dropzone',
+          orderChanged: function() {
+            FavoritesService.updateFavoriteOrder({
+              favoriteIds: scope.favorites.map(function(favorite) {
+                return favorite.id;
+              })
+            });
+          }
         };
       }
     };

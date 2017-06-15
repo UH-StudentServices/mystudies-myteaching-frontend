@@ -19,7 +19,6 @@ angular.module('directives.usefulLinks', [
   'resources.usefulLinks',
   'directives.usefulLinks.title',
   'directives.usefulLinks.editableLink',
-  'dndLists',
   'services.focus',
   'utils.validator'])
 

@@ -28,6 +28,7 @@ angular.module('opintoniPortfolioApp', [
   'portfolioErrors',
   'resources.httpInterceptor',
   'angular-click-outside',
+  'as.sortable',
   'templates',
 
   'constants.portfolioTabs',

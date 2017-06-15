@@ -22,8 +22,7 @@ angular.module('directives.favorites', [
   'directives.favorites.unicafe',
   'directives.favorites.twitter',
   'directives.favorites.addNew',
-  'directives.favorites.unisport',
-  'dndLists'
+  'directives.favorites.unisport'
 ])
   .constant('availableFavoriteTypes', ['RSS', 'UNICAFE', 'TWITTER', 'UNISPORT'])
   .directive('favorites', function(availableFavoriteTypes,
