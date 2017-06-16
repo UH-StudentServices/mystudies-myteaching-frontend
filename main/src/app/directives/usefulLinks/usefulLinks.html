@@ -21,30 +21,37 @@
     <div class="component-header__actions">
       <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
     </div>
-    </div>
+  </div>
 
-  <ul role="list"
-      class="list-of-links"
-      dnd-list="usefulLinks"
-      dnd-allowed-types="['usefulLink']">
-    <li ng-repeat="link in usefulLinks"
-        role="listitem"
-        dnd-draggable="link"
-        dnd-type="'usefulLink'"
-        dnd-moved="updateOrder($index)"
-        dnd-effect-allowed="move">
-      <a ng-hide="editMode" href="{{link.url}}" class="list-of-links__link button--action icon--arrow-right">
-        {{ link.description | renderUsefulLinkDescription:link.type }}
-      </a>
-      <editable-useful-link ng-show="editMode"
-                            useful-link="link"
-                            editable="link.type === UsefulLinkType.USER_DEFINED">
-      </editable-useful-link>
-      <span ng-show="editMode && !link.edit" class="useful-links__delete-link" ng-click="deleteLink(link)" role="button">
-        <i class="icon-remove"></i>
-      </span>
-    </li>
-  </ul>
+  <div class="useful-links__dropzone">
+    <ul class="list-of-links useful-links__list"
+        ng-model="usefulLinks"
+        as-sortable="sortableOptions"
+        is-disabled="!editMode">
+      <li ng-repeat="link in usefulLinks"
+          class="useful-link"
+          as-sortable-item>
+        <div as-sortable-item-handle>
+          <a ng-hide="editMode" href="{{link.url}}" class="list-of-links__link button--action icon--arrow-right">
+            {{ link.description | renderUsefulLinkDescription:link.type }}
+          </a>
+
+          <editable-useful-link ng-show="editMode"
+                                useful-link="link"
+                                editable="link.type === UsefulLinkType.USER_DEFINED">
+          </editable-useful-link>
+
+          <a href=""
+             ng-show="editMode && !link.edit"
+             class="useful-links__delete-link"
+             ng-click="deleteLink(link)"
+             role="button">
+            <i class="icon--remove"></i>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
 
   <div ng-show="editMode && !editLink" class="new-useful-link-container">
     <div class="new-useful-link">
