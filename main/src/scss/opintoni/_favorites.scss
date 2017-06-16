@@ -15,95 +15,11 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-.favorites-container {
-  @include clearfix;
-}
-
-.favorites-list__item {
-  height: 100%;
-  position: relative;
-
-  .twitter-timeline {
-    display: none;
-  }
-}
-
-.favorites-list__remove {
-  display: none;
-  .edit-favorites & {
-    display: block;
-  }
-  color: $white;
-  background-color: $blue;
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  &:before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    @include icon($icon-remove);
-  }
-}
-
-.twitter-favorite__loading {
-  position: absolute;
-  &-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    color: $gray;
-  }
-  border: 2px dashed $gray;
-  border-radius: 10px;
-  top: 50%;
-  left: 50%;
-  width: 85%;
-  height: 85%;
-  transform: translate(-50%,-50%);
-  z-index: -1;
-}
-
-.favorites-list__remove-screen {
-  display: none;
-  .edit-favorites & {
-    display: block;
-  }
-  top: 0;
-  left: 0;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-/***************************** Required styles *****************************/
-
-/**
- * For the correct positioning of the placeholder element, the dnd-list and
- * it's children must have position: relative
- */
-.favorites-container ul[dnd-list],
-.favorites-container ul[dnd-list] > li {
-  position: relative;
-}
-
-/***************************** Dropzone Styling *****************************/
-
-/**
- * The dnd-list should always have a min-height,
- * otherwise you can't drop to it once it's empty
- */
-.favorites-container .dropzone ul[dnd-list] {
+.favorites__list {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  min-height: 120px !important;
 
   @include breakpoint($small) {
     &::after {
@@ -111,6 +27,7 @@
       width: calc(33.33% - (80px/3));
     };
   }
+
   @include breakpoint($medium) {
     &::after {
       content: "";
@@ -119,49 +36,7 @@
   }
 }
 
-/**
- * Reduce opacity of elements during the drag operation. This allows the user
- * to see where he is dropping his element, even if the element is huge. The
- * .dndDragging class is automatically set during the drag operation.
- */
-.favorites-container .dropzone .dndDragging {
-  opacity: 0.7;
-}
-
-/**
- * The dndDraggingSource class will be applied to the source element of a drag
- * operation. It makes sense to hide it to give the user the feeling that he's
- * actually moving it. Note that the source element has also .dndDragging class.
- */
-.favorites-container .dropzone .dndDraggingSource {
-  display: none;
-}
-
-/**
- * An element with .dndPlaceholder class will be added as child of the dnd-list
- * while the user is dragging over it.
- */
-.favorites-container .dropzone .dndPlaceholder {
-  background-color: #ddd !important;
-  display: block;
-  position: relative;
-
-  @include breakpoint($medium) {
-    height: 300px;
-  }
-
-  @include breakpoint($large) {
-    height: 340px;
-  }
-}
-
-/***************************** Element type specific styles *****************************/
-
-.favorites-container .dropzone .itemlist {
-  min-height: 120px !important;
-}
-
-.favorites-container .dropzone .itemlist > li {
+.favorite, .favorites__add-new {
   padding-top: 20px;
 
   @include breakpoint($mobile-only) {
@@ -185,7 +60,6 @@
   }
 
   .rss-feed {
-
     .rss-header {
       white-space: nowrap;
     }
@@ -208,18 +82,97 @@
       background-size: cover;
       margin-bottom: 5px;
     }
-
   }
 
   .twitter {
     padding: 0;
     overflow: hidden;
   }
-
 }
 
-.favorites-container .dropzone .container-element {
-  margin: 10px;
+.as-sortable-dragging {
+  & .as-sortable-item {
+    opacity: 0.7;
+    width: 100%;
+  }
+}
+
+.favorite__drag-handle {
+  height: 100% !important;
+}
+
+.favorites:not(.edit-favorites) {
+  & .as-sortable-item-handle {
+    cursor: default;
+  }
+}
+
+.favorites-list__item {
+  height: 100%;
+  position: relative;
+
+  .twitter-timeline {
+    display: none;
+  }
+}
+
+.favorites-list__remove {
+  display: none;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: $white;
+  background-color: $blue;
+  cursor: pointer;
+
+  .edit-favorites & {
+    display: block;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @include icon($icon-remove);
+  }
+}
+
+.twitter-favorite__loading {
+  position: absolute;
+  border: 2px dashed $gray;
+  border-radius: 10px;
+  top: 50%;
+  left: 50%;
+  width: 85%;
+  height: 85%;
+  transform: translate(-50%,-50%);
+  z-index: -1;
+
+  &-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: $gray;
+  }
+}
+
+.favorites-list__remove-screen {
+  display: none;
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+
+  .edit-favorites & {
+    display: block;
+  }
 }
 
 .loading-container {
@@ -230,8 +183,6 @@
 .favorite-img {
   max-height: 150px;
 }
-
-// _add-favorites.scss
 
 .favorites-list__item.add-new {
   @include breakpoint($mobile-only) {
@@ -281,9 +232,11 @@
 
 .add-favorite-step {
   width: 100%;
+
   ul {
     padding: 0.5em;
   }
+
   li.bar {
     padding: 0.5em 0;
     font-size: 0.9em;
@@ -295,7 +248,6 @@
       a {
         color: grey;
       }
-
     }
   }
 }
@@ -330,6 +282,7 @@
     border: 0;
     width: 80%;
     font-size: 0.8rem;
+
     &.ng-invalid {
       border: 1px solid $red;
     }
@@ -347,36 +300,38 @@
   @include breakpoint($small) {
     height: 230px;
   }
+
   @include breakpoint($medium) {
     height: 270px;
   }
+
   @include breakpoint($large) {
     height: 300px;
   }
 }
 
 .unisport {
-    .unisport-header {
+  .unisport-header {
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+    position: relative;
+
+    img {
+      position: absolute;
       width: 100%;
-      height: 100px;
-      overflow: hidden;
-      position: relative;
-
-      img {
-        position: absolute;
-        width: 100%;
-        left: 0;
-        bottom: 0;
-      }
+      left: 0;
+      bottom: 0;
     }
+  }
 
-    .authorization-url-container {
-      padding: 10px;
+  .authorization-url-container {
+    padding: 10px;
 
-      a {
-        margin-top: 1em;
-      }
+    a {
+      margin-top: 1em;
     }
+  }
 
   .events {
     display: flex;
@@ -412,11 +367,10 @@
       &__heading {
         flex: 1;
       }
+
       &__content {
         flex: 3;
       }
     }
-
   }
-
 }
