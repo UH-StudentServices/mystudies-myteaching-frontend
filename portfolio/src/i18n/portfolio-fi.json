@@ -6,6 +6,7 @@
     "addNew": "lisää uusi",
     "remove" : "poista",
     "ok": "Ok",
+    "login": "kirjaudu",
     "cancel": "Peruuta",
     "showMore": "lisää",
     "showLess": "vähemmän",
@@ -132,6 +133,11 @@
     "maintenance" : {
       "title" : "huoltokatko",
       "description" : "sivu on poissa käytöstä huoltotöiden vuoksi."
+    },
+    "loginNeeded": {
+      "title": "kirjautuminen tarvitaan",
+      "description": "Hakemasi portfolio saattaa olla rajoitettu vain Helsingin yliopiston käyttäjille. Ole hyvä ja kirjaudu sisään.",
+      "disclaimer": "Jos portfolio ei sittenkään näy, ole hyvä ja otayhtettä sen kirjoittajaan."
     }
   },
   "preview" : {

@@ -6,6 +6,7 @@
     "addNew": "lägg till",
     "remove" : "radera",
     "ok": "Ok",
+    "login": "logga in",
     "cancel": "Avbryt",
     "showMore": "mer",
     "showLess": "mindre",
@@ -132,6 +133,11 @@
     "maintenance" : {
       "title" : "under underhåll",
       "description" : "sidan är för närvarande under underhåll."
+    },
+    "loginNeeded": {
+      "title": "login needed",
+      "description": "Portfolio du letar efter kan begränsas till användarna av Helsingfors universitet. Vänligen logga in.",
+      "disclaimer": "Om portföljen är fortfarande inte nås, kontakta författaren."
     }
   },
   "preview" : {

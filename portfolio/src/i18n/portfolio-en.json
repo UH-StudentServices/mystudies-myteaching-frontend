@@ -6,6 +6,7 @@
     "addNew": "add new",
     "remove" : "remove",
     "ok": "Ok",
+    "login": "Login",
     "cancel": "Cancel",
     "showMore": "more",
     "showLess": "less",
@@ -124,14 +125,19 @@
     "title": "Study meters",
     "totalCredits": "ECTS credits"
   },
-  "errorPage" : {
-    "notFound" : {
-      "title" : "Page not found",
-      "description" : "page you are looking for does not exist."
+  "errorPage": {
+    "notFound": {
+      "title": "Page not found",
+      "description": "page you are looking for does not exist."
     },
-    "maintenance" : {
-      "title" : "under maintenance",
-      "description" : "page is currently under maintenance."
+    "maintenance": {
+      "title": "under maintenance",
+      "description": "page is currently under maintenance."
+    },
+    "loginNeeded": {
+      "title": "login needed",
+      "description": "Portfolio you are looking for may be restricted to the users of University of Helsinki. Please login.",
+      "disclaimer": "If the portfolio is still unreachable, please contact the author."
     }
   },
   "preview" : {

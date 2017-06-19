@@ -123,6 +123,14 @@ angular.module('opintoniApp', [
               }, function getUserSettingsError() {
                 return undefined;
               });
+          },
+          redirectNeeded: function($window, $cookies, RedirectCookie) {
+            var redirectCookie = $cookies.get(RedirectCookie.NAME);
+
+            if (redirectCookie) {
+              $cookies.remove(RedirectCookie.NAME);
+              $window.location.href = redirectCookie;
+            }
           }
         }
       })
