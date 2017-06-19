@@ -15,7 +15,7 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('portfolioErrors', [])
+angular.module('portfolioErrors', ['services.login'])
   .config(function($stateProvider) {
     $stateProvider
       .state('error', {
@@ -30,6 +30,19 @@ angular.module('portfolioErrors', [])
         parent: 'error',
         url: '/notfound',
         templateUrl: 'app/partials/errorPages/_error.notFound.html'
+      })
+      .state('loginNeeded', {
+        parent: 'error',
+        url: '/loginNeeded',
+        templateUrl: 'app/partials/errorPages/_error.loginNeeded.html',
+        controller: function($scope, $stateParams, Configuration, LoginService) {
+          $scope.redirectToLogin =  function redirectToLogin() {
+            LoginService.goToLogin($stateParams.originalUrl);
+          };
+        },
+        params: {
+          originalUrl: null
+        }
       })
       .state('maintenance', {
         parent: 'error',

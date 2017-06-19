@@ -24,6 +24,11 @@ angular.module('services.configuration', [])
 
   .constant('LoginCookie', 'OPINTONI_HAS_LOGGED_IN')
 
+  .constant('RedirectCookie', {
+      NAME: 'OO_REDIRECT_TO',
+      TIMEOUT_IN_MINUTES: 5
+  })
+
   .constant('Environments', {
     LOCAL: 'local',
     DEV: 'dev',

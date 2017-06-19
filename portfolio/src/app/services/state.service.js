@@ -16,15 +16,18 @@
  */
 
 angular.module('services.state', ['services.session',
-                                  'services.portfolioRole'])
+                                  'services.portfolioRole',
+                                  'services.configuration'])
 
   .constant('State', {
+    'MY_STUDIES': 'opintoni',
+    'MY_TEACHINGS': 'opetukseni',
     'PRIVATE': 'private',
     'RESTRICTED': 'restricted',
     'PUBLIC': 'public'
   })
 
-  .factory('StateService', function(State, PortfolioRoleService) {
+  .factory('StateService', function(State, PortfolioRoleService, Configuration, ConfigurationProperties, $location) {
     var currentState = State.PUBLIC,
         portfolioRole = PortfolioRoleService.getActiveRole();
 
@@ -50,8 +53,25 @@ angular.module('services.state', ['services.session',
       return currentState;
     }
 
+    function configurationPropertyContains(property, expectedValue) {
+      return Configuration[property] && Configuration[property].indexOf(expectedValue) > -1;
+    }
+
+    function getStateFromDomain() {
+      var host = $location.host();
+
+      if (configurationPropertyContains(ConfigurationProperties.STUDENT_APP_URL, host)) {
+        return State.MY_STUDIES;
+      } else if (configurationPropertyContains(ConfigurationProperties.TEACHER_APP_URL, host)) {
+        return State.MY_TEACHINGS;
+      } else {
+        throw Error('hostname does not match any configured values');
+      }
+    };
+
     return {
       resolve: resolve,
-      getCurrent: getCurrent
+      getCurrent: getCurrent,
+      getStateFromDomain: getStateFromDomain
     };
   });

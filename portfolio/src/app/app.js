@@ -118,12 +118,16 @@ angular.module('opintoniPortfolioApp', [
             return UserSettingsService.getUserSettings();
           }
         },
-        portfolio: function(PortfolioService, $state, $stateParams, state, $translate) {
+        portfolio: function(PortfolioService, $location, $state, $stateParams, session, state, $translate) {
           $translate.fallbackLanguage($stateParams.lang);
           return PortfolioService.findPortfolioByPath(state, $stateParams.lang, $stateParams.userpath)
             .catch(function findPortfolioFail(error) {
               if (error.status === 404) {
-                $state.go('notFound');
+                if (session) {
+                  $state.go('notFound');
+                } else {
+                  $state.go('loginNeeded', {originalUrl: $location.absUrl()});
+                }
               }
             });
         }
