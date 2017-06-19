@@ -2,9 +2,9 @@
   "general": {
     "edit": "edit",
     "done": "done",
-    "add" : "add",
+    "add": "add",
     "addNew": "add new",
-    "remove" : "remove",
+    "remove": "remove",
     "ok": "Ok",
     "login": "Login",
     "cancel": "Cancel",
@@ -88,7 +88,7 @@
   "studies": {
     "title": "Studies"
   },
-  "workExperience" : {
+  "workExperience": {
     "title": "work experience",
     "addWorkExperience": "Add employer",
     "addJobSearch": "Add looking for work",
@@ -140,21 +140,21 @@
       "disclaimer": "If the portfolio is still unreachable, please contact the author."
     }
   },
-  "preview" : {
-    "enterPreview" : "preview",
-    "info" : "this is how your portfolio looks to others if it is published.",
-    "exit" : "close preview",
+  "preview": {
+    "enterPreview": "preview",
+    "info": "this is how your portfolio looks to others if it is published.",
+    "exit": "close preview",
     "print": "print"
   },
-  "freeTextContent" : {
-    "defaultTitle" : "Add title",
-    "defaultText" : "Add content"
+  "freeTextContent": {
+    "defaultTitle": "Add title",
+    "defaultText": "Add content"
   },
   "feedback": {
     "title": "Feedback",
     "submit": "Submit",
     "submitted": "Thanks",
-    "anonymous" : "I wish to be anonymous"
+    "anonymous": "I wish to be anonymous"
   },
   "cookieNotification": {
     "notification": "This website uses cookies to ensure you get the best experience on our website.",

@@ -2,11 +2,11 @@
   "general": {
     "edit": "muokkaa",
     "done": "valmis",
-    "add" : "lisää",
+    "add": "lisää",
     "addNew": "lisää uusi",
-    "remove" : "poista",
+    "remove": "poista",
     "ok": "Ok",
-    "login": "kirjaudu",
+    "login": "Kirjaudu",
     "cancel": "Peruuta",
     "showMore": "lisää",
     "showLess": "vähemmän",
@@ -88,7 +88,7 @@
   "studies": {
     "title": "Opinnot"
   },
-  "workExperience" : {
+  "workExperience": {
     "title": "työkokemus",
     "addWorkExperience": "Lisää työnantaja",
     "addJobSearch": "Lisää haen työpaikkaa",
@@ -125,14 +125,14 @@
     "title": "Opiskelun mittarit",
     "totalCredits": "Opintopistettä suoritettu"
   },
-  "errorPage" : {
-    "notFound" : {
-      "title" : "Sivua ei löytynyt",
-      "description" : "Etsimääsi sivua ei löytynyt."
+  "errorPage": {
+    "notFound": {
+      "title": "Sivua ei löytynyt",
+      "description": "Etsimääsi sivua ei löytynyt."
     },
-    "maintenance" : {
-      "title" : "huoltokatko",
-      "description" : "sivu on poissa käytöstä huoltotöiden vuoksi."
+    "maintenance": {
+      "title": "huoltokatko",
+      "description": "sivu on poissa käytöstä huoltotöiden vuoksi."
     },
     "loginNeeded": {
       "title": "kirjautuminen tarvitaan",
@@ -140,21 +140,21 @@
       "disclaimer": "Jos portfolio ei sittenkään näy, ole hyvä ja otayhtettä sen kirjoittajaan."
     }
   },
-  "preview" : {
-    "enterPreview" : "esikatsele",
-    "info" : "tältä portfoliosi näyttää muille jos olet määritellyt sen julkiseksi.",
-    "exit" : "sulje esikatselu",
+  "preview": {
+    "enterPreview": "esikatsele",
+    "info": "tältä portfoliosi näyttää muille jos olet määritellyt sen julkiseksi.",
+    "exit": "sulje esikatselu",
     "print": "tulosta"
   },
-  "freeTextContent" : {
-    "defaultTitle" : "Lisää otsikko",
-    "defaultText" : "Lisää sisältöä"
+  "freeTextContent": {
+    "defaultTitle": "Lisää otsikko",
+    "defaultText": "Lisää sisältöä"
   },
   "feedback": {
     "title": "Palaute",
     "submit": "Lähetä",
     "submitted": "Kiitos",
-    "anonymous" : "Haluan antaa palautteeni nimettömänä"
+    "anonymous": "Haluan antaa palautteeni nimettömänä"
   },
   "cookieNotification": {
     "notification": "Jotta sivusto toimisi mahdollisimman hyvin, käytämme evästeitä.",
