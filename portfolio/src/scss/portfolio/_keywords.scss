@@ -17,7 +17,7 @@
 
 $keywords-summary-tag-color: $black;
 $keywords-summary-text-color: $white;
-$keywords-summary-max-height: 171px;
+$keywords-summary-max-height: 162px;
 
 .keywords-summary__list {
   max-height: $keywords-summary-max-height;
@@ -31,8 +31,8 @@ $keywords-summary-max-height: 171px;
   padding: 1em;
   font-weight: 600;
   display: inline-block;
-  margin-right: 0.2em;
-  margin-bottom: 0.2em;
+  margin-right: 4px;
+  margin-bottom: 4px;
 }
 
 .keywords-input-container__btn {
