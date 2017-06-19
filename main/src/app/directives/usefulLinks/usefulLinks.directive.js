@@ -119,9 +119,12 @@ angular.module('directives.usefulLinks', [
           setSearchState(SearchState.NO_SEARCH);
         };
 
-        $scope.updateOrder = function($index) {
-          $scope.usefulLinks.splice($index, 1);
-          UsefulLinksResource.updateOrder(_.map($scope.usefulLinks, 'id'));
+        $scope.sortableOptions = {
+          containment: '.useful-links__dropzone',
+          containerPositioning: 'relative',
+          orderChanged: function() {
+            UsefulLinksResource.updateOrder(_.map($scope.usefulLinks, 'id'));
+          }
         };
 
         function setSearchState(searchState) {

@@ -24,42 +24,25 @@
   margin-bottom: 16px;
 }
 
-.useful-links ul[dnd-list], .useful-links li[dnd-list] {
-  position: relative;
-}
-
-.useful-links li[dnd-list] {
-  display: block;
-}
-
-.useful-links .dndDraggingSource {
-  display: none;
-}
-
-.useful-links .dndDragging {
-  opacity: 0.7;
-}
-
-.useful-links .dndPlaceholder {
-  background-color: #ddd !important;
+.useful-links__list, .useful-link {
   display: block;
   position: relative;
-  height: 50px;
+  margin-bottom: 2px;
+  overflow: hidden;
+}
+
+.useful-link {
+  // ng-animate sometimes briefly shows sibling elements with
+  // mutually exclusive ng-hide and ng-show rendering conditions
+  // simultaneously -- disabling transition-duration fixes this
+  // for some browsers
+  [ng-hide], [ng-show] { transition-duration: 0s; }
 }
 
 .useful-links__edit {
   display: block;
   text-align: right;
   margin-bottom: 0.5em;
-}
-
-.useful-links ul {
-  margin-bottom: 2px;
-}
-
-.useful-links li {
-  position: relative;
-  margin-bottom: 2px;
 }
 
 .useful-links__delete-link {
@@ -77,6 +60,7 @@
   border: 2px solid $lightsilver;
   margin-bottom: 2px;
   padding: 0.8em 3em 0.8em 1em;
+
   input {
     margin: 0;
     padding: 0;
@@ -213,7 +197,7 @@
 }
 
 .useful-links__fixed-link-button {
-  @include button
+  @include button;
   display: block;
   padding-left: 10px;
   position: relative;
