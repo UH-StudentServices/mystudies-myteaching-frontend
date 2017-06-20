@@ -58,6 +58,12 @@
   cursor: pointer;
 }
 
+.drag-disabled {
+  .as-sortable-item-handle {
+    cursor: auto !important;
+  }
+}
+
 .text-transform-capitalize {
   @include capitalize-first-letter(inline-block);
 }

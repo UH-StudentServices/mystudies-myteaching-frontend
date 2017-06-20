@@ -44,7 +44,8 @@ angular.module('resources.portfolio', ['services.state'])
           id: portfolio.id,
           intro: portfolio.intro,
           ownerName: portfolio.ownerName,
-          visibility: portfolio.visibility
+          visibility: portfolio.visibility,
+          componentOrders: portfolio.componentOrders
         }).$promise;
     }
 

@@ -15,8 +15,7 @@
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<section class="ui-component editable-wrapper">
-
+<div class="ui-component editable-wrapper">
   <div class="component-header">
     <h2 class="ui-component__title border-bottom"
         translate translate-language="{{::portfolioLang}}">
@@ -33,4 +32,4 @@
 
   <show-samples ng-show="!editing" samples="samples"></show-samples>
   <edit-samples ng-show="editing" samples="samples" on-change="refreshValidity()"></edit-samples>
-</section>
+</div>

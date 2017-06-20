@@ -15,12 +15,24 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('controllers.main', ['constants.portfolioTabs'])
-  .controller('MainCtrl', function($scope, portfolioTabs, portfolio, userSettings) {
+angular.module('controllers.main', ['constants.portfolioTabs', 'services.componentOrder'])
+  .controller('MainCtrl', function($scope, portfolioTabs, portfolio, state, userSettings,
+                                   ComponentOrderService, State) {
     $scope.portfolio = portfolio;
     $scope.userSettings = userSettings;
     $scope.portfolioTabs = portfolioTabs;
     $scope.currentYear = moment().year();
+    $scope.portfolioSections = ComponentOrderService.getInitialComponentOrder(portfolio);
+    $scope.sectionSortDisabled = state !== State.PRIVATE;
+
+    $scope.sortableOptions = {
+      containment: '.portfolio-components__dropzone',
+      orderChanged: function(e) {
+        var updatedSections = e.dest.sortableScope.modelValue;
+
+        ComponentOrderService.updateComponentOrder(portfolio.id, updatedSections);
+      }
+    };
 
     document.title = portfolio.ownerName;
   });
