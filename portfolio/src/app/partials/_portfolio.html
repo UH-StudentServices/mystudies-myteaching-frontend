@@ -37,7 +37,11 @@
   </div>
 </div>
 
-<feedback limit-visibility="PRIVATE" ng-if="userSettings.cookieConsent"></feedback>
-<cookie-notification limit-visibility="PRIVATE" ng-if="!userSettings.cookieConsent"></cookie-notification>
+<div ng-if="userSettings.cookieConsent">
+  <feedback limit-visibility="PRIVATE" ></feedback>
+</div>
+<div ng-if="!userSettings.cookieConsent">
+  <cookie-notification limit-visibility="PRIVATE"></cookie-notification>
+</div>
 
 <footer role="contentinfo" ng-include="'app/partials/_page_footer.html'"></footer>
