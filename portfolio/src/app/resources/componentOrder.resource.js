@@ -24,7 +24,7 @@ angular.module('resources.componentOrder', [])
         portfolioId: portfolioId
       }, {
         'save': {
-          method:'POST',
+          method: 'POST',
           isArray: true
         }
       });
