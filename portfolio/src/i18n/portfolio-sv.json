@@ -31,7 +31,7 @@
   },
   "visibility": {
     "PRIVATE": "privat",
-    "RESTRICTED": "begränsad",
+    "RESTRICTED": "HU-andvändare",
     "PUBLIC": "allmän",
     "toPublic" : "Change to public (sv)",
     "toPrivate" : "Change to private (sv)"
