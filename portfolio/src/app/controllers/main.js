@@ -27,6 +27,7 @@ angular.module('controllers.main', ['constants.portfolioTabs', 'services.compone
 
     $scope.sortableOptions = {
       containment: '.portfolio-components__dropzone',
+      longTouch: true,
       orderChanged: function(e) {
         var updatedSections = e.dest.sortableScope.modelValue;
 
