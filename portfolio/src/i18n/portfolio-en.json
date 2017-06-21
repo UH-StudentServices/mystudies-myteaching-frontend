@@ -31,7 +31,7 @@
   },
   "visibility": {
     "PRIVATE": "private",
-    "RESTRICTED": "restricted",
+    "RESTRICTED": "UH-users",
     "PUBLIC": "public",
     "toPublic" : "Change to public",
     "toPrivate" : "Change to private"
