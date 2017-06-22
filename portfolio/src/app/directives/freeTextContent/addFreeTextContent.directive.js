@@ -15,28 +15,21 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.editFreeText', [])
+angular.module('directives.addFreeText', ['services.freeTextContent'])
 
-.directive('editFreeTextContent', function() {
+.directive('addFreeTextContent', function(FreeTextContentService, FreeTextContentFactory) {
   return {
     restrict: 'E',
     replace: true,
-    scope: {
-      freeTextContentItem: '=',
-      onRemove: '&',
-      onOk: '&',
-      headingKey: '@',
-      portfolioLang: '@',
-      deletable: '='
-    },
-    templateUrl: 'app/directives/freeTextContent/editFreeTextContent.html',
+    scope: {},
+    templateUrl: 'app/directives/freeTextContent/addFreeTextContent.html',
     link: function(scope) {
-      _.assign(scope, {
-        editingTitle: false,
-        editTitle: function() {
-          scope.editingTitle = !scope.editingTitle;
-        }
-      });
+      scope.insertFreeTextContent = function() {
+        var entry = FreeTextContentFactory.defaultFreeTextContent({});
+
+        FreeTextContentService
+          .insertFreeTextContent(entry, {});
+      };
     }
   };
 });

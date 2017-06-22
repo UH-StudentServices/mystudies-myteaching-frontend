@@ -16,74 +16,81 @@
 -->
 
 <div class="l-multi-col-content-wrapper">
-  <div class="l-content-primary-wrapper portfolio-components__dropzone"
-       ng-model="portfolioSections"
-       as-sortable="sortableOptions"
-       is-disabled="sectionSortDisabled"
-       ng-class="{'drag-disabled': sectionSortDisabled}">
-    <section ng-repeat="section in portfolioSections"
-             as-sortable-item>
-      <div as-sortable-item-handle
-           ng-switch on="section.component">
-        <div ng-switch-when="STUDIES">
-          <studies limit-visibility="{componentId: 'STUDIES'}"
-                   summary-data="portfolio.summary"
-                   portfolio-id="{{::portfolio.id}}"
-                   portfolio-lang="{{::portfolio.lang}}">
-          </studies>
-        </div>
-
-        <div ng-switch-when="DEGREES">
-          <degrees limit-visibility="{componentId: 'DEGREES'}"
-                   degrees-data="portfolio.degrees"
-                   portfolio-id="{{::portfolio.id}}"
-                   portfolio-lang="{{::portfolio.lang}}">
-          </degrees>
-        </div>
-
-        <div ng-switch-when="WORK_EXPERIENCE">
-          <work-experience limit-visibility="{componentId: 'WORK_EXPERIENCE'}"
-                           work-experience-data="portfolio.workExperience"
-                           portfolio-id="{{::portfolio.id}}"
-                           portfolio-lang="{{::portfolio.lang}}">
-          </work-experience>
-        </div>
-
-        <div ng-switch-when="SAMPLES">
-          <samples limit-visibility="{componentId: 'SAMPLES'}"
-                   samples-data="portfolio.samples"
-                   portfolio-id="{{::portfolio.id}}"
-                   portfolio-lang="{{::portfolio.lang}}">
-          </samples>
-        </div>
-
-        <div ng-switch-when="FREE_TEXT_CONTENT">
-          <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT'}">
-          </free-text-content>
-        </div>
-
-        <div ng-switch-when="ATTAINMENTS">
-          <attainments limit-visibility="{componentId: 'ATTAINMENTS'}"
-                       portfolio-id="{{::portfolio.id}}"
-                       portfolio-lang="{{::portfolio.lang}}">
-          </attainments>
-        </div>
-
-        <div ng-switch-when="LANGUAGE_PROFICIENCIES">
-          <language-proficiencies limit-visibility="{componentId: 'LANGUAGE_PROFICIENCIES'}"
-                                  language-proficiencies-data="portfolio.languageProficiencies"
-                                  portfolio-lang="{{::portfolio.lang}}">
-          </language-proficiencies>
-        </div>
-
-        <div ng-switch-when="FAVORITES">
-          <favorites limit-visibility="{componentId: 'FAVORITES'}"
-                     favorites-data="portfolio.favorites"
+  <div class="l-content-primary-wrapper ">
+    <div class="portfolio-components__dropzone"
+         ng-model="portfolioSections"
+         as-sortable="sortableOptions"
+         is-disabled="sectionSortDisabled"
+         ng-class="{'drag-disabled': sectionSortDisabled}">
+      <section ng-repeat="section in portfolioSections"
+               as-sortable-item>
+        <div as-sortable-item-handle
+             ng-switch on="section.component">
+          <div ng-switch-when="STUDIES">
+            <studies limit-visibility="{componentId: 'STUDIES'}"
+                     summary-data="portfolio.summary"
+                     portfolio-id="{{::portfolio.id}}"
                      portfolio-lang="{{::portfolio.lang}}">
-          </favorites>
+            </studies>
+          </div>
+
+          <div ng-switch-when="DEGREES">
+            <degrees limit-visibility="{componentId: 'DEGREES'}"
+                     degrees-data="portfolio.degrees"
+                     portfolio-id="{{::portfolio.id}}"
+                     portfolio-lang="{{::portfolio.lang}}">
+            </degrees>
+          </div>
+
+          <div ng-switch-when="WORK_EXPERIENCE">
+            <work-experience limit-visibility="{componentId: 'WORK_EXPERIENCE'}"
+                             work-experience-data="portfolio.workExperience"
+                             portfolio-id="{{::portfolio.id}}"
+                             portfolio-lang="{{::portfolio.lang}}">
+            </work-experience>
+          </div>
+
+          <div ng-switch-when="SAMPLES">
+            <samples limit-visibility="{componentId: 'SAMPLES'}"
+                     samples-data="portfolio.samples"
+                     portfolio-id="{{::portfolio.id}}"
+                     portfolio-lang="{{::portfolio.lang}}">
+            </samples>
+          </div>
+
+          <div ng-switch-when="FREE_TEXT_CONTENT">
+            <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
+                                                  instanceName: section.instanceName}"
+                               instance-name="{{section.instanceName}}"
+                               deletable="true">
+            </free-text-content>
+          </div>
+
+          <div ng-switch-when="ATTAINMENTS">
+            <attainments limit-visibility="{componentId: 'ATTAINMENTS'}"
+                         portfolio-id="{{::portfolio.id}}"
+                         portfolio-lang="{{::portfolio.lang}}">
+            </attainments>
+          </div>
+
+          <div ng-switch-when="LANGUAGE_PROFICIENCIES">
+            <language-proficiencies limit-visibility="{componentId: 'LANGUAGE_PROFICIENCIES'}"
+                                    language-proficiencies-data="portfolio.languageProficiencies"
+                                    portfolio-lang="{{::portfolio.lang}}">
+            </language-proficiencies>
+          </div>
+
+          <div ng-switch-when="FAVORITES">
+            <favorites limit-visibility="{componentId: 'FAVORITES'}"
+                       favorites-data="portfolio.favorites"
+                       portfolio-lang="{{::portfolio.lang}}">
+            </favorites>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
+
+    <add-free-text-content></add-free-text-content>
   </div>
 
   <div class="l-content-secondary-wrapper">
@@ -91,6 +98,7 @@
              portfolio-id="{{::portfolio.id}}"
              portfolio-lang="{{::portfolio.lang}}">
     </credits>
+
     <contact-information limit-visibility="{componentId: 'CONTACT_INFORMATION'}"
                          contact-information-data="portfolio.contactInformation"
                          owner-name="{{::portfolio.ownerName}}"

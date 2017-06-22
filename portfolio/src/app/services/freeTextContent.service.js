@@ -18,65 +18,85 @@
 angular.module('services.freeTextContent', ['resources.freeTextContent', 'services.portfolio'])
 
   .factory('FreeTextContentService', function(PortfolioService, FreeTextContentResource) {
+    var Rx = window.Rx,
+        freeTextContentSubject,
+        initialDataPromise,
+        cachedFreeTextContent = [];
+
+    function initCache() {
+      initialDataPromise = PortfolioService.getPortfolio()
+          .then(_.partialRight(_.get, 'freeTextContent', []))
+          .then(function(freeTextContentItems) {
+            cachedFreeTextContent = freeTextContentItems;
+
+            return freeTextContentItems;
+          }).then(publish);
+    }
+
+    function getFreeTextContentSubject() {
+      if (!freeTextContentSubject) {
+        freeTextContentSubject = new Rx.BehaviorSubject(cachedFreeTextContent);
+      }
+
+      return freeTextContentSubject;
+    }
+
+    function publish(freeTextContentItems) {
+      freeTextContentSubject.onNext(freeTextContentItems);
+
+      return freeTextContentItems;
+    }
 
     function getPortfolioId() {
       return PortfolioService.getPortfolio().then(_.property('id'));
     }
 
-    function getFreeTextContent(searchCriteria) {
-      return PortfolioService.getPortfolio().then(function(portfolio) {
-        if (portfolio.freeTextContent == null) {
-          portfolio.freeTextContent = [];
-        }
-        return portfolio.freeTextContent.filter(_.matches(searchCriteria));
-      });
+    function updateCache(freeTextContent, visibilityDescriptor, remove) {
+      if (_.find(cachedFreeTextContent, ['id', freeTextContent.id])) {
+        cachedFreeTextContent = remove ?
+          _.differenceBy(cachedFreeTextContent, [freeTextContent], 'id') :
+          _.unionBy([freeTextContent], cachedFreeTextContent, 'id');
+      } else {
+        cachedFreeTextContent = cachedFreeTextContent.concat(freeTextContent);
+      }
+
+      return cachedFreeTextContent;
     }
 
-    function updateCachedPortfolio(freeTextContent, visibilityDescriptor, remove) {
-      return PortfolioService.getPortfolio().then(function(portfolio) {
-        var idx = _.findIndex(portfolio.freeTextContent, _.pick(freeTextContent, 'id'));
-
-        if (idx !== -1 && !remove) {
-          portfolio.freeTextContent.splice(idx, 1, freeTextContent);
-        } else if (idx !== -1 && remove) {
-          portfolio.freeTextContent.splice(idx, 1);
-        } else {
-          if (portfolio.freeTextContent == null) {
-            portfolio.freeTextContent = [];
-          }
-          portfolio.freeTextContent.push(freeTextContent);
-        }
-
-        return getFreeTextContent(visibilityDescriptor);
-      });
+    function getInitialData() {
+      return initialDataPromise;
     }
 
     function insertFreeTextContent(freeTextContent, visibilityDescriptor) {
       return getPortfolioId().then(function(portfolioId) {
         return FreeTextContentResource.insertFreeTextContent(portfolioId, freeTextContent);
       }).then(function(freeTextContent) {
-        return updateCachedPortfolio(freeTextContent, visibilityDescriptor);
-      });
+        return updateCache(freeTextContent, visibilityDescriptor);
+      }).then(publish);
     }
 
     function updateFreeTextContent(freeTextContent, visibilityDescriptor) {
       return getPortfolioId().then(function(portfolioId) {
         return FreeTextContentResource.updateFreeTextContent(portfolioId, freeTextContent);
       }).then(function(freeTextContent) {
-        return updateCachedPortfolio(freeTextContent, visibilityDescriptor);
+        return updateCache(freeTextContent, visibilityDescriptor);
       });
     }
 
     function deleteFreeTextContent(freeTextContent, visibilityDescriptor) {
       return getPortfolioId().then(function(portfolioId) {
-        return FreeTextContentResource.deleteFreeTextContent(portfolioId, freeTextContent);
+        return FreeTextContentResource.deleteFreeTextContent(portfolioId, freeTextContent,
+          visibilityDescriptor.instanceName);
       }).then(function() {
-        return updateCachedPortfolio(freeTextContent, visibilityDescriptor, true);
-      });
+        return updateCache(freeTextContent, visibilityDescriptor, true);
+      }).then(publish);
     }
 
+    initCache();
+
     return {
-      getFreeTextContent: getFreeTextContent,
+      getInitialData: getInitialData,
+      getFreeTextContentSubject: getFreeTextContentSubject,
       insertFreeTextContent: insertFreeTextContent,
       updateFreeTextContent: updateFreeTextContent,
       deleteFreeTextContent: deleteFreeTextContent

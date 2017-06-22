@@ -16,16 +16,13 @@
 -->
 
 <div>
-  <div limit-visibility="{sectionName: 'RESEARCH'}" class="tab-content__content-area">
-    <div class="tab-content__visibility-toggle">
-      <visibility-toggle section-name="RESEARCH"></visibility-toggle>
-    </div>
-
-    <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
-                                          sectionName: 'RESEARCH',
-                                          instanceName: 'GENERAL'}"
-                       portfolio-section="RESEARCH"
-                       instance-name="GENERAL">
-    </free-text-content>
+  <div class="add-free-text-content ui-component" limit-visibility="PRIVATE">
+    <a class="add-free-text-content__add-new"
+       role="button"
+       href=""
+       aria-label="{{::('favorites.addNew' | translate)}}"
+       ng-click="insertFreeTextContent()">
+       <h3 class="add-free-text-content__title hide-mobile-only" translate="favorites.addNew"></h3>
+    </a>
   </div>
 </div>

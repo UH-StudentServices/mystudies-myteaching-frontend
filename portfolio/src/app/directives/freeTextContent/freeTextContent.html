@@ -15,45 +15,39 @@
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<div class="ui-component">
-  <div ng-repeat="freeTextContent in freeTextContents track by $index" class="free-text-content ui-component">
+<div class="free-text-content ui-component">
+  <div class="component-header">
+    <div class="component-header__actions">
+      <visibility-toggle component-id="FREE_TEXT_CONTENT"
+                         section-name="{{::portfolioSection}}"
+                         instance-name="{{::instanceName}}">
+      </visibility-toggle>
 
-    <div class="component-header">
-      <div class="component-header__actions">
-        <visibility-toggle component-id="FREE_TEXT_CONTENT"
-                           section-name="{{::portfolioSection}}"
-                           instance-name="{{::instanceName}}">
-        </visibility-toggle>
-        <edit-link on-edit="editFreeTextContent(freeTextContent)"
-                   on-exit-edit="updateFreeTextContent()">
-        </edit-link>
-      </div>
+      <edit-link on-edit="toggleEdit()"
+                 on-exit-edit="updateOrCreateNew()">
+      </edit-link>
     </div>
-    <div ng-if="freeTextContentToEdit !== freeTextContent">
-      <div class="free-text-content__title-container">
-        <h2 class="ui-component__title" ng-if="!headingKey">{{freeTextContent.title}}</h2>
-        <h2 class="ui-component__title" ng-if="headingKey"
-            translate translate-language="{{::portfolioLang}}">
-          {{::headingKey}}
-        </h2>
-      </div>
-      <div class="free-text-content__text user-text">
-        <ng-embed embed-data="freeTextContent.text" embed-options="embedOptions"></ng-embed>
-      </div>
-
-    </div>
-    <edit-free-text-content ng-if="freeTextContentToEdit === freeTextContent"
-                            free-text-content="freeTextContentToEdit"
-                            heading-key="{{headingKey}}"
-                            on-ok="updateFreeTextContent()"
-                            on-remove="deleteFreeTextContent()"
-                            portfolio-lang="{{::portfolioLang}}">
-    </edit-free-text-content>
   </div>
 
-  <div ng-if="!disableAddNew">
-    <div class="add-free-text-content ui-component" limit-visibility="PRIVATE">
-      <add-new-component on-click="insertFreeTextContent()"></add-new-component>
+  <div ng-if="!isEditing">
+    <div class="free-text-content__title-container">
+      <h2 class="free-text-content__title ui-component__title" ng-if="!headingKey">{{freeTextContentItem.title}}</h2>
+      <h2 class="free-text-content__title ui-component__title" ng-if="headingKey"
+          translate translate-language="{{::portfolioLang}}">
+        {{::headingKey}}
+      </h2>
     </div>
-  </div
+    <div class="free-text-content__text user-text" ng-if="freeTextContentItem.text.length">
+      <ng-embed embed-data="freeTextContentItem.text" embed-options="embedOptions"></ng-embed>
+    </div>
+  </div>
+
+  <edit-free-text-content ng-if="isEditing"
+                          free-text-content-item="freeTextContentItem"
+                          heading-key="{{headingKey}}"
+                          deletable="deletable"
+                          on-ok="updateOrCreateNew()"
+                          on-remove="deleteItem()"
+                          portfolio-lang="{{::portfolioLang}}">
+  </edit-free-text-content>
 </div>
