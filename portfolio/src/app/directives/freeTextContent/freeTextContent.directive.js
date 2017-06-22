@@ -18,7 +18,8 @@
 angular.module('directives.freeTextContent', [
   'services.freeTextContent',
   'directives.editFreeText',
-  'directives.editLink'])
+  'directives.editLink',
+  'constants.ngEmbedOptions'])
 
   .factory('FreeTextContentFactory', function($translate) {
 
@@ -41,7 +42,9 @@ angular.module('directives.freeTextContent', [
     };
   })
 
-  .directive('freeTextContent', function(FreeTextContentService, FreeTextContentFactory) {
+  .directive('freeTextContent', function(FreeTextContentService,
+                                         FreeTextContentFactory,
+                                         NG_EMBED_OPTIONS) {
 
     return {
       restrict: 'E',
@@ -126,28 +129,9 @@ angular.module('directives.freeTextContent', [
           updateOrCreateNew: updateOrCreateNew,
           toggleEdit: function() {
             scope.isEditing = !scope.isEditing;
-          }
+          },
+          embedOptions: NG_EMBED_OPTIONS
         });
-
-        scope.embedOptions = {
-          video: {
-            embed: true,
-            width: null,
-            height: null,
-            ytTheme: 'dark',
-            details: false,
-            thumbnailQuality: 'medium',
-            autoPlay: false
-          },
-          code: {
-            highlight: false
-          },
-          gdevAuth: true,
-          tweetEmbed: false,
-          image: {
-            embed: true
-          }
-        };
 
         init();
       }
