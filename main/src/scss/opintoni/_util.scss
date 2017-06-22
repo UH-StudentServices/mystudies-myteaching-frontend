@@ -62,6 +62,10 @@
   .as-sortable-item-handle {
     cursor: auto !important;
   }
+
+  .as-sortable-item {
+    touch-action: auto;
+  }
 }
 
 .text-transform-capitalize {
