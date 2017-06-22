@@ -17,8 +17,12 @@
 
 <div>
   <textarea class="studies__summary--editing"
-    ng-show="editing" ng-model="summary" maxlength="2500"></textarea>
-  <div class="studies__summary--view user-text" ng-hide="editing">
+            ng-show="editing"
+            ng-model="summary"
+            maxlength="2500">
+  </textarea>
+
+  <div class="studies__summary--view user-text" ng-if="!editing && summary.length">
     <ng-embed embed-data="summary" embed-options="embedOptions"></ng-embed>
   </div>
 </div>
