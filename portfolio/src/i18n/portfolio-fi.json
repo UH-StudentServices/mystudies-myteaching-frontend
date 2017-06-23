@@ -144,7 +144,8 @@
     "enterPreview": "esikatsele",
     "info": "tältä portfoliosi näyttää muille jos olet määritellyt sen julkiseksi.",
     "exit": "sulje esikatselu",
-    "print": "tulosta"
+    "printAndShare": "Tulosta & Jaa",
+    "printAndShareInfo": "Voit tulostaa portfoliosi pdf:ksi, tallentaa sen koneellesi ja jakaa sähköpostin liitetiedostona."
   },
   "freeTextContent": {
     "defaultTitle": "Lisää otsikko",
