@@ -15,15 +15,17 @@
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<span>
-  <a
-    role="button"
-    href=""
-    class="edit-link"
-    ng-click="onClick()"
-    title="{{(editing ? 'general.done' : 'general.edit') | translate}}"
-    limit-visibility="PRIVATE">
-    <i
-      ng-class="{'icon--done' : editing, 'icon--edit-event' : !editing, 'disabled' : editing && exitEditDisabled}"></i>
+<span class="help-icon">
+  <a role="button" href="" aria-label="{{:: (ariaLabelTranslationKey | translate) }}"
+     class="help-icon-popover-trigger">
+    <span class="hy icon--question"></span>
   </a>
+
+  <popover template="app/directives/helpIcon/helpIcon.popover.html"
+           override-class="help-icon-popover-container"
+           id="help-icon-popover"
+           trigger-selector="help-icon-popover-trigger"
+           trigger-event="{{::triggerEvent}}"
+           target-selector=".help-icon-popover-trigger">
+  </popover>
 </span>

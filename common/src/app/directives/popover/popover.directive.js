@@ -30,13 +30,15 @@ angular.module('directives.popover', ['angular-click-outside'])
         triggerSelector: '@', // this can be either a class or an id, as prescribed by angular-click-outside
         targetSelector: '@',  // this must a valid CSS selector
         onClickTrigger: '&?',
-        onClickOutside: '&?'
+        onClickOutside: '&?',
+        triggerEvent: '@'
       },
       link: function(scope, el, attrs, ctrl, transclude) {
         var compiledTmpl = $compile($templateCache.get(attrs.template))(scope.$parent),
             targetEl = document.querySelector(scope.targetSelector),
             targetPos = window.getComputedStyle(targetEl).getPropertyValue('position'),
-            triggerEl;
+            triggerEl,
+            triggerEvent = scope.triggerEvent || 'click';
 
         transclude(scope.$parent, function() {
           el.append(compiledTmpl);
@@ -65,7 +67,7 @@ angular.module('directives.popover', ['angular-click-outside'])
           triggerEl = document.querySelector('.' + scope.triggerSelector) ||
                       document.querySelector('#' + scope.triggerSelector);
 
-          triggerEl.addEventListener('click', scope.togglePopover);
+          triggerEl.addEventListener(triggerEvent, scope.togglePopover);
         }
       }
     };
