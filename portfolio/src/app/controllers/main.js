@@ -38,6 +38,9 @@ angular.module('controllers.main', ['constants.portfolioTabs',
         var updatedSections = e.dest.sortableScope.modelValue;
 
         ComponentOrderService.updateComponentOrder(portfolio.id, updatedSections);
+      },
+      accept: function(sourceItemHandleScope, destSortableScope) {
+        return sourceItemHandleScope.itemScope.sortableScope.$parent.$id === destSortableScope.$parent.$id;
       }
     };
 
