@@ -15,14 +15,17 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('controllers.main', ['constants.portfolioTabs', 'services.componentOrder'])
+angular.module('controllers.main', ['constants.portfolioTabs',
+                                    'services.componentOrder',
+                                    'utils.browser'])
+
   .controller('MainCtrl', function($scope, portfolioTabs, portfolio, state, userSettings,
-                                   ComponentOrderService, State) {
+                                   ComponentOrderService, State, BrowserUtil) {
     $scope.portfolio = portfolio;
     $scope.userSettings = userSettings;
     $scope.portfolioTabs = portfolioTabs;
     $scope.currentYear = moment().year();
-    $scope.sectionSortDisabled = state !== State.PRIVATE;
+    $scope.sectionSortDisabled = state !== State.PRIVATE || BrowserUtil.supportsTouch();
     $scope.portfolioSections = [];
 
     ComponentOrderService.subscribeToComponentOrderChanges(portfolio, function(componentOrders) {

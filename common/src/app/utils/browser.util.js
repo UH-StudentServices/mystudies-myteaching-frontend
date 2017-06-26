@@ -35,6 +35,10 @@ angular.module('utils.browser', [])
       return navigator.getMedia ? true : false;
     }
 
+    function supportsTouch() {
+      return 'ontouchstart' in window;
+    }
+
     function getViewportSize() {
       return isMobile() ? 'MOBILE' : 'DESKTOP';
     }
@@ -54,6 +58,7 @@ angular.module('utils.browser', [])
     return {
       viewportSizeSubject: viewportSizeSubject,
       supportsCamera: supportsCamera,
+      supportsTouch: supportsTouch,
       isMobile: isMobile,
       isMac: isMac
     };
