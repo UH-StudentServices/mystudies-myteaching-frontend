@@ -15,19 +15,24 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.summary', ['constants.ngEmbedOptions'])
+angular.module('constants.ngEmbedOptions', [])
 
-  .directive('summary', function(NG_EMBED_OPTIONS) {
-    return {
-      restrict: 'E',
-      replace: true,
-      scope: {
-        editing: '=',
-        summary: '='
-      },
-      templateUrl: 'app/directives/studies/summary.html',
-      link: function(scope) {
-        scope.embedOptions = NG_EMBED_OPTIONS;
-      }
-    };
+  .constant('NG_EMBED_OPTIONS', {
+    video: {
+      embed: true,
+      width: null,
+      height: null,
+      ytTheme: 'dark',
+      details: false,
+      thumbnailQuality: 'medium',
+      autoPlay: false
+    },
+    code: {
+      highlight: false
+    },
+    gdevAuth: true,
+    tweetEmbed: false,
+    image: {
+      embed: true
+    }
   });

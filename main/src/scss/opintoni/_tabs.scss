@@ -75,7 +75,10 @@ $horizontal-tab-padding: 0.4em;
   &__visibility-toggle {
     display: flex;
     justify-content: flex-end;
-    margin-bottom: 1em;
+    align-items: center;
+    height: 2em;
+    margin-top: 0.3em;
+    font-size: 1.5em;
   }
 }
 

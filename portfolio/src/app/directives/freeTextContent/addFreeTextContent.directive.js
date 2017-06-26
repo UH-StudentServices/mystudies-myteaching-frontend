@@ -15,19 +15,21 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.summary', ['constants.ngEmbedOptions'])
+angular.module('directives.addFreeText', ['services.freeTextContent'])
 
-  .directive('summary', function(NG_EMBED_OPTIONS) {
-    return {
-      restrict: 'E',
-      replace: true,
-      scope: {
-        editing: '=',
-        summary: '='
-      },
-      templateUrl: 'app/directives/studies/summary.html',
-      link: function(scope) {
-        scope.embedOptions = NG_EMBED_OPTIONS;
-      }
-    };
-  });
+.directive('addFreeTextContent', function(FreeTextContentService, FreeTextContentFactory) {
+  return {
+    restrict: 'E',
+    replace: true,
+    scope: {},
+    templateUrl: 'app/directives/freeTextContent/addFreeTextContent.html',
+    link: function(scope) {
+      scope.insertFreeTextContent = function() {
+        var entry = FreeTextContentFactory.defaultFreeTextContent({});
+
+        FreeTextContentService
+          .insertFreeTextContent(entry, {});
+      };
+    }
+  };
+});

@@ -18,7 +18,8 @@
 angular.module('directives.freeTextContent', [
   'services.freeTextContent',
   'directives.editFreeText',
-  'directives.editLink'])
+  'directives.editLink',
+  'constants.ngEmbedOptions'])
 
   .factory('FreeTextContentFactory', function($translate) {
 
@@ -41,7 +42,9 @@ angular.module('directives.freeTextContent', [
     };
   })
 
-  .directive('freeTextContent', function(FreeTextContentService, FreeTextContentFactory) {
+  .directive('freeTextContent', function(FreeTextContentService,
+                                         FreeTextContentFactory,
+                                         NG_EMBED_OPTIONS) {
 
     return {
       restrict: 'E',
@@ -50,91 +53,87 @@ angular.module('directives.freeTextContent', [
       scope: {
         portfolioSection: '@',
         instanceName: '@',
-        singleEntry: '@?',
         headingKey: '@?',
-        portfolioLang: '@'
+        portfolioLang: '@',
+        deletable: '='
       },
-      link: function(scope, el ,attrs) {
-        var visibilityDescriptor = {
-          portfolioSection: scope.portfolioSection || null,
-          instanceName: scope.instanceName || null
-        };
+      link: function(scope, el, attrs) {
+        var visibilityDescriptor = getVisibilityDescriptor(),
+            freeTextContentSubject;
 
-        function refreshContent(freeTextContent) {
-          scope.freeTextContents = freeTextContent;
-          return freeTextContent;
+        function getVisibilityDescriptor() {
+          return {
+            portfolioSection: scope.portfolioSection || null,
+            instanceName: scope.instanceName || null
+          };
         }
 
-        function conditionalFixedEntry(freeTextContent) {
-          if (!freeTextContent.length && scope.headingKey) {
-            scope.insertFreeTextContent(true);
+        function getMatchingItem(freeTextContentItems, searchCriteria) {
+          var filteredFreeTextContentItems = freeTextContentItems.filter(_.matches(searchCriteria)),
+              newFreeTextContentItem;
+
+          if (filteredFreeTextContentItems.length > 1) {
+            throw Error('Multiple matching free-text content items');
           }
+
+          return filteredFreeTextContentItems[0];
         }
 
-        function setEditableEntry(freeTextContent) {
-          if (!scope.headingKey) {
-            scope.freeTextContentToEdit = freeTextContent[freeTextContent.length - 1];
-          }
-        }
-
-        scope.embedOptions = {
-          video: {
-            embed: true,
-            width: null,
-            height: null,
-            ytTheme: 'dark',
-            details: false,
-            thumbnailQuality: 'medium',
-            autoPlay: false
-          },
-          code: {
-            highlight: false
-          },
-          gdevAuth: true,
-          tweetEmbed: false,
-          image: {
-            embed: true
-          }
-        };
-
-        scope.disableAddNew = 'singleEntry' in attrs;
-
-        scope.freeTextContents = FreeTextContentService
-          .getFreeTextContent(visibilityDescriptor)
-          .then(refreshContent)
-          .then(conditionalFixedEntry);
-
-        scope.editFreeTextContent = function(freeTextContent) {
-          scope.freeTextContentToEdit = freeTextContent;
-        };
-
-        scope.insertFreeTextContent = function(useFixedEntry) {
-          var entry = useFixedEntry ?
+        function createMatchingItem() {
+          return scope.headingKey ?
             FreeTextContentFactory.fixedFreeTextContent(visibilityDescriptor, scope.headingKey) :
             FreeTextContentFactory.defaultFreeTextContent(visibilityDescriptor);
+        }
 
-          FreeTextContentService
-            .insertFreeTextContent(entry, visibilityDescriptor)
-            .then(refreshContent)
-            .then(setEditableEntry);
-        };
+        function subscribeToChanges() {
+          freeTextContentSubject = FreeTextContentService.getFreeTextContentSubject();
 
-        scope.updateFreeTextContent = function() {
-          FreeTextContentService.updateFreeTextContent(scope.freeTextContentToEdit, visibilityDescriptor)
-            .then(refreshContent)
-            .then(function() {
-              scope.freeTextContentToEdit = null;
-            });
+          freeTextContentSubject.subscribe(function(freeTextContentItems) {
+            var matchingItem = getMatchingItem(freeTextContentItems, visibilityDescriptor);
+
+            if (matchingItem) {
+              scope.freeTextContentItem = matchingItem;
+            }
+          });
+        }
+
+        function updateOrCreateNew() {
+          var serviceFn;
+
+          if (getMatchingItem(freeTextContentSubject.getValue(), visibilityDescriptor)) {
+            serviceFn = 'updateFreeTextContent';
+          } else {
+            serviceFn = 'insertFreeTextContent';
+          }
+
+          FreeTextContentService[serviceFn](scope.freeTextContentItem, visibilityDescriptor)
+            .then(scope.toggleEdit);
+
           return true;
-        };
+        }
 
-        scope.deleteFreeTextContent = function() {
-          FreeTextContentService.deleteFreeTextContent(scope.freeTextContentToEdit, visibilityDescriptor)
-            .then(refreshContent)
-            .then(function() {
-              scope.freeTextContentToEdit = null;
-            });
-        };
+        function deleteItem() {
+          FreeTextContentService.deleteFreeTextContent(scope.freeTextContentItem, visibilityDescriptor);
+        }
+
+        function init() {
+          FreeTextContentService.getInitialData().then(function(initialData) {
+            var matchingItem = getMatchingItem(initialData, visibilityDescriptor);
+
+            scope.freeTextContentItem = matchingItem || createMatchingItem();
+          }).then(subscribeToChanges);
+        }
+
+        _.assign(scope, {
+          deleteItem: deleteItem,
+          updateOrCreateNew: updateOrCreateNew,
+          toggleEdit: function() {
+            scope.isEditing = !scope.isEditing;
+          },
+          embedOptions: NG_EMBED_OPTIONS
+        });
+
+        init();
       }
     };
   });

@@ -16,9 +16,9 @@ angular.module('resources.freeTextContent', ['services.state'])
       return freeTextResource(portfolioId).update(freeTextContent).$promise;
     }
 
-    function deleteFreeTextContent(portfolioId, freeTextContent) {
+    function deleteFreeTextContent(portfolioId, freeTextContent, instanceName) {
       return freeTextResource(portfolioId)
-        .delete({freeTextContentId: freeTextContent.id}).$promise;
+        .delete({freeTextContentId: freeTextContent.id, instanceName: instanceName}).$promise;
     }
 
     return {

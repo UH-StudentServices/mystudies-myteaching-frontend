@@ -22,8 +22,12 @@ angular.module('controllers.main', ['constants.portfolioTabs', 'services.compone
     $scope.userSettings = userSettings;
     $scope.portfolioTabs = portfolioTabs;
     $scope.currentYear = moment().year();
-    $scope.portfolioSections = ComponentOrderService.getInitialComponentOrder(portfolio);
     $scope.sectionSortDisabled = state !== State.PRIVATE;
+    $scope.portfolioSections = [];
+
+    ComponentOrderService.subscribeToComponentOrderChanges(portfolio, function(componentOrders) {
+      $scope.portfolioSections = componentOrders;
+    });
 
     $scope.sortableOptions = {
       containment: '.portfolio-components__dropzone',

@@ -57,7 +57,7 @@ angular.module('opintoniPortfolioApp', [
   'directives.previewButton',
   'directives.previewMessage',
   'directives.freeTextContent',
-  'directives.addNewComponent',
+  'directives.addFreeText',
   'directives.languageProficiencies',
   'directives.feedback',
   'directives.popover',

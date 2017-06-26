@@ -17,17 +17,30 @@
 
 .free-text-content {
   position: relative;
+
   .edit-link {
     top: 0.5em;
+  }
+
+  .component-header__actions {
+    transform: translateY(100%);
   }
 }
 
 .free-text-content__title-container {
-  padding-bottom: 0.2em;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-bottom: 0.4em;
+  margin-right: 4em;
   @include border-bottom;
 }
 
-.free-text-content__text, .edit-free-text-content__edit-text {
+.free-text-content__title {
+  padding-bottom: 0;
+}
+
+.free-text-content__text, .free-text-content__text--edit {
   margin-top: 0.2em;
 }
 
@@ -35,26 +48,49 @@
   .ne-image, .ne-video {
     white-space: normal;
   }
+
   .ne-image {
     max-height: none;
   }
+
   .ne-image-wrapper, .ne-video-player {
     background-color: $white;
   }
-
 }
 
-.edit-free-text-content__edit-text {
+.free-text-content__text--edit {
   height: 200px;
 }
 
 .add-free-text-content {
   position: relative;
   height: 150px;
+
   @include border;
+
+  &__add-new {
+    @extend .add-favorite-button;
+    @extend .island;
+
+    &::after {
+      content: '+';
+      font-weight: bold;
+      font-size: 6em;
+      text-align: center;
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__title {
+    @extend .add-favorite-button__title;
+  }
 }
 
-.edit-free-text-content {
+.free-text-content--edit {
   .free-text-content__title.is-editable {
     &:hover {
       cursor: pointer;
@@ -72,15 +108,17 @@
       }
     }
   }
-  .favorites-list__remove {
+
+  .free-text-content__remove {
+    @extend .favorites-list__remove;
+
     display: inline-block;
     position: relative;
-    margin-left: 0.5em;
-    vertical-align: top;
+    margin-left: 1em;
   }
 }
 
-.edit-free-text-content__edit-title {
+.free-text-content__title--edit {
   display: inline-block;
   padding: 0;
   font-size: 32px;

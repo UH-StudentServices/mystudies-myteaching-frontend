@@ -15,27 +15,56 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('services.componentOrder', ['resources.componentOrder'])
+angular.module('services.componentOrder', ['services.freeTextContent', 'resources.componentOrder'])
 
-  .factory('ComponentOrderService', function(ComponentOrderResource) {
+  .factory('ComponentOrderService', function(FreeTextContentService, ComponentOrderResource) {
 
-    function defaultComponentOrder() {
+    var cachedComponentOrders = [];
+
+    function defaultSingletonComponentOrder() {
       return [
         {component: 'STUDIES'},
         {component: 'DEGREES'},
         {component: 'WORK_EXPERIENCE'},
         {component: 'SAMPLES'},
-        {component: 'FREE_TEXT_CONTENT'},
         {component: 'ATTAINMENTS'},
         {component: 'LANGUAGE_PROFICIENCIES'},
         {component: 'FAVORITES'}
       ];
     }
 
-    function getInitialComponentOrder(portfolio) {
-      var componentOrders = portfolio.componentOrders.length ? portfolio.componentOrders : defaultComponentOrder();
+    function singletonComponentOrders(portfolio) {
+      return cachedComponentOrders.length ? cachedComponentOrders.filter(function(el) {
+        return el.component !== 'FREE_TEXT_CONTENT';
+      }) : defaultSingletonComponentOrder();
+    }
 
-      return _.sortBy(componentOrders, 'orderValue');
+    function getFreeTextContentItemOrder(item, allFreeTextContentItems) {
+      var componentOrder = _.find(cachedComponentOrders, ['instanceName', item.instanceName]) || {};
+
+      return componentOrder.orderValue;
+    }
+
+    function subscribeToComponentOrderChanges(portfolio, callback) {
+      if (portfolio.componentOrders.length) {
+        cachedComponentOrders = portfolio.componentOrders;
+      }
+
+      FreeTextContentService.getFreeTextContentSubject()
+        .subscribe(function(freeTextContentItems) {
+          var freeTextContentComponentOrders, allComponentOrders;
+
+          freeTextContentComponentOrders = freeTextContentItems.map(function(el) {
+            return {
+              component: 'FREE_TEXT_CONTENT',
+              instanceName: el.instanceName,
+              orderValue: getFreeTextContentItemOrder(el, freeTextContentItems)
+            };
+          });
+
+          allComponentOrders = singletonComponentOrders(portfolio).concat(freeTextContentComponentOrders);
+          callback(_.sortBy(allComponentOrders, 'orderValue'));
+        });
     }
 
     function updateComponentOrder(portfolioId, updatedComponents) {
@@ -47,11 +76,13 @@ angular.module('services.componentOrder', ['resources.componentOrder'])
             orderValue: i + 1
           };
         })
+      }).then(function(componentOrders) {
+        cachedComponentOrders = componentOrders;
       });
     }
 
     return {
-      getInitialComponentOrder: getInitialComponentOrder,
+      subscribeToComponentOrderChanges: subscribeToComponentOrderChanges,
       updateComponentOrder: updateComponentOrder
     };
   });

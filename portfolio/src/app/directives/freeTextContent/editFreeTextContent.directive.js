@@ -22,19 +22,21 @@ angular.module('directives.editFreeText', [])
     restrict: 'E',
     replace: true,
     scope: {
-      freeTextContent: '=',
+      freeTextContentItem: '=',
       onRemove: '&',
       onOk: '&',
       headingKey: '@',
-      portfolioLang: '@'
+      portfolioLang: '@',
+      deletable: '='
     },
     templateUrl: 'app/directives/freeTextContent/editFreeTextContent.html',
     link: function(scope) {
-      scope.editingTitle = false;
-
-      scope.editTitle = function() {
-        scope.editingTitle = !scope.editingTitle;
-      };
+      _.assign(scope, {
+        editingTitle: false,
+        editTitle: function() {
+          scope.editingTitle = !scope.editingTitle;
+        }
+      });
     }
   };
 });
