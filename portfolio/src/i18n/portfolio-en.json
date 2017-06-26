@@ -144,7 +144,8 @@
     "enterPreview": "preview",
     "info": "this is how your portfolio looks to others if it is published.",
     "exit": "close preview",
-    "print": "print"
+    "printAndShare": "Print & Share",
+    "printAndShareInfo": "You may print your portfolio as a PDF, save it to your computer and share it as an attachment by email."
   },
   "freeTextContent": {
     "defaultTitle": "Add title",

@@ -15,42 +15,17 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-.preview-btn, .print-btn {
+angular.module('directives.helpIcon', ['directives.popover'])
 
-  &--text {
-    text-transform: capitalize;
-    display: none;
-
-    @include breakpoint($small) {
-      display: inline-block;
-    }
-  }
-
-  &--icon {
-    display: inline-block;
-
-    @include breakpoint($small) {
-      display: none !important;
-    }
-  }
-}
-
-.print-btn {
-  display: flex;
-  align-items: center;
-
-  .help-icon {
-    top: 0;
-    margin-left: 0.2em;
-  }
-
-  .help-icon-popover-trigger {
-    &:hover {
-      color: $blue;
-    }
-  }
-
-  @include breakpoint($mobile-only) {
-    display: none !important;
-  }
-}
+  .directive('helpIcon', function() {
+    return {
+      restrict: 'E',
+      replace: true,
+      scope: {
+        translationKey: '@',
+        ariaLabelTranslationKey: '@',
+        triggerEvent: '@'
+      },
+      templateUrl: 'app/directives/helpIcon/helpIcon.html'
+    };
+  });

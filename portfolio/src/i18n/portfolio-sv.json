@@ -144,7 +144,8 @@
     "enterPreview": "förhandsvisning",
     "info": "detta är hur din portfölj ser till andra om det publiceras.",
     "exit": "Stäng förhandsvisning",
-    "print": "skriva ut"
+    "printAndShare": "Utskriva & Dela",
+    "printAndShareInfo": "Du kan utskriva din portföjl till PDF, spara den till dator och sicka den via e-post."
   },
   "freeTextContent": {
     "defaultTitle": "Lägg till rubrik",

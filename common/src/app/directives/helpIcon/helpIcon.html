@@ -13,19 +13,19 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
-  -->
+-->
 
-<div class="navigation-right__element">
-  <button class="button button--light print-btn"
-          ng-click="print()"
-          aria-labelledby="portfolio-print-btn">
-    <span id="portfolio-print-btn"
-          class="print-btn--text"
-          translate="preview.printAndShare">
-    </span>
+<span class="help-icon">
+  <a role="button" href="" aria-label="{{:: (ariaLabelTranslationKey | translate) }}"
+     class="help-icon-popover-trigger">
+    <span class="hy icon--question"></span>
+  </a>
 
-    <help-icon translation-key="preview.printAndShareInfo"
-               trigger-event="mouseover"
-               aria-label-translation-key="preview.print"></help-icon>
-  </button>
-</div>
+  <popover template="app/directives/helpIcon/helpIcon.popover.html"
+           override-class="help-icon-popover-container"
+           id="help-icon-popover"
+           trigger-selector="help-icon-popover-trigger"
+           trigger-event="{{::triggerEvent}}"
+           target-selector=".help-icon-popover-trigger">
+  </popover>
+</span>
