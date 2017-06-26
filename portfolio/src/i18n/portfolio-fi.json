@@ -31,7 +31,7 @@
   },
   "visibility": {
     "PRIVATE": "yksityinen",
-    "RESTRICTED": "HY-käyttäjät",
+    "RESTRICTED": "HY käyttäjät",
     "PUBLIC": "julkinen",
     "toPublic" : "Muuta julkiseksi",
     "toPrivate" : "Muuta yksityiseksi"
