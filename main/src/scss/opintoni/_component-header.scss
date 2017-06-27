@@ -21,6 +21,8 @@
   .component-header__actions {
     right: 0;
     position: absolute;
+    font-size: 1.2em;
+
     @include vertically-center;
 
     > * {
