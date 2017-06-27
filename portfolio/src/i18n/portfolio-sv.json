@@ -6,8 +6,8 @@
     "addNew": "lägg till",
     "remove": "radera",
     "ok": "Ok",
-    "login": "Logga in",
-    "cancel": "Avbryt",
+    "login": "logga in",
+    "cancel": "avbryt",
     "showMore": "mer",
     "showLess": "mindre",
     "students": "studerande",
@@ -19,8 +19,8 @@
     "city": "Helsingfors stad"
   },
   "pageFooter": {
-    "contact": "Kontaktinformation",
-    "library": "Bibliotek",
+    "contact": "kontaktinformation",
+    "library": "bibliotek",
     "addressLine1": "PL 3 (Fabiansgatan 33)",
     "addressLine2": "00014 Helsingfors universitet",
     "telephoneExchange": "Växel"
@@ -33,18 +33,18 @@
     "PRIVATE": "privat",
     "RESTRICTED": "HU andvändare",
     "PUBLIC": "allmän",
-    "toPublic" : "Ändra till offentligt",
-    "toPrivate" : "Ändra  till privat"
+    "toPublic" : "ändra till offentligt",
+    "toPrivate" : "ändra  till privat"
   },
   "keywords": {
-    "title": "Nyckelord",
+    "title": "nyckelord",
     "addNewPlaceholder": "Lägg till nyckelord",
     "enterNew": "skriv ett nyckelord",
     "addNew": "lägg till nyckelord"
   },
   "favorites": {
     "types": {
-      "LINK": "Webbsidans länk",
+      "LINK": "webbsidans länk",
       "TWITTER": "Twitter"
     },
     "title": "favoriter",
