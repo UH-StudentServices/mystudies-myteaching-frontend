@@ -137,7 +137,7 @@
     "loginNeeded": {
       "title": "login needed",
       "description": "Portfolio du letar efter kan begränsas till användarna av Helsingfors universitet. Vänligen logga in.",
-      "disclaimer": "Om portföljen är fortfarande inte nås, kontakta författaren."
+      "disclaimer": "Med Firefox-webbläsaren kan du behöva öppna länken efter inloggningen. Om portföljen är fortfarande inte nås, kontakta författaren."
     }
   },
   "preview": {
