@@ -23,6 +23,7 @@
          is-disabled="sectionSortDisabled"
          ng-class="{'drag-disabled': sectionSortDisabled}">
       <section ng-repeat="section in portfolioSections"
+               class="portfolio-section"
                as-sortable-item>
         <div as-sortable-item-handle
              ng-switch on="section.component">
