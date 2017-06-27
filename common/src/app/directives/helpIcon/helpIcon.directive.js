@@ -24,7 +24,7 @@ angular.module('directives.helpIcon', ['directives.popover'])
       scope: {
         translationKey: '@',
         ariaLabelTranslationKey: '@',
-        triggerEvent: '@'
+        plainTitle: '='
       },
       templateUrl: 'app/directives/helpIcon/helpIcon.html'
     };

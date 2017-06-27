@@ -16,6 +16,7 @@
  */
 
 .preview-btn, .print-btn {
+  @extend button.button--light;
 
   &--text {
     text-transform: capitalize;
@@ -36,18 +37,10 @@
 }
 
 .print-btn {
-  display: flex;
-  align-items: center;
 
   .help-icon {
     top: 0;
     margin-left: 0.2em;
-  }
-
-  .help-icon-popover-trigger {
-    &:hover {
-      color: $blue;
-    }
   }
 
   @include breakpoint($mobile-only) {

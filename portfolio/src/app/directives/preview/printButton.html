@@ -16,16 +16,18 @@
   -->
 
 <div class="navigation-right__element">
-  <button class="button button--light print-btn"
-          ng-click="print()"
-          aria-labelledby="portfolio-print-btn">
+  <a href=""
+     class="button button--light print-btn nav-ctrl"
+     ng-click="print()"
+     aria-labelledby="portfolio-print-btn">
     <span id="portfolio-print-btn"
           class="print-btn--text"
           translate="preview.printAndShare">
     </span>
 
     <help-icon translation-key="preview.printAndShareInfo"
+               plain-title="true"
                trigger-event="mouseover"
                aria-label-translation-key="preview.print"></help-icon>
-  </button>
+  </a>
 </div>

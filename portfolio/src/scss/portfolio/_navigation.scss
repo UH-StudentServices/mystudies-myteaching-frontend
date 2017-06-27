@@ -75,17 +75,21 @@ $navigationHeight: 60px;
     @include breakpoint($small) {
       margin-right: 1em;
     }
-
-    > button {
-      height: 28px;
-
-      @include breakpoint($small) {
-        height: 32px;
-      }
-    }
   }
 
   .dropdown {
     margin: 0;
+  }
+}
+
+.nav-ctrl {
+  height: 28px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  line-height: 1;
+
+  @include breakpoint($small) {
+    height: 32px;
   }
 }
