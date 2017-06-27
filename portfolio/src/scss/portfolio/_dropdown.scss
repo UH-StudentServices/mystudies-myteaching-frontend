@@ -26,6 +26,7 @@
 
   .dropdown-toggle {
     text-transform: capitalize;
+    white-space: nowrap;
     display: flex;
     align-items: center;
     position: relative;

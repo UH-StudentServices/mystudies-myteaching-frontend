@@ -101,7 +101,6 @@
   .dropdown-toggle {
     position: absolute;
     top: -43px;
-
     width: 3em;
     height: 44px;
 
@@ -109,8 +108,10 @@
       > * {
         display: none;
       }
-      @include mobile-toolbar-toggle;
+
       top: -44px;
+      @include mobile-toolbar-toggle;
+
       &:before {
         @include icon($icon-remove);
       }
