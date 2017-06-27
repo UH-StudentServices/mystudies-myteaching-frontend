@@ -33,8 +33,8 @@
     "PRIVATE": "privat",
     "RESTRICTED": "HU andvändare",
     "PUBLIC": "allmän",
-    "toPublic" : "Change to public (sv)",
-    "toPrivate" : "Change to private (sv)"
+    "toPublic" : "Ändra till offentligt",
+    "toPrivate" : "Ändra  till privat"
   },
   "keywords": {
     "title": "Nyckelord",
