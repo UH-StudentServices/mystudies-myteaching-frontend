@@ -40,7 +40,7 @@ angular.module('constants.externalLinks', [])
       href: {
         fi: 'https://dev.guide.student.helsinki.fi/fi',
         sv: 'https://dev.guide.student.helsinki.fi/sv',
-        en: 'https://dev.guide.student.helsinki.fi'
+        en: 'https://dev.guide.student.helsinki.fi/en'
       }
     },
     {
@@ -74,7 +74,7 @@ angular.module('constants.externalLinks', [])
       href: {
         fi: 'https://dev.guide.student.helsinki.fi/fi',
         sv: 'https://dev.guide.student.helsinki.fi/sv',
-        en: 'https://dev.guide.student.helsinki.fi'
+        en: 'https://dev.guide.student.helsinki.fi/en'
       }
     },
     {
@@ -108,7 +108,7 @@ angular.module('constants.externalLinks', [])
       href: {
         fi: 'https://dev.guide.student.helsinki.fi/fi',
         sv: 'https://dev.guide.student.helsinki.fi/sv',
-        en: 'https://dev.guide.student.helsinki.fi'
+        en: 'https://dev.guide.student.helsinki.fi/en'
       }
     },
     {
@@ -142,7 +142,7 @@ angular.module('constants.externalLinks', [])
       href: {
         fi: 'https://guide.student.helsinki.fi/fi',
         sv: 'https://guide.student.helsinki.fi/sv',
-        en: 'https://guide.student.helsinki.fi'
+        en: 'https://guide.student.helsinki.fi/en'
       }
     }
   ],
@@ -168,7 +168,7 @@ angular.module('constants.externalLinks', [])
       href: {
         fi: 'https://guide.student.helsinki.fi/fi',
         sv: 'https://guide.student.helsinki.fi/sv',
-        en: 'https://guide.student.helsinki.fi'
+        en: 'https://guide.student.helsinki.fi/en'
       }
     },
     {
