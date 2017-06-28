@@ -33,8 +33,7 @@
     <input class="free-text-content__title--edit"
            ng-if="editingTitle"
            type="text"
-           ng-model="freeTextContentItem.title"
-           ui-keypress="{'enter':'onOk()'}">
+           ng-model="freeTextContentItem.title">
 
     <button ng-if="deletable && !editingTitle"
             ng-click="onRemove()"

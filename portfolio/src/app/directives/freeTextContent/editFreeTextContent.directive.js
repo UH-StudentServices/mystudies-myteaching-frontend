@@ -24,7 +24,6 @@ angular.module('directives.editFreeText', [])
     scope: {
       freeTextContentItem: '=',
       onRemove: '&',
-      onOk: '&',
       headingKey: '@',
       portfolioLang: '@',
       deletable: '='
