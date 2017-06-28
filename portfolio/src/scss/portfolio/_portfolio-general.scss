@@ -15,7 +15,7 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-.portfolio-section {
+.portfolio-components__dropzone:not(.drag-disabled) > .portfolio-section {
   .ui-component__title {
     &::before {
       content: $icon-drag;
