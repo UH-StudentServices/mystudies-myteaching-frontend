@@ -20,11 +20,12 @@ angular.module('controllers.main', ['constants.portfolioTabs',
                                     'utils.browser'])
 
   .controller('MainCtrl', function($scope, portfolioTabs, portfolio, state, userSettings,
-                                   ComponentOrderService, State, BrowserUtil) {
+                                   ComponentOrderService, PreviewService, State, BrowserUtil) {
     $scope.portfolio = portfolio;
     $scope.userSettings = userSettings;
     $scope.portfolioTabs = portfolioTabs;
     $scope.currentYear = moment().year();
+    $scope.isPreview = PreviewService.isPreview();
     $scope.sectionSortDisabled = state !== State.PRIVATE || BrowserUtil.supportsTouch();
     $scope.portfolioSections = [];
 

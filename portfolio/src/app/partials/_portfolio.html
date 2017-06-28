@@ -27,7 +27,7 @@
 
 <intro></intro>
 
-<div class="l-page island wrapper">
+<div class="l-page island wrapper portfolio" ng-class="{'is-preview': isPreview}">
   <div limit-visibility="{roles: ['STUDENT']}">
     <div ng-include="'app/partials/_student.html'"></div>
   </div>
@@ -40,6 +40,7 @@
 <div ng-if="userSettings.cookieConsent">
   <feedback limit-visibility="PRIVATE" ></feedback>
 </div>
+
 <div ng-if="!userSettings.cookieConsent">
   <cookie-notification limit-visibility="PRIVATE"></cookie-notification>
 </div>
