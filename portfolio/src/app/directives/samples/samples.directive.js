@@ -17,55 +17,92 @@
 
 angular.module('directives.samples', [
   'services.samples',
+  'services.componentHeadingService',
   'directives.showSamples',
   'directives.editSamples'
 ])
 
-.directive('samples', function(SamplesService) {
+.directive('samples', function(SamplesService, ComponentHeadingService, $translate) {
   return {
     restrict: 'E',
     replace: true,
     scope: {
       samplesData: '&',
       portfolioId: '@',
-      portfolioLang: '@'
+      portfolioLang: '@',
+      getHeading: '&'
     },
     templateUrl: 'app/directives/samples/samples.html',
-    link: function($scope) {
-      $scope.editing = false;
-      $scope.samples = $scope.samplesData();
-      $scope.samplesValid = true;
+    link: function(scope) {
+      scope.editing = false;
+      scope.editingTitle = false;
+      scope.samples = scope.samplesData();
+      scope.samplesValid = true;
 
-      $scope.edit = function() {
-        $scope.editing = true;
+      scope.component = scope.getHeading({component: 'SAMPLES'});
+
+      function getDefaultTitle() {
+        return $translate.instant('samples.title', {}, '', scope.portfolioLang);
+      }
+
+      if (scope.component && scope.component.heading) {
+        scope.componentTitle = scope.component.heading;
+      } else {
+        scope.componentTitle = getDefaultTitle();
+        scope.component = {component: 'SAMPLES', heading: ''};
+      }
+
+      scope.editTitle =  function editTitle() {
+        scope.editingTitle = true;
+      };
+
+      scope.exitEditTitle =  function exitEditTitle() {
+        if (scope.component.heading !== scope.componentTitle) {
+          ComponentHeadingService.updateHeading(scope.component)
+            .then(function(component) {
+              scope.editingTitle = false;
+              if (component.heading) {
+                scope.componentTitle = component.heading;
+              } else {
+                scope.componentTitle = getDefaultTitle();
+              }
+            });
+        } else {
+          scope.editingTitle = false;
+        }
+      };
+
+      scope.edit = function() {
+        scope.editing = true;
       };
 
       var isValid = function() {
-        return $scope.samples.every(function(sample) {
+        return scope.samples.every(function(sample) {
           return sample.title && sample.url;
         });
       };
 
-      $scope.refreshValidity = _.debounce(function() {
-        $scope.samplesValid = isValid();
+      scope.refreshValidity = _.debounce(function() {
+        scope.samplesValid = isValid();
       }, 500);
 
-      $scope.exitEdit = function() {
-        $scope.markAllSubmitted();
+      scope.exitEdit = function() {
+        scope.editingTitle = false;
+        scope.markAllSubmitted();
 
         if (isValid()) {
-          var updateSamples = angular.copy($scope.samples);
+          var updateSamples = angular.copy(scope.samples);
 
-          SamplesService.updateSamples($scope.portfolioId, updateSamples).then(function(data) {
-            $scope.samples = data;
-            $scope.editing = false;
+          SamplesService.updateSamples(scope.portfolioId, updateSamples).then(function(data) {
+            scope.samples = data;
+            scope.editing = false;
           });
           return true;
         }
       };
 
-      $scope.markAllSubmitted = function() {
-        $scope.samples.forEach(function(sample) { sample.submitted = true; });
+      scope.markAllSubmitted = function() {
+        scope.samples.forEach(function(sample) { sample.submitted = true; });
       };
     },
   };

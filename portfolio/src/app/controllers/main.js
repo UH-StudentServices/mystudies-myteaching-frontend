@@ -33,6 +33,10 @@ angular.module('controllers.main', ['constants.portfolioTabs',
       $scope.portfolioSections = componentOrders;
     });
 
+    $scope.getHeading = function getHeading(componentId) {
+      return _.find(portfolio.headings, {'component': componentId});
+    };
+
     $scope.sortableOptions = {
       containment: '.portfolio-components__dropzone',
       orderChanged: function(e) {

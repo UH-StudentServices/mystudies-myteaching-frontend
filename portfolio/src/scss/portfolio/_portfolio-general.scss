@@ -23,5 +23,51 @@
       vertical-align: middle;
       margin-right: 0.5em;
     }
+
+    &.is-editable {
+      display: inline-block;
+      padding-right: 2em;
+
+      &:hover {
+        cursor: pointer;
+        background-color: $gray;
+        color: $white;
+        a {
+          color: $white;
+        }
+        &:after {
+          position: absolute;
+          margin-left: 0.5em;
+          font-size: 1em;
+          @include icon($icon-edit);
+        }
+      }
+    }
   }
+
+  .ui-component__title--container {
+    width: 80%;
+
+    .icon--done {
+      position: absolute;
+      right: 25%;
+      top: 50%;
+      @include transform(translateY(-50%));
+      color: $blue;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .ui-component__title--edit {
+    display: inline-block;
+    padding: 0;
+    font-size: 2.5em;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    padding-right: 2.5em;
+  }
+
 }
