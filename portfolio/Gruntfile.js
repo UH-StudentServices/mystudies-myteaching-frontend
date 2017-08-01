@@ -43,7 +43,6 @@ var gruntPlugins = [
   'grunt-ng-annotate',
   'grunt-ng-constant',
   'grunt-postcss',
-  'grunt-protractor-runner',
   'grunt-sass',
   'grunt-svgmin',
   'grunt-text-replace',
@@ -321,34 +320,6 @@ module.exports = function(grunt) {
         'buildTemplates'
       ]
     },
-    protractor: {
-      options: {
-        configFile: 'protractor.conf.js',
-        keepAlive: false,
-        noColor: false,
-        includeStackTrace: true
-      },
-      local: {
-        options: {
-          args: {
-            browser: 'chrome',
-            params: {
-              baseUrl: 'http://localhost:3001'
-            }
-          }
-        }
-      },
-      dev: {
-        options: {
-          args: {
-            browser: 'phantomjs',
-            params: {
-              baseUrl: ''
-            }
-          }
-        }
-      }
-    },
     ngAnnotate: {
       dist: {
         files: [{
@@ -373,14 +344,6 @@ module.exports = function(grunt) {
     'concurrent:serve',
     'browserSync',
     'watch:dev'
-  ]);
-
-  grunt.registerTask('e2e', [
-    'protractor:local'
-  ]);
-
-  grunt.registerTask('e2e_dev', [
-    'protractor:dev'
   ]);
 
   grunt.registerTask('cssDev', [

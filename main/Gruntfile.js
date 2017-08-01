@@ -49,7 +49,6 @@ gruntPlugins = [
   'grunt-ng-annotate',
   'grunt-ng-constant',
   'grunt-postcss',
-  'grunt-protractor-runner',
   'grunt-sass',
   'grunt-svgmin',
   'grunt-text-replace',
@@ -356,44 +355,6 @@ module.exports = function(grunt) {
         autoWatch: true
       }
     },
-    protractor: {
-      options: {
-        configFile: 'protractor.conf.js',
-        keepAlive: false,
-        noColor: false,
-        includeStackTrace: true
-      },
-      local: {
-        options: {
-          args: {
-            browser: 'chrome',
-            params: {
-              student: {
-                loginUrl: 'http://local.student.helsinki.fi:3000/info/local-login'
-              },
-              teacher: {
-                loginUrl: 'http://local.teacher.helsinki.fi:3000/info/local-login'
-              }
-            }
-          }
-        }
-      },
-      dev: {
-        options: {
-          args: {
-            browser: 'phantomjs',
-            params: {
-              student: {
-                loginUrl: 'https://opi-1.student.helsinki.fi/info/local-login'
-              },
-              teacher: {
-                loginUrl: 'https://opi-1.teacher.helsinki.fi/info/local-login'
-              }
-            }
-          }
-        }
-      }
-    },
     ngAnnotate: {
       dist: {
         files: [{
@@ -419,14 +380,6 @@ module.exports = function(grunt) {
     'concurrent:test',
     'karma:unit',
     'eslint'
-  ]);
-
-  grunt.registerTask('e2e', [
-    'protractor:local'
-  ]);
-
-  grunt.registerTask('e2e_dev', [
-    'protractor:dev'
   ]);
 
   grunt.registerTask('cssDev', [

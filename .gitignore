@@ -1,6 +1,5 @@
 node_modules
 bower_components
-e2e_screenshots
 .idea/
 .tmp/
 .nvmrc
