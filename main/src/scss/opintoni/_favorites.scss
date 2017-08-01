@@ -352,7 +352,6 @@
 
     &__event-name {
       display: flex;
-      flex: 1 100%;
       justify-content: center;
       color: $blue;
       margin-bottom: 0.2em;
@@ -361,7 +360,6 @@
     &__info-row {
       display: flex;
       flex-direction: row;
-      flex: 1 100%;
       margin-top: 0.2em;
 
       &__heading {
