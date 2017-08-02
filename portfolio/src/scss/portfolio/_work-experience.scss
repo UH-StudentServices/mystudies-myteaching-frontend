@@ -34,6 +34,20 @@ $work-experience-summary-max-height: 104px;
   margin-bottom: 1em;
 }
 
+.work-experience .banner-content__banner-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > * {
+    margin: 0 2px;
+  }
+
+  input {
+    width: 70px !important;
+  }
+}
+
 .job-search .banner-content__description, .work-experience .banner-content__description {
   p {
     height: $work-experience-description-height;

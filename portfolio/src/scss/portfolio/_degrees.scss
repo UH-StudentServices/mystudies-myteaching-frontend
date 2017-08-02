@@ -24,14 +24,15 @@ $degree-invalid-color: red;
   position: relative;
 
   &.editable {
-    margin-top: 1em;
-
     a {
       color: $white;
     }
 
     .degree__container {
       width: 80%;
+      > * {
+        margin-bottom: 3px
+      }
     }
 
     .icon--remove {
