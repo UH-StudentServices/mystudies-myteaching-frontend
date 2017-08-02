@@ -27,9 +27,9 @@
     .editable-content {
       padding: 2px;
       color: $white;
+      cursor: pointer;
 
       .icon--edit-event {
-        display: none;
         margin-left: 0.5em;
       }
 
@@ -37,34 +37,27 @@
         background-color: $darkgray;
       }
     }
-
-    &:hover {
-      cursor: pointer;
-      .icon--edit-event {
-        display: inline;
-      }
-    }
-
   }
 }
 
 .editable-content-active {
+  $done-icon-size: 16px;
+  $done-icon-right-offset: 5px;
   position: relative;
+
   input {
-    margin: 0;
-    padding: 0;
+    padding: 3px;
     border: 0;
     background-color: $white;
     font-weight: normal;
     width: 100%;
-    padding-right: 2.5em;
+    padding-right: $done-icon-size + $done-icon-right-offset;
   }
 
   .icon--done {
-    position: absolute;
-    right: 1em;
-    top: 50%;
-    @include transform(translateY(-50%));
+    right: $done-icon-right-offset;
+    font-size: $done-icon-size;
+    @include vertically-center
     color: $blue;
     &:hover {
       cursor: pointer;
