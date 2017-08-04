@@ -22,7 +22,7 @@ angular.module('directives.studies', [
   'directives.keywords',
   'directives.summary'])
 
-.directive('studies', function(KeywordService, SummaryService) {
+.directive('studies', function(KeywordService, SummaryService, ComponentHeadingService) {
   return {
     restrict: 'E',
     replace: true,
@@ -31,51 +31,74 @@ angular.module('directives.studies', [
       portfolioId: '@',
       portfolioLang: '@',
       headingKey: '@',
-      sectionName: '@'
+      sectionName: '@',
+      getHeadingOrDefault: '&'
     },
     templateUrl: 'app/directives/studies/studies.html',
-    link: function(scope) {
-      var portfolioId = scope.portfolioId,
-          DEFAULT_HEADING_KEY = 'studies.title';
+    link: function($scope) {
+      var portfolioId = $scope.portfolioId,
+          HEADING_I18N_KEY = 'studies.title',
+          COMPONENT_KEY = 'STUDIES';
 
       function edit() {
-        scope.editing = true;
+        $scope.editing = true;
       }
+      $scope.component = $scope.getHeadingOrDefault({componentId: COMPONENT_KEY,
+                                                     i18nKey: HEADING_I18N_KEY,
+                                                     lang: $scope.portfolioLang
+      });
+      $scope.oldTitle = $scope.component.heading;
+
+      $scope.saveTitle = function() {
+        if ($scope.component.heading !== $scope.oldTitle) {
+          ComponentHeadingService.updateHeading($scope.component)
+            .then(function(component) {
+              if (component.heading) {
+                $scope.oldTitle = component.heading;
+              }
+            });
+          return true;
+        }
+        return false;
+      };
 
       function exitEdit() {
+
         var updateKeywordsRequest = {
-          keywords: scope.keywords
+          keywords: $scope.keywords
         };
 
         var updateSummaryRequest = {
-          summary: scope.summary
+          summary: $scope.summary
         };
+
+        $scope.saveTitle();
 
         _.forEach(updateKeywordsRequest.keywords, function(keyword, index) {
           keyword.orderIndex = index;
         });
 
-        scope.editing = false;
+        $scope.editing = false;
 
         SummaryService.updateSummary(portfolioId, updateSummaryRequest);
         KeywordService.updateKeywords(portfolioId, updateKeywordsRequest)
           .then(function(keywords) {
-            scope.keywords = keywords;
+            $scope.keywords = keywords;
           });
 
         return true;
       }
 
-      _.assign(scope, {
-        summary: scope.summaryData(),
-        headingKey: scope.headingKey || DEFAULT_HEADING_KEY,
+      _.assign($scope, {
+        summary: $scope.summaryData(),
+        headingKey: $scope.headingKey || HEADING_I18N_KEY,
         edit: edit,
         exitEdit: exitEdit
       });
 
       KeywordService.getKeywordsSubject()
         .subscribe(function(keywords) {
-          scope.keywords = keywords;
+          $scope.keywords = keywords;
         });
     }
   };

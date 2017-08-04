@@ -26,24 +26,48 @@ angular.module('directives.favorites', [
   .directive('favorites', function(availableFavoriteTypes,
                                    FavoritesService,
                                    NewFavoriteAddedEvent,
-                                   RemoveFavoriteEvent) {
+                                   RemoveFavoriteEvent,
+                                   ComponentHeadingService) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/favorites.html',
       scope: {
         favoritesData: '&',
-        portfolioLang: '@'
+        portfolioLang: '@',
+        getHeadingOrDefault: '&'
       },
       link: function(scope) {
+        var HEADING_I18N_KEY = 'favorites.title',
+            COMPONENT_KEY = 'FAVORITES';
+
         scope.favorites = scope.favoritesData();
         scope.editMode = false;
         scope.availableFavoriteTypes = availableFavoriteTypes;
+        scope.component = scope.getHeadingOrDefault({componentId: COMPONENT_KEY,
+                                                     i18nKey: HEADING_I18N_KEY,
+                                                     lang: scope.portfolioLang
+        });
+        scope.oldTitle = scope.component.heading;
 
         scope.edit = function() {
           scope.editMode = true;
         };
 
+        scope.saveTitle = function() {
+          if (scope.component.heading !== scope.oldTitle) {
+            ComponentHeadingService.updateHeading(scope.component)
+              .then(function(component) {
+                if (component.heading) {
+                  scope.oldTitle = component.heading;
+                }
+              });
+            return true;
+          }
+          return false;
+        };
+
         scope.exitEdit = function() {
+          scope.saveTitle();
           scope.editMode = false;
 
           return true;

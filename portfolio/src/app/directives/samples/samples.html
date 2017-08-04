@@ -17,20 +17,15 @@
 
 <div class="ui-component editable-wrapper">
   <div class="component-header">
-    <h2 ng-if="!editingTitle"
-        class="ui-component__title border-bottom" ng-class="{'is-editable': editing}">
-      <span ng-if="!editing">{{::componentTitle}}</span>
-      <a ng-if="editing" role="button" href="" ng-click="editTitle()">
-        {{::componentTitle}}
-      </a>
+    <h2 ng-if="!editing"
+        class="ui-component__title border-bottom">
+      {{::component.heading}}
     </h2>
-
-    <div ng-if="editingTitle" class="ui-component__title--container">
+    <div ng-if="editing" class="ui-component__title--container">
       <input class="ui-component__title--edit"
              type="text"
              ng-model="component.heading"
-             ui-keypress="{'enter':'exitEditTitle()'}">
-      <a role="button" href="" ng-click="exitEditTitle()"><i class="icon--done"></i></a>
+             ui-keypress="{'enter':'saveTitle()'}">
     </div>
 
     <div class="component-header__actions">

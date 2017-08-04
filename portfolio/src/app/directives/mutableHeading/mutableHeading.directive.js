@@ -1,0 +1,68 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+// MutableHeading is intended for portfolio section headers.
+
+angular.module('directives.mutableHeading', [
+  'services.portfolio',
+  'services.componentHeadingService'
+  ]
+)
+  .directive('mutableHeading', function($translate, PortfolioService, ComponentHeadingService) {
+    return {
+    restrict: 'E',
+    replace: true,
+    scope: {
+      componentId: '@',
+      defaultText: '@',
+      portfolioLang: '@',
+      editing: '<',
+      saveSlot: '<'
+    },
+    templateUrl: 'app/directives/mutableHeading/mutableHeading.html',
+    link: function($scope) {
+
+      $scope.component = {
+        component: $scope.componentId,
+        heading: $translate.instant($scope.defaultText, {}, '', $scope.portfolioLang)
+      };
+      $scope.currentText = $scope.component.heading;
+
+      PortfolioService.getPortfolio().then(function(portfolio) {
+        $scope.component = _.find(portfolio.headings, {'component': $scope.componentId});
+        $scope.currentText = $scope.component.heading;
+      });
+      $scope.headings = 'myself';
+
+      $scope.saveHeading = function() {
+        console.log('saveHeading called');
+        if ($scope.component.heading !== $scope.currentText) {
+          ComponentHeadingService.updateHeading($scope.component)
+            .then(function(component) {
+              if (component.heading) {
+                $scope.currentText = component.heading;
+              }
+            });
+          return true;
+        }
+        return false;
+      };
+      // Ignore the warning. 'saveSlot' makes saveHeading accessible for the element that gave it to us.
+      $scope.saveSlot.func = $scope.saveHeading;
+    }
+    };
+  });

@@ -13,25 +13,19 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
--->
+  -->
 
-<div class="ui-component ui-component__degrees editable-wrapper">
-  <div class="component-header">
-    <mutable-heading component-id="DEGREES"
-                     default-text="degrees.title"
-                     portfolio-lang="{{::portfolioLang}}"
-                     editing="editing"
-                     save-slot="saveHeading"></mutable-heading>
 
-    <div class="component-header__actions">
-      <visibility-toggle component-id="DEGREES" section-name="{{::sectionName}}"></visibility-toggle>
-      <edit-link on-edit="edit()"
-        on-exit-edit="exitEdit()"
-        exit-edit-disabled="!degreesValid"
-        on-disabled-exit-edit="markAllSubmitted()"></edit-link>
-    </div>
+<div>
+  <h2 ng-if="!editing"
+      class="ui-component__title border-bottom">
+    {{::component.heading}}
+  </h2>
+  <div ng-if="editing" class="ui-component__title--container">
+    <input class="ui-component__title--edit"
+           type="text"
+           ng-model="component.heading"
+           ui-keypress="{'enter':'saveTitle()'}">
   </div>
-
-  <show-degrees ng-show="!editing"></show-degrees>
-  <edit-degrees ng-show="editing"></edit-degrees>
 </div>
+

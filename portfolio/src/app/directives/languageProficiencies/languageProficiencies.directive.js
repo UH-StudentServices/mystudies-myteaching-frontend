@@ -19,18 +19,22 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
   .directive('languageProficiencies', function(AvailablePortfolioLanguages,
                                                AvailableLanguageProficiencies,
                                                LanguageProficienciesService,
-                                               $filter) {
+                                               $filter,
+                                               ComponentHeadingService) {
     return {
       restrict: 'E',
       replace: true,
       scope: {
         languageProficienciesData: '&',
         portfolioLang: '@',
-        sectionName: '@'
+        sectionName: '@',
+        getHeadingOrDefault: '&'
       },
       templateUrl: 'app/directives/languageProficiencies/languageProficiencies.html',
       link: function($scope) {
-        var updateBatch,
+        var HEADING_I18N_KEY = 'languages.title',
+            COMPONENT_KEY = 'LANGUAGE_PROFICIENCIES',
+            updateBatch,
             orderBy = $filter('orderBy'),
             translate = $filter('translate'),
             initUpdateBatch = function() {
@@ -68,6 +72,12 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
             NEW_OR_UPDATED_PROP_NAMES = ['updatedLanguageProficiencies',
                                          'newLanguageProficiencies'];
 
+        $scope.component = $scope.getHeadingOrDefault({componentId: COMPONENT_KEY,
+                                                       i18nKey: HEADING_I18N_KEY,
+                                                       lang: $scope.portfolioLang
+        });
+        $scope.oldTitle = $scope.component.heading;
+
         _.assign($scope, {
           languageProficiencies: orderByProficiency($scope.languageProficienciesData()),
           availableLanguages: AvailablePortfolioLanguages,
@@ -78,7 +88,21 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
             initUpdateBatch();
           },
 
+          saveTitle: function() {
+            if ($scope.component.heading !== $scope.oldTitle) {
+              ComponentHeadingService.updateHeading($scope.component)
+                .then(function(component) {
+                  if (component.heading) {
+                    $scope.oldTitle = component.heading;
+                  }
+                });
+              return true;
+            }
+            return false;
+          },
+
           exitEdit: function() {
+            $scope.saveTitle();
             updateBatch.newLanguageProficiencies = $scope.languageProficiencies
               .filter(function(el) {
                 return !el.id;

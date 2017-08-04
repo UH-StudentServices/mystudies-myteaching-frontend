@@ -17,11 +17,11 @@
 
 angular.module('directives.degrees', [
   'services.degree',
-  'services.componentHeadingService',
   'directives.showDegrees',
-  'directives.editDegrees'
+  'directives.editDegrees',
+  'directives.mutableHeading'
 ])
-.directive('degrees', function(DegreeService, ComponentHeadingService, $translate) {
+.directive('degrees', function(DegreeService) {
   return {
     restrict: 'E',
     replace: true,
@@ -29,26 +29,15 @@ angular.module('directives.degrees', [
       degreesData: '&',
       portfolioId: '@',
       portfolioLang: '@',
-      getHeading: '&',
       sectionName: '@'
     },
     templateUrl: 'app/directives/degrees/degrees.html',
     link: function($scope) {
       $scope.degrees = DegreeService.formatDates($scope.degreesData());
-
       $scope.editing = false;
       $scope.newDegree = {};
       $scope.degreesValid = true;
-
-      function getDefaultTitle() {
-        return $translate.instant('degrees.title', {}, '', $scope.portfolioLang);
-      }
-
-      $scope.component = $scope.getHeading({component: 'DEGREES'});
-      if (!$scope.component) {
-        $scope.component = {component: 'DEGREES', heading: getDefaultTitle()};
-      }
-      $scope.componentTitle = $scope.component.heading;
+      $scope.saveHeading = {};
 
       $scope.edit = function() {
         $scope.editing = true;
@@ -68,24 +57,13 @@ angular.module('directives.degrees', [
         $scope.degrees.forEach(function(degree) { degree.submitted = true; });
       };
 
-      $scope.saveTitle = function() {
-        if ($scope.component.heading !== $scope.componentTitle) {
-          ComponentHeadingService.updateHeading($scope.component)
-            .then(function(component) {
-              if (component.heading) {
-                $scope.componentTitle = component.heading;
-              } else {
-                $scope.componentTitle = getDefaultTitle();
-              }
-            });
-          return true;
-        }
-        return false;
-      };
 
       $scope.exitEdit = function() {
-        var changed = $scope.saveTitle();
+        var changed = false;
 
+        if ($scope.saveHeading.func) {
+          changed = $scope.saveHeading.func();
+        }
         $scope.markAllSubmitted();
 
         if (isValid()) {

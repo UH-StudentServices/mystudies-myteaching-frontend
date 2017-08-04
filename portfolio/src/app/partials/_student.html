@@ -31,7 +31,8 @@
             <studies limit-visibility="{componentId: 'STUDIES'}"
                      summary-data="portfolio.summary"
                      portfolio-id="{{::portfolio.id}}"
-                     portfolio-lang="{{::portfolio.lang}}">
+                     portfolio-lang="{{::portfolio.lang}}"
+                     get-heading-or-default="getHeadingOrDefault(componentId, i18nKey, lang)">
             </studies>
           </div>
 
@@ -39,7 +40,8 @@
             <degrees limit-visibility="{componentId: 'DEGREES'}"
                      degrees-data="portfolio.degrees"
                      portfolio-id="{{::portfolio.id}}"
-                     portfolio-lang="{{::portfolio.lang}}">
+                     portfolio-lang="{{::portfolio.lang}}"
+                     get-heading-or-default="getHeadingOrDefault(componentId, i18nKey, lang)">
             </degrees>
           </div>
 
@@ -47,7 +49,8 @@
             <work-experience limit-visibility="{componentId: 'WORK_EXPERIENCE'}"
                              work-experience-data="portfolio.workExperience"
                              portfolio-id="{{::portfolio.id}}"
-                             portfolio-lang="{{::portfolio.lang}}">
+                             portfolio-lang="{{::portfolio.lang}}"
+                             get-heading-or-default="getHeadingOrDefault(componentId, i18nKey, lang)">
             </work-experience>
           </div>
 
@@ -56,7 +59,7 @@
                      samples-data="portfolio.samples"
                      portfolio-id="{{::portfolio.id}}"
                      portfolio-lang="{{::portfolio.lang}}"
-                     get-heading="getHeading(component)">
+                     get-heading-or-default="getHeadingOrDefault(componentId, i18nKey, lang)">
             </samples>
           </div>
 
@@ -71,21 +74,24 @@
           <div ng-switch-when="ATTAINMENTS">
             <attainments limit-visibility="{componentId: 'ATTAINMENTS'}"
                          portfolio-id="{{::portfolio.id}}"
-                         portfolio-lang="{{::portfolio.lang}}">
+                         portfolio-lang="{{::portfolio.lang}}"
+                         get-heading-or-default="getHeadingOrDefault(componentId, i18nKey, lang)">
             </attainments>
           </div>
 
           <div ng-switch-when="LANGUAGE_PROFICIENCIES">
             <language-proficiencies limit-visibility="{componentId: 'LANGUAGE_PROFICIENCIES'}"
                                     language-proficiencies-data="portfolio.languageProficiencies"
-                                    portfolio-lang="{{::portfolio.lang}}">
+                                    portfolio-lang="{{::portfolio.lang}}"
+                                    get-heading-or-default="getHeadingOrDefault(componentId, i18nKey, lang)">
             </language-proficiencies>
           </div>
 
           <div ng-switch-when="FAVORITES">
             <favorites limit-visibility="{componentId: 'FAVORITES'}"
                        favorites-data="portfolio.favorites"
-                       portfolio-lang="{{::portfolio.lang}}">
+                       portfolio-lang="{{::portfolio.lang}}"
+                       get-heading-or-default="getHeadingOrDefault(componentId, i18nKey, lang)">
             </favorites>
           </div>
         </div>

@@ -22,7 +22,7 @@ angular.module('directives.samples', [
   'directives.editSamples'
 ])
 
-.directive('samples', function(SamplesService, ComponentHeadingService, $translate) {
+.directive('samples', function(SamplesService, ComponentHeadingService) {
   return {
     restrict: 'E',
     replace: true,
@@ -30,46 +30,34 @@ angular.module('directives.samples', [
       samplesData: '&',
       portfolioId: '@',
       portfolioLang: '@',
-      getHeading: '&'
+      getHeadingOrDefault: '&'
     },
     templateUrl: 'app/directives/samples/samples.html',
     link: function(scope) {
+      var HEADING_I18N_KEY = 'samples.title',
+          COMPONENT_KEY = 'SAMPLES';
+
       scope.editing = false;
-      scope.editingTitle = false;
       scope.samples = scope.samplesData();
       scope.samplesValid = true;
 
-      scope.component = scope.getHeading({component: 'SAMPLES'});
+      scope.component = scope.getHeadingOrDefault({componentId: COMPONENT_KEY,
+                                                   i18nKey: HEADING_I18N_KEY,
+                                                   lang: scope.portfolioLang
+      });
+      scope.oldTitle = scope.component.heading;
 
-      function getDefaultTitle() {
-        return $translate.instant('samples.title', {}, '', scope.portfolioLang);
-      }
-
-      if (scope.component && scope.component.heading) {
-        scope.componentTitle = scope.component.heading;
-      } else {
-        scope.componentTitle = getDefaultTitle();
-        scope.component = {component: 'SAMPLES', heading: ''};
-      }
-
-      scope.editTitle =  function editTitle() {
-        scope.editingTitle = true;
-      };
-
-      scope.exitEditTitle =  function exitEditTitle() {
-        if (scope.component.heading !== scope.componentTitle) {
+      scope.saveTitle = function() {
+        if (scope.component.heading !== scope.oldTitle) {
           ComponentHeadingService.updateHeading(scope.component)
             .then(function(component) {
-              scope.editingTitle = false;
               if (component.heading) {
-                scope.componentTitle = component.heading;
-              } else {
-                scope.componentTitle = getDefaultTitle();
+                scope.oldTitle = component.heading;
               }
             });
-        } else {
-          scope.editingTitle = false;
+          return true;
         }
+        return false;
       };
 
       scope.edit = function() {
@@ -87,7 +75,8 @@ angular.module('directives.samples', [
       }, 500);
 
       scope.exitEdit = function() {
-        scope.editingTitle = false;
+        var changed = scope.saveTitle();
+
         scope.markAllSubmitted();
 
         if (isValid()) {
@@ -97,8 +86,9 @@ angular.module('directives.samples', [
             scope.samples = data;
             scope.editing = false;
           });
-          return true;
+          changed = true;
         }
+        return changed;
       };
 
       scope.markAllSubmitted = function() {

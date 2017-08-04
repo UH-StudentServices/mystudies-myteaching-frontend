@@ -46,6 +46,7 @@ angular.module('opintoniPortfolioApp', [
   'directives.favorites',
   'directives.contactInformation',
   'directives.focus',
+  'directives.mutableHeading',
   'directives.degrees',
   'directives.workExperience',
   'directives.samples',
