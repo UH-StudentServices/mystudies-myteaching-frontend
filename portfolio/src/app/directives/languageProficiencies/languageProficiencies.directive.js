@@ -15,12 +15,11 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.languageProficiencies', ['services.languageProficiencies'])
+angular.module('directives.languageProficiencies', ['services.languageProficiencies', 'directives.mutableHeading'])
   .directive('languageProficiencies', function(AvailablePortfolioLanguages,
                                                AvailableLanguageProficiencies,
                                                LanguageProficienciesService,
-                                               $filter,
-                                               ComponentHeadingService) {
+                                               $filter) {
     return {
       restrict: 'E',
       replace: true,
@@ -28,13 +27,10 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
         languageProficienciesData: '&',
         portfolioLang: '@',
         sectionName: '@',
-        getHeadingOrDefault: '&'
       },
       templateUrl: 'app/directives/languageProficiencies/languageProficiencies.html',
       link: function($scope) {
-        var HEADING_I18N_KEY = 'languages.title',
-            COMPONENT_KEY = 'LANGUAGE_PROFICIENCIES',
-            updateBatch,
+        var updateBatch,
             orderBy = $filter('orderBy'),
             translate = $filter('translate'),
             initUpdateBatch = function() {
@@ -72,11 +68,7 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
             NEW_OR_UPDATED_PROP_NAMES = ['updatedLanguageProficiencies',
                                          'newLanguageProficiencies'];
 
-        $scope.component = $scope.getHeadingOrDefault({componentId: COMPONENT_KEY,
-                                                       i18nKey: HEADING_I18N_KEY,
-                                                       lang: $scope.portfolioLang
-        });
-        $scope.oldTitle = $scope.component.heading;
+        $scope.saveHeading = {};
 
         _.assign($scope, {
           languageProficiencies: orderByProficiency($scope.languageProficienciesData()),
@@ -88,21 +80,11 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
             initUpdateBatch();
           },
 
-          saveTitle: function() {
-            if ($scope.component.heading !== $scope.oldTitle) {
-              ComponentHeadingService.updateHeading($scope.component)
-                .then(function(component) {
-                  if (component.heading) {
-                    $scope.oldTitle = component.heading;
-                  }
-                });
-              return true;
-            }
-            return false;
-          },
 
           exitEdit: function() {
-            $scope.saveTitle();
+            if ($scope.saveHeading.func) {
+              $scope.saveHeading.func();
+            }
             updateBatch.newLanguageProficiencies = $scope.languageProficiencies
               .filter(function(el) {
                 return !el.id;

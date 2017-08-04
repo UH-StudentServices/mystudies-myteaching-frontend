@@ -20,7 +20,7 @@
 angular.module('directives.mutableHeading', [
   'services.portfolio',
   'services.componentHeadingService'
-  ]
+]
 )
   .directive('mutableHeading', function($translate, PortfolioService, ComponentHeadingService) {
     return {
@@ -43,10 +43,13 @@ angular.module('directives.mutableHeading', [
       $scope.currentText = $scope.component.heading;
 
       PortfolioService.getPortfolio().then(function(portfolio) {
-        $scope.component = _.find(portfolio.headings, {'component': $scope.componentId});
-        $scope.currentText = $scope.component.heading;
+        var comp = _.find(portfolio.headings, {'component': $scope.componentId});
+
+        if (comp && comp.heading) {
+          $scope.component = comp;
+          $scope.currentText = $scope.component.heading;
+        }
       });
-      $scope.headings = 'myself';
 
       $scope.saveHeading = function() {
         console.log('saveHeading called');
@@ -61,8 +64,12 @@ angular.module('directives.mutableHeading', [
         }
         return false;
       };
-      // Ignore the warning. 'saveSlot' makes saveHeading accessible for the element that gave it to us.
-      $scope.saveSlot.func = $scope.saveHeading;
+      if ($scope.saveSlot !== undefined) {
+        // Ignore the warning. 'saveSlot' makes saveHeading accessible for the element that gave it to us.
+        $scope.saveSlot.func = $scope.saveHeading;
+      } else {
+        console.log('no saveSlot for heading -- cannot save section titles.' + $scope.componentId);
+      }
     }
     };
   });

@@ -20,33 +20,28 @@ angular.module('directives.attainments', [
   'resources.attainment',
   'filters.moment',
   'filters.formatting',
-  'directives.editLink'
+  'directives.editLink',
+  'directives.mutableHeading'
+
 ])
 
-  .directive('attainments', function(AttainmentResource, ComponentHeadingService) {
+  .directive('attainments', function(AttainmentResource) {
     return {
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/attainments/attainments.html',
       scope: {
         portfolioId: '@',
-        portfolioLang: '@',
-        getHeadingOrDefault: '&'
+        portfolioLang: '@'
       },
       link: function($scope) {
         var SHOW_MORE_ADDITION = 5,
-            MAX_GRADE_CHAR_COUNT = 4,
-            HEADING_I18N_KEY = 'attainments.attainments',
-            COMPONENT_KEY = 'ATTAINMENTS';
+            MAX_GRADE_CHAR_COUNT = 4;
 
         $scope.editing = false;
         $scope.numberOfVisibleAttainments = 5;
         $scope.attainments = [];
-        $scope.component = $scope.getHeadingOrDefault({componentId: COMPONENT_KEY,
-                                                       i18nKey: HEADING_I18N_KEY,
-                                                       lang: $scope.portfolioLang
-        });
-        $scope.oldTitle = $scope.component.heading;
+        $scope.saveHeading = {};
 
         $scope.formatGrade = function(grade) {
           if (grade.endsWith('.')) {
@@ -66,21 +61,11 @@ angular.module('directives.attainments', [
           });
         };
 
-        $scope.saveTitle = function() {
-          if ($scope.component.heading !== $scope.oldTitle) {
-            ComponentHeadingService.updateHeading($scope.component)
-              .then(function(component) {
-                if (component.heading) {
-                  $scope.oldTitle = component.heading;
-                }
-              });
-            return true;
-          }
-          return false;
-        };
-
         $scope.exitEdit = function exitEdit() {
-          $scope.saveTitle();
+          if ($scope.saveHeading.func) {
+            $scope.saveHeading.func();
+          }
+
           $scope.editing = false;
 
           AttainmentResource.updateWhitelist($scope.portfolioId, {

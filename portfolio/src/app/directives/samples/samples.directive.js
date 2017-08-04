@@ -19,10 +19,11 @@ angular.module('directives.samples', [
   'services.samples',
   'services.componentHeadingService',
   'directives.showSamples',
-  'directives.editSamples'
+  'directives.editSamples',
+  'directives.mutableHeading'
 ])
 
-.directive('samples', function(SamplesService, ComponentHeadingService) {
+.directive('samples', function(SamplesService) {
   return {
     restrict: 'E',
     replace: true,
@@ -30,35 +31,13 @@ angular.module('directives.samples', [
       samplesData: '&',
       portfolioId: '@',
       portfolioLang: '@',
-      getHeadingOrDefault: '&'
     },
     templateUrl: 'app/directives/samples/samples.html',
     link: function(scope) {
-      var HEADING_I18N_KEY = 'samples.title',
-          COMPONENT_KEY = 'SAMPLES';
-
       scope.editing = false;
       scope.samples = scope.samplesData();
       scope.samplesValid = true;
-
-      scope.component = scope.getHeadingOrDefault({componentId: COMPONENT_KEY,
-                                                   i18nKey: HEADING_I18N_KEY,
-                                                   lang: scope.portfolioLang
-      });
-      scope.oldTitle = scope.component.heading;
-
-      scope.saveTitle = function() {
-        if (scope.component.heading !== scope.oldTitle) {
-          ComponentHeadingService.updateHeading(scope.component)
-            .then(function(component) {
-              if (component.heading) {
-                scope.oldTitle = component.heading;
-              }
-            });
-          return true;
-        }
-        return false;
-      };
+      scope.saveHeading = {};
 
       scope.edit = function() {
         scope.editing = true;
@@ -75,7 +54,11 @@ angular.module('directives.samples', [
       }, 500);
 
       scope.exitEdit = function() {
-        var changed = scope.saveTitle();
+        var changed = false;
+
+        if (scope.saveHeading.func) {
+          changed = scope.saveHeading.func();
+        }
 
         scope.markAllSubmitted();
 

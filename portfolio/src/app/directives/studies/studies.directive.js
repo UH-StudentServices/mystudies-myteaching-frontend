@@ -20,9 +20,10 @@ angular.module('directives.studies', [
   'services.summary',
   'directives.editLink',
   'directives.keywords',
-  'directives.summary'])
+  'directives.summary',
+  'directives.mutableHeading'])
 
-.directive('studies', function(KeywordService, SummaryService, ComponentHeadingService) {
+.directive('studies', function(KeywordService, SummaryService) {
   return {
     restrict: 'E',
     replace: true,
@@ -31,36 +32,17 @@ angular.module('directives.studies', [
       portfolioId: '@',
       portfolioLang: '@',
       headingKey: '@',
-      sectionName: '@',
-      getHeadingOrDefault: '&'
+      sectionName: '@'
     },
     templateUrl: 'app/directives/studies/studies.html',
     link: function($scope) {
-      var portfolioId = $scope.portfolioId,
-          HEADING_I18N_KEY = 'studies.title',
-          COMPONENT_KEY = 'STUDIES';
+      var portfolioId = $scope.portfolioId;
+
+      $scope.saveHeading = {};
 
       function edit() {
         $scope.editing = true;
       }
-      $scope.component = $scope.getHeadingOrDefault({componentId: COMPONENT_KEY,
-                                                     i18nKey: HEADING_I18N_KEY,
-                                                     lang: $scope.portfolioLang
-      });
-      $scope.oldTitle = $scope.component.heading;
-
-      $scope.saveTitle = function() {
-        if ($scope.component.heading !== $scope.oldTitle) {
-          ComponentHeadingService.updateHeading($scope.component)
-            .then(function(component) {
-              if (component.heading) {
-                $scope.oldTitle = component.heading;
-              }
-            });
-          return true;
-        }
-        return false;
-      };
 
       function exitEdit() {
 
@@ -72,7 +54,9 @@ angular.module('directives.studies', [
           summary: $scope.summary
         };
 
-        $scope.saveTitle();
+        if ($scope.saveHeading.func) {
+          $scope.saveHeading.func();
+        }
 
         _.forEach(updateKeywordsRequest.keywords, function(keyword, index) {
           keyword.orderIndex = index;
@@ -91,7 +75,7 @@ angular.module('directives.studies', [
 
       _.assign($scope, {
         summary: $scope.summaryData(),
-        headingKey: $scope.headingKey || HEADING_I18N_KEY,
+        headingKey: $scope.headingKey || '',
         edit: edit,
         exitEdit: exitEdit
       });

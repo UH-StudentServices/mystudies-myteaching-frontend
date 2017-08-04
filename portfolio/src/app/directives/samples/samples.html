@@ -17,16 +17,11 @@
 
 <div class="ui-component editable-wrapper">
   <div class="component-header">
-    <h2 ng-if="!editing"
-        class="ui-component__title border-bottom">
-      {{::component.heading}}
-    </h2>
-    <div ng-if="editing" class="ui-component__title--container">
-      <input class="ui-component__title--edit"
-             type="text"
-             ng-model="component.heading"
-             ui-keypress="{'enter':'saveTitle()'}">
-    </div>
+    <mutable-heading component-id="SAMPLES"
+                     default-text="samples.title"
+                     portfolio-lang="{{::portfolioLang}}"
+                     editing="editing"
+                     save-slot="saveHeading"></mutable-heading>
 
     <div class="component-header__actions">
       <visibility-toggle component-id="SAMPLES"></visibility-toggle>

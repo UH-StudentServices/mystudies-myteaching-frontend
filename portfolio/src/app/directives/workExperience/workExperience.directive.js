@@ -19,7 +19,8 @@ angular.module('directives.workExperience', [
   'services.workExperience',
   'filters.moment',
   'directives.showWorkExperience',
-  'directives.editWorkExperience'
+  'directives.editWorkExperience',
+  'directives.mutableHeading'
 ])
 
 .factory('OrderWorkExperience', function() {
@@ -28,7 +29,7 @@ angular.module('directives.workExperience', [
   };
 })
 
-.directive('workExperience', function(WorkExperienceService, ComponentHeadingService) {
+.directive('workExperience', function(WorkExperienceService) {
   return {
     restrict: 'E',
     replace: true,
@@ -41,38 +42,18 @@ angular.module('directives.workExperience', [
     },
     templateUrl: 'app/directives/workExperience/workExperience.html',
     link: function($scope) {
-      var HEADING_I18N_KEY = 'workExperience.title',
-          COMPONENT_KEY = 'WORK_EXPERIENCE';
 
       $scope.workExperience = WorkExperienceService.formatDates($scope.workExperienceData());
       $scope.editing = false;
       $scope.workExperienceValid = true;
       $scope.newJob = {};
       $scope.newJobSearch = {};
-
-      $scope.component = $scope.getHeadingOrDefault({componentId: COMPONENT_KEY,
-                                                     i18nKey: HEADING_I18N_KEY,
-                                                     lang: $scope.portfolioLang
-      });
-      $scope.oldTitle = $scope.component.heading;
+      $scope.saveHeading = {};
 
 
       WorkExperienceService.getJobSearchSubject().subscribe(function(jobSearch) {
         $scope.jobSearch = jobSearch;
       });
-
-      $scope.saveTitle = function() {
-        if ($scope.component.heading !== $scope.oldTitle) {
-          ComponentHeadingService.updateHeading($scope.component)
-            .then(function(component) {
-              if (component.heading) {
-                $scope.oldTitle = component.heading;
-              }
-            });
-          return true;
-        }
-        return false;
-      };
 
       $scope.edit = function() {
         $scope.editing = true;
@@ -99,7 +80,11 @@ angular.module('directives.workExperience', [
       }, 500);
 
       $scope.exitEdit = function() {
-        var changed = $scope.saveTitle();
+        var changed = false;
+
+        if ($scope.saveHeading.func) {
+          changed = $scope.saveHeading.func();
+        }
 
         $scope.markAllSubmitted();
 
