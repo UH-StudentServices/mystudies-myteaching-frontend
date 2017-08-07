@@ -21,7 +21,7 @@ angular.module('directives.studies', [
   'directives.editLink',
   'directives.keywords',
   'directives.summary',
-  'directives.mutableHeading'])
+  'directives.editableHeading'])
 
 .directive('studies', function(KeywordService, SummaryService) {
   return {

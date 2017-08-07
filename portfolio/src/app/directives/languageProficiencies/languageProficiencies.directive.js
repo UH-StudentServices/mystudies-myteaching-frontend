@@ -15,7 +15,7 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.languageProficiencies', ['services.languageProficiencies', 'directives.mutableHeading'])
+angular.module('directives.languageProficiencies', ['services.languageProficiencies', 'directives.editableHeading'])
   .directive('languageProficiencies', function(AvailablePortfolioLanguages,
                                                AvailableLanguageProficiencies,
                                                LanguageProficienciesService,

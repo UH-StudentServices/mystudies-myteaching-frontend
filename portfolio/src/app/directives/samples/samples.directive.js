@@ -20,7 +20,7 @@ angular.module('directives.samples', [
   'services.componentHeadingService',
   'directives.showSamples',
   'directives.editSamples',
-  'directives.mutableHeading'
+  'directives.editableHeading'
 ])
 
 .directive('samples', function(SamplesService) {

@@ -17,12 +17,12 @@
 
 // MutableHeading is intended for portfolio section headers.
 
-angular.module('directives.mutableHeading', [
+angular.module('directives.editableHeading', [
   'services.portfolio',
   'services.componentHeadingService'
 ]
 )
-  .directive('mutableHeading', function($translate, PortfolioService, ComponentHeadingService) {
+  .directive('editableHeading', function($translate, PortfolioService, ComponentHeadingService) {
     return {
     restrict: 'E',
     replace: true,
@@ -33,7 +33,7 @@ angular.module('directives.mutableHeading', [
       editing: '<',
       saveSlot: '<'
     },
-    templateUrl: 'app/directives/mutableHeading/mutableHeading.html',
+    templateUrl: 'app/directives/editableHeading/editableHeading.html',
     link: function($scope) {
 
       $scope.component = {

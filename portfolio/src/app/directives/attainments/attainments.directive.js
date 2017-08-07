@@ -21,7 +21,7 @@ angular.module('directives.attainments', [
   'filters.moment',
   'filters.formatting',
   'directives.editLink',
-  'directives.mutableHeading'
+  'directives.editableHeading'
 
 ])
 

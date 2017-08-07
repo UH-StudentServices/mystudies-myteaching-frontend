@@ -19,7 +19,7 @@ angular.module('directives.degrees', [
   'services.degree',
   'directives.showDegrees',
   'directives.editDegrees',
-  'directives.mutableHeading'
+  'directives.editableHeading'
 ])
 .directive('degrees', function(DegreeService) {
   return {

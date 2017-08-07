@@ -20,7 +20,7 @@ angular.module('directives.workExperience', [
   'filters.moment',
   'directives.showWorkExperience',
   'directives.editWorkExperience',
-  'directives.mutableHeading'
+  'directives.editableHeading'
 ])
 
 .factory('OrderWorkExperience', function() {
@@ -37,8 +37,7 @@ angular.module('directives.workExperience', [
       workExperienceData: '&',
       portfolioId: '@',
       portfolioLang: '@',
-      sectionName: '@',
-      getHeadingOrDefault: '&'
+      sectionName: '@'
     },
     templateUrl: 'app/directives/workExperience/workExperience.html',
     link: function($scope) {

@@ -20,7 +20,7 @@ angular.module('controllers.main', ['constants.portfolioTabs',
                                     'utils.browser'])
 
   .controller('MainCtrl', function($scope, portfolioTabs, portfolio, state, userSettings,
-                                   ComponentOrderService, PreviewService, State, BrowserUtil, $translate) {
+                                   ComponentOrderService, PreviewService, State, BrowserUtil) {
     $scope.portfolio = portfolio;
     $scope.userSettings = userSettings;
     $scope.portfolioTabs = portfolioTabs;
@@ -32,23 +32,6 @@ angular.module('controllers.main', ['constants.portfolioTabs',
     ComponentOrderService.subscribeToComponentOrderChanges(portfolio, function(componentOrders) {
       $scope.portfolioSections = componentOrders;
     });
-
-    $scope.getHeading = function getHeading(componentId) {
-      console.log('getHeading called with: ' + componentId);
-      return _.find(portfolio.headings, {'component': componentId});
-    };
-
-    $scope.getHeadingOrDefault = function getHeadingOrDefault(componentId, i18nKey, lang) {
-      console.log('getHeadingOrDefault called with: ', componentId, i18nKey, lang);
-      var found = _.find(portfolio.headings, {'component': componentId});
-
-      if (!found) {
-        found = {component: componentId, heading: $translate.instant(i18nKey, {}, '', lang)};
-      }
-      console.log(found);
-      return found;
-    };
-
 
     $scope.sortableOptions = {
       containment: '.portfolio-components__dropzone',

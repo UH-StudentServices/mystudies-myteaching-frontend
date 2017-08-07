@@ -24,14 +24,12 @@ angular.module('services.componentHeadingService', ['resources.componentHeading'
 
     function updateHeading(component) {
       return getPortfolioId().then(function(portfolioId) {
-        console.log('updateHeading ', component);
         return ComponentHeadingResource.updateHeading(portfolioId, component);
       });
     }
 
     function getComponentHeading(componentId) {
       return PortfolioService.getPortfolio().then(function(portfolio) {
-        console.log('getComponentHeading called w. ' + componentId);
         return _.find(portfolio.headings, {component: componentId});
       });
     }
