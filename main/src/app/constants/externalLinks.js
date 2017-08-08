@@ -16,7 +16,98 @@
  */
 
 angular.module('constants.externalLinks', [])
-
+.constant('optionalLinks', {
+  local: {
+    pilot: {
+      key: 'optionalLinks.pilotProgram',
+      href: {
+        fi: 'https://sis-helsinki-test.funidata.fi/student/degree',
+        sv: 'https://sis-helsinki-test.funidata.fi/student/degree',
+        en: 'https://sis-helsinki-test.funidata.fi/student/degree'
+      }
+    },
+    normal: {
+      key: 'optionalLinks.normalProgram',
+      href: {
+        fi: 'http://example.org',
+        sv: 'http://example.org',
+        en: 'http://example.org'
+      }
+    }
+  },
+  dev: {
+    pilot: {
+      key: 'optionalLinks.pilotProgram',
+      href: {
+        fi: 'https://sis-helsinki-test.funidata.fi/student/degree',
+        sv: 'https://sis-helsinki-test.funidata.fi/student/degree',
+        en: 'https://sis-helsinki-test.funidata.fi/student/degree'
+      }
+    },
+    normal: {
+      key: 'optionalLinks.normalProgram',
+      href: {
+        fi: 'http://example.org',
+        sv: 'http://example.org',
+        en: 'http://example.org'
+      }
+    }
+  },
+  qa: {
+    pilot: {
+      key: 'optionalLinks.pilotProgram',
+      href: {
+        fi: 'https://sis-helsinki-test.funidata.fi/student/degree',
+        sv: 'https://sis-helsinki-test.funidata.fi/student/degree',
+        en: 'https://sis-helsinki-test.funidata.fi/student/degree'
+      }
+    },
+    normal: {
+      key: 'optionalLinks.normalProgram',
+      href: {
+        fi: 'http://example.org',
+        sv: 'http://example.org',
+        en: 'http://example.org'
+      }
+    }
+  },
+  demo: {
+    pilot: {
+      key: 'optionalLinks.pilotProgram',
+      href: {
+        fi: 'https://sis-helsinki.funidata.fi/student/degree',
+        sv: 'https://sis-helsinki.funidata.fi/student/degree',
+        en: 'https://sis-helsinki.funidata.fi/student/degree'
+      }
+    },
+    normal: {
+      key: 'optionalLinks.normalProgram',
+      href: {
+        fi: 'http://example.org',
+        sv: 'http://example.org',
+        en: 'http://example.org'
+      }
+    }
+  },
+  prod: {
+    pilot: {
+      key: 'optionalLinks.pilotProgram',
+      href: {
+        fi: 'https://sis-helsinki.funidata.fi/student/degree',
+        sv: 'https://sis-helsinki.funidata.fi/student/degree',
+        en: 'https://sis-helsinki.funidata.fi/student/degree'
+      }
+    },
+    normal: {
+      key: 'optionalLinks.normalProgram',
+      href: {
+        fi: 'http://example.org',
+        sv: 'http://example.org',
+        en: 'http://example.org'
+      }
+    }
+  }
+})
 .constant('primaryLinks', {
   local: [
     {

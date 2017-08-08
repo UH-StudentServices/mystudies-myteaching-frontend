@@ -76,6 +76,10 @@
     "guide": "Instructions for students",
     "opinder": "Opinder"
   },
+  "optionalLinks": {
+    "pilotProgram": "Plan your studies",
+    "normalProgram": "Course catalogues"
+  },
   "banner": {
     "news": "News",
     "tooltip": {
