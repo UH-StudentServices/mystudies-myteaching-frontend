@@ -52,7 +52,6 @@ angular.module('directives.editableHeading', [
       });
 
       $scope.saveHeading = function() {
-        console.log('saveHeading called');
         if ($scope.component.heading !== $scope.currentText) {
           ComponentHeadingService.updateHeading($scope.component)
             .then(function(component) {

@@ -17,7 +17,29 @@
 
 <div class="free-text-content ui-component">
   <div class="component-header">
+    <h2 ng-if="!isEditing" class="ui-component__title border-bottom">
+        <span ng-if="!headingKey">
+          {{::freeTextContentItem.title}}
+        </span>
+      <span ng-if="headingKey" translate translate-language="{{::portfolioLang}}">
+          {{::headingKey}}
+        </span>
+    </h2>
+
+    <div ng-if="isEditing">
+      <input class="free-text-content__title--edit" type="text" ng-model="freeTextContentItem.title">
+    </div>
+
     <div class="component-header__actions">
+      <a
+        ng-if="deletable && isEditing"
+        role="button"
+        href=""
+        ng-click="deleteItem()"
+        title="delete">
+        <i class="icon--remove"></i>
+      </a>
+
       <visibility-toggle component-id="FREE_TEXT_CONTENT"
                          section-name="{{::portfolioSection}}"
                          instance-name="{{::instanceName}}">
@@ -29,24 +51,13 @@
     </div>
   </div>
 
-  <div ng-if="!isEditing">
-    <div class="free-text-content__title-container">
-      <h2 class="free-text-content__title ui-component__title" ng-if="!headingKey">{{freeTextContentItem.title}}</h2>
-      <h2 class="free-text-content__title ui-component__title" ng-if="headingKey"
-          translate translate-language="{{::portfolioLang}}">
-        {{::headingKey}}
-      </h2>
-    </div>
-    <div class="free-text-content__text user-text" ng-if="freeTextContentItem.text.length">
-      <ng-embed embed-data="freeTextContentItem.text" embed-options="embedOptions"></ng-embed>
-    </div>
+
+  <div ng-if="!isEditing" class="free-text-content__text user-text" ng-if="freeTextContentItem.text.length">
+    <ng-embed embed-data="freeTextContentItem.text" embed-options="embedOptions"></ng-embed>
   </div>
 
-  <edit-free-text-content ng-if="isEditing"
-                          free-text-content-item="freeTextContentItem"
-                          heading-key="{{headingKey}}"
-                          deletable="deletable"
-                          on-remove="deleteItem()"
-                          portfolio-lang="{{::portfolioLang}}">
-  </edit-free-text-content>
+  <div ng-if="isEditing" class="free-text-content--edit">
+    <textarea class="free-text-content__text--edit" ng-model="freeTextContentItem.text"></textarea>
+  </div>
+
 </div>
