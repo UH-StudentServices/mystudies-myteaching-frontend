@@ -17,14 +17,16 @@
 
 
 <div>
-  <h2 ng-if="!editing"
-      class="ui-component__title border-bottom">
-    {{::component.heading}}
-  </h2>
-  <input ng-if="editing"
-         class="ui-component__title--edit"
-         type="text"
-         ng-model="component.heading"
-         ui-keypress="{'enter':'saveTitle()'}">
+  <div ng-if="editing">
+    <input class="ui-component__title--edit"
+           type="text"
+           ng-model="component.heading"
+           ui-keypress="{'enter':'saveTitle()'}">
+  </div>
+  <div ng-if="!editing" >
+    <h2 class="ui-component__title border-bottom">
+      {{::component.heading}}
+    </h2>
+  </div>
 </div>
 

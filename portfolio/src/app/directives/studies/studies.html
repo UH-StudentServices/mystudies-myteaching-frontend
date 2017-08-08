@@ -23,13 +23,21 @@
                      editing="editing"
                      save-slot="saveHeading"></editable-heading>
     <div class="component-header__actions">
-      <visibility-toggle component-id="STUDIES" section-name="{{::sectionName}}"></visibility-toggle>
+      <visibility-toggle component-id="STUDIES"></visibility-toggle>
       <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
     </div>
   </div>
 
   <div class="content">
-    <summary editing="editing" summary="summary"></summary>
+    <div ng-if="editing">
+    <textarea class="studies__summary--editing"
+              ng-model="$parent.summaryData"
+              maxlength="2500">
+    </textarea>
+    </div>
+    <div class="studies__summary--view user-text" ng-if="!editing && summary.length">
+      <ng-embed embed-data="summaryData" embed-options="embedOptions"></ng-embed>
+    </div>
     <keywords editing="editing" keywords="keywords"></keywords>
   </div>
 </div>

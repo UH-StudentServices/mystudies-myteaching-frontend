@@ -26,7 +26,7 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
       scope: {
         languageProficienciesData: '&',
         portfolioLang: '@',
-        sectionName: '@',
+        sectionName: '@'
       },
       templateUrl: 'app/directives/languageProficiencies/languageProficiencies.html',
       link: function($scope) {
