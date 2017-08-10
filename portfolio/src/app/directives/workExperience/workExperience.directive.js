@@ -48,7 +48,6 @@ angular.module('directives.workExperience', [
       $scope.newJob = {};
       $scope.newJobSearch = {};
 
-
       WorkExperienceService.getJobSearchSubject().subscribe(function(jobSearch) {
         $scope.jobSearch = jobSearch;
       });
