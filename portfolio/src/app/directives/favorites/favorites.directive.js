@@ -35,28 +35,28 @@ angular.module('directives.favorites', [
         favoritesData: '&',
         portfolioLang: '@'
       },
-      link: function($scope) {
+      link: function(scope) {
 
-        $scope.favorites = $scope.favoritesData();
-        $scope.editing = false;
-        $scope.availableFavoriteTypes = availableFavoriteTypes;
-        $scope.saveHeading = {};
+        scope.favorites = scope.favoritesData();
+        scope.editing = false;
+        scope.availableFavoriteTypes = availableFavoriteTypes;
+        scope.saveHeading = {};
 
-        $scope.edit = function() {
-          $scope.editing = true;
+        scope.edit = function() {
+          scope.editing = true;
         };
 
-        $scope.exitEdit = function() {
-          if ($scope.saveHeading.func) {
-            $scope.saveHeading.func();
+        scope.exitEdit = function() {
+          if (scope.saveHeading.func) {
+            scope.saveHeading.func();
           }
-          $scope.editing = false;
+          scope.editing = false;
 
           return true;
         };
 
         function showFavorites(favorites) {
-          $scope.favorites = favorites;
+          scope.favorites = favorites;
         }
 
         function updateFavorites() {
@@ -67,14 +67,14 @@ angular.module('directives.favorites', [
           FavoritesService.deleteFavorite(favoriteId).then(showFavorites);
         }
 
-        $scope.$on(NewFavoriteAddedEvent, updateFavorites);
-        $scope.$on(RemoveFavoriteEvent, removeFavorite);
+        scope.$on(NewFavoriteAddedEvent, updateFavorites);
+        scope.$on(RemoveFavoriteEvent, removeFavorite);
 
-        $scope.sortableOptions = {
+        scope.sortableOptions = {
           containment: '.favorites__dropzone',
           orderChanged: function() {
             FavoritesService.updateFavoriteOrder({
-              favoriteIds: $scope.favorites.map(function(favorite) {
+              favoriteIds: scope.favorites.map(function(favorite) {
                 return favorite.id;
               })
             });

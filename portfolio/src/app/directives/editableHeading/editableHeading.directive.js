@@ -24,51 +24,49 @@ angular.module('directives.editableHeading', [
 )
   .directive('editableHeading', function($translate, PortfolioService, ComponentHeadingService) {
     return {
-    restrict: 'E',
-    replace: true,
-    scope: {
-      componentId: '@',
-      defaultText: '@',
-      portfolioLang: '@',
-      editing: '<',
-      saveSlot: '<'
-    },
-    templateUrl: 'app/directives/editableHeading/editableHeading.html',
-    link: function($scope) {
+      restrict: 'E',
+      replace: true,
+      scope: {
+        componentId: '@',
+        defaultText: '@',
+        portfolioLang: '@',
+        editing: '<',
+        saveSlot: '<'
+      },
+      templateUrl: 'app/directives/editableHeading/editableHeading.html',
+      link: function($scope) {
 
-      $scope.component = {
-        component: $scope.componentId,
-        heading: $translate.instant($scope.defaultText, {}, '', $scope.portfolioLang)
-      };
-      $scope.currentText = $scope.component.heading;
+        $scope.component = {
+          component: $scope.componentId,
+          heading: $translate.instant($scope.defaultText, {}, '', $scope.portfolioLang)
+        };
+        $scope.currentText = $scope.component.heading;
 
-      PortfolioService.getPortfolio().then(function(portfolio) {
-        var comp = _.find(portfolio.headings, {'component': $scope.componentId});
+        PortfolioService.getPortfolio().then(function(portfolio) {
+          var comp = _.find(portfolio.headings, {'component': $scope.componentId});
 
-        if (comp && comp.heading) {
-          $scope.component = comp;
-          $scope.currentText = $scope.component.heading;
+          if (comp && comp.heading) {
+            $scope.component = comp;
+            $scope.currentText = $scope.component.heading;
+          }
+        });
+
+        $scope.saveHeading = function() {
+          if ($scope.component.heading !== $scope.currentText) {
+            ComponentHeadingService.updateHeading($scope.component)
+              .then(function(component) {
+                if (component.heading) {
+                  $scope.currentText = component.heading;
+                }
+              });
+            return true;
+          }
+          return false;
+        };
+        if ($scope.saveSlot !== undefined) {
+          // Ignore the warning. 'saveSlot' makes saveHeading accessible for the element that gave it to us.
+          $scope.saveSlot.func = $scope.saveHeading;
         }
-      });
-
-      $scope.saveHeading = function() {
-        if ($scope.component.heading !== $scope.currentText) {
-          ComponentHeadingService.updateHeading($scope.component)
-            .then(function(component) {
-              if (component.heading) {
-                $scope.currentText = component.heading;
-              }
-            });
-          return true;
-        }
-        return false;
-      };
-      if ($scope.saveSlot !== undefined) {
-        // Ignore the warning. 'saveSlot' makes saveHeading accessible for the element that gave it to us.
-        $scope.saveSlot.func = $scope.saveHeading;
-      } else {
-        console.log('no saveSlot for heading -- cannot save section titles.' + $scope.componentId);
       }
-    }
     };
   });

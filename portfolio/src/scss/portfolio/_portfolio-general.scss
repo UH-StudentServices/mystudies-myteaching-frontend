@@ -30,10 +30,10 @@
 
       &:hover {
         cursor: pointer;
-        background-color: $gray;
-        color: $white;
+        background-color: inherit;
+        color: inherit;
         a {
-          color: $white;
+          color: inherit;
         }
         &:after {
           position: absolute;

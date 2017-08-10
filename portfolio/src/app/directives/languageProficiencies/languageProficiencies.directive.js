@@ -68,12 +68,12 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
             NEW_OR_UPDATED_PROP_NAMES = ['updatedLanguageProficiencies',
                                          'newLanguageProficiencies'];
 
-        $scope.saveHeading = {};
 
         _.assign($scope, {
           languageProficiencies: orderByProficiency($scope.languageProficienciesData()),
           availableLanguages: AvailablePortfolioLanguages,
           proficiencies: AvailableLanguageProficiencies,
+          saveHeading: {},
 
           edit: function() {
             $scope.editing = true;
