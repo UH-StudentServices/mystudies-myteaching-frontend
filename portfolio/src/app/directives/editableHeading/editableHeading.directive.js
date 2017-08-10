@@ -30,8 +30,7 @@ angular.module('directives.editableHeading', [
         componentId: '@',
         defaultText: '@',
         portfolioLang: '@',
-        editing: '<',
-        saveSlot: '<'
+        editing: '<'
       },
       templateUrl: 'app/directives/editableHeading/editableHeading.html',
       link: function($scope) {
@@ -63,10 +62,8 @@ angular.module('directives.editableHeading', [
           }
           return false;
         };
-        if ($scope.saveSlot !== undefined) {
-          // Ignore the warning. 'saveSlot' makes saveHeading accessible for the element that gave it to us.
-          $scope.saveSlot.func = $scope.saveHeading;
-        }
+
+        $scope.$on('saveComponent', $scope.saveHeading);
       }
     };
   });

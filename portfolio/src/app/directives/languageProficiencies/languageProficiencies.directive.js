@@ -73,7 +73,6 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
           languageProficiencies: orderByProficiency($scope.languageProficienciesData()),
           availableLanguages: AvailablePortfolioLanguages,
           proficiencies: AvailableLanguageProficiencies,
-          saveHeading: {},
 
           edit: function() {
             $scope.editing = true;
@@ -82,9 +81,8 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
 
 
           exitEdit: function() {
-            if ($scope.saveHeading.func) {
-              $scope.saveHeading.func();
-            }
+            $scope.$broadcast('saveComponent');
+
             updateBatch.newLanguageProficiencies = $scope.languageProficiencies
               .filter(function(el) {
                 return !el.id;

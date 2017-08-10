@@ -47,7 +47,6 @@ angular.module('directives.workExperience', [
       $scope.workExperienceValid = true;
       $scope.newJob = {};
       $scope.newJobSearch = {};
-      $scope.saveHeading = {};
 
 
       WorkExperienceService.getJobSearchSubject().subscribe(function(jobSearch) {
@@ -79,12 +78,7 @@ angular.module('directives.workExperience', [
       }, 500);
 
       $scope.exitEdit = function() {
-        var changed = false;
-
-        if ($scope.saveHeading.func) {
-          changed = $scope.saveHeading.func();
-        }
-
+        $scope.$broadcast('saveComponent');
         $scope.markAllSubmitted();
 
         if (isValid()) {
@@ -98,9 +92,8 @@ angular.module('directives.workExperience', [
             $scope.workExperience = data;
             $scope.editing = false;
           });
-          changed = true;
         }
-        return changed;
+        return true;
       };
 
       $scope.markAllSubmitted = function() {

@@ -41,7 +41,6 @@ angular.module('directives.attainments', [
         $scope.editing = false;
         $scope.numberOfVisibleAttainments = 5;
         $scope.attainments = [];
-        $scope.saveHeading = {};
 
         $scope.formatGrade = function(grade) {
           if (grade.endsWith('.')) {
@@ -62,10 +61,7 @@ angular.module('directives.attainments', [
         };
 
         $scope.exitEdit = function exitEdit() {
-          if ($scope.saveHeading.func) {
-            $scope.saveHeading.func();
-          }
-
+          $scope.$broadcast('saveComponent');
           $scope.editing = false;
 
           AttainmentResource.updateWhitelist($scope.portfolioId, {

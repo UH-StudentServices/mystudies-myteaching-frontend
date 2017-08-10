@@ -36,7 +36,6 @@ angular.module('directives.studies', [
     link: function(scope) {
       var portfolioId = scope.portfolioId;
 
-      scope.saveHeading = {};
       scope.embedOptions = NG_EMBED_OPTIONS;
       scope.editing = false;
 
@@ -53,9 +52,7 @@ angular.module('directives.studies', [
           summary: scope.summaryData
         };
 
-        if (scope.saveHeading.func) {
-          scope.saveHeading.func();
-        }
+        scope.$broadcast('saveComponent');
 
         _.forEach(updateKeywordsRequest.keywords, function(keyword, index) {
           keyword.orderIndex = index;

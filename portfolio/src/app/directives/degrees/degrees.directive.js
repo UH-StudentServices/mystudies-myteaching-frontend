@@ -37,7 +37,6 @@ angular.module('directives.degrees', [
       $scope.editing = false;
       $scope.newDegree = {};
       $scope.degreesValid = true;
-      $scope.saveHeading = {};
 
       $scope.edit = function() {
         $scope.editing = true;
@@ -57,13 +56,8 @@ angular.module('directives.degrees', [
         $scope.degrees.forEach(function(degree) { degree.submitted = true; });
       };
 
-
       $scope.exitEdit = function() {
-        var changed = false;
-
-        if ($scope.saveHeading.func) {
-          changed = $scope.saveHeading.func();
-        }
+        $scope.$broadcast('saveComponent');
         $scope.markAllSubmitted();
 
         if (isValid()) {
@@ -71,9 +65,8 @@ angular.module('directives.degrees', [
             $scope.degrees = data;
             $scope.editing = false;
           });
-          changed = true;
         }
-        return changed;
+        return true;
       };
     }
   };

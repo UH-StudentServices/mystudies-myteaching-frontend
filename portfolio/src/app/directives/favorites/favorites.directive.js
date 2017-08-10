@@ -36,20 +36,16 @@ angular.module('directives.favorites', [
         portfolioLang: '@'
       },
       link: function(scope) {
-
         scope.favorites = scope.favoritesData();
         scope.editing = false;
         scope.availableFavoriteTypes = availableFavoriteTypes;
-        scope.saveHeading = {};
 
         scope.edit = function() {
           scope.editing = true;
         };
 
         scope.exitEdit = function() {
-          if (scope.saveHeading.func) {
-            scope.saveHeading.func();
-          }
+          scope.$broadcast('saveComponent');
           scope.editing = false;
 
           return true;

@@ -37,7 +37,6 @@ angular.module('directives.samples', [
       scope.editing = false;
       scope.samples = scope.samplesData();
       scope.samplesValid = true;
-      scope.saveHeading = {};
 
       scope.edit = function() {
         scope.editing = true;
@@ -54,12 +53,7 @@ angular.module('directives.samples', [
       }, 500);
 
       scope.exitEdit = function() {
-        var changed = false;
-
-        if (scope.saveHeading.func) {
-          changed = scope.saveHeading.func();
-        }
-
+        scope.$broadcast('saveComponent');
         scope.markAllSubmitted();
 
         if (isValid()) {
@@ -69,9 +63,8 @@ angular.module('directives.samples', [
             scope.samples = data;
             scope.editing = false;
           });
-          changed = true;
         }
-        return changed;
+        return true;
       };
 
       scope.markAllSubmitted = function() {
