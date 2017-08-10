@@ -24,7 +24,8 @@ describe('Language proficiencies directive', function() {
       compileDirective = function() {
         var element = angular.element(
               '<language-proficiencies limit-visibility="[\'STUDENT_ONLY\']"' +
-              '                        language-proficiencies-data="portfolio.languageProficiencies">' +
+              '                        language-proficiencies-data="portfolio.languageProficiencies"' +
+              '                        portfolio-lang="en">' +
               '</language-proficiencies>'),
             compiledDirective = $compile(element)($scope);
 
@@ -84,6 +85,14 @@ describe('Language proficiencies directive', function() {
         })
       });
       $provide.constant('translateFilter', function(val) {return val;});
+      $provide.constant('$translate', {
+        instant: function(val) {return val;}
+      });
+      $provide.constant('PortfolioService', {
+        getPortfolio: function() {return {then: function() {return {headings: []};}};}
+      }
+      );
+      $provide.constant('ComponentHeadingService', function(val) {return val;});
     });
 
     module('templates');
