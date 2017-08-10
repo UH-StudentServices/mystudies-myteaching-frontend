@@ -20,7 +20,8 @@ angular.module('directives.favorites', [
   'services.favorites',
   'directives.favorites.link',
   'directives.favorites.twitter',
-  'directives.favorites.addNew'
+  'directives.favorites.addNew',
+  'directives.editableHeading'
 ])
   .constant('availableFavoriteTypes', ['LINK', 'TWITTER'])
   .directive('favorites', function(availableFavoriteTypes,
@@ -36,15 +37,16 @@ angular.module('directives.favorites', [
       },
       link: function(scope) {
         scope.favorites = scope.favoritesData();
-        scope.editMode = false;
+        scope.editing = false;
         scope.availableFavoriteTypes = availableFavoriteTypes;
 
         scope.edit = function() {
-          scope.editMode = true;
+          scope.editing = true;
         };
 
         scope.exitEdit = function() {
-          scope.editMode = false;
+          scope.$broadcast('saveComponent');
+          scope.editing = false;
 
           return true;
         };

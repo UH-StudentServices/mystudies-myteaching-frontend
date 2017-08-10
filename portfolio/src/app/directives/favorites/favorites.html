@@ -15,12 +15,13 @@
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<div class="ui-component favorites" ng-class="{'edit-favorites' : editMode}">
+<div class="ui-component favorites" ng-class="{'edit-favorites' : editing}">
   <div class="component-header">
-    <h2 class="ui-component__title border-bottom"
-        translate translate-language="{{::portfolioLang}}">
-      favorites.title
-    </h2>
+    <editable-heading component-id="FAVORITES"
+                      default-text="favorites.title"
+                      portfolio-lang="{{::portfolioLang}}"
+                      editing="editing"></editable-heading>
+
     <div class="component-header__actions">
       <visibility-toggle component-id="FAVORITES"></visibility-toggle>
       <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
@@ -30,7 +31,7 @@
   <div class="favorites__dropzone">
     <ul ng-model="favorites"
         as-sortable="sortableOptions"
-        is-disabled="!editMode"
+        is-disabled="!editing"
         class="favorites__list">
 
      <li ng-repeat="favorite in favorites"
@@ -42,7 +43,7 @@
           <favorites-twitter remove-favorite ng-switch-when="TWITTER" data="favorite"></favorites-twitter>
         </div>
       </li>
-      <li class="favorites__add-new" limit-visibility="PRIVATE">
+      <li ng-show="editing" class="favorites__add-new" limit-visibility="PRIVATE">
         <add-new-favorite favorites="favorites" available-favorite-types="availableFavoriteTypes"></add-new-favorite>
       </li>
     </ul>

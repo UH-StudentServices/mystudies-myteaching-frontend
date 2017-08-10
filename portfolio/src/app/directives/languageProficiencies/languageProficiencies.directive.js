@@ -15,7 +15,7 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.languageProficiencies', ['services.languageProficiencies'])
+angular.module('directives.languageProficiencies', ['services.languageProficiencies', 'directives.editableHeading'])
   .directive('languageProficiencies', function(AvailablePortfolioLanguages,
                                                AvailableLanguageProficiencies,
                                                LanguageProficienciesService,
@@ -68,6 +68,7 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
             NEW_OR_UPDATED_PROP_NAMES = ['updatedLanguageProficiencies',
                                          'newLanguageProficiencies'];
 
+
         _.assign($scope, {
           languageProficiencies: orderByProficiency($scope.languageProficienciesData()),
           availableLanguages: AvailablePortfolioLanguages,
@@ -78,7 +79,10 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
             initUpdateBatch();
           },
 
+
           exitEdit: function() {
+            $scope.$broadcast('saveComponent');
+
             updateBatch.newLanguageProficiencies = $scope.languageProficiencies
               .filter(function(el) {
                 return !el.id;

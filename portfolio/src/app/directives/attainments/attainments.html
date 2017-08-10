@@ -17,10 +17,11 @@
 
 <div class="ui-component">
   <div class="component-header">
-    <h2 class="ui-component__title border-bottom"
-        translate translate-language="{{::portfolioLang}}">
-      attainments.attainments
-    </h2>
+    <editable-heading component-id="ATTAINMENTS"
+                      default-text="attainments.attainments"
+                      portfolio-lang="{{::portfolioLang}}"
+                      editing="editing"></editable-heading>
+
     <div class="component-header__actions">
       <visibility-toggle component-id="ATTAINMENTS"></visibility-toggle>
       <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>

@@ -18,7 +18,8 @@
 angular.module('directives.degrees', [
   'services.degree',
   'directives.showDegrees',
-  'directives.editDegrees'
+  'directives.editDegrees',
+  'directives.editableHeading'
 ])
 .directive('degrees', function(DegreeService) {
   return {
@@ -33,7 +34,6 @@ angular.module('directives.degrees', [
     templateUrl: 'app/directives/degrees/degrees.html',
     link: function($scope) {
       $scope.degrees = DegreeService.formatDates($scope.degreesData());
-
       $scope.editing = false;
       $scope.newDegree = {};
       $scope.degreesValid = true;
@@ -57,6 +57,7 @@ angular.module('directives.degrees', [
       };
 
       $scope.exitEdit = function() {
+        $scope.$broadcast('saveComponent');
         $scope.markAllSubmitted();
 
         if (isValid()) {
@@ -64,8 +65,8 @@ angular.module('directives.degrees', [
             $scope.degrees = data;
             $scope.editing = false;
           });
-          return true;
         }
+        return true;
       };
     }
   };

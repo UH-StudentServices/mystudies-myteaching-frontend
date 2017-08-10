@@ -20,36 +20,39 @@ angular.module('directives.studies', [
   'services.summary',
   'directives.editLink',
   'directives.keywords',
-  'directives.summary'])
+  'directives.editableHeading',
+  'constants.ngEmbedOptions'])
 
-.directive('studies', function(KeywordService, SummaryService) {
+.directive('studies', function(KeywordService, SummaryService, NG_EMBED_OPTIONS) {
   return {
     restrict: 'E',
     replace: true,
     scope: {
-      summaryData: '&',
+      summaryData: '=',
       portfolioId: '@',
-      portfolioLang: '@',
-      headingKey: '@',
-      sectionName: '@'
+      portfolioLang: '@'
     },
     templateUrl: 'app/directives/studies/studies.html',
     link: function(scope) {
-      var portfolioId = scope.portfolioId,
-          DEFAULT_HEADING_KEY = 'studies.title';
+      var portfolioId = scope.portfolioId;
 
-      function edit() {
+      scope.embedOptions = NG_EMBED_OPTIONS;
+      scope.editing = false;
+
+      scope.edit = function() {
         scope.editing = true;
-      }
+      };
 
-      function exitEdit() {
+      scope.exitEdit = function() {
         var updateKeywordsRequest = {
           keywords: scope.keywords
         };
 
         var updateSummaryRequest = {
-          summary: scope.summary
+          summary: scope.summaryData
         };
+
+        scope.$broadcast('saveComponent');
 
         _.forEach(updateKeywordsRequest.keywords, function(keyword, index) {
           keyword.orderIndex = index;
@@ -64,14 +67,7 @@ angular.module('directives.studies', [
           });
 
         return true;
-      }
-
-      _.assign(scope, {
-        summary: scope.summaryData(),
-        headingKey: scope.headingKey || DEFAULT_HEADING_KEY,
-        edit: edit,
-        exitEdit: exitEdit
-      });
+      };
 
       KeywordService.getKeywordsSubject()
         .subscribe(function(keywords) {

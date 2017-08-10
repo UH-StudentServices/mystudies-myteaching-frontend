@@ -19,7 +19,8 @@ angular.module('directives.workExperience', [
   'services.workExperience',
   'filters.moment',
   'directives.showWorkExperience',
-  'directives.editWorkExperience'
+  'directives.editWorkExperience',
+  'directives.editableHeading'
 ])
 
 .factory('OrderWorkExperience', function() {
@@ -40,6 +41,7 @@ angular.module('directives.workExperience', [
     },
     templateUrl: 'app/directives/workExperience/workExperience.html',
     link: function($scope) {
+
       $scope.workExperience = WorkExperienceService.formatDates($scope.workExperienceData());
       $scope.editing = false;
       $scope.workExperienceValid = true;
@@ -75,6 +77,7 @@ angular.module('directives.workExperience', [
       }, 500);
 
       $scope.exitEdit = function() {
+        $scope.$broadcast('saveComponent');
         $scope.markAllSubmitted();
 
         if (isValid()) {
@@ -88,8 +91,8 @@ angular.module('directives.workExperience', [
             $scope.workExperience = data;
             $scope.editing = false;
           });
-          return true;
         }
+        return true;
       };
 
       $scope.markAllSubmitted = function() {

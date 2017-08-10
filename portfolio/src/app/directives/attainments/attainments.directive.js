@@ -20,7 +20,9 @@ angular.module('directives.attainments', [
   'resources.attainment',
   'filters.moment',
   'filters.formatting',
-  'directives.editLink'
+  'directives.editLink',
+  'directives.editableHeading'
+
 ])
 
   .directive('attainments', function(AttainmentResource) {
@@ -59,6 +61,7 @@ angular.module('directives.attainments', [
         };
 
         $scope.exitEdit = function exitEdit() {
+          $scope.$broadcast('saveComponent');
           $scope.editing = false;
 
           AttainmentResource.updateWhitelist($scope.portfolioId, {

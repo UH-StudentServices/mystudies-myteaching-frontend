@@ -24,7 +24,6 @@ angular.module('services.portfolio', ['resources.portfolio',
 
     function findPortfolioByPath(state, lang, userpath) {
       portfolioPromise = PortfolioResource.find(state, PortfolioRoleService.getActiveRole(), lang, userpath);
-
       return portfolioPromise;
     }
 
@@ -34,7 +33,6 @@ angular.module('services.portfolio', ['resources.portfolio',
 
     function updatePortfolio(portfolio) {
       portfolioPromise = PortfolioResource.update(portfolio);
-
       return portfolioPromise;
     }
 

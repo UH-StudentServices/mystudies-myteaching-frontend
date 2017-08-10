@@ -18,49 +18,32 @@
 .free-text-content {
   position: relative;
 
-  .edit-link {
-    top: 0.5em;
+  &__title--edit {
+    @extend .ui-component__title--edit;
+    width: 72% !important;
   }
 
-  .component-header__actions {
-    transform: translateY(100%);
-  }
-}
+  &__text {
+    margin-top: 0.2em;
 
-.free-text-content__title-container {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding-bottom: 0.4em;
-  margin-right: 4em;
-  @include border-bottom;
-}
+    .ne-image, .ne-video {
+      white-space: normal;
+    }
 
-.free-text-content__title {
-  padding-bottom: 0;
-}
+    .ne-image {
+      max-height: none;
+    }
 
-.free-text-content__text, .free-text-content__text--edit {
-  margin-top: 0.2em;
-}
-
-.free-text-content__text {
-  .ne-image, .ne-video {
-    white-space: normal;
-  }
-
-  .ne-image {
-    max-height: none;
-  }
-
-  .ne-image-wrapper, .ne-video-player {
-    background-color: $white;
+    .ne-image-wrapper, .ne-video-player {
+      background-color: $white;
+    }
+    &--edit {
+      margin-top: 0.2em;
+      height: 200px;
+    }
   }
 }
 
-.free-text-content__text--edit {
-  height: 200px;
-}
 
 .add-free-text-content {
   position: relative;
@@ -90,41 +73,3 @@
   }
 }
 
-.free-text-content--edit {
-  .free-text-content__title.is-editable {
-    &:hover {
-      cursor: pointer;
-      background-color: $gray;
-      color: $white;
-      a {
-        color: $white;
-      }
-      &:after {
-        position: absolute;
-        font-weight: normal;
-        margin-top: -0.5em;
-        @include font-size(14px);
-        @include icon($icon-edit);
-      }
-    }
-  }
-
-  .free-text-content__remove {
-    @extend .favorites-list__remove;
-
-    display: inline-block;
-    position: relative;
-    margin-left: 1em;
-  }
-}
-
-.free-text-content__title--edit {
-  display: inline-block;
-  padding: 0;
-  font-size: 32px;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: -0.05em;
-  line-height: 1.1em;
-  width: 80%;
-}

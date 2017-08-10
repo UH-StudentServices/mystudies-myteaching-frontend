@@ -15,19 +15,26 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.summary', ['constants.ngEmbedOptions'])
+angular.module('resources.componentHeading', [])
 
-  .directive('summary', function(NG_EMBED_OPTIONS) {
+  .factory('ComponentHeadingResource', function($resource) {
+
+    function componentHeadingResource(portfolioId) {
+      return $resource('/api/private/v1/portfolio/:portfolioId/component-headings', {
+        portfolioId: portfolioId
+      }, {
+        'save': {
+          method: 'POST'
+        }
+      });
+    }
+
+    function updateHeading(portfolioId, component) {
+      return componentHeadingResource(portfolioId).save(component).$promise;
+    }
+
     return {
-      restrict: 'E',
-      replace: true,
-      scope: {
-        editing: '=',
-        summary: '='
-      },
-      templateUrl: 'app/directives/studies/summary.html',
-      link: function(scope) {
-        scope.embedOptions = NG_EMBED_OPTIONS;
-      }
+      updateHeading: updateHeading
     };
+
   });

@@ -17,10 +17,10 @@
 
 <div class="ui-component editable-wrapper">
   <div class="component-header">
-    <h2 class="ui-component__title border-bottom"
-        translate translate-language="{{::portfolioLang}}">
-      workExperience.title
-    </h2>
+    <editable-heading component-id="WORK_EXPERIENCE"
+                      default-text="workExperience.title"
+                      portfolio-lang="{{::portfolioLang}}"
+                      editing="editing"></editable-heading>
     <div class="component-header__actions">
       <visibility-toggle component-id="WORK_EXPERIENCE" section-name="{{::sectionName}}"></visibility-toggle>
       <edit-link on-edit="edit()"

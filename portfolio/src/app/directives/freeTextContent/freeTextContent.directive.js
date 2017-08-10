@@ -17,7 +17,6 @@
 
 angular.module('directives.freeTextContent', [
   'services.freeTextContent',
-  'directives.editFreeText',
   'directives.editLink',
   'constants.ngEmbedOptions'])
 
