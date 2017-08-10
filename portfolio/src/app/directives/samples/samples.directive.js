@@ -30,7 +30,7 @@ angular.module('directives.samples', [
     scope: {
       samplesData: '&',
       portfolioId: '@',
-      portfolioLang: '@',
+      portfolioLang: '@'
     },
     templateUrl: 'app/directives/samples/samples.html',
     link: function(scope) {
