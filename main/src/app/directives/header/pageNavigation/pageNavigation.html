@@ -23,7 +23,7 @@
           <span class="main-menu__home"></span>
           <a tabindex="0" ui-sref="init" class="active" aria-label="{{:: ('toolbar.home' | translate) }}"></a>
         </li>
-        <li ng-repeat="link in primaryLinks" class="is-lvl1">
+        <li ng-repeat="link in primaryLinks track by link.key" class="is-lvl1">
           <a href="{{ ::link.href[selectedLanguage] }}"
              analytics-event="{
                eventCategory: 'EXTERNAL_LINK',
