@@ -76,6 +76,10 @@
     "guide": "Instruktioner för studerande",
     "opinder": "Opinder"
   },
+  "optionalLinks": {
+    "pilotProgram": "Studieplanering",
+    "normalProgram": "Studiehandböcker"
+  },
   "banner": {
     "news": "Nyheter",
     "tooltip": {

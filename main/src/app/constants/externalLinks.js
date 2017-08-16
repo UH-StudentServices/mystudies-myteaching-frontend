@@ -16,7 +16,98 @@
  */
 
 angular.module('constants.externalLinks', [])
-
+.constant('optionalLinks', {
+  local: {
+    pilot: {
+      key: 'optionalLinks.pilotProgram',
+      href: {
+        fi: 'https://sis-helsinki-test.funidata.fi/student/degree',
+        sv: 'https://sis-helsinki-test.funidata.fi/student/degree',
+        en: 'https://sis-helsinki-test.funidata.fi/student/degree'
+      }
+    },
+    normal: {
+      key: 'optionalLinks.normalProgram',
+      href: {
+        fi: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=1',
+        sv: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=2',
+        en: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=6'
+      }
+    }
+  },
+  dev: {
+    pilot: {
+      key: 'optionalLinks.pilotProgram',
+      href: {
+        fi: 'https://sis-helsinki-test.funidata.fi/student/degree',
+        sv: 'https://sis-helsinki-test.funidata.fi/student/degree',
+        en: 'https://sis-helsinki-test.funidata.fi/student/degree'
+      }
+    },
+    normal: {
+      key: 'optionalLinks.normalProgram',
+      href: {
+        fi: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=1',
+        sv: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=2',
+        en: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=6'
+      }
+    }
+  },
+  qa: {
+    pilot: {
+      key: 'optionalLinks.pilotProgram',
+      href: {
+        fi: 'https://sis-helsinki-test.funidata.fi/student/degree',
+        sv: 'https://sis-helsinki-test.funidata.fi/student/degree',
+        en: 'https://sis-helsinki-test.funidata.fi/student/degree'
+      }
+    },
+    normal: {
+      key: 'optionalLinks.normalProgram',
+      href: {
+        fi: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=1',
+        sv: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=2',
+        en: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=6'
+      }
+    }
+  },
+  demo: {
+    pilot: {
+      key: 'optionalLinks.pilotProgram',
+      href: {
+        fi: 'https://sis-helsinki.funidata.fi/student/degree',
+        sv: 'https://sis-helsinki.funidata.fi/student/degree',
+        en: 'https://sis-helsinki.funidata.fi/student/degree'
+      }
+    },
+    normal: {
+      key: 'optionalLinks.normalProgram',
+      href: {
+        fi: 'https://weboodi.helsinki.fi/hy/opasopiskopas.jsp?Kieli=1',
+        sv: 'https://weboodi.helsinki.fi/hy/opasopiskopas.jsp?Kieli=2',
+        en: 'https://weboodi.helsinki.fi/hy/opasopiskopas.jsp?Kieli=6'
+      }
+    }
+  },
+  prod: {
+    pilot: {
+      key: 'optionalLinks.pilotProgram',
+      href: {
+        fi: 'https://sis-helsinki.funidata.fi/student/degree',
+        sv: 'https://sis-helsinki.funidata.fi/student/degree',
+        en: 'https://sis-helsinki.funidata.fi/student/degree'
+      }
+    },
+    normal: {
+      key: 'optionalLinks.normalProgram',
+      href: {
+        fi: 'https://weboodi.helsinki.fi/hy/opasopiskopas.jsp?Kieli=1',
+        sv: 'https://weboodi.helsinki.fi/hy/opasopiskopas.jsp?Kieli=2',
+        en: 'https://weboodi.helsinki.fi/hy/opasopiskopas.jsp?Kieli=6'
+      }
+    }
+  }
+})
 .constant('primaryLinks', {
   local: [
     {

@@ -20,6 +20,8 @@
 angular.module('directives.pageNavigation', [
   'constants.externalLinks',
   'services.configuration',
+  'services.session',
+  'services.state',
   'directives.analytics'
 ])
 
@@ -28,8 +30,27 @@ angular.module('directives.pageNavigation', [
       restrict: 'E',
       templateUrl: 'app/directives/header/pageNavigation/pageNavigation.html',
       scope: {},
-      controller: function($scope, primaryLinks, LanguageService, Configuration) {
+      controller: function($scope,
+                           primaryLinks,
+                           optionalLinks,
+                           LanguageService,
+                           SessionService,
+                           StateService,
+                           Configuration,
+                           Role,
+                           State) {
         $scope.primaryLinks = primaryLinks[Configuration.environment];
+
+        if (SessionService.isInRole(Role.STUDENT) && StateService.currentOrParentStateMatches(State.MY_STUDIES)) {
+          var optional = optionalLinks[Configuration.environment];
+
+          if (SessionService.isInPilotDegreeProgramme()) {
+            $scope.primaryLinks.unshift(optional['pilot']);
+          } else {
+            $scope.primaryLinks.unshift(optional['normal']);
+          }
+        }
+
         $scope.selectedLanguage = LanguageService.getCurrent();
       }
     };
