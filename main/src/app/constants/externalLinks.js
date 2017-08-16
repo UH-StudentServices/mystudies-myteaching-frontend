@@ -29,9 +29,9 @@ angular.module('constants.externalLinks', [])
     normal: {
       key: 'optionalLinks.normalProgram',
       href: {
-        fi: 'http://example.org',
-        sv: 'http://example.org',
-        en: 'http://example.org'
+        fi: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=1',
+        sv: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=2',
+        en: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=6'
       }
     }
   },
@@ -47,9 +47,9 @@ angular.module('constants.externalLinks', [])
     normal: {
       key: 'optionalLinks.normalProgram',
       href: {
-        fi: 'http://example.org',
-        sv: 'http://example.org',
-        en: 'http://example.org'
+        fi: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=1',
+        sv: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=2',
+        en: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=6'
       }
     }
   },
@@ -65,9 +65,9 @@ angular.module('constants.externalLinks', [])
     normal: {
       key: 'optionalLinks.normalProgram',
       href: {
-        fi: 'http://example.org',
-        sv: 'http://example.org',
-        en: 'http://example.org'
+        fi: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=1',
+        sv: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=2',
+        en: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=6'
       }
     }
   },
@@ -83,9 +83,9 @@ angular.module('constants.externalLinks', [])
     normal: {
       key: 'optionalLinks.normalProgram',
       href: {
-        fi: 'http://example.org',
-        sv: 'http://example.org',
-        en: 'http://example.org'
+        fi: 'https://weboodi.helsinki.fi/hy/opasopiskopas.jsp?Kieli=1',
+        sv: 'https://weboodi.helsinki.fi/hy/opasopiskopas.jsp?Kieli=2',
+        en: 'https://weboodi.helsinki.fi/hy/opasopiskopas.jsp?Kieli=6'
       }
     }
   },
@@ -101,9 +101,9 @@ angular.module('constants.externalLinks', [])
     normal: {
       key: 'optionalLinks.normalProgram',
       href: {
-        fi: 'http://example.org',
-        sv: 'http://example.org',
-        en: 'http://example.org'
+        fi: 'https://weboodi.helsinki.fi/hy/opasopiskopas.jsp?Kieli=1',
+        sv: 'https://weboodi.helsinki.fi/hy/opasopiskopas.jsp?Kieli=2',
+        en: 'https://weboodi.helsinki.fi/hy/opasopiskopas.jsp?Kieli=6'
       }
     }
   }
