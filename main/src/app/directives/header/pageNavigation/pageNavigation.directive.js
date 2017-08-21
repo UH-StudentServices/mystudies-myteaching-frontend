@@ -39,7 +39,9 @@ angular.module('directives.pageNavigation', [
                            Configuration,
                            Role,
                            State) {
-        $scope.primaryLinks = primaryLinks[Configuration.environment];
+        $scope.primaryLinks = _.filter(primaryLinks[Configuration.environment], function(link) {
+          return _.includes(link.domain, StateService.getStateFromDomain());
+        });
 
         if (SessionService.isInRole(Role.STUDENT) && StateService.currentOrParentStateMatches(State.MY_STUDIES)) {
           var optional = optionalLinks[Configuration.environment];
