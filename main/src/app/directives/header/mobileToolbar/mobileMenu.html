@@ -38,13 +38,28 @@
         </a>
       </li>
       <li ng-repeat="link in primaryLinks">
-        <a href="{{ ::link.href[selectedLanguage] }}"
+        <a href="{{ ::link.href[selectedLanguage] }}" ng-if="!link.hasSub"
            analytics-event="{
                eventCategory: 'EXTERNAL_LINK',
                eventAction: 'CLICK',
                value: link.href[selectedLanguage]}">
           <span translate="{{::link.key}}"></span>
         </a>
+
+        <a href="{{ ::link.href[selectedLanguage] }}" ng-if="link.hasSub">
+          <span translate="{{::link.key}}"></span>
+        </a>
+        <ul ng-if="link.hasSub" class="mobile-menu__links mobile-menu__links--light mobile-menu__actions">
+          <li ng-repeat="sublink in link.subMenu">
+            <a href="{{ ::sublink.href[selectedLanguage] }}"
+               analytics-event="{
+               eventCategory: 'EXTERNAL_LINK',
+               eventAction: 'CLICK',
+               value: sublink.href[selectedLanguage]}">
+              <span translate="{{::sublink.key}}"></span>
+            </a>
+          </li>
+        </ul>
       </li>
       <li>
         <start-tour start-tour-text="{{::('general.introduction' | translate)}}"></start-tour>

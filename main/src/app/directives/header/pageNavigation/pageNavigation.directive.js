@@ -39,9 +39,33 @@ angular.module('directives.pageNavigation', [
                            Configuration,
                            Role,
                            State) {
-        $scope.primaryLinks = _.filter(primaryLinks[Configuration.environment], function(link) {
-          return _.includes(link.domain, StateService.getStateFromDomain());
-        });
+        $scope.primaryLinks = _.chain(primaryLinks[Configuration.environment])
+          .filter(function(link) {
+            return _.includes(link.domain, StateService.getStateFromDomain());
+          })
+          .map(function(link) {
+            link['isOpen'] = false;
+            link['hasSub'] = link.hasOwnProperty('subMenu');
+            return link;
+          })
+          .value();
+
+        $scope.fatmenuContent = [];
+        $scope.fatmenuOpen = false;
+        $scope.hideFatmenu = function() {
+          $scope.fatmenuOpen = false;
+          _.forEach($scope.primaryLinks, function(link) {
+            link.isOpen = false;
+          });
+        };
+        $scope.toggleFatmenu = function(link) {
+          var wasOpen = link.isOpen;
+
+          $scope.hideFatmenu();
+          link.isOpen = !wasOpen;
+          $scope.fatmenuOpen = !wasOpen;
+          $scope.fatmenuContent = link.hasSub ? link.subMenu : [];
+        };
 
         if (SessionService.isInRole(Role.STUDENT) && StateService.currentOrParentStateMatches(State.MY_STUDIES)) {
           var optional = optionalLinks[Configuration.environment];

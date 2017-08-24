@@ -20,6 +20,7 @@ angular.module('directives.mobileToolbar', [
   'constants.externalLinks',
   'services.state',
   'services.configuration',
+  'services.session',
   'directives.logoutLink',
   'directives.userMenu',
   'directives.mobileMenu',
@@ -28,9 +29,14 @@ angular.module('directives.mobileToolbar', [
   .directive('mobileToolbar', function(pageHeaderLinks,
                                        mobileReturnLinks,
                                        primaryLinks,
+                                       optionalLinks,
                                        LanguageService,
+                                       StateService,
+                                       SessionService,
                                        $state,
-                                       Configuration) {
+                                       Configuration,
+                                       Role,
+                                       State) {
     return {
       restrict: 'E',
       replace: true,
@@ -56,7 +62,26 @@ angular.module('directives.mobileToolbar', [
 
         $scope.pageHeaderLinks = pageHeaderLinks;
         $scope.mobileReturnLinks = mobileReturnLinks;
-        $scope.primaryLinks = primaryLinks[Configuration.environment];
+        $scope.primaryLinks = _.chain(primaryLinks[Configuration.environment])
+          .filter(function(link) {
+            return _.includes(link.domain, StateService.getStateFromDomain());
+          })
+          .map(function(link) {
+            link['hasSub'] = link.hasOwnProperty('subMenu');
+            return link;
+          })
+          .value();
+
+        if (SessionService.isInRole(Role.STUDENT) && StateService.currentOrParentStateMatches(State.MY_STUDIES)) {
+          var optional = optionalLinks[Configuration.environment];
+
+          if (SessionService.isInPilotDegreeProgramme()) {
+            $scope.primaryLinks.unshift(optional['pilot']);
+          } else {
+            $scope.primaryLinks.unshift(optional['normal']);
+          }
+        }
+
         $scope.selectedLanguage = LanguageService.getCurrent();
       }
     };
