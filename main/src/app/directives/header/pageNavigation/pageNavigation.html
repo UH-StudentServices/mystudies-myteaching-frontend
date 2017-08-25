@@ -23,15 +23,55 @@
           <span class="main-menu__home"></span>
           <a tabindex="0" ui-sref="init" class="active" aria-label="{{:: ('toolbar.home' | translate) }}"></a>
         </li>
-        <li ng-repeat="link in primaryLinks track by link.key" class="is-lvl1">
-          <a href="{{ ::link.href[selectedLanguage] }}"
+        <li ng-repeat="link in primaryLinks track by link.key"
+            class="is-lvl1" ng-class="{'is-expandable': link.hasSub, 'is-open': link.isOpen}"
+            ng-init="link.isOpen = false">
+          <a ng-if="!link.hasSub" href="{{ ::link.href[selectedLanguage] }}"
              analytics-event="{
                eventCategory: 'EXTERNAL_LINK',
                eventAction: 'CLICK',
                value: link.href[selectedLanguage]}">
             <span translate="{{::link.key}}"></span>
           </a>
+
+          <a class="fatmenu__title fatmenu-open" ng-if="link.hasSub" href="{{ ::link.href[selectedLanguage] }}" ng-click="toggleFatmenu(link)">
+            <span translate="{{::link.key}}"></span>
+          </a>
+          <span ng-if="link.hasSub" class="main-menu__expand fatmenu-open"  ng-click="toggleFatmenu(link)"></span>
+          <ul ng-if="link.hasSub" class="menu">
+            <li ng-repeat="sublink in link.subMenu track by sublink.key" class="is-lvl2">
+              <a href="{{ ::sublink.href[selectedLanguage] }}"
+                 analytics-event="{
+                   eventCategory: 'EXTERNAL_LINK',
+                   eventActions: 'CLICK',
+                   value: sublink.href[selectedLanguage]}">
+                <span translate="{{::sublink.key}}"></span>
+              </a>
+            </li>
+          </ul>
         </li>
+      </ul>
+    </nav>
+    <nav class="fatmenu" ng-class="{'is-open': fatmenuOpen, 'is-slidein': fatmenuOpen}" click-outside="hideFatmenu()" outside-if-not="fatmenu-open">
+      <ul class="menu">
+        <li class="is-lvl1 is-active fatmenu__front">
+          <span class="fatmenu__home"></span>
+          <a href="#" class="active">Etusivu</a>
+        </li>
+        <li class="is-lvl1 is-expandable" ng-class="{'is-open': fatmenuOpen}">
+          <ul class="menu">
+            <li ng-repeat="link in fatmenuContent track by link.key" class="is-lvl2">
+              <a href="{{ ::link.href[selectedLanguage] }}"
+                 analytics-event="{
+                   eventCategory: 'EXTERNAL_LINK',
+                   eventActions: 'CLICK',
+                   value: sublink.href[selectedLanguage]}">
+                <span translate="{{::link.key}}"></span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <span class="fatmenu__collapse" ng-click="hideFatmenu()"></span>
       </ul>
     </nav>
     <user-menu></user-menu>
