@@ -67,7 +67,7 @@ angular.module('directives.mobileToolbar', [
             return _.includes(link.domain, StateService.getStateFromDomain());
           })
           .map(function(link) {
-            link['hasSub'] = link.hasOwnProperty('subMenu');
+            link.hasSub = link.hasOwnProperty('subMenu');
             return link;
           })
           .value();
@@ -76,9 +76,9 @@ angular.module('directives.mobileToolbar', [
           var optional = optionalLinks[Configuration.environment];
 
           if (SessionService.isInPilotDegreeProgramme()) {
-            $scope.primaryLinks.unshift(optional['pilot']);
+            $scope.primaryLinks.unshift(optional.pilot);
           } else {
-            $scope.primaryLinks.unshift(optional['normal']);
+            $scope.primaryLinks.unshift(optional.normal);
           }
         }
 

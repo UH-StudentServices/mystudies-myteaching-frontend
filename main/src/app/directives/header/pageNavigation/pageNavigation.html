@@ -34,10 +34,10 @@
             <span translate="{{::link.key}}"></span>
           </a>
 
-          <a class="fatmenu__title" ng-if="link.hasSub" href="{{ ::link.href[selectedLanguage] }}" ng-click="toggleFatmenu(link)">
+          <a class="fatmenu__title fatmenu-open" ng-if="link.hasSub" href="{{ ::link.href[selectedLanguage] }}" ng-click="toggleFatmenu(link)">
             <span translate="{{::link.key}}"></span>
           </a>
-          <span ng-if="link.hasSub" class="main-menu__expand"  ng-click="toggleFatmenu(link)"></span>
+          <span ng-if="link.hasSub" class="main-menu__expand fatmenu-open"  ng-click="toggleFatmenu(link)"></span>
           <ul ng-if="link.hasSub" class="menu">
             <li ng-repeat="sublink in link.subMenu track by sublink.key" class="is-lvl2">
               <a href="{{ ::sublink.href[selectedLanguage] }}"
@@ -52,7 +52,7 @@
         </li>
       </ul>
     </nav>
-    <nav class="fatmenu" ng-class="{'is-open': fatmenuOpen, 'is-slidein': fatmenuOpen}">
+    <nav class="fatmenu" ng-class="{'is-open': fatmenuOpen, 'is-slidein': fatmenuOpen}" click-outside="hideFatmenu()" outside-if-not="fatmenu-open">
       <ul class="menu">
         <li class="is-lvl1 is-active fatmenu__front">
           <span class="fatmenu__home"></span>

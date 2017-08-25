@@ -44,8 +44,8 @@ angular.module('directives.pageNavigation', [
             return _.includes(link.domain, StateService.getStateFromDomain());
           })
           .map(function(link) {
-            link['isOpen'] = false;
-            link['hasSub'] = link.hasOwnProperty('subMenu');
+            link.isOpen = false;
+            link.hasSub = link.hasOwnProperty('subMenu');
             return link;
           })
           .value();
@@ -53,6 +53,9 @@ angular.module('directives.pageNavigation', [
         $scope.fatmenuContent = [];
         $scope.fatmenuOpen = false;
         $scope.hideFatmenu = function() {
+          if (!$scope.fatmenuOpen) {
+            return;
+          }
           $scope.fatmenuOpen = false;
           _.forEach($scope.primaryLinks, function(link) {
             link.isOpen = false;
@@ -71,9 +74,9 @@ angular.module('directives.pageNavigation', [
           var optional = optionalLinks[Configuration.environment];
 
           if (SessionService.isInPilotDegreeProgramme()) {
-            $scope.primaryLinks.unshift(optional['pilot']);
+            $scope.primaryLinks.unshift(optional.pilot);
           } else {
-            $scope.primaryLinks.unshift(optional['normal']);
+            $scope.primaryLinks.unshift(optional.normal);
           }
         }
 
