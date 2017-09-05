@@ -72,15 +72,20 @@ angular.module('directives.mobileToolbar', [
           })
           .value();
 
-        if (SessionService.isInRole(Role.STUDENT) && StateService.currentOrParentStateMatches(State.MY_STUDIES)) {
+        SessionService.isInRole(Role.STUDENT).then(function(isStudent) {
+          if (!isStudent || !StateService.currentOrParentStateMatches(State.MY_STUDIES)) {
+            return;
+          }
           var optional = optionalLinks[Configuration.environment];
 
-          if (SessionService.isInPilotDegreeProgramme()) {
-            $scope.primaryLinks.unshift(optional.pilot);
-          } else {
-            $scope.primaryLinks.unshift(optional.normal);
-          }
-        }
+          SessionService.isInPilotDegreeProgramme().then(function(isInPilotProgramme) {
+            if (isInPilotProgramme) {
+              $scope.primaryLinks.unshift(optional.pilot);
+            } else {
+              $scope.primaryLinks.unshift(optional.normal);
+            }
+          });
+        });
 
         $scope.selectedLanguage = LanguageService.getCurrent();
       }
