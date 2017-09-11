@@ -15,7 +15,7 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// MutableHeading is intended for portfolio section headers.
+// EditableHeading is intended for portfolio section headers.
 
 angular.module('directives.editableHeading', [
   'services.portfolio',

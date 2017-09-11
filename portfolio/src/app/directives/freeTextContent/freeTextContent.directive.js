@@ -43,7 +43,8 @@ angular.module('directives.freeTextContent', [
 
   .directive('freeTextContent', function(FreeTextContentService,
                                          FreeTextContentFactory,
-                                         NG_EMBED_OPTIONS) {
+                                         NG_EMBED_OPTIONS,
+                                         $translate) {
 
     return {
       restrict: 'E',
@@ -96,6 +97,10 @@ angular.module('directives.freeTextContent', [
           });
         }
 
+        function isTranslatableHeading() {
+          return scope.headingKey && $translate.instant(scope.headingKey) === scope.freeTextContentItem.title;
+        }
+
         function updateOrCreateNew() {
           var serviceFn;
 
@@ -129,7 +134,8 @@ angular.module('directives.freeTextContent', [
           toggleEdit: function() {
             scope.isEditing = !scope.isEditing;
           },
-          embedOptions: NG_EMBED_OPTIONS
+          embedOptions: NG_EMBED_OPTIONS,
+          isTranslatableHeading: isTranslatableHeading
         });
 
         init();

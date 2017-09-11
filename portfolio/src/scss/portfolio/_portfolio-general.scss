@@ -23,7 +23,10 @@
       vertical-align: middle;
       margin-right: 0.5em;
     }
-
+  }
+}
+.portfolio:not(.is-preview) .portfolio-section {
+  .ui-component__title {
     &.is-editable {
       display: inline-block;
       padding-right: 2em;
@@ -50,7 +53,7 @@
      text-transform: uppercase;
      font-weight: 700;
      letter-spacing: -0.05em;
-     width: 80%;
+     width: 85%;
    }
   }
 }
