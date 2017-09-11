@@ -98,9 +98,6 @@ angular.module('directives.freeTextContent', [
         }
 
         function isTranslatableHeading() {
-          console.log('in translatableheading: ', scope.headingKey, $translate.instant(scope.headingKey),
-            scope.freeTextContentItem.title
-          );
           return scope.headingKey && $translate.instant(scope.headingKey) === scope.freeTextContentItem.title;
         }
 
