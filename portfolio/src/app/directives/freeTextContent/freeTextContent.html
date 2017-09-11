@@ -18,12 +18,14 @@
 <div class="free-text-content ui-component">
   <div class="component-header">
     <h2 ng-if="!isEditing" class="ui-component__title border-bottom">
-        <span ng-if="!headingKey">
-          {{::freeTextContentItem.title}}
-        </span>
-      <span ng-if="headingKey" translate translate-language="{{::portfolioLang}}">
-          {{::headingKey}}
-        </span>
+      <span ng-if="!isTranslatableHeading()">
+        {{::freeTextContentItem.title}}
+      </span>
+
+      <span ng-if="isTranslatableHeading()" translate translate-language="{{::portfolioLang}}">
+        {{::headingKey}}
+      </span>
+
     </h2>
 
     <div ng-if="isEditing">

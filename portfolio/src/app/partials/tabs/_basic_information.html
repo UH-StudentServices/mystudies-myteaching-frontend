@@ -21,39 +21,48 @@
       <visibility-toggle section-name="BASIC_INFORMATION"></visibility-toggle>
     </div>
 
-    <studies limit-visibility="{componentId: 'STUDIES', sectionName: 'BASIC_INFORMATION'}"
-             summary-data="portfolio.summary"
-             portfolio-id="{{::portfolio.id}}"
-             section-name="BASIC_INFORMATION"
-             heading-key="personalInformation.title"
-             portfolio-lang="{{::portfolio.lang}}">
-    </studies>
+    <section class="portfolio-section">
+      <studies limit-visibility="{componentId: 'STUDIES', sectionName: 'BASIC_INFORMATION'}"
+               summary-data="portfolio.summary"
+               portfolio-id="{{::portfolio.id}}"
+               portfolio-lang="{{::portfolio.lang}}">
+      </studies>
+    </section>
 
-    <language-proficiencies limit-visibility="{componentId: 'LANGUAGE_PROFICIENCIES', sectionName: 'BASIC_INFORMATION'}"
-                            section-name="BASIC_INFORMATION"
-                            language-proficiencies-data="portfolio.languageProficiencies"
-                            portfolio-lang="{{::portfolio.lang}}">
-    </language-proficiencies>
+    <section class="portfolio-section">
+      <language-proficiencies limit-visibility="{componentId: 'LANGUAGE_PROFICIENCIES', sectionName: 'BASIC_INFORMATION'}"
+                              section-name="BASIC_INFORMATION"
+                              language-proficiencies-data="portfolio.languageProficiencies"
+                              portfolio-lang="{{::portfolio.lang}}">
+      </language-proficiencies>
+    </section>
 
-    <work-experience limit-visibility="{componentId: 'WORK_EXPERIENCE', sectionName: 'BASIC_INFORMATION'}"
-                     section-name="BASIC_INFORMATION"
-                     work-experience-data="portfolio.workExperience"
-                     portfolio-id="{{::portfolio.id}}"
-                     portfolio-lang="{{::portfolio.lang}}">
-    </work-experience>
+    <section class="portfolio-section">
+      <work-experience limit-visibility="{componentId: 'WORK_EXPERIENCE', sectionName: 'BASIC_INFORMATION'}"
+                       section-name="BASIC_INFORMATION"
+                       work-experience-data="portfolio.workExperience"
+                       portfolio-id="{{::portfolio.id}}"
+                       portfolio-lang="{{::portfolio.lang}}">
+      </work-experience>
+    </section>
 
-    <degrees limit-visibility="{componentId: 'DEGREES', sectionName: 'BASIC_INFORMATION'}"
-             section-name="BASIC_INFORMATION"
-             degrees-data="portfolio.degrees"
-             portfolio-id="{{::portfolio.id}}"
-             portfolio-lang="{{::portfolio.lang}}">
-    </degrees>
+    <section class="portfolio-section">
+      <degrees limit-visibility="{componentId: 'DEGREES', sectionName: 'BASIC_INFORMATION'}"
+               section-name="BASIC_INFORMATION"
+               degrees-data="portfolio.degrees"
+               portfolio-id="{{::portfolio.id}}"
+               portfolio-lang="{{::portfolio.lang}}">
+      </degrees>
+    </section>
 
-    <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
-                                          sectionName: 'BASIC_INFORMATION',
-                                          instanceName: 'GENERAL'}"
-                       portfolio-section="BASIC_INFORMATION"
-                       instance-name="GENERAL">
-    </free-text-content>
+    <section class="portfolio-section">
+      <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
+                                            sectionName: 'BASIC_INFORMATION',
+                                            instanceName: 'GENERAL'}"
+                         portfolio-section="BASIC_INFORMATION"
+                         instance-name="GENERAL">
+      </free-text-content>
+    </section>
+
   </div>
 </div>

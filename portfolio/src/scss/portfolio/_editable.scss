@@ -57,7 +57,7 @@
   .icon--done {
     right: $done-icon-right-offset;
     font-size: $done-icon-size;
-    @include vertically-center
+    @include vertically-center;
     color: $blue;
     &:hover {
       cursor: pointer;
