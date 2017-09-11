@@ -76,13 +76,16 @@ angular.module('directives.pageNavigation', [
           }
           var optional = optionalLinks[Configuration.environment];
 
-          SessionService.isInPilotDegreeProgramme().then(function(isInPilotProgramme) {
+          // FIXME: Commented out and replaced with "normal" studyguide link temporarily.
+          // Waiting for go ahead from sisu-team for deploy
+          $scope.primaryLinks.unshift(optional.normal);
+          /*SessionService.isInPilotDegreeProgramme().then(function(isInPilotProgramme) {
             if (isInPilotProgramme) {
               $scope.primaryLinks.unshift(optional.pilot);
             } else {
               $scope.primaryLinks.unshift(optional.normal);
             }
-          });
+          });*/
         });
 
         $scope.selectedLanguage = LanguageService.getCurrent();
