@@ -209,7 +209,8 @@
     "researchGate": "ResearchGate",
     "optimePortal": "Optime Portal",
     "courseCatalogs": "Studiehandböcker",
-    "generalInformation": "Allmän information"
+    "generalInformation": "Allmän information",
+    "email": "E-post"
   },
   "notificationsMenu": {
     "title": "Notifikationer"

@@ -27,12 +27,6 @@
       <li class="divider change-avatar" role="menuitem">
         <avatar></avatar>
       </li>
-      <li class="user-settings__menu-item" role="menuitem" ng-show="session.faculty">
-        <a href="{{ session.faculty.uri }}" target="_blank">
-          <i class="in-menu-icon icon--units-and-faculties"></i>
-          {{ "faculties." + session.faculty.code | translate }}
-        </a>
-      </li>
       <li limit-visibility="['STUDENT_ONLY', 'MY_STUDIES_ONLY']" class="user-settings__menu-item" role="menuitem">
         <a href="" ng-click="openPortfolio(roles.student)">
           <i class="in-menu-icon icon--profile"></i>
