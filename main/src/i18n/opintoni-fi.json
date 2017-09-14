@@ -209,7 +209,8 @@
     "researchGate": "ResearchGate",
     "optimePortal": "Optime Portal",
     "courseCatalogs": "Opinto-oppaat",
-    "generalInformation": "Yleistietoa"
+    "generalInformation": "Yleistietoa",
+    "email": "Sähköposti"
   },
   "notificationsMenu": {
     "title": "Ilmoitukset"
