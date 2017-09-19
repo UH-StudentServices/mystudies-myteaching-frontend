@@ -76,7 +76,7 @@ angular.module('directives.feedback', [
                     userAgent: $window.navigator.userAgent,
                     faculty: sessionData.facultyCode,
                     state: 'portfolio',
-                    role: PortfolioRoleService.getPortfolioRoleFromDomain()
+                    role: PortfolioRoleService.getActiveRole()
                   }
                 };
               })
