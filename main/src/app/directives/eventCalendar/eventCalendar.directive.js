@@ -23,7 +23,7 @@ angular.module('directives.eventCalendar', [])
     'MONTH': 'month'
   })
   .constant('CalendarDefaults', {
-    "EVENT_DURATION_HOURS": 1
+    'EVENT_DURATION_HOURS': 1
   })
 
   .service('EventColorService', function() {
