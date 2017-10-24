@@ -22,6 +22,9 @@ angular.module('directives.eventCalendar', [])
     'WEEK': 'agendaWeek',
     'MONTH': 'month'
   })
+  .constant('CalendarDefaults', {
+    'EVENT_DURATION_HOURS': 1
+  })
 
   .service('EventColorService', function() {
     var colors = ['#0098d0', '#005479', '#888888', ' #424242'];
@@ -39,6 +42,7 @@ angular.module('directives.eventCalendar', [])
   .directive('eventCalendar', function(
     uiCalendarConfig,
     CalendarViews,
+    CalendarDefaults,
     EventColorService,
     $window,
     AnalyticsService,
@@ -175,10 +179,11 @@ angular.module('directives.eventCalendar', [])
           var calendarEvents = sortedEvents.map(function(event) {
 
             var startMoment =  event.startDate;
-            var endMoment = event.endDate;
+            var endMoment = event.endDate ||
+              moment().clone(startMoment).add(CalendarDefaults.EVENT_DURATION_HOURS, 'hours');
             var title = getEventTitle(event);
 
-            var calendarEvent = {
+            return {
               title: title,
               start: startMoment.toDate(),
               end: endMoment.toDate(),
@@ -186,8 +191,6 @@ angular.module('directives.eventCalendar', [])
               tooltip: title,
               url: event.moodleUri ? event.moodleUri : event.courseUri
             };
-
-            return calendarEvent;
           });
 
           $scope.eventSources.length = 0;
