@@ -174,20 +174,20 @@ angular.module('directives.eventCalendar', [])
 
           var calendarEvents = sortedEvents.map(function(event) {
 
-            var startMoment =  event.startDate;
-            var endMoment = event.endDate;
+            var startMoment =  event.startDate.toDate();
+            var endMoment = event.endDate ?
+              event.endDate.toDate() :
+              moment().clone(startMoment).add(1, 'hours').toDate();
             var title = getEventTitle(event);
 
-            var calendarEvent = {
+            return {
               title: title,
-              start: startMoment.toDate(),
-              end: endMoment.toDate(),
+              start: startMoment,
+              end: endMoment,
               color: EventColorService.getColor(event.realisationId),
               tooltip: title,
               url: event.moodleUri ? event.moodleUri : event.courseUri
             };
-
-            return calendarEvent;
           });
 
           $scope.eventSources.length = 0;
