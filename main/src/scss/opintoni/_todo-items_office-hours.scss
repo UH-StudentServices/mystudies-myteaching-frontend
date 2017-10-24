@@ -139,7 +139,7 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
       background-color: rgba(0, 0, 0, 0.4);
     }
 
-    &__empty-list {
+    &--empty {
       padding-right: 1em;
     }
   }
