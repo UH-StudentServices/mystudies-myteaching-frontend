@@ -116,14 +116,15 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
         var translate = TourTemplate.translate;
 
         var config = [
-            {
+            // these all will be removed in OO-945
+            { // not needed
               type: 'title',
               heading: translate('tour.student.intro.heading'),
               text: translate('tour.student.intro.text'),
               titleTemplate: 'studentTourTitleTemplate.html',
               setNextBtnTextFn: TourTemplate.getNextButtonText
             },
-            {
+            { // not needed
               type: 'element',
               selector: TourElementSelector.selectorByViewportWidth('.tour-element__search',
                 '.tour-element__search > .dropdown-toggle'),
@@ -132,6 +133,7 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
               placement: 'bottom'
             },
             {
+              // won't fix
               type: 'element',
               selector: '.tour-element__notifications',
               heading: translate('tour.common.notifications.heading'),
@@ -139,6 +141,7 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
               placement: 'bottom'
             },
             {
+              // done
               type: 'element',
               selector: '.tour-element__todo',
               heading: translate('tour.common.todoItems.heading'),
@@ -146,6 +149,7 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
               placement: 'bottom'
             },
             {
+              // done
               type: 'element',
               selector: '#week-feed',
               heading: translate('tour.student.weekFeed.heading'),
@@ -153,6 +157,7 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
               placement: 'bottom'
             },
             {
+              // done
               type: 'element',
               selector: '#useful-links',
               heading: translate('tour.common.usefulLinks.heading'),
@@ -160,6 +165,7 @@ angular.module('directives.tour', ['services.userSettings', 'utils.browser', 'op
               placement: 'bottom'
             },
             {
+              // done
               type: 'element',
               selector: '#favorites',
               heading: translate('tour.common.favorites.heading'),

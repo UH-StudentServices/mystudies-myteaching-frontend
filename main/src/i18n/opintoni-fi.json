@@ -136,6 +136,8 @@
   "weekFeed": {
     "nowTeaching": "Nyt opetuksessani",
     "nowStudying": "Nyt opinnoissani",
+    "studentHelpText": "Nyt opinnoissani näyttää kurssit ja tentit, joihin olet ilmoittautunut WebOodissa. Välilehtiä on kolme: Aikataulu, kurssit ja tentit. Opintoni-sivu näyttää sen välilehden, joka jäi auki viimeksi sivulla käydessäsi. Kurssin nimeä klikkaamalla pääset kurssisivulle.<br/><br/> Huomaa, että kaikilla kursseilla ei vielä ole kurssisivua.<br/><br/> Huomioithan, että ilmoittautumistiedot päivittyvät kahden tunnin viiveellä.",
+    "teacherHelpText": "Nyt opetuksessani näyttää kurssit ja tentit, joihit sinut on merkitty opettajaksi Oodissa. Välilehtiä on kolme: Aikataulu, opetus ja tentit. Opetukseni-sivu näyttää sen välilehden, joka jäi auki viimeksi sivulla käydessäsi. Kurssin nimeä klikkaamalla pääset kurssisivullesi, jos sellainen on sinulle generoitu.<br/><br/> Huomioithan, että ilmoittautumistiedot päivittyvät kahden tunnin viiveellä.",
     "timetable": "Aikataulu",
     "allEvents": "Kaikki tapahtumat",
     "noPastEvents": "sinulla ei ole menneitä tapahtumia.",
@@ -183,6 +185,7 @@
   },
   "usefulLinks": {
     "title": "hyödyllistä",
+    "helpText": "Hyödyllistä-linkit ovat opiskelija- tai opettajaroolisi ja tiedekuntasi mukaan sinulle tarjottuja linkkejä. Jos olet sekä opettaja että opiskelija, näet opettajille suunnatut linkit. Voit poistaa ja lisätä linkkejä painamalla Muokkaa-painiketta. Linkit näytetään lisäysjärjestyksessä.",
     "healthAndWellbeing": "Terveys ja hyvinvointi",
     "studyingAndTrainingAbroad": "Opiskelu ja harjoittelu ulkomailla",
     "academicAdministration": "Opintohallinto",
@@ -243,6 +246,7 @@
       "UNISPORT": "Unisport-varaukset"
     },
     "title": "suosikit",
+    "helpText": "Voit lisätä suosikkeihin rss-syötteitä, linkkejä verkkosivuille ja valitsemasi Unicafen päivän ruokalistan. Lisää suosikki painamalla +-painiketta Lisää uusi -laatikossa. Suosikkien järjestystä voit muokata Muokkaa-tilassa raahaamalla suosikin haluamaasi paikkaan ja suosikin saat poistettua painamalla sen oikeassa yläreunassa olevaa ruksia. Muista painaa Valmis tallentaaksesi muutokset.",
     "addNew": "lisää uusi",
     "rss": {
       "rssFeedSearch": "RSS-syötteen osoite"
@@ -276,7 +280,9 @@
     "demoEnvNoticeMyTeaching": "Huomio! Tämä on demoympäristö, jossa tiedot eivät ole oikeita. Oikeat tiedot ovat osoitteessa <a href='http://teacher.helsinki.fi'>http://teacher.helsinki.fi</a>"
   },
   "todoItems": {
+    "heading": "Tehtävälista",
     "listIsEmpty": "Muistilistasi on vielä tyhjä",
+    "helpText": "Lisää uusi tehtävä listaan kirjoittamalla se tekstikenttään ja painamalla +-painiketta tai enteriä. Voit merkitä tehtävän tehdyksi tai poistaa sen tehtävän oikealla puolella puolella olevilla painikkeilla.",
     "addNew": "Uusi tehtävä...",
     "check": "Merkitse tehdyksi",
     "ariaLabels": {
@@ -326,7 +332,7 @@
       },
       "weekFeed": {
         "heading": "Nyt opinnoissani",
-        "text": "Nyt opinnoissani näyttää kurssit ja tentit, joihin olet ilmoittautunut WebOodissa. Välilehtiä on kolme: Aikataulu, kurssit ja tentit. Opintoni-sivu näyttää sen välilehden, joka jäi auki viimeksi sivulla käydessäsi. Kurssin nimeä klikkaamalla pääset kurssisivulle. Huomaa, että kaikilla kursseilla ei vielä ole kurssisivua."
+        "text": "Nyt opinnoissani näyttää kurssit ja tentit, joihin olet ilmoittautunut WebOodissa. Välilehtiä on kolme: Aikataulu, kurssit ja tentit. Opintoni-sivu näyttää sen välilehden, joka jäi auki viimeksi sivulla käydessäsi. Kurssin nimeä klikkaamalla pääset kurssisivulle.<br/><br/> Huomaa, että kaikilla kursseilla ei vielä ole kurssisivua.<br/><br/> Huomioithan, että ilmoittautumistiedot päivittyvät kahden tunnin viiveellä."
       }
     },
     "teacher": {
@@ -336,7 +342,7 @@
       },
       "weekFeed": {
         "heading": "Nyt opetuksessani",
-        "text": "Nyt opetuksessani näyttää kurssit ja tentit, joihit sinut on merkitty opettajaksi Oodissa. Välilehtiä on kolme: Aikataulu, opetus ja tentit. Opetukseni-sivu näyttää sen välilehden, joka jäi auki viimeksi sivulla käydessäsi. Kurssin nimeä klikkaamalla pääset kurssisivullesi, jos sellainen on sinulle generoitu."
+        "text": "Nyt opetuksessani näyttää kurssit ja tentit, joihit sinut on merkitty opettajaksi Oodissa. Välilehtiä on kolme: Aikataulu, opetus ja tentit. Opetukseni-sivu näyttää sen välilehden, joka jäi auki viimeksi sivulla käydessäsi. Kurssin nimeä klikkaamalla pääset kurssisivullesi, jos sellainen on sinulle generoitu.<br/><br/> Huomioithan, että ilmoittautumistiedot päivittyvät kahden tunnin viiveellä."
       }
     },
     "ariaLabels": {

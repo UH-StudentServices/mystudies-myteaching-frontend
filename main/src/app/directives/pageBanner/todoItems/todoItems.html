@@ -18,7 +18,12 @@
 <div class="todo-items tour-element__todo">
   <div class="todo-items__bg-img-container">
     <div class="todo-items__box" ng-if="todoItems.length === 0 && todoItemsLoaded">
-      <div translate="todoItems.listIsEmpty"></div>
+      <div>
+        <span translate="todoItems.listIsEmpty" class="todo-items__box__empty-list"></span>
+        <help-icon translation-key="todoItems.helpText"
+                   aria-label-translation-key="todoItems.heading"
+                   panel-align="center"></help-icon>
+      </div>
       <div class="todo-items__icon"><span class="icon-5x icon--todo-list"></span></div>
     </div>
 

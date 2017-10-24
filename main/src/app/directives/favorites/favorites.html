@@ -16,8 +16,11 @@
 -->
 
 <article class="ui-component favorites" id="favorites" ng-class="{'edit-favorites' : editMode}">
-  <div class="component-header">
-    <h2 class="ui-component__title border-bottom" translate="favorites.title"></h2>
+  <div class="component-header favorites__header" >
+    <h2 class="ui-component__title favorites__header__title" translate="favorites.title"></h2>
+    <help-icon translation-key="favorites.helpText"
+               aria-label-translation-key="favorites.title"
+               panel-align="right"></help-icon>
     <div class="component-header__actions">
       <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
     </div>
