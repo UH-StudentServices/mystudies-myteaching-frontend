@@ -174,16 +174,14 @@ angular.module('directives.eventCalendar', [])
 
           var calendarEvents = sortedEvents.map(function(event) {
 
-            var startMoment =  event.startDate.toDate();
-            var endMoment = event.endDate ?
-              event.endDate.toDate() :
-              moment().clone(startMoment).add(1, 'hours').toDate();
+            var startMoment =  event.startDate;
+            var endMoment = event.endDate || moment().clone(startMoment).add(1, 'hours');
             var title = getEventTitle(event);
 
             return {
               title: title,
-              start: startMoment,
-              end: endMoment,
+              start: startMoment.toDate(),
+              end: endMoment.toDate(),
               color: EventColorService.getColor(event.realisationId),
               tooltip: title,
               url: event.moodleUri ? event.moodleUri : event.courseUri
