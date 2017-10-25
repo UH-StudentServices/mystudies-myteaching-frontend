@@ -17,14 +17,8 @@
 
 angular.module('services.userSettings', ['resources.userSettings', 'services.configuration'])
 
-  .constant('DemoTourCookie', {
-    TEACHER: 'OODemoTourTeacher',
-    STUDENT: 'OODemoTourStudent'
-  })
-
   .factory('UserSettingsService', function($q,
                                            $cookies,
-                                           DemoTourCookie,
                                            UserSettingsResource,
                                            Configuration,
                                            Environments) {
@@ -89,34 +83,6 @@ angular.module('services.userSettings', ['resources.userSettings', 'services.con
       });
     }
 
-    function showMyStudiesTour() {
-      if (Configuration.environment === Environments.DEMO) {
-        if ($cookies.get(DemoTourCookie.STUDENT)) {
-          return $q.resolve(false);
-        } else {
-          return $q.resolve(true);
-        }
-      } else {
-        return getUserSettings().then(function(settings) {
-          return settings.showMyStudiesTour;
-        });
-      }
-    }
-
-    function showMyTeachingTour() {
-      if (Configuration.environment === Environments.DEMO) {
-        if ($cookies.get(DemoTourCookie.TEACHER)) {
-          return $q.resolve(false);
-        } else {
-          return $q.resolve(true);
-        }
-      } else {
-        return getUserSettings().then(function(settings) {
-          return settings.showMyTeachingTour;
-        });
-      }
-    }
-
     function updateUserSettings(updateObject) {
       settingsPromise = getUserSettings()
         .then(function(settings) {
@@ -125,26 +91,6 @@ angular.module('services.userSettings', ['resources.userSettings', 'services.con
         .then(publishUserSettings);
 
       return settingsPromise;
-    }
-
-    function putDemoTourInfoToCookie(cookieName) {
-      $cookies.put(cookieName, true);
-    }
-
-    function markStudentTourShown() {
-      if (Configuration.environment === Environments.DEMO) {
-        putDemoTourInfoToCookie(DemoTourCookie.STUDENT);
-      } else {
-        return updateUserSettings({showMyStudiesTour: false});
-      }
-    }
-
-    function markTeacherTourShown() {
-      if (Configuration.environment === Environments.DEMO) {
-        putDemoTourInfoToCookie(DemoTourCookie.TEACHER);
-      } else {
-        return updateUserSettings({showMyTeachingTour: false});
-      }
     }
 
     function setShowBanner(showBanner) {
@@ -167,10 +113,6 @@ angular.module('services.userSettings', ['resources.userSettings', 'services.con
       uploadUserBackground: uploadUserBackground,
       updateUserAvatar: updateUserAvatar,
       deleteUserAvatar: deleteUserAvatar,
-      showMyStudiesTour: showMyStudiesTour,
-      showMyTeachingTour: showMyTeachingTour,
-      markStudentTourShown: markStudentTourShown,
-      markTeacherTourShown: markTeacherTourShown,
       setShowBanner: setShowBanner,
       getShowBannerSubject: getShowBannerSubject
     };
