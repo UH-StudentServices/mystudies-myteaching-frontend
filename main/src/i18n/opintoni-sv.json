@@ -32,7 +32,9 @@
     "location": "Plats",
     "ok": "Ok",
     "help": "hjälp",
-    "helsinkiUniversity": "Helsingfors universitet"
+    "helsinkiUniversity": "Helsingfors universitet",
+    "next": "följande",
+    "previous": "föregående"
   },
   "abbreviations": {
     "credits": "sp"
@@ -54,7 +56,6 @@
     },
     "icons": {
       "search": "Sök",
-      "tour": "Introduktionstur",
       "notifications": "Notifikationer",
       "logout": "Logga ut"
     }
@@ -289,59 +290,6 @@
     "publish": "publicera",
     "degreeProgramme": "utbildningsprogram",
     "placeholder": "dina mottagningstider"
-  },
-  "tour" : {
-    "common": {
-      "closeConfirm" : "Vill du stänga introduktionsturen?",
-      "start": "Börja",
-      "skip": "hoppa över",
-      "next": "följande",
-      "previous": "föregående",
-      "finish": "sluta",
-      "search": {
-        "heading": "Sök",
-        "text": "Sök information från Helsingfors universitets hemsidor, evenemanger, kurser och digitala arkivet (HELDA)."
-      },
-      "notifications": {
-        "heading": "Notifikationer",
-        "text": "Notifikationsklockan berättar om nya meddelanden eller material har läggs till kurssidan."
-      },
-      "todoItems": {
-        "heading": "Uppgiftslista",
-        "text": "Skapa en ny todo genom att skriva den i textrutan och klicka +-knappen. Du kan markera en todo färdigt eller ta bort den med ikoner på den högra sidan av todon."
-      },
-      "usefulLinks": {
-        "heading": "Nyttigt",
-        "text": "Nyttiga länkar rekommenderas baserad på din studerande- eller lärarstatus. Om du är både lärare och studerande, ser du länkar som är riktade mot lärare. Du kan ta bort och skapa nya länkar genom att klicka Redigera. Länkar visas i den ordning du har skapat dem."
-      },
-      "favorites": {
-        "heading": "Favoriter",
-        "text": "Du kan lägga rss feed, länkar och Unicafes lunchmeny till favoriter.  Klicka +-knappen i Lägg till -lådan för att lägga till en ny favorit. Klicka på Redigera och dra en favorit till en ny plats eller ta bort den genom att klicka den blåa korsen i dess övre högra hörnet. Klicka på Färdig för att spara ändringar."
-      }
-    },
-    "student": {
-      "intro": {
-        "heading": "Mina studier",
-        "text": "Mina studier ger en översikt av dina kurser. Sidan visar kommande händelser med tids- och platsinformation och ger en enkel åtkomst till dina kurssidor. Observera att varje kurs ännu inte har en kurssida. Du kan till och med personifiera egna länk-, favorit och uppgiftslistor. Tjänsten aktiveras när du slutar introduktionsturen. Du kan öppna turen igen genom att klicka på i-ikonen bredvid sökfältet. Kom ihåg att ge feedback och hjälp oss att förbättra tjänsten."
-      },
-      "weekFeed": {
-        "heading": "Nu i mina studier",
-        "text": "Nu i mina studier visar de kurser och tentamina som du har anmält dig till i WebOodi. De finns tre flikar: tidsschema, kurser och tentamina. Mina studier visar den flik som förblev öppen senaste gången du besökte sidan. Du riktas till kurssidan när du klickar på kursens namn. Observera att varje kurs ännu inte har en kurssida."
-      }
-    },
-    "teacher": {
-      "intro": {
-        "heading": "Min undervisning",
-        "text": "Min undervisning ger en översikt av dina kurser. Sidan visar kommande händelser med tids- och platsinformation och ger en enkel åtkomst till dina kurssidor. Observera att varje kurs ännu inte har en kurssida. Du kan till och med personifiera egna länk-, favorit och uppgiftslistor. Tjänsten aktiveras när du slutar introduktionsturen. Du kan öppna turen igen genom att klicka på i-ikonen bredvid sökfältet. Kom ihåg att ge feedback och hjälp oss att förbättra tjänsten."
-      },
-      "weekFeed": {
-        "heading": "Nu i min undervisning",
-        "text": "Nu i min undervisning visar de kurser och tentamina som du är som lärare i WebOodi. De finns tre flikar: tidsschema, undervisning och tentamina. Min undervisning visar den flik som förblev öppen senaste gången du besökte sidan. Om kurssidan har genererats till dig, riktas du till kurssidan när du klickar på kursens namn."
-      }
-    },
-    "ariaLabels" : {
-      "startTour" : "börja turen"
-    }
   },
   "searchResults": {
     "title": "Sök",

@@ -75,13 +75,13 @@
       <a tabindex="0" translate="admin.first"></a>
     </li>
     <li class="pager__previous" ng-click="previousPage()">
-      <a tabindex="0" translate="tour.common.previous"></a>
+      <a tabindex="0" translate="general.previous"></a>
     </li>
     <li class="pager__page" ng-repeat="index in pageIndexes" ng-class="pageClasses(index)">
       <a  tabindex="0" ng-click="selectPage(index)">{{ index + 1 }}</a>
     </li>
     <li class="pager__next" ng-click="nextPage()">
-      <a  tabindex="0" translate="tour.common.next"></a>
+      <a  tabindex="0" translate="general.next"></a>
     </li>
     <li class="pager__last" ng-click="selectPage(pageIndexes.length - 1)">
       <a tabindex="0" translate="admin.last"></a>

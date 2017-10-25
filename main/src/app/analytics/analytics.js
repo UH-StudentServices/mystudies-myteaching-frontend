@@ -64,7 +64,6 @@ angular.module('opintoniAnalytics', [
     'SEARCH': 'search',
     'SHOW_CALENDAR_VIEW': 'showCalendarView',
     'SHOW_WEEK_FEED_TAB': 'showWeekFeedTab',
-    'START_TOUR': 'startTour',
     'SUBSCRIBE_CALENDAR': 'subscribeCalendar',
     'UPLOAD': 'upload'
   })
@@ -114,8 +113,6 @@ angular.module('opintoniAnalytics', [
         _.partial(submitAnalyticsEvent, EventCategories.EXTERNAL_LINK, EventActions.CLICK, EventLabels.FLAMMA_NEWS),
       trackSearch:
         _.partial(submitAnalyticsEvent, EventCategories.SITE_ACTIONS, EventActions.SEARCH),
-      trackStartTour:
-        _.partial(submitAnalyticsEvent, EventCategories.SITE_ACTIONS, EventActions.START_TOUR),
       trackNotificationMarkAsRead:
         _.partial(submitAnalyticsEvent, EventCategories.SITE_ACTIONS, EventActions.MARK_NOTIFICATION_AS_READ),
       trackUploadBackground:
