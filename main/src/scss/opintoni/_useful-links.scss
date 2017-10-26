@@ -19,9 +19,15 @@
   position: relative;
 }
 
-.useful-links h3 {
-  @include font-size(20px);
+.useful-links__header {
   margin-bottom: 16px;
+}
+
+.useful-links__title {
+  @include font-size(20px);
+  display: inline-block;
+  margin-right: 0.5em;
+  word-wrap: break-word;
 }
 
 .useful-links__list, .useful-link {
