@@ -305,6 +305,10 @@ $tablist-single-row: min-width 28.75em;
     width: auto;
   }
 
+  &__container {
+    width: 100%;
+  }
+
   &__button {
     width: 100%;
     padding: 0.3em 0.7em 0.4em;
