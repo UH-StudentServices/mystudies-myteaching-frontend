@@ -32,7 +32,9 @@
     "location": "Location",
     "ok": "Ok",
     "help": "help",
-    "helsinkiUniversity": "University of Helsinki"
+    "helsinkiUniversity": "University of Helsinki",
+    "next": "next",
+    "previous": "previous"
   },
   "abbreviations": {
     "credits": "cr"
@@ -54,7 +56,6 @@
     },
     "icons": {
       "search": "Search",
-      "tour": "Introduction tour",
       "notifications": "Notifications",
       "logout": "Logout"
     }
@@ -295,59 +296,6 @@
     "publish": "publish",
     "degreeProgramme": "degree programme",
     "placeholder": "your consultation hours"
-  },
-  "tour" : {
-    "common": {
-      "closeConfirm" : "Do you want to close the introduction tour?",
-      "start": "start",
-      "skip": "skip",
-      "next": "next",
-      "previous": "previous",
-      "finish": "finish",
-      "search": {
-        "heading": "Search",
-        "text": "Search within the homepage, events, courses, and digital repository of the University of Helsinki."
-      },
-      "notifications": {
-        "heading": "Notifications",
-        "text": "The notification bell notifies you when new messages or materials have been added to a course page. A click on the notification will lead you to the course page."
-      },
-      "todoItems": {
-        "heading": "To do list",
-        "text": "Add a new to do item by writing it into the text box and clicking the +-button. Mark the item as done or remove it with the icons on the right side of the item."
-      },
-      "usefulLinks": {
-        "heading": "Useful information",
-        "text": "Useful links are recommended to you based on your student or teacher status and your faculty. If you are a teacher and a student, you will see the links offered to teachers. You can remove and links by pressing Edit. Links will be displayed in the order you added them."
-      },
-      "favorites": {
-        "heading": "Favorites",
-        "text": "You can add rss feeds, links, and Unicafe lunch menu to favorites. Add a new favorite by clicking +-button in Add new box. Favourites can be organized in Edit mode simply by dragging then to a new spot and removed by clicking the blue cross in the top right hand corner of the specific favorite item. Remember to press Done to save the changes."
-      }
-    },
-    "student": {
-      "intro": {
-        "heading": "My Studies",
-        "text": "My studies provides an overview on your courses. The service displays next course events including information on time and place and allows easy access to your course pages. Please note that every course does not yet have a course page. In addition, it lets you personalize own lists of links, favorites and to do items. The service will activate when you close this introduction tour. You can open the tour later by clicking the i-icon next the the search field. Please give feedback: it helps us to improve the service."
-      },
-      "weekFeed": {
-        "heading": "Now in my studies",
-        "text": "Now in my studies shows the courses and examinations for which you have registered in WebOodi. There are three tabs: timetable, courses, and exams. My studies displays the tab that remained open the last time you visited the page. Clicking the course name will direct you the course page. <br/><br/> Please note that every course does not yet have a course page. <br/> <br/> Please note that your registration information will be updated within two hours."
-      }
-    },
-    "teacher": {
-      "intro": {
-        "heading": "My Teaching",
-        "text": "My teaching provides an overview on your courses. The service displays next course events including information on time and place and allows easy access to your course pages. Please note that every course does not yet have a course page. In addition, it lets you personalize own lists of links, favorites and to do items. The service will activate when you close this introduction tour. You can open the tour later by clicking the i-icon next to the search field. Please give feedback: it helps us to improve the service."
-      },
-      "weekFeed": {
-        "heading": "Now in my teaching",
-        "text": "Now in my teaching shows the courses and examinations for which you have registered in WebOodi. There are three tabs: timetable, teaching, and exams. My teaching displays the tab that remained open the last time you visited the page. Clicking the course name will direct you to your course page if one has been generated. <br/> <br/> Please note that your registration information will be updated within two hours."
-      }
-    },
-   "ariaLabels" : {
-      "startTour" : "start tour"
-    }
   },
   "searchResults": {
     "title": "Search",

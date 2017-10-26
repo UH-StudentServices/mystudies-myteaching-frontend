@@ -26,7 +26,6 @@ angular.module('opintoniApp', [
   'ngAnimate',
   'ngSanitize',
   'ngAria',
-  'ngJoyRide',
   'ngAddToHomescreen',
   'angular-google-analytics',
   'ui.utils',
@@ -62,7 +61,6 @@ angular.module('opintoniApp', [
 
   'controllers.main',
   'controllers.calendar',
-  'directives.tour',
   'directives.pageBanner',
   'directives.helpIcon',
   'directives.popover',

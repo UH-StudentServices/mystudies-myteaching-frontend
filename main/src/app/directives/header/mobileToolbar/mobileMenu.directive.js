@@ -15,7 +15,7 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.mobileMenu', ['directives.tour', 'directives.analytics'])
+angular.module('directives.mobileMenu', ['directives.analytics'])
 
   .directive('mobileMenu', function() {
     return {
