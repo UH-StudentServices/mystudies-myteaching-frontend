@@ -558,6 +558,7 @@ angular.module('directives.weekFeed', [
         $scope.hideSubTabs = $scope.selectedSubTab.hideSubTabs;
         $scope.calendarView = $scope.selectedSubTab.calendarView;
         $scope.currentDate = $stateParams.currentDate ? $stateParams.currentDate : moment();
+        $scope.studentMode = currentStateName === State.MY_STUDIES;
 
         Loader.start(LoaderKey);
 

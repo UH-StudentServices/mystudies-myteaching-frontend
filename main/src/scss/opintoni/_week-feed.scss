@@ -18,6 +18,12 @@
 $tablist-multi-row: max-width 28.74em;
 $tablist-single-row: min-width 28.75em;
 
+.weekfeed__header__title {
+  display: inline-block;
+  margin-right: 0.5em;
+  word-wrap: break-word;
+}
+
 .weekfeed__sub-tabs {
   display: flex;
   align-items: stretch;
