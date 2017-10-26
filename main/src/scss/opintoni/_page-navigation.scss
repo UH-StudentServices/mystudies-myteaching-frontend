@@ -31,17 +31,21 @@ $navigationHeight: 60px;
     box-sizing: border-box;
     .wrapper {
       height: 100%;
+      position: relative;
     }
 
     @include breakpoint($small) {
       nav {
         height: 100%;
+        border: none;
       }
       .fatmenu {
-        top: $navigationHeight + 70px;
+        position: absolute;
+        top: $navigationHeight;
         left: 0;
         display: none;
         height: auto;
+        z-index: 10001;
 
         &.is-open {
           display: block;
