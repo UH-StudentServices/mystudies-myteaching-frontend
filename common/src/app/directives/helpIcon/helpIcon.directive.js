@@ -17,15 +17,34 @@
 
 angular.module('directives.helpIcon', ['directives.popover'])
 
-  .directive('helpIcon', function() {
+  .directive('helpIcon', function(BrowserUtil) {
+
     return {
       restrict: 'E',
       replace: true,
       scope: {
         translationKey: '@',
         ariaLabelTranslationKey: '@',
-        plainTitle: '='
+        plainTitle: '=',
+        uniqueId: '@',
+        panelAlign: '@'
       },
-      templateUrl: 'app/directives/helpIcon/helpIcon.html'
+      templateUrl: 'app/directives/helpIcon/helpIcon.html',
+      link: function(scope) {
+        var alignmentClass;
+
+        if (BrowserUtil.isMobile() || scope.panelAlign === 'center') {
+          alignmentClass = 'help-icon-popover-container--center-aligned';
+        } else if (scope.panelAlign === 'right') {
+          alignmentClass = 'help-icon-popover-container--right-aligned';
+        } else {
+          alignmentClass = 'help-icon-popover-container--left-aligned';
+        }
+
+        _.assign(scope, {
+          uniqueId: scope.$id,
+          alignmentClass: alignmentClass
+        });
+      }
     };
   });

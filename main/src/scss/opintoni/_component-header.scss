@@ -17,13 +17,12 @@
 
 .component-header {
   position: relative;
+  display: flex;
+  align-items: center;
 
   .component-header__actions {
-    right: 0;
-    position: absolute;
+    margin-left: auto;
     font-size: 1.2em;
-
-    @include vertically-center;
 
     > * {
       margin-left: 1em;

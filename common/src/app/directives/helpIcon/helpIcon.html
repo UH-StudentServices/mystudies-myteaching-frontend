@@ -20,16 +20,17 @@
      href=""
      ng-if="!plainTitle"
      aria-label="{{:: (ariaLabelTranslationKey | translate) }}"
-     class="help-icon-popover-trigger">
-    <span class="hy icon--question"></span>
+     class="help-icon-popover-trigger"
+     id="help-icon-popover-trigger_{{uniqueId}}">
+    <span class="hy icon--question help-icon-icon"></span>
   </a>
 
   <popover template="app/directives/helpIcon/helpIcon.popover.html"
-           override-class="help-icon-popover-container"
+           override-class="help-icon-popover-container {{alignmentClass}}"
            ng-if="!plainTitle"
-           id="help-icon-popover"
-           trigger-selector="help-icon-popover-trigger"
-           target-selector=".help-icon-popover-trigger">
+           id="help-icon-popover_{{uniqueId}}"
+           trigger-selector="help-icon-popover-trigger_{{uniqueId}}"
+           target-selector="#help-icon-popover-trigger_{{uniqueId}}">
   </popover>
 
   <span class="hy icon--question"

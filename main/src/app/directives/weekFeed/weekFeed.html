@@ -17,7 +17,13 @@
 
 <div role="article" id="week-feed">
   <div class="ui-component ui-component--events">
-    <h2 class="ui-component__title"><span ng-bind="header"></span></h2>
+    <div class="component-header">
+      <h2 class="ui-component__title weekfeed__header__title"><span ng-bind="header"></span></h2>
+      <help-icon ng-if="studentMode" translation-key="weekFeed.studentHelpText"
+                 aria-label-translation-key="weekFeed.nowStudying"></help-icon>
+      <help-icon ng-if="!studentMode" translation-key="weekFeed.teacherHelpText"
+                 aria-label-translation-key="weekFeed.nowTeaching"></help-icon>
+    </div>
 
     <scrollable-tab-bar use-full-width-on-mobile="true">
       <ul class="tab-set" role="tablist">
@@ -61,7 +67,7 @@
         <event-calendar events="events" date="currentDate" calendar-view="calendarView" full-screen="false"></event-calendar>
         <div class="week-feed-calendar__extra-buttons hide-mobile-only">
           <subscribe-events></subscribe-events>
-          <a href="" role="button" ng-click="showFullScreenCalendar(currentDate)" 
+          <a href="" role="button" ng-click="showFullScreenCalendar(currentDate)"
              class="icon--full-screen week-feed-calendar__full-screen-button "
              aria-label="{{::('fullScreenCalendar.open' | translate)}}" />
         </div>

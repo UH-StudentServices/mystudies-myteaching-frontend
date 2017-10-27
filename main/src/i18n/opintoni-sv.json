@@ -137,6 +137,8 @@
   "weekFeed": {
     "nowTeaching": "Nu i min undervisning",
     "nowStudying": "Nu i mina studier",
+    "studentHelpText": "Nu i mina studier visar de kurser och tentamina som du har anmält dig till i WebOodi. De finns tre flikar: tidsschema, kurser och tentamina. Mina studier visar den flik som förblev öppen senaste gången du besökte sidan. Du riktas till kurssidan när du klickar på kursens namn.<br/><br/> Observera att varje kurs ännu inte har en kurssida.<br/><br/>  Vänligen observera att anmälningsinformation uppdateras inom två timmar.",
+    "teacherHelpText": "Nu i min undervisning visar de kurser och tentamina som du är som lärare i WebOodi. De finns tre flikar: tidsschema, undervisning och tentamina. Min undervisning visar den flik som förblev öppen senaste gången du besökte sidan. Om kurssidan har genererats till dig, riktas du till kurssidan när du klickar på kursens namn. <br/><br/> Vänligen observera att anmälningsinformation uppdateras inom två timmar.",
     "timetable": "Tidsschema",
     "allEvents": "Alla händelser",
     "noPastEvents": "Du har inga tidigare händelser.",
@@ -184,6 +186,7 @@
   },
   "usefulLinks": {
     "title": "Nyttigt",
+    "helpText": "Nyttiga länkar rekommenderas baserad på din studerande- eller lärarstatus. Om du är både lärare och studerande, ser du länkar som är riktade mot lärare. Du kan ta bort och skapa nya länkar genom att klicka Redigera. Länkar visas i den ordning du har skapat dem.",
     "healthAndWellbeing": "Hälsa och välmående",
     "studyingAndTrainingAbroad": "Studier och praktik utomlands ",
     "academicAdministration": "Studieadministration",
@@ -244,6 +247,7 @@
       "UNISPORT": "Unisports bokningar"
     },
     "title": "favoriter",
+    "helpText": "Du kan lägga rss feed, länkar och Unicafes lunchmeny till favoriter.  Klicka +-knappen i Lägg till -lådan för att lägga till en ny favorit. Klicka på Redigera och dra en favorit till en ny plats eller ta bort den genom att klicka den blåa korsen i dess övre högra hörnet. Klicka på Färdig för att spara ändringar.",
     "addNew": "lägg till",
     "rss": {
       "rssFeedSearch": "Feed url"
@@ -277,7 +281,9 @@
     "demoEnvNoticeMyTeaching": "Obs! Detta är en demomiljö och information är inte korrekt. För rätt information gå till <a href='http://teacher.helsinki.fi'>http://teacher.helsinki.fi</a>"
   },
   "todoItems": {
+    "heading": "Uppgiftslista",
     "listIsEmpty": "Din uppgiftslista är tom",
+    "helpText": "Skapa en ny todo genom att skriva den i textrutan och klicka +-knappen. Du kan markera en todo färdigt eller ta bort den med ikoner på den högra sidan av todon.",
     "addNew": "Skapa en ny todo",
     "check": "Klarmarkera",
     "ariaLabels": {

@@ -18,11 +18,20 @@
 $icon-size: 20px;
 $tooltip-width: 300px;
 $tooltip-width-mobile: 250px;
+$half-width: calc(0.5 * #{$tooltip-width});
+$minus-half-width: calc(-0.5 * #{$tooltip-width});
+$half-width-mobile: calc(0.5 * #{$tooltip-width-mobile});
+$minus-half-width-mobile: calc(-0.5 * #{$tooltip-width-mobile});
 
 .help-icon {
   font-size: $icon-size;
   position: relative;
-  top: 3px;
+  display:inline-block;
+  top: 50%;
+}
+
+.help-icon-icon:after {
+  vertical-align: middle;
 }
 
 .help-icon-popover-trigger {
@@ -30,9 +39,7 @@ $tooltip-width-mobile: 250px;
 }
 
 .help-icon-popover-container {
-  right: -15px !important;
   width: $tooltip-width-mobile;
-
 
   @include breakpoint($mobile-only) {
     width: $tooltip-width-mobile;
@@ -40,6 +47,40 @@ $tooltip-width-mobile: 250px;
 
   @include breakpoint($small) {
     width: $tooltip-width;
+
+    &--center-aligned {
+      left: $minus-half-width;
+      right: auto !important;
+
+      &::before, &::after {
+        left: $half-width !important;
+        right: auto !important;
+      }
+    }
+  }
+
+  &--left-aligned {
+    right: -15px !important;
+  }
+
+  &--right-aligned {
+    left: -15px;
+    right: auto !important;
+
+    &::before, &::after {
+      left: 1em !important;
+      right: auto !important;
+    }
+  }
+
+  &--center-aligned {
+    left: $minus-half-width-mobile;
+    right: auto !important;
+
+    &::before, &::after {
+      left: $half-width-mobile !important;
+      right: auto !important;
+    }
   }
 }
 

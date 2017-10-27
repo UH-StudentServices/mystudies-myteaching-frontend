@@ -15,6 +15,17 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+.favorites__header {
+  @include border-bottom;
+  margin-bottom: 1em;
+}
+
+.favorites__header__title {
+  display: inline-block;
+  margin-right: 0.5em;
+  word-wrap: break-word;
+}
+
 .favorites__list {
   display: flex;
   flex-wrap: wrap;
