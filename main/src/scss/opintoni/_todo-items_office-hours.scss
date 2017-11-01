@@ -239,8 +239,8 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
   position: relative;
   word-wrap: break-word;
 
-  padding: 10px 30px 10px 0px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0px 10px 10px 0px;
+  text-transform: uppercase;
 
   .degree-programme__remove {
     @include vertically-center;
@@ -268,7 +268,32 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
   justify-content: flex-end;
 
   button {
-    width: 90px;
     text-transform: capitalize;
   }
+}
+
+.office-hours__office-hours-list {
+  display: flex;
+}
+
+.office-hours__office-hours-item-container {
+  width: 80%;
+}
+
+.office-hours__office-hours-item-icons {
+  width: 20%;
+  text-align: right;
+}
+
+.office-hours__delete-confirmation-box {
+  padding: 30px;
+  background: black;
+
+  .office-hours__buttons {
+    justify-content: center;
+  }
+}
+
+.office-hours__office-hours-item {
+  margin-bottom: 10px;
 }

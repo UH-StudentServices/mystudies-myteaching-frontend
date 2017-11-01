@@ -19,9 +19,10 @@
 
 angular.module('directives.officeHours', [
   'services.officeHours',
-  'services.session'
+  'services.session',
+  'ui.bootstrap.modal'
 ])
-  .directive('officeHours', function(OfficeHoursService, SessionService) {
+  .directive('officeHours', function(OfficeHoursService, SessionService, $uibModal) {
     return {
       restrict: 'E',
       replace: true,
@@ -38,64 +39,114 @@ angular.module('directives.officeHours', [
 
         function officeHoursLoaded(officeHours) {
           scope.loaded = true;
-          if (officeHours.description) {
-            scope.edit = false;
-          }
 
-          scope.officeHours = {description: officeHours.description, degreeProgrammes: []};
-
-          _.forEach(officeHours.degreeProgrammes, function(programme) {
-            scope.officeHours.degreeProgrammes.push(_.find(scope.degreeProgrammes, ['code', programme.code]));
+          scope.officeHoursList = _.map(officeHours, function(oh) {
+            return {
+              description: oh.description,
+              degreeProgrammes: _.map(oh.degreeProgrammes, function(programme) {
+                return _.find(scope.degreeProgrammes, ['code', programme.code]);
+              })
+            };
           });
         }
 
         scope.addDegreeProgramme = function addDegreeProgramme(degreeProgramme) {
           if (degreeProgramme !== null) {
-            scope.newOfficeHours.degreeProgrammes.push(_.find(scope.degreeProgrammes, ['code', degreeProgramme]));
+            scope.officeHoursUnderEdit.degreeProgrammes.push(_.find(scope.degreeProgrammes, ['code', degreeProgramme]));
             _.remove(scope.availableDegreeProgrammes, ['code', degreeProgramme]);
           }
         };
 
         scope.removeDegreeProgramme = function removeDegreeProgramme(degreeProgramme) {
-          _.remove(scope.newOfficeHours.degreeProgrammes, ['code', degreeProgramme.code]);
+          _.remove(scope.officeHoursUnderEdit.degreeProgrammes, ['code', degreeProgramme.code]);
           scope.availableDegreeProgrammes.push(degreeProgramme);
         };
 
         scope.publishOfficeHours = function publishOfficeHours() {
-          if (scope.newOfficeHours.description && scope.newOfficeHours.degreeProgrammes.length > 0) {
-            OfficeHoursService.saveOfficeHours(scope.newOfficeHours).then(officeHoursLoaded);
-          }
+          OfficeHoursService.saveOfficeHours(scope.officeHoursUnderEdit).then(officeHoursLoaded);
         };
 
-        scope.deleteOfficeHours = function deleteOfficeHours() {
-          scope.availableDegreeProgrammes = _.cloneDeep(scope.degreeProgrammes);
-          OfficeHoursService.deleteOfficeHours()
-            .then(function officeHoursDeleted(officeHours) {
-              scope.officeHours = officeHours;
-              scope.newOfficeHours = {description: null, degreeProgrammes: [], name: scope.userName};
-              scope.edit = true;
-            });
+        scope.editOfficeHours = function editOfficeHours(index) {
+          scope.officeHoursUnderEdit = _.cloneDeep(scope.officeHoursList[index]);
+          scope.availableDegreeProgrammes = _.filter(scope.degreeProgrammes, function(code) {
+            return !_.find(scope.officeHoursUnderEdit.degreeProgrammes, ['code', code.code]);
+          });
+          scope.editedOfficeHoursIndex = index;
+          scope.openEditDialog();
         };
 
-        scope.editOfficeHours = function editOfficeHours() {
-          scope.edit = true;
-          scope.newOfficeHours.description = scope.officeHours.description;
-          scope.newOfficeHours.degreeProgrammes = _.cloneDeep(scope.officeHours.degreeProgrammes);
-          _.forEach(scope.newOfficeHours.degreeProgrammes, function(programme) {
-            _.remove(scope.availableDegreeProgrammes, ['code', programme.code]);
+        scope.deleteConfirmationIndex = -1;
+        scope.showDeleteConfirmation = function showDeleteConfirmation(index) {
+          scope.deleteConfirmationIndex = index;
+        };
+        scope.clearDeleteConfirmation = function clearDeleteConfirmation() {
+          scope.deleteConfirmationIndex = -1;
+        };
+
+        scope.shouldDeleteConfirmationBeShown = function shouldDeleteConfirmationBeShown(index) {
+          return index === scope.deleteConfirmationIndex;
+        };
+
+        scope.deleteOfficeHours = function deleteOfficeHours(index) {
+          scope.officeHoursList.splice(index,1);
+          scope.deleteConfirmationIndex = -1;
+          OfficeHoursService.saveOfficeHours(scope.officeHoursList).then(officeHoursLoaded);
+        };
+
+        scope.addOfficeHours = function addOfficeHours() {
+          scope.editedOfficeHoursIndex = scope.officeHoursList.length - 1;
+          scope.resetOfficeHoursUnderEdit();
+          scope.openEditDialog();
+        };
+
+        scope.openEditDialog = function openEditDialog() {
+          scope.modalInstance = $uibModal.open({
+            templateUrl: 'officeHoursEditDialog.html',
+            scope: scope,
+            animation: false,
+            windowClass: 'dialog'
           });
         };
 
-        scope.cancel = function cancel() {
-          scope.edit = false;
+        scope.editDialogOk = function editDialogOk() {
+          if (scope.officeHoursUnderEdit.description && scope.officeHoursUnderEdit.degreeProgrammes.length > 0) {
+
+            if (scope.editedOfficeHoursIndex === -1) {
+              scope.officeHoursList.push(_.cloneDeep(scope.officeHoursUnderEdit));
+            } else {
+              scope.officeHoursList[scope.editedOfficeHoursIndex + 1] = _.cloneDeep(scope.officeHoursUnderEdit);
+            }
+            scope.resetOfficeHoursUnderEdit();
+            OfficeHoursService.saveOfficeHours(scope.officeHoursList).then(officeHoursLoaded);
+          }
+
+          scope.modalInstance.close();
         };
 
-        scope.newOfficeHours = {description: null, degreeProgrammes: [], name: null};
+        scope.editDialogCancel = function editDialogCancel() {
+          scope.modalInstance.close();
+          scope.resetOfficeHoursUnderEdit();
+        };
+
+        scope.canPublishEdits = function canPublishEdits() {
+          return !!scope.officeHoursUnderEdit.description &&
+            scope.officeHoursUnderEdit.degreeProgrammes.length > 0 &&
+            !!scope.officeHoursUnderEdit.name;
+        };
+
+        scope.resetOfficeHoursUnderEdit = function resetOfficeHoursUnderEdit() {
+          scope.officeHoursUnderEdit = {
+            description: null,
+            degreeProgrammes: [],
+            name: scope.userName
+          };
+        };
+        scope.resetOfficeHoursUnderEdit();
+
         scope.loaded = false;
-        scope.edit = true;
 
         SessionService.getSession().then(function getSessionSuccess(session) {
-          scope.newOfficeHours.name = session.name;
+          scope.resetOfficeHoursUnderEdit();
           scope.userName = session.name;
         });
 

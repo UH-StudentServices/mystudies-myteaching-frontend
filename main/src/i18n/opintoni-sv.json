@@ -292,10 +292,12 @@
   },
   "officeHours": {
     "intro": "Välj rätt utbildningsprogram och publicera dina mottagningstider. Ändringar du gör i de publicerade mottagningstiderna uppdateras automatiskt.",
+    "dialogIntro": "Välj rätt utbildningsprogram och publicera dina mottagningstider.",
     "heading": "publicerade mottagningstider",
     "publish": "publicera",
-    "degreeProgramme": "utbildningsprogram",
-    "placeholder": "dina mottagningstider"
+    "degreeProgramme": "Välj ett eller mera utbildningsprogram",
+    "placeholder": "Dina mottagningstider",
+    "addNew": "Ny mottagstid..."
   },
   "searchResults": {
     "title": "Sök",

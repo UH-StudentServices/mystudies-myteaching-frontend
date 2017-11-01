@@ -292,10 +292,12 @@
   },
   "officeHours": {
     "intro": "Choose the right degree programme(s) and publish your consultation hours. Any changes you make will be automatically updated to the published consultation hours.",
+    "dialogIntro": "Choose the right degree programme(s) and publish your consultation hours.",
     "heading": "published consultation hours",
     "publish": "publish",
-    "degreeProgramme": "degree programme",
-    "placeholder": "your consultation hours"
+    "degreeProgramme": "Select one or more degree programmes",
+    "placeholder": "Your consultation hours",
+    "addNew": "Add new..."
   },
   "searchResults": {
     "title": "Search",

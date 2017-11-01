@@ -292,10 +292,12 @@
   },
   "officeHours": {
     "intro": "Julkaise vastaanottoaikasi valitsemassasi koulutusohjelmassa tai -ohjelmissa. Tekemäsi muutokset päivittyvät automaattisesti julkaistuihin vastaanottoaikoihin.",
+    "dialogIntro": "Julkaise vastaanottoaikasi valitsemissasi koulutusohjelmassa",
     "heading": "julkaistut vastaanottoajat",
     "publish": "julkaise",
-    "degreeProgramme": "koulutusohjelma",
-    "placeholder": "vastaanottoaikasi"
+    "degreeProgramme": "Valitse yksi tai useampi koulutusohjelma",
+    "placeholder": "Vastaanottoaikasi",
+    "addNew": "Uusi aika..."
   },
   "searchResults": {
     "title": "Haku",

@@ -21,7 +21,7 @@ angular.module('resources.officeHours', [])
     var officeHoursResource = $resource('/api/private/v1/officehours');
 
     function getOfficeHours() {
-      return officeHoursResource.get().$promise;
+      return officeHoursResource.query().$promise;
     }
 
     function deleteOfficeHours() {

@@ -17,54 +17,74 @@
 
 <div class="office-hours">
   <div class="office-hours__bg-img-container">
-    <div ng-if="edit && loaded" class="office-hours__box">
-      <p translate="officeHours.intro" />
-      <ul class="office-hours__degree-programmes">
-        <li class="office-hours__degree-programme"
-            ng-repeat="programme in newOfficeHours.degreeProgrammes">
-          {{programme.name}}
-          <a role="button" href=""
-             class="degree-programme__remove icon--remove"
-             ng-click="removeDegreeProgramme(programme)"/>
-        </li>
-      </ul>
-      <select name="newDegreeProgramme"
-              class="office-hours__input-element"
-              ng-model="newDegreeProgramme"
-              ng-change="addDegreeProgramme(newDegreeProgramme)"
-              ng-options="programme.code as programme.name for programme in availableDegreeProgrammes | orderBy:'name'">
-        <option value="" >{{('officeHours.degreeProgramme' | translate)}}...</option>
-      </select>
-      <textarea class="office-hours__input-element--text "
-                placeholder="{{('officeHours.placeholder' | translate)}}..."
-                ng-model="newOfficeHours.description"/>
+
+    <div ng-if="loaded && officeHoursList.length === 0" class="office-hours__box">
+      <p translate="officeHours.intro"></p>
       <div class="button-group office-hours__buttons">
-        <button class="button button-group__button"
-                translate="general.cancel"
-                ng-click="cancel()"></button>
-        <button class="button button-group__button"
-                translate="officeHours.publish"
-                ng-click="publishOfficeHours()"></button>
+        <button class="button button-group__button" translate="officeHours.addNew" ng-click="addOfficeHours()"></button>
       </div>
     </div>
-    <div ng-if="!edit && loaded" class="office-hours__box">
+
+    <div ng-if="loaded && officeHoursList.length > 0" class="office-hours__box">
       <p class="text-transform-capitalize" translate="officeHours.heading" />
-      <ul class="office-hours__degree-programmes">
-        <li class="office-hours__degree-programme"
-            ng-repeat="programme in officeHours.degreeProgrammes">
-          {{programme.name}}
+      <ul>
+        <li class="office-hours__office-hours-item" ng-repeat="officeHours in officeHoursList">
+
+          <div ng-if="!shouldDeleteConfirmationBeShown($index)" class="office-hours__office-hours-list">
+            <div class="office-hours__office-hours-item-container">
+              <ul class="office-hours__degree-programmes">
+                <li class="office-hours__degree-programme" ng-repeat="programme in officeHours.degreeProgrammes">
+                  {{programme.name}}
+                </li>
+              </ul>
+              <p class="office-hours__description">{{officeHours.description}}</p>
+            </div>
+            <div class="office-hours__office-hours-item-icons">
+              <span class="icon--edit-event" ng-click="editOfficeHours($index)"></span>
+              <span class="icon--remove" ng-click="showDeleteConfirmation($index)"></span>
+            </div>
+          </div>
+
+          <div ng-if="shouldDeleteConfirmationBeShown($index)" class="office-hours__delete-confirmation-box">
+            <div class="button-group office-hours__buttons">
+              <button class="button button-group__button" translate="general.cancel" ng-click="clearDeleteConfirmation()"></button>
+              <button class="button button-group__button" translate="general.delete" ng-click="deleteOfficeHours($index)"></button>
+            </div>
+          </div>
         </li>
       </ul>
-      <p class="office-hours__description">{{officeHours.description}}</p>
       <div class="button-group office-hours__buttons">
-        <button class="button button-group__button"
-                translate="general.delete"
-                ng-click="deleteOfficeHours()"></button>
-        <button class="button button-group__button"
-                translate="general.edit"
-                ng-click="editOfficeHours()"></button>
+        <button class="button button-group__button" translate="officeHours.addNew" ng-click="addOfficeHours()"></button>
       </div>
     </div>
+
     <div ng-if="!loaded" class="office-hours__box"></div>
   </div>
+
+  <script type="text/ng-template" id="officeHoursEditDialog.html">
+    <div class="modal-body" id="modal-body">
+      <p translate="officeHours.dialogIntro"></p>
+
+      <select name="newDegreeProgramme" class="office-hours__input-element" ng-model="newDegreeProgramme" ng-change="addDegreeProgramme(newDegreeProgramme)"
+        ng-options="programme.code as programme.name for programme in availableDegreeProgrammes | orderBy:'name'">
+        <option value="" >{{('officeHours.degreeProgramme' | translate)}}...</option>
+      </select>
+
+      <ul class="office-hours__degree-programmes">
+        <li class="office-hours__degree-programme" ng-repeat="programme in officeHoursUnderEdit.degreeProgrammes">
+          {{programme.name}}
+          <a role="button" href="" class="degree-programme__remove icon--remove" ng-click="removeDegreeProgramme(programme)" />
+        </li>
+      </ul>
+
+      <textarea class="office-hours__input-element--text " placeholder="{{('officeHours.placeholder' | translate)}}..." ng-model="officeHoursUnderEdit.description"
+      />
+    </div>
+    <div class="modal-footer">
+      <div class="button-group office-hours__buttons">
+        <button class="button button-group__button" translate="general.cancel" ng-click="editDialogCancel()"></button>
+        <button class="button button-group__button" translate="officeHours.publish" ng-click="editDialogOk()" ng-disabled="!canPublishEdits()"></button>
+      </div>
+    </div>
+  </script>
 </div>
