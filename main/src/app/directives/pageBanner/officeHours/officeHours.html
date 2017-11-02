@@ -28,7 +28,7 @@
     <div ng-if="loaded && officeHoursList.length > 0" class="office-hours__box">
       <p class="text-transform-capitalize" translate="officeHours.heading" />
       <ul>
-        <li class="office-hours__office-hours-item" ng-repeat="officeHours in officeHoursList">
+        <li class="office-hours__office-hours-item" ng-repeat="officeHours in officeHoursList track by $index">
 
           <div ng-if="!shouldDeleteConfirmationBeShown($index)" class="office-hours__office-hours-list">
             <div class="office-hours__office-hours-item-container">

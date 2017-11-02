@@ -39,13 +39,13 @@ angular.module('directives.officeHours', [
 
         function officeHoursLoaded(officeHours) {
           scope.loaded = true;
-
-          scope.officeHoursList = _.map(officeHours, function(oh) {
+          scope.officeHoursList = officeHours.map(function(oh) {
             return {
               description: oh.description,
-              degreeProgrammes: _.map(oh.degreeProgrammes, function(programme) {
+              degreeProgrammes: oh.degreeProgrammes.map(function(programme) {
                 return _.find(scope.degreeProgrammes, ['code', programme.code]);
-              })
+              }),
+              name: scope.userName
             };
           });
         }
@@ -68,7 +68,7 @@ angular.module('directives.officeHours', [
 
         scope.editOfficeHours = function editOfficeHours(index) {
           scope.officeHoursUnderEdit = _.cloneDeep(scope.officeHoursList[index]);
-          scope.availableDegreeProgrammes = _.filter(scope.degreeProgrammes, function(code) {
+          scope.availableDegreeProgrammes = scope.degreeProgrammes.filter( function(code) {
             return !_.find(scope.officeHoursUnderEdit.degreeProgrammes, ['code', code.code]);
           });
           scope.editedOfficeHoursIndex = index;
@@ -94,7 +94,7 @@ angular.module('directives.officeHours', [
         };
 
         scope.addOfficeHours = function addOfficeHours() {
-          scope.editedOfficeHoursIndex = scope.officeHoursList.length - 1;
+          scope.editedOfficeHoursIndex = -1;
           scope.resetOfficeHoursUnderEdit();
           scope.openEditDialog();
         };
@@ -109,12 +109,11 @@ angular.module('directives.officeHours', [
         };
 
         scope.editDialogOk = function editDialogOk() {
-          if (scope.officeHoursUnderEdit.description && scope.officeHoursUnderEdit.degreeProgrammes.length > 0) {
-
+          if (scope.canPublishEdits()) {
             if (scope.editedOfficeHoursIndex === -1) {
               scope.officeHoursList.push(_.cloneDeep(scope.officeHoursUnderEdit));
             } else {
-              scope.officeHoursList[scope.editedOfficeHoursIndex + 1] = _.cloneDeep(scope.officeHoursUnderEdit);
+              scope.officeHoursList[scope.editedOfficeHoursIndex] = _.cloneDeep(scope.officeHoursUnderEdit);
             }
             scope.resetOfficeHoursUnderEdit();
             OfficeHoursService.saveOfficeHours(scope.officeHoursList).then(officeHoursLoaded);
@@ -129,9 +128,9 @@ angular.module('directives.officeHours', [
         };
 
         scope.canPublishEdits = function canPublishEdits() {
-          return !!scope.officeHoursUnderEdit.description &&
+          return scope.officeHoursUnderEdit.description &&
             scope.officeHoursUnderEdit.degreeProgrammes.length > 0 &&
-            !!scope.officeHoursUnderEdit.name;
+            scope.officeHoursUnderEdit.name;
         };
 
         scope.resetOfficeHoursUnderEdit = function resetOfficeHoursUnderEdit() {
@@ -146,8 +145,8 @@ angular.module('directives.officeHours', [
         scope.loaded = false;
 
         SessionService.getSession().then(function getSessionSuccess(session) {
-          scope.resetOfficeHoursUnderEdit();
           scope.userName = session.name;
+          scope.resetOfficeHoursUnderEdit();
         });
 
         initOfficeHours();
