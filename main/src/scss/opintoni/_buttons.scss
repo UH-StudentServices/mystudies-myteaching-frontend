@@ -47,3 +47,13 @@ button.button--dark {
   border: $button_border;
   padding: $button_padding;
 }
+
+button.button--icon {
+  border: 0;
+  background-color: transparent;
+  padding: 0;
+  font-size: 1.2rem;
+}
+button.button--icon:hover {
+  background-color: transparent;
+}

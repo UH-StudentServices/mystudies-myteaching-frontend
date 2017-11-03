@@ -40,8 +40,12 @@
               <p class="office-hours__description">{{officeHours.description}}</p>
             </div>
             <div class="office-hours__office-hours-item-icons">
-              <span class="icon--edit-event" ng-click="editOfficeHours($index)"></span>
-              <span class="icon--remove" ng-click="showDeleteConfirmation($index)"></span>
+              <button class="button--icon" ng-click="editOfficeHours($index)">
+                <span class="icon--edit-event" ></span>
+              </button>
+              <button class="button--icon" ng-click="showDeleteConfirmation($index)">
+                <span class="icon--remove"></span>
+              </button>
             </div>
           </div>
 
