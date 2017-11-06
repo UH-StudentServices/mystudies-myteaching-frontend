@@ -296,7 +296,11 @@
     "heading": "julkaistut vastaanottoajat",
     "publish": "julkaise",
     "degreeProgramme": "Valitse yksi tai useampi koulutusohjelma",
-    "placeholder": "Vastaanottoaikasi",
+    "placeholder": {
+      "description": "Vastaanottoaikasi",
+      "additionalInfo": "Lisätietoja",
+      "receptionLocation": "Huoneen numero tai muu paikka"
+    },
     "addNew": "Uusi aika..."
   },
   "searchResults": {

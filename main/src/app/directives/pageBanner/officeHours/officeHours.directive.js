@@ -42,6 +42,8 @@ angular.module('directives.officeHours', [
           scope.officeHoursList = officeHours.map(function(oh) {
             return {
               description: oh.description,
+              additionalInfo: oh.additionalInfo,
+              receptionLocation: oh.receptionLocation,
               degreeProgrammes: oh.degreeProgrammes.map(function(programme) {
                 return _.find(scope.degreeProgrammes, ['code', programme.code]);
               }),
@@ -68,7 +70,7 @@ angular.module('directives.officeHours', [
 
         scope.editOfficeHours = function editOfficeHours(index) {
           scope.officeHoursUnderEdit = _.cloneDeep(scope.officeHoursList[index]);
-          scope.availableDegreeProgrammes = scope.degreeProgrammes.filter( function(code) {
+          scope.availableDegreeProgrammes = scope.degreeProgrammes.filter(function(code) {
             return !_.find(scope.officeHoursUnderEdit.degreeProgrammes, ['code', code.code]);
           });
           scope.editedOfficeHoursIndex = index;

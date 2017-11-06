@@ -296,7 +296,11 @@
     "heading": "publicerade mottagningstider",
     "publish": "publicera",
     "degreeProgramme": "Välj ett eller mera utbildningsprogram",
-    "placeholder": "Dina mottagningstider",
+    "placeholder": {
+      "description": "Dina mottagningstider",
+      "additionalInfo": "Mer information om mottagstider",
+      "receptionLocation": "Rum numret eller annat mottagsplats"
+    },
     "addNew": "Ny mottagstid..."
   },
   "searchResults": {
