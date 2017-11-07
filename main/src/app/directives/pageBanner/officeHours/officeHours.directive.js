@@ -43,7 +43,7 @@ angular.module('directives.officeHours', [
             return {
               description: oh.description,
               additionalInfo: oh.additionalInfo,
-              receptionLocation: oh.receptionLocation,
+              location: oh.location,
               degreeProgrammes: oh.degreeProgrammes.map(function(programme) {
                 return _.find(scope.degreeProgrammes, ['code', programme.code]);
               }),

@@ -299,7 +299,7 @@
     "placeholder": {
       "description": "Dina mottagningstider",
       "additionalInfo": "Mer information om mottagstider",
-      "receptionLocation": "Rum numret eller annat mottagsplats"
+      "location": "Rum numret eller annat mottagsplats"
     },
     "addNew": "Ny mottagstid..."
   },

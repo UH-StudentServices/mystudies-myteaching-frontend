@@ -299,7 +299,7 @@
     "placeholder": {
       "description": "Vastaanottoaikasi",
       "additionalInfo": "Lisätietoja",
-      "receptionLocation": "Huoneen numero tai muu paikka"
+      "location": "Huoneen numero tai muu paikka"
     },
     "addNew": "Uusi aika..."
   },

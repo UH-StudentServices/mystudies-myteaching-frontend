@@ -299,7 +299,7 @@
     "placeholder": {
       "description": "Your consultation hours",
       "additionalInfo": "Additional information about reception",
-      "receptionLocation": "Room number or other place of reception"
+      "location": "Room number or other place of reception"
     },
     "addNew": "Add new..."
   },
