@@ -34,7 +34,8 @@
     "help": "hjälp",
     "helsinkiUniversity": "Helsingfors universitet",
     "next": "följande",
-    "previous": "föregående"
+    "previous": "föregående",
+    "mandatory": "obligatorisk"
   },
   "abbreviations": {
     "credits": "sp"
@@ -295,11 +296,16 @@
     "dialogIntro": "Välj rätt utbildningsprogram och publicera dina mottagningstider. Om du väljar inga, dina mottagstider publiceras med de alla utbildningsprogram.",
     "heading": "publicerade mottagningstider",
     "publish": "publicera",
-    "degreeProgramme": "Välj ett eller mera utbildningsprogram",
-    "placeholder": {
+    "degreeProgramme": "Välj de utbildningsprogrammen",
+    "label": {
       "description": "Dina mottagningstider",
       "additionalInfo": "Mer information om mottagstider",
-      "location": "Rum numret eller annat mottagsplats"
+      "location": "Mottagsplats"
+    },
+    "placeholder": {
+      "description": "Till exempel, Mån 14-15, Tis 12-13",
+      "additionalInfo": "Till exempel, adress till dina websidor eller blog",
+      "location": "Till exempel, rum numret"
     },
     "addNew": "Ny mottagstid..."
   },

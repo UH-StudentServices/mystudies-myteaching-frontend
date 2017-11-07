@@ -22,14 +22,14 @@ button {
   border: none;
 }
 
-a.disabled {
+a.disabled, button.disabled{
   color: grey;
   background-color: white;
   border: 1px solid grey;
   cursor: auto;
 }
 
-a.disabled:hover {
+a.disabled:hover, button.disabled:hover {
   color: grey;
   background-color: white;
   border: 1px solid grey;
