@@ -71,9 +71,9 @@
     <div class="modal-body office-hours__modal-body" id="modal-body">
       <p translate="officeHours.dialogIntro"></p>
 
-      <select name="newDegreeProgramme" class="office-hours__input-element" ng-model="newDegreeProgramme" ng-change="addDegreeProgramme(newDegreeProgramme)"
+      <select name="newDegreeProgramme" class="office-hours__input" ng-model="newDegreeProgramme" ng-change="addDegreeProgramme(newDegreeProgramme)"
         ng-options="programme.code as programme.name for programme in availableDegreeProgrammes | orderBy:'name'">
-        <option value="" >{{('officeHours.degreeProgramme' | translate)}}...</option>
+        <option value="" >{{::('officeHours.degreeProgramme' | translate)}}...</option>
       </select>
 
       <ul class="office-hours__degree-programmes">
@@ -84,16 +84,16 @@
       </ul>
 
       <label>
-        {{'officeHours.label.description' | translate}} ({{'general.mandatory' | translate}})
-        <input type="text" class="office-hours__input-element" placeholder="{{('officeHours.placeholder.description' | translate)}}..." ng-model="officeHoursUnderEdit.description">
+        {{::('officeHours.label.description' | translate)}} ({{::('general.mandatory' | translate)}})
+        <input type="text" class="office-hours__input" placeholder="{{::('officeHours.placeholder.description' | translate)}}..." ng-model="officeHoursUnderEdit.description">
       </label>
       <label>
-        {{'officeHours.label.additionalInfo' | translate}}
-        <input type="text" class="office-hours__input-element" placeholder="{{('officeHours.placeholder.additionalInfo' | translate)}}..." ng-model="officeHoursUnderEdit.additionalInfo">
+        {{::('officeHours.label.additionalInfo' | translate)}}
+        <input type="text" class="office-hours__input" placeholder="{{::('officeHours.placeholder.additionalInfo' | translate)}}..." ng-model="officeHoursUnderEdit.additionalInfo">
       </label>
       <label>
-        {{'officeHours.label.location' | translate}}
-        <input type="text" class="office-hours__input-element" placeholder="{{('officeHours.placeholder.location' | translate)}}..." ng-model="officeHoursUnderEdit.location">
+        {{::('officeHours.label.location' | translate)}}
+        <input type="text" class="office-hours__input" placeholder="{{::('officeHours.placeholder.location' | translate)}}..." ng-model="officeHoursUnderEdit.location">
       </label>
 
     </div>
