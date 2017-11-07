@@ -296,7 +296,11 @@
     "heading": "published consultation hours",
     "publish": "publish",
     "degreeProgramme": "Select one or more degree programmes",
-    "placeholder": "Your consultation hours",
+    "placeholder": {
+      "description": "Your consultation hours",
+      "additionalInfo": "Additional information about reception",
+      "location": "Room number or other place of reception"
+    },
     "addNew": "Add new..."
   },
   "searchResults": {
