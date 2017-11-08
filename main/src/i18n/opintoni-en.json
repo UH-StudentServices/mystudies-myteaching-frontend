@@ -34,7 +34,8 @@
     "help": "help",
     "helsinkiUniversity": "University of Helsinki",
     "next": "next",
-    "previous": "previous"
+    "previous": "previous",
+    "mandatory": "mandatory"
   },
   "abbreviations": {
     "credits": "cr"
@@ -292,14 +293,19 @@
   },
   "officeHours": {
     "intro": "Choose the right degree programme(s) and publish your consultation hours. Any changes you make will be automatically updated to the published consultation hours.",
-    "dialogIntro": "Choose the right degree programme(s) and publish your consultation hours.",
+    "dialogIntro": "Choose the right degree programme(s) and publish your consultation hours. If you don't pick any programme, your hours will be show for all of the programmes.",
     "heading": "published consultation hours",
     "publish": "publish",
-    "degreeProgramme": "Select one or more degree programmes",
-    "placeholder": {
+    "degreeProgramme": "Select degree programmes",
+    "label": {
       "description": "Your consultation hours",
-      "additionalInfo": "Additional information about reception",
-      "location": "Room number or other place of reception"
+      "additionalInfo": "Additional contact information",
+      "location": "Location"
+    },
+    "placeholder": {
+      "description": "For example Mon 14-15, Tue 12-13",
+      "additionalInfo": "For example blog or website address",
+      "location": "For example room number"
     },
     "addNew": "Add new..."
   },

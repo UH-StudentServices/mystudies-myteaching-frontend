@@ -255,7 +255,7 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
   white-space: pre-wrap;
 }
 
-.office-hours__input-element {
+.office-hours__input {
   margin-bottom: 8px;
 }
 
@@ -291,4 +291,12 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
 
 .office-hours__office-hours-item {
   margin-bottom: 10px;
+}
+
+.office-hours__modal-body {
+
+  label {
+    color: white;
+    font-size: 1rem;
+  }
 }

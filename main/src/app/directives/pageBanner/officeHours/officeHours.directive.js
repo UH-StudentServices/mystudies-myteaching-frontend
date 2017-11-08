@@ -131,7 +131,6 @@ angular.module('directives.officeHours', [
 
         scope.canPublishEdits = function canPublishEdits() {
           return scope.officeHoursUnderEdit.description &&
-            scope.officeHoursUnderEdit.degreeProgrammes.length > 0 &&
             scope.officeHoursUnderEdit.name;
         };
 

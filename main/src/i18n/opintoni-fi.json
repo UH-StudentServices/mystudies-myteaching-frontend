@@ -34,7 +34,8 @@
     "help": "apua",
     "helsinkiUniversity": "Helsingin Yliopisto",
     "next": "seuraava",
-    "previous": "edellinen"
+    "previous": "edellinen",
+    "mandatory": "pakollinen"
   },
   "abbreviations": {
     "credits": "op"
@@ -292,14 +293,19 @@
   },
   "officeHours": {
     "intro": "Julkaise vastaanottoaikasi valitsemassasi koulutusohjelmassa tai -ohjelmissa. Tekemäsi muutokset päivittyvät automaattisesti julkaistuihin vastaanottoaikoihin.",
-    "dialogIntro": "Julkaise vastaanottoaikasi valitsemissasi koulutusohjelmassa",
+    "dialogIntro": "Julkaise vastaanottoaikasi valitsemissasi koulutusohjelmassa. Jos et valitse mitään koulutusohjelmaa, vastaanottosi näkyy kaikkien yhteydessä.",
     "heading": "julkaistut vastaanottoajat",
     "publish": "julkaise",
-    "degreeProgramme": "Valitse yksi tai useampi koulutusohjelma",
-    "placeholder": {
+    "degreeProgramme": "Valitse haluamasi koulutusohjelmat",
+    "label": {
       "description": "Vastaanottoaikasi",
-      "additionalInfo": "Lisätietoja",
-      "location": "Huoneen numero tai muu paikka"
+      "additionalInfo": "Muut yhteystiedot",
+      "location": "Vastaanoton sijainti"
+    },
+    "placeholder": {
+      "description": "Esim maanantaisin 14-15, tiistaisin 12-13",
+      "additionalInfo": "Esim blogi tai verkkosivuosoite",
+      "location": "Esim huoneen numero"
     },
     "addNew": "Uusi aika..."
   },
