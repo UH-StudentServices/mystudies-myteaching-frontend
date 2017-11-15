@@ -37,7 +37,7 @@ angular.module('services.favorites', [
 
     function saveRSSFavorite(rssFavorite, favoriteType) {
       AnalyticsService.trackAddFavorite(favoriteType);
-      return FavoritesResource.saveRSSFavorite(rssFavorite).$promise;
+      return FavoritesResource.saveRSSFavorite(rssFavorite);
     }
 
     function getRSSFeed(feedUrl) {
