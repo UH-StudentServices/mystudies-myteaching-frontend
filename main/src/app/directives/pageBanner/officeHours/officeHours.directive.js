@@ -64,10 +64,6 @@ angular.module('directives.officeHours', [
           scope.availableDegreeProgrammes.push(degreeProgramme);
         };
 
-        scope.publishOfficeHours = function publishOfficeHours() {
-          OfficeHoursService.saveOfficeHours(scope.officeHoursUnderEdit).then(officeHoursLoaded);
-        };
-
         scope.editOfficeHours = function editOfficeHours(index) {
           scope.officeHoursUnderEdit = _.cloneDeep(scope.officeHoursList[index]);
           scope.availableDegreeProgrammes = scope.degreeProgrammes.filter(function(code) {
