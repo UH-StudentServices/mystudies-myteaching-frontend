@@ -307,7 +307,11 @@
       "additionalInfo": "Esim blogi tai verkkosivuosoite",
       "location": "Esim huoneen numero"
     },
-    "addNew": "Uusi aika..."
+    "addNew": "Uusi aika...",
+    "loading": "Ladataan vastaanottoaikoja...",
+    "errors": {
+      "loadingError": "Vastaanottoaikojen lataus epäonnistui"
+    }
   },
   "searchResults": {
     "title": "Haku",

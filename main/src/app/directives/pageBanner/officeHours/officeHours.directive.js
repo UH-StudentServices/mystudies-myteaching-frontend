@@ -29,12 +29,19 @@ angular.module('directives.officeHours', [
       templateUrl: 'app/directives/pageBanner/officeHours/officeHours.html',
       link: function(scope) {
 
+        function setLoadError() {
+          scope.loadError = true;
+        }
+
         function initOfficeHours() {
-          OfficeHoursService.loadDegreeProgrammes().then(function(degreeProgrammes) {
+          OfficeHoursService.loadDegreeProgrammes()
+          .then(function(degreeProgrammes) {
             scope.degreeProgrammes = _.cloneDeep(degreeProgrammes);
             scope.availableDegreeProgrammes = _.cloneDeep(degreeProgrammes);
-            OfficeHoursService.loadOfficeHours().then(officeHoursLoaded);
-          });
+            return OfficeHoursService.loadOfficeHours();
+          })
+          .then(officeHoursLoaded)
+          .catch(setLoadError);
         };
 
         function officeHoursLoaded(officeHours) {
@@ -62,10 +69,6 @@ angular.module('directives.officeHours', [
         scope.removeDegreeProgramme = function removeDegreeProgramme(degreeProgramme) {
           _.remove(scope.officeHoursUnderEdit.degreeProgrammes, ['code', degreeProgramme.code]);
           scope.availableDegreeProgrammes.push(degreeProgramme);
-        };
-
-        scope.publishOfficeHours = function publishOfficeHours() {
-          OfficeHoursService.saveOfficeHours(scope.officeHoursUnderEdit).then(officeHoursLoaded);
         };
 
         scope.editOfficeHours = function editOfficeHours(index) {
@@ -118,7 +121,10 @@ angular.module('directives.officeHours', [
               scope.officeHoursList[scope.editedOfficeHoursIndex] = _.cloneDeep(scope.officeHoursUnderEdit);
             }
             scope.resetOfficeHoursUnderEdit();
-            OfficeHoursService.saveOfficeHours(scope.officeHoursList).then(officeHoursLoaded);
+            scope.loaded = false;
+            OfficeHoursService.saveOfficeHours(scope.officeHoursList)
+            .then(officeHoursLoaded)
+            .catch(setLoadError);
           }
 
           scope.modalInstance.close();
@@ -144,6 +150,7 @@ angular.module('directives.officeHours', [
         scope.resetOfficeHoursUnderEdit();
 
         scope.loaded = false;
+        scope.loadError = false;
 
         SessionService.getSession().then(function getSessionSuccess(session) {
           scope.userName = session.name;

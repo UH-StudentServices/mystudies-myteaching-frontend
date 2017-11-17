@@ -18,14 +18,14 @@
 <div class="office-hours">
   <div class="office-hours__bg-img-container">
 
-    <div ng-if="loaded && officeHoursList.length === 0" class="office-hours__box">
+    <div ng-if="!loadError && loaded && officeHoursList.length === 0" class="office-hours__box">
       <p translate="officeHours.intro"></p>
       <div class="button-group office-hours__buttons">
         <button class="button button-group__button" translate="officeHours.addNew" ng-click="addOfficeHours()"></button>
       </div>
     </div>
 
-    <div ng-if="loaded && officeHoursList.length > 0" class="office-hours__box">
+    <div ng-if="!loadError && loaded && officeHoursList.length > 0" class="office-hours__box">
       <p class="text-transform-capitalize" translate="officeHours.heading" />
       <ul>
         <li class="office-hours__office-hours-item" ng-repeat="officeHours in officeHoursList track by $index">
@@ -38,7 +38,7 @@
                 </li>
               </ul>
               <div class="office-hours__description">
-                <div ng-repeat="row in [officeHours.description, officeHours.additionalInfo, officeHours.location]">{{::row}}</div>
+                <div ng-repeat="row in [officeHours.description, officeHours.additionalInfo, officeHours.location] track by $index">{{row}}</div>
               </div>
             </div>
             <div class="office-hours__office-hours-item-icons">
@@ -64,7 +64,16 @@
       </div>
     </div>
 
-    <div ng-if="!loaded" class="office-hours__box"></div>
+    <div ng-if="!loadError && !loaded" class="office-hours__box">
+      <span class="icon icon--spinner icon-spin"></span>
+      <p translate="officeHours.loading">
+    </div>
+
+    <div ng-if="loadError" class="office-hours__box">
+      <span class="icon icon--warning"></span>
+      <p translate="officeHours.errors.loadingError">
+    </div>
+
   </div>
 
   <script type="text/ng-template" id="officeHoursEditDialog.html">
