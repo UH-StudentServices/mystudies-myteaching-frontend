@@ -38,10 +38,9 @@ angular.module('directives.officeHours', [
           .then(function(degreeProgrammes) {
             scope.degreeProgrammes = _.cloneDeep(degreeProgrammes);
             scope.availableDegreeProgrammes = _.cloneDeep(degreeProgrammes);
-            OfficeHoursService.loadOfficeHours()
-            .then(officeHoursLoaded)
-            .catch(setLoadError);
+            return OfficeHoursService.loadOfficeHours();
           })
+          .then(officeHoursLoaded)
           .catch(setLoadError);
         };
 
