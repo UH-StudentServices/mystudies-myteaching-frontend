@@ -29,15 +29,20 @@ angular.module('directives.officeHours', [
       templateUrl: 'app/directives/pageBanner/officeHours/officeHours.html',
       link: function(scope) {
 
+        function setLoadError() {
+          scope.loadError = true;
+        }
+
         function initOfficeHours() {
-          OfficeHoursService.loadDegreeProgrammes().then(function(degreeProgrammes) {
+          OfficeHoursService.loadDegreeProgrammes()
+          .then(function(degreeProgrammes) {
             scope.degreeProgrammes = _.cloneDeep(degreeProgrammes);
             scope.availableDegreeProgrammes = _.cloneDeep(degreeProgrammes);
-            OfficeHoursService.loadOfficeHours().then(officeHoursLoaded, function(e) {
-              console.error('Error loading office hours:', e);
-              scope.loadError = true;
-            });
-          });
+            OfficeHoursService.loadOfficeHours()
+            .then(officeHoursLoaded)
+            .catch(setLoadError);
+          })
+          .catch(setLoadError);
         };
 
         function officeHoursLoaded(officeHours) {
@@ -118,10 +123,9 @@ angular.module('directives.officeHours', [
             }
             scope.resetOfficeHoursUnderEdit();
             scope.loaded = false;
-            OfficeHoursService.saveOfficeHours(scope.officeHoursList).then(officeHoursLoaded, function(e) {
-              console.error('Error saving office hours ', e);
-              scope.loadError = true;
-            });
+            OfficeHoursService.saveOfficeHours(scope.officeHoursList)
+            .then(officeHoursLoaded)
+            .catch(setLoadError);
           }
 
           scope.modalInstance.close();
