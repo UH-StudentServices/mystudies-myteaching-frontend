@@ -33,7 +33,10 @@ angular.module('directives.officeHours', [
           OfficeHoursService.loadDegreeProgrammes().then(function(degreeProgrammes) {
             scope.degreeProgrammes = _.cloneDeep(degreeProgrammes);
             scope.availableDegreeProgrammes = _.cloneDeep(degreeProgrammes);
-            OfficeHoursService.loadOfficeHours().then(officeHoursLoaded);
+            OfficeHoursService.loadOfficeHours().then(officeHoursLoaded, function(e) {
+              console.error('Error loading office hours:', e);
+              scope.loadError = true;
+            });
           });
         };
 
@@ -114,7 +117,11 @@ angular.module('directives.officeHours', [
               scope.officeHoursList[scope.editedOfficeHoursIndex] = _.cloneDeep(scope.officeHoursUnderEdit);
             }
             scope.resetOfficeHoursUnderEdit();
-            OfficeHoursService.saveOfficeHours(scope.officeHoursList).then(officeHoursLoaded);
+            scope.loaded = false;
+            OfficeHoursService.saveOfficeHours(scope.officeHoursList).then(officeHoursLoaded, function(e) {
+              console.error('Error saving office hours ', e);
+              scope.loadError = true;
+            });
           }
 
           scope.modalInstance.close();
@@ -140,6 +147,7 @@ angular.module('directives.officeHours', [
         scope.resetOfficeHoursUnderEdit();
 
         scope.loaded = false;
+        scope.loadError = false;
 
         SessionService.getSession().then(function getSessionSuccess(session) {
           scope.userName = session.name;

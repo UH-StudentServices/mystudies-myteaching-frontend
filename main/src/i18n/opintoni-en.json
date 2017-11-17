@@ -307,7 +307,11 @@
       "additionalInfo": "For example blog or website address",
       "location": "For example room number"
     },
-    "addNew": "Add new..."
+    "addNew": "Add new...",
+    "loading": "Loading consultation hours...",
+    "errors": {
+      "loadingError": "Consultation hours could not be loaded"
+    }
   },
   "searchResults": {
     "title": "Search",

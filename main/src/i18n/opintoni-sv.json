@@ -307,7 +307,11 @@
       "additionalInfo": "Till exempel, adress till dina websidor eller blog",
       "location": "Till exempel, rum numret"
     },
-    "addNew": "Ny mottagstid..."
+    "addNew": "Ny mottagstid...",
+    "loading": "Mottagningstider laddas...",
+    "errors": {
+      "loadingError": "Mottagninstider kunde inte laddas"
+    }
   },
   "searchResults": {
     "title": "Sök",
