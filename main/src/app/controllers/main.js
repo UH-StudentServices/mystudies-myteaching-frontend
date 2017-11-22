@@ -38,6 +38,7 @@ angular.module('controllers.main', [
     State,
     userSettings,
     session,
+    notifications,
     getCourses,
     getEvents,
     UserSettingsService) {
@@ -47,6 +48,7 @@ angular.module('controllers.main', [
     $scope.userSettings = userSettings;
     $scope.showApp = session !== undefined;
     $scope.session = session;
+    $scope.notifications = notifications;
     $scope.courses = getCourses();
     $scope.events = getEvents();
     $scope.currentYear = moment().year();

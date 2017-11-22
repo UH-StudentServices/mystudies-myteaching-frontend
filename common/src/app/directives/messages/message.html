@@ -17,7 +17,8 @@
 
 <div class="messages" ng-class="message.messageType">
   <p>
-    <span translate="{{::message.key}}"></span>
+    <span ng-if="message.key" translate="{{::message.key}}"></span>
+    <span ng-if="message.text">{{::message.text}}</span>
     <a ng-click="close(message)" class="icon--remove" ng-if="close" tabindex="0"></a>
   </p>
 </div>

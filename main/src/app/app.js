@@ -48,6 +48,7 @@ angular.module('opintoniApp', [
   'resources.httpInterceptor',
   'resources.stateInterceptor',
   'resources.events',
+  'resources.notifications',
 
   'directives.menuLanguage',
   'directives.dropdown',
@@ -122,12 +123,9 @@ angular.module('opintoniApp', [
                 return undefined;
               });
           },
-          redirectNeeded: function($window, $cookies, RedirectCookie) {
-            var redirectCookie = $cookies.get(RedirectCookie.NAME);
-
-            if (redirectCookie) {
-              $cookies.remove(RedirectCookie.NAME);
-              $window.location.href = redirectCookie;
+          notifications: function(NotificationsResource, session) {
+            if (session.$resolved) {
+              return NotificationsResource.getNotifications();
             }
           }
         }
