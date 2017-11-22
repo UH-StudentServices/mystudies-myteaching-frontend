@@ -25,15 +25,21 @@ angular.module('directives.stickyMessage', ['directives.message', 'services.conf
       templateUrl: 'app/directives/messages/stickyMessage.html',
       scope: {
         environments: '=',
-        messageKey: '@'
+        messageKey: '@',
+        messageText: '@'
       },
       link: function(scope, el) {
 
-        if (_.includes(scope.environments, Configuration.environment)) {
+        if (!scope.environments || _.includes(scope.environments, Configuration.environment)) {
           scope.message = {
-            messageType: MessageTypes.INFO,
-            key: scope.messageKey
+            messageType: MessageTypes.INFO
           };
+
+          if (scope.messageKey) {
+            scope.message.key = scope.messageKey;
+          } else if (scope.messageText) {
+            scope.message.text = scope.messageText;
+          }
 
           el.Stickyfill(); // eslint-disable-line new-cap
         }

@@ -80,6 +80,8 @@ angular.module('opintoniPortfolioApp', [
   'services.scriptInjector',
   'services.preview',
 
+  'resources.notifications',
+
   'utils.moment'
 ])
 
@@ -118,6 +120,11 @@ angular.module('opintoniPortfolioApp', [
         userSettings: function(StateService, State, UserSettingsService, state) {
           if (state === State.PRIVATE) {
             return UserSettingsService.getUserSettings();
+          }
+        },
+        notifications: function(NotificationsResource, session) {
+          if (session.$resolved) {
+            return NotificationsResource.getNotifications();
           }
         },
         portfolio: function(PortfolioService, $location, $state, $stateParams, session, state, $translate) {

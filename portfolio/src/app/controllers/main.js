@@ -19,10 +19,11 @@ angular.module('controllers.main', ['constants.portfolioTabs',
                                     'services.componentOrder',
                                     'utils.browser'])
 
-  .controller('MainCtrl', function($scope, portfolioTabs, portfolio, state, userSettings,
+  .controller('MainCtrl', function($scope, portfolioTabs, portfolio, state, userSettings, notifications,
                                    ComponentOrderService, PreviewService, State, BrowserUtil) {
     $scope.portfolio = portfolio;
     $scope.userSettings = userSettings;
+    $scope.notifications = notifications;
     $scope.portfolioTabs = portfolioTabs;
     $scope.currentYear = moment().year();
     $scope.isPreview = PreviewService.isPreview();
