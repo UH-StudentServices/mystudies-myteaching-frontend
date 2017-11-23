@@ -88,18 +88,19 @@ angular.module('directives.weekFeed.feedItem.event',[
     }
 
     return function(startDate, endDate) {
+      if (startDate) {
+        /* Dates are UTC but we want to show them as local times */
+        startDate = startDate.local();
+        endDate = endDate ? endDate.local() : undefined;
 
-      /* Dates are UTC but we want to show them as local times */
-      startDate = startDate.local();
-      endDate = endDate.local();
-
-      if (startDate.diff(endDate) === 0) {
-        return formatMomentDate(startDate);
-      } else if (startDate.year() === endDate.year() &&
-                 startDate.dayOfYear() === endDate.dayOfYear()) {
-        return formatMomentDateTimeSpan(startDate, endDate);
-      } else {
-        return formatMomentDateSpan(startDate, endDate);
+        if (!endDate || startDate.diff(endDate) === 0) {
+          return formatMomentDate(startDate);
+        } else if (startDate.year() === endDate.year() &&
+          startDate.dayOfYear() === endDate.dayOfYear()) {
+          return formatMomentDateTimeSpan(startDate, endDate);
+        } else {
+          return formatMomentDateSpan(startDate, endDate);
+        }
       }
     };
   });

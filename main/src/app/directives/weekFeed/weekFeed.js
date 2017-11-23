@@ -380,7 +380,7 @@ angular.module('directives.weekFeed', [
             nowMoment.isSame(item.startDate) ||
             nowMoment.isSame(item.endDate);
         case FeedItemTimeCondition.CURRENT_OR_UPCOMING:
-          return nowMoment.isBefore(item.endDate);
+          return nowMoment.isBefore(item.endDate) || nowMoment.isBefore(item.startDate);
         case FeedItemTimeCondition.PAST:
           return nowMoment.isAfter(item.endDate);
         default:
