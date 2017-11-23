@@ -17,9 +17,9 @@
 
 'use strict';
 
-angular.module('utils.moment', [])
+angular.module('utils.moment', ['services.language'])
 
-  .service('convertToMoment', function() {
+  .service('convertToMoment', function(LanguageService) {
     function convert(input, convertFn) {
       if (input && _.isArray(input)) {
         return convertFn(_.map(input, function(value, index) {
@@ -28,9 +28,10 @@ angular.module('utils.moment', [])
             return value - 1;
           }
           return value;
-        }));
+        })).locale(LanguageService.getCurrent());
+        // Temporary workaround for MeCe client overriding global moment locale
       } else if (input) {
-        return convertFn(input);
+        return convertFn(input).locale(LanguageService.getCurrent());
       }
     }
 

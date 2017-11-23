@@ -75,7 +75,8 @@ module.exports = function(config) {
       'src/app/utils/*.js',
       '../common/src/app/**/!(bootstrap).js',
       'test/testdata/*.json',
-      'test/spec/unit/**/*.js'
+      'test/spec/unit/**/*.js',
+      '../common/test/mock/language.service.mock.js'
     ],
 
 
