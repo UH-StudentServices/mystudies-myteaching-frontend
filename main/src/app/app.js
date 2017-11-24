@@ -59,6 +59,7 @@ angular.module('opintoniApp', [
   'directives.courseBrowsingRecommendations',
   'directives.pageNavigation',
   'directives.stickyMessage',
+  'directives.notifications',
 
   'controllers.main',
   'controllers.calendar',
