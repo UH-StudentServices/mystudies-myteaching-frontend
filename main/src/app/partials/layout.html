@@ -19,10 +19,8 @@
   <sticky-message message-key="globalMessages.demoEnvNoticeMyStudies" environments="['demo']" limit-visibility="['MY_STUDIES_ONLY']"></sticky-message>
   <sticky-message message-key="globalMessages.demoEnvNoticeMyTeaching" environments="['demo']" limit-visibility="['MY_TEACHINGS_ONLY']"></sticky-message>
 
-  <div ng-repeat="notification in notifications track by notification.id">
-    <sticky-message message-text="{{notification.text}}"></sticky-message>
-  </div>
-  
+  <notifications notifications="notifications"></notifications>
+
   <header id="top" class="l-header">
     <page-header></page-header>
     <page-navigation></page-navigation>

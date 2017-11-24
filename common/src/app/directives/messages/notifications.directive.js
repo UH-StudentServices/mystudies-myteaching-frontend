@@ -15,28 +15,24 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.stickyMessage', ['directives.message', 'services.configuration'])
+angular.module('directives.notifications', ['directives.message'])
 
-  .directive('stickyMessage', function(MessageTypes, Configuration) {
-
-    return {
-      restrict: 'E',
-      replace: true,
-      templateUrl: 'app/directives/messages/stickyMessage.html',
-      scope: {
-        environments: '=',
-        messageKey: '@'
-      },
-      link: function(scope, el) {
-
-        if (_.includes(scope.environments, Configuration.environment)) {
-          scope.message = {
-            messageType: MessageTypes.INFO,
-            key: scope.messageKey
-          };
-
-          el.Stickyfill(); // eslint-disable-line new-cap
-        }
-      }
-    };
-  });
+.directive('notifications', function(MessageTypes) {
+  return {
+    restrict: 'E',
+    replace: true,
+    templateUrl: 'app/directives/messages/notifications.html',
+    scope: {
+      notifications: '='
+    },
+    link: function(scope) {
+      scope.messages = scope.notifications.map(function(n) {
+        return {
+          messageType: MessageTypes.INFO,
+          text: n.text,
+          id: n.id
+        };
+      });
+    }
+  };
+});
