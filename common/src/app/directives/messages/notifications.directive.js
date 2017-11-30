@@ -26,13 +26,13 @@ angular.module('directives.notifications', ['directives.message'])
       notifications: '='
     },
     link: function(scope) {
-      scope.messages = scope.notifications.map(function(n) {
+      scope.messages = scope.notifications ? scope.notifications.map(function(n) {
         return {
           messageType: MessageTypes.INFO,
           text: n.text,
           id: n.id
         };
-      });
+      }) : [];
     }
   };
 });

@@ -124,7 +124,7 @@ angular.module('opintoniPortfolioApp', [
           }
         },
         notifications: function(NotificationsResource, session) {
-          if (session.$resolved) {
+          if (session && session.$resolved) {
             return NotificationsResource.getNotifications();
           }
         },

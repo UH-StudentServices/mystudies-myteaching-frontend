@@ -125,7 +125,7 @@ angular.module('opintoniApp', [
               });
           },
           notifications: function(NotificationsResource, session) {
-            if (session.$resolved) {
+            if (session && session.$resolved) {
               return NotificationsResource.getNotifications();
             }
           }
