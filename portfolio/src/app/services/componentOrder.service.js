@@ -54,13 +54,13 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
         .subscribe(function(freeTextContentItems) {
           var freeTextContentComponentOrders, allComponentOrders;
 
-          freeTextContentComponentOrders = freeTextContentItems.map(function(el) {
+          freeTextContentComponentOrders = freeTextContentItems ? freeTextContentItems.map(function(el) {
             return {
               component: 'FREE_TEXT_CONTENT',
               instanceName: el.instanceName,
               orderValue: getFreeTextContentItemOrder(el, freeTextContentItems)
             };
-          });
+          }) : [];
 
           allComponentOrders = singletonComponentOrders(portfolio).concat(freeTextContentComponentOrders);
           callback(_.sortBy(allComponentOrders, 'orderValue'));
