@@ -121,7 +121,7 @@ angular.module('constants.externalLinks', [])
     },
     {
       key: 'primaryLinks.courseSearch',
-      domain: ['opetukseni'],
+      domain: ['opintoni', 'opetukseni'],
       href: {
         fi: 'https://dev.courses.helsinki.fi/fi/search',
         sv: 'https://dev.courses.helsinki.fi/sv/search',
@@ -210,7 +210,7 @@ angular.module('constants.externalLinks', [])
     },
     {
       key: 'primaryLinks.courseSearch',
-      domain: ['opetukseni'],
+      domain: ['opintoni', 'opetukseni'],
       href: {
         fi: 'https://dev.courses.helsinki.fi/fi/search',
         sv: 'https://dev.courses.helsinki.fi/sv/search',
@@ -299,7 +299,7 @@ angular.module('constants.externalLinks', [])
     },
     {
       key: 'primaryLinks.courseSearch',
-      domain: ['opetukseni'],
+      domain: ['opintoni', 'opetukseni'],
       href: {
         fi: 'https://dev.courses.helsinki.fi/fi/search',
         sv: 'https://dev.courses.helsinki.fi/sv/search',
@@ -379,7 +379,7 @@ angular.module('constants.externalLinks', [])
   demo: [
     {
       key: 'primaryLinks.oodi',
-      domain: ['opetukseni'],
+      domain: ['opintoni', 'opetukseni'],
       href: {
         fi: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=1',
         sv: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=2',
@@ -460,7 +460,7 @@ angular.module('constants.externalLinks', [])
     },
     {
       key: 'primaryLinks.courseSearch',
-      domain: ['opetukseni'],
+      domain: ['opintoni', 'opetukseni'],
       href: {
         fi: 'https://courses.helsinki.fi/fi/search',
         sv: 'https://courses.helsinki.fi/sv/search',
