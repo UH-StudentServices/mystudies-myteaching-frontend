@@ -124,16 +124,12 @@
     @include mobile-toolbar-toggle;
   }
 
-  .user-settings, .user-notifications, .search-icon {
+  .user-settings, .user-notifications {
     display: block;
   }
 
   .user-settings .dropdown-toggle {
     right: 3em;
-  }
-
-  .search-icon .dropdown-toggle {
-    right: 6em;
   }
 
   .mece__widget {
