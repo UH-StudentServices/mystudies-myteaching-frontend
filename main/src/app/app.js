@@ -55,8 +55,6 @@ angular.module('opintoniApp', [
   'directives.editLink',
   'directives.feedback',
   'directives.visibility',
-  'directives.courseStudiesRecommendations',
-  'directives.courseBrowsingRecommendations',
   'directives.pageNavigation',
   'directives.stickyMessage',
   'directives.notifications',
