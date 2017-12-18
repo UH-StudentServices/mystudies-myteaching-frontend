@@ -419,18 +419,6 @@
     "week" : "vecka",
     "month" : "månad"
   },
-  "courseRecommendations" : {
-    "studies": {
-      "title" : "potentiellt intressanta kurser baserad på dina prestationer",
-      "disclaimerText": "Kurslistan nedan baserar på dina studieprestationer. Listan är personlig och ingen annan ser det. Vänligen kolla förutsättningar och den rätta studierätten innan du anmäler dig till kursen."
-    },
-    "browsing": {
-      "title": "potentiellt intressanta kurser baserad på din sökhistorik"
-    },
-    "showMore": "visa mer",
-    "showLess": "visa mindre",
-    "disclaimer": "disclaimer"
-  },
   "cookieNotification": {
     "notification": "Den här webbplatsen använder cookies för att förbättra användbarheten på sidorna.",
     "readMore": "Läs mer"

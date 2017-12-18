@@ -419,18 +419,6 @@
     "week": "viikko",
     "month": "kuukausi"
   },
-  "courseRecommendations" : {
-    "studies": {
-      "title" : "mahdollisesti kiinnostavia kursseja suoritustesi perusteella",
-      "disclaimerText": "Alla oleva kurssilista perustuu opintosuorituksiisi, joita on verrattu muiden opiskelijoiden suorituksiin. Lista on henkilökohtainen eikä kukaan muu näe sitä. Tarkista kurssin esitietovaatimukset ja vaadittava opiskeluoikeus ennen ilmoittautumista."
-    },
-    "browsing": {
-      "title": "mahdollisesti kiinnostavia kursseja selailuhistoriasi perusteella"
-    },
-    "showMore": "näytä lisää",
-    "showLess": "näytä vähemmän",
-    "disclaimer": "vastuuvapauslauseke"
-  },
   "cookieNotification": {
     "notification": "Tämä sivusto käyttää evästeitä toimiakseen mahdollisimman hyvin.",
     "readMore": "Lue lisää"
