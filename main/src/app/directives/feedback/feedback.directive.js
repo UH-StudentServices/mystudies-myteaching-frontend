@@ -20,8 +20,25 @@ angular.module('directives.feedback', [
   'services.session',
   'services.state'])
 
+  .factory('FeedbackSiteService', function(StateService, State) {
+    function getFeedbackSite() {
+      var rootStateName = StateService.getRootStateName();
+
+      switch (rootStateName) {
+        case State.MY_TEACHINGS:
+          return 'myTeaching';
+        default:
+          return 'myStudies';
+      }
+    }
+
+    return {
+      getFeedbackSite: getFeedbackSite
+    };
+  })
+
   .directive('feedback', function(FeedbackResource, $timeout, $window, SessionService,
-                                  StateService, AnalyticsService, LanguageService) {
+                                  FeedbackSiteService, AnalyticsService, LanguageService) {
     return {
       restrict: 'E',
       replace: true,
@@ -73,7 +90,7 @@ angular.module('directives.feedback', [
                   metadata: {
                     userAgent: $window.navigator.userAgent,
                     faculty: sessionData.facultyCode,
-                    state: StateService.getRootStateName(),
+                    site: FeedbackSiteService.getFeedbackSite(),
                     lang: LanguageService.getCurrent()
                   }
                 };
