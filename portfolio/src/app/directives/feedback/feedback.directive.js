@@ -20,8 +20,29 @@ angular.module('directives.feedback', [
   'services.session',
   'services.state'])
 
-  .directive('feedback', function(FeedbackResource, SessionService, PortfolioRoleService,
-                                  $timeout, $window) {
+  .factory('FeedbackSiteService', function(PortfolioRoleService, PortfolioRole) {
+    function getFeedbackSite() {
+      var portfolioRole = PortfolioRoleService.getActiveRole();
+
+      switch (portfolioRole) {
+        case PortfolioRole.TEACHER:
+          return 'academicPortfolio';
+        default:
+          return 'portfolio';
+      }
+    }
+
+    return {
+      getFeedbackSite: getFeedbackSite
+    };
+  })
+
+  .directive('feedback', function(FeedbackResource,
+                                  SessionService,
+                                  FeedbackSiteService,
+                                  LanguageService,
+                                  $timeout,
+                                  $window) {
     return {
       restrict: 'E',
       replace: true,
@@ -75,8 +96,8 @@ angular.module('directives.feedback', [
                   metadata: {
                     userAgent: $window.navigator.userAgent,
                     faculty: sessionData.facultyCode,
-                    state: 'portfolio',
-                    role: PortfolioRoleService.getActiveRole()
+                    site: FeedbackSiteService.getFeedbackSite(),
+                    lang: LanguageService.getCurrent()
                   }
                 };
               })
