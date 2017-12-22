@@ -18,7 +18,7 @@
 angular.module('resources.feedback', [])
 
   .factory('FeedbackResource', function FeedbackResource($resource) {
-    var feedbackResource = $resource('/api/public/v1/feedback');
+    var feedbackResource = $resource('/api/private/v1/feedback');
     var adminFeedbackResource = $resource('/api/admin/v1/feedback');
     var adminFeedbackUpdateresource = $resource('/api/admin/v1/feedback/:id', null, {
       'update': {

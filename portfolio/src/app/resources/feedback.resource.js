@@ -18,7 +18,7 @@
 angular.module('resources.feedback', [])
 
   .factory('FeedbackResource', function FeedbackResource($resource) {
-    var feedbackResource = $resource('/api/public/v1/feedback');
+    var feedbackResource = $resource('/api/private/v1/feedback');
 
     function save(insertFeedbackRequest) {
       return feedbackResource.save(insertFeedbackRequest).$promise;
