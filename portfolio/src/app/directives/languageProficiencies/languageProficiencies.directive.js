@@ -19,7 +19,8 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
   .directive('languageProficiencies', function(AvailablePortfolioLanguages,
                                                AvailableLanguageProficiencies,
                                                LanguageProficienciesService,
-                                               $filter) {
+                                               $filter,
+                                               $state) {
     return {
       restrict: 'E',
       replace: true,
@@ -63,10 +64,7 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
                   })
                   .concat(languageProficiency);
               }
-            },
-
-            NEW_OR_UPDATED_PROP_NAMES = ['updatedLanguageProficiencies',
-                                         'newLanguageProficiencies'];
+            };
 
 
         _.assign($scope, {
@@ -91,6 +89,7 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
             if (shouldUpdate()) {
               LanguageProficienciesService.save(updateBatch).then(function(savedProficiencies) {
                 $scope.languageProficiencies = orderByProficiency(savedProficiencies);
+                $state.reload(); // https://jira.it.helsinki.fi/browse/OO-1004
               });
             }
 

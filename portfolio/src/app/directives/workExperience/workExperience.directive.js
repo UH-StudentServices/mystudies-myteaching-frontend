@@ -29,7 +29,8 @@ angular.module('directives.workExperience', [
   };
 })
 
-.directive('workExperience', function(WorkExperienceService) {
+.directive('workExperience', function(WorkExperienceService,
+                                      $state) {
   return {
     restrict: 'E',
     replace: true,
@@ -90,6 +91,7 @@ angular.module('directives.workExperience', [
           WorkExperienceService.updateWorkExperience($scope.portfolioId, $scope.workExperience).then(function(data) {
             $scope.workExperience = data;
             $scope.editing = false;
+            $state.reload(); // https://jira.it.helsinki.fi/browse/OO-1004
           });
         }
         return true;
@@ -101,7 +103,7 @@ angular.module('directives.workExperience', [
           $scope.jobSearch.submitted = true;
         }
       };
-    },
+    }
   };
 })
 
