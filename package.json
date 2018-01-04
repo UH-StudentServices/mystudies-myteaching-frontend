@@ -41,10 +41,12 @@
     "karma-chrome-launcher": "^2.0.0",
     "karma-html2js-preprocessor": "^1.1.0",
     "karma-jasmine": "^1.1.0",
+    "karma-phantomjs-launcher": "^1.0.2",
     "karma-requirejs": "^1.1.0",
     "karma-script-launcher": "^1.0.0",
     "load-grunt-tasks": "^3.5.2",
     "node-uuid": "^1.4.3",
+    "phantomjs-prebuilt": "^2.1.14",
     "time-grunt": "1.4.0"
   },
   "engines": {
