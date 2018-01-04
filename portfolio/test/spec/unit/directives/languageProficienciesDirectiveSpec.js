@@ -18,6 +18,7 @@
 describe('Language proficiencies directive', function() {
   var $compile,
       $scope,
+      $state,
       directiveElem,
       getUpdatedData = _.noop,
       LanguageProficienciesService,
@@ -93,15 +94,20 @@ describe('Language proficiencies directive', function() {
       }
       );
       $provide.constant('ComponentHeadingService', function(val) {return val;});
+      $provide.constant('$state', {
+        reload: jasmine.createSpy('$state.reload')
+      });
     });
 
     module('templates');
     module('directives.editLink');
 
-    inject(function(_$compile_, _$rootScope_, _LanguageProficienciesService_) {
+    inject(function(_$compile_, _$rootScope_, _LanguageProficienciesService_, _$state_) {
       $compile = _$compile_;
       LanguageProficienciesService = _LanguageProficienciesService_;
       $scope = _$rootScope_.$new();
+      $state = _$state_;
+
 
       $scope.portfolio = {
         languageProficiencies: [{
@@ -150,6 +156,9 @@ describe('Language proficiencies directive', function() {
       newLanguageProficiencies: [{language: 'nl', proficiency: 4}],
       deletedIds: [1]
     });
+
+    expect($state.reload).toHaveBeenCalledTimes(1);
+
   });
 
   it('should not send update diff when post-edit state is unchanged from initial state', function() {

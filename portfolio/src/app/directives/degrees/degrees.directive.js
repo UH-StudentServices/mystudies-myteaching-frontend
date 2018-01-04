@@ -21,7 +21,8 @@ angular.module('directives.degrees', [
   'directives.editDegrees',
   'directives.editableHeading'
 ])
-.directive('degrees', function(DegreeService) {
+.directive('degrees', function(DegreeService,
+                               $state) {
   return {
     restrict: 'E',
     replace: true,
@@ -64,6 +65,7 @@ angular.module('directives.degrees', [
           DegreeService.updateDegrees($scope.portfolioId, $scope.degrees).then(function(data) {
             $scope.degrees = data;
             $scope.editing = false;
+            $state.reload(); // https://jira.it.helsinki.fi/browse/OO-1004
           });
         }
         return true;
