@@ -27,7 +27,6 @@ angular.module('controllers.main', [
   'directives.mobileToolbar',
   'directives.weekFeed',
   'directives.usefulLinks',
-  'directives.admin.feedback',
   'services.focus'
 ])
 

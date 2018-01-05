@@ -110,18 +110,7 @@
     "pageHeaderBranding": "My teaching"
   },
   "admin": {
-    "pageHeaderBranding": "Admin",
-    "feedback": "Feedback",
-    "downloadCsv": "Download as CSV",
-    "timestamp": "Timestamp",
-    "first": "first",
-    "last": "last",
-    "email" : "email",
-    "faculty" : "Faculty",
-    "state" : "state",
-    "userAgent" : "userAgent",
-    "feedbackProcessed": "Processed",
-    "comment": "Comment"
+    "pageHeaderBranding": "Admin"
   },
   "navigationTab": {
     "frontPage": "Frontpage",
