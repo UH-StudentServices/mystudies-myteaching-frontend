@@ -110,18 +110,7 @@
     "pageHeaderBranding": "Opetukseni"
   },
   "admin": {
-    "pageHeaderBranding": "Ylläpito",
-    "feedback": "Palaute",
-    "downloadCsv": "Lataa CSV",
-    "timestamp": "Aikaleima",
-    "first": "ensimmäinen",
-    "last": "viimeinen",
-    "email" : "sähköposti",
-    "faculty" : "Tiedekunta",
-    "state" : "tila",
-    "userAgent" : "userAgent",
-    "feedbackProcessed": "Käsitelty",
-    "comment": "Kommentti"
+    "pageHeaderBranding": "Ylläpito"
   },
   "navigationTab": {
     "frontPage": "Etusivu",

@@ -110,18 +110,7 @@
     "pageHeaderBranding": "Min undervisning"
   },
   "admin": {
-    "pageHeaderBranding": "Admin",
-    "feedback": "Feedback",
-    "downloadCsv": "Ladda som CSV",
-    "timestamp": "Tidsstämpel",
-    "first": "första",
-    "last": "sista",
-    "email" : "e-post",
-    "faculty" : "Fakultet",
-    "state" : "status",
-    "userAgent" : "userAgent",
-    "feedbackProcessed": "Behandlad",
-    "comment": "Kommentera"
+    "pageHeaderBranding": "Admin"
   },
   "navigationTab": {
     "frontPage": "Framsidan",
