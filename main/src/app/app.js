@@ -38,6 +38,7 @@ angular.module('opintoniApp', [
   'provider.analyticsAccounts',
 
   'services.session',
+  'services.language',
   'services.userSettings',
   'services.configuration',
   'services.location',
@@ -69,8 +70,6 @@ angular.module('opintoniApp', [
   'ui.calendar',
   'utils.loader'
 ])
-  .constant('preferredLanguage', 'fi')
-
   .run(function($rootScope, $window, LanguageService) {
     $rootScope.selectedLanguage = LanguageService.getCurrent();
     moment.locale($rootScope.selectedLanguage);
@@ -82,12 +81,9 @@ angular.module('opintoniApp', [
     $urlRouterProvider,
     $httpProvider,
     $locationProvider,
-    $translateProvider,
-    $cookiesProvider,
     $compileProvider,
     $qProvider,
-    $sceDelegateProvider,
-    preferredLanguage) {
+    $sceDelegateProvider) {
 
     $locationProvider.html5Mode({
       enabled: true,
@@ -273,18 +269,6 @@ angular.module('opintoniApp', [
       })
 
       .state('noSession', {}); //State to terminate ui processing in case of no session
-
-    $translateProvider.useStaticFilesLoader({
-      prefix: 'i18n/opintoni-',
-      suffix: '.json'
-    });
-    $translateProvider.useCookieStorage();
-    $translateProvider.storageKey('OO_LANGUAGE');
-    $translateProvider.useSanitizeValueStrategy('escaped');
-    $translateProvider.preferredLanguage(preferredLanguage);
-
-    $cookiesProvider.defaults.path = '/';
-    $cookiesProvider.defaults.domain = '.helsinki.fi';
 
     $sceDelegateProvider.resourceUrlWhitelist([
       // Allow same origin resource loads.

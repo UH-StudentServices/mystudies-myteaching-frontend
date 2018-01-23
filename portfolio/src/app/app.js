@@ -72,6 +72,7 @@ angular.module('opintoniPortfolioApp', [
   'filters.formatting',
 
   'services.session',
+  'services.language',
   'services.state',
   'services.userSettings',
   'services.portfolio',
@@ -86,8 +87,6 @@ angular.module('opintoniPortfolioApp', [
   'utils.moment'
 ])
 
-  .constant('preferredLanguage', 'fi')
-
   .config(function(
     $stateProvider,
     $urlRouterProvider,
@@ -96,8 +95,7 @@ angular.module('opintoniPortfolioApp', [
     $cookiesProvider,
     $locationProvider,
     $compileProvider,
-    $sceDelegateProvider,
-    preferredLanguage) {
+    $sceDelegateProvider) {
 
     $locationProvider.html5Mode(true);
 
@@ -143,19 +141,6 @@ angular.module('opintoniPortfolioApp', [
         }
       }
     });
-
-    $translateProvider.useStaticFilesLoader({
-      prefix: 'i18n/portfolio-',
-      suffix: '.json'
-    });
-
-    $translateProvider.useCookieStorage();
-    $translateProvider.storageKey('OO_LANGUAGE');
-    $translateProvider.useSanitizeValueStrategy('escaped');
-    $translateProvider.preferredLanguage(preferredLanguage);
-
-    $cookiesProvider.defaults.path = '/';
-    $cookiesProvider.defaults.domain = '.helsinki.fi';
 
     $sceDelegateProvider.resourceUrlWhitelist([
       // Allow same origin resource loads.
