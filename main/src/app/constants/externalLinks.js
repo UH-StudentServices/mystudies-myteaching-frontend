@@ -182,9 +182,9 @@ angular.module('constants.externalLinks', [])
         {
           key: 'primaryLinks.dictionary',
           href: {
-            fi: 'https://mot.kielikone.fi/mot/hy/netmot.exe',
-            sv: 'https://mot.kielikone.fi/mot/hy/netmot.exe',
-            en: 'https://mot.kielikone.fi/mot/hy/netmot.exe'
+            fi: 'https://mot.kielikone.fi/finelib/netmot.shtml',
+            sv: 'https://mot.kielikone.fi/finelib/netmot.shtml',
+            en: 'https://mot.kielikone.fi/finelib/netmot.shtml'
           }
         },
         {
@@ -271,9 +271,9 @@ angular.module('constants.externalLinks', [])
         {
           key: 'primaryLinks.dictionary',
           href: {
-            fi: 'https://mot.kielikone.fi/mot/hy/netmot.exe',
-            sv: 'https://mot.kielikone.fi/mot/hy/netmot.exe',
-            en: 'https://mot.kielikone.fi/mot/hy/netmot.exe'
+            fi: 'https://mot.kielikone.fi/finelib/netmot.shtml',
+            sv: 'https://mot.kielikone.fi/finelib/netmot.shtml',
+            en: 'https://mot.kielikone.fi/finelib/netmot.shtml'
           }
         },
         {
@@ -360,9 +360,9 @@ angular.module('constants.externalLinks', [])
         {
           key: 'primaryLinks.dictionary',
           href: {
-            fi: 'https://mot.kielikone.fi/mot/hy/netmot.exe',
-            sv: 'https://mot.kielikone.fi/mot/hy/netmot.exe',
-            en: 'https://mot.kielikone.fi/mot/hy/netmot.exe'
+            fi: 'https://mot.kielikone.fi/finelib/netmot.shtml',
+            sv: 'https://mot.kielikone.fi/finelib/netmot.shtml',
+            en: 'https://mot.kielikone.fi/finelib/netmot.shtml'
           }
         },
         {
@@ -379,7 +379,7 @@ angular.module('constants.externalLinks', [])
   demo: [
     {
       key: 'primaryLinks.oodi',
-      domain: ['opintoni', 'opetukseni'],
+      domain: ['opetukseni'],
       href: {
         fi: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=1',
         sv: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=2',
@@ -388,7 +388,7 @@ angular.module('constants.externalLinks', [])
     },
     {
       key: 'primaryLinks.courseSearch',
-      domain: ['opetukseni'],
+      domain: ['opintoni', 'opetukseni'],
       href: {
         fi: 'https://demo.courses.helsinki.fi/fi/search',
         sv: 'https://demo.courses.helsinki.fi/sv/search',
@@ -402,6 +402,15 @@ angular.module('constants.externalLinks', [])
         fi: 'https://guide.student.helsinki.fi/fi',
         sv: 'https://guide.student.helsinki.fi/sv',
         en: 'https://guide.student.helsinki.fi/en'
+      }
+    },
+    {
+      key: 'primaryLinks.opinder',
+      domain: ['opetukseni'],
+      href: {
+        fi: 'https://opinder.helsinki.fi',
+        sv: 'https://opinder.helsinki.fi',
+        en: 'https://opinder.helsinki.fi'
       }
     },
     {
@@ -440,9 +449,17 @@ angular.module('constants.externalLinks', [])
         {
           key: 'primaryLinks.dictionary',
           href: {
-            fi: 'https://mot.kielikone.fi/mot/hy/netmot.exe',
-            sv: 'https://mot.kielikone.fi/mot/hy/netmot.exe',
-            en: 'https://mot.kielikone.fi/mot/hy/netmot.exe'
+            fi: 'https://mot.kielikone.fi/finelib/netmot.shtml',
+            sv: 'https://mot.kielikone.fi/finelib/netmot.shtml',
+            en: 'https://mot.kielikone.fi/finelib/netmot.shtml'
+          }
+        },
+        {
+          key: 'primaryLinks.opinderStudentSubmenu',
+          href: {
+            fi: 'https://opinder.helsinki.fi',
+            sv: 'https://opinder.helsinki.fi',
+            en: 'https://opinder.helsinki.fi'
           }
         }
       ]
@@ -521,9 +538,9 @@ angular.module('constants.externalLinks', [])
         {
           key: 'primaryLinks.dictionary',
           href: {
-            fi: 'https://mot.kielikone.fi/mot/hy/netmot.exe',
-            sv: 'https://mot.kielikone.fi/mot/hy/netmot.exe',
-            en: 'https://mot.kielikone.fi/mot/hy/netmot.exe'
+            fi: 'https://mot.kielikone.fi/finelib/netmot.shtml',
+            sv: 'https://mot.kielikone.fi/finelib/netmot.shtml',
+            en: 'https://mot.kielikone.fi/finelib/netmot.shtml'
           }
         },
         {
