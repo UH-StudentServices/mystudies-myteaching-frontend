@@ -43,6 +43,7 @@ angular.module('services.language', ['constants.language'])
 
   $cookiesProvider.defaults.path = '/';
   $cookiesProvider.defaults.domain = '.helsinki.fi';
+  $cookiesProvider.defaults.expires = moment().add(10, 'year').calendar();
 })
 
 .factory('LanguageService', function($translate) {
