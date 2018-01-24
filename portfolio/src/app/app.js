@@ -92,7 +92,6 @@ angular.module('opintoniPortfolioApp', [
     $urlRouterProvider,
     $translateProvider,
     $httpProvider,
-    $cookiesProvider,
     $locationProvider,
     $compileProvider,
     $sceDelegateProvider) {
