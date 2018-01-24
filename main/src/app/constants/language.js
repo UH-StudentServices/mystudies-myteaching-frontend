@@ -15,25 +15,5 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-'use strict';
-
-angular.module('services.language', [])
-  .factory('LanguageService', function($translate, LANGUAGES) {
-    return {
-      getCurrent: function() {
-        return $translate.proposedLanguage() || $translate.use();
-      },
-      getAll: function() {
-        return LANGUAGES;
-      }
-    };
-  })
-
-  .constant('LANGUAGES', [
-    'en', 'fi', 'sv'
-  ]
-);
-
-
-
-
+angular.module('constants.language', [])
+  .constant('TRANSLATION_FILE_PREFIX', 'i18n/opintoni-');
