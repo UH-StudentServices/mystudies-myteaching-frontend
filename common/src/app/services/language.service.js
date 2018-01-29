@@ -21,7 +21,7 @@ angular.module('services.language', ['constants.language'])
 .constant('SUPPORTED_LANGUAGES', [
   'en', 'fi', 'sv'
 ])
-.constant('DEFAULT_LANGUAGE', 'en')
+.constant('DEFAULT_LANGUAGE', 'fi')
 
 .config(function($translateProvider,
                  $cookiesProvider,
@@ -35,11 +35,7 @@ angular.module('services.language', ['constants.language'])
   $translateProvider.useCookieStorage();
   $translateProvider.storageKey('OO_LANGUAGE');
   $translateProvider.useSanitizeValueStrategy('escaped');
-  $translateProvider.registerAvailableLanguageKeys(SUPPORTED_LANGUAGES, {
-    'fi_*': 'fi',
-    'sv_*': 'sv',
-    '*': DEFAULT_LANGUAGE
-  }).determinePreferredLanguage();
+  $translateProvider.preferredLanguage(DEFAULT_LANGUAGE);
 
   $cookiesProvider.defaults.path = '/';
   $cookiesProvider.defaults.domain = '.helsinki.fi';
