@@ -4,7 +4,7 @@
     "myTeachingBaseUrl": "http://local.teacher.helsinki.fi:3000"
   },
   "ci" : {
-    "myStudiesBaseUrl": "http://opi-1.student.helsinki.fi",
-    "myTeachingBaseUrl": "http://opi-1.teacher.helsinki.fi"
+    "myStudiesBaseUrl": "https://opi-1.student.helsinki.fi",
+    "myTeachingBaseUrl": "https://opi-1.teacher.helsinki.fi"
   }
 }
