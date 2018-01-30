@@ -39,6 +39,10 @@
     }],
     "max-len": [2, 120, 2],
     "eqeqeq": [2, "smart"],
-    "keyword-spacing": 2
-  }
+    "keyword-spacing": 2,
+    "header/header": [2, "header.txt"]
+  },
+  "plugins": [
+    "header"
+  ]
 }

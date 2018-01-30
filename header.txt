@@ -14,11 +14,3 @@
  * You should have received a copy of the GNU General Public License
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-import config from '../config';
-import {loginAsStudent} from '../util';
-
-fixture('My Studies')
-  .page(config.myStudiesBaseUrl);
-
-test('My Studies page opens', async t => loginAsStudent(t));

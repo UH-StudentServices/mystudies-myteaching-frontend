@@ -339,7 +339,6 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('serve', [
-    'eslint',
     'clean:server',
     'concurrent:serve',
     'browserSync',
@@ -361,8 +360,7 @@ module.exports = function(grunt) {
     'concurrent:test',
     'htmlmin',
     'html2js',
-    'karma:unit',
-    'eslint'
+    'karma:unit'
   ]);
 
   grunt.registerTask('buildMinified', [

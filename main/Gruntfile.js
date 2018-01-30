@@ -368,7 +368,6 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('serve', [
-    'eslint',
     'clean:server',
     'concurrent:serve',
     'browserSync',
@@ -378,8 +377,7 @@ module.exports = function(grunt) {
   grunt.registerTask('test', [
     'clean:server',
     'concurrent:test',
-    'karma:unit',
-    'eslint'
+    'karma:unit'
   ]);
 
   grunt.registerTask('cssDev', [
