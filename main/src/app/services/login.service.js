@@ -92,19 +92,10 @@ angular.module('services.login', [
       goToStateOrRedirectOut(loginPath);
     }
 
-    function resetUserLang() {
-      var langCookie = $translate.storageKey(),
-          escapedLangInCookie = $cookies.get(langCookie),
-          langInCookie = escapedLangInCookie.replace(/\"/g, '');
-
-      return $translate.use(langInCookie);
-    }
-
     function reloadUserData() {
       return $q.all([
         SessionService.getSession(true),
-        UserSettingsService.getUserSettings(true),
-        resetUserLang()
+        UserSettingsService.getUserSettings(true)
       ]);
     }
 

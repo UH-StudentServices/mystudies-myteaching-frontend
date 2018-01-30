@@ -1,0 +1,10 @@
+{
+  "local" : {
+    "myStudiesBaseUrl": "http://local.student.helsinki.fi:3000",
+    "myTeachingBaseUrl": "http://local.teacher.helsinki.fi:3000"
+  },
+  "ci" : {
+    "myStudiesBaseUrl": "https://opi-1.student.helsinki.fi",
+    "myTeachingBaseUrl": "https://opi-1.teacher.helsinki.fi"
+  }
+}
