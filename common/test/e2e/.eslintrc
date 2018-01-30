@@ -1,20 +1,18 @@
 {
   "parserOptions": {
-    "ecmaVersion": 9,
+    "ecmaVersion": 2017,
     "sourceType": "module"
   },
   "parser": "babel-eslint",
-  "env": {
-    "browser": true
-  },
-  "extends": "plugin:testcafe/recommended",
   "plugins": [
     "testcafe",
     "import"
   ],
+  "extends": "plugin:testcafe/recommended",
   "rules": {
     "no-unused-expressions": [2, {
       "allowTaggedTemplates": true
-    }]
+    }],
+    "new-cap": [2, {"capIsNewExceptions": ["Selector"]}]
   }
 }

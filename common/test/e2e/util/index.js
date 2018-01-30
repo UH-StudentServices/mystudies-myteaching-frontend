@@ -31,7 +31,7 @@ export const openPortfolio = async (t, portfolioLinkText, expectedPortfolioTitle
   const porfolioLinkSelector = Selector('a').withText(portfolioLinkText);
   const portfolioIntroSelector = Selector('.portfolio-intro__title').withText(expectedPortfolioTitle);
 
-  await openAvatarMenu(t)
+  await openAvatarMenu(t);
   await t
     .click(porfolioLinkSelector)
     .expect(portfolioIntroSelector.exists).ok();
