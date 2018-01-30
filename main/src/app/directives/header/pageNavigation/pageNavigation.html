@@ -43,7 +43,7 @@
               <a href="{{ ::sublink.href[selectedLanguage] }}"
                  analytics-event="{
                    eventCategory: 'EXTERNAL_LINK',
-                   eventActions: 'CLICK',
+                   eventAction: 'CLICK',
                    value: sublink.href[selectedLanguage]}">
                 <span translate="{{::sublink.key}}"></span>
               </a>
@@ -64,8 +64,8 @@
               <a href="{{ ::link.href[selectedLanguage] }}"
                  analytics-event="{
                    eventCategory: 'EXTERNAL_LINK',
-                   eventActions: 'CLICK',
-                   value: sublink.href[selectedLanguage]}">
+                   eventAction: 'CLICK',
+                   value: link.href[selectedLanguage]}">
                 <span translate="{{::link.key}}"></span>
               </a>
             </li>

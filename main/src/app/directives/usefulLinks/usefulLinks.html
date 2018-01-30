@@ -34,7 +34,11 @@
           class="useful-link"
           as-sortable-item>
         <div as-sortable-item-handle>
-          <a ng-hide="editMode" href="{{link.url}}" class="list-of-links__link button--action icon--arrow-right">
+          <a ng-hide="editMode" href="{{link.url}}" class="list-of-links__link button--action icon--arrow-right"
+            analytics-event="{
+              eventCategory: 'USEFUL_LINKS',
+              eventAction: 'CLICK',
+              value: link.url}">
             {{ link.description | renderUsefulLinkDescription:link.type }}
           </a>
 
@@ -80,13 +84,21 @@
 
   <ul class="list-of-links">
     <li limit-visibility="['MY_STUDIES_ONLY']">
-      <a class="list-of-links__link useful-links__fixed-link-button" href="{{getStudentServicesLink()}}">
+      <a class="list-of-links__link useful-links__fixed-link-button" href="{{getStudentServicesLink()}}"
+         analytics-event="{
+              eventCategory: 'USEFUL_LINKS',
+              eventAction: 'CLICK',
+              value: getStudentServicesLink()}">
         <span class="useful-links__fixed-link-title" translate="usefulLinks.studentServices"></span>
       </a>
     </li>
 
     <li>
-      <a class="list-of-links__link useful-links__fixed-link-button" href="{{getHelpdeskLink()}}">
+      <a class="list-of-links__link useful-links__fixed-link-button" href="{{getHelpdeskLink()}}"
+         analytics-event="{
+              eventCategory: 'USEFUL_LINKS',
+              eventAction: 'CLICK',
+              value: getHelpdeskLink()}">
         <p class="useful-links__fixed-link-title">Helpdesk</p>
         <p class="useful-links__fixed-link-info">helpdesk@helsinki.fi</p>
       </a>

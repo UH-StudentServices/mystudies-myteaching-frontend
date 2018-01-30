@@ -20,7 +20,10 @@
   <div class="l-top-bar__subregion">
     <div class="l-top-bar__main">
       <div id="block-hy-contact-hy-logo-block">
-        <a href="http://www.helsinki.fi/yliopisto/" class="logo">
+        <a href="http://www.helsinki.fi/yliopisto/" class="logo" analytics-event="{
+          eventCategory: 'EXTERNAL_LINK',
+          eventAction: 'CLICK',
+          value: 'https://www.helsinki.fi/yliopisto'}">
           <h1 class="logo__sitename" translate="general.helsinkiUniversity"></h1>
         </a>
       </div>
@@ -29,7 +32,13 @@
       <div id="block-hy-links-hy-links-header-block" class="l-top-bar__subleft">
         <div class="links">
           <a ng-repeat="link in pageHeaderLinks"
-             href="{{::link.href}}" target="_blank" class="links__link "translate="{{::link.key}}"></a>
+             href="{{::link.href}}" target="_blank" class="links__link"
+            analytics-event="{
+              eventCategory: 'EXTERNAL_LINK',
+              eventAction: 'CLICK',
+              value: link.href}">
+            <span translate="{{::link.key}}"></span>
+          </a>
          </div>
       </div>
       <div id="block-locale-language" role="complementary" class="l-top-bar__subright">

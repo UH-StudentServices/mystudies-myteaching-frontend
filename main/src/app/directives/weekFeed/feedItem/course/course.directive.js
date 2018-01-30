@@ -16,7 +16,8 @@
  */
 
 angular.module('directives.weekFeed.feedItem.course', [
-  'directives.helpIcon'
+  'directives.helpIcon',
+  'directives.analytics'
 ])
 
   .constant('CourseMaterialTranslationKeys', {

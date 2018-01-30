@@ -41,8 +41,8 @@ angular.module('directives.pageBanner', [
           $scope.newsList = data;
         });
 
-        $scope.newsUrlClick = function() {
-          AnalyticsService.trackFlammaNewsUrlClick();
+        $scope.newsUrlClick = function(newsUrl) {
+          AnalyticsService.trackPageBannerNewsUrlClick(newsUrl);
         };
       }
     };

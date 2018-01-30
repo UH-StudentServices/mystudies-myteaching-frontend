@@ -17,7 +17,7 @@
 
 'use strict';
 
-angular.module('directives.pageHeader', ['constants.commonExternalLinks'])
+angular.module('directives.pageHeader', ['directives.analytics', 'constants.commonExternalLinks'])
   .directive('pageHeader', function(pageHeaderLinks) {
     return {
       restrict: 'E',

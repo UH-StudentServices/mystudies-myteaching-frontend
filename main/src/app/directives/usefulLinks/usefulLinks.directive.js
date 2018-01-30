@@ -19,6 +19,7 @@ angular.module('directives.usefulLinks', [
   'resources.usefulLinks',
   'directives.usefulLinks.title',
   'directives.usefulLinks.editableLink',
+  'directives.analytics',
   'services.focus',
   'utils.validator'])
 

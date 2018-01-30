@@ -25,7 +25,11 @@
       </div>
 
       <div class="box-data__title">
-        <a ng-if="feedItem.coursePageUri !== null" href="{{ feedItem.coursePageUri }}">
+        <a ng-if="feedItem.coursePageUri !== null" href="{{ feedItem.coursePageUri }}"
+          analytics-event="{
+              eventCategory: 'WEEK_FEED',
+              eventAction: 'CLICK',
+              value: feedItem.coursePageUri}">
           {{ feedItem.name }}
         </a>
         <span ng-if="feedItem.coursePageUri === null">{{ feedItem.name }}</span>
