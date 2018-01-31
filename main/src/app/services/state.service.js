@@ -74,10 +74,6 @@ angular.module('services.state', [
       }
     };
 
-    function domainContainsString(stringToFind, host) {
-      return host.indexOf(stringToFind) > -1;
-    }
-
     function configurationPropertyContains(property, expectedValue) {
       return Configuration[property] && Configuration[property].indexOf(expectedValue) > -1;
     }

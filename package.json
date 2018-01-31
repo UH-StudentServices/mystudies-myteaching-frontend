@@ -1,14 +1,19 @@
 {
   "name": "@helsinkiuni/my-studies",
-  "version": "0.0.11",
+  "version": "0.0.13",
   "private": true,
   "devDependencies": {
     "autoprefixer": "^6.6.1",
+    "babel-eslint": "^8.2.1",
     "bower": "^1.8.0",
     "concurrently": "^2.2.0",
     "connect-modrewrite": "^0.9.0",
+    "cross-env": "^5.1.3",
     "eslint": "^3.13.1",
     "eslint-config-defaults": "^9.0.0",
+    "eslint-plugin-header": "^1.2.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-testcafe": "^0.2.1",
     "grunt": "^1.0.1",
     "grunt-browser-sync": "^2.2.0",
     "grunt-build-control": "^0.7.1",
@@ -47,6 +52,7 @@
     "load-grunt-tasks": "^3.5.2",
     "node-uuid": "^1.4.3",
     "phantomjs-prebuilt": "^2.1.14",
+    "testcafe": "^0.18.6",
     "time-grunt": "1.4.0"
   },
   "engines": {
@@ -60,6 +66,13 @@
     "lint": "eslint common/** main/** portfolio/**",
     "postinstall": "npm run bower:install",
     "predist": "npm rebuild node-sass",
-    "test": "concurrently 'grunt test --gruntfile main/Gruntfile.js' 'grunt test --gruntfile portfolio/Gruntfile.js'"
+    "prepush": "npm test",
+    "pretest": "npm run lint",
+    "test": "concurrently 'grunt test --gruntfile main/Gruntfile.js' 'grunt test --gruntfile portfolio/Gruntfile.js'",
+    "test:e2e": "cross-env NODE_ENV=local testcafe 'chrome -incognito' common/test/e2e",
+    "test:e2e:ci": "cross-env NODE_ENV=ci testcafe 'chromium:headless' common/test/e2e"
+  },
+  "dependencies": {
+    "husky": "^0.14.3"
   }
 }
