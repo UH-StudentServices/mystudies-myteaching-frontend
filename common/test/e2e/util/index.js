@@ -23,7 +23,7 @@ const loginAsUser = async (t, name, expectedWeekFeedHeader) => {
 
   return await t
     .click(loginAsUserButton)
-    .expect(weekFeedHeader).ok();
+    .expect(weekFeedHeader.exists).ok();
 };
 
 const openAvatarMenu = async t => t.click(Selector('.user-avatar'));
