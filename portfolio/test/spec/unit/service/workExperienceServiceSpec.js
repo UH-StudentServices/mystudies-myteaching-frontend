@@ -104,11 +104,11 @@ describe('WorkExperienceService', function() {
 
   describe('Work experience', function() {
 
-    it('Will provide work experience data', function() {
+    it("Will provide work experience data", function() {
       getWorkExperienceSubject()
         .subscribe(function(workExperience) {
           expect(workExperience[0].employer)
-            .toEqual(portfolioResponse.workExperience[0].employer);
+            .toEqual(portfolioResponse.workExperience[1].employer);
         });
 
       $httpBackend.flush();
