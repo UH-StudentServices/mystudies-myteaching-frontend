@@ -69,8 +69,8 @@
     "prepush": "npm test",
     "pretest": "npm run lint",
     "test": "concurrently 'grunt test --gruntfile main/Gruntfile.js' 'grunt test --gruntfile portfolio/Gruntfile.js'",
-    "test:e2e": "cross-env NODE_ENV=local testcafe 'chrome -incognito' common/test/e2e",
-    "test:e2e:ci": "cross-env NODE_ENV=ci testcafe 'chromium:headless' common/test/e2e"
+    "test:e2e": "cross-env NODE_ENV=local testcafe 'chrome -incognito' -S -s screenshots common/test/e2e",
+    "test:e2e:ci": "cross-env NODE_ENV=ci testcafe 'chromium:headless' -S -s screenshots common/test/e2e"
   },
   "dependencies": {
     "husky": "^0.14.3"
