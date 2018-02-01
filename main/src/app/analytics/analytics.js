@@ -48,7 +48,9 @@ angular.module('opintoniAnalytics', [
     'FAVORITES': 'favorites',
     'SITE_ACTIONS': 'siteActions',
     'TODO_ITEMS': 'todoItems',
-    'USEFUL_LINKS': 'usefulLinks'
+    'USEFUL_LINKS': 'usefulLinks',
+    'WEEK_FEED': 'weekFeed',
+    'PAGE_BANNER': 'pageBanner'
   })
 
   .constant('EventActions', {
@@ -59,18 +61,15 @@ angular.module('opintoniAnalytics', [
     'MARK_AS_DONE': 'markAsDone',
     'MARK_NOTIFICATION_AS_READ': 'markNotificationAsRead',
     'REMOVE': 'remove',
-    'SEARCH': 'search',
     'SHOW_CALENDAR_VIEW': 'showCalendarView',
     'SHOW_WEEK_FEED_TAB': 'showWeekFeedTab',
     'SUBSCRIBE_CALENDAR': 'subscribeCalendar',
-    'UPLOAD': 'upload'
+    'UPLOAD': 'upload',
+    'VISIBLE_ON_PAGE_LOAD': 'visibleOnPageLoad',
+    'BROWSE': 'browse'
   })
 
-  .constant('EventLabels', {
-    'FLAMMA_NEWS': 'flammaNews'
-  })
-
-  .factory('AnalyticsService', function(Analytics, EventCategories, EventActions, EventLabels) {
+  .factory('AnalyticsService', function(Analytics, EventCategories, EventActions) {
 
     function trackEvent(eventCategory, eventAction, value) {
       submitAnalyticsEvent(EventCategories[eventCategory], EventActions[eventAction], value);
@@ -107,10 +106,8 @@ angular.module('opintoniAnalytics', [
         _.partial(submitAnalyticsEvent, EventCategories.TODO_ITEMS, EventActions.REMOVE),
       trackTodoItemMarkAsDone:
         _.partial(submitAnalyticsEvent, EventCategories.TODO_ITEMS, EventActions.MARK_AS_DONE),
-      trackFlammaNewsUrlClick:
-        _.partial(submitAnalyticsEvent, EventCategories.EXTERNAL_LINK, EventActions.CLICK, EventLabels.FLAMMA_NEWS),
-      trackSearch:
-        _.partial(submitAnalyticsEvent, EventCategories.SITE_ACTIONS, EventActions.SEARCH),
+      trackPageBannerNewsUrlClick:
+        _.partial(submitAnalyticsEvent, EventCategories.PAGE_BANNER, EventActions.CLICK),
       trackNotificationMarkAsRead:
         _.partial(submitAnalyticsEvent, EventCategories.SITE_ACTIONS, EventActions.MARK_NOTIFICATION_AS_READ),
       trackUploadBackground:
@@ -129,5 +126,9 @@ angular.module('opintoniAnalytics', [
         _.partial(submitAnalyticsEvent, EventCategories.SITE_ACTIONS, EventActions.SHOW_WEEK_FEED_TAB),
       trackShowCalendarView:
         _.partial(submitAnalyticsEvent, EventCategories.SITE_ACTIONS, EventActions.SHOW_CALENDAR_VIEW),
+      trackCalendarLinkClick:
+        _.partial(submitAnalyticsEvent, EventCategories.WEEK_FEED, EventActions.CLICK),
+      trackPageBannerVisibleOnPageLoad:
+        _.partial(submitAnalyticsEvent, EventCategories.PAGE_BANNER, EventActions.VISIBLE_ON_PAGE_LOAD)
     };
   });

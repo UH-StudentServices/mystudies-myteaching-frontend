@@ -20,6 +20,12 @@ describe('Event time span filter', function() {
   var eventTimeSpanFilter;
 
   beforeEach(module('directives.weekFeed'));
+  beforeEach(module('ngResource'));
+  beforeEach(function() {
+    module(function($provide) {
+      $provide.constant('StateService', {getStateFromDomain: function() { }});
+    });
+  });
 
   beforeEach(inject(function($filter) {
     eventTimeSpanFilter = $filter('eventTimeSpan');

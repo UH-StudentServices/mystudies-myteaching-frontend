@@ -25,6 +25,12 @@ describe('CourseView', function() {
       nowMoment = moment('2010-01-22');
 
   beforeEach(module('directives.weekFeed'));
+  beforeEach(module('ngResource'));
+  beforeEach(function() {
+    module(function($provide) {
+      $provide.constant('StateService', {getStateFromDomain: function() { }});
+    });
+  });
 
   beforeEach(inject(function(_CourseView_, _FeedItemTimeCondition_, _FeedItemSortCondition_) {
     CourseView = _CourseView_;

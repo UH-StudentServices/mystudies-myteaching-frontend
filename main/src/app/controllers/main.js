@@ -39,7 +39,8 @@ angular.module('controllers.main', [
     notifications,
     getCourses,
     getEvents,
-    UserSettingsService) {
+    UserSettingsService,
+    AnalyticsService) {
 
     $scope.currentStateName = StateService.getRootStateName();
     $scope.State = State;
@@ -54,5 +55,7 @@ angular.module('controllers.main', [
     UserSettingsService.getShowBannerSubject().subscribe(function(showBanner) {
       $scope.showBanner = showBanner;
     });
+
+    AnalyticsService.trackPageBannerVisibleOnPageLoad($scope.showBanner);
 
   });
