@@ -30,6 +30,12 @@ describe('FeedMessages', function() {
 
 
   beforeEach(module('directives.weekFeed'));
+  beforeEach(module('ngResource'));
+  beforeEach(function() {
+    module(function($provide) {
+      $provide.constant('StateService', {getStateFromDomain: function() { }});
+    });
+  });
 
   function expectedErrorMessage(selectedTab) {
     return {
