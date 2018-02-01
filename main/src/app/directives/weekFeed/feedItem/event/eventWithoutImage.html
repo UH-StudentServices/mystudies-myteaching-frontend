@@ -27,7 +27,10 @@
     </div>
 
     <div class="box-data__title">
-      <a href="{{:: feedItem.courseUri}}" ng-if="feedItem.courseUri">
+      <a href="{{:: feedItem.courseUri}}" ng-if="feedItem.courseUri" analytics-event="{
+          eventCategory: 'WEEK_FEED',
+          eventAction: 'CLICK',
+          value: feedItem.courseUri}">
         <event-title></event-title>
       </a>
       <event-title ng-if="!feedItem.courseUri"></event-title>
