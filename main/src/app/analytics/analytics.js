@@ -69,6 +69,11 @@ angular.module('opintoniAnalytics', [
     'BROWSE': 'browse'
   })
 
+  .constant('EventLabels', {
+    'VISIBLE': 'visible',
+    'HIDDEN': 'hidden'
+  })
+
   .factory('AnalyticsService', function(Analytics, EventCategories, EventActions) {
 
     function trackEvent(eventCategory, eventAction, value) {

@@ -41,8 +41,11 @@ angular.module('directives.pageBanner', [
           $scope.newsList = data;
         });
 
-        $scope.newsUrlClick = function(newsUrl) {
-          AnalyticsService.trackPageBannerNewsUrlClick(newsUrl);
+        $scope.newsUrlClick = function(event, newsUrl) {
+          // catch mouse primary and middle clicks
+          if (event.which === 1 || event.which === 2) {
+            AnalyticsService.trackPageBannerNewsUrlClick(newsUrl);
+          }
         };
       }
     };
