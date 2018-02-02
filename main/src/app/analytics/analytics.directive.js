@@ -26,9 +26,9 @@ angular.module('directives.analytics', [
         analyticsEvent: '='
       },
       link: function($scope, element) {
-        element.on('mouseup', function(e) {
-          // catch mouse primary and middle button clicks
-          if (e.which === 1 || e.which === 2) {
+        element.on('click mouseup', function(e) {
+          // catch click events and middle mouse clicks
+          if (e.type === 'click' || e.which === 2) {
             AnalyticsService.trackEvent(
               $scope.analyticsEvent.eventCategory,
               $scope.analyticsEvent.eventAction,

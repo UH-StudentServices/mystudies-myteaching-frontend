@@ -18,6 +18,7 @@
 'use strict';
 
 angular.module('directives.pageBanner', [
+  'directives.analytics',
   'services.news',
   'angular-flexslider',
   'dibari.angular-ellipsis',
@@ -40,13 +41,6 @@ angular.module('directives.pageBanner', [
         NewsService.getNews($scope.currentStateName).then(function(data) {
           $scope.newsList = data;
         });
-
-        $scope.newsUrlClick = function(event, newsUrl) {
-          // catch mouse primary and middle clicks
-          if (event.which === 1 || event.which === 2) {
-            AnalyticsService.trackPageBannerNewsUrlClick(newsUrl);
-          }
-        };
       }
     };
   })
