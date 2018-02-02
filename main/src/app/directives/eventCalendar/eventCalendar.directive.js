@@ -72,7 +72,7 @@ angular.module('directives.eventCalendar', [])
                   element.attr('title', event.tooltip);
                   element.on('click mouseup', function(e) {
                     // catch click events and middle mouse clicks
-                    if (e.type === 'click' || e.which === 2) {
+                    if (AnalyticsService.isClickOrMiddleButton(e)) {
                       AnalyticsService.trackCalendarLinkClick(event.url);
                     }
                   });

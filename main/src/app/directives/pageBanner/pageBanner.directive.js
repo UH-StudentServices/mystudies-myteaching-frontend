@@ -25,7 +25,7 @@ angular.module('directives.pageBanner', [
   'ngAnimate'
 ])
 
-  .directive('pageBanner', function($filter, NewsService, StateService, AnalyticsService) {
+  .directive('pageBanner', function($filter, NewsService, StateService) {
     return {
       restrict: 'E',
       replace: 'true',

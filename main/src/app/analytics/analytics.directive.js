@@ -28,7 +28,7 @@ angular.module('directives.analytics', [
       link: function($scope, element) {
         element.on('click mouseup', function(e) {
           // catch click events and middle mouse clicks
-          if (e.type === 'click' || e.which === 2) {
+          if (AnalyticsService.isClickOrMiddleButton(e)) {
             AnalyticsService.trackEvent(
               $scope.analyticsEvent.eventCategory,
               $scope.analyticsEvent.eventAction,
