@@ -26,11 +26,14 @@ angular.module('directives.analytics', [
         analyticsEvent: '='
       },
       link: function($scope, element) {
-        element.on('click', function() {
-          AnalyticsService.trackEvent(
-            $scope.analyticsEvent.eventCategory,
-            $scope.analyticsEvent.eventAction,
-            $scope.analyticsEvent.value);
+        element.on('click mouseup', function(e) {
+          // catch click events and middle mouse clicks
+          if (AnalyticsService.isClickOrMiddleButton(e)) {
+            AnalyticsService.trackEvent(
+              $scope.analyticsEvent.eventCategory,
+              $scope.analyticsEvent.eventAction,
+              $scope.analyticsEvent.value);
+          }
         });
       }
     };

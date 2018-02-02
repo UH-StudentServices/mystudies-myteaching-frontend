@@ -18,13 +18,14 @@
 'use strict';
 
 angular.module('directives.pageBanner', [
+  'directives.analytics',
   'services.news',
   'angular-flexslider',
   'dibari.angular-ellipsis',
   'ngAnimate'
 ])
 
-  .directive('pageBanner', function($filter, NewsService, StateService, AnalyticsService) {
+  .directive('pageBanner', function($filter, NewsService, StateService) {
     return {
       restrict: 'E',
       replace: 'true',
@@ -40,10 +41,6 @@ angular.module('directives.pageBanner', [
         NewsService.getNews($scope.currentStateName).then(function(data) {
           $scope.newsList = data;
         });
-
-        $scope.newsUrlClick = function(newsUrl) {
-          AnalyticsService.trackPageBannerNewsUrlClick(newsUrl);
-        };
       }
     };
   })

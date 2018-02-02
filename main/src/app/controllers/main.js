@@ -40,7 +40,8 @@ angular.module('controllers.main', [
     getCourses,
     getEvents,
     UserSettingsService,
-    AnalyticsService) {
+    AnalyticsService,
+    EventLabels) {
 
     $scope.currentStateName = StateService.getRootStateName();
     $scope.State = State;
@@ -56,6 +57,7 @@ angular.module('controllers.main', [
       $scope.showBanner = showBanner;
     });
 
-    AnalyticsService.trackPageBannerVisibleOnPageLoad($scope.showBanner);
+    AnalyticsService.trackPageBannerVisibleOnPageLoad(
+      $scope.showBanner ? EventLabels.VISIBLE : EventLabels.HIDDEN);
 
   });

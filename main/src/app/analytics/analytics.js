@@ -69,7 +69,16 @@ angular.module('opintoniAnalytics', [
     'BROWSE': 'browse'
   })
 
+  .constant('EventLabels', {
+    'VISIBLE': 'visible',
+    'HIDDEN': 'hidden'
+  })
+
   .factory('AnalyticsService', function(Analytics, EventCategories, EventActions) {
+
+    function isClickOrMiddleButton(event) {
+      return event.type === 'click' || event.which === 2;
+    }
 
     function trackEvent(eventCategory, eventAction, value) {
       submitAnalyticsEvent(EventCategories[eventCategory], EventActions[eventAction], value);
@@ -90,8 +99,8 @@ angular.module('opintoniAnalytics', [
     }
 
     return {
-      trackEvent:
-        trackEvent,
+      isClickOrMiddleButton: isClickOrMiddleButton,
+      trackEvent: trackEvent,
       trackAddFavorite:
         _.partial(submitAnalyticsEvent, EventCategories.FAVORITES, EventActions.ADD),
       trackRemoveFavorite:

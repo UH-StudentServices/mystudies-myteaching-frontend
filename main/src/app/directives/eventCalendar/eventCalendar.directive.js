@@ -70,8 +70,11 @@ angular.module('directives.eventCalendar', [])
                 allDaySlot: false,
                 eventRender: function(event, element) {
                   element.attr('title', event.tooltip);
-                  element.click(function() {
-                    AnalyticsService.trackCalendarLinkClick(event.url);
+                  element.on('click mouseup', function(e) {
+                    // catch click events and middle mouse clicks
+                    if (AnalyticsService.isClickOrMiddleButton(e)) {
+                      AnalyticsService.trackCalendarLinkClick(event.url);
+                    }
                   });
                 },
                 customButtons: {

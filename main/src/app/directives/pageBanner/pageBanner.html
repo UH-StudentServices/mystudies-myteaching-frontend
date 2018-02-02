@@ -36,8 +36,14 @@
             <p class="page-banner__text" ng-bind="news.content" data-ellipsis></p>
             <ul class="list-of-links">
               <li>
-                <a ng-click="newsUrlClick(news.url)" href="{{ news.url }}" target="_blank" translate="pageBanner.newsButtonLabel"
-                   class="list-of-links__link button--action icon--arrow-right"></a>
+                <a href="{{ news.url }}"
+                   target="_blank"
+                   class="list-of-links__link button--action icon--arrow-right"
+                   analytics-event="{
+                     eventCategory: 'PAGE_BANNER',
+                     eventAction: 'CLICK',
+                     value: news.url
+                   }"><span translate="pageBanner.newsButtonLabel"></span></a>
               </li>
             </ul>
           </div>
