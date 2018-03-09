@@ -225,22 +225,6 @@
   }
 }
 
-.add-favorite {
-  height: 250px;
-
-  @include breakpoint($small) {
-    height: 280px;
-  }
-
-  @include breakpoint($medium) {
-    height: 320px;
-  }
-
-  @include breakpoint($large) {
-    height: 350px;
-  }
-}
-
 .add-favorite-step {
   width: 100%;
 

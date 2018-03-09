@@ -25,7 +25,7 @@
       <section ng-repeat="section in portfolioSections"
                class="portfolio-section"
                as-sortable-item>
-        <div ng-switch on="section.component">
+        <div ng-switch on="section.component" class="portfolio-section__outer-container">
           <span class="portfolio-section__drag-handle" as-sortable-item-handle ></span>
           <div ng-switch-when="STUDIES" class="portfolio-section__body">
             <studies limit-visibility="{componentId: 'STUDIES'}"

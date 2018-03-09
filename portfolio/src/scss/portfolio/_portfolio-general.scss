@@ -15,7 +15,7 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-.portfolio-section > div {
+.portfolio-section__outer-container {
   display: flex;
 }
 
@@ -60,12 +60,12 @@
     }
    &--edit {
      display: inline-block;
-     padding: 0;
+     padding: 0 0.2em;
      font-size: 2.5em;
      text-transform: uppercase;
      font-weight: 700;
      letter-spacing: -0.05em;
-     width: 85%;
+     width: 100%;
    }
   }
 }

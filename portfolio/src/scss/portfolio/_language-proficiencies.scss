@@ -53,6 +53,8 @@
   flex-direction: column;
   flex-wrap: nowrap;
 
+  margin-top: 1em;
+
   @include breakpoint($medium) {
     flex-direction: row;
     flex-wrap: wrap;
