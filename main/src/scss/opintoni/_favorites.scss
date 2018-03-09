@@ -30,7 +30,6 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  min-height: 120px !important;
 
   @include breakpoint($small) {
     &::after {
@@ -222,22 +221,6 @@
   &::after {
     transform: translate(50%,0);
     right: 50% !important;
-  }
-}
-
-.add-favorite {
-  height: 250px;
-
-  @include breakpoint($small) {
-    height: 280px;
-  }
-
-  @include breakpoint($medium) {
-    height: 320px;
-  }
-
-  @include breakpoint($large) {
-    height: 350px;
   }
 }
 

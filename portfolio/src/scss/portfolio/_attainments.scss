@@ -15,6 +15,10 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+.study-attainments {
+  margin-top: 0.5em;
+}
+
 .study-attainment__item {
   @extend .box-data, .border-bottom;
   padding-top: 15px;

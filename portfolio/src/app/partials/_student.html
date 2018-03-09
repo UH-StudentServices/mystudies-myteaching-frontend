@@ -25,9 +25,9 @@
       <section ng-repeat="section in portfolioSections"
                class="portfolio-section"
                as-sortable-item>
-        <div as-sortable-item-handle
-             ng-switch on="section.component">
-          <div ng-switch-when="STUDIES">
+        <div ng-switch on="section.component" class="portfolio-section__outer-container">
+          <span class="portfolio-section__drag-handle" as-sortable-item-handle ></span>
+          <div ng-switch-when="STUDIES" class="portfolio-section__body">
             <studies limit-visibility="{componentId: 'STUDIES'}"
                      summary-data="portfolio.summary"
                      portfolio-id="{{::portfolio.id}}"
@@ -35,7 +35,7 @@
             </studies>
           </div>
 
-          <div ng-switch-when="DEGREES">
+          <div ng-switch-when="DEGREES" class="portfolio-section__body">
             <degrees limit-visibility="{componentId: 'DEGREES'}"
                      degrees-data="portfolio.degrees"
                      portfolio-id="{{::portfolio.id}}"
@@ -43,7 +43,7 @@
             </degrees>
           </div>
 
-          <div ng-switch-when="WORK_EXPERIENCE">
+          <div ng-switch-when="WORK_EXPERIENCE" class="portfolio-section__body">
             <work-experience limit-visibility="{componentId: 'WORK_EXPERIENCE'}"
                              work-experience-data="portfolio.workExperience"
                              portfolio-id="{{::portfolio.id}}"
@@ -51,7 +51,7 @@
             </work-experience>
           </div>
 
-          <div ng-switch-when="SAMPLES">
+          <div ng-switch-when="SAMPLES" class="portfolio-section__body">
             <samples limit-visibility="{componentId: 'SAMPLES'}"
                      samples-data="portfolio.samples"
                      portfolio-id="{{::portfolio.id}}"
@@ -59,7 +59,7 @@
             </samples>
           </div>
 
-          <div ng-switch-when="FREE_TEXT_CONTENT">
+          <div ng-switch-when="FREE_TEXT_CONTENT" class="portfolio-section__body">
             <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
                                                   instanceName: section.instanceName}"
                                instance-name="{{section.instanceName}}"
@@ -67,21 +67,21 @@
             </free-text-content>
           </div>
 
-          <div ng-switch-when="ATTAINMENTS">
+          <div ng-switch-when="ATTAINMENTS" class="portfolio-section__body">
             <attainments limit-visibility="{componentId: 'ATTAINMENTS'}"
                          portfolio-id="{{::portfolio.id}}"
                          portfolio-lang="{{::portfolio.lang}}">
             </attainments>
           </div>
 
-          <div ng-switch-when="LANGUAGE_PROFICIENCIES">
+          <div ng-switch-when="LANGUAGE_PROFICIENCIES" class="portfolio-section__body">
             <language-proficiencies limit-visibility="{componentId: 'LANGUAGE_PROFICIENCIES'}"
                                     language-proficiencies-data="portfolio.languageProficiencies"
                                     portfolio-lang="{{::portfolio.lang}}">
             </language-proficiencies>
           </div>
 
-          <div ng-switch-when="FAVORITES">
+          <div ng-switch-when="FAVORITES" class="portfolio-section__body">
             <favorites limit-visibility="{componentId: 'FAVORITES'}"
                        favorites-data="portfolio.favorites"
                        portfolio-lang="{{::portfolio.lang}}">

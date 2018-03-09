@@ -17,6 +17,10 @@
 
 $degree-invalid-color: red;
 
+.degrees {
+  margin-top: 1em;
+}
+
 .degree__item {
   @extend .box-data, .border-bottom;
   min-height: 94px;
