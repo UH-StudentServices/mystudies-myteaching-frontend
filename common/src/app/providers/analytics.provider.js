@@ -43,7 +43,10 @@ angular.module('provider.analyticsAccounts', ['services.configuration'])
       accountsArray.push({
         tracker: configuration[trackerId],
         trackEvent: true,
-        name: trackerName
+        name: trackerName,
+        set: {
+          anonymizeIp: true
+        }
       });
     }
 
