@@ -64,6 +64,7 @@
     "dev": "concurrently 'grunt serve --gruntfile main/Gruntfile.js' 'grunt serve --gruntfile portfolio/Gruntfile.js'",
     "dist": "grunt buildMinified --gruntfile main/Gruntfile.js && grunt buildMinified --gruntfile portfolio/Gruntfile.js",
     "lint": "eslint common/** main/** portfolio/**",
+    "lintfix": "eslint common/** main/** portfolio/** --fix",
     "postinstall": "npm run bower:install",
     "predist": "npm rebuild node-sass",
     "prepush": "npm test",
