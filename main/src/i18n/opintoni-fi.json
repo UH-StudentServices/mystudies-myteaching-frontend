@@ -234,7 +234,9 @@
       "TWITTER": "Twitter-aikajana",
       "LINK": "Linkki verkkosivulle",
       "UNICAFE": "Unicafe-lounaslista",
-      "UNISPORT": "Unisport-varaukset"
+      "UNISPORT": "Unisport-varaukset",
+      "FLAMMA_EVENTS": "Flamma tapahtumat",
+      "FLAMMA_NEWS": "Flamma uutiset"
     },
     "title": "suosikit",
     "helpText": "Voit lisätä suosikkeihin rss-syötteitä, linkkejä verkkosivuille ja valitsemasi Unicafen päivän ruokalistan. Lisää suosikki painamalla +-painiketta Lisää uusi -laatikossa. Suosikkien järjestystä voit muokata Muokkaa-tilassa raahaamalla suosikin haluamaasi paikkaan ja suosikin saat poistettua painamalla sen oikeassa yläreunassa olevaa ruksia. Muista painaa Valmis tallentaaksesi muutokset.",

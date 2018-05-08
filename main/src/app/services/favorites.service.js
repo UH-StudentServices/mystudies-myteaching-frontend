@@ -81,6 +81,11 @@ angular.module('services.favorites', [
       return FavoritesResource.saveUnisportFavorite();
     }
 
+    function saveUnisportFavorite(favoriteType) {
+      AnalyticsService.trackAddFavorite(favoriteType);
+      return FavoritesResource.saveUnisportFavorite();
+    }
+
     function getUnisportUserReservations() {
       return UnisportResource.getUserReservations();
     }
@@ -99,6 +104,12 @@ angular.module('services.favorites', [
       return FavoritesResource.deleteFavorite(favoriteId);
     }
 
+    function saveFlammaFavorite(favoriteType) {
+      console.log('saving flamma favorite of type:', favoriteType);
+      AnalyticsService.trackAddFavorite(favoriteType);
+      return FavoritesResource.saveFlammaFavorite(favoriteType);
+    }
+
     return {
       getFavorites: getFavorites,
       saveRSSFavorite: saveRSSFavorite,
@@ -112,6 +123,7 @@ angular.module('services.favorites', [
       getUnisportUserReservations: getUnisportUserReservations,
       saveTwitterFavorite: saveTwitterFavorite,
       updateFavoriteOrder: updateFavoriteOrder,
-      deleteFavorite: deleteFavorite
+      deleteFavorite: deleteFavorite,
+      saveFlammaFavorite: saveFlammaFavorite
     };
   });
