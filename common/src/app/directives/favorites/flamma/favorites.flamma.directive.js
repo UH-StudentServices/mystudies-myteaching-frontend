@@ -17,7 +17,18 @@
 
 angular
   .module('directives.favorites.flamma', ['services.favorites','services.language'])
-  .directive('favoritesFlamma', function(FavoritesService, LanguageService) {
+  .constant('FLAMMA_URLS', {
+    FLAMMA_EVENTS: {
+      fi: 'https://flamma.helsinki.fi/infotaulu/all-events-students-fi.xml',
+      en: 'https://flamma.helsinki.fi/infotaulu/all-events-students-en.xml',
+      sv: 'https://flamma.helsinki.fi/infotaulu/all-events-students-sv.xml'
+    },
+    FLAMMA_NEWS: {
+      fi: 'https://flamma.helsinki.fi/infotaulu/atom-news.xml',
+      en: 'https://flamma.helsinki.fi/infotaulu/atom-news-en.xml',
+      sv: 'https://flamma.helsinki.fi/infotaulu/atom-news-sv.xml'
+    }})
+  .directive('favoritesFlamma', function(FavoritesService, LanguageService, FLAMMA_URLS) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/rss/favorites.rss.html',
@@ -26,21 +37,7 @@ angular
         data: '='
       },
       link: function($scope, e, attr) {
-        var urls = {
-          FLAMMA_EVENTS: {
-            fi: 'https://flamma.helsinki.fi/infotaulu/all-events-students-fi.xml',
-            en: 'https://flamma.helsinki.fi/infotaulu/all-events-students-en.xml',
-            sv: 'https://flamma.helsinki.fi/infotaulu/all-events-students-sv.xml'
-          },
-          FLAMMA_NEWS: {
-            fi: 'https://flamma.helsinki.fi/infotaulu/atom-news.xml',
-            en: 'https://flamma.helsinki.fi/infotaulu/atom-news-en.xml',
-            sv: 'https://flamma.helsinki.fi/infotaulu/atom-news-sv.xml'
-          }
-        };
-
-        console.log('data:', $scope.data);
-        var feedUrl = urls[$scope.data.type][LanguageService.getCurrent()];
+        var feedUrl = FLAMMA_URLS[$scope.data.type][LanguageService.getCurrent()];
 
         FavoritesService.getRSSFeed(feedUrl)
           .then(function getFeedSuccess(feedData) {

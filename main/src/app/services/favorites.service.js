@@ -105,7 +105,6 @@ angular.module('services.favorites', [
     }
 
     function saveFlammaFavorite(favoriteType) {
-      console.log('saving flamma favorite of type:', favoriteType);
       AnalyticsService.trackAddFavorite(favoriteType);
       return FavoritesResource.saveFlammaFavorite(favoriteType);
     }
