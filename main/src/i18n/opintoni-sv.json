@@ -234,7 +234,9 @@
       "TWITTER": "Twitter",
       "LINK": "Webbsidans länk",
       "UNICAFE": "Unicafes lunchmeny",
-      "UNISPORT": "Unisports bokningar"
+      "UNISPORT": "Unisports bokningar",
+      "FLAMMA_EVENTS": "Flamma evenemang",
+      "FLAMMA_NEWS": "Flamma nyheter"
     },
     "title": "favoriter",
     "helpText": "Du kan lägga rss feed, länkar och Unicafes lunchmeny till favoriter.  Klicka +-knappen i Lägg till -lådan för att lägga till en ny favorit. Klicka på Redigera och dra en favorit till en ny plats eller ta bort den genom att klicka den blåa korsen i dess övre högra hörnet. Klicka på Färdig för att spara ändringar.",

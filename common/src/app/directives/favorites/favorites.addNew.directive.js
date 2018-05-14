@@ -21,6 +21,7 @@ angular.module('directives.favorites.addNew', [
   'directives.favorites.addNew.twitter',
   'directives.favorites.addNew.unisport',
   'directives.favorites.addNew.link',
+  'directives.favorites.addNew.flamma',
   'directives.popover',
   'services.focus'])
 
