@@ -71,9 +71,12 @@
 
   .rss-feed {
     .rss-header {
-      white-space: nowrap;
+      word-break: break-all;
     }
 
+    .box-story__tag {
+      display: inline;
+    }
     .rss-content {
       overflow-y: auto;
       max-height: 319px;
