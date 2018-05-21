@@ -168,6 +168,16 @@ angular.module('directives.eventCalendar', [])
             });
           }
 
+          if (event.optimeExtras) {
+            var optimeText = [event.optimeExtras.otherNotes, event.optimeExtras.roomNotes, event.optimeExtras.staffNotes]
+              .filter(function(d) {
+                return d;
+              }).join(" ");
+            if(optimeText) {
+              title += ', ' + optimeText;
+            }
+          }
+
           return title;
 
         }
