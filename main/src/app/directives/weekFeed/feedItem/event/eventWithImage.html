@@ -31,7 +31,9 @@
     </a>
     <span ng-if="!feedItem.courseUri"><event-title></event-title></span>
   </div>
-
+  {{:: feedItem.optimeExtras.otherNotes}}
+  {{:: feedItem.optimeExtras.roomNotes}}
+  {{:: feedItem.optimeExtras.staffNotes}}
   <div class="box-data__content">
     <div ng-repeat="location in feedItem.locations" class="event-location">
       <span class="event-location__name">{{ ::location.locationString }}</span>

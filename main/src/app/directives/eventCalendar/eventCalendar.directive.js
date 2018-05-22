@@ -154,11 +154,7 @@ angular.module('directives.eventCalendar', [])
         $scope.eventSources = [];
 
         function getEventTitle(event) {
-          var title = event.title;
-
-          if (event.source === 'COURSE_PAGE') {
-            title += ', ' + event.courseTitle;
-          }
+          var title = event.fullEventTitle;
 
           if (event.locations) {
             event.locations.forEach(function(location) {
@@ -167,9 +163,7 @@ angular.module('directives.eventCalendar', [])
               }
             });
           }
-
           return title;
-
         }
 
         $scope.setActiveButton = function setActiveButton(buttonName) {
