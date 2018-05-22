@@ -154,11 +154,7 @@ angular.module('directives.eventCalendar', [])
         $scope.eventSources = [];
 
         function getEventTitle(event) {
-          var title = event.title;
-
-          if (event.source === 'COURSE_PAGE') {
-            title += ', ' + event.courseTitle;
-          }
+          var title = event.fullEventTitle;
 
           if (event.locations) {
             event.locations.forEach(function(location) {
@@ -167,23 +163,7 @@ angular.module('directives.eventCalendar', [])
               }
             });
           }
-
-          if (event.optimeExtras) {
-            var optimeText = [
-              event.optimeExtras.otherNotes,
-              event.optimeExtras.roomNotes,
-              event.optimeExtras.staffNotes
-            ].filter(function(d) {
-              return d;
-            }).join(' ');
-
-            if (optimeText) {
-              title += ', ' + optimeText;
-            }
-          }
-
           return title;
-
         }
 
         $scope.setActiveButton = function setActiveButton(buttonName) {
