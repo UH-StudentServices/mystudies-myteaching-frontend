@@ -41,7 +41,7 @@ angular.module('directives.favorites.rss', [
 
           $scope.feed = feedData;
           $scope.loading = false;
-        }).catch(function (error) {
+        }).catch(function(error) {
           $scope.error = true;
           $scope.loading = false;
         });

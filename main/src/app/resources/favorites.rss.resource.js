@@ -25,6 +25,7 @@ angular.module('resources.favorites.rss', [])
 
     function get(url) {
       var parser = new RSSParser();
+
       return parser.parseURL(url).then(function(feed) {
         feed.items = _.take(feed.items, NUMBER_OF_ITEMS);
         return feed;
