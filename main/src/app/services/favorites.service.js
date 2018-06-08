@@ -44,13 +44,17 @@ angular.module('services.favorites', [
       function convertDate(d) {
         return dateArrayToMomentObject(_.slice(d, 0, 5));
       }
-
       return RSSResource.get(feedUrl).then(function(feed) {
-        feed.momentDate = convertDate(feed.date);
-        _.each(feed.entries, function(entry) {
-          entry.momentDate = convertDate(entry.date);
-        });
-        return feed;
+        return {
+          title: feed.title,
+          link: feed.feedUrl,
+          description: feed.description,
+          date: feed.pubDate,
+          momentDate: convertDate(feed.date),
+          entries: _.each(feed.items, function(entry) {
+            entry.momentDate = convertDate(entry.date);
+          })
+        };
       });
     }
 

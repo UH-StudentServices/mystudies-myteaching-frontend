@@ -16,16 +16,24 @@
   -->
 
 <section class="favorites-list__item rss-feed" data-feed-url="{{data.url}}">
-  
-    <div class="box-story__topical rss-header">
-      <span class="box-story__date" ng-bind="feedDateLocalized"></span>
-      <a class="box-story__tag" href="{{ feedLink }}" target="_blank" title="{{ feedTitle }}"><span>{{ feedTitle }}</span></a>
+
+    <div class="loading-container" ng-if="loading">
+      <span class="icon-5x icon--spinner icon-spin"/>
     </div>
-    <div class="rss-content">
-      <article ng-repeat="feedItem in feed.entries" class="rss-feed__item">
-          <h4 class="rss-feed__item-title"><a href="{{feedItem.link}}" target="_blank">{{feedItem.title}}</a></h4>
-          <div class="rss-feed__date">{{feedItem.momentDate | convertDateFormat:'l LT'}}</div>
-      </article>
+    <div ng-if="!loading">
+      <div class="box-story__topical rss-header">
+        <span class="box-story__date" ng-bind="feedDateLocalized"></span>
+        <a class="box-story__tag" href="{{ feedLink }}" target="_blank" title="{{ feedTitle }}"><span>{{ feedTitle }}</span></a>
+      </div>
+      <div class="rss-content">
+        <article ng-if="error">
+          {{::('favorites.rss.loadingFailed' | translate)}}
+        </article>
+        <article ng-repeat="feedItem in feed.entries" class="rss-feed__item">
+            <h4 class="rss-feed__item-title"><a href="{{feedItem.link}}" target="_blank">{{feedItem.title}}</a></h4>
+            <div class="rss-feed__date">{{feedItem.momentDate | convertDateFormat:'l LT'}}</div>
+        </article>
+      </div>
     </div>
-  
+
 </section>
