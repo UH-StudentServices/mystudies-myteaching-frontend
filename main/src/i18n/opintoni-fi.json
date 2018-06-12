@@ -243,7 +243,7 @@
     "addNew": "lisää uusi",
     "rss": {
       "rssFeedSearch": "RSS-syötteen osoite",
-      "loadingFailed": "Syötteen latamaaminen epäonnistui"
+      "loadingFailed": "Syötteen lataaminen epäonnistui"
     },
     "link": {
       "linkPlaceholder": "URL suosikkisivulle"
