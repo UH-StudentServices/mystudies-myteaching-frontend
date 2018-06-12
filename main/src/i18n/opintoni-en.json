@@ -242,7 +242,8 @@
     "helpText": "You can add rss feeds, links, and Unicafe lunch menu to favorites. Add a new favorite by clicking +-button in Add new box. Favourites can be organized in Edit mode simply by dragging then to a new spot and removed by clicking the blue cross in the top right hand corner of the specific favorite item. Remember to press Done to save the changes.",
     "addNew": "add new",
     "rss": {
-      "rssFeedSearch": "Feed url"
+      "rssFeedSearch": "Feed url",
+      "loadingFailed": "Feed could not be loaded"
     },
     "link": {
       "linkPlaceholder": "URL to favorite website"

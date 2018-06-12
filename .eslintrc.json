@@ -23,6 +23,7 @@
     "jasmine": false,
     "Modernizr": false,
     "moment": false,
+    "RSSParser": true,
     "sprintf": false,
     "twttr": true
   },

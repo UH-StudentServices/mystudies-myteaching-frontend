@@ -28,16 +28,22 @@ angular.module('directives.favorites.rss', [
         data: '='
       },
       link: function($scope) {
+        $scope.loading = true;
+        $scope.error = false;
 
         var feedUrl = $scope.data.url;
 
         FavoritesService.getRSSFeed(feedUrl).then(function getFeedSuccess(feedData) {
-
+          $scope.error = false;
           $scope.feedTitle = feedData.title ? feedData.title : feedUrl;
           $scope.feedDateLocalized = feedData.momentDate.format('l');
           $scope.feedLink = feedData.link;
 
           $scope.feed = feedData;
+          $scope.loading = false;
+        }).catch(function(error) {
+          $scope.error = true;
+          $scope.loading = false;
         });
       }
     };
