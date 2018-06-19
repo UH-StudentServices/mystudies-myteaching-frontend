@@ -210,7 +210,7 @@ $banner-content-description-edit-height: 116px;
     top: 0;
     right: 0;
     &:before {
-      @include icon($icon-remove);
+      @include icon($icon-trash);
     }
   }
 }

@@ -43,6 +43,8 @@ angular.module('directives.freeTextContent', [
 
   .directive('freeTextContent', function(FreeTextContentService,
                                          FreeTextContentFactory,
+                                         VerificationDialog,
+                                         PreviewService,
                                          NG_EMBED_OPTIONS,
                                          $translate) {
 
@@ -116,6 +118,10 @@ angular.module('directives.freeTextContent', [
           return true;
         }
 
+        function confirmDelete() {
+          VerificationDialog.open('general.reallyDelete', 'general.ok', 'general.cancel', deleteItem, function() {});
+        }
+
         function deleteItem() {
           FreeTextContentService.deleteFreeTextContent(scope.freeTextContentItem, visibilityDescriptor);
         }
@@ -130,12 +136,14 @@ angular.module('directives.freeTextContent', [
 
         _.assign(scope, {
           deleteItem: deleteItem,
+          confirmDelete: confirmDelete,
           updateOrCreateNew: updateOrCreateNew,
           toggleEdit: function() {
             scope.isEditing = !scope.isEditing;
           },
           embedOptions: NG_EMBED_OPTIONS,
-          isTranslatableHeading: isTranslatableHeading
+          isTranslatableHeading: isTranslatableHeading,
+          isPreview: PreviewService.isPreview()
         });
 
         init();

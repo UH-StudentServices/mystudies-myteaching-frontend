@@ -90,3 +90,8 @@
 //@import "../bower_components/Styleguide/sass/components/box/box-subtitle";
 
 @import "../bower_components/Styleguide/sass/_states.scss";
+
+// Override some new Styleguide styles to match how the application looked like with Styleguide v.1.3.1
+h3, h4 {
+  text-transform: uppercase;
+}
