@@ -12,7 +12,8 @@
     "showLess": "vähemmän",
     "students": "opiskelijat",
     "teachers": "opettajat",
-    "helsinkiUniversity": "Helsingin Yliopisto"
+    "helsinkiUniversity": "Helsingin Yliopisto",
+    "reallyDelete": "Poistetaanko?"
   },
   "pageHeaderLinks": {
     "flamma": "flamma",

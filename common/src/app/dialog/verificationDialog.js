@@ -15,11 +15,12 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('opintoniDialog', ['ui.bootstrap.modal'])
+angular.module('dialog.verificationDialog', ['ui.bootstrap.modal',
+                                             'uib/template/modal/window.html'])
 
-  .factory('Dialog', function($uibModal, $rootScope) {
+  .factory('VerificationDialog', function($uibModal, $rootScope) {
 
-    function modalDialog(translationKey, okKey, cancelKey, okCallback, cancelCallback) {
+    function open(translationKey, okKey, cancelKey, okCallback, cancelCallback) {
       var scope = $rootScope.$new();
       var modalInstance;
 
@@ -42,7 +43,7 @@ angular.module('opintoniDialog', ['ui.bootstrap.modal'])
       scope.cancelKey = cancelKey;
 
       modalInstance = $uibModal.open({
-        templateUrl: 'app/dialog/modalDialog.html',
+        templateUrl: 'app/dialog/verificationDialog.html',
         scope: scope,
         windowClass: 'confirm',
         animation: false,
@@ -50,11 +51,8 @@ angular.module('opintoniDialog', ['ui.bootstrap.modal'])
       });
     }
 
-
     return {
-      modalDialog: modalDialog
+      open: open
     };
-
-
   });
 

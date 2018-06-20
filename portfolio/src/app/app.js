@@ -69,6 +69,8 @@ angular.module('opintoniPortfolioApp', [
   'directives.languageSelector',
   'directives.notifications',
 
+  'dialog.verificationDialog',
+
   'filters.formatting',
 
   'services.session',

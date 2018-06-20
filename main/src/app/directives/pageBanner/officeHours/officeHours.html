@@ -46,7 +46,7 @@
                 <span class="icon--edit-event" ></span>
               </button>
               <button class="button--icon" ng-click="showDeleteConfirmation($index)">
-                <span class="icon--remove"></span>
+                <span class="icon--trash"></span>
               </button>
             </div>
           </div>
@@ -88,7 +88,7 @@
       <ul class="office-hours__degree-programmes">
         <li class="office-hours__degree-programme" ng-repeat="programme in officeHoursUnderEdit.degreeProgrammes">
           {{programme.name}}
-          <a role="button" href="" class="degree-programme__remove icon--remove" ng-click="removeDegreeProgramme(programme)" />
+          <a role="button" href="" class="degree-programme__remove icon--trash" ng-click="removeDegreeProgramme(programme)" />
         </li>
       </ul>
 

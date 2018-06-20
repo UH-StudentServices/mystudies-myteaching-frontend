@@ -12,7 +12,8 @@
     "showLess": "less",
     "students": "students",
     "teachers": "teachers",
-    "helsinkiUniversity": "University of Helsinki"
+    "helsinkiUniversity": "University of Helsinki",
+    "reallyDelete": "Really delete?"
   },
   "pageHeaderLinks": {
     "flamma": "flamma",
