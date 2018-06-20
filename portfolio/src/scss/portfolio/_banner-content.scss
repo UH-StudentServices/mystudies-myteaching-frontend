@@ -200,12 +200,10 @@ $banner-content-description-edit-height: 116px;
   }
 
   &__remove {
-    color: white;
+    color: $blue;
     z-index: 2;
-    background-color: $blue;
     cursor: pointer;
     width: 40px;
-    height:40px;
     position: absolute;
     top: 0;
     right: 0;
