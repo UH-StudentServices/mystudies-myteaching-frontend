@@ -204,7 +204,8 @@ module.exports = function(grunt) {
           'dist/app/newrelic.js',
           'dist/assets/styles/*.css',
           'dist/assets/fonts/hy-icons.*',
-          'dist/assets/images/**/*.{png,ico,jpg}'
+          'dist/assets/images/**/*.{png,ico,jpg}',
+          'dist/assets/icons/**/*.{png,svg}'
         ]
       }
     },

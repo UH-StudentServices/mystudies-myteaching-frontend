@@ -188,7 +188,11 @@ module.exports = function(grunt) {
           'dist/app/app.js',
           'dist/app/vendor.js',
           'dist/app/newrelic.js',
-          'dist/assets/styles/*.css']
+          'dist/assets/styles/*.css',
+          'dist/assets/fonts/hy-icons.*',
+          'dist/assets/images/**/*.{png,ico,jpg}',
+          'dist/assets/icons/**/*.{png,svg}'
+        ]
       }
     },
     useminPrepare: {
@@ -211,7 +215,10 @@ module.exports = function(grunt) {
       css: ['<%= application.dist %>/assets/styles/**/*.css'],
       js: ['<%= application.dist %>/scripts/**/*.js'],
       options: {
-        assetsDirs: ['<%= application.dist %>']
+        assetsDirs: [
+          '<%= application.dist %>',
+          '<%= application.dist %>/assets/fonts'
+        ]
       }
     },
     htmlmin: {
@@ -386,7 +393,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('buildTemplates', [
     'htmlmin',
-    'html2js:templates',
+    'html2js:templates'
   ]);
 
   grunt.registerTask('default', [
