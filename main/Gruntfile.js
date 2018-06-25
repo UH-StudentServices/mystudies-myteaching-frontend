@@ -17,8 +17,7 @@
 
 'use strict';
 
-var fs = require('fs'),
-    httpProxy = require('http-proxy'),
+var httpProxy = require('http-proxy'),
     modRewrite = require('connect-modrewrite'),
     urlUtil = require('url'),
     proxy,
@@ -203,7 +202,10 @@ module.exports = function(grunt) {
           'dist/app/app.js',
           'dist/app/vendor.js',
           'dist/app/newrelic.js',
-          'dist/assets/styles/*.css']
+          'dist/assets/styles/*.css',
+          'dist/assets/fonts/hy-icons.*',
+          'dist/assets/images/**/*.{png,ico,jpg}'
+        ]
       }
     },
     useminPrepare: {
@@ -227,7 +229,10 @@ module.exports = function(grunt) {
       css: ['<%= application.dist %>/assets/styles/**/*.css'],
       js: ['<%= application.dist %>/scripts/**/*.js'],
       options: {
-        assetsDirs: ['<%= application.dist %>']
+        assetsDirs: [
+          '<%= application.dist %>',
+          '<%= application.dist %>/assets/fonts'
+        ]
       }
     },
     htmlmin: {
@@ -413,7 +418,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('buildTemplates', [
     'htmlmin',
-    'html2js:templates',
+    'html2js:templates'
   ]);
 
   grunt.registerTask('default', [
