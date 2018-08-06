@@ -271,21 +271,24 @@
 }
 
 .add-favorite-search {
-  .icon--search::after, .icon--remove::after {
+  .icon--search::after, .icon--remove::after, .icon--done::after {
     vertical-align: middle;
+    width: 16px;
   }
 
   input[type="text"], input[type="url"] {
     border: 0;
-    width: 80%;
     font-size: 0.8rem;
+    width: 140px;
+    margin-right: 0.5em;
 
     &.ng-invalid {
       border: 1px solid $red;
     }
   }
 
-  padding: 0 0 0 1em;
+  display: flex;
+  padding: 0 0 0 0;
 }
 
 .add-favorite-search-result {
