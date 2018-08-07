@@ -278,14 +278,16 @@
 .add-favorite-search {
   .icon--search::after, .icon--remove::after, .icon--done::after {
     vertical-align: middle;
-    width: 16px;
+    flex: 1 0 20px;
+    min-width: 18px;
+    padding-left: 0.2em;
   }
 
   input[type="text"], input[type="url"] {
     border: 0;
     font-size: 0.8rem;
-    width: 140px;
-    margin-right: 0.5em;
+    flex: 9 1 auto;
+    min-width: 120px;
 
     &.ng-invalid {
       border: 1px solid $red;
