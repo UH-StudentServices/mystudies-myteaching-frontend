@@ -66,6 +66,7 @@ angular.module('directives.favorites.addNew', [
               $scope.clearSearchFn();
             }
           };
+          $scope.$on('saveComponent', $scope.save);
         };
       }
     };
