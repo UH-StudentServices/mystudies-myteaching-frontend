@@ -17,8 +17,8 @@
 
 angular.module('services.keyword', ['services.portfolio', 'resources.keyword'])
   .factory('KeywordService', function(PortfolioService, KeywordResource) {
-    var Rx = window.Rx,
-        keywordsSubject;
+    var Rx = window.Rx;
+    var keywordsSubject = new Rx.BehaviorSubject();
 
     function publishKeywords(keywords) {
       keywordsSubject.onNext(keywords);
@@ -35,12 +35,9 @@ angular.module('services.keyword', ['services.portfolio', 'resources.keyword'])
     }
 
     function getKeywordsSubject() {
-      if (!keywordsSubject) {
-        keywordsSubject = new Rx.BehaviorSubject();
-        PortfolioService.getPortfolio()
+      PortfolioService.getPortfolio()
         .then(_.partialRight(_.get, 'keywords'))
         .then(publishKeywords);
-      }
 
       return keywordsSubject;
     }

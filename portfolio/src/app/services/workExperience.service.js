@@ -26,9 +26,9 @@ angular.module('services.workExperience', [
                                              $filter) {
 
     var Rx = window.Rx,
-        workExperienceSubject,
-        jobSearchSubject,
-        orderBy = $filter('orderBy');
+      workExperienceSubject = new Rx.BehaviorSubject(),
+      jobSearchSubject = new Rx.BehaviorSubject(),
+      orderBy = $filter('orderBy');
 
     function formatDates(workExperiences) {
       workExperiences = _.map(workExperiences, function(job) {
@@ -91,20 +91,14 @@ angular.module('services.workExperience', [
     }
 
     function getWorkExperienceSubject() {
-      if (!workExperienceSubject) {
-        workExperienceSubject = new Rx.BehaviorSubject();
         getWorkExperience()
           .then(publishWorkExperience);
-      }
       return workExperienceSubject;
     }
 
     function getJobSearchSubject() {
-      if (!jobSearchSubject) {
-        jobSearchSubject = new Rx.BehaviorSubject();
         getJobSearch()
           .then(publishJobSearch);
-      }
       return jobSearchSubject;
     }
 
