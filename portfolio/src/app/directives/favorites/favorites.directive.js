@@ -27,7 +27,8 @@ angular.module('directives.favorites', [
   .directive('favorites', function(availableFavoriteTypes,
                                    FavoritesService,
                                    NewFavoriteAddedEvent,
-                                   RemoveFavoriteEvent) {
+                                   RemoveFavoriteEvent,
+                                   $state) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/favorites.html',
@@ -46,8 +47,11 @@ angular.module('directives.favorites', [
 
         scope.exitEdit = function() {
           scope.$broadcast('saveComponent');
+          FavoritesService.getFavorites().then(function(favorites) {
+            scope.favorites = favorites;
+            $state.reload();
+          });
           scope.editing = false;
-
           return true;
         };
 
