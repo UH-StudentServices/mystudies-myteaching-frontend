@@ -83,7 +83,7 @@ angular.module('opintoniPortfolioApp', [
   'services.portfolioRole',
   'services.scriptInjector',
   'services.preview',
-
+  'services.freeTextContent',
   'resources.notifications',
 
   'utils.moment'
@@ -127,7 +127,7 @@ angular.module('opintoniPortfolioApp', [
             return NotificationsResource.getNotifications();
           }
         },
-        portfolio: function(PortfolioService, $location, $state, $stateParams, session, state, $translate) {
+        portfolio: function(PortfolioService, FreeTextContentService, $location, $state, $stateParams, session, state, $translate) {
           $translate.fallbackLanguage($stateParams.lang);
           return PortfolioService.findPortfolioByPath(state, $stateParams.lang, $stateParams.userpath)
             .catch(function findPortfolioFail(error) {
@@ -138,6 +138,9 @@ angular.module('opintoniPortfolioApp', [
                   $state.go('loginNeeded', {originalUrl: $location.absUrl()});
                 }
               }
+            })
+            .finally(function() {
+              FreeTextContentService.initCache();
             });
         }
       }

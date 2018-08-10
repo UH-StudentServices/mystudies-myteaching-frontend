@@ -28,16 +28,12 @@ angular.module('services.freeTextContent', ['resources.freeTextContent', 'servic
           .then(_.partialRight(_.get, 'freeTextContent', []))
           .then(function(freeTextContentItems) {
             cachedFreeTextContent = freeTextContentItems;
-
+            freeTextContentSubject = new Rx.BehaviorSubject(cachedFreeTextContent);
             return freeTextContentItems;
           }).then(publish);
     }
 
     function getFreeTextContentSubject() {
-      if (!freeTextContentSubject) {
-        freeTextContentSubject = new Rx.BehaviorSubject(cachedFreeTextContent);
-      }
-
       return freeTextContentSubject;
     }
 
@@ -92,9 +88,8 @@ angular.module('services.freeTextContent', ['resources.freeTextContent', 'servic
       }).then(publish);
     }
 
-    initCache();
-
     return {
+      initCache: initCache,
       getInitialData: getInitialData,
       getFreeTextContentSubject: getFreeTextContentSubject,
       insertFreeTextContent: insertFreeTextContent,
