@@ -28,6 +28,8 @@ angular.module('directives.favorites', [
                                    FavoritesService,
                                    NewFavoriteAddedEvent,
                                    RemoveFavoriteEvent,
+                                   StartFetchingFavoriteEvent,
+                                   FinishFetchingFavoriteEvent,
                                    $state) {
     return {
       restrict: 'E',
@@ -40,6 +42,7 @@ angular.module('directives.favorites', [
         scope.favorites = scope.favoritesData();
         scope.editing = false;
         scope.availableFavoriteTypes = availableFavoriteTypes;
+        scope.loading = false;
 
         scope.edit = function() {
           scope.editing = true;
@@ -67,8 +70,18 @@ angular.module('directives.favorites', [
           FavoritesService.deleteFavorite(favoriteId).then(showFavorites);
         }
 
+        function startLoading() {
+          scope.loading = true;
+        }
+
+        function finishLoading() {
+          scope.loading = false;
+        }
+
         scope.$on(NewFavoriteAddedEvent, updateFavorites);
         scope.$on(RemoveFavoriteEvent, removeFavorite);
+        scope.$on(StartFetchingFavoriteEvent, startLoading);
+        scope.$on(FinishFetchingFavoriteEvent, finishLoading);
 
         scope.sortableOptions = {
           containment: '.favorites__dropzone',

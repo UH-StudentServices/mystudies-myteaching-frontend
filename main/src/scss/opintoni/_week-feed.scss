@@ -65,7 +65,7 @@ $tablist-single-row: min-width 28.75em;
     background-color: $darkblue;
   }
 
-  a, a:hover, a:active, a:focus {
+  &>a, &>a:hover, &>a:active, &>a:focus {
     color: $white;
   }
 }

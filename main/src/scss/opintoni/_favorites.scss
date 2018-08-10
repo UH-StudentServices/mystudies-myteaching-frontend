@@ -204,9 +204,12 @@
 }
 
 .favorites-list-popover-container {
-  top: calc(50% + 3rem) !important;
+  top: calc(50% - 2rem) !important;
   left: 0;
   max-width: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  min-height: 80px;
 
   @include breakpoint($mobile-only) {
     margin: 0 10%;
@@ -235,9 +238,16 @@
   }
 
   li.bar {
-    padding: 0.5em 0;
-    font-size: 0.9em;
+    font-size: 0.9375rem;
     cursor: pointer;
+    margin-bottom: 2px;
+    padding: 0;
+
+    a {
+      width: 100%;
+      padding: 0.3em 0.7em 0.4em;
+      line-height: normal;
+    }
 
     &.disabled {
       cursor: auto;

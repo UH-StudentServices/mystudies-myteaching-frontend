@@ -20,10 +20,14 @@ angular.module('directives.favorites.addNew.link', [
   'resources.favorites.link',
   'directives.favorites.addNew'
 ])
+  .constant('StartFetchingFavoriteEvent', 'START_FETCHING_FAVORITE')
+  .constant('FinishFetchingFavoriteEvent', 'FINISH_FETCHING_FAVORITE')
 
   .directive('addNewLinkFavorite', function(EmbedLyResource,
                                             FavoritesService,
-                                            NewFavoriteAddedEvent) {
+                                            NewFavoriteAddedEvent,
+                                            StartFetchingFavoriteEvent,
+                                            FinishFetchingFavoriteEvent) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/link/favorites.addNew.link.html',
@@ -35,9 +39,11 @@ angular.module('directives.favorites.addNew.link', [
 
         function search(searchString) {
           $scope.loading = true;
+          $scope.$emit(StartFetchingFavoriteEvent);
           EmbedLyResource.get(searchString).then(function getMetaDataSuccess(result) {
             $scope.metaData = result.data;
           }).finally(function getMetaDataFinally() {
+            $scope.$emit(FinishFetchingFavoriteEvent);
             $scope.loading = false;
           });
         }
@@ -45,6 +51,7 @@ angular.module('directives.favorites.addNew.link', [
         $scope.search = search;
 
         $scope.clearSearch = function() {
+          $scope.$emit(FinishFetchingFavoriteEvent);
           $scope.metaData = undefined;
         };
 
