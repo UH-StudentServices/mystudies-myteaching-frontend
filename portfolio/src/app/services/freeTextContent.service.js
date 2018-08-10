@@ -25,12 +25,12 @@ angular.module('services.freeTextContent', ['resources.freeTextContent', 'servic
 
     function initCache() {
       initialDataPromise = PortfolioService.getPortfolio()
-          .then(_.partialRight(_.get, 'freeTextContent', []))
-          .then(function(freeTextContentItems) {
-            cachedFreeTextContent = freeTextContentItems;
-            freeTextContentSubject = new Rx.BehaviorSubject(cachedFreeTextContent);
-            return freeTextContentItems;
-          }).then(publish);
+        .then(_.partialRight(_.get, 'freeTextContent', []))
+        .then(function(freeTextContentItems) {
+          cachedFreeTextContent = freeTextContentItems;
+          freeTextContentSubject = new Rx.BehaviorSubject(cachedFreeTextContent);
+          return freeTextContentItems;
+        }).then(publish);
     }
 
     function getFreeTextContentSubject() {

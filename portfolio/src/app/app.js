@@ -127,7 +127,14 @@ angular.module('opintoniPortfolioApp', [
             return NotificationsResource.getNotifications();
           }
         },
-        portfolio: function(PortfolioService, FreeTextContentService, $location, $state, $stateParams, session, state, $translate) {
+        portfolio: function(PortfolioService,
+                            FreeTextContentService,
+                            $location,
+                            $state,
+                            $stateParams,
+                            session,
+                            state,
+                            $translate) {
           $translate.fallbackLanguage($stateParams.lang);
           return PortfolioService.findPortfolioByPath(state, $stateParams.lang, $stateParams.userpath)
             .catch(function findPortfolioFail(error) {
