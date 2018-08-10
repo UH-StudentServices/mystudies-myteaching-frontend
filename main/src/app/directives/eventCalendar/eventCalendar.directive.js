@@ -70,6 +70,10 @@ angular.module('directives.eventCalendar', [])
                 allDaySlot: false,
                 eventRender: function(event, element) {
                   element.attr('title', event.tooltip);
+                  if ($scope.calendarView === 'MONTH') {
+                    element.css('overflow', 'hidden');
+                    element.css('height', '48px');
+                  }
                   element.on('click mouseup', function(e) {
                     // catch click events and middle mouse clicks
                     if (AnalyticsService.isClickOrMiddleButton(e)) {
@@ -153,7 +157,7 @@ angular.module('directives.eventCalendar', [])
 
         $scope.eventSources = [];
 
-        function getEventTitle(event) {
+        function getEventTitleWithLocationsAndOptimeExtras(event) {
           var title = event.fullEventTitle;
 
           if (event.locations) {
@@ -162,6 +166,10 @@ angular.module('directives.eventCalendar', [])
                 title += ', ' + location.roomName;
               }
             });
+          }
+
+          if (event.optimeExtrasAsString) {
+            title += '\n' + event.optimeExtrasAsString;
           }
           return title;
         }
@@ -181,7 +189,7 @@ angular.module('directives.eventCalendar', [])
             var startMoment =  event.startDate;
             var endMoment = event.endDate ||
               moment().clone(startMoment).add(CalendarDefaults.EVENT_DURATION_HOURS, 'hours');
-            var title = getEventTitle(event);
+            var title = getEventTitleWithLocationsAndOptimeExtras(event);
 
             return {
               title: title,
