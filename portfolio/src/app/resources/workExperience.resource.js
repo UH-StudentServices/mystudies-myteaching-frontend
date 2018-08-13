@@ -20,11 +20,14 @@ angular.module('resources.workExperience', ['services.state'])
   .factory('WorkExperienceResource', function($resource, StateService) {
 
     function workExperienceResource(portfolioId) {
-      return $resource('/api/' + StateService.getCurrent() + '/v1/portfolio/' +
-        portfolioId + '/workexperience/:id', {id: '@id'},
+      var workExperienceUrl = '/api/' + StateService.getCurrent() + '/v1/portfolio/' +
+        portfolioId + '/workexperience/:id';
+
+      return $resource(workExperienceUrl, {id: '@id'},
         {
-          'delete': {method: 'DELETE', isArray: true},
-          'update': {method: 'POST', isArray: true}
+          'delete': {url: workExperienceUrl, method: 'DELETE', isArray: true},
+          'update': {url: workExperienceUrl, method: 'POST', isArray: true},
+          'updateWorkExperienceOrder': {url: workExperienceUrl + '/order', method: 'POST', isArray: true}
         }
       );
     }
@@ -46,9 +49,14 @@ angular.module('resources.workExperience', ['services.state'])
       return workExperienceResource(portfolioId).update(updateWorkExperience).$promise;
     }
 
+    function updateWorkExperienceOrder(portfolioId, workExperienceIds) {
+      return workExperienceResource(portfolioId).updateWorkExperienceOrder(workExperienceIds).$promise;
+    }
+
     return {
       saveJobSearch: saveJobSearch,
       deleteJobSearch: deleteJobSearch,
-      updateWorkExperience: updateWorkExperience
+      updateWorkExperience: updateWorkExperience,
+      updateWorkExperienceOrder: updateWorkExperienceOrder
     };
   });
