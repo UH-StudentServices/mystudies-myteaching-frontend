@@ -55,13 +55,18 @@ angular.module('directives.favorites.addNew', [
               $scope.enterFn();
             }
           };
-
+          $scope.save = function() {
+            if ($scope.enterFn && $scope.favoriteSearchForm.$valid) {
+              $scope.enterFn();
+            }
+          };
           $scope.clearSearch = function() {
             $scope.searchString = '';
             if ($scope.clearSearchFn) {
               $scope.clearSearchFn();
             }
           };
+          $scope.$on('saveComponent', $scope.save);
         };
       }
     };
