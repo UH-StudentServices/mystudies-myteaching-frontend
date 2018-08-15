@@ -21,9 +21,9 @@ angular.module('constants.externalLinks', [])
     pilot: {
       key: 'optionalLinks.pilotProgram',
       href: {
-        fi: 'https://sis-helsinki-test.funidata.fi/student/degree',
-        sv: 'https://sis-helsinki-test.funidata.fi/student/degree',
-        en: 'https://sis-helsinki-test.funidata.fi/student/degree'
+        fi: 'https://sis-helsinki-test.funidata.fi/student',
+        sv: 'https://sis-helsinki-test.funidata.fi/student',
+        en: 'https://sis-helsinki-test.funidata.fi/student'
       }
     },
     normal: {
@@ -39,9 +39,9 @@ angular.module('constants.externalLinks', [])
     pilot: {
       key: 'optionalLinks.pilotProgram',
       href: {
-        fi: 'https://sis-helsinki-test.funidata.fi/student/degree',
-        sv: 'https://sis-helsinki-test.funidata.fi/student/degree',
-        en: 'https://sis-helsinki-test.funidata.fi/student/degree'
+        fi: 'https://sis-helsinki-test.funidata.fi/student',
+        sv: 'https://sis-helsinki-test.funidata.fi/student',
+        en: 'https://sis-helsinki-test.funidata.fi/student'
       }
     },
     normal: {
@@ -57,9 +57,9 @@ angular.module('constants.externalLinks', [])
     pilot: {
       key: 'optionalLinks.pilotProgram',
       href: {
-        fi: 'https://sis-helsinki-test.funidata.fi/student/degree',
-        sv: 'https://sis-helsinki-test.funidata.fi/student/degree',
-        en: 'https://sis-helsinki-test.funidata.fi/student/degree'
+        fi: 'https://sis-helsinki-test.funidata.fi/student',
+        sv: 'https://sis-helsinki-test.funidata.fi/student',
+        en: 'https://sis-helsinki-test.funidata.fi/student'
       }
     },
     normal: {
@@ -75,9 +75,9 @@ angular.module('constants.externalLinks', [])
     pilot: {
       key: 'optionalLinks.pilotProgram',
       href: {
-        fi: 'https://sis-helsinki.funidata.fi/student/degree',
-        sv: 'https://sis-helsinki.funidata.fi/student/degree',
-        en: 'https://sis-helsinki.funidata.fi/student/degree'
+        fi: 'https://sis-helsinki.funidata.fi/student',
+        sv: 'https://sis-helsinki.funidata.fi/student',
+        en: 'https://sis-helsinki.funidata.fi/student'
       }
     },
     normal: {
@@ -93,9 +93,9 @@ angular.module('constants.externalLinks', [])
     pilot: {
       key: 'optionalLinks.pilotProgram',
       href: {
-        fi: 'https://sis-helsinki.funidata.fi/student/degree',
-        sv: 'https://sis-helsinki.funidata.fi/student/degree',
-        en: 'https://sis-helsinki.funidata.fi/student/degree'
+        fi: 'https://sis-helsinki.funidata.fi/student',
+        sv: 'https://sis-helsinki.funidata.fi/student',
+        en: 'https://sis-helsinki.funidata.fi/student'
       }
     },
     normal: {
