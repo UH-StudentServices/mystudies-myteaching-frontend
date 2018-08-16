@@ -17,9 +17,7 @@
 
 'use strict';
 
-angular.module('directives.editDegrees', [
-  'directives.dateInput'
-])
+angular.module('directives.editDegrees', [])
 
   .directive('editDegrees', function() {
     return {
@@ -48,20 +46,23 @@ angular.module('directives.editDegrees', [
         };
 
         $scope.exitDateOfDegreeEdit = function(degree) {
-          if (!degree.dateOfDegree.isValid()) {
-            degree.dateOfDegree = moment();
-          }
           degree.dateOfDegreeEdit = false;
         };
 
         $scope.addDegree = function(degree) {
-          degree.dateOfDegree = moment();
           $scope.degrees.push(degree);
           $scope.newDegree = {};
         };
 
         $scope.removeDegree = function(degree) {
           $scope.degrees = _.without($scope.degrees, degree);
+        };
+
+        $scope.sortableOptions = {
+          containment: '.degrees__dropzone',
+          accept: function(sourceItemHandleScope, destSortableScope) {
+            return sourceItemHandleScope.itemScope.sortableScope.$parent.$id === destSortableScope.$parent.$id;
+          }
         };
       }
     };
