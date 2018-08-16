@@ -59,6 +59,22 @@
             </span>
           </div>
 
+          <div class="degree__institution">
+            <span class="editable-content" ng-show="!degree.institutionEdit">
+              <a role="button" href="" ng-click="editInstitution(degree)">
+                {{ degree.institution || ('degrees.institutionPlaceholder' | translate) }}
+                <i class="icon--edit-event"></i>
+              </a>
+            </span>
+            <span class="editable-content-active" ng-show="degree.institutionEdit">
+              <input focus="degree.institutionEdit"
+                     ng-model="degree.institution"
+                     ui-keypress="{'enter':'exitInstitutionEdit(degree)'}"
+                     placeholder="{{::('degrees.institutionPlaceholder' | translate) }}">
+              <a role="button" href="" ng-click="exitInstitutionEdit(degree)"><i class="icon--done"></i></a>
+            </span>
+          </div>
+
           <div class="degree__description">
             <span class="editable-content" ng-show="!degree.descriptionEdit">
               <a role="button" href="" ng-click="editDescription(degree)">
@@ -67,18 +83,19 @@
               </a>
             </span>
             <span class="editable-content-active" ng-show="degree.descriptionEdit">
-              <input focus="degree.descriptionEdit"
+              <textarea focus="degree.descriptionEdit"
                      ng-model="degree.description"
                      ui-keypress="{'enter':'exitDescriptionEdit(degree)'}"
                      placeholder="{{::('degrees.descriptionPlaceholder' | translate)}}">
+              </textarea>
               <a role="button" href="" ng-click="exitDescriptionEdit(degree)"><i class="icon--done"></i></a>
             </span>
           </div>
+
         </div>
         <a class="degree__remove" role="button" href="" ng-click="removeDegree(degree)">
           <i class="icon--trash"></i>
         </a>
-      </div>
     </li>
   </ul>
 </div>

@@ -82,6 +82,7 @@
   "degrees": {
     "title": "Examen",
     "datePlaceholder": "Lägg till datum t.ex 31.5.2019 eller 5/2019",
+    "institutionPlaceholder": "Lägg till institut",
     "titlePlaceholder": "Lägg till examen",
     "descriptionPlaceholder": "Lägg till beskrivning",
     "addNewPlaceholder": "Lägg till examen"

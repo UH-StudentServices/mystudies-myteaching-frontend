@@ -33,6 +33,14 @@ angular.module('directives.editDegrees', [])
           degree.titleEdit = false;
         };
 
+        $scope.editInstitution = function(degree) {
+          degree.institutionEdit = true;
+        };
+
+        $scope.exitInstitutionEdit = function(degree) {
+          degree.institutionEdit = false;
+        };
+
         $scope.editDescription = function(degree) {
           degree.descriptionEdit = true;
         };
