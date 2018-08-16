@@ -34,6 +34,26 @@ $work-experience-summary-max-height: 104px;
   margin-bottom: 1em;
 }
 
+.banner-content__drag-handle {
+  position: absolute;
+  left: -48px;
+  top: 0px;
+  padding-top: 0.5em;
+  height: 100%;
+  @include user-select(none);
+  display: inline-block;
+
+  &:before {
+    content: $icon-drag;
+    font-size: 2rem;
+    color: $black;
+    @include user-select(none);
+    font-family: "hy-icons";
+    vertical-align: middle;
+  }
+
+}
+
 .work-experience .banner-content__banner-text {
   display: flex;
   justify-content: center;

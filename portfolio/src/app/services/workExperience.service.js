@@ -131,7 +131,8 @@ angular.module('services.workExperience', [
       getJobSearchSubject: getJobSearchSubject,
       saveJobSearch: saveJobSearch,
       deleteJobSearch: deleteJobSearch,
-      updateWorkExperience: updateWorkExperience
+      updateWorkExperience: updateWorkExperience,
+      updateWorkExperienceOrder: updateWorkExperienceOrder
     };
   });
 
