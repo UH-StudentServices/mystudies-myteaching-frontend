@@ -26,8 +26,7 @@ angular.module('resources.workExperience', ['services.state'])
       return $resource(workExperienceUrl, {id: '@id'},
         {
           'delete': {url: workExperienceUrl, method: 'DELETE', isArray: true},
-          'update': {url: workExperienceUrl, method: 'POST', isArray: true},
-          'updateWorkExperienceOrder': {url: workExperienceUrl + '/order', method: 'POST', isArray: true}
+          'update': {url: workExperienceUrl, method: 'POST', isArray: true}
         }
       );
     }
@@ -49,14 +48,9 @@ angular.module('resources.workExperience', ['services.state'])
       return workExperienceResource(portfolioId).update(updateWorkExperience).$promise;
     }
 
-    function updateWorkExperienceOrder(portfolioId, workExperienceIds) {
-      return workExperienceResource(portfolioId).updateWorkExperienceOrder(workExperienceIds).$promise;
-    }
-
     return {
       saveJobSearch: saveJobSearch,
       deleteJobSearch: deleteJobSearch,
-      updateWorkExperience: updateWorkExperience,
-      updateWorkExperienceOrder: updateWorkExperienceOrder
+      updateWorkExperience: updateWorkExperience
     };
   });

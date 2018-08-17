@@ -122,16 +122,7 @@ angular.module('directives.editWorkExperience', [
       };
 
       $scope.sortableOptions = {
-        containment: '.work-experience__dropzone',
-        orderChanged: function() {
-          WorkExperienceService.updateWorkExperienceOrder({
-            workExperienceIds: $scope.workExperience.map(function(workExperience) {
-              return workExperience.id;
-            })
-          });
-        }
+        containment: '.work-experience__dropzone'
       };
-
-    }
-  };
+    }};
 });

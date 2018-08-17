@@ -15,17 +15,18 @@
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<div class="work-experience__dropzone">
+<div class="work-experience__dropzone disableSelect">
   <ul class="banner-content"
       ng-model="workExperience"
       as-sortable="sortableOptions"
       is-disabled="!workExperience || workExperience.length < 2">
     <li ng-repeat="workExperienceItem in workExperience track by workExperienceItem.id"
         class="editable" as-sortable-item>
-      <div class="banner-content__item work-experience">
+      <div class="work-experience work-experience__outer_container">
         <div class="banner-content__drag-handle"
              as-sortable-item-handle
              ng-show="workExperience && workExperience.length > 1"></div>
+        <div class="banner-content__item">
         <div class="banner-content__banner">
           <div class="banner-content__backdrop">
             <div class="banner-content__banner-content">
@@ -142,6 +143,7 @@
           </div>
         </div>
         <button class="banner-content__remove" ng-click="removeWorkExperience(workExperienceItem)"></button>
+      </div>
       </div>
     </li>
 

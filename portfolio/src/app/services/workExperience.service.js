@@ -119,20 +119,13 @@ angular.module('services.workExperience', [
       return WorkExperienceResource.updateWorkExperience(portfolioId, updateWorkExperience).then(formatDates);
     }
 
-    function updateWorkExperienceOrder(workIdList) {
-      return getPortfolio().then(function(portfolio) {
-        return WorkExperienceResource.updateWorkExperienceOrder(portfolio.id, workIdList);
-      });
-    }
-
     return {
       formatDates: formatDates,
       getWorkExperienceSubject: getWorkExperienceSubject,
       getJobSearchSubject: getJobSearchSubject,
       saveJobSearch: saveJobSearch,
       deleteJobSearch: deleteJobSearch,
-      updateWorkExperience: updateWorkExperience,
-      updateWorkExperienceOrder: updateWorkExperienceOrder
+      updateWorkExperience: updateWorkExperience
     };
   });
 
