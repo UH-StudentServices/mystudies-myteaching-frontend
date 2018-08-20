@@ -26,9 +26,10 @@ angular.module('services.workExperience', [
                                              $filter) {
 
     var Rx = window.Rx,
-        workExperienceSubject = new Rx.BehaviorSubject(),
-        jobSearchSubject = new Rx.BehaviorSubject(),
-        orderBy = $filter('orderBy');
+        workExperienceSubject,
+        jobSearchSubject,
+        orderBy = $filter('orderBy'),
+        getPortfolio = PortfolioService.getPortfolio;
 
     function formatDates(workExperiences) {
       workExperiences = _.map(workExperiences, function(job) {
@@ -66,39 +67,44 @@ angular.module('services.workExperience', [
     }
 
     function getJobSearch() {
-      return PortfolioService.getPortfolio()
-          .then(getProperty('jobSearch'));
+      return getPortfolio().then(getProperty('jobSearch'));
     }
 
     function getWorkExperience() {
-      return PortfolioService.getPortfolio()
+      return getPortfolio()
         .then(getProperty('workExperience'))
         .then(_.partialRight(_.map, workExperienceArrayDatesToMoment));
     }
 
     function saveJobSearch(jobSearch) {
-      return PortfolioService.getPortfolio()
+      return getPortfolio()
         .then(getPortfolioId)
         .then(_.partial(WorkExperienceResource.saveJobSearch, jobSearch))
         .then(publishJobSearch);
     }
 
     function deleteJobSearch(jobSearch) {
-      return PortfolioService.getPortfolio()
+      return getPortfolio()
         .then(getPortfolioId)
         .then(_.partial(WorkExperienceResource.deleteJobSearch, jobSearch))
         .then(_.partial(publishJobSearch, null));
     }
 
     function getWorkExperienceSubject() {
-      getWorkExperience()
-        .then(publishWorkExperience);
+      if (!workExperienceSubject) {
+        workExperienceSubject = new Rx.BehaviorSubject();
+        getWorkExperience()
+          .then(publishWorkExperience);
+      }
       return workExperienceSubject;
     }
 
     function getJobSearchSubject() {
-      getJobSearch()
-        .then(publishJobSearch);
+      if (!jobSearchSubject) {
+        jobSearchSubject = new Rx.BehaviorSubject();
+        getJobSearch()
+          .then(publishJobSearch);
+      }
       return jobSearchSubject;
     }
 

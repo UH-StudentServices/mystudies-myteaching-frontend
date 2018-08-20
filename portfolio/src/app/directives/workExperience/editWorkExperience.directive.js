@@ -19,7 +19,7 @@ angular.module('directives.editWorkExperience', [
   'directives.dateInput'
 ])
 
-.directive('editWorkExperience', function($translate) {
+.directive('editWorkExperience', function(WorkExperienceService, $translate) {
   return {
     restrict: 'E',
     templateUrl: 'app/directives/workExperience/editWorkExperience.html',
@@ -121,6 +121,8 @@ angular.module('directives.editWorkExperience', [
         $scope.jobSearch = null;
       };
 
-    }
-  };
+      $scope.sortableOptions = {
+        containment: '.work-experience__dropzone'
+      };
+    }};
 });
