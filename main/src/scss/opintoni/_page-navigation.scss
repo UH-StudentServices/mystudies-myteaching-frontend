@@ -34,46 +34,141 @@ $navigationHeight: 60px;
       position: relative;
     }
 
-    @include breakpoint($small) {
-      nav {
-        height: 100%;
-        border: none;
+    nav {
+      height: 100%;
+      border: none;
+    }
+    .main-menu {
+      display: table;
+      height: 100%;
+    }
+    .main-menu__item {
+      display: table-cell;
+      vertical-align: middle;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      text-decoration: none;
+      &:first-child {
+        padding-right: 20px;
+        position: relative;
+        top: 2px;
       }
-      .fatmenu {
-        position: absolute;
-        top: $navigationHeight;
-        left: 0;
-        display: none;
-        height: auto;
-        z-index: 10001;
+    }
+    .fatmenu {
+      background-color: $white;
+      display: none;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: $navigationHeight;
+      height: auto;
+      z-index: 10001;
+
+      &.is-open {
+        border-bottom: 1px solid $mediumsilver;
+        display: block;
+      }
+
+      > ul.menu {
+        @include container;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+      }
+
+      li.is-lvl1 {
+        float: left;
+        margin-right: -100%;
+        padding: 2em 0 20px;
+        visibility: hidden;
+        width: 100%;
 
         &.is-open {
-          display: block;
+          display: block !important;
+          margin-right: 0;
+          visibility: visible;
         }
 
         > ul.menu {
-          height: 100%;
+          margin-bottom: 3em;
         }
       }
-      .main-menu {
-        display: table;
-        height: 100%;
-      }
-      .main-menu__item {
-        display: table-cell;
-        vertical-align: middle;
-        font-weight: 700;
-        font-size: 15px;
-        letter-spacing: 0.01em;
-        text-transform: uppercase;
-        text-decoration: none;
-        &:first-child {
-          padding-right: 20px;
+
+      li.is-lvl2 {
+        float: left;
+        margin-right: 10px;
+        padding: 0 0 0.8em 0;
+        width: 30%;
+
+        > a {
+          @include font-weight-bold;
+          @include font-size(15px);
+          display: block;
+          letter-spacing: 0;
+          line-height: 1.25em;
+          padding: ($vert-spacing-unit)/2 0 0;
           position: relative;
-          top: 2px;
+          text-decoration: none;
+
+          &:hover {
+            color: $darkblue;
+          }
+
+          &.active-trail {
+            color: $darkblue;
+          }
         }
+
+        > ul.menu {
+          margin: 0.5em 0 0 0;
+          padding: 0;
+          position: relative;
+        }
+      }
+    }
+
+    .fatmenu__title {
+      a {
+        color: $blue;
+
+        &:hover {
+          color: $darkblue;
+        }
+
+        &:after {
+          @include font-size(16px);
+          @include icon($icon-link-arrow);
+          margin-left: 1em;
+          position: absolute;
+        }
+      }
+    }
+
+    .fatmenu__collapse {
+      @include font-weight-medium;
+      @include font-size(20px);
+      align-items: center;
+      color: $blue;
+      cursor: pointer;
+      display: flex;
+      height: 2em;
+      justify-content: center;
+      margin: 0;
+      position: absolute;
+      right: 10px;
+      text-align: center;
+      top: 15px;
+      width: 2em;
+
+      &:hover {
+        color: $darkblue;
+      }
+
+      &:before {
+        @include icon($icon-caret-up);
       }
     }
   }
 }
-
