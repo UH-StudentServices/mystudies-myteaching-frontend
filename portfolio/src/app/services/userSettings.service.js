@@ -19,7 +19,16 @@ angular.module('services.userSettings', ['resources.userSettings'])
 
   .factory('UserSettingsService', function(UserSettingsResource) {
 
-    var userSettingsPromise;
+    var userSettingsPromise,
+        settingsPromise,
+        availableBackgroundsPromise,
+        Rx = window.Rx,
+        userSettingsSubject = new Rx.BehaviorSubject();
+
+    function publishUserSettings(userSettings) {
+      userSettingsSubject.onNext(userSettings);
+      return userSettings;
+    }
 
     function getUserSettings() {
       if (!userSettingsPromise) {
@@ -27,6 +36,22 @@ angular.module('services.userSettings', ['resources.userSettings'])
       }
 
       return userSettingsPromise;
+    }
+
+    function getAvailableBackgrounds() {
+      if (!availableBackgroundsPromise) {
+        availableBackgroundsPromise = UserSettingsResource.getAvailableBackgrounds();
+      }
+      return availableBackgroundsPromise;
+    }
+
+    function selectUserBackground(filename) {
+      return getUserSettings().then(function(settings) {
+        settingsPromise =
+          UserSettingsResource.selectUserBackground(settings.id, filename)
+            .then(publishUserSettings);
+        return settingsPromise;
+      });
     }
 
     function updateUserSettings(updateObject) {
@@ -44,7 +69,9 @@ angular.module('services.userSettings', ['resources.userSettings'])
 
     return {
       acceptCookies: acceptCookies,
+      getAvailableBackgrounds: getAvailableBackgrounds,
       getUserSettings: getUserSettings,
+      selectUserBackground: selectUserBackground,
       updateUserSettings: updateUserSettings
     };
 

@@ -246,5 +246,9 @@
   "languageSelector": {
     "confirmation": "The contents of this portfolio are in {{ lang }}. Do you want to create a new portfolio in a different language?",
     "selectionPrompt": "Please select the language for your new portfolio:"
+  },
+  "pageBanner": {
+    "chooseDefaultBackground": "Choose from default backgrounds",
+    "uploadFile": "Upload file"
   }
 }

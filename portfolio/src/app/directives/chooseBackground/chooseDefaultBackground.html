@@ -1,0 +1,58 @@
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<div class="choose-background-container">
+  <div class="choose-background" role="dialog" aria-label="{{::('userSettings.ariaLabels.chooseBackgroundImage' | translate)}}">
+    <div class="choose-background__image">
+      <flex-slider
+              id="chooseBackground"
+              animation="fade"
+              control-nav="false"
+              animation-loop="false"
+              slideshow="false"
+              slide="backgroundImage in backgroundImages"
+              start="init($slider)"
+              sync="#chooseBackgroundThumbs .flexslider"
+              after="change($slider)">
+        <li class="choose-background__image--container">
+            <img ng-src="/api/public/v1/images/backgrounds/{{backgroundImage}}">
+        </li>
+      </flex-slider>
+    </div>
+    <div class="choose-background__thumbnails">
+      <flex-slider
+              id="chooseBackgroundThumbs"
+              animation="slide"
+              control-nav="false"
+              animation-loop="false"
+              slideshow="false"
+              slide="backgroundImage in backgroundImages"
+              slideshow="false"
+              as-nav-for="#chooseBackground .flexslider"
+              item-margin="10"
+              item-width="100">
+        <li>
+            <img ng-src="/api/public/v1/images/backgrounds/{{backgroundImage}}">
+        </li>
+      </flex-slider>
+    </div>
+  </div>
+  <div class="modal__actions">
+    <a role="button" href="" ng-click="ok()" class="text-transform-capitalize" translate="general.save"></a>
+    <a role="button" href="" ng-click="cancel()" class="text-transform-capitalize" translate="general.cancel"></a>
+  </div>
+</div>

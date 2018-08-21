@@ -246,5 +246,10 @@
   "languageSelector": {
     "confirmation": "Denna portfölj är i {{lang}}. Vill du skapa en ny portfölj på ett annat språk?",
     "selectionPrompt": "Välj språk för din nya portfölj:"
+  },
+  ,
+  "pageBanner": {
+    "chooseDefaultBackground": "Välj av standardbilder",
+    "uploadFile": "Ladda up fil"
   }
 }

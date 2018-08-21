@@ -246,5 +246,9 @@
   "languageSelector": {
     "confirmation": "Tämän portfolion sisältö on kielellä {{ lang }}. Haluatko luoda uuden portfolion eri kielellä?",
     "selectionPrompt": "Valitse uuden portfolion kieli:"
+  },
+  "pageBanner": {
+    "chooseDefaultBackground": "Valitse vakiokuvista",
+    "uploadFile": "Lataa tiedosto"
   }
 }

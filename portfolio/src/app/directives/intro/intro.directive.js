@@ -15,9 +15,13 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.intro',
-  ['services.portfolio',
-   'directives.editLink'])
+angular.module('directives.intro', ['services.portfolio',
+                                    'directives.editLink',
+                                    'directives.chooseBackground',
+                                    'angular-flexslider'])
+
+  .constant('backgroundChangeEvent', 'backgroundChange')
+
   .directive('intro', function(PortfolioService) {
     return {
       restrict: 'E',
