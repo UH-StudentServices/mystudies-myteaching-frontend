@@ -56,5 +56,20 @@ $navigationHeight: 60px;
         top: 2px;
       }
     }
+    .fatmenu {
+      display: none;
+      left: 0;
+      top: $navigationHeight;
+      height: auto;
+      z-index: 10001;
+
+      &.is-open {
+        display: block;
+      }
+
+      > ul.menu {
+        height: 100%;
+      }
+    }
   }
 }
