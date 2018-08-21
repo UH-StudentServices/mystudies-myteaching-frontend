@@ -54,6 +54,10 @@
     </nav>
     <nav class="fatmenu" ng-class="{'is-open': fatmenuOpen, 'is-slidein': fatmenuOpen}" click-outside="hideFatmenu()" outside-if-not="fatmenu-open">
       <ul class="menu">
+        <li class="is-lvl1 is-active fatmenu__front">
+          <span class="fatmenu__home"></span>
+          <a href="#" class="active">Etusivu</a>
+        </li>
         <li class="is-lvl1 is-expandable" ng-class="{'is-open': fatmenuOpen}">
           <ul class="menu">
             <li ng-repeat="link in fatmenuContent track by link.key" class="is-lvl2">

@@ -34,27 +34,46 @@ $navigationHeight: 60px;
       position: relative;
     }
 
-    nav {
-      height: 100%;
-      border: none;
-    }
-    .main-menu {
-      display: table;
-      height: 100%;
-    }
-    .main-menu__item {
-      display: table-cell;
-      vertical-align: middle;
-      font-weight: 700;
-      font-size: 15px;
-      letter-spacing: 0.01em;
-      text-transform: uppercase;
-      text-decoration: none;
-      &:first-child {
-        padding-right: 20px;
-        position: relative;
-        top: 2px;
+    @include breakpoint($small) {
+      nav {
+        height: 100%;
+        border: none;
+      }
+      .fatmenu {
+        position: absolute;
+        top: $navigationHeight;
+        left: 0;
+        display: none;
+        height: auto;
+        z-index: 10001;
+
+        &.is-open {
+          display: block;
+        }
+
+        > ul.menu {
+          height: 100%;
+        }
+      }
+      .main-menu {
+        display: table;
+        height: 100%;
+      }
+      .main-menu__item {
+        display: table-cell;
+        vertical-align: middle;
+        font-weight: 700;
+        font-size: 15px;
+        letter-spacing: 0.01em;
+        text-transform: uppercase;
+        text-decoration: none;
+        &:first-child {
+          padding-right: 20px;
+          position: relative;
+          top: 2px;
+        }
       }
     }
   }
 }
+
