@@ -8,6 +8,7 @@
     "ok": "Ok",
     "login": "Login",
     "cancel": "Cancel",
+    "save": "Save",
     "showMore": "more",
     "showLess": "less",
     "students": "students",
@@ -246,6 +247,9 @@
   "languageSelector": {
     "confirmation": "The contents of this portfolio are in {{ lang }}. Do you want to create a new portfolio in a different language?",
     "selectionPrompt": "Please select the language for your new portfolio:"
+  },
+  "upload" : {
+    "privacyMessage": "The uploaded picture is automatically used in other UH services (e.g. Opinder), and the picture will have a public link."
   },
   "pageBanner": {
     "chooseDefaultBackground": "Choose from default backgrounds",

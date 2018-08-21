@@ -7,6 +7,7 @@
     "remove": "radera",
     "ok": "Ok",
     "login": "logga in",
+    "save": "spara",
     "cancel": "avbryt",
     "showMore": "mer",
     "showLess": "mindre",
@@ -247,7 +248,9 @@
     "confirmation": "Denna portfölj är i {{lang}}. Vill du skapa en ny portfölj på ett annat språk?",
     "selectionPrompt": "Välj språk för din nya portfölj:"
   },
-  ,
+  "upload" : {
+    "privacyMessage": "Den uppladdade bilden används också i andra HUs tjänster (t.ex. Opinder) och bilden får en publik länk."
+  },
   "pageBanner": {
     "chooseDefaultBackground": "Välj av standardbilder",
     "uploadFile": "Ladda up fil"

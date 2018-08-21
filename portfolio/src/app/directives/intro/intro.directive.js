@@ -18,7 +18,8 @@
 angular.module('directives.intro', ['services.portfolio',
                                     'directives.editLink',
                                     'directives.chooseBackground',
-                                    'angular-flexslider'])
+                                    'angular-flexslider',
+                                    'ngFileUpload'])
 
   .constant('backgroundChangeEvent', 'backgroundChange')
 

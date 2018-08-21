@@ -22,7 +22,6 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
   .constant('AvatarImageSize', 510)
   .constant('CropperMargin', 30)
   .constant('ImageSourceMedia', {
-    WEBCAM: 'webcam',
     FILE_SYSTEM: 'fileSystem'
   })
 

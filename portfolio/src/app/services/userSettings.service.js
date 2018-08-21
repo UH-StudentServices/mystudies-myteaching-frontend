@@ -67,12 +67,22 @@ angular.module('services.userSettings', ['resources.userSettings'])
       return updateUserSettings({cookieConsent: true});
     }
 
+    function uploadUserBackground(imageBase64) {
+      return getUserSettings().then(function(userSettings) {
+        settingsPromise =
+          UserSettingsResource.uploadUserBackground(userSettings.id, imageBase64)
+            .then(publishUserSettings);
+        return settingsPromise;
+      });
+    }
+
     return {
       acceptCookies: acceptCookies,
       getAvailableBackgrounds: getAvailableBackgrounds,
       getUserSettings: getUserSettings,
       selectUserBackground: selectUserBackground,
-      updateUserSettings: updateUserSettings
+      updateUserSettings: updateUserSettings,
+      uploadUserBackground: uploadUserBackground
     };
 
   });
