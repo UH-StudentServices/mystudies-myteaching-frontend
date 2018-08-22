@@ -46,7 +46,7 @@ angular.module('directives.subscribeEvents', [
 
   .directive('subscribeEvents', function(CalendarFeedResource,
                                          OptimeCalendarResource,
-                                         SessionService, Role,
+                                         Role,
                                          $rootScope,
                                          $q,
                                          DomainUtil,
@@ -54,6 +54,8 @@ angular.module('directives.subscribeEvents', [
                                          InstructionLinks,
                                          BrowserUtil,
                                          $timeout,
+                                         StateService,
+                                         State,
                                          MessageTimeouts) {
     return {
       rescrict: 'E',
@@ -86,14 +88,12 @@ angular.module('directives.subscribeEvents', [
         };
 
         function getOrCreateCalendarFeedUrl() {
-          SessionService.isInRole(Role.TEACHER).then(function(isTeacher) {
-            AnalyticsService.trackCalendarSubscribe();
-            if (isTeacher) {
-              return getOptimeCalendarUrl();
-            } else {
-              return getMyStudiesTeachingCalendarUrl();
-            }
-          });
+          AnalyticsService.trackCalendarSubscribe();
+          if (StateService.getStateFromDomain() === State.MY_TEACHINGS) {
+            return getOptimeCalendarUrl();
+          } else {
+            return getMyStudiesTeachingCalendarUrl();
+          }
         }
 
         function getMyStudiesTeachingCalendarUrl() {
