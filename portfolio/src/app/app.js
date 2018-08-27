@@ -50,7 +50,6 @@ angular.module('opintoniPortfolioApp', [
   'directives.degrees',
   'directives.workExperience',
   'directives.samples',
-  'directives.credits',
   'directives.navigation',
   'directives.dropdown',
   'directives.avatarImage',
