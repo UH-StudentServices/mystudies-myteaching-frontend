@@ -16,6 +16,7 @@
  */
 
 angular.module('directives.intro', ['services.portfolio',
+                                    'services.portfolioBackground',
                                     'directives.editLink',
                                     'directives.chooseBackground',
                                     'angular-flexslider',
@@ -23,19 +24,25 @@ angular.module('directives.intro', ['services.portfolio',
 
   .constant('backgroundChangeEvent', 'backgroundChange')
 
-  .directive('intro', function(PortfolioService) {
+  .directive('intro', function($rootScope, PortfolioService, PortfolioBackgroundService, backgroundChangeEvent) {
     return {
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/intro/intro.html',
       link: function($scope) {
 
+        function setBackgroundUri(data) {
+          $scope.userBackgroundStyle = {
+            'background-image': 'url("' + data.backgroundUri + '")'
+          };
+        }
+
         function setBackgroundImage() {
-          PortfolioService.getPortfolio().then(function(portfolio) {
-            $scope.userBackgroundStyle = {
-              'background-image': 'url("' + portfolio.backgroundUri + '")'
-            };
-          });
+          PortfolioService.getPortfolio().then(setBackgroundUri);
+        }
+
+        function updateBackgroundImage() {
+          PortfolioBackgroundService.getPortfolioBackgroundUri().then(setBackgroundUri);
         }
 
         $scope.editing = false;
@@ -55,6 +62,8 @@ angular.module('directives.intro', ['services.portfolio',
           });
           return true;
         };
+
+        $rootScope.$on(backgroundChangeEvent, updateBackgroundImage);
 
         setBackgroundImage();
       }

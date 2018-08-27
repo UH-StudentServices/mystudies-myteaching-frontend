@@ -21,14 +21,6 @@ angular.module('resources.userSettings', [])
     var userSettingsResource = $resource('/api/private/v1/usersettings/:id', {id: '@id'}, {
       update: {
         method: 'PUT'
-      },
-      selectUserBackground: {
-        url: '/api/private/v1/usersettings/:id/selectbackground',
-        method: 'PUT'
-      },
-      uploadUserBackground: {
-        url: '/api/private/v1/usersettings/:id/uploadbackground',
-        method: 'PUT'
       }
     });
 
@@ -46,20 +38,10 @@ angular.module('resources.userSettings', [])
       return userSettingsResource.update(settings).$promise;
     };
 
-    var selectUserBackground = function selectUserBackground(id, filename) {
-      return userSettingsResource.selectUserBackground({id: id, filename: filename}).$promise;
-    };
-
-    var uploadUserBackground = function uploadUserBackground(id, imageBase64) {
-      return userSettingsResource.uploadUserBackground({id: id, imageBase64: imageBase64}).$promise;
-    };
-
     return {
       getUserSettings: getUserSettings,
       getAvailableBackgrounds: getAvailableBackgrounds,
-      selectUserBackground: selectUserBackground,
-      updateUserSettings: updateUserSettings,
-      uploadUserBackground: uploadUserBackground
+      updateUserSettings: updateUserSettings
     };
 
   });

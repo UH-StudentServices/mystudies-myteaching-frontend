@@ -45,15 +45,6 @@ angular.module('services.userSettings', ['resources.userSettings'])
       return availableBackgroundsPromise;
     }
 
-    function selectUserBackground(filename) {
-      return getUserSettings().then(function(settings) {
-        settingsPromise =
-          UserSettingsResource.selectUserBackground(settings.id, filename)
-            .then(publishUserSettings);
-        return settingsPromise;
-      });
-    }
-
     function updateUserSettings(updateObject) {
       userSettingsPromise = getUserSettings()
         .then(function(settings) {
@@ -80,9 +71,7 @@ angular.module('services.userSettings', ['resources.userSettings'])
       acceptCookies: acceptCookies,
       getAvailableBackgrounds: getAvailableBackgrounds,
       getUserSettings: getUserSettings,
-      selectUserBackground: selectUserBackground,
       updateUserSettings: updateUserSettings,
-      uploadUserBackground: uploadUserBackground
     };
 
   });

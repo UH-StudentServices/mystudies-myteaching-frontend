@@ -15,8 +15,10 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.chooseBackground', ['ui.bootstrap.modal', 'directives.uploadImage',
-                                               'services.userSettings'])
+angular.module('directives.chooseBackground', ['ui.bootstrap.modal',
+                                               'directives.uploadImage',
+                                               'services.userSettings',
+                                               'services.portfolioBackground'])
 
   .directive('chooseBackgroundButton', function() {
     return {
@@ -48,6 +50,7 @@ angular.module('directives.chooseBackground', ['ui.bootstrap.modal', 'directives
   .controller('ChooseDefaultBackgroundController', function($scope,
                                                             $uibModalInstance,
                                                             UserSettingsService,
+                                                            PortfolioBackgroundService,
                                                             $q,
                                                             $rootScope,
                                                             backgroundChangeEvent) {
@@ -71,7 +74,7 @@ angular.module('directives.chooseBackground', ['ui.bootstrap.modal', 'directives
     }
 
     $scope.ok = function() {
-      UserSettingsService.selectUserBackground(getSelectedBackgroundImageName()).then(function() {
+      PortfolioBackgroundService.selectPortfolioBackground(getSelectedBackgroundImageName()).then(function() {
         $rootScope.$broadcast(backgroundChangeEvent);
         $uibModalInstance.dismiss();
       });
