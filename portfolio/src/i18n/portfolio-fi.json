@@ -83,6 +83,7 @@
   "degrees": {
     "title": "Tutkinnot",
     "datePlaceholder": "Lisää päivämäärä, esim. 31.5.2019 tai 5/2019",
+    "institutionPlaceholder": "Lisää oppilaitos",
     "titlePlaceholder": "Lisää tutkinto",
     "descriptionPlaceholder": "Lisää kuvaus",
     "addNewPlaceholder": "Lisää uusi tutkinto"
