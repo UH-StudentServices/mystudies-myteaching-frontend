@@ -32,14 +32,21 @@ angular.module('services.portfolioBackground', ['resources.portfolioBackground',
       });
     }
 
-    function getProtfolioBackgroundUri() {
+    function getPortfolioBackgroundUri() {
       return getPortfolioId().then(function(portfolioId) {
         return PortfolioBackgroundResource.getPortfolioBackground(portfolioId);
       });
     }
 
+    function uploadUserBackground(imageBase64) {
+      return getPortfolioId().then(function(portfolioId) {
+        return PortfolioBackgroundResource.uploadUserBackground(portfolioId, imageBase64);
+      });
+    }
+
     return {
       selectPortfolioBackground: selectPortfolioBackground,
-      getPortfolioBackgroundUri: getProtfolioBackgroundUri
+      getPortfolioBackgroundUri: getPortfolioBackgroundUri,
+      uploadUserBackground: uploadUserBackground
     };
   });

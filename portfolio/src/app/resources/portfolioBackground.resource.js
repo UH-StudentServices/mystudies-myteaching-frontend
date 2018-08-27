@@ -28,6 +28,10 @@ angular.module('resources.portfolioBackground', [])
           method: 'PUT',
           url: portfolioBackgroundUrl + '/select'
         },
+        uploadPortfolioBackground: {
+          method: 'PUT',
+          url: portfolioBackgroundUrl + '/upload'
+        },
         getPortfolioBackground: {
           method: 'GET',
           url: portfolioBackgroundUrl
@@ -43,8 +47,13 @@ angular.module('resources.portfolioBackground', [])
       return portfolioBackgroundResource(portfolioId).getPortfolioBackground().$promise;
     }
 
+    function uploadUserBackground(portfolioId, imageBase64) {
+      return portfolioBackgroundResource(portfolioId).uploadPortfolioBackground({imageBase64: imageBase64}).$promise;
+    }
+
     return {
       selectPortfolioBackground: selectPortfolioBackground,
-      getPortfolioBackground: getPortfolioBackground
+      getPortfolioBackground: getPortfolioBackground,
+      uploadUserBackground: uploadUserBackground
     };
   });

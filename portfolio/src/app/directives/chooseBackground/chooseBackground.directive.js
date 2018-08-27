@@ -27,7 +27,7 @@ angular.module('directives.chooseBackground', ['ui.bootstrap.modal',
       templateUrl: 'app/directives/chooseBackground/chooseBackgroundButton.html',
       scope: {},
       controller: function($scope, $uibModal, $rootScope, UserSettingsService,
-                           backgroundChangeEvent) {
+                           PortfolioBackgroundService, backgroundChangeEvent) {
         $scope.openChooseBGModal = function() {
           $uibModal.open({
             templateUrl: 'app/directives/chooseBackground/chooseDefaultBackground.html',
@@ -39,7 +39,7 @@ angular.module('directives.chooseBackground', ['ui.bootstrap.modal',
         };
 
         $scope.upload = function(image) {
-          return UserSettingsService.uploadUserBackground(image).then(function() {
+          return PortfolioBackgroundService.uploadUserBackground(image).then(function() {
             $rootScope.$broadcast(backgroundChangeEvent);
           });
         };
