@@ -96,6 +96,7 @@ angular.module('opintoniPortfolioApp', [
     $httpProvider,
     $locationProvider,
     $compileProvider,
+    $qProvider,
     $sceDelegateProvider) {
 
     $locationProvider.html5Mode(true);
@@ -105,6 +106,8 @@ angular.module('opintoniPortfolioApp', [
     $urlRouterProvider.otherwise('/');
 
     $compileProvider.debugInfoEnabled(false);
+
+    $qProvider.errorOnUnhandledRejections(false);
 
     $stateProvider.state('portfolio', {
       url: '/:lang/:userpath',
