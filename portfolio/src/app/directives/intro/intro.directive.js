@@ -15,22 +15,34 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.intro',
-  ['services.portfolio',
-   'directives.editLink'])
-  .directive('intro', function(PortfolioService) {
+angular.module('directives.intro', ['services.portfolio',
+                                    'services.portfolioBackground',
+                                    'directives.editLink',
+                                    'directives.chooseBackground',
+                                    'angular-flexslider',
+                                    'ngFileUpload'])
+
+  .constant('backgroundChangeEvent', 'backgroundChange')
+
+  .directive('intro', function($rootScope, PortfolioService, PortfolioBackgroundService, backgroundChangeEvent) {
     return {
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/intro/intro.html',
       link: function($scope) {
 
+        function setBackgroundUri(data) {
+          $scope.userBackgroundStyle = {
+            'background-image': 'url("' + data.backgroundUri + '")'
+          };
+        }
+
         function setBackgroundImage() {
-          PortfolioService.getPortfolio().then(function(portfolio) {
-            $scope.userBackgroundStyle = {
-              'background-image': 'url("' + portfolio.backgroundUri + '")'
-            };
-          });
+          PortfolioService.getPortfolio().then(setBackgroundUri);
+        }
+
+        function updateBackgroundImage() {
+          PortfolioBackgroundService.getPortfolioBackgroundUri().then(setBackgroundUri);
         }
 
         $scope.editing = false;
@@ -50,6 +62,8 @@ angular.module('directives.intro',
           });
           return true;
         };
+
+        $rootScope.$on(backgroundChangeEvent, updateBackgroundImage);
 
         setBackgroundImage();
       }

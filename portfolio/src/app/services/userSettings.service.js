@@ -19,7 +19,16 @@ angular.module('services.userSettings', ['resources.userSettings'])
 
   .factory('UserSettingsService', function(UserSettingsResource) {
 
-    var userSettingsPromise;
+    var userSettingsPromise,
+        settingsPromise,
+        availableBackgroundsPromise,
+        Rx = window.Rx,
+        userSettingsSubject = new Rx.BehaviorSubject();
+
+    function publishUserSettings(userSettings) {
+      userSettingsSubject.onNext(userSettings);
+      return userSettings;
+    }
 
     function getUserSettings() {
       if (!userSettingsPromise) {
@@ -27,6 +36,13 @@ angular.module('services.userSettings', ['resources.userSettings'])
       }
 
       return userSettingsPromise;
+    }
+
+    function getAvailableBackgrounds() {
+      if (!availableBackgroundsPromise) {
+        availableBackgroundsPromise = UserSettingsResource.getAvailableBackgrounds();
+      }
+      return availableBackgroundsPromise;
     }
 
     function updateUserSettings(updateObject) {
@@ -42,10 +58,20 @@ angular.module('services.userSettings', ['resources.userSettings'])
       return updateUserSettings({cookieConsent: true});
     }
 
+    function uploadUserBackground(imageBase64) {
+      return getUserSettings().then(function(userSettings) {
+        settingsPromise =
+          UserSettingsResource.uploadUserBackground(userSettings.id, imageBase64)
+            .then(publishUserSettings);
+        return settingsPromise;
+      });
+    }
+
     return {
       acceptCookies: acceptCookies,
+      getAvailableBackgrounds: getAvailableBackgrounds,
       getUserSettings: getUserSettings,
-      updateUserSettings: updateUserSettings
+      updateUserSettings: updateUserSettings,
     };
 
   });

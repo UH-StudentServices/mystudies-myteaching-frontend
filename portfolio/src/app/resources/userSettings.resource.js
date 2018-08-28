@@ -24,8 +24,14 @@ angular.module('resources.userSettings', [])
       }
     });
 
+    var availableBackgroundImagesResource = $resource('/api/public/v1/images/backgrounds');
+
     var getUserSettings = function getUserSettings() {
       return userSettingsResource.get().$promise;
+    };
+
+    var getAvailableBackgrounds = function getAvailableBackgrounds() {
+      return availableBackgroundImagesResource.query().$promise;
     };
 
     var updateUserSettings = function updateUserSettings(settings) {
@@ -34,6 +40,7 @@ angular.module('resources.userSettings', [])
 
     return {
       getUserSettings: getUserSettings,
+      getAvailableBackgrounds: getAvailableBackgrounds,
       updateUserSettings: updateUserSettings
     };
 

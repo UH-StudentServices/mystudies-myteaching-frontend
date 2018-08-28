@@ -7,6 +7,7 @@
     "remove": "poista",
     "ok": "Ok",
     "login": "Kirjaudu",
+    "save": "Tallenna",
     "cancel": "Peruuta",
     "showMore": "lisää",
     "showLess": "vähemmän",
@@ -243,5 +244,12 @@
   "languageSelector": {
     "confirmation": "Tämän portfolion sisältö on kielellä {{ lang }}. Haluatko luoda uuden portfolion eri kielellä?",
     "selectionPrompt": "Valitse uuden portfolion kieli:"
+  },
+  "upload": {
+    "privacyMessage": "Lataamaasi kuvaa käytetään automaattisesti myös muissa HY:n palveluissa (esimerkiksi Opinderissa) ja kuvalle muodostuu julkinen linkki."
+  },
+  "pageBanner": {
+    "chooseDefaultBackground": "Valitse vakiokuvista",
+    "uploadFile": "Lataa tiedosto"
   }
 }
