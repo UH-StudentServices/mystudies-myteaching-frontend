@@ -123,10 +123,6 @@
   "buttons": {
     "showMore": "Näytä lisää"
   },
-  "credits": {
-    "title": "Opiskelun mittarit",
-    "totalCredits": "Opintopistettä suoritettu"
-  },
   "errorPage": {
     "notFound": {
       "title": "Sivua ei löytynyt",

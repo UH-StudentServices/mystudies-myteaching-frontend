@@ -123,10 +123,6 @@
   "buttons": {
     "showMore": "Show more"
   },
-  "credits": {
-    "title": "Study meters",
-    "totalCredits": "ECTS credits"
-  },
   "errorPage": {
     "notFound": {
       "title": "Page not found",

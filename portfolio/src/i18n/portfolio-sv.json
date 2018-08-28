@@ -123,10 +123,6 @@
   "buttons": {
     "showMore": "Visa mer"
   },
-  "credits": {
-    "title": "Studiemätare",
-    "totalCredits": "studiepoäng"
-  },
   "errorPage": {
     "notFound": {
       "title": "sidan hittas inte",
