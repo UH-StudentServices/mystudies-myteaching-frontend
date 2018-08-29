@@ -35,11 +35,9 @@ angular.module('directives.favorites', [
       restrict: 'E',
       templateUrl: 'app/directives/favorites/favorites.html',
       scope: {
-        favoritesData: '&',
         portfolioLang: '@'
       },
       link: function(scope) {
-        scope.favorites = scope.favoritesData();
         scope.editing = false;
         scope.availableFavoriteTypes = availableFavoriteTypes;
         scope.loading = false;
@@ -82,6 +80,8 @@ angular.module('directives.favorites', [
         scope.$on(RemoveFavoriteEvent, removeFavorite);
         scope.$on(StartFetchingFavoriteEvent, startLoading);
         scope.$on(FinishFetchingFavoriteEvent, finishLoading);
+
+        updateFavorites();
 
         scope.sortableOptions = {
           containment: '.favorites__dropzone',
