@@ -161,6 +161,9 @@
   },
   "languages": {
     "title": "Språk",
+    "languagePlaceholder": "Kieli (sv)",
+    "proficiencyPlaceholder": "Taitotaso (sv)",
+    "descriptionPlaceholder": "Lisätietoja (sv)",
     "proficiency": {
       "1": "Grundläggande",
       "2": "Moderat",

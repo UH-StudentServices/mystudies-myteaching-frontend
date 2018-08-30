@@ -161,6 +161,9 @@
   },
   "languages": {
     "title": "Languages",
+    "languagePlaceholder": "Language name",
+    "proficiencyPlaceholder": "Skill level, e.g. Native, Excellent, ...",
+    "descriptionPlaceholder": "Extra information",
     "proficiency": {
       "1": "Basic",
       "2": "Moderate",
