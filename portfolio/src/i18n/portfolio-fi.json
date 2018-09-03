@@ -163,7 +163,12 @@
     "title": "Kielitaito",
     "languagePlaceholder": "Kieli",
     "proficiencyPlaceholder": "Taitotaso, esim. Äidinkieli, erinomainen, ...",
-    "descriptionPlaceholder": "Lisätietoja"
+    "descriptionPlaceholder": "Lisätietoja",
+    "code": {
+      "en": "Englanti",
+      "fi": "Suomi",
+      "sv": "Ruotsi"
+    }
   },
   "tabs": {
     "basicInformation": "Perustiedot",
