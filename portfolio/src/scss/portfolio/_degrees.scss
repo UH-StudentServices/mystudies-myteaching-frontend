@@ -50,6 +50,19 @@ $degree-invalid-color: red;
       border: 2px solid $degree-invalid-color;
     }
   }
+
+  .degree__description {
+    display: flex;
+  }
+
+  .degree__description .editable-content-active {
+    align-content: stretch;
+    width: 100%;
+  }
+
+  .degree__description .editable-content-active .icon--done {
+    top: 12px;
+  }
 }
 
 .degree__lyre {
