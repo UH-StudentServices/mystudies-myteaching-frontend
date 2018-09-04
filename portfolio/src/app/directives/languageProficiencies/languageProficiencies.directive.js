@@ -39,7 +39,7 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
               };
             },
             newLanguageProficiency = function() {
-              return {language: '', proficiency: '', description: ''};
+              return {languageName: '', proficiency: '', description: ''};
             },
             orderByName = function(languageProficiencies) {
               return orderBy(languageProficiencies, 'languageName');
