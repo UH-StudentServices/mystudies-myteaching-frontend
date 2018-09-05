@@ -156,7 +156,6 @@ describe('Language proficiencies directive', function() {
 
     addNewItem('nl', 'Excellent');
     toggleEditMode();
-
     expect(LanguageProficienciesService.save).toHaveBeenCalledWith({
       updatedLanguageProficiencies: [
         {id: 2, languageName: 'zh', proficiency: 'Moderate', description: 'description'}],
