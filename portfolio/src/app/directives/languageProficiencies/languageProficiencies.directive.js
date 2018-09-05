@@ -94,9 +94,9 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
             }
           },
 
-          updateLanguageProficiency: _.debounce(function(languageProficiency) {
+          updateLanguageProficiency: function(languageProficiency) {
             update(languageProficiency);
-          }, 300),
+          },
 
           remove: function(languageProficiency) {
             if (languageProficiency.id) {

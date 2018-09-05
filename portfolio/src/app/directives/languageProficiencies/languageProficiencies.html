@@ -60,15 +60,15 @@
           </div>
 
           <div class="language-proficiency-item__description">
-            <span ng-show="!editing && languageProficiency.description">
+            <div ng-show="!editing && languageProficiency.description">
               {{ languageProficiency.description }}
-            </span>
-            <span ng-show="editing" class="language-proficiency-item__input-container editable-content-active">
+            </div>
+            <div ng-show="editing" class="language-proficiency-item__input-container editable-content-active">
               <textarea name="description"
                         ng-model="languageProficiency.description"
                         ng-change="updateLanguageProficiency(languageProficiency)"
                         placeholder="{{::('languages.descriptionPlaceholder' | translate)}}"></textarea>
-            </span>
+            </div>
           </div>
         </div>
 

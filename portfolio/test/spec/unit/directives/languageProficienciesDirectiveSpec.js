@@ -156,15 +156,15 @@ describe('Language proficiencies directive', function() {
 
     addNewItem('nl', 'Excellent');
     toggleEditMode();
-    setTimeout(function() {
-      expect(LanguageProficienciesService.save).toHaveBeenCalledWith({
-        updatedLanguageProficiencies: [
-          {id: 2, languageName: 'zh', proficiency: 'Moderate', description: 'description'}],
-        newLanguageProficiencies: [
-          {languageName: 'nl', proficiency: 'Excellent', description: 'description'}],
-        deletedIds: [1]
-      });
-    }, 500);
+
+    expect(LanguageProficienciesService.save).toHaveBeenCalledWith({
+      updatedLanguageProficiencies: [
+        {id: 2, languageName: 'zh', proficiency: 'Moderate', description: 'description'}],
+      newLanguageProficiencies: [
+        {languageName: 'nl', proficiency: 'Excellent', description: 'description'}],
+      deletedIds: [1]
+    });
+
     expect($state.reload).toHaveBeenCalledTimes(1);
 
   });
