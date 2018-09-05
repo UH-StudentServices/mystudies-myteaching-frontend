@@ -28,61 +28,49 @@
   </div>
 
   <ul class="language-proficiency-list" ng-class="{editing : editing}">
-    <li ng-repeat="languageProficiency in languageProficiencies track by languageProficiency.language"
+    <li ng-repeat="languageProficiency in languageProficiencies"
         class="language-proficiency-item"
         data-id="{{::languageProficiency.id}}">
-        <figure class="proficiency-visualizer-container">
-          <div class="proficiency-visualizer -level-{{languageProficiency.proficiency}}">
-            <div class="proficiency-visualizer__inner-circle"></div>
-          </div>
-        </figure>
 
         <div class="language-proficiency-item__content">
-          <div class="language-proficiency-item__language-name"
-               ng-click="toggleLanguageSelect(this)"
-               aria-pressed="{{editing && languageSelectVisible}}">
-            <span translate translate-language="{{::portfolioLang}}">
-              {{'languages.code.' + languageProficiency.language}}
+          <div class="language-proficiency-item__language-name">
+            <span ng-show="!editing && languageProficiency.languageName">
+              {{languageProficiency.languageName}}
             </span>
-            <i class="icon--drop-down" role="presentational" ng-show="editing"></i>
-            <div ng-show="editing && languageSelectVisible" class="language-proficiency-item__select-container">
-              <ul class="language-proficiency-item__select" role="listbox">
-                <li role="option"
-                    ng-repeat="lang in availableLanguages |
-                               filter:excludeOtherProficiencyLanguages(languageProficiency.language) |
-                               orderBy:translatedLanguageName(languageProficiency.language)"
-                    class="language-proficiency-item__select-item">
-                  <a role="button" href="" class="language-proficiency-item__select-item-link"
-                     id="language-{{::lang}}"
-                     translate translate-language="{{::portfolioLang}}"
-                     ng-click="updateLanguage(languageProficiency, lang)">
-                     {{'languages.code.' + lang}}
-                  </a>
-                </li>
-              </ul>
-            </div>
+            <span ng-show="editing" class="language-proficiency-item__input-container editable-content-active">
+              <input type="text"
+                     name="languageName"
+                     ng-model="languageProficiency.languageName"
+                     ng-model-options="{ debounce: 300 }"
+                     ng-change="updateLanguageProficiency(languageProficiency)"
+                     placeholder="{{::('languages.languagePlaceholder' | translate)}}"/>
+            </span>
           </div>
 
-          <div class="language-proficiency-item__proficiency"
-               ng-click="toggleProficiencySelect(this)"
-               aria-pressed="{{editing && proficiencySelectVisible}}">
-            <span translate translate-language="{{::portfolioLang}}">
-              {{'languages.proficiency.' + languageProficiency.proficiency}}
+          <div class="language-proficiency-item__proficiency">
+            <span ng-show="!editing && languageProficiency.proficiency">
+              {{languageProficiency.proficiency}}
             </span>
-            <i class="icon--drop-down" role="presentational" ng-show="editing"></i>
-            <div ng-show="editing && proficiencySelectVisible" class="language-proficiency-item__select-container">
-              <ul class="language-proficiency-item__select" role="listbox">
-                <li role="option"
-                    ng-repeat="pr in proficiencies"
-                    class="language-proficiency-item__select-item">
-                  <a role="button" href="" class="language-proficiency-item__select-item-link"
-                     id="proficiency-{{::pr}}"
-                     translate translate-language="{{::portfolioLang}}"
-                     ng-click="updateProficiency(languageProficiency, pr)">
-                     {{'languages.proficiency.' + pr}}
-                  </a>
-                </li>
-              </ul>
+            <span ng-show="editing" class="language-proficiency-item__input-container editable-content-active">
+              <input type="text"
+                     name="proficiency"
+                     ng-model="languageProficiency.proficiency"
+                     ng-model-options="{ debounce: 300 }"
+                     ng-change="updateLanguageProficiency(languageProficiency)"
+                     placeholder="{{::('languages.proficiencyPlaceholder' | translate)}}"/>
+            </span>
+          </div>
+
+          <div class="language-proficiency-item__description">
+            <div ng-show="!editing && languageProficiency.description">
+              {{ languageProficiency.description }}
+            </div>
+            <div ng-show="editing" class="language-proficiency-item__input-container editable-content-active">
+              <textarea name="description"
+                        ng-model="languageProficiency.description"
+                        ng-model-options="{ debounce: 300 }"
+                        ng-change="updateLanguageProficiency(languageProficiency)"
+                        placeholder="{{::('languages.descriptionPlaceholder' | translate)}}"></textarea>
             </div>
           </div>
         </div>

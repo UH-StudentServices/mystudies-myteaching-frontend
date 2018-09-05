@@ -16,9 +16,7 @@
  */
 
 angular.module('directives.languageProficiencies', ['services.languageProficiencies', 'directives.editableHeading'])
-  .directive('languageProficiencies', function(AvailablePortfolioLanguages,
-                                               AvailableLanguageProficiencies,
-                                               LanguageProficienciesService,
+  .directive('languageProficiencies', function(LanguageProficienciesService,
                                                $filter,
                                                $state) {
     return {
@@ -33,7 +31,6 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
       link: function($scope) {
         var updateBatch,
             orderBy = $filter('orderBy'),
-            translate = $filter('translate'),
             initUpdateBatch = function() {
               updateBatch = {
                 updatedLanguageProficiencies: [],
@@ -41,17 +38,11 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
                 deletedIds: []
               };
             },
-            unusedLanguages = function() {
-              return _.difference(AvailablePortfolioLanguages,
-                _.map($scope.languageProficiencies, 'language'));
-            },
             newLanguageProficiency = function() {
-              var unused = unusedLanguages();
-
-              return unused.length ? {language: unused[0], proficiency: 1} : null;
+              return {languageName: '', proficiency: '', description: ''};
             },
-            orderByProficiency = function(languageProficiencies) {
-              return orderBy(languageProficiencies, '-proficiency');
+            orderByName = function(languageProficiencies) {
+              return orderBy(languageProficiencies, 'languageName');
             },
             shouldUpdate = function() {
               return _.some(updateBatch, 'length');
@@ -68,15 +59,12 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
 
 
         _.assign($scope, {
-          languageProficiencies: orderByProficiency($scope.languageProficienciesData()),
-          availableLanguages: AvailablePortfolioLanguages,
-          proficiencies: AvailableLanguageProficiencies,
+          languageProficiencies: orderByName($scope.languageProficienciesData()),
 
           edit: function() {
             $scope.editing = true;
             initUpdateBatch();
           },
-
 
           exitEdit: function() {
             $scope.$broadcast('saveComponent');
@@ -88,7 +76,7 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
 
             if (shouldUpdate()) {
               LanguageProficienciesService.save(updateBatch).then(function(savedProficiencies) {
-                $scope.languageProficiencies = orderByProficiency(savedProficiencies);
+                $scope.languageProficiencies = orderByName(savedProficiencies);
                 $state.reload(); // https://jira.it.helsinki.fi/browse/OO-1004
               });
             }
@@ -96,32 +84,6 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
             $scope.editing = false;
 
             return true;
-          },
-
-          toggleLanguageSelect: function(scope) {
-            if ($scope.editing) {
-              scope.proficiencySelectVisible = false;
-              scope.languageSelectVisible = !scope.languageSelectVisible;
-            }
-          },
-
-          toggleProficiencySelect: function(scope) {
-            if ($scope.editing) {
-              scope.languageSelectVisible = false;
-              scope.proficiencySelectVisible = !scope.proficiencySelectVisible;
-            }
-          },
-
-          translatedLanguageName: function() {
-            return function(langCode) {
-              return translate('languages.code.' + langCode);
-            };
-          },
-
-          excludeOtherProficiencyLanguages: function(preselectedLangCode) {
-            return function(langCode) {
-              return unusedLanguages().concat(preselectedLangCode).indexOf(langCode) !== -1;
-            };
           },
 
           addNew: function() {
@@ -132,18 +94,8 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
             }
           },
 
-          updateLanguage: function(languageProficiency, language) {
-            if (languageProficiency.language !== language) {
-              languageProficiency.language = language;
-              update(languageProficiency);
-            }
-          },
-
-          updateProficiency: function(languageProficiency, proficiency) {
-            if (languageProficiency.proficiency !== proficiency) {
-              languageProficiency.proficiency = proficiency;
-              update(languageProficiency);
-            }
+          updateLanguageProficiency: function(languageProficiency) {
+            update(languageProficiency);
           },
 
           remove: function(languageProficiency) {
@@ -152,7 +104,7 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
             }
 
             _.remove($scope.languageProficiencies, function(el) {
-              return el.language === languageProficiency.language;
+              return el.languageName === languageProficiency.languageName;
             });
           }
         });

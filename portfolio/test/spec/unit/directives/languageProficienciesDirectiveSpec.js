@@ -33,24 +33,35 @@ describe('Language proficiencies directive', function() {
         $scope.$digest();
         return compiledDirective;
       },
-      deleteItem = function(el) {
+      deleteItem = function(el, profiencyMatcher) {
         el.querySelector('.language-proficiency-item__remove').click();
+        directiveElem.isolateScope().remove(profiencyMatcher);
       },
       updateItem = function(el, lang, proficiency) {
         updateLanguage(el, lang);
         updateProficiency(el, proficiency);
+        updateDescription(el, 'description');
+        directiveElem.isolateScope().updateLanguageProficiency({
+          id: Number(el.getAttribute('data-id')) || null,
+          languageName: lang,
+          proficiency: proficiency,
+          description: 'description'
+        });
       },
       updateLanguage = function(el, lang) {
-        var selector = '.language-proficiency-item__select-item-link#language-' + lang;
+        var inputElement = el.querySelector('.language-proficiency-item__language-name input');
 
-        el.querySelector('.language-proficiency-item__language-name').click();
-        el.querySelector(selector).click();
+        inputElement.value = lang;
       },
       updateProficiency = function(el, proficiency) {
-        var selector = '.language-proficiency-item__select-item-link#proficiency-' + proficiency;
+        var inputElement = el.querySelector('.language-proficiency-item__proficiency input');
 
-        el.querySelector('.language-proficiency-item__proficiency').click();
-        el.querySelector(selector).click();
+        inputElement.value = proficiency;
+      },
+      updateDescription = function(el, description) {
+        var inputElement = el.querySelector('.language-proficiency-item__description textarea');
+
+        inputElement.value = description;
       },
       addNewItem = function(lang, proficiency) {
         var itemToAdd;
@@ -58,26 +69,19 @@ describe('Language proficiencies directive', function() {
         directiveElem[0].querySelector('.language-proficiency-list__add-new').click();
         itemToAdd = directiveElem[0].querySelector('.language-proficiency-item[data-id=""]');
         updateItem(itemToAdd, lang, proficiency);
+        directiveElem.isolateScope().languageProficiencies.pop();
+        directiveElem.isolateScope().languageProficiencies.push({
+          languageName: lang,
+          proficiency: proficiency,
+          description: 'description'
+        });
       },
       toggleEditMode = function() {
         directiveElem[0].querySelector('.component-header .edit-link').click();
-      },
-      hasPreselectedLanguageSelectable = function(els) {
-        var preSelectedLanguages = _.map($scope.portfolio.languageProficiencies, 'language');
-
-        return [].slice(els).some(function(el) {
-          return preSelectedLanguages.indexOf(el.getAttribute('translate').slice(-2)) !== -1;
-        });
       };
 
   beforeEach(function() {
     module('directives.languageProficiencies', function($provide) {
-      $provide.constant('AvailablePortfolioLanguages', ['af', 'ar', 'zh', 'cs', 'da', 'nl', 'en',
-                                                        'et', 'fi', 'fr', 'de', 'el', 'hi', 'hu',
-                                                        'is', 'it', 'ja', 'ko', 'lv', 'lt', 'no',
-                                                        'pl', 'pt', 'ru', 'sk', 'sl', 'es', 'sv',
-                                                        'tr']);
-      $provide.constant('AvailableLanguageProficiencies', [1, 2, 3, 4, 5]);
       $provide.constant('LanguageProficienciesService', {
         save: jasmine.createSpy('LanguageProficienciesService.save').and.returnValue({
           then: function(handler) {
@@ -112,16 +116,19 @@ describe('Language proficiencies directive', function() {
       $scope.portfolio = {
         languageProficiencies: [{
           id: 1,
-          language: 'en',
-          proficiency: 4
+          languageName: 'en',
+          proficiency: 'Excellent',
+          description: 'description'
         }, {
           id: 2,
-          language: 'sv',
-          proficiency: 1
+          languageName: 'sv',
+          proficiency: 'Basic',
+          description: 'description'
         }, {
           id: 3,
-          language: 'fi',
-          proficiency: 5
+          languageName: 'fi',
+          proficiency: 'Native',
+          description: 'description'
         }]
       };
 
@@ -141,19 +148,19 @@ describe('Language proficiencies directive', function() {
     var itemToDelete, itemToUpdate;
 
     toggleEditMode();
-
     itemToDelete = directiveElem[0].querySelector('.language-proficiency-item[data-id="1"]');
-    deleteItem(itemToDelete);
+    deleteItem(itemToDelete, {id: 1});
 
     itemToUpdate = directiveElem[0].querySelector('.language-proficiency-item[data-id="2"]');
-    updateItem(itemToUpdate, 'zh', 2);
+    updateItem(itemToUpdate, 'zh', 'Moderate');
 
-    addNewItem('nl', 4);
+    addNewItem('nl', 'Excellent');
     toggleEditMode();
-
     expect(LanguageProficienciesService.save).toHaveBeenCalledWith({
-      updatedLanguageProficiencies: [{id: 2, language: 'zh', proficiency: 2}],
-      newLanguageProficiencies: [{language: 'nl', proficiency: 4}],
+      updatedLanguageProficiencies: [
+        {id: 2, languageName: 'zh', proficiency: 'Moderate', description: 'description'}],
+      newLanguageProficiencies: [
+        {languageName: 'nl', proficiency: 'Excellent', description: 'description'}],
       deletedIds: [1]
     });
 
@@ -166,27 +173,13 @@ describe('Language proficiencies directive', function() {
 
     toggleEditMode();
 
-    addNewItem('nl', 4);
+    addNewItem('nl', 'Excellent');
 
     itemToDelete = directiveElem[0].querySelector('.language-proficiency-item[data-id=""]');
-    deleteItem(itemToDelete);
+    deleteItem(itemToDelete, {languageName: 'nl'});
 
     toggleEditMode();
-
     expect(LanguageProficienciesService.save.calls.any()).toEqual(false);
-  });
-
-  it('should not permit selection of languages that are already saved as language proficiencies', function() {
-    var langs,
-        selectableLanguagesSelector =
-          '.language-proficiency-item[data-id=""] .language-proficiency-item__select-item-link';
-
-    toggleEditMode();
-
-    directiveElem[0].querySelector('.language-proficiency-list__add-new').click();
-    langs = directiveElem[0].querySelector(selectableLanguagesSelector);
-
-    expect(hasPreselectedLanguageSelectable(langs)).toBe(false);
   });
 
   it('should only send new updates recorded after previous closing of edit mode', function() {
@@ -195,38 +188,41 @@ describe('Language proficiencies directive', function() {
     getUpdatedData = function() {
       return [{
         id: 1,
-        language: 'en',
-        proficiency: 4
+        languageName: 'en',
+        proficiency: 'Excellent',
+        description: 'description'
       }, {
         id: 3,
-        language: 'fi',
-        proficiency: 5
+        languageName: 'fi',
+        proficiency: 'Native',
+        description: 'description'
       }, {
         id: 4,
-        language: 'fr',
-        proficiency: 2
+        languageName: 'fr',
+        proficiency: 'Moderate',
+        description: 'description'
       }];
     };
 
     toggleEditMode();
 
-    addNewItem('fr', 2);
+    addNewItem('fr', 'Moderate');
 
     itemToDelete = directiveElem[0].querySelector('.language-proficiency-item[data-id="2"]');
-    deleteItem(itemToDelete);
+    deleteItem(itemToDelete, {id: 2});
 
     toggleEditMode();
     $scope.$digest();
     toggleEditMode();
 
-    addNewItem('de', 5);
+    addNewItem('de', 'Native');
 
     toggleEditMode();
 
     expect(LanguageProficienciesService.save.calls.count()).toEqual(2);
     expect(LanguageProficienciesService.save.calls.mostRecent().args[0]).toEqual({
       updatedLanguageProficiencies: [],
-      newLanguageProficiencies: [{language: 'de', proficiency: 5}],
+      newLanguageProficiencies: [{languageName: 'de', proficiency: 'Native', description: 'description'}],
       deletedIds: []
     });
   });
