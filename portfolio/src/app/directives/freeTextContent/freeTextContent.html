@@ -61,4 +61,9 @@
     <textarea class="free-text-content__text--edit" ng-model="freeTextContentItem.text"></textarea>
   </div>
 
+
+  <div ng-controller="CkeditorCtrl">
+    <div ckeditor="options" ng-model="content" ready="onReady()"></div>
+  </div>
+
 </div>

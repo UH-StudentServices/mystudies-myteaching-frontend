@@ -36,6 +36,7 @@ angular.module('opintoniPortfolioApp', [
   'provider.analyticsAccounts',
 
   'controllers.main',
+  'controllers.ckeditor',
 
   'directives.visibility',
   'directives.attainments',
