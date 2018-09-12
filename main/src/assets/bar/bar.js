@@ -15,7 +15,7 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-(function() {
+(function($) {
 
   var htmlTemplate =
     '<div class="hy-bar">' +
@@ -30,11 +30,16 @@
     '</div>' +
     '<nav class="hy-bar__nav">' +
     '<div class="l-top-bar__subregion">' +
-    '<ul><li><a href="/">etusivu</a></li><li><a href="/coursepages">opetus</a></li></ul><' +
-    '/div>' +
+    '<ul>' +
+    '<li><a href="/" target="_self">etusivu</a></li><li><a href="/coursepages" target="_self">opetus</a></li>' +
+    '</ul>' +
+    '</div>' +
     '</nav>' +
     '</div>';
 
+  $('.l-header').remove();
+  $('.menu-wrapper').remove();
+
   $('body').prepend(htmlTemplate);
 
-})();
+})(window.jQuery);
