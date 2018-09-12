@@ -71,6 +71,12 @@ proxyMiddleware = function(req, res, next) {
   var path = urlUtil.parse(req.url).pathname;
 
   if (proxyPaths.some(function(p) {return path.indexOf(p) === 0;})) {
+    req.headers['HY-USER-eduPersonPrincipalName'] = 'opiskelija@helsinki.fi';
+    req.headers['HY-USER-mail'] = 'opiskelija@mail.helsinki.fi';
+    req.headers['HY-USER-commonName'] = 'Olli Opiskelija';
+    req.headers['HY-USER-studentNumber'] = '010189791';
+    req.headers['HY-USER-oodiUid'] = '1001';
+
     proxy.web(req, res);
   } else {
     next();
@@ -270,6 +276,7 @@ module.exports = function(grunt) {
             'assets/images/**/*.{png,jpg,gif,webp,ico}',
             'assets/icons/**/*',
             'assets/swf/*',
+            'assets/bar/*',
             'i18n/*'
           ]
         },

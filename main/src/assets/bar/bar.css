@@ -1,0 +1,34 @@
+.hy-bar {
+    background-color: #222;
+}
+
+.hy-bar .l-top-bar {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.hy-bar__nav {
+    background-color: #fff;
+    border-bottom: 1px solid #222;
+}
+
+.hy-bar__nav a {
+    color: #000;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.hy-bar__nav li {
+    display: inline-block;
+    padding: 1em;
+    border-right: 1px solid #222;
+}
+
+.hy-bar__nav ul {
+    border-left: 1px solid #222;
+}
+
+
+
+
+
