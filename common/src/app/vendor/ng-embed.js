@@ -55,7 +55,8 @@
     .constant('NG_EMBED_REGEXP_PATTERNS', {
       // url
       protocol: /^[a-z]+:\/\//i,
-      url: /\b(?:(https?|ftp|file):\/\/|www\.)[-A-Z0-9+()&@$#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|]/gi,
+      url: /\b[^"](?:(https?|ftp|file):\/\/|www\.)[-A-Z0-9+()&@$#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|]/gi,
+      linkUrl: /&lt;a href=".*"&gt;.*&lt;\/a&gt;/,
       // files
       basicVideo: /((?:https?|ftp|file):\/\/\S*\.(?:ogv|webm|mp4)(\?([\w=&_%\-]*))?)/gi,
       basicAudio: /((?:https?|ftp|file):\/\/\S*\.(?:wav|mp3|ogg)(\?([\w=&_%\-]*))?)/gi,
@@ -921,6 +922,11 @@
 
       if (options.link) {
         input = urlEmbed(input, options.linkTarget, NG_EMBED_REGEXP_PATTERNS.url, NG_EMBED_REGEXP_PATTERNS.protocol);
+
+        // Support for RTE generated links
+        input = input.replace(NG_EMBED_REGEXP_PATTERNS.linkUrl, function(str) {
+          return str.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+        });
       }
 
       return $sce.trustAsHtml(input);

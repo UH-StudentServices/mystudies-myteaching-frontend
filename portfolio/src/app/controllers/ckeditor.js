@@ -16,20 +16,26 @@
  */
 
 angular.module('controllers.ckeditor', ['ckeditor'])
-  .controller('CkeditorCtrl', ['$scope', function ($scope) {
+  .controller('CkeditorCtrl', ['$scope', function($scope) {
 
     // Editor options.
     $scope.options = {
-      language: 'en',
-      filebrowserBrowseUrl: '/api/private/v1/portfolio/files',
+      language: 'fi',
+      // filebrowserBrowseUrl: '/api/private/v1/portfolio/files',
+      filebrowserBrowseUrl: '/portfolio/files',
       filebrowserImageBrowseUrl: '/api/private/v1/portfolio/files',
       filebrowserUploadUrl: '/api/private/v1/portfolio/files',
-      filebrowserImageUploadUrl: '/api/private/v1/portfolio/files'
-      //filebrowserBrowseUrl: '/browser/browse.php'
+      filebrowserImageUploadUrl: '/api/private/v1/portfolio/files',
+
+      toolbar: [['Link', 'Unlink']],
+      linkShowTargetTab: false,
+      removePlugins: 'elementspath',
+      enterMode: CKEDITOR.ENTER_BR, // eslint-disable-line no-undef
+      entities_latin: false // eslint-disable-line camelcase
     };
 
     // Called when the editor is completely ready.
-    $scope.onReady = function () {
+    $scope.onReady = function() {
       // ...
     };
   }]);
