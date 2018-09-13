@@ -62,7 +62,6 @@ var proxyMiddleware = function(req, res, next) {
     req.headers['HY-USER-commonName'] = 'Olli Opiskelija';
     req.headers['HY-USER-studentNumber'] = '010189791';
     req.headers['HY-USER-oodiUid'] = '1001';
-    
     proxy.web(req, res);
   } else {
     next();

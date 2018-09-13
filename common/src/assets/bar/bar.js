@@ -17,6 +17,7 @@
 
 (function($) {
   var portfolioApiUrl = '/api/private/v1/portfolio/student';
+
   function gotoPortfolio() {
     $.get(portfolioApiUrl)
       .done(getPortfolioSuccess)
