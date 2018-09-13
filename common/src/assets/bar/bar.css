@@ -7,6 +7,10 @@
     padding-bottom: 20px;
 }
 
+.hy-bar .l-top-bar__subright {
+    border-left: 0;
+}
+
 .hy-bar__nav {
     background-color: #fff;
     border-bottom: 1px solid #222;
@@ -26,6 +30,12 @@
 
 .hy-bar__nav ul {
     border-left: 1px solid #222;
+}
+
+.hy-bar__avatar {
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
 }
 
 

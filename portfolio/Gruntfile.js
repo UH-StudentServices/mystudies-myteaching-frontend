@@ -57,6 +57,12 @@ var proxy = httpProxy.createProxyServer({
 
 var proxyMiddleware = function(req, res, next) {
   if (req.url.indexOf('api') !== -1) {
+    req.headers['HY-USER-eduPersonPrincipalName'] = 'opiskelija@helsinki.fi';
+    req.headers['HY-USER-mail'] = 'opiskelija@mail.helsinki.fi';
+    req.headers['HY-USER-commonName'] = 'Olli Opiskelija';
+    req.headers['HY-USER-studentNumber'] = '010189791';
+    req.headers['HY-USER-oodiUid'] = '1001';
+    
     proxy.web(req, res);
   } else {
     next();

@@ -44,9 +44,6 @@
           .then(function(res) {
             window.configuration = res.data;
             return res;
-          })
-          .catch(function() {
-            return false;
           });
       };
 

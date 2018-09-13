@@ -16,6 +16,18 @@
  */
 
 (function($) {
+  var portfolioApiUrl = '/api/private/v1/portfolio/student';
+  function gotoPortfolio() {
+    $.get(portfolioApiUrl)
+      .done(getPortfolioSuccess)
+      .fail(function() {
+        $.post(portfolioApiUrl).done(getPortfolioSuccess);
+      });
+  }
+
+  function getPortfolioSuccess(portfolio) {
+    window.location.href = portfolio.url;
+  }
 
   var htmlTemplate =
     '<div class="hy-bar">' +
@@ -26,6 +38,7 @@
     '<h1 class="logo__sitename">Opintoni</h1>' +
     '</a>' +
     '</div>' +
+    '<div class="l-top-bar__sub"><div class="l-top-bar__subright"></div></div>' +
     '</div>' +
     '</div>' +
     '<nav class="hy-bar__nav">' +
@@ -41,5 +54,12 @@
   $('.menu-wrapper').remove();
 
   $('body').prepend(htmlTemplate);
+
+  $.get('/api/private/v1/session', function(session) {
+    var avatar = $('<img class="hy-bar__avatar" src="' + session.avatarUrl + '">');
+
+    avatar.click(gotoPortfolio);
+    $('.l-top-bar__subright').append(avatar);
+  });
 
 })(window.jQuery);
