@@ -219,5 +219,8 @@
   "pageBanner": {
     "chooseDefaultBackground": "Choose from default backgrounds",
     "uploadFile": "Upload file"
+  },
+  "files": {
+    "fileBrowserTitle": "Files"
   }
 }

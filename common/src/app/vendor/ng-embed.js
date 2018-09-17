@@ -97,13 +97,13 @@
     })
     .constant('NG_EMBED_DEFAULT_OPTIONS', {
       watchEmbedData: false,
-      sanitizeHtml: true,
+      sanitizeHtml: false,
       fontSmiley: true,
       emoji: true,
       link: true,
       linkTarget: '_self',
       pdf: {
-        embed: true
+        embed: false
       },
       image: {
         embed: false

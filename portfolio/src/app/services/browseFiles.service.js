@@ -15,22 +15,15 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('controllers.ckeditor', ['ckeditor', 'services.language'])
-  .controller('CkeditorCtrl', function($scope, LanguageService) {
+angular.module('services.browseFiles', ['resources.browseFiles'])
 
-    // Editor options.
-    $scope.options = {
-      language: LanguageService.getCurrent(),
+  .factory('BrowseFilesService', function(BrowseFilesResource) {
 
-      filebrowserBrowseUrl: '/portfolio/files',
-      filebrowserImageBrowseUrl: '/api/private/v1/portfolio/files',
-      filebrowserUploadUrl: '/api/private/v1/portfolio/files',
-      filebrowserImageUploadUrl: '/api/private/v1/portfolio/files',
+    function getFileList() {
+      return BrowseFilesResource.getFileList();
+    }
 
-      toolbar: [['Link', 'Unlink']],
-      linkShowTargetTab: false,
-      removePlugins: 'elementspath',
-      enterMode: CKEDITOR.ENTER_BR, // eslint-disable-line no-undef
-      entities_latin: false // eslint-disable-line camelcase
+    return {
+      getFileList: getFileList
     };
   });

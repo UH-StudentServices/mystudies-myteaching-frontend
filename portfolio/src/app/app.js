@@ -68,6 +68,7 @@ angular.module('opintoniPortfolioApp', [
   'directives.accordion',
   'directives.languageSelector',
   'directives.notifications',
+  'directives.browseFiles',
 
   'dialog.verificationDialog',
 
@@ -84,6 +85,7 @@ angular.module('opintoniPortfolioApp', [
   'services.scriptInjector',
   'services.preview',
   'services.freeTextContent',
+  'services.browseFiles',
   'resources.notifications',
 
   'utils.moment'
@@ -154,6 +156,11 @@ angular.module('opintoniPortfolioApp', [
             });
         }
       }
+    });
+
+    $stateProvider.state('files', {
+      url: '/files',
+      templateUrl: 'app/partials/_files.html'
     });
 
     $sceDelegateProvider.resourceUrlWhitelist([
