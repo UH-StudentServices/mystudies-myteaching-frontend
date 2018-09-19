@@ -18,7 +18,6 @@
 angular.module('controllers.ckeditor', ['ckeditor', 'services.language'])
   .controller('CkeditorCtrl', function($scope, LanguageService) {
 
-    // Editor options.
     $scope.options = {
       language: LanguageService.getCurrent(),
 
