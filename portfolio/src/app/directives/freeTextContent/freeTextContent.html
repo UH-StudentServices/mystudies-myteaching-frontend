@@ -58,7 +58,6 @@
   </div>
 
   <div ng-if="isEditing" class="free-text-content--edit">
-    <!-- <textarea class="free-text-content__text--edit" ng-model="freeTextContentItem.text"></textarea> -->
     <div ng-controller="CkeditorCtrl">
       <div ckeditor="options" ng-model="freeTextContentItem.text" ready="onReady()"></div>
     </div>

@@ -17,7 +17,7 @@
 
 angular.module('directives.browseFiles', ['services.browseFiles'])
 
-  .directive('browseFiles', function(BrowseFilesService) {
+  .directive('browseFiles', function($location, BrowseFilesService) {
     return {
       restrict: 'E',
       replace: true,
@@ -27,16 +27,10 @@ angular.module('directives.browseFiles', ['services.browseFiles'])
           $scope.files = res.map(function(resource) { return resource.name; });
         });
 
-        function getUrlParam(paramName) {
-          var match = window.location.search.match(new RegExp('(?:[\?&]|&)' + paramName + '=([^&]+)', 'i'));
-
-          return match && match.length > 1 ? match[1] : null;
-        }
-
         $scope.fileSelected = function(file) {
           var baseUrl = window.location.origin + '/api/private/v1/portfolio/files/';
 
-          window.opener.CKEDITOR.tools.callFunction(getUrlParam('CKEditorFuncNum'), baseUrl + file);
+          window.opener.CKEDITOR.tools.callFunction($location.search().CKEditorFuncNum, baseUrl + file);
           window.close();
         };
       }

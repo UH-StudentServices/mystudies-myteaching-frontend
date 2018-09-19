@@ -29,7 +29,7 @@ angular.module('controllers.ckeditor', ['ckeditor', 'services.language'])
       toolbar: [['Link', 'Unlink']],
       linkShowTargetTab: false,
       removePlugins: 'elementspath',
-      enterMode: CKEDITOR.ENTER_BR, // eslint-disable-line no-undef
+      enterMode: CKEDITOR.ENTER_BR,
       entities_latin: false // eslint-disable-line camelcase
     };
   });
