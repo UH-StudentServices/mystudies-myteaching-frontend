@@ -23,7 +23,12 @@ angular.module('services.browseFiles', ['resources.browseFiles'])
       return BrowseFilesResource.getFileList();
     }
 
+    function deleteFile(file) {
+      return BrowseFilesResource.deleteFile(file.substr(file.indexOf('/') + 1));
+    }
+
     return {
-      getFileList: getFileList
+      getFileList: getFileList,
+      deleteFile: deleteFile
     };
   });

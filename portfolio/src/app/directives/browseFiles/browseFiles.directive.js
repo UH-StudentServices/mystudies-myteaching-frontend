@@ -17,21 +17,33 @@
 
 angular.module('directives.browseFiles', ['services.browseFiles'])
 
-  .directive('browseFiles', function($location, BrowseFilesService) {
+  .directive('browseFiles', function($location, BrowseFilesService, VerificationDialog) {
+    function loadFileList($scope) {
+      BrowseFilesService.getFileList().then(function(res) {
+        $scope.files = res.map(function(resource) { return resource.name; });
+      });
+    }
+
     return {
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/browseFiles/browseFiles.html',
       link: function($scope) {
-        BrowseFilesService.getFileList().then(function(res) {
-          $scope.files = res.map(function(resource) { return resource.name; });
-        });
+        loadFileList($scope);
 
         $scope.fileSelected = function(file) {
           var baseUrl = window.location.origin + '/api/private/v1/portfolio/files/';
 
           window.opener.CKEDITOR.tools.callFunction($location.search().CKEditorFuncNum, baseUrl + file);
           window.close();
+        };
+
+        $scope.deleteFile = function(file) {
+          function deleteItem() {
+            BrowseFilesService.deleteFile(file).then(function() { loadFileList($scope); });
+          }
+
+          VerificationDialog.open('general.reallyDelete', 'general.ok', 'general.cancel', deleteItem, function() {});
         };
       }
     };

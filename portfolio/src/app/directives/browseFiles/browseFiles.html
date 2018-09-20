@@ -17,9 +17,14 @@
 
 <div class="portfolio-files-browser__container">
   <h1 translate="files.fileBrowserTitle"></h1>
-  <ul>
-    <li ng-repeat="file in files">
+
+  <div ng-repeat="file in files" class="portfolio-files-browser__list">
+    <div class="portfolio-files-browser__filename">
       <a href="" ng-click="fileSelected(file)">{{file}}</a>
-    </li>
-  </ul>
+    </div>
+    <div>
+      <a ng-click="deleteFile(file)">Poista</a>
+    </div>
+  </div>
+
 </div>

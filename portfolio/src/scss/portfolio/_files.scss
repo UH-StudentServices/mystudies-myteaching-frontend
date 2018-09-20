@@ -18,3 +18,11 @@
 .portfolio-files-browser__container {
   margin: 1em;
 }
+
+.portfolio-files-browser__list {
+  display: flex;
+}
+
+.portfolio-files-browser__filename {
+  margin-right: 2em;
+}

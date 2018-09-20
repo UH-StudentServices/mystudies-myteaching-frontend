@@ -19,7 +19,7 @@ angular.module('resources.browseFiles', [])
 
   .factory('BrowseFilesResource', function($resource) {
 
-    function browseFilesResource() {
+    function browseFilesResource(path) {
       var browseFilesResource = '/api/private/v1/portfolio/files';
 
       return $resource(browseFilesResource, {}, {
@@ -27,6 +27,10 @@ angular.module('resources.browseFiles', [])
           method: 'GET',
           isArray: true,
           url: browseFilesResource
+        },
+        deleteFile: {
+          method: 'DELETE',
+          url: browseFilesResource + '/' + path
         }
       });
     }
@@ -35,7 +39,12 @@ angular.module('resources.browseFiles', [])
       return browseFilesResource().getFileList().$promise;
     }
 
+    function deleteFile(file) {
+      return browseFilesResource(file).deleteFile().$promise;
+    }
+
     return {
-      getFileList: getFileList
+      getFileList: getFileList,
+      deleteFile: deleteFile
     };
   });
