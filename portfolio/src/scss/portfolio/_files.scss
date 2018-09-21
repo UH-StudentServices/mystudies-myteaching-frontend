@@ -20,9 +20,11 @@
 }
 
 .portfolio-files-browser__list {
-  display: flex;
+  table {
+    max-width: 50em;
+  }
 }
 
-.portfolio-files-browser__filename {
-  margin-right: 2em;
+.portfolio-files-browser__remove {
+  text-transform: capitalize;
 }

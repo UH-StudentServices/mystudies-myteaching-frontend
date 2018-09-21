@@ -18,13 +18,17 @@
 <div class="portfolio-files-browser__container">
   <h1 translate="files.fileBrowserTitle"></h1>
 
-  <div ng-repeat="file in files" class="portfolio-files-browser__list">
-    <div class="portfolio-files-browser__filename">
-      <a href="" ng-click="fileSelected(file)">{{file}}</a>
-    </div>
-    <div>
-      <a ng-click="deleteFile(file)">Poista</a>
-    </div>
+  <div class="portfolio-files-browser__list">
+    <table>
+      <tr ng-repeat="file in files">
+        <td>
+          <a href="" ng-click="fileSelected(file)">{{file}}</a>
+        </td>
+        <td class="portfolio-files-browser__remove">
+          <a ng-click="deleteFile(file)" translate="general.remove"></a>
+        </td>
+      </tr>
+    </table>
   </div>
 
 </div>
