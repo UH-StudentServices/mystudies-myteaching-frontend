@@ -129,7 +129,8 @@ module.exports = function(grunt) {
           routes: {
             '/bower_components': '../bower_components',
             '/common': '../common',
-            '/assets/fonts': '../bower_components/Styleguide/fonts'
+            '/assets/fonts': '../common/src/assets/fonts'
+
           },
           middleware: [proxyMiddleware,
                        modRewrite([
@@ -277,8 +278,8 @@ module.exports = function(grunt) {
           flatten: true,
           expand: true,
           cwd: '..',
-          src: 'bower_components/Styleguide/fonts/*',
-          dest: '<%= application.dist %>/assets/fonts'
+          dest: '<%= application.dist %>/assets/fonts',
+          src: ['common/src/assets/fonts/*']
         },
         {
           flatten: true,
@@ -314,7 +315,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: '..',
           dest: '<%= application.dist %>/assets/fonts',
-          src: ['bower_components/Styleguide/fonts/*']
+          src: ['common/src/assets/fonts/*']
         },
         {
           expand: true,
