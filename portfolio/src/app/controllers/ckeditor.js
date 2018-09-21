@@ -16,15 +16,15 @@
  */
 
 angular.module('controllers.ckeditor', ['ckeditor', 'services.language'])
-  .controller('CkeditorCtrl', function($scope, LanguageService) {
+  .controller('CkeditorCtrl', function($scope, LanguageService, PortfolioFilesResourcePath) {
 
     $scope.options = {
       language: LanguageService.getCurrent(),
 
       filebrowserBrowseUrl: '/portfolio/files',
-      filebrowserImageBrowseUrl: '/api/private/v1/portfolio/files',
-      filebrowserUploadUrl: '/api/private/v1/portfolio/files',
-      filebrowserImageUploadUrl: '/api/private/v1/portfolio/files',
+      filebrowserImageBrowseUrl: PortfolioFilesResourcePath,
+      filebrowserUploadUrl: PortfolioFilesResourcePath,
+      filebrowserImageUploadUrl: PortfolioFilesResourcePath,
 
       toolbar: [['Link', 'Unlink']],
       linkShowTargetTab: false,

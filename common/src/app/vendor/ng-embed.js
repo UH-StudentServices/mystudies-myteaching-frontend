@@ -909,7 +909,6 @@
 
       if (options.sanitizeHtml) {
         input = sanitizeHtml(input);
-
       }
 
       if (options.fontSmiley) {
@@ -924,9 +923,7 @@
         input = urlEmbed(input, options.linkTarget, NG_EMBED_REGEXP_PATTERNS.url, NG_EMBED_REGEXP_PATTERNS.protocol);
 
         // Support for RTE generated links
-        input = input.replace(NG_EMBED_REGEXP_PATTERNS.linkUrl, function(str) {
-          return str.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
-        });
+        input = input.replace(NG_EMBED_REGEXP_PATTERNS.linkUrl, _.unescape);
       }
 
       return $sce.trustAsHtml(input);
@@ -1088,7 +1085,7 @@
 
   function urlEmbed(str, linkTarget, urlPattern, protocolPattern) {
     return str.replace(urlPattern, function(text) {
-      var url = text.replace(/^\s/, ''); // Remove possible whitespace from beginning of the url
+      var url = text.trim();
 
       if (!protocolPattern.test(url)) {
         url = getHttpProtocol() + '//' + text;
