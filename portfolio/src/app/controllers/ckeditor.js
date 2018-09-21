@@ -15,29 +15,21 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* Portfolio application styles */
+angular.module('controllers.ckeditor', ['ckeditor', 'services.language'])
+  .controller('CkeditorCtrl', function($scope, LanguageService, PortfolioFilesResourcePath) {
 
-@import "portfolio-general";
-@import "common";
-@import "mixins";
-@import "editable";
-@import "intro";
-@import "studies";
-@import "keywords";
-@import "degrees";
-@import "banner-content";
-@import "work-experience";
-@import "forms";
-@import "attainments";
-@import "buttons";
-@import "dropdown";
-@import "contact-information";
-@import "page-banner";
-@import "navigation";
-@import "preview";
-@import "free-text-content";
-@import "language-proficiencies";
-@import "accordion";
-@import "lang-selector";
-@import "print";
-@import "files";
+    $scope.options = {
+      language: LanguageService.getCurrent(),
+
+      filebrowserBrowseUrl: '/portfolio/files',
+      filebrowserImageBrowseUrl: PortfolioFilesResourcePath,
+      filebrowserUploadUrl: PortfolioFilesResourcePath,
+      filebrowserImageUploadUrl: PortfolioFilesResourcePath,
+
+      toolbar: [['Link', 'Unlink']],
+      linkShowTargetTab: false,
+      removePlugins: 'elementspath',
+      enterMode: CKEDITOR.ENTER_BR,
+      entities_latin: false // eslint-disable-line camelcase
+    };
+  });

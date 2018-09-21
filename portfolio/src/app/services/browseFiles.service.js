@@ -15,29 +15,20 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* Portfolio application styles */
+angular.module('services.browseFiles', ['resources.browseFiles'])
 
-@import "portfolio-general";
-@import "common";
-@import "mixins";
-@import "editable";
-@import "intro";
-@import "studies";
-@import "keywords";
-@import "degrees";
-@import "banner-content";
-@import "work-experience";
-@import "forms";
-@import "attainments";
-@import "buttons";
-@import "dropdown";
-@import "contact-information";
-@import "page-banner";
-@import "navigation";
-@import "preview";
-@import "free-text-content";
-@import "language-proficiencies";
-@import "accordion";
-@import "lang-selector";
-@import "print";
-@import "files";
+  .factory('BrowseFilesService', function(BrowseFilesResource) {
+
+    function getFileList() {
+      return BrowseFilesResource.getFileList();
+    }
+
+    function deleteFile(file) {
+      return BrowseFilesResource.deleteFile(file.substr(file.indexOf('/') + 1));
+    }
+
+    return {
+      getFileList: getFileList,
+      deleteFile: deleteFile
+    };
+  });

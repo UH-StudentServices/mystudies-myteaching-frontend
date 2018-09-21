@@ -219,5 +219,8 @@
   "pageBanner": {
     "chooseDefaultBackground": "Välj av standardbilder",
     "uploadFile": "Ladda up fil"
+  },
+  "files": {
+    "fileBrowserTitle": "Filer"
   }
 }

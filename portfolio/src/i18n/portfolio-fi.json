@@ -219,5 +219,8 @@
   "pageBanner": {
     "chooseDefaultBackground": "Valitse vakiokuvista",
     "uploadFile": "Lataa tiedosto"
+  },
+  "files": {
+    "fileBrowserTitle": "Tiedostot"
   }
 }

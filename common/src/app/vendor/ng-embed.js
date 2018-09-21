@@ -55,7 +55,8 @@
     .constant('NG_EMBED_REGEXP_PATTERNS', {
       // url
       protocol: /^[a-z]+:\/\//i,
-      url: /\b(?:(https?|ftp|file):\/\/|www\.)[-A-Z0-9+()&@$#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|]/gi,
+      url: /(?:^|[^"'])(?:(https?|ftp|file):\/\/|www\.)[-A-Z0-9+()&@$#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|]/gi,
+      linkUrl: /&lt;a href=".*"&gt;.*&lt;\/a&gt;/gi,
       // files
       basicVideo: /((?:https?|ftp|file):\/\/\S*\.(?:ogv|webm|mp4)(\?([\w=&_%\-]*))?)/gi,
       basicAudio: /((?:https?|ftp|file):\/\/\S*\.(?:wav|mp3|ogg)(\?([\w=&_%\-]*))?)/gi,
@@ -96,13 +97,13 @@
     })
     .constant('NG_EMBED_DEFAULT_OPTIONS', {
       watchEmbedData: false,
-      sanitizeHtml: true,
+      sanitizeHtml: false,
       fontSmiley: true,
       emoji: true,
       link: true,
       linkTarget: '_self',
       pdf: {
-        embed: true
+        embed: false
       },
       image: {
         embed: false
@@ -908,7 +909,6 @@
 
       if (options.sanitizeHtml) {
         input = sanitizeHtml(input);
-
       }
 
       if (options.fontSmiley) {
@@ -921,6 +921,9 @@
 
       if (options.link) {
         input = urlEmbed(input, options.linkTarget, NG_EMBED_REGEXP_PATTERNS.url, NG_EMBED_REGEXP_PATTERNS.protocol);
+
+        // Support for RTE generated links
+        input = input.replace(NG_EMBED_REGEXP_PATTERNS.linkUrl, _.unescape);
       }
 
       return $sce.trustAsHtml(input);
@@ -1082,9 +1085,9 @@
 
   function urlEmbed(str, linkTarget, urlPattern, protocolPattern) {
     return str.replace(urlPattern, function(text) {
-      var url = text;
+      var url = text.trim();
 
-      if (!protocolPattern.test(text)) {
+      if (!protocolPattern.test(url)) {
         url = getHttpProtocol() + '//' + text;
       }
 
