@@ -78,6 +78,7 @@ $tuhat-bg: $black;
     padding: 20px 10px;
     border: 1px solid $lightsilver;
     position: relative;
+    overflow: hidden;
   }
 
   .useful-links__edit-link-url {
@@ -131,6 +132,11 @@ $tuhat-bg: $black;
 
     &--research_gate {
       background: transparent url("../icons/rg_logo_square_brand.png") no-repeat center center;
+    }
+
+    &--academia {
+      background: transparent url("../icons/academia.png") no-repeat center center;
+      background-size: cover;
     }
 
     &--tuhat {
@@ -211,6 +217,12 @@ $tuhat-bg: $black;
     }
     &--research_gate:hover::after {
       opacity: 0.9;
+    }
+
+    &--academia::after {
+      @include social-media-link-icon();
+      background: transparent url("../icons/academia.png") no-repeat center center;
+      background-size: cover;
     }
   }
 }

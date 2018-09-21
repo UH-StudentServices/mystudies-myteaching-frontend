@@ -22,15 +22,17 @@ angular.module('directives.contactInformation', ['services.contactInformation', 
     YOUTUBE: 'YOUTUBE',
     TWITTER: 'TWITTER',
     TUHAT: 'TUHAT',
-    RESEARCH_GATE: 'RESEARCH_GATE'
+    RESEARCH_GATE: 'RESEARCH_GATE',
+    ACADEMIA: 'ACADEMIA'
   })
 
   .factory('StudentSocialMediaLinks', function(SomeLinkType) {
-    return [SomeLinkType.TWITTER, SomeLinkType.FACEBOOK, SomeLinkType.YOUTUBE];
+    return [SomeLinkType.TWITTER, SomeLinkType.FACEBOOK, SomeLinkType.YOUTUBE,
+            SomeLinkType.TUHAT, SomeLinkType.RESEARCH_GATE, SomeLinkType.ACADEMIA];
   })
 
   .factory('TeacherSocialMediaLinks', function(SomeLinkType) {
-    return [SomeLinkType.TWITTER, SomeLinkType.TUHAT, SomeLinkType.RESEARCH_GATE];
+    return [SomeLinkType.TWITTER, SomeLinkType.TUHAT, SomeLinkType.RESEARCH_GATE, SomeLinkType.ACADEMIA];
   })
 
   .directive('contactInformation', function(ContactInformationService,
