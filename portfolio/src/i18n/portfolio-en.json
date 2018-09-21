@@ -78,7 +78,9 @@
     "YOUTUBE": "Youtube",
     "TWITTER": "Twitter",
     "TUHAT": "Tuhat",
-    "RESEARCH_GATE": "ResearchGate"
+    "RESEARCH_GATE": "ResearchGate",
+    "ACADEMIA": "Academia.edu",
+    "WEBSITE_LINK": "Website link"
   },
   "degrees": {
     "title": "Degrees",
