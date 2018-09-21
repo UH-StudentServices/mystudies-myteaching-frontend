@@ -23,12 +23,13 @@ angular.module('directives.contactInformation', ['services.contactInformation', 
     TWITTER: 'TWITTER',
     TUHAT: 'TUHAT',
     RESEARCH_GATE: 'RESEARCH_GATE',
-    ACADEMIA: 'ACADEMIA'
+    ACADEMIA: 'ACADEMIA',
+    WEBSITE_LINK: 'WEBSITE_LINK'
   })
 
   .factory('StudentSocialMediaLinks', function(SomeLinkType) {
     return [SomeLinkType.TWITTER, SomeLinkType.FACEBOOK, SomeLinkType.YOUTUBE,
-            SomeLinkType.TUHAT, SomeLinkType.RESEARCH_GATE, SomeLinkType.ACADEMIA];
+            SomeLinkType.TUHAT, SomeLinkType.RESEARCH_GATE, SomeLinkType.ACADEMIA, SomeLinkType.WEBSITE_LINK];
   })
 
   .factory('TeacherSocialMediaLinks', function(SomeLinkType) {

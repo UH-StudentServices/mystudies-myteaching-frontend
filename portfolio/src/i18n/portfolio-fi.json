@@ -79,7 +79,8 @@
     "TWITTER": "Twitter",
     "TUHAT": "Tuhat",
     "RESEARCH_GATE": "ResearchGate",
-    "ACADEMIA": "Academia.edu"
+    "ACADEMIA": "Academia.edu",
+    "WEBSITE_LINK": "Linkki verkkosivulle"
   },
   "degrees": {
     "title": "Tutkinnot",

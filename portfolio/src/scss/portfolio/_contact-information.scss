@@ -23,6 +23,7 @@ $linkedin-bg: #1483c4;
 $instagram-bg: #125688;
 
 $tuhat-bg: $black;
+$free-link-bg: $black;
 
 
 @mixin social-media-icon($icon, $background-color) {
@@ -143,6 +144,10 @@ $tuhat-bg: $black;
       @include social-media-icon($icon-hy-logo, $tuhat-bg);
     }
 
+    &--website_link {
+      @include social-media-icon($icon-url, $free-link-bg)
+    }
+
   }
 
   .editing {
@@ -223,6 +228,11 @@ $tuhat-bg: $black;
       @include social-media-link-icon();
       background: transparent url("../icons/academia.png") no-repeat center center;
       background-size: cover;
+    }
+
+    &--website_link::after {
+      @include social-media-link-icon($icon-url);
+      background-color: $free-link-bg;
     }
   }
 }
