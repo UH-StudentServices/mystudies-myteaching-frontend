@@ -17,7 +17,10 @@
 
 angular.module('directives.browseFiles', ['services.browseFiles'])
 
-  .directive('browseFiles', function($location, BrowseFilesService, VerificationDialog, PortfolioFilesResourcePath) {
+  .constant('PortfolioPublicFilesResourcePath', '/api/public/v1/portfolio/files')
+
+  .directive('browseFiles', function($location, BrowseFilesService,
+                                     VerificationDialog, PortfolioPublicFilesResourcePath) {
     function loadFileList($scope) {
       BrowseFilesService.getFileList().then(function(res) {
         $scope.files = res.map(function(resource) { return resource.name; });
@@ -32,7 +35,7 @@ angular.module('directives.browseFiles', ['services.browseFiles'])
         loadFileList($scope);
 
         $scope.fileSelected = function(file) {
-          var baseUrl = window.location.origin + PortfolioFilesResourcePath;
+          var baseUrl = window.location.origin + PortfolioPublicFilesResourcePath;
 
           window.opener.CKEDITOR.tools.callFunction($location.search().CKEditorFuncNum, baseUrl + '/' + file);
           window.close();
