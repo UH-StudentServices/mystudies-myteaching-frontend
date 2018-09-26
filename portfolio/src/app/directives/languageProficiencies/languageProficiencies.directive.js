@@ -1,4 +1,4 @@
-/*
+ /*
  * This file is part of MystudiesMyteaching application.
  *
  * MystudiesMyteaching application is free software: you can redistribute it and/or modify
@@ -15,10 +15,14 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.languageProficiencies', ['services.languageProficiencies', 'directives.editableHeading'])
+angular.module('directives.languageProficiencies', [
+  'services.languageProficiencies',
+  'directives.editableHeading',
+  'portfolioAnalytics'])
   .directive('languageProficiencies', function(LanguageProficienciesService,
                                                $filter,
-                                               $state) {
+                                               $state,
+                                               AnalyticsService) {
     return {
       restrict: 'E',
       replace: true,
@@ -73,6 +77,10 @@ angular.module('directives.languageProficiencies', ['services.languageProficienc
               .filter(function(el) {
                 return !el.id;
               });
+
+            if (updateBatch.newLanguageProficiencies.length > 0) {
+              AnalyticsService.trackEvent(AnalyticsService.ec.LANGUAGE_PROFICIENCIES, AnalyticsService.ea.ADD);
+            }
 
             if (shouldUpdate()) {
               LanguageProficienciesService.save(updateBatch).then(function(savedProficiencies) {

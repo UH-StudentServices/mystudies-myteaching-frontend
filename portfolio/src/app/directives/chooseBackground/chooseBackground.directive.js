@@ -18,7 +18,8 @@
 angular.module('directives.chooseBackground', ['ui.bootstrap.modal',
                                                'directives.uploadImage',
                                                'services.userSettings',
-                                               'services.portfolioBackground'])
+                                               'services.portfolioBackground',
+                                               'portfolioAnalytics'])
 
   .directive('chooseBackgroundButton', function() {
     return {
@@ -27,7 +28,7 @@ angular.module('directives.chooseBackground', ['ui.bootstrap.modal',
       templateUrl: 'app/directives/chooseBackground/chooseBackgroundButton.html',
       scope: {},
       controller: function($scope, $uibModal, $rootScope, UserSettingsService,
-                           PortfolioBackgroundService, backgroundChangeEvent) {
+                           PortfolioBackgroundService, backgroundChangeEvent, AnalyticsService) {
         $scope.openChooseBGModal = function() {
           $uibModal.open({
             templateUrl: 'app/directives/chooseBackground/chooseDefaultBackground.html',
@@ -41,6 +42,7 @@ angular.module('directives.chooseBackground', ['ui.bootstrap.modal',
         $scope.upload = function(image) {
           return PortfolioBackgroundService.uploadUserBackground(image).then(function() {
             $rootScope.$broadcast(backgroundChangeEvent);
+            AnalyticsService.trackEvent(AnalyticsService.ec.BACKGROUND_IMAGE, AnalyticsService.ea.UPLOAD);
           });
         };
       }
@@ -53,7 +55,8 @@ angular.module('directives.chooseBackground', ['ui.bootstrap.modal',
                                                             PortfolioBackgroundService,
                                                             $q,
                                                             $rootScope,
-                                                            backgroundChangeEvent) {
+                                                            backgroundChangeEvent,
+                                                            AnalyticsService) {
     var availableBackgroundImages,
         selectedItemIndex;
 
@@ -75,6 +78,8 @@ angular.module('directives.chooseBackground', ['ui.bootstrap.modal',
 
     $scope.ok = function() {
       PortfolioBackgroundService.selectPortfolioBackground(getSelectedBackgroundImageName()).then(function() {
+        AnalyticsService.trackEvent(AnalyticsService.ec.BACKGROUND_IMAGE,
+          AnalyticsService.ea.SAVE, getSelectedBackgroundImageName());
         $rootScope.$broadcast(backgroundChangeEvent);
         $uibModalInstance.dismiss();
       });

@@ -20,10 +20,11 @@ angular.module('directives.samples', [
   'services.componentHeadingService',
   'directives.showSamples',
   'directives.editSamples',
-  'directives.editableHeading'
+  'directives.editableHeading',
+  'portfolioAnalytics'
 ])
 
-.directive('samples', function(SamplesService) {
+.directive('samples', function(SamplesService, AnalyticsService) {
   return {
     restrict: 'E',
     replace: true,
@@ -40,6 +41,7 @@ angular.module('directives.samples', [
 
       scope.edit = function() {
         scope.editing = true;
+        scope.origSamples = scope.samples.slice();
       };
 
       var isValid = function() {
@@ -59,6 +61,9 @@ angular.module('directives.samples', [
         if (isValid()) {
           var updateSamples = angular.copy(scope.samples);
 
+          AnalyticsService.trackEventIfAdded(scope.origSamples, scope.samples,
+            AnalyticsService.ec.SAMPLES, AnalyticsService.ea.ADD);
+
           SamplesService.updateSamples(scope.portfolioId, updateSamples).then(function(data) {
             scope.samples = data;
             scope.editing = false;
@@ -70,6 +75,6 @@ angular.module('directives.samples', [
       scope.markAllSubmitted = function() {
         scope.samples.forEach(function(sample) { sample.submitted = true; });
       };
-    },
+    }
   };
 });

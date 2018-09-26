@@ -19,10 +19,11 @@
 
 angular.module('directives.editableHeading', [
   'services.portfolio',
-  'services.componentHeadingService'
+  'services.componentHeadingService',
+  'portfolioAnalytics'
 ]
 )
-  .directive('editableHeading', function($translate, PortfolioService, ComponentHeadingService) {
+  .directive('editableHeading', function($translate, PortfolioService, ComponentHeadingService, AnalyticsService) {
     return {
       restrict: 'E',
       replace: true,
@@ -52,6 +53,7 @@ angular.module('directives.editableHeading', [
 
         $scope.saveHeading = function() {
           if ($scope.component.heading !== $scope.currentText) {
+            AnalyticsService.trackEvent($scope.component.component.toLowerCase(), AnalyticsService.ea.EDIT_HEADING);
             ComponentHeadingService.updateHeading($scope.component)
               .then(function(component) {
                 if (component.heading) {

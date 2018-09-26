@@ -21,11 +21,11 @@ angular.module('directives.attainments', [
   'filters.moment',
   'filters.formatting',
   'directives.editLink',
-  'directives.editableHeading'
-
+  'directives.editableHeading',
+  'portfolioAnalytics'
 ])
 
-  .directive('attainments', function(AttainmentResource) {
+  .directive('attainments', function(AttainmentResource, AnalyticsService) {
     return {
       restrict: 'E',
       replace: true,
@@ -55,12 +55,15 @@ angular.module('directives.attainments', [
 
         $scope.edit = function edit() {
           $scope.editing = true;
+          $scope.origWhitelist = $scope.whitelist.slice();
           AttainmentResource.getAll($scope.portfolioLang).then(function attainmentsSuccess(attainments) {
             $scope.allAttainments = attainments;
           });
         };
 
         $scope.exitEdit = function exitEdit() {
+          AnalyticsService.trackEventIfAdded($scope.origWhitelist, $scope.whitelist,
+            AnalyticsService.ec.ATTAINMENTS, AnalyticsService.ea.SET_VISIBILITY, AnalyticsService.el.VISIBLE);
           $scope.$broadcast('saveComponent');
           $scope.editing = false;
 

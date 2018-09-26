@@ -18,7 +18,8 @@
 angular.module('directives.freeTextContent', [
   'services.freeTextContent',
   'directives.editLink',
-  'constants.ngEmbedOptions'])
+  'constants.ngEmbedOptions',
+  'portfolioAnalytics'])
 
   .factory('FreeTextContentFactory', function($translate) {
 
@@ -46,7 +47,8 @@ angular.module('directives.freeTextContent', [
                                          VerificationDialog,
                                          PreviewService,
                                          NG_EMBED_OPTIONS,
-                                         $translate) {
+                                         $translate,
+                                         AnalyticsService) {
 
     return {
       restrict: 'E',
@@ -71,8 +73,7 @@ angular.module('directives.freeTextContent', [
         }
 
         function getMatchingItem(freeTextContentItems, searchCriteria) {
-          var filteredFreeTextContentItems = freeTextContentItems.filter(_.matches(searchCriteria)),
-              newFreeTextContentItem;
+          var filteredFreeTextContentItems = freeTextContentItems.filter(_.matches(searchCriteria));
 
           if (filteredFreeTextContentItems.length > 1) {
             throw Error('Multiple matching free-text content items');
@@ -103,8 +104,40 @@ angular.module('directives.freeTextContent', [
           return scope.headingKey && $translate.instant(scope.headingKey) === scope.freeTextContentItem.title;
         }
 
+        function trackIfNeeded(oldText, newText) {
+          var host = window.location.hostname;
+
+          // <a href="https://student.helsinki.fi/api/public/v1/portfolio/files/olli-opiskelija/some.file">lalala</a>
+          // eslint-disable-next-line max-len
+          var hostedFilesRe = new RegExp('<a href="https?://' + host + '.*/api/(?:public|private)/v1/portfolio/files.*">.*</a>', 'gim');
+          var imageRe = /((?:https?|ftp|file):\/\/\S*\.(?:gif|jpg|jpeg|tiff|png|svg|webp)(\?([\w=&_%\-]*))?)/gi;
+          // eslint-disable-next-line max-len
+          var linksRe = /(?:^|[^"'])(?:(https?|ftp|file):\/\/|www\.)[-A-Z0-9+()&@$#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|]/gi;
+
+          function getOtherLinks(text) {
+            text = text.replace(imageRe, '');
+            text = text.replace(hostedFilesRe, '');
+            return text.match(linksRe);
+          }
+          function getHostedFiles(text) {
+            return text.match(hostedFilesRe);
+          }
+          function getImages(text) {
+            return text.match(imageRe);
+          }
+
+          AnalyticsService.trackEventIfAdded(getHostedFiles(oldText), getHostedFiles(newText),
+            AnalyticsService.ec.FREE_TEXT_CONTENT, AnalyticsService.ea.ADD_FILE);
+          AnalyticsService.trackEventIfAdded(getImages(oldText), getImages(newText),
+            AnalyticsService.ec.FREE_TEXT_CONTENT, AnalyticsService.ea.ADD_IMAGE);
+          AnalyticsService.trackEventIfAdded(getOtherLinks(oldText), getOtherLinks(newText),
+            AnalyticsService.ec.FREE_TEXT_CONTENT, AnalyticsService.ea.ADD_LINK);
+        }
+
         function updateOrCreateNew() {
           var serviceFn;
+
+          trackIfNeeded(scope.origFreeText, scope.freeTextContentItem.text);
 
           if (getMatchingItem(freeTextContentSubject.getValue(), visibilityDescriptor)) {
             serviceFn = 'updateFreeTextContent';
@@ -140,6 +173,7 @@ angular.module('directives.freeTextContent', [
           updateOrCreateNew: updateOrCreateNew,
           toggleEdit: function() {
             scope.isEditing = !scope.isEditing;
+            scope.origFreeText = scope.freeTextContentItem.text;
           },
           embedOptions: NG_EMBED_OPTIONS,
           isTranslatableHeading: isTranslatableHeading,

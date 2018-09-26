@@ -20,11 +20,16 @@ angular.module('directives.intro', ['services.portfolio',
                                     'directives.editLink',
                                     'directives.chooseBackground',
                                     'angular-flexslider',
-                                    'ngFileUpload'])
+                                    'ngFileUpload',
+                                    'portfolioAnalytics'])
 
   .constant('backgroundChangeEvent', 'backgroundChange')
 
-  .directive('intro', function($rootScope, PortfolioService, PortfolioBackgroundService, backgroundChangeEvent) {
+  .directive('intro', function($rootScope,
+                               PortfolioService,
+                               PortfolioBackgroundService,
+                               backgroundChangeEvent,
+                               AnalyticsService) {
     return {
       restrict: 'E',
       replace: true,
@@ -56,6 +61,7 @@ angular.module('directives.intro', ['services.portfolio',
         };
 
         $scope.exitEdit = function() {
+          AnalyticsService.trackEvent(AnalyticsService.ec.INTRO_TEXT, AnalyticsService.ea.SAVE);
           $scope.editing = false;
           PortfolioService.updatePortfolio($scope.portfolio).then(function(portfolio) {
             $scope.portfolio = portfolio;

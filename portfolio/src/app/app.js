@@ -24,7 +24,9 @@ angular.module('opintoniPortfolioApp', [
   'ngAria',
   'ngEmbed',
   'pascalprecht.translate',
+  'angular-google-analytics',
   'ui.utils',
+  'portfolioAnalytics',
   'portfolioErrors',
   'resources.httpInterceptor',
   'angular-click-outside',
@@ -171,10 +173,12 @@ angular.module('opintoniPortfolioApp', [
     ]);
   })
 
-  .run(function($rootScope, $window, LanguageService) {
+  .run(function($rootScope, $window, LanguageService, AnalyticsService) {
     var language = LanguageService.getCurrent();
 
     $rootScope.selectedLanguage = language;
     moment.locale(language);
     $window.FastClick.attach($window.document.body);
+
+    AnalyticsService.trackPageView();
   });

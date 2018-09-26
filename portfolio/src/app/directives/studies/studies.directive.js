@@ -21,9 +21,10 @@ angular.module('directives.studies', [
   'directives.editLink',
   'directives.keywords',
   'directives.editableHeading',
-  'constants.ngEmbedOptions'])
+  'constants.ngEmbedOptions',
+  'portfolioAnalytics'])
 
-.directive('studies', function(KeywordService, SummaryService, NG_EMBED_OPTIONS) {
+.directive('studies', function(KeywordService, SummaryService, NG_EMBED_OPTIONS, AnalyticsService) {
   return {
     restrict: 'E',
     replace: true,
@@ -41,6 +42,7 @@ angular.module('directives.studies', [
 
       scope.edit = function() {
         scope.editing = true;
+        scope.origText = scope.summaryData;
       };
 
       scope.exitEdit = function() {
@@ -59,6 +61,10 @@ angular.module('directives.studies', [
         });
 
         scope.editing = false;
+
+        if (scope.origText !== scope.summaryData) {
+          AnalyticsService.trackEvent(AnalyticsService.ec.STUDIES, AnalyticsService.ea.EDIT_SUMMARY);
+        }
 
         SummaryService.updateSummary(portfolioId, updateSummaryRequest);
         KeywordService.updateKeywords(portfolioId, updateKeywordsRequest)
