@@ -58,8 +58,7 @@ angular.module('portfolioAnalytics', ['provider.analyticsAccounts'])
   })
 
 
-  .factory('AnalyticsService', function(PortfolioRoleService,
-                                        Analytics,
+  .factory('AnalyticsService', function(Analytics,
                                         STRIP_USERNAME_REGEX,
                                         TRACK_PAGE_TITLE,
                                         TRACK_PREFIX,
