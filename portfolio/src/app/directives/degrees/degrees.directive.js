@@ -19,10 +19,12 @@ angular.module('directives.degrees', [
   'services.degree',
   'directives.showDegrees',
   'directives.editDegrees',
-  'directives.editableHeading'
+  'directives.editableHeading',
+  'portfolioAnalytics'
 ])
 .directive('degrees', function(DegreeService,
-                               $state) {
+                               $state,
+                               AnalyticsService) {
   return {
     restrict: 'E',
     replace: true,
@@ -41,6 +43,8 @@ angular.module('directives.degrees', [
 
       $scope.edit = function() {
         $scope.editing = true;
+        $scope.origDegrees = $scope.degrees.slice();
+        $scope.origDescriptions = descriptions($scope.degrees);
       };
 
       var isValid = function() {
@@ -57,11 +61,25 @@ angular.module('directives.degrees', [
         $scope.degrees.forEach(function(degree) { degree.submitted = true; });
       };
 
+      function descriptions(degreeArray) {
+        return _.map(degreeArray, function(value, index) {
+          return value.description ? index : null;
+        });
+      }
+
+      function trackIfNeeded() {
+        AnalyticsService.trackEventIfAdded(_.concat($scope.origDegrees, $scope.origDescriptions),
+          _.concat($scope.degrees, descriptions($scope.degrees)),
+          AnalyticsService.ec.DEGREES, AnalyticsService.ea.ADD);
+      }
+
       $scope.exitEdit = function() {
         $scope.$broadcast('saveComponent');
         $scope.markAllSubmitted();
 
         if (isValid()) {
+          trackIfNeeded();
+
           DegreeService.updateDegrees($scope.portfolioId, $scope.degrees).then(function(data) {
             $scope.degrees = data;
             $scope.editing = false;

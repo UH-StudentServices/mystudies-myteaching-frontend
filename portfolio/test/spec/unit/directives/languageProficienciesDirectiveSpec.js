@@ -80,6 +80,7 @@ describe('Language proficiencies directive', function() {
         directiveElem[0].querySelector('.component-header .edit-link').click();
       };
 
+  angular.module('portfolioAnalytics', []);
   beforeEach(function() {
     module('directives.languageProficiencies', function($provide) {
       $provide.constant('LanguageProficienciesService', {
@@ -95,11 +96,15 @@ describe('Language proficiencies directive', function() {
       });
       $provide.constant('PortfolioService', {
         getPortfolio: function() {return {then: function() {return {headings: []};}};}
-      }
-      );
+      });
       $provide.constant('ComponentHeadingService', function(val) {return val;});
       $provide.constant('$state', {
         reload: jasmine.createSpy('$state.reload')
+      });
+      $provide.constant('AnalyticsService', {
+        trackEvent: function() {},
+        ec: {},
+        ea: {}
       });
     });
 

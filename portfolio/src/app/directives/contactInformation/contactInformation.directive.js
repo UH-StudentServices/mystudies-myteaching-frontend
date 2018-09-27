@@ -15,7 +15,10 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.contactInformation', ['services.contactInformation', 'services.portfolioRole'])
+angular.module('directives.contactInformation', [
+    'services.contactInformation',
+    'services.portfolioRole',
+    'portfolioAnalytics'])
 
   .constant('SomeLinkType', {
     FACEBOOK: 'FACEBOOK',
@@ -41,7 +44,8 @@ angular.module('directives.contactInformation', ['services.contactInformation', 
                                             PortfolioRole,
                                             PortfolioRoleService,
                                             TeacherSocialMediaLinks,
-                                            StudentSocialMediaLinks) {
+                                            StudentSocialMediaLinks,
+                                            AnalyticsService) {
     return {
       restrict: 'E',
       replace: true,
@@ -68,13 +72,33 @@ angular.module('directives.contactInformation', ['services.contactInformation', 
           });
         }
 
+        function trackIfNeeded() {
+          function getFieldsThatHaveValues(object) {
+            return _.filter(
+              _.concat(
+                _.map(object, function(value, key) {
+                  return value && value !== Object(value) ? key : null;
+                }),
+                _.map(object.someLinks, function(value) {
+                  return value.url ? value.type : null;
+                })
+              )
+            );
+          }
+
+          AnalyticsService.trackEventIfAdded(getFieldsThatHaveValues($scope.origContactInfo),
+            getFieldsThatHaveValues($scope.contactInfo),
+            AnalyticsService.ec.CONTACT_INFO, AnalyticsService.ea.ADD);
+        }
+
         $scope.edit = function() {
           $scope.editing = true;
           addDefaultSomeLinkTypes();
+          $scope.origContactInfo = _.cloneDeep($scope.contactInfo);
         };
 
         function selectFilledSomeLinks(someLinks) {
-          return _.filter($scope.contactInfo.someLinks, function(someLink) {
+          return _.filter(someLinks, function(someLink) {
             return !_.isEmpty(someLink.url);
           });
         }
@@ -82,6 +106,7 @@ angular.module('directives.contactInformation', ['services.contactInformation', 
         $scope.exitEdit = function() {
           var updateContactInformationRequest = _.assign({}, $scope.contactInfo);
 
+          trackIfNeeded();
           updateContactInformationRequest.someLinks =
             selectFilledSomeLinks($scope.contactInfo.someLinks);
           ContactInformationService

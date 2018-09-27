@@ -21,7 +21,8 @@ angular.module('directives.favorites', [
   'directives.favorites.link',
   'directives.favorites.twitter',
   'directives.favorites.addNew',
-  'directives.editableHeading'
+  'directives.editableHeading',
+  'portfolioAnalytics'
 ])
   .constant('availableFavoriteTypes', ['LINK', 'TWITTER'])
   .directive('favorites', function(availableFavoriteTypes,
@@ -30,7 +31,8 @@ angular.module('directives.favorites', [
                                    RemoveFavoriteEvent,
                                    StartFetchingFavoriteEvent,
                                    FinishFetchingFavoriteEvent,
-                                   $state) {
+                                   $state,
+                                   AnalyticsService) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/favorites.html',
@@ -62,6 +64,11 @@ angular.module('directives.favorites', [
           scope.favorites = favorites;
         }
 
+        function favoriteAdded() {
+          AnalyticsService.trackEvent(AnalyticsService.ec.FAVORITES, AnalyticsService.ea.ADD);
+          updateFavorites();
+        }
+
         function updateFavorites() {
           FavoritesService.getFavorites().then(showFavorites);
         }
@@ -78,7 +85,7 @@ angular.module('directives.favorites', [
           scope.loading = false;
         }
 
-        scope.$on(NewFavoriteAddedEvent, updateFavorites);
+        scope.$on(NewFavoriteAddedEvent, favoriteAdded);
         scope.$on(RemoveFavoriteEvent, removeFavorite);
         scope.$on(StartFetchingFavoriteEvent, startLoading);
         scope.$on(FinishFetchingFavoriteEvent, finishLoading);

@@ -15,9 +15,9 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.keywords', ['services.keyword', 'directives.inputUppercase'])
+angular.module('directives.keywords', ['services.keyword', 'directives.inputUppercase', 'portfolioAnalytics'])
 
-  .directive('keywords', function($filter) {
+  .directive('keywords', function($filter, AnalyticsService) {
     return {
       restrict: 'E',
       replace: true,
@@ -32,6 +32,7 @@ angular.module('directives.keywords', ['services.keyword', 'directives.inputUppe
 
         $scope.addKeyword = function(title) {
           if (!_.isEmpty(title) && !_.find($scope.keywords, {title: title})) {
+            AnalyticsService.trackEvent(AnalyticsService.ec.STUDIES, AnalyticsService.ea.ADD_KEYWORD);
             $scope.keywords.push({title: title});
             $scope.newKeyword = {};
           }

@@ -20,7 +20,8 @@ angular.module('directives.workExperience', [
   'filters.moment',
   'directives.showWorkExperience',
   'directives.editWorkExperience',
-  'directives.editableHeading'
+  'directives.editableHeading',
+  'portfolioAnalytics'
 ])
 
 .factory('OrderWorkExperience', function() {
@@ -30,7 +31,8 @@ angular.module('directives.workExperience', [
 })
 
 .directive('workExperience', function(WorkExperienceService,
-                                      $state) {
+                                      $state,
+                                      AnalyticsService) {
   return {
     restrict: 'E',
     replace: true,
@@ -55,6 +57,8 @@ angular.module('directives.workExperience', [
 
       $scope.edit = function() {
         $scope.editing = true;
+        $scope.origWorkExperience = $scope.workExperience.slice();
+        $scope.origJobSearch = _.clone($scope.jobSearch);
       };
 
       var isJobSearchValid = function() {
@@ -84,10 +88,15 @@ angular.module('directives.workExperience', [
         if (isValid()) {
           if ($scope.jobSearch !== null) {
             WorkExperienceService.saveJobSearch($scope.jobSearch);
+            if (!$scope.origJobSearch) {
+              AnalyticsService.trackEvent(AnalyticsService.ec.JOB_SEARCH, AnalyticsService.ea.ADD);
+            }
           } else {
             WorkExperienceService.deleteJobSearch($scope.jobSearch);
           }
 
+          AnalyticsService.trackEventIfAdded($scope.origWorkExperience, $scope.workExperience,
+            AnalyticsService.ec.WORK_EXPERIENCE, AnalyticsService.ea.ADD);
           WorkExperienceService.updateWorkExperience($scope.portfolioId, $scope.workExperience).then(function(data) {
             $scope.workExperience = data;
             $scope.editing = false;

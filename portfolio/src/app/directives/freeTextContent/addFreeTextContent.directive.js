@@ -15,9 +15,9 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.addFreeText', ['services.freeTextContent'])
+angular.module('directives.addFreeText', ['services.freeTextContent', 'portfolioAnalytics'])
 
-.directive('addFreeTextContent', function(FreeTextContentService, FreeTextContentFactory) {
+.directive('addFreeTextContent', function(FreeTextContentService, FreeTextContentFactory, AnalyticsService) {
   return {
     restrict: 'E',
     replace: true,
@@ -26,6 +26,8 @@ angular.module('directives.addFreeText', ['services.freeTextContent'])
     link: function(scope) {
       scope.insertFreeTextContent = function() {
         var entry = FreeTextContentFactory.defaultFreeTextContent({});
+
+        AnalyticsService.trackEvent(AnalyticsService.ec.FREE_TEXT_CONTENT, AnalyticsService.ea.ADD);
 
         FreeTextContentService
           .insertFreeTextContent(entry, {});
