@@ -354,6 +354,18 @@ module.exports = function(grunt) {
         configFile: 'karma.conf.js',
         singleRun: true
       }
+    },
+    replace: {
+      ckeditor: {
+        src: ['src/index.html'],
+        dest: '<%= application.dist %>/index.html',
+        replacements: [
+          {
+            from: '// CKEDITOR_BASEPATH = "/";',
+            to: 'CKEDITOR_BASEPATH = "/";'
+          }
+        ]
+      }
     }
   });
 
@@ -393,7 +405,8 @@ module.exports = function(grunt) {
     'uglify',
     'filerev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'replace'
   ]);
 
   grunt.registerTask('build', [
