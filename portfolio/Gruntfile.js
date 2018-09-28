@@ -357,7 +357,7 @@ module.exports = function(grunt) {
     },
     replace: {
       ckeditor: {
-        src: ['src/index.html'],
+        src: ['<%= application.dist %>/index.html'],
         dest: '<%= application.dist %>/index.html',
         replacements: [
           {
