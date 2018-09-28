@@ -272,9 +272,9 @@ module.exports = function(grunt) {
           src: [
             'config.js',
             'editor.css',
-            'lang/*',
-            'plugins/*',
-            'skins/*',
+            'lang/**',
+            'plugins/**',
+            'skins/**',
             'styles.js'
           ]
         }
