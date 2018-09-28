@@ -363,7 +363,7 @@ module.exports = function(grunt) {
         replacements: [
           {
             from: '// CKEDITOR_BASEPATH = "/";',
-            to: 'CKEDITOR_BASEPATH = "/";'
+            to: 'CKEDITOR_BASEPATH = "/portfolio";'
           }
         ]
       }
