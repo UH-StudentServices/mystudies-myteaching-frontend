@@ -263,6 +263,17 @@ module.exports = function(grunt) {
           cwd: '..',
           dest: '<%= application.dist %>/assets/fonts',
           src: ['common/src/assets/fonts/*']
+        },
+        {
+          expand: true,
+          dot: true,
+          cwd: '../bower_components/ckeditor',
+          dest: '<%= application.dist %>',
+          src: [
+            'config.js',
+            'editor.css',
+            'lang/*'
+          ]
         }
         ]
       },
