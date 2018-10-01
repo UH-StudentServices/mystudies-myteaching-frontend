@@ -55,7 +55,7 @@
     .constant('NG_EMBED_REGEXP_PATTERNS', {
       // url
       protocol: /^[a-z]+:\/\//i,
-      url: /(?:^|[^"'])(?:(https?|ftp|file):\/\/|www\.)[-A-Z0-9+()&@$#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|]/gi,
+      url: /(?:^)(?:(https?|ftp|file):\/\/|www\.)[-A-Z0-9+()&@$#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|]/gi,
       linkUrl: /&lt;a href=".*"&gt;.*&lt;\/a&gt;/gi,
       // files
       basicVideo: /((?:https?|ftp|file):\/\/\S*\.(?:ogv|webm|mp4)(\?([\w=&_%\-]*))?)/gi,
