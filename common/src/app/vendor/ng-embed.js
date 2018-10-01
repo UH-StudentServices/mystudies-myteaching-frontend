@@ -60,7 +60,7 @@
       // files
       basicVideo: /((?:https?|ftp|file):\/\/\S*\.(?:ogv|webm|mp4)(\?([\w=&_%\-]*))?)/gi,
       basicAudio: /((?:https?|ftp|file):\/\/\S*\.(?:wav|mp3|ogg)(\?([\w=&_%\-]*))?)/gi,
-      basicImage: /((?:https?|ftp|file):\/\/\S*\.(?:gif|jpg|jpeg|tiff|png|svg|webp)(\?([\w=&_%\-]*))?)/gi,
+      basicImage: /(?:^|[^"'])((?:https?|ftp|file):\/\/\S*\.(?:gif|jpg|jpeg|tiff|png|svg|webp)(\?([\w=&_%\-]*))?)/gi,
       pdf: /((?:https?|ftp|file):\/\/\S*\.(?:pdf)(\?([\w=&_%\-]*))?)/gi,
       // audio
       soundCloud: /soundcloud.com\/[a-zA-Z0-9-_]+\/[a-zA-Z0-9-_]+/gi,
