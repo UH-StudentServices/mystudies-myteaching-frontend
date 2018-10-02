@@ -32,15 +32,15 @@ const openAvatarMenu = async t => t.click(Selector('.user-avatar'));
 export const openPortfolio = async (t, portfolioLinkText, expectedPortfolioTitle) => {
   const porfolioLinkSelector = Selector('a').withText(portfolioLinkText);
   const portfolioStudiesSelector = Selector('.ui-component__studies');
-  const portfolioLink = Selector('.portfolio-intro__title');
-  const portfolioIntroSelector = portfolioLink.withText(expectedPortfolioTitle);
+  const portfolioLinkSelector = Selector('.portfolio-intro__title');
+  const portfolioIntroSelector = portfolioLinkSelector.withText(expectedPortfolioTitle);
 
 
   await openAvatarMenu(t);
   await t
     .click(porfolioLinkSelector)
     .expect(portfolioIntroSelector.exists).ok()
-    .click(portfolioLink)
+    .click(portfolioLinkSelector)
     .expect(portfolioStudiesSelector.exists).ok();
 };
 
