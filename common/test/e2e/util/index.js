@@ -21,6 +21,7 @@ const loginAsUser = async (t, name, expectedWeekFeedHeader) => {
   const loginAsUserButton = Selector('a.button').withText(name);
   const weekFeedHeader = Selector('h2 span').withText(expectedWeekFeedHeader);
 
+
   return await t
     .click(loginAsUserButton)
     .expect(weekFeedHeader.exists).ok();
@@ -30,15 +31,28 @@ const openAvatarMenu = async t => t.click(Selector('.user-avatar'));
 
 export const openPortfolio = async (t, portfolioLinkText, expectedPortfolioTitle) => {
   const porfolioLinkSelector = Selector('a').withText(portfolioLinkText);
-  const portfolioIntroSelector = Selector('.portfolio-intro__title').withText(expectedPortfolioTitle);
+  const portfolioStudiesSelector = Selector('.ui-component__studies');
+  const portfolioLinkSelector = Selector('.portfolio-intro__title');
+  const portfolioIntroSelector = portfolioLinkSelector.withText(expectedPortfolioTitle);
+
 
   await openAvatarMenu(t);
   await t
     .click(porfolioLinkSelector)
-    .expect(portfolioIntroSelector.exists).ok();
+    .expect(portfolioIntroSelector.exists).ok()
+    .click(portfolioLinkSelector)
+    .expect(portfolioStudiesSelector.exists).ok();
 };
 
-export const loginAsStudent = async t => loginAsUser(t, 'Olli Opiskelija', 'NYT OPINNOISSANI');
+export const loginAsStudent = async t => {
+  const tabs = Selector('ul.tab-set');
+  const firstWeekFeedItem = Selector('ul.week-feed-items').child(0);
+
+  loginAsUser(t, 'Olli Opiskelija', 'NYT OPINNOISSANI');
+  return t
+    .click(tabs.child(2))
+    .expect(firstWeekFeedItem.exists).ok();
+};
 export const loginAsTeacher = async t => loginAsUser(t, 'Olli Opettaja', 'NYT OPETUKSESSANI');
 export const loginAndOpenPortfolio = async (t) => {
   await loginAsStudent(t);
