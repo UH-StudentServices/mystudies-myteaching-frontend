@@ -34,15 +34,31 @@
   @include breakpoint($small) {
     &::after {
       content: "";
-      width: calc(33.33% - (80px/3));
+      width: calc(50% - (80px/3));
     };
   }
 
   @include breakpoint($medium) {
     &::after {
       content: "";
-      width: calc(33.33% - (160px/3));
+      width: calc(50% - (160px/3));
     };
+  }
+
+  .favorites__student & {
+    @include breakpoint($small) {
+      &::after {
+        content: "";
+        width: calc(33.33% - (80px/3));
+      };
+    }
+
+    @include breakpoint($medium) {
+      &::after {
+        content: "";
+        width: calc(33.33% - (160px/3));
+      };
+    }
   }
 }
 
@@ -58,11 +74,21 @@
     height: 380px;
     display: inline-block;
     vertical-align: top;
-    width: calc(33.33% - (80px/3));
+    width: calc(50% - (80px/3));
   }
 
   @include breakpoint($medium) {
-    width: calc(33.33% - (160px/3));
+    width: calc(50% - (160px/3));
+  }
+
+  .favorites__student & {
+    @include breakpoint($small) {
+      width: calc(33.33% - (80px/3));
+    }
+
+    @include breakpoint($medium) {
+      width: calc(33.33% - (160px/3));
+    }
   }
 
   .add-new {

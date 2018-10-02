@@ -35,6 +35,7 @@
       <div class="l-content-primary-wrapper">
         <week-feed courses-promise="courses" events-promise="events" date="currentDate" on-show-full-screen-calendar="showFullScreenCalendar()"></week-feed>
         <attainments limit-visibility="['MY_STUDIES_ONLY']"></attainments>
+        <favorites limit-visibility="['MY_TEACHINGS_ONLY', 'DESKTOP_ONLY']"></favorites>
       </div>
 
       <div class="l-content-secondary-wrapper" role="navigation">
@@ -42,12 +43,14 @@
           <div ng-if="!showBanner">
             <todo-items limit-visibility="['MY_STUDIES_ONLY']" class="todo-items--secondary"></todo-items>
           </div>
-          <office-hours limit-visibility="['MY_TEACHINGS_ONLY']" class="office-hours--secondary"></office-hours>
+          <office-hours limit-visibility="['MY_TEACHINGS_ONLY']"></office-hours>
           <useful-links></useful-links>
         </div>
       </div>
     </div>
-    <favorites></favorites>
+
+    <favorites limit-visibility="['MY_TEACHINGS_ONLY', 'MOBILE_ONLY']"></favorites>
+    <favorites limit-visibility="['MY_STUDIES_ONLY']" class="favorites__student"></favorites>
   </div>
 
   <feedback ng-if="userSettings.cookieConsent"></feedback>
