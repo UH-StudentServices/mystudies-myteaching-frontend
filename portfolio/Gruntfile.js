@@ -271,7 +271,7 @@ module.exports = function(grunt) {
           dest: '<%= application.dist %>',
           src: [
             'config.js',
-            'editor.css',
+            'contents.css',
             'lang/**',
             'plugins/**',
             'skins/**',

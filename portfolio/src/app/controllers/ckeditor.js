@@ -22,11 +22,11 @@ angular.module('controllers.ckeditor', ['ckeditor', 'services.language'])
       language: LanguageService.getCurrent(),
 
       filebrowserBrowseUrl: '/portfolio/files',
-      filebrowserImageBrowseUrl: PortfolioFilesResourcePath,
+      filebrowserImageBrowseUrl: '/portfolio/files',
       filebrowserUploadUrl: PortfolioFilesResourcePath,
       filebrowserImageUploadUrl: PortfolioFilesResourcePath,
 
-      toolbar: [['Link', 'Unlink']],
+      toolbar: [['Link', 'Unlink', 'Image']],
       linkShowTargetTab: false,
       removePlugins: 'elementspath',
       enterMode: CKEDITOR.ENTER_BR,
