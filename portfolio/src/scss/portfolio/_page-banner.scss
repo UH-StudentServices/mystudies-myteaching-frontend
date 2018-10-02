@@ -31,6 +31,18 @@
   height: 100% !important;
 }
 
+.page-banner__image::after {
+  content:"";
+  display: block;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $black;
+  opacity: 0.4;
+}
+
 .page-banner__change-background-menu.dropdown-content {
   @extend .dropdown-menu;
 
