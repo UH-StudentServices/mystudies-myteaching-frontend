@@ -44,24 +44,6 @@
     "enterNew": "skriv ett nyckelord",
     "addNew": "lägg till nyckelord"
   },
-  "favorites": {
-    "types": {
-      "LINK": "webbsidans länk",
-      "TWITTER": "Twitter"
-    },
-    "title": "favoriter",
-    "addNew": "lägg till",
-    "link": {
-      "linkPlaceholder": "urlen till favorit hemsidan"
-    },
-    "twitter": {
-      "twitterPlaceholder": "Twitter användarnamn, t.ex helsinkiuni"
-    },
-    "ariaLabels": {
-      "clearSearch": "radar sökningar",
-      "searchResults": "sökresultat"
-    }
-  },
   "contactInformation": {
     "title": "Kontakta mig",
     "addPhoneNumber": "Lägg till telefonnummer",

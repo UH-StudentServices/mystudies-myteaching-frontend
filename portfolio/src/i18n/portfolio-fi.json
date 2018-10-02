@@ -44,24 +44,6 @@
     "enterNew": "kirjoita uusi avainsana",
     "addNew": "lisää avainsana"
   },
-  "favorites": {
-    "types": {
-      "LINK": "Linkki verkkosivulle",
-      "TWITTER": "Twitter-aikajana"
-    },
-    "title": "suosikit",
-    "addNew": "lisää uusi",
-    "link": {
-      "linkPlaceholder": "URL suosikkisivulle"
-    },
-    "twitter": {
-      "twitterPlaceholder": "Twitter-käyttäjänimi, esim. helsinkiuni"
-    },
-    "ariaLabels": {
-      "clearSearch": "tyhjennä haku",
-      "searchResults": "hakutulokset"
-    }
-  },
   "contactInformation": {
     "title": "Ota yhteyttä",
     "addPhoneNumber": "Lisää puhelinnumero",
