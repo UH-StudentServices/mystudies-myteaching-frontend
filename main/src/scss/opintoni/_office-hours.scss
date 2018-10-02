@@ -1,0 +1,111 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.office-hours {
+
+  &__title {
+    @include font-size(20px);
+    display: inline-block;
+    margin-right: 0.5em;
+    word-wrap: break-word;
+  }
+
+  &__box {
+    position: relative;
+    padding: 20px;
+    overflow-y: auto;
+  }
+
+  &__degree-programme {
+    position: relative;
+    word-wrap: break-word;
+
+    padding: 0px 10px 10px 0px;
+    text-transform: uppercase;
+
+    .degree-programme__remove {
+      @include vertically-center;
+      color: $blue;
+      right: 0px;
+      cursor: pointer;
+    }
+  }
+
+  &__description {
+    padding: 10px 0px 10px 0px;
+    white-space: pre-wrap;
+  }
+
+  &__input {
+    margin-bottom: 8px;
+  }
+
+  &__buttons {
+    justify-content: flex-end;
+
+    button {
+      text-transform: capitalize;
+    }
+  }
+
+  &__list {
+    display: flex;
+  }
+
+  &__item-container {
+    width: 80%;
+  }
+
+  &__item-icons {
+    width: 20%;
+    text-align: right;
+
+    & button {
+      color: $blue;
+
+      &:hover {
+        color: $darkblue--active;
+      }
+
+      &:focus {
+        background-color: $white;
+        color: $darkblue--active;
+      }
+    }
+  }
+
+  &__delete-confirmation-box {
+    padding: 30px;
+    background: black;
+
+    &__buttons {
+      justify-content: center;
+    }
+  }
+
+  &__item {
+    margin-bottom: 10px;
+  }
+
+  &__modal-body {
+
+    label {
+      color: white;
+      font-size: 1rem;
+    }
+  }
+}

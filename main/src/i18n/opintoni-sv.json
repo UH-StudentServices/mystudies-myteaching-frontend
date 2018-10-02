@@ -284,6 +284,7 @@
     }
   },
   "officeHours": {
+    "title": "Mottagningstider",
     "intro": "Välj rätt utbildningsprogram och publicera dina mottagningstider. Ändringar du gör i de publicerade mottagningstiderna uppdateras automatiskt.",
     "dialogIntro": "Välj rätt utbildningsprogram och publicera dina mottagningstider. Om du inte väljer någonting, publiceras dina mottagningstider med lärarnas mottagningstider vid Språkcentrum.",
     "heading": "publicerade mottagningstider",

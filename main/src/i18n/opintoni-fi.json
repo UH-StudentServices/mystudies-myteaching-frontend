@@ -284,6 +284,7 @@
     }
   },
   "officeHours": {
+    "title": "Vastaanottoajat",
     "intro": "Julkaise vastaanottoaikasi valitsemassasi koulutusohjelmassa tai -ohjelmissa. Tekemäsi muutokset päivittyvät automaattisesti julkaistuihin vastaanottoaikoihin.",
     "dialogIntro": "Julkaise vastaanottoaikasi valitsemissasi koulutusohjelmissa. Jos et valitse mitään koulutusohjelmaa, vastaanottosi näkyy Kielikeskuksen vastaanottoajoissa.",
     "heading": "julkaistut vastaanottoajat",

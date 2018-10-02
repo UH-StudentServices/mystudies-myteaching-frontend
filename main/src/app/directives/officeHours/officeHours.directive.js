@@ -26,7 +26,7 @@ angular.module('directives.officeHours', [
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'app/directives/pageBanner/officeHours/officeHours.html',
+      templateUrl: 'app/directives/officeHours/officeHours.html',
       link: function(scope) {
 
         function setLoadError() {
