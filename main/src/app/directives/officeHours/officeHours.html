@@ -16,64 +16,63 @@
 -->
 
 <div class="office-hours">
-  <div class="office-hours__bg-img-container">
 
-    <div ng-if="!loadError && loaded && officeHoursList.length === 0" class="office-hours__box">
-      <p translate="officeHours.intro"></p>
-      <div class="button-group office-hours__buttons">
-        <button class="button button-group__button" translate="officeHours.addNew" ng-click="addOfficeHours()"></button>
-      </div>
+  <div ng-if="!loadError && loaded && officeHoursList.length === 0" class="office-hours__box">
+    <h3 class="office-hours__title" translate="officeHours.title" />
+    <p translate="officeHours.intro"></p>
+    <div class="button-group office-hours__buttons">
+      <button class="button button-group__button" translate="officeHours.addNew" ng-click="addOfficeHours()"></button>
     </div>
+  </div>
 
-    <div ng-if="!loadError && loaded && officeHoursList.length > 0" class="office-hours__box">
-      <p class="text-transform-capitalize" translate="officeHours.heading" />
-      <ul>
-        <li class="office-hours__office-hours-item" ng-repeat="officeHours in officeHoursList track by $index">
+  <div ng-if="!loadError && loaded && officeHoursList.length > 0" class="office-hours__box">
+    <h3 class="office-hours__title" translate="officeHours.title" />
+    <p class="text-transform-capitalize" translate="officeHours.heading" />
+    <ul>
+      <li class="office-hours__item" ng-repeat="officeHours in officeHoursList track by $index">
 
-          <div ng-if="!shouldDeleteConfirmationBeShown($index)" class="office-hours__office-hours-list">
-            <div class="office-hours__office-hours-item-container">
-              <ul class="office-hours__degree-programmes">
-                <li class="office-hours__degree-programme" ng-repeat="programme in officeHours.degreeProgrammes">
-                  {{programme.name}}
-                </li>
-              </ul>
-              <div class="office-hours__description">
-                <div ng-repeat="row in [officeHours.description, officeHours.additionalInfo, officeHours.location] track by $index">{{row}}</div>
-              </div>
-            </div>
-            <div class="office-hours__office-hours-item-icons">
-              <button class="button--icon" ng-click="editOfficeHours($index)">
-                <span class="icon--edit-event" ></span>
-              </button>
-              <button class="button--icon" ng-click="showDeleteConfirmation($index)">
-                <span class="icon--trash"></span>
-              </button>
+        <div ng-if="!shouldDeleteConfirmationBeShown($index)" class="office-hours__list">
+          <div class="office-hours__item-container">
+            <ul class="office-hours__degree-programmes">
+              <li class="office-hours__degree-programme" ng-repeat="programme in officeHours.degreeProgrammes">
+                {{programme.name}}
+              </li>
+            </ul>
+            <div class="office-hours__description">
+              <div ng-repeat="row in [officeHours.description, officeHours.additionalInfo, officeHours.location] track by $index">{{row}}</div>
             </div>
           </div>
-
-          <div ng-if="shouldDeleteConfirmationBeShown($index)" class="office-hours__delete-confirmation-box">
-            <div class="button-group office-hours__buttons">
-              <button class="button button-group__button" translate="general.cancel" ng-click="clearDeleteConfirmation()"></button>
-              <button class="button button-group__button" translate="general.delete" ng-click="deleteOfficeHours($index)"></button>
-            </div>
+          <div class="office-hours__item-icons">
+            <button class="button--icon" ng-click="editOfficeHours($index)" title="{{'general.edit' | translate}}">
+              <span class="icon--edit-event" ></span>
+            </button>
+            <button class="button--icon" ng-click="showDeleteConfirmation($index)" title="{{'general.delete' | translate}}">
+              <span class="icon--trash"></span>
+            </button>
           </div>
-        </li>
-      </ul>
-      <div class="button-group office-hours__buttons">
-        <button class="button button-group__button" translate="officeHours.addNew" ng-click="addOfficeHours()"></button>
-      </div>
-    </div>
+        </div>
 
-    <div ng-if="!loadError && !loaded" class="office-hours__box">
-      <span class="icon icon--spinner icon-spin"></span>
-      <p translate="officeHours.loading">
+        <div ng-if="shouldDeleteConfirmationBeShown($index)" class="office-hours__delete-confirmation-box">
+          <div class="button-group office-hours__delete-confirmation-box__buttons">
+            <button class="button button-group__button" translate="general.cancel" ng-click="clearDeleteConfirmation()"></button>
+            <button class="button button-group__button" translate="general.delete" ng-click="deleteOfficeHours($index)"></button>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div class="button-group office-hours__buttons">
+      <button class="button button-group__button" translate="officeHours.addNew" ng-click="addOfficeHours()"></button>
     </div>
+  </div>
 
-    <div ng-if="loadError" class="office-hours__box">
-      <span class="icon icon--warning"></span>
-      <p translate="officeHours.errors.loadingError">
-    </div>
+  <div ng-if="!loadError && !loaded" class="office-hours__box">
+    <span class="icon icon--spinner icon-spin"></span>
+    <p translate="officeHours.loading">
+  </div>
 
+  <div ng-if="loadError" class="office-hours__box">
+    <span class="icon icon--warning"></span>
+    <p translate="officeHours.errors.loadingError">
   </div>
 
   <script type="text/ng-template" id="officeHoursEditDialog.html">

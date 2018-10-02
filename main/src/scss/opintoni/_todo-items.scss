@@ -48,7 +48,7 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
   }
 }
 
-.todo-items, .office-hours {
+.todo-items {
   width: 100%;
   position: relative;
   z-index: 10;
@@ -126,15 +126,11 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
       @include container-height(0);
     }
 
-    .office-hours--banner &, .office-hours--secondary & {
-      @include container-height();
-    }
-
-    .todo-items--banner &, .office-hours--banner & {
+    .todo-items--banner & {
       background-color: $todo-item-background-color;
     }
 
-    .todo-items--secondary &, .office-hours--secondary & {
+    .todo-items--secondary & {
       @include border;
       background-color: rgba(0, 0, 0, 0.4);
     }
@@ -232,71 +228,5 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
     &--remove {
       right: 0px;
     }
-  }
-}
-
-.office-hours__degree-programme {
-  position: relative;
-  word-wrap: break-word;
-
-  padding: 0px 10px 10px 0px;
-  text-transform: uppercase;
-
-  .degree-programme__remove {
-    @include vertically-center;
-    color: $todo-item-color;
-    right: 0px;
-    cursor: pointer;
-  }
-}
-
-.office-hours__description {
-  padding: 10px 0px 10px 0px;
-  white-space: pre-wrap;
-}
-
-.office-hours__input {
-  margin-bottom: 8px;
-}
-
-.office-hours__buttons {
-  justify-content: flex-end;
-
-  button {
-    text-transform: capitalize;
-  }
-}
-
-.office-hours__office-hours-list {
-  display: flex;
-}
-
-.office-hours__office-hours-item-container {
-  width: 80%;
-}
-
-.office-hours__office-hours-item-icons {
-  width: 20%;
-  text-align: right;
-}
-
-.office-hours__delete-confirmation-box {
-  padding: 30px;
-  background: black;
-
-  .office-hours__buttons {
-    justify-content: center;
-  }
-}
-
-.office-hours__office-hours-item {
-  margin-bottom: 10px;
-}
-
-.office-hours__modal-body {
-
-  label {
-    color: white;
-    font-size: 1rem;
   }
 }
