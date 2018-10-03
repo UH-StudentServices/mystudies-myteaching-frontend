@@ -28,7 +28,8 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
         {component: 'WORK_EXPERIENCE'},
         {component: 'SAMPLES'},
         {component: 'ATTAINMENTS'},
-        {component: 'LANGUAGE_PROFICIENCIES'}
+        {component: 'LANGUAGE_PROFICIENCIES'},
+        {component: 'SKILLS_AND_EXPERTISE'}
       ];
     }
 

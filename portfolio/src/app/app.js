@@ -61,6 +61,7 @@ angular.module('opintoniPortfolioApp', [
   'directives.freeTextContent',
   'directives.addFreeText',
   'directives.languageProficiencies',
+  'directives.skillsAndExpertise',
   'directives.feedback',
   'directives.popover',
   'directives.cookieNotification',

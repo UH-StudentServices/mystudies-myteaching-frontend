@@ -80,6 +80,14 @@
                                     portfolio-lang="{{::portfolio.lang}}">
             </language-proficiencies>
           </div>
+
+          <div ng-switch-when="SKILLS_AND_EXPERTISE" class="portfolio-section__body">
+            <skills-and-expertise limit-visibility="{componentId: 'SKILLS_AND_EXPERTISE'}"
+                                  portfolio-id="{{::portfolio.id}}"
+                                  portfolio-lang="{{::portfolio.lang}}"
+                                  skills-and-expertise="portfolio.skillsAndExpertise">
+            </skills-and-expertise>
+          </div>
         </div>
       </section>
     </div>

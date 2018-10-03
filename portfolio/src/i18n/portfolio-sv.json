@@ -155,6 +155,9 @@
       "sv": "Svenska"
     }
   },
+  "skillsAndExpertise": {
+    "title": "Kompetens och expertis"
+  },
   "tabs": {
     "basicInformation": "Basuppgifter",
     "research": "Forskning och vetenskaplig verksamhet",
