@@ -36,6 +36,10 @@ $work-experience-summary-max-height: 104px;
 
 .work-experience__outer_container {
   display: flex;
+  background-color: $lightsilver;
+  border: 1px solid $mediumsilver;
+  padding: 1em;
+  margin-bottom: 1em;
 }
 
 .banner-content__drag-handle {
@@ -104,4 +108,29 @@ $work-experience-summary-max-height: 104px;
   width: 100%;
   padding-bottom: 1.5em;
   margin: 0;
+}
+
+input.work-experience__date-input {
+  width: 6em;
+}
+
+.work-experience {
+  &__default_image {
+    font-size: 3em;
+    color: $blue;
+  }
+
+  &__input.ng-invalid {
+    border: 2px solid red;
+  }
+
+  .banner-content {
+    &__item {
+      margin-top: 0;
+    }
+
+    &__remove {
+      background-color: transparent;
+    }
+  }
 }

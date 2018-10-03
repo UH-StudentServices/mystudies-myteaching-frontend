@@ -79,6 +79,7 @@ angular.module('directives.workExperience', [
 
       $scope.refreshValidity = _.debounce(function() {
         $scope.workExperienceValid = isValid();
+        $scope.$apply();
       }, 500);
 
       $scope.exitEdit = function() {
