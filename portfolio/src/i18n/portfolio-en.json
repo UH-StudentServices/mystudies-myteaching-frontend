@@ -44,24 +44,6 @@
     "enterNew": "enter new keyword",
     "addNew": "add keyword"
   },
-  "favorites": {
-    "types": {
-      "LINK": "Website link",
-      "TWITTER": "Twitter timeline"
-    },
-    "title": "favorites",
-    "addNew": "add new",
-    "link": {
-      "linkPlaceholder": "URL to favorite website"
-    },
-    "twitter": {
-      "twitterPlaceholder": "Twitter username, eg. helsinkiuni"
-    },
-    "ariaLabels": {
-      "clearSearch": "clear search",
-      "searchResults": "search results"
-    }
-  },
   "contactInformation": {
     "title": "Contact me",
     "addPhoneNumber": "Add phone number",
