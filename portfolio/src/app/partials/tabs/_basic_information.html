@@ -56,12 +56,14 @@
     </section>
 
     <section class="portfolio-section">
-      <skills-and-expertise limit-visibility="{componentId: 'SKILLS_AND_EXPERTISE',
-                                               sectionName: 'BASIC_INFORMATION',
-                                               instanceName: 'GENERAL'}"
+      <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
+                                            sectionName: 'BASIC_INFORMATION',
+                                            instanceName: 'SKILLS_AND_EXPERTISE'}"
+                         heading-key="skillsAndExpertise.title"
                          portfolio-section="BASIC_INFORMATION"
-                         instance-name="GENERAL">
-      </skills-and-expertise>
+                         instance-name="SKILLS_AND_EXPERTISE"
+                         portfolio-lang="{{::portfolio.lang}}">
+      </free-text-content>
     </section>
 
     <section class="portfolio-section">

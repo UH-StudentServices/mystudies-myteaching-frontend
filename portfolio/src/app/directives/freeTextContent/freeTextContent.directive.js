@@ -115,9 +115,9 @@ angular.module('directives.freeTextContent', [
           var linksRe = /(?:^|[^"'])(?:(https?|ftp|file):\/\/|www\.)[-A-Z0-9+()&@$#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|]/gi;
 
           function getOtherLinks(text) {
-            text = text.replace(imageRe, '');
-            text = text.replace(hostedFilesRe, '');
-            return text.match(linksRe);
+            return text.replace(imageRe, '')
+              .replace(hostedFilesRe, '')
+              .match(linksRe);
           }
           function getHostedFiles(text) {
             return text.match(hostedFilesRe);

@@ -116,7 +116,6 @@ angular.module('portfolioAnalytics', ['provider.analyticsAccounts'])
       ATTAINMENTS: 'attainments',
       LANGUAGE_PROFICIENCIES: 'language_proficiencies',
       FAVORITES: 'favorites',
-      SKILLS_AND_EXPERTISE: 'skills_and_expertise',
       FREE_TEXT_CONTENT: 'free_text_content',
       CONTACT_INFO: 'contact_info',
       PORTFOLIO: 'portfolio'
