@@ -23,73 +23,39 @@
 
         <div class="degree__container">
           <div class="degree__date">
-            <span class="editable-content" ng-show="!degree.dateOfDegreeEdit">
-              <a role="button" href="" ng-click="editDateOfDegree(degree)"
-                ng-class="{'ng-invalid':!degree.dateOfDegree}">
-                {{ degree.dateOfDegree || ('degrees.datePlaceholder' | translate) }}
-                <i class="icon--edit-event"></i>
-              </a>
-            </span>
-            <span class="editable-content-active" ng-if="degree.dateOfDegreeEdit">
-              <input focus="degree.dateOfDegreeEdit" ng-model="degree.dateOfDegree"
-                     ui-keypress="{'enter':'exitDateOfDegreeEdit(degree)'}"
-                     ng-change="refreshValidity()"
-                     ng-class="{'ng-invalid':!degree.dateOfDegree}"
-                     placeholder="{{::('degrees.datePlaceholder' | translate) }}">
-              <a role="button" href="" ng-click="exitDateOfDegreeEdit(degree)"><i class="icon--done"></i></a>
-            </span>
+            <label for="degree_date_{{ $index }}" translate="degrees.dateLabel" />
+            <input type="text"
+                   id="degree_date_{{ $index }}"
+                   placeholder="{{ ::('degrees.datePlaceholder' | translate) }}"
+                   ng-model="degree.dateOfDegree"
+                   ng-change="refreshValidity()"
+                   ng-class="{'ng-invalid':!degree.dateOfDegree}" />
           </div>
 
           <div class="degree__title">
-            <span class="editable-content" ng-show="!degree.titleEdit">
-              <a role="button" href="" ng-click="editTitle(degree)"
-                ng-class="{'ng-invalid':!degree.title}">
-                {{ degree.title || ('degrees.titlePlaceholder' | translate) }}
-                <i class="icon--edit-event"></i>
-              </a>
-            </span>
-            <span class="editable-content-active" ng-show="degree.titleEdit">
-              <input focus="degree.titleEdit"
-                     ng-model="degree.title"
-                     ui-keypress="{'enter':'exitTitleEdit(degree)'}"
-                     ng-change="refreshValidity()"
-                     placeholder="{{::('degrees.titlePlaceholder' | translate) }}"
-                     ng-class="{'ng-invalid':!degree.title}">
-              <a role="button" href="" ng-click="exitTitleEdit(degree)"><i class="icon--done"></i></a>
-            </span>
+            <label for="degree_title_{{ $index }}" translate="degrees.titleLabel" />
+            <input type="text"
+                   id="degree_title_{{ $index }}"
+                   placeholder="{{ ::('degrees.titlePlaceholder' | translate) }}"
+                   ng-model="degree.title"
+                   ng-change="refreshValidity()"
+                   ng-class="{'ng-invalid':!degree.title}" />
           </div>
 
           <div class="degree__institution">
-            <span class="editable-content" ng-show="!degree.institutionEdit">
-              <a role="button" href="" ng-click="editInstitution(degree)">
-                {{ degree.institution || ('degrees.institutionPlaceholder' | translate) }}
-                <i class="icon--edit-event"></i>
-              </a>
-            </span>
-            <span class="editable-content-active" ng-show="degree.institutionEdit">
-              <input focus="degree.institutionEdit"
-                     ng-model="degree.institution"
-                     ui-keypress="{'enter':'exitInstitutionEdit(degree)'}"
-                     placeholder="{{::('degrees.institutionPlaceholder' | translate) }}">
-              <a role="button" href="" ng-click="exitInstitutionEdit(degree)"><i class="icon--done"></i></a>
-            </span>
+            <label for="degree_institution_{{ $index }}" translate="degrees.institutionLabel" />
+            <input type="text"
+                   id="degree_institution_{{ $index }}"
+                   placeholder="{{ ::('degrees.institutionPlaceholder' | translate) }}"
+                   ng-model="degree.institution" />
           </div>
 
           <div class="degree__description">
-            <span class="editable-content" ng-show="!degree.descriptionEdit">
-              <a role="button" href="" ng-click="editDescription(degree)">
-                {{ (degree.description || ('degrees.descriptionPlaceholder' | translate)) }}
-                <i class="icon--edit-event"></i>
-              </a>
-            </span>
-            <span class="editable-content-active" ng-show="degree.descriptionEdit">
-              <textarea focus="degree.descriptionEdit"
-                     ng-model="degree.description"
-                     ui-keypress="{'enter':'exitDescriptionEdit(degree)'}"
-                     placeholder="{{::('degrees.descriptionPlaceholder' | translate)}}">
-              </textarea>
-              <a role="button" href="" ng-click="exitDescriptionEdit(degree)"><i class="icon--done"></i></a>
-            </span>
+            <label for="degree_description_{{ $index }}" translate="degrees.descriptionLabel" />
+            <textarea id="degree_description_{{ $index }}"
+                      placeholder="{{ ::('degrees.descriptionPlaceholder' | translate) }}"
+                      ng-model="degree.description">
+            </textarea>
           </div>
 
         </div>

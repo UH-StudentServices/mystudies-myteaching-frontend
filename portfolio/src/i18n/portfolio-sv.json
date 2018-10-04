@@ -66,9 +66,13 @@
   },
   "degrees": {
     "title": "Examen",
+    "dateLabel": "Datum ",
     "datePlaceholder": "Lägg till datum, t.ex. 31 maj 2018 eller 05/2018",
+    "institutionLabel": "Institut",
     "institutionPlaceholder": "Lägg till institut",
+    "titleLabel": "Examen",
     "titlePlaceholder": "Lägg till examen",
+    "descriptionLabel": "Beskriving",
     "descriptionPlaceholder": "Lägg till beskrivning",
     "addNewPlaceholder": "Lägg till examen"
   },

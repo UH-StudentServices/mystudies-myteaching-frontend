@@ -32,6 +32,11 @@ $degree-invalid-color: red;
       color: $white;
     }
 
+    label {
+      color: $white;
+      font-weight: bold;
+    }
+
     .degree__container {
       width: 80%;
       > * {
@@ -43,25 +48,12 @@ $degree-invalid-color: red;
       position: absolute;
       right: 1em;
     }
-  }
 
-  .editable-content, .editable-content-active {
-    .ng-invalid {
-      border: 2px solid $degree-invalid-color;
+    input, textarea {
+      &.ng-invalid {
+        outline: 2px solid $degree-invalid-color;
+      }
     }
-  }
-
-  .degree__description {
-    display: flex;
-  }
-
-  .degree__description .editable-content-active {
-    align-content: stretch;
-    width: 100%;
-  }
-
-  .degree__description .editable-content-active .icon--done {
-    top: 12px;
   }
 }
 
@@ -104,6 +96,10 @@ $degree-invalid-color: red;
 
 .degree__title {
   @extend .box-data__title;
+}
+
+.degree__institution {
+  @extend .box-data__content
 }
 
 .degree__description {
