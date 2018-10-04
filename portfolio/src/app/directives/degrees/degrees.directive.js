@@ -74,11 +74,11 @@ angular.module('directives.degrees', [
       }
 
       $scope.exitEdit = function() {
-        $scope.$broadcast('saveComponent');
-        $scope.markAllSubmitted();
-
         if (isValid()) {
           trackIfNeeded();
+
+          $scope.$broadcast('saveComponent');
+          $scope.markAllSubmitted();
 
           DegreeService.updateDegrees($scope.portfolioId, $scope.degrees).then(function(data) {
             $scope.degrees = data;
@@ -86,7 +86,6 @@ angular.module('directives.degrees', [
             $state.reload(); // https://jira.it.helsinki.fi/browse/OO-1004
           });
         }
-        return true;
       };
     }
   };

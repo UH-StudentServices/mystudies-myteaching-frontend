@@ -66,9 +66,13 @@
   },
   "degrees": {
     "title": "Degrees",
+    "dateLabel": "Date",
     "datePlaceholder": "Add date, e.g. 31st May 2019 or May 2019",
+    "institutionLabel": "Institution",
     "institutionPlaceholder": "Add institution",
+    "titleLabel": "Degree",
     "titlePlaceholder": "Add title",
+    "descriptionLabel": "Description",
     "descriptionPlaceholder": "Add description",
     "addNewPlaceholder": "Add new degree"
   },

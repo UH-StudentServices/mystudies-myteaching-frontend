@@ -25,45 +25,15 @@ angular.module('directives.editDegrees', [])
       templateUrl: 'app/directives/degrees/editDegrees.html',
       link: function($scope) {
 
-        $scope.editTitle = function(degree) {
-          degree.titleEdit = true;
-        };
-
-        $scope.exitTitleEdit = function(degree) {
-          degree.titleEdit = false;
-        };
-
-        $scope.editInstitution = function(degree) {
-          degree.institutionEdit = true;
-        };
-
-        $scope.exitInstitutionEdit = function(degree) {
-          degree.institutionEdit = false;
-        };
-
-        $scope.editDescription = function(degree) {
-          degree.descriptionEdit = true;
-        };
-
-        $scope.exitDescriptionEdit = function(degree) {
-          degree.descriptionEdit = false;
-        };
-
-        $scope.editDateOfDegree = function(degree) {
-          degree.dateOfDegreeEdit = true;
-        };
-
-        $scope.exitDateOfDegreeEdit = function(degree) {
-          degree.dateOfDegreeEdit = false;
-        };
-
         $scope.addDegree = function(degree) {
           $scope.degrees.push(degree);
           $scope.newDegree = {};
+          $scope.refreshValidity();
         };
 
         $scope.removeDegree = function(degree) {
           $scope.degrees = _.without($scope.degrees, degree);
+          $scope.refreshValidity();
         };
 
         $scope.sortableOptions = {
