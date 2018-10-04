@@ -25,58 +25,18 @@ angular.module('directives.editWorkExperience', [
     templateUrl: 'app/directives/workExperience/editWorkExperience.html',
     link: function($scope) {
 
-      $scope.editEmployer = function(job) {
-        job.employerEdit = true;
-      };
-
-      $scope.exitEmployerEdit = function(job) {
-        job.employerEdit = false;
-      };
-
-      $scope.editStartDate = function(job) {
-        job.startDateEdit = true;
-      };
-
-      $scope.exitStartDateEdit = function(job) {
+      $scope.startDateChanged = function(job) {
         if (!job.startDate || !job.startDate.isValid()) {
           job.startDate = moment();
         }
-        job.startDateEdit = false;
+        $scope.refreshValidity();
       };
 
-      $scope.editEndDate = function(job) {
-        job.endDateEdit = true;
-      };
-
-      $scope.exitEndDateEdit = function(job) {
+      $scope.endDateChanged = function(job) {
         if (job.endDate && !job.endDate.isValid()) {
           job.endDate = '';
         }
-        job.endDateEdit = false;
-      };
-
-      $scope.editJobTitle = function(job) {
-        job.jobTitleEdit = true;
-      };
-
-      $scope.exitJobTitleEdit = function(job) {
-        job.jobTitleEdit = false;
-      };
-
-      $scope.editDescription = function(job) {
-        job.descriptionEdit = true;
-      };
-
-      $scope.exitDescriptionEdit = function(job) {
-        job.descriptionEdit = false;
-      };
-
-      $scope.editEmployerUrl = function(job) {
-        job.employerUrlEdit = true;
-      };
-
-      $scope.exitEmployerUrlEdit = function(job) {
-        job.employerUrlEdit = false;
+        $scope.refreshValidity();
       };
 
       $scope.enterContactEmailEdit = function() {
