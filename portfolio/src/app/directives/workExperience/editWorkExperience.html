@@ -27,13 +27,9 @@
              as-sortable-item-handle
              ng-show="workExperience && workExperience.length > 1"></div>
         <div class="banner-content__item">
-          <div class="banner-content__empty-banner">
-            <div class="work-experience__default_image icon--image"></div>
-            Add image
-          </div>
-          <div class="banner-content__details-container">
+          <div class="work-experience__editor-content">
             <div>
-              <label>Date of employment</label>
+              <label translate="workExperience.dateOfEmployment"></label>
               <div>
                 <input type="text"
                        class="work-experience__date-input work-experience__input"
@@ -42,7 +38,7 @@
                        ng-blur="startDateChanged(workExperienceItem)"
                        ng-class="{'ng-invalid':!workExperienceItem.startDate || !workExperienceItem.startDate.isValid()}"
                        placeholder="{{:: ('workExperience.startDatePlaceholder' | translate) }}" />
-                -
+                &ndash;
                 <input type="text"
                        class="work-experience__date-input work-experience__input"
                        date-input="MM/YYYY" ng-model="workExperienceItem.endDate"

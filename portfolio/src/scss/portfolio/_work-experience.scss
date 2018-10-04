@@ -28,12 +28,6 @@ $work-experience-summary-max-height: 104px;
   }
 }
 
-.work-experience__title {
-  text-transform: uppercase;
-  font-weight: 700;
-  margin-bottom: 1em;
-}
-
 .work-experience__outer_container {
   display: flex;
   background-color: $lightsilver;
@@ -74,7 +68,8 @@ $work-experience-summary-max-height: 104px;
 
 .job-search .banner-content__description, .work-experience .banner-content__description {
   p {
-    height: $work-experience-description-height;
+    height: initial;
+    max-height: $work-experience-description-height;
   }
 
   textarea {
@@ -131,6 +126,40 @@ input.work-experience__date-input {
 
     &__remove {
       background-color: transparent;
+    }
+
+    &__details-container {
+      width: 100%;
+    }
+  }
+
+  &__title {
+    font-weight: bold;
+
+    div {
+      margin-bottom: 4px;
+    }
+  }
+
+  &__job-title {
+    font-size: 1.25em;
+  }
+
+  &__employer {
+    font-size: 1.25em;
+    color: $blue;
+  }
+
+  &__editor-content {
+    color: $black;
+    width: 80%;
+
+    @include breakpoint($mobile-only) {
+      width: 100%;
+    }
+
+    label {
+      color: $black;
     }
   }
 }

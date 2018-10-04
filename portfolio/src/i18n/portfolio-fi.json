@@ -99,18 +99,17 @@
     "addJobSearch": "Lisää haen työpaikkaa",
     "jobSearch": "haen työpaikkaa",
     "employer": "Työnantaja",
-    "startDatePlaceholder": "kk.vvvv",
-    "endDatePlaceholder": "kk.vvvv",
+    "startDatePlaceholder": "kk/vvvv",
+    "endDatePlaceholder": "kk/vvvv",
     "jobTitle": "Nimike",
     "employerUrl": "Työnantajan verkkosivu",
     "text": "Kuvausteksti",
     "descriptionPlaceholder": "Lisää kuvaus",
-    "startDate": "alkupäivämäärä (kk.vvvv)",
-    "endDate": "loppupäivämäärä (kk.vvvv)",
     "showMore": "lisää",
     "showLess": "vähemmän",
     "contactEmail": "sähköpostiosoite",
-    "jobSearchHeadline": "otsikko"
+    "jobSearchHeadline": "otsikko",
+    "dateOfEmployment": "Työtehtävän päivämäärä"
   },
   "samples": {
     "title": "Näytteet",
