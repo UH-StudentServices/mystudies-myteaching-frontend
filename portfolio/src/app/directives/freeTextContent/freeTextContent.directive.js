@@ -19,7 +19,8 @@ angular.module('directives.freeTextContent', [
   'services.freeTextContent',
   'directives.editLink',
   'constants.ngEmbedOptions',
-  'portfolioAnalytics'])
+  'portfolioAnalytics'
+])
 
   .factory('FreeTextContentFactory', function($translate) {
 
@@ -171,6 +172,15 @@ angular.module('directives.freeTextContent', [
           confirmDelete: confirmDelete,
           updateOrCreateNew: updateOrCreateNew,
           toggleEdit: function() {
+            if (isTranslatableHeading()){
+              var currentLang = $translate.use();
+              $translate.use(scope.portfolioLang)
+                .then(function() {
+                    scope.freeTextContentItem.title = $translate.instant(scope.headingKey);
+                    $translate.use(currentLang);
+                  }
+                );
+            }
             scope.isEditing = !scope.isEditing;
             scope.origFreeText = scope.freeTextContentItem.text;
           },
