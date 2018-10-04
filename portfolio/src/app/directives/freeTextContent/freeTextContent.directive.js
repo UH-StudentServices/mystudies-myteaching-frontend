@@ -34,9 +34,9 @@ angular.module('directives.freeTextContent', [
           text: defaultText
         });
       },
-      fixedFreeTextContent: function(visibilityDescriptor, headingKey) {
+      fixedFreeTextContent: function(visibilityDescriptor, headingKey, portfolioLang) {
         return _.assign({}, visibilityDescriptor, {
-          title: $translate.instant(headingKey),
+          title: $translate.instant(headingKey, {}, '', portfolioLang),
           text: defaultText
         });
       }
@@ -85,7 +85,7 @@ angular.module('directives.freeTextContent', [
 
         function createMatchingItem() {
           return scope.headingKey ?
-            FreeTextContentFactory.fixedFreeTextContent(visibilityDescriptor, scope.headingKey) :
+            FreeTextContentFactory.fixedFreeTextContent(visibilityDescriptor, scope.headingKey, scope.portfolioLang) :
             FreeTextContentFactory.defaultFreeTextContent(visibilityDescriptor);
         }
 
@@ -159,6 +159,11 @@ angular.module('directives.freeTextContent', [
           FreeTextContentService.deleteFreeTextContent(scope.freeTextContentItem, visibilityDescriptor);
         }
 
+        function toggleEdit() {
+          scope.isEditing = !scope.isEditing;
+          scope.origFreeText = scope.freeTextContentItem.text;
+        }
+
         function init() {
           FreeTextContentService.getInitialData().then(function(initialData) {
             var matchingItem = getMatchingItem(initialData, visibilityDescriptor);
@@ -171,19 +176,7 @@ angular.module('directives.freeTextContent', [
           deleteItem: deleteItem,
           confirmDelete: confirmDelete,
           updateOrCreateNew: updateOrCreateNew,
-          toggleEdit: function() {
-            if (isTranslatableHeading()){
-              var currentLang = $translate.use();
-              $translate.use(scope.portfolioLang)
-                .then(function() {
-                    scope.freeTextContentItem.title = $translate.instant(scope.headingKey);
-                    $translate.use(currentLang);
-                  }
-                );
-            }
-            scope.isEditing = !scope.isEditing;
-            scope.origFreeText = scope.freeTextContentItem.text;
-          },
+          toggleEdit: toggleEdit,
           embedOptions: NG_EMBED_OPTIONS,
           isTranslatableHeading: isTranslatableHeading,
           isPreview: PreviewService.isPreview()
