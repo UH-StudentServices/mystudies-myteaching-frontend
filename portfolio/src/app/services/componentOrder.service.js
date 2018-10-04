@@ -33,6 +33,10 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
       ];
     }
 
+    var singletonFreeTextContentComponents = [
+      'SKILLS_AND_EXPERTISE'
+    ];
+
     function singletonComponentOrders(portfolio) {
       return cachedComponentOrders.length ? cachedComponentOrders.filter(function(el) {
         return el.component !== 'FREE_TEXT_CONTENT';
@@ -62,7 +66,11 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
             };
           }) : [];
 
-          allComponentOrders = singletonComponentOrders(portfolio).concat(freeTextContentComponentOrders);
+          allComponentOrders = singletonComponentOrders(portfolio).concat(
+            freeTextContentComponentOrders.filter(function(component) {
+              return !_.includes(singletonFreeTextContentComponents, component.instanceName);
+            })
+          );
           callback(_.sortBy(allComponentOrders, 'orderValue'));
         });
     }
