@@ -57,8 +57,7 @@
                 ng-change="refreshValidity()"
                 ng-blur="refreshValidity()"
                 ng-class="{'ng-invalid':!workExperienceItem.jobTitle}"
-                placeholder="{{::'workExperience.jobTitle' | translate}}"
-                value="{{ workExperienceItem.jobTitle || ('workExperience.jobTitle' | translate)}}">
+                placeholder="{{::'workExperience.jobTitle' | translate}}">
             </div>
             <div>
               <label for="employer-{{workExperienceItem.id}}" translate="workExperience.employer"></label>
