@@ -33,9 +33,11 @@ angular.module('directives.freeTextContent', [
           text: defaultText
         });
       },
-      fixedFreeTextContent: function(visibilityDescriptor, headingKey) {
+      fixedFreeTextContent: function(visibilityDescriptor, headingKey, portfolioLang) {
+        var lang = portfolioLang || $translate.use();
+
         return _.assign({}, visibilityDescriptor, {
-          title: $translate.instant(headingKey),
+          title: $translate.instant(headingKey, {}, '', lang),
           text: defaultText
         });
       }
@@ -84,7 +86,7 @@ angular.module('directives.freeTextContent', [
 
         function createMatchingItem() {
           return scope.headingKey ?
-            FreeTextContentFactory.fixedFreeTextContent(visibilityDescriptor, scope.headingKey) :
+            FreeTextContentFactory.fixedFreeTextContent(visibilityDescriptor, scope.headingKey, scope.portfolioLang) :
             FreeTextContentFactory.defaultFreeTextContent(visibilityDescriptor);
         }
 
@@ -115,8 +117,7 @@ angular.module('directives.freeTextContent', [
           var linksRe = /(?:^|[^"'])(?:(https?|ftp|file):\/\/|www\.)[-A-Z0-9+()&@$#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|]/gi;
 
           function getOtherLinks(text) {
-            text = text.replace(imageRe, '');
-            text = text.replace(hostedFilesRe, '');
+            text = text.replace(imageRe, '').replace(hostedFilesRe, '');
             return text.match(linksRe);
           }
           function getHostedFiles(text) {
@@ -159,6 +160,11 @@ angular.module('directives.freeTextContent', [
           FreeTextContentService.deleteFreeTextContent(scope.freeTextContentItem, visibilityDescriptor);
         }
 
+        function toggleEdit() {
+          scope.isEditing = !scope.isEditing;
+          scope.origFreeText = scope.freeTextContentItem.text;
+        }
+
         function init() {
           FreeTextContentService.getInitialData().then(function(initialData) {
             var matchingItem = getMatchingItem(initialData, visibilityDescriptor);
@@ -171,10 +177,7 @@ angular.module('directives.freeTextContent', [
           deleteItem: deleteItem,
           confirmDelete: confirmDelete,
           updateOrCreateNew: updateOrCreateNew,
-          toggleEdit: function() {
-            scope.isEditing = !scope.isEditing;
-            scope.origFreeText = scope.freeTextContentItem.text;
-          },
+          toggleEdit: toggleEdit,
           embedOptions: NG_EMBED_OPTIONS,
           isTranslatableHeading: isTranslatableHeading,
           isPreview: PreviewService.isPreview()

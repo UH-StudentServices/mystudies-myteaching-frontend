@@ -158,6 +158,9 @@
       "sv": "Swedish"
     }
   },
+  "skillsAndExpertise": {
+    "title": "Skills and expertise"
+  },
   "tabs": {
     "basicInformation": "Basic information",
     "research": "Research and scientific activities",

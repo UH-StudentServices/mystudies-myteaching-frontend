@@ -158,6 +158,9 @@
       "sv": "Ruotsi"
     }
   },
+  "skillsAndExpertise": {
+    "title": "Osaaminen ja asiantuntijuus"
+  },
   "tabs": {
     "basicInformation": "Perustiedot",
     "research": "Tutkimus",

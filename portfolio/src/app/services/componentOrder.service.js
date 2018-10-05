@@ -20,6 +20,9 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
   .factory('ComponentOrderService', function(FreeTextContentService, ComponentOrderResource) {
 
     var cachedComponentOrders = [];
+    var singletonFreeTextContentComponents = [
+      'SKILLS_AND_EXPERTISE'
+    ];
 
     function defaultSingletonComponentOrder() {
       return [
@@ -28,7 +31,8 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
         {component: 'WORK_EXPERIENCE'},
         {component: 'SAMPLES'},
         {component: 'ATTAINMENTS'},
-        {component: 'LANGUAGE_PROFICIENCIES'}
+        {component: 'LANGUAGE_PROFICIENCIES'},
+        {component: 'SKILLS_AND_EXPERTISE'}
       ];
     }
 
@@ -61,7 +65,12 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
             };
           }) : [];
 
-          allComponentOrders = singletonComponentOrders(portfolio).concat(freeTextContentComponentOrders);
+          allComponentOrders = singletonComponentOrders(portfolio).concat(
+            freeTextContentComponentOrders.filter(function(component) {
+              return !_.includes(singletonFreeTextContentComponents, component.instanceName);
+            })
+          );
+
           callback(_.sortBy(allComponentOrders, 'orderValue'));
         });
     }
