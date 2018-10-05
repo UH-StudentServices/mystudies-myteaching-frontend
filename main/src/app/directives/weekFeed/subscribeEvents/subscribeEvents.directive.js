@@ -95,7 +95,7 @@ angular.module('directives.subscribeEvents', [
             .then(function (calendarFeed) {
               cachedCalendarFeedUrl = DomainUtil.getDomain() + calendarFeed.feedUrl + '/' + $rootScope.selectedLanguage;
               $scope.calendarFeedUrl = cachedCalendarFeedUrl;
-              return null;
+              return undefined;
             });
         }
 
@@ -109,7 +109,7 @@ angular.module('directives.subscribeEvents', [
                 cachedCalendarFeedUrl = calendarInfo.url;
                 $scope.optimeCalendar = true;
                 $scope.calendarFeedUrl = cachedCalendarFeedUrl;
-                return null;
+                return undefined;
               }
               return getMyStudiesTeachingCalendarUrl();
             });

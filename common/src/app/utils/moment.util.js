@@ -34,7 +34,7 @@ angular.module('utils.moment', ['services.language'])
         return moment(input).locale(LanguageService.getCurrent());
       }
 
-      throw Error('dateArrayToMomentObject called with falsy value');
+      return undefined;
     }
 
     return convert;

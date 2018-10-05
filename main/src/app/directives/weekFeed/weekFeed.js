@@ -67,7 +67,7 @@ angular.module('directives.weekFeed', [
       } if (!filteredItems.length) {
         return getInfoMessage(selectedTab, selectedSubTab);
       }
-      return null;
+      return undefined;
     }
 
     function getEventsMessage(courses, events, filteredItems, selectedTab, selectedSubTab) {
