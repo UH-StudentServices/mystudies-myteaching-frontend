@@ -39,6 +39,7 @@ angular.module('opintoniPortfolioApp', [
 
   'controllers.main',
   'controllers.ckeditor',
+  'controllers.tinymce',
 
   'directives.visibility',
   'directives.attainments',
