@@ -38,7 +38,9 @@ angular.module('directives.editDegrees', [])
         $scope.sortableOptions = {
           containment: '.degrees__dropzone',
           accept: function (sourceItemHandleScope, destSortableScope) {
-            return sourceItemHandleScope.itemScope.sortableScope.$parent.$id === destSortableScope.$parent.$id;
+            var sourceScopeParentId = sourceItemHandleScope.itemScope.sortableScope.$parent.$id;
+            var destScopeParentId = destSortableScope.$parent.$id;
+            return sourceScopeParentId === destScopeParentId;
           }
         };
       }

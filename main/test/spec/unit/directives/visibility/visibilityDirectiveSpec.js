@@ -16,8 +16,24 @@
  */
 
 describe('Visibility directive', function () {
-  var compile; var scope; var
-    directiveElem;
+  var compile;
+  var scope;
+  var directiveElem;
+
+  function getCompiledElement() {
+    var element = angular.element(
+      '<div>'
+      + '<span class="student-only" limit-visibility="[\'MY_STUDIES_ONLY\']">Student only</span>'
+      + '<span class="dev-and-qa-only" limit-visibility="[\'MY_STUDIES_ONLY\', \'DEV_AND_QA_ONLY\']">'
+      + 'Dev and QA only</span>'
+      + '<span class="teacher-only" limit-visibility="[\'MY_TEACHINGS_ONLY\']">Teacher only</span>'
+      + '</div>'
+    );
+    var compiledElement = compile(element)(scope);
+
+    scope.$digest();
+    return compiledElement;
+  }
 
   beforeEach(function () {
     module('directives.visibility');
@@ -35,20 +51,6 @@ describe('Visibility directive', function () {
     directiveElem = getCompiledElement();
   });
 
-  function getCompiledElement() {
-    var element = angular.element(
-      '<div>'
-      + '<span class="student-only" limit-visibility="[\'MY_STUDIES_ONLY\']">Student only</span>'
-      + '<span class="dev-and-qa-only" limit-visibility="[\'MY_STUDIES_ONLY\', \'DEV_AND_QA_ONLY\']">'
-      + 'Dev and QA only</span>'
-      + '<span class="teacher-only" limit-visibility="[\'MY_TEACHINGS_ONLY\']">Teacher only</span>'
-      + '</div>'
-    );
-    var compiledElement = compile(element)(scope);
-
-    scope.$digest();
-    return compiledElement;
-  }
 
   it('Element should be visible for student', function () {
     var spanElement = directiveElem.find('.student-only');

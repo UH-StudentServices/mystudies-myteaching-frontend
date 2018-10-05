@@ -62,9 +62,10 @@ angular.module('directives.userMenu.settings', [
             $window.location.href = portfolio.url;
           }).catch(function getPortfolioFail(data) {
             if (data.status === 404) {
-              PortfolioService.createPortfolio(role).then(function createPortfolioSuccess(portfolio) {
-                $window.location.href = portfolio.url;
-              });
+              PortfolioService.createPortfolio(role)
+                .then(function createPortfolioSuccess(portfolio) {
+                  $window.location.href = portfolio.url;
+                });
             }
           });
         };

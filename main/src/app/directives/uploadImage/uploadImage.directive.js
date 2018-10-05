@@ -40,17 +40,9 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
   .factory('ResizeImageService', function (MaxImageDimensions) {
     function getDimensions(image) {
       var width = image.videoWidth ? image.videoWidth : image.width;
-
-
       var height = image.videoHeight ? image.videoHeight : image.height;
-
-
       var dimensions = { width: width, height: height };
-
-
       var currentMaxDimension = Math.max(width, height);
-
-
       var maxImageDimensions = MaxImageDimensions.get();
 
       if (currentMaxDimension > maxImageDimensions) {
@@ -66,22 +58,11 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
     return {
       resizeImage: function (image) {
         var dimensions = getDimensions(image);
-
-
         var canvas = document.createElement('canvas');
-
-
         var sWidth = dimensions.width;
-
-
         var sHeight = dimensions.height;
-
-
         var dWidth = dimensions.resizedWidth ? dimensions.resizedWidth : dimensions.width;
-
-
         var dHeight = dimensions.resizedHeight ? dimensions.resizedHeight : dimensions.height;
-
         canvas.width = dWidth;
         canvas.height = dHeight;
         canvas.getContext('2d').drawImage(image, 0, 0, sWidth, sHeight, 0, 0, dWidth, dHeight);
@@ -113,10 +94,6 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
         cropToSquare: '='
       },
       link: function ($scope) {
-        $scope.$on(startImageCropperEvent, function (event, image, imageSourceMedia) {
-          openImageCropper(image, imageSourceMedia);
-        });
-
         function openImageCropper(croppedImage, imageSourceMedia) {
           $uibModal.open({
             templateUrl: 'app/directives/uploadImage/uploadImage.cropper.html',
@@ -129,8 +106,6 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
             resolve: {
               image: ['$q', function ($q) {
                 var deferred = $q.defer();
-
-
                 var img;
 
                 if (typeof croppedImage === 'string') {
@@ -151,8 +126,6 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
               },
               cropDimensions: function () {
                 var cropBoxWidth = $scope.cropperWidth ? $scope.cropperWidth : AvatarImageSize;
-
-
                 var cropBoxHeight = $scope.cropperHeight ? $scope.cropperHeight : AvatarImageSize;
 
                 // Add some margin for better UI
@@ -183,6 +156,10 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
           });
         }
 
+        $scope.$on(startImageCropperEvent, function (event, image, imageSourceMedia) {
+          openImageCropper(image, imageSourceMedia);
+        });
+
         $scope.$watch('files', function (files) {
           if (files && files.length === 1) {
             $scope.readImage(files[0]);
@@ -196,7 +173,7 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
             openImageCropper(event.target.result, ImageSourceMedia.FILE_SYSTEM);
           };
 
-          reader.onerror = function (error) {
+          reader.onerror = function () {
             alert('Device not supported');
           };
 
@@ -216,8 +193,10 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
     cropDimensions,
     uploadCallback,
     cancelCallback,
-    MessageTypes,
-    CropperMargin) {
+    MessageTypes) {
+    var left = $window.innerWidth / 2 - cropDimensions.width / 2;
+    var top = $window.innerHeight / 2 - cropDimensions.height / 2;
+
     $scope.image = image;
     $scope.submitting = false;
 
@@ -225,18 +204,13 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
       $uibModalInstance.dismiss();
     }
 
-    function getCanvasDataURL() {
-      return cropperElement().cropper('getCroppedCanvas').toDataURL();
-    }
-
     function cropperElement() {
       return angular.element('.crop-image > img');
     }
 
-    var left = $window.innerWidth / 2 - cropDimensions.width / 2;
-
-
-    var top = $window.innerHeight / 2 - cropDimensions.height / 2;
+    function getCanvasDataURL() {
+      return cropperElement().cropper('getCroppedCanvas').toDataURL();
+    }
 
     $scope.message = {
       key: 'upload.privacyMessage',

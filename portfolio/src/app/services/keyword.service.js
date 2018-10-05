@@ -25,10 +25,6 @@ angular.module('services.keyword', ['services.portfolio', 'resources.keyword'])
       return keywords;
     }
 
-    function getPortfolioId(portfolio) {
-      return portfolio.id;
-    }
-
     function updateKeywords(portfolioId, updateKeywordsRequest) {
       return KeywordResource.updateKeywords(portfolioId, updateKeywordsRequest)
         .then(publishKeywords);

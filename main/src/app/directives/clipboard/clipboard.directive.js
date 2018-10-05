@@ -18,8 +18,7 @@
 angular.module('directives.clipboard', [])
 
   .directive('clipboard', function (BrowserUtil,
-    $timeout,
-    $parse) {
+    $timeout) {
     return {
       rescrict: 'A',
       scope: {

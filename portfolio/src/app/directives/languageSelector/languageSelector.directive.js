@@ -29,14 +29,8 @@ angular.module('directives.languageSelector', ['services.portfolio',
       templateUrl: 'app/directives/languageSelector/languageSelector.html',
       link: function (scope) {
         var supportedLangs = ['en', 'fi', 'sv'];
-
-
         var role = PortfolioRoleService.getActiveRole();
-
-
         var portfolio;
-
-
         var session;
 
         function canCreateRolePortfolioInLang(lang) {
@@ -52,7 +46,8 @@ angular.module('directives.languageSelector', ['services.portfolio',
         }
 
         function confirm() {
-          // use of _.defer is warranted since otherwise ngIf will kick in before angular-click-outside which would
+          // use of _.defer is warranted since otherwise ngIf will
+          // kick in before angular-click-outside which would
           // close the popover instead of presenting the user with a different dialog
           _.defer(function () {
             scope.hasConfirmed = true;
@@ -60,8 +55,8 @@ angular.module('directives.languageSelector', ['services.portfolio',
           });
         }
 
-        function hasMultiplePortfolios(session) {
-          return Object.keys(session.portfolioPathsByRoleAndLang[role]).length > 1;
+        function hasMultiplePortfolios(userSession) {
+          return Object.keys(userSession.portfolioPathsByRoleAndLang[role]).length > 1;
         }
 
         function createAndSwitchToNewPortfolio(lang) {
@@ -85,23 +80,24 @@ angular.module('directives.languageSelector', ['services.portfolio',
           return $translate.instant(['languages', 'code', lang].join('.'));
         }
 
-        $q.all([PortfolioService.getPortfolio(), SessionService.getSession()]).then(function (data) {
-          portfolio = data[0];
-          session = data[1];
+        $q.all([PortfolioService.getPortfolio(), SessionService.getSession()])
+          .then(function (data) {
+            portfolio = data[0];
+            session = data[1];
 
-          scope = _.assign(scope, {
-            currentLang: portfolio.lang,
-            translatedLang: translateCurrentLang(portfolio.lang),
-            supportedLangs: supportedLangs,
-            availableLangs: supportedLangs.filter(canCreateRolePortfolioInLang),
-            hasOnlyOnePortfolio: !hasMultiplePortfolios(session),
-            togglePopover: togglePopover,
-            closePopover: closePopover,
-            confirm: confirm,
-            createAndSwitchToNewPortfolio: createAndSwitchToNewPortfolio,
-            switchToPortfolioInLang: switchToPortfolioInLang
+            _.assign(scope, {
+              currentLang: portfolio.lang,
+              translatedLang: translateCurrentLang(portfolio.lang),
+              supportedLangs: supportedLangs,
+              availableLangs: supportedLangs.filter(canCreateRolePortfolioInLang),
+              hasOnlyOnePortfolio: !hasMultiplePortfolios(session),
+              togglePopover: togglePopover,
+              closePopover: closePopover,
+              confirm: confirm,
+              createAndSwitchToNewPortfolio: createAndSwitchToNewPortfolio,
+              switchToPortfolioInLang: switchToPortfolioInLang
+            });
           });
-        });
       }
     };
   });

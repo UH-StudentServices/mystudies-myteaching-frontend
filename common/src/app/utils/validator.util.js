@@ -30,8 +30,6 @@ angular.module('utils.validator', [])
           return url;
         }
         return 'http://' + url;
-
-        return url;
       }
       return false;
     }

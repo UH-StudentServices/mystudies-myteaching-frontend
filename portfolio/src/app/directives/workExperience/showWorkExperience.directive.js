@@ -18,7 +18,6 @@
 angular.module('directives.showWorkExperience', [
   'dibari.angular-ellipsis'
 ])
-
   .directive('showWorkExperience', function () {
     return {
       restrict: 'E',

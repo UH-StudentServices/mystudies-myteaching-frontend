@@ -27,7 +27,10 @@ angular.module('directives.addFreeText', ['services.freeTextContent', 'portfolio
         scope.insertFreeTextContent = function () {
           var entry = FreeTextContentFactory.defaultFreeTextContent({});
 
-          AnalyticsService.trackEvent(AnalyticsService.ec.FREE_TEXT_CONTENT, AnalyticsService.ea.ADD);
+          AnalyticsService.trackEvent(
+            AnalyticsService.ec.FREE_TEXT_CONTENT,
+            AnalyticsService.ea.ADD
+          );
 
           FreeTextContentService
             .insertFreeTextContent(entry, {});

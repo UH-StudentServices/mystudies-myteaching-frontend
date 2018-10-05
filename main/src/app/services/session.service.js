@@ -37,12 +37,6 @@ angular.module('services.session', [
       return sessionPromise;
     };
 
-    var isInAnyRole = function (roleNames) {
-      return $q
-        .all(_.map(roleNames, isInRole))
-        .then(_.some);
-    };
-
     var isInRole = function (roleName) {
       return getSession()
         .then(function (session) {
@@ -51,6 +45,12 @@ angular.module('services.session', [
         .catch(function () {
           return false;
         });
+    };
+
+    var isInAnyRole = function (roleNames) {
+      return $q
+        .all(_.map(roleNames, isInRole))
+        .then(_.some);
     };
 
     var isInPilotDegreeProgramme = function () {

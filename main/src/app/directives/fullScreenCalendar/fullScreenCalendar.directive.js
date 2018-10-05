@@ -44,8 +44,6 @@ angular.module('directives.fullScreenCalendar', [
       },
       templateUrl: 'app/directives/fullScreenCalendar/fullScreenCalendar.html',
       link: function ($scope) {
-        var eventsPromise = $scope.eventsPromise;
-
         Loader.start(LoaderKey);
         $scope.eventsPromise.then(function (events) {
           $scope.events = events;
@@ -57,7 +55,9 @@ angular.module('directives.fullScreenCalendar', [
         $scope.oldScrollY = $window.scrollY;
         $window.scrollTo(0, 0);
 
-        $scope.calendarView = TabsToCalendarViews[UserPreferencesService.getPreferences().selectedSubTab];
+        $scope.calendarView =
+          TabsToCalendarViews[UserPreferencesService.getPreferences().selectedSubTab];
+
         $scope.currentDate = $stateParams.currentDate ? $stateParams.currentDate : moment();
 
         $scope.$on('changeWeekFeedSubTab', function (evt, params) {

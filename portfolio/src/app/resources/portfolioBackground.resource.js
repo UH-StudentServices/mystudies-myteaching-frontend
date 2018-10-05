@@ -39,7 +39,8 @@ angular.module('resources.portfolioBackground', [])
     }
 
     function selectPortfolioBackground(portfolioId, filename) {
-      return portfolioBackgroundResource(portfolioId).selectPortfolioBackground({ filename: filename }).$promise;
+      return portfolioBackgroundResource(portfolioId)
+        .selectPortfolioBackground({ filename: filename }).$promise;
     }
 
     function getPortfolioBackground(portfolioId) {
@@ -47,7 +48,8 @@ angular.module('resources.portfolioBackground', [])
     }
 
     function uploadUserBackground(portfolioId, imageBase64) {
-      return portfolioBackgroundResource(portfolioId).uploadPortfolioBackground({ imageBase64: imageBase64 }).$promise;
+      return portfolioBackgroundResource(portfolioId)
+        .uploadPortfolioBackground({ imageBase64: imageBase64 }).$promise;
     }
 
     return {

@@ -28,15 +28,9 @@ angular.module('resources.httpInterceptor', ['services.state', 'services.configu
     Configuration,
     $location,
     ErrorPages,
-    State,
-    $window,
-    ConfigurationProperties) {
+    State) {
     function redirectToErrorPage(errorPage) {
       $location.path('/error/' + errorPage);
-    }
-
-    function configurationPropertyContains(property, expectedValue) {
-      return Configuration[property] && Configuration[property].indexOf(expectedValue) > -1;
     }
 
     function success(response) {

@@ -35,7 +35,12 @@ angular.module('directives.visibility',
         });
 
         $scope.setVisibility = function (visibility) {
-          AnalyticsService.trackEvent(AnalyticsService.ec.PORTFOLIO, AnalyticsService.ea.SET_VISIBILITY, visibility);
+          AnalyticsService.trackEvent(
+            AnalyticsService.ec.PORTFOLIO,
+            AnalyticsService.ea.SET_VISIBILITY,
+            visibility
+          );
+
           PortfolioService.getPortfolio().then(function (portfolio) {
             portfolio.visibility = visibility;
             return PortfolioService.updatePortfolio(portfolio);
@@ -68,7 +73,9 @@ angular.module('directives.visibility',
           });
 
         scope.toggleVisibility = function () {
-          var newVisibility = scope.visibility === Visibility.PUBLIC ? Visibility.PRIVATE : Visibility.PUBLIC;
+          var newVisibility = scope.visibility === Visibility.PUBLIC
+            ? Visibility.PRIVATE
+            : Visibility.PUBLIC;
 
           AnalyticsService.trackEvent(scope.componentId.toLowerCase(),
             AnalyticsService.ea.SET_VISIBILITY, newVisibility);

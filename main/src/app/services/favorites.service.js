@@ -84,11 +84,6 @@ angular.module('services.favorites', [
       return FavoritesResource.saveUnisportFavorite();
     }
 
-    function saveUnisportFavorite(favoriteType) {
-      AnalyticsService.trackAddFavorite(favoriteType);
-      return FavoritesResource.saveUnisportFavorite();
-    }
-
     function getUnisportUserReservations() {
       return UnisportResource.getUserReservations();
     }

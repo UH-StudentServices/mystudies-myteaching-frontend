@@ -81,6 +81,10 @@ angular.module('directives.usefulLinks', [
         $scope.UsefulLinkType = UsefulLinkType;
         $scope.selectedLanguage = $rootScope.selectedLanguage;
 
+        function setSearchState(searchState) {
+          $scope.pageTitleSearchState = searchState;
+        }
+
         setSearchState(SearchState.NO_SEARCH);
 
         $scope.editMode = false;
@@ -105,7 +109,7 @@ angular.module('directives.usefulLinks', [
         };
 
         $scope.deleteLink = function (link) {
-          UsefulLinksResource.deleteLink(link).then(function (usefulLinks) {
+          UsefulLinksResource.deleteLink(link).then(function () {
             AnalyticsService.trackRemoveUsefulLink();
             Focus.focusNext();
             _.remove($scope.usefulLinks, { id: link.id });
@@ -125,10 +129,6 @@ angular.module('directives.usefulLinks', [
             UsefulLinksResource.updateOrder(_.map($scope.usefulLinks, 'id'));
           }
         };
-
-        function setSearchState(searchState) {
-          $scope.pageTitleSearchState = searchState;
-        }
 
         function searchPageTitle(url) {
           var validUrl = ValidatorUtils.convertValidUrl(url);

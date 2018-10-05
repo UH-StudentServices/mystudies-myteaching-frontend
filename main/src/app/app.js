@@ -110,7 +110,7 @@ angular.module('opintoniApp', [
               $state.go('noSession');
             });
           },
-          userSettings: function (UserSettingsService, session) {
+          userSettings: function (UserSettingsService) {
             return UserSettingsService.getUserSettings()
               .then(function getUserSettingsSuccess(userSettings) {
                 return userSettings;
@@ -122,6 +122,7 @@ angular.module('opintoniApp', [
             if (session && session.$resolved) {
               return NotificationsResource.getNotifications();
             }
+            return undefined;
           }
         }
       })

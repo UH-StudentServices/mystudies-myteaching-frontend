@@ -42,7 +42,10 @@ angular.module('directives.chooseBackground', ['ui.bootstrap.modal',
         $scope.upload = function (image) {
           return PortfolioBackgroundService.uploadUserBackground(image).then(function () {
             $rootScope.$broadcast(backgroundChangeEvent);
-            AnalyticsService.trackEvent(AnalyticsService.ec.BACKGROUND_IMAGE, AnalyticsService.ea.UPLOAD);
+            AnalyticsService.trackEvent(
+              AnalyticsService.ec.BACKGROUND_IMAGE,
+              AnalyticsService.ea.UPLOAD
+            );
           });
         };
       }
@@ -79,12 +82,13 @@ angular.module('directives.chooseBackground', ['ui.bootstrap.modal',
     }
 
     $scope.ok = function () {
-      PortfolioBackgroundService.selectPortfolioBackground(getSelectedBackgroundImageName()).then(function () {
-        AnalyticsService.trackEvent(AnalyticsService.ec.BACKGROUND_IMAGE,
-          AnalyticsService.ea.SAVE, getSelectedBackgroundImageName());
-        $rootScope.$broadcast(backgroundChangeEvent);
-        $uibModalInstance.dismiss();
-      });
+      PortfolioBackgroundService.selectPortfolioBackground(getSelectedBackgroundImageName())
+        .then(function () {
+          AnalyticsService.trackEvent(AnalyticsService.ec.BACKGROUND_IMAGE,
+            AnalyticsService.ea.SAVE, getSelectedBackgroundImageName());
+          $rootScope.$broadcast(backgroundChangeEvent);
+          $uibModalInstance.dismiss();
+        });
     };
 
     $scope.cancel = function () {

@@ -60,6 +60,10 @@ angular.module('services.state', [
       return rootStateName;
     };
 
+    function configurationPropertyContains(property, expectedValue) {
+      return Configuration[property] && Configuration[property].indexOf(expectedValue) > -1;
+    }
+
     var getStateFromDomain = function getStateFromDomain() {
       var host = $location.host();
 
@@ -70,10 +74,6 @@ angular.module('services.state', [
       }
       throw Error('hostname does not match any configured values');
     };
-
-    function configurationPropertyContains(property, expectedValue) {
-      return Configuration[property] && Configuration[property].indexOf(expectedValue) > -1;
-    }
 
     var getDefaultStateForUser = function getDefaultStateForUser(session) {
       var defaultRole = _.first(session.roles);

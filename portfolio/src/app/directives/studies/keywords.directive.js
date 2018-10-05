@@ -31,7 +31,11 @@ angular.module('directives.keywords', ['services.keyword', 'directives.inputUppe
 
         $scope.addKeyword = function (title) {
           if (!_.isEmpty(title) && !_.find($scope.keywords, { title: title })) {
-            AnalyticsService.trackEvent(AnalyticsService.ec.STUDIES, AnalyticsService.ea.ADD_KEYWORD);
+            AnalyticsService.trackEvent(
+              AnalyticsService.ec.STUDIES,
+              AnalyticsService.ea.ADD_KEYWORD
+            );
+
             $scope.keywords.push({ title: title });
             $scope.newKeyword = {};
           }

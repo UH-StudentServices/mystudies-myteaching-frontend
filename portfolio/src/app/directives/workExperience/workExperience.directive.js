@@ -89,19 +89,27 @@ angular.module('directives.workExperience', [
             if ($scope.jobSearch !== null) {
               WorkExperienceService.saveJobSearch($scope.jobSearch);
               if (!$scope.origJobSearch) {
-                AnalyticsService.trackEvent(AnalyticsService.ec.JOB_SEARCH, AnalyticsService.ea.ADD);
+                AnalyticsService.trackEvent(
+                  AnalyticsService.ec.JOB_SEARCH,
+                  AnalyticsService.ea.ADD
+                );
               }
             } else {
               WorkExperienceService.deleteJobSearch($scope.jobSearch);
             }
 
-            AnalyticsService.trackEventIfAdded($scope.origWorkExperience, $scope.workExperience,
-              AnalyticsService.ec.WORK_EXPERIENCE, AnalyticsService.ea.ADD);
-            WorkExperienceService.updateWorkExperience($scope.portfolioId, $scope.workExperience).then(function (data) {
-              $scope.workExperience = data;
-              $scope.editing = false;
-              $state.reload(); // https://jira.it.helsinki.fi/browse/OO-1004
-            });
+            AnalyticsService.trackEventIfAdded(
+              $scope.origWorkExperience,
+              $scope.workExperience,
+              AnalyticsService.ec.WORK_EXPERIENCE, AnalyticsService.ea.ADD
+            );
+
+            WorkExperienceService.updateWorkExperience($scope.portfolioId, $scope.workExperience)
+              .then(function (data) {
+                $scope.workExperience = data;
+                $scope.editing = false;
+                $state.reload(); // https://jira.it.helsinki.fi/browse/OO-1004
+              });
           }
           return true;
         };

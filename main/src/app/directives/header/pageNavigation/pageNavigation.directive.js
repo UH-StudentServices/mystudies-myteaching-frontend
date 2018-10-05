@@ -45,7 +45,7 @@ angular.module('directives.pageNavigation', [
           })
           .map(function (link) {
             link.isOpen = false;
-            link.hasSub = link.hasOwnProperty('subMenu');
+            link.hasSub = link.hasOwnProperty('subMenu'); // eslint-disable-line no-prototype-builtins
             return link;
           })
           .value();

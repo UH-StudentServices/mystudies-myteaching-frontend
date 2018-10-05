@@ -33,16 +33,10 @@ angular.module('webcam', ['utils.browser'])
       },
       link: function postLink($scope, element) {
         var videoElem = null;
-
-
         var videoStream = null;
-
-
         var placeholder = null;
 
-        $scope.config = $scope.config || {};
-
-        var _removeDOMElement = function _removeDOMElement(DOMel) {
+        var removeDOMElement = function removeDOMElement(DOMel) {
           if (DOMel) {
             angular.element(DOMel).remove();
           }
@@ -82,11 +76,7 @@ angular.module('webcam', ['utils.browser'])
 
         // called when any error happens
         var onFailure = function onFailure(err) {
-          _removeDOMElement(placeholder);
-
-          if (console && console.log) {
-            console.log('The following error occured: ', err);
-          }
+          removeDOMElement(placeholder);
 
           /* Call custom callback */
           if ($scope.onError) {
@@ -126,10 +116,9 @@ angular.module('webcam', ['utils.browser'])
           videoElem.addEventListener('canplay', function () {
             if (!isStreaming) {
               isStreaming = true;
-
               $scope.config.video = videoElem;
 
-              _removeDOMElement(placeholder);
+              removeDOMElement(placeholder);
 
               /* Call custom callback */
               if ($scope.onStreaming) {
@@ -146,6 +135,7 @@ angular.module('webcam', ['utils.browser'])
           }
         };
 
+        $scope.config = $scope.config || {};
         $scope.$on('$destroy', onDestroy);
         $scope.$on('START_WEBCAM', startWebcam);
         $scope.$on('STOP_WEBCAM', stopWebcam);

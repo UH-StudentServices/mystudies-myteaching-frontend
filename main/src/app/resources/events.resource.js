@@ -29,11 +29,14 @@ angular.module('resources.events', ['services.eventUri', 'utils.moment'])
         return _.map(data, function (event) {
           event.startDate = dateArrayToMomentObject(event.startDate);
           event.endDate = dateArrayToMomentObject(event.endDate);
+
           event.locations = _.map(event.locations, function (location) {
             location.googleMapsUri = EventUriService.getGoogleMapsUri(location);
-            location.reittiopasEnabled = EventUriService.reittiopasUriCanBeGenerated(event.startDate, location);
+            location.reittiopasEnabled =
+              EventUriService.reittiopasUriCanBeGenerated(event.startDate, location);
             return location;
           });
+
           return event;
         });
       });

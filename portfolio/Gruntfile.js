@@ -15,6 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/* eslint global-require: 0 */
+
 'use strict';
 
 var httpProxy = require('http-proxy');

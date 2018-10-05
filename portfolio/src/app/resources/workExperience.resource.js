@@ -42,8 +42,8 @@ angular.module('resources.workExperience', ['services.state'])
       return jobSearchResource(portfolioId).delete(jobSearch).$promise;
     }
 
-    function updateWorkExperience(portfolioId, updateWorkExperience) {
-      return workExperienceResource(portfolioId).update(updateWorkExperience).$promise;
+    function updateWorkExperience(portfolioId, updatedWorkExperience) {
+      return workExperienceResource(portfolioId).update(updatedWorkExperience).$promise;
     }
 
     return {

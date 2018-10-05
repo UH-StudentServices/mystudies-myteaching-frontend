@@ -87,14 +87,6 @@ angular.module('directives.subscribeEvents', [
           }, MessageTimeouts.FAIL);
         };
 
-        function getOrCreateCalendarFeedUrl() {
-          AnalyticsService.trackCalendarSubscribe();
-          if (StateService.getStateFromDomain() === State.MY_TEACHINGS) {
-            return getOptimeCalendarUrl();
-          }
-          return getMyStudiesTeachingCalendarUrl();
-        }
-
         function getMyStudiesTeachingCalendarUrl() {
           return CalendarFeedResource.getCalendarFeed()
             .catch(function () {
@@ -102,7 +94,8 @@ angular.module('directives.subscribeEvents', [
             })
             .then(function (calendarFeed) {
               cachedCalendarFeedUrl = DomainUtil.getDomain() + calendarFeed.feedUrl + '/' + $rootScope.selectedLanguage;
-              return $scope.calendarFeedUrl = cachedCalendarFeedUrl;
+              $scope.calendarFeedUrl = cachedCalendarFeedUrl;
+              return null;
             });
         }
 
@@ -115,10 +108,19 @@ angular.module('directives.subscribeEvents', [
               if (calendarInfo.url) {
                 cachedCalendarFeedUrl = calendarInfo.url;
                 $scope.optimeCalendar = true;
-                return $scope.calendarFeedUrl = cachedCalendarFeedUrl;
+                $scope.calendarFeedUrl = cachedCalendarFeedUrl;
+                return null;
               }
               return getMyStudiesTeachingCalendarUrl();
             });
+        }
+
+        function getOrCreateCalendarFeedUrl() {
+          AnalyticsService.trackCalendarSubscribe();
+          if (StateService.getStateFromDomain() === State.MY_TEACHINGS) {
+            return getOptimeCalendarUrl();
+          }
+          return getMyStudiesTeachingCalendarUrl();
         }
 
         $scope.closePopover = function () {
@@ -134,6 +136,7 @@ angular.module('directives.subscribeEvents', [
             })
               .catch(getOrCreateCalendarFeedUrl);
           }
+          return null;
         };
       }
     };

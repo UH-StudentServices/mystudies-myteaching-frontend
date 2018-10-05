@@ -32,16 +32,10 @@ angular.module('directives.tabSet', ['directives.scrollableTabBar',
         useFullWidthOnMobile: '=',
         portfolioLang: '@'
       },
-      link: function (scope, el, attrs) {
+      link: function (scope, el) {
         var activeTab;
-
-
         var tabContentHolder = angular.element(el[0].querySelector('.tab-content'));
-
-
         var FADE_IN_CLASS = 'fade-in';
-
-
         var FADE_OUT_CLASS = 'fade-out';
 
         function selectTab(tab) {
@@ -75,9 +69,10 @@ angular.module('directives.tabSet', ['directives.scrollableTabBar',
 
           if (StateService.getCurrent() !== State.PRIVATE || PreviewService.isPreview()) {
             visibleTabs = allTabs.map(function (tab) {
-              return VisibilityService.getComponentVisibility({ sectionName: tab.name }).then(function (visibility) {
-                return visibility === Visibility.PUBLIC ? tab : null;
-              });
+              return VisibilityService.getComponentVisibility({ sectionName: tab.name })
+                .then(function (visibility) {
+                  return visibility === Visibility.PUBLIC ? tab : null;
+                });
             });
 
             return $q.all(visibleTabs).then(function (tabs) {

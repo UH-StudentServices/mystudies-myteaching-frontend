@@ -111,10 +111,6 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
         cropToSquare: '='
       },
       link: function ($scope) {
-        $scope.$on(startImageCropperEvent, function (event, image, imageSourceMedia) {
-          openImageCropper(image, imageSourceMedia);
-        });
-
         function openImageCropper(croppedImage, imageSourceMedia) {
           $uibModal.open({
             templateUrl: 'app/directives/uploadImage/uploadImage.cropper.html',
@@ -181,6 +177,10 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
           });
         }
 
+        $scope.$on(startImageCropperEvent, function (event, image, imageSourceMedia) {
+          openImageCropper(image, imageSourceMedia);
+        });
+
         $scope.$watch('files', function (files) {
           if (files && files.length === 1) {
             $scope.readImage(files[0]);
@@ -194,7 +194,7 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
             openImageCropper(event.target.result, ImageSourceMedia.FILE_SYSTEM);
           };
 
-          reader.onerror = function (error) {
+          reader.onerror = function () {
             alert('Device not supported');
           };
 
@@ -214,8 +214,7 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
     cropDimensions,
     uploadCallback,
     cancelCallback,
-    MessageTypes,
-    CropperMargin) {
+    MessageTypes) {
     $scope.image = image;
     $scope.submitting = false;
 
@@ -223,12 +222,12 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
       $uibModalInstance.dismiss();
     }
 
-    function getCanvasDataURL() {
-      return cropperElement().cropper('getCroppedCanvas').toDataURL();
-    }
-
     function cropperElement() {
       return angular.element('.crop-image > img');
+    }
+
+    function getCanvasDataURL() {
+      return cropperElement().cropper('getCroppedCanvas').toDataURL();
     }
 
     var left = $window.innerWidth / 2 - cropDimensions.width / 2;

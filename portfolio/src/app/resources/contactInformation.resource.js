@@ -37,8 +37,10 @@ angular.module('resources.contactInformation', [])
     }
 
     function updateContactInformation(portfolioId, updateContactInformationRequest) {
-      return resource().update({ currentState: StateService.getCurrent(), portfolioId: portfolioId },
-        updateContactInformationRequest).$promise;
+      return resource().update(
+        { currentState: StateService.getCurrent(), portfolioId: portfolioId },
+        updateContactInformationRequest
+      ).$promise;
     }
 
     function getEmployeeContactInformation(portfolioId) {

@@ -32,10 +32,7 @@ angular.module('opintoniLander', ['services.language',
     fi: 'http://www.helsinki.fi/kirjasto/fi/etusivu/'
   })
 
-  .config(function (
-    $stateProvider,
-    $translateProvider
-  ) {
+  .config(function ($stateProvider) {
     $stateProvider
       .state('lander', {
         parent: 'getState',
@@ -68,34 +65,35 @@ angular.module('opintoniLander', ['services.language',
         parent: 'lander',
         url: '/login',
         templateUrl: 'app/partials/landerPages/_lander.login.html',
-        controller: function ($scope, Configuration, LanguageService, COURSE_SEARCH_URL, LoginService) {
-          _.assign($scope, {
-            loginUrls: {
-              loginUrlStudent: Configuration.studentAppUrl,
-              loginUrlTeacher: Configuration.teacherAppUrl
-            },
-            redirectToLogin: function () {
-              LoginService.goToLogin();
-            },
-            courseSearchUrl: COURSE_SEARCH_URL[LanguageService.getCurrent()]
-          });
-        }
+        controller:
+          function ($scope, Configuration, LanguageService, COURSE_SEARCH_URL, LoginService) {
+            _.assign($scope, {
+              loginUrls: {
+                loginUrlStudent: Configuration.studentAppUrl,
+                loginUrlTeacher: Configuration.teacherAppUrl
+              },
+              redirectToLogin: function () {
+                LoginService.goToLogin();
+              },
+              courseSearchUrl: COURSE_SEARCH_URL[LanguageService.getCurrent()]
+            });
+          }
       })
 
       .state('localLogin', {
         parent: 'lander',
         url: '/local-login',
         templateUrl: 'app/partials/landerPages/_local.login.html',
-        controller: function ($scope, Configuration, LocalUsers, StateService, State, LoginService, Environments) {
+        controller: function (
+          $scope,
+          Configuration,
+          LocalUsers,
+          StateService,
+          State,
+          LoginService,
+          Environments
+        ) {
           var state = StateService.getStateFromDomain();
-
-
-          var envUsers = environmentUsers(Configuration.environment);
-
-
-          var users = state === State.MY_TEACHINGS ? envUsers.teachers : envUsers.students;
-
-
           var isDemo = Configuration.environment === Environments.DEMO;
 
           function environmentUsers(environment) {
@@ -107,6 +105,9 @@ angular.module('opintoniLander', ['services.language',
             }
             throw Error('unsupported environment for local login');
           }
+
+          var envUsers = environmentUsers(Configuration.environment);
+          var users = state === State.MY_TEACHINGS ? envUsers.teachers : envUsers.students;
 
           _.assign($scope, {
             isDemo: isDemo,

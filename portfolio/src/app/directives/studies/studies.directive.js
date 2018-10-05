@@ -63,7 +63,10 @@ angular.module('directives.studies', [
           scope.editing = false;
 
           if (scope.origText !== scope.summaryData) {
-            AnalyticsService.trackEvent(AnalyticsService.ec.STUDIES, AnalyticsService.ea.EDIT_SUMMARY);
+            AnalyticsService.trackEvent(
+              AnalyticsService.ec.STUDIES,
+              AnalyticsService.ea.EDIT_SUMMARY
+            );
           }
 
           SummaryService.updateSummary(portfolioId, updateSummaryRequest);

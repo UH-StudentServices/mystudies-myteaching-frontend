@@ -41,6 +41,12 @@ angular.module('directives.degrees', [
         $scope.newDegree = {};
         $scope.degreesValid = true;
 
+        function descriptions(degreeArray) {
+          return _.map(degreeArray, function (value, index) {
+            return value.description ? index : null;
+          });
+        }
+
         $scope.edit = function () {
           $scope.editing = true;
           $scope.origDegrees = $scope.degrees.slice();
@@ -60,12 +66,6 @@ angular.module('directives.degrees', [
         $scope.markAllSubmitted = function () {
           $scope.degrees.forEach(function (degree) { degree.submitted = true; });
         };
-
-        function descriptions(degreeArray) {
-          return _.map(degreeArray, function (value, index) {
-            return value.description ? index : null;
-          });
-        }
 
         function trackIfNeeded() {
           AnalyticsService.trackEventIfAdded(_.concat($scope.origDegrees, $scope.origDescriptions),

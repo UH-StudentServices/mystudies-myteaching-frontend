@@ -25,8 +25,8 @@ angular.module('resources.degree', [])
       });
     }
 
-    function updateDegrees(portfolioId, updateDegrees) {
-      return resource().update({ portfolioId: portfolioId }, updateDegrees).$promise;
+    function updateDegrees(portfolioId, degrees) {
+      return resource().update({ portfolioId: portfolioId }, degrees).$promise;
     }
 
     return {

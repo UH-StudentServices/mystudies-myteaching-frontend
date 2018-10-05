@@ -17,7 +17,7 @@
 
 angular.module('directives.editSamples', [])
 
-  .directive('editSamples', function ($translate) {
+  .directive('editSamples', function () {
     return {
       restrict: 'E',
       scope: {

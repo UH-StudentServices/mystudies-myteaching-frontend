@@ -127,11 +127,13 @@ angular.module('opintoniPortfolioApp', [
           if (state === State.PRIVATE) {
             return UserSettingsService.getUserSettings();
           }
+          return undefined;
         },
         notifications: function (NotificationsResource, session) {
           if (session && session.$resolved) {
             return NotificationsResource.getNotifications();
           }
+          return undefined;
         },
         portfolio: function (PortfolioService,
           FreeTextContentService,
@@ -142,7 +144,11 @@ angular.module('opintoniPortfolioApp', [
           state,
           $translate) {
           $translate.fallbackLanguage($stateParams.lang);
-          return PortfolioService.findPortfolioByPath(state, $stateParams.lang, $stateParams.userpath)
+          return PortfolioService.findPortfolioByPath(
+            state,
+            $stateParams.lang,
+            $stateParams.userpath
+          )
             .catch(function findPortfolioFail(error) {
               if (error.status === 404) {
                 if (session) {

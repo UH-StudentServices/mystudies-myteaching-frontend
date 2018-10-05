@@ -29,8 +29,7 @@ angular.module('directives.favorites', [
   .directive('favorites', function (availableFavoriteTypes,
     FavoritesService,
     NewFavoriteAddedEvent,
-    RemoveFavoriteEvent,
-    AnalyticsService) {
+    RemoveFavoriteEvent) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/favorites.html',

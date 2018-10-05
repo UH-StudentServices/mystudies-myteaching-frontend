@@ -67,7 +67,7 @@ angular.module('directives.mobileToolbar', [
             return _.includes(link.domain, StateService.getStateFromDomain());
           })
           .map(function (link) {
-            link.hasSub = link.hasOwnProperty('subMenu');
+            link.hasSub = link.hasOwnProperty('subMenu'); // eslint-disable-line no-prototype-builtins
             return link;
           })
           .value();

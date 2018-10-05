@@ -21,17 +21,17 @@ angular.module('resources.browseFiles', [])
 
   .factory('BrowseFilesResource', function ($resource, PortfolioFilesResourcePath) {
     function browseFilesResource(path) {
-      var browseFilesResource = PortfolioFilesResourcePath;
+      var browseFilesResourcePath = PortfolioFilesResourcePath;
 
-      return $resource(browseFilesResource, {}, {
+      return $resource(browseFilesResourcePath, {}, {
         getFileList: {
           method: 'GET',
           isArray: true,
-          url: browseFilesResource
+          url: browseFilesResourcePath
         },
         deleteFile: {
           method: 'DELETE',
-          url: browseFilesResource + '/' + path
+          url: browseFilesResourcePath + '/' + path
         }
       });
     }

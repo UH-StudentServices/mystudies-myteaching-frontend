@@ -16,7 +16,7 @@
  */
 
 angular.module('portfolioAnalytics', ['provider.analyticsAccounts'])
-  .constant('STRIP_USERNAME_REGEX', /\/[^\/]+$/)
+  .constant('STRIP_USERNAME_REGEX', /\/[^\/]+$/) // eslint-disable-line no-useless-escape
   .constant('TRACK_PAGE_TITLE', 'Portfolio')
   .constant('TRACK_PREFIX', '/portfolio')
 
@@ -43,6 +43,7 @@ angular.module('portfolioAnalytics', ['provider.analyticsAccounts'])
           // We leave portfolio language out of the location and page attributes of events,
           // as it seems it is not possible to change these attributes
           // for events after configuration.
+          // eslint-disable-next-line no-restricted-globals
           location: location.origin + TRACK_PREFIX,
           page: TRACK_PREFIX,
           title: TRACK_PAGE_TITLE
@@ -85,6 +86,9 @@ angular.module('portfolioAnalytics', ['provider.analyticsAccounts'])
       };
     }
 
+    function trackEvent(eventCategory, eventAction, label) {
+      Analytics.trackEvent(eventCategory, eventAction, label);
+    }
 
     function trackEventIfAdded(oldArray, newArray, eventCategory, eventAction, label) {
       function filter(arr) {
@@ -95,10 +99,6 @@ angular.module('portfolioAnalytics', ['provider.analyticsAccounts'])
       if (_.difference(filter(newArray), filter(oldArray)).length > 0) {
         trackEvent(eventCategory, eventAction, label);
       }
-    }
-
-    function trackEvent(eventCategory, eventAction, label) {
-      Analytics.trackEvent(eventCategory, eventAction, label);
     }
 
     // Automatic page view tracking will leak the user name in the page title to GA,

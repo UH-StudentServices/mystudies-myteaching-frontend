@@ -23,7 +23,7 @@ angular.module('directives.showDegrees', [])
     return {
       restrict: 'E',
       templateUrl: 'app/directives/degrees/showDegrees.html',
-      link: function ($scope) {
+      link: function () {
       }
     };
   });

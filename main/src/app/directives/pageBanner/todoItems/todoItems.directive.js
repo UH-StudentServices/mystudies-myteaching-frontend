@@ -51,11 +51,16 @@ angular.module('directives.todoItems', ['resources.todoItems', 'directives.swipe
           }
         };
 
+        function updateTodoItem(todoItem) {
+          var itemIndex = _.findIndex($scope.todoItems, ['id', todoItem.id]);
+          $scope.todoItems[itemIndex] = todoItem;
+        }
+
         $scope.markAsDone = function (todoItem) {
           todoItem.status = Status.DONE;
-          TodoItemsResource.update(todoItem).then(function todoItemUpdateSuccess(data) {
+          TodoItemsResource.update(todoItem).then(function todoItemUpdateSuccess(updatedItem) {
             AnalyticsService.trackTodoItemMarkAsDone();
-            todoItem = data;
+            updateTodoItem(updatedItem);
           });
         };
 

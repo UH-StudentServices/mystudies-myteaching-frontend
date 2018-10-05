@@ -20,23 +20,11 @@
 'use strict';
 
 var httpProxy = require('http-proxy');
-
-
 var modRewrite = require('connect-modrewrite');
-
-
 var urlUtil = require('url');
-
-
 var proxy;
-
-
 var proxyPaths;
-
-
 var proxyMiddleware;
-
-
 var gruntPlugins;
 
 // Grunt plugins must be loaded manually since load-grunt-tasks doesn't know

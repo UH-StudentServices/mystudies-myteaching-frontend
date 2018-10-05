@@ -32,17 +32,6 @@ angular.module('directives.officeHours', [
           scope.loadError = true;
         }
 
-        function initOfficeHours() {
-          OfficeHoursService.loadDegreeProgrammes()
-            .then(function (degreeProgrammes) {
-              scope.degreeProgrammes = _.cloneDeep(degreeProgrammes);
-              scope.availableDegreeProgrammes = _.cloneDeep(degreeProgrammes);
-              return OfficeHoursService.loadOfficeHours();
-            })
-            .then(officeHoursLoaded)
-            .catch(setLoadError);
-        }
-
         function officeHoursLoaded(officeHours) {
           scope.loaded = true;
           scope.officeHoursList = officeHours.map(function (oh) {
@@ -56,6 +45,17 @@ angular.module('directives.officeHours', [
               name: scope.userName
             };
           });
+        }
+
+        function initOfficeHours() {
+          OfficeHoursService.loadDegreeProgrammes()
+            .then(function (degreeProgrammes) {
+              scope.degreeProgrammes = _.cloneDeep(degreeProgrammes);
+              scope.availableDegreeProgrammes = _.cloneDeep(degreeProgrammes);
+              return OfficeHoursService.loadOfficeHours();
+            })
+            .then(officeHoursLoaded)
+            .catch(setLoadError);
         }
 
         scope.addDegreeProgramme = function addDegreeProgramme(degreeProgramme) {
@@ -117,7 +117,8 @@ angular.module('directives.officeHours', [
             if (scope.editedOfficeHoursIndex === -1) {
               scope.officeHoursList.push(_.cloneDeep(scope.officeHoursUnderEdit));
             } else {
-              scope.officeHoursList[scope.editedOfficeHoursIndex] = _.cloneDeep(scope.officeHoursUnderEdit);
+              scope.officeHoursList[scope.editedOfficeHoursIndex] =
+                _.cloneDeep(scope.officeHoursUnderEdit);
             }
             scope.resetOfficeHoursUnderEdit();
             scope.loaded = false;

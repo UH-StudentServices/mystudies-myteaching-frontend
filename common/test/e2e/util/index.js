@@ -15,6 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/* eslint-disable */
+
 import { Selector } from 'testcafe';
 
 const loginAsUser = async (t, name, expectedWeekFeedHeader) => {

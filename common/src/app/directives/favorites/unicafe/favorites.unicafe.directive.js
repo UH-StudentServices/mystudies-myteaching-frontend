@@ -32,11 +32,7 @@ angular.module('directives.favorites.unicafe', [
 
       try {
         var exception = menuData.information.business.exception;
-
-
         var reqular = menuData.information.business.regular;
-
-
         var toDay = _.capitalize(nowMoment.locale('FI').format('dd'));
 
         if (exception && exception.length > 0) {
@@ -90,7 +86,7 @@ angular.module('directives.favorites.unicafe', [
         function updateMenu(restaurantId) {
           FavoritesService.getUnicafeRestaurantMenu(restaurantId)
             .then(function getMenuSuccess(menuData) {
-              $scope.closed = UnicafeOpenDaysParser.isRestaurantClosed(menuData, moment(new Date()));
+              $scope.closed = UnicafeOpenDaysParser.isRestaurantClosed(menuData, moment());
               $scope.information = menuData.information;
               $scope.menu = _.find(menuData.data, function (data) {
                 return moment().diff(moment(data.date, 'DD.MM'), 'days') === 0;

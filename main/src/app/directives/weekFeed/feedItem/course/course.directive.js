@@ -52,27 +52,19 @@ angular.module('directives.weekFeed.feedItem.course', [
       },
       link: function (scope) {
         var feedItem = scope.feedItem;
-
-
         var courseCode = feedItem.showAsChild ? '' : feedItem.code;
-
-
         var courseType = $translate.instant('codes.courseTypes.' + feedItem.typeCode);
-
-
         var courseCredits = feedItem.credits && !feedItem.showAsChild
           ? '(' + feedItem.credits + $translate.instant('abbreviations.credits') + ')'
           : '';
-
-
         var courseTeachers = feedItem.teachers.join(', ');
 
         scope.courseInfo = [courseCode, courseType + ' ' + courseCredits, courseTeachers]
           .filter(Boolean)
           .join(', ');
 
-        scope.isOfficial = function (feedItem) {
-          return feedItem.teacherRole === TeacherRoles.OFFICIAL;
+        scope.isOfficial = function (item) {
+          return item.teacherRole === TeacherRoles.OFFICIAL;
         };
       }
     };
@@ -103,7 +95,8 @@ angular.module('directives.weekFeed.feedItem.course', [
       link: function ($scope) {
         if ($scope.feedItem.courseMaterial) {
           $scope.courseMaterialType = $scope.feedItem.courseMaterial.courseMaterialType;
-          $scope.courseMaterialLinkTitle = getCourseMaterialLinkTitle($scope.courseMaterialType, $scope.compact);
+          $scope.courseMaterialLinkTitle =
+            getCourseMaterialLinkTitle($scope.courseMaterialType, $scope.compact);
         }
 
         $scope.isMoodleAndNotCompact = function () {
@@ -118,12 +111,11 @@ angular.module('directives.weekFeed.feedItem.course', [
       if (momentDate) {
         return momentDate.format('DD.MM.YYYY');
       }
+      return undefined;
     }
 
     return function (startDate, endDate) {
       var formattedStartDate = formatMomentDate(startDate);
-
-
       var formattedEndDate = formatMomentDate(endDate);
 
       if (formattedStartDate && formattedEndDate && formattedStartDate !== formattedEndDate) {

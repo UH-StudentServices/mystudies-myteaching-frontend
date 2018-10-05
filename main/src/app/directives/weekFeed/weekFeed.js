@@ -47,28 +47,6 @@ angular.module('directives.weekFeed', [
     MessageTypes,
     WeekFeedMessageKeys
   ) {
-    function getEventsMessage(courses, events, filteredItems, selectedTab, selectedSubTab) {
-      return getItemsMessage(events, filteredItems, selectedTab, selectedSubTab);
-    }
-
-    function getCoursesMessage(courses, events, filteredItems, selectedTab, selectedSubTab) {
-      return getItemsMessage(courses, filteredItems, selectedTab, selectedSubTab);
-    }
-
-    function getCalendarMessage(courses, events, filteredItems, selectedTab) {
-      if (!events) {
-        return getErrorMessage(selectedTab);
-      }
-    }
-
-    function getItemsMessage(items, filteredItems, selectedTab, selectedSubTab) {
-      if (!items) {
-        return getErrorMessage(selectedTab);
-      } if (!filteredItems.length) {
-        return getInfoMessage(selectedTab, selectedSubTab);
-      }
-    }
-
     function getInfoMessage(selectedTab, selectedSubTab) {
       return {
         messageType: MessageTypes.INFO,
@@ -83,6 +61,31 @@ angular.module('directives.weekFeed', [
       };
     }
 
+    function getItemsMessage(items, filteredItems, selectedTab, selectedSubTab) {
+      if (!items) {
+        return getErrorMessage(selectedTab);
+      } if (!filteredItems.length) {
+        return getInfoMessage(selectedTab, selectedSubTab);
+      }
+      return null;
+    }
+
+    function getEventsMessage(courses, events, filteredItems, selectedTab, selectedSubTab) {
+      return getItemsMessage(events, filteredItems, selectedTab, selectedSubTab);
+    }
+
+    function getCoursesMessage(courses, events, filteredItems, selectedTab, selectedSubTab) {
+      return getItemsMessage(courses, filteredItems, selectedTab, selectedSubTab);
+    }
+
+    function getCalendarMessage(courses, events, filteredItems, selectedTab) {
+      if (!events) {
+        return getErrorMessage(selectedTab);
+      }
+      return undefined;
+    }
+
+
     return {
       getEventsMessage: getEventsMessage,
       getCoursesMessage: getCoursesMessage,
@@ -91,43 +94,6 @@ angular.module('directives.weekFeed', [
   })
 
   .factory('CourseView', function (FeedItemSortCondition, FeedItemTimeCondition, FeedItemTimeFilter) {
-    function getCourses(courses, feedItemTimeCondition, feedItemSortCondition, now) {
-      courses = _.filter(courses, function (course) {
-        return filterCourse(course, courses, feedItemTimeCondition, now);
-      });
-
-      return _(courses)
-        .filter(function (course) { return isRootNode(course, courses); })
-        .map(function (rootNode) { return setRootNodeChildren(rootNode, courses, feedItemSortCondition); })
-        .orderBy(function (rootNode) { return sortRootNode(rootNode, feedItemSortCondition); }, feedItemSortCondition)
-        .map(function (rootNode) {
-          return [rootNode].concat(rootNode.children);
-        })
-        .flatten()
-        .value();
-    }
-
-    function setRootNodeChildren(rootNode, courses, feedItemSortCondition) {
-      rootNode.children = _(courses)
-        .filter(function (child) { return child.parentId && rootNode.realisationId === child.rootId; })
-        .orderBy(function (child) { return child.startDate; }, feedItemSortCondition)
-        .map(tagAsChild)
-        .value();
-      tagLastChild(rootNode.children);
-      return rootNode;
-    }
-
-    function sortRootNode(rootNode, feedItemSortCondition) {
-      var findMinOrMax = feedItemSortCondition === FeedItemSortCondition.START_DATE_ASC ? _.minBy : _.maxBy;
-
-
-      var minOrMaxChild = findMinOrMax(rootNode.children, getStartDate);
-
-      return minOrMaxChild ? minOrMaxChild.startDate : rootNode.startDate;
-    }
-
-    function getStartDate(course) { return course.startDate; }
-
     function tagAsChild(child) {
       child.showAsChild = true;
       return child;
@@ -141,8 +107,23 @@ angular.module('directives.weekFeed', [
       }
     }
 
-    function isRootNode(course, courses) {
-      return course.parentId === null || _.find(courses, { realisationId: course.rootId }) === undefined;
+    function getStartDate(course) {
+      return course.startDate;
+    }
+
+    function setRootNodeChildren(rootNode, courses, feedItemSortCondition) {
+      rootNode.children = _(courses)
+        .filter(function (child) {
+          return child.parentId && rootNode.realisationId === child.rootId;
+        })
+        .orderBy(function (child) {
+          return child.startDate;
+        }, feedItemSortCondition)
+        .map(tagAsChild)
+        .value();
+
+      tagLastChild(rootNode.children);
+      return rootNode;
     }
 
     function filterCourse(item, courses, timeCondition, now) {
@@ -151,7 +132,43 @@ angular.module('directives.weekFeed', [
           return child.rootId === item.realisationId && child.realisationId !== item.realisationId;
         })
         .some(function (child) { return filterCourse(child, courses, timeCondition, now); })
-          || FeedItemTimeFilter.isInTimeFrame(item, timeCondition, now);
+        || FeedItemTimeFilter.isInTimeFrame(item, timeCondition, now);
+    }
+
+    function isRootNode(course, courses) {
+      return course.parentId === null
+        || _.find(courses, { realisationId: course.rootId }) === undefined;
+    }
+
+    function sortRootNode(rootNode, feedItemSortCondition) {
+      var findMinOrMax = feedItemSortCondition === FeedItemSortCondition.START_DATE_ASC
+        ? _.minBy
+        : _.maxBy;
+      var minOrMaxChild = findMinOrMax(rootNode.children, getStartDate);
+      return minOrMaxChild ? minOrMaxChild.startDate : rootNode.startDate;
+    }
+
+    function getCourses(courses, feedItemTimeCondition, feedItemSortCondition, now) {
+      // eslint-disable-next-line no-param-reassign
+      courses = _.filter(courses, function (course) {
+        return filterCourse(course, courses, feedItemTimeCondition, now);
+      });
+
+      return _(courses)
+        .filter(function (course) {
+          return isRootNode(course, courses);
+        })
+        .map(function (rootNode) {
+          return setRootNodeChildren(rootNode, courses, feedItemSortCondition);
+        })
+        .orderBy(function (rootNode) {
+          return sortRootNode(rootNode, feedItemSortCondition);
+        }, feedItemSortCondition)
+        .map(function (rootNode) {
+          return [rootNode].concat(rootNode.children);
+        })
+        .flatten()
+        .value();
     }
 
     return {
@@ -167,11 +184,7 @@ angular.module('directives.weekFeed', [
     FeedMessages
   ) {
     var getEventsMessage = FeedMessages.getEventsMessage;
-
-
     var getCoursesMessage = FeedMessages.getCoursesMessage;
-
-
     var getCalendarMessage = FeedMessages.getCalendarMessage;
 
     function getItems(items, feedItemTimeCondition, feedItemSortCondition) {
@@ -190,7 +203,11 @@ angular.module('directives.weekFeed', [
             hideSubTabs: false,
             translateKey: 'weekFeed.calendarCustom.list',
             getItems: function (courses, events) {
-              return getItems(events, FeedItemTimeCondition.CURRENT_OR_UPCOMING, FeedItemSortCondition.NONE);
+              return getItems(
+                events,
+                FeedItemTimeCondition.CURRENT_OR_UPCOMING,
+                FeedItemSortCondition.NONE
+              );
             },
             getMessage: getEventsMessage
           },
@@ -199,7 +216,7 @@ angular.module('directives.weekFeed', [
             hideSubTabs: true,
             calendarView: 'DAY',
             translateKey: 'eventCalendar.day',
-            getItems: function (courses, events) {
+            getItems: function () {
               return [];
             },
             getMessage: getCalendarMessage
@@ -209,7 +226,7 @@ angular.module('directives.weekFeed', [
             hideSubTabs: true,
             calendarView: 'WEEK',
             translateKey: 'eventCalendar.week',
-            getItems: function (courses, events) {
+            getItems: function () {
               return [];
             },
             getMessage: getCalendarMessage
@@ -219,7 +236,7 @@ angular.module('directives.weekFeed', [
             hideSubTabs: true,
             calendarView: 'MONTH',
             translateKey: 'eventCalendar.month',
-            getItems: function (courses, events) {
+            getItems: function () {
               return [];
             },
             getMessage: getCalendarMessage
@@ -235,7 +252,7 @@ angular.module('directives.weekFeed', [
             key: 'CURRENT_COURSES',
             hideSubTabs: false,
             translateKey: 'general.current',
-            getItems: function (courses, events) {
+            getItems: function (courses) {
               return CourseView.getCourses(_.filter(courses, { isExam: false }),
                 FeedItemTimeCondition.CURRENT, FeedItemSortCondition.START_DATE_ASC);
             },
@@ -245,7 +262,7 @@ angular.module('directives.weekFeed', [
             key: 'UPCOMING_COURSES',
             hideSubTabs: false,
             translateKey: 'general.upcoming',
-            getItems: function (courses, events) {
+            getItems: function (courses) {
               return CourseView.getCourses(_.filter(courses, { isExam: false }),
                 FeedItemTimeCondition.UPCOMING, FeedItemSortCondition.START_DATE_ASC);
             },
@@ -255,7 +272,7 @@ angular.module('directives.weekFeed', [
             key: 'PAST_COURSES',
             hideSubTabs: false,
             translateKey: 'general.past',
-            getItems: function (courses, events) {
+            getItems: function (courses) {
               return CourseView.getCourses(_.filter(courses, { isExam: false }),
                 FeedItemTimeCondition.PAST, FeedItemSortCondition.START_DATE_DESC);
             },
@@ -271,7 +288,7 @@ angular.module('directives.weekFeed', [
             key: 'UPCOMING_EXAMS',
             hideSubTabs: false,
             translateKey: 'general.upcoming',
-            getItems: function (courses, events) {
+            getItems: function (courses) {
               return CourseView.getCourses(_.filter(courses, { isExam: true }),
                 FeedItemTimeCondition.NOT_ENDED, FeedItemSortCondition.START_DATE_ASC);
             },
@@ -281,7 +298,7 @@ angular.module('directives.weekFeed', [
             key: 'PAST_EXAMS',
             hideSubTabs: false,
             translateKey: 'general.past',
-            getItems: function (courses, events) {
+            getItems: function (courses) {
               return CourseView.getCourses(_.filter(courses, { isExam: true }),
                 FeedItemTimeCondition.PAST, FeedItemSortCondition.START_DATE_ASC);
             },
@@ -297,7 +314,7 @@ angular.module('directives.weekFeed', [
             key: 'CURRENT_TEACHER_COURSES',
             hideSubTabs: false,
             translateKey: 'general.current',
-            getItems: function (courses, events) {
+            getItems: function (courses) {
               return CourseView.getCourses(_.filter(courses, { isExam: false }),
                 FeedItemTimeCondition.CURRENT, FeedItemSortCondition.START_DATE_ASC);
             },
@@ -307,7 +324,7 @@ angular.module('directives.weekFeed', [
             key: 'UPCOMING_TEACHER_COURSES',
             hideSubTabs: false,
             translateKey: 'general.upcoming',
-            getItems: function (courses, events) {
+            getItems: function (courses) {
               return CourseView.getCourses(_.filter(courses, { isExam: false }),
                 FeedItemTimeCondition.UPCOMING, FeedItemSortCondition.START_DATE_ASC);
             },
@@ -317,7 +334,7 @@ angular.module('directives.weekFeed', [
             key: 'PAST_TEACHER_COURSES',
             hideSubTabs: false,
             translateKey: 'general.past',
-            getItems: function (courses, events) {
+            getItems: function (courses) {
               return CourseView.getCourses(_.filter(courses, { isExam: false }),
                 FeedItemTimeCondition.PAST, FeedItemSortCondition.START_DATE_DESC);
             },
@@ -333,7 +350,7 @@ angular.module('directives.weekFeed', [
             key: 'UPCOMING_TEACHER_EXAMS',
             hideSubTabs: false,
             translateKey: 'general.upcoming',
-            getItems: function (courses, events) {
+            getItems: function (courses) {
               return CourseView.getCourses(_.filter(courses, { isExam: true }),
                 FeedItemTimeCondition.NOT_ENDED, FeedItemSortCondition.START_DATE_ASC);
             },
@@ -343,7 +360,7 @@ angular.module('directives.weekFeed', [
             key: 'PAST_TEACHER_EXAMS',
             hideSubTabs: false,
             translateKey: 'general.past',
-            getItems: function (courses, events) {
+            getItems: function (courses) {
               return CourseView.getCourses(_.filter(courses, { isExam: true }),
                 FeedItemTimeCondition.PAST, FeedItemSortCondition.START_DATE_DESC);
             },
@@ -420,7 +437,7 @@ angular.module('directives.weekFeed', [
             return -item.startDate.unix();
           });
         default:
-          // FIXME: error, anyone?
+          throw Error('Invalid FeedItemSortCondition');
       }
     };
   })

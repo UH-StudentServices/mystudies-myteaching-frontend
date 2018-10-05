@@ -17,9 +17,8 @@
 
 describe('WorkExperienceService', function () {
   var $httpBackend;
-  var $q;
-  var $rootScope;
-  var $location;
+  var $q; // eslint-disable-line no-unused-vars
+  var $rootScope; // eslint-disable-line no-unused-vars
   var WorkExperienceService;
   var PortfolioService;
   var StateService;
