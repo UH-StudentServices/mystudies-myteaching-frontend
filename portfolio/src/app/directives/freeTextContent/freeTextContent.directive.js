@@ -19,8 +19,7 @@ angular.module('directives.freeTextContent', [
   'services.freeTextContent',
   'directives.editLink',
   'constants.ngEmbedOptions',
-  'portfolioAnalytics'
-])
+  'portfolioAnalytics'])
 
   .factory('FreeTextContentFactory', function($translate) {
 
@@ -35,8 +34,10 @@ angular.module('directives.freeTextContent', [
         });
       },
       fixedFreeTextContent: function(visibilityDescriptor, headingKey, portfolioLang) {
+        var lang = portfolioLang || $translate.use();
+
         return _.assign({}, visibilityDescriptor, {
-          title: $translate.instant(headingKey, {}, '', portfolioLang),
+          title: $translate.instant(headingKey, {}, '', lang),
           text: defaultText
         });
       }
