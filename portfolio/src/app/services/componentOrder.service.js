@@ -20,6 +20,9 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
   .factory('ComponentOrderService', function(FreeTextContentService, ComponentOrderResource) {
 
     var cachedComponentOrders = [];
+    var singletonFreeTextContentComponents = [
+      'SKILLS_AND_EXPERTISE'
+    ];
 
     function defaultSingletonComponentOrder() {
       return [
@@ -32,10 +35,6 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
         {component: 'SKILLS_AND_EXPERTISE'}
       ];
     }
-
-    var singletonFreeTextContentComponents = [
-      'SKILLS_AND_EXPERTISE'
-    ];
 
     function singletonComponentOrders(portfolio) {
       return cachedComponentOrders.length ? cachedComponentOrders.filter(function(el) {
@@ -71,6 +70,7 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
               return !_.includes(singletonFreeTextContentComponents, component.instanceName);
             })
           );
+
           callback(_.sortBy(allComponentOrders, 'orderValue'));
         });
     }
