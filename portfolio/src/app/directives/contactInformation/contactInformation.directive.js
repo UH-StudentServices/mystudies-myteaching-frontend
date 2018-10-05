@@ -21,22 +21,24 @@ angular.module('directives.contactInformation', [
     'portfolioAnalytics'])
 
   .constant('SomeLinkType', {
-    FACEBOOK: 'FACEBOOK',
-    YOUTUBE: 'YOUTUBE',
-    TWITTER: 'TWITTER',
-    TUHAT: 'TUHAT',
-    RESEARCH_GATE: 'RESEARCH_GATE',
-    ACADEMIA: 'ACADEMIA',
-    WEBSITE_LINK: 'WEBSITE_LINK'
+    FACEBOOK: {type: 'FACEBOOK', baseUrl: 'https://facebook.com/'},
+    YOUTUBE: {type: 'YOUTUBE', baseUrl: 'https://youtube.com/'},
+    TWITTER: {type: 'TWITTER', baseUrl: 'https://twitter.com/'},
+    TUHAT: {type: 'TUHAT', baseUrl: 'https://tuhat.helsinki.fi/portal/fi/persons/'},
+    RESEARCH_GATE: {type: 'RESEARCH_GATE', baseUrl: 'https://www.researchgate.net/'},
+    ACADEMIA: {type: 'ACADEMIA', baseUrl: 'https://xxx.academia.edu/'},
+    WEBSITE_LINK: {type: 'WEBSITE_LINK', baseUrl: 'https://'},
+    LINKEDIN: {type: 'LINKEDIN', baseUrl: 'https://www.linkedin.com/'}
   })
 
   .factory('StudentSocialMediaLinks', function(SomeLinkType) {
-    return [SomeLinkType.TWITTER, SomeLinkType.FACEBOOK, SomeLinkType.YOUTUBE,
+    return [SomeLinkType.TWITTER, SomeLinkType.FACEBOOK, SomeLinkType.YOUTUBE, SomeLinkType.LINKEDIN,
             SomeLinkType.TUHAT, SomeLinkType.RESEARCH_GATE, SomeLinkType.ACADEMIA, SomeLinkType.WEBSITE_LINK];
   })
 
   .factory('TeacherSocialMediaLinks', function(SomeLinkType) {
-    return [SomeLinkType.TWITTER, SomeLinkType.TUHAT, SomeLinkType.RESEARCH_GATE, SomeLinkType.ACADEMIA];
+    return [SomeLinkType.TWITTER, SomeLinkType.TUHAT, SomeLinkType.RESEARCH_GATE, SomeLinkType.ACADEMIA,
+            SomeLinkType.LINKEDIN];
   })
 
   .directive('contactInformation', function(ContactInformationService,
@@ -66,8 +68,8 @@ angular.module('directives.contactInformation', [
             TeacherSocialMediaLinks : StudentSocialMediaLinks;
 
           defaultSocialMediaLinks.forEach(function(socialMediaLinkType) {
-            if (!_.find($scope.contactInfo.someLinks, {type: socialMediaLinkType})) {
-              $scope.contactInfo.someLinks.push({type: socialMediaLinkType});
+            if (!_.find($scope.contactInfo.someLinks, {type: socialMediaLinkType.type})) {
+              $scope.contactInfo.someLinks.push(socialMediaLinkType);
             }
           });
         }
@@ -104,16 +106,22 @@ angular.module('directives.contactInformation', [
         }
 
         $scope.exitEdit = function() {
+          if ($scope.editContactInformation.$invalid) {
+            return false;
+          }
           var updateContactInformationRequest = _.assign({}, $scope.contactInfo);
 
-          trackIfNeeded();
           updateContactInformationRequest.someLinks =
             selectFilledSomeLinks($scope.contactInfo.someLinks);
           ContactInformationService
             .updateContactInformation($scope.portfolioId, updateContactInformationRequest)
             .then(function(data) {
+              trackIfNeeded();
               $scope.contactInfo = data;
               $scope.editing = false;
+            })
+            .catch(function() {
+              return false;
             });
           return true;
         };
