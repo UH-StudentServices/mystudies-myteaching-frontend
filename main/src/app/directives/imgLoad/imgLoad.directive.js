@@ -19,15 +19,15 @@
 
 angular.module('directives.imgLoad', [])
 
-  .directive('imgLoad', function($parse) {
+  .directive('imgLoad', function ($parse) {
     return {
       restrict: 'A',
-      link: function(scope, elem, attrs) {
+      link: function (scope, elem, attrs) {
         var fn = $parse(attrs.imgLoad);
 
-        elem.on('load', function(event) {
-          scope.$apply(function() {
-            fn(scope, {$event: event});
+        elem.on('load', function (event) {
+          scope.$apply(function () {
+            fn(scope, { $event: event });
           });
         });
       }

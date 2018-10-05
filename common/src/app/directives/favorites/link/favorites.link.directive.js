@@ -18,7 +18,7 @@
 angular.module('directives.favorites.link', [
 ])
 
-  .directive('favoritesLink', function() {
+  .directive('favoritesLink', function () {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/link/favorites.link.html',
@@ -26,7 +26,7 @@ angular.module('directives.favorites.link', [
       scope: {
         data: '='
       },
-      link: function($scope) {
+      link: function () {
       }
     };
   });

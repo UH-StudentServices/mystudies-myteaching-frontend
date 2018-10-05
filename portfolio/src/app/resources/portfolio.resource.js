@@ -17,16 +17,19 @@
 
 angular.module('resources.portfolio', ['services.state'])
 
-  .factory('PortfolioResource', function($resource, StateService) {
+  .factory('PortfolioResource', function ($resource, StateService) {
+    var findPortfolioResource = $resource('/api/:currentState/v1/portfolio/:portfolioRole/:lang/:userPath');
 
-    var findPortfolioResource = $resource('/api/:currentState/v1/portfolio/:portfolioRole/:lang/:userPath'),
-        createPortfolioResource = $resource('/api/private/v1/portfolio/:portfolioRole/:lang', {
-          portfolioRole: '@portfolioRole',
-          lang: '@lang'
-        }),
-        updatePortfolioResource =  $resource('/api/:currentState/v1/portfolio/:id', {id: '@id'}, {
-          'update': {method: 'PUT'}
-        });
+
+    var createPortfolioResource = $resource('/api/private/v1/portfolio/:portfolioRole/:lang', {
+      portfolioRole: '@portfolioRole',
+      lang: '@lang'
+    });
+
+
+    var updatePortfolioResource = $resource('/api/:currentState/v1/portfolio/:id', { id: '@id' }, {
+      update: { method: 'PUT' }
+    });
 
     function find(state, portfolioRole, portfolioLang, userPath) {
       return findPortfolioResource
@@ -40,7 +43,7 @@ angular.module('resources.portfolio', ['services.state'])
 
     function update(portfolio) {
       return updatePortfolioResource
-        .update({currentState: StateService.getCurrent()}, {
+        .update({ currentState: StateService.getCurrent() }, {
           id: portfolio.id,
           intro: portfolio.intro,
           ownerName: portfolio.ownerName,

@@ -15,12 +15,12 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.weekFeed.feedItem.event',[
+angular.module('directives.weekFeed.feedItem.event', [
   'services.location',
   'services.eventUri',
   'directives.analytics'])
 
-  .directive('event', function(LocationService, EventUriService) {
+  .directive('event', function (LocationService, EventUriService) {
     return {
       restrict: 'E',
       replace: true,
@@ -29,7 +29,7 @@ angular.module('directives.weekFeed.feedItem.event',[
         feedItem: '=',
         showCourseImage: '='
       },
-      link: function($scope) {
+      link: function ($scope) {
         $scope.openReittiopas = function openReittiopas(startDate, location) {
           var addressFromCookie = LocationService.getUserAddressFromCookie();
 
@@ -37,7 +37,7 @@ angular.module('directives.weekFeed.feedItem.event',[
             window.location = EventUriService.getReittiopasUri(startDate, location, addressFromCookie);
           } else {
             location.loadingLocation = true;
-            LocationService.getUserAddressFromGeolocation().then(function(data) {
+            LocationService.getUserAddressFromGeolocation().then(function (data) {
               LocationService.putUserAddressToCookie(data);
               window.location = EventUriService.getReittiopasUri(startDate, location, data);
             });
@@ -47,7 +47,7 @@ angular.module('directives.weekFeed.feedItem.event',[
     };
   })
 
-  .directive('eventTitle', function() {
+  .directive('eventTitle', function () {
     return {
       restrict: 'E',
       replace: true,
@@ -55,9 +55,11 @@ angular.module('directives.weekFeed.feedItem.event',[
     };
   })
 
-  .filter('eventTimeSpan', function() {
-    var dateString = 'DD.MM.YYYY',
-        hoursString = 'HH:mm';
+  .filter('eventTimeSpan', function () {
+    var dateString = 'DD.MM.YYYY';
+
+
+    var hoursString = 'HH:mm';
 
     function momentDateHasHours(momentDate) {
       return _.isArray(momentDate._i) && momentDate._i.length > 3;
@@ -66,9 +68,8 @@ angular.module('directives.weekFeed.feedItem.event',[
     function getFormatString(momentDate) {
       if (momentDateHasHours(momentDate)) {
         return dateString + ' ' + hoursString;
-      } else {
-        return dateString;
       }
+      return dateString;
     }
 
     function formatMomentDate(momentDate) {
@@ -88,7 +89,7 @@ angular.module('directives.weekFeed.feedItem.event',[
       return dateString;
     }
 
-    return function(startDate, endDate) {
+    return function (startDate, endDate) {
       if (startDate) {
         /* Dates are UTC but we want to show them as local times */
         startDate = startDate.local();
@@ -96,12 +97,11 @@ angular.module('directives.weekFeed.feedItem.event',[
 
         if (!endDate || startDate.diff(endDate) === 0) {
           return formatMomentDate(startDate);
-        } else if (startDate.year() === endDate.year() &&
-          startDate.dayOfYear() === endDate.dayOfYear()) {
+        } if (startDate.year() === endDate.year()
+          && startDate.dayOfYear() === endDate.dayOfYear()) {
           return formatMomentDateTimeSpan(startDate, endDate);
-        } else {
-          return formatMomentDateSpan(startDate, endDate);
         }
+        return formatMomentDateSpan(startDate, endDate);
       }
     };
   });

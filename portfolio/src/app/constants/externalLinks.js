@@ -18,5 +18,5 @@
 angular.module('constants.externalLinks', [])
 
   .constant('primaryLinks', [
-    {key: 'navigationTab.list', href: '', active: true}
+    { key: 'navigationTab.list', href: '', active: true }
   ]);

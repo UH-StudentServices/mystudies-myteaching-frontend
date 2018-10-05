@@ -17,13 +17,12 @@
 
 angular.module('resources.portfolioBackground', [])
 
-  .factory('PortfolioBackgroundResource', function($resource, StateService) {
-
+  .factory('PortfolioBackgroundResource', function ($resource, StateService) {
     function portfolioBackgroundResource(portfolioId) {
-      var portfolioBackgroundUrl = '/api/' + StateService.getCurrent() +
-        '/v1/portfolio/' + portfolioId + '/background';
+      var portfolioBackgroundUrl = '/api/' + StateService.getCurrent()
+        + '/v1/portfolio/' + portfolioId + '/background';
 
-      return $resource(portfolioBackgroundUrl, {id: '@id'}, {
+      return $resource(portfolioBackgroundUrl, { id: '@id' }, {
         selectPortfolioBackground: {
           method: 'PUT',
           url: portfolioBackgroundUrl + '/select'
@@ -40,7 +39,7 @@ angular.module('resources.portfolioBackground', [])
     }
 
     function selectPortfolioBackground(portfolioId, filename) {
-      return portfolioBackgroundResource(portfolioId).selectPortfolioBackground({filename: filename}).$promise;
+      return portfolioBackgroundResource(portfolioId).selectPortfolioBackground({ filename: filename }).$promise;
     }
 
     function getPortfolioBackground(portfolioId) {
@@ -48,7 +47,7 @@ angular.module('resources.portfolioBackground', [])
     }
 
     function uploadUserBackground(portfolioId, imageBase64) {
-      return portfolioBackgroundResource(portfolioId).uploadPortfolioBackground({imageBase64: imageBase64}).$promise;
+      return portfolioBackgroundResource(portfolioId).uploadPortfolioBackground({ imageBase64: imageBase64 }).$promise;
     }
 
     return {

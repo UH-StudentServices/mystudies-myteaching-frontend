@@ -19,11 +19,11 @@
 
 angular.module('directives.showDegrees', [])
 
-  .directive('showDegrees', function() {
+  .directive('showDegrees', function () {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/degrees/showDegrees.html',
-      link: function($scope) {
+      link: function ($scope) {
       }
     };
   });

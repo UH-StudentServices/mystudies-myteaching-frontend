@@ -17,21 +17,21 @@
 
 angular.module('directives.addFreeText', ['services.freeTextContent', 'portfolioAnalytics'])
 
-.directive('addFreeTextContent', function(FreeTextContentService, FreeTextContentFactory, AnalyticsService) {
-  return {
-    restrict: 'E',
-    replace: true,
-    scope: {},
-    templateUrl: 'app/directives/freeTextContent/addFreeTextContent.html',
-    link: function(scope) {
-      scope.insertFreeTextContent = function() {
-        var entry = FreeTextContentFactory.defaultFreeTextContent({});
+  .directive('addFreeTextContent', function (FreeTextContentService, FreeTextContentFactory, AnalyticsService) {
+    return {
+      restrict: 'E',
+      replace: true,
+      scope: {},
+      templateUrl: 'app/directives/freeTextContent/addFreeTextContent.html',
+      link: function (scope) {
+        scope.insertFreeTextContent = function () {
+          var entry = FreeTextContentFactory.defaultFreeTextContent({});
 
-        AnalyticsService.trackEvent(AnalyticsService.ec.FREE_TEXT_CONTENT, AnalyticsService.ea.ADD);
+          AnalyticsService.trackEvent(AnalyticsService.ec.FREE_TEXT_CONTENT, AnalyticsService.ea.ADD);
 
-        FreeTextContentService
-          .insertFreeTextContent(entry, {});
-      };
-    }
-  };
-});
+          FreeTextContentService
+            .insertFreeTextContent(entry, {});
+        };
+      }
+    };
+  });

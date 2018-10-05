@@ -17,13 +17,13 @@
 
 angular.module('directives.printButton', ['services.preview', 'directives.helpIcon'])
 
-  .directive('printButton', function() {
+  .directive('printButton', function () {
     return {
       restrict: 'E',
       replace: true,
       scope: {},
       templateUrl: 'app/directives/preview/printButton.html',
-      controller: function($scope, PreviewService) {
+      controller: function ($scope, PreviewService) {
         $scope.print = _.partial(PreviewService.enterPreview, true);
       }
     };

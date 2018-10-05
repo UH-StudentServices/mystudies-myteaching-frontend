@@ -17,17 +17,17 @@
 
 angular.module('provider.analyticsAccounts', ['services.configuration'])
   .constant('Tracker', {
-    'main': {
-      'NAME': 'OOtracker',
-      'ID': 'googleAnalyticsAccount'
+    main: {
+      NAME: 'OOtracker',
+      ID: 'googleAnalyticsAccount'
     },
-    'teacher': {
-      'NAME': 'OOTeacher',
-      'ID': 'googleAnalyticsAccountTeacher'
+    teacher: {
+      NAME: 'OOTeacher',
+      ID: 'googleAnalyticsAccountTeacher'
     },
-    'student': {
-      'NAME': 'OOStudent',
-      'ID': 'googleAnalyticsAccountStudent'
+    student: {
+      NAME: 'OOStudent',
+      ID: 'googleAnalyticsAccountStudent'
     }
   })
 
@@ -68,5 +68,4 @@ angular.module('provider.analyticsAccounts', ['services.configuration'])
     return {
       $get: getAccounts
     };
-
   });

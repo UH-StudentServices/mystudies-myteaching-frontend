@@ -19,7 +19,7 @@ angular.module('directives.favorites.rss', [
   'services.favorites'
 ])
 
-  .directive('favoritesRss', function(FavoritesService) {
+  .directive('favoritesRss', function (FavoritesService) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/rss/favorites.rss.html',
@@ -27,7 +27,7 @@ angular.module('directives.favorites.rss', [
       scope: {
         data: '='
       },
-      link: function($scope) {
+      link: function ($scope) {
         $scope.loading = true;
         $scope.error = false;
 
@@ -41,7 +41,7 @@ angular.module('directives.favorites.rss', [
 
           $scope.feed = feedData;
           $scope.loading = false;
-        }).catch(function(error) {
+        }).catch(function () {
           $scope.error = true;
           $scope.loading = false;
         });

@@ -27,7 +27,7 @@ angular.module('directives.favorites.addNew', [
 
   .constant('NewFavoriteAddedEvent', 'NEW_FAVORITE_ADDED')
 
-  .directive('addNewFavoriteSearch', function() {
+  .directive('addNewFavoriteSearch', function () {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/favorites.addNew.search.html',
@@ -40,27 +40,27 @@ angular.module('directives.favorites.addNew', [
         placeholder: '@',
         loading: '='
       },
-      compile: function(tElement, tAttrs) {
+      compile: function (tElement, tAttrs) {
         tElement.find('input').attr('type', tAttrs.inputType);
 
-        return function($scope) {
-          $scope.search = _.debounce(function(searchString) {
+        return function ($scope) {
+          $scope.search = _.debounce(function (searchString) {
             if ($scope.favoriteSearchForm.$valid && $scope.searchFn) {
               $scope.searchFn(searchString);
             }
           }, 1000);
 
-          $scope.onKeyPress = function($event) {
+          $scope.onKeyPress = function ($event) {
             if ($event.which === 13 && $scope.enterFn && $scope.favoriteSearchForm.$valid) {
               $scope.enterFn();
             }
           };
-          $scope.save = function() {
+          $scope.save = function () {
             if ($scope.enterFn && $scope.favoriteSearchForm.$valid) {
               $scope.enterFn();
             }
           };
-          $scope.clearSearch = function() {
+          $scope.clearSearch = function () {
             $scope.searchString = '';
             if ($scope.clearSearchFn) {
               $scope.clearSearchFn();
@@ -72,7 +72,7 @@ angular.module('directives.favorites.addNew', [
     };
   })
 
-  .directive('addNewFavorite', function(NewFavoriteAddedEvent, Focus) {
+  .directive('addNewFavorite', function (NewFavoriteAddedEvent, Focus) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/favorites.addNew.html',
@@ -81,21 +81,28 @@ angular.module('directives.favorites.addNew', [
         favorites: '=',
         availableFavoriteTypes: '='
       },
-      link: function($scope) {
+      link: function ($scope) {
         $scope.favorite = {};
         $scope.displayPopover = false;
 
         $scope.getFavoriteTypeClasses = function getFavoriteTypeClasses(favoriteType) {
           if (favoriteType === 'UNISPORT') {
             return {
-              disabled: !_.isUndefined(_.find($scope.favorites, {'type': 'UNISPORT'}))
+              disabled: !_.isUndefined(_.find($scope.favorites, { type: 'UNISPORT' }))
             };
-          } else {
-            return {};
           }
+          return {};
         };
 
-        $scope.togglePopover = function() {
+        function setFocus() {
+          Focus.setFocus('.add-favorite-container a');
+        }
+
+        function resetPopover() {
+          $scope.favorite = {};
+        }
+
+        $scope.togglePopover = function () {
           $scope.displayPopover = !$scope.displayPopover;
 
           if ($scope.displayPopover) {
@@ -104,26 +111,18 @@ angular.module('directives.favorites.addNew', [
           }
         };
 
-        $scope.closePopover = function() {
+        $scope.closePopover = function () {
           $scope.displayPopover = false;
         };
 
-        $scope.selectFavoriteType = function(favoriteType) {
+        $scope.selectFavoriteType = function (favoriteType) {
           $scope.favorite.type = favoriteType;
           Focus.setFocus('.add-favorite-container input');
         };
 
-        $scope.$on(NewFavoriteAddedEvent, function() {
+        $scope.$on(NewFavoriteAddedEvent, function () {
           resetPopover();
         });
-
-        function setFocus() {
-          Focus.setFocus('.add-favorite-container a');
-        };
-
-        function resetPopover() {
-          $scope.favorite = {};
-        };
       }
     };
   });

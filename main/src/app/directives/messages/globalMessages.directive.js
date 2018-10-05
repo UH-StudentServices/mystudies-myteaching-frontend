@@ -18,37 +18,43 @@
 angular.module('directives.globalMessages',
   ['directives.message'])
 
-  .factory('GlobalMessagesService', function(MessageTypes, $window) {
-    var messages = [],
-        Rx = $window.Rx,
-        msgSubject = new Rx.Subject(),
-        errorMsg = {
-          messageType: MessageTypes.ERROR,
-          key: 'globalMessages.errors.genericError'
-        };
+  .factory('GlobalMessagesService', function (MessageTypes, $window) {
+    var messages = [];
+
+
+    var Rx = $window.Rx;
+
+
+    var msgSubject = new Rx.Subject();
+
+
+    var errorMsg = {
+      messageType: MessageTypes.ERROR,
+      key: 'globalMessages.errors.genericError'
+    };
 
     return {
-      addErrorMessage: function() {
+      addErrorMessage: function () {
         if (!_.find(messages, errorMsg)) {
           messages.push(errorMsg);
           msgSubject.onNext(messages);
         }
       },
-      removeErrorMessage: function() {
+      removeErrorMessage: function () {
         messages = _.without(messages, errorMsg);
         msgSubject.onNext(messages);
       },
-      subscribe: function(fn) {
+      subscribe: function (fn) {
         return msgSubject.subscribe(fn);
       }
     };
   })
 
-  .factory('httpRequestInterceptor', function($q, GlobalMessagesService) {
+  .factory('httpRequestInterceptor', function ($q, GlobalMessagesService) {
     return {
-      responseError: function(err) {
-        if (err.config && err.config.url &&
-            err.config.url.indexOf('/api/') > -1 && err.status !== 404) {
+      responseError: function (err) {
+        if (err.config && err.config.url
+            && err.config.url.indexOf('/api/') > -1 && err.status !== 404) {
           GlobalMessagesService.addErrorMessage();
         }
 
@@ -57,25 +63,25 @@ angular.module('directives.globalMessages',
     };
   })
 
-  .config(function($httpProvider) {
+  .config(function ($httpProvider) {
     $httpProvider.interceptors.push('httpRequestInterceptor');
   })
 
-  .directive('globalMessages', function(GlobalMessagesService, MessageTypes) {
+  .directive('globalMessages', function (GlobalMessagesService, MessageTypes) {
     return {
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/messages/globalMessages.html',
-      link: function(scope) {
-        GlobalMessagesService.subscribe(function(messages) {
-          scope.$applyAsync(function() {
+      link: function (scope) {
+        GlobalMessagesService.subscribe(function (messages) {
+          scope.$applyAsync(function () {
             scope.messages = messages;
           });
         });
 
         _.assign(scope, {
           messages: [],
-          dismissMessage: function(message) {
+          dismissMessage: function (message) {
             if (message.messageType === MessageTypes.ERROR) {
               GlobalMessagesService.removeErrorMessage();
             }

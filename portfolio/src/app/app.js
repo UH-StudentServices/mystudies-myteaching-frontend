@@ -92,7 +92,7 @@ angular.module('opintoniPortfolioApp', [
   'utils.moment'
 ])
 
-  .config(function(
+  .config(function (
     $stateProvider,
     $urlRouterProvider,
     $translateProvider,
@@ -100,8 +100,8 @@ angular.module('opintoniPortfolioApp', [
     $locationProvider,
     $compileProvider,
     $qProvider,
-    $sceDelegateProvider) {
-
+    $sceDelegateProvider
+  ) {
     $locationProvider.html5Mode(true);
 
     $httpProvider.interceptors.push('HttpInterceptor');
@@ -117,30 +117,30 @@ angular.module('opintoniPortfolioApp', [
       templateUrl: 'app/partials/_portfolio.html',
       controller: 'MainCtrl',
       resolve: {
-        session: function(SessionService) {
+        session: function (SessionService) {
           return SessionService.getSession();
         },
-        state: function(StateService, $stateParams, session) {
+        state: function (StateService, $stateParams, session) {
           return StateService.resolve(session, $stateParams.lang, $stateParams.userpath);
         },
-        userSettings: function(StateService, State, UserSettingsService, state) {
+        userSettings: function (StateService, State, UserSettingsService, state) {
           if (state === State.PRIVATE) {
             return UserSettingsService.getUserSettings();
           }
         },
-        notifications: function(NotificationsResource, session) {
+        notifications: function (NotificationsResource, session) {
           if (session && session.$resolved) {
             return NotificationsResource.getNotifications();
           }
         },
-        portfolio: function(PortfolioService,
-                            FreeTextContentService,
-                            $location,
-                            $state,
-                            $stateParams,
-                            session,
-                            state,
-                            $translate) {
+        portfolio: function (PortfolioService,
+          FreeTextContentService,
+          $location,
+          $state,
+          $stateParams,
+          session,
+          state,
+          $translate) {
           $translate.fallbackLanguage($stateParams.lang);
           return PortfolioService.findPortfolioByPath(state, $stateParams.lang, $stateParams.userpath)
             .catch(function findPortfolioFail(error) {
@@ -148,11 +148,11 @@ angular.module('opintoniPortfolioApp', [
                 if (session) {
                   $state.go('notFound');
                 } else {
-                  $state.go('loginNeeded', {originalUrl: $location.absUrl()});
+                  $state.go('loginNeeded', { originalUrl: $location.absUrl() });
                 }
               }
             })
-            .finally(function() {
+            .finally(function () {
               FreeTextContentService.initCache();
             });
         }
@@ -172,7 +172,7 @@ angular.module('opintoniPortfolioApp', [
     ]);
   })
 
-  .run(function($rootScope, $window, LanguageService, AnalyticsService) {
+  .run(function ($rootScope, $window, LanguageService, AnalyticsService) {
     var language = LanguageService.getCurrent();
 
     $rootScope.selectedLanguage = language;

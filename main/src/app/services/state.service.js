@@ -32,19 +32,17 @@ angular.module('services.state', [
     LANDER: 'login'
   })
 
-  .factory('StateService', function($state, $location, State, Configuration, Role, ConfigurationProperties) {
-
-    var stateMatches = function(state, name) {
+  .factory('StateService', function ($state, $location, State, Configuration, Role, ConfigurationProperties) {
+    var stateMatches = function (state, name) {
       if (state === name || state.name === name) {
         return true;
-      } else if (state.parent) {
+      } if (state.parent) {
         return stateMatches(state.parent, name);
-      } else {
-        return false;
       }
+      return false;
     };
 
-    var currentOrParentStateMatches = function(stateToMatch) {
+    var currentOrParentStateMatches = function (stateToMatch) {
       return stateMatches($state.current, stateToMatch);
     };
 
@@ -67,11 +65,10 @@ angular.module('services.state', [
 
       if (configurationPropertyContains(ConfigurationProperties.STUDENT_APP_URL, host)) {
         return State.MY_STUDIES;
-      } else if (configurationPropertyContains(ConfigurationProperties.TEACHER_APP_URL, host)) {
+      } if (configurationPropertyContains(ConfigurationProperties.TEACHER_APP_URL, host)) {
         return State.MY_TEACHINGS;
-      } else {
-        throw Error('hostname does not match any configured values');
       }
+      throw Error('hostname does not match any configured values');
     };
 
     function configurationPropertyContains(property, expectedValue) {
@@ -83,11 +80,10 @@ angular.module('services.state', [
 
       if (defaultRole === Role.TEACHER) {
         return State.MY_TEACHINGS;
-      } else if (defaultRole === Role.STUDENT) {
+      } if (defaultRole === Role.STUDENT) {
         return State.MY_STUDIES;
-      } else {
-        return State.ACCESS_DENIED;
       }
+      return State.ACCESS_DENIED;
     };
 
     return {
@@ -96,5 +92,4 @@ angular.module('services.state', [
       getDefaultStateForUser: getDefaultStateForUser,
       currentOrParentStateMatches: currentOrParentStateMatches
     };
-
   });

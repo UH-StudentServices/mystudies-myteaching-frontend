@@ -25,6 +25,6 @@ angular.module('resources.degreeProgrammes', [])
     }
 
     return {
-      getDegreeProgrammes: getDegreeProgrammes,
+      getDegreeProgrammes: getDegreeProgrammes
     };
   });

@@ -19,28 +19,27 @@ angular.module('services.officeHours', [
   'resources.officeHours',
   'resources.degreeProgrammes'
 ])
-.factory('OfficeHoursService', function SessionService(OfficeHoursResource, DegreeProgrammesResource) {
+  .factory('OfficeHoursService', function SessionService(OfficeHoursResource, DegreeProgrammesResource) {
+    function loadDegreeProgrammes() {
+      return DegreeProgrammesResource.getDegreeProgrammes();
+    }
 
-  function loadDegreeProgrammes() {
-    return DegreeProgrammesResource.getDegreeProgrammes();
-  }
+    function loadOfficeHours() {
+      return OfficeHoursResource.getOfficeHours();
+    }
 
-  function loadOfficeHours() {
-    return OfficeHoursResource.getOfficeHours();
-  }
+    function saveOfficeHours(officeHours) {
+      return OfficeHoursResource.saveOfficeHours(officeHours);
+    }
 
-  function saveOfficeHours(officeHours) {
-    return OfficeHoursResource.saveOfficeHours(officeHours);
-  }
+    function deleteOfficeHours() {
+      return OfficeHoursResource.deleteOfficeHours();
+    }
 
-  function deleteOfficeHours() {
-    return OfficeHoursResource.deleteOfficeHours();
-  }
-
-  return {
-    loadDegreeProgrammes: loadDegreeProgrammes,
-    loadOfficeHours: loadOfficeHours,
-    saveOfficeHours: saveOfficeHours,
-    deleteOfficeHours: deleteOfficeHours
-  };
-});
+    return {
+      loadDegreeProgrammes: loadDegreeProgrammes,
+      loadOfficeHours: loadOfficeHours,
+      saveOfficeHours: saveOfficeHours,
+      deleteOfficeHours: deleteOfficeHours
+    };
+  });

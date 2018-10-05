@@ -17,18 +17,24 @@
 
 angular.module('directives.removeFavorite', [])
   .constant('RemoveFavoriteEvent', 'REMOVE_FAVORITE')
-  .directive('removeFavorite', function(RemoveFavoriteEvent) {
+  .directive('removeFavorite', function (RemoveFavoriteEvent) {
     return {
       restrict: 'A',
-      link: function($scope, el, attrs) {
-        var favorite = $scope.$eval(attrs.data),
-            closeButton = $('<div class="favorites-list__remove" role="button"></div>'),
-            screen = $('<div class="favorites-list__remove-screen"></div>'),
-            element = $(el);
+      link: function ($scope, el, attrs) {
+        var favorite = $scope.$eval(attrs.data);
+
+
+        var closeButton = $('<div class="favorites-list__remove" role="button"></div>');
+
+
+        var screen = $('<div class="favorites-list__remove-screen"></div>');
+
+
+        var element = $(el);
 
         element.append(screen);
         element.append(closeButton);
-        closeButton.bind('click', function() {
+        closeButton.bind('click', function () {
           $scope.$emit(RemoveFavoriteEvent, favorite.id, favorite.type);
           return false;
         });

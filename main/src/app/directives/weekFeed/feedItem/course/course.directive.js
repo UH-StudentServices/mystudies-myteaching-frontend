@@ -21,29 +21,28 @@ angular.module('directives.weekFeed.feedItem.course', [
 ])
 
   .constant('CourseMaterialTranslationKeys', {
-    'COURSE_PAGE': 'weekFeed.courseMaterials',
-    'MOODLE': 'weekFeed.courseMaterialsMoodle',
-    'WIKI': 'weekFeed.courseMaterialsWiki'
+    COURSE_PAGE: 'weekFeed.courseMaterials',
+    MOODLE: 'weekFeed.courseMaterialsMoodle',
+    WIKI: 'weekFeed.courseMaterialsWiki'
   })
 
   .constant('CourseMaterialTranslationKeysShort', {
-    'COURSE_PAGE': 'weekFeed.courseMaterialsShort',
-    'MOODLE': 'weekFeed.courseMaterialsMoodleShort',
-    'WIKI': 'weekFeed.courseMaterialsWikiShort'
+    COURSE_PAGE: 'weekFeed.courseMaterialsShort',
+    MOODLE: 'weekFeed.courseMaterialsMoodleShort',
+    WIKI: 'weekFeed.courseMaterialsWikiShort'
   })
 
   .constant('CourseMaterialTypes', {
-    'COURSE_PAGE': 'COURSE_PAGE',
-    'MOODLE': 'MOODLE',
-    'WIKI': 'WIKI'
+    COURSE_PAGE: 'COURSE_PAGE',
+    MOODLE: 'MOODLE',
+    WIKI: 'WIKI'
   })
 
   .constant('TeacherRoles', {
-    'OFFICIAL': 'official'
+    OFFICIAL: 'official'
   })
 
-  .directive('course', function($translate, TeacherRoles) {
-
+  .directive('course', function ($translate, TeacherRoles) {
     return {
       restrict: 'E',
       replace: true,
@@ -51,31 +50,38 @@ angular.module('directives.weekFeed.feedItem.course', [
       scope: {
         feedItem: '='
       },
-      link: function(scope) {
-        var feedItem = scope.feedItem,
-            courseCode = feedItem.showAsChild ? '' : feedItem.code,
-            courseType = $translate.instant('codes.courseTypes.' + feedItem.typeCode),
-            courseCredits = feedItem.credits && !feedItem.showAsChild ?
-              '(' + feedItem.credits + $translate.instant('abbreviations.credits') + ')' :
-              '',
-            courseTeachers = feedItem.teachers.join(', ');
+      link: function (scope) {
+        var feedItem = scope.feedItem;
+
+
+        var courseCode = feedItem.showAsChild ? '' : feedItem.code;
+
+
+        var courseType = $translate.instant('codes.courseTypes.' + feedItem.typeCode);
+
+
+        var courseCredits = feedItem.credits && !feedItem.showAsChild
+          ? '(' + feedItem.credits + $translate.instant('abbreviations.credits') + ')'
+          : '';
+
+
+        var courseTeachers = feedItem.teachers.join(', ');
 
         scope.courseInfo = [courseCode, courseType + ' ' + courseCredits, courseTeachers]
           .filter(Boolean)
           .join(', ');
 
-        scope.isOfficial = function(feedItem) {
+        scope.isOfficial = function (feedItem) {
           return feedItem.teacherRole === TeacherRoles.OFFICIAL;
         };
       }
     };
   })
 
-  .directive('courseMaterialsLink', function($filter,
-                                             CourseMaterialTranslationKeys,
-                                             CourseMaterialTranslationKeysShort,
-                                             CourseMaterialTypes) {
-
+  .directive('courseMaterialsLink', function ($filter,
+    CourseMaterialTranslationKeys,
+    CourseMaterialTranslationKeysShort,
+    CourseMaterialTypes) {
     function getTranslationKey(courseMaterialType, compact) {
       var keys = compact ? CourseMaterialTranslationKeysShort : CourseMaterialTranslationKeys;
 
@@ -94,35 +100,35 @@ angular.module('directives.weekFeed.feedItem.course', [
         feedItem: '='
       },
       templateUrl: 'app/directives/weekFeed/feedItem/course/courseMaterialsLink.html',
-      link: function($scope) {
+      link: function ($scope) {
         if ($scope.feedItem.courseMaterial) {
           $scope.courseMaterialType = $scope.feedItem.courseMaterial.courseMaterialType;
           $scope.courseMaterialLinkTitle = getCourseMaterialLinkTitle($scope.courseMaterialType, $scope.compact);
         }
 
-        $scope.isMoodleAndNotCompact = function() {
+        $scope.isMoodleAndNotCompact = function () {
           return $scope.courseMaterialType === CourseMaterialTypes.MOODLE && !$scope.compact;
         };
       }
     };
   })
 
-  .filter('eventDateSpan', function() {
-
+  .filter('eventDateSpan', function () {
     function formatMomentDate(momentDate) {
       if (momentDate) {
         return momentDate.format('DD.MM.YYYY');
       }
     }
 
-    return function(startDate, endDate) {
-      var formattedStartDate = formatMomentDate(startDate),
-          formattedEndDate = formatMomentDate(endDate);
+    return function (startDate, endDate) {
+      var formattedStartDate = formatMomentDate(startDate);
+
+
+      var formattedEndDate = formatMomentDate(endDate);
 
       if (formattedStartDate && formattedEndDate && formattedStartDate !== formattedEndDate) {
         return formattedStartDate + ' - ' + formattedEndDate;
-      } else {
-        return formattedStartDate;
       }
+      return formattedStartDate;
     };
   });

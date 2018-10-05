@@ -18,7 +18,7 @@
 'use strict';
 
 angular.module('directives.userName', [])
-  .directive('userName', function() {
+  .directive('userName', function () {
     return {
       restrict: 'C',
       scope: {

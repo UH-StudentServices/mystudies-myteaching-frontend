@@ -17,23 +17,24 @@
 
 angular.module('services.scriptInjector', [])
 
-.factory('ScriptInjectorService', function($document) {
+  .factory('ScriptInjectorService', function ($document) {
+    function addScript(scriptId, scriptUrl) {
+      if (!$document[0].getElementById(scriptId)) {
+        var newScript = $document[0].createElement('script');
 
-  function addScript(scriptId, scriptUrl) {
-    if (!$document[0].getElementById(scriptId)) {
-      var newScript = $document[0].createElement('script'),
-          firstScript = $document[0].getElementsByTagName('script')[0];
 
-      newScript.id = scriptId;
-      newScript.type = 'text/javascript';
-      newScript.async = true;
-      newScript.src = scriptUrl;
+        var firstScript = $document[0].getElementsByTagName('script')[0];
 
-      firstScript.parentNode.insertBefore(newScript, firstScript);
+        newScript.id = scriptId;
+        newScript.type = 'text/javascript';
+        newScript.async = true;
+        newScript.src = scriptUrl;
+
+        firstScript.parentNode.insertBefore(newScript, firstScript);
+      }
     }
-  }
 
-  return {
-    addScript: addScript
-  };
-});
+    return {
+      addScript: addScript
+    };
+  });

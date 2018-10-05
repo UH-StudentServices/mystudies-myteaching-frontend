@@ -16,7 +16,7 @@
  */
 
 import config from '../config';
-import {loginAsStudent} from '../util';
+import { loginAsStudent } from '../util';
 
 fixture('My Studies')
   .page(config.myStudiesBaseUrl);

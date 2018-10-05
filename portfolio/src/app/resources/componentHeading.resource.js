@@ -17,13 +17,12 @@
 
 angular.module('resources.componentHeading', [])
 
-  .factory('ComponentHeadingResource', function($resource) {
-
+  .factory('ComponentHeadingResource', function ($resource) {
     function componentHeadingResource(portfolioId) {
       return $resource('/api/private/v1/portfolio/:portfolioId/component-headings', {
         portfolioId: portfolioId
       }, {
-        'save': {
+        save: {
           method: 'POST'
         }
       });
@@ -36,5 +35,4 @@ angular.module('resources.componentHeading', [])
     return {
       updateHeading: updateHeading
     };
-
   });

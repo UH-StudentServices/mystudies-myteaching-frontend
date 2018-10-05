@@ -16,13 +16,13 @@
  */
 
 angular.module('portfolioErrors', ['services.login'])
-  .config(function($stateProvider) {
+  .config(function ($stateProvider) {
     $stateProvider
       .state('error', {
         abstract: true,
         url: '/error',
         templateUrl: 'app/partials/errorPages/_error.html',
-        controller: ['$scope', 'pageHeaderLinks', function($scope, pageHeaderLinks) {
+        controller: ['$scope', 'pageHeaderLinks', function ($scope, pageHeaderLinks) {
           $scope.pageHeaderLinks = pageHeaderLinks;
         }]
       })
@@ -35,8 +35,8 @@ angular.module('portfolioErrors', ['services.login'])
         parent: 'error',
         url: '/loginNeeded',
         templateUrl: 'app/partials/errorPages/_error.loginNeeded.html',
-        controller: function($scope, $stateParams, Configuration, LoginService) {
-          $scope.redirectToLogin =  function redirectToLogin() {
+        controller: function ($scope, $stateParams, Configuration, LoginService) {
+          $scope.redirectToLogin = function redirectToLogin() {
             LoginService.goToLogin($stateParams.originalUrl);
           };
         },

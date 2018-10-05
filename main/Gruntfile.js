@@ -15,15 +15,29 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/* eslint global-require: 0 */
+
 'use strict';
 
-var httpProxy = require('http-proxy'),
-    modRewrite = require('connect-modrewrite'),
-    urlUtil = require('url'),
-    proxy,
-    proxyPaths,
-    proxyMiddleware,
-    gruntPlugins;
+var httpProxy = require('http-proxy');
+
+
+var modRewrite = require('connect-modrewrite');
+
+
+var urlUtil = require('url');
+
+
+var proxy;
+
+
+var proxyPaths;
+
+
+var proxyMiddleware;
+
+
+var gruntPlugins;
 
 // Grunt plugins must be loaded manually since load-grunt-tasks doesn't know
 // how to load node_modules from parent dir as of this writing
@@ -67,18 +81,18 @@ proxyPaths = [
   '/redirect',
   '/files'];
 
-proxyMiddleware = function(req, res, next) {
+proxyMiddleware = function (req, res, next) {
   var path = urlUtil.parse(req.url).pathname;
 
-  if (proxyPaths.some(function(p) {return path.indexOf(p) === 0;})) {
+  if (proxyPaths.some(function (p) { return path.indexOf(p) === 0; })) {
     proxy.web(req, res);
   } else {
     next();
   }
 };
 
-module.exports = function(grunt) {
-  gruntPlugins.forEach(function(plugin) {
+module.exports = function (grunt) {
+  gruntPlugins.forEach(function (plugin) {
     grunt.loadTasks('../node_modules/' + plugin + '/tasks');
   });
 
@@ -133,10 +147,10 @@ module.exports = function(grunt) {
 
           },
           middleware: [proxyMiddleware,
-                       modRewrite([
-                        '^/proxy/hyyravintolat http://messi.hyyravintolat.fi/publicapi [P]',
-                        '^[^\\.]*$ /index.html [L]'
-                       ])
+            modRewrite([
+              '^/proxy/hyyravintolat http://messi.hyyravintolat.fi/publicapi [P]',
+              '^[^\\.]*$ /index.html [L]'
+            ])
           ]
         }
       }
@@ -165,7 +179,7 @@ module.exports = function(grunt) {
         options: {
           map: true,
           processors: [
-            require('autoprefixer')({browsers: ['last 3 versions']})
+            require('autoprefixer')({ browsers: ['last 3 versions'] })
           ]
         },
         src: 'src/assets/styles/main.css',
@@ -175,7 +189,7 @@ module.exports = function(grunt) {
         options: {
           map: false,
           processors: [
-            require('autoprefixer')({browsers: ['last 3 versions']})
+            require('autoprefixer')({ browsers: ['last 3 versions'] })
           ]
         },
         src: 'src/assets/styles/main.css',
@@ -287,7 +301,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: 'src',
           src: ['app/vendor/ng-file-upload/FileAPI.min.js',
-                'app/vendor/ng-file-upload/FileAPI.flash.swf'],
+            'app/vendor/ng-file-upload/FileAPI.flash.swf'],
           dest: '<%= application.dist %>/app'
         }]
       },
@@ -331,7 +345,7 @@ module.exports = function(grunt) {
         singleModule: true,
         module: 'opintoniApp',
         existingModule: true,
-        rename: function(moduleName) {
+        rename: function (moduleName) {
           return moduleName.replace('../.tmp/src/', '');
         }
       },

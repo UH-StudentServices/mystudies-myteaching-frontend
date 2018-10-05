@@ -17,8 +17,7 @@
 
 angular.module('directives.stickyMessage', ['directives.message', 'services.configuration'])
 
-  .directive('stickyMessage', function(MessageTypes, Configuration) {
-
+  .directive('stickyMessage', function (MessageTypes, Configuration) {
     return {
       restrict: 'E',
       replace: true,
@@ -27,8 +26,7 @@ angular.module('directives.stickyMessage', ['directives.message', 'services.conf
         environments: '=',
         messageKey: '@'
       },
-      link: function(scope, el) {
-
+      link: function (scope, el) {
         if (_.includes(scope.environments, Configuration.environment)) {
           scope.message = {
             messageType: MessageTypes.INFO,

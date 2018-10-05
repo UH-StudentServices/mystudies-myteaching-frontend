@@ -17,7 +17,7 @@
 
 angular.module('directives.accordion', [])
 
-  .directive('accordion', function($timeout) {
+  .directive('accordion', function ($timeout) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/accordion/accordion.html',
@@ -26,9 +26,11 @@ angular.module('directives.accordion', [])
         headingKey: '@',
         portfolioLang: '@'
       },
-      link: function(scope, el) {
-        var CONTENT_AREA_SELECTOR = '.accordion__contents',
-            contentHolder = el.find(CONTENT_AREA_SELECTOR);
+      link: function (scope, el) {
+        var CONTENT_AREA_SELECTOR = '.accordion__contents';
+
+
+        var contentHolder = el.find(CONTENT_AREA_SELECTOR);
 
         function toggle() {
           scope.isOpen = !scope.isOpen;
@@ -40,9 +42,9 @@ angular.module('directives.accordion', [])
           toggle: toggle
         });
 
-        $timeout(function() {
-          var textOrElementNodes = contentHolder.contents().toArray().filter(function(el) {
-            return [1,3].indexOf(el.nodeType) !== -1;
+        $timeout(function () {
+          var textOrElementNodes = contentHolder.contents().toArray().filter(function (element) {
+            return [1, 3].indexOf(element.nodeType) !== -1;
           });
 
           if (!textOrElementNodes.length) {

@@ -30,22 +30,21 @@ angular.module('directives.userMenu.settings', [
 ])
   .constant('userAvatarUpdatedEvent', 'USER_AVATAR_UPDATED_EVENT')
 
-  .directive('settings', function($window,
-                                  $rootScope,
-                                  Upload,
-                                  userAvatarUpdatedEvent,
-                                  UserSettingsService,
-                                  PortfolioService,
-                                  SessionService,
-                                  BrowserUtil,
-                                  Role) {
+  .directive('settings', function ($window,
+    $rootScope,
+    Upload,
+    userAvatarUpdatedEvent,
+    UserSettingsService,
+    PortfolioService,
+    SessionService,
+    BrowserUtil,
+    Role) {
     return {
       restrict: 'E',
       replace: true,
       scope: true,
       templateUrl: 'app/directives/header/userMenu/settings/userMenu.settings.html',
-      link: function($scope) {
-
+      link: function ($scope) {
         $scope.showAvatarChangeType = false;
         $scope.cameraOn = false;
         $scope.supportsCamera = BrowserUtil.supportsCamera();
@@ -58,7 +57,7 @@ angular.module('directives.userMenu.settings', [
           $scope.session = session;
         });
 
-        $scope.openPortfolio = function(role) {
+        $scope.openPortfolio = function (role) {
           PortfolioService.getPortfolio(role).then(function getPortfolioSuccess(portfolio) {
             $window.location.href = portfolio.url;
           }).catch(function getPortfolioFail(data) {
@@ -70,18 +69,17 @@ angular.module('directives.userMenu.settings', [
           });
         };
 
-        $scope.resetMenu = function() {
+        $scope.resetMenu = function () {
           $scope.showAvatarChangeType = false;
           $scope.cameraOn = false;
           $scope.$broadcast('STOP_WEBCAM');
         };
 
-        $scope.$on(userAvatarUpdatedEvent, function() {
-          SessionService.getSession(true).then(function(session) {
+        $scope.$on(userAvatarUpdatedEvent, function () {
+          SessionService.getSession(true).then(function (session) {
             $scope.session.avatarUrl = session.avatarUrl + '?' + new Date().getTime();
           });
         });
       }
     };
   });
-

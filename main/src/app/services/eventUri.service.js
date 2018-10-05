@@ -21,8 +21,7 @@ angular.module('services.eventUri', ['services.location'])
     HELSINKI: 'Europe/Helsinki'
   })
 
-  .factory('EventUriService', function(Timezones, LocationService, BrowserUtil) {
-
+  .factory('EventUriService', function (Timezones, LocationService, BrowserUtil) {
     function hasStreetAddress(location) {
       return location.streetAddress;
     }
@@ -42,38 +41,52 @@ angular.module('services.eventUri', ['services.location'])
         var encoded = encodeURIComponent(getPlace(location));
 
         return 'https://www.google.fi/maps/place/' + encoded;
-      } else {
-        return undefined;
       }
+      return undefined;
     }
 
     function getReittiopasUri(startDate, location, fromAddress) {
-      var to = location.streetAddress,
-          start = startDate.tz(Timezones.HELSINKI),
-          minutes = start.minute(),
-          hours = start.hour(),
-          date = start.date(),
-          month = start.month() + 1,
-          year = start.year();
+      var to = location.streetAddress;
+
+
+      var start = startDate.tz(Timezones.HELSINKI);
+
+
+      var minutes = start.minute();
+
+
+      var hours = start.hour();
+
+
+      var date = start.date();
+
+
+      var month = start.month() + 1;
+
+
+      var year = start.year();
 
       if (BrowserUtil.isMobile()) {
         return sprintf(
-          'http://m.reittiopas.fi/fi/index.php?txtFrom=%s&txtTo=%s&minute=%02s&hour=%s&day=%s' +
-          '&month=%s&year=%s&timetype=arrival&search=Hae+Reitti&cmargin=3&wspeed=70' +
-          '&route-type=fastest&stz=0&bus=bus&tram=tram&metro=metro&train=train&uline=uline' +
-          '&service=service&nroutes=3&is-now=OFF',
-          fromAddress.substr(0, fromAddress.indexOf(',')), to, minutes, hours, date, month, year);
-      } else {
-        return sprintf(
-          'http://www.reittiopas.fi/fi/?from=%s&to=%s&minute=%02s&hour=%s&day=%s&month=%s&year=%s' +
-          '&timetype=arrival',
-          fromAddress, to, minutes, hours, date, month, year);
+          'http://m.reittiopas.fi/fi/index.php?txtFrom=%s&txtTo=%s&minute=%02s&hour=%s&day=%s'
+          + '&month=%s&year=%s&timetype=arrival&search=Hae+Reitti&cmargin=3&wspeed=70'
+          + '&route-type=fastest&stz=0&bus=bus&tram=tram&metro=metro&train=train&uline=uline'
+          + '&service=service&nroutes=3&is-now=OFF',
+          fromAddress.substr(0, fromAddress.indexOf(',')), to, minutes, hours, date, month, year
+        );
       }
+      return sprintf(
+        'http://www.reittiopas.fi/fi/?from=%s&to=%s&minute=%02s&hour=%s&day=%s&month=%s&year=%s'
+          + '&timetype=arrival',
+        fromAddress, to, minutes, hours, date, month, year
+      );
     }
 
     function reittiopasUriCanBeGenerated(startDate, location) {
-      var now = moment().tz(Timezones.HELSINKI),
-          start = startDate.clone().tz(Timezones.HELSINKI);
+      var now = moment().tz(Timezones.HELSINKI);
+
+
+      var start = startDate.clone().tz(Timezones.HELSINKI);
 
       return hasStreetAddress(location) && now.isBefore(start) && start.diff(now, 'days') < 7;
     }

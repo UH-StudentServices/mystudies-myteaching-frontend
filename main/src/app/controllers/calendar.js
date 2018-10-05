@@ -20,10 +20,9 @@ angular.module('controllers.calendar', [
   'services.focus'
 ])
 
-  .controller('CalendarCtrl', function(
+  .controller('CalendarCtrl', function (
     $scope,
-    getEvents) {
-
+    getEvents
+  ) {
     $scope.events = getEvents();
-
   });

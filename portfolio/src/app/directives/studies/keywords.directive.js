@@ -17,7 +17,7 @@
 
 angular.module('directives.keywords', ['services.keyword', 'directives.inputUppercase', 'portfolioAnalytics'])
 
-  .directive('keywords', function($filter, AnalyticsService) {
+  .directive('keywords', function ($filter, AnalyticsService) {
     return {
       restrict: 'E',
       replace: true,
@@ -26,35 +26,34 @@ angular.module('directives.keywords', ['services.keyword', 'directives.inputUppe
         keywords: '='
       },
       templateUrl: 'app/directives/studies/keywords.html',
-      link: function($scope) {
-
+      link: function ($scope) {
         $scope.newKeyword = {};
 
-        $scope.addKeyword = function(title) {
-          if (!_.isEmpty(title) && !_.find($scope.keywords, {title: title})) {
+        $scope.addKeyword = function (title) {
+          if (!_.isEmpty(title) && !_.find($scope.keywords, { title: title })) {
             AnalyticsService.trackEvent(AnalyticsService.ec.STUDIES, AnalyticsService.ea.ADD_KEYWORD);
-            $scope.keywords.push({title: title});
+            $scope.keywords.push({ title: title });
             $scope.newKeyword = {};
           }
         };
 
-        $scope.removeKeyword = function(keyword) {
+        $scope.removeKeyword = function (keyword) {
           _.remove($scope.keywords, keyword);
         };
       }
     };
   })
 
-  .directive('keywordsSummary', function() {
+  .directive('keywordsSummary', function () {
     return {
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/studies/keywordsSummary.html',
       scope: {
       },
-      controller: function($scope, KeywordService) {
+      controller: function ($scope, KeywordService) {
         KeywordService.getKeywordsSubject()
-          .subscribe(function(keywords) {
+          .subscribe(function (keywords) {
             $scope.keywords = keywords;
           });
       }

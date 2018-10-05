@@ -24,24 +24,24 @@ angular.module('directives.favorites.addNew.twitter', [
     USER_TIMELINE: 'USER_TIMELINE'
   })
 
-  .directive('addNewTwitterFavorite', function(FavoritesService,
-                                               TwitterFeedTypes,
-                                               NewFavoriteAddedEvent) {
+  .directive('addNewTwitterFavorite', function (FavoritesService,
+    TwitterFeedTypes,
+    NewFavoriteAddedEvent) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/twitter/favorites.addNew.twitter.html',
       replace: true,
       scope: true,
-      link: function(scope) {
-        scope.addTwitterFavorite = function() {
+      link: function (scope) {
+        scope.addTwitterFavorite = function () {
           var insertTwitterFavoriteRequest = {
             feedType: TwitterFeedTypes.USER_TIMELINE,
             value: scope.twitterUsername
           };
 
           FavoritesService.saveTwitterFavorite(insertTwitterFavoriteRequest,
-                                               scope.favorite.type + '_' + TwitterFeedTypes.USER_TIMELINE)
-            .then(function() {
+            scope.favorite.type + '_' + TwitterFeedTypes.USER_TIMELINE)
+            .then(function () {
               scope.$emit(NewFavoriteAddedEvent);
             });
         };

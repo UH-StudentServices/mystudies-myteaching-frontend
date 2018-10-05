@@ -30,23 +30,22 @@ angular.module('directives.attainments', [
     en: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=6'
   })
 
-  .directive('attainments', function(AttainmentsService, MessageTypes, $rootScope, OodiLinks) {
+  .directive('attainments', function (AttainmentsService, MessageTypes, $rootScope, OodiLinks) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/attainments/attainments.html',
-      link: function($scope) {
-
+      link: function ($scope) {
         $scope.hasAttainments = false;
         $scope.numberOfVisibleAttainments = 3;
 
-        $scope.getOodiLink = function() {
+        $scope.getOodiLink = function () {
           return OodiLinks[$rootScope.selectedLanguage];
         };
 
-        AttainmentsService.hasStudyAttainments().then(function(hasAttainments) {
+        AttainmentsService.hasStudyAttainments().then(function (hasAttainments) {
           $scope.hasAttainments = hasAttainments;
           if (hasAttainments) {
-            AttainmentsService.getLastStudyAttainments().then(function(attainments) {
+            AttainmentsService.getLastStudyAttainments().then(function (attainments) {
               $scope.attainments = attainments;
               if ($scope.attainments.length === 0) {
                 $scope.message = {
@@ -62,7 +61,6 @@ angular.module('directives.attainments', [
             };
           }
         });
-
       }
     };
   });

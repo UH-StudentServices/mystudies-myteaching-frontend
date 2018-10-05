@@ -22,71 +22,71 @@ angular.module('directives.degrees', [
   'directives.editableHeading',
   'portfolioAnalytics'
 ])
-.directive('degrees', function(DegreeService,
-                               $state,
-                               AnalyticsService) {
-  return {
-    restrict: 'E',
-    replace: true,
-    scope: {
-      degreesData: '&',
-      portfolioId: '@',
-      portfolioLang: '@',
-      sectionName: '@'
-    },
-    templateUrl: 'app/directives/degrees/degrees.html',
-    link: function($scope) {
-      $scope.degrees = $scope.degreesData();
-      $scope.editing = false;
-      $scope.newDegree = {};
-      $scope.degreesValid = true;
+  .directive('degrees', function (DegreeService,
+    $state,
+    AnalyticsService) {
+    return {
+      restrict: 'E',
+      replace: true,
+      scope: {
+        degreesData: '&',
+        portfolioId: '@',
+        portfolioLang: '@',
+        sectionName: '@'
+      },
+      templateUrl: 'app/directives/degrees/degrees.html',
+      link: function ($scope) {
+        $scope.degrees = $scope.degreesData();
+        $scope.editing = false;
+        $scope.newDegree = {};
+        $scope.degreesValid = true;
 
-      $scope.edit = function() {
-        $scope.editing = true;
-        $scope.origDegrees = $scope.degrees.slice();
-        $scope.origDescriptions = descriptions($scope.degrees);
-      };
+        $scope.edit = function () {
+          $scope.editing = true;
+          $scope.origDegrees = $scope.degrees.slice();
+          $scope.origDescriptions = descriptions($scope.degrees);
+        };
 
-      var isValid = function() {
-        return $scope.degrees.every(function(degree) {
-          return degree.title && degree.dateOfDegree;
-        });
-      };
+        var isValid = function () {
+          return $scope.degrees.every(function (degree) {
+            return degree.title && degree.dateOfDegree;
+          });
+        };
 
-      $scope.refreshValidity = _.debounce(function() {
-        $scope.degreesValid = isValid();
-      }, 500);
+        $scope.refreshValidity = _.debounce(function () {
+          $scope.degreesValid = isValid();
+        }, 500);
 
-      $scope.markAllSubmitted = function() {
-        $scope.degrees.forEach(function(degree) { degree.submitted = true; });
-      };
+        $scope.markAllSubmitted = function () {
+          $scope.degrees.forEach(function (degree) { degree.submitted = true; });
+        };
 
-      function descriptions(degreeArray) {
-        return _.map(degreeArray, function(value, index) {
-          return value.description ? index : null;
-        });
-      }
-
-      function trackIfNeeded() {
-        AnalyticsService.trackEventIfAdded(_.concat($scope.origDegrees, $scope.origDescriptions),
-          _.concat($scope.degrees, descriptions($scope.degrees)),
-          AnalyticsService.ec.DEGREES, AnalyticsService.ea.ADD);
-      }
-
-      $scope.exitEdit = function() {
-        if (isValid()) {
-          trackIfNeeded();
-
-          $scope.$broadcast('saveComponent');
-          $scope.markAllSubmitted();
-
-          DegreeService.updateDegrees($scope.portfolioId, $scope.degrees).then(function(data) {
-            $scope.degrees = data;
-            $scope.editing = false;
-            $state.reload(); // https://jira.it.helsinki.fi/browse/OO-1004
+        function descriptions(degreeArray) {
+          return _.map(degreeArray, function (value, index) {
+            return value.description ? index : null;
           });
         }
-      };
-    }
-  };
-});
+
+        function trackIfNeeded() {
+          AnalyticsService.trackEventIfAdded(_.concat($scope.origDegrees, $scope.origDescriptions),
+            _.concat($scope.degrees, descriptions($scope.degrees)),
+            AnalyticsService.ec.DEGREES, AnalyticsService.ea.ADD);
+        }
+
+        $scope.exitEdit = function () {
+          if (isValid()) {
+            trackIfNeeded();
+
+            $scope.$broadcast('saveComponent');
+            $scope.markAllSubmitted();
+
+            DegreeService.updateDegrees($scope.portfolioId, $scope.degrees).then(function (data) {
+              $scope.degrees = data;
+              $scope.editing = false;
+              $state.reload(); // https://jira.it.helsinki.fi/browse/OO-1004
+            });
+          }
+        };
+      }
+    };
+  });

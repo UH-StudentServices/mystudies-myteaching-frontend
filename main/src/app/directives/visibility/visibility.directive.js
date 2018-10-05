@@ -20,105 +20,107 @@ angular.module('directives.visibility', [
   'services.session',
   'utils.browser'])
 
-.constant('Visibility', {
-  MY_TEACHINGS_ONLY:
+  .constant('Visibility', {
+    MY_TEACHINGS_ONLY:
     function teacherOnly($q, StateService, State, SessionService, Role, Configuration, BrowserUtil) {
       return $q.resolve(StateService.getRootStateName() === State.MY_TEACHINGS);
     },
-  MY_STUDIES_ONLY:
+    MY_STUDIES_ONLY:
     function studentOnly($q, StateService, State, SessionService, Role, Configuration, BrowserUtil) {
       return $q.resolve(StateService.getRootStateName() === State.MY_STUDIES);
     },
-  TEACHER_ONLY:
+    TEACHER_ONLY:
     function teacherOnly($q, StateService, State, SessionService, Role, Configuration, BrowserUtil) {
       return SessionService.isInRole(Role.TEACHER);
     },
-  STUDENT_ONLY:
+    STUDENT_ONLY:
     function teacherOnly($q, StateService, State, SessionService, Role, Configuration, BrowserUtil) {
       return SessionService.isInRole(Role.STUDENT);
     },
-  ADMIN_ONLY:
+    ADMIN_ONLY:
     function adminOnly($q, StateService, State, SessionService, Role, Configuration, BrowserUtil) {
       return SessionService.isInRole(Role.ADMIN);
     },
-  DEV_AND_QA_ONLY:
+    DEV_AND_QA_ONLY:
     function devAndQaOnly($q, StateService, State, SessionService, Role, Configuration, BrowserUtil) {
       var env = Configuration.environment;
 
       return $q.resolve(
-          env === 'local' ||
-          env === 'dev' ||
-          env === 'qa');
+        env === 'local'
+          || env === 'dev'
+          || env === 'qa'
+      );
     },
-  MOBILE_ONLY:
+    MOBILE_ONLY:
     function mobileOnly($q, StateService, State, SessionService, Role, Configuration, BrowserUtil) {
       return $q.resolve(BrowserUtil.isMobile());
     },
-  DESKTOP_ONLY:
+    DESKTOP_ONLY:
     function desktopOnly($q, StateService, State, SessionService, Role, Configuration, BrowserUtil) {
       return $q.resolve(!BrowserUtil.isMobile());
     }
-})
+  })
 
 /**
 * Implemented based on ngIf directive
 * https://github.com/angular/angular.js/blob/master/src/ng/directive/ngIf.js#L3
 */
-.directive('limitVisibility',
-  function($q, $animate, $compile, Visibility, StateService, State, SessionService, Role, Configuration, BrowserUtil) {
+  .directive('limitVisibility',
+    function ($q, $animate, $compile, Visibility, StateService, State, SessionService, Role, Configuration, BrowserUtil) {
+      return {
+        multiElement: true,
+        transclude: 'element',
+        priority: 600,
+        terminal: true,
+        restrict: 'A',
+        scope: {
+          limitVisibility: '='
+        },
+        link: function ($scope, $element, $attr, ctrl, $transclude) {
+          var element;
 
-    return {
-      multiElement: true,
-      transclude: 'element',
-      priority: 600,
-      terminal: true,
-      restrict: 'A',
-      scope: {
-        limitVisibility: '='
-      },
-      link: function($scope, $element, $attr, ctrl, $transclude) {
 
-        var element,
-            childScope,
-            viewportSizeChangesSubscription = BrowserUtil.viewportSizeSubject.subscribe(evaluateVisibility);
+          var childScope;
 
-        function evaluateVisibility() {
-          $q.all(_.map(limitArgumentsToFunctions(), function(limitFunction) {
-            return limitFunction($q, StateService, State, SessionService, Role, Configuration, BrowserUtil);
-          }))
-          .then(render);
-        }
 
-        function render(visibilities) {
-          if (_.every(visibilities, Boolean)) {
-            if (!childScope) {
-              $transclude(function(clone, newScope) {
-                element = clone;
-                childScope = newScope;
-                $animate.enter(clone, $element.parent(), $element);
-              });
-            }
-          } else {
-            if (element) {
-              element.remove();
-              element = null;
-            }
-            if (childScope) {
-              childScope.$destroy();
-              childScope = null;
+          var viewportSizeChangesSubscription = BrowserUtil.viewportSizeSubject.subscribe(evaluateVisibility);
+
+          function evaluateVisibility() {
+            $q.all(_.map(limitArgumentsToFunctions(), function (limitFunction) {
+              return limitFunction($q, StateService, State, SessionService, Role, Configuration, BrowserUtil);
+            }))
+              .then(render);
+          }
+
+          function render(visibilities) {
+            if (_.every(visibilities, Boolean)) {
+              if (!childScope) {
+                $transclude(function (clone, newScope) {
+                  element = clone;
+                  childScope = newScope;
+                  $animate.enter(clone, $element.parent(), $element);
+                });
+              }
+            } else {
+              if (element) {
+                element.remove();
+                element = null;
+              }
+              if (childScope) {
+                childScope.$destroy();
+                childScope = null;
+              }
             }
           }
-        }
 
-        function limitArgumentsToFunctions() {
-          return _.map($scope.limitVisibility, function(limit) {
-            if (Visibility[limit]) {
-              return Visibility[limit];
-            }
-            throw 'limitVisibility directive: Invalid Visibility argument ' + limit;
-          });
+          function limitArgumentsToFunctions() {
+            return _.map($scope.limitVisibility, function (limit) {
+              if (Visibility[limit]) {
+                return Visibility[limit];
+              }
+              throw 'limitVisibility directive: Invalid Visibility argument ' + limit;
+            });
+          }
         }
-      }
-    };
-  }
-);
+      };
+    });

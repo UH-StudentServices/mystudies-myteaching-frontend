@@ -26,7 +26,7 @@ angular.module('directives.fullScreenCalendar', [
     CALENDAR_MONTH: 'MONTH'
   })
 
-  .directive('fullScreenCalendar', function(
+  .directive('fullScreenCalendar', function (
     $window,
     $state,
     $stateParams,
@@ -34,8 +34,8 @@ angular.module('directives.fullScreenCalendar', [
     LoaderKey,
     UserPreferencesService,
     AnalyticsService,
-    TabsToCalendarViews) {
-
+    TabsToCalendarViews
+  ) {
     return {
       restrict: 'E',
       replace: 'true',
@@ -43,25 +43,25 @@ angular.module('directives.fullScreenCalendar', [
         eventsPromise: '='
       },
       templateUrl: 'app/directives/fullScreenCalendar/fullScreenCalendar.html',
-      link: function($scope) {
+      link: function ($scope) {
         var eventsPromise = $scope.eventsPromise;
 
         Loader.start(LoaderKey);
-        $scope.eventsPromise.then(function(events) {
+        $scope.eventsPromise.then(function (events) {
           $scope.events = events;
-        }).finally(function() {
+        }).finally(function () {
           Loader.stop(LoaderKey);
         });
 
         $scope.oldScrollX = $window.scrollX;
         $scope.oldScrollY = $window.scrollY;
-        $window.scrollTo(0,0);
+        $window.scrollTo(0, 0);
 
         $scope.calendarView = TabsToCalendarViews[UserPreferencesService.getPreferences().selectedSubTab];
         $scope.currentDate = $stateParams.currentDate ? $stateParams.currentDate : moment();
 
-        $scope.$on('changeWeekFeedSubTab', function(evt, params) {
-          $scope.$apply(function() {
+        $scope.$on('changeWeekFeedSubTab', function (evt, params) {
+          $scope.$apply(function () {
             var tabName = params.subTab;
 
             $scope.calendarView = TabsToCalendarViews[tabName];
@@ -72,7 +72,7 @@ angular.module('directives.fullScreenCalendar', [
 
         $scope.close = function close() {
           $scope.$broadcast('eventCalendar.refreshCurrentDate');
-          $state.go($state.current.parent, {currentDate: $scope.currentDate});
+          $state.go($state.current.parent, { currentDate: $scope.currentDate });
           $window.scrollTo($scope.oldScrollX, $scope.oldScrollY);
         };
       }

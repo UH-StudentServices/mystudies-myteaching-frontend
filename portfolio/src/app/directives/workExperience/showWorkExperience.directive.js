@@ -19,29 +19,28 @@ angular.module('directives.showWorkExperience', [
   'dibari.angular-ellipsis'
 ])
 
-.directive('showWorkExperience', function() {
-  return {
-    restrict: 'E',
-    templateUrl: 'app/directives/workExperience/showWorkExperience.html',
-    link: function($scope) {
-      $scope.formatUrl = function(url) {
-        if (url) {
-          var normalizedUrl = url.toLowerCase();
+  .directive('showWorkExperience', function () {
+    return {
+      restrict: 'E',
+      templateUrl: 'app/directives/workExperience/showWorkExperience.html',
+      link: function ($scope) {
+        $scope.formatUrl = function (url) {
+          if (url) {
+            var normalizedUrl = url.toLowerCase();
 
-          if (normalizedUrl.startsWith('http://') || normalizedUrl.startsWith('https://')) {
-            return url;
-          } else {
+            if (normalizedUrl.startsWith('http://') || normalizedUrl.startsWith('https://')) {
+              return url;
+            }
             return 'http://' + url;
           }
-        }
-        return '';
-      };
-      $scope.showFull = function(workExperienceItem) {
-        workExperienceItem.showFull = true;
-      };
-      $scope.hideFull = function(workExperienceItem) {
-        workExperienceItem.showFull = false;
-      };
-    }
-  };
-});
+          return '';
+        };
+        $scope.showFull = function (workExperienceItem) {
+          workExperienceItem.showFull = true;
+        };
+        $scope.hideFull = function (workExperienceItem) {
+          workExperienceItem.showFull = false;
+        };
+      }
+    };
+  });

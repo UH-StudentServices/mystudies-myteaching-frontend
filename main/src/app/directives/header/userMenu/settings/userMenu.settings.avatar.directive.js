@@ -16,25 +16,24 @@
  */
 
 angular.module('directives.userMenu.settings.avatar', ['directives.imgLoad',
-                                                       'directives.uploadImage'])
+  'directives.uploadImage'])
   .constant('Camera', {
     START: 'START_WEBCAM',
     STOP: 'STOP_WEBCAM'
   })
 
-  .directive('avatar', function(userAvatarUpdatedEvent,
-                                startImageCropperEvent,
-                                Camera,
-                                UserSettingsService,
-                                BrowserUtil,
-                                ImageSourceMedia,
-                                AnalyticsService) {
+  .directive('avatar', function (userAvatarUpdatedEvent,
+    startImageCropperEvent,
+    Camera,
+    UserSettingsService,
+    BrowserUtil,
+    ImageSourceMedia,
+    AnalyticsService) {
     return {
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/header/userMenu/settings/userMenu.settings.avatar.html',
-      link: function($scope) {
-
+      link: function ($scope) {
         function reset() {
           $scope.stopCamera();
           $scope.resetMenu();
@@ -42,13 +41,13 @@ angular.module('directives.userMenu.settings.avatar', ['directives.imgLoad',
 
         $scope.showAvatarChangeType = false;
 
-        $scope.toggleChangeAvatar = function() {
+        $scope.toggleChangeAvatar = function () {
           $scope.showAvatarChangeType = !$scope.showAvatarChangeType;
         };
 
         $scope.supportsCamera = BrowserUtil.supportsCamera();
 
-        $scope.deleteUserAvatar = function() {
+        $scope.deleteUserAvatar = function () {
           UserSettingsService.deleteUserAvatar()
             .then(function deleteUserAvatarSuccess() {
               AnalyticsService.trackRemoveAvatar();
@@ -57,22 +56,22 @@ angular.module('directives.userMenu.settings.avatar', ['directives.imgLoad',
             });
         };
 
-        $scope.startCamera = function() {
+        $scope.startCamera = function () {
           $scope.$broadcast(Camera.START);
         };
 
-        $scope.stopCamera = function() {
+        $scope.stopCamera = function () {
           $scope.$broadcast(Camera.STOP);
           $scope.cameraOn = false;
         };
 
-        $scope.takeSnapshot = function() {
+        $scope.takeSnapshot = function () {
           var videoElement = $scope.avatarChannel.video;
 
           $scope.$broadcast(startImageCropperEvent, videoElement, ImageSourceMedia.WEBCAM);
         };
 
-        $scope.onStreaming = function() {
+        $scope.onStreaming = function () {
           $scope.cameraOn = true;
           $scope.$apply();
         };
@@ -81,15 +80,15 @@ angular.module('directives.userMenu.settings.avatar', ['directives.imgLoad',
           video: null // Will reference the video element on success
         };
 
-        $scope.upload = function(image, imageSourceMedia) {
-          return UserSettingsService.updateUserAvatar(image).then(function() {
+        $scope.upload = function (image, imageSourceMedia) {
+          return UserSettingsService.updateUserAvatar(image).then(function () {
             AnalyticsService.trackAddAvatar(imageSourceMedia);
             reset();
             $scope.$emit(userAvatarUpdatedEvent);
           });
         };
 
-        $scope.cancelUpload = function() {
+        $scope.cancelUpload = function () {
           reset();
         };
       }

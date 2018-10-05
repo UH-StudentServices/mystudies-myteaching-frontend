@@ -16,18 +16,18 @@
  */
 
 angular
-  .module('directives.favorites.flamma', ['services.favorites','services.language'])
-  .constant('FLAMMA_EVENTS',{
-      fi: 'https://flamma.helsinki.fi/infotaulu/all-events-students-fi.xml',
-      en: 'https://flamma.helsinki.fi/infotaulu/all-events-students-en.xml',
-      sv: 'https://flamma.helsinki.fi/infotaulu/all-events-students-sv.xml'
+  .module('directives.favorites.flamma', ['services.favorites', 'services.language'])
+  .constant('FLAMMA_EVENTS', {
+    fi: 'https://flamma.helsinki.fi/infotaulu/all-events-students-fi.xml',
+    en: 'https://flamma.helsinki.fi/infotaulu/all-events-students-en.xml',
+    sv: 'https://flamma.helsinki.fi/infotaulu/all-events-students-sv.xml'
   })
   .constant('FLAMMA_NEWS', {
-      fi: 'https://flamma.helsinki.fi/infotaulu/atom-news.xml',
-      en: 'https://flamma.helsinki.fi/infotaulu/atom-news-en.xml',
-      sv: 'https://flamma.helsinki.fi/infotaulu/atom-news-sv.xml'
+    fi: 'https://flamma.helsinki.fi/infotaulu/atom-news.xml',
+    en: 'https://flamma.helsinki.fi/infotaulu/atom-news-en.xml',
+    sv: 'https://flamma.helsinki.fi/infotaulu/atom-news-sv.xml'
   })
-  .directive('favoritesFlamma', function(FavoritesService, LanguageService, FLAMMA_EVENTS, FLAMMA_NEWS) {
+  .directive('favoritesFlamma', function (FavoritesService, LanguageService, FLAMMA_EVENTS, FLAMMA_NEWS) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/rss/favorites.rss.html',
@@ -35,7 +35,7 @@ angular
       scope: {
         data: '='
       },
-      link: function($scope, e, attr) {
+      link: function ($scope) {
         var feedUrl;
 
         switch ($scope.data.type) {
@@ -46,7 +46,7 @@ angular
             feedUrl = FLAMMA_NEWS[LanguageService.getCurrent()];
             break;
           default:
-            throw 'Unknown Flamma type: ' + $scope.data.type;
+            throw Error('Unknown Flamma type: ' + $scope.data.type);
         }
 
         FavoritesService.getRSSFeed(feedUrl)

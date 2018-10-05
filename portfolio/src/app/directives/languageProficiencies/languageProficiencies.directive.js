@@ -1,4 +1,4 @@
- /*
+/*
  * This file is part of MystudiesMyteaching application.
  *
  * MystudiesMyteaching application is free software: you can redistribute it and/or modify
@@ -19,10 +19,10 @@ angular.module('directives.languageProficiencies', [
   'services.languageProficiencies',
   'directives.editableHeading',
   'portfolioAnalytics'])
-  .directive('languageProficiencies', function(LanguageProficienciesService,
-                                               $filter,
-                                               $state,
-                                               AnalyticsService) {
+  .directive('languageProficiencies', function (LanguageProficienciesService,
+    $filter,
+    $state,
+    AnalyticsService) {
     return {
       restrict: 'E',
       replace: true,
@@ -32,58 +32,65 @@ angular.module('directives.languageProficiencies', [
         sectionName: '@'
       },
       templateUrl: 'app/directives/languageProficiencies/languageProficiencies.html',
-      link: function($scope) {
-        var updateBatch,
-            orderBy = $filter('orderBy'),
-            initUpdateBatch = function() {
-              updateBatch = {
-                updatedLanguageProficiencies: [],
-                newLanguageProficiencies: [],
-                deletedIds: []
-              };
-            },
-            newLanguageProficiency = function() {
-              return {languageName: '', proficiency: '', description: ''};
-            },
-            orderByName = function(languageProficiencies) {
-              return orderBy(languageProficiencies, 'languageName');
-            },
-            shouldUpdate = function() {
-              return _.some(updateBatch, 'length');
-            },
-            update = function(languageProficiency) {
-              if (languageProficiency.id) {
-                updateBatch.updatedLanguageProficiencies = updateBatch.updatedLanguageProficiencies
-                  .filter(function(el) {
-                    return el.id !== languageProficiency.id;
-                  })
-                  .concat(languageProficiency);
-              }
-            };
+      link: function ($scope) {
+        var updateBatch;
+        var orderBy = $filter('orderBy');
 
+        var initUpdateBatch = function () {
+          updateBatch = {
+            updatedLanguageProficiencies: [],
+            newLanguageProficiencies: [],
+            deletedIds: []
+          };
+        };
+
+        var newLanguageProficiency = function () {
+          return { languageName: '', proficiency: '', description: '' };
+        };
+
+        var orderByName = function (languageProficiencies) {
+          return orderBy(languageProficiencies, 'languageName');
+        };
+
+        var shouldUpdate = function () {
+          return _.some(updateBatch, 'length');
+        };
+
+        var update = function (languageProficiency) {
+          if (languageProficiency.id) {
+            updateBatch.updatedLanguageProficiencies = updateBatch.updatedLanguageProficiencies
+              .filter(function (el) {
+                return el.id !== languageProficiency.id;
+              })
+              .concat(languageProficiency);
+          }
+        };
 
         _.assign($scope, {
           languageProficiencies: orderByName($scope.languageProficienciesData()),
 
-          edit: function() {
+          edit: function () {
             $scope.editing = true;
             initUpdateBatch();
           },
 
-          exitEdit: function() {
+          exitEdit: function () {
             $scope.$broadcast('saveComponent');
 
             updateBatch.newLanguageProficiencies = $scope.languageProficiencies
-              .filter(function(el) {
+              .filter(function (el) {
                 return !el.id;
               });
 
             if (updateBatch.newLanguageProficiencies.length > 0) {
-              AnalyticsService.trackEvent(AnalyticsService.ec.LANGUAGE_PROFICIENCIES, AnalyticsService.ea.ADD);
+              AnalyticsService.trackEvent(
+                AnalyticsService.ec.LANGUAGE_PROFICIENCIES,
+                AnalyticsService.ea.ADD
+              );
             }
 
             if (shouldUpdate()) {
-              LanguageProficienciesService.save(updateBatch).then(function(savedProficiencies) {
+              LanguageProficienciesService.save(updateBatch).then(function (savedProficiencies) {
                 $scope.languageProficiencies = orderByName(savedProficiencies);
                 $state.reload(); // https://jira.it.helsinki.fi/browse/OO-1004
               });
@@ -93,25 +100,22 @@ angular.module('directives.languageProficiencies', [
 
             return true;
           },
-
-          addNew: function() {
+          addNew: function () {
             var newEntry = newLanguageProficiency();
 
             if (newEntry) {
               $scope.languageProficiencies.push(newEntry);
             }
           },
-
-          updateLanguageProficiency: function(languageProficiency) {
+          updateLanguageProficiency: function (languageProficiency) {
             update(languageProficiency);
           },
-
-          remove: function(languageProficiency) {
+          remove: function (languageProficiency) {
             if (languageProficiency.id) {
               updateBatch.deletedIds = _.union(updateBatch.deletedIds, [languageProficiency.id]);
             }
 
-            _.remove($scope.languageProficiencies, function(el) {
+            _.remove($scope.languageProficiencies, function (el) {
               return el.languageName === languageProficiency.languageName;
             });
           }

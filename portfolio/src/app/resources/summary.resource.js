@@ -17,17 +17,16 @@
 
 angular.module('resources.summary', [])
 
-  .factory('SummaryResource', function($resource, StateService) {
-
+  .factory('SummaryResource', function ($resource, StateService) {
     function resource() {
-      return $resource('/api/' + StateService.getCurrent() +
-        '/v1/portfolio/:portfolioId/summary', {}, {
-          update: {method: 'POST'}
-        });
+      return $resource('/api/' + StateService.getCurrent()
+        + '/v1/portfolio/:portfolioId/summary', {}, {
+        update: { method: 'POST' }
+      });
     }
 
     function updateSummary(portfolioId, updateSummaryRequest) {
-      return resource().update({portfolioId: portfolioId}, updateSummaryRequest).$promise;
+      return resource().update({ portfolioId: portfolioId }, updateSummaryRequest).$promise;
     }
 
     return {

@@ -20,7 +20,7 @@ angular.module('directives.feedback', [
   'services.session',
   'services.state'])
 
-  .factory('FeedbackSiteService', function(PortfolioRoleService, PortfolioRole) {
+  .factory('FeedbackSiteService', function (PortfolioRoleService, PortfolioRole) {
     function getFeedbackSite() {
       var portfolioRole = PortfolioRoleService.getActiveRole();
 
@@ -37,18 +37,18 @@ angular.module('directives.feedback', [
     };
   })
 
-  .directive('feedback', function(FeedbackResource,
-                                  SessionService,
-                                  FeedbackSiteService,
-                                  LanguageService,
-                                  $timeout,
-                                  $window) {
+  .directive('feedback', function (FeedbackResource,
+    SessionService,
+    FeedbackSiteService,
+    LanguageService,
+    $timeout,
+    $window) {
     return {
       restrict: 'E',
       replace: true,
       scope: {},
       templateUrl: 'app/directives/feedback/feedback.html',
-      controller: function($scope) {
+      controller: function ($scope) {
         var FEEDBACK_DISPLAY_DURATION = 3000;
 
         function initialState() {
@@ -67,20 +67,20 @@ angular.module('directives.feedback', [
 
         initialState();
 
-        $scope.giveFeedback = function() {
+        $scope.giveFeedback = function () {
           $scope.showDefaultState = false;
           $scope.showForm = true;
         };
 
-        $scope.cancel = function() {
+        $scope.cancel = function () {
           initialState();
         };
 
-        $scope.submit = function() {
+        $scope.submit = function () {
           if ($scope.content && $scope.feedbackForm.$valid) {
             SessionService
               .getSession()
-              .then(function(session) {
+              .then(function (session) {
                 var facultyCode = session.faculty && session.faculty.code;
 
                 return _.assign({
@@ -89,7 +89,7 @@ angular.module('directives.feedback', [
                   facultyCode: facultyCode
                 } : {});
               })
-              .then(function(sessionData) {
+              .then(function (sessionData) {
                 return {
                   content: $scope.content,
                   email: $scope.isAnonymous ? '' : sessionData.email,
@@ -102,7 +102,7 @@ angular.module('directives.feedback', [
                 };
               })
               .then(FeedbackResource.save)
-              .then(function() {
+              .then(function () {
                 submittedState();
                 $timeout(initialState, FEEDBACK_DISPLAY_DURATION);
               });

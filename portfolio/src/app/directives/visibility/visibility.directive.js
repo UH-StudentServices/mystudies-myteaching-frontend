@@ -17,38 +17,37 @@
 
 angular.module('directives.visibility',
   ['services.state',
-   'services.visibility',
-   'services.portfolio',
-   'services.preview',
-   'portfolioAnalytics'])
+    'services.visibility',
+    'services.portfolio',
+    'services.preview',
+    'portfolioAnalytics'])
 
-  .directive('portfolioVisibility', function(AnalyticsService) {
+  .directive('portfolioVisibility', function (AnalyticsService) {
     return {
       restrict: 'E',
       replace: true,
       scope: {
       },
       templateUrl: 'app/directives/visibility/portfolioVisibility.html',
-      controller: function($scope, PortfolioService) {
-        PortfolioService.getPortfolio().then(function(portfolio) {
+      controller: function ($scope, PortfolioService) {
+        PortfolioService.getPortfolio().then(function (portfolio) {
           $scope.portfolio = portfolio;
         });
 
-        $scope.setVisibility = function(visibility) {
+        $scope.setVisibility = function (visibility) {
           AnalyticsService.trackEvent(AnalyticsService.ec.PORTFOLIO, AnalyticsService.ea.SET_VISIBILITY, visibility);
-          PortfolioService.getPortfolio().then(function(portfolio) {
+          PortfolioService.getPortfolio().then(function (portfolio) {
             portfolio.visibility = visibility;
             return PortfolioService.updatePortfolio(portfolio);
-          }).then(function(portfolio) {
+          }).then(function (portfolio) {
             $scope.portfolio = portfolio;
           });
         };
-
       }
     };
   })
 
-  .directive('visibilityToggle', function(VisibilityService, Visibility, AnalyticsService) {
+  .directive('visibilityToggle', function (VisibilityService, Visibility, AnalyticsService) {
     return {
       restrict: 'E',
       replace: true,
@@ -58,24 +57,24 @@ angular.module('directives.visibility',
         instanceName: '@'
       },
       templateUrl: 'app/directives/visibility/visibilityToggle.html',
-      link: function(scope) {
+      link: function (scope) {
         var visibilityDescriptor = _.pick(scope, ['componentId', 'sectionName', 'instanceName']);
 
         scope.Visibility = Visibility;
 
         VisibilityService.getComponentVisibility(visibilityDescriptor)
-          .then(function(visibility) {
+          .then(function (visibility) {
             scope.visibility = visibility;
           });
 
-        scope.toggleVisibility = function() {
+        scope.toggleVisibility = function () {
           var newVisibility = scope.visibility === Visibility.PUBLIC ? Visibility.PRIVATE : Visibility.PUBLIC;
 
           AnalyticsService.trackEvent(scope.componentId.toLowerCase(),
             AnalyticsService.ea.SET_VISIBILITY, newVisibility);
 
           VisibilityService.setComponentVisibility(visibilityDescriptor, newVisibility)
-            .then(function(visibility) {
+            .then(function (visibility) {
               scope.visibility = visibility;
             });
         };
@@ -97,17 +96,16 @@ angular.module('directives.visibility',
    * https://github.com/angular/angular.js/blob/master/src/ng/directive/ngIf.js#L3
    */
   .directive('limitVisibility',
-    function($q,
-             $animate,
-             VisibilityRoles,
-             PortfolioRoleService,
-             PortfolioRole,
-             VisibilityService,
-             Visibility,
-             StateService,
-             State,
-             PreviewService) {
-
+    function ($q,
+      $animate,
+      VisibilityRoles,
+      PortfolioRoleService,
+      PortfolioRole,
+      VisibilityService,
+      Visibility,
+      StateService,
+      State,
+      PreviewService) {
       return {
         multiElement: true,
         transclude: 'element',
@@ -116,53 +114,54 @@ angular.module('directives.visibility',
         restrict: 'A',
         scope: {
         },
-        link: function(scope, $element, $attr, ctrl, $transclude) {
-          var preview = PreviewService.isPreview(),
-              currentState = StateService.getCurrent(),
-              limitVisibility = scope.$parent.$eval($attr.limitVisibility) || $attr.limitVisibility;
+        link: function (scope, $element, $attr, ctrl, $transclude) {
+          var preview = PreviewService.isPreview();
+
+
+          var currentState = StateService.getCurrent();
+
+
+          var limitVisibility = scope.$parent.$eval($attr.limitVisibility) || $attr.limitVisibility;
 
           function isLimitedByPrivateVisibility(visibility) {
-            if (visibility === Visibility.PRIVATE &&
-              (preview || currentState !== State.PRIVATE)) {
+            if (visibility === Visibility.PRIVATE
+              && (preview || currentState !== State.PRIVATE)) {
               return $q.when(true);
-            } else {
-              return $q.when(false);
             }
+            return $q.when(false);
           }
 
           function isLimitedByRole() {
             var roleLimits = _.get(limitVisibility, 'roles');
 
             if (roleLimits) {
-              return $q.when(!_.some(roleLimits, function(role) {
+              return $q.when(!_.some(roleLimits, function (role) {
                 return VisibilityRoles[role](PortfolioRoleService, PortfolioRole);
               }));
-            } else {
-              return $q.when(false);
             }
+            return $q.when(false);
           }
 
           function isLimitedByPortfolioComponentVisibility() {
             var visibilityDescriptor = _.pick(limitVisibility,
               ['componentId', 'sectionName', 'instanceName']);
 
-            return _.some(visibilityDescriptor) ?
-              VisibilityService.getComponentVisibility(visibilityDescriptor)
-                .then(isLimitedByPrivateVisibility) :
-              $q.when(false);
+            return _.some(visibilityDescriptor)
+              ? VisibilityService.getComponentVisibility(visibilityDescriptor)
+                .then(isLimitedByPrivateVisibility)
+              : $q.when(false);
           }
 
           $q.all([
             isLimitedByPrivateVisibility(limitVisibility),
             isLimitedByRole(),
-            isLimitedByPortfolioComponentVisibility()]).then(function(limits) {
-              if (!_.some(limits, Boolean)) {
-                $transclude(function(clone) {
-                  $animate.enter(clone, $element.parent(), $element);
-                });
-              }
-            });
+            isLimitedByPortfolioComponentVisibility()]).then(function (limits) {
+            if (!_.some(limits, Boolean)) {
+              $transclude(function (clone) {
+                $animate.enter(clone, $element.parent(), $element);
+              });
+            }
+          });
         }
       };
-    }
-  );
+    });

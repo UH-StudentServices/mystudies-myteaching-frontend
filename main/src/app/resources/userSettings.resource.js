@@ -17,9 +17,8 @@
 
 angular.module('resources.userSettings', [])
 
-  .factory('UserSettingsResource', function($resource) {
-
-    var userSettingsResource = $resource('/api/private/v1/usersettings/:id', {id: '@id'}, {
+  .factory('UserSettingsResource', function ($resource) {
+    var userSettingsResource = $resource('/api/private/v1/usersettings/:id', { id: '@id' }, {
       update: {
         method: 'PUT'
       },
@@ -44,7 +43,7 @@ angular.module('resources.userSettings', [])
     var availableBackgroundImagesResource = $resource('/api/public/v1/images/backgrounds');
 
     var uploadUserBackground = function uploadUserBackground(id, imageBase64) {
-      return userSettingsResource.uploadUserBackground({id: id, imageBase64: imageBase64}).$promise;
+      return userSettingsResource.uploadUserBackground({ id: id, imageBase64: imageBase64 }).$promise;
     };
 
     var getUserSettings = function getUserSettings() {
@@ -60,15 +59,15 @@ angular.module('resources.userSettings', [])
     };
 
     var updateUserAvatar = function updateUserAvatar(id, imageBase64) {
-      return userSettingsResource.updateUserAvatar({id: id, imageBase64: imageBase64}).$promise;
+      return userSettingsResource.updateUserAvatar({ id: id, imageBase64: imageBase64 }).$promise;
     };
 
     var deleteUserAvatar = function deleteUserAvatar(id) {
-      return userSettingsResource.deleteUserAvatar({id: id}).$promise;
+      return userSettingsResource.deleteUserAvatar({ id: id }).$promise;
     };
 
     var selectUserBackground = function selectUserBackground(id, filename) {
-      return userSettingsResource.selectUserBackground({id: id, filename: filename}).$promise;
+      return userSettingsResource.selectUserBackground({ id: id, filename: filename }).$promise;
     };
 
     return {
@@ -80,5 +79,4 @@ angular.module('resources.userSettings', [])
       deleteUserAvatar: deleteUserAvatar,
       selectUserBackground: selectUserBackground
     };
-
   });

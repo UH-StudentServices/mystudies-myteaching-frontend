@@ -17,23 +17,22 @@
 
 angular.module('services.componentOrder', ['services.freeTextContent', 'resources.componentOrder'])
 
-  .factory('ComponentOrderService', function(FreeTextContentService, ComponentOrderResource) {
-
+  .factory('ComponentOrderService', function (FreeTextContentService, ComponentOrderResource) {
     var cachedComponentOrders = [];
 
     function defaultSingletonComponentOrder() {
       return [
-        {component: 'STUDIES'},
-        {component: 'DEGREES'},
-        {component: 'WORK_EXPERIENCE'},
-        {component: 'SAMPLES'},
-        {component: 'ATTAINMENTS'},
-        {component: 'LANGUAGE_PROFICIENCIES'}
+        { component: 'STUDIES' },
+        { component: 'DEGREES' },
+        { component: 'WORK_EXPERIENCE' },
+        { component: 'SAMPLES' },
+        { component: 'ATTAINMENTS' },
+        { component: 'LANGUAGE_PROFICIENCIES' }
       ];
     }
 
     function singletonComponentOrders(portfolio) {
-      return cachedComponentOrders.length ? cachedComponentOrders.filter(function(el) {
+      return cachedComponentOrders.length ? cachedComponentOrders.filter(function (el) {
         return el.component !== 'FREE_TEXT_CONTENT';
       }) : defaultSingletonComponentOrder();
     }
@@ -50,10 +49,11 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
       }
 
       FreeTextContentService.getFreeTextContentSubject()
-        .subscribe(function(freeTextContentItems) {
-          var freeTextContentComponentOrders, allComponentOrders;
+        .subscribe(function (freeTextContentItems) {
+          var freeTextContentComponentOrders; var
+            allComponentOrders;
 
-          freeTextContentComponentOrders = freeTextContentItems ? freeTextContentItems.map(function(el) {
+          freeTextContentComponentOrders = freeTextContentItems ? freeTextContentItems.map(function (el) {
             return {
               component: 'FREE_TEXT_CONTENT',
               instanceName: el.instanceName,
@@ -68,14 +68,14 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
 
     function updateComponentOrder(portfolioId, updatedComponents) {
       ComponentOrderResource.updateComponentOrder(portfolioId, {
-        componentOrders: updatedComponents.map(function(el, i) {
+        componentOrders: updatedComponents.map(function (el, i) {
           return {
             component: el.component,
             instanceName: el.instanceName,
             orderValue: i + 1
           };
         })
-      }).then(function(componentOrders) {
+      }).then(function (componentOrders) {
         cachedComponentOrders = componentOrders;
       });
     }

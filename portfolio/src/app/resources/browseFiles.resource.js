@@ -19,8 +19,7 @@ angular.module('resources.browseFiles', [])
 
   .constant('PortfolioFilesResourcePath', '/api/private/v1/portfolio/files')
 
-  .factory('BrowseFilesResource', function($resource, PortfolioFilesResourcePath) {
-
+  .factory('BrowseFilesResource', function ($resource, PortfolioFilesResourcePath) {
     function browseFilesResource(path) {
       var browseFilesResource = PortfolioFilesResourcePath;
 

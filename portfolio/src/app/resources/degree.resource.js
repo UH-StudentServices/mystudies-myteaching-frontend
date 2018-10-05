@@ -17,17 +17,16 @@
 
 angular.module('resources.degree', [])
 
-  .factory('DegreeResource', function($resource, StateService) {
-
+  .factory('DegreeResource', function ($resource, StateService) {
     function resource() {
-      return $resource('/api/' + StateService.getCurrent() +
-        '/v1/portfolio/:portfolioId/degree', {}, {
-          update: {method: 'POST', isArray: true}
-        });
+      return $resource('/api/' + StateService.getCurrent()
+        + '/v1/portfolio/:portfolioId/degree', {}, {
+        update: { method: 'POST', isArray: true }
+      });
     }
 
     function updateDegrees(portfolioId, updateDegrees) {
-      return resource().update({portfolioId: portfolioId}, updateDegrees).$promise;
+      return resource().update({ portfolioId: portfolioId }, updateDegrees).$promise;
     }
 
     return {

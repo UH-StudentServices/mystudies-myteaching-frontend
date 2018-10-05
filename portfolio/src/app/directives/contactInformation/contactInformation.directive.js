@@ -16,9 +16,9 @@
  */
 
 angular.module('directives.contactInformation', [
-    'services.contactInformation',
-    'services.portfolioRole',
-    'portfolioAnalytics'])
+  'services.contactInformation',
+  'services.portfolioRole',
+  'portfolioAnalytics'])
 
   .constant('SomeLinkType', {
     FACEBOOK: 'FACEBOOK',
@@ -30,22 +30,22 @@ angular.module('directives.contactInformation', [
     WEBSITE_LINK: 'WEBSITE_LINK'
   })
 
-  .factory('StudentSocialMediaLinks', function(SomeLinkType) {
+  .factory('StudentSocialMediaLinks', function (SomeLinkType) {
     return [SomeLinkType.TWITTER, SomeLinkType.FACEBOOK, SomeLinkType.YOUTUBE,
-            SomeLinkType.TUHAT, SomeLinkType.RESEARCH_GATE, SomeLinkType.ACADEMIA, SomeLinkType.WEBSITE_LINK];
+      SomeLinkType.TUHAT, SomeLinkType.RESEARCH_GATE, SomeLinkType.ACADEMIA, SomeLinkType.WEBSITE_LINK];
   })
 
-  .factory('TeacherSocialMediaLinks', function(SomeLinkType) {
+  .factory('TeacherSocialMediaLinks', function (SomeLinkType) {
     return [SomeLinkType.TWITTER, SomeLinkType.TUHAT, SomeLinkType.RESEARCH_GATE, SomeLinkType.ACADEMIA];
   })
 
-  .directive('contactInformation', function(ContactInformationService,
-                                            SomeLinkType,
-                                            PortfolioRole,
-                                            PortfolioRoleService,
-                                            TeacherSocialMediaLinks,
-                                            StudentSocialMediaLinks,
-                                            AnalyticsService) {
+  .directive('contactInformation', function (ContactInformationService,
+    SomeLinkType,
+    PortfolioRole,
+    PortfolioRoleService,
+    TeacherSocialMediaLinks,
+    StudentSocialMediaLinks,
+    AnalyticsService) {
     return {
       restrict: 'E',
       replace: true,
@@ -56,18 +56,18 @@ angular.module('directives.contactInformation', [
         portfolioLang: '@'
       },
       templateUrl: 'app/directives/contactInformation/contactInformation.html',
-      link: function($scope) {
+      link: function ($scope) {
         $scope.editing = false;
         $scope.contactInfo = $scope.contactInformationData() || {};
         $scope.contactInfo.someLinks = $scope.contactInfo.someLinks || [];
 
         function addDefaultSomeLinkTypes() {
-          var defaultSocialMediaLinks = PortfolioRoleService.isInRole(PortfolioRole.TEACHER) ?
-            TeacherSocialMediaLinks : StudentSocialMediaLinks;
+          var defaultSocialMediaLinks = PortfolioRoleService.isInRole(PortfolioRole.TEACHER)
+            ? TeacherSocialMediaLinks : StudentSocialMediaLinks;
 
-          defaultSocialMediaLinks.forEach(function(socialMediaLinkType) {
-            if (!_.find($scope.contactInfo.someLinks, {type: socialMediaLinkType})) {
-              $scope.contactInfo.someLinks.push({type: socialMediaLinkType});
+          defaultSocialMediaLinks.forEach(function (socialMediaLinkType) {
+            if (!_.find($scope.contactInfo.someLinks, { type: socialMediaLinkType })) {
+              $scope.contactInfo.someLinks.push({ type: socialMediaLinkType });
             }
           });
         }
@@ -76,10 +76,10 @@ angular.module('directives.contactInformation', [
           function getFieldsThatHaveValues(object) {
             return _.filter(
               _.concat(
-                _.map(object, function(value, key) {
+                _.map(object, function (value, key) {
                   return value && value !== Object(value) ? key : null;
                 }),
-                _.map(object.someLinks, function(value) {
+                _.map(object.someLinks, function (value) {
                   return value.url ? value.type : null;
                 })
               )
@@ -91,48 +91,47 @@ angular.module('directives.contactInformation', [
             AnalyticsService.ec.CONTACT_INFO, AnalyticsService.ea.ADD);
         }
 
-        $scope.edit = function() {
+        $scope.edit = function () {
           $scope.editing = true;
           addDefaultSomeLinkTypes();
           $scope.origContactInfo = _.cloneDeep($scope.contactInfo);
         };
 
         function selectFilledSomeLinks(someLinks) {
-          return _.filter(someLinks, function(someLink) {
+          return _.filter(someLinks, function (someLink) {
             return !_.isEmpty(someLink.url);
           });
         }
 
-        $scope.exitEdit = function() {
+        $scope.exitEdit = function () {
           var updateContactInformationRequest = _.assign({}, $scope.contactInfo);
 
           trackIfNeeded();
-          updateContactInformationRequest.someLinks =
-            selectFilledSomeLinks($scope.contactInfo.someLinks);
+          updateContactInformationRequest.someLinks = selectFilledSomeLinks($scope.contactInfo.someLinks);
           ContactInformationService
             .updateContactInformation($scope.portfolioId, updateContactInformationRequest)
-            .then(function(data) {
+            .then(function (data) {
               $scope.contactInfo = data;
               $scope.editing = false;
             });
           return true;
         };
 
-        $scope.reloadEmployeeContactInformation = function() {
+        $scope.reloadEmployeeContactInformation = function () {
           ContactInformationService
             .getEmployeeContactInformation($scope.portfolioId)
-            .then(function(data) {
-              _.assign($scope.contactInfo, _.omitBy(data, function(value, key) {
+            .then(function (data) {
+              _.assign($scope.contactInfo, _.omitBy(data, function (value, key) {
                 return key === 'someLinks' || !value;
               }));
             });
         };
 
-        $scope.editSomeLink = function(someLink) {
+        $scope.editSomeLink = function (someLink) {
           someLink.edit = true;
         };
 
-        $scope.exitSomeLinkEdit = function(someLink) {
+        $scope.exitSomeLinkEdit = function (someLink) {
           someLink.edit = false;
         };
       }

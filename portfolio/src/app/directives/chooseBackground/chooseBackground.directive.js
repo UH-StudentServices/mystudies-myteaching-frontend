@@ -16,20 +16,20 @@
  */
 
 angular.module('directives.chooseBackground', ['ui.bootstrap.modal',
-                                               'directives.uploadImage',
-                                               'services.userSettings',
-                                               'services.portfolioBackground',
-                                               'portfolioAnalytics'])
+  'directives.uploadImage',
+  'services.userSettings',
+  'services.portfolioBackground',
+  'portfolioAnalytics'])
 
-  .directive('chooseBackgroundButton', function() {
+  .directive('chooseBackgroundButton', function () {
     return {
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/chooseBackground/chooseBackgroundButton.html',
       scope: {},
-      controller: function($scope, $uibModal, $rootScope, UserSettingsService,
-                           PortfolioBackgroundService, backgroundChangeEvent, AnalyticsService) {
-        $scope.openChooseBGModal = function() {
+      controller: function ($scope, $uibModal, $rootScope, UserSettingsService,
+        PortfolioBackgroundService, backgroundChangeEvent, AnalyticsService) {
+        $scope.openChooseBGModal = function () {
           $uibModal.open({
             templateUrl: 'app/directives/chooseBackground/chooseDefaultBackground.html',
             controller: 'ChooseDefaultBackgroundController',
@@ -39,8 +39,8 @@ angular.module('directives.chooseBackground', ['ui.bootstrap.modal',
           });
         };
 
-        $scope.upload = function(image) {
-          return PortfolioBackgroundService.uploadUserBackground(image).then(function() {
+        $scope.upload = function (image) {
+          return PortfolioBackgroundService.uploadUserBackground(image).then(function () {
             $rootScope.$broadcast(backgroundChangeEvent);
             AnalyticsService.trackEvent(AnalyticsService.ec.BACKGROUND_IMAGE, AnalyticsService.ea.UPLOAD);
           });
@@ -49,23 +49,25 @@ angular.module('directives.chooseBackground', ['ui.bootstrap.modal',
     };
   })
 
-  .controller('ChooseDefaultBackgroundController', function($scope,
-                                                            $uibModalInstance,
-                                                            UserSettingsService,
-                                                            PortfolioBackgroundService,
-                                                            $q,
-                                                            $rootScope,
-                                                            backgroundChangeEvent,
-                                                            AnalyticsService) {
-    var availableBackgroundImages,
-        selectedItemIndex;
+  .controller('ChooseDefaultBackgroundController', function ($scope,
+    $uibModalInstance,
+    UserSettingsService,
+    PortfolioBackgroundService,
+    $q,
+    $rootScope,
+    backgroundChangeEvent,
+    AnalyticsService) {
+    var availableBackgroundImages;
+
+
+    var selectedItemIndex;
 
     $q.all([UserSettingsService.getUserSettings(), UserSettingsService.getAvailableBackgrounds()])
-      .then(function(data) {
+      .then(function (data) {
         availableBackgroundImages = data[1];
-        var userBackgroundImage = data[0].backgroundFilename ?
-          data[0].backgroundFilename :
-          _.first(availableBackgroundImages);
+        var userBackgroundImage = data[0].backgroundFilename
+          ? data[0].backgroundFilename
+          : _.first(availableBackgroundImages);
 
         selectedItemIndex = _.indexOf(availableBackgroundImages, userBackgroundImage);
 
@@ -76,8 +78,8 @@ angular.module('directives.chooseBackground', ['ui.bootstrap.modal',
       return availableBackgroundImages[selectedItemIndex];
     }
 
-    $scope.ok = function() {
-      PortfolioBackgroundService.selectPortfolioBackground(getSelectedBackgroundImageName()).then(function() {
+    $scope.ok = function () {
+      PortfolioBackgroundService.selectPortfolioBackground(getSelectedBackgroundImageName()).then(function () {
         AnalyticsService.trackEvent(AnalyticsService.ec.BACKGROUND_IMAGE,
           AnalyticsService.ea.SAVE, getSelectedBackgroundImageName());
         $rootScope.$broadcast(backgroundChangeEvent);
@@ -85,15 +87,15 @@ angular.module('directives.chooseBackground', ['ui.bootstrap.modal',
       });
     };
 
-    $scope.cancel = function() {
+    $scope.cancel = function () {
       $uibModalInstance.dismiss();
     };
 
-    $scope.init = function(slider) {
+    $scope.init = function (slider) {
       slider.element.flexAnimate(selectedItemIndex);
     };
 
-    $scope.change = function(slider) {
+    $scope.change = function (slider) {
       selectedItemIndex = slider.element.currentSlide;
     };
   });

@@ -17,16 +17,22 @@
 
 angular.module('services.freeTextContent', ['resources.freeTextContent', 'services.portfolio'])
 
-  .factory('FreeTextContentService', function(PortfolioService, FreeTextContentResource) {
-    var Rx = window.Rx,
-        freeTextContentSubject,
-        initialDataPromise,
-        cachedFreeTextContent = [];
+  .factory('FreeTextContentService', function (PortfolioService, FreeTextContentResource) {
+    var Rx = window.Rx;
+    var freeTextContentSubject;
+    var initialDataPromise;
+    var cachedFreeTextContent = [];
+
+    function publish(freeTextContentItems) {
+      freeTextContentSubject.onNext(freeTextContentItems);
+
+      return freeTextContentItems;
+    }
 
     function initCache() {
       initialDataPromise = PortfolioService.getPortfolio()
         .then(_.partialRight(_.get, 'freeTextContent', []))
-        .then(function(freeTextContentItems) {
+        .then(function (freeTextContentItems) {
           cachedFreeTextContent = freeTextContentItems;
           freeTextContentSubject = new Rx.BehaviorSubject(cachedFreeTextContent);
           return freeTextContentItems;
@@ -37,11 +43,6 @@ angular.module('services.freeTextContent', ['resources.freeTextContent', 'servic
       return freeTextContentSubject;
     }
 
-    function publish(freeTextContentItems) {
-      freeTextContentSubject.onNext(freeTextContentItems);
-
-      return freeTextContentItems;
-    }
 
     function getPortfolioId() {
       return PortfolioService.getPortfolio().then(_.property('id'));
@@ -49,9 +50,9 @@ angular.module('services.freeTextContent', ['resources.freeTextContent', 'servic
 
     function updateCache(freeTextContent, visibilityDescriptor, remove) {
       if (_.find(cachedFreeTextContent, ['id', freeTextContent.id])) {
-        cachedFreeTextContent = remove ?
-          _.differenceBy(cachedFreeTextContent, [freeTextContent], 'id') :
-          _.unionBy([freeTextContent], cachedFreeTextContent, 'id');
+        cachedFreeTextContent = remove
+          ? _.differenceBy(cachedFreeTextContent, [freeTextContent], 'id')
+          : _.unionBy([freeTextContent], cachedFreeTextContent, 'id');
       } else {
         cachedFreeTextContent = cachedFreeTextContent.concat(freeTextContent);
       }
@@ -64,26 +65,26 @@ angular.module('services.freeTextContent', ['resources.freeTextContent', 'servic
     }
 
     function insertFreeTextContent(freeTextContent, visibilityDescriptor) {
-      return getPortfolioId().then(function(portfolioId) {
+      return getPortfolioId().then(function (portfolioId) {
         return FreeTextContentResource.insertFreeTextContent(portfolioId, freeTextContent);
-      }).then(function(freeTextContent) {
-        return updateCache(freeTextContent, visibilityDescriptor);
+      }).then(function (ftc) {
+        return updateCache(ftc, visibilityDescriptor);
       }).then(publish);
     }
 
     function updateFreeTextContent(freeTextContent, visibilityDescriptor) {
-      return getPortfolioId().then(function(portfolioId) {
+      return getPortfolioId().then(function (portfolioId) {
         return FreeTextContentResource.updateFreeTextContent(portfolioId, freeTextContent);
-      }).then(function(freeTextContent) {
-        return updateCache(freeTextContent, visibilityDescriptor);
+      }).then(function (ftc) {
+        return updateCache(ftc, visibilityDescriptor);
       });
     }
 
     function deleteFreeTextContent(freeTextContent, visibilityDescriptor) {
-      return getPortfolioId().then(function(portfolioId) {
+      return getPortfolioId().then(function (portfolioId) {
         return FreeTextContentResource.deleteFreeTextContent(portfolioId, freeTextContent,
           visibilityDescriptor.instanceName);
-      }).then(function() {
+      }).then(function () {
         return updateCache(freeTextContent, visibilityDescriptor, true);
       }).then(publish);
     }

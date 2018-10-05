@@ -18,15 +18,14 @@
 'use strict';
 
 angular.module('directives.focus', [])
-  .directive('focus', function($timeout) {
-
+  .directive('focus', function ($timeout) {
     return {
       restrict: 'A',
-      link: function($scope, element, attrs) {
+      link: function ($scope, element, attrs) {
         $scope.$watch(attrs.focus,
-          function(newValue) {
+          function (newValue) {
             if (newValue === true) {
-              $timeout(function() {
+              $timeout(function () {
                 // Checks whether the element is visible. We only
                 // want to focus to an element that is visible.
                 if (element[0].offsetParent !== null) {

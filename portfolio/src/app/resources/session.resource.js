@@ -19,11 +19,11 @@
 
 angular.module('resources.session', [])
 
-  .factory('SessionResource', function($resource) {
+  .factory('SessionResource', function ($resource) {
     var sessionResource = $resource('/api/private/v1/session');
 
     return {
-      getSession: function() {
+      getSession: function () {
         return sessionResource.get().$promise;
       }
     };

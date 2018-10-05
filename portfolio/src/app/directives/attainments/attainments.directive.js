@@ -25,7 +25,7 @@ angular.module('directives.attainments', [
   'portfolioAnalytics'
 ])
 
-  .directive('attainments', function(AttainmentResource, AnalyticsService) {
+  .directive('attainments', function (AttainmentResource, AnalyticsService) {
     return {
       restrict: 'E',
       replace: true,
@@ -34,36 +34,48 @@ angular.module('directives.attainments', [
         portfolioId: '@',
         portfolioLang: '@'
       },
-      link: function($scope) {
-        var SHOW_MORE_ADDITION = 5,
-            MAX_GRADE_CHAR_COUNT = 4;
+      link: function ($scope) {
+        var SHOW_MORE_ADDITION = 5;
+        var MAX_GRADE_CHAR_COUNT = 4;
 
         $scope.editing = false;
         $scope.numberOfVisibleAttainments = 5;
         $scope.attainments = [];
 
-        $scope.formatGrade = function(grade) {
+        $scope.formatGrade = function (grade) {
           if (grade.endsWith('.')) {
             return grade.substring(0, grade.length - 1);
           }
           return grade;
         };
 
-        $scope.gradeClass = function(grade) {
+        $scope.gradeClass = function (grade) {
           return Math.max(1, Math.min(MAX_GRADE_CHAR_COUNT, $scope.formatGrade(grade).length));
         };
 
         $scope.edit = function edit() {
           $scope.editing = true;
           $scope.origWhitelist = $scope.whitelist.slice();
-          AttainmentResource.getAll($scope.portfolioLang).then(function attainmentsSuccess(attainments) {
-            $scope.allAttainments = attainments;
-          });
+          AttainmentResource.getAll($scope.portfolioLang)
+            .then(function attainmentsSuccess(attainments) {
+              $scope.allAttainments = attainments;
+            });
         };
 
+        function updateWhitelistedAttainments() {
+          AttainmentResource.getAllWhitelisted($scope.portfolioId, $scope.portfolioLang)
+            .then(function (attainments) {
+              $scope.attainments = attainments;
+            });
+        }
+
         $scope.exitEdit = function exitEdit() {
-          AnalyticsService.trackEventIfAdded($scope.origWhitelist, $scope.whitelist,
-            AnalyticsService.ec.ATTAINMENTS, AnalyticsService.ea.SET_VISIBILITY, AnalyticsService.el.VISIBLE);
+          AnalyticsService.trackEventIfAdded($scope.origWhitelist,
+            $scope.whitelist,
+            AnalyticsService.ec.ATTAINMENTS,
+            AnalyticsService.ea.SET_VISIBILITY,
+            AnalyticsService.el.VISIBLE);
+
           $scope.$broadcast('saveComponent');
           $scope.editing = false;
 
@@ -74,16 +86,9 @@ angular.module('directives.attainments', [
           return true;
         };
 
-        AttainmentResource.getWhitelist($scope.portfolioId).then(function(whitelist) {
+        AttainmentResource.getWhitelist($scope.portfolioId).then(function (whitelist) {
           $scope.whitelist = whitelist.oodiStudyAttainmentIds;
         });
-
-        function updateWhitelistedAttainments() {
-          AttainmentResource.getAllWhitelisted($scope.portfolioId, $scope.portfolioLang)
-            .then(function(attainments) {
-              $scope.attainments = attainments;
-            });
-        }
 
         $scope.isVisible = function isVisible(attainment) {
           return $scope.whitelist.indexOf(attainment.studyAttainmentId) !== -1;

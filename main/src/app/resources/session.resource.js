@@ -20,7 +20,6 @@
 angular.module('resources.session', [])
 
   .factory('SessionResource', function SessionResource($resource) {
-
     var sessionResource = $resource('/api/private/v1/session');
 
     return {

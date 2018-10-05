@@ -25,7 +25,7 @@ angular.module('directives.pageBanner', [
   'ngAnimate'
 ])
 
-  .directive('pageBanner', function($filter, NewsService, StateService) {
+  .directive('pageBanner', function ($filter, NewsService, StateService) {
     return {
       restrict: 'E',
       replace: 'true',
@@ -33,19 +33,18 @@ angular.module('directives.pageBanner', [
         showBanner: '='
       },
       templateUrl: 'app/directives/pageBanner/pageBanner.html',
-      link: function($scope) {
-
+      link: function ($scope) {
         $scope.currentStateName = StateService.getRootStateName();
         $scope.newsList = [];
 
-        NewsService.getNews($scope.currentStateName).then(function(data) {
+        NewsService.getNews($scope.currentStateName).then(function (data) {
           $scope.newsList = data;
         });
       }
     };
   })
 
-  .directive('pageBannerToggle', function($location, $anchorScroll, UserSettingsService, $translate) {
+  .directive('pageBannerToggle', function ($location, $anchorScroll, UserSettingsService, $translate) {
     return {
       restrict: 'E',
       replace: true,
@@ -53,9 +52,11 @@ angular.module('directives.pageBanner', [
         showBanner: '='
       },
       templateUrl: 'app/directives/pageBanner/pageBannerToggle.html',
-      link: function($scope) {
-        var hideTooltip = $translate.instant('banner.tooltip.hide'),
-            showTooltip = $translate.instant('banner.tooltip.show');
+      link: function ($scope) {
+        var hideTooltip = $translate.instant('banner.tooltip.hide');
+
+
+        var showTooltip = $translate.instant('banner.tooltip.show');
 
         if ($scope.showBanner) {
           $scope.tooltip = hideTooltip;
@@ -63,7 +64,7 @@ angular.module('directives.pageBanner', [
           $scope.tooltip = showTooltip;
         }
 
-        $scope.toggleShowBanner = function() {
+        $scope.toggleShowBanner = function () {
           UserSettingsService.setShowBanner(!$scope.showBanner);
 
           if (!$scope.showBanner) {

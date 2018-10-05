@@ -22,13 +22,12 @@ angular.module('directives.todoItems', ['resources.todoItems', 'directives.swipe
     OPEN: 'OPEN',
     DONE: 'DONE'
   })
-  .directive('todoItems', function(TodoItemsResource, Status, AnalyticsService) {
+  .directive('todoItems', function (TodoItemsResource, Status, AnalyticsService) {
     return {
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/pageBanner/todoItems/todoItems.html',
-      link: function($scope) {
-
+      link: function ($scope) {
         function loadTodoItems() {
           TodoItemsResource.getAll().then(function todoItemsGetAllSuccess(todoItems) {
             $scope.todoItems = todoItems;
@@ -37,22 +36,22 @@ angular.module('directives.todoItems', ['resources.todoItems', 'directives.swipe
         }
 
         $scope.todoItems = [];
-        $scope.newTodoItem = {status: Status.OPEN};
+        $scope.newTodoItem = { status: Status.OPEN };
         $scope.Status = Status;
 
         loadTodoItems();
 
-        $scope.addTodoItem = function() {
+        $scope.addTodoItem = function () {
           if ($scope.newTodoItem.content) {
             TodoItemsResource.save($scope.newTodoItem).then(function todoItemSaveSuccess() {
               AnalyticsService.trackAddTodoItem();
-              $scope.newTodoItem = {status: Status.OPEN};
+              $scope.newTodoItem = { status: Status.OPEN };
               loadTodoItems();
             });
           }
         };
 
-        $scope.markAsDone = function(todoItem) {
+        $scope.markAsDone = function (todoItem) {
           todoItem.status = Status.DONE;
           TodoItemsResource.update(todoItem).then(function todoItemUpdateSuccess(data) {
             AnalyticsService.trackTodoItemMarkAsDone();
@@ -60,7 +59,7 @@ angular.module('directives.todoItems', ['resources.todoItems', 'directives.swipe
           });
         };
 
-        $scope.removeTodoItem = function(todoItem) {
+        $scope.removeTodoItem = function (todoItem) {
           TodoItemsResource.deleteTodoItem(todoItem.id).then(function todoItemDeleteSuccess(data) {
             AnalyticsService.trackRemoveTodoItem();
             $scope.todoItems = data;

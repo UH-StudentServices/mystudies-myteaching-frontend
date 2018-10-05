@@ -16,15 +16,15 @@
  */
 
 angular.module('directives.avatarImage', ['services.portfolio'])
-  .directive('avatarImage', function() {
+  .directive('avatarImage', function () {
     return {
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/avatarImage/avatarImage.html',
       scope: {
       },
-      controller: function($scope, PortfolioService) {
-        PortfolioService.getPortfolio().then(function(portfolio) {
+      controller: function ($scope, PortfolioService) {
+        PortfolioService.getPortfolio().then(function (portfolio) {
           $scope.avatarUrl = portfolio.avatarUrl;
           $scope.default = portfolio.avatarUrl.indexOf('/api') === -1;
         });

@@ -20,18 +20,17 @@
 angular.module('resources.httpInterceptor', ['services.state', 'services.configuration'])
 
   .constant('ErrorPages', {
-    'MAINTENANCE': 'maintenance'
+    MAINTENANCE: 'maintenance'
   })
 
   .factory('HttpInterceptor', function HttpInterceptor($q,
-                                                       $injector,
-                                                       Configuration,
-                                                       $location,
-                                                       ErrorPages,
-                                                       State,
-                                                       $window,
-                                                       ConfigurationProperties) {
-
+    $injector,
+    Configuration,
+    $location,
+    ErrorPages,
+    State,
+    $window,
+    ConfigurationProperties) {
     function redirectToErrorPage(errorPage) {
       $location.path('/error/' + errorPage);
     }

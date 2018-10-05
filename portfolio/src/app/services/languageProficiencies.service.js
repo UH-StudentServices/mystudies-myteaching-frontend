@@ -19,17 +19,17 @@ angular.module('services.languageProficiencies', [
   'services.portfolio',
   'resources.languageProficiencies'])
 
-  .factory('LanguageProficienciesService', function(PortfolioService,
-                                                    LanguageProficienciesResource) {
+  .factory('LanguageProficienciesService', function (PortfolioService,
+    LanguageProficienciesResource) {
     function getPortfolioId() {
       return PortfolioService.getPortfolio()
-        .then(function(portfolio) {
+        .then(function (portfolio) {
           return portfolio.id;
         });
     }
 
     function save(updateBatch) {
-      return getPortfolioId().then(function(portfolioId) {
+      return getPortfolioId().then(function (portfolioId) {
         return LanguageProficienciesResource.save(portfolioId, updateBatch);
       });
     }

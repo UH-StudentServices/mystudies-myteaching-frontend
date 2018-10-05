@@ -16,14 +16,19 @@
  */
 
 angular.module('services.portfolio', ['resources.portfolio',
-                                      'services.portfolioRole'])
+  'services.portfolioRole'])
 
-  .factory('PortfolioService' , function(PortfolioResource,
-                                         PortfolioRoleService) {
+  .factory('PortfolioService', function (PortfolioResource,
+    PortfolioRoleService) {
     var portfolioPromise;
 
     function findPortfolioByPath(state, lang, userpath) {
-      portfolioPromise = PortfolioResource.find(state, PortfolioRoleService.getActiveRole(), lang, userpath);
+      portfolioPromise = PortfolioResource.find(
+        state,
+        PortfolioRoleService.getActiveRole(),
+        lang,
+        userpath
+      );
       return portfolioPromise;
     }
 

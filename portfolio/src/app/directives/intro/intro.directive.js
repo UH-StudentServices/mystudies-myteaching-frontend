@@ -16,26 +16,25 @@
  */
 
 angular.module('directives.intro', ['services.portfolio',
-                                    'services.portfolioBackground',
-                                    'directives.editLink',
-                                    'directives.chooseBackground',
-                                    'angular-flexslider',
-                                    'ngFileUpload',
-                                    'portfolioAnalytics'])
+  'services.portfolioBackground',
+  'directives.editLink',
+  'directives.chooseBackground',
+  'angular-flexslider',
+  'ngFileUpload',
+  'portfolioAnalytics'])
 
   .constant('backgroundChangeEvent', 'backgroundChange')
 
-  .directive('intro', function($rootScope,
-                               PortfolioService,
-                               PortfolioBackgroundService,
-                               backgroundChangeEvent,
-                               AnalyticsService) {
+  .directive('intro', function ($rootScope,
+    PortfolioService,
+    PortfolioBackgroundService,
+    backgroundChangeEvent,
+    AnalyticsService) {
     return {
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/intro/intro.html',
-      link: function($scope) {
-
+      link: function ($scope) {
         function setBackgroundUri(data) {
           $scope.userBackgroundStyle = {
             'background-image': 'url("' + data.backgroundUri + '")'
@@ -52,18 +51,18 @@ angular.module('directives.intro', ['services.portfolio',
 
         $scope.editing = false;
 
-        PortfolioService.getPortfolio().then(function(portfolio) {
+        PortfolioService.getPortfolio().then(function (portfolio) {
           $scope.portfolio = portfolio;
         });
 
-        $scope.edit = function() {
+        $scope.edit = function () {
           $scope.editing = true;
         };
 
-        $scope.exitEdit = function() {
+        $scope.exitEdit = function () {
           AnalyticsService.trackEvent(AnalyticsService.ec.INTRO_TEXT, AnalyticsService.ea.SAVE);
           $scope.editing = false;
-          PortfolioService.updatePortfolio($scope.portfolio).then(function(portfolio) {
+          PortfolioService.updatePortfolio($scope.portfolio).then(function (portfolio) {
             $scope.portfolio = portfolio;
           });
           return true;

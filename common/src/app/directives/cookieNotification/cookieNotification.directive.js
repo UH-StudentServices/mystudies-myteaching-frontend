@@ -16,21 +16,21 @@
  */
 
 angular.module('directives.cookieNotification', ['constants.commonExternalLinks',
-                                                 'services.language',
-                                                 'resources.userSettings'])
+  'services.language',
+  'resources.userSettings'])
 
-  .directive('cookieNotification', function(privacyPolicyLink, LanguageService, UserSettingsService) {
+  .directive('cookieNotification', function (privacyPolicyLink, LanguageService, UserSettingsService) {
     return {
       restrict: 'E',
       replace: 'true',
       templateUrl: 'app/directives/cookieNotification/cookieNotification.html',
       scope: {},
-      link: function(scope, el) {
+      link: function (scope, el) {
         scope.privacyPolicyLink = privacyPolicyLink;
         scope.selectedLanguage = LanguageService.getCurrent();
 
-        scope.dismiss = function() {
-          UserSettingsService.acceptCookies().then(function() {
+        scope.dismiss = function () {
+          UserSettingsService.acceptCookies().then(function () {
             el.remove();
           });
         };

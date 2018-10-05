@@ -55,7 +55,7 @@ var proxy = httpProxy.createProxyServer({
   target: 'http://localhost:8080'
 });
 
-var proxyMiddleware = function(req, res, next) {
+var proxyMiddleware = function (req, res, next) {
   if (req.url.indexOf('api') !== -1) {
     proxy.web(req, res);
   } else {
@@ -63,8 +63,8 @@ var proxyMiddleware = function(req, res, next) {
   }
 };
 
-module.exports = function(grunt) {
-  gruntPlugins.forEach(function(plugin) {
+module.exports = function (grunt) {
+  gruntPlugins.forEach(function (plugin) {
     grunt.loadTasks('../node_modules/' + plugin + '/tasks');
   });
 
@@ -118,10 +118,10 @@ module.exports = function(grunt) {
             '/assets/fonts': '../bower_components/Styleguide/fonts'
           },
           middleware: [proxyMiddleware,
-                       modRewrite([
-                        '^[^\\.]*$ /index.html [L]',
-                        '^/portfolio* http://localhost:3002 [P]'
-                       ])
+            modRewrite([
+              '^[^\\.]*$ /index.html [L]',
+              '^/portfolio* http://localhost:3002 [P]'
+            ])
           ]
         }
       }
@@ -150,7 +150,7 @@ module.exports = function(grunt) {
         options: {
           map: true,
           processors: [
-            require('autoprefixer')({browsers: ['last 3 versions']})
+            require('autoprefixer')({ browsers: ['last 3 versions'] })
           ]
         },
         src: 'src/assets/styles/main.css',
@@ -160,7 +160,7 @@ module.exports = function(grunt) {
         options: {
           map: false,
           processors: [
-            require('autoprefixer')({browsers: ['last 3 versions']})
+            require('autoprefixer')({ browsers: ['last 3 versions'] })
           ]
         },
         src: 'src/assets/styles/main.css',
@@ -320,7 +320,7 @@ module.exports = function(grunt) {
         singleModule: true,
         module: 'templates',
         existingModule: false,
-        rename: function(moduleName) {
+        rename: function (moduleName) {
           return moduleName.replace('../.tmp/src/', '');
         }
       },

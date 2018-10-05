@@ -17,8 +17,7 @@
 
 angular.module('utils.validator', [])
 
-  .factory('ValidatorUtils', function() {
-
+  .factory('ValidatorUtils', function () {
     function isUrl(url) {
       var regExp = /^(?:(http|https):\/\/)?(?:[\w-]+\.)+[a-z]{2,6}/;
 
@@ -29,14 +28,12 @@ angular.module('utils.validator', [])
       if (isUrl(url)) {
         if (/http:\/\/|https:\/\//.test(url)) {
           return url;
-        } else {
-          return 'http://' + url;
         }
-        return url;
-      } else {
-        return false;
-      }
+        return 'http://' + url;
 
+        return url;
+      }
+      return false;
     }
 
 

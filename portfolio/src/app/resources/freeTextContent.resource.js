@@ -17,12 +17,11 @@
 
 angular.module('resources.freeTextContent', ['services.state'])
 
-  .factory('FreeTextContentResource', function(StateService, $resource) {
-
+  .factory('FreeTextContentResource', function (StateService, $resource) {
     function freeTextResource(portfolioId) {
       return $resource('/api/:state/v1/portfolio/:portfolioId/freetextcontent/:freeTextContentId',
-        {state: StateService.getCurrent(), portfolioId: portfolioId, freeTextContentId: '@id'},
-        {'update': {method: 'PUT'}});
+        { state: StateService.getCurrent(), portfolioId: portfolioId, freeTextContentId: '@id' },
+        { update: { method: 'PUT' } });
     }
 
     function insertFreeTextContent(portfolioId, freeTextContent) {
@@ -35,7 +34,7 @@ angular.module('resources.freeTextContent', ['services.state'])
 
     function deleteFreeTextContent(portfolioId, freeTextContent, instanceName) {
       return freeTextResource(portfolioId)
-        .delete({freeTextContentId: freeTextContent.id, instanceName: instanceName}).$promise;
+        .delete({ freeTextContentId: freeTextContent.id, instanceName: instanceName }).$promise;
     }
 
     return {

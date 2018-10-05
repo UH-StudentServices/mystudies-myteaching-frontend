@@ -17,22 +17,22 @@
 
 angular.module('directives.notifications', ['directives.message'])
 
-.directive('notifications', function(MessageTypes) {
-  return {
-    restrict: 'E',
-    replace: true,
-    templateUrl: 'app/directives/messages/notifications.html',
-    scope: {
-      notifications: '='
-    },
-    link: function(scope) {
-      scope.messages = scope.notifications ? scope.notifications.map(function(n) {
-        return {
-          messageType: MessageTypes.INFO,
-          text: n.text,
-          id: n.id
-        };
-      }) : [];
-    }
-  };
-});
+  .directive('notifications', function (MessageTypes) {
+    return {
+      restrict: 'E',
+      replace: true,
+      templateUrl: 'app/directives/messages/notifications.html',
+      scope: {
+        notifications: '='
+      },
+      link: function (scope) {
+        scope.messages = scope.notifications ? scope.notifications.map(function (n) {
+          return {
+            messageType: MessageTypes.INFO,
+            text: n.text,
+            id: n.id
+          };
+        }) : [];
+      }
+    };
+  });

@@ -17,8 +17,7 @@
 
 angular.module('resources.visibility', [])
 
-  .factory('VisibilityResource', function($resource) {
-
+  .factory('VisibilityResource', function ($resource) {
     function visibilityResource(portfolioId) {
       return $resource('/api/private/v1/portfolio/' + portfolioId + '/componentvisibility');
     }
@@ -30,5 +29,4 @@ angular.module('resources.visibility', [])
     return {
       setComponentVisibility: setComponentVisibility
     };
-
   });

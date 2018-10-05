@@ -18,9 +18,9 @@
 'use strict';
 
 angular.module('services.language', [])
-  .factory('LanguageService', function() {
+  .factory('LanguageService', function () {
     return {
-      getCurrent: function() {
+      getCurrent: function () {
         return 'fi';
       }
     };

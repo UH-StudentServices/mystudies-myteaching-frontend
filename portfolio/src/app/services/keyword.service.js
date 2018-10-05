@@ -16,7 +16,7 @@
  */
 
 angular.module('services.keyword', ['services.portfolio', 'resources.keyword'])
-  .factory('KeywordService', function(PortfolioService, KeywordResource) {
+  .factory('KeywordService', function (PortfolioService, KeywordResource) {
     var Rx = window.Rx;
     var keywordsSubject = new Rx.BehaviorSubject();
 

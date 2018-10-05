@@ -17,14 +17,13 @@
 
 angular.module('utils.domain', [])
 
-  .factory('DomainUtil', function($location) {
-
+  .factory('DomainUtil', function ($location) {
     function getPort(port) {
       return port !== 80 ? ':' + port : '';
     }
 
     return {
-      getDomain: function() {
+      getDomain: function () {
         return $location.protocol() + '://' + $location.host() + getPort($location.port());
       }
     };

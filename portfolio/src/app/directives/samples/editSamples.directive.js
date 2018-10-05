@@ -17,55 +17,54 @@
 
 angular.module('directives.editSamples', [])
 
-.directive('editSamples', function($translate) {
-  return {
-    restrict: 'E',
-    scope: {
-      samples: '=',
-      onChange: '&',
-    },
-    templateUrl: 'app/directives/samples/editSamples.html',
-    link: function($scope) {
-      $scope.newSample = {};
-
-      $scope.editTitle = function(sample) {
-        sample.titleEdit = true;
-      };
-
-      $scope.exitTitleEdit = function(sample) {
-        sample.titleEdit = false;
-      };
-
-      $scope.editUrl = function(sample) {
-        sample.urlEdit = true;
-      };
-
-      $scope.exitUrlEdit = function(sample) {
-        sample.urlEdit = false;
-      };
-
-      $scope.editDescription = function(sample) {
-        sample.descriptionEdit = true;
-      };
-
-      $scope.exitDescriptionEdit = function(sample) {
-        sample.descriptionEdit = false;
-      };
-
-      $scope.addSample = function(sample) {
-        sample.id = Date.now();
-        sample.title = '';
-        sample.description = '';
-        $scope.samples.push(sample);
+  .directive('editSamples', function ($translate) {
+    return {
+      restrict: 'E',
+      scope: {
+        samples: '=',
+        onChange: '&'
+      },
+      templateUrl: 'app/directives/samples/editSamples.html',
+      link: function ($scope) {
         $scope.newSample = {};
-        $scope.onChange();
-      };
 
-      $scope.removeSample = function(sample) {
-        $scope.samples = _.without($scope.samples, sample);
-        $scope.onChange();  // we might have deleted the only invalid item
-      };
+        $scope.editTitle = function (sample) {
+          sample.titleEdit = true;
+        };
 
-    }
-  };
-});
+        $scope.exitTitleEdit = function (sample) {
+          sample.titleEdit = false;
+        };
+
+        $scope.editUrl = function (sample) {
+          sample.urlEdit = true;
+        };
+
+        $scope.exitUrlEdit = function (sample) {
+          sample.urlEdit = false;
+        };
+
+        $scope.editDescription = function (sample) {
+          sample.descriptionEdit = true;
+        };
+
+        $scope.exitDescriptionEdit = function (sample) {
+          sample.descriptionEdit = false;
+        };
+
+        $scope.addSample = function (sample) {
+          sample.id = Date.now();
+          sample.title = '';
+          sample.description = '';
+          $scope.samples.push(sample);
+          $scope.newSample = {};
+          $scope.onChange();
+        };
+
+        $scope.removeSample = function (sample) {
+          $scope.samples = _.without($scope.samples, sample);
+          $scope.onChange(); // we might have deleted the only invalid item
+        };
+      }
+    };
+  });

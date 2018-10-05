@@ -17,7 +17,7 @@
 
 angular.module('directives.favorites.twitter', ['services.scriptInjector'])
 
-  .directive('favoritesTwitter', function($window, ScriptInjectorService) {
+  .directive('favoritesTwitter', function ($window, ScriptInjectorService) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/twitter/favorites.twitter.html',
@@ -25,11 +25,13 @@ angular.module('directives.favorites.twitter', ['services.scriptInjector'])
       scope: {
         data: '='
       },
-      link: function(scope, el) {
-        var TWITTER_SCRIPT_ID = 'twitter-wjs',
-            TWITTER_WIDGETS_URL = 'https://platform.twitter.com/widgets.js';
+      link: function (scope, el) {
+        var TWITTER_SCRIPT_ID = 'twitter-wjs';
 
-        scope.$watch('favorites.length', function() {
+
+        var TWITTER_WIDGETS_URL = 'https://platform.twitter.com/widgets.js';
+
+        scope.$watch('favorites.length', function () {
           if ($window.twttr) {
             twttr.widgets.createTimeline(
               {

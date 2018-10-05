@@ -18,7 +18,7 @@
 'use strict';
 
 angular.module('webcam', ['utils.browser'])
-  .directive('webcam', function(BrowserUtil) {
+  .directive('webcam', function (BrowserUtil) {
     return {
       template: '<div class="webcam" ng-transclude></div>',
       restrict: 'E',
@@ -32,9 +32,13 @@ angular.module('webcam', ['utils.browser'])
         config: '=channel'
       },
       link: function postLink($scope, element) {
-        var videoElem = null,
-            videoStream = null,
-            placeholder = null;
+        var videoElem = null;
+
+
+        var videoStream = null;
+
+
+        var placeholder = null;
 
         $scope.config = $scope.config || {};
 
@@ -48,7 +52,7 @@ angular.module('webcam', ['utils.browser'])
           if (!!videoStream && typeof videoStream.stop === 'function') {
             videoStream.stop();
           }
-          if (!!videoElem) {
+          if (videoElem) {
             delete videoElem.src;
           }
         };
@@ -72,7 +76,7 @@ angular.module('webcam', ['utils.browser'])
 
           /* Call custom callback */
           if ($scope.onStream) {
-            $scope.onStream({stream: stream});
+            $scope.onStream({ stream: stream });
           }
         };
 
@@ -86,10 +90,8 @@ angular.module('webcam', ['utils.browser'])
 
           /* Call custom callback */
           if ($scope.onError) {
-            $scope.onError({err: err});
+            $scope.onError({ err: err });
           }
-
-          return;
         };
 
         var startWebcam = function startWebcam() {
@@ -110,18 +112,18 @@ angular.module('webcam', ['utils.browser'])
 
           // Check the availability of getUserMedia across supported browsers
           if (!BrowserUtil.supportsCamera()) {
-            onFailure({code: -1, msg: 'Browser does not support getUserMedia.'});
+            onFailure({ code: -1, msg: 'Browser does not support getUserMedia.' });
             return;
           }
 
-          var mediaConstraint = {video: true, audio: false};
+          var mediaConstraint = { video: true, audio: false };
 
           navigator.getMedia(mediaConstraint, onSuccess, onFailure);
 
           /* Start streaming the webcam data when the video element can play
            * It will do it only once
            */
-          videoElem.addEventListener('canplay', function() {
+          videoElem.addEventListener('canplay', function () {
             if (!isStreaming) {
               isStreaming = true;
 

@@ -37,45 +37,43 @@ angular.module('directives.usefulLinks', [
   })
 
   .constant('StudentServicesLinks', {
-    'fi': 'https://guide.student.helsinki.fi/fi/artikkeli/opiskelijaneuvonta',
-    'sv': 'https://guide.student.helsinki.fi/sv/artikel/studentservicen',
-    'en': 'https://guide.student.helsinki.fi/article/student-services'
+    fi: 'https://guide.student.helsinki.fi/fi/artikkeli/opiskelijaneuvonta',
+    sv: 'https://guide.student.helsinki.fi/sv/artikel/studentservicen',
+    en: 'https://guide.student.helsinki.fi/article/student-services'
   })
 
   .constant('HelpdeskLinks', {
-    'fi': 'http://www.helsinki.fi/helpdesk',
-    'sv': 'http://www.helsinki.fi/helpdesk/sve/',
-    'en': 'http://www.helsinki.fi/helpdesk/eng/'
+    fi: 'http://www.helsinki.fi/helpdesk',
+    sv: 'http://www.helsinki.fi/helpdesk/sve/',
+    en: 'http://www.helsinki.fi/helpdesk/eng/'
   })
 
-  .filter('renderUsefulLinkDescription', function($filter) {
-    return function(description, type) {
+  .filter('renderUsefulLinkDescription', function ($filter) {
+    return function (description, type) {
       if (type === 'DEFAULT') {
         return $filter('upperFirst')($filter('translate')(description));
-      } else {
-        return description;
       }
+      return description;
     };
   })
-  .directive('usefulLinks', function(UsefulLinksResource,
-                                     SearchState,
-                                     pageTitleSearchDebounceDelay,
-                                     UsefulLinkType,
-                                     $rootScope,
-                                     closeEditUsefulLinkEvent,
-                                     Focus,
-                                     AnalyticsService,
-                                     ValidatorUtils,
-                                     StudentServicesLinks,
-                                     HelpdeskLinks) {
+  .directive('usefulLinks', function (UsefulLinksResource,
+    SearchState,
+    pageTitleSearchDebounceDelay,
+    UsefulLinkType,
+    $rootScope,
+    closeEditUsefulLinkEvent,
+    Focus,
+    AnalyticsService,
+    ValidatorUtils,
+    StudentServicesLinks,
+    HelpdeskLinks) {
     return {
       restrict: 'E',
       replace: true,
       scope: {},
       templateUrl: 'app/directives/usefulLinks/usefulLinks.html',
-      link: function($scope) {
-
-        UsefulLinksResource.getAll().then(function(usefulLinks) {
+      link: function ($scope) {
+        UsefulLinksResource.getAll().then(function (usefulLinks) {
           $scope.usefulLinks = usefulLinks;
         });
 
@@ -88,33 +86,33 @@ angular.module('directives.usefulLinks', [
         $scope.editMode = false;
         $scope.newLink = {};
 
-        $scope.getStudentServicesLink = function() {
+        $scope.getStudentServicesLink = function () {
           return StudentServicesLinks[$scope.selectedLanguage];
         };
 
-        $scope.getHelpdeskLink = function() {
+        $scope.getHelpdeskLink = function () {
           return HelpdeskLinks[$scope.selectedLanguage];
         };
 
-        $scope.edit = function() {
+        $scope.edit = function () {
           $scope.editMode = true;
         };
 
-        $scope.exitEdit = function() {
+        $scope.exitEdit = function () {
           $scope.editMode = false;
           $scope.clearSearch();
           $rootScope.$broadcast(closeEditUsefulLinkEvent, $scope.usefulLink);
         };
 
-        $scope.deleteLink = function(link) {
-          UsefulLinksResource.deleteLink(link).then(function(usefulLinks) {
+        $scope.deleteLink = function (link) {
+          UsefulLinksResource.deleteLink(link).then(function (usefulLinks) {
             AnalyticsService.trackRemoveUsefulLink();
             Focus.focusNext();
-            _.remove($scope.usefulLinks, {id: link.id});
+            _.remove($scope.usefulLinks, { id: link.id });
           });
         };
 
-        $scope.clearSearch = function() {
+        $scope.clearSearch = function () {
           $scope.newLink.url = '';
           $scope.newLink.description = '';
           setSearchState(SearchState.NO_SEARCH);
@@ -123,7 +121,7 @@ angular.module('directives.usefulLinks', [
         $scope.sortableOptions = {
           containment: '.useful-links__dropzone',
           containerPositioning: 'relative',
-          orderChanged: function() {
+          orderChanged: function () {
             UsefulLinksResource.updateOrder(_.map($scope.usefulLinks, 'id'));
           }
         };
@@ -143,11 +141,11 @@ angular.module('directives.usefulLinks', [
                 $scope.newLink.description = validUrl;
               })
               .then(function searchPageTitleSuccess(pageTitleSearchResult) {
-                $scope.newLink.description = pageTitleSearchResult.searchResult ?
-                  pageTitleSearchResult.searchResult :
-                  validUrl;
+                $scope.newLink.description = pageTitleSearchResult.searchResult
+                  ? pageTitleSearchResult.searchResult
+                  : validUrl;
               })
-              .finally(function() {
+              .finally(function () {
                 setSearchState(SearchState.SHOW_RESULTS);
               });
           }
@@ -155,14 +153,14 @@ angular.module('directives.usefulLinks', [
 
         $scope.searchPageTitle = _.debounce(searchPageTitle, pageTitleSearchDebounceDelay);
 
-        $scope.addNewUsefulLink = function() {
+        $scope.addNewUsefulLink = function () {
           var newLink = $scope.newLink;
 
           if (newLink.url && newLink.description) {
             UsefulLinksResource.save({
               url: newLink.url,
               description: newLink.description
-            }).then(function(usefulLink) {
+            }).then(function (usefulLink) {
               AnalyticsService.trackAddUsefulLink();
               $scope.usefulLinks.push(usefulLink);
               $scope.clearSearch();

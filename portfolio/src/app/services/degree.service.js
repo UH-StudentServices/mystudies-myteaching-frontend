@@ -17,8 +17,7 @@
 
 angular.module('services.degree', ['resources.degree'])
 
-  .factory('DegreeService', function(DegreeResource) {
-
+  .factory('DegreeService', function (DegreeResource) {
     function updateDegrees(portfolioId, degrees) {
       var updateDegrees = angular.copy(degrees);
 

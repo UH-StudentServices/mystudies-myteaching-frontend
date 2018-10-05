@@ -24,57 +24,57 @@ angular.module('directives.samples', [
   'portfolioAnalytics'
 ])
 
-.directive('samples', function(SamplesService, AnalyticsService) {
-  return {
-    restrict: 'E',
-    replace: true,
-    scope: {
-      samplesData: '&',
-      portfolioId: '@',
-      portfolioLang: '@'
-    },
-    templateUrl: 'app/directives/samples/samples.html',
-    link: function(scope) {
-      scope.editing = false;
-      scope.samples = scope.samplesData();
-      scope.samplesValid = true;
+  .directive('samples', function (SamplesService, AnalyticsService) {
+    return {
+      restrict: 'E',
+      replace: true,
+      scope: {
+        samplesData: '&',
+        portfolioId: '@',
+        portfolioLang: '@'
+      },
+      templateUrl: 'app/directives/samples/samples.html',
+      link: function (scope) {
+        scope.editing = false;
+        scope.samples = scope.samplesData();
+        scope.samplesValid = true;
 
-      scope.edit = function() {
-        scope.editing = true;
-        scope.origSamples = scope.samples.slice();
-      };
+        scope.edit = function () {
+          scope.editing = true;
+          scope.origSamples = scope.samples.slice();
+        };
 
-      var isValid = function() {
-        return scope.samples.every(function(sample) {
-          return sample.title && sample.url;
-        });
-      };
-
-      scope.refreshValidity = _.debounce(function() {
-        scope.samplesValid = isValid();
-      }, 500);
-
-      scope.exitEdit = function() {
-        scope.$broadcast('saveComponent');
-        scope.markAllSubmitted();
-
-        if (isValid()) {
-          var updateSamples = angular.copy(scope.samples);
-
-          AnalyticsService.trackEventIfAdded(scope.origSamples, scope.samples,
-            AnalyticsService.ec.SAMPLES, AnalyticsService.ea.ADD);
-
-          SamplesService.updateSamples(scope.portfolioId, updateSamples).then(function(data) {
-            scope.samples = data;
-            scope.editing = false;
+        var isValid = function () {
+          return scope.samples.every(function (sample) {
+            return sample.title && sample.url;
           });
-        }
-        return true;
-      };
+        };
 
-      scope.markAllSubmitted = function() {
-        scope.samples.forEach(function(sample) { sample.submitted = true; });
-      };
-    }
-  };
-});
+        scope.refreshValidity = _.debounce(function () {
+          scope.samplesValid = isValid();
+        }, 500);
+
+        scope.exitEdit = function () {
+          scope.$broadcast('saveComponent');
+          scope.markAllSubmitted();
+
+          if (isValid()) {
+            var updateSamples = angular.copy(scope.samples);
+
+            AnalyticsService.trackEventIfAdded(scope.origSamples, scope.samples,
+              AnalyticsService.ec.SAMPLES, AnalyticsService.ea.ADD);
+
+            SamplesService.updateSamples(scope.portfolioId, updateSamples).then(function (data) {
+              scope.samples = data;
+              scope.editing = false;
+            });
+          }
+          return true;
+        };
+
+        scope.markAllSubmitted = function () {
+          scope.samples.forEach(function (sample) { sample.submitted = true; });
+        };
+      }
+    };
+  });

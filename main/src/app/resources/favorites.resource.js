@@ -16,16 +16,16 @@
  */
 
 angular.module('resources.favorites', [])
-  .factory('FavoritesResource', function($resource) {
-    var favoritesResource = $resource('/api/private/v1/favorites', {'id': '@id', 'type': '@type'}, {
-      saveRSSFavorite: {method: 'POST', url: '/api/private/v1/favorites/rss'},
-      saveUnicafeFavorite: {method: 'POST', url: '/api/private/v1/favorites/unicafe'},
-      updateUnicafeFavorite: {method: 'PUT', url: '/api/private/v1/favorites/unicafe/:id'},
-      saveUnisportFavorite: {method: 'POST', url: '/api/private/v1/favorites/unisport'},
-      saveTwitterFavorite: {method: 'POST', url: '/api/private/v1/favorites/twitter'},
-      saveFlammaFavorite: {method: 'POST', url: '/api/private/v1/favorites/flamma/:type'},
-      updateFavoriteOrder: {method: 'POST', url: '/api/private/v1/favorites/order', isArray: true},
-      deleteFavorite: {method: 'DELETE', url: '/api/private/v1/favorites/:id', isArray: true},
+  .factory('FavoritesResource', function ($resource) {
+    var favoritesResource = $resource('/api/private/v1/favorites', { id: '@id', type: '@type' }, {
+      saveRSSFavorite: { method: 'POST', url: '/api/private/v1/favorites/rss' },
+      saveUnicafeFavorite: { method: 'POST', url: '/api/private/v1/favorites/unicafe' },
+      updateUnicafeFavorite: { method: 'PUT', url: '/api/private/v1/favorites/unicafe/:id' },
+      saveUnisportFavorite: { method: 'POST', url: '/api/private/v1/favorites/unisport' },
+      saveTwitterFavorite: { method: 'POST', url: '/api/private/v1/favorites/twitter' },
+      saveFlammaFavorite: { method: 'POST', url: '/api/private/v1/favorites/flamma/:type' },
+      updateFavoriteOrder: { method: 'POST', url: '/api/private/v1/favorites/order', isArray: true },
+      deleteFavorite: { method: 'DELETE', url: '/api/private/v1/favorites/:id', isArray: true }
 
     });
 
@@ -54,7 +54,7 @@ angular.module('resources.favorites', [])
     }
 
     function saveFlammaFavorite(type) {
-      return favoritesResource.saveFlammaFavorite({type: type}).$promise;
+      return favoritesResource.saveFlammaFavorite({ type: type }).$promise;
     }
 
     function updateFavoriteOrder(favoriteIdList) {
@@ -62,7 +62,7 @@ angular.module('resources.favorites', [])
     }
 
     function deleteFavorite(favoriteId) {
-      return favoritesResource.deleteFavorite({id: favoriteId}).$promise;
+      return favoritesResource.deleteFavorite({ id: favoriteId }).$promise;
     }
 
     return {

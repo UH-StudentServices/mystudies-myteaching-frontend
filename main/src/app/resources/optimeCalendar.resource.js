@@ -17,11 +17,11 @@
 
 angular.module('resources.optimeCalendar', [])
 
-  .factory('OptimeCalendarResource', function($resource) {
+  .factory('OptimeCalendarResource', function ($resource) {
     var optimeCalendarResource = $resource('/api/private/v1/optime/calendar');
 
     return {
-      getCalendarUrl: function() {
+      getCalendarUrl: function () {
         return optimeCalendarResource.get().$promise;
       }
     };

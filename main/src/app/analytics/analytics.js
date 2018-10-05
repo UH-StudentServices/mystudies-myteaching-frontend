@@ -26,14 +26,14 @@ angular.module('opintoniAnalytics', [
   * Analytics must be injected at least once.
   * If relying on automatic page tracking, do not remove it.
   */
-  .run(function(Analytics, SessionService, StateService) {
-    SessionService.getFacultyCode().then(function(facultyCode) {
+  .run(function (Analytics, SessionService, StateService) {
+    SessionService.getFacultyCode().then(function (facultyCode) {
       Analytics.set('dimension1', StateService.getStateFromDomain());
       Analytics.set('dimension2', facultyCode);
     });
   })
 
-  .config(function(AnalyticsProvider, AnalyticsAccountsProvider) {
+  .config(function (AnalyticsProvider, AnalyticsAccountsProvider) {
     AnalyticsProvider.setAccount(AnalyticsAccountsProvider.$get());
     AnalyticsProvider.trackPages(true);
     AnalyticsProvider.useAnalytics(true);
@@ -42,40 +42,39 @@ angular.module('opintoniAnalytics', [
   })
 
   .constant('EventCategories', {
-    'AVATAR_IMAGE': 'avatarImage',
-    'BACKGROUND_IMAGE': 'backgroundImage',
-    'EXTERNAL_LINK': 'externalLink',
-    'FAVORITES': 'favorites',
-    'SITE_ACTIONS': 'siteActions',
-    'TODO_ITEMS': 'todoItems',
-    'USEFUL_LINKS': 'usefulLinks',
-    'WEEK_FEED': 'weekFeed',
-    'PAGE_BANNER': 'pageBanner'
+    AVATAR_IMAGE: 'avatarImage',
+    BACKGROUND_IMAGE: 'backgroundImage',
+    EXTERNAL_LINK: 'externalLink',
+    FAVORITES: 'favorites',
+    SITE_ACTIONS: 'siteActions',
+    TODO_ITEMS: 'todoItems',
+    USEFUL_LINKS: 'usefulLinks',
+    WEEK_FEED: 'weekFeed',
+    PAGE_BANNER: 'pageBanner'
   })
 
   .constant('EventActions', {
-    'ADD': 'add',
-    'CHOOSE_DEFAULT': 'chooseDefault',
-    'CLICK': 'click',
-    'FEEDBACK': 'feedback',
-    'MARK_AS_DONE': 'markAsDone',
-    'MARK_NOTIFICATION_AS_READ': 'markNotificationAsRead',
-    'REMOVE': 'remove',
-    'SHOW_CALENDAR_VIEW': 'showCalendarView',
-    'SHOW_WEEK_FEED_TAB': 'showWeekFeedTab',
-    'SUBSCRIBE_CALENDAR': 'subscribeCalendar',
-    'UPLOAD': 'upload',
-    'VISIBLE_ON_PAGE_LOAD': 'visibleOnPageLoad',
-    'BROWSE': 'browse'
+    ADD: 'add',
+    CHOOSE_DEFAULT: 'chooseDefault',
+    CLICK: 'click',
+    FEEDBACK: 'feedback',
+    MARK_AS_DONE: 'markAsDone',
+    MARK_NOTIFICATION_AS_READ: 'markNotificationAsRead',
+    REMOVE: 'remove',
+    SHOW_CALENDAR_VIEW: 'showCalendarView',
+    SHOW_WEEK_FEED_TAB: 'showWeekFeedTab',
+    SUBSCRIBE_CALENDAR: 'subscribeCalendar',
+    UPLOAD: 'upload',
+    VISIBLE_ON_PAGE_LOAD: 'visibleOnPageLoad',
+    BROWSE: 'browse'
   })
 
   .constant('EventLabels', {
-    'VISIBLE': 'visible',
-    'HIDDEN': 'hidden'
+    VISIBLE: 'visible',
+    HIDDEN: 'hidden'
   })
 
-  .factory('AnalyticsService', function(Analytics, EventCategories, EventActions) {
-
+  .factory('AnalyticsService', function (Analytics, EventCategories, EventActions) {
     function isClickOrMiddleButton(event) {
       return event.type === 'click' || event.which === 2;
     }
@@ -106,7 +105,7 @@ angular.module('opintoniAnalytics', [
       trackRemoveFavorite:
         _.partial(submitAnalyticsEvent, EventCategories.FAVORITES, EventActions.REMOVE),
       trackAddUsefulLink:
-        _.partial(submitAnalyticsEvent,EventCategories.USEFUL_LINKS, EventActions.ADD),
+        _.partial(submitAnalyticsEvent, EventCategories.USEFUL_LINKS, EventActions.ADD),
       trackRemoveUsefulLink:
         _.partial(submitAnalyticsEvent, EventCategories.USEFUL_LINKS, EventActions.REMOVE),
       trackAddTodoItem:

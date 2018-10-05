@@ -21,9 +21,8 @@ angular.module('directives.editableHeading', [
   'services.portfolio',
   'services.componentHeadingService',
   'portfolioAnalytics'
-]
-)
-  .directive('editableHeading', function($translate, PortfolioService, ComponentHeadingService, AnalyticsService) {
+])
+  .directive('editableHeading', function ($translate, PortfolioService, ComponentHeadingService, AnalyticsService) {
     return {
       restrict: 'E',
       replace: true,
@@ -34,16 +33,15 @@ angular.module('directives.editableHeading', [
         editing: '<'
       },
       templateUrl: 'app/directives/editableHeading/editableHeading.html',
-      link: function($scope) {
-
+      link: function ($scope) {
         $scope.component = {
           component: $scope.componentId,
           heading: $translate.instant($scope.defaultText, {}, '', $scope.portfolioLang)
         };
         $scope.currentText = $scope.component.heading;
 
-        PortfolioService.getPortfolio().then(function(portfolio) {
-          var comp = _.find(portfolio.headings, {'component': $scope.componentId});
+        PortfolioService.getPortfolio().then(function (portfolio) {
+          var comp = _.find(portfolio.headings, { component: $scope.componentId });
 
           if (comp && comp.heading) {
             $scope.component = comp;
@@ -51,11 +49,11 @@ angular.module('directives.editableHeading', [
           }
         });
 
-        $scope.saveHeading = function() {
+        $scope.saveHeading = function () {
           if ($scope.component.heading !== $scope.currentText) {
             AnalyticsService.trackEvent($scope.component.component.toLowerCase(), AnalyticsService.ea.EDIT_HEADING);
             ComponentHeadingService.updateHeading($scope.component)
-              .then(function(component) {
+              .then(function (component) {
                 if (component.heading) {
                   $scope.currentText = component.heading;
                 }

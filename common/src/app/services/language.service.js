@@ -18,38 +18,34 @@
 'use strict';
 
 angular.module('services.language', ['constants.language'])
-.constant('SUPPORTED_LANGUAGES', [
-  'en', 'fi', 'sv'
-])
-.constant('DEFAULT_LANGUAGE', 'fi')
+  .constant('SUPPORTED_LANGUAGES', [
+    'en', 'fi', 'sv'
+  ])
+  .constant('DEFAULT_LANGUAGE', 'fi')
 
-.config(function($translateProvider,
-                 $cookiesProvider,
-                 SUPPORTED_LANGUAGES,
-                 DEFAULT_LANGUAGE,
-                 TRANSLATION_FILE_PREFIX) {
-  $translateProvider.useStaticFilesLoader({
-    prefix: TRANSLATION_FILE_PREFIX,
-    suffix: '.json'
+  .config(function ($translateProvider,
+    $cookiesProvider,
+    SUPPORTED_LANGUAGES,
+    DEFAULT_LANGUAGE,
+    TRANSLATION_FILE_PREFIX) {
+    $translateProvider.useStaticFilesLoader({
+      prefix: TRANSLATION_FILE_PREFIX,
+      suffix: '.json'
+    });
+    $translateProvider.useCookieStorage();
+    $translateProvider.storageKey('OO_LANGUAGE');
+    $translateProvider.useSanitizeValueStrategy('escaped');
+    $translateProvider.preferredLanguage(DEFAULT_LANGUAGE);
+
+    $cookiesProvider.defaults.path = '/';
+    $cookiesProvider.defaults.domain = '.helsinki.fi';
+    $cookiesProvider.defaults.expires = moment().add(10, 'year').calendar();
+  })
+
+  .factory('LanguageService', function ($translate) {
+    return {
+      getCurrent: function () {
+        return $translate.proposedLanguage() || $translate.use();
+      }
+    };
   });
-  $translateProvider.useCookieStorage();
-  $translateProvider.storageKey('OO_LANGUAGE');
-  $translateProvider.useSanitizeValueStrategy('escaped');
-  $translateProvider.preferredLanguage(DEFAULT_LANGUAGE);
-
-  $cookiesProvider.defaults.path = '/';
-  $cookiesProvider.defaults.domain = '.helsinki.fi';
-  $cookiesProvider.defaults.expires = moment().add(10, 'year').calendar();
-})
-
-.factory('LanguageService', function($translate) {
-  return {
-    getCurrent: function() {
-      return $translate.proposedLanguage() || $translate.use();
-    }
-  };
-});
-
-
-
-

@@ -21,7 +21,11 @@ angular.module('portfolioAnalytics', ['provider.analyticsAccounts'])
   .constant('TRACK_PREFIX', '/portfolio')
 
 
-  .config(function(AnalyticsProvider, ConfigurationProvider, TRACK_PAGE_TITLE, STRIP_USERNAME_REGEX, TRACK_PREFIX) {
+  .config(function (AnalyticsProvider,
+    ConfigurationProvider,
+    TRACK_PAGE_TITLE,
+    STRIP_USERNAME_REGEX,
+    TRACK_PREFIX) {
     var TRACKER_CONFIG_KEY = 'googleAnalyticsAccountPortfolio';
     var trackerConfig = ConfigurationProvider.$get()[TRACKER_CONFIG_KEY];
 
@@ -37,7 +41,8 @@ angular.module('portfolioAnalytics', ['provider.analyticsAccounts'])
         set: {
           anonymizeIp: true,
           // We leave portfolio language out of the location and page attributes of events,
-          // as it seems it is not possible to change these attributes for events after configuration.
+          // as it seems it is not possible to change these attributes
+          // for events after configuration.
           location: location.origin + TRACK_PREFIX,
           page: TRACK_PREFIX,
           title: TRACK_PAGE_TITLE
@@ -58,12 +63,11 @@ angular.module('portfolioAnalytics', ['provider.analyticsAccounts'])
   })
 
 
-  .factory('AnalyticsService', function(Analytics,
-                                        STRIP_USERNAME_REGEX,
-                                        TRACK_PAGE_TITLE,
-                                        TRACK_PREFIX,
-                                        $location) {
-
+  .factory('AnalyticsService', function (Analytics,
+    STRIP_USERNAME_REGEX,
+    TRACK_PAGE_TITLE,
+    TRACK_PREFIX,
+    $location) {
     function urlWithoutUsername() {
       return $location.absUrl().replace(STRIP_USERNAME_REGEX, '');
     }
@@ -84,7 +88,7 @@ angular.module('portfolioAnalytics', ['provider.analyticsAccounts'])
 
     function trackEventIfAdded(oldArray, newArray, eventCategory, eventAction, label) {
       function filter(arr) {
-        return _.reject(arr, function(o) {
+        return _.reject(arr, function (o) {
           return o == null;
         });
       }
@@ -97,7 +101,8 @@ angular.module('portfolioAnalytics', ['provider.analyticsAccounts'])
       Analytics.trackEvent(eventCategory, eventAction, label);
     }
 
-    // Automatic page view tracking will leak the user name in the page title to GA, so we track page views manually.
+    // Automatic page view tracking will leak the user name in the page title to GA,
+    // so we track page views manually.
     // In practice only changing portfolio language changes the URL.
     function trackPageView() {
       var params = trackPageParams();
@@ -105,7 +110,7 @@ angular.module('portfolioAnalytics', ['provider.analyticsAccounts'])
       Analytics.trackPage(params.page, params.title, params);
     }
 
-    var eventCategories =  {
+    var eventCategories = {
       INTRO_TEXT: 'intro_text',
       BACKGROUND_IMAGE: 'background_image',
       STUDIES: 'studies',
@@ -136,8 +141,8 @@ angular.module('portfolioAnalytics', ['provider.analyticsAccounts'])
     };
 
     var eventLabels = {
-        'VISIBLE': 'visible',
-        'HIDDEN': 'hidden'
+      VISIBLE: 'visible',
+      HIDDEN: 'hidden'
     };
 
     return {

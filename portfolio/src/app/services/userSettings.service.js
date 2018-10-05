@@ -17,13 +17,20 @@
 
 angular.module('services.userSettings', ['resources.userSettings'])
 
-  .factory('UserSettingsService', function(UserSettingsResource) {
+  .factory('UserSettingsService', function (UserSettingsResource) {
+    var userSettingsPromise;
 
-    var userSettingsPromise,
-        settingsPromise,
-        availableBackgroundsPromise,
-        Rx = window.Rx,
-        userSettingsSubject = new Rx.BehaviorSubject();
+
+    var settingsPromise;
+
+
+    var availableBackgroundsPromise;
+
+
+    var Rx = window.Rx;
+
+
+    var userSettingsSubject = new Rx.BehaviorSubject();
 
     function publishUserSettings(userSettings) {
       userSettingsSubject.onNext(userSettings);
@@ -47,7 +54,7 @@ angular.module('services.userSettings', ['resources.userSettings'])
 
     function updateUserSettings(updateObject) {
       userSettingsPromise = getUserSettings()
-        .then(function(settings) {
+        .then(function (settings) {
           return UserSettingsResource.updateUserSettings(_.assign(settings, updateObject));
         });
 
@@ -55,14 +62,13 @@ angular.module('services.userSettings', ['resources.userSettings'])
     }
 
     function acceptCookies() {
-      return updateUserSettings({cookieConsent: true});
+      return updateUserSettings({ cookieConsent: true });
     }
 
     function uploadUserBackground(imageBase64) {
-      return getUserSettings().then(function(userSettings) {
-        settingsPromise =
-          UserSettingsResource.uploadUserBackground(userSettings.id, imageBase64)
-            .then(publishUserSettings);
+      return getUserSettings().then(function (userSettings) {
+        settingsPromise = UserSettingsResource.uploadUserBackground(userSettings.id, imageBase64)
+          .then(publishUserSettings);
         return settingsPromise;
       });
     }
@@ -71,7 +77,6 @@ angular.module('services.userSettings', ['resources.userSettings'])
       acceptCookies: acceptCookies,
       getAvailableBackgrounds: getAvailableBackgrounds,
       getUserSettings: getUserSettings,
-      updateUserSettings: updateUserSettings,
+      updateUserSettings: updateUserSettings
     };
-
   });

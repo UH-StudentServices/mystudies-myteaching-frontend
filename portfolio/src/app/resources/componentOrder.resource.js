@@ -17,13 +17,12 @@
 
 angular.module('resources.componentOrder', [])
 
-  .factory('ComponentOrderResource', function($resource) {
-
+  .factory('ComponentOrderResource', function ($resource) {
     function componentOrderResource(portfolioId) {
       return $resource('/api/private/v1/portfolio/:portfolioId/component-orders', {
         portfolioId: portfolioId
       }, {
-        'save': {
+        save: {
           method: 'POST',
           isArray: true
         }
@@ -37,5 +36,4 @@ angular.module('resources.componentOrder', [])
     return {
       updateComponentOrder: updateComponentOrder
     };
-
   });

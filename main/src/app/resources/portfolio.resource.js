@@ -17,10 +17,11 @@
 
 angular.module('resources.portfolio', ['services.state'])
 
-  .factory('PortfolioResource', function($resource) {
+  .factory('PortfolioResource', function ($resource) {
+    var studentPortfolioResource = $resource('/api/private/v1/portfolio/student');
 
-    var studentPortfolioResource = $resource('/api/private/v1/portfolio/student'),
-        teacherPortfolioResource = $resource('/api/private/v1/portfolio/teacher');
+
+    var teacherPortfolioResource = $resource('/api/private/v1/portfolio/teacher');
 
     function createPortfolio(resource) {
       return resource.save().$promise;
@@ -34,7 +35,6 @@ angular.module('resources.portfolio', ['services.state'])
       createStudentPortfolio: _.partial(createPortfolio, studentPortfolioResource),
       getStudentPortfolio: _.partial(getPortfolio, studentPortfolioResource),
       createTeacherPortfolio: _.partial(createPortfolio, teacherPortfolioResource),
-      getTeacherPortfolio: _.partial(getPortfolio, teacherPortfolioResource),
+      getTeacherPortfolio: _.partial(getPortfolio, teacherPortfolioResource)
     };
-
   });

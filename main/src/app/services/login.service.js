@@ -22,39 +22,44 @@ angular.module('services.login', [
   'services.configuration',
   'ngCookies'])
 
-  .factory('LoginService', function($q,
-                                    $window,
-                                    $http,
-                                    $httpParamSerializerJQLike,
-                                    $state,
-                                    $injector,
-                                    $cookies,
-                                    $translate,
-                                    SessionService,
-                                    UserSettingsService,
-                                    StateService,
-                                    State,
-                                    Configuration,
-                                    LocalPassword,
-                                    LoginCookie,
-                                    Environments) {
-
-    var FEDERATED_LOGIN_ENVS = [Environments.QA, Environments.PROD],
-        isFederatedLoginEnv = FEDERATED_LOGIN_ENVS.indexOf(Configuration.environment) > -1;
+  .factory('LoginService', function ($q,
+    $window,
+    $http,
+    $httpParamSerializerJQLike,
+    $state,
+    $injector,
+    $cookies,
+    $translate,
+    SessionService,
+    UserSettingsService,
+    StateService,
+    State,
+    Configuration,
+    LocalPassword,
+    LoginCookie,
+    Environments) {
+    var FEDERATED_LOGIN_ENVS = [Environments.QA, Environments.PROD];
+    var isFederatedLoginEnv = FEDERATED_LOGIN_ENVS.indexOf(Configuration.environment) > -1;
 
     function loginPathForState(state) {
-      var loginUrl = state === State.MY_TEACHINGS ? Configuration.loginUrlTeacher : Configuration.loginUrlStudent,
-          appUrl = state === State.MY_TEACHINGS ? Configuration.teacherAppUrl : Configuration.studentAppUrl;
+      var loginUrl = state === State.MY_TEACHINGS
+        ? Configuration.loginUrlTeacher
+        : Configuration.loginUrlStudent;
+
+
+      var appUrl = state === State.MY_TEACHINGS
+        ? Configuration.teacherAppUrl
+        : Configuration.studentAppUrl;
 
       return loginUrl.replace(appUrl, '');
     }
 
     function goToStateOrRedirectOut(url) {
-      var $state = $injector.get('$state'),
-          allStates = $state.get(),
-          stateMatch;
+      var $state = $injector.get('$state'); // eslint-disable-line no-shadow
+      var allStates = $state.get();
+      var stateMatch;
 
-      stateMatch = _.find(allStates, function(el) {
+      stateMatch = _.find(allStates, function (el) {
         return $state.href(el.name) === url;
       });
 
@@ -65,16 +70,23 @@ angular.module('services.login', [
       }
     }
 
-    function shouldShowLander() {
-      return isFederatedLoginEnv && isFirstLogin();
-    }
-
     function isFirstLogin() {
       return !$cookies.get(LoginCookie);
     }
 
+    function shouldShowLander() {
+      return isFederatedLoginEnv && isFirstLogin();
+    }
+
     function goToLander() {
       $state.go(State.LANDER);
+    }
+
+    function goToLogin() {
+      var state = StateService.getStateFromDomain();
+      var loginPath = loginPathForState(state);
+
+      goToStateOrRedirectOut(loginPath);
     }
 
     function goToLoginOrLander() {
@@ -83,13 +95,6 @@ angular.module('services.login', [
       } else {
         goToLogin();
       }
-    }
-
-    function goToLogin() {
-      var state = StateService.getStateFromDomain(),
-          loginPath = loginPathForState(state);
-
-      goToStateOrRedirectOut(loginPath);
     }
 
     function reloadUserData() {
@@ -104,7 +109,7 @@ angular.module('services.login', [
         username: username,
         password: LocalPassword
       }), {
-        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
       })
         .then(reloadUserData)
         .then(StateService.getStateFromDomain)

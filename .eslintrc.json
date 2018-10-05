@@ -1,5 +1,5 @@
 {
-  "extends": "defaults/configurations/google",
+  "extends": "airbnb-base/legacy",
   "env": {
     "browser": true,
     "node": true
@@ -29,20 +29,14 @@
     "CKEDITOR": true
   },
   "rules": {
-    "dot-location": [2, "property"],
-    "indent": [2, 2, {
-      "VariableDeclarator": 2,
-      "SwitchCase": 1,
-      "ArrayExpression": "first",
-      "FunctionExpression": {
-        "parameters": "first"
-      },
-      "ObjectExpression": "first"
-    }],
-    "max-len": [2, 120, 2],
-    "eqeqeq": [2, "smart"],
-    "keyword-spacing": 2,
-    "header/header": [2, "header.txt"]
+    "comma-dangle": [2, "never"],
+    "header/header": [2, "header.txt"],
+    "func-names": 0,
+    "no-param-reassign": ["error",
+      { "props": false }
+    ],
+    "vars-on-top": 1,
+    "operator-linebreak": ["error", "before", { "overrides": { "=": "ignore" } }]
   },
   "plugins": [
     "header"

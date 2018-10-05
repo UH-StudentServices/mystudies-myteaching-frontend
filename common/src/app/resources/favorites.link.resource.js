@@ -17,8 +17,7 @@
 
 angular.module('resources.favorites.link', [])
 
-  .factory('EmbedLyResource', function($http, Configuration) {
-
+  .factory('EmbedLyResource', function ($http, Configuration) {
     var apiKey = Configuration.embedlyApiKey;
 
     function get(url) {

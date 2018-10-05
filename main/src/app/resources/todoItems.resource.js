@@ -18,9 +18,9 @@
 angular.module('resources.todoItems', ['utils.moment'])
 
   .factory('TodoItemsResource', function TodoItemsResource($resource) {
-    var todoItemsResource = $resource('/api/private/v1/todoitems/:id', {id: '@id'}, {
-      update: {method: 'PUT'},
-      delete: {method: 'DELETE', isArray: true}
+    var todoItemsResource = $resource('/api/private/v1/todoitems/:id', { id: '@id' }, {
+      update: { method: 'PUT' },
+      delete: { method: 'DELETE', isArray: true }
     });
 
     function getAll() {
@@ -36,7 +36,7 @@ angular.module('resources.todoItems', ['utils.moment'])
     }
 
     function deleteTodoItem(id) {
-      return todoItemsResource.delete({id: id}).$promise;
+      return todoItemsResource.delete({ id: id }).$promise;
     }
 
     return {

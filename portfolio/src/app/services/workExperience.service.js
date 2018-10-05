@@ -19,25 +19,25 @@ angular.module('services.workExperience', [
   'services.portfolio',
   'resources.workExperience'])
 
-  .factory('WorkExperienceService', function(PortfolioService,
-                                             WorkExperienceResource,
-                                             momentDateToLocalDateArray,
-                                             dateArrayToMomentObject,
-                                             $filter) {
-
-    var Rx = window.Rx,
-        workExperienceSubject,
-        jobSearchSubject,
-        orderBy = $filter('orderBy'),
-        getPortfolio = PortfolioService.getPortfolio;
+  .factory('WorkExperienceService', function (PortfolioService,
+    WorkExperienceResource,
+    momentDateToLocalDateArray,
+    dateArrayToMomentObject,
+    $filter) {
+    var Rx = window.Rx;
+    var workExperienceSubject;
+    var jobSearchSubject;
+    var orderBy = $filter('orderBy');
+    var getPortfolio = PortfolioService.getPortfolio;
 
     function formatDates(workExperiences) {
-      workExperiences = _.map(workExperiences, function(job) {
+      var workExperiencesWithDates = _.map(workExperiences, function (job) {
         job.startDate = dateArrayToMomentObject(job.startDate);
         job.endDate = dateArrayToMomentObject(job.endDate);
         return job;
       });
-      return orderBy(workExperiences, '-startDate');
+
+      return orderBy(workExperiencesWithDates, '-startDate');
     }
 
     function workExperienceArrayDatesToMoment(workExperience) {
@@ -109,14 +109,15 @@ angular.module('services.workExperience', [
     }
 
     function updateWorkExperience(portfolioId, workExperience) {
-      var updateWorkExperience = angular.copy(workExperience);
+      var updatedWorkExperience = angular.copy(workExperience);
 
-      updateWorkExperience.forEach(function(job) {
+      updatedWorkExperience.forEach(function (job) {
         job.startDate = momentDateToLocalDateArray(job.startDate);
         job.endDate = momentDateToLocalDateArray(job.endDate);
       });
 
-      return WorkExperienceResource.updateWorkExperience(portfolioId, updateWorkExperience).then(formatDates);
+      return WorkExperienceResource.updateWorkExperience(portfolioId, updatedWorkExperience)
+        .then(formatDates);
     }
 
     return {
@@ -128,4 +129,3 @@ angular.module('services.workExperience', [
       updateWorkExperience: updateWorkExperience
     };
   });
-
