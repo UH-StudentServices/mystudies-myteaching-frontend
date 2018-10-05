@@ -32,7 +32,7 @@ angular.module('directives.editLink', [])
           if (!$scope.exitEditDisabled) {
             $scope.editing = false;
             if ($scope.onExitEdit) {
-              $scope.onExitEdit();
+              $scope.editing = !$scope.onExitEdit();
             }
           } else if ($scope.onDisabledExitEdit) {
             $scope.onDisabledExitEdit();

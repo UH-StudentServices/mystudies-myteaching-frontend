@@ -62,6 +62,7 @@
     "TUHAT": "Tuhat",
     "RESEARCH_GATE": "ResearchGate",
     "ACADEMIA": "Academia.edu",
+    "LINKEDIN": "LinkedIn",
     "WEBSITE_LINK": "Website link"
   },
   "degrees": {
@@ -157,6 +158,9 @@
       "fi": "Finnish",
       "sv": "Swedish"
     }
+  },
+  "skillsAndExpertise": {
+    "title": "Skills and expertise"
   },
   "tabs": {
     "basicInformation": "Basic information",

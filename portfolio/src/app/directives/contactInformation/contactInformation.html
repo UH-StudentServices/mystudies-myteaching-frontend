@@ -93,7 +93,7 @@
           <div limit-visibility="{roles: ['STUDENT']}">
             <input ng-model="contactInfo.phoneNumber"
                    placeholder="{{::('contactInformation.addPhoneNumber' | translate)}}">
-            <input ng-model="contactInfo.email"
+            <input ng-model="contactInfo.email" type="email"
                    placeholder="{{::('contactInformation.addEmail' | translate)}}">
           </div>
           <div limit-visibility="{roles: ['TEACHER']}">
@@ -107,7 +107,7 @@
                    placeholder="{{::('contactInformation.addWorkAddress' | translate)}}">
             <input ng-model="contactInfo.workPostcode"
                    placeholder="{{::('contactInformation.addWorkPostcode' | translate)}}">
-            <input ng-model="contactInfo.email"
+            <input ng-model="contactInfo.email" type="email"
                    placeholder="{{::('contactInformation.addEmail' | translate)}}">
             <input ng-model="contactInfo.workMobile"
                    placeholder="{{::('contactInformation.addWorkMobile' | translate)}}">
@@ -134,9 +134,9 @@
           </a>
 
           <div class="useful-links__edit-link-url" ng-show="someLink.edit">
-            <input focus="someLink.edit" ng-model="someLink.url"
-                   ui-keypress="{'enter':'exitSomeLinkEdit(someLink)'}" />
-            <a role="button" href="" ng-click="exitSomeLinkEdit(someLink)"><i class="icon--done"></i></a>
+            <input name="{{someLink.type}}" focus="someLink.edit" ng-model="someLink.url" type="url" placeholder="{{someLink.baseUrl}}"
+                   ui-keypress="{'enter':'editContactInformation[someLink.type].$valid && exitSomeLinkEdit(someLink)'}" />
+            <a ng-show="editContactInformation[someLink.type].$valid" role="button" href="" ng-click="exitSomeLinkEdit(someLink)"><i class="icon--done"></i></a>
           </div>
         </li>
       </ul>

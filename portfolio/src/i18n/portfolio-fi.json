@@ -62,6 +62,7 @@
     "TUHAT": "Tuhat",
     "RESEARCH_GATE": "ResearchGate",
     "ACADEMIA": "Academia.edu",
+    "LINKEDIN": "LinkedIn",
     "WEBSITE_LINK": "Linkki verkkosivulle"
   },
   "degrees": {
@@ -157,6 +158,9 @@
       "fi": "Suomi",
       "sv": "Ruotsi"
     }
+  },
+  "skillsAndExpertise": {
+    "title": "Osaaminen ja asiantuntijuus"
   },
   "tabs": {
     "basicInformation": "Perustiedot",
