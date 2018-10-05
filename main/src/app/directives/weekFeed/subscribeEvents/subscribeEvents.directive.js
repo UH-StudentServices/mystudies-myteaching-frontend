@@ -136,7 +136,7 @@ angular.module('directives.subscribeEvents', [
             })
               .catch(getOrCreateCalendarFeedUrl);
           }
-          return null;
+          return undefined;
         };
       }
     };
