@@ -36,7 +36,7 @@ angular.module('services.eventUri', ['services.location'])
 
     function getGoogleMapsUri(location) {
       if (hasStreetAddress(location)) {
-        var encoded = encodeURIComponent(getPlace(location));
+        var encoded = encodeURIComponent(getPlace(location)); // eslint-disable-line vars-on-top
 
         return 'https://www.google.fi/maps/place/' + encoded;
       }
@@ -45,17 +45,11 @@ angular.module('services.eventUri', ['services.location'])
 
     function getReittiopasUri(startDate, location, fromAddress) {
       var to = location.streetAddress;
-
       var start = startDate.tz(Timezones.HELSINKI);
-
       var minutes = start.minute();
-
       var hours = start.hour();
-
       var date = start.date();
-
       var month = start.month() + 1;
-
       var year = start.year();
 
       if (BrowserUtil.isMobile()) {

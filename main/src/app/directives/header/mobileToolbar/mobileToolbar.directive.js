@@ -77,6 +77,7 @@ angular.module('directives.mobileToolbar', [
           if (!isStudent || !StateService.currentOrParentStateMatches(State.MY_STUDIES)) {
             return;
           }
+          // eslint-disable-next-line vars-on-top
           var optional = optionalLinks[Configuration.environment];
 
           SessionService.isInPilotDegreeProgramme().then(function (isInPilotProgramme) {

@@ -67,6 +67,8 @@ angular.module('directives.scrollableTabBar', [])
             }
           });
         }
+        // eslint-disable-next-line vars-on-top
+        var debouncedResizeHandler = _.debounce(onResize, DEBOUNCE_DELAY);
 
         function scrollBy(combinator) {
           tabContainer.scrollLeft = combinator(tabContainer.scrollLeft, SCROLL_STEP);
@@ -78,8 +80,6 @@ angular.module('directives.scrollableTabBar', [])
             && scope.showScrollControls
             && $window.matchMedia(MOBILE_ONLY_BREAKPOINT_VALUE).matches;
         }
-
-        var debouncedResizeHandler = _.debounce(onResize, DEBOUNCE_DELAY);
 
         angular.element($window).on('resize', debouncedResizeHandler);
 

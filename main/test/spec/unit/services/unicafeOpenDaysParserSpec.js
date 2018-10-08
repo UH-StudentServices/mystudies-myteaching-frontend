@@ -61,13 +61,13 @@ describe('UnicafeOpenDaysParser', function () {
       .add(offsetDays, 'days');
   }
 
-  var monday = momentFromNextWeekStart(0);
-  var tuesday = momentFromNextWeekStart(1);
-  var wednesday = momentFromNextWeekStart(2);
-  var thursday = momentFromNextWeekStart(3);
-  var friday = momentFromNextWeekStart(4);
-  var saturday = momentFromNextWeekStart(5);
-  var sunday = momentFromNextWeekStart(6);
+  var monday = momentFromNextWeekStart(0); // eslint-disable-line vars-on-top
+  var tuesday = momentFromNextWeekStart(1); // eslint-disable-line vars-on-top
+  var wednesday = momentFromNextWeekStart(2); // eslint-disable-line vars-on-top
+  var thursday = momentFromNextWeekStart(3); // eslint-disable-line vars-on-top
+  var friday = momentFromNextWeekStart(4); // eslint-disable-line vars-on-top
+  var saturday = momentFromNextWeekStart(5); // eslint-disable-line vars-on-top
+  var sunday = momentFromNextWeekStart(6); // eslint-disable-line vars-on-top
 
   beforeEach(function () {
     module(function ($provide) {

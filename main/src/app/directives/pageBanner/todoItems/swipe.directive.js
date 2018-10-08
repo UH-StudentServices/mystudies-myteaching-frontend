@@ -28,6 +28,7 @@ angular.module('directives.swipe', [])
       },
       link: function ($scope, el) {
         if (Modernizr.touch) {
+          // eslint-disable-next-line vars-on-top
           var mc = new Hammer(el[0]);
 
           mc.get('swipe').set({ velocity: 0.15 });

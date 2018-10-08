@@ -31,9 +31,9 @@ angular.module('directives.favorites.unicafe', [
       var closed = false;
 
       try {
-        var exception = menuData.information.business.exception;
-        var reqular = menuData.information.business.regular;
-        var toDay = _.capitalize(nowMoment.locale('FI').format('dd'));
+        var exception = menuData.information.business.exception; // eslint-disable-line vars-on-top
+        var reqular = menuData.information.business.regular; // eslint-disable-line vars-on-top
+        var toDay = _.capitalize(nowMoment.locale('FI').format('dd')); // eslint-disable-line vars-on-top
 
         if (exception && exception.length > 0) {
           closed = closed || _.some(exception, function (e) {

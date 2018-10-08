@@ -64,15 +64,16 @@ angular.module('directives.freeTextContent', [
         deletable: '='
       },
       link: function (scope) {
+        var freeTextContentSubject;
+
         function getVisibilityDescriptor() {
           return {
             portfolioSection: scope.portfolioSection || null,
             instanceName: scope.instanceName || null
           };
         }
-
+        // eslint-disable-next-line vars-on-top
         var visibilityDescriptor = getVisibilityDescriptor();
-        var freeTextContentSubject;
 
         function getMatchingItem(freeTextContentItems, searchCriteria) {
           var filteredFreeTextContentItems = freeTextContentItems.filter(_.matches(searchCriteria));

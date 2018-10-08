@@ -142,7 +142,7 @@ angular.module('directives.visibility', [
             }))
               .then(render);
           }
-          // eslint-disable-next-line no-unused-vars
+          // eslint-disable-next-line no-unused-vars, vars-on-top
           var viewportSizeChangesSubscription =
             BrowserUtil.viewportSizeSubject.subscribe(evaluateVisibility);
         }

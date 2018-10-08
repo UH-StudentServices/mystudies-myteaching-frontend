@@ -33,6 +33,7 @@ angular.module('portfolioAnalytics', ['provider.analyticsAccounts'])
     }
 
     if (trackerConfig) {
+      // eslint-disable-next-line vars-on-top
       var config = {
         name: 'PortfolioTracker',
         tracker: trackerConfig,
@@ -67,6 +68,41 @@ angular.module('portfolioAnalytics', ['provider.analyticsAccounts'])
     TRACK_PAGE_TITLE,
     TRACK_PREFIX,
     $location) {
+    var eventCategories = {
+      INTRO_TEXT: 'intro_text',
+      BACKGROUND_IMAGE: 'background_image',
+      STUDIES: 'studies',
+      DEGREES: 'degrees',
+      WORK_EXPERIENCE: 'work_experience',
+      JOB_SEARCH: 'job_search',
+      SAMPLES: 'samples',
+      ATTAINMENTS: 'attainments',
+      LANGUAGE_PROFICIENCIES: 'language_proficiencies',
+      FAVORITES: 'favorites',
+      FREE_TEXT_CONTENT: 'free_text_content',
+      CONTACT_INFO: 'contact_info',
+      PORTFOLIO: 'portfolio'
+    };
+
+    var eventActions = {
+      SAVE: 'save',
+      UPLOAD: 'upload',
+      EDIT: 'edit',
+      EDIT_HEADING: 'edit_heading',
+      ADD_KEYWORD: 'add_keyword',
+      ADD: 'add',
+      ADD_LINK: 'add_link',
+      ADD_IMAGE: 'add_image',
+      ADD_FILE: 'add_file',
+      EDIT_SUMMARY: 'edit_summary',
+      SET_VISIBILITY: 'set_visibility'
+    };
+
+    var eventLabels = {
+      VISIBLE: 'visible',
+      HIDDEN: 'hidden'
+    };
+
     function urlWithoutUsername() {
       return $location.absUrl().replace(STRIP_USERNAME_REGEX, '');
     }
@@ -107,41 +143,6 @@ angular.module('portfolioAnalytics', ['provider.analyticsAccounts'])
 
       Analytics.trackPage(params.page, params.title, params);
     }
-
-    var eventCategories = {
-      INTRO_TEXT: 'intro_text',
-      BACKGROUND_IMAGE: 'background_image',
-      STUDIES: 'studies',
-      DEGREES: 'degrees',
-      WORK_EXPERIENCE: 'work_experience',
-      JOB_SEARCH: 'job_search',
-      SAMPLES: 'samples',
-      ATTAINMENTS: 'attainments',
-      LANGUAGE_PROFICIENCIES: 'language_proficiencies',
-      FAVORITES: 'favorites',
-      FREE_TEXT_CONTENT: 'free_text_content',
-      CONTACT_INFO: 'contact_info',
-      PORTFOLIO: 'portfolio'
-    };
-
-    var eventActions = {
-      SAVE: 'save',
-      UPLOAD: 'upload',
-      EDIT: 'edit',
-      EDIT_HEADING: 'edit_heading',
-      ADD_KEYWORD: 'add_keyword',
-      ADD: 'add',
-      ADD_LINK: 'add_link',
-      ADD_IMAGE: 'add_image',
-      ADD_FILE: 'add_file',
-      EDIT_SUMMARY: 'edit_summary',
-      SET_VISIBILITY: 'set_visibility'
-    };
-
-    var eventLabels = {
-      VISIBLE: 'visible',
-      HIDDEN: 'hidden'
-    };
 
     return {
       trackEvent: trackEvent,

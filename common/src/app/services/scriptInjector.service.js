@@ -20,8 +20,9 @@ angular.module('services.scriptInjector', [])
   .factory('ScriptInjectorService', function ($document) {
     function addScript(scriptId, scriptUrl) {
       if (!$document[0].getElementById(scriptId)) {
+        // eslint-disable-next-line vars-on-top
         var newScript = $document[0].createElement('script');
-
+        // eslint-disable-next-line vars-on-top
         var firstScript = $document[0].getElementsByTagName('script')[0];
 
         newScript.id = scriptId;

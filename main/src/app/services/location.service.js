@@ -92,7 +92,7 @@ angular.module('services.location', [])
 
       new google.maps.Geocoder().geocode({ latLng: googleLatLng }, function (results, status) {
         if (geocoderStatusOk(status)) {
-          var address = results[1];
+          var address = results[1]; // eslint-disable-line vars-on-top
 
           deferred.resolve(address ? address.formatted_address : '');
         } else {

@@ -24,10 +24,10 @@ angular.module('directives.favorites.rss', ['services.favorites'])
       replace: true,
       scope: { data: '=' },
       link: function ($scope) {
+        var feedUrl = $scope.data.url;
+
         $scope.loading = true;
         $scope.error = false;
-
-        var feedUrl = $scope.data.url;
 
         FavoritesService.getRSSFeed(feedUrl).then(function getFeedSuccess(feedData) {
           $scope.error = false;

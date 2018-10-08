@@ -31,6 +31,8 @@ angular.module('utils.browser', [])
     function getViewportSize() {
       return isMobile() ? 'MOBILE' : 'DESKTOP';
     }
+    // eslint-disable-next-line vars-on-top
+    var viewportSizeSubject = new Rx.BehaviorSubject(getViewportSize());
 
     function supportsCamera() {
       navigator.getMedia = navigator.getUserMedia
@@ -48,8 +50,6 @@ angular.module('utils.browser', [])
     function isMac() {
       return !!navigator.platform.match(/(Mac|iPhone|iPad)/i);
     }
-
-    var viewportSizeSubject = new Rx.BehaviorSubject(getViewportSize());
 
     window.addEventListener('resize', _.debounce(function () {
       viewportSizeSubject.onNext(getViewportSize());

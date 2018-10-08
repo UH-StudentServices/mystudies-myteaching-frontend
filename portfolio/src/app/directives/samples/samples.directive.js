@@ -35,6 +35,12 @@ angular.module('directives.samples', [
       },
       templateUrl: 'app/directives/samples/samples.html',
       link: function (scope) {
+        var isValid = function () {
+          return scope.samples.every(function (sample) {
+            return sample.title && sample.url;
+          });
+        };
+
         scope.editing = false;
         scope.samples = scope.samplesData();
         scope.samplesValid = true;
@@ -42,12 +48,6 @@ angular.module('directives.samples', [
         scope.edit = function () {
           scope.editing = true;
           scope.origSamples = scope.samples.slice();
-        };
-
-        var isValid = function () {
-          return scope.samples.every(function (sample) {
-            return sample.title && sample.url;
-          });
         };
 
         scope.refreshValidity = _.debounce(function () {
@@ -59,6 +59,7 @@ angular.module('directives.samples', [
           scope.markAllSubmitted();
 
           if (isValid()) {
+            // eslint-disable-next-line vars-on-top
             var updateSamples = angular.copy(scope.samples);
 
             AnalyticsService.trackEventIfAdded(scope.origSamples, scope.samples,

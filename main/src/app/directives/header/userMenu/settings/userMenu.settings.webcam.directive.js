@@ -59,6 +59,7 @@ angular.module('webcam', ['utils.browser'])
           if (navigator.mozGetUserMedia) {
             videoElem.mozSrcObject = stream;
           } else {
+            // eslint-disable-next-line vars-on-top
             var vendorURL = window.URL || window.webkitURL;
 
             videoElem.src = vendorURL.createObjectURL(stream);
@@ -98,6 +99,7 @@ angular.module('webcam', ['utils.browser'])
           }
 
           // Default variables
+          // eslint-disable-next-line vars-on-top
           var isStreaming = false;
 
           // Check the availability of getUserMedia across supported browsers
@@ -105,7 +107,7 @@ angular.module('webcam', ['utils.browser'])
             onFailure({ code: -1, msg: 'Browser does not support getUserMedia.' });
             return;
           }
-
+          // eslint-disable-next-line vars-on-top
           var mediaConstraint = { video: true, audio: false };
 
           navigator.getMedia(mediaConstraint, onSuccess, onFailure);

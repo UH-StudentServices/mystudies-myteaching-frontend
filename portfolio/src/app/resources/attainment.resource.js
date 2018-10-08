@@ -30,13 +30,13 @@ angular.module('resources.attainment', ['utils.moment'])
         getWhitelist: { method: 'GET' }
       });
     }
-
+    // eslint-disable-next-line vars-on-top
     var updateWhitelist = function updateWhitelist(portfolioId, whitelistDto) {
       return portfolioAttainmentsPrivateResource()
         .updateWhitelist({ portfolioId: portfolioId }, whitelistDto)
         .$promise;
     };
-
+    // eslint-disable-next-line vars-on-top
     var getAll = function getAll(portfolioLang) {
       var attainmentsResource = $resource('/api/private/v1/studyattainments', {
         limit: ALL_ATTAINMENTS,
@@ -50,7 +50,7 @@ angular.module('resources.attainment', ['utils.moment'])
         });
       });
     };
-
+    // eslint-disable-next-line vars-on-top
     var getAllWhitelisted = function getAllWhitelisted(portfolioId, portfolioLang) {
       var attainmentsResource = $resource('/api/' + StateService.getCurrent()
         + '/v1/portfolio/:portfolioId/attainment', { portfolioId: portfolioId, lang: portfolioLang });
@@ -62,7 +62,7 @@ angular.module('resources.attainment', ['utils.moment'])
         });
       });
     };
-
+    // eslint-disable-next-line vars-on-top
     var getWhitelist = function getWhitelist(portfolioId) {
       return portfolioAttainmentsPrivateResource()
         .getWhitelist({ portfolioId: portfolioId })

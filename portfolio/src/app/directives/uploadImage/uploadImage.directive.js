@@ -37,16 +37,12 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
   .factory('ResizeImageService', function (MaxImageDimensions) {
     function getDimensions(image) {
       var width = image.videoWidth ? image.videoWidth : image.width;
-
       var height = image.videoHeight ? image.videoHeight : image.height;
-
       var dimensions = { width: width, height: height };
-
       var currentMaxDimension = Math.max(width, height);
-
       var maxImageDimensions = MaxImageDimensions.get();
-
       if (currentMaxDimension > maxImageDimensions) {
+        // eslint-disable-next-line vars-on-top
         var factor = maxImageDimensions / currentMaxDimension;
 
         dimensions.resizedWidth = width * factor;
@@ -59,15 +55,10 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
     return {
       resizeImage: function (image) {
         var dimensions = getDimensions(image);
-
         var canvas = document.createElement('canvas');
-
         var sWidth = dimensions.width;
-
         var sHeight = dimensions.height;
-
         var dWidth = dimensions.resizedWidth ? dimensions.resizedWidth : dimensions.width;
-
         var dHeight = dimensions.resizedHeight ? dimensions.resizedHeight : dimensions.height;
 
         canvas.width = dWidth;
@@ -204,6 +195,9 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
     uploadCallback,
     cancelCallback,
     MessageTypes) {
+    var left = $window.innerWidth / 2 - cropDimensions.width / 2;
+    var top = $window.innerHeight / 2 - cropDimensions.height / 2;
+
     $scope.image = image;
     $scope.submitting = false;
 
@@ -218,10 +212,6 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
     function getCanvasDataURL() {
       return cropperElement().cropper('getCroppedCanvas').toDataURL();
     }
-
-    var left = $window.innerWidth / 2 - cropDimensions.width / 2;
-
-    var top = $window.innerHeight / 2 - cropDimensions.height / 2;
 
     $scope.message = {
       key: 'upload.privacyMessage',

@@ -36,6 +36,12 @@ angular.module('directives.degrees', [
       },
       templateUrl: 'app/directives/degrees/degrees.html',
       link: function ($scope) {
+        var isValid = function () {
+          return $scope.degrees.every(function (degree) {
+            return degree.title && degree.dateOfDegree;
+          });
+        };
+
         $scope.degrees = $scope.degreesData();
         $scope.editing = false;
         $scope.newDegree = {};
@@ -51,12 +57,6 @@ angular.module('directives.degrees', [
           $scope.editing = true;
           $scope.origDegrees = $scope.degrees.slice();
           $scope.origDescriptions = descriptions($scope.degrees);
-        };
-
-        var isValid = function () {
-          return $scope.degrees.every(function (degree) {
-            return degree.title && degree.dateOfDegree;
-          });
         };
 
         $scope.refreshValidity = _.debounce(function () {

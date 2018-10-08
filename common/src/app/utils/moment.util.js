@@ -45,7 +45,7 @@ angular.module('utils.moment', ['services.language'])
       if (!date) {
         return null;
       }
-
+      // eslint-disable-next-line vars-on-top
       var dateAsArray = _.take(date.toArray(), 3);
 
       // Month is zero indexed in moment, API requires months to start from one

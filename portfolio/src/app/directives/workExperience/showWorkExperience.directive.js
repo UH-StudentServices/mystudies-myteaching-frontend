@@ -23,6 +23,7 @@ angular.module('directives.showWorkExperience', ['dibari.angular-ellipsis'])
       link: function ($scope) {
         $scope.formatUrl = function (url) {
           if (url) {
+            // eslint-disable-next-line vars-on-top
             var normalizedUrl = url.toLowerCase();
 
             if (normalizedUrl.startsWith('http://') || normalizedUrl.startsWith('https://')) {

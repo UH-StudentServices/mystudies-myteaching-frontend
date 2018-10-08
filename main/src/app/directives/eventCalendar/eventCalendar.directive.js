@@ -215,6 +215,7 @@ angular.module('directives.eventCalendar', [])
 
         $scope.$on('eventCalendar.refreshCurrentDate', function () {
           if (uiCalendarConfig.calendars.eventCalendar) {
+            // eslint-disable-next-line vars-on-top
             var newCurrentDate = uiCalendarConfig.calendars.eventCalendar.fullCalendar('getDate');
 
             $scope.currentDate.set(newCurrentDate.toObject());

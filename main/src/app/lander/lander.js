@@ -107,9 +107,12 @@ angular.module('opintoniLander', [
             }
             throw Error('unsupported environment for local login');
           }
-
+          // eslint-disable-next-line vars-on-top
           var envUsers = environmentUsers(Configuration.environment);
-          var users = state === State.MY_TEACHINGS ? envUsers.teachers : envUsers.students;
+          // eslint-disable-next-line vars-on-top
+          var users = state === State.MY_TEACHINGS
+            ? envUsers.teachers
+            : envUsers.students;
 
           _.assign($scope, {
             isDemo: isDemo,

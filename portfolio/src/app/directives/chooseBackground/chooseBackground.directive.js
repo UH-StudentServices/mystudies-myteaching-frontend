@@ -69,6 +69,7 @@ angular.module('directives.chooseBackground', [
     $q.all([UserSettingsService.getUserSettings(), UserSettingsService.getAvailableBackgrounds()])
       .then(function (data) {
         availableBackgroundImages = data[1];
+        // eslint-disable-next-line vars-on-top
         var userBackgroundImage = data[0].backgroundFilename
           ? data[0].backgroundFilename
           : _.first(availableBackgroundImages);

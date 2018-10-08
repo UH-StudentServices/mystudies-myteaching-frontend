@@ -60,21 +60,6 @@ angular.module('services.state', [
       return rootStateName;
     };
 
-    function configurationPropertyContains(property, expectedValue) {
-      return Configuration[property] && Configuration[property].indexOf(expectedValue) > -1;
-    }
-
-    var getStateFromDomain = function getStateFromDomain() {
-      var host = $location.host();
-
-      if (configurationPropertyContains(ConfigurationProperties.STUDENT_APP_URL, host)) {
-        return State.MY_STUDIES;
-      } if (configurationPropertyContains(ConfigurationProperties.TEACHER_APP_URL, host)) {
-        return State.MY_TEACHINGS;
-      }
-      throw Error('hostname does not match any configured values');
-    };
-
     var getDefaultStateForUser = function getDefaultStateForUser(session) {
       var defaultRole = _.first(session.roles);
 
@@ -84,6 +69,21 @@ angular.module('services.state', [
         return State.MY_STUDIES;
       }
       return State.ACCESS_DENIED;
+    };
+
+    function configurationPropertyContains(property, expectedValue) {
+      return Configuration[property] && Configuration[property].indexOf(expectedValue) > -1;
+    }
+    // eslint-disable-next-line vars-on-top
+    var getStateFromDomain = function getStateFromDomain() {
+      var host = $location.host();
+
+      if (configurationPropertyContains(ConfigurationProperties.STUDENT_APP_URL, host)) {
+        return State.MY_STUDIES;
+      } if (configurationPropertyContains(ConfigurationProperties.TEACHER_APP_URL, host)) {
+        return State.MY_TEACHINGS;
+      }
+      throw Error('hostname does not match any configured values');
     };
 
     return {

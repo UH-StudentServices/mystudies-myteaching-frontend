@@ -24,9 +24,13 @@ angular.module('directives.dropdown', [])
     return {
       restrict: 'A',
       link: function ($scope, element, attrs) {
+        var id = uniqueId + 1;
+        var toggleElement = element.find('.dropdown-toggle');
+        var contentElement = element.find('.dropdown-content');
+
         function applyCloseCallback() {
           if (attrs.closeCallback) {
-            var fn = $parse(attrs.closeCallback);
+            var fn = $parse(attrs.closeCallback); // eslint-disable-line vars-on-top
 
             fn($scope);
             $scope.$apply();
@@ -41,6 +45,15 @@ angular.module('directives.dropdown', [])
             $scope.$apply();
           }
         }
+        // eslint-disable-next-line vars-on-top
+        var doToggle = function () {
+          contentElement.toggle();
+          toggleElement.toggleClass('active');
+
+          if (toggleElement.hasClass('active')) {
+            applyOpenCallback();
+          }
+        };
 
         /*
          * Some explaining why this check is necessary:
@@ -55,22 +68,9 @@ angular.module('directives.dropdown', [])
           return target.attr('ngf-select') !== undefined;
         }
 
-        var id = uniqueId + 1;
-        var toggleElement = element.find('.dropdown-toggle');
-        var contentElement = element.find('.dropdown-content');
-
         toggleElement.data('dropdowntoggle' + id, true);
         contentElement.data('dropdowncontent' + id, true);
         contentElement.hide();
-
-        var doToggle = function () {
-          contentElement.toggle();
-          toggleElement.toggleClass('active');
-
-          if (toggleElement.hasClass('active')) {
-            applyOpenCallback();
-          }
-        };
 
         toggleElement.click(doToggle);
         toggleElement.keydown(function (event) {

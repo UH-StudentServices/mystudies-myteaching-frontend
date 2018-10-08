@@ -44,6 +44,22 @@ angular.module('directives.workExperience', [
       },
       templateUrl: 'app/directives/workExperience/workExperience.html',
       link: function ($scope) {
+        var isJobSearchValid = function () {
+          if ($scope.jobSearch !== null) {
+            return $scope.jobSearch.contactEmail;
+          }
+          return true;
+        };
+
+        var isValid = function () {
+          return isJobSearchValid() && $scope.workExperience.every(function (job) {
+            return job.employer
+              && job.startDate.isValid()
+              && (!job.endDate || job.endDate.isValid())
+              && job.jobTitle;
+          });
+        };
+
         $scope.workExperience = WorkExperienceService.formatDates($scope.workExperienceData());
         $scope.editing = false;
         $scope.workExperienceValid = true;
@@ -58,22 +74,6 @@ angular.module('directives.workExperience', [
           $scope.editing = true;
           $scope.origWorkExperience = $scope.workExperience.slice();
           $scope.origJobSearch = _.clone($scope.jobSearch);
-        };
-
-        var isJobSearchValid = function () {
-          if ($scope.jobSearch !== null) {
-            return $scope.jobSearch.contactEmail;
-          }
-          return true;
-        };
-
-        var isValid = function () {
-          return isJobSearchValid() && $scope.workExperience.every(function (job) {
-            return job.employer
-                 && job.startDate.isValid()
-                 && (!job.endDate || job.endDate.isValid())
-                 && job.jobTitle;
-          });
         };
 
         $scope.refreshValidity = _.debounce(function () {

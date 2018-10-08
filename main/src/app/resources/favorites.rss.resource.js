@@ -30,6 +30,7 @@ angular.module('resources.favorites.rss', [])
         return feed;
       });
     }
+
     function findFeed(url) {
       return findRssFeedResource.query({ url: url }).$promise;
     }

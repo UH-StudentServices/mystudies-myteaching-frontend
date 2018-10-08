@@ -42,6 +42,7 @@ angular.module('directives.tabSet', [
 
         function selectTab(tab) {
           if (tab !== activeTab) {
+            // eslint-disable-next-line vars-on-top
             var compiledTmpl = $compile($templateCache.get(tab.templateUrl))(scope.$parent);
 
             activeTab = tab;
