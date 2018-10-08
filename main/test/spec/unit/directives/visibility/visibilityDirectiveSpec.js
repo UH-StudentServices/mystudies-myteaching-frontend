@@ -51,7 +51,6 @@ describe('Visibility directive', function () {
     directiveElem = getCompiledElement();
   });
 
-
   it('Element should be visible for student', function () {
     var spanElement = directiveElem.find('.student-only');
 

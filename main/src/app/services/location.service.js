@@ -77,9 +77,7 @@ angular.module('services.location', [])
       return deferred.promise;
     }
 
-    return {
-      getCoordinates: getCoordinates
-    };
+    return { getCoordinates: getCoordinates };
   })
 
   .factory('GoogleGeocoderService', function ($q) {
@@ -89,7 +87,6 @@ angular.module('services.location', [])
 
     function getAddressFromCoordinates(latLng) {
       var deferred = $q.defer();
-
 
       var googleLatLng = new google.maps.LatLng(latLng.lat, latLng.lng);
 
@@ -105,7 +102,5 @@ angular.module('services.location', [])
       return deferred.promise;
     }
 
-    return {
-      getAddressFromCoordinates: getAddressFromCoordinates
-    };
+    return { getAddressFromCoordinates: getAddressFromCoordinates };
   });

@@ -18,7 +18,8 @@
 angular.module('directives.languageProficiencies', [
   'services.languageProficiencies',
   'directives.editableHeading',
-  'portfolioAnalytics'])
+  'portfolioAnalytics'
+])
   .directive('languageProficiencies', function (LanguageProficienciesService,
     $filter,
     $state,

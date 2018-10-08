@@ -17,7 +17,8 @@
 
 angular.module('services.workExperience', [
   'services.portfolio',
-  'resources.workExperience'])
+  'resources.workExperience'
+])
 
   .factory('WorkExperienceService', function (PortfolioService,
     WorkExperienceResource,

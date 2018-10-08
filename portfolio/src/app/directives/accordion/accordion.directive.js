@@ -29,7 +29,6 @@ angular.module('directives.accordion', [])
       link: function (scope, el) {
         var CONTENT_AREA_SELECTOR = '.accordion__contents';
 
-
         var contentHolder = el.find(CONTENT_AREA_SELECTOR);
 
         function toggle() {

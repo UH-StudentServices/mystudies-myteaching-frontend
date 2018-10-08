@@ -42,7 +42,6 @@ describe('Language proficiencies directive', function () {
     directiveElem.isolateScope().remove(profiencyMatcher);
   };
 
-
   var updateLanguage = function (el, lang) {
     var inputElement = el.querySelector('.language-proficiency-item__language-name input');
 
@@ -102,16 +101,10 @@ describe('Language proficiencies directive', function () {
         })
       });
       $provide.constant('translateFilter', function (val) { return val; });
-      $provide.constant('$translate', {
-        instant: function (val) { return val; }
-      });
-      $provide.constant('PortfolioService', {
-        getPortfolio: function () { return { then: function () { return { headings: [] }; } }; }
-      });
+      $provide.constant('$translate', { instant: function (val) { return val; } });
+      $provide.constant('PortfolioService', { getPortfolio: function () { return { then: function () { return { headings: [] }; } }; } });
       $provide.constant('ComponentHeadingService', function (val) { return val; });
-      $provide.constant('$state', {
-        reload: jasmine.createSpy('$state.reload')
-      });
+      $provide.constant('$state', { reload: jasmine.createSpy('$state.reload') });
       $provide.constant('AnalyticsService', {
         trackEvent: function () {},
         ec: {},
@@ -128,24 +121,25 @@ describe('Language proficiencies directive', function () {
       $scope = _$rootScope_.$new();
       $state = _$state_;
 
-
       $scope.portfolio = {
-        languageProficiencies: [{
-          id: 1,
-          languageName: 'en',
-          proficiency: 'Excellent',
-          description: 'description'
-        }, {
-          id: 2,
-          languageName: 'sv',
-          proficiency: 'Basic',
-          description: 'description'
-        }, {
-          id: 3,
-          languageName: 'fi',
-          proficiency: 'Native',
-          description: 'description'
-        }]
+        languageProficiencies: [
+          {
+            id: 1,
+            languageName: 'en',
+            proficiency: 'Excellent',
+            description: 'description'
+          }, {
+            id: 2,
+            languageName: 'sv',
+            proficiency: 'Basic',
+            description: 'description'
+          }, {
+            id: 3,
+            languageName: 'fi',
+            proficiency: 'Native',
+            description: 'description'
+          }
+        ]
       };
 
       directiveElem = compileDirective();
@@ -174,12 +168,8 @@ describe('Language proficiencies directive', function () {
     addNewItem('nl', 'Excellent');
     toggleEditMode();
     expect(LanguageProficienciesService.save).toHaveBeenCalledWith({
-      updatedLanguageProficiencies: [
-        {
-          id: 2, languageName: 'zh', proficiency: 'Moderate', description: 'description'
-        }],
-      newLanguageProficiencies: [
-        { languageName: 'nl', proficiency: 'Excellent', description: 'description' }],
+      updatedLanguageProficiencies: [{ id: 2, languageName: 'zh', proficiency: 'Moderate', description: 'description' }],
+      newLanguageProficiencies: [{ languageName: 'nl', proficiency: 'Excellent', description: 'description' }],
       deletedIds: [1]
     });
 
@@ -204,22 +194,24 @@ describe('Language proficiencies directive', function () {
     var itemToDelete;
 
     getUpdatedData = function () {
-      return [{
-        id: 1,
-        languageName: 'en',
-        proficiency: 'Excellent',
-        description: 'description'
-      }, {
-        id: 3,
-        languageName: 'fi',
-        proficiency: 'Native',
-        description: 'description'
-      }, {
-        id: 4,
-        languageName: 'fr',
-        proficiency: 'Moderate',
-        description: 'description'
-      }];
+      return [
+        {
+          id: 1,
+          languageName: 'en',
+          proficiency: 'Excellent',
+          description: 'description'
+        }, {
+          id: 3,
+          languageName: 'fi',
+          proficiency: 'Native',
+          description: 'description'
+        }, {
+          id: 4,
+          languageName: 'fr',
+          proficiency: 'Moderate',
+          description: 'description'
+        }
+      ];
     };
 
     toggleEditMode();

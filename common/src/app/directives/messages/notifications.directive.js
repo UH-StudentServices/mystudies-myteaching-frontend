@@ -22,9 +22,7 @@ angular.module('directives.notifications', ['directives.message'])
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/messages/notifications.html',
-      scope: {
-        notifications: '='
-      },
+      scope: { notifications: '=' },
       link: function (scope) {
         scope.messages = scope.notifications ? scope.notifications.map(function (n) {
           return {

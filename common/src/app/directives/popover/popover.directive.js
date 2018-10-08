@@ -35,12 +35,9 @@ angular.module('directives.popover', ['angular-click-outside'])
       link: function (scope, el, attrs, ctrl, transclude) {
         var compiledTmpl = $compile($templateCache.get(attrs.template))(scope.$parent);
 
-
         var targetEl = document.querySelector(scope.targetSelector);
 
-
         var targetPos = window.getComputedStyle(targetEl).getPropertyValue('position');
-
 
         var triggerEl;
 

@@ -19,9 +19,7 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
 
   .factory('ComponentOrderService', function (FreeTextContentService, ComponentOrderResource) {
     var cachedComponentOrders = [];
-    var singletonFreeTextContentComponents = [
-      'SKILLS_AND_EXPERTISE'
-    ];
+    var singletonFreeTextContentComponents = ['SKILLS_AND_EXPERTISE'];
 
     function defaultSingletonComponentOrder() {
       return [

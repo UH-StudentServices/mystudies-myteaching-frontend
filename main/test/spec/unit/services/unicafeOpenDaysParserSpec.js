@@ -26,7 +26,8 @@ describe('UnicafeOpenDaysParser', function () {
             from: '1.6',
             to: '30.8',
             closed: false
-          }],
+          }
+        ],
         regular: [
           { when: ['Ma', 'Ti', 'Ke', 'To', false, false, false] },
           { when: ['previous', 'previous', 'previous', 'previous', 'Pe', false, false] }
@@ -43,7 +44,8 @@ describe('UnicafeOpenDaysParser', function () {
             from: '1.6',
             to: '30.8',
             closed: true
-          }],
+          }
+        ],
         regular: [
           { when: ['Ma', 'Ti', 'Ke', 'To', false, false, false] },
           { when: ['previous', 'previous', 'previous', 'previous', 'Pe', false, false] }

@@ -15,8 +15,10 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('dialog.verificationDialog', ['ui.bootstrap.modal',
-  'uib/template/modal/window.html'])
+angular.module('dialog.verificationDialog', [
+  'ui.bootstrap.modal',
+  'uib/template/modal/window.html'
+])
 
   .factory('VerificationDialog', function ($uibModal, $rootScope) {
     function open(translationKey, okKey, cancelKey, okCallback, cancelCallback) {
@@ -50,7 +52,5 @@ angular.module('dialog.verificationDialog', ['ui.bootstrap.modal',
       });
     }
 
-    return {
-      open: open
-    };
+    return { open: open };
   });

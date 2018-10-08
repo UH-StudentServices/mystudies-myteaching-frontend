@@ -34,8 +34,5 @@ angular.module('utils.validator', [])
       return false;
     }
 
-
-    return {
-      convertValidUrl: convertValidUrl
-    };
+    return { convertValidUrl: convertValidUrl };
   });

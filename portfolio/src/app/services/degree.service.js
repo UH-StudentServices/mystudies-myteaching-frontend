@@ -24,7 +24,5 @@ angular.module('services.degree', ['resources.degree'])
       return DegreeResource.updateDegrees(portfolioId, newDegrees);
     }
 
-    return {
-      updateDegrees: updateDegrees
-    };
+    return { updateDegrees: updateDegrees };
   });

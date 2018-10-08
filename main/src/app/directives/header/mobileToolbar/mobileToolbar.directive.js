@@ -24,7 +24,8 @@ angular.module('directives.mobileToolbar', [
   'directives.logoutLink',
   'directives.userMenu',
   'directives.mobileMenu',
-  'directives.visibility'])
+  'directives.visibility'
+])
 
   .directive('mobileToolbar', function (pageHeaderLinks,
     mobileReturnLinks,

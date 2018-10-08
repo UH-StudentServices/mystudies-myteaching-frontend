@@ -43,7 +43,6 @@ angular.module('services.freeTextContent', ['resources.freeTextContent', 'servic
       return freeTextContentSubject;
     }
 
-
     function getPortfolioId() {
       return PortfolioService.getPortfolio().then(_.property('id'));
     }

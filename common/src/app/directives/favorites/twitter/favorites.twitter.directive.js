@@ -22,12 +22,9 @@ angular.module('directives.favorites.twitter', ['services.scriptInjector'])
       restrict: 'E',
       templateUrl: 'app/directives/favorites/twitter/favorites.twitter.html',
       replace: true,
-      scope: {
-        data: '='
-      },
+      scope: { data: '=' },
       link: function (scope, el) {
         var TWITTER_SCRIPT_ID = 'twitter-wjs';
-
 
         var TWITTER_WIDGETS_URL = 'https://platform.twitter.com/widgets.js';
 

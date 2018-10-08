@@ -23,7 +23,6 @@ angular.module('services.attainments', ['resources.attainments', 'utils.moment']
     monthsCount) {
     var now = moment();
 
-
     var studyAttainmentsPromise;
 
     function getStudyAttainments() {

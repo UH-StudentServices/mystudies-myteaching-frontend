@@ -18,7 +18,8 @@
 angular.module('directives.weekFeed.feedItem.event', [
   'services.location',
   'services.eventUri',
-  'directives.analytics'])
+  'directives.analytics'
+])
 
   .directive('event', function (LocationService, EventUriService) {
     return {

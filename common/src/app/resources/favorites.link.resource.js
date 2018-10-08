@@ -24,7 +24,5 @@ angular.module('resources.favorites.link', [])
       return $http.jsonp('https://api.embed.ly/1/oembed?key=' + apiKey + '&url=' + encodeURIComponent(url));
     }
 
-    return {
-      get: get
-    };
+    return { get: get };
   });

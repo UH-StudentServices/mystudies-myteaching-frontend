@@ -17,7 +17,8 @@
 
 angular.module('directives.header.meceWidget', [
   'services.userSettings',
-  'services.language'])
+  'services.language'
+])
 
   .directive('meceWidget', function (UserSettingsService, LanguageService) {
     return {

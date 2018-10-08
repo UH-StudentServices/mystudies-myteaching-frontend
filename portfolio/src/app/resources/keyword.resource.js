@@ -20,18 +20,14 @@ angular.module('resources.keyword', [])
   .factory('KeywordResource', function ($resource, StateService) {
     function keywordResource() {
       return $resource('/api/' + StateService.getCurrent()
-        + '/v1/portfolio/:portfolioId/keyword', {}, {
-        updateKeywords: { method: 'POST', isArray: true }
-      });
+        + '/v1/portfolio/:portfolioId/keyword', {}, { updateKeywords: { method: 'POST', isArray: true } });
     }
 
     function updateKeywords(portfolioId, updateKeywordsRequest) {
-      return keywordResource().updateKeywords({
-        portfolioId: portfolioId
-      }, updateKeywordsRequest).$promise;
+      return keywordResource()
+        .updateKeywords({ portfolioId: portfolioId }, updateKeywordsRequest)
+        .$promise;
     }
 
-    return {
-      updateKeywords: updateKeywords
-    };
+    return { updateKeywords: updateKeywords };
   });

@@ -15,9 +15,11 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('services.state', ['services.session',
+angular.module('services.state', [
+  'services.session',
   'services.portfolioRole',
-  'services.configuration'])
+  'services.configuration'
+])
 
   .constant('State', {
     MY_STUDIES: 'opintoni',
@@ -29,7 +31,6 @@ angular.module('services.state', ['services.session',
 
   .factory('StateService', function (State, PortfolioRoleService, Configuration, ConfigurationProperties, $location) {
     var currentState = State.PUBLIC;
-
 
     var portfolioRole = PortfolioRoleService.getActiveRole();
 

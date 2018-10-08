@@ -17,7 +17,8 @@
 
 angular.module('services.languageProficiencies', [
   'services.portfolio',
-  'resources.languageProficiencies'])
+  'resources.languageProficiencies'
+])
 
   .factory('LanguageProficienciesService', function (PortfolioService,
     LanguageProficienciesResource) {
@@ -34,7 +35,5 @@ angular.module('services.languageProficiencies', [
       });
     }
 
-    return {
-      save: save
-    };
+    return { save: save };
   });

@@ -20,9 +20,7 @@ angular.module('directives.favorites.addNew.twitter', [
   'directives.favorites.addNew'
 ])
 
-  .constant('TwitterFeedTypes', {
-    USER_TIMELINE: 'USER_TIMELINE'
-  })
+  .constant('TwitterFeedTypes', { USER_TIMELINE: 'USER_TIMELINE' })
 
   .directive('addNewTwitterFavorite', function (FavoritesService,
     TwitterFeedTypes,

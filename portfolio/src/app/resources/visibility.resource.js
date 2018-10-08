@@ -26,7 +26,5 @@ angular.module('resources.visibility', [])
       return visibilityResource(portfolioId).save(componentPermission).$promise;
     }
 
-    return {
-      setComponentVisibility: setComponentVisibility
-    };
+    return { setComponentVisibility: setComponentVisibility };
   });

@@ -46,16 +46,12 @@ angular.module('directives.favorites.unicafe', [
             return d !== toDay;
           });
         }
-      } catch (e) {
-        //
-      }
+      } catch (e) {}
 
       return closed;
     }
 
-    return {
-      isRestaurantClosed: isRestaurantClosed
-    };
+    return { isRestaurantClosed: isRestaurantClosed };
   })
 
   .directive('favoritesUnicafe', function ($cookies,
@@ -67,9 +63,7 @@ angular.module('directives.favorites.unicafe', [
       restrict: 'E',
       templateUrl: 'app/directives/favorites/unicafe/favorites.unicafe.html',
       replace: true,
-      scope: {
-        data: '='
-      },
+      scope: { data: '=' },
       link: function ($scope) {
         var langKey = $cookies.get('OO_LANGUAGE');
 

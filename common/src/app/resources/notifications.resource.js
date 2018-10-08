@@ -26,7 +26,5 @@ angular.module('resources.notifications', [])
       return resource.query().$promise;
     }
 
-    return {
-      getNotifications: getNotifications
-    };
+    return { getNotifications: getNotifications };
   });

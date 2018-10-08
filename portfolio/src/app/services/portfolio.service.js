@@ -15,8 +15,10 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('services.portfolio', ['resources.portfolio',
-  'services.portfolioRole'])
+angular.module('services.portfolio', [
+  'resources.portfolio',
+  'services.portfolioRole'
+])
 
   .factory('PortfolioService', function (PortfolioResource,
     PortfolioRoleService) {

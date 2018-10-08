@@ -21,8 +21,7 @@ angular.module('directives.avatarImage', ['services.portfolio'])
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/avatarImage/avatarImage.html',
-      scope: {
-      },
+      scope: {},
       controller: function ($scope, PortfolioService) {
         PortfolioService.getPortfolio().then(function (portfolio) {
           $scope.avatarUrl = portfolio.avatarUrl;

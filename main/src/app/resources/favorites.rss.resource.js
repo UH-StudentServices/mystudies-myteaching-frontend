@@ -20,9 +20,7 @@ angular.module('resources.favorites.rss', [])
   .factory('RSSResource', function ($resource) {
     var findRssFeedResource = $resource('/api/private/v1/favorites/rss/find');
 
-
     var NUMBER_OF_ITEMS = 3;
-
 
     function get(url) {
       var parser = new RSSParser();

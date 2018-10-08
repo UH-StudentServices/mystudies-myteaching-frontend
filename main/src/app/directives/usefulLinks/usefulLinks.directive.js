@@ -21,7 +21,8 @@ angular.module('directives.usefulLinks', [
   'directives.usefulLinks.editableLink',
   'directives.analytics',
   'services.focus',
-  'utils.validator'])
+  'utils.validator'
+])
 
   .constant('pageTitleSearchDebounceDelay', 1000)
 

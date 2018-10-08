@@ -39,9 +39,7 @@ angular.module('directives.fullScreenCalendar', [
     return {
       restrict: 'E',
       replace: 'true',
-      scope: {
-        eventsPromise: '='
-      },
+      scope: { eventsPromise: '=' },
       templateUrl: 'app/directives/fullScreenCalendar/fullScreenCalendar.html',
       link: function ($scope) {
         Loader.start(LoaderKey);

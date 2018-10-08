@@ -18,11 +18,7 @@
 angular.module('resources.userSettings', [])
 
   .factory('UserSettingsResource', function ($resource) {
-    var userSettingsResource = $resource('/api/private/v1/usersettings/:id', { id: '@id' }, {
-      update: {
-        method: 'PUT'
-      }
-    });
+    var userSettingsResource = $resource('/api/private/v1/usersettings/:id', { id: '@id' }, { update: { method: 'PUT' } });
 
     var availableBackgroundImagesResource = $resource('/api/public/v1/images/backgrounds');
 

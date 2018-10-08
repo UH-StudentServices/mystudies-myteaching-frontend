@@ -15,9 +15,11 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('controllers.main', ['constants.portfolioTabs',
+angular.module('controllers.main', [
+  'constants.portfolioTabs',
   'services.componentOrder',
-  'utils.browser'])
+  'utils.browser'
+])
 
   .controller('MainCtrl', function ($scope, portfolioTabs, portfolio, state, userSettings, notifications,
     ComponentOrderService, PreviewService, State, BrowserUtil) {

@@ -17,25 +17,25 @@
 
 'use strict';
 
-angular.module('directives.menuLanguage', [
-  'services.language'
-])
+angular.module('directives.menuLanguage', ['services.language'])
 
   .directive('menuLanguage', function ($translate, $window, LanguageService) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/menuLanguage/menu_language.html',
       link: function ($scope) {
-        var languageOptions = [{
-          nativeName: 'English',
-          languageCode: 'en'
-        }, {
-          nativeName: 'Svenska',
-          languageCode: 'sv'
-        }, {
-          nativeName: 'Suomi',
-          languageCode: 'fi'
-        }];
+        var languageOptions = [
+          {
+            nativeName: 'English',
+            languageCode: 'en'
+          }, {
+            nativeName: 'Svenska',
+            languageCode: 'sv'
+          }, {
+            nativeName: 'Suomi',
+            languageCode: 'fi'
+          }
+        ];
 
         $scope.changeLanguage = function (languageKey) {
           $translate.use(languageKey).then(function translationUseSuccess() {

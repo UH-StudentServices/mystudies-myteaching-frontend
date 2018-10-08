@@ -16,10 +16,12 @@
  */
 
 angular.module('directives.userMenu',
-  ['directives.userMenu.settings',
+  [
+    'directives.userMenu.settings',
     'directives.header.meceWidget',
     'directives.visibility',
-    'ngFileUpload'])
+    'ngFileUpload'
+  ])
   .directive('userMenu', function () {
     return {
       restrict: 'E',

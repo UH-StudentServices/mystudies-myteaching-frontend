@@ -78,7 +78,6 @@ module.exports = function (config) {
       '../common/test/mock/language.service.mock.js'
     ],
 
-
     // list of files / patterns to exclude
     exclude: [],
 

@@ -20,7 +20,8 @@ angular.module('services.login', [
   'services.session',
   'services.userSettings',
   'services.configuration',
-  'ngCookies'])
+  'ngCookies'
+])
 
   .factory('LoginService', function ($q,
     $window,
@@ -45,7 +46,6 @@ angular.module('services.login', [
       var loginUrl = state === State.MY_TEACHINGS
         ? Configuration.loginUrlTeacher
         : Configuration.loginUrlStudent;
-
 
       var appUrl = state === State.MY_TEACHINGS
         ? Configuration.teacherAppUrl
@@ -108,9 +108,7 @@ angular.module('services.login', [
       $http.post('/login', $httpParamSerializerJQLike({
         username: username,
         password: LocalPassword
-      }), {
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-      })
+      }), { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
         .then(reloadUserData)
         .then(StateService.getStateFromDomain)
         .then($state.go)

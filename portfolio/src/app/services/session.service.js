@@ -15,9 +15,7 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('services.session', [
-  'resources.session'
-])
+angular.module('services.session', ['resources.session'])
 
   .factory('SessionService', function SessionService(SessionResource) {
     var sessionPromise;
@@ -32,7 +30,5 @@ angular.module('services.session', [
       return sessionPromise;
     }
 
-    return {
-      getSession: getSession
-    };
+    return { getSession: getSession };
   });

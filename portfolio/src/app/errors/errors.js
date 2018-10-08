@@ -22,9 +22,11 @@ angular.module('portfolioErrors', ['services.login'])
         abstract: true,
         url: '/error',
         templateUrl: 'app/partials/errorPages/_error.html',
-        controller: ['$scope', 'pageHeaderLinks', function ($scope, pageHeaderLinks) {
-          $scope.pageHeaderLinks = pageHeaderLinks;
-        }]
+        controller: [
+          '$scope', 'pageHeaderLinks', function ($scope, pageHeaderLinks) {
+            $scope.pageHeaderLinks = pageHeaderLinks;
+          }
+        ]
       })
       .state('notFound', {
         parent: 'error',
@@ -40,9 +42,7 @@ angular.module('portfolioErrors', ['services.login'])
             LoginService.goToLogin($stateParams.originalUrl);
           };
         },
-        params: {
-          originalUrl: null
-        }
+        params: { originalUrl: null }
       })
       .state('maintenance', {
         parent: 'error',

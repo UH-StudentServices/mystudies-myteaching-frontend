@@ -29,9 +29,7 @@ angular.module('directives.pageBanner', [
     return {
       restrict: 'E',
       replace: 'true',
-      scope: {
-        showBanner: '='
-      },
+      scope: { showBanner: '=' },
       templateUrl: 'app/directives/pageBanner/pageBanner.html',
       link: function ($scope) {
         $scope.currentStateName = StateService.getRootStateName();
@@ -48,13 +46,10 @@ angular.module('directives.pageBanner', [
     return {
       restrict: 'E',
       replace: true,
-      scope: {
-        showBanner: '='
-      },
+      scope: { showBanner: '=' },
       templateUrl: 'app/directives/pageBanner/pageBannerToggle.html',
       link: function ($scope) {
         var hideTooltip = $translate.instant('banner.tooltip.hide');
-
 
         var showTooltip = $translate.instant('banner.tooltip.show');
 

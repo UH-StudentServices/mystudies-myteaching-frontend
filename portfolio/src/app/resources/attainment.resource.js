@@ -32,9 +32,9 @@ angular.module('resources.attainment', ['utils.moment'])
     }
 
     var updateWhitelist = function updateWhitelist(portfolioId, whitelistDto) {
-      return portfolioAttainmentsPrivateResource().updateWhitelist({
-        portfolioId: portfolioId
-      }, whitelistDto).$promise;
+      return portfolioAttainmentsPrivateResource()
+        .updateWhitelist({ portfolioId: portfolioId }, whitelistDto)
+        .$promise;
     };
 
     var getAll = function getAll(portfolioLang) {
@@ -64,9 +64,9 @@ angular.module('resources.attainment', ['utils.moment'])
     };
 
     var getWhitelist = function getWhitelist(portfolioId) {
-      return portfolioAttainmentsPrivateResource().getWhitelist({
-        portfolioId: portfolioId
-      }).$promise;
+      return portfolioAttainmentsPrivateResource()
+        .getWhitelist({ portfolioId: portfolioId })
+        .$promise;
     };
 
     return {

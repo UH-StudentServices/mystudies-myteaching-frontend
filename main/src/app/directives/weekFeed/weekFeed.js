@@ -85,7 +85,6 @@ angular.module('directives.weekFeed', [
       return undefined;
     }
 
-
     return {
       getEventsMessage: getEventsMessage,
       getCoursesMessage: getCoursesMessage,
@@ -171,9 +170,7 @@ angular.module('directives.weekFeed', [
         .value();
     }
 
-    return {
-      getCourses: getCourses
-    };
+    return { getCourses: getCourses };
   })
 
   .factory('Tabs', function (
@@ -410,9 +407,7 @@ angular.module('directives.weekFeed', [
       }
     }
 
-    return {
-      isInTimeFrame: isInTimeFrame
-    };
+    return { isInTimeFrame: isInTimeFrame };
   })
 
   .filter('filterFeedItems', function (FeedItemTimeCondition, FeedItemTimeFilter) {
@@ -444,9 +439,7 @@ angular.module('directives.weekFeed', [
 
   .constant('WeekFeedMessageKeys', {
     SCHEDULE: {
-      info: {
-        SCHEDULE_LIST: 'weekFeed.noEvents'
-      },
+      info: { SCHEDULE_LIST: 'weekFeed.noEvents' },
       error: 'weekFeed.errors.errorLoadingEvents'
     },
     COURSES: {
@@ -513,12 +506,9 @@ angular.module('directives.weekFeed', [
       link: function ($scope) {
         var currentStateName = StateService.getRootStateName();
 
-
         var tabs = _.pick(Tabs, TabConfiguration[currentStateName]);
 
-
         var coursesPromise = $scope.coursesPromise;
-
 
         var eventsPromise = $scope.eventsPromise;
 
@@ -538,9 +528,8 @@ angular.module('directives.weekFeed', [
         }
 
         function getPreferredTab() {
-          return _.find($scope.tabs, {
-            key: UserPreferencesService.getPreferences().selectedTab
-          }) || getFirstTab();
+          return _.find($scope.tabs, { key: UserPreferencesService.getPreferences().selectedTab })
+            || getFirstTab();
         }
 
         function getFirstSubTab() {
@@ -548,9 +537,9 @@ angular.module('directives.weekFeed', [
         }
 
         function getPreferredSubTab() {
-          return _.find($scope.selectedTab.subTabs, {
-            key: UserPreferencesService.getPreferences().selectedSubTab
-          }) || getFirstSubTab();
+          return _.find($scope.selectedTab.subTabs,
+            { key: UserPreferencesService.getPreferences().selectedSubTab })
+            || getFirstSubTab();
         }
 
         function mapToResolved(promises) {
@@ -636,15 +625,11 @@ angular.module('directives.weekFeed', [
         };
 
         $scope.getTabClasses = function getTabClasses(tab) {
-          return {
-            'is-active': tab === $scope.selectedTab
-          };
+          return { 'is-active': tab === $scope.selectedTab };
         };
 
         $scope.getSubTabClasses = function getSubTabClasses(subTab) {
-          return {
-            active: subTab === $scope.selectedSubTab
-          };
+          return { active: subTab === $scope.selectedSubTab };
         };
 
         $scope.showFullScreenCalendar = function showFullScreenCalendar() {

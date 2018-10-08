@@ -33,9 +33,7 @@ describe('Event time span filter', function () {
   it('Will show only startdate if dates are identical', function () {
     var startDate = moment([2014, 2, 12, 13, 40]);
 
-
     var endDate = moment([2014, 2, 12, 13, 40]);
-
 
     var result = eventTimeSpanFilter(startDate, endDate);
 
@@ -44,7 +42,6 @@ describe('Event time span filter', function () {
 
   it('Will show only startdate if enddate is not defined', function () {
     var startDate = moment([2014, 2, 12, 13, 40]);
-
 
     var result = eventTimeSpanFilter(startDate);
 
@@ -61,9 +58,7 @@ describe('Event time span filter', function () {
     function () {
       var startDate = moment([2014, 2, 12]);
 
-
       var endDate = moment([2014, 2, 12]);
-
 
       var result = eventTimeSpanFilter(startDate, endDate);
 
@@ -74,9 +69,7 @@ describe('Event time span filter', function () {
     function () {
       var startDate = moment([2014, 2, 12, 13, 40]);
 
-
       var endDate = moment([2014, 2, 12, 14, 40]);
-
 
       var result = eventTimeSpanFilter(startDate, endDate);
 
@@ -86,9 +79,7 @@ describe('Event time span filter', function () {
   it('Will show full time span if dates are not identical', function () {
     var startDate = moment([2014, 2, 12, 13, 40]);
 
-
     var endDate = moment([2014, 2, 13, 15, 40]);
-
 
     var result = eventTimeSpanFilter(startDate, endDate);
 
@@ -99,9 +90,7 @@ describe('Event time span filter', function () {
     function () {
       var startDate = moment([2014, 2, 12]);
 
-
       var endDate = moment([2014, 2, 13]);
-
 
       var result = eventTimeSpanFilter(startDate, endDate);
 

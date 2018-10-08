@@ -31,7 +31,6 @@ angular.module('provider.analyticsAccounts', ['services.configuration'])
     }
   })
 
-
   .provider('AnalyticsAccounts', function getAnalyticsAccounts(Tracker, ConfigurationProvider) {
     var configuration = ConfigurationProvider.$get();
 
@@ -44,9 +43,7 @@ angular.module('provider.analyticsAccounts', ['services.configuration'])
         tracker: configuration[trackerId],
         trackEvent: true,
         name: trackerName,
-        set: {
-          anonymizeIp: true
-        }
+        set: { anonymizeIp: true }
       });
     }
 
@@ -65,7 +62,5 @@ angular.module('provider.analyticsAccounts', ['services.configuration'])
       return accountsArray;
     }
 
-    return {
-      $get: getAccounts
-    };
+    return { $get: getAccounts };
   });

@@ -20,7 +20,6 @@ angular.module('portfolioAnalytics', ['provider.analyticsAccounts'])
   .constant('TRACK_PAGE_TITLE', 'Portfolio')
   .constant('TRACK_PREFIX', '/portfolio')
 
-
   .config(function (AnalyticsProvider,
     ConfigurationProvider,
     TRACK_PAGE_TITLE,
@@ -62,7 +61,6 @@ angular.module('portfolioAnalytics', ['provider.analyticsAccounts'])
       AnalyticsProvider.logAllCalls(true);
     }
   })
-
 
   .factory('AnalyticsService', function (Analytics,
     STRIP_USERNAME_REGEX,

@@ -24,7 +24,5 @@ angular.module('resources.favorites.unisport', [])
       return unisportResource.get().$promise;
     }
 
-    return {
-      getUserReservations: getUserReservations
-    };
+    return { getUserReservations: getUserReservations };
   });

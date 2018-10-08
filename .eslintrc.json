@@ -36,7 +36,11 @@
       { "props": false }
     ],
     "vars-on-top": 0,
-    "operator-linebreak": ["error", "before", { "overrides": { "=": "ignore" } }]
+    "operator-linebreak": ["error", "before", { "overrides": { "=": "ignore" } }],
+    "no-multiple-empty-lines": ["error", { "max": 1}],
+    "no-empty": ["error", { "allowEmptyCatch": true }],
+    "array-bracket-newline": ["error", { "multiline": true }],
+    "object-curly-newline": ["error", { "multiline": true }]
   },
   "plugins": [
     "header"

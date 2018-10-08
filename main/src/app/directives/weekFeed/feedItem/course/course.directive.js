@@ -38,18 +38,14 @@ angular.module('directives.weekFeed.feedItem.course', [
     WIKI: 'WIKI'
   })
 
-  .constant('TeacherRoles', {
-    OFFICIAL: 'official'
-  })
+  .constant('TeacherRoles', { OFFICIAL: 'official' })
 
   .directive('course', function ($translate, TeacherRoles) {
     return {
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/weekFeed/feedItem/course/course.html',
-      scope: {
-        feedItem: '='
-      },
+      scope: { feedItem: '=' },
       link: function (scope) {
         var feedItem = scope.feedItem;
         var courseCode = feedItem.showAsChild ? '' : feedItem.code;

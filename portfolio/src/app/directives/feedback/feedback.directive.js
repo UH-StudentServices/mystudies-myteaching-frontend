@@ -18,7 +18,8 @@
 angular.module('directives.feedback', [
   'resources.feedback',
   'services.session',
-  'services.state'])
+  'services.state'
+])
 
   .factory('FeedbackSiteService', function (PortfolioRoleService, PortfolioRole) {
     function getFeedbackSite() {
@@ -32,9 +33,7 @@ angular.module('directives.feedback', [
       }
     }
 
-    return {
-      getFeedbackSite: getFeedbackSite
-    };
+    return { getFeedbackSite: getFeedbackSite };
   })
 
   .directive('feedback', function (FeedbackResource,
@@ -83,11 +82,9 @@ angular.module('directives.feedback', [
               .then(function (session) {
                 var facultyCode = session.faculty && session.faculty.code;
 
-                return _.assign({
-                  email: session.email
-                }, facultyCode ? {
-                  facultyCode: facultyCode
-                } : {});
+                return _.assign({ email: session.email }, facultyCode
+                  ? { facultyCode: facultyCode }
+                  : {});
               })
               .then(function (sessionData) {
                 return {

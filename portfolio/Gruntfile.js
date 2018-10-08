@@ -53,9 +53,7 @@ var gruntPlugins = [
   'gruntify-eslint'
 ];
 
-var proxy = httpProxy.createProxyServer({
-  target: 'http://localhost:8080'
-});
+var proxy = httpProxy.createProxyServer({ target: 'http://localhost:8080' });
 
 var proxyMiddleware = function (req, res, next) {
   if (req.url.indexOf('api') !== -1) {
@@ -73,9 +71,7 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
 
   grunt.initConfig({
-    application: {
-      dist: 'dist'
-    },
+    application: { dist: 'dist' },
     watch: {
       dev: {
         files: [
@@ -119,7 +115,8 @@ module.exports = function (grunt) {
             '/common': '../common',
             '/assets/fonts': '../bower_components/Styleguide/fonts'
           },
-          middleware: [proxyMiddleware,
+          middleware: [
+            proxyMiddleware,
             modRewrite([
               '^[^\\.]*$ /index.html [L]',
               '^/portfolio* http://localhost:3002 [P]'
@@ -130,30 +127,28 @@ module.exports = function (grunt) {
     },
     clean: {
       dist: {
-        files: [{
-          dot: true,
-          src: [
-            '.tmp',
-            '<%= application.dist %>/*',
-            '!<%= application.dist %>/.git*'
-          ]
-        }]
+        files: [
+          {
+            dot: true,
+            src: [
+              '.tmp',
+              '<%= application.dist %>/*',
+              '!<%= application.dist %>/.git*'
+            ]
+          }
+        ]
       },
       server: '.tmp'
     },
     eslint: {
       src: ['src/app/**/*.js', 'test/spec/**/*.js', '*.js', '../common/**/*.js'],
-      options: {
-        quiet: true
-      }
+      options: { quiet: true }
     },
     postcss: {
       dev: {
         options: {
           map: true,
-          processors: [
-            require('autoprefixer')({ browsers: ['last 3 versions'] })
-          ]
+          processors: [require('autoprefixer')({ browsers: ['last 3 versions'] })]
         },
         src: 'src/assets/styles/main.css',
         dest: 'src/assets/styles/main.css'
@@ -161,29 +156,19 @@ module.exports = function (grunt) {
       prod: {
         options: {
           map: false,
-          processors: [
-            require('autoprefixer')({ browsers: ['last 3 versions'] })
-          ]
+          processors: [require('autoprefixer')({ browsers: ['last 3 versions'] })]
         },
         src: 'src/assets/styles/main.css',
         dest: 'src/assets/styles/main.css'
       }
     },
     sass: {
-      options: {
-        sourceMap: false
-      },
-      main: {
-        files: {
-          'src/assets/styles/main.css': 'src/scss/main.scss'
-        }
-      }
+      options: { sourceMap: false },
+      main: { files: { 'src/assets/styles/main.css': 'src/scss/main.scss' } }
     },
-    concat: {
-      // not used since Uglify task does concat,
-      // but still available if needed
-      //    dist: {}
-    },
+    // not used since Uglify task does concat,
+    // but still available if needed
+    concat: {},
     filerev: {
       dist: {
         src: [
@@ -232,89 +217,94 @@ module.exports = function (grunt) {
           collapseWhitespace: true,
           keepClosingSlash: true
         },
-        files: [{
-          expand: true,
-          cwd: 'src/app',
-          src: ['**/*.html'],
-          dest: '.tmp/src/app'
-        }, {
-          expand: true,
-          cwd: '../common/src/app',
-          src: ['**/*.html'],
-          dest: '.tmp/src/app'
-        }]
+        files: [
+          {
+            expand: true,
+            cwd: 'src/app',
+            src: ['**/*.html'],
+            dest: '.tmp/src/app'
+          }, {
+            expand: true,
+            cwd: '../common/src/app',
+            src: ['**/*.html'],
+            dest: '.tmp/src/app'
+          }
+        ]
       }
     },
     // Put files not handled in other tasks here
     copy: {
       distMinified: {
-        files: [{
-          expand: true,
-          dot: true,
-          cwd: 'src',
-          dest: '<%= application.dist %>',
-          src: [
-            'index.html',
-            'assets/images/**/*.{png,jpg,gif,webp,ico}',
-            'assets/icons/**/*',
-            'i18n/*'
-          ]
-        },
-        {
-          flatten: true,
-          expand: true,
-          cwd: '..',
-          src: 'bower_components/Styleguide/fonts/*',
-          dest: '<%= application.dist %>/assets/fonts'
-        },
-        {
-          expand: true,
-          dot: true,
-          cwd: '../bower_components/ckeditor',
-          dest: '<%= application.dist %>',
-          src: [
-            'config.js',
-            'contents.css',
-            'lang/**',
-            'plugins/**',
-            'skins/**',
-            'styles.js'
-          ]
-        }
+        files: [
+          {
+            expand: true,
+            dot: true,
+            cwd: 'src',
+            dest: '<%= application.dist %>',
+            src: [
+              'index.html',
+              'assets/images/**/*.{png,jpg,gif,webp,ico}',
+              'assets/icons/**/*',
+              'i18n/*'
+            ]
+          },
+          {
+            flatten: true,
+            expand: true,
+            cwd: '..',
+            src: 'bower_components/Styleguide/fonts/*',
+            dest: '<%= application.dist %>/assets/fonts'
+          },
+          {
+            expand: true,
+            dot: true,
+            cwd: '../bower_components/ckeditor',
+            dest: '<%= application.dist %>',
+            src: [
+              'config.js',
+              'contents.css',
+              'lang/**',
+              'plugins/**',
+              'skins/**',
+              'styles.js'
+            ]
+          }
         ]
       },
       dist: {
-        files: [{
-          expand: true,
-          dot: true,
-          cwd: 'src',
-          dest: '<%= application.dist %>',
-          src: [
-            '*.html',
-            'app/**',
-            'assets/**',
-            'i18n/**'
-          ]
-        },
-        {
-          expand: true,
-          cwd: '..',
-          dest: '<%= application.dist %>',
-          src: ['bower_components/**']
-        },
-        {
-          flatten: true,
-          expand: true,
-          cwd: '..',
-          dest: '<%= application.dist %>/assets/fonts',
-          src: ['common/src/assets/fonts/*']
-        },
-        {
-          expand: true,
-          cwd: '..',
-          dest: '<%= application.dist %>',
-          src: ['common/src/app/**']
-        }]
+        files: [
+          {
+            expand: true,
+            dot: true,
+            cwd: 'src',
+            dest: '<%= application.dist %>',
+            src: [
+              '*.html',
+              'app/**',
+              'assets/**',
+              'i18n/**'
+            ]
+          },
+          {
+            expand: true,
+            cwd: '..',
+            dest: '<%= application.dist %>',
+            src: ['bower_components/**']
+          },
+          {
+            flatten: true,
+            expand: true,
+            cwd: '..',
+            dest: '<%= application.dist %>/assets/fonts',
+            src: ['common/src/assets/fonts/*']
+          },
+          {
+            expand: true,
+            cwd: '..',
+            dest: '<%= application.dist %>',
+            src: ['common/src/app/**']
+          }
+        ]
       }
     },
     html2js: {
@@ -347,12 +337,14 @@ module.exports = function (grunt) {
     },
     ngAnnotate: {
       dist: {
-        files: [{
-          expand: true,
-          cwd: '.tmp/concat/app',
-          src: '*.js',
-          dest: '.tmp/concat/app'
-        }]
+        files: [
+          {
+            expand: true,
+            cwd: '.tmp/concat/app',
+            src: '*.js',
+            dest: '.tmp/concat/app'
+          }
+        ]
       }
     },
     karma: {
@@ -427,7 +419,5 @@ module.exports = function (grunt) {
     'html2js:templates'
   ]);
 
-  grunt.registerTask('default', [
-    'build'
-  ]);
+  grunt.registerTask('default', ['build']);
 };

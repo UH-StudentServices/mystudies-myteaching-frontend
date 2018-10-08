@@ -25,11 +25,13 @@ angular.module('opintoniErrors', [])
         views: {
           'content@': {
             templateUrl: 'app/partials/errorPages/_error.html',
-            controller: ['$scope', 'pageHeaderLinks', 'state',
+            controller: [
+              '$scope', 'pageHeaderLinks', 'state',
               function ($scope, pageHeaderLinks, state) {
                 $scope.pageHeaderLinks = pageHeaderLinks;
                 $scope.currentStateName = state;
-              }]
+              }
+            ]
           }
         }
       })

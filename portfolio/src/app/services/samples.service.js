@@ -17,7 +17,8 @@
 
 angular.module('services.samples', [
   'services.portfolio',
-  'resources.samples'])
+  'resources.samples'
+])
 
   .factory('SamplesService', function (PortfolioService,
     SamplesResource) {
@@ -25,7 +26,5 @@ angular.module('services.samples', [
       return SamplesResource.updateSamples(portfolioId, samples);
     }
 
-    return {
-      updateSamples: updateSamples
-    };
+    return { updateSamples: updateSamples };
   });

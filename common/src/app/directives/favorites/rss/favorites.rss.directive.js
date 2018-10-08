@@ -15,18 +15,14 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.favorites.rss', [
-  'services.favorites'
-])
+angular.module('directives.favorites.rss', ['services.favorites'])
 
   .directive('favoritesRss', function (FavoritesService) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/rss/favorites.rss.html',
       replace: true,
-      scope: {
-        data: '='
-      },
+      scope: { data: '=' },
       link: function ($scope) {
         $scope.loading = true;
         $scope.error = false;

@@ -18,7 +18,8 @@
 angular.module('directives.visibility', [
   'services.state',
   'services.session',
-  'utils.browser'])
+  'utils.browser'
+])
 
   .constant('Visibility', {
     MY_TEACHINGS_ONLY:
@@ -92,9 +93,7 @@ angular.module('directives.visibility', [
         priority: 600,
         terminal: true,
         restrict: 'A',
-        scope: {
-          limitVisibility: '='
-        },
+        scope: { limitVisibility: '=' },
         link: function ($scope, $element, $attr, ctrl, $transclude) {
           var element;
           var childScope;

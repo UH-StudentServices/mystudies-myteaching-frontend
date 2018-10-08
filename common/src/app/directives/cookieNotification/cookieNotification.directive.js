@@ -15,9 +15,11 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.cookieNotification', ['constants.commonExternalLinks',
+angular.module('directives.cookieNotification', [
+  'constants.commonExternalLinks',
   'services.language',
-  'resources.userSettings'])
+  'resources.userSettings'
+])
 
   .directive('cookieNotification', function (privacyPolicyLink, LanguageService, UserSettingsService) {
     return {

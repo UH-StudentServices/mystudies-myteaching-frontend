@@ -25,7 +25,5 @@ angular.module('resources.attainments', [])
       return attainmentsResource.query().$promise;
     }
 
-    return {
-      getStudyAttainments: getStudyAttainments
-    };
+    return { getStudyAttainments: getStudyAttainments };
   });

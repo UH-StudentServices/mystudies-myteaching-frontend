@@ -15,16 +15,12 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.analytics', [
-  'opintoniAnalytics'
-])
+angular.module('directives.analytics', ['opintoniAnalytics'])
 
   .directive('analyticsEvent', function (AnalyticsService) {
     return {
       restrict: 'A',
-      scope: {
-        analyticsEvent: '='
-      },
+      scope: { analyticsEvent: '=' },
       link: function ($scope, element) {
         element.on('click mouseup', function (e) {
           // catch click events and middle mouse clicks

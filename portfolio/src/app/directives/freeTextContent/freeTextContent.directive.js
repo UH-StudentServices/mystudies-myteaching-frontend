@@ -19,11 +19,11 @@ angular.module('directives.freeTextContent', [
   'services.freeTextContent',
   'directives.editLink',
   'constants.ngEmbedOptions',
-  'portfolioAnalytics'])
+  'portfolioAnalytics'
+])
 
   .factory('FreeTextContentFactory', function ($translate) {
     var defaultTitle = $translate.instant('freeTextContent.defaultTitle');
-
 
     var defaultText = $translate.instant('freeTextContent.defaultText');
 

@@ -21,12 +21,9 @@ angular.module('directives.globalMessages',
   .factory('GlobalMessagesService', function (MessageTypes, $window) {
     var messages = [];
 
-
     var Rx = $window.Rx;
 
-
     var msgSubject = new Rx.Subject();
-
 
     var errorMsg = {
       messageType: MessageTypes.ERROR,

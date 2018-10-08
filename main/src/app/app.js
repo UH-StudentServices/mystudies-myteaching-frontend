@@ -262,9 +262,11 @@ angular.module('opintoniApp', [
       .state('getState', {
         abstract: true,
         resolve: {
-          state: ['StateService', function (StateService) {
-            return StateService.getStateFromDomain();
-          }]
+          state: [
+            'StateService', function (StateService) {
+              return StateService.getStateFromDomain();
+            }
+          ]
         }
       })
 

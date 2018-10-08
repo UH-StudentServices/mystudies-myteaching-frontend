@@ -18,33 +18,23 @@
 describe('FeedMessages', function () {
   var MessageTypes;
 
-
   var FeedMessages;
-
 
   var WeekFeedMessageKeys;
 
-
   var eventsTab;
-
 
   var eventsSubTab;
 
-
   var coursesTab;
-
 
   var coursesSubTab;
 
-
   var calendarSubTab;
-
 
   var testEvent = {};
 
-
   var testCourse = {};
-
 
   beforeEach(module('directives.weekFeed'));
   beforeEach(module('ngResource'));

@@ -16,18 +16,19 @@
  */
 
 angular.module('directives.visibility',
-  ['services.state',
+  [
+    'services.state',
     'services.visibility',
     'services.portfolio',
     'services.preview',
-    'portfolioAnalytics'])
+    'portfolioAnalytics'
+  ])
 
   .directive('portfolioVisibility', function (AnalyticsService) {
     return {
       restrict: 'E',
       replace: true,
-      scope: {
-      },
+      scope: {},
       templateUrl: 'app/directives/visibility/portfolioVisibility.html',
       controller: function ($scope, PortfolioService) {
         PortfolioService.getPortfolio().then(function (portfolio) {
@@ -119,14 +120,11 @@ angular.module('directives.visibility',
         priority: 600,
         terminal: true,
         restrict: 'A',
-        scope: {
-        },
+        scope: {},
         link: function (scope, $element, $attr, ctrl, $transclude) {
           var preview = PreviewService.isPreview();
 
-
           var currentState = StateService.getCurrent();
-
 
           var limitVisibility = scope.$parent.$eval($attr.limitVisibility) || $attr.limitVisibility;
 
@@ -162,7 +160,8 @@ angular.module('directives.visibility',
           $q.all([
             isLimitedByPrivateVisibility(limitVisibility),
             isLimitedByRole(),
-            isLimitedByPortfolioComponentVisibility()]).then(function (limits) {
+            isLimitedByPortfolioComponentVisibility()
+          ]).then(function (limits) {
             if (!_.some(limits, Boolean)) {
               $transclude(function (clone) {
                 $animate.enter(clone, $element.parent(), $element);

@@ -22,9 +22,7 @@ angular.module('directives.eventCalendar', [])
     WEEK: 'agendaWeek',
     MONTH: 'month'
   })
-  .constant('CalendarDefaults', {
-    EVENT_DURATION_HOURS: 1
-  })
+  .constant('CalendarDefaults', { EVENT_DURATION_HOURS: 1 })
 
   .service('EventColorService', function () {
     var colors = ['#0098d0', '#005479', '#888888', ' #424242'];
@@ -62,7 +60,8 @@ angular.module('directives.eventCalendar', [])
           'weekFeed.calendarCustom.list',
           'eventCalendar.day',
           'eventCalendar.week',
-          'eventCalendar.month']).then(function (buttonLabels) {
+          'eventCalendar.month'
+        ]).then(function (buttonLabels) {
           $scope.uiConfig = {
             calendar: {
               height: 'auto',
@@ -85,36 +84,28 @@ angular.module('directives.eventCalendar', [])
                 listButton: {
                   text: _.capitalize(buttonLabels['weekFeed.calendarCustom.list']),
                   click: function () {
-                    $scope.$emit('changeWeekFeedSubTab', {
-                      subTab: 'SCHEDULE_LIST'
-                    });
+                    $scope.$emit('changeWeekFeedSubTab', { subTab: 'SCHEDULE_LIST' });
                   }
                 },
                 dayButton: {
                   text: _.capitalize(buttonLabels['eventCalendar.day']),
                   click: function () {
                     $scope.setActiveButton('dayButton');
-                    $scope.$emit('changeWeekFeedSubTab', {
-                      subTab: 'CALENDAR_DAY'
-                    });
+                    $scope.$emit('changeWeekFeedSubTab', { subTab: 'CALENDAR_DAY' });
                   }
                 },
                 weekButton: {
                   text: _.capitalize(buttonLabels['eventCalendar.week']),
                   click: function () {
                     $scope.setActiveButton('weekButton');
-                    $scope.$emit('changeWeekFeedSubTab', {
-                      subTab: 'CALENDAR_WEEK'
-                    });
+                    $scope.$emit('changeWeekFeedSubTab', { subTab: 'CALENDAR_WEEK' });
                   }
                 },
                 monthButton: {
                   text: _.capitalize(buttonLabels['eventCalendar.month']),
                   click: function () {
                     $scope.setActiveButton('monthButton');
-                    $scope.$emit('changeWeekFeedSubTab', {
-                      subTab: 'CALENDAR_MONTH'
-                    });
+                    $scope.$emit('changeWeekFeedSubTab', { subTab: 'CALENDAR_MONTH' });
                   }
                 }
               },
@@ -145,11 +136,7 @@ angular.module('directives.eventCalendar', [])
               maxTime: '20:30:00',
               displayEventEnd: true,
               hiddenDays: [0],
-              views: {
-                week: {
-                  columnFormat: 'dd DD.MM.'
-                }
-              },
+              views: { week: { columnFormat: 'dd DD.MM.' } },
               firstDay: 1,
               defaultDate: $scope.currentDate
             }

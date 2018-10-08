@@ -22,7 +22,8 @@ angular.module('directives.subscribeEvents', [
   'utils.domain',
   'utils.browser',
   'directives.clipboard',
-  'directives.popover'])
+  'directives.popover'
+])
 
   .constant({
     MessageTimeouts: {

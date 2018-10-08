@@ -104,23 +104,25 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
             scope: $scope,
             windowClass: 'crop-image-modal',
             resolve: {
-              image: ['$q', function ($q) {
-                var deferred = $q.defer();
-                var img;
+              image: [
+                '$q', function ($q) {
+                  var deferred = $q.defer();
+                  var img;
 
-                if (typeof croppedImage === 'string') {
-                  img = new Image();
+                  if (typeof croppedImage === 'string') {
+                    img = new Image();
 
-                  img.src = croppedImage;
-                  img.onload = function () {
-                    deferred.resolve(ResizeImageService.resizeImage(img));
-                  };
-                } else {
-                  deferred.resolve(ResizeImageService.resizeImage(croppedImage));
+                    img.src = croppedImage;
+                    img.onload = function () {
+                      deferred.resolve(ResizeImageService.resizeImage(img));
+                    };
+                  } else {
+                    deferred.resolve(ResizeImageService.resizeImage(croppedImage));
+                  }
+
+                  return deferred.promise;
                 }
-
-                return deferred.promise;
-              }],
+              ],
               imageSourceMedia: function () {
                 return imageSourceMedia;
               },

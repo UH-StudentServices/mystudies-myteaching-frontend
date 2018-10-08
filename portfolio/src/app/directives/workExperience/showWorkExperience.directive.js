@@ -15,9 +15,7 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.showWorkExperience', [
-  'dibari.angular-ellipsis'
-])
+angular.module('directives.showWorkExperience', ['dibari.angular-ellipsis'])
   .directive('showWorkExperience', function () {
     return {
       restrict: 'E',

@@ -18,7 +18,8 @@
 angular.module('services.login', [
   'services.state',
   'services.configuration',
-  'ngCookies'])
+  'ngCookies'
+])
 
   .factory('LoginService', function ($window,
     $cookies,
@@ -38,7 +39,5 @@ angular.module('services.login', [
       $window.location.href = loginUrl;
     }
 
-    return {
-      goToLogin: goToLogin
-    };
+    return { goToLogin: goToLogin };
   });

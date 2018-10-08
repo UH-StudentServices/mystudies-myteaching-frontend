@@ -18,7 +18,8 @@
 angular.module('directives.contactInformation', [
   'services.contactInformation',
   'services.portfolioRole',
-  'portfolioAnalytics'])
+  'portfolioAnalytics'
+])
 
   .constant('SomeLinkType', {
     FACEBOOK: { type: 'FACEBOOK', baseUrl: 'https://facebook.com/' },

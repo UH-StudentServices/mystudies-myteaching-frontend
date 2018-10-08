@@ -19,7 +19,8 @@ angular.module('directives.usefulLinks.editableLink', [
   'directives.usefulLinks',
   'directives.usefulLinks.title',
   'resources.usefulLinks',
-  'services.focus'])
+  'services.focus'
+])
 
   .constant('closeEditUsefulLinkEvent', 'EXIT_EDIT_USEFUL_LINK_EVENT')
 

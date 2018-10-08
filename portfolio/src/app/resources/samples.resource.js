@@ -31,7 +31,5 @@ angular.module('resources.samples', ['services.state'])
       return samplesResource(portfolioId).update(samples).$promise;
     }
 
-    return {
-      updateSamples: updateSamples
-    };
+    return { updateSamples: updateSamples };
   });

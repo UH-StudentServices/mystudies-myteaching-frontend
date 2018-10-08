@@ -79,9 +79,9 @@ angular.module('directives.attainments', [
           $scope.$broadcast('saveComponent');
           $scope.editing = false;
 
-          AttainmentResource.updateWhitelist($scope.portfolioId, {
-            oodiStudyAttainmentIds: $scope.whitelist
-          }).then(updateWhitelistedAttainments);
+          AttainmentResource
+            .updateWhitelist($scope.portfolioId, { oodiStudyAttainmentIds: $scope.whitelist })
+            .then(updateWhitelistedAttainments);
 
           return true;
         };

@@ -21,16 +21,12 @@ angular.module('resources.languageProficiencies', ['services.state'])
       return $resource('/api/:state/v1/portfolio/:portfolioId/languageproficiencies/', {
         state: StateService.getCurrent(),
         portfolioId: portfolioId
-      }, {
-        save: { method: 'PATCH', isArray: true }
-      });
+      }, { save: { method: 'PATCH', isArray: true } });
     }
 
     function save(portfolioId, updateBatch) {
       return languageProficienciesResource(portfolioId).save(updateBatch).$promise;
     }
 
-    return {
-      save: save
-    };
+    return { save: save };
   });

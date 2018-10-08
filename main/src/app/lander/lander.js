@@ -15,10 +15,12 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('opintoniLander', ['services.language',
+angular.module('opintoniLander', [
+  'services.language',
   'services.login',
   'services.state',
-  'services.configuration'])
+  'services.configuration'
+])
 
   .constant('COURSE_SEARCH_URL', {
     en: 'https://courses.helsinki.fi/search',

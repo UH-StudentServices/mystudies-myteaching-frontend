@@ -23,7 +23,8 @@ angular.module('directives.favorites.addNew', [
   'directives.favorites.addNew.link',
   'directives.favorites.addNew.flamma',
   'directives.popover',
-  'services.focus'])
+  'services.focus'
+])
 
   .constant('NewFavoriteAddedEvent', 'NEW_FAVORITE_ADDED')
 
@@ -87,9 +88,7 @@ angular.module('directives.favorites.addNew', [
 
         $scope.getFavoriteTypeClasses = function getFavoriteTypeClasses(favoriteType) {
           if (favoriteType === 'UNISPORT') {
-            return {
-              disabled: !_.isUndefined(_.find($scope.favorites, { type: 'UNISPORT' }))
-            };
+            return { disabled: !_.isUndefined(_.find($scope.favorites, { type: 'UNISPORT' })) };
           }
           return {};
         };

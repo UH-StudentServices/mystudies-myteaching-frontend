@@ -19,9 +19,7 @@ angular.module('resources.userSettings', [])
 
   .factory('UserSettingsResource', function ($resource) {
     var userSettingsResource = $resource('/api/private/v1/usersettings/:id', { id: '@id' }, {
-      update: {
-        method: 'PUT'
-      },
+      update: { method: 'PUT' },
       updateUserAvatar: {
         url: '/api/private/v1/usersettings/:id/uploaduseravatar',
         method: 'PUT'

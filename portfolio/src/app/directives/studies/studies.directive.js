@@ -22,7 +22,8 @@ angular.module('directives.studies', [
   'directives.keywords',
   'directives.editableHeading',
   'constants.ngEmbedOptions',
-  'portfolioAnalytics'])
+  'portfolioAnalytics'
+])
 
   .directive('studies', function (KeywordService, SummaryService, NG_EMBED_OPTIONS, AnalyticsService) {
     return {
@@ -46,13 +47,9 @@ angular.module('directives.studies', [
         };
 
         scope.exitEdit = function () {
-          var updateKeywordsRequest = {
-            keywords: scope.keywords
-          };
+          var updateKeywordsRequest = { keywords: scope.keywords };
 
-          var updateSummaryRequest = {
-            summary: scope.summaryData
-          };
+          var updateSummaryRequest = { summary: scope.summaryData };
 
           scope.$broadcast('saveComponent');
 

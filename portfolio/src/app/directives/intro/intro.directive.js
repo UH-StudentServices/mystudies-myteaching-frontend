@@ -15,13 +15,15 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.intro', ['services.portfolio',
+angular.module('directives.intro', [
+  'services.portfolio',
   'services.portfolioBackground',
   'directives.editLink',
   'directives.chooseBackground',
   'angular-flexslider',
   'ngFileUpload',
-  'portfolioAnalytics'])
+  'portfolioAnalytics'
+])
 
   .constant('backgroundChangeEvent', 'backgroundChange')
 
@@ -36,9 +38,7 @@ angular.module('directives.intro', ['services.portfolio',
       templateUrl: 'app/directives/intro/intro.html',
       link: function ($scope) {
         function setBackgroundUri(data) {
-          $scope.userBackgroundStyle = {
-            'background-image': 'url("' + data.backgroundUri + '")'
-          };
+          $scope.userBackgroundStyle = { 'background-image': 'url("' + data.backgroundUri + '")' };
         }
 
         function setBackgroundImage() {

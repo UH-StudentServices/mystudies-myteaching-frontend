@@ -17,9 +17,7 @@
 
 angular.module('services.eventUri', ['services.location'])
 
-  .constant('Timezones', {
-    HELSINKI: 'Europe/Helsinki'
-  })
+  .constant('Timezones', { HELSINKI: 'Europe/Helsinki' })
 
   .factory('EventUriService', function (Timezones, LocationService, BrowserUtil) {
     function hasStreetAddress(location) {
@@ -48,21 +46,15 @@ angular.module('services.eventUri', ['services.location'])
     function getReittiopasUri(startDate, location, fromAddress) {
       var to = location.streetAddress;
 
-
       var start = startDate.tz(Timezones.HELSINKI);
-
 
       var minutes = start.minute();
 
-
       var hours = start.hour();
-
 
       var date = start.date();
 
-
       var month = start.month() + 1;
-
 
       var year = start.year();
 
@@ -84,7 +76,6 @@ angular.module('services.eventUri', ['services.location'])
 
     function reittiopasUriCanBeGenerated(startDate, location) {
       var now = moment().tz(Timezones.HELSINKI);
-
 
       var start = startDate.clone().tz(Timezones.HELSINKI);
 

@@ -17,9 +17,7 @@
 
 'use strict';
 
-angular.module('services.session', [
-  'resources.session'
-])
+angular.module('services.session', ['resources.session'])
   .constant('Role', {
     TEACHER: 'TEACHER',
     STUDENT: 'STUDENT',

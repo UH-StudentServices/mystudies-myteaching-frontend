@@ -19,9 +19,7 @@
 
 angular.module('resources.httpInterceptor', ['services.state', 'services.configuration'])
 
-  .constant('ErrorPages', {
-    MAINTENANCE: 'maintenance'
-  })
+  .constant('ErrorPages', { MAINTENANCE: 'maintenance' })
 
   .factory('HttpInterceptor', function HttpInterceptor($q,
     $injector,

@@ -15,8 +15,10 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.userMenu.settings.avatar', ['directives.imgLoad',
-  'directives.uploadImage'])
+angular.module('directives.userMenu.settings.avatar', [
+  'directives.imgLoad',
+  'directives.uploadImage'
+])
   .constant('Camera', {
     START: 'START_WEBCAM',
     STOP: 'STOP_WEBCAM'
@@ -76,9 +78,7 @@ angular.module('directives.userMenu.settings.avatar', ['directives.imgLoad',
           $scope.$apply();
         };
 
-        $scope.avatarChannel = {
-          video: null // Will reference the video element on success
-        };
+        $scope.avatarChannel = { video: null }; // Will reference the video element on success
 
         $scope.upload = function (image, imageSourceMedia) {
           return UserSettingsService.updateUserAvatar(image).then(function () {

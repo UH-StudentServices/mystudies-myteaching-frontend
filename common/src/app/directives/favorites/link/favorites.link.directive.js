@@ -15,17 +15,14 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.favorites.link', [
-])
+angular.module('directives.favorites.link', [])
 
   .directive('favoritesLink', function () {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/link/favorites.link.html',
       replace: true,
-      scope: {
-        data: '='
-      },
+      scope: { data: '=' },
       link: function () {
       }
     };

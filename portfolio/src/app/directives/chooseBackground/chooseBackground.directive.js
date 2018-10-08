@@ -15,11 +15,13 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.chooseBackground', ['ui.bootstrap.modal',
+angular.module('directives.chooseBackground', [
+  'ui.bootstrap.modal',
   'directives.uploadImage',
   'services.userSettings',
   'services.portfolioBackground',
-  'portfolioAnalytics'])
+  'portfolioAnalytics'
+])
 
   .directive('chooseBackgroundButton', function () {
     return {
@@ -61,7 +63,6 @@ angular.module('directives.chooseBackground', ['ui.bootstrap.modal',
     backgroundChangeEvent,
     AnalyticsService) {
     var availableBackgroundImages;
-
 
     var selectedItemIndex;
 

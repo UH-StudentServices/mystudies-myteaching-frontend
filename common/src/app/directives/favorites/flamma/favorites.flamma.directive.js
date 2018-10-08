@@ -32,9 +32,7 @@ angular
       restrict: 'E',
       templateUrl: 'app/directives/favorites/rss/favorites.rss.html',
       replace: true,
-      scope: {
-        data: '='
-      },
+      scope: { data: '=' },
       link: function ($scope) {
         var feedUrl;
 

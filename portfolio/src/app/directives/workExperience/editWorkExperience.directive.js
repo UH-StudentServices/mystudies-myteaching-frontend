@@ -15,9 +15,7 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.editWorkExperience', [
-  'directives.dateInput'
-])
+angular.module('directives.editWorkExperience', ['directives.dateInput'])
 
   .directive('editWorkExperience', function (WorkExperienceService, $translate) {
     return {
@@ -80,9 +78,7 @@ angular.module('directives.editWorkExperience', [
           $scope.jobSearch = null;
         };
 
-        $scope.sortableOptions = {
-          containment: '.work-experience__dropzone'
-        };
+        $scope.sortableOptions = { containment: '.work-experience__dropzone' };
       }
     };
   });

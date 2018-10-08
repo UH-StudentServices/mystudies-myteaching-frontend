@@ -22,7 +22,5 @@ angular.module('services.summary', ['resources.summary'])
       return SummaryResource.updateSummary(portfolioId, updateSummaryRequest);
     }
 
-    return {
-      updateSummary: updateSummary
-    };
+    return { updateSummary: updateSummary };
   });

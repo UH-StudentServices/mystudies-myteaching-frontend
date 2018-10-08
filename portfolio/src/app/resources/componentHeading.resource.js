@@ -19,20 +19,12 @@ angular.module('resources.componentHeading', [])
 
   .factory('ComponentHeadingResource', function ($resource) {
     function componentHeadingResource(portfolioId) {
-      return $resource('/api/private/v1/portfolio/:portfolioId/component-headings', {
-        portfolioId: portfolioId
-      }, {
-        save: {
-          method: 'POST'
-        }
-      });
+      return $resource('/api/private/v1/portfolio/:portfolioId/component-headings', { portfolioId: portfolioId }, { save: { method: 'POST' } });
     }
 
     function updateHeading(portfolioId, component) {
       return componentHeadingResource(portfolioId).save(component).$promise;
     }
 
-    return {
-      updateHeading: updateHeading
-    };
+    return { updateHeading: updateHeading };
   });

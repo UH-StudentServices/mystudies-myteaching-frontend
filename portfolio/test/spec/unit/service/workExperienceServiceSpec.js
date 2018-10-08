@@ -31,13 +31,11 @@ describe('WorkExperienceService', function () {
   var portfolioLang = 'en';
   var portfolioPath = '/' + [portfolioLang, userPath].join('/');
 
-
   var portfolioResponse = {
     id: portfolioId,
     workExperience: [{ employer: 'employer' }],
     jobSearch: { contactEmail: 'olli.opiskelija@helsinki.fi' }
   };
-
 
   var portfolioApiPath = privateApiBasePath + [portfolioRole, portfolioLang, userPath].join('/');
 
@@ -67,19 +65,11 @@ describe('WorkExperienceService', function () {
   beforeEach(module('services.workExperience'));
 
   beforeEach(module('services.portfolioRole', function ($provide) {
-    $provide.constant('PortfolioRoleService', {
-      getActiveRole: jasmine.createSpy('PortfolioRoleService.getActiveRole').and.returnValue(portfolioRole)
-    });
+    $provide.constant('PortfolioRoleService', { getActiveRole: jasmine.createSpy('PortfolioRoleService.getActiveRole').and.returnValue(portfolioRole) });
   }));
 
   beforeEach(function () {
-    session = {
-      portfolioPathsByRoleAndLang: {
-        student: {
-          en: [portfolioPath]
-        }
-      }
-    };
+    session = { portfolioPathsByRoleAndLang: { student: { en: [portfolioPath] } } };
 
     inject(function (_$rootScope_, _$q_, _$httpBackend_, _WorkExperienceService_,
       _StateService_, _PortfolioService_) {

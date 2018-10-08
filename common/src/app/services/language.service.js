@@ -18,9 +18,7 @@
 'use strict';
 
 angular.module('services.language', ['constants.language'])
-  .constant('SUPPORTED_LANGUAGES', [
-    'en', 'fi', 'sv'
-  ])
+  .constant('SUPPORTED_LANGUAGES', ['en', 'fi', 'sv'])
   .constant('DEFAULT_LANGUAGE', 'fi')
 
   .config(function ($translateProvider,

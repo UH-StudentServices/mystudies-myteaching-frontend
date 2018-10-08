@@ -58,16 +58,15 @@ gruntPlugins = [
   'gruntify-eslint'
 ];
 
-proxy = httpProxy.createProxyServer({
-  target: 'http://localhost:8080/'
-});
+proxy = httpProxy.createProxyServer({ target: 'http://localhost:8080/' });
 
 proxyPaths = [
   '/api',
   '/login',
   '/logout',
   '/redirect',
-  '/files'];
+  '/files'
+];
 
 proxyMiddleware = function (req, res, next) {
   var path = urlUtil.parse(req.url).pathname;
@@ -87,9 +86,7 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
 
   grunt.initConfig({
-    application: {
-      dist: 'dist'
-    },
+    application: { dist: 'dist' },
     watch: {
       dev: {
         files: [
@@ -134,7 +131,8 @@ module.exports = function (grunt) {
             '/assets/fonts': '../bower_components/Styleguide/fonts'
 
           },
-          middleware: [proxyMiddleware,
+          middleware: [
+            proxyMiddleware,
             modRewrite([
               '^/proxy/hyyravintolat http://messi.hyyravintolat.fi/publicapi [P]',
               '^[^\\.]*$ /index.html [L]'
@@ -145,30 +143,28 @@ module.exports = function (grunt) {
     },
     clean: {
       dist: {
-        files: [{
-          dot: true,
-          src: [
-            '.tmp',
-            '<%= application.dist %>/*',
-            '!<%= application.dist %>/.git*'
-          ]
-        }]
+        files: [
+          {
+            dot: true,
+            src: [
+              '.tmp',
+              '<%= application.dist %>/*',
+              '!<%= application.dist %>/.git*'
+            ]
+          }
+        ]
       },
       server: '.tmp'
     },
     eslint: {
       src: ['src/app/**/*.js', 'test/spec/**/*.js', '*.js', '../common/**/*.js'],
-      options: {
-        quiet: true
-      }
+      options: { quiet: true }
     },
     postcss: {
       dev: {
         options: {
           map: true,
-          processors: [
-            require('autoprefixer')({ browsers: ['last 3 versions'] })
-          ]
+          processors: [require('autoprefixer')({ browsers: ['last 3 versions'] })]
         },
         src: 'src/assets/styles/main.css',
         dest: 'src/assets/styles/main.css'
@@ -176,29 +172,20 @@ module.exports = function (grunt) {
       prod: {
         options: {
           map: false,
-          processors: [
-            require('autoprefixer')({ browsers: ['last 3 versions'] })
-          ]
+          processors: [require('autoprefixer')({ browsers: ['last 3 versions'] })]
         },
         src: 'src/assets/styles/main.css',
         dest: 'src/assets/styles/main.css'
       }
     },
     sass: {
-      options: {
-        sourceMap: false
-      },
-      main: {
-        files: {
-          'src/assets/styles/main.css': 'src/scss/main.scss'
-        }
-      }
+      options: { sourceMap: false },
+      main: { files: { 'src/assets/styles/main.css': 'src/scss/main.scss' } }
     },
-    concat: {
-      // not used since Uglify task does concat,
-      // but still available if needed
-      //    dist: {}usemin
-    },
+    // not used since Uglify task does concat,
+    // but still available if needed
+    //    dist: {}usemin
+    concat: {},
     filerev: {
       dist: {
         src: [
@@ -248,84 +235,92 @@ module.exports = function (grunt) {
           collapseWhitespace: true,
           keepClosingSlash: true
         },
-        files: [{
-          expand: true,
-          cwd: 'src/app',
-          src: ['**/*.html'],
-          dest: '.tmp/src/app'
-        }, {
-          expand: true,
-          cwd: '../common/src/app',
-          src: ['**/*.html'],
-          dest: '.tmp/src/app'
-        }]
+        files: [
+          {
+            expand: true,
+            cwd: 'src/app',
+            src: ['**/*.html'],
+            dest: '.tmp/src/app'
+          }, {
+            expand: true,
+            cwd: '../common/src/app',
+            src: ['**/*.html'],
+            dest: '.tmp/src/app'
+          }
+        ]
       }
     },
     // Put files not handled in other tasks here
     copy: {
       distMinified: {
-        files: [{
-          expand: true,
-          dot: true,
-          cwd: 'src',
-          dest: '<%= application.dist %>',
-          src: [
-            'index.html',
-            'assets/images/**/*.{png,jpg,gif,webp,ico}',
-            'assets/icons/**/*',
-            'assets/swf/*',
-            'i18n/*'
-          ]
-        },
-        {
-          flatten: true,
-          expand: true,
-          cwd: '..',
-          src: 'bower_components/Styleguide/fonts/*',
-          dest: '<%= application.dist %>/assets/fonts'
-        },
-        {
-          flatten: true,
-          expand: true,
-          cwd: 'src',
-          src: ['app/vendor/ng-file-upload/FileAPI.min.js',
-            'app/vendor/ng-file-upload/FileAPI.flash.swf'],
-          dest: '<%= application.dist %>/app'
-        }]
+        files: [
+          {
+            expand: true,
+            dot: true,
+            cwd: 'src',
+            dest: '<%= application.dist %>',
+            src: [
+              'index.html',
+              'assets/images/**/*.{png,jpg,gif,webp,ico}',
+              'assets/icons/**/*',
+              'assets/swf/*',
+              'i18n/*'
+            ]
+          },
+          {
+            flatten: true,
+            expand: true,
+            cwd: '..',
+            src: 'bower_components/Styleguide/fonts/*',
+            dest: '<%= application.dist %>/assets/fonts'
+          },
+          {
+            flatten: true,
+            expand: true,
+            cwd: 'src',
+            src: [
+              'app/vendor/ng-file-upload/FileAPI.min.js',
+              'app/vendor/ng-file-upload/FileAPI.flash.swf'
+            ],
+            dest: '<%= application.dist %>/app'
+          }
+        ]
       },
       dist: {
-        files: [{
-          expand: true,
-          dot: true,
-          cwd: 'src',
-          dest: '<%= application.dist %>',
-          src: [
-            '*.html',
-            'app/**',
-            '../../common/src/app/**',
-            'assets/**',
-            'i18n/**'
-          ]
-        },
-        {
-          expand: true,
-          cwd: '..',
-          dest: '<%= application.dist %>',
-          src: ['bower_components/**']
-        },
-        {
-          flatten: true,
-          expand: true,
-          cwd: '..',
-          dest: '<%= application.dist %>/assets/fonts',
-          src: ['common/src/assets/fonts/*']
-        },
-        {
-          expand: true,
-          cwd: '..',
-          dest: '<%= application.dist %>',
-          src: ['common/src/app/**']
-        }]
+        files: [
+          {
+            expand: true,
+            dot: true,
+            cwd: 'src',
+            dest: '<%= application.dist %>',
+            src: [
+              '*.html',
+              'app/**',
+              '../../common/src/app/**',
+              'assets/**',
+              'i18n/**'
+            ]
+          },
+          {
+            expand: true,
+            cwd: '..',
+            dest: '<%= application.dist %>',
+            src: ['bower_components/**']
+          },
+          {
+            flatten: true,
+            expand: true,
+            cwd: '..',
+            dest: '<%= application.dist %>/assets/fonts',
+            src: ['common/src/assets/fonts/*']
+          },
+          {
+            expand: true,
+            cwd: '..',
+            dest: '<%= application.dist %>',
+            src: ['common/src/app/**']
+          }
+        ]
       }
     },
     html2js: {
@@ -368,12 +363,14 @@ module.exports = function (grunt) {
     },
     ngAnnotate: {
       dist: {
-        files: [{
-          expand: true,
-          cwd: '.tmp/concat/app',
-          src: '*.js',
-          dest: '.tmp/concat/app'
-        }]
+        files: [
+          {
+            expand: true,
+            cwd: '.tmp/concat/app',
+            src: '*.js',
+            dest: '.tmp/concat/app'
+          }
+        ]
       }
     }
   });
@@ -427,7 +424,5 @@ module.exports = function (grunt) {
     'html2js:templates'
   ]);
 
-  grunt.registerTask('default', [
-    'build'
-  ]);
+  grunt.registerTask('default', ['build']);
 };

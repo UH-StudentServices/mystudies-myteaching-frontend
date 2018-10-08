@@ -53,8 +53,7 @@ angular.module('directives.keywords', ['services.keyword', 'directives.inputUppe
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/studies/keywordsSummary.html',
-      scope: {
-      },
+      scope: {},
       controller: function ($scope, KeywordService) {
         KeywordService.getKeywordsSubject()
           .subscribe(function (keywords) {

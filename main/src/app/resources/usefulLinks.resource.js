@@ -23,9 +23,7 @@ angular.module('resources.usefulLinks', [])
       delete: { method: 'DELETE', isArray: true },
       updateOrder: { method: 'POST', url: '/api/private/v1/usefullinks/order' }
     });
-    var searchPageTitleResource = $resource('/api/private/v1/usefullinks/searchpagetitle', null, {
-      searchPageTitle: { method: 'POST' }
-    });
+    var searchPageTitleResource = $resource('/api/private/v1/usefullinks/searchpagetitle', null, { searchPageTitle: { method: 'POST' } });
 
     function getAll() {
       return usefulLinksResource.query().$promise;

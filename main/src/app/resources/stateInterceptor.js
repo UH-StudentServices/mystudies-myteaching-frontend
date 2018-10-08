@@ -18,7 +18,8 @@
 angular.module('resources.stateInterceptor', [
   'services.session',
   'services.state',
-  'services.login'])
+  'services.login'
+])
 
   .run(function ($rootScope, $state, SessionService, State, LoginService) {
     function authorizeState(stateRoles) {

@@ -22,9 +22,7 @@ angular.module('directives.inputUppercase', [])
   .directive('inputUppercase', function ($filter) {
     return {
       restrict: 'A',
-      scope: {
-        ngModel: '='
-      },
+      scope: { ngModel: '=' },
       link: function ($scope) {
         $scope.$watch('ngModel', function (val) {
           $scope.ngModel = $filter('uppercase')(val);

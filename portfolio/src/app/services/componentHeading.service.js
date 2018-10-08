@@ -28,7 +28,5 @@ angular.module('services.componentHeadingService', ['resources.componentHeading'
       });
     }
 
-    return {
-      updateHeading: updateHeading
-    };
+    return { updateHeading: updateHeading };
   });

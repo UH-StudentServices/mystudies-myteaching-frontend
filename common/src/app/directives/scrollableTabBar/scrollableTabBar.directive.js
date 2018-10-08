@@ -73,7 +73,6 @@ angular.module('directives.scrollableTabBar', [])
           disableScrollCtrlsIfScrollPosAtEnd();
         }
 
-
         function useFullWidthLayout() {
           return scope.useFullWidthOnMobile
             && scope.showScrollControls
@@ -81,7 +80,6 @@ angular.module('directives.scrollableTabBar', [])
         }
 
         var debouncedResizeHandler = _.debounce(onResize, DEBOUNCE_DELAY);
-
 
         angular.element($window).on('resize', debouncedResizeHandler);
 

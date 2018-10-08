@@ -15,12 +15,14 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.tabSet', ['directives.scrollableTabBar',
+angular.module('directives.tabSet', [
+  'directives.scrollableTabBar',
   'ngAnimate',
   'directives.visibility',
   'services.visibility',
   'services.state',
-  'services.preview'])
+  'services.preview'
+])
 
   .directive('tabSet', function ($compile, $templateCache, $animate, $q, VisibilityService,
     Visibility, PreviewService, StateService, State) {
@@ -52,9 +54,7 @@ angular.module('directives.tabSet', ['directives.scrollableTabBar',
         }
 
         function getTabClasses(tab) {
-          return {
-            'is-active': tab === activeTab
-          };
+          return { 'is-active': tab === activeTab };
         }
 
         function selectDefaultOrFirstTab(tabs) {
@@ -63,7 +63,6 @@ angular.module('directives.tabSet', ['directives.scrollableTabBar',
 
         function initTabs() {
           var allTabs = scope.tabDescriptor;
-
 
           var visibleTabs;
 

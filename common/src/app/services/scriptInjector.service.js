@@ -22,7 +22,6 @@ angular.module('services.scriptInjector', [])
       if (!$document[0].getElementById(scriptId)) {
         var newScript = $document[0].createElement('script');
 
-
         var firstScript = $document[0].getElementsByTagName('script')[0];
 
         newScript.id = scriptId;
@@ -34,7 +33,5 @@ angular.module('services.scriptInjector', [])
       }
     }
 
-    return {
-      addScript: addScript
-    };
+    return { addScript: addScript };
   });

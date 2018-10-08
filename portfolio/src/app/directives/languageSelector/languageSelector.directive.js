@@ -15,10 +15,12 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.languageSelector', ['services.portfolio',
+angular.module('directives.languageSelector', [
+  'services.portfolio',
   'services.portfolioRole',
   'services.session',
-  'directives.popover'])
+  'directives.popover'
+])
 
   .directive('languageSelector', function ($q, $window, $state, $translate, PortfolioService,
     PortfolioRoleService, SessionService) {
@@ -70,9 +72,7 @@ angular.module('directives.languageSelector', ['services.portfolio',
             createAndSwitchToNewPortfolio(lang);
           } else {
             $translate.fallbackLanguage(lang);
-            $state.go('portfolio', {
-              lang: lang
-            });
+            $state.go('portfolio', { lang: lang });
           }
         }
 

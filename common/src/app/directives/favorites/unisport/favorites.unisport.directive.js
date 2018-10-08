@@ -15,18 +15,14 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.favorites.unisport', [
-  'services.favorites'
-])
+angular.module('directives.favorites.unisport', ['services.favorites'])
 
   .directive('favoritesUnisport', function (FavoritesService) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/unisport/favorites.unisport.html',
       replace: true,
-      scope: {
-        data: '='
-      },
+      scope: { data: '=' },
       link: function ($scope) {
         function getEventTimeRange(startTime, endTime) {
           var momentStartTime = moment(startTime);
