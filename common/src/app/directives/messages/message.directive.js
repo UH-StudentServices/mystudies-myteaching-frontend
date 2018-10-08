@@ -23,7 +23,7 @@ angular.module('directives.message', [])
     STATUS: 'status'
   })
 
-  .directive('message', function() {
+  .directive('message', function () {
     return {
       restrict: 'E',
       replace: true,

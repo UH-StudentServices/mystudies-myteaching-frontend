@@ -22,7 +22,7 @@ angular.module('services.visibility', ['services.portfolio', 'resources.visibili
     PUBLIC: 'PUBLIC'
   })
 
-  .factory('VisibilityService', function($q, PortfolioService, VisibilityResource, Visibility) {
+  .factory('VisibilityService', function ($q, PortfolioService, VisibilityResource, Visibility) {
     function componentVisibilitySearchCriteria(visibilityDescriptor) {
       var searchCriteria = {};
 
@@ -34,16 +34,19 @@ angular.module('services.visibility', ['services.portfolio', 'resources.visibili
     }
 
     function createComponentPermission(visibilityDescriptor, visibility) {
-      return _.assign(componentVisibilitySearchCriteria(visibilityDescriptor), {visibility: visibility});
+      return _.assign(
+        componentVisibilitySearchCriteria(visibilityDescriptor),
+        { visibility: visibility }
+      );
     }
 
     function getComponentVisibility(visibilityDescriptor) {
       return PortfolioService.getPortfolio()
-        .then(function(portfolio) {
+        .then(function (portfolio) {
           return _.find(portfolio.componentVisibilities,
             componentVisibilitySearchCriteria(visibilityDescriptor));
         })
-        .then(function(visibility) {
+        .then(function (visibility) {
           return _.get(visibility, 'visibility', Visibility.PRIVATE);
         });
     }
@@ -54,7 +57,8 @@ angular.module('services.visibility', ['services.portfolio', 'resources.visibili
 
       if (!visibilityToUpdate) {
         portfolio.componentVisibilities.push(
-          createComponentPermission(visibilityDescriptor, visibility));
+          createComponentPermission(visibilityDescriptor, visibility)
+        );
       } else {
         visibilityToUpdate.visibility = visibility;
       }
@@ -63,12 +67,13 @@ angular.module('services.visibility', ['services.portfolio', 'resources.visibili
     }
 
     function setComponentVisibility(visibilityDescriptor, visibility) {
-      return PortfolioService.getPortfolio().then(function(portfolio) {
+      return PortfolioService.getPortfolio().then(function (portfolio) {
         return VisibilityResource
           .setComponentVisibility(portfolio.id,
             createComponentPermission(visibilityDescriptor, visibility))
           .then(_.partial(
-            insertOrUpdateComponentVisibility, visibilityDescriptor, visibility, portfolio));
+            insertOrUpdateComponentVisibility, visibilityDescriptor, visibility, portfolio
+          ));
       });
     }
 

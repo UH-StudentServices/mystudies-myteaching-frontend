@@ -24,13 +24,12 @@ angular.module('services.favorites', [
   'utils.moment'
 ])
 
-  .factory('FavoritesService', function(FavoritesResource,
-                                        RSSResource,
-                                        UnicafeResource,
-                                        UnisportResource,
-                                        AnalyticsService,
-                                        dateArrayToMomentObject) {
-
+  .factory('FavoritesService', function (FavoritesResource,
+    RSSResource,
+    UnicafeResource,
+    UnisportResource,
+    AnalyticsService,
+    dateArrayToMomentObject) {
     function getFavorites() {
       return FavoritesResource.getAll();
     }
@@ -44,14 +43,14 @@ angular.module('services.favorites', [
       function convertDate(d) {
         return dateArrayToMomentObject(_.slice(d, 0, 5));
       }
-      return RSSResource.get(feedUrl).then(function(feed) {
+      return RSSResource.get(feedUrl).then(function (feed) {
         return {
           title: feed.title,
           link: feed.feedUrl,
           description: feed.description,
           date: feed.pubDate,
           momentDate: convertDate(feed.date),
-          entries: _.each(feed.items, function(entry) {
+          entries: _.each(feed.items, function (entry) {
             entry.momentDate = convertDate(entry.date);
           })
         };
@@ -78,11 +77,6 @@ angular.module('services.favorites', [
 
     function getUnicafeRestaurantOptions() {
       return UnicafeResource.getRestaurantOptions();
-    }
-
-    function saveUnisportFavorite(favoriteType) {
-      AnalyticsService.trackAddFavorite(favoriteType);
-      return FavoritesResource.saveUnisportFavorite();
     }
 
     function saveUnisportFavorite(favoriteType) {

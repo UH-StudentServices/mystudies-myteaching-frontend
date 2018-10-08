@@ -18,9 +18,10 @@
 angular.module('directives.feedback', [
   'resources.feedback',
   'services.session',
-  'services.state'])
+  'services.state'
+])
 
-  .factory('FeedbackSiteService', function(StateService, State) {
+  .factory('FeedbackSiteService', function (StateService, State) {
     function getFeedbackSite() {
       var rootStateName = StateService.getRootStateName();
 
@@ -32,19 +33,17 @@ angular.module('directives.feedback', [
       }
     }
 
-    return {
-      getFeedbackSite: getFeedbackSite
-    };
+    return { getFeedbackSite: getFeedbackSite };
   })
 
-  .directive('feedback', function(FeedbackResource, $timeout, $window, SessionService,
-                                  FeedbackSiteService, AnalyticsService, LanguageService) {
+  .directive('feedback', function (FeedbackResource, $timeout, $window, SessionService,
+    FeedbackSiteService, AnalyticsService, LanguageService) {
     return {
       restrict: 'E',
       replace: true,
       scope: {},
       templateUrl: 'app/directives/feedback/feedback.html',
-      controller: function($scope) {
+      controller: function ($scope) {
         function initialState() {
           $scope.showDefaultState = true;
           $scope.showForm = false;
@@ -61,29 +60,27 @@ angular.module('directives.feedback', [
 
         initialState();
 
-        $scope.giveFeedback = function() {
+        $scope.giveFeedback = function () {
           $scope.showDefaultState = false;
           $scope.showForm = true;
         };
 
-        $scope.cancel = function() {
+        $scope.cancel = function () {
           initialState();
         };
 
-        $scope.submit = function() {
+        $scope.submit = function () {
           if (!_.isEmpty($scope.content) && $scope.feedbackForm.$valid) {
             SessionService
               .getSession()
-              .then(function(session) {
+              .then(function (session) {
                 var facultyCode = session.faculty && session.faculty.code;
 
-                return _.assign({
-                  email: session.email
-                }, facultyCode ? {
-                  facultyCode: facultyCode
-                } : {});
+                return _.assign({ email: session.email }, facultyCode
+                  ? { facultyCode: facultyCode }
+                  : {});
               })
-              .then(function(sessionData) {
+              .then(function (sessionData) {
                 return {
                   content: $scope.content,
                   email: $scope.isAnonymous ? '' : sessionData.email,
@@ -96,7 +93,7 @@ angular.module('directives.feedback', [
                 };
               })
               .then(FeedbackResource.save)
-              .then(function() {
+              .then(function () {
                 AnalyticsService.trackSendFeedback();
                 submittedState();
                 $timeout(initialState, 3000);

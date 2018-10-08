@@ -16,7 +16,7 @@
  */
 
 import config from '../config';
-import {loginAndOpenAcademicPortfolio} from '../util';
+import { loginAndOpenAcademicPortfolio } from '../util';
 
 fixture('Academic portfolio')
   .page(config.myTeachingBaseUrl);

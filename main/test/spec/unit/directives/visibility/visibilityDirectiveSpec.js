@@ -15,19 +15,35 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-describe('Visibility directive', function() {
+describe('Visibility directive', function () {
+  var compile;
+  var scope;
+  var directiveElem;
 
-  var compile, scope, directiveElem;
+  function getCompiledElement() {
+    var element = angular.element(
+      '<div>'
+      + '<span class="student-only" limit-visibility="[\'MY_STUDIES_ONLY\']">Student only</span>'
+      + '<span class="dev-and-qa-only" limit-visibility="[\'MY_STUDIES_ONLY\', \'DEV_AND_QA_ONLY\']">'
+      + 'Dev and QA only</span>'
+      + '<span class="teacher-only" limit-visibility="[\'MY_TEACHINGS_ONLY\']">Teacher only</span>'
+      + '</div>'
+    );
+    var compiledElement = compile(element)(scope);
 
-  beforeEach(function() {
+    scope.$digest();
+    return compiledElement;
+  }
+
+  beforeEach(function () {
     module('directives.visibility');
-    module(function($provide) {
-      $provide.constant('StateService', {getRootStateName: function() { return 'opintoni'; }});
+    module(function ($provide) {
+      $provide.constant('StateService', { getRootStateName: function () { return 'opintoni'; } });
       $provide.constant('SessionService', {});
-      $provide.constant('Configuration', {environment: 'qa'});
+      $provide.constant('Configuration', { environment: 'qa' });
     });
 
-    inject(function($compile, $rootScope) {
+    inject(function ($compile, $rootScope) {
       compile = $compile;
       scope = $rootScope.$new();
     });
@@ -35,38 +51,23 @@ describe('Visibility directive', function() {
     directiveElem = getCompiledElement();
   });
 
-  function getCompiledElement() {
-    var element = angular.element(
-      '<div>' +
-      '<span class="student-only" limit-visibility="[\'MY_STUDIES_ONLY\']">Student only</span>' +
-      '<span class="dev-and-qa-only" limit-visibility="[\'MY_STUDIES_ONLY\', \'DEV_AND_QA_ONLY\']">' +
-      'Dev and QA only</span>' +
-      '<span class="teacher-only" limit-visibility="[\'MY_TEACHINGS_ONLY\']">Teacher only</span>' +
-      '</div>');
-    var compiledElement = compile(element)(scope);
-
-    scope.$digest();
-    return compiledElement;
-  }
-
-  it('Element should be visible for student', function() {
+  it('Element should be visible for student', function () {
     var spanElement = directiveElem.find('.student-only');
 
     expect(spanElement).toBeDefined();
     expect(spanElement.text()).toEqual('Student only');
   });
 
-  it('Element should be visible for student in QA environment', function() {
+  it('Element should be visible for student in QA environment', function () {
     var spanElement = directiveElem.find('.dev-and-qa-only');
 
     expect(spanElement).toBeDefined();
     expect(spanElement.text()).toEqual('Dev and QA only');
   });
 
-  it('Element should not be visible for student', function() {
+  it('Element should not be visible for student', function () {
     var spanElement = directiveElem.find('.teacher-only');
 
     expect(spanElement.length).toEqual(0);
   });
-
 });

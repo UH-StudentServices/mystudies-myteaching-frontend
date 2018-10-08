@@ -19,11 +19,11 @@ angular.module('directives.browseFiles', ['services.browseFiles'])
 
   .constant('PortfolioPublicFilesResourcePath', '/api/public/v1/portfolio/files')
 
-  .directive('browseFiles', function($location, BrowseFilesService,
-                                     VerificationDialog, PortfolioPublicFilesResourcePath) {
+  .directive('browseFiles', function ($location, BrowseFilesService,
+    VerificationDialog, PortfolioPublicFilesResourcePath) {
     function loadFileList($scope) {
-      BrowseFilesService.getFileList().then(function(res) {
-        $scope.files = res.map(function(resource) { return resource.name; });
+      BrowseFilesService.getFileList().then(function (res) {
+        $scope.files = res.map(function (resource) { return resource.name; });
       });
     }
 
@@ -31,22 +31,22 @@ angular.module('directives.browseFiles', ['services.browseFiles'])
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/browseFiles/browseFiles.html',
-      link: function($scope) {
+      link: function ($scope) {
         loadFileList($scope);
 
-        $scope.fileSelected = function(file) {
+        $scope.fileSelected = function (file) {
           var baseUrl = window.location.origin + PortfolioPublicFilesResourcePath;
 
           window.opener.CKEDITOR.tools.callFunction($location.search().CKEditorFuncNum, baseUrl + '/' + file);
           window.close();
         };
 
-        $scope.deleteFile = function(file) {
+        $scope.deleteFile = function (file) {
           function deleteItem() {
-            BrowseFilesService.deleteFile(file).then(function() { loadFileList($scope); });
+            BrowseFilesService.deleteFile(file).then(function () { loadFileList($scope); });
           }
 
-          VerificationDialog.open('general.reallyDelete', 'general.ok', 'general.cancel', deleteItem, function() {});
+          VerificationDialog.open('general.reallyDelete', 'general.ok', 'general.cancel', deleteItem, function () {});
         };
       }
     };

@@ -16,7 +16,7 @@
  */
 
 import config from '../config';
-import {loginAndOpenPortfolio} from '../util';
+import { loginAndOpenPortfolio } from '../util';
 
 fixture('Portfolio')
   .page(config.myStudiesBaseUrl);

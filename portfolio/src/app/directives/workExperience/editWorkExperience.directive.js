@@ -15,114 +15,70 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.editWorkExperience', [
-  'directives.dateInput'
-])
+angular.module('directives.editWorkExperience', ['directives.dateInput'])
 
-.directive('editWorkExperience', function(WorkExperienceService, $translate) {
-  return {
-    restrict: 'E',
-    templateUrl: 'app/directives/workExperience/editWorkExperience.html',
-    link: function($scope) {
+  .directive('editWorkExperience', function (WorkExperienceService, $translate) {
+    return {
+      restrict: 'E',
+      templateUrl: 'app/directives/workExperience/editWorkExperience.html',
+      link: function ($scope) {
+        $scope.startDateChanged = function (job) {
+          if (!job.startDate || !job.startDate.isValid()) {
+            job.startDate = moment();
+          }
+          $scope.refreshValidity();
+        };
 
-      $scope.editEmployer = function(job) {
-        job.employerEdit = true;
-      };
+        $scope.endDateChanged = function (job) {
+          if (job.endDate && !job.endDate.isValid()) {
+            job.endDate = '';
+          }
+          $scope.refreshValidity();
+        };
 
-      $scope.exitEmployerEdit = function(job) {
-        job.employerEdit = false;
-      };
+        $scope.enterContactEmailEdit = function () {
+          $scope.editContactEmail = true;
+        };
 
-      $scope.editStartDate = function(job) {
-        job.startDateEdit = true;
-      };
+        $scope.exitContactEmailEdit = function () {
+          $scope.editContactEmail = false;
+        };
 
-      $scope.exitStartDateEdit = function(job) {
-        if (!job.startDate || !job.startDate.isValid()) {
+        $scope.enterJobHeadlineEdit = function () {
+          $scope.editJobSearchHeadline = true;
+        };
+
+        $scope.exitJobHeadlineEdit = function () {
+          $scope.editJobSearchHeadline = false;
+        };
+
+        $scope.addWorkExperience = function (job) {
+          job.id = Date.now();
           job.startDate = moment();
-        }
-        job.startDateEdit = false;
-      };
-
-      $scope.editEndDate = function(job) {
-        job.endDateEdit = true;
-      };
-
-      $scope.exitEndDateEdit = function(job) {
-        if (job.endDate && !job.endDate.isValid()) {
           job.endDate = '';
-        }
-        job.endDateEdit = false;
-      };
+          job.jobTitle = '';
+          job.employerUrl = '';
+          $scope.workExperience.push(job);
+          $scope.newJob = {};
+          $scope.refreshValidity();
+        };
 
-      $scope.editJobTitle = function(job) {
-        job.jobTitleEdit = true;
-      };
+        $scope.removeWorkExperience = function (job) {
+          $scope.workExperience = _.without($scope.workExperience, job);
+          $scope.refreshValidity(); // we might have deleted the only invalid item
+        };
 
-      $scope.exitJobTitleEdit = function(job) {
-        job.jobTitleEdit = false;
-      };
+        $scope.addJobSearch = function (jobSearch) {
+          jobSearch.headline = $translate.instant('workExperience.jobSearchHeadline');
+          $scope.jobSearch = jobSearch;
+          $scope.newJobSearch = {};
+        };
 
-      $scope.editDescription = function(job) {
-        job.descriptionEdit = true;
-      };
+        $scope.removeJobSearch = function () {
+          $scope.jobSearch = null;
+        };
 
-      $scope.exitDescriptionEdit = function(job) {
-        job.descriptionEdit = false;
-      };
-
-      $scope.editEmployerUrl = function(job) {
-        job.employerUrlEdit = true;
-      };
-
-      $scope.exitEmployerUrlEdit = function(job) {
-        job.employerUrlEdit = false;
-      };
-
-      $scope.enterContactEmailEdit = function() {
-        $scope.editContactEmail = true;
-      };
-
-      $scope.exitContactEmailEdit = function() {
-        $scope.editContactEmail = false;
-      };
-
-      $scope.enterJobHeadlineEdit = function() {
-        $scope.editJobSearchHeadline = true;
-      };
-
-      $scope.exitJobHeadlineEdit = function() {
-        $scope.editJobSearchHeadline = false;
-      };
-
-      $scope.addWorkExperience = function(job) {
-        job.id = Date.now();
-        job.startDate = moment();
-        job.endDate = '';
-        job.jobTitle = '';
-        job.employerUrl = '';
-        $scope.workExperience.push(job);
-        $scope.newJob = {};
-        $scope.refreshValidity();
-      };
-
-      $scope.removeWorkExperience = function(job) {
-        $scope.workExperience = _.without($scope.workExperience, job);
-        $scope.refreshValidity();  // we might have deleted the only invalid item
-      };
-
-      $scope.addJobSearch = function(jobSearch) {
-        jobSearch.headline = $translate.instant('workExperience.jobSearchHeadline');
-        $scope.jobSearch = jobSearch;
-        $scope.newJobSearch = {};
-      };
-
-      $scope.removeJobSearch = function() {
-        $scope.jobSearch = null;
-      };
-
-      $scope.sortableOptions = {
-        containment: '.work-experience__dropzone'
-      };
-    }};
-});
+        $scope.sortableOptions = { containment: '.work-experience__dropzone' };
+      }
+    };
+  });

@@ -15,18 +15,14 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-describe('momentUtils', function() {
+describe('momentUtils', function () {
   beforeEach(module('utils.moment'));
 
-  describe('dateArrayToMomentObject', function() {
-    it('Converts arrays to moment objects correctly.', inject(function(dateArrayToMomentObject) {
-
+  describe('dateArrayToMomentObject', function () {
+    it('Converts arrays to moment objects correctly.', inject(function (dateArrayToMomentObject) {
       expect(dateArrayToMomentObject([2015, 3, 24]).format('DD.MM.YYYY')).toEqual('24.03.2015');
       expect(dateArrayToMomentObject([2015, 3, 24, 10, 0]).format('DD.MM.YYYY HH:mm'))
         .toEqual('24.03.2015 10:00');
-
     }));
   });
-
-
 });

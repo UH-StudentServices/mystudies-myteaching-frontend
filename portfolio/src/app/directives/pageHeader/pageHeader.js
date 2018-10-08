@@ -18,11 +18,11 @@
 'use strict';
 
 angular.module('directives.pageHeader', ['constants.commonExternalLinks', 'constants.externalLinks'])
-  .directive('pageHeader', function(primaryLinks, pageHeaderLinks) {
+  .directive('pageHeader', function (primaryLinks, pageHeaderLinks) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/pageHeader/page_header.html',
-      link: function($scope) {
+      link: function ($scope) {
         $scope.primaryLinks = primaryLinks;
         $scope.pageHeaderLinks = pageHeaderLinks;
       }

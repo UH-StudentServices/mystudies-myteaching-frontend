@@ -17,18 +17,9 @@
 
 angular.module('services.userSettings', ['resources.userSettings'])
 
-  .factory('UserSettingsService', function(UserSettingsResource) {
-
-    var userSettingsPromise,
-        settingsPromise,
-        availableBackgroundsPromise,
-        Rx = window.Rx,
-        userSettingsSubject = new Rx.BehaviorSubject();
-
-    function publishUserSettings(userSettings) {
-      userSettingsSubject.onNext(userSettings);
-      return userSettings;
-    }
+  .factory('UserSettingsService', function (UserSettingsResource) {
+    var userSettingsPromise;
+    var availableBackgroundsPromise;
 
     function getUserSettings() {
       if (!userSettingsPromise) {
@@ -47,7 +38,7 @@ angular.module('services.userSettings', ['resources.userSettings'])
 
     function updateUserSettings(updateObject) {
       userSettingsPromise = getUserSettings()
-        .then(function(settings) {
+        .then(function (settings) {
           return UserSettingsResource.updateUserSettings(_.assign(settings, updateObject));
         });
 
@@ -55,23 +46,13 @@ angular.module('services.userSettings', ['resources.userSettings'])
     }
 
     function acceptCookies() {
-      return updateUserSettings({cookieConsent: true});
-    }
-
-    function uploadUserBackground(imageBase64) {
-      return getUserSettings().then(function(userSettings) {
-        settingsPromise =
-          UserSettingsResource.uploadUserBackground(userSettings.id, imageBase64)
-            .then(publishUserSettings);
-        return settingsPromise;
-      });
+      return updateUserSettings({ cookieConsent: true });
     }
 
     return {
       acceptCookies: acceptCookies,
       getAvailableBackgrounds: getAvailableBackgrounds,
       getUserSettings: getUserSettings,
-      updateUserSettings: updateUserSettings,
+      updateUserSettings: updateUserSettings
     };
-
   });

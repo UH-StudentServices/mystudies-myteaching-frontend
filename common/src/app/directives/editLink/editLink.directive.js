@@ -16,7 +16,7 @@
  */
 
 angular.module('directives.editLink', [])
-  .directive('editLink', function() {
+  .directive('editLink', function () {
     return {
       restrict: 'E',
       replace: true,
@@ -27,13 +27,12 @@ angular.module('directives.editLink', [])
         onDisabledExitEdit: '&',
         exitEditDisabled: '='
       },
-      link: function($scope) {
-
+      link: function ($scope) {
         function exitEdit() {
           if (!$scope.exitEditDisabled) {
             $scope.editing = false;
             if ($scope.onExitEdit) {
-              $scope.onExitEdit();
+              $scope.editing = !$scope.onExitEdit();
             }
           } else if ($scope.onDisabledExitEdit) {
             $scope.onDisabledExitEdit();
@@ -47,7 +46,7 @@ angular.module('directives.editLink', [])
           }
         }
 
-        $scope.onClick = function() {
+        $scope.onClick = function () {
           if ($scope.editing) {
             exitEdit();
           } else {

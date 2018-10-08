@@ -17,7 +17,7 @@
 
 angular.module('directives.mobileMenu', ['directives.analytics'])
 
-  .directive('mobileMenu', function() {
+  .directive('mobileMenu', function () {
     return {
       restrict: 'E',
       replace: 'true',

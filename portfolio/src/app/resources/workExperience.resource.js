@@ -17,23 +17,21 @@
 
 angular.module('resources.workExperience', ['services.state'])
 
-  .factory('WorkExperienceResource', function($resource, StateService) {
-
+  .factory('WorkExperienceResource', function ($resource, StateService) {
     function workExperienceResource(portfolioId) {
-      var workExperienceUrl = '/api/' + StateService.getCurrent() + '/v1/portfolio/' +
-        portfolioId + '/workexperience/:id';
+      var workExperienceUrl = '/api/' + StateService.getCurrent() + '/v1/portfolio/'
+        + portfolioId + '/workexperience/:id';
 
-      return $resource(workExperienceUrl, {id: '@id'},
+      return $resource(workExperienceUrl, { id: '@id' },
         {
-          'delete': {url: workExperienceUrl, method: 'DELETE', isArray: true},
-          'update': {url: workExperienceUrl, method: 'POST', isArray: true}
-        }
-      );
+          delete: { url: workExperienceUrl, method: 'DELETE', isArray: true },
+          update: { url: workExperienceUrl, method: 'POST', isArray: true }
+        });
     }
 
     function jobSearchResource(portfolioId) {
-      return $resource('/api/' + StateService.getCurrent() + '/v1/portfolio/' +
-        portfolioId + '/jobsearch', {});
+      return $resource('/api/' + StateService.getCurrent() + '/v1/portfolio/'
+        + portfolioId + '/jobsearch', {});
     }
 
     function saveJobSearch(jobSearch, portfolioId) {
@@ -44,8 +42,8 @@ angular.module('resources.workExperience', ['services.state'])
       return jobSearchResource(portfolioId).delete(jobSearch).$promise;
     }
 
-    function updateWorkExperience(portfolioId, updateWorkExperience) {
-      return workExperienceResource(portfolioId).update(updateWorkExperience).$promise;
+    function updateWorkExperience(portfolioId, updatedWorkExperience) {
+      return workExperienceResource(portfolioId).update(updatedWorkExperience).$promise;
     }
 
     return {

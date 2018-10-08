@@ -28,14 +28,12 @@ $work-experience-summary-max-height: 104px;
   }
 }
 
-.work-experience__title {
-  text-transform: uppercase;
-  font-weight: 700;
-  margin-bottom: 1em;
-}
-
 .work-experience__outer_container {
   display: flex;
+  background-color: $lightsilver;
+  border: 1px solid $mediumsilver;
+  padding: 1em;
+  margin-bottom: 1em;
 }
 
 .banner-content__drag-handle {
@@ -70,7 +68,8 @@ $work-experience-summary-max-height: 104px;
 
 .job-search .banner-content__description, .work-experience .banner-content__description {
   p {
-    height: $work-experience-description-height;
+    height: initial;
+    max-height: $work-experience-description-height;
   }
 
   textarea {
@@ -104,4 +103,63 @@ $work-experience-summary-max-height: 104px;
   width: 100%;
   padding-bottom: 1.5em;
   margin: 0;
+}
+
+input.work-experience__date-input {
+  width: 6em;
+}
+
+.work-experience {
+  &__default_image {
+    font-size: 3em;
+    color: $blue;
+  }
+
+  &__input.ng-invalid {
+    border: 2px solid red;
+  }
+
+  .banner-content {
+    &__item {
+      margin-top: 0;
+    }
+
+    &__remove {
+      background-color: transparent;
+    }
+
+    &__details-container {
+      width: 100%;
+    }
+  }
+
+  &__title {
+    font-weight: bold;
+
+    div {
+      margin-bottom: 4px;
+    }
+  }
+
+  &__job-title {
+    font-size: 1.25em;
+  }
+
+  &__employer {
+    font-size: 1.25em;
+    color: $blue;
+  }
+
+  &__editor-content {
+    color: $black;
+    width: 80%;
+
+    @include breakpoint($mobile-only) {
+      width: 100%;
+    }
+
+    label {
+      color: $black;
+    }
+  }
 }

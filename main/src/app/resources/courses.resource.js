@@ -19,20 +19,19 @@
 
 angular.module('resources.courses', [])
 
-  .factory('CoursesResource', function($resource) {
-
+  .factory('CoursesResource', function ($resource) {
     var studentCoursesResource = $resource('/api/private/v1/students/enrollments/courses');
     var teacherCoursesResource = $resource('/api/private/v1/teachers/enrollments/courses');
 
     var courseNamesResource = $resource('/api/private/v1/courses/names',
-                                        {learningOpportunities: '@learningOpportunities'});
+      { learningOpportunities: '@learningOpportunities' });
 
     var getCourses = function getCourses(resource) {
       return resource.query().$promise;
     };
 
     var getCourseNames = function getCourseNames(idString) {
-      return courseNamesResource.query({learningOpportunities: idString}).$promise;
+      return courseNamesResource.query({ learningOpportunities: idString }).$promise;
     };
 
     return {
@@ -40,5 +39,4 @@ angular.module('resources.courses', [])
       getTeacherCourses: _.partial(getCourses, teacherCoursesResource),
       getCourseNames: getCourseNames
     };
-
   });

@@ -17,8 +17,7 @@
 
 angular.module('services.browseFiles', ['resources.browseFiles'])
 
-  .factory('BrowseFilesService', function(BrowseFilesResource) {
-
+  .factory('BrowseFilesService', function (BrowseFilesResource) {
     function getFileList() {
       return BrowseFilesResource.getFileList();
     }

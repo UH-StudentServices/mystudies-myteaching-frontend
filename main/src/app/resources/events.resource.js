@@ -20,20 +20,23 @@
 angular.module('resources.events', ['services.eventUri', 'utils.moment'])
 
   .factory('EventsResource', function Attainments($resource, EventUriService,
-                                                  dateArrayToMomentObject) {
+    dateArrayToMomentObject) {
     var studentEventsResource = $resource('/api/private/v1/students/enrollments/events');
     var teacherEventsResource = $resource('/api/private/v1/teachers/enrollments/events');
 
     var getEvents = function getEvents(resource) {
-      return resource.query().$promise.then(function(data) {
-        return _.map(data, function(event) {
+      return resource.query().$promise.then(function (data) {
+        return _.map(data, function (event) {
           event.startDate = dateArrayToMomentObject(event.startDate);
           event.endDate = dateArrayToMomentObject(event.endDate);
-          event.locations = _.map(event.locations, function(location) {
+
+          event.locations = _.map(event.locations, function (location) {
             location.googleMapsUri = EventUriService.getGoogleMapsUri(location);
-            location.reittiopasEnabled = EventUriService.reittiopasUriCanBeGenerated(event.startDate, location);
+            location.reittiopasEnabled =
+              EventUriService.reittiopasUriCanBeGenerated(event.startDate, location);
             return location;
           });
+
           return event;
         });
       });
@@ -43,5 +46,4 @@ angular.module('resources.events', ['services.eventUri', 'utils.moment'])
       getStudentEvents: _.partial(getEvents, studentEventsResource),
       getTeacherEvents: _.partial(getEvents, teacherEventsResource)
     };
-
   });

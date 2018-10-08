@@ -17,7 +17,7 @@
 
 angular.module('directives.scrollableTabBar', [])
 
-  .directive('scrollableTabBar', function($window, $timeout) {
+  .directive('scrollableTabBar', function ($window, $timeout) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/scrollableTabBar/scrollableTabBar.html',
@@ -27,10 +27,40 @@ angular.module('directives.scrollableTabBar', [])
         outermostTabPadding: '@',
         useFullWidthOnMobile: '='
       },
-      link: function(scope, el, attrs) {
+      link: function (scope, el, attrs) {
+        var DEBOUNCE_DELAY = 200;
+        var SCROLL_STEP = 50;
+        var MOBILE_ONLY_BREAKPOINT_VALUE = '(max-width: 48em)';
+        var DEFAULT_TAB_SELECTOR = '.tab-set__tab';
+        var DEFAULT_SCROLLER_DISPLAY_THRESHOLD = 6;
+        // this should equal horizontal tab padding on first/last tabs
+        var tabContainer = el[0].querySelector('.tab-bar__tab-container');
+        var tabSelector = attrs.tabSelector || DEFAULT_TAB_SELECTOR;
+        var outermostTabPadding = attrs.outermostTabPadding || DEFAULT_SCROLLER_DISPLAY_THRESHOLD;
+        var debouncedResizeHandler;
+
+        function determineScrollStep() {
+          var tab = el[0].querySelector(tabSelector);
+          var tabWidth = parseInt($window.getComputedStyle(tab).getPropertyValue('width'), 10);
+          if (tabWidth) {
+            SCROLL_STEP = tabWidth;
+          }
+        }
+
+        function disableScrollCtrlsIfScrollPosAtEnd() {
+          scope.$applyAsync(function () {
+            _.assign(scope, {
+              disableLeftScroll: !tabContainer.scrollLeft,
+              disableRightScroll:
+                tabContainer.scrollLeft === tabContainer.scrollWidth - tabContainer.clientWidth
+            });
+          });
+        }
+
         function onResize() {
-          scope.$applyAsync(function() {
-            scope.showScrollControls = tabContainer.scrollWidth - outermostTabPadding > tabContainer.clientWidth;
+          scope.$applyAsync(function () {
+            scope.showScrollControls =
+              tabContainer.scrollWidth - outermostTabPadding > tabContainer.clientWidth;
 
             if (scope.showScrollControls) {
               disableScrollCtrlsIfScrollPosAtEnd();
@@ -44,43 +74,16 @@ angular.module('directives.scrollableTabBar', [])
           disableScrollCtrlsIfScrollPosAtEnd();
         }
 
-        function disableScrollCtrlsIfScrollPosAtEnd() {
-          scope.$applyAsync(function() {
-            _.assign(scope, {
-              disableLeftScroll: !tabContainer.scrollLeft,
-              disableRightScroll: tabContainer.scrollLeft === tabContainer.scrollWidth - tabContainer.clientWidth
-            });
-          });
-        }
-
-        function determineScrollStep() {
-          var tab = el[0].querySelector(tabSelector),
-              tabWidth = parseInt($window.getComputedStyle(tab).getPropertyValue('width'));
-
-          if (tabWidth) {
-            SCROLL_STEP = tabWidth;
-          }
-        }
-
         function useFullWidthLayout() {
-          return scope.useFullWidthOnMobile &&
-            scope.showScrollControls &&
-            $window.matchMedia(MOBILE_ONLY_BREAKPOINT_VALUE).matches;
+          return scope.useFullWidthOnMobile
+            && scope.showScrollControls
+            && $window.matchMedia(MOBILE_ONLY_BREAKPOINT_VALUE).matches;
         }
 
-        var DEBOUNCE_DELAY = 200,
-            SCROLL_STEP = 50,
-            MOBILE_ONLY_BREAKPOINT_VALUE = '(max-width: 48em)',
-            DEFAULT_TAB_SELECTOR = '.tab-set__tab',
-            DEFAULT_SCROLLER_DISPLAY_THRESHOLD = 6, // this should equal horizontal tab padding on first/last tabs
-            tabContainer = el[0].querySelector('.tab-bar__tab-container'),
-            tabSelector = attrs.tabSelector || DEFAULT_TAB_SELECTOR,
-            debouncedResizeHandler = _.debounce(onResize, DEBOUNCE_DELAY),
-            outermostTabPadding = attrs.outermostTabPadding || DEFAULT_SCROLLER_DISPLAY_THRESHOLD;
-
+        debouncedResizeHandler = _.debounce(onResize, DEBOUNCE_DELAY);
         angular.element($window).on('resize', debouncedResizeHandler);
 
-        scope.$on('$destroy', function() {
+        scope.$on('$destroy', function () {
           angular.element($window).off('resize', debouncedResizeHandler);
         });
 

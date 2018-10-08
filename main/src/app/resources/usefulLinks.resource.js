@@ -18,14 +18,12 @@
 angular.module('resources.usefulLinks', [])
 
   .factory('UsefulLinksResource', function UsefulLinksResource($resource) {
-    var usefulLinksResource = $resource('/api/private/v1/usefullinks/:id', {id: '@id'}, {
-      update: {method: 'PUT'},
-      delete: {method: 'DELETE', isArray: true},
-      updateOrder: {method: 'POST', url: '/api/private/v1/usefullinks/order'}
+    var usefulLinksResource = $resource('/api/private/v1/usefullinks/:id', { id: '@id' }, {
+      update: { method: 'PUT' },
+      delete: { method: 'DELETE', isArray: true },
+      updateOrder: { method: 'POST', url: '/api/private/v1/usefullinks/order' }
     });
-    var searchPageTitleResource = $resource('/api/private/v1/usefullinks/searchpagetitle', null, {
-      searchPageTitle: {method: 'POST'}
-    });
+    var searchPageTitleResource = $resource('/api/private/v1/usefullinks/searchpagetitle', null, { searchPageTitle: { method: 'POST' } });
 
     function getAll() {
       return usefulLinksResource.query().$promise;
@@ -44,11 +42,11 @@ angular.module('resources.usefulLinks', [])
     }
 
     function searchPageTitle(url) {
-      return searchPageTitleResource.searchPageTitle({searchUrl: url}).$promise;
+      return searchPageTitleResource.searchPageTitle({ searchUrl: url }).$promise;
     }
 
     function updateOrder(usefulLinksIds) {
-      return usefulLinksResource.updateOrder({usefulLinkIds: usefulLinksIds});
+      return usefulLinksResource.updateOrder({ usefulLinkIds: usefulLinksIds });
     }
 
     return {

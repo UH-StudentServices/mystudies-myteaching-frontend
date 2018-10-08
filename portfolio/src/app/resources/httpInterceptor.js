@@ -19,12 +19,9 @@
 
 angular.module('resources.httpInterceptor', ['services.state'])
 
-  .constant('ErrorPages', {
-    'MAINTENANCE': 'maintenance'
-  })
+  .constant('ErrorPages', { MAINTENANCE: 'maintenance' })
 
   .factory('HttpInterceptor', function HttpInterceptor($q, Configuration, $location, ErrorPages) {
-
     function redirectToErrorPage(errorPage) {
       $location.path('/error/' + errorPage);
     }
@@ -44,5 +41,4 @@ angular.module('resources.httpInterceptor', ['services.state'])
       response: success,
       responseError: error
     };
-
   });

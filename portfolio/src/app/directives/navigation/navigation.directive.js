@@ -17,16 +17,16 @@
 
 angular.module('directives.navigation', ['services.configuration'])
 
-  .directive('navigation', function() {
+  .directive('navigation', function () {
     return {
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/navigation/navigation.html',
       scope: {},
-      controller: function($scope, $window, Configuration, PortfolioRoleService, PortfolioRole) {
-        $scope.backToFrontpage = function() {
-          $window.location = PortfolioRoleService.isInRole(PortfolioRole.TEACHER) ?
-            Configuration.teacherAppUrl : Configuration.studentAppUrl;
+      controller: function ($scope, $window, Configuration, PortfolioRoleService, PortfolioRole) {
+        $scope.backToFrontpage = function () {
+          $window.location = PortfolioRoleService.isInRole(PortfolioRole.TEACHER)
+            ? Configuration.teacherAppUrl : Configuration.studentAppUrl;
         };
       }
     };

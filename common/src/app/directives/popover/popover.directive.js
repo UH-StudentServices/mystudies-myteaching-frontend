@@ -17,7 +17,7 @@
 
 angular.module('directives.popover', ['angular-click-outside'])
 
-  .directive('popover', function($templateCache, $compile) {
+  .directive('popover', function ($templateCache, $compile) {
     return {
       restrict: 'E',
       replace: true,
@@ -28,17 +28,17 @@ angular.module('directives.popover', ['angular-click-outside'])
         overrideClass: '@',
         id: '@',
         triggerSelector: '@', // this can be either a class or an id, as prescribed by angular-click-outside
-        targetSelector: '@',  // this must a valid CSS selector
+        targetSelector: '@', // this must a valid CSS selector
         onClickTrigger: '&?',
         onClickOutside: '&?'
       },
-      link: function(scope, el, attrs, ctrl, transclude) {
-        var compiledTmpl = $compile($templateCache.get(attrs.template))(scope.$parent),
-            targetEl = document.querySelector(scope.targetSelector),
-            targetPos = window.getComputedStyle(targetEl).getPropertyValue('position'),
-            triggerEl;
+      link: function (scope, el, attrs, ctrl, transclude) {
+        var compiledTmpl = $compile($templateCache.get(attrs.template))(scope.$parent);
+        var targetEl = document.querySelector(scope.targetSelector);
+        var targetPos = window.getComputedStyle(targetEl).getPropertyValue('position');
+        var triggerEl;
 
-        transclude(scope.$parent, function() {
+        transclude(scope.$parent, function () {
           el.append(compiledTmpl);
         });
 
@@ -47,23 +47,23 @@ angular.module('directives.popover', ['angular-click-outside'])
         }
 
         _.assign(scope, {
-          showPopover: scope.onClickTrigger ? true : false,
-          closePopover: function() {
+          showPopover: !!scope.onClickTrigger,
+          closePopover: function () {
             if (scope.onClickOutside) {
               scope.onClickOutside();
             } else {
               scope.showPopover = false;
             }
           },
-          togglePopover: function() {
+          togglePopover: function () {
             scope.showPopover = !scope.showPopover;
             scope.$apply();
           }
         });
 
         if (!scope.onClickTrigger) {
-          triggerEl = document.querySelector('.' + scope.triggerSelector) ||
-                      document.querySelector('#' + scope.triggerSelector);
+          triggerEl = document.querySelector('.' + scope.triggerSelector)
+                      || document.querySelector('#' + scope.triggerSelector);
 
           triggerEl.addEventListener('click', scope.togglePopover);
         }

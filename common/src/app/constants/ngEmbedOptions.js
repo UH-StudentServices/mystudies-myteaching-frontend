@@ -27,12 +27,8 @@ angular.module('constants.ngEmbedOptions', [])
       thumbnailQuality: 'medium',
       autoPlay: false
     },
-    code: {
-      highlight: false
-    },
+    code: { highlight: false },
     gdevAuth: true,
     tweetEmbed: false,
-    image: {
-      embed: true
-    }
+    image: { embed: true }
   });

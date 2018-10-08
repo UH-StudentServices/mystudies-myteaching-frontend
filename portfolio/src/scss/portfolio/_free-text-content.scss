@@ -18,9 +18,13 @@
 .free-text-content {
   position: relative;
 
+  &__title-container--edit {
+    width: 100%;
+  }
+
   &__title--edit {
     @extend .ui-component__title--edit;
-    width: 72% !important;
+    width: 90% !important;
   }
 
   &__text {

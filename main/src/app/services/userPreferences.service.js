@@ -21,8 +21,7 @@ angular.module('services.userPreferences', [])
 
   .constant('userPreferencesKey', 'userPreferences')
 
-  .factory('UserPreferencesService', function(localStorageService, userPreferencesKey) {
-
+  .factory('UserPreferencesService', function (localStorageService, userPreferencesKey) {
     function getPreferences() {
       var preferences = localStorageService.get(userPreferencesKey);
 

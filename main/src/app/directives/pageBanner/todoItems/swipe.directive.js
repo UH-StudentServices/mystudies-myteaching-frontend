@@ -18,7 +18,7 @@
 'use strict';
 
 angular.module('directives.swipe', [])
-  .directive('swipe', function() {
+  .directive('swipe', function () {
     return {
       restrict: 'A',
       scope: {
@@ -26,17 +26,18 @@ angular.module('directives.swipe', [])
         swipeRightCallback: '=',
         swipeObject: '='
       },
-      link: function($scope, el) {
+      link: function ($scope, el) {
+        var mc;
         if (Modernizr.touch) {
-          var mc = new Hammer(el[0]);
+          mc = new Hammer(el[0]);
 
-          mc.get('swipe').set({velocity: 0.15});
+          mc.get('swipe').set({ velocity: 0.15 });
 
-          mc.on('swipeleft', function() {
+          mc.on('swipeleft', function () {
             $scope.swipeLeftCallback($scope.swipeObject);
           });
 
-          mc.on('swiperight', function() {
+          mc.on('swiperight', function () {
             $scope.swipeRightCallback($scope.swipeObject);
           });
         }

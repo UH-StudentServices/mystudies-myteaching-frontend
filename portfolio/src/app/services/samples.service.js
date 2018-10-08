@@ -17,17 +17,14 @@
 
 angular.module('services.samples', [
   'services.portfolio',
-  'resources.samples'])
+  'resources.samples'
+])
 
-  .factory('SamplesService', function(PortfolioService,
-                                      SamplesResource) {
-
-    function updateSamples(portfolioId, updateSamples) {
-      return SamplesResource.updateSamples(portfolioId, updateSamples);
+  .factory('SamplesService', function (PortfolioService,
+    SamplesResource) {
+    function updateSamples(portfolioId, samples) {
+      return SamplesResource.updateSamples(portfolioId, samples);
     }
 
-    return {
-      updateSamples: updateSamples
-    };
+    return { updateSamples: updateSamples };
   });
-

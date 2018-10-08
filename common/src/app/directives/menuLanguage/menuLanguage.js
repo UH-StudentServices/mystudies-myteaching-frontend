@@ -17,28 +17,27 @@
 
 'use strict';
 
-angular.module('directives.menuLanguage', [
-  'services.language'
-])
+angular.module('directives.menuLanguage', ['services.language'])
 
-  .directive('menuLanguage', function($translate, $window, LanguageService) {
-
+  .directive('menuLanguage', function ($translate, $window, LanguageService) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/menuLanguage/menu_language.html',
-      link: function($scope) {
-        var languageOptions = [{
-          nativeName: 'English',
-          languageCode: 'en'
-        }, {
-          nativeName: 'Svenska',
-          languageCode: 'sv'
-        }, {
-          nativeName: 'Suomi',
-          languageCode: 'fi'
-        }];
+      link: function ($scope) {
+        var languageOptions = [
+          {
+            nativeName: 'English',
+            languageCode: 'en'
+          }, {
+            nativeName: 'Svenska',
+            languageCode: 'sv'
+          }, {
+            nativeName: 'Suomi',
+            languageCode: 'fi'
+          }
+        ];
 
-        $scope.changeLanguage = function(languageKey) {
+        $scope.changeLanguage = function (languageKey) {
           $translate.use(languageKey).then(function translationUseSuccess() {
             $window.location.reload();
           });
@@ -49,11 +48,10 @@ angular.module('directives.menuLanguage', [
         $scope.getLanguageOptions = function getLanguageOptions(userLanguage) {
           if (userLanguage === 'fi') {
             return [languageOptions[0], languageOptions[1]];
-          } else if (userLanguage === 'sv') {
+          } if (userLanguage === 'sv') {
             return [languageOptions[0], languageOptions[2]];
-          } else {
-            return [languageOptions[2], languageOptions[1]];
           }
+          return [languageOptions[2], languageOptions[1]];
         };
       }
     };

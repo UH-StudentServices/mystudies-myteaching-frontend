@@ -17,55 +17,54 @@
 
 angular.module('resources.favorites.unicafe', [])
 
-  .factory('UnicafeResource', function($http) {
-
+  .factory('UnicafeResource', function ($http) {
     var baseUrl = '/proxy/hyyravintolat';
 
     var areas = [
-        {
-          id: 1,
-          name: 'Keskusta',
-          restaurants: []
-        },
-        {
-          id: 2,
-          name: 'Kumpula',
-          restaurants: []
-        },
-        {
-          id: 3,
-          name: 'Meilahti',
-          restaurants: []
-        },
-        {
-          id: 5,
-          name: 'Viikki',
-          restaurants: []
-        },
-        {
-          id: 6,
-          name: 'Metropolia',
-          restaurants: []
-        }
+      {
+        id: 1,
+        name: 'Keskusta',
+        restaurants: []
+      },
+      {
+        id: 2,
+        name: 'Kumpula',
+        restaurants: []
+      },
+      {
+        id: 3,
+        name: 'Meilahti',
+        restaurants: []
+      },
+      {
+        id: 5,
+        name: 'Viikki',
+        restaurants: []
+      },
+      {
+        id: 6,
+        name: 'Metropolia',
+        restaurants: []
+      }
     ];
 
     function getRestaurants() {
-      return $http.get(baseUrl + '/restaurants').then(function(response) {
+      return $http.get(baseUrl + '/restaurants').then(function (response) {
         return response.data;
       });
     }
 
     function getRestaurantMenu(restaurantId) {
-      return $http.get(baseUrl + '/restaurant/' + restaurantId).then(function(response) {
+      return $http.get(baseUrl + '/restaurant/' + restaurantId).then(function (response) {
         return response.data;
       });
     }
 
     function getRestaurantOptions() {
-      return getRestaurants().then(function(restaurants) {
+      return getRestaurants().then(function (restaurants) {
         var restaurantsByAreaCode = _.groupBy(restaurants.data, 'areacode');
 
-        return _.map(areas, function(area) {
+        return _.map(areas, function (area) {
           area.restaurants = restaurantsByAreaCode[area.id];
           return area;
         });
@@ -76,7 +75,4 @@ angular.module('resources.favorites.unicafe', [])
       getRestaurantOptions: getRestaurantOptions,
       getRestaurantMenu: getRestaurantMenu
     };
-
-  }
-)
-;
+  });

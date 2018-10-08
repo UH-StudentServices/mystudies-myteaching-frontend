@@ -17,20 +17,19 @@
 
 angular.module('provider.analyticsAccounts', ['services.configuration'])
   .constant('Tracker', {
-    'main': {
-      'NAME': 'OOtracker',
-      'ID': 'googleAnalyticsAccount'
+    main: {
+      NAME: 'OOtracker',
+      ID: 'googleAnalyticsAccount'
     },
-    'teacher': {
-      'NAME': 'OOTeacher',
-      'ID': 'googleAnalyticsAccountTeacher'
+    teacher: {
+      NAME: 'OOTeacher',
+      ID: 'googleAnalyticsAccountTeacher'
     },
-    'student': {
-      'NAME': 'OOStudent',
-      'ID': 'googleAnalyticsAccountStudent'
+    student: {
+      NAME: 'OOStudent',
+      ID: 'googleAnalyticsAccountStudent'
     }
   })
-
 
   .provider('AnalyticsAccounts', function getAnalyticsAccounts(Tracker, ConfigurationProvider) {
     var configuration = ConfigurationProvider.$get();
@@ -44,9 +43,7 @@ angular.module('provider.analyticsAccounts', ['services.configuration'])
         tracker: configuration[trackerId],
         trackEvent: true,
         name: trackerName,
-        set: {
-          anonymizeIp: true
-        }
+        set: { anonymizeIp: true }
       });
     }
 
@@ -65,8 +62,5 @@ angular.module('provider.analyticsAccounts', ['services.configuration'])
       return accountsArray;
     }
 
-    return {
-      $get: getAccounts
-    };
-
+    return { $get: getAccounts };
   });

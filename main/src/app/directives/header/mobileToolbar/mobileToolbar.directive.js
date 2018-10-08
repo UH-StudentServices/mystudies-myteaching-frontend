@@ -24,61 +24,63 @@ angular.module('directives.mobileToolbar', [
   'directives.logoutLink',
   'directives.userMenu',
   'directives.mobileMenu',
-  'directives.visibility'])
+  'directives.visibility'
+])
 
-  .directive('mobileToolbar', function(pageHeaderLinks,
-                                       mobileReturnLinks,
-                                       primaryLinks,
-                                       optionalLinks,
-                                       LanguageService,
-                                       StateService,
-                                       SessionService,
-                                       $state,
-                                       Configuration,
-                                       Role,
-                                       State) {
+  .directive('mobileToolbar', function (pageHeaderLinks,
+    mobileReturnLinks,
+    primaryLinks,
+    optionalLinks,
+    LanguageService,
+    StateService,
+    SessionService,
+    $state,
+    Configuration,
+    Role,
+    State) {
     return {
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/header/mobileToolbar/mobileToolbar.html',
-      link: function($scope) {
+      link: function ($scope) {
         $scope.showToolbar = false;
         $scope.showShortcuts = false;
         $scope.showReturnLinks = false;
         $scope.changeRoleTo = null;
         $scope.isLander = $state.includes('lander');
 
-        $scope.toggleToolbar = function() {
+        $scope.toggleToolbar = function () {
           $scope.showToolbar = !$scope.showToolbar;
         };
 
-        $scope.toggleShortcuts = function() {
+        $scope.toggleShortcuts = function () {
           $scope.showShortcuts = !$scope.showShortcuts;
         };
 
-        $scope.toggleReturnLinks = function() {
+        $scope.toggleReturnLinks = function () {
           $scope.showReturnLinks = !$scope.showReturnLinks;
         };
 
         $scope.pageHeaderLinks = pageHeaderLinks;
         $scope.mobileReturnLinks = mobileReturnLinks;
         $scope.primaryLinks = _.chain(primaryLinks[Configuration.environment])
-          .filter(function(link) {
+          .filter(function (link) {
             return _.includes(link.domain, StateService.getStateFromDomain());
           })
-          .map(function(link) {
-            link.hasSub = link.hasOwnProperty('subMenu');
+          .map(function (link) {
+            link.hasSub = link.hasOwnProperty('subMenu'); // eslint-disable-line no-prototype-builtins
             return link;
           })
           .value();
 
-        SessionService.isInRole(Role.STUDENT).then(function(isStudent) {
+        SessionService.isInRole(Role.STUDENT).then(function (isStudent) {
+          var optional;
           if (!isStudent || !StateService.currentOrParentStateMatches(State.MY_STUDIES)) {
             return;
           }
-          var optional = optionalLinks[Configuration.environment];
+          optional = optionalLinks[Configuration.environment];
 
-          SessionService.isInPilotDegreeProgramme().then(function(isInPilotProgramme) {
+          SessionService.isInPilotDegreeProgramme().then(function (isInPilotProgramme) {
             if (isInPilotProgramme) {
               $scope.primaryLinks.unshift(optional.pilot);
             } else {

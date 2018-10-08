@@ -80,6 +80,15 @@
                                     portfolio-lang="{{::portfolio.lang}}">
             </language-proficiencies>
           </div>
+
+          <div ng-switch-when="SKILLS_AND_EXPERTISE" class="portfolio-section__body">
+            <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
+                                                  instanceName: 'SKILLS_AND_EXPERTISE'}"
+                               heading-key="skillsAndExpertise.title"
+                               instance-name="SKILLS_AND_EXPERTISE"
+                               portfolio-lang="{{::portfolio.lang}}">
+            </free-text-content>
+          </div>
         </div>
       </section>
     </div>

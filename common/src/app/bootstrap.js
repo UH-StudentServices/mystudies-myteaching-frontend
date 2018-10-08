@@ -15,44 +15,52 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/* eslint no-restricted-globals: 0 */
+
 'use strict';
 
-!function() {
-  var CONFIG_RESOURCE_PATH = '/api/public/v1/configuration',
-      TIMEOUT = 5000,
-      ERROR_PAGE_PATH = '/error/maintenance',
-      PORTFOLIO_PATH = '/portfolio',
-      isPortfolio = function() {
-        return location.pathname.indexOf(PORTFOLIO_PATH) !== -1;
-      },
-      RESOLVED_ERROR_PAGE_PATH = isPortfolio() ? PORTFOLIO_PATH + ERROR_PAGE_PATH : ERROR_PAGE_PATH,
-      NG_APP_NAME = isPortfolio() ? 'opintoniPortfolioApp' : 'opintoniApp',
-      bootstrap = function(res) {
-        angular.element(document).ready(function() {
-          angular.bootstrap(document, [NG_APP_NAME]);
+// eslint-disable-next-line no-unused-expressions
+!(function () {
+  var CONFIG_RESOURCE_PATH = '/api/public/v1/configuration';
+  var TIMEOUT = 5000;
+  var ERROR_PAGE_PATH = '/error/maintenance';
+  var PORTFOLIO_PATH = '/portfolio';
 
-          if (!res && location.pathname !== RESOLVED_ERROR_PAGE_PATH) {
-            location.pathname = RESOLVED_ERROR_PAGE_PATH;
-          }
-        });
-      },
-      fetchConf = function() {
-        var injector = angular.injector(['ng']),
-            $http = injector.get('$http');
+  var isPortfolio = function () {
+    return location.pathname.indexOf(PORTFOLIO_PATH) !== -1;
+  };
 
-        return $http.get(CONFIG_RESOURCE_PATH, {timeout: TIMEOUT})
-          .then(function(res) {
-            window.configuration = res.data;
-            return res;
-          })
-          .catch(function() {
-            return false;
-          });
-      };
+  var RESOLVED_ERROR_PAGE_PATH = isPortfolio() ? PORTFOLIO_PATH + ERROR_PAGE_PATH : ERROR_PAGE_PATH;
+
+  var NG_APP_NAME = isPortfolio() ? 'opintoniPortfolioApp' : 'opintoniApp';
+
+  var bootstrap = function (res) {
+    angular.element(document).ready(function () {
+      angular.bootstrap(document, [NG_APP_NAME]);
+
+      if (!res && location.pathname !== RESOLVED_ERROR_PAGE_PATH) {
+        location.pathname = RESOLVED_ERROR_PAGE_PATH;
+      }
+    });
+  };
+
+  var fetchConf = function () {
+    var injector = angular.injector(['ng']);
+    var $http = injector.get('$http');
+
+    return $http.get(CONFIG_RESOURCE_PATH, { timeout: TIMEOUT })
+      .then(function (res) {
+        window.configuration = res.data;
+        return res;
+      })
+      .catch(function () {
+        return false;
+      });
+  };
 
   if (location.pathname !== RESOLVED_ERROR_PAGE_PATH) {
     fetchConf().then(bootstrap);
   } else {
     bootstrap();
   }
-}();
+}());

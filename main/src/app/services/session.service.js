@@ -17,9 +17,7 @@
 
 'use strict';
 
-angular.module('services.session', [
-  'resources.session'
-])
+angular.module('services.session', ['resources.session'])
   .constant('Role', {
     TEACHER: 'TEACHER',
     STUDENT: 'STUDENT',
@@ -27,10 +25,9 @@ angular.module('services.session', [
   })
 
   .factory('SessionService', function SessionService($q, SessionResource) {
-
     var sessionPromise;
 
-    var getSession = function(forceRefresh) {
+    var getSession = function (forceRefresh) {
       if (!sessionPromise || forceRefresh) {
         sessionPromise = SessionResource.getSession();
       }
@@ -38,31 +35,31 @@ angular.module('services.session', [
       return sessionPromise;
     };
 
-    var isInAnyRole = function(roleNames) {
+    var isInRole = function (roleName) {
+      return getSession()
+        .then(function (session) {
+          return _.invoke(session, 'roles.indexOf', roleName) > -1;
+        })
+        .catch(function () {
+          return false;
+        });
+    };
+
+    var isInAnyRole = function (roleNames) {
       return $q
         .all(_.map(roleNames, isInRole))
         .then(_.some);
     };
 
-    var isInRole = function(roleName) {
+    var isInPilotDegreeProgramme = function () {
       return getSession()
-        .then(function(session) {
-          return _.invoke(session, 'roles.indexOf', roleName) > -1;
-        })
-        .catch(function() {
-          return false;
-        });
-    };
-
-    var isInPilotDegreeProgramme = function() {
-      return getSession()
-        .then(function(session) {
+        .then(function (session) {
           return session.pilotDegreeProgramme ? session.pilotDegreeProgramme : false;
         });
     };
 
-    var getFacultyCode = function() {
-      return getSession().then(function(session) {
+    var getFacultyCode = function () {
+      return getSession().then(function (session) {
         return session.faculty ? session.faculty.code : undefined;
       });
     };
@@ -74,5 +71,4 @@ angular.module('services.session', [
       getSession: getSession,
       getFacultyCode: getFacultyCode
     };
-
   });

@@ -15,12 +15,14 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('controllers.main', ['constants.portfolioTabs',
-                                    'services.componentOrder',
-                                    'utils.browser'])
+angular.module('controllers.main', [
+  'constants.portfolioTabs',
+  'services.componentOrder',
+  'utils.browser'
+])
 
-  .controller('MainCtrl', function($scope, portfolioTabs, portfolio, state, userSettings, notifications,
-                                   ComponentOrderService, PreviewService, State, BrowserUtil) {
+  .controller('MainCtrl', function ($scope, portfolioTabs, portfolio, state, userSettings, notifications,
+    ComponentOrderService, PreviewService, State, BrowserUtil) {
     $scope.portfolio = portfolio;
     $scope.userSettings = userSettings;
     $scope.notifications = notifications;
@@ -30,19 +32,21 @@ angular.module('controllers.main', ['constants.portfolioTabs',
     $scope.sectionSortDisabled = state !== State.PRIVATE || BrowserUtil.supportsTouch();
     $scope.portfolioSections = [];
 
-    ComponentOrderService.subscribeToComponentOrderChanges(portfolio, function(componentOrders) {
+    ComponentOrderService.subscribeToComponentOrderChanges(portfolio, function (componentOrders) {
       $scope.portfolioSections = componentOrders;
     });
 
     $scope.sortableOptions = {
       containment: '.portfolio-components__dropzone',
-      orderChanged: function(e) {
+      orderChanged: function (e) {
         var updatedSections = e.dest.sortableScope.modelValue;
 
         ComponentOrderService.updateComponentOrder(portfolio.id, updatedSections);
       },
-      accept: function(sourceItemHandleScope, destSortableScope) {
-        return sourceItemHandleScope.itemScope.sortableScope.$parent.$id === destSortableScope.$parent.$id;
+      accept: function (sourceItemHandleScope, destSortableScope) {
+        var sourceScopeParentId = sourceItemHandleScope.itemScope.sortableScope.$parent.$id;
+        var destScopeParentId = destSortableScope.$parent.$id;
+        return sourceScopeParentId === destScopeParentId;
       }
     };
 

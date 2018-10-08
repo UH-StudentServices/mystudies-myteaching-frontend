@@ -22,15 +22,14 @@ angular.module('services.location', [])
     TIMEOUT_IN_MINUTES: 10
   })
 
-  .factory('LocationService', function($q,
-                                       $cookies,
-                                       UserAddressCookie,
-                                       GeolocationService,
-                                       GoogleGeocoderService) {
-
+  .factory('LocationService', function ($q,
+    $cookies,
+    UserAddressCookie,
+    GeolocationService,
+    GoogleGeocoderService) {
     function putUserAddressToCookie(userAddress) {
       $cookies.put(UserAddressCookie.NAME, userAddress,
-        {expires: moment().add(UserAddressCookie.TIMEOUT_IN_MINUTES, 'minutes').toDate()});
+        { expires: moment().add(UserAddressCookie.TIMEOUT_IN_MINUTES, 'minutes').toDate() });
     }
 
     function getAddressFromCoordinates(latLng) {
@@ -62,14 +61,13 @@ angular.module('services.location', [])
     };
   })
 
-  .factory('GeolocationService', function($q) {
-
+  .factory('GeolocationService', function ($q) {
     function getCoordinates() {
       var deferred = $q.defer();
 
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function currentPositionSuccess(position) {
-          deferred.resolve({lat: position.coords.latitude, lng: position.coords.longitude});
+          deferred.resolve({ lat: position.coords.latitude, lng: position.coords.longitude });
         }, function currentPositionError() {
           deferred.reject('Could not get current position');
         });
@@ -79,24 +77,23 @@ angular.module('services.location', [])
       return deferred.promise;
     }
 
-    return {
-      getCoordinates: getCoordinates
-    };
+    return { getCoordinates: getCoordinates };
   })
 
-  .factory('GoogleGeocoderService', function($q) {
-
+  .factory('GoogleGeocoderService', function ($q) {
     function geocoderStatusOk(status) {
       return status === google.maps.GeocoderStatus.OK;
     }
 
     function getAddressFromCoordinates(latLng) {
-      var deferred = $q.defer(),
-          googleLatLng = new google.maps.LatLng(latLng.lat, latLng.lng);
+      var deferred = $q.defer();
 
-      new google.maps.Geocoder().geocode({latLng: googleLatLng}, function(results, status) {
+      var googleLatLng = new google.maps.LatLng(latLng.lat, latLng.lng);
+
+      new google.maps.Geocoder().geocode({ latLng: googleLatLng }, function (results, status) {
+        var address;
         if (geocoderStatusOk(status)) {
-          var address = results[1];
+          address = results[1];
 
           deferred.resolve(address ? address.formatted_address : '');
         } else {
@@ -106,7 +103,5 @@ angular.module('services.location', [])
       return deferred.promise;
     }
 
-    return {
-      getAddressFromCoordinates: getAddressFromCoordinates
-    };
+    return { getAddressFromCoordinates: getAddressFromCoordinates };
   });

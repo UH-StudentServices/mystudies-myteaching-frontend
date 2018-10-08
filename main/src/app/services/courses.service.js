@@ -18,20 +18,20 @@
 
 angular.module('services.courses', ['resources.courses', 'utils.moment'])
 
-  .factory('CoursesService', function(CoursesResource, dateArrayToMomentObject) {
-
-    var teacherCoursesPromise, studentCoursesPromise;
+  .factory('CoursesService', function (CoursesResource, dateArrayToMomentObject) {
+    var teacherCoursesPromise; var
+      studentCoursesPromise;
 
     function filterUpcomingEnrollments(enrollments) {
       var now = moment();
 
-      return _.filter(enrollments, function(enrollment) {
+      return _.filter(enrollments, function (enrollment) {
         return enrollment.startDate.isAfter(now, 'day');
       });
     }
 
     function convertEnrollmentDates(enrollments) {
-      return _.map(enrollments, function(enrollment) {
+      return _.map(enrollments, function (enrollment) {
         enrollment.startDate = dateArrayToMomentObject(enrollment.startDate);
         enrollment.endDate = dateArrayToMomentObject(enrollment.endDate);
 
@@ -76,5 +76,4 @@ angular.module('services.courses', ['resources.courses', 'utils.moment'])
       getTeacherCourses: getTeacherCourses,
       getUpcomingTeacherCourses: getUpcomingTeacherCourses
     };
-
   });

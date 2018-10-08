@@ -106,9 +106,9 @@ $free-link-bg: $black;
 
   .social-media-link-icon {
     display: inline-block;
-    height: 4em;
-    width: 4em;
-    line-height: 4em;
+    height: 60px;
+    width: 60px;
+    line-height: 60px;
     color: $white;
     text-align: center;
     position: absolute;
@@ -133,6 +133,7 @@ $free-link-bg: $black;
 
     &--research_gate {
       background: transparent url("../icons/rg_logo_square_brand.png") no-repeat center center;
+      background-size: cover;
     }
 
     &--academia {
@@ -148,6 +149,11 @@ $free-link-bg: $black;
       @include social-media-icon($icon-url, $free-link-bg)
     }
 
+    &--linkedin {
+      background: transparent url("../icons/In-2CRev-66px-R.png") no-repeat center center;
+      background-size: cover;
+    }
+
   }
 
   .editing {
@@ -157,6 +163,9 @@ $free-link-bg: $black;
         padding: 0 3em 0 1em;
         color: $white;
       }
+    }
+    input.ng-invalid {
+      border: 1px solid $red;
     }
   }
 }

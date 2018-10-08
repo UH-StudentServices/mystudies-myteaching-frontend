@@ -17,23 +17,19 @@
 
 <ul class="banner-content">
   <li ng-repeat="workExperienceItem in workExperience track by workExperienceItem.id">
-    <div class="banner-content__item work-experience">
-      <div class="banner-content__banner">
-        <div class="banner-content__backdrop">
-          <div class="banner-content__banner-content">
-            <div class="banner-content__banner-title">
-              {{workExperienceItem.employer}}
-            </div>
-            <div class="banner-content__banner-text">
-              {{workExperienceItem.startDate | momentFormat:'M/YYYY'}} -
-              {{workExperienceItem.endDate | momentFormat:'M/YYYY'}}
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="banner-content__item work-experience work-experience__outer_container">
       <div class="banner-content__details-container">
         <div class="work-experience__title">
-          {{workExperienceItem.jobTitle}}
+          <div>
+            {{workExperienceItem.startDate | momentFormat:'M/YYYY'}} &ndash;
+            {{workExperienceItem.endDate | momentFormat:'M/YYYY'}}
+          </div>
+          <div class="work-experience__job-title">
+            {{workExperienceItem.jobTitle}}
+          </div>
+          <div class="work-experience__employer">
+            {{workExperienceItem.employer}}
+          </div>
         </div>
         <div ng-class="{'banner-content__show-full-description': workExperienceItem.showFull}">
           <div class="banner-content__description">

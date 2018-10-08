@@ -20,11 +20,9 @@
 angular.module('resources.news', [])
 
   .factory('NewsResource', function NewsResource($resource) {
-
     var studentNewsResource = $resource('/api/private/v1/news/student');
     var teacherNewsResource = $resource('/api/private/v1/news/teacher');
-    var openUniversityNewsResource =
-      $resource('/api/private/v1/news/openuniversity');
+    var openUniversityNewsResource = $resource('/api/private/v1/news/openuniversity');
 
     function getNews(resource) {
       return resource.query().$promise;
@@ -35,5 +33,4 @@ angular.module('resources.news', [])
       getTeacherNews: _.partial(getNews, teacherNewsResource),
       getOpenUniversityNews: _.partial(getNews, openUniversityNewsResource)
     };
-
   });

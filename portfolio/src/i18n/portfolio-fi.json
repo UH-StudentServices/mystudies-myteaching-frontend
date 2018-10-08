@@ -62,6 +62,7 @@
     "TUHAT": "Tuhat",
     "RESEARCH_GATE": "ResearchGate",
     "ACADEMIA": "Academia.edu",
+    "LINKEDIN": "LinkedIn",
     "WEBSITE_LINK": "Linkki verkkosivulle"
   },
   "degrees": {
@@ -84,19 +85,18 @@
     "addWorkExperience": "Lisää työnantaja",
     "addJobSearch": "Lisää haen työpaikkaa",
     "jobSearch": "haen työpaikkaa",
-    "employerPlaceholder": "työnantaja",
-    "startDatePlaceholder": "kk.vvvv",
-    "endDatePlaceholder": "kk.vvvv",
-    "jobTitlePlaceholder": "nimike",
-    "employerUrlPlaceholder": "työnantajan web-osoite",
-    "text": "kuvausteksti",
+    "employer": "Työnantaja",
+    "startDatePlaceholder": "kk/vvvv",
+    "endDatePlaceholder": "kk/vvvv",
+    "jobTitle": "Nimike",
+    "employerUrl": "Työnantajan verkkosivu",
+    "text": "Kuvausteksti",
     "descriptionPlaceholder": "Lisää kuvaus",
-    "startDate": "alkupäivämäärä (kk.vvvv)",
-    "endDate": "loppupäivämäärä (kk.vvvv)",
     "showMore": "lisää",
     "showLess": "vähemmän",
     "contactEmail": "sähköpostiosoite",
-    "jobSearchHeadline": "otsikko"
+    "jobSearchHeadline": "otsikko",
+    "dateOfEmployment": "Työtehtävän päivämäärä"
   },
   "samples": {
     "title": "Näytteet",
@@ -158,6 +158,9 @@
       "fi": "Suomi",
       "sv": "Ruotsi"
     }
+  },
+  "skillsAndExpertise": {
+    "title": "Osaaminen ja asiantuntijuus"
   },
   "tabs": {
     "basicInformation": "Perustiedot",

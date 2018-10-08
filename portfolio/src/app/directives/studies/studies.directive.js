@@ -22,63 +22,63 @@ angular.module('directives.studies', [
   'directives.keywords',
   'directives.editableHeading',
   'constants.ngEmbedOptions',
-  'portfolioAnalytics'])
+  'portfolioAnalytics'
+])
 
-.directive('studies', function(KeywordService, SummaryService, NG_EMBED_OPTIONS, AnalyticsService) {
-  return {
-    restrict: 'E',
-    replace: true,
-    scope: {
-      summaryData: '=',
-      portfolioId: '@',
-      portfolioLang: '@'
-    },
-    templateUrl: 'app/directives/studies/studies.html',
-    link: function(scope) {
-      var portfolioId = scope.portfolioId;
+  .directive('studies', function (KeywordService, SummaryService, NG_EMBED_OPTIONS, AnalyticsService) {
+    return {
+      restrict: 'E',
+      replace: true,
+      scope: {
+        summaryData: '=',
+        portfolioId: '@',
+        portfolioLang: '@'
+      },
+      templateUrl: 'app/directives/studies/studies.html',
+      link: function (scope) {
+        var portfolioId = scope.portfolioId;
 
-      scope.embedOptions = NG_EMBED_OPTIONS;
-      scope.editing = false;
-
-      scope.edit = function() {
-        scope.editing = true;
-        scope.origText = scope.summaryData;
-      };
-
-      scope.exitEdit = function() {
-        var updateKeywordsRequest = {
-          keywords: scope.keywords
-        };
-
-        var updateSummaryRequest = {
-          summary: scope.summaryData
-        };
-
-        scope.$broadcast('saveComponent');
-
-        _.forEach(updateKeywordsRequest.keywords, function(keyword, index) {
-          keyword.orderIndex = index;
-        });
-
+        scope.embedOptions = NG_EMBED_OPTIONS;
         scope.editing = false;
 
-        if (scope.origText !== scope.summaryData) {
-          AnalyticsService.trackEvent(AnalyticsService.ec.STUDIES, AnalyticsService.ea.EDIT_SUMMARY);
-        }
+        scope.edit = function () {
+          scope.editing = true;
+          scope.origText = scope.summaryData;
+        };
 
-        SummaryService.updateSummary(portfolioId, updateSummaryRequest);
-        KeywordService.updateKeywords(portfolioId, updateKeywordsRequest)
-          .then(function(keywords) {
-            scope.keywords = keywords;
+        scope.exitEdit = function () {
+          var updateKeywordsRequest = { keywords: scope.keywords };
+
+          var updateSummaryRequest = { summary: scope.summaryData };
+
+          scope.$broadcast('saveComponent');
+
+          _.forEach(updateKeywordsRequest.keywords, function (keyword, index) {
+            keyword.orderIndex = index;
           });
 
-        return true;
-      };
+          scope.editing = false;
 
-      KeywordService.getKeywordsSubject()
-        .subscribe(function(keywords) {
-          scope.keywords = keywords;
-        });
-    }
-  };
-});
+          if (scope.origText !== scope.summaryData) {
+            AnalyticsService.trackEvent(
+              AnalyticsService.ec.STUDIES,
+              AnalyticsService.ea.EDIT_SUMMARY
+            );
+          }
+
+          SummaryService.updateSummary(portfolioId, updateSummaryRequest);
+          KeywordService.updateKeywords(portfolioId, updateKeywordsRequest)
+            .then(function (keywords) {
+              scope.keywords = keywords;
+            });
+
+          return true;
+        };
+
+        KeywordService.getKeywordsSubject()
+          .subscribe(function (keywords) {
+            scope.keywords = keywords;
+          });
+      }
+    };
+  });

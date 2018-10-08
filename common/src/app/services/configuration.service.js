@@ -25,8 +25,8 @@ angular.module('services.configuration', [])
   .constant('LoginCookie', 'OPINTONI_HAS_LOGGED_IN')
 
   .constant('RedirectCookie', {
-      NAME: 'OO_REDIRECT_TO',
-      TIMEOUT_IN_MINUTES: 5
+    NAME: 'OO_REDIRECT_TO',
+    TIMEOUT_IN_MINUTES: 5
   })
 
   .constant('Environments', {
@@ -34,7 +34,7 @@ angular.module('services.configuration', [])
     DEV: 'dev',
     QA: 'qa',
     DEMO: 'demo',
-    PROD: 'prod',
+    PROD: 'prod'
   })
 
   .constant('LocalUsers', {
@@ -139,6 +139,6 @@ angular.module('services.configuration', [])
 
   .constant('LocalPassword', 'password')
 
-  .factory('Configuration', function($window) {
+  .factory('Configuration', function ($window) {
     return $window.configuration ? $window.configuration : {};
   });

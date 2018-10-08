@@ -16,11 +16,13 @@
  */
 
 angular.module('directives.userMenu',
-  ['directives.userMenu.settings',
-   'directives.header.meceWidget',
-   'directives.visibility',
-   'ngFileUpload'])
-  .directive('userMenu', function() {
+  [
+    'directives.userMenu.settings',
+    'directives.header.meceWidget',
+    'directives.visibility',
+    'ngFileUpload'
+  ])
+  .directive('userMenu', function () {
     return {
       restrict: 'E',
       replace: true,

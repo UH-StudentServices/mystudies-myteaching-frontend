@@ -18,13 +18,13 @@
 angular.module('services.portfolioRole', [])
 
   .constant('PortfolioRole', {
-    'STUDENT': 'student',
-    'TEACHER': 'teacher'
+    STUDENT: 'student',
+    TEACHER: 'teacher'
   })
 
-  .factory('PortfolioRoleService', function($location, PortfolioRole) {
-    var host = $location.host(),
-        activeRole;
+  .factory('PortfolioRoleService', function ($location, PortfolioRole) {
+    var host = $location.host();
+    var activeRole;
 
     function isInRole(portfolioRole) {
       return host.indexOf(portfolioRole) > -1;
@@ -32,7 +32,9 @@ angular.module('services.portfolioRole', [])
 
     function getActiveRole() {
       if (!activeRole) {
-        activeRole = isInRole(PortfolioRole.TEACHER) ? PortfolioRole.TEACHER : PortfolioRole.STUDENT;
+        activeRole = isInRole(PortfolioRole.TEACHER)
+          ? PortfolioRole.TEACHER
+          : PortfolioRole.STUDENT;
       }
 
       return activeRole;

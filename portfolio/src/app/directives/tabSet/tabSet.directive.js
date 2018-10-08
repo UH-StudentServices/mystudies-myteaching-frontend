@@ -15,15 +15,17 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.tabSet', ['directives.scrollableTabBar',
-                                     'ngAnimate',
-                                     'directives.visibility',
-                                     'services.visibility',
-                                     'services.state',
-                                     'services.preview'])
+angular.module('directives.tabSet', [
+  'directives.scrollableTabBar',
+  'ngAnimate',
+  'directives.visibility',
+  'services.visibility',
+  'services.state',
+  'services.preview'
+])
 
-  .directive('tabSet', function($compile, $templateCache, $animate, $q, VisibilityService,
-                                Visibility, PreviewService, StateService, State) {
+  .directive('tabSet', function ($compile, $templateCache, $animate, $q, VisibilityService,
+    Visibility, PreviewService, StateService, State) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/tabSet/tabSet.html',
@@ -32,19 +34,19 @@ angular.module('directives.tabSet', ['directives.scrollableTabBar',
         useFullWidthOnMobile: '=',
         portfolioLang: '@'
       },
-      link: function(scope, el, attrs) {
-        var activeTab,
-            tabContentHolder = angular.element(el[0].querySelector('.tab-content')),
-            FADE_IN_CLASS = 'fade-in',
-            FADE_OUT_CLASS = 'fade-out';
+      link: function (scope, el) {
+        var activeTab;
+        var tabContentHolder = angular.element(el[0].querySelector('.tab-content'));
+        var FADE_IN_CLASS = 'fade-in';
+        var FADE_OUT_CLASS = 'fade-out';
 
         function selectTab(tab) {
+          var compiledTmpl;
           if (tab !== activeTab) {
-            var compiledTmpl = $compile($templateCache.get(tab.templateUrl))(scope.$parent);
-
+            compiledTmpl = $compile($templateCache.get(tab.templateUrl))(scope.$parent);
             activeTab = tab;
             $animate.addClass(tabContentHolder, FADE_OUT_CLASS, FADE_IN_CLASS)
-              .then(function() {
+              .then(function () {
                 $animate.setClass(tabContentHolder, FADE_IN_CLASS, FADE_OUT_CLASS);
                 tabContentHolder.html(compiledTmpl);
               });
@@ -52,9 +54,7 @@ angular.module('directives.tabSet', ['directives.scrollableTabBar',
         }
 
         function getTabClasses(tab) {
-          return {
-            'is-active': tab === activeTab
-          };
+          return { 'is-active': tab === activeTab };
         }
 
         function selectDefaultOrFirstTab(tabs) {
@@ -62,17 +62,19 @@ angular.module('directives.tabSet', ['directives.scrollableTabBar',
         }
 
         function initTabs() {
-          var allTabs = scope.tabDescriptor,
-              visibleTabs;
+          var allTabs = scope.tabDescriptor;
+
+          var visibleTabs;
 
           if (StateService.getCurrent() !== State.PRIVATE || PreviewService.isPreview()) {
-            visibleTabs = allTabs.map(function(tab) {
-              return VisibilityService.getComponentVisibility({sectionName: tab.name}).then(function(visibility) {
-                return visibility === Visibility.PUBLIC ? tab : null;
-              });
+            visibleTabs = allTabs.map(function (tab) {
+              return VisibilityService.getComponentVisibility({ sectionName: tab.name })
+                .then(function (visibility) {
+                  return visibility === Visibility.PUBLIC ? tab : null;
+                });
             });
 
-            return $q.all(visibleTabs).then(function(tabs) {
+            return $q.all(visibleTabs).then(function (tabs) {
               return tabs.filter(Boolean);
             });
           }
@@ -80,7 +82,7 @@ angular.module('directives.tabSet', ['directives.scrollableTabBar',
           return $q.resolve(allTabs);
         }
 
-        initTabs().then(function(tabs) {
+        initTabs().then(function (tabs) {
           _.assign(scope, {
             selectTab: selectTab,
             tabs: tabs,

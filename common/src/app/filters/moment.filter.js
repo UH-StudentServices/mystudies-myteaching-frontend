@@ -17,14 +17,14 @@
 
 angular.module('filters.moment', [])
 
-  .filter('momentFormat', function() {
-    return function(input, format) {
+  .filter('momentFormat', function () {
+    return function (input, format) {
       return input ? input.format(format) : '';
     };
   })
 
-  .filter('convertDateFormat', function() {
-    return function(inputString, outputFormat) {
+  .filter('convertDateFormat', function () {
+    return function (inputString, outputFormat) {
       return moment(new Date(inputString)).format(outputFormat);
     };
   });

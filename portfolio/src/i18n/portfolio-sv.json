@@ -62,6 +62,7 @@
     "TUHAT": "Tuhat",
     "RESEARCH_GATE": "ResearchGate",
     "ACADEMIA": "Academia.edu",
+    "LINKEDIN": "LinkedIn",
     "WEBSITE_LINK": "Webbsidans länk"
   },
   "degrees": {
@@ -84,19 +85,18 @@
     "addWorkExperience": "Lägg till arbetsgivare",
     "addJobSearch": "Lägg till söker job",
     "jobSearch": "söker job",
-    "employerPlaceholder": "arbetsgivare",
-    "startDatePlaceholder": "mm.yyyy",
-    "endDatePlaceholder": "mm.yyyy",
-    "jobTitlePlaceholder": "jobbtitel",
-    "employerUrlPlaceholder": "arbetsgivares websidan",
-    "text": "beskrivning",
+    "employer": "Arbetsgivare",
+    "startDatePlaceholder": "mm/yyyy",
+    "endDatePlaceholder": "mm/yyyy",
+    "jobTitle": "Jobbtitel",
+    "employerUrl": "Arbetsgivares websidan",
+    "text": "Beskrivning",
     "descriptionPlaceholder": "Lägg till beskrivning",
-    "startDate": "startdatum (mm.yyyy)",
-    "endDate": "slutdatum (mm.yyyy)",
     "showMore": "mer",
     "showLess": "mindre",
     "contactEmail": "contact email",
-    "jobSearchHeadline": "rubrik"
+    "jobSearchHeadline": "rubrik",
+    "dateOfEmployment": "Anställningstid"
   },
   "samples": {
     "title": "Prover",
@@ -158,6 +158,9 @@
       "fi": "Finska",
       "sv": "Svenska"
     }
+  },
+  "skillsAndExpertise": {
+    "title": "Kompetens och expertis"
   },
   "tabs": {
     "basicInformation": "Basuppgifter",

@@ -19,27 +19,28 @@
 
 angular.module('directives.editDegrees', [])
 
-  .directive('editDegrees', function() {
+  .directive('editDegrees', function () {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/degrees/editDegrees.html',
-      link: function($scope) {
-
-        $scope.addDegree = function(degree) {
+      link: function ($scope) {
+        $scope.addDegree = function (degree) {
           $scope.degrees.push(degree);
           $scope.newDegree = {};
           $scope.refreshValidity();
         };
 
-        $scope.removeDegree = function(degree) {
+        $scope.removeDegree = function (degree) {
           $scope.degrees = _.without($scope.degrees, degree);
           $scope.refreshValidity();
         };
 
         $scope.sortableOptions = {
           containment: '.degrees__dropzone',
-          accept: function(sourceItemHandleScope, destSortableScope) {
-            return sourceItemHandleScope.itemScope.sortableScope.$parent.$id === destSortableScope.$parent.$id;
+          accept: function (sourceItemHandleScope, destSortableScope) {
+            var sourceScopeParentId = sourceItemHandleScope.itemScope.sortableScope.$parent.$id;
+            var destScopeParentId = destSortableScope.$parent.$id;
+            return sourceScopeParentId === destScopeParentId;
           }
         };
       }
