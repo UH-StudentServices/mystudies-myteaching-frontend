@@ -23,6 +23,7 @@ angular.module('utils.browser', [])
     var MOBILE_MAX_WIDTH = 767;
     var RESIZE_DEBOUNCE_DELAY = 200;
     var Rx = window.Rx;
+    var viewportSizeSubject;
 
     function isMobile() {
       return $window.matchMedia('(max-width: ' + MOBILE_MAX_WIDTH + 'px)').matches;
@@ -31,8 +32,6 @@ angular.module('utils.browser', [])
     function getViewportSize() {
       return isMobile() ? 'MOBILE' : 'DESKTOP';
     }
-    // eslint-disable-next-line vars-on-top
-    var viewportSizeSubject = new Rx.BehaviorSubject(getViewportSize());
 
     function supportsCamera() {
       navigator.getMedia = navigator.getUserMedia
@@ -50,6 +49,8 @@ angular.module('utils.browser', [])
     function isMac() {
       return !!navigator.platform.match(/(Mac|iPhone|iPad)/i);
     }
+
+    viewportSizeSubject = new Rx.BehaviorSubject(getViewportSize());
 
     window.addEventListener('resize', _.debounce(function () {
       viewportSizeSubject.onNext(getViewportSize());

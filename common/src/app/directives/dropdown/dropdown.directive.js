@@ -29,9 +29,9 @@ angular.module('directives.dropdown', [])
         var contentElement = element.find('.dropdown-content');
 
         function applyCloseCallback() {
+          var fn;
           if (attrs.closeCallback) {
-            var fn = $parse(attrs.closeCallback); // eslint-disable-line vars-on-top
-
+            fn = $parse(attrs.closeCallback);
             fn($scope);
             $scope.$apply();
           }

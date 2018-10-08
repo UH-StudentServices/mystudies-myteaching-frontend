@@ -41,10 +41,9 @@ angular.module('directives.tabSet', [
         var FADE_OUT_CLASS = 'fade-out';
 
         function selectTab(tab) {
+          var compiledTmpl;
           if (tab !== activeTab) {
-            // eslint-disable-next-line vars-on-top
-            var compiledTmpl = $compile($templateCache.get(tab.templateUrl))(scope.$parent);
-
+            compiledTmpl = $compile($templateCache.get(tab.templateUrl))(scope.$parent);
             activeTab = tab;
             $animate.addClass(tabContentHolder, FADE_OUT_CLASS, FADE_IN_CLASS)
               .then(function () {

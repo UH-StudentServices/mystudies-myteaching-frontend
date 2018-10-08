@@ -65,6 +65,7 @@ angular.module('directives.freeTextContent', [
       },
       link: function (scope) {
         var freeTextContentSubject;
+        var visibilityDescriptor;
 
         function getVisibilityDescriptor() {
           return {
@@ -72,8 +73,8 @@ angular.module('directives.freeTextContent', [
             instanceName: scope.instanceName || null
           };
         }
-        // eslint-disable-next-line vars-on-top
-        var visibilityDescriptor = getVisibilityDescriptor();
+
+        visibilityDescriptor = getVisibilityDescriptor();
 
         function getMatchingItem(freeTextContentItems, searchCriteria) {
           var filteredFreeTextContentItems = freeTextContentItems.filter(_.matches(searchCriteria));

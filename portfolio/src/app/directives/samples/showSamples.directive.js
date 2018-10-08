@@ -24,9 +24,9 @@ angular.module('directives.showSamples', ['dibari.angular-ellipsis'])
       templateUrl: 'app/directives/samples/showSamples.html',
       link: function ($scope) {
         $scope.formatUrl = function (url) {
+          var normalizedUrl;
           if (url) {
-            // eslint-disable-next-line vars-on-top
-            var normalizedUrl = url.toLowerCase();
+            normalizedUrl = url.toLowerCase();
 
             if (normalizedUrl.startsWith('http://') || normalizedUrl.startsWith('https://')) {
               return url;

@@ -53,15 +53,14 @@ angular.module('webcam', ['utils.browser'])
 
         // called when camera stream is loaded
         var onSuccess = function onSuccess(stream) {
+          var vendorURL;
           videoStream = stream;
 
           // Firefox supports a src object
           if (navigator.mozGetUserMedia) {
             videoElem.mozSrcObject = stream;
           } else {
-            // eslint-disable-next-line vars-on-top
-            var vendorURL = window.URL || window.webkitURL;
-
+            vendorURL = window.URL || window.webkitURL;
             videoElem.src = vendorURL.createObjectURL(stream);
           }
 
@@ -86,6 +85,7 @@ angular.module('webcam', ['utils.browser'])
         };
 
         var startWebcam = function startWebcam() {
+          var isStreaming = false;
           videoElem = document.createElement('video');
           videoElem.setAttribute('class', 'webcam-live');
           videoElem.setAttribute('autoplay', '');
@@ -97,10 +97,6 @@ angular.module('webcam', ['utils.browser'])
             placeholder.src = $scope.placeholder;
             element.append(placeholder);
           }
-
-          // Default variables
-          // eslint-disable-next-line vars-on-top
-          var isStreaming = false;
 
           // Check the availability of getUserMedia across supported browsers
           if (!BrowserUtil.supportsCamera()) {

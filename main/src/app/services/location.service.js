@@ -91,8 +91,9 @@ angular.module('services.location', [])
       var googleLatLng = new google.maps.LatLng(latLng.lat, latLng.lng);
 
       new google.maps.Geocoder().geocode({ latLng: googleLatLng }, function (results, status) {
+        var address;
         if (geocoderStatusOk(status)) {
-          var address = results[1]; // eslint-disable-line vars-on-top
+          address = results[1];
 
           deferred.resolve(address ? address.formatted_address : '');
         } else {

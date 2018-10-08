@@ -19,12 +19,11 @@ angular.module('services.scriptInjector', [])
 
   .factory('ScriptInjectorService', function ($document) {
     function addScript(scriptId, scriptUrl) {
+      var newScript;
+      var firstScript;
       if (!$document[0].getElementById(scriptId)) {
-        // eslint-disable-next-line vars-on-top
-        var newScript = $document[0].createElement('script');
-        // eslint-disable-next-line vars-on-top
-        var firstScript = $document[0].getElementsByTagName('script')[0];
-
+        newScript = $document[0].createElement('script');
+        firstScript = $document[0].getElementsByTagName('script')[0];
         newScript.id = scriptId;
         newScript.type = 'text/javascript';
         newScript.async = true;

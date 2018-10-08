@@ -31,6 +31,7 @@ angular.module('services.state', [
     LANDER: 'login'
   })
   .factory('StateService', function ($state, $location, State, Configuration, Role, ConfigurationProperties) {
+    var getStateFromDomain;
     var stateMatches = function (state, name) {
       if (state === name || state.name === name) {
         return true;
@@ -72,8 +73,8 @@ angular.module('services.state', [
     function configurationPropertyContains(property, expectedValue) {
       return Configuration[property] && Configuration[property].indexOf(expectedValue) > -1;
     }
-    // eslint-disable-next-line vars-on-top
-    var getStateFromDomain = function getStateFromDomain() {
+
+    getStateFromDomain = function getStateFromDomainFn() {
       var host = $location.host();
 
       if (configurationPropertyContains(ConfigurationProperties.STUDENT_APP_URL, host)) {

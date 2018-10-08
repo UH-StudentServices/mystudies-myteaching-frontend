@@ -55,12 +55,12 @@ angular.module('directives.samples', [
         }, 500);
 
         scope.exitEdit = function () {
+          var updateSamples;
           scope.$broadcast('saveComponent');
           scope.markAllSubmitted();
 
           if (isValid()) {
-            // eslint-disable-next-line vars-on-top
-            var updateSamples = angular.copy(scope.samples);
+            updateSamples = angular.copy(scope.samples);
 
             AnalyticsService.trackEventIfAdded(scope.origSamples, scope.samples,
               AnalyticsService.ec.SAMPLES, AnalyticsService.ea.ADD);

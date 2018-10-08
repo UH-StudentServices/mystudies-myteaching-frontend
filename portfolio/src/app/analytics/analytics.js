@@ -27,14 +27,14 @@ angular.module('portfolioAnalytics', ['provider.analyticsAccounts'])
     TRACK_PREFIX) {
     var TRACKER_CONFIG_KEY = 'googleAnalyticsAccountPortfolio';
     var trackerConfig = ConfigurationProvider.$get()[TRACKER_CONFIG_KEY];
+    var config;
 
     function isStudentPortfolio() {
       return window.location.hostname.indexOf('student') >= 0;
     }
 
     if (trackerConfig) {
-      // eslint-disable-next-line vars-on-top
-      var config = {
+      config = {
         name: 'PortfolioTracker',
         tracker: trackerConfig,
         trackEvent: true,

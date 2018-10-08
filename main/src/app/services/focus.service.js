@@ -41,11 +41,11 @@ angular.module('services.focus', [])
     return {
       setFocus: setFocus,
       focusNext: function () {
+        var focusables;
+        var index;
         if (currentFocusElement) {
-          // eslint-disable-next-line vars-on-top
-          var focusables = $(focusableQuery).filter(':visible');
-          // eslint-disable-next-line vars-on-top
-          var index = focusables.index(currentFocusElement);
+          focusables = $(focusableQuery).filter(':visible');
+          index = focusables.index(currentFocusElement);
 
           if (focusables.length > index + 1) {
             setFocus(focusables.get(index + 1));

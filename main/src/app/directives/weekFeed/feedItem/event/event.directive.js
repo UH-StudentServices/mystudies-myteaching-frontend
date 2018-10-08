@@ -91,10 +91,12 @@ angular.module('directives.weekFeed.feedItem.event', [
     }
 
     return function (startDate, endDate) {
+      var localStartDate;
+      var localEndDate;
       if (startDate) {
         /* Dates are UTC but we want to show them as local times */
-        var localStartDate = startDate.local(); // eslint-disable-line vars-on-top
-        var localEndDate = endDate ? endDate.local() : undefined; // eslint-disable-line vars-on-top
+        localStartDate = startDate.local();
+        localEndDate = endDate ? endDate.local() : undefined;
 
         if (!localEndDate || localStartDate.diff(localEndDate) === 0) {
           return formatMomentDate(localStartDate);

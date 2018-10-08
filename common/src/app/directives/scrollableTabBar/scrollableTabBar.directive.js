@@ -37,6 +37,7 @@ angular.module('directives.scrollableTabBar', [])
         var tabContainer = el[0].querySelector('.tab-bar__tab-container');
         var tabSelector = attrs.tabSelector || DEFAULT_TAB_SELECTOR;
         var outermostTabPadding = attrs.outermostTabPadding || DEFAULT_SCROLLER_DISPLAY_THRESHOLD;
+        var debouncedResizeHandler;
 
         function determineScrollStep() {
           var tab = el[0].querySelector(tabSelector);
@@ -67,8 +68,6 @@ angular.module('directives.scrollableTabBar', [])
             }
           });
         }
-        // eslint-disable-next-line vars-on-top
-        var debouncedResizeHandler = _.debounce(onResize, DEBOUNCE_DELAY);
 
         function scrollBy(combinator) {
           tabContainer.scrollLeft = combinator(tabContainer.scrollLeft, SCROLL_STEP);
@@ -81,6 +80,7 @@ angular.module('directives.scrollableTabBar', [])
             && $window.matchMedia(MOBILE_ONLY_BREAKPOINT_VALUE).matches;
         }
 
+        debouncedResizeHandler = _.debounce(onResize, DEBOUNCE_DELAY);
         angular.element($window).on('resize', debouncedResizeHandler);
 
         scope.$on('$destroy', function () {

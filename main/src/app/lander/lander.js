@@ -97,6 +97,8 @@ angular.module('opintoniLander', [
         ) {
           var state = StateService.getStateFromDomain();
           var isDemo = Configuration.environment === Environments.DEMO;
+          var envUsers;
+          var users;
 
           function environmentUsers(environment) {
             if (environment === Environments.LOCAL
@@ -107,10 +109,8 @@ angular.module('opintoniLander', [
             }
             throw Error('unsupported environment for local login');
           }
-          // eslint-disable-next-line vars-on-top
-          var envUsers = environmentUsers(Configuration.environment);
-          // eslint-disable-next-line vars-on-top
-          var users = state === State.MY_TEACHINGS
+          envUsers = environmentUsers(Configuration.environment);
+          users = state === State.MY_TEACHINGS
             ? envUsers.teachers
             : envUsers.students;
 

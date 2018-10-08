@@ -95,9 +95,9 @@ angular.module('directives.attainments', [
         };
 
         $scope.toggleVisibility = function toggleVisibility(attainment) {
+          var index;
           if (!_.isUndefined($scope.whitelist)) {
-            // eslint-disable-next-line vars-on-top
-            var index = $scope.whitelist.indexOf(attainment.studyAttainmentId);
+            index = $scope.whitelist.indexOf(attainment.studyAttainmentId);
 
             if (index !== -1) {
               $scope.whitelist.splice(index, 1);

@@ -42,12 +42,12 @@ angular.module('utils.moment', ['services.language'])
 
   .service('momentDateToLocalDateArray', function () {
     return function convert(date) {
+      var dateAsArray;
       if (!date) {
         return null;
       }
-      // eslint-disable-next-line vars-on-top
-      var dateAsArray = _.take(date.toArray(), 3);
 
+      dateAsArray = _.take(date.toArray(), 3);
       // Month is zero indexed in moment, API requires months to start from one
       dateAsArray[1] += 1;
       return dateAsArray;

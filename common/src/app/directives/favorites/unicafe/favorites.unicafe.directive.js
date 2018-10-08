@@ -29,11 +29,13 @@ angular.module('directives.favorites.unicafe', [
   .factory('UnicafeOpenDaysParser', function () {
     function isRestaurantClosed(menuData, nowMoment) {
       var closed = false;
-
+      var exception;
+      var reqular;
+      var toDay;
       try {
-        var exception = menuData.information.business.exception; // eslint-disable-line vars-on-top
-        var reqular = menuData.information.business.regular; // eslint-disable-line vars-on-top
-        var toDay = _.capitalize(nowMoment.locale('FI').format('dd')); // eslint-disable-line vars-on-top
+        exception = menuData.information.business.exception;
+        reqular = menuData.information.business.regular;
+        toDay = _.capitalize(nowMoment.locale('FI').format('dd'));
 
         if (exception && exception.length > 0) {
           closed = closed || _.some(exception, function (e) {

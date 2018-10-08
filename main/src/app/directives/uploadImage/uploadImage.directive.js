@@ -44,11 +44,10 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
       var dimensions = { width: width, height: height };
       var currentMaxDimension = Math.max(width, height);
       var maxImageDimensions = MaxImageDimensions.get();
+      var factor;
 
       if (currentMaxDimension > maxImageDimensions) {
-        // eslint-disable-next-line vars-on-top
-        var factor = maxImageDimensions / currentMaxDimension;
-
+        factor = maxImageDimensions / currentMaxDimension;
         dimensions.resizedWidth = width * factor;
         dimensions.resizedHeight = height * factor;
       }

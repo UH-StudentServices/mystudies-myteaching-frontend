@@ -74,11 +74,11 @@ angular.module('directives.mobileToolbar', [
           .value();
 
         SessionService.isInRole(Role.STUDENT).then(function (isStudent) {
+          var optional;
           if (!isStudent || !StateService.currentOrParentStateMatches(State.MY_STUDIES)) {
             return;
           }
-          // eslint-disable-next-line vars-on-top
-          var optional = optionalLinks[Configuration.environment];
+          optional = optionalLinks[Configuration.environment];
 
           SessionService.isInPilotDegreeProgramme().then(function (isInPilotProgramme) {
             if (isInPilotProgramme) {
