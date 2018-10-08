@@ -27,7 +27,6 @@ angular.module('directives.weekFeed', [
   'services.state',
   'utils.loader'
 ])
-
   .constant('FeedItemTimeCondition', {
     ALL: 'ALL',
     UPCOMING: 'UPCOMING',
@@ -36,13 +35,11 @@ angular.module('directives.weekFeed', [
     CURRENT_OR_UPCOMING: 'CURRENT_OR_UPCOMING',
     PAST: 'PAST'
   })
-
   .constant('FeedItemSortCondition', {
     NONE: 'NONE',
     START_DATE_ASC: 'asc',
     START_DATE_DESC: 'desc'
   })
-
   .factory('FeedMessages', function (
     MessageTypes,
     WeekFeedMessageKeys
@@ -91,7 +88,6 @@ angular.module('directives.weekFeed', [
       getCalendarMessage: getCalendarMessage
     };
   })
-
   .factory('CourseView', function (FeedItemSortCondition, FeedItemTimeCondition, FeedItemTimeFilter) {
     function tagAsChild(child) {
       child.showAsChild = true;
@@ -367,7 +363,6 @@ angular.module('directives.weekFeed', [
       }
     };
   })
-
   .constant('TabConfiguration', {
     opintoni: [
       'SCHEDULE',
@@ -380,7 +375,6 @@ angular.module('directives.weekFeed', [
       'TEACHER_EXAMS'
     ]
   })
-
   .factory('FeedItemTimeFilter', function (FeedItemTimeCondition) {
     function isInTimeFrame(item, timeCondition, now) {
       var nowMoment = now || moment.utc();
@@ -409,7 +403,6 @@ angular.module('directives.weekFeed', [
 
     return { isInTimeFrame: isInTimeFrame };
   })
-
   .filter('filterFeedItems', function (FeedItemTimeCondition, FeedItemTimeFilter) {
     return function (items, timeCondition, now) {
       return _.filter(items, function (item) {
@@ -436,7 +429,6 @@ angular.module('directives.weekFeed', [
       }
     };
   })
-
   .constant('WeekFeedMessageKeys', {
     SCHEDULE: {
       info: { SCHEDULE_LIST: 'weekFeed.noEvents' },
@@ -475,10 +467,8 @@ angular.module('directives.weekFeed', [
       error: 'weekFeed.errors.errorLoadingExams'
     }
   })
-
   .constant('InitialVisibleItems', 5)
   .constant('LoaderKey', 'weekFeed')
-
   .directive('weekFeed', function (
     $q,
     $filter,
@@ -505,11 +495,8 @@ angular.module('directives.weekFeed', [
       },
       link: function ($scope) {
         var currentStateName = StateService.getRootStateName();
-
         var tabs = _.pick(Tabs, TabConfiguration[currentStateName]);
-
         var coursesPromise = $scope.coursesPromise;
-
         var eventsPromise = $scope.eventsPromise;
 
         function updateFeedItems() {

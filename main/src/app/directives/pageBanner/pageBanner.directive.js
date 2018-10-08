@@ -24,7 +24,6 @@ angular.module('directives.pageBanner', [
   'dibari.angular-ellipsis',
   'ngAnimate'
 ])
-
   .directive('pageBanner', function ($filter, NewsService, StateService) {
     return {
       restrict: 'E',
@@ -41,7 +40,6 @@ angular.module('directives.pageBanner', [
       }
     };
   })
-
   .directive('pageBannerToggle', function ($location, $anchorScroll, UserSettingsService, $translate) {
     return {
       restrict: 'E',
@@ -50,7 +48,6 @@ angular.module('directives.pageBanner', [
       templateUrl: 'app/directives/pageBanner/pageBannerToggle.html',
       link: function ($scope) {
         var hideTooltip = $translate.instant('banner.tooltip.hide');
-
         var showTooltip = $translate.instant('banner.tooltip.show');
 
         if ($scope.showBanner) {
