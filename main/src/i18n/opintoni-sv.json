@@ -289,6 +289,11 @@
     "dialogIntro": "Välj rätt utbildningsprogram och publicera dina mottagningstider. Om du inte väljer någonting, publiceras dina mottagningstider med lärarnas mottagningstider vid Språkcentrum.",
     "heading": "publicerade mottagningstider",
     "publish": "publicera",
+    "expiration": {
+      "date": "Giltighetsdatum:",
+      "info": "Efter giltighetsdatum kommer mottagningstider inte längre att visas på Instruktioner för studerande -sidorna.",
+      "expired": "Upphört. Uppdatera information."
+    },
     "degreeProgramme": "Välj de utbildningsprogrammen",
     "label": {
       "description": "Dina mottagningstider",
@@ -298,7 +303,8 @@
     "placeholder": {
       "description": "Till exempel, Mån 14-15, Tis 12-13",
       "additionalInfo": "Till exempel, adress till dina websidor eller blog",
-      "location": "Till exempel, rum numret"
+      "location": "Till exempel, rum numret",
+      "expirationDate": "Format yyyy-mm-dd"
     },
     "addNew": "Ny mottagstid...",
     "loading": "Mottagningstider laddas...",

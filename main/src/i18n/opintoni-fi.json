@@ -289,6 +289,11 @@
     "dialogIntro": "Julkaise vastaanottoaikasi valitsemissasi koulutusohjelmissa. Jos et valitse mitään koulutusohjelmaa, vastaanottosi näkyy Kielikeskuksen vastaanottoajoissa.",
     "heading": "julkaistut vastaanottoajat",
     "publish": "julkaise",
+    "expiration": {
+      "date": "Viimeinen voimassaolopäivä",
+      "info": "Viimeisen voimassaolopäivän jälkeen vastaanottoaika ei näy Opiskelijan ohjeissa. ",
+      "expired": "Vanhentunut. Päivitä tiedot."
+    },
     "degreeProgramme": "Valitse haluamasi koulutusohjelmat",
     "label": {
       "description": "Vastaanottoaikasi",
@@ -298,7 +303,8 @@
     "placeholder": {
       "description": "Esim maanantaisin 14-15, tiistaisin 12-13",
       "additionalInfo": "Esim blogi tai verkkosivuosoite",
-      "location": "Esim huoneen numero"
+      "location": "Esim huoneen numero",
+      "expirationDate": "Muodossa dd.mm.yyyy"
     },
     "addNew": "Uusi aika...",
     "loading": "Ladataan vastaanottoaikoja...",

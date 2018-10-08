@@ -36,6 +36,7 @@
 
     padding: 0px 10px 10px 0px;
     text-transform: uppercase;
+    font-weight: bold;
 
     .degree-programme__remove {
       @include vertically-center;
@@ -64,6 +65,7 @@
 
   &__list {
     display: flex;
+    margin-bottom: 1em;
   }
 
   &__item-container {
@@ -107,5 +109,8 @@
       color: white;
       font-size: 1rem;
     }
+  }
+  &__expired {
+    color: #fca311;
   }
 }

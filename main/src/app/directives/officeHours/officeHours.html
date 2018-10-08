@@ -27,7 +27,7 @@
 
   <div ng-if="!loadError && loaded && officeHoursList.length > 0" class="office-hours__box">
     <h3 class="office-hours__title" translate="officeHours.title" />
-    <p class="text-transform-capitalize" translate="officeHours.heading" />
+    <p translate="officeHours.expiration.info" />
     <ul>
       <li class="office-hours__item" ng-repeat="officeHours in officeHoursList track by $index">
 
@@ -40,6 +40,12 @@
             </ul>
             <div class="office-hours__description">
               <div ng-repeat="row in [officeHours.description, officeHours.additionalInfo, officeHours.location] track by $index">{{row}}</div>
+            </div>
+            <div class="office-hours__expiration_date" ng-if="!officeHours.expired">
+              {{::('officeHours.expiration.date' | translate)}} {{ officeHours.expirationDate}}
+            </div>
+            <div class="office-hours__expired" ng-if="officeHours.expired">
+              {{::('officeHours.expiration.expired' | translate)}}
             </div>
           </div>
           <div class="office-hours__item-icons">
@@ -102,6 +108,10 @@
       <label>
         {{::('officeHours.label.location' | translate)}}
         <input type="text" class="office-hours__input" placeholder="{{::('officeHours.placeholder.location' | translate)}}..." ng-model="officeHoursUnderEdit.location">
+      </label>
+      <label>
+        {{::('officeHours.expiration.date' | translate)}} ({{::('general.mandatory' | translate)}})
+        <input type="text" class="office-hours__input" placeholder="{{::('officeHours.placeholder.expirationDate' | translate)}}..." ng-model="officeHoursUnderEdit.expirationDate">
       </label>
 
     </div>

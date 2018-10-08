@@ -289,6 +289,11 @@
     "dialogIntro": "Choose the right degree programme(s) and publish your consultation hours. If you don't pick any programme, your hours will be shown in Language Centre teachers' office hours.",
     "heading": "published consultation hours",
     "publish": "publish",
+    "expiration": {
+      "date": "Expiration date:",
+      "info": "After the expiration date, the consultation hours will no longer be displayed in the Instructions for Students.",
+      "expired": "Expired. Update information."
+    },
     "degreeProgramme": "Select degree programmes",
     "label": {
       "description": "Your consultation hours",
@@ -298,7 +303,8 @@
     "placeholder": {
       "description": "For example Mon 14-15, Tue 12-13",
       "additionalInfo": "For example blog or website address",
-      "location": "For example room number"
+      "location": "For example room number",
+      "expirationDate": "Format mm/dd/yyyy"
     },
     "addNew": "Add new...",
     "loading": "Loading consultation hours...",
