@@ -21,7 +21,6 @@ angular.module('services.state', [
   'services.session',
   'services.configuration'
 ])
-
   .constant('State', {
     MY_STUDIES: 'opintoni',
     MY_TEACHINGS: 'opetukseni',
@@ -31,7 +30,6 @@ angular.module('services.state', [
     LOCAL_LOGIN: 'localLogin',
     LANDER: 'login'
   })
-
   .factory('StateService', function ($state, $location, State, Configuration, Role, ConfigurationProperties) {
     var stateMatches = function (state, name) {
       if (state === name || state.name === name) {

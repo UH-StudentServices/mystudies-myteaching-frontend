@@ -20,7 +20,6 @@ angular.module('services.state', [
   'services.portfolioRole',
   'services.configuration'
 ])
-
   .constant('State', {
     MY_STUDIES: 'opintoni',
     MY_TEACHINGS: 'opetukseni',
@@ -28,10 +27,8 @@ angular.module('services.state', [
     RESTRICTED: 'restricted',
     PUBLIC: 'public'
   })
-
   .factory('StateService', function (State, PortfolioRoleService, Configuration, ConfigurationProperties, $location) {
     var currentState = State.PUBLIC;
-
     var portfolioRole = PortfolioRoleService.getActiveRole();
 
     function hasPortfolioPathInSessionDescriptor(session, lang, userpath) {

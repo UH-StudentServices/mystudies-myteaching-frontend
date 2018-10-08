@@ -21,9 +21,8 @@ angular.module('services.focus', [])
     var focusableQuery = 'a[href], area[href], input:not([disabled]), select:not([disabled])'
       + ', textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex]'
       + ', *[contenteditable]';
-
-    var currentFocusElement; var
-      storedFocusElement;
+    var currentFocusElement;
+    var storedFocusElement;
 
     $('body').on('focusin', function (event) {
       currentFocusElement = $(event.target);

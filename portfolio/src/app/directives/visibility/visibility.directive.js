@@ -123,9 +123,7 @@ angular.module('directives.visibility',
         scope: {},
         link: function (scope, $element, $attr, ctrl, $transclude) {
           var preview = PreviewService.isPreview();
-
           var currentState = StateService.getCurrent();
-
           var limitVisibility = scope.$parent.$eval($attr.limitVisibility) || $attr.limitVisibility;
 
           function isLimitedByPrivateVisibility(visibility) {

@@ -19,9 +19,7 @@ angular.module('services.focus', [])
 
   .factory('Focus', function ($timeout) {
     var currentFocusElement;
-
     var storedFocusElement;
-
     var focusableQuery = 'a[href], area[href], input:not([disabled]), select:not([disabled])'
                          + ', textarea:not([disabled]), button:not([disabled]), iframe, object,'
                          + ' embed, *[tabindex], *[contenteditable]';
