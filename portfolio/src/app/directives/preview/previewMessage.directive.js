@@ -17,13 +17,13 @@
 
 angular.module('directives.previewMessage', ['services.preview'])
 
-  .directive('previewMessage', function() {
+  .directive('previewMessage', function () {
     return {
       restrict: 'E',
       replace: true,
       scope: {},
       templateUrl: 'app/directives/preview/previewMessage.html',
-      controller: function($scope, PreviewService, $window, $timeout) {
+      controller: function ($scope, PreviewService, $window, $timeout) {
         $scope.showMessage = PreviewService.isPreview();
         $scope.exitPreview = PreviewService.exitPreview;
 

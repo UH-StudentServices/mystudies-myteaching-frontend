@@ -15,36 +15,32 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.showSamples', [
-  'dibari.angular-ellipsis'
-])
+angular.module('directives.showSamples', ['dibari.angular-ellipsis'])
 
-.directive('showSamples', function() {
-  return {
-    restrict: 'E',
-    scope: {
-      samples: '='
-    },
-    templateUrl: 'app/directives/samples/showSamples.html',
-    link: function($scope) {
-      $scope.formatUrl = function(url) {
-        if (url) {
-          var normalizedUrl = url.toLowerCase();
+  .directive('showSamples', function () {
+    return {
+      restrict: 'E',
+      scope: { samples: '=' },
+      templateUrl: 'app/directives/samples/showSamples.html',
+      link: function ($scope) {
+        $scope.formatUrl = function (url) {
+          var normalizedUrl;
+          if (url) {
+            normalizedUrl = url.toLowerCase();
 
-          if (normalizedUrl.startsWith('http://') || normalizedUrl.startsWith('https://')) {
-            return url;
-          } else {
+            if (normalizedUrl.startsWith('http://') || normalizedUrl.startsWith('https://')) {
+              return url;
+            }
             return 'http://' + url;
           }
-        }
-        return '';
-      };
-      $scope.showFull = function(sampleItem) {
-        sampleItem.showFull = true;
-      };
-      $scope.hideFull = function(sampleItem) {
-        sampleItem.showFull = false;
-      };
-    }
-  };
-});
+          return '';
+        };
+        $scope.showFull = function (sampleItem) {
+          sampleItem.showFull = true;
+        };
+        $scope.hideFull = function (sampleItem) {
+          sampleItem.showFull = false;
+        };
+      }
+    };
+  });

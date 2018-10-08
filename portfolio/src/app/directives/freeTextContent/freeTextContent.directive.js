@@ -19,22 +19,23 @@ angular.module('directives.freeTextContent', [
   'services.freeTextContent',
   'directives.editLink',
   'constants.ngEmbedOptions',
-  'portfolioAnalytics'])
+  'portfolioAnalytics'
+])
 
-  .factory('FreeTextContentFactory', function($translate) {
+  .factory('FreeTextContentFactory', function ($translate) {
+    var defaultTitle = $translate.instant('freeTextContent.defaultTitle');
 
-    var defaultTitle = $translate.instant('freeTextContent.defaultTitle'),
-        defaultText = $translate.instant('freeTextContent.defaultText');
+    var defaultText = $translate.instant('freeTextContent.defaultText');
 
     return {
-      defaultFreeTextContent: function(visibilityDescriptor) {
+      defaultFreeTextContent: function (visibilityDescriptor) {
         return _.assign({}, visibilityDescriptor, {
           title: defaultTitle,
           text: defaultText
         });
       },
-      fixedFreeTextContent: function(visibilityDescriptor, headingKey, portfolioLang) {
-        var lang = portfolioLang || $translate.use();
+      fixedFreeTextContent: function (visibilityDescriptor, headingKey, portfolioLang) {
+        var lang = portfolioLang || $translate.use();
 
         return _.assign({}, visibilityDescriptor, {
           title: $translate.instant(headingKey, {}, '', lang),
@@ -44,14 +45,13 @@ angular.module('directives.freeTextContent', [
     };
   })
 
-  .directive('freeTextContent', function(FreeTextContentService,
-                                         FreeTextContentFactory,
-                                         VerificationDialog,
-                                         PreviewService,
-                                         NG_EMBED_OPTIONS,
-                                         $translate,
-                                         AnalyticsService) {
-
+  .directive('freeTextContent', function (FreeTextContentService,
+    FreeTextContentFactory,
+    VerificationDialog,
+    PreviewService,
+    NG_EMBED_OPTIONS,
+    $translate,
+    AnalyticsService) {
     return {
       restrict: 'E',
       replace: true,
@@ -63,9 +63,9 @@ angular.module('directives.freeTextContent', [
         portfolioLang: '@',
         deletable: '='
       },
-      link: function(scope, el, attrs) {
-        var visibilityDescriptor = getVisibilityDescriptor(),
-            freeTextContentSubject;
+      link: function (scope) {
+        var freeTextContentSubject;
+        var visibilityDescriptor;
 
         function getVisibilityDescriptor() {
           return {
@@ -73,6 +73,8 @@ angular.module('directives.freeTextContent', [
             instanceName: scope.instanceName || null
           };
         }
+
+        visibilityDescriptor = getVisibilityDescriptor();
 
         function getMatchingItem(freeTextContentItems, searchCriteria) {
           var filteredFreeTextContentItems = freeTextContentItems.filter(_.matches(searchCriteria));
@@ -85,15 +87,19 @@ angular.module('directives.freeTextContent', [
         }
 
         function createMatchingItem() {
-          return scope.headingKey ?
-            FreeTextContentFactory.fixedFreeTextContent(visibilityDescriptor, scope.headingKey, scope.portfolioLang) :
-            FreeTextContentFactory.defaultFreeTextContent(visibilityDescriptor);
+          return scope.headingKey
+            ? FreeTextContentFactory.fixedFreeTextContent(
+              visibilityDescriptor,
+              scope.headingKey,
+              scope.portfolioLang
+            )
+            : FreeTextContentFactory.defaultFreeTextContent(visibilityDescriptor);
         }
 
         function subscribeToChanges() {
           freeTextContentSubject = FreeTextContentService.getFreeTextContentSubject();
 
-          freeTextContentSubject.subscribe(function(freeTextContentItems) {
+          freeTextContentSubject.subscribe(function (freeTextContentItems) {
             var matchingItem = getMatchingItem(freeTextContentItems, visibilityDescriptor);
 
             if (matchingItem) {
@@ -103,7 +109,8 @@ angular.module('directives.freeTextContent', [
         }
 
         function isTranslatableHeading() {
-          return scope.headingKey && $translate.instant(scope.headingKey) === scope.freeTextContentItem.title;
+          var translatedHeading = scope.headingKey && $translate.instant(scope.headingKey);
+          return translatedHeading === scope.freeTextContentItem.title;
         }
 
         function trackIfNeeded(oldText, newText) {
@@ -112,13 +119,13 @@ angular.module('directives.freeTextContent', [
           // <a href="https://student.helsinki.fi/api/public/v1/portfolio/files/olli-opiskelija/some.file">lalala</a>
           // eslint-disable-next-line max-len
           var hostedFilesRe = new RegExp('<a href="https?://' + host + '.*/api/(?:public|private)/v1/portfolio/files.*">.*</a>', 'gim');
+          // eslint-disable-next-line no-useless-escape
           var imageRe = /((?:https?|ftp|file):\/\/\S*\.(?:gif|jpg|jpeg|tiff|png|svg|webp)(\?([\w=&_%\-]*))?)/gi;
-          // eslint-disable-next-line max-len
+          // eslint-disable-next-line max-len, no-useless-escape
           var linksRe = /(?:^|[^"'])(?:(https?|ftp|file):\/\/|www\.)[-A-Z0-9+()&@$#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|]/gi;
 
           function getOtherLinks(text) {
-            text = text.replace(imageRe, '').replace(hostedFilesRe, '');
-            return text.match(linksRe);
+            return text.replace(imageRe, '').replace(hostedFilesRe, '').match(linksRe);
           }
           function getHostedFiles(text) {
             return text.match(hostedFilesRe);
@@ -152,12 +159,15 @@ angular.module('directives.freeTextContent', [
           return true;
         }
 
-        function confirmDelete() {
-          VerificationDialog.open('general.reallyDelete', 'general.ok', 'general.cancel', deleteItem, function() {});
+        function deleteItem() {
+          FreeTextContentService.deleteFreeTextContent(
+            scope.freeTextContentItem,
+            visibilityDescriptor
+          );
         }
 
-        function deleteItem() {
-          FreeTextContentService.deleteFreeTextContent(scope.freeTextContentItem, visibilityDescriptor);
+        function confirmDelete() {
+          VerificationDialog.open('general.reallyDelete', 'general.ok', 'general.cancel', deleteItem, function () {});
         }
 
         function toggleEdit() {
@@ -166,7 +176,7 @@ angular.module('directives.freeTextContent', [
         }
 
         function init() {
-          FreeTextContentService.getInitialData().then(function(initialData) {
+          FreeTextContentService.getInitialData().then(function (initialData) {
             var matchingItem = getMatchingItem(initialData, visibilityDescriptor);
 
             scope.freeTextContentItem = matchingItem || createMatchingItem();

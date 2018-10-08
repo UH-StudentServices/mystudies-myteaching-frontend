@@ -17,18 +17,12 @@
 
 angular.module('resources.metaData', [])
 
-  .factory('MetaDataResource', function($resource) {
-
-    var metaDataResource = $resource('/api/private/v1/page-meta-data?url=:pageUrl', {}, {
-      getMetaData: {method: 'GET'}
-    }
-    );
+  .factory('MetaDataResource', function ($resource) {
+    var metaDataResource = $resource('/api/private/v1/page-meta-data?url=:pageUrl', {}, { getMetaData: { method: 'GET' } });
 
     function getMetaData(pageUrl) {
-      return metaDataResource.getMetaData({pageUrl: pageUrl}).$promise;
+      return metaDataResource.getMetaData({ pageUrl: pageUrl }).$promise;
     }
 
-    return {
-      getMetaData: getMetaData
-    };
+    return { getMetaData: getMetaData };
   });

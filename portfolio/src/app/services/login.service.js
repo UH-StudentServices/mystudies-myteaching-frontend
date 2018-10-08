@@ -18,30 +18,26 @@
 angular.module('services.login', [
   'services.state',
   'services.configuration',
-  'ngCookies'])
+  'ngCookies'
+])
 
-  .factory('LoginService', function($window,
-                                    $cookies,
-                                    StateService,
-                                    State,
-                                    Configuration,
-                                    RedirectCookie) {
-
-    function loginPathForState(state) {
-      return state === State.MY_TEACHINGS ? Configuration.loginUrlTeacher : Configuration.loginUrlStudent;
-    }
-
+  .factory('LoginService', function ($window,
+    $cookies,
+    StateService,
+    State,
+    Configuration,
+    RedirectCookie) {
     function goToLogin(originalUrl) {
-      var state = StateService.getStateFromDomain(),
-          loginUrl = state === State.MY_TEACHINGS ? Configuration.loginUrlTeacher : Configuration.loginUrlStudent;
+      var state = StateService.getStateFromDomain();
+      var loginUrl = state === State.MY_TEACHINGS
+        ? Configuration.loginUrlTeacher
+        : Configuration.loginUrlStudent;
 
       $cookies.put(RedirectCookie.NAME, originalUrl,
-        {expires: moment().add(RedirectCookie.TIMEOUT_IN_MINUTES, 'minutes').toDate()});
+        { expires: moment().add(RedirectCookie.TIMEOUT_IN_MINUTES, 'minutes').toDate() });
 
-      $window.location.href  = loginUrl;
+      $window.location.href = loginUrl;
     }
 
-    return {
-      goToLogin: goToLogin
-    };
+    return { goToLogin: goToLogin };
   });

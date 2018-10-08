@@ -16,8 +16,7 @@
  */
 
 angular.module('controllers.ckeditor', ['ckeditor', 'services.language'])
-  .controller('CkeditorCtrl', function($scope, LanguageService, PortfolioFilesResourcePath) {
-
+  .controller('CkeditorCtrl', function ($scope, LanguageService, PortfolioFilesResourcePath) {
     $scope.options = {
       language: LanguageService.getCurrent(),
 

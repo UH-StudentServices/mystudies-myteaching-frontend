@@ -16,13 +16,13 @@
  */
 
 angular.module('filters.formatting', [])
-  .filter('capitalize', function() {
-    return function(inputString) {
+  .filter('capitalize', function () {
+    return function (inputString) {
       return _.capitalize(inputString);
     };
   })
-  .filter('upperFirst', function() {
-    return function(inputString) {
+  .filter('upperFirst', function () {
+    return function (inputString) {
       return _.upperFirst(inputString);
     };
   });

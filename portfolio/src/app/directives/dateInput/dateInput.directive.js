@@ -19,18 +19,18 @@
 
 angular.module('directives.dateInput', [])
 
-  .directive('dateInput', function() {
+  .directive('dateInput', function () {
     return {
       restrict: 'A',
       require: 'ngModel',
-      link: function(scope, elm, attrs, ngModelCtrl) {
+      link: function (scope, elm, attrs, ngModelCtrl) {
         var format = attrs.dateInput || 'DD.MM.YYYY';
 
-        ngModelCtrl.$formatters.push(function(modelValue) {
+        ngModelCtrl.$formatters.push(function (modelValue) {
           return modelValue ? moment(modelValue).format(format) : '';
         });
 
-        ngModelCtrl.$parsers.unshift(function(viewValue) {
+        ngModelCtrl.$parsers.unshift(function (viewValue) {
           return moment(viewValue, format);
         });
       }

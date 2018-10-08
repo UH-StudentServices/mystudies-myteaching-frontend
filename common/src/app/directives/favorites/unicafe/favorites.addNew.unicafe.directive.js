@@ -20,14 +20,14 @@ angular.module('directives.favorites.addNew.unicafe', [
   'directives.favorites.addNew'
 ])
 
-  .directive('addNewUnicafeFavorite', function(FavoritesService,
-                                               NewFavoriteAddedEvent) {
+  .directive('addNewUnicafeFavorite', function (FavoritesService,
+    NewFavoriteAddedEvent) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/unicafe/favorites.addNew.unicafe.html',
       replace: true,
       scope: true,
-      link: function($scope) {
+      link: function ($scope) {
         $scope.loading = true;
 
         FavoritesService.getUnicafeRestaurantOptions()
@@ -38,7 +38,10 @@ angular.module('directives.favorites.addNew.unicafe', [
 
         $scope.addUnicafeFavorite = function addUnicafeFavorite(restaurant) {
           if (restaurant.id > 0) {
-            FavoritesService.saveUnicafeFavorite({restaurantId: restaurant.id}, $scope.favorite.type)
+            FavoritesService.saveUnicafeFavorite(
+              { restaurantId: restaurant.id },
+              $scope.favorite.type
+            )
               .then(function saveUnicafeSuccess() {
                 $scope.$emit(NewFavoriteAddedEvent);
               });

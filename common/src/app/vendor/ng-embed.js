@@ -18,35 +18,34 @@
 // Locally modified version of ng-embed (https://github.com/ritz078/ng-embed)
 // to support embedding unitube-videos
 
-(function() {
-
+(function () {
   'use strict';
 
   angular.module('ngEmbed', ['ngSanitize'])
     .constant('NG_EMBED_BASIC_EMOTICONS', {
-      ':)': {text: ':)', 'class': 'smiley', code: 'e60a'},
-      ':D': {text: ':D', 'class': 'happy', code: 'e608'},
-      ':d': {text: ':d', 'class': 'happy', code: 'e608'},
-      ':(': {text: ':(', 'class': 'sad', code: 'e60e'},
-      ':/': {text: ':/', 'class': 'wondering', code: 'e620'},
-      ':P': {text: ':P', 'class': 'tongue', code: 'e60c'},
-      ':p': {text: ':p', 'class': 'tongue', code: 'e60c'},
-      '3:)': {text: '3:)', 'class': 'evil', code: 'e618'},
-      '(^)': {text: '(^)', 'class': 'thumbsup2', code: 'e607'},
-      ';)': {text: ';)', 'class': 'wink', code: 'e610'},
-      ':o': {text: ':o', 'class': 'shocked', code: 'e61a'},
-      '-_-': {text: '-_-', 'class': 'neutral', code: 'e61e'},
-      '(y)': {text: '(y)', 'class': 'thumbs-up', code: 'e606'},
-      ':*': {text: ':*', 'class': 'heart', code: 'e604'},
-      '&lt;3': {text: '&lt;3', 'class': 'heart', code: 'e604'},
-      '<3': {text: '<3', 'class': 'heart', code: 'e604'},
-      '&lt;/3': {text: '&lt;/3', 'class': 'heart-broken', code: 'e605'},
-      '</3': {text: '</3', 'class': 'heart-broken', code: 'e605'},
-      '^_^': {text: '^_^', 'class': 'grin', code: 'e612'},
-      '8-)': {text: '8-)', 'class': 'cool', code: 'e614'},
-      '8|': {text: '8|', 'class': 'cool', code: 'e614'},
-      ':S': {text: ':S', 'class': 'confused', code: 'e61c'},
-      ':s': {text: ':s', 'class': 'confused', code: 'e61c'}
+      ':)': { text: ':)', class: 'smiley', code: 'e60a' },
+      ':D': { text: ':D', class: 'happy', code: 'e608' },
+      ':d': { text: ':d', class: 'happy', code: 'e608' },
+      ':(': { text: ':(', class: 'sad', code: 'e60e' },
+      ':/': { text: ':/', class: 'wondering', code: 'e620' },
+      ':P': { text: ':P', class: 'tongue', code: 'e60c' },
+      ':p': { text: ':p', class: 'tongue', code: 'e60c' },
+      '3:)': { text: '3:)', class: 'evil', code: 'e618' },
+      '(^)': { text: '(^)', class: 'thumbsup2', code: 'e607' },
+      ';)': { text: ';)', class: 'wink', code: 'e610' },
+      ':o': { text: ':o', class: 'shocked', code: 'e61a' },
+      '-_-': { text: '-_-', class: 'neutral', code: 'e61e' },
+      '(y)': { text: '(y)', class: 'thumbs-up', code: 'e606' },
+      ':*': { text: ':*', class: 'heart', code: 'e604' },
+      '&lt;3': { text: '&lt;3', class: 'heart', code: 'e604' },
+      '<3': { text: '<3', class: 'heart', code: 'e604' },
+      '&lt;/3': { text: '&lt;/3', class: 'heart-broken', code: 'e605' },
+      '</3': { text: '</3', class: 'heart-broken', code: 'e605' },
+      '^_^': { text: '^_^', class: 'grin', code: 'e612' },
+      '8-)': { text: '8-)', class: 'cool', code: 'e614' },
+      '8|': { text: '8|', class: 'cool', code: 'e614' },
+      ':S': { text: ':S', class: 'confused', code: 'e61c' },
+      ':s': { text: ':s', class: 'confused', code: 'e61c' }
     })
     .constant('NG_EMBED_EMOJI_LIST', [
       // eslint-disable-next-line max-len
@@ -127,19 +126,19 @@
       },
       tweetEmbed: true,
       tweetOptions: {
-        //The maximum width of a rendered Tweet in whole pixels. Must be between 220 and 550 inclusive.
+        // The maximum width of a rendered Tweet in whole pixels. Must be between 220 and 550 inclusive.
         maxWidth: 550,
-        //When set to true or 1 links in a Tweet are not expanded to photo, video, or link previews.
+        // When set to true or 1 links in a Tweet are not expanded to photo, video, or link previews.
         hideMedia: false,
-        //When set to true or 1 a collapsed version of the previous Tweet in a conversation thread
-        //will not be displayed when the requested Tweet is in reply to another Tweet.
+        // When set to true or 1 a collapsed version of the previous Tweet in a conversation thread
+        // will not be displayed when the requested Tweet is in reply to another Tweet.
         hideThread: false,
-        //Specifies whether the embedded Tweet should be floated left, right, or center in
-        //the page relative to the parent element.Valid values are left, right, center, and none.
-        //Defaults to none, meaning no alignment styles are specified for the Tweet.
+        // Specifies whether the embedded Tweet should be floated left, right, or center in
+        // the page relative to the parent element.Valid values are left, right, center, and none.
+        // Defaults to none, meaning no alignment styles are specified for the Tweet.
         align: 'none',
-        //Request returned HTML and a rendered Tweet in the specified.
-        //Supported Languages listed here (https://dev.twitter.com/web/overview/languages)
+        // Request returned HTML and a rendered Tweet in the specified.
+        // Supported Languages listed here (https://dev.twitter.com/web/overview/languages)
         lang: 'en'
       },
       twitchtvEmbed: true,
@@ -150,14 +149,15 @@
       ustreamEmbed: true,
       soundCloudEmbed: true,
       soundCloudOptions: {
-        height: 160, themeColor: 'f50000',   //Hex Code of the player theme color
+        height: 160,
+        themeColor: 'f50000', // Hex Code of the player theme color
         autoPlay: false,
         hideRelated: false,
         showComments: true,
         showUser: true,
         showReposts: false,
-        visual: false,         //Show/hide the big preview image
-        download: false          //Show/Hide download buttons
+        visual: false, // Show/hide the big preview image
+        download: false // Show/Hide download buttons
       },
       spotifyEmbed: true,
       codepenEmbed: true,
@@ -175,8 +175,7 @@
     .filter('embed', EmbedFilter)
 
     .constant('NG_DEFAULT_TEMPLATE_URL', 'ng-embed-default-template.html')
-    .run(['$templateCache', 'NG_DEFAULT_TEMPLATE_URL', function($templateCache, NG_DEFAULT_TEMPLATE_URL) {
-
+    .run(['$templateCache', 'NG_DEFAULT_TEMPLATE_URL', function ($templateCache, NG_DEFAULT_TEMPLATE_URL) {
       // eslint-disable-next-line max-len
       var template = '<div ng-bind-html="neText"></div> <div class="ne-video" ng-if="video.host" class="fade"> <div class="ne-video-preview" ng-hide="nePlayVideo || !options.video.details"> <div class="ne-video-thumb" ng-click="nePlayVideo=!nePlayVideo"> <img ng-src="{{video.thumbnail}}" alt=""/> <i class="fa fa-play-circle-o"></i> </div> <div class="ne-video-detail"> <div class="ne-video-title"> <a ng-href="{{video.url}}">{{video.title}}</a> </div> <div class="ne-video-desc"> {{video.description}} </div> <div class="ne-video-stats"> <span><i class="fa fa-eye"></i> {{video.views}}</span> <span><i class="fa fa-heart"></i> {{video.likes}}</span> </div> </div> </div> <div class="ne-video-player" ng-if="nePlayVideo || !(options.video.details)"> <iframe ng-src="{{video.embedSrc}}" frameBorder="0" width="{{video.width}}" height="{{video.height}}" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> </div> </div> <div class="ne-video" ng-if="video.basic"> <div class="ne-video-player"> <div class="player"> <video ng-src="{{video.basic}}" controls></video> </div> </div> </div> <div ng-init="neImageLong=false" ng-class="{false:\'ne-image\', true:\'ne-image ne-image-long\'}[neImageLong]" ng-if="image.url"> <div class="ne-image-wrapper"> <img ng-src="{{image.url}}" ng-click="neImageLong=!neImageLong" alt=""/> </div> </div> <div class="ne-pdf" ng-if="pdf.url"> <div class="ne-pdf-preview" ng-hide="neShowPdf"> <div class="ne-pdf-icon"> <i class="fa fa-file-pdf-o"></i> </div> <div class="ne-pdf-detail" > <div class="ne-pdf-title"> <a href="">{{pdf.url}}</a> </div> <div class="ne-pdf-view"> <button><i class="fa fa-download"></i> <a ng-href="{{pdf.url}}" target="_blank">Download</a></button> <button ng-click="neShowPdf=!neShowPdf"><i class="fa fa-eye"></i> View PDF</button> </div> </div> </div> <div class="ne-pdf-viewer" ng-if="neShowPdf" ng-show="neShowPdf"> <iframe ng-src="{{pdf.url}}" frameBorder="0"></iframe> </div> </div> <div class="ne-audio" ng-if="audio.url"> <audio ng-src="{{audio.url}}" controls></audio> </div> <div ng-if="tweets" ng-repeat="tweet in tweets"> <div ng-bind-html="tweet"></div> </div> <div ng-if="videoServices" class="ne-video" ng-repeat="v in videoServices"> <div class="ne-video-player"> <div class="player"> <div ng-bind-html="v"></div> </div> </div> </div> <div ng-if="audioServices" class="ne-audio" ng-repeat="a in audioServices"> <div ng-bind-html="a"></div> </div> <div ng-if="codeServices" class="ne-embed" ng-repeat="c in codeServices"> <div ng-bind-html="c"></div> </div> <div ng-if="gist" class="ne-gist" ng-repeat="g in gist"> <ne-gist id="{{g}}"></ne-gist> </div>';
 
@@ -185,32 +184,31 @@
 
     .directive('ngEmbed', ngEmbedDirective)
 
-    //This directive is a modification of a module developed by Scott Corgan.
-    //present at scottcorgan/angular-gist
-    .directive('neGist', function() {
+    // This directive is a modification of a module developed by Scott Corgan.
+    // present at scottcorgan/angular-gist
+    .directive('neGist', function () {
       return {
         restrict: 'EA',
         replace: true,
         template: '<div></div>',
-        link: function(scope, element, attrs) {
+        link: function (scope, element, attrs) {
           appendGistToElement(element[0], attrs.id);
         }
       };
     });
 
   ngEmbedDirective.$inject = ['$filter', '$sce', '$http', '$timeout', '$q', 'NG_DEFAULT_TEMPLATE_URL',
-                              'NG_EMBED_REGEXP_PATTERNS', 'NG_EMBED_DEFAULT_OPTIONS'];
+    'NG_EMBED_REGEXP_PATTERNS', 'NG_EMBED_DEFAULT_OPTIONS'];
 
   function ngEmbedDirective($filter, $sce, $http, $timeout, $q, NG_DEFAULT_TEMPLATE_URL,
-                            NG_EMBED_REGEXP_PATTERNS, NG_EMBED_DEFAULT_OPTIONS) {
-
+    NG_EMBED_REGEXP_PATTERNS, NG_EMBED_DEFAULT_OPTIONS) {
     return {
       restrict: 'AE',
       scope: true,
-      templateUrl: function(element, attributes) {
+      templateUrl: function (element, attributes) {
         return attributes.embedTemplateUrl || NG_DEFAULT_TEMPLATE_URL;
       },
-      link: function(scope, elements, attributes) {
+      link: function (scope, elements, attributes) {
         var embedFilter = $filter('embed');
         var httpProtocol = getHttpProtocol();
 
@@ -223,10 +221,10 @@
         extendDeep(options, userOptions);
 
         var videoProcess = {
-          calcDimensions: function(options) {
+          calcDimensions: function (options) {
             var dimensions = {
-              'width': null,
-              'height': null
+              width: null,
+              height: null
             };
 
             dimensions.width = options.video.width;
@@ -234,29 +232,29 @@
 
             if (options.video.height && options.video.width) {
               return dimensions;
-            } else if (options.video.height) {
+            } if (options.video.height) {
               dimensions.width = options.video.height / 390 * 640;
               return dimensions;
-            } else if (options.video.width) {
+            } if (options.video.width) {
               dimensions.height = dimensions.width / 640 * 390;
               return dimensions;
-            } else {
-              dimensions.width = 640;
-              dimensions.height = 390;
-              return dimensions;
             }
+            dimensions.width = 640;
+            dimensions.height = 390;
+            return dimensions;
           },
-          getRequestConfig: function() {
+          getRequestConfig: function () {
             // clear existing headers if present for this http request
             return {
               headers: {
-                'Authorization': undefined
+                Authorization: undefined
               }
             };
           },
 
-          youtubeEmbed: function(data, options) {
-            var promise, video;
+          youtubeEmbed: function (data, options) {
+            var promise; var
+              video;
 
             if (data.match(NG_EMBED_REGEXP_PATTERNS.youtube)) {
               var dimensions = videoProcess.calcDimensions(options);
@@ -269,12 +267,11 @@
               };
 
               if (options.video.details) {
-
                 // eslint-disable-next-line max-len
                 promise = $http.get('https://www.googleapis.com/youtube/v3/videos?id=' + video.id + '&key=' + options.gdevAuth + '&part=snippet,statistics', videoProcess.getRequestConfig())
-                  .then(function(r) {
-                    var autoPlay = options.video.autoPlay === undefined ||
-                      options.video.autoPlay === true ? '?autoplay=1' : '?autoplay=0';
+                  .then(function (r) {
+                    var autoPlay = options.video.autoPlay === undefined
+                      || options.video.autoPlay === true ? '?autoplay=1' : '?autoplay=0';
                     var ytData = r.data.items[0];
 
                     video.title = ytData.snippet.title;
@@ -304,8 +301,9 @@
             return promise;
           },
 
-          vimeoEmbed: function(data, options) {
-            var promise, video;
+          vimeoEmbed: function (data, options) {
+            var promise; var
+              video;
 
             if (data.match(NG_EMBED_REGEXP_PATTERNS.vimeo)) {
               var dimensions = videoProcess.calcDimensions(options);
@@ -318,13 +316,12 @@
               };
 
               if (options.video.details) {
-
                 // eslint-disable-next-line max-len
                 promise = $http.get('https://vimeo.com/api/v2/video/' + video.id + '.json', videoProcess.getRequestConfig())
-                  .then(function(r) {
+                  .then(function (r) {
                     var d = r.data;
-                    var autoPlay = options.video.autoPlay === undefined ||
-                      options.video.autoPlay === true ? '&autoplay=1' : '&autoplay=0';
+                    var autoPlay = options.video.autoPlay === undefined
+                      || options.video.autoPlay === true ? '&autoplay=1' : '&autoplay=0';
 
                     video.title = d[0].title;
                     video.rawDescription = d[0].description
@@ -357,15 +354,15 @@
             return promise;
           },
 
-          embed: function(data, options) {
+          embed: function (data, options) {
             // show only youtube video if both vimeo and youtube videos are present.
             return videoProcess.youtubeEmbed(data, options)
-              .catch(function() {
+              .catch(function () {
                 return videoProcess.vimeoEmbed(data, options);
               });
           },
 
-          embedBasic: function(data) {
+          embedBasic: function (data) {
             if (data.match(NG_EMBED_REGEXP_PATTERNS.basicVideo)) {
               scope.video.basic = $sce.trustAsResourceUrl(RegExp.$1);
             }
@@ -373,23 +370,23 @@
             return data;
           },
 
-          twitchtvEmbed: function(str, opts) {
+          twitchtvEmbed: function (str, opts) {
             var matches = str.match(NG_EMBED_REGEXP_PATTERNS.twitchtv);
 
             if (matches) {
               var uniqueMatches = getUniqueArray(matches);
               var videoDimensions = videoProcess.calcDimensions(opts);
 
-              angular.forEach(uniqueMatches, function(match) {
-                var frame = $sce.trustAsHtml('<iframe ' +
-                  'src="https://player.twitch.tv/?channel=' + match.split('/')[1] + '&!autoplay" ' +
-                  'height="' + videoDimensions.height + '" ' +
-                  'width="' + videoDimensions.width + '" ' +
-                  'autoplay="false" ' +
-                  'frameborder="0" ' +
-                  'scrolling="no" ' +
-                  'allowfullscreen="true">' +
-                  '</iframe>');
+              angular.forEach(uniqueMatches, function (match) {
+                var frame = $sce.trustAsHtml('<iframe '
+                  + 'src="https://player.twitch.tv/?channel=' + match.split('/')[1] + '&!autoplay" '
+                  + 'height="' + videoDimensions.height + '" '
+                  + 'width="' + videoDimensions.width + '" '
+                  + 'autoplay="false" '
+                  + 'frameborder="0" '
+                  + 'scrolling="no" '
+                  + 'allowfullscreen="true">'
+                  + '</iframe>');
 
                 scope.videoServices.push(frame);
               });
@@ -397,14 +394,14 @@
             return str;
           },
 
-          dailymotionEmbed: function(str, opts) {
+          dailymotionEmbed: function (str, opts) {
             var matches = str.match(NG_EMBED_REGEXP_PATTERNS.dailymotion);
 
             if (matches) {
               var uniqueMatches = getUniqueArray(matches);
               var videoDimensions = videoProcess.calcDimensions(opts);
 
-              angular.forEach(uniqueMatches, function(match) {
+              angular.forEach(uniqueMatches, function (match) {
                 // eslint-disable-next-line max-len
                 var frame = $sce.trustAsHtml('<iframe src="' + httpProtocol + '//www.dailymotion.com/embed/video/' + match.split('/')[2] + '" height="' + videoDimensions.height + '" width="' + videoDimensions.width + '"></iframe>');
 
@@ -414,14 +411,14 @@
             return str;
           },
 
-          tedEmbed: function(str, opts) {
+          tedEmbed: function (str, opts) {
             var matches = str.match(NG_EMBED_REGEXP_PATTERNS.ted);
 
             if (matches) {
               var uniqueMatches = getUniqueArray(matches);
               var videoDimensions = videoProcess.calcDimensions(opts);
 
-              angular.forEach(uniqueMatches, function(match) {
+              angular.forEach(uniqueMatches, function (match) {
                 // eslint-disable-next-line max-len
                 var frame = $sce.trustAsHtml('<iframe src="https://embed.ted.com/talks/' + match.split('/')[2] + '.html" height="' + videoDimensions.height + '" width="' + videoDimensions.width + '"></iframe>');
 
@@ -431,14 +428,14 @@
             return str;
           },
 
-          dotsubEmbed: function(str, opts) {
+          dotsubEmbed: function (str, opts) {
             var matches = str.match(NG_EMBED_REGEXP_PATTERNS.dotsub);
 
             if (matches) {
               var uniqueMatches = getUniqueArray(matches);
               var videoDimensions = videoProcess.calcDimensions(opts);
 
-              angular.forEach(uniqueMatches, function(match) {
+              angular.forEach(uniqueMatches, function (match) {
                 // eslint-disable-next-line max-len
                 var frame = $sce.trustAsHtml('<iframe src="https://dotsub.com/media/' + match.split('/')[2] + '/embed/" width="' + videoDimensions.width + '" height="' + videoDimensions.height + '"></iframe>');
 
@@ -448,14 +445,14 @@
             return str;
           },
 
-          liveleakEmbed: function(str, opts) {
+          liveleakEmbed: function (str, opts) {
             var matches = str.match(NG_EMBED_REGEXP_PATTERNS.liveleak);
 
             if (matches) {
               var uniqueMatches = getUniqueArray(matches);
               var videoDimensions = videoProcess.calcDimensions(opts);
 
-              angular.forEach(uniqueMatches, function(match) {
+              angular.forEach(uniqueMatches, function (match) {
                 // eslint-disable-next-line max-len
                 var frame = $sce.trustAsHtml('<iframe src="' + httpProtocol + '//www.liveleak.com/e/' + match.split('=')[1] + '" height="' + videoDimensions.height + '" width="' + videoDimensions.width + '"></iframe>');
 
@@ -465,15 +462,15 @@
             return str;
           },
 
-          ustreamEmbed: function(str, opts) {
+          ustreamEmbed: function (str, opts) {
             var matches = str.match(NG_EMBED_REGEXP_PATTERNS.ustream);
 
             if (matches) {
-              https://www.helsinki.fi/en/unitube/video/89224bc7-e527-489a-a052-3e6cdd7fc378
-                var uniqueMatches = getUniqueArray(matches);
+              https:// www.helsinki.fi/en/unitube/video/89224bc7-e527-489a-a052-3e6cdd7fc378
+              var uniqueMatches = getUniqueArray(matches);
               var videoDimensions = videoProcess.calcDimensions(opts);
 
-              angular.forEach(uniqueMatches, function(match) {
+              angular.forEach(uniqueMatches, function (match) {
                 var id = match.split('/');
 
                 if (id.indexOf('embed') < 0) {
@@ -488,23 +485,23 @@
             return str;
           },
 
-          unitubeEmbed: function(str, opts) {
+          unitubeEmbed: function (str, opts) {
             var matches = str.match(NG_EMBED_REGEXP_PATTERNS.unitube);
 
             if (matches) {
               var uniqueMatches = getUniqueArray(matches);
               var videoDimensions = videoProcess.calcDimensions(opts);
 
-              angular.forEach(uniqueMatches, function(match) {
+              angular.forEach(uniqueMatches, function (match) {
                 var videoId = match.split('/').pop();
-                var frame = $sce.trustAsHtml('<iframe ' +
-                  'src="' + httpProtocol + '//webcast.helsinki.fi/unitube/embed.html?id=' + videoId + '" ' +
-                  'scrolling="no" ' +
-                  'height="' + videoDimensions.height + '" ' +
-                  'width="' + videoDimensions.width + '" ' +
-                  'marginheight="0" ' +
-                  'marginwidth="0" ' +
-                  'allowfullscreen="true"/>');
+                var frame = $sce.trustAsHtml('<iframe '
+                  + 'src="' + httpProtocol + '//webcast.helsinki.fi/unitube/embed.html?id=' + videoId + '" '
+                  + 'scrolling="no" '
+                  + 'height="' + videoDimensions.height + '" '
+                  + 'width="' + videoDimensions.width + '" '
+                  + 'marginheight="0" '
+                  + 'marginwidth="0" '
+                  + 'allowfullscreen="true"/>');
 
                 scope.videoServices.push(frame);
               });
@@ -514,20 +511,20 @@
         };
 
         var audioProcess = {
-          embed: function(str) {
+          embed: function (str) {
             if (str.match(NG_EMBED_REGEXP_PATTERNS.basicAudio)) {
               scope.audio.url = $sce.trustAsResourceUrl(RegExp.$1);
             }
             return str;
           },
 
-          soundcloudEmbed: function(str, opts) {
+          soundcloudEmbed: function (str, opts) {
             var matches = str.match(NG_EMBED_REGEXP_PATTERNS.soundCloud);
 
             if (matches) {
               var uniqueMatches = getUniqueArray(matches);
 
-              angular.forEach(uniqueMatches, function(match) {
+              angular.forEach(uniqueMatches, function (match) {
                 // eslint-disable-next-line max-len
                 var frame = $sce.trustAsHtml('<iframe height="160" scrolling="no" ' + 'src="https://w.soundcloud.com/player/?url=https://' + match + '&auto_play=' + opts.soundCloudOptions.autoPlay + '&hide_related=' + opts.soundCloudOptions.hideRelated + '&show_comments=' + opts.soundCloudOptions.showComments + '&show_user=' + opts.soundCloudOptions.showUser + '&show_reposts=' + opts.soundCloudOptions.showReposts + '&visual=' + opts.soundCloudOptions.visual + '&download=' + opts.soundCloudOptions.download + '&color=' + opts.soundCloudOptions.themeColor + '&theme_color=' + opts.soundCloudOptions.themeColor + '"></iframe>');
 
@@ -537,13 +534,13 @@
             return str;
           },
 
-          spotifyEmbed: function(str) {
+          spotifyEmbed: function (str) {
             var matches = str.match(NG_EMBED_REGEXP_PATTERNS.spotify);
 
             if (matches) {
               var uniqueMatches = getUniqueArray(matches);
 
-              angular.forEach(uniqueMatches, function(match) {
+              angular.forEach(uniqueMatches, function (match) {
                 // eslint-disable-next-line max-len
                 var frame = $sce.trustAsHtml('<iframe src="https://embed.spotify.com/?uri=spotify:track:' + match.split('/')[2] + '" height="80"></iframe>');
 
@@ -555,7 +552,7 @@
         };
 
         var imageProcess = {
-          embed: function(data) {
+          embed: function (data) {
             if (data.match(NG_EMBED_REGEXP_PATTERNS.basicImage)) {
               scope.image.url = RegExp.$1;
             }
@@ -571,16 +568,16 @@
            * @param  {string} code The string that has to be encoded.
            * @return {string}      The encoded string
            */
-          encode: function(code) {
+          encode: function (code) {
             var encoded = htmlEncode(code);
 
             encoded = encoded.replace(/&amp;/gm, '');
             return encoded;
           },
 
-          getCode: function(text) {
+          getCode: function (text) {
             return (text + '').replace(NG_EMBED_REGEXP_PATTERNS.highlightCode,
-              function(wholeMatch, group1, group2, group3) {
+              function (wholeMatch, group1, group2, group3) {
                 var code = group3;
 
                 code = trimSpace(code);
@@ -604,13 +601,12 @@
                 }
 
                 return '<pre><code class="ne-code hljs ' + language + '">' + highlightedCode.value + '</code></pre>';
-              }
-            );
+              });
           }
         };
 
         var pdfProcess = {
-          embed: function(str) {
+          embed: function (str) {
             if (str.match(NG_EMBED_REGEXP_PATTERNS.pdf)) {
               scope.pdf.url = $sce.trustAsResourceUrl(RegExp.$1);
             }
@@ -620,7 +616,7 @@
         };
 
         var tweetProcess = {
-          embed: function(str, opts) {
+          embed: function (str, opts) {
             if (!window.twttr) {
               console.error(new ReferenceError('twttr is not defined. Load http://platform.twitter.com/widgets.js'));
               // eslint-disable-next-line no-undef
@@ -628,7 +624,7 @@
             }
 
             function renderTweet() {
-              $timeout(function() {
+              $timeout(function () {
                 twttr.widgets.load();
               }, 10);
             }
@@ -640,13 +636,13 @@
             if (matches) {
               var uniqueMatches = getUniqueArray(matches);
 
-              angular.forEach(uniqueMatches, function(match) {
+              angular.forEach(uniqueMatches, function (match) {
                 // eslint-disable-next-line max-len
                 var url = 'https://api.twitter.com/1/statuses/oembed.json?omit_script=true&&url=' + match + '&maxwidth=' + opts.tweetOptions.maxWidth + '&hide_media=' + opts.tweetOptions.hideMedia + '&hide_thread=' + opts.tweetOptions.hideThread + '&align=' + opts.tweetOptions.align + '&lang=' + opts.tweetOptions.lang;
                 var request;
 
                 if (parseInt(angular.version.major) >= 1 && parseInt(angular.version.minor) >= 6) {
-                  request = $http.jsonp($sce.trustAsResourceUrl(url), {callbackParam: 'JSON_CALLBACK'});
+                  request = $http.jsonp($sce.trustAsResourceUrl(url), { callbackParam: 'JSON_CALLBACK' });
                 } else {
                   /**
                    * callback=JSON_CALLBACK is an angular fix to make sure we get the correct mime type of the
@@ -655,12 +651,12 @@
                   request = $http.jsonp(url + '&callback=JSON_CALLBACK');
                 }
 
-                request.then(function(r) {
+                request.then(function (r) {
                   scope.tweets.push(r.data.html);
                   if (scope.tweets.length === uniqueMatches.length) {
                     renderTweet();
                   }
-                }).catch(function(err) {
+                }).catch(function (err) {
                   console.error(err);
                 });
               });
@@ -670,13 +666,13 @@
         };
 
         var codeEmbedProcess = {
-          codepenEmbed: function(str, opts) {
+          codepenEmbed: function (str, opts) {
             var matches = str.match(NG_EMBED_REGEXP_PATTERNS.codepen);
 
             if (matches) {
               var uniqueMatches = getUniqueArray(matches);
 
-              angular.forEach(uniqueMatches, function(match) {
+              angular.forEach(uniqueMatches, function (match) {
                 // eslint-disable-next-line max-len
                 var frame = $sce.trustAsHtml('<iframe scrolling="no" height="' + opts.codepenHeight + '" src="' + match.replace(/\/pen\//, '/embed/') + '/?height=' + opts.codepenHeight + '" frameborder="no" allowtransparency="true" allowfullscreen="true"></iframe>');
 
@@ -686,13 +682,13 @@
             return str;
           },
 
-          jsfiddleEmbed: function(str, opts) {
+          jsfiddleEmbed: function (str, opts) {
             var matches = str.match(NG_EMBED_REGEXP_PATTERNS.jsfiddle);
 
             if (matches) {
               var uniqueMatches = getUniqueArray(matches);
 
-              angular.forEach(uniqueMatches, function(match) {
+              angular.forEach(uniqueMatches, function (match) {
                 // eslint-disable-next-line max-len
                 var frame = $sce.trustAsHtml('<iframe height="' + opts.jsfiddleHeight + '" src="' + httpProtocol + '//' + match + '/embedded"></iframe>');
 
@@ -702,13 +698,13 @@
             return str;
           },
 
-          jsbinEmbed: function(str, opts) {
+          jsbinEmbed: function (str, opts) {
             var matches = str.match(NG_EMBED_REGEXP_PATTERNS.jsbin);
 
             if (matches) {
               var uniqueMatches = getUniqueArray(matches);
 
-              angular.forEach(uniqueMatches, function(match) {
+              angular.forEach(uniqueMatches, function (match) {
                 // eslint-disable-next-line max-len
                 var frame = $sce.trustAsHtml('<iframe height="' + opts.jsbinHeight + '" class="jsbin-embed foo" src="' + httpProtocol + '//' + match + '/embed?html,js,output">Simple Animation Tests</iframe>');
 
@@ -718,13 +714,13 @@
             return str;
           },
 
-          plunkerEmbed: function(str, opts) {
+          plunkerEmbed: function (str, opts) {
             var matches = str.match(NG_EMBED_REGEXP_PATTERNS.plunker);
 
             if (matches) {
               var uniqueMatches = getUniqueArray(matches);
 
-              angular.forEach(uniqueMatches, function(match) {
+              angular.forEach(uniqueMatches, function (match) {
                 var path = match.split('/')[2];
                 var idMatch = match.indexOf('?') === -1 ? path : path.split('?')[0];
                 // eslint-disable-next-line max-len
@@ -736,13 +732,13 @@
             return str;
           },
 
-          githubgistEmbed: function(str) {
+          githubgistEmbed: function (str) {
             var matches = str.match(NG_EMBED_REGEXP_PATTERNS.gist);
 
             if (matches) {
               var gists = [];
 
-              angular.forEach(matches, function(match) {
+              angular.forEach(matches, function (match) {
                 gists.push(match.split('/')[2]);
               });
               scope.gist = getUniqueArray(gists);
@@ -751,13 +747,13 @@
             return str;
           },
 
-          ideoneEmbed: function(str, opts) {
+          ideoneEmbed: function (str, opts) {
             var matches = str.match(NG_EMBED_REGEXP_PATTERNS.ideone);
 
             if (matches) {
               var uniqueMatches = getUniqueArray(matches);
 
-              angular.forEach(uniqueMatches, function(match) {
+              angular.forEach(uniqueMatches, function (match) {
                 // eslint-disable-next-line max-len
                 var frame = $sce.trustAsHtml('<iframe src="' + httpProtocol + '//ideone.com/embed/' + match.split('/')[1] + '" height="' + opts.ideoneHeight + '"></iframe>');
 
@@ -766,44 +762,43 @@
             }
             return str;
           },
-          highlightEmbed: function(data, options) {
+          highlightEmbed: function (data, options) {
             if (!window.hljs) {
               console.error(new ReferenceError('hlsj (Highlight JS is not defined.'));
               return data;
-            } else {
-              data = codeProcess.getCode(data);
+            }
+            data = codeProcess.getCode(data);
 
-              /**
+            /**
                * Adding line numbers to code
                */
-              $timeout(function() {
-                // wrapped in timeout to allow code elements to be added to DOM
-                if (options.code.lineNumbers) {
-                  var codeBlocks = elements.find('.ne-code');
+            $timeout(function () {
+              // wrapped in timeout to allow code elements to be added to DOM
+              if (options.code.lineNumbers) {
+                var codeBlocks = elements.find('.ne-code');
 
-                  if (codeBlocks.length > 0) {
-                    angular.forEach(codeBlocks, function(block) {
-                      var codeElement = angular.element(block)
-                        .addClass('has-numbering');
-                      var content = codeElement.text();
-                      var lineCount = content.split('\n').length;
-                      var lineNbrList = angular.element('<ul/>').addClass('pre-numbering');
+                if (codeBlocks.length > 0) {
+                  angular.forEach(codeBlocks, function (block) {
+                    var codeElement = angular.element(block)
+                      .addClass('has-numbering');
+                    var content = codeElement.text();
+                    var lineCount = content.split('\n').length;
+                    var lineNbrList = angular.element('<ul/>').addClass('pre-numbering');
 
-                      for (var i = 1; i <= lineCount; i++) {
-                        var lineNbr = angular.element('<li/>').text(i);
+                    for (var i = 1; i <= lineCount; i++) {
+                      var lineNbr = angular.element('<li/>').text(i);
 
-                        lineNbrList.append(lineNbr);
-                      }
+                      lineNbrList.append(lineNbr);
+                    }
 
-                      codeElement
-                        .parent()
-                        .append(lineNbrList);
-                    });
-                  }
+                    codeElement
+                      .parent()
+                      .append(lineNbrList);
+                  });
                 }
+              }
+            }, 20);
 
-              }, 20);
-            }
 
             return data;
           }
@@ -831,11 +826,10 @@
               console.error('Youtube authentication key is required to get data from youtube.');
             } else {
               videoProcess.embed(x, options)
-                .then(function(video) {
+                .then(function (video) {
                   scope.video = video;
                 });
             }
-
           }
 
           x = options.basicVideo ? videoProcess.embedBasic(x) : x;
@@ -861,7 +855,7 @@
 
           videoProcess.unitubeEmbed(x, options);
 
-          $timeout(function(html) {
+          $timeout(function (html) {
             scope.neText = $sce.trustAsHtml(html);
           }, 0, true, x);
         }
@@ -878,15 +872,13 @@
   }
 
   EmbedFilter.$inject = ['$sce', 'NG_EMBED_BASIC_EMOTICONS', 'NG_EMBED_EMOJI_LIST',
-                         'NG_EMBED_REGEXP_PATTERNS', 'NG_EMBED_FILTER_DEFAULT_OPTIONS'];
+    'NG_EMBED_REGEXP_PATTERNS', 'NG_EMBED_FILTER_DEFAULT_OPTIONS'];
 
   function EmbedFilter($sce, NG_EMBED_BASIC_EMOTICONS, NG_EMBED_EMOJI_LIST,
-                       NG_EMBED_REGEXP_PATTERNS, NG_EMBED_FILTER_DEFAULT_OPTIONS) {
-
+    NG_EMBED_REGEXP_PATTERNS, NG_EMBED_FILTER_DEFAULT_OPTIONS) {
     var EMOIJ_REGEX = new RegExp(':(' + NG_EMBED_EMOJI_LIST.join('|') + '):', 'gi');
 
-    return function(input, userOptions) {
-
+    return function (input, userOptions) {
       var options = {};
 
       angular.copy(NG_EMBED_FILTER_DEFAULT_OPTIONS, options);
@@ -927,7 +919,6 @@
       }
 
       return $sce.trustAsHtml(input);
-
     };
   }
 
@@ -939,14 +930,14 @@
     iframe.id = 'gist-' + gistId;
     element.appendChild(iframe);
 
-    var iframeHtml = '<html><head><base target="_parent"><style>table{font-size:12px;}</style>' +
-      '</head><body onload="parent.document.getElementById(\'' + iframe.id + '\').style.height=' +
-      'document.body.scrollHeight + \'px\'" style="margin:10px 0;"><script type="text/javascript">' +
-      '!function(){"use strict";window.retargetLinks=function(){ var gists=' +
-      'document.getElementsByClassName("gist");for(var i=0,links;i<gists.length;i++){' +
-      'links=gists[i].getElementsByTagName("a");for(var j=0;j<links.length;j++){ ' +
-      'links[j].setAttribute("target","_blank");}}}}();</script><script type="text/javascript" ' +
-      'src="https://gist.github.com/' + gistId + '.js" onload="retargetLinks()"></script></body></html>';
+    var iframeHtml = '<html><head><base target="_parent"><style>table{font-size:12px;}</style>'
+      + '</head><body onload="parent.document.getElementById(\'' + iframe.id + '\').style.height='
+      + 'document.body.scrollHeight + \'px\'" style="margin:10px 0;"><script type="text/javascript">'
+      + '!function(){"use strict";window.retargetLinks=function(){ var gists='
+      + 'document.getElementsByClassName("gist");for(var i=0,links;i<gists.length;i++){'
+      + 'links=gists[i].getElementsByTagName("a");for(var j=0;j<links.length;j++){ '
+      + 'links[j].setAttribute("target","_blank");}}}}();</script><script type="text/javascript" '
+      + 'src="https://gist.github.com/' + gistId + '.js" onload="retargetLinks()"></script></body></html>';
 
     var doc = iframe.document;
 
@@ -965,7 +956,8 @@
     //*
     // fast way using hashmap
     // inspired by http://jszen.com/best-way-to-get-unique-values-of-an-array-in-javascript.7.html
-    var n = {}, r = [];
+    var n = {}; var
+      r = [];
 
     for (var i = 0; i < list.length; i++) {
       if (!n[list[i]]) {
@@ -974,13 +966,13 @@
       }
     }
     return r;
-    //*/
+    //* /
     /*
     // IE9+, a bit slower
     return list.filter(function (x, i, a) {
       return a.indexOf(x) === i;
     });
-    //*/
+    // */
   }
 
   /**
@@ -996,8 +988,10 @@
    */
 
   function trunc(str, n, useWordBoundary) {
-    var toLong = str.length > n,
-        s_ = toLong ? str.substr(0, n - 1) : str;
+    var toLong = str.length > n;
+
+
+    var s_ = toLong ? str.substr(0, n - 1) : str;
 
     s_ = useWordBoundary && toLong ? s_.substr(0, s_.lastIndexOf(' ')) : s_;
     return toLong ? s_ + '...' : s_;
@@ -1014,9 +1008,9 @@
    */
 
   function extendDeep(dst) {
-    angular.forEach(arguments, function(obj) {
+    angular.forEach(arguments, function (obj) {
       if (obj !== dst) {
-        angular.forEach(obj, function(value, key) {
+        angular.forEach(obj, function (value, key) {
           if (dst[key] && dst[key].constructor && dst[key].constructor === Object) {
             extendDeep(dst[key], value);
           } else {
@@ -1042,7 +1036,7 @@
   function insertfontSmiley(str, icons) {
     var words = str.split(' ');
 
-    angular.forEach(words, function(word, i) {
+    angular.forEach(words, function (word, i) {
       var icon = icons[word];
 
       if (icon) {
@@ -1065,7 +1059,7 @@
    */
 
   function insertEmoji(str, emojiPattern) {
-    return str.replace(emojiPattern, function(match, text) {
+    return str.replace(emojiPattern, function (match, text) {
       return '<i class=\'emoticon emoticon-' + text + '\' title=\':' + text + ':\'></i>';
     });
   }
@@ -1084,7 +1078,7 @@
    */
 
   function urlEmbed(str, linkTarget, urlPattern, protocolPattern) {
-    return str.replace(urlPattern, function(text) {
+    return str.replace(urlPattern, function (text) {
       var url = text.trim();
 
       if (!protocolPattern.test(url)) {
@@ -1093,11 +1087,9 @@
 
       if (linkTarget === 'cordova') {
         return '<a href="#" onclick="window.open(\'' + url + '\', \'_system\', \'location=yes\')" >' + text + '</a>';
-      } else {
-        return '<a href="' + url + '" target="' + linkTarget + '">' + text + '</a>';
       }
-    }
-    );
+      return '<a href="' + url + '" target="' + linkTarget + '">' + text + '</a>';
+    });
   }
 
   /**
@@ -1111,9 +1103,9 @@
    * @return {string} sanitized string
    */
   function sanitizeHtml(str) {
-    var map = {'&': '&amp;', '>': '&gt;', '<': '&lt;'};
+    var map = { '&': '&amp;', '>': '&gt;', '<': '&lt;' };
 
-    return str.replace(/[&<>]/g, function(m) {
+    return str.replace(/[&<>]/g, function (m) {
       return map[m];
     });
   }
@@ -1129,9 +1121,9 @@
    * @return {string} encoded string
    */
   function htmlEncode(str) {
-    var map = {'&amp;': '&', '&gt;': '>', '&lt;': '<'};
+    var map = { '&amp;': '&', '&gt;': '>', '&lt;': '<' };
 
-    return str.replace(/&(amp|gt|lt);/g, function(m) {
+    return str.replace(/&(amp|gt|lt);/g, function (m) {
       return map[m];
     });
   }
@@ -1159,4 +1151,4 @@
   function getHttpProtocol() {
     return window.location.protocol.match(/https/) ? 'https:' : 'http:';
   }
-})();
+}());

@@ -16,7 +16,7 @@
  */
 
 angular.module('directives.avatarImage', ['services.state'])
-  .directive('avatarImage', function(StateService, State) {
+  .directive('avatarImage', function (StateService, State) {
     return {
       restrict: 'E',
       replace: true,
@@ -25,10 +25,10 @@ angular.module('directives.avatarImage', ['services.state'])
         imgSrc: '=',
         imgAlt: '='
       },
-      link: function($scope) {
+      link: function ($scope) {
         $scope.isTeacher = StateService.getRootStateName() === State.MY_TEACHINGS;
 
-        $scope.isDefault = function() {
+        $scope.isDefault = function () {
           return $scope.imgSrc ? $scope.imgSrc.indexOf('/api') === -1 : true;
         };
       }

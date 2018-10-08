@@ -17,13 +17,10 @@
 
 angular.module('services.summary', ['resources.summary'])
 
-  .factory('SummaryService', function(SummaryResource) {
-
+  .factory('SummaryService', function (SummaryResource) {
     function updateSummary(portfolioId, updateSummaryRequest) {
       return SummaryResource.updateSummary(portfolioId, updateSummaryRequest);
     }
 
-    return {
-      updateSummary: updateSummary
-    };
+    return { updateSummary: updateSummary };
   });

@@ -17,8 +17,7 @@
 
 angular.module('services.preview', [])
 
-  .factory('PreviewService', function($location, $window) {
-
+  .factory('PreviewService', function ($location, $window) {
     function isPreview() {
       return $location.search().preview === 'true';
     }
@@ -28,7 +27,7 @@ angular.module('services.preview', [])
     }
 
     function reloadPage() {
-      _.defer(function() {
+      _.defer(function () {
         $window.location.reload();
       });
     }

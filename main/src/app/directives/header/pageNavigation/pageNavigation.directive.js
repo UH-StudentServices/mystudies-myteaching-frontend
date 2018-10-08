@@ -25,43 +25,43 @@ angular.module('directives.pageNavigation', [
   'directives.analytics'
 ])
 
-  .directive('pageNavigation', function() {
+  .directive('pageNavigation', function () {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/header/pageNavigation/pageNavigation.html',
       scope: {},
-      controller: function($scope,
-                           primaryLinks,
-                           optionalLinks,
-                           LanguageService,
-                           SessionService,
-                           StateService,
-                           Configuration,
-                           Role,
-                           State) {
+      controller: function ($scope,
+        primaryLinks,
+        optionalLinks,
+        LanguageService,
+        SessionService,
+        StateService,
+        Configuration,
+        Role,
+        State) {
         $scope.primaryLinks = _.chain(primaryLinks[Configuration.environment])
-          .filter(function(link) {
+          .filter(function (link) {
             return _.includes(link.domain, StateService.getStateFromDomain());
           })
-          .map(function(link) {
+          .map(function (link) {
             link.isOpen = false;
-            link.hasSub = link.hasOwnProperty('subMenu');
+            link.hasSub = link.hasOwnProperty('subMenu'); // eslint-disable-line no-prototype-builtins
             return link;
           })
           .value();
 
         $scope.fatmenuContent = [];
         $scope.fatmenuOpen = false;
-        $scope.hideFatmenu = function() {
+        $scope.hideFatmenu = function () {
           if (!$scope.fatmenuOpen) {
             return;
           }
           $scope.fatmenuOpen = false;
-          _.forEach($scope.primaryLinks, function(link) {
+          _.forEach($scope.primaryLinks, function (link) {
             link.isOpen = false;
           });
         };
-        $scope.toggleFatmenu = function(link) {
+        $scope.toggleFatmenu = function (link) {
           var wasOpen = link.isOpen;
 
           $scope.hideFatmenu();
@@ -70,14 +70,14 @@ angular.module('directives.pageNavigation', [
           $scope.fatmenuContent = link.hasSub ? link.subMenu : [];
         };
 
-        SessionService.isInRole(Role.STUDENT).then(function(isStudent) {
+        SessionService.isInRole(Role.STUDENT).then(function (isStudent) {
+          var optional;
           if (!isStudent || !StateService.currentOrParentStateMatches(State.MY_STUDIES)) {
             return;
           }
+          optional = optionalLinks[Configuration.environment];
 
-          var optional = optionalLinks[Configuration.environment];
-
-          SessionService.isInPilotDegreeProgramme().then(function(isInPilotProgramme) {
+          SessionService.isInPilotDegreeProgramme().then(function (isInPilotProgramme) {
             if (isInPilotProgramme) {
               $scope.primaryLinks.unshift(optional.pilot);
             } else {

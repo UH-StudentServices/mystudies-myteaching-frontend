@@ -19,8 +19,8 @@ angular.module('resources.officeHours', [])
 
   .factory('OfficeHoursResource', function OfficeHoursResource($resource) {
     var officeHoursResource = $resource('/api/private/v1/officehours', null, {
-      save: {'method': 'POST', isArray: true},
-      get: {'method': 'GET', isArray: true}
+      save: { method: 'POST', isArray: true },
+      get: { method: 'GET', isArray: true }
     });
 
     function getOfficeHours() {

@@ -21,26 +21,30 @@ angular.module('directives.favorites.addNew.rss', [
   'directives.favorites.addNew'
 ])
 
-  .filter('stripHTML', function() {
-    return function(input) {
+  .filter('stripHTML', function () {
+    return function (input) {
       return String(input).replace(/<[^>]+>/gm, '');
     };
   })
 
   .constant('minSearchStringLength', 3)
 
-  .directive('addNewRssFavorite', function(FavoritesService,
-                                           NewFavoriteAddedEvent,
-                                           minSearchStringLength,
-                                           ValidatorUtils) {
+  .directive('addNewRssFavorite', function (FavoritesService,
+    NewFavoriteAddedEvent,
+    minSearchStringLength,
+    ValidatorUtils) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/rss/favorites.addNew.rss.html',
       replace: true,
       scope: true,
-      link: function($scope) {
+      link: function ($scope) {
         $scope.searchString = '';
         $scope.loading = false;
+
+        function findFeedFailed() {
+          $scope.searchResults = null;
+        }
 
         function findFeedSuccess(feed) {
           if (feed) {
@@ -50,18 +54,13 @@ angular.module('directives.favorites.addNew.rss', [
           }
         }
 
-        function findFeedFailed() {
-          $scope.searchResults = null;
-        }
-
-
         function search(feedUrl) {
           $scope.loading = true;
           $scope.searchResults = undefined;
           FavoritesService.findRSSFeed(feedUrl)
             .then(findFeedSuccess)
             .catch(findFeedFailed)
-            .finally(function() {
+            .finally(function () {
               $scope.loading = false;
             });
         }
@@ -77,20 +76,20 @@ angular.module('directives.favorites.addNew.rss', [
         function addFeed(feedUrl) {
           $scope.favorite.url = feedUrl;
           FavoritesService.saveRSSFavorite($scope.favorite, $scope.favorite.type)
-            .then(function() {
+            .then(function () {
               $scope.$emit(NewFavoriteAddedEvent);
             });
         }
 
         $scope.search = _.debounce(_.partial(convertUrl, search), 500);
 
-        $scope.clearSearch = function() {
+        $scope.clearSearch = function () {
           $scope.searchString = '';
         };
 
         $scope.addFeed = _.partial(convertUrl, addFeed);
 
-        $scope.addFeedOnEnter = function() {
+        $scope.addFeedOnEnter = function () {
           var urlToAdd = _.get($scope, ['searchResults', '0', 'url']);
 
           if (urlToAdd) {

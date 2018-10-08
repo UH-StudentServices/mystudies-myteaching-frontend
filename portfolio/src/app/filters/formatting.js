@@ -17,8 +17,8 @@
 
 angular.module('filters.formatting', [])
 
-    .filter('capitalize', function() {
-      return function(inputString) {
-        return _.capitalize(inputString);
-      };
-    });
+  .filter('capitalize', function () {
+    return function (inputString) {
+      return _.capitalize(inputString);
+    };
+  });

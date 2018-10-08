@@ -15,24 +15,21 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.analytics', [
-  'opintoniAnalytics'
-])
+angular.module('directives.analytics', ['opintoniAnalytics'])
 
-  .directive('analyticsEvent', function(AnalyticsService) {
+  .directive('analyticsEvent', function (AnalyticsService) {
     return {
       restrict: 'A',
-      scope: {
-        analyticsEvent: '='
-      },
-      link: function($scope, element) {
-        element.on('click mouseup', function(e) {
+      scope: { analyticsEvent: '=' },
+      link: function ($scope, element) {
+        element.on('click mouseup', function (e) {
           // catch click events and middle mouse clicks
           if (AnalyticsService.isClickOrMiddleButton(e)) {
             AnalyticsService.trackEvent(
               $scope.analyticsEvent.eventCategory,
               $scope.analyticsEvent.eventAction,
-              $scope.analyticsEvent.value);
+              $scope.analyticsEvent.value
+            );
           }
         });
       }

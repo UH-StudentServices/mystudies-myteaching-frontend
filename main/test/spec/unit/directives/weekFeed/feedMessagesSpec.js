@@ -15,25 +15,23 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-describe('FeedMessages', function() {
-
-  var MessageTypes,
-      FeedMessages,
-      WeekFeedMessageKeys,
-      eventsTab,
-      eventsSubTab,
-      coursesTab,
-      coursesSubTab,
-      calendarSubTab,
-      testEvent = {},
-      testCourse = {};
-
+describe('FeedMessages', function () {
+  var MessageTypes;
+  var FeedMessages;
+  var WeekFeedMessageKeys;
+  var eventsTab;
+  var eventsSubTab;
+  var coursesTab;
+  var coursesSubTab;
+  var calendarSubTab;
+  var testEvent = {};
+  var testCourse = {};
 
   beforeEach(module('directives.weekFeed'));
   beforeEach(module('ngResource'));
-  beforeEach(function() {
-    module(function($provide) {
-      $provide.constant('StateService', {getStateFromDomain: function() { }});
+  beforeEach(function () {
+    module(function ($provide) {
+      $provide.constant('StateService', { getStateFromDomain: function () { } });
     });
   });
 
@@ -53,7 +51,7 @@ describe('FeedMessages', function() {
 
   function expectedEmptyMessage() {}
 
-  beforeEach(inject(function(_FeedMessages_, _MessageTypes_, _WeekFeedMessageKeys_, Tabs) {
+  beforeEach(inject(function (_FeedMessages_, _MessageTypes_, _WeekFeedMessageKeys_, Tabs) {
     FeedMessages = _FeedMessages_;
     MessageTypes = _MessageTypes_;
     WeekFeedMessageKeys = _WeekFeedMessageKeys_;
@@ -64,89 +62,98 @@ describe('FeedMessages', function() {
     calendarSubTab = Tabs.SCHEDULE.subTabs.CALENDAR_WEEK.key;
   }));
 
-  it('getEventsMessage will return error message if events cannot be fetched', function() {
+  it('getEventsMessage will return error message if events cannot be fetched', function () {
     expect(FeedMessages.getEventsMessage(
       [],
       null,
       [],
       eventsTab,
-      eventsSubTab))
+      eventsSubTab
+    ))
       .toEqual(expectedErrorMessage(eventsTab));
   });
 
-  it('getEventsMessage will return info message if events are filtered to empty array', function() {
+  it('getEventsMessage will return info message if events are filtered to empty array', function () {
     expect(FeedMessages.getEventsMessage(
       [],
       [],
       [],
       eventsTab,
-      eventsSubTab))
+      eventsSubTab
+    ))
       .toEqual(expectedInfoMessage(eventsTab, eventsSubTab));
   });
 
-  it('getEventsMessage will return null if events are found', function() {
+  it('getEventsMessage will return null if events are found', function () {
     expect(FeedMessages.getEventsMessage(
       [],
       [],
       [testEvent],
-      eventsTab))
+      eventsTab
+    ))
       .toEqual(expectedEmptyMessage());
   });
 
-  it('getCoursesMessage will return error if courses cannot be fetched', function() {
+  it('getCoursesMessage will return error if courses cannot be fetched', function () {
     expect(FeedMessages.getCoursesMessage(
       null,
       [],
       [],
-      coursesTab))
+      coursesTab
+    ))
       .toEqual(expectedErrorMessage(coursesTab));
   });
 
-  it('getCoursesMessage will return info message' +
-    ' if courses are filtered to empty array', function() {
+  it('getCoursesMessage will return info message'
+    + ' if courses are filtered to empty array', function () {
     expect(FeedMessages.getCoursesMessage(
       [],
       [],
       [],
-      coursesTab, coursesSubTab))
+      coursesTab, coursesSubTab
+    ))
       .toEqual(expectedInfoMessage(coursesTab, coursesSubTab));
   });
 
-  it('getCoursesMessage will return null if courses are found', function() {
+  it('getCoursesMessage will return null if courses are found', function () {
     expect(FeedMessages.getCoursesMessage(
       [],
       [],
       [testCourse],
-      coursesTab))
+      coursesTab
+    ))
       .toEqual(expectedEmptyMessage());
   });
 
-  it('getCalendarMessage will return error if events cannot be fetched', function() {
+  it('getCalendarMessage will return error if events cannot be fetched', function () {
     expect(FeedMessages.getCalendarMessage(
       [],
       null,
       [],
       eventsTab,
-      calendarSubTab))
+      calendarSubTab
+    ))
       .toEqual(expectedErrorMessage(eventsTab));
   });
 
-  it('getCalendarMessage will return return null if events' +
-    ' are filtered to empty array', function() {
+  it('getCalendarMessage will return return null if events'
+    + ' are filtered to empty array', function () {
     expect(FeedMessages.getCalendarMessage(
       [],
       [],
       [],
-      eventsTab))
+      eventsTab
+    ))
       .toEqual(expectedEmptyMessage());
   });
 
-  it('getCalendarMessage will return return null if events are found', function() {
+  it('getCalendarMessage will return return null if events are found', function () {
     expect(FeedMessages.getCalendarMessage(
       [],
       [],
       [testEvent],
-      calendarSubTab))
+      calendarSubTab
+    ))
       .toEqual(expectedEmptyMessage());
   });
 });

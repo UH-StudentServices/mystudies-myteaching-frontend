@@ -17,29 +17,28 @@
 
 angular.module('services.portfolioBackground', ['resources.portfolioBackground', 'services.portfolio'])
 
-  .factory('PortfolioBackgroundService', function(PortfolioBackgroundResource, PortfolioService) {
-
+  .factory('PortfolioBackgroundService', function (PortfolioBackgroundResource, PortfolioService) {
     function getPortfolioId() {
       return PortfolioService.getPortfolio()
-        .then(function(portfolio) {
+        .then(function (portfolio) {
           return portfolio.id;
         });
     }
 
     function selectPortfolioBackground(filename) {
-      return getPortfolioId().then(function(portfolioId) {
+      return getPortfolioId().then(function (portfolioId) {
         return PortfolioBackgroundResource.selectPortfolioBackground(portfolioId, filename);
       });
     }
 
     function getPortfolioBackgroundUri() {
-      return getPortfolioId().then(function(portfolioId) {
+      return getPortfolioId().then(function (portfolioId) {
         return PortfolioBackgroundResource.getPortfolioBackground(portfolioId);
       });
     }
 
     function uploadUserBackground(imageBase64) {
-      return getPortfolioId().then(function(portfolioId) {
+      return getPortfolioId().then(function (portfolioId) {
         return PortfolioBackgroundResource.uploadUserBackground(portfolioId, imageBase64);
       });
     }

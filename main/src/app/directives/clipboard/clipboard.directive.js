@@ -17,9 +17,8 @@
 
 angular.module('directives.clipboard', [])
 
-  .directive('clipboard', function(BrowserUtil,
-                                   $timeout,
-                                   $parse) {
+  .directive('clipboard', function (BrowserUtil,
+    $timeout) {
     return {
       rescrict: 'A',
       scope: {
@@ -27,19 +26,19 @@ angular.module('directives.clipboard', [])
         successCallback: '=clipboardSuccessCallback',
         errorCallback: '=clipboardErrorCallback'
       },
-      link: function($scope, element) {
+      link: function ($scope, element) {
         element.attr('data-clipboard-target', $scope.selector);
 
-        $timeout(function() {
+        $timeout(function () {
           var clipboard = new Clipboard('#' + element.attr('id'));
 
-          clipboard.on('success', function(e) {
+          clipboard.on('success', function (e) {
             e.clearSelection();
             $scope.successCallback();
             $scope.$apply();
           });
 
-          clipboard.on('error', function() {
+          clipboard.on('error', function () {
             $scope.errorCallback();
             $scope.$apply();
           });

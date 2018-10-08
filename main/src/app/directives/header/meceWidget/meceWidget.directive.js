@@ -17,15 +17,15 @@
 
 angular.module('directives.header.meceWidget', [
   'services.userSettings',
-  'services.language'])
+  'services.language'
+])
 
-  .directive('meceWidget', function(UserSettingsService, LanguageService) {
-
+  .directive('meceWidget', function (UserSettingsService, LanguageService) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/header/meceWidget/meceWidget.html',
       replace: true,
-      link: function($scope) {
+      link: function ($scope) {
         $scope.currentLanguage = LanguageService.getCurrent();
 
         UserSettingsService.getUserSettings()

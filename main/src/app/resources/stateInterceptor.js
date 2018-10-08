@@ -18,10 +18,10 @@
 angular.module('resources.stateInterceptor', [
   'services.session',
   'services.state',
-  'services.login'])
+  'services.login'
+])
 
-  .run(function($rootScope, $state, SessionService, State, LoginService) {
-
+  .run(function ($rootScope, $state, SessionService, State, LoginService) {
     function authorizeState(stateRoles) {
       return SessionService.isInAnyRole(stateRoles);
     }
@@ -30,15 +30,15 @@ angular.module('resources.stateInterceptor', [
       return [State.LOCAL_LOGIN, State.LANDER].indexOf(targetState.name) > -1;
     }
 
-    $rootScope.$on('$stateChangeStart', function(event, toState) {
+    $rootScope.$on('$stateChangeStart', function (event, toState) {
       if (!isLoginOrLander(toState)) {
-        SessionService.getSession().then(function() {
+        SessionService.getSession().then(function () {
           if (toState.data && toState.data.roles) {
             return authorizeState(toState.data.roles);
           }
 
           return true;
-        }).then(function(authorized) {
+        }).then(function (authorized) {
           if (!authorized) {
             $state.go(State.ACCESS_DENIED);
           }

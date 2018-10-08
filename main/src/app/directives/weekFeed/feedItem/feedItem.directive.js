@@ -15,12 +15,12 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.weekFeed.feedItem',[
+angular.module('directives.weekFeed.feedItem', [
   'directives.weekFeed.feedItem.event',
   'directives.weekFeed.feedItem.course'
 ])
 
-  .directive('item', function() {
+  .directive('item', function () {
     return {
       restrict: 'E',
       replace: true,
@@ -30,8 +30,7 @@ angular.module('directives.weekFeed.feedItem',[
         first: '=',
         tabOptions: '='
       },
-      link: function($scope) {
-
+      link: function ($scope) {
         $scope.isEvent = function isEvent() {
           return !_.isUndefined($scope.feedItem.type);
         };

@@ -16,542 +16,542 @@
  */
 
 angular.module('constants.externalLinks', [])
-.constant('optionalLinks', {
-  local: {
-    pilot: {
-      key: 'optionalLinks.pilotProgram',
-      href: {
-        fi: 'https://sis-helsinki-test.funidata.fi/student',
-        sv: 'https://sis-helsinki-test.funidata.fi/student',
-        en: 'https://sis-helsinki-test.funidata.fi/student'
-      }
-    },
-    normal: {
-      key: 'optionalLinks.normalProgram',
-      href: {
-        fi: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=1',
-        sv: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=2',
-        en: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=6'
-      }
-    }
-  },
-  dev: {
-    pilot: {
-      key: 'optionalLinks.pilotProgram',
-      href: {
-        fi: 'https://sis-helsinki-test.funidata.fi/student',
-        sv: 'https://sis-helsinki-test.funidata.fi/student',
-        en: 'https://sis-helsinki-test.funidata.fi/student'
-      }
-    },
-    normal: {
-      key: 'optionalLinks.normalProgram',
-      href: {
-        fi: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=1',
-        sv: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=2',
-        en: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=6'
-      }
-    }
-  },
-  qa: {
-    pilot: {
-      key: 'optionalLinks.pilotProgram',
-      href: {
-        fi: 'https://sis-helsinki-test.funidata.fi/student',
-        sv: 'https://sis-helsinki-test.funidata.fi/student',
-        en: 'https://sis-helsinki-test.funidata.fi/student'
-      }
-    },
-    normal: {
-      key: 'optionalLinks.normalProgram',
-      href: {
-        fi: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=1',
-        sv: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=2',
-        en: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=6'
-      }
-    }
-  },
-  demo: {
-    pilot: {
-      key: 'optionalLinks.pilotProgram',
-      href: {
-        fi: 'https://sis-helsinki.funidata.fi/student',
-        sv: 'https://sis-helsinki.funidata.fi/student',
-        en: 'https://sis-helsinki.funidata.fi/student'
-      }
-    },
-    normal: {
-      key: 'optionalLinks.normalProgram',
-      href: {
-        fi: 'https://weboodi.helsinki.fi/hy/opasopiskopas.jsp?Kieli=1',
-        sv: 'https://weboodi.helsinki.fi/hy/opasopiskopas.jsp?Kieli=2',
-        en: 'https://weboodi.helsinki.fi/hy/opasopiskopas.jsp?Kieli=6'
-      }
-    }
-  },
-  prod: {
-    pilot: {
-      key: 'optionalLinks.pilotProgram',
-      href: {
-        fi: 'https://sis-helsinki.funidata.fi/student',
-        sv: 'https://sis-helsinki.funidata.fi/student',
-        en: 'https://sis-helsinki.funidata.fi/student'
-      }
-    },
-    normal: {
-      key: 'optionalLinks.normalProgram',
-      href: {
-        fi: 'https://weboodi.helsinki.fi/hy/opasopiskopas.jsp?Kieli=1',
-        sv: 'https://weboodi.helsinki.fi/hy/opasopiskopas.jsp?Kieli=2',
-        en: 'https://weboodi.helsinki.fi/hy/opasopiskopas.jsp?Kieli=6'
-      }
-    }
-  }
-})
-.constant('primaryLinks', {
-  local: [
-    {
-      key: 'primaryLinks.oodi',
-      domain: ['opetukseni'],
-      href: {
-        fi: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=1',
-        sv: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=2',
-        en: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=6'
-      }
-    },
-    {
-      key: 'primaryLinks.courseSearch',
-      domain: ['opintoni', 'opetukseni'],
-      href: {
-        fi: 'https://dev.courses.helsinki.fi/fi/search',
-        sv: 'https://dev.courses.helsinki.fi/sv/search',
-        en: 'https://dev.courses.helsinki.fi/search'
-      }
-    },
-    {
-      key: 'primaryLinks.guide',
-      domain: ['opintoni', 'opetukseni'],
-      href: {
-        fi: 'https://dev.guide.student.helsinki.fi/fi',
-        sv: 'https://dev.guide.student.helsinki.fi/sv',
-        en: 'https://dev.guide.student.helsinki.fi/en'
-      }
-    },
-    {
-      key: 'primaryLinks.opinder',
-      domain: ['opetukseni'],
-      href: {
-        fi: 'https://opinder1.student.helsinki.fi/',
-        sv: 'https://opinder1.student.helsinki.fi/',
-        en: 'https://opinder1.student.helsinki.fi/'
-      }
-    },
-    {
-      key: 'primaryLinks.tools',
-      domain: ['opintoni'],
-      href: {
-        fi: '#',
-        sv: '#',
-        en: '#'
-      },
-      subMenu: [
-        {
-          key: 'primaryLinks.completedStudies',
-          href: {
-            fi: 'https://weboodi.helsinki.fi/hytest/omatopinn.jsp?NaytSuor=1&Kieli=1',
-            sv: 'https://weboodi.helsinki.fi/hytest/omatopinn.jsp?NaytSuor=1&Kieli=2',
-            en: 'https://weboodi.helsinki.fi/hytest/omatopinn.jsp?NaytSuor=1&Kieli=6'
-          }
-        },
-        {
-          key: 'primaryLinks.email',
-          href: {
-            fi: 'http://www.helsinki.fi/office365',
-            sv: 'http://www.helsinki.fi/office365',
-            en: 'http://www.helsinki.fi/office365'
-          }
-        },
-        {
-          key: 'primaryLinks.library',
-          href: {
-            fi: 'http://www.helsinki.fi/kirjasto/fi/etusivu/',
-            sv: 'http://www.helsinki.fi/kirjasto/sv/hem/',
-            en: 'http://www.helsinki.fi/kirjasto/en/home/'
-          }
-        },
-        {
-          key: 'primaryLinks.dictionary',
-          href: {
-            fi: 'https://mot.kielikone.fi/finelib/netmot.shtml',
-            sv: 'https://mot.kielikone.fi/finelib/netmot.shtml',
-            en: 'https://mot.kielikone.fi/finelib/netmot.shtml'
-          }
-        },
-        {
-          key: 'primaryLinks.opinderStudentSubmenu',
-          href: {
-            fi: 'https://opinder1.student.helsinki.fi/',
-            sv: 'https://opinder1.student.helsinki.fi/',
-            en: 'https://opinder1.student.helsinki.fi/'
-          }
+  .constant('optionalLinks', {
+    local: {
+      pilot: {
+        key: 'optionalLinks.pilotProgram',
+        href: {
+          fi: 'https://sis-helsinki-test.funidata.fi/student',
+          sv: 'https://sis-helsinki-test.funidata.fi/student',
+          en: 'https://sis-helsinki-test.funidata.fi/student'
         }
-      ]
-    }
-  ],
-  dev: [
-    {
-      key: 'primaryLinks.oodi',
-      domain: ['opetukseni'],
-      href: {
-        fi: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=1',
-        sv: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=2',
-        en: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=6'
-      }
-    },
-    {
-      key: 'primaryLinks.courseSearch',
-      domain: ['opintoni', 'opetukseni'],
-      href: {
-        fi: 'https://dev.courses.helsinki.fi/fi/search',
-        sv: 'https://dev.courses.helsinki.fi/sv/search',
-        en: 'https://dev.courses.helsinki.fi/search'
-      }
-    },
-    {
-      key: 'primaryLinks.guide',
-      domain: ['opintoni', 'opetukseni'],
-      href: {
-        fi: 'https://dev.guide.student.helsinki.fi/fi',
-        sv: 'https://dev.guide.student.helsinki.fi/sv',
-        en: 'https://dev.guide.student.helsinki.fi/en'
-      }
-    },
-    {
-      key: 'primaryLinks.opinder',
-      domain: ['opetukseni'],
-      href: {
-        fi: 'https://opinder1.student.helsinki.fi/',
-        sv: 'https://opinder1.student.helsinki.fi/',
-        en: 'https://opinder1.student.helsinki.fi/'
-      }
-    },
-    {
-      key: 'primaryLinks.tools',
-      domain: ['opintoni'],
-      href: {
-        fi: '#',
-        sv: '#',
-        en: '#'
       },
-      subMenu: [
-        {
-          key: 'primaryLinks.completedStudies',
-          href: {
-            fi: 'https://weboodi.helsinki.fi/hytest/omatopinn.jsp?NaytSuor=1&Kieli=1',
-            sv: 'https://weboodi.helsinki.fi/hytest/omatopinn.jsp?NaytSuor=1&Kieli=2',
-            en: 'https://weboodi.helsinki.fi/hytest/omatopinn.jsp?NaytSuor=1&Kieli=6'
-          }
-        },
-        {
-          key: 'primaryLinks.email',
-          href: {
-            fi: 'http://www.helsinki.fi/office365',
-            sv: 'http://www.helsinki.fi/office365',
-            en: 'http://www.helsinki.fi/office365'
-          }
-        },
-        {
-          key: 'primaryLinks.library',
-          href: {
-            fi: 'http://www.helsinki.fi/kirjasto/fi/etusivu/',
-            sv: 'http://www.helsinki.fi/kirjasto/sv/hem/',
-            en: 'http://www.helsinki.fi/kirjasto/en/home/'
-          }
-        },
-        {
-          key: 'primaryLinks.dictionary',
-          href: {
-            fi: 'https://mot.kielikone.fi/finelib/netmot.shtml',
-            sv: 'https://mot.kielikone.fi/finelib/netmot.shtml',
-            en: 'https://mot.kielikone.fi/finelib/netmot.shtml'
-          }
-        },
-        {
-          key: 'primaryLinks.opinderStudentSubmenu',
-          href: {
-            fi: 'https://opinder1.student.helsinki.fi/',
-            sv: 'https://opinder1.student.helsinki.fi/',
-            en: 'https://opinder1.student.helsinki.fi/'
-          }
+      normal: {
+        key: 'optionalLinks.normalProgram',
+        href: {
+          fi: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=1',
+          sv: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=2',
+          en: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=6'
         }
-      ]
-    }
-  ],
-  qa: [
-    {
-      key: 'primaryLinks.oodi',
-      domain: ['opetukseni'],
-      href: {
-        fi: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=1',
-        sv: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=2',
-        en: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=6'
       }
     },
-    {
-      key: 'primaryLinks.courseSearch',
-      domain: ['opintoni', 'opetukseni'],
-      href: {
-        fi: 'https://dev.courses.helsinki.fi/fi/search',
-        sv: 'https://dev.courses.helsinki.fi/sv/search',
-        en: 'https://dev.courses.helsinki.fi/search'
-      }
-    },
-    {
-      key: 'primaryLinks.guide',
-      domain: ['opintoni', 'opetukseni'],
-      href: {
-        fi: 'https://dev.guide.student.helsinki.fi/fi',
-        sv: 'https://dev.guide.student.helsinki.fi/sv',
-        en: 'https://dev.guide.student.helsinki.fi/en'
-      }
-    },
-    {
-      key: 'primaryLinks.opinder',
-      domain: ['opetukseni'],
-      href: {
-        fi: 'https://opinder1.student.helsinki.fi/',
-        sv: 'https://opinder1.student.helsinki.fi/',
-        en: 'https://opinder1.student.helsinki.fi/'
-      }
-    },
-    {
-      key: 'primaryLinks.tools',
-      domain: ['opintoni'],
-      href: {
-        fi: '#',
-        sv: '#',
-        en: '#'
+    dev: {
+      pilot: {
+        key: 'optionalLinks.pilotProgram',
+        href: {
+          fi: 'https://sis-helsinki-test.funidata.fi/student',
+          sv: 'https://sis-helsinki-test.funidata.fi/student',
+          en: 'https://sis-helsinki-test.funidata.fi/student'
+        }
       },
-      subMenu: [
-        {
-          key: 'primaryLinks.completedStudies',
-          href: {
-            fi: 'https://weboodi.helsinki.fi/hytest/omatopinn.jsp?NaytSuor=1&Kieli=1',
-            sv: 'https://weboodi.helsinki.fi/hytest/omatopinn.jsp?NaytSuor=1&Kieli=2',
-            en: 'https://weboodi.helsinki.fi/hytest/omatopinn.jsp?NaytSuor=1&Kieli=6'
-          }
-        },
-        {
-          key: 'primaryLinks.email',
-          href: {
-            fi: 'http://www.helsinki.fi/office365',
-            sv: 'http://www.helsinki.fi/office365',
-            en: 'http://www.helsinki.fi/office365'
-          }
-        },
-        {
-          key: 'primaryLinks.library',
-          href: {
-            fi: 'http://www.helsinki.fi/kirjasto/fi/etusivu/',
-            sv: 'http://www.helsinki.fi/kirjasto/sv/hem/',
-            en: 'http://www.helsinki.fi/kirjasto/en/home/'
-          }
-        },
-        {
-          key: 'primaryLinks.dictionary',
-          href: {
-            fi: 'https://mot.kielikone.fi/finelib/netmot.shtml',
-            sv: 'https://mot.kielikone.fi/finelib/netmot.shtml',
-            en: 'https://mot.kielikone.fi/finelib/netmot.shtml'
-          }
-        },
-        {
-          key: 'primaryLinks.opinderStudentSubmenu',
-          href: {
-            fi: 'https://opinder1.student.helsinki.fi/',
-            sv: 'https://opinder1.student.helsinki.fi/',
-            en: 'https://opinder1.student.helsinki.fi/'
-          }
+      normal: {
+        key: 'optionalLinks.normalProgram',
+        href: {
+          fi: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=1',
+          sv: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=2',
+          en: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=6'
         }
-      ]
-    }
-  ],
-  demo: [
-    {
-      key: 'primaryLinks.oodi',
-      domain: ['opetukseni'],
-      href: {
-        fi: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=1',
-        sv: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=2',
-        en: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=6'
       }
     },
-    {
-      key: 'primaryLinks.courseSearch',
-      domain: ['opintoni', 'opetukseni'],
-      href: {
-        fi: 'https://demo.courses.helsinki.fi/fi/search',
-        sv: 'https://demo.courses.helsinki.fi/sv/search',
-        en: 'https://demo.courses.helsinki.fi/search'
-      }
-    },
-    {
-      key: 'primaryLinks.guide',
-      domain: ['opintoni', 'opetukseni'],
-      href: {
-        fi: 'https://guide.student.helsinki.fi/fi',
-        sv: 'https://guide.student.helsinki.fi/sv',
-        en: 'https://guide.student.helsinki.fi/en'
-      }
-    },
-    {
-      key: 'primaryLinks.opinder',
-      domain: ['opetukseni'],
-      href: {
-        fi: 'https://opinder.helsinki.fi',
-        sv: 'https://opinder.helsinki.fi',
-        en: 'https://opinder.helsinki.fi'
-      }
-    },
-    {
-      key: 'primaryLinks.tools',
-      domain: ['opintoni'],
-      href: {
-        fi: '#',
-        sv: '#',
-        en: '#'
+    qa: {
+      pilot: {
+        key: 'optionalLinks.pilotProgram',
+        href: {
+          fi: 'https://sis-helsinki-test.funidata.fi/student',
+          sv: 'https://sis-helsinki-test.funidata.fi/student',
+          en: 'https://sis-helsinki-test.funidata.fi/student'
+        }
       },
-      subMenu: [
-        {
-          key: 'primaryLinks.completedStudies',
-          href: {
-            fi: 'https://weboodi.helsinki.fi/hy/omatopinn.jsp?NaytSuor=1&Kieli=1',
-            sv: 'https://weboodi.helsinki.fi/hy/omatopinn.jsp?NaytSuor=1&Kieli=2',
-            en: 'https://weboodi.helsinki.fi/hy/omatopinn.jsp?NaytSuor=1&Kieli=6'
-          }
-        },
-        {
-          key: 'primaryLinks.email',
-          href: {
-            fi: 'http://www.helsinki.fi/office365',
-            sv: 'http://www.helsinki.fi/office365',
-            en: 'http://www.helsinki.fi/office365'
-          }
-        },
-        {
-          key: 'primaryLinks.library',
-          href: {
-            fi: 'http://www.helsinki.fi/kirjasto/fi/etusivu/',
-            sv: 'http://www.helsinki.fi/kirjasto/sv/hem/',
-            en: 'http://www.helsinki.fi/kirjasto/en/home/'
-          }
-        },
-        {
-          key: 'primaryLinks.dictionary',
-          href: {
-            fi: 'https://mot.kielikone.fi/finelib/netmot.shtml',
-            sv: 'https://mot.kielikone.fi/finelib/netmot.shtml',
-            en: 'https://mot.kielikone.fi/finelib/netmot.shtml'
-          }
-        },
-        {
-          key: 'primaryLinks.opinderStudentSubmenu',
-          href: {
-            fi: 'https://opinder.helsinki.fi',
-            sv: 'https://opinder.helsinki.fi',
-            en: 'https://opinder.helsinki.fi'
-          }
+      normal: {
+        key: 'optionalLinks.normalProgram',
+        href: {
+          fi: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=1',
+          sv: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=2',
+          en: 'https://weboodi.helsinki.fi/hytest/opasopiskopas.jsp?Kieli=6'
         }
-      ]
-    }
-  ],
-  prod: [
-    {
-      key: 'primaryLinks.oodi',
-      domain: ['opetukseni'],
-      href: {
-        fi: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=1',
-        sv: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=2',
-        en: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=6'
       }
     },
-    {
-      key: 'primaryLinks.courseSearch',
-      domain: ['opintoni', 'opetukseni'],
-      href: {
-        fi: 'https://courses.helsinki.fi/fi/search',
-        sv: 'https://courses.helsinki.fi/sv/search',
-        en: 'https://courses.helsinki.fi/search'
-      }
-    },
-    {
-      key: 'primaryLinks.guide',
-      domain: ['opintoni', 'opetukseni'],
-      href: {
-        fi: 'https://guide.student.helsinki.fi/fi',
-        sv: 'https://guide.student.helsinki.fi/sv',
-        en: 'https://guide.student.helsinki.fi/en'
-      }
-    },
-    {
-      key: 'primaryLinks.opinder',
-      domain: ['opetukseni'],
-      href: {
-        fi: 'https://opinder.helsinki.fi',
-        sv: 'https://opinder.helsinki.fi',
-        en: 'https://opinder.helsinki.fi'
-      }
-    },
-    {
-      key: 'primaryLinks.tools',
-      domain: ['opintoni'],
-      href: {
-        fi: '#',
-        sv: '#',
-        en: '#'
+    demo: {
+      pilot: {
+        key: 'optionalLinks.pilotProgram',
+        href: {
+          fi: 'https://sis-helsinki.funidata.fi/student',
+          sv: 'https://sis-helsinki.funidata.fi/student',
+          en: 'https://sis-helsinki.funidata.fi/student'
+        }
       },
-      subMenu: [
-        {
-          key: 'primaryLinks.completedStudies',
-          href: {
-            fi: 'https://weboodi.helsinki.fi/hy/omatopinn.jsp?NaytSuor=1&Kieli=1',
-            sv: 'https://weboodi.helsinki.fi/hy/omatopinn.jsp?NaytSuor=1&Kieli=2',
-            en: 'https://weboodi.helsinki.fi/hy/omatopinn.jsp?NaytSuor=1&Kieli=6'
-          }
-        },
-        {
-          key: 'primaryLinks.email',
-          href: {
-            fi: 'http://www.helsinki.fi/office365',
-            sv: 'http://www.helsinki.fi/office365',
-            en: 'http://www.helsinki.fi/office365'
-          }
-        },
-        {
-          key: 'primaryLinks.library',
-          href: {
-            fi: 'http://www.helsinki.fi/kirjasto/fi/etusivu/',
-            sv: 'http://www.helsinki.fi/kirjasto/sv/hem/',
-            en: 'http://www.helsinki.fi/kirjasto/en/home/'
-          }
-        },
-        {
-          key: 'primaryLinks.dictionary',
-          href: {
-            fi: 'https://mot.kielikone.fi/finelib/netmot.shtml',
-            sv: 'https://mot.kielikone.fi/finelib/netmot.shtml',
-            en: 'https://mot.kielikone.fi/finelib/netmot.shtml'
-          }
-        },
-        {
-          key: 'primaryLinks.opinderStudentSubmenu',
-          href: {
-            fi: 'https://opinder.helsinki.fi',
-            sv: 'https://opinder.helsinki.fi',
-            en: 'https://opinder.helsinki.fi'
-          }
+      normal: {
+        key: 'optionalLinks.normalProgram',
+        href: {
+          fi: 'https://weboodi.helsinki.fi/hy/opasopiskopas.jsp?Kieli=1',
+          sv: 'https://weboodi.helsinki.fi/hy/opasopiskopas.jsp?Kieli=2',
+          en: 'https://weboodi.helsinki.fi/hy/opasopiskopas.jsp?Kieli=6'
         }
-      ]
+      }
+    },
+    prod: {
+      pilot: {
+        key: 'optionalLinks.pilotProgram',
+        href: {
+          fi: 'https://sis-helsinki.funidata.fi/student',
+          sv: 'https://sis-helsinki.funidata.fi/student',
+          en: 'https://sis-helsinki.funidata.fi/student'
+        }
+      },
+      normal: {
+        key: 'optionalLinks.normalProgram',
+        href: {
+          fi: 'https://weboodi.helsinki.fi/hy/opasopiskopas.jsp?Kieli=1',
+          sv: 'https://weboodi.helsinki.fi/hy/opasopiskopas.jsp?Kieli=2',
+          en: 'https://weboodi.helsinki.fi/hy/opasopiskopas.jsp?Kieli=6'
+        }
+      }
     }
-  ]
-});
+  })
+  .constant('primaryLinks', {
+    local: [
+      {
+        key: 'primaryLinks.oodi',
+        domain: ['opetukseni'],
+        href: {
+          fi: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=1',
+          sv: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=2',
+          en: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=6'
+        }
+      },
+      {
+        key: 'primaryLinks.courseSearch',
+        domain: ['opintoni', 'opetukseni'],
+        href: {
+          fi: 'https://dev.courses.helsinki.fi/fi/search',
+          sv: 'https://dev.courses.helsinki.fi/sv/search',
+          en: 'https://dev.courses.helsinki.fi/search'
+        }
+      },
+      {
+        key: 'primaryLinks.guide',
+        domain: ['opintoni', 'opetukseni'],
+        href: {
+          fi: 'https://dev.guide.student.helsinki.fi/fi',
+          sv: 'https://dev.guide.student.helsinki.fi/sv',
+          en: 'https://dev.guide.student.helsinki.fi/en'
+        }
+      },
+      {
+        key: 'primaryLinks.opinder',
+        domain: ['opetukseni'],
+        href: {
+          fi: 'https://opinder1.student.helsinki.fi/',
+          sv: 'https://opinder1.student.helsinki.fi/',
+          en: 'https://opinder1.student.helsinki.fi/'
+        }
+      },
+      {
+        key: 'primaryLinks.tools',
+        domain: ['opintoni'],
+        href: {
+          fi: '#',
+          sv: '#',
+          en: '#'
+        },
+        subMenu: [
+          {
+            key: 'primaryLinks.completedStudies',
+            href: {
+              fi: 'https://weboodi.helsinki.fi/hytest/omatopinn.jsp?NaytSuor=1&Kieli=1',
+              sv: 'https://weboodi.helsinki.fi/hytest/omatopinn.jsp?NaytSuor=1&Kieli=2',
+              en: 'https://weboodi.helsinki.fi/hytest/omatopinn.jsp?NaytSuor=1&Kieli=6'
+            }
+          },
+          {
+            key: 'primaryLinks.email',
+            href: {
+              fi: 'http://www.helsinki.fi/office365',
+              sv: 'http://www.helsinki.fi/office365',
+              en: 'http://www.helsinki.fi/office365'
+            }
+          },
+          {
+            key: 'primaryLinks.library',
+            href: {
+              fi: 'http://www.helsinki.fi/kirjasto/fi/etusivu/',
+              sv: 'http://www.helsinki.fi/kirjasto/sv/hem/',
+              en: 'http://www.helsinki.fi/kirjasto/en/home/'
+            }
+          },
+          {
+            key: 'primaryLinks.dictionary',
+            href: {
+              fi: 'https://mot.kielikone.fi/finelib/netmot.shtml',
+              sv: 'https://mot.kielikone.fi/finelib/netmot.shtml',
+              en: 'https://mot.kielikone.fi/finelib/netmot.shtml'
+            }
+          },
+          {
+            key: 'primaryLinks.opinderStudentSubmenu',
+            href: {
+              fi: 'https://opinder1.student.helsinki.fi/',
+              sv: 'https://opinder1.student.helsinki.fi/',
+              en: 'https://opinder1.student.helsinki.fi/'
+            }
+          }
+        ]
+      }
+    ],
+    dev: [
+      {
+        key: 'primaryLinks.oodi',
+        domain: ['opetukseni'],
+        href: {
+          fi: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=1',
+          sv: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=2',
+          en: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=6'
+        }
+      },
+      {
+        key: 'primaryLinks.courseSearch',
+        domain: ['opintoni', 'opetukseni'],
+        href: {
+          fi: 'https://dev.courses.helsinki.fi/fi/search',
+          sv: 'https://dev.courses.helsinki.fi/sv/search',
+          en: 'https://dev.courses.helsinki.fi/search'
+        }
+      },
+      {
+        key: 'primaryLinks.guide',
+        domain: ['opintoni', 'opetukseni'],
+        href: {
+          fi: 'https://dev.guide.student.helsinki.fi/fi',
+          sv: 'https://dev.guide.student.helsinki.fi/sv',
+          en: 'https://dev.guide.student.helsinki.fi/en'
+        }
+      },
+      {
+        key: 'primaryLinks.opinder',
+        domain: ['opetukseni'],
+        href: {
+          fi: 'https://opinder1.student.helsinki.fi/',
+          sv: 'https://opinder1.student.helsinki.fi/',
+          en: 'https://opinder1.student.helsinki.fi/'
+        }
+      },
+      {
+        key: 'primaryLinks.tools',
+        domain: ['opintoni'],
+        href: {
+          fi: '#',
+          sv: '#',
+          en: '#'
+        },
+        subMenu: [
+          {
+            key: 'primaryLinks.completedStudies',
+            href: {
+              fi: 'https://weboodi.helsinki.fi/hytest/omatopinn.jsp?NaytSuor=1&Kieli=1',
+              sv: 'https://weboodi.helsinki.fi/hytest/omatopinn.jsp?NaytSuor=1&Kieli=2',
+              en: 'https://weboodi.helsinki.fi/hytest/omatopinn.jsp?NaytSuor=1&Kieli=6'
+            }
+          },
+          {
+            key: 'primaryLinks.email',
+            href: {
+              fi: 'http://www.helsinki.fi/office365',
+              sv: 'http://www.helsinki.fi/office365',
+              en: 'http://www.helsinki.fi/office365'
+            }
+          },
+          {
+            key: 'primaryLinks.library',
+            href: {
+              fi: 'http://www.helsinki.fi/kirjasto/fi/etusivu/',
+              sv: 'http://www.helsinki.fi/kirjasto/sv/hem/',
+              en: 'http://www.helsinki.fi/kirjasto/en/home/'
+            }
+          },
+          {
+            key: 'primaryLinks.dictionary',
+            href: {
+              fi: 'https://mot.kielikone.fi/finelib/netmot.shtml',
+              sv: 'https://mot.kielikone.fi/finelib/netmot.shtml',
+              en: 'https://mot.kielikone.fi/finelib/netmot.shtml'
+            }
+          },
+          {
+            key: 'primaryLinks.opinderStudentSubmenu',
+            href: {
+              fi: 'https://opinder1.student.helsinki.fi/',
+              sv: 'https://opinder1.student.helsinki.fi/',
+              en: 'https://opinder1.student.helsinki.fi/'
+            }
+          }
+        ]
+      }
+    ],
+    qa: [
+      {
+        key: 'primaryLinks.oodi',
+        domain: ['opetukseni'],
+        href: {
+          fi: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=1',
+          sv: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=2',
+          en: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=6'
+        }
+      },
+      {
+        key: 'primaryLinks.courseSearch',
+        domain: ['opintoni', 'opetukseni'],
+        href: {
+          fi: 'https://dev.courses.helsinki.fi/fi/search',
+          sv: 'https://dev.courses.helsinki.fi/sv/search',
+          en: 'https://dev.courses.helsinki.fi/search'
+        }
+      },
+      {
+        key: 'primaryLinks.guide',
+        domain: ['opintoni', 'opetukseni'],
+        href: {
+          fi: 'https://dev.guide.student.helsinki.fi/fi',
+          sv: 'https://dev.guide.student.helsinki.fi/sv',
+          en: 'https://dev.guide.student.helsinki.fi/en'
+        }
+      },
+      {
+        key: 'primaryLinks.opinder',
+        domain: ['opetukseni'],
+        href: {
+          fi: 'https://opinder1.student.helsinki.fi/',
+          sv: 'https://opinder1.student.helsinki.fi/',
+          en: 'https://opinder1.student.helsinki.fi/'
+        }
+      },
+      {
+        key: 'primaryLinks.tools',
+        domain: ['opintoni'],
+        href: {
+          fi: '#',
+          sv: '#',
+          en: '#'
+        },
+        subMenu: [
+          {
+            key: 'primaryLinks.completedStudies',
+            href: {
+              fi: 'https://weboodi.helsinki.fi/hytest/omatopinn.jsp?NaytSuor=1&Kieli=1',
+              sv: 'https://weboodi.helsinki.fi/hytest/omatopinn.jsp?NaytSuor=1&Kieli=2',
+              en: 'https://weboodi.helsinki.fi/hytest/omatopinn.jsp?NaytSuor=1&Kieli=6'
+            }
+          },
+          {
+            key: 'primaryLinks.email',
+            href: {
+              fi: 'http://www.helsinki.fi/office365',
+              sv: 'http://www.helsinki.fi/office365',
+              en: 'http://www.helsinki.fi/office365'
+            }
+          },
+          {
+            key: 'primaryLinks.library',
+            href: {
+              fi: 'http://www.helsinki.fi/kirjasto/fi/etusivu/',
+              sv: 'http://www.helsinki.fi/kirjasto/sv/hem/',
+              en: 'http://www.helsinki.fi/kirjasto/en/home/'
+            }
+          },
+          {
+            key: 'primaryLinks.dictionary',
+            href: {
+              fi: 'https://mot.kielikone.fi/finelib/netmot.shtml',
+              sv: 'https://mot.kielikone.fi/finelib/netmot.shtml',
+              en: 'https://mot.kielikone.fi/finelib/netmot.shtml'
+            }
+          },
+          {
+            key: 'primaryLinks.opinderStudentSubmenu',
+            href: {
+              fi: 'https://opinder1.student.helsinki.fi/',
+              sv: 'https://opinder1.student.helsinki.fi/',
+              en: 'https://opinder1.student.helsinki.fi/'
+            }
+          }
+        ]
+      }
+    ],
+    demo: [
+      {
+        key: 'primaryLinks.oodi',
+        domain: ['opetukseni'],
+        href: {
+          fi: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=1',
+          sv: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=2',
+          en: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=6'
+        }
+      },
+      {
+        key: 'primaryLinks.courseSearch',
+        domain: ['opintoni', 'opetukseni'],
+        href: {
+          fi: 'https://demo.courses.helsinki.fi/fi/search',
+          sv: 'https://demo.courses.helsinki.fi/sv/search',
+          en: 'https://demo.courses.helsinki.fi/search'
+        }
+      },
+      {
+        key: 'primaryLinks.guide',
+        domain: ['opintoni', 'opetukseni'],
+        href: {
+          fi: 'https://guide.student.helsinki.fi/fi',
+          sv: 'https://guide.student.helsinki.fi/sv',
+          en: 'https://guide.student.helsinki.fi/en'
+        }
+      },
+      {
+        key: 'primaryLinks.opinder',
+        domain: ['opetukseni'],
+        href: {
+          fi: 'https://opinder.helsinki.fi',
+          sv: 'https://opinder.helsinki.fi',
+          en: 'https://opinder.helsinki.fi'
+        }
+      },
+      {
+        key: 'primaryLinks.tools',
+        domain: ['opintoni'],
+        href: {
+          fi: '#',
+          sv: '#',
+          en: '#'
+        },
+        subMenu: [
+          {
+            key: 'primaryLinks.completedStudies',
+            href: {
+              fi: 'https://weboodi.helsinki.fi/hy/omatopinn.jsp?NaytSuor=1&Kieli=1',
+              sv: 'https://weboodi.helsinki.fi/hy/omatopinn.jsp?NaytSuor=1&Kieli=2',
+              en: 'https://weboodi.helsinki.fi/hy/omatopinn.jsp?NaytSuor=1&Kieli=6'
+            }
+          },
+          {
+            key: 'primaryLinks.email',
+            href: {
+              fi: 'http://www.helsinki.fi/office365',
+              sv: 'http://www.helsinki.fi/office365',
+              en: 'http://www.helsinki.fi/office365'
+            }
+          },
+          {
+            key: 'primaryLinks.library',
+            href: {
+              fi: 'http://www.helsinki.fi/kirjasto/fi/etusivu/',
+              sv: 'http://www.helsinki.fi/kirjasto/sv/hem/',
+              en: 'http://www.helsinki.fi/kirjasto/en/home/'
+            }
+          },
+          {
+            key: 'primaryLinks.dictionary',
+            href: {
+              fi: 'https://mot.kielikone.fi/finelib/netmot.shtml',
+              sv: 'https://mot.kielikone.fi/finelib/netmot.shtml',
+              en: 'https://mot.kielikone.fi/finelib/netmot.shtml'
+            }
+          },
+          {
+            key: 'primaryLinks.opinderStudentSubmenu',
+            href: {
+              fi: 'https://opinder.helsinki.fi',
+              sv: 'https://opinder.helsinki.fi',
+              en: 'https://opinder.helsinki.fi'
+            }
+          }
+        ]
+      }
+    ],
+    prod: [
+      {
+        key: 'primaryLinks.oodi',
+        domain: ['opetukseni'],
+        href: {
+          fi: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=1',
+          sv: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=2',
+          en: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=6'
+        }
+      },
+      {
+        key: 'primaryLinks.courseSearch',
+        domain: ['opintoni', 'opetukseni'],
+        href: {
+          fi: 'https://courses.helsinki.fi/fi/search',
+          sv: 'https://courses.helsinki.fi/sv/search',
+          en: 'https://courses.helsinki.fi/search'
+        }
+      },
+      {
+        key: 'primaryLinks.guide',
+        domain: ['opintoni', 'opetukseni'],
+        href: {
+          fi: 'https://guide.student.helsinki.fi/fi',
+          sv: 'https://guide.student.helsinki.fi/sv',
+          en: 'https://guide.student.helsinki.fi/en'
+        }
+      },
+      {
+        key: 'primaryLinks.opinder',
+        domain: ['opetukseni'],
+        href: {
+          fi: 'https://opinder.helsinki.fi',
+          sv: 'https://opinder.helsinki.fi',
+          en: 'https://opinder.helsinki.fi'
+        }
+      },
+      {
+        key: 'primaryLinks.tools',
+        domain: ['opintoni'],
+        href: {
+          fi: '#',
+          sv: '#',
+          en: '#'
+        },
+        subMenu: [
+          {
+            key: 'primaryLinks.completedStudies',
+            href: {
+              fi: 'https://weboodi.helsinki.fi/hy/omatopinn.jsp?NaytSuor=1&Kieli=1',
+              sv: 'https://weboodi.helsinki.fi/hy/omatopinn.jsp?NaytSuor=1&Kieli=2',
+              en: 'https://weboodi.helsinki.fi/hy/omatopinn.jsp?NaytSuor=1&Kieli=6'
+            }
+          },
+          {
+            key: 'primaryLinks.email',
+            href: {
+              fi: 'http://www.helsinki.fi/office365',
+              sv: 'http://www.helsinki.fi/office365',
+              en: 'http://www.helsinki.fi/office365'
+            }
+          },
+          {
+            key: 'primaryLinks.library',
+            href: {
+              fi: 'http://www.helsinki.fi/kirjasto/fi/etusivu/',
+              sv: 'http://www.helsinki.fi/kirjasto/sv/hem/',
+              en: 'http://www.helsinki.fi/kirjasto/en/home/'
+            }
+          },
+          {
+            key: 'primaryLinks.dictionary',
+            href: {
+              fi: 'https://mot.kielikone.fi/finelib/netmot.shtml',
+              sv: 'https://mot.kielikone.fi/finelib/netmot.shtml',
+              en: 'https://mot.kielikone.fi/finelib/netmot.shtml'
+            }
+          },
+          {
+            key: 'primaryLinks.opinderStudentSubmenu',
+            href: {
+              fi: 'https://opinder.helsinki.fi',
+              sv: 'https://opinder.helsinki.fi',
+              en: 'https://opinder.helsinki.fi'
+            }
+          }
+        ]
+      }
+    ]
+  });

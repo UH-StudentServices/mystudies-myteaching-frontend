@@ -15,10 +15,12 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('opintoniLander', ['services.language',
-                                  'services.login',
-                                  'services.state',
-                                  'services.configuration'])
+angular.module('opintoniLander', [
+  'services.language',
+  'services.login',
+  'services.state',
+  'services.configuration'
+])
 
   .constant('COURSE_SEARCH_URL', {
     en: 'https://courses.helsinki.fi/search',
@@ -32,10 +34,7 @@ angular.module('opintoniLander', ['services.language',
     fi: 'http://www.helsinki.fi/kirjasto/fi/etusivu/'
   })
 
-  .config(function(
-    $stateProvider,
-    $translateProvider) {
-
+  .config(function ($stateProvider) {
     $stateProvider
       .state('lander', {
         parent: 'getState',
@@ -43,17 +42,17 @@ angular.module('opintoniLander', ['services.language',
         views: {
           'content@': {
             templateUrl: 'app/partials/landerPages/_lander.html',
-            controller: function($scope, state, LanguageService, LIBRARY_URL) {
+            controller: function ($scope, state, LanguageService, LIBRARY_URL) {
               $scope.currentStateName = state;
               $scope.libraryUrl = LIBRARY_URL[LanguageService.getCurrent()];
             }
           }
         },
         resolve: {
-          pageTitle: function($q, $translate, state, State) {
-            var titleString = !state || state === State.MY_STUDIES ?
-              'opintoni.pageHeaderBranding' :
-              'opetukseni.pageHeaderBranding';
+          pageTitle: function ($q, $translate, state, State) {
+            var titleString = !state || state === State.MY_STUDIES
+              ? 'opintoni.pageHeaderBranding'
+              : 'opetukseni.pageHeaderBranding';
 
             return $translate(titleString)
               .then(function translateHeaderSuccess(title) {
@@ -68,40 +67,52 @@ angular.module('opintoniLander', ['services.language',
         parent: 'lander',
         url: '/login',
         templateUrl: 'app/partials/landerPages/_lander.login.html',
-        controller: function($scope, Configuration, LanguageService, COURSE_SEARCH_URL, LoginService) {
-          _.assign($scope, {
-            loginUrls: {
-              loginUrlStudent: Configuration.studentAppUrl,
-              loginUrlTeacher: Configuration.teacherAppUrl
-            },
-            redirectToLogin: function() {
-              LoginService.goToLogin();
-            },
-            courseSearchUrl: COURSE_SEARCH_URL[LanguageService.getCurrent()]
-          });
-        }
+        controller:
+          function ($scope, Configuration, LanguageService, COURSE_SEARCH_URL, LoginService) {
+            _.assign($scope, {
+              loginUrls: {
+                loginUrlStudent: Configuration.studentAppUrl,
+                loginUrlTeacher: Configuration.teacherAppUrl
+              },
+              redirectToLogin: function () {
+                LoginService.goToLogin();
+              },
+              courseSearchUrl: COURSE_SEARCH_URL[LanguageService.getCurrent()]
+            });
+          }
       })
 
       .state('localLogin', {
         parent: 'lander',
         url: '/local-login',
         templateUrl: 'app/partials/landerPages/_local.login.html',
-        controller: function($scope, Configuration, LocalUsers, StateService, State, LoginService, Environments) {
-          var state = StateService.getStateFromDomain(),
-              envUsers = environmentUsers(Configuration.environment),
-              users = state === State.MY_TEACHINGS ? envUsers.teachers : envUsers.students,
-              isDemo = Configuration.environment === Environments.DEMO;
+        controller: function (
+          $scope,
+          Configuration,
+          LocalUsers,
+          StateService,
+          State,
+          LoginService,
+          Environments
+        ) {
+          var state = StateService.getStateFromDomain();
+          var isDemo = Configuration.environment === Environments.DEMO;
+          var envUsers;
+          var users;
 
           function environmentUsers(environment) {
-            if (environment === Environments.LOCAL ||
-                environment === Environments.DEV) {
+            if (environment === Environments.LOCAL
+                || environment === Environments.DEV) {
               return LocalUsers.local;
-            } else if (environment === Environments.DEMO) {
+            } if (environment === Environments.DEMO) {
               return LocalUsers.demo;
-            } else {
-              throw Error('unsupported environment for local login');
             }
+            throw Error('unsupported environment for local login');
           }
+          envUsers = environmentUsers(Configuration.environment);
+          users = state === State.MY_TEACHINGS
+            ? envUsers.teachers
+            : envUsers.students;
 
           _.assign($scope, {
             isDemo: isDemo,

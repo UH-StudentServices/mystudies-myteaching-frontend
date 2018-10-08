@@ -24,7 +24,5 @@ angular.module('resources.feedback', [])
       return feedbackResource.save(insertFeedbackRequest).$promise;
     }
 
-    return {
-      save: save
-    };
+    return { save: save };
   });

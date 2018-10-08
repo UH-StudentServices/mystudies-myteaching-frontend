@@ -17,13 +17,13 @@
 
 angular.module('directives.previewButton', ['services.preview'])
 
-  .directive('previewButton', function() {
+  .directive('previewButton', function () {
     return {
       restrict: 'E',
       replace: true,
       scope: {},
       templateUrl: 'app/directives/preview/previewButton.html',
-      controller: function($scope, PreviewService) {
+      controller: function ($scope, PreviewService) {
         $scope.enterPreview = PreviewService.enterPreview;
       }
     };

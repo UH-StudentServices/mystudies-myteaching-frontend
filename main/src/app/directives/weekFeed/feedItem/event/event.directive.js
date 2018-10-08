@@ -15,12 +15,13 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.weekFeed.feedItem.event',[
+angular.module('directives.weekFeed.feedItem.event', [
   'services.location',
   'services.eventUri',
-  'directives.analytics'])
+  'directives.analytics'
+])
 
-  .directive('event', function(LocationService, EventUriService) {
+  .directive('event', function (LocationService, EventUriService) {
     return {
       restrict: 'E',
       replace: true,
@@ -29,15 +30,16 @@ angular.module('directives.weekFeed.feedItem.event',[
         feedItem: '=',
         showCourseImage: '='
       },
-      link: function($scope) {
+      link: function ($scope) {
         $scope.openReittiopas = function openReittiopas(startDate, location) {
           var addressFromCookie = LocationService.getUserAddressFromCookie();
 
           if (addressFromCookie) {
-            window.location = EventUriService.getReittiopasUri(startDate, location, addressFromCookie);
+            window.location =
+              EventUriService.getReittiopasUri(startDate, location, addressFromCookie);
           } else {
             location.loadingLocation = true;
-            LocationService.getUserAddressFromGeolocation().then(function(data) {
+            LocationService.getUserAddressFromGeolocation().then(function (data) {
               LocationService.putUserAddressToCookie(data);
               window.location = EventUriService.getReittiopasUri(startDate, location, data);
             });
@@ -47,7 +49,7 @@ angular.module('directives.weekFeed.feedItem.event',[
     };
   })
 
-  .directive('eventTitle', function() {
+  .directive('eventTitle', function () {
     return {
       restrict: 'E',
       replace: true,
@@ -55,20 +57,20 @@ angular.module('directives.weekFeed.feedItem.event',[
     };
   })
 
-  .filter('eventTimeSpan', function() {
-    var dateString = 'DD.MM.YYYY',
-        hoursString = 'HH:mm';
+  .filter('eventTimeSpan', function () {
+    var dateString = 'DD.MM.YYYY';
+    var hoursString = 'HH:mm';
 
     function momentDateHasHours(momentDate) {
+      // eslint-disable-next-line no-underscore-dangle
       return _.isArray(momentDate._i) && momentDate._i.length > 3;
     }
 
     function getFormatString(momentDate) {
       if (momentDateHasHours(momentDate)) {
         return dateString + ' ' + hoursString;
-      } else {
-        return dateString;
       }
+      return dateString;
     }
 
     function formatMomentDate(momentDate) {
@@ -80,28 +82,30 @@ angular.module('directives.weekFeed.feedItem.event',[
     }
 
     function formatMomentDateTimeSpan(startDate, endDate) {
-      var dateString = formatMomentDate(startDate);
+      var formattedDateString = formatMomentDate(startDate);
 
       if (momentDateHasHours(startDate) && momentDateHasHours(endDate)) {
-        dateString += ' - ' + endDate.format(hoursString);
+        formattedDateString += ' - ' + endDate.format(hoursString);
       }
-      return dateString;
+      return formattedDateString;
     }
 
-    return function(startDate, endDate) {
+    return function (startDate, endDate) {
+      var localStartDate;
+      var localEndDate;
       if (startDate) {
         /* Dates are UTC but we want to show them as local times */
-        startDate = startDate.local();
-        endDate = endDate ? endDate.local() : undefined;
+        localStartDate = startDate.local();
+        localEndDate = endDate ? endDate.local() : undefined;
 
-        if (!endDate || startDate.diff(endDate) === 0) {
-          return formatMomentDate(startDate);
-        } else if (startDate.year() === endDate.year() &&
-          startDate.dayOfYear() === endDate.dayOfYear()) {
-          return formatMomentDateTimeSpan(startDate, endDate);
-        } else {
-          return formatMomentDateSpan(startDate, endDate);
+        if (!localEndDate || localStartDate.diff(localEndDate) === 0) {
+          return formatMomentDate(localStartDate);
+        } if (localStartDate.year() === localEndDate.year()
+          && localStartDate.dayOfYear() === localEndDate.dayOfYear()) {
+          return formatMomentDateTimeSpan(localStartDate, localEndDate);
         }
+        return formatMomentDateSpan(localStartDate, localEndDate);
       }
+      return undefined;
     };
   });

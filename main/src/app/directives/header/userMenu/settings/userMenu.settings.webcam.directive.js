@@ -18,7 +18,7 @@
 'use strict';
 
 angular.module('webcam', ['utils.browser'])
-  .directive('webcam', function(BrowserUtil) {
+  .directive('webcam', function (BrowserUtil) {
     return {
       template: '<div class="webcam" ng-transclude></div>',
       restrict: 'E',
@@ -32,13 +32,11 @@ angular.module('webcam', ['utils.browser'])
         config: '=channel'
       },
       link: function postLink($scope, element) {
-        var videoElem = null,
-            videoStream = null,
-            placeholder = null;
+        var videoElem = null;
+        var videoStream = null;
+        var placeholder = null;
 
-        $scope.config = $scope.config || {};
-
-        var _removeDOMElement = function _removeDOMElement(DOMel) {
+        var removeDOMElement = function removeDOMElement(DOMel) {
           if (DOMel) {
             angular.element(DOMel).remove();
           }
@@ -48,21 +46,21 @@ angular.module('webcam', ['utils.browser'])
           if (!!videoStream && typeof videoStream.stop === 'function') {
             videoStream.stop();
           }
-          if (!!videoElem) {
+          if (videoElem) {
             delete videoElem.src;
           }
         };
 
         // called when camera stream is loaded
         var onSuccess = function onSuccess(stream) {
+          var vendorURL;
           videoStream = stream;
 
           // Firefox supports a src object
           if (navigator.mozGetUserMedia) {
             videoElem.mozSrcObject = stream;
           } else {
-            var vendorURL = window.URL || window.webkitURL;
-
+            vendorURL = window.URL || window.webkitURL;
             videoElem.src = vendorURL.createObjectURL(stream);
           }
 
@@ -72,27 +70,22 @@ angular.module('webcam', ['utils.browser'])
 
           /* Call custom callback */
           if ($scope.onStream) {
-            $scope.onStream({stream: stream});
+            $scope.onStream({ stream: stream });
           }
         };
 
         // called when any error happens
         var onFailure = function onFailure(err) {
-          _removeDOMElement(placeholder);
-
-          if (console && console.log) {
-            console.log('The following error occured: ', err);
-          }
+          removeDOMElement(placeholder);
 
           /* Call custom callback */
           if ($scope.onError) {
-            $scope.onError({err: err});
+            $scope.onError({ err: err });
           }
-
-          return;
         };
 
         var startWebcam = function startWebcam() {
+          var isStreaming = false;
           videoElem = document.createElement('video');
           videoElem.setAttribute('class', 'webcam-live');
           videoElem.setAttribute('autoplay', '');
@@ -105,29 +98,25 @@ angular.module('webcam', ['utils.browser'])
             element.append(placeholder);
           }
 
-          // Default variables
-          var isStreaming = false;
-
           // Check the availability of getUserMedia across supported browsers
           if (!BrowserUtil.supportsCamera()) {
-            onFailure({code: -1, msg: 'Browser does not support getUserMedia.'});
+            onFailure({ code: -1, msg: 'Browser does not support getUserMedia.' });
             return;
           }
-
-          var mediaConstraint = {video: true, audio: false};
+          // eslint-disable-next-line vars-on-top
+          var mediaConstraint = { video: true, audio: false };
 
           navigator.getMedia(mediaConstraint, onSuccess, onFailure);
 
           /* Start streaming the webcam data when the video element can play
            * It will do it only once
            */
-          videoElem.addEventListener('canplay', function() {
+          videoElem.addEventListener('canplay', function () {
             if (!isStreaming) {
               isStreaming = true;
-
               $scope.config.video = videoElem;
 
-              _removeDOMElement(placeholder);
+              removeDOMElement(placeholder);
 
               /* Call custom callback */
               if ($scope.onStreaming) {
@@ -144,6 +133,7 @@ angular.module('webcam', ['utils.browser'])
           }
         };
 
+        $scope.config = $scope.config || {};
         $scope.$on('$destroy', onDestroy);
         $scope.$on('START_WEBCAM', startWebcam);
         $scope.$on('STOP_WEBCAM', stopWebcam);

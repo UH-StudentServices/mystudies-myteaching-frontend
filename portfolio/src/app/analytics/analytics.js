@@ -16,28 +16,34 @@
  */
 
 angular.module('portfolioAnalytics', ['provider.analyticsAccounts'])
-  .constant('STRIP_USERNAME_REGEX', /\/[^\/]+$/)
+  .constant('STRIP_USERNAME_REGEX', /\/[^\/]+$/) // eslint-disable-line no-useless-escape
   .constant('TRACK_PAGE_TITLE', 'Portfolio')
   .constant('TRACK_PREFIX', '/portfolio')
 
-
-  .config(function(AnalyticsProvider, ConfigurationProvider, TRACK_PAGE_TITLE, STRIP_USERNAME_REGEX, TRACK_PREFIX) {
+  .config(function (AnalyticsProvider,
+    ConfigurationProvider,
+    TRACK_PAGE_TITLE,
+    STRIP_USERNAME_REGEX,
+    TRACK_PREFIX) {
     var TRACKER_CONFIG_KEY = 'googleAnalyticsAccountPortfolio';
     var trackerConfig = ConfigurationProvider.$get()[TRACKER_CONFIG_KEY];
+    var config;
 
     function isStudentPortfolio() {
       return window.location.hostname.indexOf('student') >= 0;
     }
 
     if (trackerConfig) {
-      var config = {
+      config = {
         name: 'PortfolioTracker',
         tracker: trackerConfig,
         trackEvent: true,
         set: {
           anonymizeIp: true,
           // We leave portfolio language out of the location and page attributes of events,
-          // as it seems it is not possible to change these attributes for events after configuration.
+          // as it seems it is not possible to change these attributes
+          // for events after configuration.
+          // eslint-disable-next-line no-restricted-globals
           location: location.origin + TRACK_PREFIX,
           page: TRACK_PREFIX,
           title: TRACK_PAGE_TITLE
@@ -57,55 +63,12 @@ angular.module('portfolioAnalytics', ['provider.analyticsAccounts'])
     }
   })
 
-
-  .factory('AnalyticsService', function(Analytics,
-                                        STRIP_USERNAME_REGEX,
-                                        TRACK_PAGE_TITLE,
-                                        TRACK_PREFIX,
-                                        $location) {
-
-    function urlWithoutUsername() {
-      return $location.absUrl().replace(STRIP_USERNAME_REGEX, '');
-    }
-
-    function pathWithoutUsername() {
-      return TRACK_PREFIX + $location.url().replace(STRIP_USERNAME_REGEX, '');
-    }
-
-    function trackPageParams() {
-      return {
-        page: pathWithoutUsername(),
-        location: urlWithoutUsername(),
-        referer: urlWithoutUsername(),
-        title: TRACK_PAGE_TITLE
-      };
-    }
-
-
-    function trackEventIfAdded(oldArray, newArray, eventCategory, eventAction, label) {
-      function filter(arr) {
-        return _.reject(arr, function(o) {
-          return o == null;
-        });
-      }
-      if (_.difference(filter(newArray), filter(oldArray)).length > 0) {
-        trackEvent(eventCategory, eventAction, label);
-      }
-    }
-
-    function trackEvent(eventCategory, eventAction, label) {
-      Analytics.trackEvent(eventCategory, eventAction, label);
-    }
-
-    // Automatic page view tracking will leak the user name in the page title to GA, so we track page views manually.
-    // In practice only changing portfolio language changes the URL.
-    function trackPageView() {
-      var params = trackPageParams();
-
-      Analytics.trackPage(params.page, params.title, params);
-    }
-
-    var eventCategories =  {
+  .factory('AnalyticsService', function (Analytics,
+    STRIP_USERNAME_REGEX,
+    TRACK_PAGE_TITLE,
+    TRACK_PREFIX,
+    $location) {
+    var eventCategories = {
       INTRO_TEXT: 'intro_text',
       BACKGROUND_IMAGE: 'background_image',
       STUDIES: 'studies',
@@ -136,9 +99,50 @@ angular.module('portfolioAnalytics', ['provider.analyticsAccounts'])
     };
 
     var eventLabels = {
-        'VISIBLE': 'visible',
-        'HIDDEN': 'hidden'
+      VISIBLE: 'visible',
+      HIDDEN: 'hidden'
     };
+
+    function urlWithoutUsername() {
+      return $location.absUrl().replace(STRIP_USERNAME_REGEX, '');
+    }
+
+    function pathWithoutUsername() {
+      return TRACK_PREFIX + $location.url().replace(STRIP_USERNAME_REGEX, '');
+    }
+
+    function trackPageParams() {
+      return {
+        page: pathWithoutUsername(),
+        location: urlWithoutUsername(),
+        referer: urlWithoutUsername(),
+        title: TRACK_PAGE_TITLE
+      };
+    }
+
+    function trackEvent(eventCategory, eventAction, label) {
+      Analytics.trackEvent(eventCategory, eventAction, label);
+    }
+
+    function trackEventIfAdded(oldArray, newArray, eventCategory, eventAction, label) {
+      function filter(arr) {
+        return _.reject(arr, function (o) {
+          return o == null;
+        });
+      }
+      if (_.difference(filter(newArray), filter(oldArray)).length > 0) {
+        trackEvent(eventCategory, eventAction, label);
+      }
+    }
+
+    // Automatic page view tracking will leak the user name in the page title to GA,
+    // so we track page views manually.
+    // In practice only changing portfolio language changes the URL.
+    function trackPageView() {
+      var params = trackPageParams();
+
+      Analytics.trackPage(params.page, params.title, params);
+    }
 
     return {
       trackEvent: trackEvent,

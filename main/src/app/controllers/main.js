@@ -30,7 +30,7 @@ angular.module('controllers.main', [
   'services.focus'
 ])
 
-  .controller('MainCtrl', function(
+  .controller('MainCtrl', function (
     $scope,
     StateService,
     State,
@@ -41,8 +41,8 @@ angular.module('controllers.main', [
     getEvents,
     UserSettingsService,
     AnalyticsService,
-    EventLabels) {
-
+    EventLabels
+  ) {
     $scope.currentStateName = StateService.getRootStateName();
     $scope.State = State;
     $scope.userSettings = userSettings;
@@ -53,11 +53,11 @@ angular.module('controllers.main', [
     $scope.events = getEvents();
     $scope.currentYear = moment().year();
 
-    UserSettingsService.getShowBannerSubject().subscribe(function(showBanner) {
+    UserSettingsService.getShowBannerSubject().subscribe(function (showBanner) {
       $scope.showBanner = showBanner;
     });
 
     AnalyticsService.trackPageBannerVisibleOnPageLoad(
-      $scope.showBanner ? EventLabels.VISIBLE : EventLabels.HIDDEN);
-
+      $scope.showBanner ? EventLabels.VISIBLE : EventLabels.HIDDEN
+    );
   });

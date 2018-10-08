@@ -24,7 +24,5 @@ angular.module('resources.degreeProgrammes', [])
       return degreeProgrammesResource.query().$promise;
     }
 
-    return {
-      getDegreeProgrammes: getDegreeProgrammes,
-    };
+    return { getDegreeProgrammes: getDegreeProgrammes };
   });

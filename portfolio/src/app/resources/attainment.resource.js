@@ -21,24 +21,28 @@ angular.module('resources.attainment', ['utils.moment'])
   .constant('ALL_ATTAINMENTS', 9999)
 
   .factory('AttainmentResource', function Attainments($resource,
-                                                      StateService,
-                                                      dateArrayToMomentObject,
-                                                      ALL_ATTAINMENTS) {
+    StateService,
+    dateArrayToMomentObject,
+    ALL_ATTAINMENTS) {
+    var updateWhitelist;
+    var getAll;
+    var getAllWhitelisted;
+    var getWhitelist;
 
     function portfolioAttainmentsPrivateResource() {
       return $resource('/api/private/v1/portfolio/:portfolioId/attainment/whitelist', {}, {
-        'updateWhitelist': {method: 'POST'},
-        'getWhitelist': {method: 'GET'}
+        updateWhitelist: { method: 'POST' },
+        getWhitelist: { method: 'GET' }
       });
     }
 
-    var updateWhitelist = function updateWhitelist(portfolioId, whitelistDto) {
-      return portfolioAttainmentsPrivateResource().updateWhitelist({
-        portfolioId: portfolioId
-      }, whitelistDto).$promise;
+    updateWhitelist = function updateWhitelistfn(portfolioId, whitelistDto) {
+      return portfolioAttainmentsPrivateResource()
+        .updateWhitelist({ portfolioId: portfolioId }, whitelistDto)
+        .$promise;
     };
 
-    var getAll = function getAll(portfolioLang) {
+    getAll = function getAllFn(portfolioLang) {
       var attainmentsResource = $resource('/api/private/v1/studyattainments', {
         limit: ALL_ATTAINMENTS,
         lang: portfolioLang
@@ -46,30 +50,28 @@ angular.module('resources.attainment', ['utils.moment'])
 
       return attainmentsResource.query().$promise.then(function getAllSuccess(data) {
         return _.map(data, function datesToMoment(attainment) {
-          attainment.attainmentDate =
-            dateArrayToMomentObject(attainment.attainmentDate);
+          attainment.attainmentDate = dateArrayToMomentObject(attainment.attainmentDate);
           return attainment;
         });
       });
     };
 
-    var getAllWhitelisted = function getAllWhitelisted(portfolioId, portfolioLang) {
-      var attainmentsResource = $resource('/api/' + StateService.getCurrent() +
-        '/v1/portfolio/:portfolioId/attainment', {portfolioId: portfolioId, lang: portfolioLang});
+    getAllWhitelisted = function getAllWhitelistedFn(portfolioId, portfolioLang) {
+      var attainmentsResource = $resource('/api/' + StateService.getCurrent()
+        + '/v1/portfolio/:portfolioId/attainment', { portfolioId: portfolioId, lang: portfolioLang });
 
       return attainmentsResource.query().$promise.then(function getAllSuccess(data) {
         return _.map(data, function datesToMoment(attainment) {
-          attainment.attainmentDate =
-            dateArrayToMomentObject(attainment.attainmentDate);
+          attainment.attainmentDate = dateArrayToMomentObject(attainment.attainmentDate);
           return attainment;
         });
       });
     };
 
-    var getWhitelist = function getWhitelist(portfolioId) {
-      return portfolioAttainmentsPrivateResource().getWhitelist({
-        portfolioId: portfolioId
-      }).$promise;
+    getWhitelist = function getWhitelistFn(portfolioId) {
+      return portfolioAttainmentsPrivateResource()
+        .getWhitelist({ portfolioId: portfolioId })
+        .$promise;
     };
 
     return {
@@ -78,5 +80,4 @@ angular.module('resources.attainment', ['utils.moment'])
       getWhitelist: getWhitelist,
       updateWhitelist: updateWhitelist
     };
-
   });

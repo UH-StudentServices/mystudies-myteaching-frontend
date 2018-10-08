@@ -21,7 +21,6 @@ angular.module('services.state', [
   'services.session',
   'services.configuration'
 ])
-
   .constant('State', {
     MY_STUDIES: 'opintoni',
     MY_TEACHINGS: 'opetukseni',
@@ -31,20 +30,18 @@ angular.module('services.state', [
     LOCAL_LOGIN: 'localLogin',
     LANDER: 'login'
   })
-
-  .factory('StateService', function($state, $location, State, Configuration, Role, ConfigurationProperties) {
-
-    var stateMatches = function(state, name) {
+  .factory('StateService', function ($state, $location, State, Configuration, Role, ConfigurationProperties) {
+    var getStateFromDomain;
+    var stateMatches = function (state, name) {
       if (state === name || state.name === name) {
         return true;
-      } else if (state.parent) {
+      } if (state.parent) {
         return stateMatches(state.parent, name);
-      } else {
-        return false;
       }
+      return false;
     };
 
-    var currentOrParentStateMatches = function(stateToMatch) {
+    var currentOrParentStateMatches = function (stateToMatch) {
       return stateMatches($state.current, stateToMatch);
     };
 
@@ -62,32 +59,30 @@ angular.module('services.state', [
       return rootStateName;
     };
 
-    var getStateFromDomain = function getStateFromDomain() {
-      var host = $location.host();
+    var getDefaultStateForUser = function getDefaultStateForUser(session) {
+      var defaultRole = _.first(session.roles);
 
-      if (configurationPropertyContains(ConfigurationProperties.STUDENT_APP_URL, host)) {
-        return State.MY_STUDIES;
-      } else if (configurationPropertyContains(ConfigurationProperties.TEACHER_APP_URL, host)) {
+      if (defaultRole === Role.TEACHER) {
         return State.MY_TEACHINGS;
-      } else {
-        throw Error('hostname does not match any configured values');
+      } if (defaultRole === Role.STUDENT) {
+        return State.MY_STUDIES;
       }
+      return State.ACCESS_DENIED;
     };
 
     function configurationPropertyContains(property, expectedValue) {
       return Configuration[property] && Configuration[property].indexOf(expectedValue) > -1;
     }
 
-    var getDefaultStateForUser = function getDefaultStateForUser(session) {
-      var defaultRole = _.first(session.roles);
+    getStateFromDomain = function getStateFromDomainFn() {
+      var host = $location.host();
 
-      if (defaultRole === Role.TEACHER) {
-        return State.MY_TEACHINGS;
-      } else if (defaultRole === Role.STUDENT) {
+      if (configurationPropertyContains(ConfigurationProperties.STUDENT_APP_URL, host)) {
         return State.MY_STUDIES;
-      } else {
-        return State.ACCESS_DENIED;
+      } if (configurationPropertyContains(ConfigurationProperties.TEACHER_APP_URL, host)) {
+        return State.MY_TEACHINGS;
       }
+      throw Error('hostname does not match any configured values');
     };
 
     return {
@@ -96,5 +91,4 @@ angular.module('services.state', [
       getDefaultStateForUser: getDefaultStateForUser,
       currentOrParentStateMatches: currentOrParentStateMatches
     };
-
   });

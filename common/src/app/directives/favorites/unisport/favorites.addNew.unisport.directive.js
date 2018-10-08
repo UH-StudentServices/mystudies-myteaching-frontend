@@ -20,12 +20,12 @@ angular.module('directives.favorites.addNew.unisport', [
   'directives.favorites.addNew'
 ])
 
-  .directive('addNewUnisportFavorite', function(FavoritesService, NewFavoriteAddedEvent) {
+  .directive('addNewUnisportFavorite', function (FavoritesService, NewFavoriteAddedEvent) {
     return {
       restrict: 'E',
       scope: true,
-      link: function($scope) {
-        if (_.isUndefined(_.find($scope.favorites, {'type': 'UNISPORT'}))) {
+      link: function ($scope) {
+        if (_.isUndefined(_.find($scope.favorites, { type: 'UNISPORT' }))) {
           FavoritesService.saveUnisportFavorite($scope.favorite.type)
             .then(function addUnisportFavoriteSuccess() {
               $scope.$emit(NewFavoriteAddedEvent);

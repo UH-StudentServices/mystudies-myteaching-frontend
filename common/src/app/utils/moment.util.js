@@ -19,42 +19,37 @@
 
 angular.module('utils.moment', ['services.language'])
 
-  .service('convertToMoment', function(LanguageService) {
-    function convert(input, convertFn) {
+  .service('dateArrayToMomentObject', function (LanguageService) {
+    function convert(input) {
       if (input && _.isArray(input)) {
-        return convertFn(_.map(input, function(value, index) {
+        return moment(_.map(input, function (value, index) {
           if (index === 1) {
-            //Month is zero indexed
+            // Month is zero indexed
             return value - 1;
           }
           return value;
         })).locale(LanguageService.getCurrent());
         // Temporary workaround for MeCe client overriding global moment locale
-      } else if (input) {
-        return convertFn(input).locale(LanguageService.getCurrent());
+      } if (input) {
+        return moment(input).locale(LanguageService.getCurrent());
       }
-    }
 
-    return convert;
-  })
-  .service('dateArrayToMomentObject', function(convertToMoment) {
-    function convert(input) {
-      return convertToMoment(input, moment);
+      return undefined;
     }
 
     return convert;
   })
 
-  .service('momentDateToLocalDateArray', function() {
+  .service('momentDateToLocalDateArray', function () {
     return function convert(date) {
+      var dateAsArray;
       if (!date) {
         return null;
       }
 
-      var dateAsArray = _.take(date.toArray(), 3);
-
+      dateAsArray = _.take(date.toArray(), 3);
       // Month is zero indexed in moment, API requires months to start from one
-      dateAsArray[1] = dateAsArray[1] + 1;
+      dateAsArray[1] += 1;
       return dateAsArray;
     };
   });

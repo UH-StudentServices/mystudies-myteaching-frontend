@@ -19,39 +19,40 @@
 
 angular.module('utils.browser', [])
 
-  .service('BrowserUtil', function($window) {
+  .service('BrowserUtil', function ($window) {
+    var MOBILE_MAX_WIDTH = 767;
+    var RESIZE_DEBOUNCE_DELAY = 200;
+    var Rx = window.Rx;
+    var viewportSizeSubject;
 
-    var MOBILE_MAX_WIDTH = 767,
-        RESIZE_DEBOUNCE_DELAY = 200,
-        Rx = window.Rx,
-        viewportSizeSubject = new Rx.BehaviorSubject(getViewportSize());
-
-    function supportsCamera() {
-      navigator.getMedia = navigator.getUserMedia ||
-        navigator.webkitGetUserMedia ||
-        navigator.mozGetUserMedia ||
-        navigator.msGetUserMedia;
-
-      return navigator.getMedia ? true : false;
-    }
-
-    function supportsTouch() {
-      return 'ontouchstart' in window;
+    function isMobile() {
+      return $window.matchMedia('(max-width: ' + MOBILE_MAX_WIDTH + 'px)').matches;
     }
 
     function getViewportSize() {
       return isMobile() ? 'MOBILE' : 'DESKTOP';
     }
 
-    function isMobile() {
-      return $window.matchMedia('(max-width: ' + MOBILE_MAX_WIDTH + 'px)').matches;
+    function supportsCamera() {
+      navigator.getMedia = navigator.getUserMedia
+        || navigator.webkitGetUserMedia
+        || navigator.mozGetUserMedia
+        || navigator.msGetUserMedia;
+
+      return !!navigator.getMedia;
+    }
+
+    function supportsTouch() {
+      return 'ontouchstart' in window;
     }
 
     function isMac() {
-      return navigator.platform.match(/(Mac|iPhone|iPad)/i) ? true : false;
+      return !!navigator.platform.match(/(Mac|iPhone|iPad)/i);
     }
 
-    window.addEventListener('resize', _.debounce(function() {
+    viewportSizeSubject = new Rx.BehaviorSubject(getViewportSize());
+
+    window.addEventListener('resize', _.debounce(function () {
       viewportSizeSubject.onNext(getViewportSize());
     }, RESIZE_DEBOUNCE_DELAY));
 

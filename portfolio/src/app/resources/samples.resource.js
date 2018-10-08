@@ -17,23 +17,19 @@
 
 angular.module('resources.samples', ['services.state'])
 
-  .factory('SamplesResource', function($resource, StateService) {
-
+  .factory('SamplesResource', function ($resource, StateService) {
     function samplesResource(portfolioId) {
-      return $resource('/api/' + StateService.getCurrent() + '/v1/portfolio/' +
-        portfolioId + '/samples/:id', {id: '@id'},
-        {
-          'delete': {method: 'DELETE', isArray: true},
-          'update': {method: 'POST', isArray: true}
-        }
-      );
+      return $resource('/api/' + StateService.getCurrent() + '/v1/portfolio/'
+        + portfolioId + '/samples/:id', { id: '@id' },
+      {
+        delete: { method: 'DELETE', isArray: true },
+        update: { method: 'POST', isArray: true }
+      });
     }
 
-    function updateSamples(portfolioId, updateSamples) {
-      return samplesResource(portfolioId).update(updateSamples).$promise;
+    function updateSamples(portfolioId, samples) {
+      return samplesResource(portfolioId).update(samples).$promise;
     }
 
-    return {
-      updateSamples: updateSamples
-    };
+    return { updateSamples: updateSamples };
   });

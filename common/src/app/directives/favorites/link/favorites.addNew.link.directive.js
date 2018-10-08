@@ -23,17 +23,17 @@ angular.module('directives.favorites.addNew.link', [
   .constant('StartFetchingFavoriteEvent', 'START_FETCHING_FAVORITE')
   .constant('FinishFetchingFavoriteEvent', 'FINISH_FETCHING_FAVORITE')
 
-  .directive('addNewLinkFavorite', function(EmbedLyResource,
-                                            FavoritesService,
-                                            NewFavoriteAddedEvent,
-                                            StartFetchingFavoriteEvent,
-                                            FinishFetchingFavoriteEvent) {
+  .directive('addNewLinkFavorite', function (EmbedLyResource,
+    FavoritesService,
+    NewFavoriteAddedEvent,
+    StartFetchingFavoriteEvent,
+    FinishFetchingFavoriteEvent) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/link/favorites.addNew.link.html',
       replace: true,
       scope: true,
-      link: function($scope) {
+      link: function ($scope) {
         $scope.searchString = '';
         $scope.loading = false;
 
@@ -50,7 +50,7 @@ angular.module('directives.favorites.addNew.link', [
 
         $scope.search = search;
 
-        $scope.clearSearch = function() {
+        $scope.clearSearch = function () {
           $scope.$emit(FinishFetchingFavoriteEvent);
           $scope.metaData = undefined;
         };

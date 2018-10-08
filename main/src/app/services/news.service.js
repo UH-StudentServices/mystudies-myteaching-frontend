@@ -17,29 +17,23 @@
 
 angular.module('services.news', ['resources.news'])
 
-  .factory('NewsService', function(NewsResource, SessionService, State) {
-
+  .factory('NewsService', function (NewsResource, SessionService, State) {
     var promise;
 
     function getNews(currentStateName) {
-      return SessionService.getSession().then(function(data) {
+      return SessionService.getSession().then(function (data) {
         if (_.isUndefined(promise)) {
           if (data.openUniversity) {
             promise = NewsResource.getOpenUniversityNews();
+          } else if (currentStateName === State.MY_STUDIES) {
+            promise = NewsResource.getStudentNews();
           } else {
-            if (currentStateName === State.MY_STUDIES) {
-              promise = NewsResource.getStudentNews();
-            } else {
-              promise = NewsResource.getTeacherNews();
-            }
-
+            promise = NewsResource.getTeacherNews();
           }
         }
         return promise;
       });
     }
 
-    return {
-      getNews: getNews
-    };
+    return { getNews: getNews };
   });

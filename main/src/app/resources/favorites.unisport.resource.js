@@ -17,15 +17,12 @@
 
 angular.module('resources.favorites.unisport', [])
 
-  .factory('UnisportResource', function($resource) {
-
+  .factory('UnisportResource', function ($resource) {
     var unisportResource = $resource('/api/private/v1/favorites/unisport');
 
     function getUserReservations() {
       return unisportResource.get().$promise;
     }
 
-    return {
-      getUserReservations: getUserReservations
-    };
+    return { getUserReservations: getUserReservations };
   });

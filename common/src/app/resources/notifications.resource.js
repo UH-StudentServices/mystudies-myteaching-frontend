@@ -19,16 +19,12 @@
 
 angular.module('resources.notifications', [])
 
-  .factory('NotificationsResource', function($resource) {
+  .factory('NotificationsResource', function ($resource) {
     var resource = $resource('/api/private/v1/notifications');
 
     function getNotifications() {
       return resource.query().$promise;
-    };
+    }
 
-    return {
-      getNotifications: getNotifications
-    };
-
+    return { getNotifications: getNotifications };
   });
-

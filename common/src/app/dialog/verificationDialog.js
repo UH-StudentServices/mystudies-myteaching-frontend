@@ -15,23 +15,24 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('dialog.verificationDialog', ['ui.bootstrap.modal',
-                                             'uib/template/modal/window.html'])
+angular.module('dialog.verificationDialog', [
+  'ui.bootstrap.modal',
+  'uib/template/modal/window.html'
+])
 
-  .factory('VerificationDialog', function($uibModal, $rootScope) {
-
+  .factory('VerificationDialog', function ($uibModal, $rootScope) {
     function open(translationKey, okKey, cancelKey, okCallback, cancelCallback) {
       var scope = $rootScope.$new();
       var modalInstance;
 
-      scope.okCallback = function(event) {
+      scope.okCallback = function (event) {
         modalInstance.close();
         if (okCallback) {
           okCallback(event);
         }
       };
 
-      scope.cancelCallback = function(event) {
+      scope.cancelCallback = function (event) {
         modalInstance.close();
         if (cancelCallback) {
           cancelCallback(event);
@@ -51,8 +52,5 @@ angular.module('dialog.verificationDialog', ['ui.bootstrap.modal',
       });
     }
 
-    return {
-      open: open
-    };
+    return { open: open };
   });
-

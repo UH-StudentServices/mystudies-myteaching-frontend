@@ -19,12 +19,13 @@ angular.module('directives.usefulLinks.editableLink', [
   'directives.usefulLinks',
   'directives.usefulLinks.title',
   'resources.usefulLinks',
-  'services.focus'])
+  'services.focus'
+])
 
   .constant('closeEditUsefulLinkEvent', 'EXIT_EDIT_USEFUL_LINK_EVENT')
 
-  .directive('editableUsefulLink', function($rootScope, closeEditUsefulLinkEvent,
-                                            UsefulLinksResource, Focus) {
+  .directive('editableUsefulLink', function ($rootScope, closeEditUsefulLinkEvent,
+    UsefulLinksResource, Focus) {
     return {
       restrict: 'E',
       replace: true,
@@ -33,7 +34,7 @@ angular.module('directives.usefulLinks.editableLink', [
         usefulLink: '=',
         editable: '='
       },
-      link: function($scope, element) {
+      link: function ($scope, element) {
         function setFocusOnEdit() {
           Focus.storeFocus();
           Focus.setFocus(element.find('input[ng-model="usefulLink.url"]'));
@@ -47,7 +48,7 @@ angular.module('directives.usefulLinks.editableLink', [
           delete $scope.usefulLink.edit;
         }
 
-        $scope.editUsefulLink = function() {
+        $scope.editUsefulLink = function () {
           if ($scope.editable) {
             $scope.usefulLink.edit = true;
             $rootScope.$broadcast(closeEditUsefulLinkEvent, $scope.usefulLink);
@@ -55,18 +56,18 @@ angular.module('directives.usefulLinks.editableLink', [
           }
         };
 
-        $scope.saveUsefulLink = function() {
+        $scope.saveUsefulLink = function () {
           if ($scope.usefulLink.url && $scope.usefulLink.description) {
             UsefulLinksResource
               .update(_.omit($scope.usefulLink, 'edit'))
-              .then(function() {
+              .then(function () {
                 setFocusOnSave();
                 exitEditUsefulLink();
               });
           }
         };
 
-        $rootScope.$on(closeEditUsefulLinkEvent, function(event, link) {
+        $rootScope.$on(closeEditUsefulLinkEvent, function (event, link) {
           if (link !== $scope.usefulLink) {
             exitEditUsefulLink();
           }

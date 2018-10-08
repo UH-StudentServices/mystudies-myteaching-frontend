@@ -17,22 +17,22 @@
 
 angular.module('resources.favorites.rss', [])
 
-  .factory('RSSResource', function($resource) {
+  .factory('RSSResource', function ($resource) {
+    var findRssFeedResource = $resource('/api/private/v1/favorites/rss/find');
 
-    var findRssFeedResource = $resource('/api/private/v1/favorites/rss/find'),
-        NUMBER_OF_ITEMS = 3;
-
+    var NUMBER_OF_ITEMS = 3;
 
     function get(url) {
       var parser = new RSSParser();
 
-      return parser.parseURL(url).then(function(feed) {
+      return parser.parseURL(url).then(function (feed) {
         feed.items = _.take(feed.items, NUMBER_OF_ITEMS);
         return feed;
       });
     }
+
     function findFeed(url) {
-      return findRssFeedResource.query({url: url}).$promise;
+      return findRssFeedResource.query({ url: url }).$promise;
     }
 
     return {

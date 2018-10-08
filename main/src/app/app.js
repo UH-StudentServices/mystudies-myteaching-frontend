@@ -70,21 +70,21 @@ angular.module('opintoniApp', [
   'ui.calendar',
   'utils.loader'
 ])
-  .run(function($rootScope, $window, LanguageService) {
+  .run(function ($rootScope, $window, LanguageService) {
     $rootScope.selectedLanguage = LanguageService.getCurrent();
     moment.locale($rootScope.selectedLanguage);
     $window.FastClick.attach($window.document.body);
   })
 
-  .config(function(
+  .config(function (
     $stateProvider,
     $urlRouterProvider,
     $httpProvider,
     $locationProvider,
     $compileProvider,
     $qProvider,
-    $sceDelegateProvider) {
-
+    $sceDelegateProvider
+  ) {
     $locationProvider.html5Mode({
       enabled: true,
       requireBase: false
@@ -101,16 +101,16 @@ angular.module('opintoniApp', [
     $stateProvider
       .state('root', {
         abstract: true,
-        params: {currentDate: null},
+        params: { currentDate: null },
         resolve: {
-          session: function($q, SessionService, $state) {
+          session: function ($q, SessionService, $state) {
             return SessionService.getSession().then(function getSessionSuccess(session) {
               return session;
             }, function getSessionError() {
               $state.go('noSession');
             });
           },
-          userSettings: function(UserSettingsService, session) {
+          userSettings: function (UserSettingsService) {
             return UserSettingsService.getUserSettings()
               .then(function getUserSettingsSuccess(userSettings) {
                 return userSettings;
@@ -118,10 +118,11 @@ angular.module('opintoniApp', [
                 return undefined;
               });
           },
-          notifications: function(NotificationsResource, session) {
+          notifications: function (NotificationsResource, session) {
             if (session && session.$resolved) {
               return NotificationsResource.getNotifications();
             }
+            return undefined;
           }
         }
       })
@@ -129,14 +130,13 @@ angular.module('opintoniApp', [
         url: '/init',
         parent: 'root',
         resolve: {
-          toState: function(StateService, session) {
+          toState: function (StateService, session) {
             var stateFromDomain = StateService.getStateFromDomain();
 
             if (stateFromDomain) {
               return stateFromDomain;
-            } else {
-              return StateService.getDefaultStateForUser(session);
             }
+            return StateService.getDefaultStateForUser(session);
           }
         },
         onEnter: function onEnter($state, toState) {
@@ -158,7 +158,7 @@ angular.module('opintoniApp', [
           }
         },
         resolve: {
-          pageTitle: function($q, $translate) {
+          pageTitle: function ($q, $translate) {
             var deferred = $q.defer();
 
             $translate('opintoni.pageHeaderBranding').then(function translateHeaderSuccess(title) {
@@ -167,15 +167,15 @@ angular.module('opintoniApp', [
             });
             return deferred.promise;
           },
-          getCourses: function(CoursesService) {
+          getCourses: function (CoursesService) {
             return CoursesService.getStudentCourses;
           },
-          getEvents: function(EventsResource) {
+          getEvents: function (EventsResource) {
             return EventsResource.getStudentEvents;
           }
         },
         onEnter: function onEnter(ngAddToHomescreen) {
-          ngAddToHomescreen({maxDisplayCount: 1});
+          ngAddToHomescreen({ maxDisplayCount: 1 });
         }
       })
       .state('opetukseni', {
@@ -193,21 +193,21 @@ angular.module('opintoniApp', [
           }
         },
         resolve: {
-          pageTitle: function($q, $translate) {
+          pageTitle: function ($q, $translate) {
             return $translate('opetukseni.pageHeaderBranding')
               .then(function translateHeaderSuccess(title) {
                 document.title = title;
               });
           },
-          getCourses: function(CoursesService) {
+          getCourses: function (CoursesService) {
             return CoursesService.getTeacherCourses;
           },
-          getEvents: function(EventsResource) {
+          getEvents: function (EventsResource) {
             return EventsResource.getTeacherEvents;
           }
         },
         onEnter: function onEnter(ngAddToHomescreen) {
-          ngAddToHomescreen({maxDisplayCount: 1});
+          ngAddToHomescreen({ maxDisplayCount: 1 });
         }
       })
       .state('opintoniCalendar', {
@@ -244,16 +244,16 @@ angular.module('opintoniApp', [
           }
         },
         resolve: {
-          pageTitle: function() {
+          pageTitle: function () {
             var title = 'Admin';
 
             document.title = title;
             return title;
           },
-          getCourses: function(CoursesService) {
+          getCourses: function (CoursesService) {
             return CoursesService.getTeacherCourses;
           },
-          getEvents: function(EventsResource) {
+          getEvents: function (EventsResource) {
             return EventsResource.getTeacherEvents;
           }
         }
@@ -262,13 +262,15 @@ angular.module('opintoniApp', [
       .state('getState', {
         abstract: true,
         resolve: {
-          state: ['StateService', function(StateService) {
-            return StateService.getStateFromDomain();
-          }]
+          state: [
+            'StateService', function (StateService) {
+              return StateService.getStateFromDomain();
+            }
+          ]
         }
       })
 
-      .state('noSession', {}); //State to terminate ui processing in case of no session
+      .state('noSession', {}); // State to terminate ui processing in case of no session
 
     $sceDelegateProvider.resourceUrlWhitelist([
       // Allow same origin resource loads.

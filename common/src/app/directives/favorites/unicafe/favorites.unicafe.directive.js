@@ -21,28 +21,30 @@ angular.module('directives.favorites.unicafe', [
 ])
 
   .constant('UnicafeUrl', {
-    'fi': 'http://www.hyyravintolat.fi/#/',
-    'sv': 'http://www.hyyravintolat.fi/sv/#/',
-    'en': 'http://www.hyyravintolat.fi/en/#/'
+    fi: 'http://www.hyyravintolat.fi/#/',
+    sv: 'http://www.hyyravintolat.fi/sv/#/',
+    en: 'http://www.hyyravintolat.fi/en/#/'
   })
 
-  .factory('UnicafeOpenDaysParser', function() {
+  .factory('UnicafeOpenDaysParser', function () {
     function isRestaurantClosed(menuData, nowMoment) {
       var closed = false;
-
+      var exception;
+      var reqular;
+      var toDay;
       try {
-        var exception = menuData.information.business.exception,
-            reqular = menuData.information.business.regular,
-            toDay = _.capitalize(nowMoment.locale('FI').format('dd'));
+        exception = menuData.information.business.exception;
+        reqular = menuData.information.business.regular;
+        toDay = _.capitalize(nowMoment.locale('FI').format('dd'));
 
         if (exception && exception.length > 0) {
-          closed = closed || _.some(exception, function(e) {
+          closed = closed || _.some(exception, function (e) {
             return e.closed && nowMoment.isBetween(moment(e.from, 'DD.M'), moment(e.to, 'DD.M'));
           });
         }
 
         if (reqular && reqular.length > 0) {
-          closed = closed || _.every(_.flatten(_.map(reqular, 'when')), function(d) {
+          closed = closed || _.every(_.flatten(_.map(reqular, 'when')), function (d) {
             return d !== toDay;
           });
         }
@@ -51,24 +53,20 @@ angular.module('directives.favorites.unicafe', [
       return closed;
     }
 
-    return {
-      isRestaurantClosed: isRestaurantClosed
-    };
+    return { isRestaurantClosed: isRestaurantClosed };
   })
 
-  .directive('favoritesUnicafe', function($cookies,
-                                          FavoritesService,
-                                          UnicafeOpenDaysParser,
-                                          UnicafeUrl,
-                                          LanguageService) {
+  .directive('favoritesUnicafe', function ($cookies,
+    FavoritesService,
+    UnicafeOpenDaysParser,
+    UnicafeUrl,
+    LanguageService) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/unicafe/favorites.unicafe.html',
       replace: true,
-      scope: {
-        data: '='
-      },
-      link: function($scope) {
+      scope: { data: '=' },
+      link: function ($scope) {
         var langKey = $cookies.get('OO_LANGUAGE');
 
         $scope.languageSuffix = langKey !== 'fi' ? '_' + langKey : '';
@@ -81,30 +79,31 @@ angular.module('directives.favorites.unicafe', [
           return id === $scope.selectedRestaurant;
         };
 
+        function updateMenu(restaurantId) {
+          FavoritesService.getUnicafeRestaurantMenu(restaurantId)
+            .then(function getMenuSuccess(menuData) {
+              $scope.closed = UnicafeOpenDaysParser.isRestaurantClosed(menuData, moment());
+              $scope.information = menuData.information;
+              $scope.menu = _.find(menuData.data, function (data) {
+                return moment().diff(moment(data.date, 'DD.MM'), 'days') === 0;
+              }).data;
+            }).finally(function getMenuFinally() {
+              $scope.loading = false;
+            });
+        }
+
         $scope.restaurantSelected = function restaurantSelected(restaurant) {
           $scope.selectedRestaurant = restaurant;
           $scope.loading = true;
           FavoritesService
-            .updateUnicafeFavorite({id: $scope.data.id, restaurantId: restaurant})
+            .updateUnicafeFavorite({ id: $scope.data.id, restaurantId: restaurant })
             .then(_.partial(updateMenu, restaurant));
         };
 
-        function updateMenu(restaurantId) {
-          FavoritesService.getUnicafeRestaurantMenu(restaurantId).then(function getMenuSuccess(menuData) {
-            $scope.closed = UnicafeOpenDaysParser.isRestaurantClosed(menuData, moment(new Date()));
-            $scope.information = menuData.information;
-            $scope.menu = _.find(menuData.data, function(data) {
-              return moment().diff(moment(data.date, 'DD.MM'), 'days') === 0;
-            }).data;
-          }).finally(function getMenuFinally() {
-            $scope.loading = false;
-          });
-        }
-
         updateMenu($scope.data.restaurantId);
 
-        FavoritesService.getUnicafeRestaurantOptions().then(function(restaurantOptions) {
-          _.each(restaurantOptions, function(area) {
+        FavoritesService.getUnicafeRestaurantOptions().then(function (restaurantOptions) {
+          _.each(restaurantOptions, function (area) {
             $scope.restaurantOptions.push({
               id: 0,
               name: area.name,
@@ -112,7 +111,7 @@ angular.module('directives.favorites.unicafe', [
               selected: false
             });
 
-            _.each(area.restaurants, function(restaurant) {
+            _.each(area.restaurants, function (restaurant) {
               $scope.restaurantOptions.push({
                 id: restaurant.id,
                 name: restaurant.name,

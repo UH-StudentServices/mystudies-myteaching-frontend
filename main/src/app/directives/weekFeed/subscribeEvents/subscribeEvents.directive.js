@@ -22,47 +22,48 @@ angular.module('directives.subscribeEvents', [
   'utils.domain',
   'utils.browser',
   'directives.clipboard',
-  'directives.popover'])
+  'directives.popover'
+])
 
   .constant({
-    'MessageTimeouts': {
-      'SUCCESS': 1000,
-      'FAIL': 2000
+    MessageTimeouts: {
+      SUCCESS: 1000,
+      FAIL: 2000
     }
   })
 
   .constant('InstructionLinks', {
     OUTLOOK: {
-      'fi': 'https://helpdesk.it.helsinki.fi/ohjeet/yhteydenpito-ja-julkaiseminen/kalentereiden-synkronointi',
-      'en': 'https://helpdesk.it.helsinki.fi/en/instructions/collaboration-and-publication/synchronising-calendars',
-      'sv': 'https://helpdesk.it.helsinki.fi/sv/instruktioner/kontakter-och-publicering/kalendersynkronisering'
+      fi: 'https://helpdesk.it.helsinki.fi/ohjeet/yhteydenpito-ja-julkaiseminen/kalentereiden-synkronointi',
+      en: 'https://helpdesk.it.helsinki.fi/en/instructions/collaboration-and-publication/synchronising-calendars',
+      sv: 'https://helpdesk.it.helsinki.fi/sv/instruktioner/kontakter-och-publicering/kalendersynkronisering'
     },
     GOOGLE: {
-      'fi': 'https://support.google.com/calendar/answer/37100?hl=fi',
-      'en': 'https://support.google.com/calendar/answer/37100?hl=en',
-      'sv': 'https://support.google.com/calendar/answer/37100?hl=sv'
+      fi: 'https://support.google.com/calendar/answer/37100?hl=fi',
+      en: 'https://support.google.com/calendar/answer/37100?hl=en',
+      sv: 'https://support.google.com/calendar/answer/37100?hl=sv'
     }
   })
 
-  .directive('subscribeEvents', function(CalendarFeedResource,
-                                         OptimeCalendarResource,
-                                         Role,
-                                         $rootScope,
-                                         $q,
-                                         DomainUtil,
-                                         AnalyticsService,
-                                         InstructionLinks,
-                                         BrowserUtil,
-                                         $timeout,
-                                         StateService,
-                                         State,
-                                         MessageTimeouts) {
+  .directive('subscribeEvents', function (CalendarFeedResource,
+    OptimeCalendarResource,
+    Role,
+    $rootScope,
+    $q,
+    DomainUtil,
+    AnalyticsService,
+    InstructionLinks,
+    BrowserUtil,
+    $timeout,
+    StateService,
+    State,
+    MessageTimeouts) {
     return {
       rescrict: 'E',
       replace: true,
       templateUrl: 'app/directives/weekFeed/subscribeEvents/subscribeEvents.html',
       scope: {},
-      controller: function($scope) {
+      controller: function ($scope) {
         var cachedCalendarFeedUrl;
 
         $scope.showPopover = false;
@@ -70,72 +71,73 @@ angular.module('directives.subscribeEvents', [
         $scope.selectedLanguage = $rootScope.selectedLanguage;
         $scope.showCopyToClipboard = Clipboard.isSupported();
 
-        $scope.copyToClipboardSuccessCallback = function() {
+        $scope.copyToClipboardSuccessCallback = function () {
           $scope.copyToClipboardSuccess = true;
 
-          $timeout(function() {
+          $timeout(function () {
             $scope.copyToClipboardSuccess = false;
           }, MessageTimeouts.SUCCESS);
         };
 
-        $scope.copyToClipboardErrorCallback = function() {
+        $scope.copyToClipboardErrorCallback = function () {
           $scope.copyToClipboardFailMessageKeySuffix = BrowserUtil.isMac() ? 'Mac' : 'Other';
           $scope.copyToClipboardFail = true;
 
-          $timeout(function() {
+          $timeout(function () {
             $scope.copyToClipboardFail = false;
           }, MessageTimeouts.FAIL);
         };
 
-        function getOrCreateCalendarFeedUrl() {
-          AnalyticsService.trackCalendarSubscribe();
-          if (StateService.getStateFromDomain() === State.MY_TEACHINGS) {
-            return getOptimeCalendarUrl();
-          } else {
-            return getMyStudiesTeachingCalendarUrl();
-          }
-        }
-
         function getMyStudiesTeachingCalendarUrl() {
           return CalendarFeedResource.getCalendarFeed()
-            .catch(function() {
+            .catch(function () {
               return CalendarFeedResource.saveCalendarFeed();
             })
-            .then(function(calendarFeed) {
+            .then(function (calendarFeed) {
               cachedCalendarFeedUrl = DomainUtil.getDomain() + calendarFeed.feedUrl + '/' + $rootScope.selectedLanguage;
-              return $scope.calendarFeedUrl = cachedCalendarFeedUrl;
+              $scope.calendarFeedUrl = cachedCalendarFeedUrl;
+              return undefined;
             });
         }
 
         function getOptimeCalendarUrl() {
           return OptimeCalendarResource.getCalendarUrl()
-            .catch(function() {
+            .catch(function () {
               return getMyStudiesTeachingCalendarUrl();
             })
-            .then(function(calendarInfo) {
+            .then(function (calendarInfo) {
               if (calendarInfo.url) {
                 cachedCalendarFeedUrl = calendarInfo.url;
                 $scope.optimeCalendar = true;
-                return $scope.calendarFeedUrl = cachedCalendarFeedUrl;
-              } else {
-                return getMyStudiesTeachingCalendarUrl();
+                $scope.calendarFeedUrl = cachedCalendarFeedUrl;
+                return undefined;
               }
+              return getMyStudiesTeachingCalendarUrl();
             });
         }
 
-        $scope.closePopover = function() {
+        function getOrCreateCalendarFeedUrl() {
+          AnalyticsService.trackCalendarSubscribe();
+          if (StateService.getStateFromDomain() === State.MY_TEACHINGS) {
+            return getOptimeCalendarUrl();
+          }
+          return getMyStudiesTeachingCalendarUrl();
+        }
+
+        $scope.closePopover = function () {
           $scope.showPopover = false;
         };
 
-        $scope.onClick = function() {
+        $scope.onClick = function () {
           $scope.showPopover = !$scope.showPopover;
 
           if ($scope.showPopover) {
-            return $q(function(resolve, reject) {
+            return $q(function (resolve, reject) {
               return cachedCalendarFeedUrl ? resolve() : reject();
             })
-            .catch(getOrCreateCalendarFeedUrl);
+              .catch(getOrCreateCalendarFeedUrl);
           }
+          return undefined;
         };
       }
     };

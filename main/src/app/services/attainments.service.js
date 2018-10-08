@@ -19,15 +19,16 @@ angular.module('services.attainments', ['resources.attainments', 'utils.moment']
 
   .constant('monthsCount', 6)
 
-  .factory('AttainmentsService', function(AttainmentsResource, dateArrayToMomentObject,
-                                          monthsCount) {
-    var now = moment(),
-        studyAttainmentsPromise;
+  .factory('AttainmentsService', function (AttainmentsResource, dateArrayToMomentObject,
+    monthsCount) {
+    var now = moment();
+
+    var studyAttainmentsPromise;
 
     function getStudyAttainments() {
       if (!studyAttainmentsPromise) {
-        studyAttainmentsPromise = AttainmentsResource.getStudyAttainments().then(function(data) {
-          return _.map(data, function(attainment) {
+        studyAttainmentsPromise = AttainmentsResource.getStudyAttainments().then(function (data) {
+          return _.map(data, function (attainment) {
             attainment.attainmentDate = dateArrayToMomentObject(attainment.attainmentDate)
               .local();
 
@@ -39,17 +40,17 @@ angular.module('services.attainments', ['resources.attainments', 'utils.moment']
     }
 
     function getLastStudyAttainments() {
-      return getStudyAttainments().then(function(attainments) {
-        return _.filter(attainments, function(attainment) {
+      return getStudyAttainments().then(function (attainments) {
+        return _.filter(attainments, function (attainment) {
           var diff = now.diff(attainment.attainmentDate, 'months');
 
           return diff >= 0 && diff < monthsCount;
         });
       });
-    };
+    }
 
     function hasStudyAttainments() {
-      return getStudyAttainments().then(function(attainments) {
+      return getStudyAttainments().then(function (attainments) {
         return attainments && attainments.length > 0;
       });
     }
@@ -58,5 +59,4 @@ angular.module('services.attainments', ['resources.attainments', 'utils.moment']
       getLastStudyAttainments: getLastStudyAttainments,
       hasStudyAttainments: hasStudyAttainments
     };
-
   });

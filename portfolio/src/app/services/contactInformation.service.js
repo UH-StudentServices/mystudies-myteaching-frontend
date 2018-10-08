@@ -16,8 +16,7 @@
  */
 
 angular.module('services.contactInformation', ['resources.contactInformation'])
-  .factory('ContactInformationService', function(ContactInformationResource) {
-
+  .factory('ContactInformationService', function (ContactInformationResource) {
     function updateContactInformation(portfolioId, updateContactInformationRequest) {
       return ContactInformationResource
         .updateContactInformation(portfolioId, updateContactInformationRequest);

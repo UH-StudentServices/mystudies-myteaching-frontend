@@ -15,21 +15,19 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('services.userSettings', ['resources.userSettings', 'services.configuration'])
+angular.module('services.userSettings', ['resources.userSettings'])
 
-  .factory('UserSettingsService', function($q,
-                                           $cookies,
-                                           UserSettingsResource,
-                                           Configuration,
-                                           Environments) {
+  .factory('UserSettingsService', function ($q,
+    $cookies,
+    UserSettingsResource) {
+    var settingsPromise;
+    var availableBackgroundsPromise;
+    var Rx = window.Rx;
+    var userSettingsSubject = new Rx.BehaviorSubject();
 
-    var settingsPromise,
-        availableBackgroundsPromise,
-        Rx = window.Rx,
-        userSettingsSubject = new Rx.BehaviorSubject(),
-        showBannerSubject = userSettingsSubject.map(function(userSettings) {
-          return userSettings.showBanner;
-        });
+    var showBannerSubject = userSettingsSubject.map(function (userSettings) {
+      return userSettings.showBanner;
+    });
 
     function publishUserSettings(userSettings) {
       userSettingsSubject.onNext(userSettings);
@@ -54,38 +52,36 @@ angular.module('services.userSettings', ['resources.userSettings', 'services.con
     }
 
     function selectUserBackground(filename) {
-      return getUserSettings().then(function(settings) {
-        settingsPromise =
-          UserSettingsResource.selectUserBackground(settings.id, filename)
-            .then(publishUserSettings);
+      return getUserSettings().then(function (settings) {
+        settingsPromise = UserSettingsResource.selectUserBackground(settings.id, filename)
+          .then(publishUserSettings);
         return settingsPromise;
       });
     }
 
     function uploadUserBackground(imageBase64) {
-      return getUserSettings().then(function(userSettings) {
-        settingsPromise =
-          UserSettingsResource.uploadUserBackground(userSettings.id, imageBase64)
-            .then(publishUserSettings);
+      return getUserSettings().then(function (userSettings) {
+        settingsPromise = UserSettingsResource.uploadUserBackground(userSettings.id, imageBase64)
+          .then(publishUserSettings);
         return settingsPromise;
       });
     }
 
     function updateUserAvatar(imageBase64) {
-      return getUserSettings().then(function(userSettings) {
+      return getUserSettings().then(function (userSettings) {
         return UserSettingsResource.updateUserAvatar(userSettings.id, imageBase64);
       });
     }
 
     function deleteUserAvatar() {
-      return getUserSettings().then(function(settings) {
+      return getUserSettings().then(function (settings) {
         return UserSettingsResource.deleteUserAvatar(settings.id);
       });
     }
 
     function updateUserSettings(updateObject) {
       settingsPromise = getUserSettings()
-        .then(function(settings) {
+        .then(function (settings) {
           return UserSettingsResource.updateUserSettings(_.assign(settings, updateObject));
         })
         .then(publishUserSettings);
@@ -94,7 +90,7 @@ angular.module('services.userSettings', ['resources.userSettings', 'services.con
     }
 
     function setShowBanner(showBanner) {
-      return updateUserSettings({showBanner: showBanner});
+      return updateUserSettings({ showBanner: showBanner });
     }
 
     function getShowBannerSubject() {
@@ -102,7 +98,7 @@ angular.module('services.userSettings', ['resources.userSettings', 'services.con
     }
 
     function acceptCookies() {
-      return updateUserSettings({cookieConsent: true});
+      return updateUserSettings({ cookieConsent: true });
     }
 
     return {

@@ -18,17 +18,17 @@
 angular.module('directives.favorites.addNew.flamma', [
   'services.favorites',
   'directives.favorites.addNew'
-]).directive('addNewFlammaFavorite', function(FavoritesService, NewFavoriteAddedEvent) {
+]).directive('addNewFlammaFavorite', function (FavoritesService, NewFavoriteAddedEvent) {
   return {
-      restrict: 'E',
-      scope: true,
-      link: function($scope, e, attr) {
-        if (_.isUndefined(_.find($scope.favorites, {'type': attr.type}))) {
-          FavoritesService.saveFlammaFavorite(attr.type)
-            .then(function addFlammaNewsFavoriteSuccess() {
-              $scope.$emit(NewFavoriteAddedEvent);
-            });
-        }
+    restrict: 'E',
+    scope: true,
+    link: function ($scope, e, attr) {
+      if (_.isUndefined(_.find($scope.favorites, { type: attr.type }))) {
+        FavoritesService.saveFlammaFavorite(attr.type)
+          .then(function addFlammaNewsFavoriteSuccess() {
+            $scope.$emit(NewFavoriteAddedEvent);
+          });
       }
+    }
   };
 });

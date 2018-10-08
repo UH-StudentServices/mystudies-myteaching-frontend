@@ -17,32 +17,29 @@
 
 angular.module('services.componentOrder', ['services.freeTextContent', 'resources.componentOrder'])
 
-  .factory('ComponentOrderService', function(FreeTextContentService, ComponentOrderResource) {
-
+  .factory('ComponentOrderService', function (FreeTextContentService, ComponentOrderResource) {
     var cachedComponentOrders = [];
-    var singletonFreeTextContentComponents = [
-      'SKILLS_AND_EXPERTISE'
-    ];
+    var singletonFreeTextContentComponents = ['SKILLS_AND_EXPERTISE'];
 
     function defaultSingletonComponentOrder() {
       return [
-        {component: 'STUDIES'},
-        {component: 'DEGREES'},
-        {component: 'WORK_EXPERIENCE'},
-        {component: 'SAMPLES'},
-        {component: 'ATTAINMENTS'},
-        {component: 'LANGUAGE_PROFICIENCIES'},
-        {component: 'SKILLS_AND_EXPERTISE'}
+        { component: 'STUDIES' },
+        { component: 'DEGREES' },
+        { component: 'WORK_EXPERIENCE' },
+        { component: 'SAMPLES' },
+        { component: 'ATTAINMENTS' },
+        { component: 'LANGUAGE_PROFICIENCIES' },
+        { component: 'SKILLS_AND_EXPERTISE' }
       ];
     }
 
-    function singletonComponentOrders(portfolio) {
-      return cachedComponentOrders.length ? cachedComponentOrders.filter(function(el) {
+    function singletonComponentOrders() {
+      return cachedComponentOrders.length ? cachedComponentOrders.filter(function (el) {
         return el.component !== 'FREE_TEXT_CONTENT';
       }) : defaultSingletonComponentOrder();
     }
 
-    function getFreeTextContentItemOrder(item, allFreeTextContentItems) {
+    function getFreeTextContentItemOrder(item) {
       var componentOrder = _.find(cachedComponentOrders, ['instanceName', item.instanceName]) || {};
 
       return componentOrder.orderValue;
@@ -54,19 +51,22 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
       }
 
       FreeTextContentService.getFreeTextContentSubject()
-        .subscribe(function(freeTextContentItems) {
-          var freeTextContentComponentOrders, allComponentOrders;
+        .subscribe(function (freeTextContentItems) {
+          var freeTextContentComponentOrders; var
+            allComponentOrders;
 
-          freeTextContentComponentOrders = freeTextContentItems ? freeTextContentItems.map(function(el) {
-            return {
-              component: 'FREE_TEXT_CONTENT',
-              instanceName: el.instanceName,
-              orderValue: getFreeTextContentItemOrder(el, freeTextContentItems)
-            };
-          }) : [];
+          freeTextContentComponentOrders = freeTextContentItems
+            ? freeTextContentItems.map(function (el) {
+              return {
+                component: 'FREE_TEXT_CONTENT',
+                instanceName: el.instanceName,
+                orderValue: getFreeTextContentItemOrder(el)
+              };
+            })
+            : [];
 
-          allComponentOrders = singletonComponentOrders(portfolio).concat(
-            freeTextContentComponentOrders.filter(function(component) {
+          allComponentOrders = singletonComponentOrders().concat(
+            freeTextContentComponentOrders.filter(function (component) {
               return !_.includes(singletonFreeTextContentComponents, component.instanceName);
             })
           );
@@ -77,14 +77,14 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
 
     function updateComponentOrder(portfolioId, updatedComponents) {
       ComponentOrderResource.updateComponentOrder(portfolioId, {
-        componentOrders: updatedComponents.map(function(el, i) {
+        componentOrders: updatedComponents.map(function (el, i) {
           return {
             component: el.component,
             instanceName: el.instanceName,
             orderValue: i + 1
           };
         })
-      }).then(function(componentOrders) {
+      }).then(function (componentOrders) {
         cachedComponentOrders = componentOrders;
       });
     }

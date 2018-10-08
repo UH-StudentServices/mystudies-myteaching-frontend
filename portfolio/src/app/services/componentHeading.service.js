@@ -17,29 +17,16 @@
 
 angular.module('services.componentHeadingService', ['resources.componentHeading', 'services.portfolio'])
 
-  .factory('ComponentHeadingService', function(PortfolioService, ComponentHeadingResource, $translate) {
+  .factory('ComponentHeadingService', function (PortfolioService, ComponentHeadingResource) {
     function getPortfolioId() {
       return PortfolioService.getPortfolio().then(_.property('id'));
     }
 
     function updateHeading(component) {
-      return getPortfolioId().then(function(portfolioId) {
+      return getPortfolioId().then(function (portfolioId) {
         return ComponentHeadingResource.updateHeading(portfolioId, component);
       });
     }
 
-    function getComponentHeading(componentId) {
-      return PortfolioService.getPortfolio().then(function(portfolio) {
-        return _.find(portfolio.headings, {component: componentId});
-      });
-    }
-
-    function getDefaultHeading(componentId, i18nKey, lang) {
-      return {component: componentId, heading: $translate.instant(i18nKey, {}, '', lang)};
-    }
-
-    return {
-      updateHeading: updateHeading, getComponentHeading: getComponentHeading, getDefaultHeading: getDefaultHeading
-    };
-
+    return { updateHeading: updateHeading };
   });

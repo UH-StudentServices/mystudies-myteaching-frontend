@@ -15,36 +15,32 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.favorites.unisport', [
-  'services.favorites'
-])
+angular.module('directives.favorites.unisport', ['services.favorites'])
 
-  .directive('favoritesUnisport', function(FavoritesService) {
+  .directive('favoritesUnisport', function (FavoritesService) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/favorites/unisport/favorites.unisport.html',
       replace: true,
-      scope: {
-        data: '='
-      },
-      link: function($scope) {
-
-        FavoritesService.getUnisportUserReservations().then(function getUserReservationsSuccess(data) {
-          $scope.events = _(data.events).map(function(event) {
-            event.timeRange = getEventTimeRange(event.startTime, event.endTime);
-            return event;
-          }).value();
-          if (!_.isNull(data.authorizationUrl)) {
-            $scope.authorizationUrl =  data.authorizationUrl + '?redirectTarget=' + window.location.origin;
-          }
-        });
-
+      scope: { data: '=' },
+      link: function ($scope) {
         function getEventTimeRange(startTime, endTime) {
-          var startTime = moment(startTime),
-              endTime = moment(endTime);
+          var momentStartTime = moment(startTime);
+          var momentEndTime = moment(endTime);
 
-          return startTime.format('D.M.YYYY HH.mm') + ' - ' + endTime.format('HH.mm');
+          return momentStartTime.format('D.M.YYYY HH.mm') + ' - ' + momentEndTime.format('HH.mm');
         }
+
+        FavoritesService.getUnisportUserReservations()
+          .then(function getUserReservationsSuccess(data) {
+            $scope.events = _(data.events).map(function (event) {
+              event.timeRange = getEventTimeRange(event.startTime, event.endTime);
+              return event;
+            }).value();
+            if (!_.isNull(data.authorizationUrl)) {
+              $scope.authorizationUrl = data.authorizationUrl + '?redirectTarget=' + window.location.origin;
+            }
+          });
       }
     };
   });

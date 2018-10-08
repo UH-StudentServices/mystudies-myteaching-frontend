@@ -24,117 +24,124 @@ angular.module('directives.workExperience', [
   'portfolioAnalytics'
 ])
 
-.factory('OrderWorkExperience', function() {
-  return function(workExperience) {
-    return workExperience.startDate.unix();
-  };
-})
+  .factory('OrderWorkExperience', function () {
+    return function (workExperience) {
+      return workExperience.startDate.unix();
+    };
+  })
 
-.directive('workExperience', function(WorkExperienceService,
-                                      $state,
-                                      AnalyticsService) {
-  return {
-    restrict: 'E',
-    replace: true,
-    scope: {
-      workExperienceData: '&',
-      portfolioId: '@',
-      portfolioLang: '@',
-      sectionName: '@'
-    },
-    templateUrl: 'app/directives/workExperience/workExperience.html',
-    link: function($scope) {
-
-      $scope.workExperience = WorkExperienceService.formatDates($scope.workExperienceData());
-      $scope.editing = false;
-      $scope.workExperienceValid = true;
-      $scope.newJob = {};
-      $scope.newJobSearch = {};
-
-      WorkExperienceService.getJobSearchSubject().subscribe(function(jobSearch) {
-        $scope.jobSearch = jobSearch;
-      });
-
-      $scope.edit = function() {
-        $scope.editing = true;
-        $scope.origWorkExperience = $scope.workExperience.slice();
-        $scope.origJobSearch = _.clone($scope.jobSearch);
-      };
-
-      var isJobSearchValid = function() {
-        if ($scope.jobSearch !== null) {
-          return $scope.jobSearch.contactEmail;
-        }
-        return true;
-      };
-
-      var isValid = function() {
-        return isJobSearchValid() && $scope.workExperience.every(function(job) {
-          return job.employer &&
-                 job.startDate.isValid() &&
-                 (!job.endDate || job.endDate.isValid()) &&
-                 job.jobTitle;
-        });
-      };
-
-      $scope.refreshValidity = _.debounce(function() {
-        $scope.workExperienceValid = isValid();
-        $scope.$apply();
-      }, 500);
-
-      $scope.exitEdit = function() {
-        $scope.$broadcast('saveComponent');
-        $scope.markAllSubmitted();
-
-        if (isValid()) {
+  .directive('workExperience', function (WorkExperienceService,
+    $state,
+    AnalyticsService) {
+    return {
+      restrict: 'E',
+      replace: true,
+      scope: {
+        workExperienceData: '&',
+        portfolioId: '@',
+        portfolioLang: '@',
+        sectionName: '@'
+      },
+      templateUrl: 'app/directives/workExperience/workExperience.html',
+      link: function ($scope) {
+        var isJobSearchValid = function () {
           if ($scope.jobSearch !== null) {
-            WorkExperienceService.saveJobSearch($scope.jobSearch);
-            if (!$scope.origJobSearch) {
-              AnalyticsService.trackEvent(AnalyticsService.ec.JOB_SEARCH, AnalyticsService.ea.ADD);
-            }
-          } else {
-            WorkExperienceService.deleteJobSearch($scope.jobSearch);
+            return $scope.jobSearch.contactEmail;
           }
+          return true;
+        };
 
-          AnalyticsService.trackEventIfAdded($scope.origWorkExperience, $scope.workExperience,
-            AnalyticsService.ec.WORK_EXPERIENCE, AnalyticsService.ea.ADD);
-          WorkExperienceService.updateWorkExperience($scope.portfolioId, $scope.workExperience).then(function(data) {
-            $scope.workExperience = data;
-            $scope.editing = false;
-            $state.reload(); // https://jira.it.helsinki.fi/browse/OO-1004
+        var isValid = function () {
+          return isJobSearchValid() && $scope.workExperience.every(function (job) {
+            return job.employer
+              && job.startDate.isValid()
+              && (!job.endDate || job.endDate.isValid())
+              && job.jobTitle;
           });
-        }
-        return true;
-      };
+        };
 
-      $scope.markAllSubmitted = function() {
-        $scope.workExperience.forEach(function(job) { job.submitted = true; });
-        if ($scope.jobSearch !== null) {
-          $scope.jobSearch.submitted = true;
-        }
-      };
-    }
-  };
-})
+        $scope.workExperience = WorkExperienceService.formatDates($scope.workExperienceData());
+        $scope.editing = false;
+        $scope.workExperienceValid = true;
+        $scope.newJob = {};
+        $scope.newJobSearch = {};
 
-.directive('workExperienceSummary', function() {
-  return {
-    restrict: 'E',
-    replace: true,
-    templateUrl: 'app/directives/workExperience/workExperienceSummary.html',
-    scope: {},
-    controller: function($scope,
-                         WorkExperienceService,
-                         OrderWorkExperience) {
-      WorkExperienceService.getWorkExperienceSubject().subscribe(function(workExperience) {
-        $scope.workExperience = workExperience;
-      });
+        WorkExperienceService.getJobSearchSubject().subscribe(function (jobSearch) {
+          $scope.jobSearch = jobSearch;
+        });
 
-      WorkExperienceService.getJobSearchSubject().subscribe(function(jobSearch) {
-        $scope.jobSearch = jobSearch;
-      });
+        $scope.edit = function () {
+          $scope.editing = true;
+          $scope.origWorkExperience = $scope.workExperience.slice();
+          $scope.origJobSearch = _.clone($scope.jobSearch);
+        };
 
-      $scope.orderWorkExperience = OrderWorkExperience;
-    }
-  };
-});
+        $scope.refreshValidity = _.debounce(function () {
+          $scope.workExperienceValid = isValid();
+          $scope.$apply();
+        }, 500);
+
+        $scope.exitEdit = function () {
+          $scope.$broadcast('saveComponent');
+          $scope.markAllSubmitted();
+
+          if (isValid()) {
+            if ($scope.jobSearch !== null) {
+              WorkExperienceService.saveJobSearch($scope.jobSearch);
+              if (!$scope.origJobSearch) {
+                AnalyticsService.trackEvent(
+                  AnalyticsService.ec.JOB_SEARCH,
+                  AnalyticsService.ea.ADD
+                );
+              }
+            } else {
+              WorkExperienceService.deleteJobSearch($scope.jobSearch);
+            }
+
+            AnalyticsService.trackEventIfAdded(
+              $scope.origWorkExperience,
+              $scope.workExperience,
+              AnalyticsService.ec.WORK_EXPERIENCE, AnalyticsService.ea.ADD
+            );
+
+            WorkExperienceService.updateWorkExperience($scope.portfolioId, $scope.workExperience)
+              .then(function (data) {
+                $scope.workExperience = data;
+                $scope.editing = false;
+                $state.reload(); // https://jira.it.helsinki.fi/browse/OO-1004
+              });
+          }
+          return true;
+        };
+
+        $scope.markAllSubmitted = function () {
+          $scope.workExperience.forEach(function (job) { job.submitted = true; });
+          if ($scope.jobSearch !== null) {
+            $scope.jobSearch.submitted = true;
+          }
+        };
+      }
+    };
+  })
+
+  .directive('workExperienceSummary', function () {
+    return {
+      restrict: 'E',
+      replace: true,
+      templateUrl: 'app/directives/workExperience/workExperienceSummary.html',
+      scope: {},
+      controller: function ($scope,
+        WorkExperienceService,
+        OrderWorkExperience) {
+        WorkExperienceService.getWorkExperienceSubject().subscribe(function (workExperience) {
+          $scope.workExperience = workExperience;
+        });
+
+        WorkExperienceService.getJobSearchSubject().subscribe(function (jobSearch) {
+          $scope.jobSearch = jobSearch;
+        });
+
+        $scope.orderWorkExperience = OrderWorkExperience;
+      }
+    };
+  });

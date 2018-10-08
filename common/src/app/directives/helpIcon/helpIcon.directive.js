@@ -17,8 +17,7 @@
 
 angular.module('directives.helpIcon', ['directives.popover'])
 
-  .directive('helpIcon', function(BrowserUtil) {
-
+  .directive('helpIcon', function (BrowserUtil) {
     return {
       restrict: 'E',
       replace: true,
@@ -30,7 +29,7 @@ angular.module('directives.helpIcon', ['directives.popover'])
         panelAlign: '@'
       },
       templateUrl: 'app/directives/helpIcon/helpIcon.html',
-      link: function(scope) {
+      link: function (scope) {
         var alignmentClass;
 
         if (BrowserUtil.isMobile() || scope.panelAlign === 'center') {

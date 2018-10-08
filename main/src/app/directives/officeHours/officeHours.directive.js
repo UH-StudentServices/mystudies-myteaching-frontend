@@ -22,41 +22,40 @@ angular.module('directives.officeHours', [
   'services.session',
   'ui.bootstrap.modal'
 ])
-  .directive('officeHours', function(OfficeHoursService, SessionService, $uibModal) {
+  .directive('officeHours', function (OfficeHoursService, SessionService, $uibModal) {
     return {
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/officeHours/officeHours.html',
-      link: function(scope) {
-
+      link: function (scope) {
         function setLoadError() {
           scope.loadError = true;
         }
 
-        function initOfficeHours() {
-          OfficeHoursService.loadDegreeProgrammes()
-          .then(function(degreeProgrammes) {
-            scope.degreeProgrammes = _.cloneDeep(degreeProgrammes);
-            scope.availableDegreeProgrammes = _.cloneDeep(degreeProgrammes);
-            return OfficeHoursService.loadOfficeHours();
-          })
-          .then(officeHoursLoaded)
-          .catch(setLoadError);
-        };
-
         function officeHoursLoaded(officeHours) {
           scope.loaded = true;
-          scope.officeHoursList = officeHours.map(function(oh) {
+          scope.officeHoursList = officeHours.map(function (oh) {
             return {
               description: oh.description,
               additionalInfo: oh.additionalInfo,
               location: oh.location,
-              degreeProgrammes: oh.degreeProgrammes.map(function(programme) {
+              degreeProgrammes: oh.degreeProgrammes.map(function (programme) {
                 return _.find(scope.degreeProgrammes, ['code', programme.code]);
               }),
               name: scope.userName
             };
           });
+        }
+
+        function initOfficeHours() {
+          OfficeHoursService.loadDegreeProgrammes()
+            .then(function (degreeProgrammes) {
+              scope.degreeProgrammes = _.cloneDeep(degreeProgrammes);
+              scope.availableDegreeProgrammes = _.cloneDeep(degreeProgrammes);
+              return OfficeHoursService.loadOfficeHours();
+            })
+            .then(officeHoursLoaded)
+            .catch(setLoadError);
         }
 
         scope.addDegreeProgramme = function addDegreeProgramme(degreeProgramme) {
@@ -73,7 +72,7 @@ angular.module('directives.officeHours', [
 
         scope.editOfficeHours = function editOfficeHours(index) {
           scope.officeHoursUnderEdit = _.cloneDeep(scope.officeHoursList[index]);
-          scope.availableDegreeProgrammes = scope.degreeProgrammes.filter(function(code) {
+          scope.availableDegreeProgrammes = scope.degreeProgrammes.filter(function (code) {
             return !_.find(scope.officeHoursUnderEdit.degreeProgrammes, ['code', code.code]);
           });
           scope.editedOfficeHoursIndex = index;
@@ -93,7 +92,7 @@ angular.module('directives.officeHours', [
         };
 
         scope.deleteOfficeHours = function deleteOfficeHours(index) {
-          scope.officeHoursList.splice(index,1);
+          scope.officeHoursList.splice(index, 1);
           scope.deleteConfirmationIndex = -1;
           OfficeHoursService.saveOfficeHours(scope.officeHoursList).then(officeHoursLoaded);
         };
@@ -118,13 +117,14 @@ angular.module('directives.officeHours', [
             if (scope.editedOfficeHoursIndex === -1) {
               scope.officeHoursList.push(_.cloneDeep(scope.officeHoursUnderEdit));
             } else {
-              scope.officeHoursList[scope.editedOfficeHoursIndex] = _.cloneDeep(scope.officeHoursUnderEdit);
+              scope.officeHoursList[scope.editedOfficeHoursIndex] =
+                _.cloneDeep(scope.officeHoursUnderEdit);
             }
             scope.resetOfficeHoursUnderEdit();
             scope.loaded = false;
             OfficeHoursService.saveOfficeHours(scope.officeHoursList)
-            .then(officeHoursLoaded)
-            .catch(setLoadError);
+              .then(officeHoursLoaded)
+              .catch(setLoadError);
           }
 
           scope.modalInstance.close();
@@ -136,8 +136,8 @@ angular.module('directives.officeHours', [
         };
 
         scope.canPublishEdits = function canPublishEdits() {
-          return scope.officeHoursUnderEdit.description &&
-            scope.officeHoursUnderEdit.name;
+          return scope.officeHoursUnderEdit.description
+            && scope.officeHoursUnderEdit.name;
         };
 
         scope.resetOfficeHoursUnderEdit = function resetOfficeHoursUnderEdit() {
