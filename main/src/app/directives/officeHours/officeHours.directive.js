@@ -43,7 +43,7 @@ angular.module('directives.officeHours', [
         }
 
         function formatOfficeHours(officeHoursList) {
-          return _.map(officeHoursList, function (oh) {
+          return officeHoursList.map(function (oh) {
             return {
               name: oh.name,
               additionalInfo: oh.additionalInfo,
