@@ -38,7 +38,6 @@ angular.module('opintoniPortfolioApp', [
   'provider.analyticsAccounts',
 
   'controllers.main',
-  'controllers.ckeditor',
   'controllers.tinymce',
 
   'directives.visibility',

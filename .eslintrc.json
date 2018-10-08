@@ -25,8 +25,7 @@
     "moment": false,
     "RSSParser": true,
     "sprintf": false,
-    "twttr": true,
-    "CKEDITOR": true
+    "twttr": true
   },
   "rules": {
     "dot-location": [2, "property"],

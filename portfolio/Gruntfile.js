@@ -268,15 +268,10 @@ module.exports = function(grunt) {
         {
           expand: true,
           dot: true,
-          cwd: '../bower_components/ckeditor',
+          cwd: '../bower_components/tinymce',
           dest: '<%= application.dist %>',
           src: [
-            'config.js',
-            'contents.css',
-            'lang/**',
-            'plugins/**',
-            'skins/**',
-            'styles.js'
+            'skins/**'
           ]
         }
         ]
@@ -358,18 +353,6 @@ module.exports = function(grunt) {
         configFile: 'karma.conf.js',
         singleRun: true
       }
-    },
-    replace: {
-      ckeditor: {
-        src: ['<%= application.dist %>/index.html'],
-        dest: '<%= application.dist %>/index.html',
-        replacements: [
-          {
-            from: '// CKEDITOR_BASEPATH = "/";',
-            to: 'CKEDITOR_BASEPATH = "/portfolio/";'
-          }
-        ]
-      }
     }
   });
 
@@ -409,8 +392,7 @@ module.exports = function(grunt) {
     'uglify',
     'filerev',
     'usemin',
-    'htmlmin',
-    'replace'
+    'htmlmin'
   ]);
 
   grunt.registerTask('build', [
