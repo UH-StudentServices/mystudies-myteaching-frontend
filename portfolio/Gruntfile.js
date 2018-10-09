@@ -180,7 +180,8 @@ module.exports = function (grunt) {
           'dist/assets/images/bg/*.{png,ico,jpg}',
           'dist/assets/images/ui/*.{png,ico,jpg}',
           'dist/assets/icons/**/*.{png,svg}',
-          '!dist/assets/icons/avatar.png'
+          '!dist/assets/icons/avatar.png',
+          '!dist/assets/icons/paperclip.svg'
         ]
       }
     },
