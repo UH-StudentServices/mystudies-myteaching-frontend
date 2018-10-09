@@ -260,10 +260,7 @@ module.exports = function (grunt) {
             dot: true,
             cwd: '../bower_components/tinymce',
             dest: '<%= application.dist %>',
-            src: [
-              'skins/**',
-              'plugins/**/*'
-            ]
+            src: ['skins/**']
           }
         ]
       },
