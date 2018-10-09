@@ -36,7 +36,8 @@
             <div ng-controller="TinymceController" class="samples__input" ng-class="{'ng-invalid':!sampleItem.description}">
               <textarea class="samples__input"
                         ui-tinymce="tinymceOptions"
-                        ng-model="sampleItem.description">
+                        ng-model="sampleItem.description"
+                        ng-change="onChange()">
               </textarea>
             </div>
           </div>
