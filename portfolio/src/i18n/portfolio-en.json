@@ -101,8 +101,8 @@
   "samples": {
     "title": "Samples",
     "addSample": "Add sample",
-    "titlePlaceholder": "description",
-    "urlPlaceholder": "url",
+    "sampleTitle": "heading",
+    "sampleDescription": "Description",
     "descriptionPlaceholder": "description text"
   },
   "attainments": {

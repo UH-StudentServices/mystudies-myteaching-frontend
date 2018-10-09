@@ -16,12 +16,12 @@
   -->
 
 <ul class="banner-content">
-  <li ng-repeat="sampleItem in samples | orderBy: 'title' track by sampleItem.id">
+  <li ng-repeat="sampleItem in samples | orderBy: 'id' track by sampleItem.id">
     <div class="banner-content__item samples__outer-container">
       <div class="banner-content__details-container samples__details-container">
         <div class="samples__title">{{sampleItem.title}}</div>
         <div class="samples__description">
-          <p>{{sampleItem.description}}</p>
+          <ng-embed embed-data="sampleItem.description" embed-options="embedOptions"></ng-embed>
         </div>
       </div>
     </div>

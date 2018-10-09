@@ -101,8 +101,8 @@
   "samples": {
     "title": "Näytteet",
     "addSample": "Lisää näyte",
-    "titlePlaceholder": "kuvaus",
-    "urlPlaceholder": "url",
+    "sampleTitle": "Otsikko",
+    "sampleDescription": "Kuvaus",
     "descriptionPlaceholder": "kuvausteksti"
   },
   "attainments": {

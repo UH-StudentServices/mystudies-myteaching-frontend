@@ -15,15 +15,15 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.showSamples', ['dibari.angular-ellipsis'])
+angular.module('directives.showSamples', ['constants.ngEmbedOptions'])
 
-  .directive('showSamples', function () {
+  .directive('showSamples', function (NG_EMBED_OPTIONS) {
     return {
       restrict: 'E',
       scope: { samples: '=' },
       templateUrl: 'app/directives/samples/showSamples.html',
-      link: function () {
-
+      link: function (scope) {
+        scope.embedOptions = NG_EMBED_OPTIONS;
       }
     };
   });

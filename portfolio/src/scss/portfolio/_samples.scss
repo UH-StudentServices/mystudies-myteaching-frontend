@@ -16,6 +16,9 @@
  */
 
 .samples {
+  &--edit {
+    margin-top: 1em;
+  }
 
   &__outer-container {
     display: flex;
@@ -27,8 +30,17 @@
 
   &__details-container {
     width: 100%;
-    margin-left: 2em;
-    margin-right: 2em;
+    margin: 0 2em;
+
+    @include breakpoint($small) {
+      width: 100%;
+      margin: 0 2em;
+    }
+
+    @include breakpoint($mobile-only) {
+      width: 100%;
+      margin: 1em 0 0 0;
+    }
   }
 
   &__title {
@@ -38,11 +50,34 @@
 
   }
 
+  &__description-label {
+    font-size: 1.125em;
+    color: $labelBlack;
+    font-weight: 300;
+    line-height: 2.4em;
+    padding: 0;
+    margin: 0;
+  }
+
   &__description {
     p {
       line-height: 1.4em;
       margin-bottom: 0;
     }
+  }
+
+  .banner-content {
+    &__item {
+      margin-top: 0;
+    }
+
+    &__remove {
+      background-color: transparent;
+    }
+  }
+
+  &__input.ng-invalid {
+    border: 0.1em solid red;
   }
 
 }
