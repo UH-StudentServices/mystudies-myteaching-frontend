@@ -113,6 +113,7 @@ angular.module('controllers.tinymce', ['ui.tinymce', 'services.language', 'servi
       statusbar: false,
       target_list: false,
       link_title: false,
+      forced_root_block: false,
       setup: setupEditor
     };
   });
