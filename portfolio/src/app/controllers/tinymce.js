@@ -113,7 +113,7 @@ angular.module('controllers.tinymce', ['ui.tinymce', 'services.language'])
 
     $scope.tinymceOptions = {
       language: LanguageService.getCurrent(),
-      language_url: '/portfolio/assets/tinymce-locales/' + LanguageService.getCurrent() + '.js',
+      language_url: '/portfolio/i18n/tinymce-locales/' + LanguageService.getCurrent() + '.js',
       height: '600',
       plugins: 'link image code',
       toolbar: 'link uploadImage uploadFile',

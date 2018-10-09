@@ -245,7 +245,7 @@ module.exports = function (grunt) {
               'index.html',
               'assets/images/**/*.{png,jpg,gif,webp,ico}',
               'assets/icons/**/*',
-              'i18n/*'
+              'i18n/**/*'
             ]
           },
           {
