@@ -15,20 +15,34 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.showSamples', ['dibari.angular-ellipsis'])
+.samples {
 
-  .directive('showSamples', function () {
-    return {
-      restrict: 'E',
-      scope: { samples: '=' },
-      templateUrl: 'app/directives/samples/showSamples.html',
-      link: function ($scope) {
-        $scope.showFull = function (sampleItem) {
-          sampleItem.showFull = true;
-        };
-        $scope.hideFull = function (sampleItem) {
-          sampleItem.showFull = false;
-        };
-      }
-    };
-  });
+  &__outer-container {
+    display: flex;
+    background-color: $lightsilver;
+    border: 1px solid $mediumsilver;
+    padding: 1em;
+    margin-bottom: 1em;
+  }
+
+  &__details-container {
+    width: 100%;
+    margin-left: 2em;
+    margin-right: 2em;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 1.25em;
+    margin-bottom: 0.5em;
+
+  }
+
+  &__description {
+    p {
+      line-height: 1.4em;
+      margin-bottom: 0;
+    }
+  }
+
+}

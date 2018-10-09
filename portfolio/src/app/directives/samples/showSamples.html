@@ -17,33 +17,24 @@
 
 <ul class="banner-content">
   <li ng-repeat="sampleItem in samples | orderBy: 'title' track by sampleItem.id">
-    <div class="banner-content__item">
-      <div class="banner-content__banner">
-        <a class="banner-content__banner-link" href="{{formatUrl(sampleItem.url)}}" title="{{sampleItem.title}}">
-          <div class="banner-content__backdrop">
-            <div class="banner-content__banner-content">
-              <div class="banner-content__banner-title">
-                {{sampleItem.title}}
-              </div>
+    <div class="banner-content__item samples__outer-container">
+      <div class="banner-content__details-container samples__details-container">
+        <div class="samples__title">{{sampleItem.title}}</div>
+          <div class="samples__description" ng-class="{'banner-content__show-full-description': sampleItem.showFull}">
+            <div class="banner-content__description">
+              <p ng-bind="sampleItem.description" data-ellipsis
+                 data-ellipsis-append="{{::' '+('general.showMore'|translate)}}"
+                 data-ellipsis-append-click="showFull(sampleItem)"></p>
             </div>
-          </div>
-        </a>
-      </div>
-      <div class="banner-content__details-container"
-           ng-class="{'banner-content__show-full-description': sampleItem.showFull}">
-        <div class="banner-content__description">
-          <p ng-bind="sampleItem.description" data-ellipsis
-             data-ellipsis-append="{{::' '+('general.showMore'|translate)}}"
-             data-ellipsis-append-click="showFull(sampleItem)"></p>
-        </div>
-        <div class="banner-content__full-description">
-          <p>{{sampleItem.description}}
-            <a class="banner-content__show-less"
-               role="button"
-               href=""
-               aria-label="{{::'general.showLess'|translate}}"
-               ng-click="hideFull(sampleItem)">{{::'general.showLess'|translate}}</a>
-          </p>
+            <div class="banner-content__full-description">
+              <p>{{sampleItem.description}}
+                <a class="banner-content__show-less"
+                   role="button"
+                   href=""
+                   aria-label="{{::'general.showLess'|translate}}"
+                   ng-click="hideFull(sampleItem)">{{::'general.showLess'|translate}}</a>
+              </p>
+            </div>
         </div>
       </div>
     </div>
