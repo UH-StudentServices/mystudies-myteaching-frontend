@@ -20,16 +20,43 @@
 angular.module('directives.officeHours', [
   'services.officeHours',
   'services.session',
-  'ui.bootstrap.modal'
+  'services.language',
+  'ui.bootstrap.modal',
+  'utils.moment'
 ])
-  .directive('officeHours', function (OfficeHoursService, SessionService, $uibModal) {
+  .directive('officeHours', function (OfficeHoursService, SessionService, LanguageService, $uibModal, dateArrayToMomentObject, momentDateToLocalDateArray) {
     return {
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/officeHours/officeHours.html',
       link: function (scope) {
+        function toMoment(dateInput) {
+          if (moment.isMoment(dateInput)) {
+            return dateInput.locale(LanguageService.getCurrent());
+          }
+          return moment(dateInput, ['D.M.YYYY', 'M/D/YYYY', 'YYYY-M-D'], true)
+            .locale(LanguageService.getCurrent());
+        }
+
         function setLoadError() {
           scope.loadError = true;
+        }
+
+        function formatOfficeHours(officeHoursList) {
+          return officeHoursList.map(function (oh) {
+            return {
+              name: oh.name,
+              additionalInfo: oh.additionalInfo,
+              location: oh.location,
+              expirationDate: momentDateToLocalDateArray(toMoment(oh.expirationDate)),
+              description: oh.description,
+              degreeProgrammes: oh.degreeProgrammes
+            };
+          });
+        }
+
+        function hasExpired(expirationMoment) {
+          return moment().diff(expirationMoment, 'days') > 0;
         }
 
         function officeHoursLoaded(officeHours) {
@@ -39,6 +66,8 @@ angular.module('directives.officeHours', [
               description: oh.description,
               additionalInfo: oh.additionalInfo,
               location: oh.location,
+              expirationDate: dateArrayToMomentObject(oh.expirationDate).format('L'),
+              expired: hasExpired(dateArrayToMomentObject(oh.expirationDate)),
               degreeProgrammes: oh.degreeProgrammes.map(function (programme) {
                 return _.find(scope.degreeProgrammes, ['code', programme.code]);
               }),
@@ -94,7 +123,8 @@ angular.module('directives.officeHours', [
         scope.deleteOfficeHours = function deleteOfficeHours(index) {
           scope.officeHoursList.splice(index, 1);
           scope.deleteConfirmationIndex = -1;
-          OfficeHoursService.saveOfficeHours(scope.officeHoursList).then(officeHoursLoaded);
+          OfficeHoursService.saveOfficeHours(formatOfficeHours(scope.officeHoursList))
+            .then(officeHoursLoaded);
         };
 
         scope.addOfficeHours = function addOfficeHours() {
@@ -122,7 +152,7 @@ angular.module('directives.officeHours', [
             }
             scope.resetOfficeHoursUnderEdit();
             scope.loaded = false;
-            OfficeHoursService.saveOfficeHours(scope.officeHoursList)
+            OfficeHoursService.saveOfficeHours(formatOfficeHours(scope.officeHoursList))
               .then(officeHoursLoaded)
               .catch(setLoadError);
           }
@@ -136,15 +166,20 @@ angular.module('directives.officeHours', [
         };
 
         scope.canPublishEdits = function canPublishEdits() {
+          var expirationDate = toMoment(scope.officeHoursUnderEdit.expirationDate);
+
           return scope.officeHoursUnderEdit.description
-            && scope.officeHoursUnderEdit.name;
+            && scope.officeHoursUnderEdit.name
+            && expirationDate.isValid()
+            && expirationDate.isBefore(moment().add(1, 'year'));
         };
 
         scope.resetOfficeHoursUnderEdit = function resetOfficeHoursUnderEdit() {
           scope.officeHoursUnderEdit = {
             description: null,
             degreeProgrammes: [],
-            name: scope.userName
+            name: scope.userName,
+            expirationDate: null
           };
         };
         scope.resetOfficeHoursUnderEdit();

@@ -33,12 +33,6 @@ angular.module('directives.showWorkExperience', ['dibari.angular-ellipsis'])
           }
           return '';
         };
-        $scope.showFull = function (workExperienceItem) {
-          workExperienceItem.showFull = true;
-        };
-        $scope.hideFull = function (workExperienceItem) {
-          workExperienceItem.showFull = false;
-        };
       }
     };
   });

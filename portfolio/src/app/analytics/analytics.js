@@ -80,7 +80,7 @@ angular.module('portfolioAnalytics', ['provider.analyticsAccounts'])
       LANGUAGE_PROFICIENCIES: 'language_proficiencies',
       FAVORITES: 'favorites',
       FREE_TEXT_CONTENT: 'free_text_content',
-      CONTACT_INFO: 'contact_info',
+      CONTACT_INFO: 'contact_information',
       PORTFOLIO: 'portfolio'
     };
 

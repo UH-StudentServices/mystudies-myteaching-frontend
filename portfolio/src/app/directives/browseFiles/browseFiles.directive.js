@@ -15,14 +15,14 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.browseFiles', ['services.browseFiles'])
+angular.module('directives.browseFiles', ['services.portfolioFiles'])
 
   .constant('PortfolioPublicFilesResourcePath', '/api/public/v1/portfolio/files')
 
-  .directive('browseFiles', function ($location, BrowseFilesService,
+  .directive('browseFiles', function ($location, PortfolioFilesService,
     VerificationDialog, PortfolioPublicFilesResourcePath) {
     function loadFileList($scope) {
-      BrowseFilesService.getFileList().then(function (res) {
+      PortfolioFilesService.getFileList().then(function (res) {
         $scope.files = res.map(function (resource) { return resource.name; });
       });
     }
@@ -43,7 +43,7 @@ angular.module('directives.browseFiles', ['services.browseFiles'])
 
         $scope.deleteFile = function (file) {
           function deleteItem() {
-            BrowseFilesService.deleteFile(file).then(function () { loadFileList($scope); });
+            PortfolioFilesService.deleteFile(file).then(function () { loadFileList($scope); });
           }
 
           VerificationDialog.open('general.reallyDelete', 'general.ok', 'general.cancel', deleteItem, function () {});

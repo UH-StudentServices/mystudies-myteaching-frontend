@@ -54,8 +54,7 @@
     .constant('NG_EMBED_REGEXP_PATTERNS', {
       // url
       protocol: /^[a-z]+:\/\//i,
-      url: /(?:^)(?:(https?|ftp|file):\/\/|www\.)[-A-Z0-9+()&@$#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|]/gi,
-      linkUrl: /&lt;a href=".*"&gt;.*&lt;\/a&gt;/gi,
+      url: /\b(?:(https?|ftp|file):\/\/www\.)[-A-Z0-9+()&@$#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|](?=\s|<)/gi,
       // files
       basicVideo: /((?:https?|ftp|file):\/\/\S*\.(?:ogv|webm|mp4)(\?([\w=&_%\-]*))?)/gi,
       basicAudio: /((?:https?|ftp|file):\/\/\S*\.(?:wav|mp3|ogg)(\?([\w=&_%\-]*))?)/gi,
@@ -77,13 +76,13 @@
       dailymotion: /dailymotion.com\/video\/[a-zA-Z0-9-_]+/gi,
       liveleak: /liveleak.com\/view\?i=[a-zA-Z0-9_]+/gi,
       ted: /ted.com\/talks\/[a-zA-Z0-9_]+/gi,
-      vimeo: /vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|)(\d+)(?:$|\/|\?)*/gi,
+      vimeo: /vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|)(\d+)(?:$|\/|\?)*(?=\s|<)/gi,
       // eslint-disable-next-line max-len
-      youtube: /(?:[0-9A-Z-]+\.)?(?:youtu\.be\/|youtube\.com(?:\/embed\/|\/v\/|\/watch\?v=|\/ytscreeningroom\?v=|\/feeds\/api\/videos\/|))([\w\-]{11})[?=&+%\w-]*/gi,
+      youtube: /(?:[0-9A-Z-]+\.)?(?:youtu\.be\/|youtube\.com(?:\/embed\/|\/v\/|\/watch\?v=|\/ytscreeningroom\?v=|\/feeds\/api\/videos\/|))([\w\-]{11})[?=&+%\w-]*(?=\s|<)/gi,
       twitchtv: /twitch.tv\/[a-zA_Z0-9_]+/gi,
       ustream: /ustream.tv\/[a-z\/0-9]*/gi,
       // eslint-disable-next-line max-len
-      unitube: /(helsinki\.fi\/[a-zA-Z]{2}|hy\.fi)\/unitube\/video\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})/gi,
+      unitube: /(helsinki\.fi\/[a-zA-Z]{2}|hy\.fi)\/unitube\/video\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})(?=\s|<)/gi,
       // social media
       twitter: /https:\/\/twitter\.com\/\w+\/\w+\/\d+/gi
     })
@@ -913,9 +912,6 @@
 
       if (options.link) {
         input = urlEmbed(input, options.linkTarget, NG_EMBED_REGEXP_PATTERNS.url, NG_EMBED_REGEXP_PATTERNS.protocol);
-
-        // Support for RTE generated links
-        input = input.replace(NG_EMBED_REGEXP_PATTERNS.linkUrl, _.unescape);
       }
 
       return $sce.trustAsHtml(input);

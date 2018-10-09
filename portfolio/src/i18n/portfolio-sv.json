@@ -136,7 +136,8 @@
   },
   "freeTextContent": {
     "defaultTitle": "Lägg till rubrik",
-    "defaultText": "Lägg till innehåll"
+    "defaultText": "Lägg till innehåll",
+    "fileUploadError": "Fel i filuppladdning"
   },
   "feedback": {
     "title": "Feedback",

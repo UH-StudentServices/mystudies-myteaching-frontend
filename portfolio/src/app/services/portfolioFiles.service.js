@@ -15,19 +15,24 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('services.browseFiles', ['resources.browseFiles'])
+angular.module('services.portfolioFiles', ['resources.portfolioFiles'])
 
-  .factory('BrowseFilesService', function (BrowseFilesResource) {
+  .factory('PortfolioFilesService', function (PortfolioFilesResource) {
     function getFileList() {
-      return BrowseFilesResource.getFileList();
+      return PortfolioFilesResource.getFileList();
     }
 
     function deleteFile(file) {
-      return BrowseFilesResource.deleteFile(file.substr(file.indexOf('/') + 1));
+      return PortfolioFilesResource.deleteFile(file.substr(file.indexOf('/') + 1));
+    }
+
+    function saveFile(file) {
+      return PortfolioFilesResource.saveFile(file);
     }
 
     return {
       getFileList: getFileList,
-      deleteFile: deleteFile
+      deleteFile: deleteFile,
+      saveFile: saveFile
     };
   });
