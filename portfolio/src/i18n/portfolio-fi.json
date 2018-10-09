@@ -136,7 +136,8 @@
   },
   "freeTextContent": {
     "defaultTitle": "Lisää otsikko",
-    "defaultText": "Lisää sisältöä"
+    "defaultText": "Lisää sisältöä",
+    "fileUploadError": "Tiedoston lisäys epäonnistui"
   },
   "feedback": {
     "title": "Palaute",

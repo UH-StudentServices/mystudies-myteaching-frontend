@@ -74,10 +74,6 @@
 
 <div ui-view></div>
 
-<script>
-  // CKEDITOR_BASEPATH = "/";
-</script>
-
 <!-- build:js app/vendor.js -->
 <script src="../../bower_components/modernizr/modernizr.js"></script>
 <script src="../../bower_components/jquery/dist/jquery.js"></script>
@@ -109,8 +105,8 @@
 <script src="../../bower_components/Stickyfill/dist/stickyfill.js"></script>
 <script src="../../bower_components/ng-sortable/dist/ng-sortable.js"></script>
 <script src="../../bower_components/cropper/dist/cropper.js"></script>
-<script src="../../bower_components/ckeditor/ckeditor.js"></script>
-<script src="../../bower_components/angular-ckeditor/angular-ckeditor.js"></script>
+<script src="../../bower_components/tinymce/tinymce.js"></script>
+<script src="../../bower_components/angular-ui-tinymce/src/tinymce.js"></script>
 
 <script src="app/vendor/ng-file-upload/ng-file-upload.js"></script>
 <script src="app/vendor/ng-file-upload/ng-file-upload-shim.js"></script>
@@ -184,7 +180,7 @@
 <script src="../../common/src/app/services/language.service.js"></script>
 
 <script src="app/controllers/main.js"></script>
-<script src="app/controllers/ckeditor.js"></script>
+<script src="app/controllers/tinymce.js"></script>
 
 <script src="app/resources/contactInformation.resource.js"></script>
 <script src="app/resources/degree.resource.js"></script>
@@ -204,7 +200,7 @@
 <script src="app/resources/languageProficiencies.resource.js"></script>
 <script src="app/resources/feedback.resource.js"></script>
 <script src="app/resources/portfolioBackground.resource.js"></script>
-<script src="app/resources/browseFiles.resource.js"></script>
+<script src="app/resources/portfolioFiles.resource.js"></script>
 
 <script src="../../common/src/app/providers/analytics.provider.js"></script>
 
@@ -230,7 +226,7 @@
 <script src="app/services/languageProficiencies.service.js"></script>
 <script src="app/services/login.service.js"></script>
 <script src="app/services/portfolioBackground.service.js"></script>
-<script src="app/services/browseFiles.service.js"></script>
+<script src="app/services/portfolioFiles.service.js"></script>
 
 <script src="../../common/src/app/utils/browser.util.js"></script>
 <script src="../../common/src/app/utils/moment.util.js"></script>

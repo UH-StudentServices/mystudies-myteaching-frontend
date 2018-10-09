@@ -136,7 +136,8 @@
   },
   "freeTextContent": {
     "defaultTitle": "Add title",
-    "defaultText": "Add content"
+    "defaultText": "Add content",
+    "fileUploadError": "File upload has failed"
   },
   "feedback": {
     "title": "Feedback",

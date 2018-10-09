@@ -38,7 +38,7 @@ angular.module('opintoniPortfolioApp', [
   'provider.analyticsAccounts',
 
   'controllers.main',
-  'controllers.ckeditor',
+  'controllers.tinymce',
 
   'directives.visibility',
   'directives.attainments',
@@ -86,7 +86,7 @@ angular.module('opintoniPortfolioApp', [
   'services.scriptInjector',
   'services.preview',
   'services.freeTextContent',
-  'services.browseFiles',
+  'services.portfolioFiles',
   'resources.notifications',
 
   'utils.moment'

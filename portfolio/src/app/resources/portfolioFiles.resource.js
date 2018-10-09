@@ -15,11 +15,11 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('resources.browseFiles', [])
+angular.module('resources.portfolioFiles', [])
 
   .constant('PortfolioFilesResourcePath', '/api/private/v1/portfolio/files')
 
-  .factory('BrowseFilesResource', function ($resource, PortfolioFilesResourcePath) {
+  .factory('PortfolioFilesResource', function ($resource, $http, PortfolioFilesResourcePath) {
     function browseFilesResource(path) {
       var browseFilesResourcePath = PortfolioFilesResourcePath;
 
@@ -44,8 +44,22 @@ angular.module('resources.browseFiles', [])
       return browseFilesResource(file).deleteFile().$promise;
     }
 
+    function saveFile(file) {
+      var formData = new FormData();
+
+      formData.append('upload', file);
+
+      return $http({
+        url: PortfolioFilesResourcePath,
+        headers: { 'Content-Type': undefined },
+        data: formData,
+        method: 'POST'
+      });
+    }
+
     return {
       getFileList: getFileList,
-      deleteFile: deleteFile
+      deleteFile: deleteFile,
+      saveFile: saveFile
     };
   });
