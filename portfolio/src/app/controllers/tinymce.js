@@ -17,9 +17,10 @@
 
 /* eslint-disable camelcase */
 
-angular.module('controllers.tinymce', ['ui.tinymce', 'services.language'])
+angular.module('controllers.tinymce', ['ui.tinymce', 'services.language', 'services.portfolioFiles'])
 
-  .controller('TinymceController', function ($scope, $http, $translate, LanguageService, PortfolioFilesResourcePath) {
+  .controller('TinymceController', function ($scope, $http, $translate,
+    LanguageService, PortfolioFilesResourcePath, PortfolioFilesService) {
     /* eslint-disable max-len, no-useless-escape */
     var unitubeRegex = /(helsinki\.fi\/[a-zA-Z]{2}|hy\.fi)\/unitube\/video\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})/;
     var youtubeRegex = /(?:[0-9A-Z-]+\.)?(?:youtu\.be\/|youtube\.com(?:\/embed\/|\/v\/|\/watch\?v=|\/ytscreeningroom\?v=|\/feeds\/api\/videos\/|))([\w\-]{11})[?=&+%\w-]*/;
@@ -31,12 +32,7 @@ angular.module('controllers.tinymce', ['ui.tinymce', 'services.language'])
 
       formData.append('upload', input.files[0]);
 
-      $http({
-        url: PortfolioFilesResourcePath,
-        headers: { 'Content-Type': undefined },
-        data: formData,
-        method: 'POST'
-      })
+      PortfolioFilesService.saveFile(input.files[0])
         .then(function (res) {
           editor.insertContent(content(res));
         })

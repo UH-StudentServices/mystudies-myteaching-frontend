@@ -86,7 +86,7 @@ angular.module('opintoniPortfolioApp', [
   'services.scriptInjector',
   'services.preview',
   'services.freeTextContent',
-  'services.browseFiles',
+  'services.portfolioFiles',
   'resources.notifications',
 
   'utils.moment'
