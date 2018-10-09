@@ -29,7 +29,7 @@ angular.module('services.officeHours', [
     }
 
     function saveOfficeHours(officeHours) {
-      return OfficeHoursResource.saveOfficeHours(officeHours);
+      return OfficeHoursResource.saveOfficeHours({ officeHours: officeHours });
     }
 
     function deleteOfficeHours() {
