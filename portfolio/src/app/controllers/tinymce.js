@@ -28,10 +28,6 @@ angular.module('controllers.tinymce', ['ui.tinymce', 'services.language', 'servi
     /* eslint-enable */
 
     function upload(input, editor, content) {
-      var formData = new FormData();
-
-      formData.append('upload', input.files[0]);
-
       PortfolioFilesService.saveFile(input.files[0])
         .then(function (res) {
           editor.insertContent(content(res));
