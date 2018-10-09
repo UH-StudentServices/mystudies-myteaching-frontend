@@ -31,20 +31,9 @@
             {{workExperienceItem.employer}}
           </div>
         </div>
-        <div ng-class="{'banner-content__show-full-description': workExperienceItem.showFull}">
-          <div class="banner-content__description">
-            <p ng-bind="workExperienceItem.text" data-ellipsis
-               data-ellipsis-append="{{::' '+('general.showMore'|translate)}}"
-               data-ellipsis-append-click="showFull(workExperienceItem)"></p>
-          </div>
+        <div class="banner-content__show-full-description">
           <div class="banner-content__full-description">
-            <p>{{workExperienceItem.text}}
-              <a class="banner-content__show-less"
-                 role="button"
-                 href=""
-                 aria-label="{{::'general.showLess'|translate}}"
-                 ng-click="hideFull(workExperienceItem)">{{::'general.showLess'|translate}}</a>
-            </p>
+            <p>{{workExperienceItem.text}}</p>
           </div>
         </div>
         <div class="banner-content__details-row">
