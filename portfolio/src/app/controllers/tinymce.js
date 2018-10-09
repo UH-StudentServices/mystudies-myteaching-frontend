@@ -19,7 +19,7 @@
 
 angular.module('controllers.tinymce', ['ui.tinymce', 'services.language'])
 
-  .controller('TinymceController', function ($scope, $http, LanguageService, PortfolioFilesResourcePath) {
+  .controller('TinymceController', function ($scope, $http, $translate, LanguageService, PortfolioFilesResourcePath) {
     /* eslint-disable max-len, no-useless-escape */
     var unitubeRegex = /(helsinki\.fi\/[a-zA-Z]{2}|hy\.fi)\/unitube\/video\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})/;
     var youtubeRegex = /(?:[0-9A-Z-]+\.)?(?:youtu\.be\/|youtube\.com(?:\/embed\/|\/v\/|\/watch\?v=|\/ytscreeningroom\?v=|\/feeds\/api\/videos\/|))([\w\-]{11})[?=&+%\w-]*/;
@@ -39,11 +39,14 @@ angular.module('controllers.tinymce', ['ui.tinymce', 'services.language'])
       })
         .then(function (res) {
           editor.insertContent(content(res));
+        })
+        .catch(function () {
+          editor.notificationManager.open({ text: $translate.instant('freeTextContent.fileUploadError') });
         });
     }
 
     function uploadImage(input, editor) {
-      upload(input, editor, function (res) { return '<img src="' + res.data.url + '">'; });
+      upload(input, editor, function (res) { return '<img src="' + res.data.url + '">'; }, 'image/*');
     }
 
     function uploadFile(input, editor) {
@@ -52,22 +55,29 @@ angular.module('controllers.tinymce', ['ui.tinymce', 'services.language'])
       });
     }
 
-    function createInput(editor, onSelect) {
+    function createInput(editor, onSelect, accept) {
       var input = document.createElement('input');
 
       input.type = 'file';
       input.onchange = function () { onSelect(input, editor); };
+
+      if (accept) {
+        input.accept = accept;
+      }
+
       input.click();
     }
 
     function setupEditor(editor) {
       editor.addButton('uploadImage', {
         icon: 'image',
+        tooltip: 'Insert image',
         onclick: function () { createInput(editor, uploadImage); }
       });
 
       editor.addButton('uploadFile', {
         image: '/portfolio/assets/icons/paperclip.svg',
+        tooltip: 'Insert file',
         onclick: function () { createInput(editor, uploadFile); }
       });
 
@@ -102,11 +112,13 @@ angular.module('controllers.tinymce', ['ui.tinymce', 'services.language'])
     }
 
     $scope.tinymceOptions = {
-      // language: LanguageService.getCurrent() + '_FI',
-      height: '300',
+      language: LanguageService.getCurrent(),
+      language_url: '/portfolio/assets/tinymce-locales/' + LanguageService.getCurrent() + '.js',
+      height: '600',
       plugins: 'link image code',
       toolbar: 'link uploadImage uploadFile',
       menubar: false,
+      statusbar: false,
       target_list: false,
       link_title: false,
       setup: setupEditor
