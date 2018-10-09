@@ -41,7 +41,6 @@ angular.module('directives.editSamples', [])
           $scope.samples = _.without($scope.samples, sample);
           $scope.onChange(); // we might have deleted the only invalid item
         };
-
       }
     };
   });
