@@ -22,13 +22,8 @@ angular.module('directives.showSamples', ['dibari.angular-ellipsis'])
       restrict: 'E',
       scope: { samples: '=' },
       templateUrl: 'app/directives/samples/showSamples.html',
-      link: function ($scope) {
-        $scope.showFull = function (sampleItem) {
-          sampleItem.showFull = true;
-        };
-        $scope.hideFull = function (sampleItem) {
-          sampleItem.showFull = false;
-        };
+      link: function () {
+
       }
     };
   });
