@@ -60,6 +60,7 @@
   <div ng-if="isEditing" class="free-text-content--edit">
     <div ng-controller="TinymceController">
       <textarea ui-tinymce="tinymceOptions" ng-model="freeTextContentItem.text"></textarea>
+      <browse-files></browse-files>
     </div>
   </div>
 

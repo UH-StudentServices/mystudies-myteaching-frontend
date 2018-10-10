@@ -15,30 +15,31 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.browseFiles', ['services.portfolioFiles'])
+angular.module('directives.browseFiles', ['services.portfolioFiles', 'ui.bootstrap.modal'])
 
   .constant('PortfolioPublicFilesResourcePath', '/api/public/v1/portfolio/files')
 
-  .directive('browseFiles', function ($location, PortfolioFilesService,
-    VerificationDialog, PortfolioPublicFilesResourcePath) {
-    function loadFileList($scope) {
-      PortfolioFilesService.getFileList().then(function (res) {
-        $scope.files = res.map(function (resource) { return resource.name; });
-      });
-    }
-
+  .directive('browseFiles', function ($location, $uibModal, PortfolioFilesService, VerificationDialog) {
     return {
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/browseFiles/browseFiles.html',
-      link: function ($scope) {
-        loadFileList($scope);
+      controller: function ($scope) {
+        function loadFileList() {
+          PortfolioFilesService.getFileList().then(function (res) {
+            $scope.files = res.map(function (resource) { return resource.name; });
+          });
+        }
 
-        $scope.fileSelected = function (file) {
-          var baseUrl = window.location.origin + PortfolioPublicFilesResourcePath;
-
-          window.opener.CKEDITOR.tools.callFunction($location.search().CKEditorFuncNum, baseUrl + '/' + file);
-          window.close();
+        $scope.openFileDialog = function () {
+          loadFileList();
+          $uibModal.open({
+            templateUrl: 'browse-files-dialog.html',
+            controller: 'BrowseFilesController',
+            scope: $scope,
+            animation: false,
+            windowClass: 'file-dialog dialog'
+          });
         };
 
         $scope.deleteFile = function (file) {
@@ -49,5 +50,19 @@ angular.module('directives.browseFiles', ['services.portfolioFiles'])
           VerificationDialog.open('general.reallyDelete', 'general.ok', 'general.cancel', deleteItem, function () {});
         };
       }
+    };
+  })
+
+  .controller('BrowseFilesController', function ($scope, $uibModalInstance, PortfolioPublicFilesResourcePath) {
+    $scope.cancel = function () {
+      $uibModalInstance.dismiss();
+    };
+
+    $scope.onSelect = function (file) {
+      var baseUrl = window.location.origin + PortfolioPublicFilesResourcePath;
+      var filename = file.split('/')[1];
+
+      $scope.fileSelected(baseUrl + '/' + file, filename);
+      $uibModalInstance.dismiss();
     };
   });
