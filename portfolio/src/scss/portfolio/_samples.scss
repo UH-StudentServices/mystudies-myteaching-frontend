@@ -54,14 +54,14 @@
     font-size: 1.125em;
     color: $labelBlack;
     font-weight: 300;
-    line-height: 2.4em;
+    line-height: 2.4;
     padding: 0;
     margin: 0;
   }
 
   &__description {
     p {
-      line-height: 1.4em;
+      line-height: 1.4;
       margin-bottom: 0;
     }
   }
