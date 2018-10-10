@@ -33,7 +33,7 @@
 
           <div class="samples__description--edit">
             <span class="samples__description-label" translate="samples.sampleDescription"></span>
-            <div ng-controller="TinymceController" class="samples__input" ng-class="{'ng-invalid':!sampleItem.description}">
+            <div ng-controller="TinymceController">
               <textarea class="samples__input"
                         ui-tinymce="tinymceOptions"
                         ng-model="sampleItem.description"
