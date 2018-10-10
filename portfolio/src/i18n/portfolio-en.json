@@ -214,6 +214,11 @@
     "uploadFile": "Upload file"
   },
   "files": {
-    "fileBrowserTitle": "My uploaded files"
+    "fileBrowserTitle": "My uploaded files",
+    "deleteFile": "Delete file"
+  },
+  "settings": {
+    "title": "Settings",
+    "browseUploadedFiles": "View my uploaded files"
   }
 }

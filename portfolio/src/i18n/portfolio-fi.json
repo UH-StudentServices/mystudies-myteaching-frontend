@@ -214,6 +214,11 @@
     "uploadFile": "Lataa tiedosto"
   },
   "files": {
-    "fileBrowserTitle": "Omat tiedostot"
+    "fileBrowserTitle": "Omat tiedostot",
+    "deleteFile": "Poista tiedosto"
+  },
+  "settings": {
+    "title": "Asetukset",
+    "browseUploadedFiles": "Selaa lataamiasi tiedostoja"
   }
 }

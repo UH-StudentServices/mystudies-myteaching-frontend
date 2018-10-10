@@ -19,7 +19,14 @@
   <button
     class="button--action icon--plus"
     ng-click="openFileDialog()"
+    ng-if="fileSelected"
     translate="freeTextContent.addFromUploads"></button>
+
+  <button
+    class="button"
+    ng-click="openFileDialog()"
+    ng-if="!fileSelected"
+    translate="settings.browseUploadedFiles"></button>
 
   <script type="text/ng-template" id="browse-files-dialog.html">
     <div class="portfolio-files-browser__container">
@@ -29,10 +36,11 @@
         <table>
           <tr ng-repeat="file in files">
             <td>
-              <a href="" ng-click="onSelect(file)">{{file.split('/')[1]}}</a>
+              <a href="" ng-click="onSelect(file)" ng-if="fileSelected">{{file.split('/')[1]}}</a>
+              <span ng-if="!fileSelected">{{file.split('/')[1]}}</span>
             </td>
             <td class="portfolio-files-browser__remove">
-              <a ng-click="deleteFile(file)" translate="general.remove"></a>
+              <a ng-click="deleteFile(file)" translate="files.deleteFile"></a>
             </td>
           </tr>
         </table>

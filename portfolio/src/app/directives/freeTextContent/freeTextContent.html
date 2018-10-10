@@ -53,7 +53,7 @@
   </div>
 
 
-  <div ng-if="!isEditing" class="free-text-content__text user-text" ng-if="freeTextContentItem.text.length">
+  <div class="free-text-content__text user-text" ng-if="!isEditing && freeTextContentItem.text.length">
     <ng-embed embed-data="freeTextContentItem.text" embed-options="embedOptions"></ng-embed>
   </div>
 
