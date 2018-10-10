@@ -17,14 +17,18 @@
 
 .portfolio-files-browser__container {
   margin: 1em;
+  background-color: $white;
 }
 
 .portfolio-files-browser__list {
   table {
     max-width: 50em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    color: $black;
   }
 }
 
-.portfolio-files-browser__remove {
-  text-transform: capitalize;
+.dialog.file-dialog .modal-dialog {
+  background-color: #fff;
 }

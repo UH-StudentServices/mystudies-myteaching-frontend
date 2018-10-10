@@ -101,6 +101,10 @@ angular.module('controllers.tinymce', ['ui.tinymce', 'services.language', 'servi
           editor.insertContent(paste);
         }
       });
+
+      $scope.fileSelected = function (url, filename) {
+        editor.insertContent('<a href="' + url + '">' + filename + '</a>');
+      };
     }
 
     $scope.tinymceOptions = {
@@ -113,6 +117,7 @@ angular.module('controllers.tinymce', ['ui.tinymce', 'services.language', 'servi
       statusbar: false,
       target_list: false,
       link_title: false,
+      forced_root_block: false,
       setup: setupEditor
     };
   });

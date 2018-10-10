@@ -137,7 +137,8 @@
   "freeTextContent": {
     "defaultTitle": "Add title",
     "defaultText": "Add content",
-    "fileUploadError": "File upload has failed"
+    "fileUploadError": "File upload has failed",
+    "addFromUploads": "Add from my uploaded files"
   },
   "feedback": {
     "title": "Feedback",
@@ -213,6 +214,11 @@
     "uploadFile": "Upload file"
   },
   "files": {
-    "fileBrowserTitle": "Files"
+    "fileBrowserTitle": "My uploaded files",
+    "deleteFile": "Delete file"
+  },
+  "settings": {
+    "title": "Settings",
+    "browseUploadedFiles": "View my uploaded files"
   }
 }
