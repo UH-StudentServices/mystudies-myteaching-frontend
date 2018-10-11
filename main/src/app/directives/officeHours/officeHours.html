@@ -27,7 +27,7 @@
 
   <div ng-if="!loadError && loaded && officeHoursList.length > 0" class="office-hours__box">
     <h3 class="office-hours__title" translate="officeHours.title" />
-    <p translate="officeHours.expiration.info" />
+    <p class="office-hours__expiration-info" translate="officeHours.expiration.info" />
     <ul>
       <li class="office-hours__item" ng-repeat="officeHours in officeHoursList track by $index">
 

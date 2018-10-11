@@ -304,7 +304,7 @@
       "description": "Till exempel, Mån 14-15, Tis 12-13",
       "additionalInfo": "Till exempel, adress till dina websidor eller blog",
       "location": "Till exempel, rum numret",
-      "expirationDate": "Format yyyy-mm-dd"
+      "expirationDate": "dd.mm.yyyy (upp till ett år fån det har datumet)"
     },
     "addNew": "Ny mottagstid...",
     "loading": "Mottagningstider laddas...",

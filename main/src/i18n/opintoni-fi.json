@@ -304,7 +304,7 @@
       "description": "Esim maanantaisin 14-15, tiistaisin 12-13",
       "additionalInfo": "Esim blogi tai verkkosivuosoite",
       "location": "Esim huoneen numero",
-      "expirationDate": "Muodossa dd.mm.yyyy"
+      "expirationDate": "pv.kk.vvvv (enintään vuosi tästä päivästä)"
     },
     "addNew": "Uusi aika...",
     "loading": "Ladataan vastaanottoaikoja...",
