@@ -52,6 +52,7 @@ angular.module('opintoniApp', [
   'resources.notifications',
 
   'directives.menuLanguage',
+  'directives.currentLang',
   'directives.dropdown',
   'directives.editLink',
   'directives.feedback',

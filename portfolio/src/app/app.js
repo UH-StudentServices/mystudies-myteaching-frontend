@@ -45,6 +45,7 @@ angular.module('opintoniPortfolioApp', [
   'directives.pageHeader',
   'directives.intro',
   'directives.menuLanguage',
+  'directives.currentLang',
   'directives.studies',
   'directives.contactInformation',
   'directives.focus',
