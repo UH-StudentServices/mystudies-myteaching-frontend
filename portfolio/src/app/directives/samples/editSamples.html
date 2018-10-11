@@ -14,69 +14,43 @@
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
 -->
+<div>
+  <ul class="banner-content samples--edit">
+    <li ng-repeat="sampleItem in samples | orderBy: 'id' track by sampleItem.id" class="editable">
+      <div class="samples__outer-container samples">
+        <div class="banner-content__item">
+          <div class="samples__title--edit">
+            <label for="sample-title-{{sampleItem.id}}" translate="samples.sampleTitle"></label>
+            <input id="sample-title-{{sampleItem.id}}"
+                   focus="sampleItem.titleEdit"
+                   type="text"
+                   class="samples__input"
+                   ng-model="sampleItem.title"
+                   ng-change="onChange()"
+                   ng-class="{'ng-invalid':!sampleItem.title}"
+                   placeholder="{{::'samples.sampleTitle'|translate}}" />
+          </div>
 
-<ul class="banner-content">
-  <li ng-repeat="sampleItem in samples | orderBy: 'title' track by sampleItem.id" class="editable">
-    <div class="banner-content__item">
-      <div class="banner-content__banner">
-        <div class="banner-content__backdrop">
-          <div class="banner-content__banner-content">
-            <div class="banner-content__banner-title">
-              <span class="banner-content__editable-content" ng-show="!sampleItem.titleEdit">
-                <a role="button" href="" ng-click="editTitle(sampleItem)"
-                   class="banner-content__editable-content-button"
-                   ng-class="{'ng-invalid':sampleItem.submitted && !sampleItem.title}">
-                  {{sampleItem.title || ('samples.titlePlaceholder' | translate)}}
-                  <i class="icon--edit-event"></i>
-                </a>
-              </span>
-              <span class="banner-content__editable-content--active" ng-show="sampleItem.titleEdit">
-                <input focus="sampleItem.titleEdit"
-                       ng-model="sampleItem.title"
-                       ui-keypress="{'enter':'exitTitleEdit(sampleItem)'}"
-                       ng-change="onChange()"
-                       ng-class="{'ng-invalid':!sampleItem.title}"
-                       placeholder="{{::'samples.titlePlaceholder'|translate}}" />
-                <a role="button" href="" ng-click="exitTitleEdit(sampleItem)"><i class="icon--done"></i></a>
-              </span>
+          <div class="samples__description--edit">
+            <span class="samples__description-label" translate="samples.sampleDescription"></span>
+            <div ng-controller="TinymceController">
+              <textarea class="samples__input"
+                        ui-tinymce="tinymceOptions"
+                        ng-model="sampleItem.description"
+                        ng-change="onChange()">
+              </textarea>
             </div>
           </div>
+          <button class="banner-content__remove" ng-click="removeSample(sampleItem)"></button>
         </div>
       </div>
-      <div class="banner-content__details-container">
-        <div class="banner-content__description">
-          <textarea placeholder="{{::'samples.descriptionPlaceholder'|translate}}"
-                    ng-model="sampleItem.description" ></textarea>
-        </div>
-        <div class="banner-content__details-row">
-          <span class="banner-content__editable-content" ng-show="!sampleItem.urlEdit">
-            <a role="button" href="" ng-click="editUrl(sampleItem)"
-               class="banner-content__editable-content-button"
-               ng-class="{'ng-invalid':sampleItem.submitted && !sampleItem.url}">
-              {{sampleItem.url || ('samples.urlPlaceholder' | translate)}}
-              <i class="icon--edit-event"></i>
-            </a>
-          </span>
-          <span class="banner-content__editable-content--active" ng-show="sampleItem.urlEdit">
-            <input focus="sampleItem.urlEdit"
-                   ng-model="sampleItem.url"
-                   ui-keypress="{'enter':'exitUrlEdit(sampleItem)'}"
-                   ng-change="onChange()"
-                   ng-class="{'ng-invalid':!sampleItem.url}"
-                   placeholder="{{::'samples.urlPlaceholder'|translate}}" />
-            <a role="button" href="" ng-click="exitUrlEdit(sampleItem)"><i class="icon--done"></i></a>
-          </span>
-        </div>
-      </div>
-      <button class="banner-content__remove" ng-click="removeSample(sampleItem)"></button>
+    </li>
+  </ul>
+  <div class="add-new-content">
+    <div class="list-of-links">
+      <button type="button" class="button--action icon--plus" ng-click="addSample(newSample)">
+        {{::('samples.addSample' | translate)}}
+      </button>
     </div>
-  </li>
-</ul>
-
-<div class="add-new-content">
-  <div class="list-of-links">
-    <a role="button" href="" class="button--action icon--plus" ng-click="addSample(newSample)">
-      {{::('samples.addSample' | translate)}}
-    </a>
   </div>
 </div>

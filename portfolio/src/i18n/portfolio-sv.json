@@ -101,8 +101,8 @@
   "samples": {
     "title": "Prover",
     "addSample": "Lägg till prov",
-    "titlePlaceholder": "beskrivning",
-    "urlPlaceholder": "url",
+    "sampleTitle": "Rubrik",
+    "sampleDescription": "Beskrivning",
     "descriptionPlaceholder": "beskrivningstext"
   },
   "attainments": {

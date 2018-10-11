@@ -28,30 +28,6 @@ angular.module('directives.editSamples', [])
       link: function ($scope) {
         $scope.newSample = {};
 
-        $scope.editTitle = function (sample) {
-          sample.titleEdit = true;
-        };
-
-        $scope.exitTitleEdit = function (sample) {
-          sample.titleEdit = false;
-        };
-
-        $scope.editUrl = function (sample) {
-          sample.urlEdit = true;
-        };
-
-        $scope.exitUrlEdit = function (sample) {
-          sample.urlEdit = false;
-        };
-
-        $scope.editDescription = function (sample) {
-          sample.descriptionEdit = true;
-        };
-
-        $scope.exitDescriptionEdit = function (sample) {
-          sample.descriptionEdit = false;
-        };
-
         $scope.addSample = function (sample) {
           sample.id = Date.now();
           sample.title = '';

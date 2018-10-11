@@ -37,7 +37,7 @@ angular.module('directives.samples', [
       link: function (scope) {
         var isValid = function () {
           return scope.samples.every(function (sample) {
-            return sample.title && sample.url;
+            return sample.title;
           });
         };
 
