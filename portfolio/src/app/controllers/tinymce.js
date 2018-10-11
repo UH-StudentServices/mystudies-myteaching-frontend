@@ -38,7 +38,7 @@ angular.module('controllers.tinymce', ['ui.tinymce', 'services.language', 'servi
     }
 
     function uploadImage(input, editor) {
-      upload(input, editor, function (res) { return '<img src="' + res.data.url + '">'; }, 'image/*');
+      upload(input, editor, function (res) { return '<img src="' + res.data.url + '">'; });
     }
 
     function uploadFile(input, editor) {
@@ -64,7 +64,7 @@ angular.module('controllers.tinymce', ['ui.tinymce', 'services.language', 'servi
       editor.addButton('uploadImage', {
         icon: 'image',
         tooltip: 'Insert image',
-        onclick: function () { createInput(editor, uploadImage); }
+        onclick: function () { createInput(editor, uploadImage, 'image/*'); }
       });
 
       editor.addButton('uploadFile', {
@@ -101,6 +101,10 @@ angular.module('controllers.tinymce', ['ui.tinymce', 'services.language', 'servi
           editor.insertContent(paste);
         }
       });
+
+      $scope.fileSelected = function (url, filename) {
+        editor.insertContent('<a href="' + url + '">' + filename + '</a>');
+      };
     }
 
     $scope.tinymceOptions = {

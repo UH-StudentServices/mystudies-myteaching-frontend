@@ -137,7 +137,8 @@
   "freeTextContent": {
     "defaultTitle": "Lisää otsikko",
     "defaultText": "Lisää sisältöä",
-    "fileUploadError": "Tiedoston lisäys epäonnistui"
+    "fileUploadError": "Tiedoston lisäys epäonnistui",
+    "addFromUploads": "Lisää ladattu tiedosto"
   },
   "feedback": {
     "title": "Palaute",
@@ -213,6 +214,11 @@
     "uploadFile": "Lataa tiedosto"
   },
   "files": {
-    "fileBrowserTitle": "Tiedostot"
+    "fileBrowserTitle": "Omat tiedostot",
+    "deleteFile": "Poista tiedosto"
+  },
+  "settings": {
+    "title": "Asetukset",
+    "browseUploadedFiles": "Selaa lataamiasi tiedostoja"
   }
 }

@@ -137,7 +137,8 @@
   "freeTextContent": {
     "defaultTitle": "Lägg till rubrik",
     "defaultText": "Lägg till innehåll",
-    "fileUploadError": "Fel i filuppladdning"
+    "fileUploadError": "Fel i filuppladdning",
+    "addFromUploads": "Lägg till från mina uppladdade filer"
   },
   "feedback": {
     "title": "Feedback",
@@ -213,6 +214,11 @@
     "uploadFile": "Ladda up fil"
   },
   "files": {
-    "fileBrowserTitle": "Filer"
+    "fileBrowserTitle": "Mina uppladdade filer",
+    "deleteFile": "Radera fil"
+  },
+  "settings": {
+    "title": "Inställningar",
+    "browseUploadedFiles": "Bläddra i mina filer"
   }
 }
