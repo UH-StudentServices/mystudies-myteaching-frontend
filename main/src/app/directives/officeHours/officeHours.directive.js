@@ -30,12 +30,13 @@ angular.module('directives.officeHours', [
       replace: true,
       templateUrl: 'app/directives/officeHours/officeHours.html',
       link: function (scope) {
+        var dateFormat = 'D.M.YYYY';
+
         function toMoment(dateInput) {
           if (moment.isMoment(dateInput)) {
-            return dateInput.locale(LanguageService.getCurrent());
+            return dateInput;
           }
-          return moment(dateInput, ['D.M.YYYY', 'M/D/YYYY', 'YYYY-M-D'], true)
-            .locale(LanguageService.getCurrent());
+          return moment(dateInput, dateFormat, true);
         }
 
         function setLoadError() {
@@ -66,7 +67,7 @@ angular.module('directives.officeHours', [
               description: oh.description,
               additionalInfo: oh.additionalInfo,
               location: oh.location,
-              expirationDate: dateArrayToMomentObject(oh.expirationDate).format('L'),
+              expirationDate: dateArrayToMomentObject(oh.expirationDate).format(dateFormat),
               expired: hasExpired(dateArrayToMomentObject(oh.expirationDate)),
               degreeProgrammes: oh.degreeProgrammes.map(function (programme) {
                 return _.find(scope.degreeProgrammes, ['code', programme.code]);

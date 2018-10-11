@@ -304,7 +304,7 @@
       "description": "For example Mon 14-15, Tue 12-13",
       "additionalInfo": "For example blog or website address",
       "location": "For example room number",
-      "expirationDate": "Format mm/dd/yyyy"
+      "expirationDate": "dd.mm.yyyy (up to one year from this date)"
     },
     "addNew": "Add new...",
     "loading": "Loading consultation hours...",

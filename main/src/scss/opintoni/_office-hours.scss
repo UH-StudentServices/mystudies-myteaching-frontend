@@ -24,6 +24,10 @@
     word-wrap: break-word;
   }
 
+  &__expiration-info {
+    line-height: 1.4;
+  }
+
   &__box {
     position: relative;
     padding: 20px;
