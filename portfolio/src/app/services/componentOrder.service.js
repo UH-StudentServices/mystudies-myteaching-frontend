@@ -33,13 +33,7 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
     }
 
     function getMissingDefaultComponents() {
-      return cachedComponentOrders.length
-        ? defaultSingletonComponentOrder().filter(function (defaultComponent) {
-          return !cachedComponentOrders.some(function (cachedComponent) {
-            return defaultComponent.component === cachedComponent.component;
-          });
-        })
-        : [];
+      return _.differenceBy(defaultSingletonComponentOrder(), cachedComponentOrders, 'component');
     }
 
     function singletonComponentOrders() {
