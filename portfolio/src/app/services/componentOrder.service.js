@@ -19,7 +19,7 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
 
   .factory('ComponentOrderService', function (FreeTextContentService, ComponentOrderResource) {
     var cachedComponentOrders = [];
-    var singletonFreeTextContentComponents = ['SKILLS_AND_EXPERTISE'];
+    var singletonFreeTextContentComponents = [{ component: 'SKILLS_AND_EXPERTISE' }];
 
     function defaultSingletonComponentOrder() {
       return [
@@ -28,15 +28,26 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
         { component: 'WORK_EXPERIENCE' },
         { component: 'SAMPLES' },
         { component: 'ATTAINMENTS' },
-        { component: 'LANGUAGE_PROFICIENCIES' },
-        { component: 'SKILLS_AND_EXPERTISE' }
-      ];
+        { component: 'LANGUAGE_PROFICIENCIES' }
+      ].concat(singletonFreeTextContentComponents);
+    }
+
+    function getMissingDefaultComponents() {
+      return cachedComponentOrders.length
+        ? defaultSingletonComponentOrder().filter(function (defaultComponent) {
+          return !cachedComponentOrders.some(function (cachedComponent) {
+            return defaultComponent.component === cachedComponent.component;
+          });
+        })
+        : [];
     }
 
     function singletonComponentOrders() {
-      return cachedComponentOrders.length ? cachedComponentOrders.filter(function (el) {
-        return el.component !== 'FREE_TEXT_CONTENT';
-      }) : defaultSingletonComponentOrder();
+      return cachedComponentOrders.length
+        ? cachedComponentOrders.filter(function (el) {
+          return el.component !== 'FREE_TEXT_CONTENT';
+        }).concat(getMissingDefaultComponents())
+        : defaultSingletonComponentOrder();
     }
 
     function getFreeTextContentItemOrder(item) {
@@ -52,8 +63,8 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
 
       FreeTextContentService.getFreeTextContentSubject()
         .subscribe(function (freeTextContentItems) {
-          var freeTextContentComponentOrders; var
-            allComponentOrders;
+          var freeTextContentComponentOrders;
+          var allComponentOrders;
 
           freeTextContentComponentOrders = freeTextContentItems
             ? freeTextContentItems.map(function (el) {
@@ -67,7 +78,9 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
 
           allComponentOrders = singletonComponentOrders().concat(
             freeTextContentComponentOrders.filter(function (component) {
-              return !_.includes(singletonFreeTextContentComponents, component.instanceName);
+              return !singletonFreeTextContentComponents.some(function (sc) {
+                return sc.component === component.instanceName;
+              });
             })
           );
 
