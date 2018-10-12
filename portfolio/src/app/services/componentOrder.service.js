@@ -19,30 +19,48 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
 
   .factory('ComponentOrderService', function (FreeTextContentService, ComponentOrderResource) {
     var cachedComponentOrders = [];
-    var singletonFreeTextContentComponents = ['SKILLS_AND_EXPERTISE'];
+    var FREE_CONTENT_COMPONENT_TYPE = 'FREE_TEXT_CONTENT';
 
-    function defaultSingletonComponentOrder() {
-      return [
-        { component: 'STUDIES' },
-        { component: 'DEGREES' },
-        { component: 'WORK_EXPERIENCE' },
-        { component: 'SAMPLES' },
-        { component: 'ATTAINMENTS' },
-        { component: 'LANGUAGE_PROFICIENCIES' },
-        { component: 'SKILLS_AND_EXPERTISE' }
-      ];
+    var singletonFreeTextContentComponents = [
+      {
+        component: FREE_CONTENT_COMPONENT_TYPE,
+        instanceName: 'SKILLS_AND_EXPERTISE'
+      }
+    ];
+
+    var defaultSingletonComponentOrder = [
+      { component: 'STUDIES' },
+      { component: 'DEGREES' },
+      { component: 'WORK_EXPERIENCE' },
+      { component: 'SAMPLES' },
+      { component: 'ATTAINMENTS' },
+      { component: 'LANGUAGE_PROFICIENCIES' }
+    ];
+
+    function getMissingDefaultFreeTextComponents(freeTextContentItems) {
+      return _.differenceBy(singletonFreeTextContentComponents, freeTextContentItems, 'instanceName');
     }
 
     function singletonComponentOrders() {
-      return cachedComponentOrders.length ? cachedComponentOrders.filter(function (el) {
-        return el.component !== 'FREE_TEXT_CONTENT';
-      }) : defaultSingletonComponentOrder();
+      return cachedComponentOrders.length
+        ? cachedComponentOrders.filter(function (el) {
+          return el.component !== FREE_CONTENT_COMPONENT_TYPE;
+        })
+        : defaultSingletonComponentOrder;
     }
 
     function getFreeTextContentItemOrder(item) {
       var componentOrder = _.find(cachedComponentOrders, ['instanceName', item.instanceName]) || {};
 
       return componentOrder.orderValue;
+    }
+
+    function getOrderedComponent(componentType, instanceName, orderValue) {
+      return {
+        component: componentType,
+        instanceName: instanceName,
+        orderValue: orderValue
+      };
     }
 
     function subscribeToComponentOrderChanges(portfolio, callback) {
@@ -52,24 +70,22 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
 
       FreeTextContentService.getFreeTextContentSubject()
         .subscribe(function (freeTextContentItems) {
-          var freeTextContentComponentOrders; var
-            allComponentOrders;
+          var freeTextContentComponentOrders;
+          var allFreeTextContentItems =
+            getMissingDefaultFreeTextComponents(freeTextContentItems).concat(freeTextContentItems);
+          var allComponentOrders;
 
-          freeTextContentComponentOrders = freeTextContentItems
-            ? freeTextContentItems.map(function (el) {
-              return {
-                component: 'FREE_TEXT_CONTENT',
-                instanceName: el.instanceName,
-                orderValue: getFreeTextContentItemOrder(el)
-              };
-            })
-            : [];
+          freeTextContentComponentOrders =
+            allFreeTextContentItems.map(function (componentInstance) {
+              return getOrderedComponent(
+                FREE_CONTENT_COMPONENT_TYPE,
+                componentInstance.instanceName,
+                getFreeTextContentItemOrder(componentInstance)
+              );
+            });
 
-          allComponentOrders = singletonComponentOrders().concat(
-            freeTextContentComponentOrders.filter(function (component) {
-              return !_.includes(singletonFreeTextContentComponents, component.instanceName);
-            })
-          );
+          allComponentOrders = singletonComponentOrders()
+            .concat(freeTextContentComponentOrders);
 
           callback(_.sortBy(allComponentOrders, 'orderValue'));
         });
@@ -78,11 +94,7 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
     function updateComponentOrder(portfolioId, updatedComponents) {
       ComponentOrderResource.updateComponentOrder(portfolioId, {
         componentOrders: updatedComponents.map(function (el, i) {
-          return {
-            component: el.component,
-            instanceName: el.instanceName,
-            orderValue: i + 1
-          };
+          return getOrderedComponent(el.component, el.instanceName, i + 1);
         })
       }).then(function (componentOrders) {
         cachedComponentOrders = componentOrders;
