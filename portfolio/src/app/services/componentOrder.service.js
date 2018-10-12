@@ -23,7 +23,7 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
 
     var singletonFreeTextContentComponents = [
       {
-        component: 'SKILLS_AND_EXPERTISE',
+        component: freeTextContentComponentType,
         instanceName: 'SKILLS_AND_EXPERTISE'
       }
     ];
@@ -63,12 +63,6 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
       };
     }
 
-    function isSingletonFreeTextComponent(componentInstance) {
-      return singletonFreeTextContentComponents.some(function (singletonComponent) {
-        return componentInstance.instanceName === singletonComponent.component;
-      });
-    }
-
     function subscribeToComponentOrderChanges(portfolio, callback) {
       if (portfolio.componentOrders.length) {
         cachedComponentOrders = portfolio.componentOrders;
@@ -81,18 +75,13 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
 
           freeTextContentComponentOrders = freeTextContentItems
             ? freeTextContentItems.map(function (componentInstance) {
-              var componentType = isSingletonFreeTextComponent(componentInstance)
-                ? componentInstance.instanceName
-                : freeTextContentComponentType;
-
               return getOrderedComponent(
-                componentType,
+                freeTextContentComponentType,
                 componentInstance.instanceName,
                 getFreeTextContentItemOrder(componentInstance)
               );
             })
             : [];
-
           allComponentOrders = singletonComponentOrders()
             .concat(getMissingDefaultFreeTextComponents())
             .concat(freeTextContentComponentOrders);
@@ -104,10 +93,7 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
     function updateComponentOrder(portfolioId, updatedComponents) {
       ComponentOrderResource.updateComponentOrder(portfolioId, {
         componentOrders: updatedComponents.map(function (el, i) {
-          var componentType = isSingletonFreeTextComponent(el)
-            ? freeTextContentComponentType
-            : el.component;
-          return getOrderedComponent(componentType, el.instanceName, i + 1);
+          return getOrderedComponent(el.component, el.instanceName, i + 1);
         })
       }).then(function (componentOrders) {
         cachedComponentOrders = componentOrders;

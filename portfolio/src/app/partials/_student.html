@@ -60,11 +60,21 @@
           </div>
 
           <div ng-switch-when="FREE_TEXT_CONTENT" class="portfolio-section__body">
-            <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
-                                                  instanceName: section.instanceName}"
-                               instance-name="{{section.instanceName}}"
-                               deletable="true">
-            </free-text-content>
+            <div ng-if="section.instanceName === 'SKILLS_AND_EXPERTISE'">
+              <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
+                                                    instanceName: 'SKILLS_AND_EXPERTISE'}"
+                                 heading-key="skillsAndExpertise.title"
+                                 instance-name="SKILLS_AND_EXPERTISE"
+                                 portfolio-lang="{{::portfolio.lang}}">
+              </free-text-content>
+            </div>
+            <div ng-if="section.instanceName !== 'SKILLS_AND_EXPERTISE'">
+              <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
+                                                    instanceName: section.instanceName}"
+                                 instance-name="{{section.instanceName}}"
+                                 deletable="true">
+              </free-text-content>
+            </div>
           </div>
 
           <div ng-switch-when="ATTAINMENTS" class="portfolio-section__body">
@@ -79,15 +89,6 @@
                                     language-proficiencies-data="portfolio.languageProficiencies"
                                     portfolio-lang="{{::portfolio.lang}}">
             </language-proficiencies>
-          </div>
-
-          <div ng-switch-when="SKILLS_AND_EXPERTISE" class="portfolio-section__body">
-            <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
-                                                  instanceName: 'SKILLS_AND_EXPERTISE'}"
-                               heading-key="skillsAndExpertise.title"
-                               instance-name="SKILLS_AND_EXPERTISE"
-                               portfolio-lang="{{::portfolio.lang}}">
-            </free-text-content>
           </div>
         </div>
       </section>
