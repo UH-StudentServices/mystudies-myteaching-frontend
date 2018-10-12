@@ -19,11 +19,11 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
 
   .factory('ComponentOrderService', function (FreeTextContentService, ComponentOrderResource) {
     var cachedComponentOrders = [];
-    var freeTextContentComponentType = 'FREE_TEXT_CONTENT';
+    var FREE_CONTENT_COMPONENT_TYPE = 'FREE_TEXT_CONTENT';
 
     var singletonFreeTextContentComponents = [
       {
-        component: freeTextContentComponentType,
+        component: FREE_CONTENT_COMPONENT_TYPE,
         instanceName: 'SKILLS_AND_EXPERTISE'
       }
     ];
@@ -44,7 +44,7 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
     function singletonComponentOrders() {
       return cachedComponentOrders.length
         ? cachedComponentOrders.filter(function (el) {
-          return el.component !== freeTextContentComponentType;
+          return el.component !== FREE_CONTENT_COMPONENT_TYPE;
         })
         : defaultSingletonComponentOrder;
     }
@@ -78,7 +78,7 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
           freeTextContentComponentOrders =
             allFreeTextContentItems.map(function (componentInstance) {
               return getOrderedComponent(
-                freeTextContentComponentType,
+                FREE_CONTENT_COMPONENT_TYPE,
                 componentInstance.instanceName,
                 getFreeTextContentItemOrder(componentInstance)
               );
