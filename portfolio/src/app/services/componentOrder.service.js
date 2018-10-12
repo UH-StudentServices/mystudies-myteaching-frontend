@@ -37,8 +37,8 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
       { component: 'LANGUAGE_PROFICIENCIES' }
     ];
 
-    function getMissingDefaultFreeTextComponents() {
-      return _.differenceBy(singletonFreeTextContentComponents, cachedComponentOrders, 'instanceName');
+    function getMissingDefaultFreeTextComponents(freeTextContentItems) {
+      return _.differenceBy(singletonFreeTextContentComponents, freeTextContentItems, 'instanceName');
     }
 
     function singletonComponentOrders() {
@@ -71,19 +71,20 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
       FreeTextContentService.getFreeTextContentSubject()
         .subscribe(function (freeTextContentItems) {
           var freeTextContentComponentOrders;
+          var allFreeTextContentItems =
+            getMissingDefaultFreeTextComponents(freeTextContentItems).concat(freeTextContentItems);
           var allComponentOrders;
 
-          freeTextContentComponentOrders = freeTextContentItems
-            ? freeTextContentItems.map(function (componentInstance) {
+          freeTextContentComponentOrders =
+            allFreeTextContentItems.map(function (componentInstance) {
               return getOrderedComponent(
                 freeTextContentComponentType,
                 componentInstance.instanceName,
                 getFreeTextContentItemOrder(componentInstance)
               );
-            })
-            : [];
+            });
+
           allComponentOrders = singletonComponentOrders()
-            .concat(getMissingDefaultFreeTextComponents())
             .concat(freeTextContentComponentOrders);
 
           callback(_.sortBy(allComponentOrders, 'orderValue'));
