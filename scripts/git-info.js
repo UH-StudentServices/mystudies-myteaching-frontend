@@ -19,7 +19,7 @@ const git = require('git-rev-sync');
 const fs = require('fs');
 const path = require('path');
 
-const gitInfoFile = path.join(__dirname, '..', 'main/dist/version-info.json');
+const gitInfoFile = path.join(__dirname, '..', 'main/dist/assets/version-info.json');
 
 const getGitInfo = () => ({
   git: {

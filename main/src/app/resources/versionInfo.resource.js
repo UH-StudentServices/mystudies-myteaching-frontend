@@ -20,7 +20,7 @@
 angular.module('resources.versionInfo', [])
   .factory('VersionInfoResource', function VersionInfo($resource) {
     var apiVersionInfoResource = $resource('/info');
-    var frontendVersionInfoResource = $resource('version-info.json');
+    var frontendVersionInfoResource = $resource('assets/version-info.json');
 
     function getApiVersionInfo() {
       return apiVersionInfoResource.get().$promise;

@@ -18,21 +18,16 @@
 'use strict';
 
 angular.module('directives.versionInfo', ['services.versionInfo'])
-  .directive('versionInfo', function (VersionInfoService) {
+  .directive('versionInfo', function (VersionInfoService, $q) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/versionInfo/versionInfo.html',
       link: function ($scope) {
-        VersionInfoService.getApiVersion().then(function (versionInfo) {
-          $scope.apiVersionInfo = versionInfo.git ? versionInfo : {};
-        }).catch(function () {
-          $scope.apiVersionInfo = {};
-        });
-        VersionInfoService.getFrontendVersion().then(function (versionInfo) {
-          $scope.frontendVersionInfo = versionInfo.git ? versionInfo : {};
-        }).catch(function () {
-          $scope.frontendVersionInfo = {};
-        });
+        $q.all([VersionInfoService.getApiVersion(), VersionInfoService.getFrontendVersion()])
+          .then(function (infos) {
+            $scope.apiVersionInfo = infos[0].git ? infos[0] : {};
+            $scope.frontendVersionInfo = infos[1].git ? infos[1] : {};
+          });
       }
     };
   });
