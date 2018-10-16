@@ -65,7 +65,8 @@ proxyPaths = [
   '/login',
   '/logout',
   '/redirect',
-  '/files'
+  '/files',
+  '/info'
 ];
 
 proxyMiddleware = function (req, res, next) {

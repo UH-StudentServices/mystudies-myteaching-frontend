@@ -62,11 +62,14 @@ angular.module('opintoniApp', [
 
   'controllers.main',
   'controllers.calendar',
+  'controllers.versionInfo',
+
   'directives.pageBanner',
   'directives.helpIcon',
   'directives.popover',
   'directives.cookieNotification',
   'directives.scrollableTabBar',
+
   'ui.calendar',
   'utils.loader'
 ])
@@ -255,6 +258,23 @@ angular.module('opintoniApp', [
           },
           getEvents: function (EventsResource) {
             return EventsResource.getTeacherEvents;
+          }
+        }
+      })
+      .state('versionInfo', {
+        url: '/version-info',
+        views: {
+          'content@': {
+            templateUrl: 'app/partials/versionInfoLayout.html',
+            controller: 'VersionInfoCtrl'
+          }
+        },
+        resolve: {
+          pageTitle: function () {
+            var title = 'Version info';
+
+            document.title = title;
+            return title;
           }
         }
       })
