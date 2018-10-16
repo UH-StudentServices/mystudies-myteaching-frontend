@@ -27,6 +27,7 @@ angular.module('controllers.main', [
   'directives.mobileToolbar',
   'directives.weekFeed',
   'directives.usefulLinks',
+  'directives.versionInfo',
   'services.focus'
 ])
 
