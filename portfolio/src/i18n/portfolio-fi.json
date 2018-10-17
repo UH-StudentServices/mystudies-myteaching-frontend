@@ -14,7 +14,8 @@
     "students": "opiskelijat",
     "teachers": "opettajat",
     "helsinkiUniversity": "Helsingin Yliopisto",
-    "reallyDelete": "Poistetaanko?"
+    "reallyDelete": "Poistetaanko?",
+    "close": "Sulje"
   },
   "pageHeaderLinks": {
     "flamma": "flamma",

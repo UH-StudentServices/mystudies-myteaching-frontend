@@ -117,6 +117,7 @@ angular.module('controllers.tinymce', ['ui.tinymce', 'services.language', 'servi
       statusbar: false,
       target_list: false,
       link_title: false,
+      link_assume_external_targets: true,
       forced_root_block: false,
       setup: setupEditor
     };

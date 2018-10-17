@@ -14,7 +14,8 @@
     "students": "studerande",
     "teachers": "lärare",
     "helsinkiUniversity": "Helsingfors universitet",
-    "reallyDelete": "Radera?"
+    "reallyDelete": "Radera?",
+    "close": "Stäng"
   },
   "pageHeaderLinks": {
     "flamma": "flamma",

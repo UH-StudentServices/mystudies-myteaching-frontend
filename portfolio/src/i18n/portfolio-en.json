@@ -14,7 +14,8 @@
     "students": "students",
     "teachers": "teachers",
     "helsinkiUniversity": "University of Helsinki",
-    "reallyDelete": "Really delete?"
+    "reallyDelete": "Really delete?",
+    "close": "Close"
   },
   "pageHeaderLinks": {
     "flamma": "flamma",
