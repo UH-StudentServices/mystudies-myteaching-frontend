@@ -174,6 +174,7 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
           };
 
           reader.onerror = function () {
+            // eslint-disable-next-line no-alert
             alert('Device not supported');
           };
 
