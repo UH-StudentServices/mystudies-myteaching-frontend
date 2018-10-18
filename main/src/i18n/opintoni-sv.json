@@ -109,9 +109,6 @@
     },
     "pageHeaderBranding": "Min undervisning"
   },
-  "admin": {
-    "pageHeaderBranding": "Admin"
-  },
   "navigationTab": {
     "frontPage": "Framsidan",
     "calendar": "Kalender",

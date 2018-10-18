@@ -24,7 +24,6 @@ angular.module('services.state', [
   .constant('State', {
     MY_STUDIES: 'opintoni',
     MY_TEACHINGS: 'opetukseni',
-    ADMIN: 'admin',
     ACCESS_DENIED: 'accessDenied',
     ERROR: 'error',
     LOCAL_LOGIN: 'localLogin',
@@ -52,8 +51,6 @@ angular.module('services.state', [
         rootStateName = State.MY_STUDIES;
       } else if (stateMatches($state.current, State.MY_TEACHINGS)) {
         rootStateName = State.MY_TEACHINGS;
-      } else if (stateMatches($state.current, State.ADMIN)) {
-        rootStateName = State.ADMIN;
       }
 
       return rootStateName;
