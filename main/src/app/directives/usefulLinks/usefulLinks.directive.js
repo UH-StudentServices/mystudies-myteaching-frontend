@@ -107,6 +107,7 @@ angular.module('directives.usefulLinks', [
           $scope.editMode = false;
           $scope.clearSearch();
           $rootScope.$broadcast(closeEditUsefulLinkEvent, $scope.usefulLink);
+          $scope.apply();
         };
 
         $scope.deleteLink = function (link) {
