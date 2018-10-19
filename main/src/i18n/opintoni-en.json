@@ -109,9 +109,6 @@
     },
     "pageHeaderBranding": "My teaching"
   },
-  "admin": {
-    "pageHeaderBranding": "Admin"
-  },
   "navigationTab": {
     "frontPage": "Frontpage",
     "calendar": "Calendar",
