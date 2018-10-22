@@ -33,14 +33,15 @@
     </div>
 
     <div class="component-header__actions">
-      <a ng-if="deletable && !isEditing && !isPreview"
-         role="button"
-         href=""
-         ng-click="confirmDelete()"
-         title="delete"
-         limit-visibility="PRIVATE">
-        <i class="icon--trash"></i>
-      </a>
+      <span limit-visibility="PRIVATE">
+        <a ng-if="deletable && !isEditing && !isPreview"
+           role="button"
+           href=""
+           ng-click="confirmDelete()"
+           title="delete">
+          <i class="icon--trash"></i>
+        </a>
+      </span>
 
       <visibility-toggle component-id="FREE_TEXT_CONTENT"
                          section-name="{{::portfolioSection}}"
