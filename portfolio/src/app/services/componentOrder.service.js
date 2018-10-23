@@ -72,7 +72,7 @@ angular.module('services.componentOrder', ['services.freeTextContent', 'resource
         .subscribe(function (freeTextContentItems) {
           var freeTextContentComponentOrders;
           var allFreeTextContentItems =
-            getMissingDefaultFreeTextComponents(freeTextContentItems).concat(freeTextContentItems);
+            getMissingDefaultFreeTextComponents(freeTextContentItems).concat(freeTextContentItems || []);
           var allComponentOrders;
 
           freeTextContentComponentOrders =

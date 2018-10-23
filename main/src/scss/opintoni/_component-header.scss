@@ -21,9 +21,10 @@
   align-items: center;
 
   .component-header__actions {
+    text-align: right;
     margin-left: auto;
     font-size: 1.2em;
-    min-width: 92px;
+    min-width: 96px;
 
     > * {
       margin-left: 1em;
