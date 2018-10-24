@@ -77,7 +77,8 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
     startImageCropperEvent,
     ImageSourceMedia,
     AvatarImageSize,
-    CropperMargin) {
+    CropperMargin,
+    $translate) {
     return {
       restrict: 'E',
       replace: true,
@@ -174,7 +175,8 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
           };
 
           reader.onerror = function () {
-            alert('Device not supported');
+            // eslint-disable-next-line no-alert
+            alert($translate.instant('upload.deviceNotSupported'));
           };
 
           reader.readAsDataURL(file);

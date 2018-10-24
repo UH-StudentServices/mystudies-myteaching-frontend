@@ -233,34 +233,6 @@ angular.module('opintoniApp', [
           }
         }
       })
-      .state('admin', {
-        url: '/admin',
-        parent: 'root',
-        data: {
-          roles: ['ADMIN'],
-          pageTitle: 'opetukseni.title'
-        },
-        views: {
-          'content@': {
-            templateUrl: 'app/partials/adminLayout.html',
-            controller: 'MainCtrl'
-          }
-        },
-        resolve: {
-          pageTitle: function () {
-            var title = 'Admin';
-
-            document.title = title;
-            return title;
-          },
-          getCourses: function (CoursesService) {
-            return CoursesService.getTeacherCourses;
-          },
-          getEvents: function (EventsResource) {
-            return EventsResource.getTeacherEvents;
-          }
-        }
-      })
       .state('versionInfo', {
         url: '/version-info',
         parent: 'root',

@@ -109,9 +109,6 @@
     },
     "pageHeaderBranding": "Opetukseni"
   },
-  "admin": {
-    "pageHeaderBranding": "Ylläpito"
-  },
   "navigationTab": {
     "frontPage": "Etusivu",
     "calendar": "Kalenteri",
@@ -411,7 +408,8 @@
     "anonymous" : "Haluan antaa palautteeni nimettömänä"
   },
   "upload": {
-    "privacyMessage": "lataamaasi kuvaa käytetään automaattisesti myös muissa HY:n palveluissa (esimerkiksi Opinderissa) ja kuvalle muodostuu julkinen linkki."
+    "privacyMessage": "lataamaasi kuvaa käytetään automaattisesti myös muissa HY:n palveluissa (esimerkiksi Opinderissa) ja kuvalle muodostuu julkinen linkki.",
+    "deviceNotSupported": "Laitetta ei tueta"
   },
   "eventCalendar": {
     "day": "päivä",

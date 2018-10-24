@@ -20,8 +20,7 @@
 angular.module('services.session', ['resources.session'])
   .constant('Role', {
     TEACHER: 'TEACHER',
-    STUDENT: 'STUDENT',
-    ADMIN: 'ADMIN'
+    STUDENT: 'STUDENT'
   })
 
   .factory('SessionService', function SessionService($q, SessionResource) {

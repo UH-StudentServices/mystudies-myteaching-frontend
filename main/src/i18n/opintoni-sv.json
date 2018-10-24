@@ -109,9 +109,6 @@
     },
     "pageHeaderBranding": "Min undervisning"
   },
-  "admin": {
-    "pageHeaderBranding": "Admin"
-  },
   "navigationTab": {
     "frontPage": "Framsidan",
     "calendar": "Kalender",
@@ -411,7 +408,8 @@
     "anonymous" : "Ge feedback anonymt"
   },
   "upload" : {
-    "privacyMessage" : "den uppladdade bilden används också i andra HUs tjänster (t.ex. Opinder) och bilden får en publik länk."
+    "privacyMessage" : "den uppladdade bilden används också i andra HUs tjänster (t.ex. Opinder) och bilden får en publik länk.",
+    "deviceNotSupported": "Enheten stöds inte"
   },
   "eventCalendar" : {
     "day" : "dag",

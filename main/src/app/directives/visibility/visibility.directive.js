@@ -38,10 +38,6 @@ angular.module('directives.visibility', [
     function teacherOnly($q, StateService, State, SessionService, Role) {
       return SessionService.isInRole(Role.STUDENT);
     },
-    ADMIN_ONLY:
-    function adminOnly($q, StateService, State, SessionService, Role) {
-      return SessionService.isInRole(Role.ADMIN);
-    },
     DEV_AND_QA_ONLY:
     function devAndQaOnly($q, StateService, State, SessionService, Role, Configuration) {
       var env = Configuration.environment;
