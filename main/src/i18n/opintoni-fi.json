@@ -76,13 +76,11 @@
     "oodi": "Weboodi",
     "courseSearch": "Hae opetusta",
     "guide": "Opiskelijan ohjeet",
-    "opinder": "Opinder",
     "tools": "Työkalut",
     "completedStudies": "Opintosuoritukset",
     "email": "Sähköposti",
     "library": "Kirjasto",
-    "dictionary": "MOT-sanakirjat",
-    "opinderStudentSubmenu": "Opinder-yhteisöpalvelu"
+    "dictionary": "MOT-sanakirjat"
   },
   "optionalLinks": {
     "pilotProgram": "Opintojen suunnittelu",

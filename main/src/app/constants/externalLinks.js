@@ -138,15 +138,6 @@ angular.module('constants.externalLinks', [])
         }
       },
       {
-        key: 'primaryLinks.opinder',
-        domain: ['opetukseni'],
-        href: {
-          fi: 'https://opinder1.student.helsinki.fi/',
-          sv: 'https://opinder1.student.helsinki.fi/',
-          en: 'https://opinder1.student.helsinki.fi/'
-        }
-      },
-      {
         key: 'primaryLinks.tools',
         domain: ['opintoni'],
         href: {
@@ -185,14 +176,6 @@ angular.module('constants.externalLinks', [])
               fi: 'https://mot.kielikone.fi/finelib/netmot.shtml',
               sv: 'https://mot.kielikone.fi/finelib/netmot.shtml',
               en: 'https://mot.kielikone.fi/finelib/netmot.shtml'
-            }
-          },
-          {
-            key: 'primaryLinks.opinderStudentSubmenu',
-            href: {
-              fi: 'https://opinder1.student.helsinki.fi/',
-              sv: 'https://opinder1.student.helsinki.fi/',
-              en: 'https://opinder1.student.helsinki.fi/'
             }
           }
         ]
