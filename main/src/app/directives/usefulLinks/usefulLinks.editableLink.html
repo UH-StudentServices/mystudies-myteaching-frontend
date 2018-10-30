@@ -25,10 +25,14 @@
       </span>
     </a>
     <div class="useful-links__edit-link-url" ng-show="usefulLink.edit">
-      <input ng-model="usefulLink.url"
+      <label for="url-{{usefulLink.id}}" translate="usefulLinks.linkUrlEditLabel" />
+      <input id="url-{{usefulLink.id}}"
+             ng-model="usefulLink.url"
              ui-keypress="{'enter':'saveUsefulLink()'}"
              placeholder="{{::('usefulLinks.linkUrl' | translate | capitalize)}}" />
-      <input ng-model="usefulLink.description"
+      <label for="description-{{usefulLink.id}}" translate="usefulLinks.linkDescriptionEditLabel" />
+      <input id="description-{{usefulLink.id}}"
+             ng-model="usefulLink.description"
              ui-keypress="{'enter':'saveUsefulLink()'}"
              placeholder="{{::('usefulLinks.linkDescription' | translate | capitalize)}}" />
       <a tabindex="0" ng-click="saveUsefulLink()"><i class="icon--done"></i></a>

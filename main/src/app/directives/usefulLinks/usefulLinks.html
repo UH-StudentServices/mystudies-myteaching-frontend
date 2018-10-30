@@ -29,7 +29,7 @@
     <ul class="list-of-links useful-links__list"
         ng-model="usefulLinks"
         as-sortable="sortableOptions"
-        is-disabled="!editMode">
+        is-disabled="!editMode || editableOpen">
       <li ng-repeat="link in usefulLinks"
           class="useful-link"
           as-sortable-item>

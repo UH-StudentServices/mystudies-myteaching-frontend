@@ -73,102 +73,115 @@ angular.module('directives.usefulLinks', [
       replace: true,
       scope: {},
       templateUrl: 'app/directives/usefulLinks/usefulLinks.html',
-      link: function ($scope) {
-        UsefulLinksResource.getAll().then(function (usefulLinks) {
-          $scope.usefulLinks = usefulLinks;
-        });
-
-        $scope.SearchState = SearchState;
-        $scope.UsefulLinkType = UsefulLinkType;
-        $scope.selectedLanguage = $rootScope.selectedLanguage;
-
-        function setSearchState(searchState) {
-          $scope.pageTitleSearchState = searchState;
-        }
-
-        setSearchState(SearchState.NO_SEARCH);
-
-        $scope.editMode = false;
-        $scope.newLink = {};
-
-        $scope.getStudentServicesLink = function () {
-          return StudentServicesLinks[$scope.selectedLanguage];
-        };
-
-        $scope.getHelpdeskLink = function () {
-          return HelpdeskLinks[$scope.selectedLanguage];
-        };
-
-        $scope.edit = function () {
-          $scope.editMode = true;
-        };
-
-        $scope.exitEdit = function () {
-          $scope.editMode = false;
-          $scope.clearSearch();
-          $rootScope.$broadcast(closeEditUsefulLinkEvent, $scope.usefulLink);
-          $scope.apply();
-        };
-
-        $scope.deleteLink = function (link) {
-          UsefulLinksResource.deleteLink(link).then(function () {
-            AnalyticsService.trackRemoveUsefulLink();
-            Focus.focusNext();
-            _.remove($scope.usefulLinks, { id: link.id });
+      transclude: true,
+      controller: [
+        '$scope', function ($scope) {
+          UsefulLinksResource.getAll().then(function (usefulLinks) {
+            $scope.usefulLinks = usefulLinks;
           });
-        };
 
-        $scope.clearSearch = function () {
-          $scope.newLink.url = '';
-          $scope.newLink.description = '';
+          $scope.SearchState = SearchState;
+          $scope.UsefulLinkType = UsefulLinkType;
+          $scope.selectedLanguage = $rootScope.selectedLanguage;
+
+          function setSearchState(searchState) {
+            $scope.pageTitleSearchState = searchState;
+          }
+
           setSearchState(SearchState.NO_SEARCH);
-        };
 
-        $scope.sortableOptions = {
-          containment: '.useful-links__dropzone',
-          containerPositioning: 'relative',
-          orderChanged: function () {
-            UsefulLinksResource.updateOrder(_.map($scope.usefulLinks, 'id'));
-          }
-        };
+          $scope.editMode = false;
+          $scope.editableOpen = false;
+          $scope.newLink = {};
 
-        function searchPageTitle(url) {
-          var validUrl = ValidatorUtils.convertValidUrl(url);
+          this.editableOpen = function (isOpen) {
+            $scope.editableOpen = isOpen;
+          };
 
-          if (validUrl) {
-            $scope.newLink.url = validUrl;
-            setSearchState(SearchState.SEARCHING);
-            UsefulLinksResource
-              .searchPageTitle(validUrl, function searchPageTitleFail() {
-                $scope.newLink.description = validUrl;
-              })
-              .then(function searchPageTitleSuccess(pageTitleSearchResult) {
-                $scope.newLink.description = pageTitleSearchResult.searchResult
-                  ? pageTitleSearchResult.searchResult
-                  : validUrl;
-              })
-              .finally(function () {
-                setSearchState(SearchState.SHOW_RESULTS);
-              });
-          }
-        }
+          $scope.getStudentServicesLink = function () {
+            return StudentServicesLinks[$scope.selectedLanguage];
+          };
 
-        $scope.searchPageTitle = _.debounce(searchPageTitle, pageTitleSearchDebounceDelay);
+          $scope.getHelpdeskLink = function () {
+            return HelpdeskLinks[$scope.selectedLanguage];
+          };
 
-        $scope.addNewUsefulLink = function () {
-          var newLink = $scope.newLink;
+          $scope.edit = function () {
+            $scope.editMode = true;
+          };
 
-          if (newLink.url && newLink.description) {
-            UsefulLinksResource.save({
-              url: newLink.url,
-              description: newLink.description
-            }).then(function (usefulLink) {
-              AnalyticsService.trackAddUsefulLink();
-              $scope.usefulLinks.push(usefulLink);
-              $scope.clearSearch();
+          $scope.exitEdit = function () {
+            $scope.editMode = false;
+            $scope.clearSearch();
+            $rootScope.$broadcast(closeEditUsefulLinkEvent, $scope.usefulLink);
+            $scope.apply();
+          };
+
+          $scope.deleteLink = function (link) {
+            UsefulLinksResource.deleteLink(link).then(function () {
+              AnalyticsService.trackRemoveUsefulLink();
+              Focus.focusNext();
+              _.remove($scope.usefulLinks, { id: link.id });
             });
+          };
+
+          $scope.clearSearch = function () {
+            $scope.newLink.url = '';
+            $scope.newLink.description = '';
+            setSearchState(SearchState.NO_SEARCH);
+          };
+
+          $scope.sortableOptions = {
+            containment: '.useful-links__dropzone',
+            containerPositioning: 'relative',
+            orderChanged: function () {
+              UsefulLinksResource.updateOrder(_.map($scope.usefulLinks, 'id'));
+            }
+          };
+
+          function searchPageTitle(url) {
+            var validUrl = ValidatorUtils.convertValidUrl(url);
+
+            if (validUrl) {
+              $scope.newLink.url = validUrl;
+              setSearchState(SearchState.SEARCHING);
+              UsefulLinksResource
+                .searchPageTitle(validUrl, function searchPageTitleFail() {
+                  $scope.newLink.description = validUrl;
+                })
+                .then(function searchPageTitleSuccess(pageTitleSearchResult) {
+                  $scope.newLink = {
+                    description: pageTitleSearchResult.searchResult
+                      ? pageTitleSearchResult.searchResult
+                      : validUrl,
+                    url: pageTitleSearchResult.searchUrl
+                  };
+                })
+                .finally(function () {
+                  setSearchState(SearchState.SHOW_RESULTS);
+                });
+            } else {
+              setSearchState(SearchState.NO_SEARCH);
+            }
           }
-        };
-      }
+
+          $scope.searchPageTitle = _.debounce(searchPageTitle, pageTitleSearchDebounceDelay);
+
+          $scope.addNewUsefulLink = function () {
+            var newLink = $scope.newLink;
+
+            if (newLink.url && newLink.description) {
+              UsefulLinksResource.save({
+                url: newLink.url,
+                description: newLink.description
+              }).then(function (usefulLink) {
+                AnalyticsService.trackAddUsefulLink();
+                $scope.usefulLinks.push(usefulLink);
+                $scope.clearSearch();
+              });
+            }
+          };
+        }
+      ]
     };
   });
