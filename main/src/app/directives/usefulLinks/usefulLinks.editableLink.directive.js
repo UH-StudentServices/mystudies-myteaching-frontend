@@ -30,14 +30,16 @@ angular.module('directives.usefulLinks.editableLink', [
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/usefulLinks/usefulLinks.editableLink.html',
+      require: '^^usefulLinks',
+      transclude: true,
       scope: {
         usefulLink: '=',
         editable: '='
       },
-      link: function ($scope, element) {
+      link: function ($scope, element, attrs, parentCtrl) {
         function setFocusOnEdit() {
           Focus.storeFocus();
-          Focus.setFocus(element.find('input[ng-model="usefulLink.url"]'));
+          Focus.setFocus(element.find('input[ng-model="usefulLink.description"]'));
         }
 
         function setFocusOnSave() {
@@ -46,6 +48,7 @@ angular.module('directives.usefulLinks.editableLink', [
 
         function exitEditUsefulLink() {
           delete $scope.usefulLink.edit;
+          parentCtrl.setEditableOpen(false);
         }
 
         $scope.editUsefulLink = function () {
@@ -53,6 +56,7 @@ angular.module('directives.usefulLinks.editableLink', [
             $scope.usefulLink.edit = true;
             $rootScope.$broadcast(closeEditUsefulLinkEvent, $scope.usefulLink);
             setFocusOnEdit();
+            parentCtrl.setEditableOpen(true);
           }
         };
 

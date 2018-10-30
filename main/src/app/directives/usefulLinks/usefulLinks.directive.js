@@ -73,7 +73,8 @@ angular.module('directives.usefulLinks', [
       replace: true,
       scope: {},
       templateUrl: 'app/directives/usefulLinks/usefulLinks.html',
-      link: function ($scope) {
+      transclude: true,
+      controller: function ($scope) {
         UsefulLinksResource.getAll().then(function (usefulLinks) {
           $scope.usefulLinks = usefulLinks;
         });
@@ -89,7 +90,12 @@ angular.module('directives.usefulLinks', [
         setSearchState(SearchState.NO_SEARCH);
 
         $scope.editMode = false;
+        $scope.editableOpen = false;
         $scope.newLink = {};
+
+        this.setEditableOpen = function (isOpen) {
+          $scope.editableOpen = isOpen;
+        };
 
         $scope.getStudentServicesLink = function () {
           return StudentServicesLinks[$scope.selectedLanguage];
@@ -143,13 +149,18 @@ angular.module('directives.usefulLinks', [
                 $scope.newLink.description = validUrl;
               })
               .then(function searchPageTitleSuccess(pageTitleSearchResult) {
-                $scope.newLink.description = pageTitleSearchResult.searchResult
-                  ? pageTitleSearchResult.searchResult
-                  : validUrl;
+                $scope.newLink = {
+                  description: pageTitleSearchResult.searchResult
+                    ? pageTitleSearchResult.searchResult
+                    : validUrl,
+                  url: pageTitleSearchResult.searchUrl
+                };
               })
               .finally(function () {
                 setSearchState(SearchState.SHOW_RESULTS);
               });
+          } else {
+            setSearchState(SearchState.NO_SEARCH);
           }
         }
 
