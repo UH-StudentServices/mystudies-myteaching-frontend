@@ -48,7 +48,7 @@ angular.module('directives.usefulLinks.editableLink', [
 
         function exitEditUsefulLink() {
           delete $scope.usefulLink.edit;
-          parentCtrl.editableOpen(false);
+          parentCtrl.setEditableOpen(false);
         }
 
         $scope.editUsefulLink = function () {
@@ -56,7 +56,7 @@ angular.module('directives.usefulLinks.editableLink', [
             $scope.usefulLink.edit = true;
             $rootScope.$broadcast(closeEditUsefulLinkEvent, $scope.usefulLink);
             setFocusOnEdit();
-            parentCtrl.editableOpen(true);
+            parentCtrl.setEditableOpen(true);
           }
         };
 

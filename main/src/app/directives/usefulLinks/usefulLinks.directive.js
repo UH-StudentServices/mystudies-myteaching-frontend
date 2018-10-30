@@ -93,7 +93,7 @@ angular.module('directives.usefulLinks', [
         $scope.editableOpen = false;
         $scope.newLink = {};
 
-        this.editableOpen = function (isOpen) {
+        this.setEditableOpen = function (isOpen) {
           $scope.editableOpen = isOpen;
         };
 
