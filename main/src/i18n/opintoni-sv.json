@@ -76,13 +76,11 @@
     "oodi": "Weboodi",
     "courseSearch": "Sök undervisning",
     "guide": "Instruktioner för studerande",
-    "opinder": "Opinder",
     "tools": "Verktyg",
     "completedStudies": "Prestationer",
     "email": "E-post",
     "library": "Bibliotek",
-    "dictionary": "MOT-ordböcker",
-    "opinderStudentSubmenu": "Opinder social nätverkstjänst"
+    "dictionary": "MOT-ordböcker"
   },
   "optionalLinks": {
     "pilotProgram": "Studieplanering",
