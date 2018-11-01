@@ -34,6 +34,11 @@ angular.module('services.portfolio', [
       return portfolioPromise;
     }
 
+    function findPortfolioBySharedLink(sharedLink) {
+      portfolioPromise = PortfolioResource.findBySharedLink(sharedLink);
+      return portfolioPromise;
+    }
+
     function createPortfolio(role, lang) {
       return PortfolioResource.create(role, lang);
     }
@@ -49,6 +54,7 @@ angular.module('services.portfolio', [
 
     return {
       findPortfolioByPath: findPortfolioByPath,
+      findPortfolioBySharedLink: findPortfolioBySharedLink,
       createPortfolio: createPortfolio,
       updatePortfolio: updatePortfolio,
       getPortfolio: getPortfolio
