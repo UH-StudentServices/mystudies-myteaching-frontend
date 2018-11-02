@@ -52,4 +52,18 @@ angular.module('utils.moment', ['services.language'])
       dateAsArray[1] += 1;
       return dateAsArray;
     };
+  })
+
+  .service('momentDateToLocalDateTimeArray', function () {
+    return function convert(date) {
+      var dateTimeAsArray;
+      if (!date) {
+        return null;
+      }
+
+      dateTimeAsArray = _.take(date.toArray(), 5);
+      // Month is zero indexed in moment, API requires months to start from one
+      dateTimeAsArray[1] += 1;
+      return dateTimeAsArray;
+    };
   });

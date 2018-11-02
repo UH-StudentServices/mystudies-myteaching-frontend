@@ -15,7 +15,13 @@
     "teachers": "opettajat",
     "helsinkiUniversity": "Helsingin Yliopisto",
     "reallyDelete": "Poistetaanko?",
-    "close": "Sulje"
+    "close": "Sulje",
+    "copyToClipboard": "kopioi leikepöydälle",
+    "copyToClipboardSuccess": "Kopioitu!",
+    "copyToClipboardFailMac": "Paina ⌘-C kopioidaksesi",
+    "copyToClipboardFailOther": "Paina Ctrl-C kopioidaksesi",
+    "expires": "Vanhenee",
+    "expired": "Vanhentunut"
   },
   "pageHeaderLinks": {
     "flamma": "flamma",
@@ -221,5 +227,11 @@
   "settings": {
     "title": "Asetukset",
     "browseUploadedFiles": "Selaa lataamiasi tiedostoja"
+  },
+  "sharedLinks": {
+    "sharePortfolio": "Jaa linkillä",
+    "dialogTitle": "Jaa linkillä",
+    "addNewLink": "Lisää uusi linkki",
+    "expiryDatePlaceholder": "Linkin voimassaolo esim. 24.6.2020 12:00"
   }
 }

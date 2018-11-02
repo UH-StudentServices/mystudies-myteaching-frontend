@@ -71,6 +71,7 @@ angular.module('opintoniPortfolioApp', [
   'directives.languageSelector',
   'directives.notifications',
   'directives.browseFiles',
+  'directives.sharedLinks',
 
   'dialog.verificationDialog',
 
@@ -88,6 +89,8 @@ angular.module('opintoniPortfolioApp', [
   'services.preview',
   'services.freeTextContent',
   'services.portfolioFiles',
+  'services.sharedLinks',
+
   'resources.notifications',
 
   'utils.moment'
@@ -209,6 +212,9 @@ angular.module('opintoniPortfolioApp', [
     }).state('files', {
       url: '/files',
       templateUrl: 'app/partials/_files.html'
+    }).state('links', {
+      url: '/links',
+      templateUrl: 'app/partials/_shared_links.html'
     });
 
     $sceDelegateProvider.resourceUrlWhitelist([

@@ -19,28 +19,46 @@ angular.module('services.sharedLinks', [
   'services.portfolio',
   'resources.sharedLinks'
 ])
-  .factory('SharedLinksService', function (PortfolioService, SharedLinksResource) {
+  .factory('SharedLinksService', function (PortfolioService,
+    SharedLinksResource,
+    dateArrayToMomentObject,
+    momentDateToLocalDateTimeArray) {
     function getPortfolioId() {
       return PortfolioService.getPortfolio().then(function (portfolio) {
         return portfolio.id;
       });
     }
 
-    function create(shareLink) {
-      return SharedLinksResource.create(getPortfolioId(), shareLink);
-    }
-
-    function save(shareLinkChange) {
-      return SharedLinksResource.save(getPortfolioId(), shareLinkChange);
+    function create(sharedLink) {
+      return getPortfolioId().then(function (portfolioId) {
+        sharedLink.expiryDate = momentDateToLocalDateTimeArray(sharedLink.expiryDate);
+        return SharedLinksResource.create(portfolioId, sharedLink).then(function (newLink) {
+          newLink.expiryDate = dateArrayToMomentObject(newLink.expiryDate);
+          return newLink;
+        });
+      });
     }
 
     function get() {
-      return SharedLinksResource.get(getPortfolioId());
+      return getPortfolioId().then(function (portfolioId) {
+        return SharedLinksResource.get(portfolioId).then(function (sharedLinks) {
+          return _.map(sharedLinks, function (link) {
+            link.expiryDate = dateArrayToMomentObject(link.expiryDate);
+            return link;
+          });
+        });
+      });
+    }
+
+    function remove(sharedLinkId) {
+      return getPortfolioId().then(function (portfolioId) {
+        return SharedLinksResource.remove(portfolioId, sharedLinkId);
+      });
     }
 
     return {
       create: create,
-      save: save,
-      get: get
+      get: get,
+      remove: remove
     };
   });

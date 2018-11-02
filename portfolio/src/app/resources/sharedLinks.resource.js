@@ -15,13 +15,17 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('resources.sharedLink', [])
-  .factory('SharedLinksResource', function ($resource) {
-    function SharedLinksResource(portfolioId) {
-      return $resource('/api/private/v1/:portfolioId/sharelinks', { portfolioId: portfolioId }, {
+angular.module('resources.sharedLinks', [])
+
+  .constant('SharedLinksResourcePath', '/api/private/v1/profile/:portfolioId/sharedlinks')
+
+  .factory('SharedLinksResource', function ($resource, SharedLinksResourcePath) {
+    function SharedLinksResource(portfolioId, sharedLinkId) {
+      var resourcePath = SharedLinksResourcePath;
+      return $resource(resourcePath, { portfolioId: portfolioId, sharedLinkId: sharedLinkId }, {
         create: { method: 'POST', isArray: false },
-        save: { method: 'PATCH', isArray: false },
-        get: { method: 'GET', isArray: true }
+        get: { method: 'GET', isArray: true },
+        remove: { url: resourcePath + '/:sharedLinkId', method: 'DELETE', isArray: false }
       });
     }
 
@@ -29,17 +33,17 @@ angular.module('resources.sharedLink', [])
       return SharedLinksResource(portfolioId).create(shareLink).$promise;
     }
 
-    function save(portfolioId, shareLinkChange) {
-      return SharedLinksResource(portfolioId).save(shareLinkChange).$promise;
-    }
-
     function get(portfolioId) {
       return SharedLinksResource(portfolioId).get().$promise;
     }
 
+    function remove(portfolioId, sharedLinkId) {
+      return SharedLinksResource(portfolioId, sharedLinkId).remove().$promise;
+    }
+
     return {
       create: create,
-      save: save,
-      get: get
+      get: get,
+      remove: remove
     };
   });

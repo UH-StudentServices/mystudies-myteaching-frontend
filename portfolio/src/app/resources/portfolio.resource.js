@@ -19,7 +19,7 @@ angular.module('resources.portfolio', ['services.state'])
 
   .factory('PortfolioResource', function ($resource, StateService) {
     var findPortfolioResource = $resource('/api/:currentState/v1/profile/:portfolioRole/:lang/:userPath');
-    var findPortfolioBySharedLinkResource = $resource('/api/public/v1/profile/:sharedLinkFragment');
+    var findPortfolioBySharedLinkResource = $resource('/api/public/v1/profile/shared/:sharedLinkFragment');
     var createPortfolioResource = $resource('/api/private/v1/profile/:portfolioRole/:lang', {
       portfolioRole: '@portfolioRole',
       lang: '@lang'

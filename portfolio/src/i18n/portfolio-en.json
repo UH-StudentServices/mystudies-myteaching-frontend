@@ -15,7 +15,13 @@
     "teachers": "teachers",
     "helsinkiUniversity": "University of Helsinki",
     "reallyDelete": "Really delete?",
-    "close": "Close"
+    "close": "Close",
+    "copyToClipboard" : "copy to clipboard",
+    "copyToClipboardSuccess" : "Copied!",
+    "copyToClipboardFailMac" : "Press ⌘-C to copy",
+    "copyToClipboardFailOther" : "Press Ctrl-C to copy",
+    "expires": "Expires",
+    "expired": "Expired"
   },
   "pageHeaderLinks": {
     "flamma": "flamma",
@@ -221,5 +227,11 @@
   "settings": {
     "title": "Settings",
     "browseUploadedFiles": "View my uploaded files"
+  },
+  "sharedLinks": {
+    "sharePortfolio": "Share with a link",
+    "dialogTitle": "Share with a link",
+    "addNewLink": "Add new link",
+    "expiryDatePlaceholder": "Link validity e.g. 24.6.2020 12:00"
   }
 }

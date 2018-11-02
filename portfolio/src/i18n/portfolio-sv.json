@@ -15,7 +15,13 @@
     "teachers": "lärare",
     "helsinkiUniversity": "Helsingfors universitet",
     "reallyDelete": "Radera?",
-    "close": "Stäng"
+    "close": "Stäng",
+    "copyToClipboard" : "kopiera till klippbordet",
+    "copyToClipboardSuccess" : "Kopierad",
+    "copyToClipboardFailMac" : "Klicka ⌘-C för att kopiera",
+    "copyToClipboardFailOther" : "Klicka Ctrl-C för att kopiera",
+    "expires": "Upphör",
+    "expired": "Upphört"
   },
   "pageHeaderLinks": {
     "flamma": "flamma",
@@ -221,5 +227,11 @@
   "settings": {
     "title": "Inställningar",
     "browseUploadedFiles": "Bläddra i mina filer"
+  },
+  "sharedLinks": {
+    "sharePortfolio": "Dela med länk",
+    "dialogTitle": "Dela med länk",
+    "addNewLink": "Skapa ny länk",
+    "expiryDatePlaceholder": "Länk giltighets t.ex. 24.6.2020 12:00"
   }
 }

@@ -15,31 +15,24 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* Portfolio application styles */
+'use strict';
 
-@import "portfolio-general";
-@import "common";
-@import "mixins";
-@import "editable";
-@import "intro";
-@import "studies";
-@import "keywords";
-@import "degrees";
-@import "banner-content";
-@import "work-experience";
-@import "forms";
-@import "attainments";
-@import "buttons";
-@import "dropdown";
-@import "contact-information";
-@import "page-banner";
-@import "navigation";
-@import "preview";
-@import "free-text-content";
-@import "language-proficiencies";
-@import "accordion";
-@import "lang-selector";
-@import "print";
-@import "files";
-@import "samples";
-@import "shared-links";
+angular.module('directives.dateTimeInput', [])
+
+  .directive('dateTimeInput', function () {
+    return {
+      restrict: 'A',
+      require: 'ngModel',
+      link: function (scope, elm, attrs, ngModelCtrl) {
+        var format = attrs.dateTimeInput || 'DD.MM.YYYY HH:mm';
+
+        ngModelCtrl.$formatters.push(function (modelValue) {
+          return modelValue ? moment(modelValue).format(format) : '';
+        });
+
+        ngModelCtrl.$parsers.unshift(function (viewValue) {
+          return moment(viewValue, format);
+        });
+      }
+    };
+  });
