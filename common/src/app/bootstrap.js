@@ -24,7 +24,7 @@
   var CONFIG_RESOURCE_PATH = '/api/public/v1/configuration';
   var TIMEOUT = 5000;
   var ERROR_PAGE_PATH = '/error/maintenance';
-  var PORTFOLIO_PATH = '/portfolio';
+  var PORTFOLIO_PATH = '/profile';
 
   var isPortfolio = function () {
     return location.pathname.indexOf(PORTFOLIO_PATH) !== -1;

@@ -18,7 +18,7 @@
 angular.module('resources.languageProficiencies', ['services.state'])
   .factory('LanguageProficienciesResource', function ($resource, StateService) {
     function languageProficienciesResource(portfolioId) {
-      return $resource('/api/:state/v1/portfolio/:portfolioId/languageproficiencies/', {
+      return $resource('/api/:state/v1/profile/:portfolioId/languageproficiencies/', {
         state: StateService.getCurrent(),
         portfolioId: portfolioId
       }, { save: { method: 'PATCH', isArray: true } });

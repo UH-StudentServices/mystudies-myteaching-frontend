@@ -19,7 +19,7 @@ angular.module('resources.workExperience', ['services.state'])
 
   .factory('WorkExperienceResource', function ($resource, StateService) {
     function workExperienceResource(portfolioId) {
-      var workExperienceUrl = '/api/' + StateService.getCurrent() + '/v1/portfolio/'
+      var workExperienceUrl = '/api/' + StateService.getCurrent() + '/v1/profile/'
         + portfolioId + '/workexperience/:id';
 
       return $resource(workExperienceUrl, { id: '@id' },
@@ -30,7 +30,7 @@ angular.module('resources.workExperience', ['services.state'])
     }
 
     function jobSearchResource(portfolioId) {
-      return $resource('/api/' + StateService.getCurrent() + '/v1/portfolio/'
+      return $resource('/api/' + StateService.getCurrent() + '/v1/profile/'
         + portfolioId + '/jobsearch', {});
     }
 

@@ -19,7 +19,7 @@ angular.module('resources.visibility', [])
 
   .factory('VisibilityResource', function ($resource) {
     function visibilityResource(portfolioId) {
-      return $resource('/api/private/v1/portfolio/' + portfolioId + '/componentvisibility');
+      return $resource('/api/private/v1/profile/' + portfolioId + '/componentvisibility');
     }
 
     function setComponentVisibility(portfolioId, componentPermission) {

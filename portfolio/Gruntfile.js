@@ -119,7 +119,7 @@ module.exports = function (grunt) {
             proxyMiddleware,
             modRewrite([
               '^[^\\.]*$ /index.html [L]',
-              '^/portfolio* http://localhost:3002 [P]'
+              '^/profile* http://localhost:3002 [P]'
             ])
           ]
         }
