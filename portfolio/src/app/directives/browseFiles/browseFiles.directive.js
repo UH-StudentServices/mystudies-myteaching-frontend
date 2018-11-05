@@ -17,7 +17,7 @@
 
 angular.module('directives.browseFiles', ['services.portfolioFiles', 'ui.bootstrap.modal'])
 
-  .constant('PortfolioPublicFilesResourcePath', '/api/public/v1/portfolio/files')
+  .constant('PortfolioPublicFilesResourcePath', '/api/public/v1/profile/files')
 
   .directive('browseFiles', function ($location, $uibModal, PortfolioFilesService, VerificationDialog) {
     return {

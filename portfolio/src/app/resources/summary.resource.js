@@ -20,7 +20,7 @@ angular.module('resources.summary', [])
   .factory('SummaryResource', function ($resource, StateService) {
     function resource() {
       return $resource('/api/' + StateService.getCurrent()
-        + '/v1/portfolio/:portfolioId/summary', {}, { update: { method: 'POST' } });
+        + '/v1/profile/:portfolioId/summary', {}, { update: { method: 'POST' } });
     }
 
     function updateSummary(portfolioId, updateSummaryRequest) {

@@ -17,8 +17,8 @@
 
 angular.module('portfolioAnalytics', ['provider.analyticsAccounts'])
   .constant('STRIP_USERNAME_REGEX', /\/[^\/]+$/) // eslint-disable-line no-useless-escape
-  .constant('TRACK_PAGE_TITLE', 'Portfolio')
-  .constant('TRACK_PREFIX', '/portfolio')
+  .constant('TRACK_PAGE_TITLE', 'Profile')
+  .constant('TRACK_PREFIX', '/profile')
 
   .config(function (AnalyticsProvider,
     ConfigurationProvider,
@@ -81,7 +81,7 @@ angular.module('portfolioAnalytics', ['provider.analyticsAccounts'])
       FAVORITES: 'favorites',
       FREE_TEXT_CONTENT: 'free_text_content',
       CONTACT_INFO: 'contact_information',
-      PORTFOLIO: 'portfolio'
+      PORTFOLIO: 'profile'
     };
 
     var eventActions = {

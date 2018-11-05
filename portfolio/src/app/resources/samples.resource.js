@@ -19,7 +19,7 @@ angular.module('resources.samples', ['services.state'])
 
   .factory('SamplesResource', function ($resource, StateService) {
     function samplesResource(portfolioId) {
-      return $resource('/api/' + StateService.getCurrent() + '/v1/portfolio/'
+      return $resource('/api/' + StateService.getCurrent() + '/v1/profile/'
         + portfolioId + '/samples/:id', { id: '@id' },
       {
         delete: { method: 'DELETE', isArray: true },

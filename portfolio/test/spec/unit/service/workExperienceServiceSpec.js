@@ -24,7 +24,7 @@ describe('WorkExperienceService', function () {
   var StateService;
   var session;
   var portfolioId = 1;
-  var privateApiBasePath = '/api/private/v1/portfolio/';
+  var privateApiBasePath = '/api/private/v1/profile/';
   var state = 'private';
   var portfolioRole = 'student';
   var userPath = 'olli-opiskelija';

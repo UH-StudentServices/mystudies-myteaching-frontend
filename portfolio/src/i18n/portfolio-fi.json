@@ -124,8 +124,8 @@
     },
     "loginNeeded": {
       "title": "kirjautuminen tarvitaan",
-      "description": "Hakemasi portfolio saattaa olla rajoitettu vain Helsingin yliopiston käyttäjille. Ole hyvä ja kirjaudu sisään.",
-      "disclaimer": "Firefox-selaimella saatat joutumaan avaamaan linkin uudellen kirjautumisen jälkeen. Jos portfolio ei sittenkään näy, ole hyvä ja otayhtettä sen kirjoittajaan."
+      "description": "Hakemasi profiili saattaa olla rajoitettu vain Helsingin yliopiston käyttäjille. Ole hyvä ja kirjaudu sisään.",
+      "disclaimer": "Firefox-selaimella saatat joutumaan avaamaan linkin uudellen kirjautumisen jälkeen. Jos profiili ei sittenkään näy, ole hyvä ja ota yhtettä sen kirjoittajaan."
     }
   },
   "preview": {

@@ -17,7 +17,7 @@
 
 angular.module('resources.contactInformation', [])
 
-  .constant('CONTACT_INFORMATION_RESOURCE_URL', '/api/:currentState/v1/portfolio/:portfolioId/contactinformation')
+  .constant('CONTACT_INFORMATION_RESOURCE_URL', '/api/:currentState/v1/profile/:portfolioId/contactinformation')
 
   .factory('ContactInformationResource', function ($resource, StateService, CONTACT_INFORMATION_RESOURCE_URL) {
     function resource() {

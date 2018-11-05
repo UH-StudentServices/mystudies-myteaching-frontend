@@ -20,7 +20,7 @@ angular.module('resources.degree', [])
   .factory('DegreeResource', function ($resource, StateService) {
     function resource() {
       return $resource('/api/' + StateService.getCurrent()
-        + '/v1/portfolio/:portfolioId/degree', {}, { update: { method: 'POST', isArray: true } });
+        + '/v1/profile/:portfolioId/degree', {}, { update: { method: 'POST', isArray: true } });
     }
 
     function updateDegrees(portfolioId, degrees) {

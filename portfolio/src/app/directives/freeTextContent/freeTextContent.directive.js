@@ -116,9 +116,9 @@ angular.module('directives.freeTextContent', [
         function trackIfNeeded(oldText, newText) {
           var host = window.location.hostname;
 
-          // <a href="https://student.helsinki.fi/api/public/v1/portfolio/files/olli-opiskelija/some.file">lalala</a>
+          // <a href="https://student.helsinki.fi/api/public/v1/profile/files/olli-opiskelija/some.file">lalala</a>
           // eslint-disable-next-line max-len
-          var hostedFilesRe = new RegExp('<a href="https?://' + host + '.*/api/(?:public|private)/v1/portfolio/files.*">.*</a>', 'gim');
+          var hostedFilesRe = new RegExp('<a href="https?://' + host + '.*/api/(?:public|private)/v1/profile/files.*">.*</a>', 'gim');
           // eslint-disable-next-line no-useless-escape
           var imageRe = /((?:https?|ftp|file):\/\/\S*\.(?:gif|jpg|jpeg|tiff|png|svg|webp)(\?([\w=&_%\-]*))?)/gi;
           // eslint-disable-next-line max-len, no-useless-escape

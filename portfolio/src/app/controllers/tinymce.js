@@ -68,7 +68,7 @@ angular.module('controllers.tinymce', ['ui.tinymce', 'services.language', 'servi
       });
 
       editor.addButton('uploadFile', {
-        image: '/portfolio/assets/icons/paperclip.svg',
+        image: '/profile/assets/icons/paperclip.svg',
         tooltip: 'Insert file',
         onclick: function () { createInput(editor, uploadFile); }
       });
@@ -109,7 +109,7 @@ angular.module('controllers.tinymce', ['ui.tinymce', 'services.language', 'servi
 
     $scope.tinymceOptions = {
       language: LanguageService.getCurrent(),
-      language_url: '/portfolio/i18n/tinymce-locales/' + LanguageService.getCurrent() + '.js',
+      language_url: '/profile/i18n/tinymce-locales/' + LanguageService.getCurrent() + '.js',
       height: '600',
       plugins: 'link image code',
       toolbar: 'link uploadImage uploadFile',

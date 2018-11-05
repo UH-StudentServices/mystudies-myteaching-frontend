@@ -19,7 +19,7 @@ angular.module('resources.freeTextContent', ['services.state'])
 
   .factory('FreeTextContentResource', function (StateService, $resource) {
     function freeTextResource(portfolioId) {
-      return $resource('/api/:state/v1/portfolio/:portfolioId/freetextcontent/:freeTextContentId',
+      return $resource('/api/:state/v1/profile/:portfolioId/freetextcontent/:freeTextContentId',
         { state: StateService.getCurrent(), portfolioId: portfolioId, freeTextContentId: '@id' },
         { update: { method: 'PUT' } });
     }

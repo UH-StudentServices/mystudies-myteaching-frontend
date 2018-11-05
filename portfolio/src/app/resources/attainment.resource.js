@@ -30,7 +30,7 @@ angular.module('resources.attainment', ['utils.moment'])
     var getWhitelist;
 
     function portfolioAttainmentsPrivateResource() {
-      return $resource('/api/private/v1/portfolio/:portfolioId/attainment/whitelist', {}, {
+      return $resource('/api/private/v1/profile/:portfolioId/attainment/whitelist', {}, {
         updateWhitelist: { method: 'POST' },
         getWhitelist: { method: 'GET' }
       });
@@ -58,7 +58,7 @@ angular.module('resources.attainment', ['utils.moment'])
 
     getAllWhitelisted = function getAllWhitelistedFn(portfolioId, portfolioLang) {
       var attainmentsResource = $resource('/api/' + StateService.getCurrent()
-        + '/v1/portfolio/:portfolioId/attainment', { portfolioId: portfolioId, lang: portfolioLang });
+        + '/v1/profile/:portfolioId/attainment', { portfolioId: portfolioId, lang: portfolioLang });
 
       return attainmentsResource.query().$promise.then(function getAllSuccess(data) {
         return _.map(data, function datesToMoment(attainment) {

@@ -20,7 +20,7 @@ angular.module('resources.portfolioBackground', [])
   .factory('PortfolioBackgroundResource', function ($resource, StateService) {
     function portfolioBackgroundResource(portfolioId) {
       var portfolioBackgroundUrl = '/api/' + StateService.getCurrent()
-        + '/v1/portfolio/' + portfolioId + '/background';
+        + '/v1/profile/' + portfolioId + '/background';
 
       return $resource(portfolioBackgroundUrl, { id: '@id' }, {
         selectPortfolioBackground: {
