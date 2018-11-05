@@ -25,3 +25,4 @@ In addition, the following localhost alias configuration is also needed (in /etc
 `npm run dev`
 
 This will open the app in a new browser window at http://local.student.helsinki.fi:3000.
+
