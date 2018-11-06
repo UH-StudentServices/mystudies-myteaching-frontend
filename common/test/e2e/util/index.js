@@ -59,7 +59,7 @@ export const loginAsStudent = async t => {
 export const loginAsTeacher = async t => loginAsUser(t, 'Olli Opettaja', 'NYT OPETUKSESSANI');
 export const loginAndOpenPortfolio = async (t) => {
   await loginAsStudent(t);
-  await openPortfolio(t, 'Profiili', 'OLLI OPISKELIJA');
+  await openPortfolio(t, 'Portfolio', 'OLLI OPISKELIJA');
 };
 export const loginAndOpenAcademicPortfolio = async (t) => {
   await loginAsTeacher(t);

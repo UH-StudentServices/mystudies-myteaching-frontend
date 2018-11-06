@@ -124,8 +124,8 @@
     },
     "loginNeeded": {
       "title": "login needed",
-      "description": "Profil du letar efter kan begränsas till användarna av Helsingfors universitet. Vänligen logga in.",
-      "disclaimer": "Med Firefox-webbläsaren kan du behöva öppna länken efter inloggningen. Om profilen är fortfarande inte nås, kontakta författaren."
+      "description": "Portfolio du letar efter kan begränsas till användarna av Helsingfors universitet. Vänligen logga in.",
+      "disclaimer": "Med Firefox-webbläsaren kan du behöva öppna länken efter inloggningen. Om portföljen är fortfarande inte nås, kontakta författaren."
     }
   },
   "preview": {
