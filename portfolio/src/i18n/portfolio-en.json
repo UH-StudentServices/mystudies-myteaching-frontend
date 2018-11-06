@@ -124,8 +124,8 @@
     },
     "loginNeeded": {
       "title": "login needed",
-      "description": "Profile you are looking for may be restricted to the users of University of Helsinki. Please login.",
-      "disclaimer": "Firefox browser users may need to open the link again after the login. If the profile is still unreachable, please contact the author."
+      "description": "Portfolio you are looking for may be restricted to the users of University of Helsinki. Please login.",
+      "disclaimer": "Firefox browser users may need to open the link again after the login. If the portfolio is still unreachable, please contact the author."
     }
   },
   "preview": {
