@@ -73,8 +73,6 @@ angular.module('directives.contactInformation', [
       },
       templateUrl: 'app/directives/contactInformation/contactInformation.html',
       link: function ($scope) {
-        var updateContactInformationRequest = _.assign({}, $scope.contactInfo);
-
         $scope.editing = false;
         $scope.contactInfo = $scope.contactInformationData() || {};
         $scope.contactInfo.someLinks = $scope.contactInfo.someLinks || [];
@@ -122,9 +120,11 @@ angular.module('directives.contactInformation', [
         }
 
         $scope.exitEdit = function () {
+          var updateContactInformationRequest;
           if ($scope.editContactInformation.$invalid) {
             return false;
           }
+          updateContactInformationRequest = _.assign({}, $scope.contactInfo);
 
           updateContactInformationRequest.someLinks =
             selectFilledSomeLinks($scope.contactInfo.someLinks);
