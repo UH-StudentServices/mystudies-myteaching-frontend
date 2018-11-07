@@ -135,7 +135,7 @@ angular.module('opintoniPortfolioApp', [
     }
 
     $stateProvider.state('portfolioBySharedLink', {
-      url: '/:sharedLink',
+      url: '/:sharedlink',
       templateUrl: 'app/partials/_portfolio.html',
       controller: 'MainCtrl',
       resolve: {

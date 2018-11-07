@@ -23,7 +23,7 @@ angular.module('directives.dateTimeInput', [])
     return {
       restrict: 'A',
       require: 'ngModel',
-      link: function (scope, elm, attrs, ngModelCtrl) {
+      link: function ($scope, elm, attrs, ngModelCtrl) {
         var format = attrs.dateTimeInput || 'DD.MM.YYYY HH:mm';
 
         ngModelCtrl.$formatters.push(function (modelValue) {
@@ -31,7 +31,7 @@ angular.module('directives.dateTimeInput', [])
         });
 
         ngModelCtrl.$parsers.unshift(function (viewValue) {
-          return moment(viewValue, format);
+          return viewValue ? moment(viewValue, format) : '';
         });
       }
     };
