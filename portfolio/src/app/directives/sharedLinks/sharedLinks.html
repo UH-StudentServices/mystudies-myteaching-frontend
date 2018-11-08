@@ -64,8 +64,8 @@
             <input type="text"
                    date-time-input
                    ng-model="newSharedLink.expiryDate"
-                   ng-change="validate()"
                    ng-class="{'invalid': !expiryDateValid}"
+                   ng-blur="refreshValidity()"
                    ui-keypress="{ 'enter': 'addNewSharedLink()' }"
                    placeholder="{{::('sharedLinks.expiryDatePlaceholder' | translate)}}"/>
           </form>

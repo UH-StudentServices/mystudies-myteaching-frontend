@@ -76,12 +76,12 @@
 
     input {
       width: 85%;
-    }
 
-    input.invalid {
-      border: $red 1px solid;
-      &:focus {
-        outline: $red 2px solid;
+      &.invalid {
+        border: $red 1px solid;
+        &:focus {
+          outline: $red 2px solid;
+        }
       }
     }
   }

@@ -23,7 +23,7 @@ angular.module('directives.dateInput', [])
     return {
       restrict: 'A',
       require: 'ngModel',
-      link: function (scope, elm, attrs, ngModelCtrl) {
+      link: function ($scope, elm, attrs, ngModelCtrl) {
         var format = attrs.dateInput || 'DD.MM.YYYY';
 
         ngModelCtrl.$formatters.push(function (modelValue) {

@@ -48,7 +48,7 @@ angular.module('directives.sharedLinks', [
           loadSharedLinks();
           $uibModal.open({
             templateUrl: 'shared-links-dialog.html',
-            controller: 'SharedFilesController',
+            controller: 'SharedLinksController',
             scope: $scope,
             animation: false,
             windowClass: 'shared-links-dialog dialog'
@@ -72,25 +72,29 @@ angular.module('directives.sharedLinks', [
           }, MessageTimeouts.FAIL);
         };
 
+        function validateExpiryDate(date) {
+          return date ? date.isValid() : true;
+        }
+
         $scope.expiryDateValid = true;
-        $scope.validate = _.debounce(function () {
-          $scope.expiryDateValid = $scope.newSharedLink.expiryDate
-            ? $scope.newSharedLink.expiryDate.isValid()
-            : true;
-          $scope.$apply();
-        }, 150);
+        $scope.refreshValidity = function () {
+          $scope.expiryDateValid = validateExpiryDate($scope.newSharedLink.expiryDate);
+        };
 
         $scope.addNewSharedLink = function () {
           var newSharedLink = $scope.newSharedLink;
 
-          if (!$scope.expiryDateValid) {
-            return;
+          if (!validateExpiryDate(newSharedLink.expiryDate)) {
+            return false;
           }
+
           SharedLinksService.create({ expiryDate: newSharedLink.expiryDate })
             .then(function (sharedLink) {
               $scope.sharedLinks.push(sharedLink);
               $scope.newSharedLink = {};
             });
+
+          return true;
         };
 
         $scope.removeSharedLink = function (sharedLink) {
@@ -102,7 +106,7 @@ angular.module('directives.sharedLinks', [
     };
   })
 
-  .controller('SharedFilesController', function ($scope, $uibModalInstance) {
+  .controller('SharedLinksController', function ($scope, $uibModalInstance) {
     $scope.cancel = function () {
       $uibModalInstance.dismiss();
     };
