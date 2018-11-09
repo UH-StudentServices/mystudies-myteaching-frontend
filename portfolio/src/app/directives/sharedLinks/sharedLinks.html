@@ -59,20 +59,22 @@
 
       <h4 translate="sharedLinks.addNewLink" />
       <div class="shared-links__new-link-container">
-        <div class="shared-links__new-link">
-          <form>
-            <input type="text"
-                   date-time-input
-                   ng-model="newSharedLink.expiryDate"
-                   ng-class="{'invalid': !expiryDateValid}"
-                   ng-blur="refreshValidity()"
-                   ui-keypress="{ 'enter': 'addNewSharedLink()' }"
-                   placeholder="{{::('sharedLinks.expiryDatePlaceholder' | translate)}}"/>
-          </form>
-        </div>
-        <a class="shared-links__new-link-add-button" ng-click="addNewSharedLink()" role="button">
-          <i class="icon--plus"></i>
-        </a>
+        <form name="newLinkForm">
+          <div class="shared-links__new-link">
+              <input type="text"
+                     name="expiryDate"
+                     date-time-input
+                     ng-model="newSharedLink.expiryDate"
+                     ui-keypress="{ 'enter': 'addNewSharedLink(newLinkForm)' }"
+                     placeholder="{{::('sharedLinks.expiryDatePlaceholder' | translate)}}"/>
+          </div>
+          <a class="shared-links__new-link-add-button"
+             ng-click="addNewSharedLink(newLinkForm)"
+             ng-disabled="newLinkForm.$invalid"
+             role="button">
+            <i class="icon--plus"></i>
+          </a>
+        </form>
       </div>
 
       <button class="button" translate="general.close" ng-click="cancel()"></button>

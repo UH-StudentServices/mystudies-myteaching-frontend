@@ -31,8 +31,12 @@ angular.module('directives.dateTimeInput', [])
         });
 
         ngModelCtrl.$parsers.unshift(function (viewValue) {
-          return viewValue ? moment(viewValue, format) : '';
+          return viewValue ? moment(viewValue, format, !!$scope.isStrict) : '';
         });
+
+        ngModelCtrl.$validators.dateTimeInput = function (modelValue) {
+          return ngModelCtrl.$isEmpty(modelValue) || modelValue.isValid();
+        };
       }
     };
   });

@@ -72,19 +72,10 @@ angular.module('directives.sharedLinks', [
           }, MessageTimeouts.FAIL);
         };
 
-        function validateExpiryDate(date) {
-          return date ? date.isValid() : true;
-        }
-
-        $scope.expiryDateValid = true;
-        $scope.refreshValidity = function () {
-          $scope.expiryDateValid = validateExpiryDate($scope.newSharedLink.expiryDate);
-        };
-
-        $scope.addNewSharedLink = function () {
+        $scope.addNewSharedLink = function (form) {
           var newSharedLink = $scope.newSharedLink;
 
-          if (!validateExpiryDate(newSharedLink.expiryDate)) {
+          if (form.$invalid) {
             return false;
           }
 
