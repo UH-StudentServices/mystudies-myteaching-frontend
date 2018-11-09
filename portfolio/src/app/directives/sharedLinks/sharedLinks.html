@@ -34,7 +34,7 @@
           <div class="shared_links__link-container">
             <span id="shared-link-{{::link.id}}" class="shared-links__url">{{::link.url}}</span>
             <span ng-if="link.expiryDate" class="shared-links__expires">
-              {{::(link.active ? 'general.expires' : 'general.expired' | translate)}} {{::link.expiryDate | momentFormat:'DD.MM.YYYY HH:mm'}}
+              {{::(link.active ? 'general.expires' : 'general.expired' | translate)}} {{::link.expiryDate | momentFormat:'LLL'}}
             </span>
 
             <div class="shared-links__copy2clipboard-container">
@@ -63,7 +63,7 @@
           <div class="shared-links__new-link">
               <input type="text"
                      name="expiryDate"
-                     date-time-input="D.M.YYYY, D.M.YYYY H:mm"
+                     date-time-input
                      date-time-input-strict="true"
                      ng-model="newSharedLink.expiryDate"
                      ui-keypress="{ 'enter': 'addNewSharedLink(newLinkForm)' }"

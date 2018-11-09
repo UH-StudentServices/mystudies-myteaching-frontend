@@ -19,18 +19,35 @@
 
 angular.module('directives.dateTimeInput', [])
 
-  .directive('dateTimeInput', function () {
+  .constant('DefaultFormats', [
+    'D.M.YYYY H:mm',
+    'D.M.YYYY H.mm',
+    'YYYY-M-D H:mm',
+    'YYYY-M-D H.mm',
+    'M/D/YYYY H:mm',
+    'M/D/YYYY H.mm',
+    'D.M.YYYY',
+    'YYYY-M-D',
+    'M/D/YYYY'
+  ])
+
+  .directive('dateTimeInput', function (DefaultFormats) {
     return {
       restrict: 'A',
       scope: { isStrict: '@dateTimeInputStrict' },
       require: 'ngModel',
       link: function ($scope, elm, attrs, ngModelCtrl) {
-        var format = _.map(attrs.dateTimeInput.split(','), function (inputFormat) {
-          return _.trim(inputFormat);
-        }) || 'DD.MM.YYYY HH:mm';
+        var format;
+        if (attrs.dateTimeInput) {
+          format = _.map(attrs.dateTimeInput.split(','), function (inputFormat) {
+            return _.trim(inputFormat);
+          });
+        } else {
+          format = DefaultFormats;
+        }
 
         ngModelCtrl.$formatters.push(function (modelValue) {
-          return modelValue ? moment(modelValue).format(format) : '';
+          return modelValue ? moment(modelValue).format(format[0]) : '';
         });
 
         ngModelCtrl.$parsers.unshift(function (viewValue) {
