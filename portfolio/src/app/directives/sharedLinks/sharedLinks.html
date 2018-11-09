@@ -1,0 +1,84 @@
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<div>
+  <button class="button shared-links__button-open"
+          ng-click="openSharedLinksDialog()"
+          translate="sharedLinks.sharePortfolio"></button>
+
+  <script type="text/ng-template" id="shared-links-dialog.html">
+    <div class="shared-links__container">
+      <h3 translate="sharedLinks.dialogTitle" />
+
+      <span ng-if="copyToClipboardSuccess" translate="general.copyToClipboardSuccess"></span>
+      <span ng-if="copyToClipboardFail">
+        {{::(('general.copyToClipboardFail' + copyToClipboardFailMessageKeySuffix) | translate) }}
+      </span>
+
+      <ul>
+        <li ng-repeat="link in sharedLinks">
+          <div class="shared_links__link-container">
+            <span id="shared-link-{{::link.id}}" class="shared-links__url">{{::link.url}}</span>
+            <span ng-if="link.expiryDate" class="shared-links__expires">
+              {{::(link.active ? 'general.expires' : 'general.expired' | translate)}} {{::link.expiryDate | momentFormat:'LLL'}}
+            </span>
+
+            <div class="shared-links__copy2clipboard-container">
+              <a id="copy-shared-link-{{::link.id}}"
+                 class="text-transform-capitalize"
+                 clipboard
+                 clipboard-value-selector="#shared-link-{{::link.id}}"
+                 clipboard-success-callback="copyToClipboardSuccessCallback"
+                 clipboard-error-callback="copyToClipboardErrorCallback">
+                {{::('general.copyToClipboard' | translate)}}
+              </a>
+            </div>
+
+            <a class="shared-links__remove_link_button"
+               ng-click="removeSharedLink(link)"
+               role="button">
+              <i class="icon--trash"></i>
+            </a>
+          </div>
+        </li>
+      </ul>
+
+      <h4 translate="sharedLinks.addNewLink" />
+      <div class="shared-links__new-link-container">
+        <form name="newLinkForm">
+          <div class="shared-links__new-link">
+              <input type="text"
+                     name="expiryDate"
+                     date-time-input
+                     date-time-input-strict="true"
+                     ng-model="newSharedLink.expiryDate"
+                     ui-keypress="{ 'enter': 'addNewSharedLink(newLinkForm)' }"
+                     placeholder="{{::('sharedLinks.expiryDatePlaceholder' | translate)}}"/>
+          </div>
+          <a class="shared-links__new-link-add-button"
+             ng-click="addNewSharedLink(newLinkForm)"
+             ng-disabled="newLinkForm.$invalid"
+             role="button">
+            <i class="icon--plus"></i>
+          </a>
+        </form>
+      </div>
+
+      <button class="button" translate="general.close" ng-click="cancel()"></button>
+    </div>
+  </script>
+</div>

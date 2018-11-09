@@ -1,0 +1,116 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.shared-links__button-open {
+  margin-top: 0.2em;
+}
+
+.shared-links__container {
+  margin: 1em;
+  background-color: $white;
+  color: $black;
+
+  ul {
+    margin-bottom: 1.5em;
+  }
+
+  .shared_links__link-container {
+    width: 90%;
+    position: relative;
+    margin-top: 0.8em;
+
+    span {
+      display: block;
+      margin-bottom: 0.2em;
+    }
+
+    .shared-links__url {
+      color: $silver;
+      font-weight: 600;
+    }
+
+    .shared-links__expires {
+
+    }
+
+    .shared-links__remove_link_button {
+      position: absolute;
+      top: 0;
+      right: -1em;
+    }
+
+    .shared-links__copy2clipboard-container {
+
+    }
+  }
+}
+
+.shared-links__new-link-container {
+  margin-bottom: 1.5em;
+  position: relative;
+
+  .shared-links__new-link {
+    position: relative;
+    padding: 0.2em 0;
+    margin-bottom: 2px;
+
+    form {
+      display: inline;
+      margin: 0;
+      padding: 0;
+    }
+
+    input {
+      width: 85%;
+
+      &.ng-invalid {
+        border: $red 1px solid;
+      }
+    }
+  }
+
+  .shared-links__new-link-add-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 3em;
+    color: $white;
+    background-color: $blue;
+    @include all-link-states {
+      color: $white;
+    }
+
+    i {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      @include transform(translate(-50%, -50%));
+    }
+
+    &[disabled] {
+      color: grey;
+      background-color: white;
+      border: 1px solid grey ;
+      cursor: auto;
+    }
+  }
+}
+
+.dialog.shared-links-dialog .modal-dialog {
+  background-color: $white;
+}

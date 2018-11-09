@@ -19,6 +19,7 @@ angular.module('resources.portfolio', ['services.state'])
 
   .factory('PortfolioResource', function ($resource, StateService) {
     var findPortfolioResource = $resource('/api/:currentState/v1/profile/:portfolioRole/:lang/:userPath');
+    var findPortfolioBySharedLinkResource = $resource('/api/public/v1/profile/shared/:sharedLinkFragment');
     var createPortfolioResource = $resource('/api/private/v1/profile/:portfolioRole/:lang', {
       portfolioRole: '@portfolioRole',
       lang: '@lang'
@@ -33,6 +34,12 @@ angular.module('resources.portfolio', ['services.state'])
           lang: portfolioLang,
           userPath: userPath
         }).$promise;
+    }
+
+    function findBySharedLink(sharedLinkFragment) {
+      return findPortfolioBySharedLinkResource
+        .get({ sharedLinkFragment: sharedLinkFragment })
+        .$promise;
     }
 
     function update(portfolio) {
@@ -55,6 +62,7 @@ angular.module('resources.portfolio', ['services.state'])
 
     return {
       find: find,
+      findBySharedLink: findBySharedLink,
       update: update,
       create: create
     };

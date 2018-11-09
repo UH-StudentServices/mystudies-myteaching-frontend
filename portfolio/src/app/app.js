@@ -71,6 +71,7 @@ angular.module('opintoniPortfolioApp', [
   'directives.languageSelector',
   'directives.notifications',
   'directives.browseFiles',
+  'directives.sharedLinks',
 
   'dialog.verificationDialog',
 
@@ -88,6 +89,8 @@ angular.module('opintoniPortfolioApp', [
   'services.preview',
   'services.freeTextContent',
   'services.portfolioFiles',
+  'services.sharedLinks',
+
   'resources.notifications',
 
   'utils.moment'
@@ -113,29 +116,71 @@ angular.module('opintoniPortfolioApp', [
 
     $qProvider.errorOnUnhandledRejections(false);
 
-    $stateProvider.state('portfolio', {
+    function portfolioSession(SessionService) {
+      return SessionService.getSession();
+    }
+
+    function portfolioUserSettings(StateService, State, UserSettingsService, state) {
+      if (state === State.PRIVATE) {
+        return UserSettingsService.getUserSettings();
+      }
+      return undefined;
+    }
+
+    function portfolioNotifications(NotificationsResource, session) {
+      if (session && session.$resolved) {
+        return NotificationsResource.getNotifications();
+      }
+      return undefined;
+    }
+
+    $stateProvider.state('portfolioBySharedLink', {
+      url: '/:sharedlink',
+      templateUrl: 'app/partials/_portfolio.html',
+      controller: 'MainCtrl',
+      resolve: {
+        session: portfolioSession,
+        state: function (StateService, $stateParams, session) {
+          return StateService.resolve(session, null, null);
+        },
+        userSettings: portfolioUserSettings,
+        notifications: portfolioNotifications,
+        portfolio: function (PortfolioService,
+          FreeTextContentService,
+          $location,
+          $state,
+          $stateParams,
+          session,
+          state,
+          $translate) {
+          $translate.fallbackLanguage('fi');
+
+          return PortfolioService.findPortfolioBySharedLink($stateParams.sharedLink)
+            .catch(function findPortfolioFail(error) {
+              if (error.status === 404) {
+                if (session) {
+                  $state.go('notFound');
+                } else {
+                  $state.go('loginNeeded', { originalUrl: $location.absUrl() });
+                }
+              }
+            })
+            .finally(function () {
+              FreeTextContentService.initCache();
+            });
+        }
+      }
+    }).state('portfolio', {
       url: '/:lang/:userpath',
       templateUrl: 'app/partials/_portfolio.html',
       controller: 'MainCtrl',
       resolve: {
-        session: function (SessionService) {
-          return SessionService.getSession();
-        },
+        session: portfolioSession,
         state: function (StateService, $stateParams, session) {
           return StateService.resolve(session, $stateParams.lang, $stateParams.userpath);
         },
-        userSettings: function (StateService, State, UserSettingsService, state) {
-          if (state === State.PRIVATE) {
-            return UserSettingsService.getUserSettings();
-          }
-          return undefined;
-        },
-        notifications: function (NotificationsResource, session) {
-          if (session && session.$resolved) {
-            return NotificationsResource.getNotifications();
-          }
-          return undefined;
-        },
+        userSettings: portfolioUserSettings,
+        notifications: portfolioNotifications,
         portfolio: function (PortfolioService,
           FreeTextContentService,
           $location,
@@ -164,11 +209,12 @@ angular.module('opintoniPortfolioApp', [
             });
         }
       }
-    });
-
-    $stateProvider.state('files', {
+    }).state('files', {
       url: '/files',
       templateUrl: 'app/partials/_files.html'
+    }).state('links', {
+      url: '/links',
+      templateUrl: 'app/partials/_shared_links.html'
     });
 
     $sceDelegateProvider.resourceUrlWhitelist([
