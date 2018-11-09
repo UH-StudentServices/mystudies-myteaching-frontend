@@ -22,9 +22,12 @@ angular.module('directives.dateTimeInput', [])
   .directive('dateTimeInput', function () {
     return {
       restrict: 'A',
+      scope: { isStrict: '@dateTimeInputStrict' },
       require: 'ngModel',
       link: function ($scope, elm, attrs, ngModelCtrl) {
-        var format = attrs.dateTimeInput || 'DD.MM.YYYY HH:mm';
+        var format = _.map(attrs.dateTimeInput.split(','), function (inputFormat) {
+          return _.trim(inputFormat);
+        }) || 'DD.MM.YYYY HH:mm';
 
         ngModelCtrl.$formatters.push(function (modelValue) {
           return modelValue ? moment(modelValue).format(format) : '';
