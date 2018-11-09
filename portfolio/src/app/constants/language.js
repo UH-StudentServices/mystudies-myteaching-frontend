@@ -16,4 +16,4 @@
  */
 
 angular.module('constants.language', [])
-  .constant('TRANSLATION_FILE_PREFIX', 'i18n/portfolio-');
+  .constant('TRANSLATION_FILE_PREFIX', 'i18n/profile-');
