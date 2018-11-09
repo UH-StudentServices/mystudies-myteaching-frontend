@@ -155,7 +155,7 @@ angular.module('opintoniPortfolioApp', [
           $translate) {
           $translate.fallbackLanguage('fi');
 
-          return PortfolioService.findPortfolioBySharedLink($stateParams.sharedLink)
+          return PortfolioService.findPortfolioBySharedLink($stateParams.sharedlink)
             .catch(function findPortfolioFail(error) {
               if (error.status === 404) {
                 if (session) {
