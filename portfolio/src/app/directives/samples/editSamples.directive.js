@@ -15,9 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.editSamples', [])
-
-  .directive('editSamples', function () {
+angular.module('directives.editSamples', ['services.visibility'])
+  .directive('editSamples', function (Visibility) {
     return {
       restrict: 'E',
       scope: {
@@ -26,14 +25,15 @@ angular.module('directives.editSamples', [])
       },
       templateUrl: 'app/directives/samples/editSamples.html',
       link: function ($scope) {
-        $scope.newSample = {};
+        var newSample = { visibility: Visibility.PUBLIC };
+        $scope.newSample = newSample;
 
         $scope.addSample = function (sample) {
           sample.id = Date.now();
           sample.title = '';
           sample.description = '';
           $scope.samples.push(sample);
-          $scope.newSample = {};
+          $scope.newSample = newSample;
           $scope.onChange();
         };
 
