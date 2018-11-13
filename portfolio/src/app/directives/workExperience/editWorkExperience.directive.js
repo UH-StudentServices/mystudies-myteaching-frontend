@@ -15,9 +15,12 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.editWorkExperience', ['directives.dateInput'])
+angular.module('directives.editWorkExperience', [
+  'directives.dateInput',
+  'services.visibility'
+])
 
-  .directive('editWorkExperience', function (WorkExperienceService, $translate) {
+  .directive('editWorkExperience', function (WorkExperienceService, Visibility, $translate) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/workExperience/editWorkExperience.html',
@@ -52,12 +55,21 @@ angular.module('directives.editWorkExperience', ['directives.dateInput'])
           $scope.editJobSearchHeadline = false;
         };
 
+        $scope.toggleVisibility = function (job) {
+          return function () {
+            job.visibility = job.visibility === Visibility.PUBLIC
+              ? Visibility.PRIVATE
+              : Visibility.PUBLIC;
+          };
+        };
+
         $scope.addWorkExperience = function (job) {
           job.id = Date.now();
           job.startDate = moment();
           job.endDate = '';
           job.jobTitle = '';
           job.employerUrl = '';
+          job.visibility = Visibility.PUBLIC;
           $scope.workExperience.push(job);
           $scope.newJob = {};
           $scope.refreshValidity();
