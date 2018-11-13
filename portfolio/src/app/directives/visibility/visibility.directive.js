@@ -94,16 +94,24 @@ angular.module('directives.visibility',
     return {
       restrict: 'E',
       replace: true,
-      scope: { item: '=' },
+      scope: {
+        item: '=',
+        callback: '='
+      },
       templateUrl: 'app/directives/visibility/itemVisibilityToggle.html',
       link: function (scope) {
         scope.Visibility = Visibility;
         scope.visibility = scope.item.visibility;
+
         scope.toggleVisibility = function () {
           scope.item.visibility = scope.item.visibility === Visibility.PUBLIC
             ? Visibility.PRIVATE
             : Visibility.PUBLIC;
           scope.visibility = scope.item.visibility;
+
+          if (typeof (scope.callback) === 'function') {
+            scope.callback(scope.item);
+          }
         };
       }
     };

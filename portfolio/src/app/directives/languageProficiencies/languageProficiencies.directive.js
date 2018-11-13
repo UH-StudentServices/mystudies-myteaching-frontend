@@ -17,13 +17,15 @@
 
 angular.module('directives.languageProficiencies', [
   'services.languageProficiencies',
+  'services.visibility',
   'directives.editableHeading',
   'portfolioAnalytics'
 ])
   .directive('languageProficiencies', function (LanguageProficienciesService,
     $filter,
     $state,
-    AnalyticsService) {
+    AnalyticsService,
+    Visibility) {
     return {
       restrict: 'E',
       replace: true,
@@ -46,7 +48,7 @@ angular.module('directives.languageProficiencies', [
         };
 
         var newLanguageProficiency = function () {
-          return { languageName: '', proficiency: '', description: '' };
+          return { languageName: '', proficiency: '', description: '', visibility: Visibility.PUBLIC };
         };
 
         var orderByName = function (languageProficiencies) {
