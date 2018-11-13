@@ -55,14 +55,6 @@ angular.module('directives.editWorkExperience', [
           $scope.editJobSearchHeadline = false;
         };
 
-        $scope.toggleVisibility = function (job) {
-          return function () {
-            job.visibility = job.visibility === Visibility.PUBLIC
-              ? Visibility.PRIVATE
-              : Visibility.PUBLIC;
-          };
-        };
-
         $scope.addWorkExperience = function (job) {
           job.id = Date.now();
           job.startDate = moment();
