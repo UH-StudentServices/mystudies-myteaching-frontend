@@ -24,11 +24,13 @@ angular.module('directives.editDegrees', ['services.visibility'])
       restrict: 'E',
       templateUrl: 'app/directives/degrees/editDegrees.html',
       link: function ($scope) {
-        var newDegree = { visibility: Visibility.PUBLIC };
-        $scope.newDegree = newDegree;
+        function getNewDegree() {
+          return { visibility: Visibility.PUBLIC };
+        }
+        $scope.newDegree = getNewDegree();
         $scope.addDegree = function (degree) {
           $scope.degrees.push(degree);
-          $scope.newDegree = newDegree;
+          $scope.newDegree = getNewDegree();
           $scope.refreshValidity();
         };
 

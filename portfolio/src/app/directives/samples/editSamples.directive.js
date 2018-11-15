@@ -25,15 +25,18 @@ angular.module('directives.editSamples', ['services.visibility'])
       },
       templateUrl: 'app/directives/samples/editSamples.html',
       link: function ($scope) {
-        var newSample = { visibility: Visibility.PUBLIC };
-        $scope.newSample = newSample;
+        function getNewSample() {
+          return { visibility: Visibility.PUBLIC };
+        }
+
+        $scope.newSample = getNewSample();
 
         $scope.addSample = function (sample) {
           sample.id = Date.now();
           sample.title = '';
           sample.description = '';
           $scope.samples.push(sample);
-          $scope.newSample = newSample;
+          $scope.newSample = getNewSample();
           $scope.onChange();
         };
 
