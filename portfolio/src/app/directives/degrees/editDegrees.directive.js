@@ -17,16 +17,20 @@
 
 'use strict';
 
-angular.module('directives.editDegrees', [])
+angular.module('directives.editDegrees', ['services.visibility'])
 
-  .directive('editDegrees', function () {
+  .directive('editDegrees', function (Visibility) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/degrees/editDegrees.html',
       link: function ($scope) {
+        function getNewDegree() {
+          return { visibility: Visibility.PUBLIC };
+        }
+        $scope.newDegree = getNewDegree();
         $scope.addDegree = function (degree) {
           $scope.degrees.push(degree);
-          $scope.newDegree = {};
+          $scope.newDegree = getNewDegree();
           $scope.refreshValidity();
         };
 

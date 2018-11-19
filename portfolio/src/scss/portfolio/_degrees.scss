@@ -49,6 +49,11 @@ $degree-invalid-color: red;
       right: 1em;
     }
 
+    .item-visibility {
+      position: absolute;
+      right: 3em;
+    }
+
     input, textarea {
       &.ng-invalid {
         outline: 2px solid $degree-invalid-color;

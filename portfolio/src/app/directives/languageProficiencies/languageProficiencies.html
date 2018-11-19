@@ -75,6 +75,9 @@
           </div>
         </div>
 
+        <item-visibility-toggle item="languageProficiency"
+                                callback="updateLanguageProficiency"
+                                ng-show="editing"></item-visibility-toggle>
         <a role="button" href="" class="language-proficiency-item__remove"
            aria-label="{{::('general.remove' | translate)}}"
            ng-show="editing"

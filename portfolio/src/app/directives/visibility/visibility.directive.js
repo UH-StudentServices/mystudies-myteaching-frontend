@@ -90,6 +90,33 @@ angular.module('directives.visibility',
     };
   })
 
+  .directive('itemVisibilityToggle', function (Visibility) {
+    return {
+      restrict: 'E',
+      replace: true,
+      scope: {
+        item: '=',
+        callback: '='
+      },
+      templateUrl: 'app/directives/visibility/itemVisibilityToggle.html',
+      link: function (scope) {
+        scope.Visibility = Visibility;
+        scope.visibility = scope.item.visibility;
+
+        scope.toggleVisibility = function () {
+          scope.item.visibility = scope.item.visibility === Visibility.PUBLIC
+            ? Visibility.PRIVATE
+            : Visibility.PUBLIC;
+          scope.visibility = scope.item.visibility;
+
+          if (typeof (scope.callback) === 'function') {
+            scope.callback(scope.item);
+          }
+        };
+      }
+    };
+  })
+
   .constant('VisibilityRoles', {
     TEACHER: function teacherOnly(PortfolioRoleService, PortfolioRole) {
       return PortfolioRoleService.isInRole(PortfolioRole.TEACHER);
