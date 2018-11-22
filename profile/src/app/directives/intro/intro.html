@@ -1,0 +1,51 @@
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<div class="page-banner-container" role="banner">
+  <div class="page-banner">
+    <div class="page-banner__image" ng-style="userBackgroundStyle">
+      <div class="page-banner__image-cover"></div>
+    </div>
+    <div class="profile-intro">
+      <div class="profile-intro__owner">
+        <div class="profile-intro__avatar">
+          <avatar-image></avatar-image>
+        </div>
+        <div class="profile-intro__owner-details">
+          <div class="component-header">
+            <h2 class="profile-intro__title">{{::profile.ownerName}}</h2>
+            <div class="component-header__actions">
+              <edit-link class="profile-intro__edit-link" on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
+            </div>
+          </div>
+          <div class="editable-wrapper">
+            <p class="profile-intro__intro user-text" ng-hide="editing" ng-bind="profile.intro"></p>
+            <textarea maxlength="150" ng-show="editing" ng-model="profile.intro"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-intro__keywords">
+        <keywords-summary limit-visibility="{componentId: 'STUDIES'}"></keywords-summary>
+        <work-experience-summary limit-visibility="{componentId: 'WORK_EXPERIENCE'}"></work-experience-summary>
+      </div>
+    </div>
+    <div class="page-banner__change-background-container">
+      <choose-background-button limit-visibility="PRIVATE"></choose-background-button>
+    </div>
+  </div>
+</div>

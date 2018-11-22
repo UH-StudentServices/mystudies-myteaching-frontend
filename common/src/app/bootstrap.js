@@ -24,15 +24,15 @@
   var CONFIG_RESOURCE_PATH = '/api/public/v1/configuration';
   var TIMEOUT = 5000;
   var ERROR_PAGE_PATH = '/error/maintenance';
-  var PORTFOLIO_PATH = '/profile';
+  var PROFILE_PATH = '/profile';
 
-  var isPortfolio = function () {
-    return location.pathname.indexOf(PORTFOLIO_PATH) !== -1;
+  var isProfile = function () {
+    return location.pathname.indexOf(PROFILE_PATH) !== -1;
   };
 
-  var RESOLVED_ERROR_PAGE_PATH = isPortfolio() ? PORTFOLIO_PATH + ERROR_PAGE_PATH : ERROR_PAGE_PATH;
+  var RESOLVED_ERROR_PAGE_PATH = isProfile() ? PROFILE_PATH + ERROR_PAGE_PATH : ERROR_PAGE_PATH;
 
-  var NG_APP_NAME = isPortfolio() ? 'opintoniPortfolioApp' : 'opintoniApp';
+  var NG_APP_NAME = isProfile() ? 'opintoniProfileApp' : 'opintoniApp';
 
   var bootstrap = function (res) {
     angular.element(document).ready(function () {

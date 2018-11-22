@@ -8,12 +8,12 @@ bower_components
 *.iws
 build/
 main/src/app/templates.js
-portfolio/src/app/templates.js
+profile/src/app/templates.js
 main/src/assets/styles/main.css
-portfolio/src/assets/styles/main.css
+profile/src/assets/styles/main.css
 .sass-cache/
 main/dist/
-portfolio/dist
+profile/dist
 .DS_Store
 npm-debug.log
 screenshots

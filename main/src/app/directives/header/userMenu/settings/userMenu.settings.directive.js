@@ -19,7 +19,7 @@ angular.module('directives.userMenu.settings', [
   'uib/template/modal/window.html',
   'angular-flexslider',
   'services.userSettings',
-  'services.portfolio',
+  'services.profile',
   'services.session',
   'directives.userMenu.settings.avatar',
   'webcam',
@@ -35,7 +35,7 @@ angular.module('directives.userMenu.settings', [
     Upload,
     userAvatarUpdatedEvent,
     UserSettingsService,
-    PortfolioService,
+    ProfileService,
     SessionService,
     BrowserUtil,
     Role) {
@@ -57,14 +57,14 @@ angular.module('directives.userMenu.settings', [
           $scope.session = session;
         });
 
-        $scope.openPortfolio = function (role) {
-          PortfolioService.getPortfolio(role).then(function getPortfolioSuccess(portfolio) {
-            $window.location.href = portfolio.url;
-          }).catch(function getPortfolioFail(data) {
+        $scope.openProfile = function (role) {
+          ProfileService.getProfile(role).then(function getProfileSuccess(profile) {
+            $window.location.href = profile.url;
+          }).catch(function getProfileFail(data) {
             if (data.status === 404) {
-              PortfolioService.createPortfolio(role)
-                .then(function createPortfolioSuccess(portfolio) {
-                  $window.location.href = portfolio.url;
+              ProfileService.createProfile(role)
+                .then(function createProfileSuccess(profile) {
+                  $window.location.href = profile.url;
                 });
             }
           });

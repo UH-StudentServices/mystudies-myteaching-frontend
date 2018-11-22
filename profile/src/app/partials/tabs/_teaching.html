@@ -1,0 +1,156 @@
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<div>
+  <div limit-visibility="{sectionName: 'TEACHING'}" class="tab-content__content-area">
+    <div class="tab-content__visibility-toggle">
+      <visibility-toggle section-name="TEACHING"></visibility-toggle>
+    </div>
+
+    <accordion heading-key="teachingTabAccordions.teachingExperience"
+               profile-lang="{{::profile.lang}}">
+      <section class="profile-section">
+        <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
+                                            sectionName: 'TEACHING',
+                                            instanceName: 'COURSES_TAUGHT'}"
+                           profile-section="TEACHING"
+                           instance-name="COURSES_TAUGHT"
+                           heading-key="teachingExperienceAccordionComponents.courses"
+                           profile-lang="{{::profile.lang}}">
+        </free-text-content>
+      </section>
+      <section class="profile-section">
+        <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
+                                            sectionName: 'TEACHING',
+                                            instanceName: 'THESIS_SUPERVISION'}"
+                           profile-section="TEACHING"
+                           instance-name="THESIS_SUPERVISION"
+                           heading-key="teachingExperienceAccordionComponents.thesisSupervision"
+                           profile-lang="{{::profile.lang}}">
+        </free-text-content>
+      </section>
+
+      <section class="profile-section">
+        <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
+                                            sectionName: 'TEACHING',
+                                            instanceName: 'PRACTICES'}"
+                           profile-section="TEACHING"
+                           instance-name="PRACTICES"
+                           heading-key="teachingExperienceAccordionComponents.practices"
+                           profile-lang="{{::profile.lang}}">
+        </free-text-content>
+      </section>
+
+      <section class="profile-section">
+        <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
+                                            sectionName: 'TEACHING',
+                                            instanceName: 'FEEDBACK'}"
+                           profile-section="TEACHING"
+                           instance-name="FEEDBACK"
+                           heading-key="teachingExperienceAccordionComponents.feedback"
+                           profile-lang="{{::profile.lang}}">
+        </free-text-content>
+      </section>
+    </accordion>
+
+    <accordion heading-key="teachingTabAccordions.pedagogicalTraining"
+               profile-lang="{{::profile.lang}}">
+      <section class="profile-section">
+        <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
+                                            sectionName: 'TEACHING',
+                                            instanceName: 'COURSES_COMPLETED'}"
+                           profile-section="TEACHING"
+                           instance-name="COURSES_COMPLETED"
+                           heading-key="pedagogicalTrainingAccordionComponents.courses"
+                           profile-lang="{{::profile.lang}}">
+        </free-text-content>
+      </section>
+    </accordion>
+
+    <accordion heading-key="teachingTabAccordions.materials"
+               profile-lang="{{::profile.lang}}">
+      <section class="profile-section">
+        <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
+                                            sectionName: 'TEACHING',
+                                            instanceName: 'MATERIALS'}"
+                           profile-section="TEACHING"
+                           instance-name="MATERIALS"
+                           heading-key="materialsAccordionComponents.materials"
+                           profile-lang="{{::profile.lang}}">
+        </free-text-content>
+      </section>
+    </accordion>
+
+    <accordion heading-key="teachingTabAccordions.accomplishments"
+               profile-lang="{{::profile.lang}}">
+      <section class="profile-section">
+        <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
+                                            sectionName: 'TEACHING',
+                                            instanceName: 'CURRICULUM_DESIGN'}"
+                           profile-section="TEACHING"
+                           instance-name="CURRICULUM_DESIGN"
+                           heading-key="accomplishmentsAccordionComponents.curriculumDesign"
+                           profile-lang="{{::profile.lang}}">
+        </free-text-content>
+      </section>
+
+      <section class="profile-section">
+        <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
+                                            sectionName: 'TEACHING',
+                                            instanceName: 'TEACHING_COLLABORATION'}"
+                           profile-section="TEACHING"
+                           instance-name="TEACHING_COLLABORATION"
+                           heading-key="accomplishmentsAccordionComponents.collaborativeTeaching"
+                           profile-lang="{{::profile.lang}}">
+        </free-text-content>
+      </section>
+
+      <section class="profile-section">
+        <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
+                                            sectionName: 'TEACHING',
+                                            instanceName: 'AWARDS'}"
+                           profile-section="TEACHING"
+                           instance-name="AWARDS"
+                           heading-key="accomplishmentsAccordionComponents.awards"
+                           profile-lang="{{::profile.lang}}">
+        </free-text-content>
+      </section>
+
+      <section class="profile-section">
+        <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
+                                            sectionName: 'TEACHING',
+                                            instanceName: 'RESEARCH'}"
+                           profile-section="TEACHING"
+                           instance-name="RESEARCH"
+                           heading-key="accomplishmentsAccordionComponents.research"
+                           profile-lang="{{::profile.lang}}">
+        </free-text-content>
+      </section>
+
+      <section class="profile-section">
+        <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
+                                              sectionName: 'TEACHING',
+                                              instanceName: 'ADVISING'}"
+                           profile-section="TEACHING"
+                           instance-name="ADVISING"
+                           heading-key="accomplishmentsAccordionComponents.advising"
+                           profile-lang="{{::profile.lang}}">
+        </free-text-content>
+      </section>
+    </accordion>
+  </div>
+</div>

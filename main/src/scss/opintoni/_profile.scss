@@ -1,0 +1,40 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+//
+// Profile
+// --------------------------------------------------
+
+
+
+.profile-header {
+  @include clearfix;
+  margin-bottom: 2em;
+}
+
+.profile-header__search {
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+@include breakpoint($small) {
+  .profile-header__title  { @include float-span(8, 'first'); }
+  .profile-header__search { @include float-span(4, 'last');
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+}

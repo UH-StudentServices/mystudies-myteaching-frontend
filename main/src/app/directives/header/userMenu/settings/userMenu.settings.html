@@ -28,15 +28,15 @@
         <avatar></avatar>
       </li>
       <li limit-visibility="['STUDENT_ONLY', 'MY_STUDIES_ONLY']" class="user-settings__menu-item" role="menuitem">
-        <a href="" ng-click="openPortfolio(roles.student)">
+        <a href="" ng-click="openProfile(roles.student)">
           <i class="in-menu-icon icon--profile"></i>
-          {{::('userSettings.portfolio' | translate | capitalize)}}
+          {{::('userSettings.profile' | translate | capitalize)}}
         </a>
       </li>
       <li limit-visibility="['TEACHER_ONLY', 'MY_TEACHINGS_ONLY']" class="user-settings__menu-item" role="menuitem">
-        <a href="" ng-click="openPortfolio(roles.teacher)">
+        <a href="" ng-click="openProfile(roles.teacher)">
           <i class="in-menu-icon icon--profile"></i>
-          {{::('userSettings.universityPortfolio' | translate | capitalize)}}
+          {{::('userSettings.universityProfile' | translate | capitalize)}}
         </a>
       </li>
 

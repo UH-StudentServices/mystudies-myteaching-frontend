@@ -1,0 +1,50 @@
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<sticky-message message-key="globalMessages.demoEnvNoticeMyStudies" environments="['demo']" limit-visibility="{roles: ['STUDENT']}"></sticky-message>
+<sticky-message message-key="globalMessages.demoEnvNoticeMyTeaching" environments="['demo']" limit-visibility="{roles: ['TEACHER']}"></sticky-message>
+
+<notifications notifications="notifications"></notifications>
+
+<header class="l-header">
+  <page-header></page-header>
+</header>
+
+<navigation></navigation>
+<preview-message></preview-message>
+
+<intro></intro>
+
+<div class="l-page island wrapper profile" ng-class="{'is-preview': isPreview}">
+  <div limit-visibility="{roles: ['STUDENT']}">
+    <div ng-include="'app/partials/_student.html'"></div>
+  </div>
+
+  <div limit-visibility="{roles: ['TEACHER']}">
+    <div ng-include="'app/partials/_teacher.html'"></div>
+  </div>
+</div>
+
+<div ng-if="userSettings.cookieConsent">
+  <feedback limit-visibility="PRIVATE" ></feedback>
+</div>
+
+<div ng-if="!userSettings.cookieConsent">
+  <cookie-notification limit-visibility="PRIVATE"></cookie-notification>
+</div>
+
+<footer role="contentinfo" ng-include="'app/partials/_page_footer.html'"></footer>

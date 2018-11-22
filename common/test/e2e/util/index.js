@@ -31,19 +31,19 @@ const loginAsUser = async (t, name, expectedWeekFeedHeader) => {
 
 const openAvatarMenu = async t => t.click(Selector('.user-avatar'));
 
-export const openPortfolio = async (t, portfolioLinkText, expectedPortfolioTitle) => {
-  const porfolioLinkSelector = Selector('a').withText(portfolioLinkText);
-  const portfolioStudiesSelector = Selector('.ui-component__studies');
-  const portfolioLinkSelector = Selector('.portfolio-intro__title');
-  const portfolioIntroSelector = portfolioLinkSelector.withText(expectedPortfolioTitle);
+export const openProfile = async (t, profileLinkText, expectedProfileTitle) => {
+  const porfolioLinkSelector = Selector('a').withText(profileLinkText);
+  const profileStudiesSelector = Selector('.ui-component__studies');
+  const profileLinkSelector = Selector('.profile-intro__title');
+  const profileIntroSelector = profileLinkSelector.withText(expectedProfileTitle);
 
 
   await openAvatarMenu(t);
   await t
     .click(porfolioLinkSelector)
-    .expect(portfolioIntroSelector.exists).ok()
-    .click(portfolioLinkSelector)
-    .expect(portfolioStudiesSelector.exists)
+    .expect(profileIntroSelector.exists).ok()
+    .click(profileLinkSelector)
+    .expect(profileStudiesSelector.exists)
     .ok();
 };
 
@@ -57,11 +57,11 @@ export const loginAsStudent = async t => {
     .expect(firstWeekFeedItem.exists).ok();
 };
 export const loginAsTeacher = async t => loginAsUser(t, 'Olli Opettaja', 'NYT OPETUKSESSANI');
-export const loginAndOpenPortfolio = async (t) => {
+export const loginAndOpenProfile = async (t) => {
   await loginAsStudent(t);
-  await openPortfolio(t, 'Portfolio', 'OLLI OPISKELIJA');
+  await openProfile(t, 'Portfolio', 'OLLI OPISKELIJA');
 };
-export const loginAndOpenAcademicPortfolio = async (t) => {
+export const loginAndOpenAcademicProfile = async (t) => {
   await loginAsTeacher(t);
-  await openPortfolio(t, 'Yliopistoportfolio', 'OLLI OPETTAJA');
+  await openProfile(t, 'Yliopistoportfolio', 'OLLI OPETTAJA');
 };

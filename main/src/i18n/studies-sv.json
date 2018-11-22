@@ -215,8 +215,8 @@
       "cancelPicture": "Annullera"
     },
     "changeBackground": "Byt bakgrundsbild",
-    "portfolio": "portfölj",
-    "universityPortfolio": "universitetsportfölj",
+    "profile": "portfölj",
+    "universityProfile": "universitetsportfölj",
     "ariaLabels": {
       "chooseBackgroundImage": "Välj bakgrundsbild"
     }
