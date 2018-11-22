@@ -1,7 +1,7 @@
 main/src/app/vendor
 main/dist
 main/src/app/templates.js
-portfolio/src/app/vendor
-portfolio/dist
-portfolio/src/app/templates.js
+profile/src/app/vendor
+profile/dist
+profile/src/app/templates.js
 common/src/app/vendor

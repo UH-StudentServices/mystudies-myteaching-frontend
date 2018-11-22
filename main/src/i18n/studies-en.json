@@ -215,8 +215,8 @@
       "cancelPicture": "Cancel"
     },
     "changeBackground": "change background image",
-    "portfolio": "portfolio",
-    "universityPortfolio": "academic portfolio",
+    "profile": "portfolio",
+    "universityProfile": "academic portfolio",
     "ariaLabels" : {
       "chooseBackgroundImage" : "choose background image"
     }

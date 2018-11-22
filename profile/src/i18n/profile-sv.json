@@ -1,0 +1,237 @@
+{
+  "general": {
+    "edit": "redigera",
+    "done": "färdig",
+    "add": "lägg till",
+    "addNew": "lägg till",
+    "remove": "radera",
+    "ok": "Ok",
+    "login": "logga in",
+    "save": "spara",
+    "cancel": "avbryt",
+    "showMore": "mer",
+    "showLess": "mindre",
+    "students": "studerande",
+    "teachers": "lärare",
+    "helsinkiUniversity": "Helsingfors universitet",
+    "reallyDelete": "Radera?",
+    "close": "Stäng",
+    "copyToClipboard" : "kopiera till klippbordet",
+    "copyToClipboardSuccess" : "Kopierad",
+    "copyToClipboardFailMac" : "Klicka ⌘-C för att kopiera",
+    "copyToClipboardFailOther" : "Klicka Ctrl-C för att kopiera",
+    "expires": "Upphör",
+    "expired": "Upphört"
+  },
+  "pageHeaderLinks": {
+    "flamma": "flamma",
+    "city": "Helsingfors stad"
+  },
+  "pageFooter": {
+    "contact": "kontaktinformation",
+    "library": "bibliotek",
+    "addressLine1": "PL 3 (Fabiansgatan 33)",
+    "addressLine2": "00014 Helsingfors universitet",
+    "telephoneExchange": "Växel"
+  },
+  "toolbar": {
+    "home": "hem",
+    "helsinkiUniversity": "Helsingfors universitet"
+  },
+  "visibility": {
+    "PRIVATE": "privat",
+    "RESTRICTED": "HU andvändare",
+    "PUBLIC": "allmän",
+    "toPublic" : "ändra till offentligt",
+    "toPrivate" : "ändra  till privat"
+  },
+  "keywords": {
+    "title": "nyckelord",
+    "addNewPlaceholder": "Lägg till nyckelord",
+    "enterNew": "skriv ett nyckelord",
+    "addNew": "lägg till nyckelord"
+  },
+  "contactInformation": {
+    "title": "Kontakta mig",
+    "addPhoneNumber": "Lägg till telefonnummer",
+    "addEmail": "Lägg till e-post",
+    "addTitle": "Lägg till befattning",
+    "addFaculty": "Lägg till fakultet",
+    "addFinancialUnit": "Lägg till enhet",
+    "addWorkAddress": "Lägg till adress",
+    "addWorkPostcode": "Lägg till postnummer och adressort",
+    "addWorkMobile": "Lägg till telefonnummer",
+    "reload": "Uppdatera kontaktuppgifter",
+    "phoneNumber": "Tel.",
+    "FACEBOOK": "Facebook",
+    "YOUTUBE": "Youtube",
+    "TWITTER": "Twitter",
+    "TUHAT": "Tuhat",
+    "RESEARCH_GATE": "ResearchGate",
+    "ACADEMIA": "Academia.edu",
+    "LINKEDIN": "LinkedIn",
+    "WEBSITE_LINK": "Webbsidans länk"
+  },
+  "degrees": {
+    "title": "Examen",
+    "dateLabel": "Datum ",
+    "datePlaceholder": "Lägg till datum, t.ex. 31 maj 2018 eller 05/2018",
+    "institutionLabel": "Institut",
+    "institutionPlaceholder": "Lägg till institut",
+    "titleLabel": "Examen",
+    "titlePlaceholder": "Lägg till examen",
+    "descriptionLabel": "Beskriving",
+    "descriptionPlaceholder": "Lägg till beskrivning",
+    "addNewPlaceholder": "Lägg till examen"
+  },
+  "studies": {
+    "title": "Studier"
+  },
+  "workExperience": {
+    "title": "arbetslivserfarenhet",
+    "addWorkExperience": "Lägg till arbetsgivare",
+    "addJobSearch": "Lägg till söker job",
+    "jobSearch": "söker job",
+    "employer": "Arbetsgivare",
+    "startDatePlaceholder": "mm/yyyy",
+    "endDatePlaceholder": "mm/yyyy",
+    "jobTitle": "Jobbtitel",
+    "employerUrl": "Arbetsgivares websidan",
+    "text": "Beskrivning",
+    "descriptionPlaceholder": "Lägg till beskrivning",
+    "showMore": "mer",
+    "showLess": "mindre",
+    "contactEmail": "contact email",
+    "jobSearchHeadline": "rubrik",
+    "dateOfEmployment": "Anställningstid"
+  },
+  "samples": {
+    "title": "Prover",
+    "addSample": "Lägg till prov",
+    "sampleTitle": "Rubrik",
+    "sampleDescription": "Beskrivning",
+    "descriptionPlaceholder": "beskrivningstext"
+  },
+  "attainments": {
+    "attainments": "Prestationer",
+    "seeMoreLink": "se en lista över dina prestationer i WebOodi"
+  },
+  "buttons": {
+    "showMore": "Visa mer"
+  },
+  "errorPage": {
+    "notFound": {
+      "title": "sidan hittas inte",
+      "description": "Sidan du söker efter finns inte."
+    },
+    "maintenance": {
+      "title": "under underhåll",
+      "description": "sidan är för närvarande under underhåll."
+    },
+    "loginNeeded": {
+      "title": "login needed",
+      "description": "Portfolio du letar efter kan begränsas till användarna av Helsingfors universitet. Vänligen logga in.",
+      "disclaimer": "Med Firefox-webbläsaren kan du behöva öppna länken efter inloggningen. Om portföljen är fortfarande inte nås, kontakta författaren."
+    }
+  },
+  "preview": {
+    "enterPreview": "förhandsvisning",
+    "info": "detta är hur din portfölj ser till andra om det publiceras.",
+    "exit": "Stäng förhandsvisning",
+    "printAndShare": "Utskriva & Dela",
+    "printAndShareInfo": "Du kan utskriva din portföjl till PDF, spara den till dator och sicka den via e-post."
+  },
+  "freeTextContent": {
+    "defaultTitle": "Lägg till rubrik",
+    "defaultText": "Lägg till innehåll",
+    "fileUploadError": "Fel i filuppladdning",
+    "addFromUploads": "Lägg till från mina uppladdade filer"
+  },
+  "feedback": {
+    "title": "Feedback",
+    "submit": "Skicka",
+    "submitted": "Tack",
+    "anonymous": "Jag vill vara anonym"
+  },
+  "cookieNotification": {
+    "notification": "Denna webbplats använder cookies för att erbjuda dig den bästa upplevelsen.",
+    "readMore": "Du kan läsa mer här"
+  },
+  "languages": {
+    "title": "Språk",
+    "languagePlaceholder": "Kieli (sv)",
+    "proficiencyPlaceholder": "Taitotaso (sv)",
+    "descriptionPlaceholder": "Lisätietoja (sv)",
+    "code": {
+      "en": "Engelska",
+      "fi": "Finska",
+      "sv": "Svenska"
+    }
+  },
+  "skillsAndExpertise": {
+    "title": "Kompetens och expertis"
+  },
+  "tabs": {
+    "basicInformation": "Basuppgifter",
+    "research": "Forskning och vetenskaplig verksamhet",
+    "teaching": "Undervisning och handledning",
+    "administration": "Förvaltningsuppgifter och andra uppgifter"
+  },
+  "teachingTabAccordions": {
+    "teachingExperience": "Undervisningserfarenhet",
+    "pedagogicalTraining": "Pedagogisk utbildning",
+    "materials": "Läromedel",
+    "accomplishments": "Andra undervisningsmeriter"
+  },
+  "teachingExperienceAccordionComponents": {
+    "courses": "Kursbaserad undervisning",
+    "thesisSupervision": "Handledning av examensarbete",
+    "practices": "Undervisnings- och utvärderingsmetoder",
+    "feedback": "Insamling och utnyttjande av respons vid utvecklingen av undervisning"
+  },
+  "pedagogicalTrainingAccordionComponents": {
+    "courses": "Avlagda kurser"
+  },
+  "materialsAccordionComponents": {
+    "materials": "Förmåga at utveckla och använda läromedel"
+  },
+  "accomplishmentsAccordionComponents": {
+    "curriculumDesign": "Aktivt deltagande i utvecklings- och kvalitetsarbete",
+    "collaborativeTeaching": "Samarbete och nätverk inom undervisning",
+    "awards": "Priser och utmärkelser",
+    "research": "Pedagogisk forskning",
+    "advising": "Uppdrag som sakkunnig angående undervisning och forskning"
+  },
+  "globalMessages": {
+    "demoEnvNoticeMyStudies": "Obs! Detta är en demomiljö och information är inte korrekt. För rätt information gå till <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>",
+    "demoEnvNoticeMyTeaching": "Obs! Detta är en demomiljö och information är inte korrekt. För rätt information gå till <a href='http://teacher.helsinki.fi'>http://teacher.helsinki.fi</a>"
+  },
+  "personalInformation": {
+    "title": "Personalia"
+  },
+  "languageSelector": {
+    "confirmation": "Denna portfölj är i {{lang}}. Vill du skapa en ny portfölj på ett annat språk?",
+    "selectionPrompt": "Välj språk för din nya portfölj:"
+  },
+  "upload" : {
+    "privacyMessage": "Den uppladdade bilden används också i andra HUs tjänster (t.ex. Opinder) och bilden får en publik länk."
+  },
+  "pageBanner": {
+    "chooseDefaultBackground": "Välj av standardbilder",
+    "uploadFile": "Ladda up fil"
+  },
+  "files": {
+    "fileBrowserTitle": "Mina uppladdade filer",
+    "deleteFile": "Radera fil"
+  },
+  "settings": {
+    "title": "Inställningar",
+    "browseUploadedFiles": "Bläddra i mina filer"
+  },
+  "sharedLinks": {
+    "shareProfile": "Dela med länk",
+    "dialogTitle": "Dela med länk",
+    "addNewLink": "Skapa ny länk",
+    "expiryDatePlaceholder": "Länk giltighets t.ex. 24.6.2020 12:00"
+  }
+}

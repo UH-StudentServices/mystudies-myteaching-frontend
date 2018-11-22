@@ -1,0 +1,249 @@
+<!doctype html>
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<html current-lang>
+<head>
+    <base href="/profile/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="msapplication-TileImage144x144logo" content="assets/icons/mobile-icons/mstile-144x144.png" />
+    <meta name="msapplication-square150x150logo" content="assets/icons/mobile-icons/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="assets/icons/mobile-icons/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="assets/icons/mobile-icons/mstile-310x310.png" />
+    <meta name="msapplication-square70x70logo" content="assets/icons/mobile-icons/mstile-70x70.png" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+
+    <meta name="referrer" content="origin-when-cross-origin">
+
+    <title></title>
+
+    <!-- build:css assets/styles/main.css -->
+    <link rel="stylesheet" href="../../bower_components/normalize.css/normalize.css"/>
+    <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="stylesheet" type="text/css" href="../../bower_components/flexslider/flexslider.css">
+    <link rel="stylesheet" type="text/css" href="../../bower_components/cropper/dist/cropper.css">
+    <link rel="stylesheet" type="text/css" href="../../bower_components/ngEmbed/dist/ng-embed.min.css">
+    <link rel="stylesheet" type="text/css" href="../../bower_components/ng-sortable/dist/ng-sortable.css">
+    <!-- endbuild -->
+
+    <!-- External stylesheets -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+
+    <link rel="icon" href="assets/images/ui/hy_favicon.ico" type="image/x-icon">
+
+    <link rel="apple-touch-icon" href="assets/icons/mobile-icons/apple-touch-icon-114x114.png" sizes="114x114" />
+    <link rel="apple-touch-icon" href="assets/icons/mobile-icons/apple-touch-icon-120x120.png" sizes="120x120" />
+    <link rel="apple-touch-icon" href="assets/icons/mobile-icons/apple-touch-icon-144x144.png" sizes="144x144" />
+    <link rel="apple-touch-icon" href="assets/icons/mobile-icons/apple-touch-icon-152x152.png" sizes="152x152" />
+    <link rel="apple-touch-icon" href="assets/icons/mobile-icons/apple-touch-icon-57x57.png" sizes="57x57" />
+    <link rel="apple-touch-icon" href="assets/icons/mobile-icons/apple-touch-icon-60x60.png" sizes="60x60" />
+    <link rel="apple-touch-icon" href="assets/icons/mobile-icons/apple-touch-icon-72x72.png" sizes="72x72" />
+    <link rel="apple-touch-icon" href="assets/icons/mobile-icons/apple-touch-icon-76x76.png" sizes="76x76" />
+    <link rel="apple-touch-icon-precomposed" href="assets/icons/mobile-icons/apple-touch-icon-precomposed.png" />
+    <link rel="apple-touch-icon" href="assets/icons/mobile-icons/apple-touch-icon.png" />
+    <link rel="icon" href="assets/icons/mobile-icons/favicon-160x160.png" type="image/png" sizes="160x160" />
+    <link rel="icon" href="assets/icons/mobile-icons/favicon-16x16.png" type="image/png" sizes="16x16" />
+    <link rel="icon" href="assets/icons/mobile-icons/favicon-196x196.png" type="image/png" sizes="196x196" />
+    <link rel="icon" href="assets/icons/mobile-icons/favicon-32x32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="assets/icons/mobile-icons/favicon-96x96.png" type="image/png" sizes="96x96" />
+    <link rel="shortcut icon" href="assets/images/ui/hy_favicon.ico" />
+
+    <!-- build:js app/newrelic.js -->
+    <script src="../../common/src/app/newrelic.js"></script>
+    <!-- endbuild -->
+</head>
+<body>
+<!--[if lt IE 9]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div ui-view></div>
+
+<!-- build:js app/vendor.js -->
+<script src="../../bower_components/modernizr/modernizr.js"></script>
+<script src="../../bower_components/jquery/dist/jquery.js"></script>
+<script src="../../bower_components/flexslider/jquery.flexslider.js"></script>
+<script src="../../bower_components/angular/angular.js"></script>
+<script src="../../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="../../bower_components/angular-resource/angular-resource.js"></script>
+<script src="../../bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="../../bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="../../bower_components/angular-translate/angular-translate.js"></script>
+<script src="../../bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+<script src="../../bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+<script src="../../bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+<script src="../../bower_components/fastclick/lib/fastclick.js"></script>
+<script src="../../bower_components/angular-animate/angular-animate.js"></script>
+<script src="../../bower_components/angular-ui-utils/ui-utils.js"></script>
+<script src="../../bower_components/moment/min/moment-with-locales.min.js"></script>
+<script src="../../bower_components/angular-aria/angular-aria.js"></script>
+<script src="../../bower_components/lodash/lodash.js"></script>
+<script src="../../bower_components/angular-google-analytics/dist/angular-google-analytics.min.js"></script>
+<script src="../../bower_components/angular-ellipsis/src/angular-ellipsis.js"></script>
+<script src="../../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="../../bower_components/angular-flexslider/angular-flexslider.js"></script>
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../../bower_components/rxjs/dist/rx.js"></script>
+<script src="../../bower_components/rxjs/dist/rx.binding.js"></script>
+<script src="../../bower_components/es6-promise-polyfill/promise.min.js"></script>
+<script src="../../bower_components/angular-click-outside/clickoutside.directive.js"></script>
+<script src="../../bower_components/Stickyfill/dist/stickyfill.js"></script>
+<script src="../../bower_components/ng-sortable/dist/ng-sortable.js"></script>
+<script src="../../bower_components/cropper/dist/cropper.js"></script>
+<script src="../../bower_components/tinymce/tinymce.js"></script>
+<script src="../../bower_components/angular-ui-tinymce/src/tinymce.js"></script>
+<script src="../../bower_components/tinymce/themes/modern/theme.js"></script>
+<script src="../../bower_components/tinymce/plugins/image/plugin.js"></script>
+<script src="../../bower_components/tinymce/plugins/link/plugin.js"></script>
+<script src="../../bower_components/tinymce/plugins/code/plugin.js"></script>
+<script src="../../bower_components/clipboard/dist/clipboard.js"></script>
+
+<script src="app/vendor/ng-file-upload/ng-file-upload.js"></script>
+<script src="app/vendor/ng-file-upload/ng-file-upload-shim.js"></script>
+<!-- Customized version of ng-embed to support unitube embedding -->
+<script src="../../common/src/app/vendor/ng-embed.js"></script>
+<!-- endbuild -->
+
+<!-- build:js app/app.js -->
+<script src="app/analytics/analytics.js"></script>
+<script src="../../common/src/app/bootstrap.js"></script>
+<script src="app/app.js"></script>
+<script src="app/templates.js"></script>
+<script src="app/errors/errors.js"></script>
+<script src="app/directives/accordion/accordion.directive.js"></script>
+<script src="app/directives/contactInformation/contactInformation.directive.js"></script>
+<script src="app/directives/dateInput/dateInput.directive.js"></script>
+<script src="app/directives/dateTimeInput/dateTimeInput.directive.js"></script>
+<script src="app/directives/degrees/degrees.directive.js"></script>
+<script src="app/directives/degrees/editDegrees.directive.js"></script>
+<script src="app/directives/degrees/showDegrees.directive.js"></script>
+<script src="app/directives/focus/focus.js"></script>
+<script src="app/directives/attainments/attainments.directive.js"></script>
+<script src="app/directives/pageHeader/pageHeader.js"></script>
+<script src="app/directives/intro/intro.directive.js"></script>
+<script src="app/directives/visibility/visibility.directive.js"></script>
+<script src="app/directives/imgLoad/imgLoad.directive.js"></script>
+<script src="app/directives/uploadImage/uploadImage.directive.js"></script>
+<script src="app/directives/chooseBackground/chooseBackground.directive.js"></script>
+<script src="app/directives/studies/keywords.directive.js"></script>
+<script src="app/directives/studies/studies.directive.js"></script>
+<script src="app/directives/inputUppercase/inputUppercase.directive.js"></script>
+<script src="app/directives/workExperience/workExperience.directive.js"></script>
+<script src="app/directives/workExperience/editWorkExperience.directive.js"></script>
+<script src="app/directives/workExperience/showWorkExperience.directive.js"></script>
+<script src="app/directives/samples/samples.directive.js"></script>
+<script src="app/directives/samples/editSamples.directive.js"></script>
+<script src="app/directives/samples/showSamples.directive.js"></script>
+<script src="app/directives/navigation/navigation.directive.js"></script>
+<script src="app/directives/avatarImage/avatarImage.directive.js"></script>
+<script src="app/directives/preview/previewButton.directive.js"></script>
+<script src="app/directives/preview/previewMessage.directive.js"></script>
+<script src="app/directives/preview/printButton.directive.js"></script>
+<script src="app/directives/freeTextContent/freeTextContent.directive.js"></script>
+<script src="app/directives/freeTextContent/addFreeTextContent.directive.js"></script>
+<script src="app/directives/languageProficiencies/languageProficiencies.directive.js"></script>
+<script src="app/directives/feedback/feedback.directive.js"></script>
+<script src="app/directives/languageSelector/languageSelector.directive.js"></script>
+<script src="app/directives/tabSet/tabSet.directive.js"></script>
+<script src="app/directives/editableHeading/editableHeading.directive.js"></script>
+<script src="app/directives/browseFiles/browseFiles.directive.js"></script>
+<script src="app/directives/sharedLinks/sharedLinks.directive.js"></script>
+<script src="../../common/src/app/directives/popover/popover.directive.js"></script>
+<script src="../../common/src/app/directives/helpIcon/helpIcon.directive.js"></script>
+<script src="../../common/src/app/directives/cookieNotification/cookieNotification.directive.js"></script>
+<script src="../../common/src/app/directives/scrollableTabBar/scrollableTabBar.directive.js"></script>
+<script src="../../common/src/app/directives/messages/message.directive.js"></script>
+<script src="../../common/src/app/directives/messages/stickyMessage.directive.js"></script>
+<script src="../../common/src/app/directives/messages/notifications.directive.js"></script>
+<script src="../../common/src/app/directives/dropdown/dropdown.directive.js"></script>
+<script src="../../common/src/app/directives/menuLanguage/menuLanguage.js"></script>
+<script src="../../common/src/app/directives/currentLang/currentLang.directive.js"></script>
+<script src="../../common/src/app/resources/notifications.resource.js"></script>
+<script src="../../common/src/app/directives/editLink/editLink.directive.js"></script>
+<script src="../../common/src/app/dialog/verificationDialog.js"></script>
+<script src="../../common/src/app/directives/clipboard/clipboard.directive.js"></script>
+
+<script src="../../common/src/app/constants/commonExternalLinks.js"></script>
+<script src="../../common/src/app/constants/ngEmbedOptions.js"></script>
+<script src="app/constants/externalLinks.js"></script>
+<script src="app/constants/tabs.js"></script>
+
+<script src="app/filters/formatting.js"></script>
+<script src="../../common/src/app/filters/moment.filter.js"></script>
+<script src="app/constants/language.js"></script>
+<script src="../../common/src/app/services/language.service.js"></script>
+
+<script src="app/controllers/main.js"></script>
+<script src="app/controllers/tinymce.js"></script>
+
+<script src="app/resources/contactInformation.resource.js"></script>
+<script src="app/resources/degree.resource.js"></script>
+<script src="app/resources/session.resource.js"></script>
+<script src="app/resources/profile.resource.js"></script>
+<script src="app/resources/keyword.resource.js"></script>
+<script src="app/resources/summary.resource.js"></script>
+<script src="app/resources/userSettings.resource.js"></script>
+<script src="app/resources/workExperience.resource.js"></script>
+<script src="app/resources/samples.resource.js"></script>
+<script src="app/resources/attainment.resource.js"></script>
+<script src="app/resources/visibility.resource.js"></script>
+<script src="app/resources/componentOrder.resource.js"></script>
+<script src="app/resources/componentHeading.resource.js"></script>
+<script src="app/resources/httpInterceptor.js"></script>
+<script src="app/resources/freeTextContent.resource.js"></script>
+<script src="app/resources/languageProficiencies.resource.js"></script>
+<script src="app/resources/feedback.resource.js"></script>
+<script src="app/resources/profileBackground.resource.js"></script>
+<script src="app/resources/profileFiles.resource.js"></script>
+<script src="app/resources/sharedLinks.resource.js"></script>
+
+<script src="../../common/src/app/providers/analytics.provider.js"></script>
+
+<script src="app/services/contactInformation.service.js"></script>
+<script src="app/services/degree.service.js"></script>
+<script src="app/services/session.service.js"></script>
+<script src="app/services/profile.service.js"></script>
+<script src="app/services/state.service.js"></script>
+<script src="app/services/keyword.service.js"></script>
+<script src="app/services/focus.service.js"></script>
+<script src="../../common/src/app/services/configuration.service.js"></script>
+<script src="../../common/src/app/services/scriptInjector.service.js"></script>
+<script src="app/services/summary.service.js"></script>
+<script src="app/services/userSettings.service.js"></script>
+<script src="app/services/workExperience.service.js"></script>
+<script src="app/services/samples.service.js"></script>
+<script src="app/services/visibility.service.js"></script>
+<script src="app/services/componentOrder.service.js"></script>
+<script src="app/services/componentHeading.service.js"></script>
+<script src="app/services/preview.service.js"></script>
+<script src="app/services/freeTextContent.service.js"></script>
+<script src="app/services/profileRole.service.js"></script>
+<script src="app/services/languageProficiencies.service.js"></script>
+<script src="app/services/login.service.js"></script>
+<script src="app/services/profileBackground.service.js"></script>
+<script src="app/services/profileFiles.service.js"></script>
+<script src="app/services/sharedLinks.service.js"></script>
+
+<script src="../../common/src/app/utils/browser.util.js"></script>
+<script src="../../common/src/app/utils/moment.util.js"></script>
+<script src="../../common/src/app/utils/validator.util.js"></script>
+
+<!-- endbuild -->
+
+</body>
+</html>

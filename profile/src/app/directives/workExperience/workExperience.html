@@ -1,0 +1,35 @@
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<div class="ui-component editable-wrapper">
+  <div class="component-header">
+    <editable-heading component-id="WORK_EXPERIENCE"
+                      default-text="workExperience.title"
+                      profile-lang="{{::profileLang}}"
+                      editing="editing"></editable-heading>
+    <div class="component-header__actions">
+      <visibility-toggle component-id="WORK_EXPERIENCE" section-name="{{::sectionName}}"></visibility-toggle>
+      <edit-link on-edit="edit()"
+        on-exit-edit="exitEdit()"
+        exit-edit-disabled="!workExperienceValid"
+        on-disabled-exit-edit="markAllSubmitted()"></edit-link>
+    </div>
+  </div>
+
+  <show-work-experience ng-show="!editing"></show-work-experience>
+  <edit-work-experience ng-show="editing"></edit-work-experience>
+</div>

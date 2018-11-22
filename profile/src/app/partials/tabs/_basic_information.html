@@ -1,0 +1,68 @@
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<div>
+  <div limit-visibility="{sectionName: 'BASIC_INFORMATION'}" class="tab-content__content-area">
+    <div class="tab-content__visibility-toggle">
+      <visibility-toggle section-name="BASIC_INFORMATION"></visibility-toggle>
+    </div>
+
+    <section class="profile-section">
+      <studies limit-visibility="{componentId: 'STUDIES', sectionName: 'BASIC_INFORMATION'}"
+               summary-data="profile.summary"
+               profile-id="{{::profile.id}}"
+               profile-lang="{{::profile.lang}}">
+      </studies>
+    </section>
+
+    <section class="profile-section">
+      <language-proficiencies limit-visibility="{componentId: 'LANGUAGE_PROFICIENCIES', sectionName: 'BASIC_INFORMATION'}"
+                              section-name="BASIC_INFORMATION"
+                              language-proficiencies-data="profile.languageProficiencies"
+                              profile-lang="{{::profile.lang}}">
+      </language-proficiencies>
+    </section>
+
+    <section class="profile-section">
+      <work-experience limit-visibility="{componentId: 'WORK_EXPERIENCE', sectionName: 'BASIC_INFORMATION'}"
+                       section-name="BASIC_INFORMATION"
+                       work-experience-data="profile.workExperience"
+                       profile-id="{{::profile.id}}"
+                       profile-lang="{{::profile.lang}}">
+      </work-experience>
+    </section>
+
+    <section class="profile-section">
+      <degrees limit-visibility="{componentId: 'DEGREES', sectionName: 'BASIC_INFORMATION'}"
+               section-name="BASIC_INFORMATION"
+               degrees-data="profile.degrees"
+               profile-id="{{::profile.id}}"
+               profile-lang="{{::profile.lang}}">
+      </degrees>
+    </section>
+
+    <section class="profile-section">
+      <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
+                                            sectionName: 'BASIC_INFORMATION',
+                                            instanceName: 'GENERAL'}"
+                         profile-section="BASIC_INFORMATION"
+                         instance-name="GENERAL">
+      </free-text-content>
+    </section>
+
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<div class="keywords-container">
+  <div ng-if="editing">
+    <div>
+      <label class="keywords-label"
+             translate="keywords.title"
+             for="add-new-profile-keyword">
+      </label>
+
+      <div class="keywords-input-container">
+        <input class="keywords-input-container__input"
+               id="add-new-profile-keyword"
+               ng-model="newKeyword.title"
+               ui-keypress="{'enter':'addKeyword(newKeyword.title)'}"
+               type="text"
+               placeholder="{{::('keywords.addNewPlaceholder' | translate)}}"
+               aria-label="{{::('keywords.enterNew' | translate)}}"
+               maxlength="50"
+               input-uppercase>
+        <button class="keywords-input-container__btn icon--plus"
+                aria-label="{{::('keywords.addNew' | translate)}}"
+                ng-click="addKeyword(newKeyword.title)">
+        </button>
+      </div>
+    </div>
+    <div ng-include="'app/directives/studies/keywordItems.html'"></div>
+  </div>
+
+  <div ng-if="!editing">
+    <div ng-include="'app/directives/studies/keywordItems.html'"></div>
+  </div>
+</div>

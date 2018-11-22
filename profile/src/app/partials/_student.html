@@ -1,0 +1,114 @@
+<!--
+  ~ This file is part of MystudiesMyteaching application.
+  ~
+  ~ MystudiesMyteaching application is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ MystudiesMyteaching application is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<div class="l-multi-col-content-wrapper">
+  <div class="l-content-primary-wrapper ">
+    <div class="profile-components__dropzone"
+         ng-model="profileSections"
+         as-sortable="sortableOptions"
+         is-disabled="sectionSortDisabled"
+         ng-class="{'drag-disabled': sectionSortDisabled}">
+      <section ng-repeat="section in profileSections"
+               class="profile-section"
+               as-sortable-item>
+        <div ng-switch on="section.component" class="profile-section__outer-container">
+          <span class="profile-section__drag-handle" as-sortable-item-handle ></span>
+          <div ng-switch-when="STUDIES" class="profile-section__body">
+            <studies limit-visibility="{componentId: 'STUDIES'}"
+                     summary-data="profile.summary"
+                     profile-id="{{::profile.id}}"
+                     profile-lang="{{::profile.lang}}">
+            </studies>
+          </div>
+
+          <div ng-switch-when="DEGREES" class="profile-section__body">
+            <degrees limit-visibility="{componentId: 'DEGREES'}"
+                     degrees-data="profile.degrees"
+                     profile-id="{{::profile.id}}"
+                     profile-lang="{{::profile.lang}}">
+            </degrees>
+          </div>
+
+          <div ng-switch-when="WORK_EXPERIENCE" class="profile-section__body">
+            <work-experience limit-visibility="{componentId: 'WORK_EXPERIENCE'}"
+                             work-experience-data="profile.workExperience"
+                             profile-id="{{::profile.id}}"
+                             profile-lang="{{::profile.lang}}">
+            </work-experience>
+          </div>
+
+          <div ng-switch-when="SAMPLES" class="profile-section__body">
+            <samples limit-visibility="{componentId: 'SAMPLES'}"
+                     samples-data="profile.samples"
+                     profile-id="{{::profile.id}}"
+                     profile-lang="{{::profile.lang}}">
+            </samples>
+          </div>
+
+          <div ng-switch-when="FREE_TEXT_CONTENT" class="profile-section__body">
+            <div ng-if="section.instanceName === 'SKILLS_AND_EXPERTISE'">
+              <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
+                                                    instanceName: 'SKILLS_AND_EXPERTISE'}"
+                                 heading-key="skillsAndExpertise.title"
+                                 instance-name="SKILLS_AND_EXPERTISE"
+                                 profile-lang="{{::profile.lang}}">
+              </free-text-content>
+            </div>
+            <div ng-if="section.instanceName !== 'SKILLS_AND_EXPERTISE'">
+              <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
+                                                    instanceName: section.instanceName}"
+                                 instance-name="{{section.instanceName}}"
+                                 deletable="true">
+              </free-text-content>
+            </div>
+          </div>
+
+          <div ng-switch-when="ATTAINMENTS" class="profile-section__body">
+            <attainments limit-visibility="{componentId: 'ATTAINMENTS'}"
+                         profile-id="{{::profile.id}}"
+                         profile-lang="{{::profile.lang}}">
+            </attainments>
+          </div>
+
+          <div ng-switch-when="LANGUAGE_PROFICIENCIES" class="profile-section__body">
+            <language-proficiencies limit-visibility="{componentId: 'LANGUAGE_PROFICIENCIES'}"
+                                    language-proficiencies-data="profile.languageProficiencies"
+                                    profile-lang="{{::profile.lang}}">
+            </language-proficiencies>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <add-free-text-content></add-free-text-content>
+  </div>
+
+  <div class="l-content-secondary-wrapper">
+    <contact-information limit-visibility="{componentId: 'CONTACT_INFORMATION'}"
+                         contact-information-data="profile.contactInformation"
+                         owner-name="{{::profile.ownerName}}"
+                         profile-id="{{::profile.id}}"
+                         profile-lang="{{::profile.lang}}">
+    </contact-information>
+
+    <div limit-visibility="PRIVATE">
+      <h3 translate="settings.title"></h3>
+      <browse-files manage-files="true"></browse-files>
+      <shared-links></shared-links>
+    </div>
+  </div>
+</div>
