@@ -195,4 +195,31 @@ angular.module('directives.visibility',
           });
         }
       };
+    })
+  .directive('limitItemVisibility',
+    function ($animate,
+      Visibility,
+      PreviewService) {
+      return {
+        multiElement: true,
+        transclude: 'element',
+        priority: 600,
+        terminal: true,
+        restrict: 'A',
+        scope: { limitItemVisibility: '=' },
+        link: function (scope, $element, $attr, ctrl, $transclude) {
+          var isPreview = PreviewService.isPreview();
+          var item = scope.limitItemVisibility;
+
+          function isLimitedByPreview() {
+            return isPreview ? item.visibility === Visibility.PRIVATE : false;
+          }
+
+          if (!isLimitedByPreview()) {
+            $transclude(function (clone) {
+              $animate.enter(clone, $element.parent(), $element);
+            });
+          }
+        }
+      };
     });

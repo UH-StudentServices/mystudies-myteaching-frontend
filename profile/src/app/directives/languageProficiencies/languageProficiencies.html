@@ -30,7 +30,8 @@
   <ul class="language-proficiency-list" ng-class="{editing : editing}">
     <li ng-repeat="languageProficiency in languageProficiencies"
         class="language-proficiency-item"
-        data-id="{{::languageProficiency.id}}">
+        data-id="{{::languageProficiency.id}}"
+        limit-item-visibility="languageProficiency">
 
         <div class="language-proficiency-item__content">
           <div class="language-proficiency-item__language-name">
