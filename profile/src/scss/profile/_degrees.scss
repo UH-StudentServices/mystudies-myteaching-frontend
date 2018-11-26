@@ -110,3 +110,9 @@ $degree-invalid-color: red;
 .degree__description {
   @extend .box-data__content;
 }
+
+.degree__private {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}

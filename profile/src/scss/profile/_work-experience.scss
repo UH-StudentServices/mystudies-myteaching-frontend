@@ -110,6 +110,8 @@ input.work-experience__date-input {
 }
 
 .work-experience {
+  position: relative;
+
   &__default_image {
     font-size: 3em;
     color: $blue;
@@ -161,6 +163,13 @@ input.work-experience__date-input {
     label {
       color: $black;
     }
+  }
+
+  &__private {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    color: $darkgray;
   }
 
   .item-visibility {

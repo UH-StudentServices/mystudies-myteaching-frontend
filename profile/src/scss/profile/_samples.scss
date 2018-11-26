@@ -82,6 +82,13 @@
     }
   }
 
+  &__private {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    color: $darkgray;
+  }
+
   &__input.ng-invalid {
     border: 0.1em solid red;
   }

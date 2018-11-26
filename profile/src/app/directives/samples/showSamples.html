@@ -24,6 +24,9 @@
           <ng-embed embed-data="sampleItem.description" embed-options="embedOptions"></ng-embed>
         </div>
       </div>
+      <span class="samples__private" ng-if="sampleItem.visibility === 'PRIVATE'">
+        <i class="icon--eye-slash"></i>
+      </span>
     </div>
   </li>
 </ul>

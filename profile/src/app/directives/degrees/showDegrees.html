@@ -37,6 +37,10 @@
           {{ degree.description }}
         </div>
       </div>
+
+      <span class="degree__private" ng-if="degree.visibility === 'PRIVATE'">
+        <i class="icon--eye-slash"></i>
+      </span>
     </div>
   </li>
 </ul>

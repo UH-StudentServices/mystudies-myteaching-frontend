@@ -41,6 +41,9 @@
           {{workExperienceItem.employerUrl}}</a>
         </div>
       </div>
+      <span class="work-experience__private" ng-if="workExperienceItem.visibility === 'PRIVATE'">
+        <i class="icon--eye-slash"></i>
+      </span>
     </div>
   </li>
 
