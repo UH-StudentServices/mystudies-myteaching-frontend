@@ -22,7 +22,7 @@ angular.module('directives.editableHeading', [
   'services.componentHeadingService',
   'profileAnalytics'
 ])
-  .directive('editableHeading', function ($translate, ProfileService, ComponentHeadingService, AnalyticsService) {
+  .directive('editableHeading', function ($q, $translate, ProfileService, ComponentHeadingService, AnalyticsService) {
     return {
       restrict: 'E',
       replace: true,
@@ -34,23 +34,25 @@ angular.module('directives.editableHeading', [
       },
       templateUrl: 'app/directives/editableHeading/editableHeading.html',
       link: function ($scope) {
-        $scope.component = {
-          component: $scope.componentId,
-          heading: $translate.instant($scope.defaultText, {}, '', $scope.profileLang)
-        };
-        $scope.currentText = $scope.component.heading;
-
-        ProfileService.getProfile().then(function (profile) {
-          var comp = _.find(profile.headings, { component: $scope.componentId });
+        $q.all([
+          $translate($scope.defaultText, {}, '', $scope.defaultText, $scope.profileLang),
+          ProfileService.getProfile()
+        ]).then(function (results) {
+          var comp = _.find(results[1].headings, { component: $scope.componentId });
 
           if (comp && comp.heading) {
             $scope.component = comp;
-            $scope.currentText = $scope.component.heading;
+          } else {
+            $scope.component = {
+              component: $scope.componentId,
+              heading: results[0]
+            };
           }
+          $scope.currentText = $scope.component.heading;
         });
 
         $scope.saveHeading = function () {
-          if ($scope.component.heading !== $scope.currentText) {
+          if ($scope.component && ($scope.component.heading !== $scope.currentText)) {
             AnalyticsService.trackEvent(
               $scope.component.component.toLowerCase(),
               AnalyticsService.ea.EDIT_HEADING

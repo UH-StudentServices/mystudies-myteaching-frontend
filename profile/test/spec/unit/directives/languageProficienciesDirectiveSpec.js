@@ -91,6 +91,7 @@ describe('Language proficiencies directive', function () {
   };
 
   angular.module('profileAnalytics', []);
+
   beforeEach(function () {
     module('directives.languageProficiencies', function ($provide) {
       $provide.constant('LanguageProficienciesService', {
@@ -101,7 +102,7 @@ describe('Language proficiencies directive', function () {
         })
       });
       $provide.constant('translateFilter', function (val) { return val; });
-      $provide.constant('$translate', { instant: function (val) { return val; } });
+      $provide.constant('$translate', function (val) { return { then: function () { return val; } }; });
       $provide.constant('ProfileService', { getProfile: function () { return { then: function () { return { headings: [] }; } }; } });
       $provide.constant('ComponentHeadingService', function (val) { return val; });
       $provide.constant('$state', { reload: jasmine.createSpy('$state.reload') });
