@@ -140,8 +140,8 @@ angular.module('opintoniProfileApp', [
       controller: 'MainCtrl',
       resolve: {
         session: profileSession,
-        state: function (StateService, $stateParams, session) {
-          return StateService.resolve(session, null, null);
+        state: function (StateService) {
+          return StateService.resolve(null, null, null);
         },
         userSettings: profileUserSettings,
         notifications: profileNotifications,
