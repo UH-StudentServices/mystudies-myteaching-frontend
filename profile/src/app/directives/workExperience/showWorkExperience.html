@@ -16,7 +16,7 @@
   -->
 
 <ul class="banner-content">
-  <li ng-repeat="workExperienceItem in workExperience track by workExperienceItem.id">
+  <li ng-repeat="workExperienceItem in workExperience track by workExperienceItem.id" limit-item-visibility="workExperienceItem">
     <div class="banner-content__item work-experience work-experience__outer_container">
       <div class="banner-content__details-container">
         <div class="work-experience__title">
@@ -41,6 +41,9 @@
           {{workExperienceItem.employerUrl}}</a>
         </div>
       </div>
+      <span class="work-experience--private" ng-if="workExperienceItem.visibility === 'PRIVATE'">
+        <i class="icon--eye-slash"></i>
+      </span>
     </div>
   </li>
 

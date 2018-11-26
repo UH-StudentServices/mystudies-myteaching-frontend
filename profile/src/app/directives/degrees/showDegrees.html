@@ -16,7 +16,7 @@
   -->
 
 <ul role="list" class="degrees">
-  <li class="degree" ng-repeat="degree in degrees">
+  <li class="degree" ng-repeat="degree in degrees" limit-item-visibility="degree">
     <div class="degree__item">
       <div class="degree__lyre"></div>
 
@@ -37,6 +37,10 @@
           {{ degree.description }}
         </div>
       </div>
+
+      <span class="degree--private" ng-if="degree.visibility === 'PRIVATE'">
+        <i class="icon--eye-slash"></i>
+      </span>
     </div>
   </li>
 </ul>

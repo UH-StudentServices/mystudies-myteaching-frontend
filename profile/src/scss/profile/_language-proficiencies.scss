@@ -61,6 +61,7 @@
   min-height: 100px;
   margin: 0 4px 2px 0;
   border: 1px solid $mediumsilver;
+  position: relative;
 
   .editing & {
     background-color: $background-color-edit;
@@ -119,5 +120,11 @@
 
   &__description {
     @include flex-container(space-between, center);
+  }
+
+  &--private {
+    position: absolute;
+    top: 1em;
+    right: 1em;
   }
 }

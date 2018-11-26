@@ -16,7 +16,7 @@
   -->
 
 <ul class="banner-content">
-  <li ng-repeat="sampleItem in samples | orderBy: 'id' track by sampleItem.id">
+  <li ng-repeat="sampleItem in samples | orderBy: 'id' track by sampleItem.id" limit-item-visibility="sampleItem">
     <div class="banner-content__item samples__outer-container">
       <div class="banner-content__details-container samples__details-container">
         <div class="samples__title">{{sampleItem.title}}</div>
@@ -24,6 +24,9 @@
           <ng-embed embed-data="sampleItem.description" embed-options="embedOptions"></ng-embed>
         </div>
       </div>
+      <span class="samples--private" ng-if="sampleItem.visibility === 'PRIVATE'">
+        <i class="icon--eye-slash"></i>
+      </span>
     </div>
   </li>
 </ul>
