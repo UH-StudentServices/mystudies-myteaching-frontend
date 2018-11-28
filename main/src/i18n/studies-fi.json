@@ -282,15 +282,17 @@
   "officeHours": {
     "title": "Vastaanottoajat",
     "intro": "Julkaise vastaanottoaikasi valitsemassasi koulutusohjelmassa tai -ohjelmissa. Tekemäsi muutokset päivittyvät automaattisesti julkaistuihin vastaanottoaikoihin.",
-    "dialogIntro": "Julkaise vastaanottoaikasi valitsemissasi koulutusohjelmissa. Jos et valitse mitään koulutusohjelmaa, vastaanottosi näkyy Kielikeskuksen vastaanottoajoissa.",
+    "dialogIntro": "Julkaise vastaanottoaikasi valitsemissasi koulutusohjelmissa. Jos olet kielikeskuksen opettaja, valitse opettamasi kieli/kielet.",
     "heading": "julkaistut vastaanottoajat",
     "publish": "julkaise",
     "expiration": {
       "date": "Viimeinen voimassaolopäivä",
+      "mandatory": "(pakollinen, enintään vuosi tästä päivästä)",
       "info": "Viimeisen voimassaolopäivän jälkeen vastaanottoaika ei näy Opiskelijan ohjeissa. ",
       "expired": "Vanhentunut. Päivitä tiedot."
     },
     "degreeProgramme": "Valitse haluamasi koulutusohjelmat",
+    "teachingLanguage": "Valitse opettamasi kieli/kielet",
     "label": {
       "description": "Vastaanottoaikasi",
       "additionalInfo": "Muut yhteystiedot",
@@ -300,7 +302,7 @@
       "description": "Esim maanantaisin 14-15, tiistaisin 12-13",
       "additionalInfo": "Esim blogi tai verkkosivuosoite",
       "location": "Esim huoneen numero",
-      "expirationDate": "pv.kk.vvvv (enintään vuosi tästä päivästä)"
+      "expirationDate": "pv.kk.vvvv"
     },
     "addNew": "Uusi aika...",
     "loading": "Ladataan vastaanottoaikoja...",

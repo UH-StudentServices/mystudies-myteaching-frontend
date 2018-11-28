@@ -33,9 +33,14 @@
 
         <div ng-if="!shouldDeleteConfirmationBeShown($index)" class="office-hours__list">
           <div class="office-hours__item-container">
-            <ul class="office-hours__degree-programmes">
-              <li class="office-hours__degree-programme" ng-repeat="programme in officeHours.degreeProgrammes">
+            <ul class="office-hours__selections" ng-if="officeHours.degreeProgrammes.length">
+              <li class="office-hours__selected" ng-repeat="programme in officeHours.degreeProgrammes">
                 {{programme.name}}
+              </li>
+            </ul>
+            <ul class="office-hours__selections" ng-if="officeHours.languages.length">
+              <li class="office-hours__selected" ng-repeat="language in officeHours.languages">
+                {{::language.name[currentLanguage]}}
               </li>
             </ul>
             <div class="office-hours__description">
@@ -85,15 +90,34 @@
     <div class="modal-body office-hours__modal-body" id="modal-body">
       <p translate="officeHours.dialogIntro"></p>
 
-      <select name="newDegreeProgramme" class="office-hours__input" ng-model="newDegreeProgramme" ng-change="addDegreeProgramme(newDegreeProgramme)"
-        ng-options="programme.code as programme.name for programme in availableDegreeProgrammes | orderBy:'name'">
+      <select name="newDegreeProgramme"
+              class="office-hours__input"
+              ng-model="newDegreeProgramme"
+              ng-change="addDegreeProgramme(newDegreeProgramme)"
+              ng-options="programme.code as programme.name for programme in availableDegreeProgrammes | orderBy:'name'"
+              ng-if="!officeHoursUnderEdit.languages.length">
         <option value="" >{{::('officeHours.degreeProgramme' | translate)}}...</option>
       </select>
 
-      <ul class="office-hours__degree-programmes">
-        <li class="office-hours__degree-programme" ng-repeat="programme in officeHoursUnderEdit.degreeProgrammes">
+      <ul class="office-hours__selections">
+        <li class="office-hours__selected" ng-repeat="programme in officeHoursUnderEdit.degreeProgrammes">
           {{programme.name}}
-          <a role="button" href="" class="degree-programme__remove icon--trash" ng-click="removeDegreeProgramme(programme)" />
+          <a role="button" href="" class="selected__remove icon--trash" ng-click="removeDegreeProgramme(programme)" />
+        </li>
+      </ul>
+
+      <select name="newTeachingLanguage"
+              class="office-hours__input"
+              ng-model="newTeachingLanguage" ng-change="addTeachingLanguage(newTeachingLanguage)"
+              ng-options="language.code as language.name[currentLanguage] for language in availableLanguages | orderBy:'index'"
+              ng-if="!officeHoursUnderEdit.degreeProgrammes.length">
+        <option value="">{{::('officeHours.teachingLanguage' | translate)}}...</option>
+      </select>
+
+      <ul class="office-hours__selections">
+        <li class="office-hours__selected" data-ng-repeat="language in officeHoursUnderEdit.languages">
+          {{::language.name[currentLanguage]}}
+          <a role="button" href="" class="selected__remove icon--trash" ng-click="removeTeachingLanguage(language)" />
         </li>
       </ul>
 
@@ -110,8 +134,8 @@
         <input type="text" class="office-hours__input" placeholder="{{::('officeHours.placeholder.location' | translate)}}..." ng-model="officeHoursUnderEdit.location">
       </label>
       <label>
-        {{::('officeHours.expiration.date' | translate)}} ({{::('general.mandatory' | translate)}})
-        <input type="text" class="office-hours__input" placeholder="{{::('officeHours.placeholder.expirationDate' | translate)}}..." ng-model="officeHoursUnderEdit.expirationDate">
+        {{::('officeHours.expiration.date' | translate)}} {{::('officeHours.expiration.mandatory' | translate)}}
+        <input type="text" class="office-hours__input" placeholder="{{::('officeHours.placeholder.expirationDate' | translate)}}" ng-model="officeHoursUnderEdit.expirationDate">
       </label>
 
     </div>

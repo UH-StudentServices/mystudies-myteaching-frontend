@@ -34,7 +34,7 @@
     overflow-y: auto;
   }
 
-  &__degree-programme {
+  &__selected {
     position: relative;
     word-wrap: break-word;
 
@@ -42,7 +42,7 @@
     text-transform: uppercase;
     font-weight: bold;
 
-    .degree-programme__remove {
+    .selected__remove {
       @include vertically-center;
       color: $blue;
       right: 0px;
@@ -112,6 +112,7 @@
     label {
       color: white;
       font-size: 1rem;
+      line-height: 1.6em;
     }
   }
   &__expired {

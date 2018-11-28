@@ -23,6 +23,8 @@ angular.module('resources.officeHours', [])
       get: { method: 'GET', isArray: true }
     });
 
+    var teachingLanguagesResource = $resource('/api/private/v1/officehours/teachinglanguages', null, { get: { method: 'GET', isArray: true } });
+
     function getOfficeHours() {
       return officeHoursResource.get().$promise;
     }
@@ -35,9 +37,14 @@ angular.module('resources.officeHours', [])
       return officeHoursResource.save(officehours).$promise;
     }
 
+    function getTeachingLanguages() {
+      return teachingLanguagesResource.get().$promise;
+    }
+
     return {
       getOfficeHours: getOfficeHours,
       deleteOfficeHours: deleteOfficeHours,
-      saveOfficeHours: saveOfficeHours
+      saveOfficeHours: saveOfficeHours,
+      getTeachingLanguages: getTeachingLanguages
     };
   });
