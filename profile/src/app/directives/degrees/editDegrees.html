@@ -19,7 +19,8 @@
   <ul ng-model="degrees" role="list" class="degrees" as-sortable="sortableOptions">
     <li class="degree editable" ng-repeat="degree in degrees" as-sortable-item>
       <div class="degree__item editable">
-        <div as-sortable-item-handle class="degree__lyre--edit degree__drag-handle"></div>
+        <div class="degree__drag-handle" as-sortable-item-handle ng-show="degrees && degrees.length > 1"></div>
+        <div class="degree__lyre--edit"></div>
 
         <div class="degree__container">
           <div class="degree__date">

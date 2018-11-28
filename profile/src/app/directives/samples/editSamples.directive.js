@@ -44,6 +44,8 @@ angular.module('directives.editSamples', ['services.visibility'])
           $scope.samples = _.without($scope.samples, sample);
           $scope.onChange(); // we might have deleted the only invalid item
         };
+
+        $scope.sortableOptions = { containment: '.samples__dropzone' };
       }
     };
   });

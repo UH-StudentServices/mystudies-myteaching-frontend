@@ -95,6 +95,19 @@ $degree-invalid-color: red;
   }
 }
 
+.degree__drag-handle {
+  color: $white;
+  margin-left: 1em;
+  margin-top: 0.5em;
+
+  &:before {
+    content: $icon-drag;
+    font-size: 2rem;
+    font-family: "hy-icons";
+    vertical-align: middle;
+  }
+}
+
 .degree__date {
   @extend .box-data__content;
 }
