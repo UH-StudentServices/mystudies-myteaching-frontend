@@ -90,13 +90,11 @@ angular.module('directives.officeHours', [
             OfficeHoursService.loadDegreeProgrammes(),
             OfficeHoursService.loadTeachingLanguages()
           ]).then(function (results) {
-            scope.degreeProgrammes = _.cloneDeep(results[0]);
+            scope.degreeProgrammes = results[0];
             scope.availableDegreeProgrammes = _.cloneDeep(results[0]);
-            scope.languages = _.cloneDeepWith(results[1], function (languages) {
-              return languages.map(function (lang, idx) {
-                lang.index = idx;
-                return lang;
-              });
+            scope.languages = results[1].map(function (lang, idx) {
+              lang.index = idx;
+              return lang;
             });
             scope.availableLanguages = _.cloneDeep(scope.languages);
 
