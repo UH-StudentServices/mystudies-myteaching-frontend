@@ -94,7 +94,7 @@
               class="office-hours__input"
               ng-model="newDegreeProgramme"
               ng-change="addDegreeProgramme(newDegreeProgramme)"
-              ng-options="programme.code as programme.name for programme in availableDegreeProgrammes | orderBy:'name'"
+              ng-options="programme.code as programme.name for programme in availableDegreeProgrammes | orderBy:'name' track by programme.code"
               ng-if="!officeHoursUnderEdit.languages.length">
         <option value="" >{{::('officeHours.degreeProgramme' | translate)}}...</option>
       </select>
@@ -102,14 +102,17 @@
       <ul class="office-hours__selections">
         <li class="office-hours__selected" ng-repeat="programme in officeHoursUnderEdit.degreeProgrammes">
           {{programme.name}}
-          <a role="button" href="" class="selected__remove icon--trash" ng-click="removeDegreeProgramme(programme)" />
+          <button class="button--icon selected__remove" ng-click="removeDegreeProgramme(programme)">
+            <i class="icon--trash"></i>
+          </button>
+          <!--<a role="button" href="" class="selected__remove icon&#45;&#45;trash" ng-click="removeDegreeProgramme(programme)" />-->
         </li>
       </ul>
 
       <select name="newTeachingLanguage"
               class="office-hours__input"
               ng-model="newTeachingLanguage" ng-change="addTeachingLanguage(newTeachingLanguage)"
-              ng-options="language.code as language.name[currentLanguage] for language in availableLanguages | orderBy:'index'"
+              ng-options="language.code as language.name[currentLanguage] for language in availableLanguages | orderBy:'index' track by language.code"
               ng-if="!officeHoursUnderEdit.degreeProgrammes.length">
         <option value="">{{::('officeHours.teachingLanguage' | translate)}}...</option>
       </select>
@@ -117,7 +120,9 @@
       <ul class="office-hours__selections">
         <li class="office-hours__selected" data-ng-repeat="language in officeHoursUnderEdit.languages">
           {{::language.name[currentLanguage]}}
-          <a role="button" href="" class="selected__remove icon--trash" ng-click="removeTeachingLanguage(language)" />
+          <button class="button--icon selected__remove" ng-click="removeTeachingLanguage(language)">
+            <i class="icon--trash"></i>
+          </button>
         </li>
       </ul>
 

@@ -93,7 +93,7 @@ angular.module('directives.officeHours', [
             scope.degreeProgrammes = _.cloneDeep(results[0]);
             scope.availableDegreeProgrammes = _.cloneDeep(results[0]);
             scope.languages = _.cloneDeepWith(results[1], function (languages) {
-              return _.map(languages, function (lang, idx) {
+              return languages.map(function (lang, idx) {
                 lang.index = idx;
                 return lang;
               });
@@ -107,14 +107,14 @@ angular.module('directives.officeHours', [
         }
 
         scope.addDegreeProgramme = function addDegreeProgramme(degreeProgramme) {
-          if (degreeProgramme !== null) {
+          if (degreeProgramme) {
             scope.officeHoursUnderEdit.degreeProgrammes.push(_.find(scope.degreeProgrammes, ['code', degreeProgramme]));
             _.remove(scope.availableDegreeProgrammes, ['code', degreeProgramme]);
           }
         };
 
         scope.addTeachingLanguage = function addTeachingLanguage(teachingLanguage) {
-          if (teachingLanguage !== null) {
+          if (teachingLanguage) {
             scope.officeHoursUnderEdit.languages.push(_.find(scope.languages, ['code', teachingLanguage]));
             _.remove(scope.availableLanguages, ['code', teachingLanguage]);
           }

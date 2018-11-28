@@ -23,7 +23,7 @@ angular.module('resources.officeHours', [])
       get: { method: 'GET', isArray: true }
     });
 
-    var teachingLanguagesResource = $resource('/api/private/v1/officehours/teachinglanguages', null, { get: { method: 'GET', isArray: true } });
+    var teachingLanguagesResource = $resource('/api/private/v1/officehours/teaching-languages', null, { get: { method: 'GET', isArray: true } });
 
     function getOfficeHours() {
       return officeHoursResource.get().$promise;
