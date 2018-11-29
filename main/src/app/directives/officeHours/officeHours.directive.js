@@ -30,7 +30,7 @@ angular.module('directives.officeHours', [
       replace: true,
       templateUrl: 'app/directives/officeHours/officeHours.html',
       link: function (scope) {
-        var dateFormats = ['D.M.YYYY', 'M/D/YYYY'];
+        var dateFormats = ['D.M.YYYY', 'D/M/YYYY'];
 
         scope.currentLanguage = LanguageService.getCurrent();
 

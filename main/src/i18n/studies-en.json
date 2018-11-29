@@ -302,7 +302,7 @@
       "description": "For example Mon 14-15, Tue 12-13",
       "additionalInfo": "For example blog or website address",
       "location": "For example room number",
-      "expirationDate": "mm/dd/yyyy"
+      "expirationDate": "dd/mm/yyyy"
     },
     "addNew": "Add new...",
     "loading": "Loading consultation hours...",
