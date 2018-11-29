@@ -36,10 +36,15 @@ angular.module('services.officeHours', [
       return OfficeHoursResource.deleteOfficeHours();
     }
 
+    function loadTeachingLanguages() {
+      return OfficeHoursResource.getTeachingLanguages();
+    }
+
     return {
       loadDegreeProgrammes: loadDegreeProgrammes,
       loadOfficeHours: loadOfficeHours,
       saveOfficeHours: saveOfficeHours,
-      deleteOfficeHours: deleteOfficeHours
+      deleteOfficeHours: deleteOfficeHours,
+      loadTeachingLanguages: loadTeachingLanguages
     };
   });

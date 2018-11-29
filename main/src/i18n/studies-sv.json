@@ -282,15 +282,17 @@
   "officeHours": {
     "title": "Mottagningstider",
     "intro": "Välj rätt utbildningsprogram och publicera dina mottagningstider. Ändringar du gör i de publicerade mottagningstiderna uppdateras automatiskt.",
-    "dialogIntro": "Välj rätt utbildningsprogram och publicera dina mottagningstider. Om du inte väljer någonting, publiceras dina mottagningstider med lärarnas mottagningstider vid Språkcentrum.",
+    "dialogIntro": "Välj rätt utbildningsprogram och publicera dina mottagningstider. Om du är lärare vid språkcentret, välj det eller de språk du undervisar i.",
     "heading": "publicerade mottagningstider",
     "publish": "publicera",
     "expiration": {
-      "date": "Giltighetsdatum:",
+      "date": "Giltighetsdatum",
+      "mandatory": "(obligatorisk, upp till ett år från det har datumet)",
       "info": "Efter giltighetsdatum kommer mottagningstider inte längre att visas på Instruktioner för studerande -sidorna.",
       "expired": "Upphört. Uppdatera information."
     },
     "degreeProgramme": "Välj de utbildningsprogrammen",
+    "teachingLanguage": "Välj det eller de språk du undervisar i",
     "label": {
       "description": "Dina mottagningstider",
       "additionalInfo": "Mer information om mottagstider",
@@ -300,7 +302,7 @@
       "description": "Till exempel, Mån 14-15, Tis 12-13",
       "additionalInfo": "Till exempel, adress till dina websidor eller blog",
       "location": "Till exempel, rum numret",
-      "expirationDate": "dd.mm.yyyy (upp till ett år fån det har datumet)"
+      "expirationDate": "dd.mm.yyyy"
     },
     "addNew": "Ny mottagstid...",
     "loading": "Mottagningstider laddas...",

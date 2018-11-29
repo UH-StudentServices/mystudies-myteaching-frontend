@@ -24,19 +24,21 @@ angular.module('directives.officeHours', [
   'ui.bootstrap.modal',
   'utils.moment'
 ])
-  .directive('officeHours', function (OfficeHoursService, SessionService, LanguageService, $uibModal, dateArrayToMomentObject, momentDateToLocalDateArray) {
+  .directive('officeHours', function ($q, OfficeHoursService, SessionService, LanguageService, $uibModal, dateArrayToMomentObject, momentDateToLocalDateArray) {
     return {
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/officeHours/officeHours.html',
       link: function (scope) {
-        var dateFormat = 'D.M.YYYY';
+        var dateFormats = ['D.M.YYYY', 'D/M/YYYY'];
+
+        scope.currentLanguage = LanguageService.getCurrent();
 
         function toMoment(dateInput) {
           if (moment.isMoment(dateInput)) {
             return dateInput;
           }
-          return moment(dateInput, dateFormat, true);
+          return moment(dateInput, dateFormats, true);
         }
 
         function setLoadError() {
@@ -51,7 +53,8 @@ angular.module('directives.officeHours', [
               location: oh.location,
               expirationDate: momentDateToLocalDateArray(toMoment(oh.expirationDate)),
               description: oh.description,
-              degreeProgrammes: oh.degreeProgrammes
+              degreeProgrammes: oh.degreeProgrammes,
+              languages: oh.languages
             };
           });
         }
@@ -61,6 +64,8 @@ angular.module('directives.officeHours', [
         }
 
         function officeHoursLoaded(officeHours) {
+          var dateFormat = scope.currentLanguage === 'en' ? dateFormats[1] : dateFormats[0];
+
           scope.loaded = true;
           scope.officeHoursList = officeHours.map(function (oh) {
             return {
@@ -72,32 +77,55 @@ angular.module('directives.officeHours', [
               degreeProgrammes: oh.degreeProgrammes.map(function (programme) {
                 return _.find(scope.degreeProgrammes, ['code', programme.code]);
               }),
+              languages: oh.languages.map(function (language) {
+                return _.find(scope.languages, ['code', language.code]);
+              }),
               name: scope.userName
             };
           });
         }
 
         function initOfficeHours() {
-          OfficeHoursService.loadDegreeProgrammes()
-            .then(function (degreeProgrammes) {
-              scope.degreeProgrammes = _.cloneDeep(degreeProgrammes);
-              scope.availableDegreeProgrammes = _.cloneDeep(degreeProgrammes);
-              return OfficeHoursService.loadOfficeHours();
-            })
+          $q.all([
+            OfficeHoursService.loadDegreeProgrammes(),
+            OfficeHoursService.loadTeachingLanguages()
+          ]).then(function (results) {
+            scope.degreeProgrammes = results[0];
+            scope.availableDegreeProgrammes = _.cloneDeep(results[0]);
+            scope.languages = results[1].map(function (lang, idx) {
+              lang.index = idx;
+              return lang;
+            });
+            scope.availableLanguages = _.cloneDeep(scope.languages);
+
+            return OfficeHoursService.loadOfficeHours();
+          })
             .then(officeHoursLoaded)
             .catch(setLoadError);
         }
 
         scope.addDegreeProgramme = function addDegreeProgramme(degreeProgramme) {
-          if (degreeProgramme !== null) {
+          if (degreeProgramme) {
             scope.officeHoursUnderEdit.degreeProgrammes.push(_.find(scope.degreeProgrammes, ['code', degreeProgramme]));
             _.remove(scope.availableDegreeProgrammes, ['code', degreeProgramme]);
+          }
+        };
+
+        scope.addTeachingLanguage = function addTeachingLanguage(teachingLanguage) {
+          if (teachingLanguage) {
+            scope.officeHoursUnderEdit.languages.push(_.find(scope.languages, ['code', teachingLanguage]));
+            _.remove(scope.availableLanguages, ['code', teachingLanguage]);
           }
         };
 
         scope.removeDegreeProgramme = function removeDegreeProgramme(degreeProgramme) {
           _.remove(scope.officeHoursUnderEdit.degreeProgrammes, ['code', degreeProgramme.code]);
           scope.availableDegreeProgrammes.push(degreeProgramme);
+        };
+
+        scope.removeTeachingLanguage = function removeTeachingLanguage(teachingLanguage) {
+          _.remove(scope.officeHoursUnderEdit.languages, ['code', teachingLanguage.code]);
+          scope.availableLanguages.push(teachingLanguage);
         };
 
         scope.editOfficeHours = function editOfficeHours(index) {
@@ -166,11 +194,19 @@ angular.module('directives.officeHours', [
           scope.resetOfficeHoursUnderEdit();
         };
 
+        function degreeProgrammesTeachingLanguagesValid() {
+          return (scope.officeHoursUnderEdit.degreeProgrammes.length
+            && !scope.officeHoursUnderEdit.languages.length)
+            || (!scope.officeHoursUnderEdit.degreeProgrammes.length
+              && scope.officeHoursUnderEdit.languages.length);
+        }
+
         scope.canPublishEdits = function canPublishEdits() {
           var expirationDate = toMoment(scope.officeHoursUnderEdit.expirationDate);
 
           return scope.officeHoursUnderEdit.description
             && scope.officeHoursUnderEdit.name
+            && degreeProgrammesTeachingLanguagesValid()
             && expirationDate.isValid()
             && expirationDate.isBefore(moment().add(1, 'year'));
         };
@@ -179,6 +215,7 @@ angular.module('directives.officeHours', [
           scope.officeHoursUnderEdit = {
             description: null,
             degreeProgrammes: [],
+            languages: [],
             name: scope.userName,
             expirationDate: null
           };
