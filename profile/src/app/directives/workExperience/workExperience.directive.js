@@ -82,10 +82,9 @@ angular.module('directives.workExperience', [
         }, 500);
 
         $scope.exitEdit = function () {
-          $scope.$broadcast('saveComponent');
-          $scope.markAllSubmitted();
-
           if (isValid()) {
+            $scope.$broadcast('saveComponent');
+
             if ($scope.jobSearch !== null) {
               WorkExperienceService.saveJobSearch($scope.jobSearch);
               if (!$scope.origJobSearch) {
@@ -112,13 +111,6 @@ angular.module('directives.workExperience', [
               });
           }
           return true;
-        };
-
-        $scope.markAllSubmitted = function () {
-          $scope.workExperience.forEach(function (job) { job.submitted = true; });
-          if ($scope.jobSearch !== null) {
-            $scope.jobSearch.submitted = true;
-          }
         };
       }
     };

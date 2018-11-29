@@ -98,12 +98,14 @@
     "jobTitle": "Job title",
     "employerUrl": "Employer's website",
     "text": "Description",
-    "descriptionPlaceholder": "Add description",
+    "jobSearchDescription": "description",
+    "jobSearchDescriptionPlaceholder": "Add description",
     "showMore": "more",
     "showLess": "less",
     "contactEmail": "contact email",
     "jobSearchHeadline": "headline",
-    "dateOfEmployment": "Date of employment"
+    "jobSearchHeadlinePlaceholder": "add headline",
+    "dateOfEmployment": "Date of employment",
   },
   "samples": {
     "title": "Samples",

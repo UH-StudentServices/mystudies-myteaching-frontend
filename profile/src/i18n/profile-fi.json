@@ -98,11 +98,13 @@
     "jobTitle": "Nimike",
     "employerUrl": "Työnantajan verkkosivu",
     "text": "Kuvausteksti",
-    "descriptionPlaceholder": "Lisää kuvaus",
+    "jobSearchDescription": "kuvaus",
+    "jobSearchDescriptionPlaceholder": "lisää kuvaus",
     "showMore": "lisää",
     "showLess": "vähemmän",
     "contactEmail": "sähköpostiosoite",
     "jobSearchHeadline": "otsikko",
+    "jobSearchHeadlinePlaceholder": "lisää otsikko",
     "dateOfEmployment": "Työtehtävän päivämäärä"
   },
   "samples": {

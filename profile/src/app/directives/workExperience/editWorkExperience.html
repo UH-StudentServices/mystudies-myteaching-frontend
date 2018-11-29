@@ -96,57 +96,35 @@
     </li>
 
     <li ng-show="jobSearch" class="editable">
-      <div class="banner-content__item job-search">
-        <div class="banner-content__banner">
-          <div class="banner-content__backdrop">
-            <div class="banner-content__banner-content">
-              <div class="banner-content__banner-title" translate="workExperience.jobSearch" />
-              <div class="banner-content__banner-text">
-                {{jobSearch.contactEmail}}
+      <div class="work-experience work-experience__outer_container">
+        <div class="banner-content__item job-search">
+          <div class="banner-content__banner">
+            <div class="banner-content__backdrop">
+              <div class="banner-content__banner-content">
+                <div class="banner-content__banner-title" translate="workExperience.jobSearch" />
+                <div class="banner-content__banner-text">
+                  {{jobSearch.contactEmail}}
+                </div>
+                <button class="banner-content__remove" ng-click="removeJobSearch()"></button>
               </div>
             </div>
           </div>
-        </div>
-        <div class="banner-content__details-container">
-          <div class="work-experience__title">
-            <span class="banner-content__editable-content" ng-show="!editJobSearchHeadline">
-              <a role="button" href="" ng-click="enterJobHeadlineEdit()"
-                 class="banner-content__editable-content-button">
-                {{jobSearch.headline}}
-                <i class="icon--edit-event"></i>
-              </a>
-            </span>
-            <span class="banner-content__editable-content--active" ng-show="editJobSearchHeadline">
-              <input focus="editJobSearchHeadline" ng-model="jobSearch.headline"
-                     ui-keypress="{'enter':'exitJobHeadlineEdit()'}" />
-              <a role="button" href="" ng-click="exitJobHeadlineEdit()"><i class="icon--done"></i></a>
-            </span>
-          </div>
-          <div class="banner-content__description">
-            <textarea placeholder="{{::'workExperience.descriptionPlaceholder'|translate}}"
+          <div class="work-experience__editor-content">
+            <label for="job-search-headline">{{::'workExperience.jobSearchHeadline' | translate | capitalize}}</label>
+            <input id="job-search-headline" type="text" ng-model="jobSearch.headline" placeholder="{{::'workExperience.jobSearchHeadlinePlaceholder' | translate | capitalize}}"/>
+            <label for="job-search-description">{{::'workExperience.jobSearchDescription' | translate | capitalize}}</label>
+            <textarea id="job-search-description" placeholder="{{::'workExperience.jobSearchDescriptionPlaceholder' | translate | capitalize}}"
                       ng-model="jobSearch.text"></textarea>
-          </div>
-          <div class="banner-content__details-row">
-            <span class="banner-content__editable-content" ng-show="!editContactEmail">
-              <a role="button" href="" ng-click="enterContactEmailEdit()"
-                 class="banner-content__editable-content-button"
-                 ng-class="{'ng-invalid':jobSearch.submitted && !jobSearch.contactEmail}">
-                {{jobSearch.contactEmail || ('workExperience.contactEmail' | translate)}}
-                <i class="icon--edit-event"></i>
-              </a>
-            </span>
-            <span class="banner-content__editable-content--active" ng-show="editContactEmail">
-              <input focus="editContactEmail"
-                     type="email" required
-                     ng-model="jobSearch.contactEmail"
-                     ui-keypress="{'enter':'exitContactEmailEdit()'}"
-                     ng-class="{'ng-invalid':!jobSearch.contactEmail}"
-                     placeholder="{{::'workExperience.contactEmail'|translate}}" />
-              <a role="button" href="" ng-click="exitContactEmailEdit()"><i class="icon--done"></i></a>
-            </span>
+            <label for="job-search-contact-email">{{::'workExperience.contactEmail' | translate | capitalize }}</label>
+            <input id="job-search-contact-email"
+                   focus="editContactEmail"
+                   type="email" required
+                   ng-model="jobSearch.contactEmail"
+                   ui-keypress="{'enter':'exitContactEmailEdit()'}"
+                   ng-class="{'ng-invalid':!jobSearch.contactEmail}"
+                   placeholder="{{::'contactInformation.addEmail' | translate | capitalize}}" />
           </div>
         </div>
-        <button class="banner-content__remove" ng-click="removeJobSearch()"></button>
       </div>
     </li>
   </ul>

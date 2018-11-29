@@ -24,9 +24,8 @@
     <div class="component-header__actions">
       <visibility-toggle component-id="WORK_EXPERIENCE" section-name="{{::sectionName}}"></visibility-toggle>
       <edit-link on-edit="edit()"
-        on-exit-edit="exitEdit()"
-        exit-edit-disabled="!workExperienceValid"
-        on-disabled-exit-edit="markAllSubmitted()"></edit-link>
+        on-exit-edit="exitEdit()">
+      </edit-link>
     </div>
   </div>
 

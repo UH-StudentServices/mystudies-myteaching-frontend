@@ -32,8 +32,8 @@ $work-experience-summary-max-height: 104px;
   display: flex;
   background-color: $lightsilver;
   border: 1px solid $mediumsilver;
+  margin-top: 1em;
   padding: 1em;
-  margin-bottom: 1em;
 }
 
 .banner-content__drag-handle {
@@ -64,6 +64,16 @@ $work-experience-summary-max-height: 104px;
   input {
     width: 70px !important;
   }
+}
+
+.job-search .work-experience__editor-content {
+  @include breakpoint($small) {
+    padding-left: 2.5em;
+  }
+}
+
+.job-search .banner-content__banner {
+  height: 3em;
 }
 
 .job-search .banner-content__description, .work-experience .banner-content__description {
@@ -122,12 +132,10 @@ input.work-experience__date-input {
   }
 
   .banner-content {
-    &__item {
-      margin-top: 0;
-    }
-
     &__remove {
       background-color: transparent;
+      @include vertically-center;
+      color: $white;
     }
 
     &__details-container {
@@ -162,6 +170,7 @@ input.work-experience__date-input {
 
     label {
       color: $black;
+      font-weight: bold;
     }
   }
 

@@ -91,25 +91,25 @@
         </div>
         <div class="edit-contact-details">
           <div limit-visibility="{roles: ['STUDENT']}">
-            <input ng-model="contactInfo.phoneNumber"
+            <input ng-model="contactInfo.phoneNumber" type="text"
                    placeholder="{{::('contactInformation.addPhoneNumber' | translate)}}">
             <input ng-model="contactInfo.email" type="email"
                    placeholder="{{::('contactInformation.addEmail' | translate)}}">
           </div>
           <div limit-visibility="{roles: ['TEACHER']}">
-            <input ng-model="contactInfo.title"
+            <input ng-model="contactInfo.title" type="text"
                    placeholder="{{::('contactInformation.addTitle' | translate)}}">
-            <input ng-model="contactInfo.faculty"
+            <input ng-model="contactInfo.faculty" type="text"
                    placeholder="{{::('contactInformation.addFaculty' | translate)}}">
-            <input ng-model="contactInfo.financialUnit"
+            <input ng-model="contactInfo.financialUnit" type="text"
                    placeholder="{{::('contactInformation.addFinancialUnit' | translate)}}">
-            <input ng-model="contactInfo.workAddress"
+            <input ng-model="contactInfo.workAddress" type="text"
                    placeholder="{{::('contactInformation.addWorkAddress' | translate)}}">
-            <input ng-model="contactInfo.workPostcode"
+            <input ng-model="contactInfo.workPostcode" type="text"
                    placeholder="{{::('contactInformation.addWorkPostcode' | translate)}}">
             <input ng-model="contactInfo.email" type="email"
                    placeholder="{{::('contactInformation.addEmail' | translate)}}">
-            <input ng-model="contactInfo.workMobile"
+            <input ng-model="contactInfo.workMobile" type="text"
                    placeholder="{{::('contactInformation.addWorkMobile' | translate)}}">
             <a
               role="button"
@@ -121,23 +121,13 @@
 
         </div>
       </div>
-      <ul role="list"
-          class="contact-information__edit-links-list">
+      <ul role="list">
         <li ng-repeat="someLink in contactInfo.someLinks | orderBy: 'type'"
             class="block"
             role="listitem">
-          <a role="button" href="" class="list-of-links__link edit editable"
-             ng-hide="someLink.edit" ng-click="editSomeLink(someLink)">
-            {{ someLink.url }}
-            <i class="icon--edit-event"></i>
-            <i class="social-media-link-icon social-media-link-icon--edit social-media-link-icon--{{ someLink.type | lowercase }}"></i>
-          </a>
-
-          <div class="useful-links__edit-link-url" ng-show="someLink.edit">
-            <input name="{{someLink.type}}" focus="someLink.edit" ng-model="someLink.url" type="url" placeholder="{{someLink.baseUrl}}"
-                   ui-keypress="{'enter':'editContactInformation[someLink.type].$valid && exitSomeLinkEdit(someLink)'}" />
-            <a ng-show="editContactInformation[someLink.type].$valid" role="button" href="" ng-click="exitSomeLinkEdit(someLink)"><i class="icon--done"></i></a>
-          </div>
+          <input name="{{someLink.type}}" focus="someLink.edit" ng-model="someLink.url" type="url" placeholder="{{someLink.baseUrl}}"
+                 ui-keypress="{'enter':'editContactInformation[someLink.type].$valid && exitSomeLinkEdit(someLink)'}" />
+          <i class="social-media-link-icon social-media-link-icon--edit social-media-link-icon--{{ someLink.type | lowercase }}"></i>
         </li>
       </ul>
     </form>

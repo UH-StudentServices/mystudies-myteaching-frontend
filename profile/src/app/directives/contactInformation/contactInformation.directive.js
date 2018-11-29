@@ -150,14 +150,6 @@ angular.module('directives.contactInformation', [
               }));
             });
         };
-
-        $scope.editSomeLink = function (someLink) {
-          someLink.edit = true;
-        };
-
-        $scope.exitSomeLinkEdit = function (someLink) {
-          someLink.edit = false;
-        };
       }
     };
   });
