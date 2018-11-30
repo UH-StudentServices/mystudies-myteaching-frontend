@@ -32,8 +32,13 @@ $work-experience-summary-max-height: 104px;
   display: flex;
   background-color: $lightsilver;
   border: 1px solid $mediumsilver;
+  margin-top: 1em;
   padding: 1em;
-  margin-bottom: 1em;
+
+  .banner-content__details-container {
+    flex: 1;
+    width: auto;
+  }
 }
 
 .banner-content__drag-handle {
@@ -77,6 +82,29 @@ $work-experience-summary-max-height: 104px;
   }
 }
 
+.job-search {
+  .banner-content__banner {
+    height: 3em;
+  }
+
+  .banner-content__remove {
+    color: $white;
+    @include vertically-center;
+  }
+
+  &.work-experience__outer_container {
+    display: block;
+  }
+
+  .banner-content__details-container {
+    margin-top: 1em;
+  }
+
+  .banner-content__banner-text {
+    text-transform: none ;
+  }
+}
+
 .work-experience-summary__list{
   max-height: $work-experience-summary-max-height;
   overflow: hidden;
@@ -117,21 +145,9 @@ input.work-experience__date-input {
     color: $blue;
   }
 
-  &__input.ng-invalid {
-    border: 2px solid red;
-  }
-
   .banner-content {
-    &__item {
-      margin-top: 0;
-    }
-
     &__remove {
       background-color: transparent;
-    }
-
-    &__details-container {
-      width: 100%;
     }
   }
 
@@ -162,6 +178,7 @@ input.work-experience__date-input {
 
     label {
       color: $black;
+      font-weight: bold;
     }
   }
 

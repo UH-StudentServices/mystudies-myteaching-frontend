@@ -76,7 +76,7 @@ $free-link-bg: $black;
 
   .block {
     margin-bottom: 5px;
-    padding: 20px 10px;
+    padding: 10px 10px;
     border: 1px solid $lightsilver;
     position: relative;
     overflow: hidden;
@@ -94,9 +94,9 @@ $free-link-bg: $black;
   .edit-contact-details {
     input {
       margin-bottom: 0.5em;
-      width: 100%;
-      display: block;
-      @include border;
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 
@@ -106,7 +106,7 @@ $free-link-bg: $black;
 
   .social-media-link-icon {
     display: inline-block;
-    height: 60px;
+    height: 100%;
     width: 60px;
     line-height: 60px;
     color: $white;
@@ -167,6 +167,11 @@ $free-link-bg: $black;
     input.ng-invalid {
       border: 1px solid $red;
     }
+  }
+
+  input[type="url"] {
+    @extend input[type="text"];
+    width: calc(100% - 60px);
   }
 }
 

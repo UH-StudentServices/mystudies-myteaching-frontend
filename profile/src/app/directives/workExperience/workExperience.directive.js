@@ -44,22 +44,6 @@ angular.module('directives.workExperience', [
       },
       templateUrl: 'app/directives/workExperience/workExperience.html',
       link: function ($scope) {
-        var isJobSearchValid = function () {
-          if ($scope.jobSearch !== null) {
-            return $scope.jobSearch.contactEmail;
-          }
-          return true;
-        };
-
-        var isValid = function () {
-          return isJobSearchValid() && $scope.workExperience.every(function (job) {
-            return job.employer
-              && job.startDate.isValid()
-              && (!job.endDate || job.endDate.isValid())
-              && job.jobTitle;
-          });
-        };
-
         $scope.workExperience = WorkExperienceService.formatDates($scope.workExperienceData());
         $scope.editing = false;
         $scope.workExperienceValid = true;
@@ -76,16 +60,10 @@ angular.module('directives.workExperience', [
           $scope.origJobSearch = _.clone($scope.jobSearch);
         };
 
-        $scope.refreshValidity = _.debounce(function () {
-          $scope.workExperienceValid = isValid();
-          $scope.$apply();
-        }, 500);
-
         $scope.exitEdit = function () {
-          $scope.$broadcast('saveComponent');
-          $scope.markAllSubmitted();
+          if ($scope.workExperienceForm.$valid) {
+            $scope.$broadcast('saveComponent');
 
-          if (isValid()) {
             if ($scope.jobSearch !== null) {
               WorkExperienceService.saveJobSearch($scope.jobSearch);
               if (!$scope.origJobSearch) {
@@ -110,15 +88,10 @@ angular.module('directives.workExperience', [
                 $scope.editing = false;
                 $state.reload(); // https://jira.it.helsinki.fi/browse/OO-1004
               });
+            return true;
           }
-          return true;
-        };
-
-        $scope.markAllSubmitted = function () {
-          $scope.workExperience.forEach(function (job) { job.submitted = true; });
-          if ($scope.jobSearch !== null) {
-            $scope.jobSearch.submitted = true;
-          }
+          $scope.workExperienceForm.$setDirty();
+          return false;
         };
       }
     };

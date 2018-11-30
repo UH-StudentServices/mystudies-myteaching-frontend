@@ -98,7 +98,7 @@
     "jobTitle": "Jobbtitel",
     "employerUrl": "Arbetsgivares websidan",
     "text": "Beskrivning",
-    "descriptionPlaceholder": "Lägg till beskrivning",
+    "jobSearchDescription": "beskrivning",
     "showMore": "mer",
     "showLess": "mindre",
     "contactEmail": "contact email",

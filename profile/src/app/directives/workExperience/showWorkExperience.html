@@ -21,24 +21,20 @@
       <div class="banner-content__details-container">
         <div class="work-experience__title">
           <div>
-            {{workExperienceItem.startDate | momentFormat:'M/YYYY'}} &ndash;
-            {{workExperienceItem.endDate | momentFormat:'M/YYYY'}}
+            {{::workExperienceItem.startDate | momentFormat:'M/YYYY'}} &ndash;
+            {{::workExperienceItem.endDate | momentFormat:'M/YYYY'}}
           </div>
           <div class="work-experience__job-title">
-            {{workExperienceItem.jobTitle}}
+            {{::workExperienceItem.jobTitle}}
           </div>
           <div class="work-experience__employer">
-            {{workExperienceItem.employer}}
+            {{::workExperienceItem.employer}}
           </div>
         </div>
-        <div class="banner-content__show-full-description">
-          <div class="banner-content__full-description">
-            <p>{{workExperienceItem.text}}</p>
-          </div>
-        </div>
-        <div class="banner-content__details-row">
+        <p>{{::workExperienceItem.text}}</p>
+        <div class="banner-content__details-row" ng-if="workExperienceItem.employerUrl">
           <a href="{{workExperienceItem.employerUrl !== '' ? formatUrl(workExperienceItem.employerUrl) : ''}}">
-          {{workExperienceItem.employerUrl}}</a>
+          {{::workExperienceItem.employerUrl}}</a>
         </div>
       </div>
       <span class="work-experience--private" ng-if="workExperienceItem.visibility === 'PRIVATE'">
@@ -48,37 +44,22 @@
   </li>
 
   <li ng-show="jobSearch">
-    <div class="banner-content__item job-search">
+    <div class="banner-content__item job-search work-experience__outer_container">
       <div class="banner-content__banner">
         <div class="banner-content__backdrop">
           <div class="banner-content__banner-content">
             <div class="banner-content__banner-title" translate="workExperience.jobSearch" />
             <div class="banner-content__banner-text">
-              {{jobSearch.contactEmail}}
+              {{::jobSearch.contactEmail}}
             </div>
           </div>
         </div>
       </div>
       <div class="banner-content__details-container">
         <div class="work-experience__title">
-          {{jobSearch.headline}}
+          {{::jobSearch.headline}}
         </div>
-        <div ng-class="{'banner-content__show-full-description': jobSearch.showFull}">
-          <div class="banner-content__description">
-            <p ng-bind="jobSearch.text" data-ellipsis
-               data-ellipsis-append="{{::' '+('general.showMore'|translate)}}"
-               data-ellipsis-append-click="showFull(jobSearch)"></p>
-          </div>
-          <div class="banner-content__full-description">
-            <p>{{jobSearch.text}}
-              <a role="button" href="" aria-label="{{::'general.showLess'|translate}}"
-                 ng-click="hideFull(jobSearch)">{{::'general.showLess'|translate}}</a>
-            </p>
-          </div>
-        </div>
-        <div class="banner-content__details-row">
-          <a href="mailto:{{jobSearch.contactEmail}}">{{jobSearch.contactEmail}}</a>
-        </div>
+        <p>{{::jobSearch.text}}</p>
       </div>
     </div>
   </li>

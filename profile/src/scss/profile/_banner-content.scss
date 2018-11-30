@@ -70,10 +70,6 @@ $banner-content-description-edit-height: 116px;
     color: $white;
     position: relative;
 
-    @include breakpoint($small) {
-      margin-top: 2em;
-    }
-
     @include breakpoint($mobile-only) {
       margin-bottom: 30px;
     }

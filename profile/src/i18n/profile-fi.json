@@ -98,7 +98,7 @@
     "jobTitle": "Nimike",
     "employerUrl": "Työnantajan verkkosivu",
     "text": "Kuvausteksti",
-    "descriptionPlaceholder": "Lisää kuvaus",
+    "jobSearchDescription": "kuvaus",
     "showMore": "lisää",
     "showLess": "vähemmän",
     "contactEmail": "sähköpostiosoite",
