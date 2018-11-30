@@ -33,7 +33,6 @@
               <label translate="workExperience.dateOfEmployment"></label>
               <div>
                 <input type="text"
-                       name="start_{{$index}}"
                        ng-required="true"
                        class="work-experience__date-input work-experience__input"
                        date-input="MM/YYYY" ng-model="workExperienceItem.startDate"
@@ -41,7 +40,6 @@
                        placeholder="{{:: ('workExperience.startDatePlaceholder' | translate) }}" />
                 &ndash;
                 <input type="text"
-                       name="end_{{$index}}"
                        class="work-experience__date-input work-experience__input"
                        date-input="MM/YYYY" ng-model="workExperienceItem.endDate"
                        placeholder="{{:: ('workExperience.endDatePlaceholder' | translate) }}" />
@@ -53,7 +51,6 @@
                 id="job-title-{{workExperienceItem.id}}"
                 type="text"
                 ng-required="true"
-                name="title_{{$index}}"
                 class="work-experience__input"
                 ng-model="workExperienceItem.jobTitle"
                 ng-class="{'ng-invalid':!workExperienceItem.jobTitle}"
@@ -65,7 +62,6 @@
                 id="employer-{{workExperienceItem.id}}"
                 type="text"
                 ng-required="true"
-                name="employer_{{$index}}"
                 class="work-experience__input"
                 ng-model="workExperienceItem.employer"
                 ng-class="{'ng-invalid':!workExperienceItem.employer}"
@@ -75,7 +71,6 @@
               <label for="work-description-{{workExperienceItem.id}}" translate="workExperience.text"></label>
               <textarea
                 id="work-description-{{workExperienceItem.id}}"
-                name="description_{{$index}}"
                 placeholder="{{::'workExperience.text' | translate}}"
                 ng-model="workExperienceItem.text"></textarea>
             </div>
@@ -84,7 +79,6 @@
               <input
                 id="work-experience-url-{{workExperienceItem.id}}"
                 type="text"
-                name="url_{{$index}}"
                 class="work-experience__input"
                 ng-model="workExperienceItem.employerUrl"
                 placeholder="{{::'workExperience.employerUrl' | translate}}">
@@ -113,15 +107,13 @@
           <div class="work-experience__editor-content">
             <label for="job-search-headline">{{::'workExperience.jobSearchHeadline' | translate | capitalize}}</label>
             <input
-                    name="headline_{{$index}}"
                     id="job-search-headline"
                     type="text"
                     ng-required="jobSearch"
                     ng-model="jobSearch.headline"
                     placeholder="{{::'workExperience.jobSearchHeadline' | translate | capitalize}}"/>
             <label for="job-search-description">{{::'workExperience.jobSearchDescription' | translate | capitalize}}</label>
-            <textarea name="description_{{$index}}"
-                      id="job-search-description"
+            <textarea id="job-search-description"
                       placeholder="{{::'workExperience.jobSearchDescription' | translate | capitalize}}"
                       ng-model="jobSearch.text">
 
@@ -129,7 +121,6 @@
             <label for="job-search-contact-email">{{::'workExperience.contactEmail' | translate | capitalize }}</label>
             <input id="job-search-contact-email"
                    focus="editContactEmail"
-                   name="jobSearchEmail"
                    type="email"
                    ng-required="jobSearch"
                    ng-model="jobSearch.contactEmail"
