@@ -98,7 +98,7 @@
               <div class="banner-content__banner-content">
                 <div class="banner-content__banner-title" translate="workExperience.jobSearch" />
                 <div class="banner-content__banner-text">
-                  {{jobSearch.contactEmail}}
+                  {{::jobSearch.contactEmail}}
                 </div>
                 <button class="banner-content__remove" ng-click="removeJobSearch()"></button>
               </div>
@@ -106,26 +106,21 @@
           </div>
           <div class="work-experience__editor-content">
             <label for="job-search-headline">{{::'workExperience.jobSearchHeadline' | translate | capitalize}}</label>
-            <input
-                    id="job-search-headline"
-                    type="text"
-                    ng-required="jobSearch"
-                    ng-model="jobSearch.headline"
-                    placeholder="{{::'workExperience.jobSearchHeadline' | translate | capitalize}}"/>
+            <input id="job-search-headline"
+                   type="text"
+                   ng-required="jobSearch"
+                   ng-model="jobSearch.headline"
+                   placeholder="{{::'workExperience.jobSearchHeadline' | translate | capitalize}}"/>
             <label for="job-search-description">{{::'workExperience.jobSearchDescription' | translate | capitalize}}</label>
             <textarea id="job-search-description"
                       placeholder="{{::'workExperience.jobSearchDescription' | translate | capitalize}}"
                       ng-model="jobSearch.text">
-
             </textarea>
             <label for="job-search-contact-email">{{::'workExperience.contactEmail' | translate | capitalize }}</label>
             <input id="job-search-contact-email"
-                   focus="editContactEmail"
                    type="email"
                    ng-required="jobSearch"
                    ng-model="jobSearch.contactEmail"
-                   ui-keypress="{'enter':'exitContactEmailEdit()'}"
-                   ng-class="{'ng-invalid':!jobSearch.contactEmail}"
                    placeholder="{{::'workExperience.contactEmail' | translate | capitalize}}" />
           </div>
         </div>
