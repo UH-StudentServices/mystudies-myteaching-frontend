@@ -16,6 +16,7 @@
 -->
 
 <div class="work-experience__dropzone disableSelect">
+  <ng-form name="workExperienceForm">
   <ul class="banner-content"
       ng-model="workExperience"
       as-sortable="sortableOptions"
@@ -32,18 +33,17 @@
               <label translate="workExperience.dateOfEmployment"></label>
               <div>
                 <input type="text"
+                       name="start_{{$index}}"
+                       ng-required="true"
                        class="work-experience__date-input work-experience__input"
                        date-input="MM/YYYY" ng-model="workExperienceItem.startDate"
-                       ng-change="refreshValidity()"
-                       ng-blur="startDateChanged(workExperienceItem)"
                        ng-class="{'ng-invalid':!workExperienceItem.startDate || !workExperienceItem.startDate.isValid()}"
                        placeholder="{{:: ('workExperience.startDatePlaceholder' | translate) }}" />
                 &ndash;
                 <input type="text"
+                       name="end_{{$index}}"
                        class="work-experience__date-input work-experience__input"
                        date-input="MM/YYYY" ng-model="workExperienceItem.endDate"
-                       ng-change="refreshValidity()"
-                       ng-blur="endDateChanged(workExperienceItem)"
                        placeholder="{{:: ('workExperience.endDatePlaceholder' | translate) }}" />
               </div>
             </div>
@@ -52,10 +52,10 @@
               <input
                 id="job-title-{{workExperienceItem.id}}"
                 type="text"
+                ng-required="true"
+                name="title_{{$index}}"
                 class="work-experience__input"
                 ng-model="workExperienceItem.jobTitle"
-                ng-change="refreshValidity()"
-                ng-blur="refreshValidity()"
                 ng-class="{'ng-invalid':!workExperienceItem.jobTitle}"
                 placeholder="{{::'workExperience.jobTitle' | translate}}">
             </div>
@@ -64,11 +64,10 @@
               <input
                 id="employer-{{workExperienceItem.id}}"
                 type="text"
+                ng-required="true"
+                name="employer_{{$index}}"
                 class="work-experience__input"
                 ng-model="workExperienceItem.employer"
-                ng-change="refreshValidity()"
-                ng-blur="refreshValidity()"
-                ng-keypress="refreshValidity()"
                 ng-class="{'ng-invalid':!workExperienceItem.employer}"
                 placeholder="{{::'workExperience.employer' | translate }}">
             </div>
@@ -76,7 +75,8 @@
               <label for="work-description-{{workExperienceItem.id}}" translate="workExperience.text"></label>
               <textarea
                 id="work-description-{{workExperienceItem.id}}"
-                placeholder="{{::'workExperience.descriptionPlaceholder' | translate}}"
+                name="description_{{$index}}"
+                placeholder="{{::'workExperience.text' | translate}}"
                 ng-model="workExperienceItem.text"></textarea>
             </div>
             <div>
@@ -84,6 +84,7 @@
               <input
                 id="work-experience-url-{{workExperienceItem.id}}"
                 type="text"
+                name="url_{{$index}}"
                 class="work-experience__input"
                 ng-model="workExperienceItem.employerUrl"
                 placeholder="{{::'workExperience.employerUrl' | translate}}">
@@ -111,23 +112,36 @@
           </div>
           <div class="work-experience__editor-content">
             <label for="job-search-headline">{{::'workExperience.jobSearchHeadline' | translate | capitalize}}</label>
-            <input id="job-search-headline" type="text" ng-model="jobSearch.headline" placeholder="{{::'workExperience.jobSearchHeadlinePlaceholder' | translate | capitalize}}"/>
+            <input
+                    name="headline_{{$index}}"
+                    id="job-search-headline"
+                    type="text"
+                    ng-required="jobSearch"
+                    ng-model="jobSearch.headline"
+                    placeholder="{{::'workExperience.jobSearchHeadline' | translate | capitalize}}"/>
             <label for="job-search-description">{{::'workExperience.jobSearchDescription' | translate | capitalize}}</label>
-            <textarea id="job-search-description" placeholder="{{::'workExperience.jobSearchDescriptionPlaceholder' | translate | capitalize}}"
-                      ng-model="jobSearch.text"></textarea>
+            <textarea name="description_{{$index}}"
+                      id="job-search-description"
+                      placeholder="{{::'workExperience.jobSearchDescription' | translate | capitalize}}"
+                      ng-model="jobSearch.text">
+
+            </textarea>
             <label for="job-search-contact-email">{{::'workExperience.contactEmail' | translate | capitalize }}</label>
             <input id="job-search-contact-email"
                    focus="editContactEmail"
-                   type="email" required
+                   name="jobSearchEmail"
+                   type="email"
+                   ng-required="jobSearch"
                    ng-model="jobSearch.contactEmail"
                    ui-keypress="{'enter':'exitContactEmailEdit()'}"
                    ng-class="{'ng-invalid':!jobSearch.contactEmail}"
-                   placeholder="{{::'contactInformation.addEmail' | translate | capitalize}}" />
+                   placeholder="{{::'workExperience.contactEmail' | translate | capitalize}}" />
           </div>
         </div>
       </div>
     </li>
   </ul>
+  </ng-form>
 </div>
 <div class="add-new-content">
   <div class="list-of-links">

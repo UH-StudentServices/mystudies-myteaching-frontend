@@ -99,12 +99,10 @@
     "employerUrl": "Arbetsgivares websidan",
     "text": "Beskrivning",
     "jobSearchDescription": "beskrivning",
-    "jobSearchDescriptionPlaceholder": "Lägg till beskrivning",
     "showMore": "mer",
     "showLess": "mindre",
     "contactEmail": "contact email",
     "jobSearchHeadline": "rubrik",
-    "jobSearchHeadlinePlaceholder": "Lägg till rubrik",
     "dateOfEmployment": "Anställningstid"
   },
   "samples": {

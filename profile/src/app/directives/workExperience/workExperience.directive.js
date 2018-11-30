@@ -51,15 +51,6 @@ angular.module('directives.workExperience', [
           return true;
         };
 
-        var isValid = function () {
-          return isJobSearchValid() && $scope.workExperience.every(function (job) {
-            return job.employer
-              && job.startDate.isValid()
-              && (!job.endDate || job.endDate.isValid())
-              && job.jobTitle;
-          });
-        };
-
         $scope.workExperience = WorkExperienceService.formatDates($scope.workExperienceData());
         $scope.editing = false;
         $scope.workExperienceValid = true;
@@ -76,13 +67,9 @@ angular.module('directives.workExperience', [
           $scope.origJobSearch = _.clone($scope.jobSearch);
         };
 
-        $scope.refreshValidity = _.debounce(function () {
-          $scope.workExperienceValid = isValid();
-          $scope.$apply();
-        }, 500);
 
         $scope.exitEdit = function () {
-          if (isValid()) {
+          if ($scope.workExperienceForm.$valid) {
             $scope.$broadcast('saveComponent');
 
             if ($scope.jobSearch !== null) {
@@ -109,8 +96,10 @@ angular.module('directives.workExperience', [
                 $scope.editing = false;
                 $state.reload(); // https://jira.it.helsinki.fi/browse/OO-1004
               });
+            return true;
           }
-          return true;
+          $scope.workExperienceForm.$setDirty();
+          return false;
         };
       }
     };

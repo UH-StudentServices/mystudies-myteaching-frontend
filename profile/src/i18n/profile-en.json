@@ -99,12 +99,10 @@
     "employerUrl": "Employer's website",
     "text": "Description",
     "jobSearchDescription": "description",
-    "jobSearchDescriptionPlaceholder": "Add description",
     "showMore": "more",
     "showLess": "less",
     "contactEmail": "contact email",
     "jobSearchHeadline": "headline",
-    "jobSearchHeadlinePlaceholder": "add headline",
     "dateOfEmployment": "Date of employment",
   },
   "samples": {

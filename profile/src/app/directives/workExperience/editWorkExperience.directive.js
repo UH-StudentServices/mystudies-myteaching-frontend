@@ -25,35 +25,16 @@ angular.module('directives.editWorkExperience', [
       restrict: 'E',
       templateUrl: 'app/directives/workExperience/editWorkExperience.html',
       link: function ($scope) {
-        $scope.startDateChanged = function (job) {
-          if (!job.startDate || !job.startDate.isValid()) {
-            job.startDate = moment();
-          }
-          $scope.refreshValidity();
-        };
-
-        $scope.endDateChanged = function (job) {
-          if (job.endDate && !job.endDate.isValid()) {
-            job.endDate = '';
-          }
-          $scope.refreshValidity();
-        };
-
         $scope.addWorkExperience = function (job) {
           job.id = Date.now();
           job.startDate = moment();
-          job.endDate = '';
-          job.jobTitle = '';
-          job.employerUrl = '';
           job.visibility = Visibility.PUBLIC;
           $scope.workExperience.push(job);
           $scope.newJob = {};
-          $scope.refreshValidity();
         };
 
         $scope.removeWorkExperience = function (job) {
           $scope.workExperience = _.without($scope.workExperience, job);
-          $scope.refreshValidity(); // we might have deleted the only invalid item
         };
 
         $scope.addJobSearch = function (jobSearch) {
