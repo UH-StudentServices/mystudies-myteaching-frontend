@@ -51,8 +51,8 @@ angular.module('directives.languageProficiencies', [
           return { languageName: '', proficiency: '', description: '', visibility: Visibility.PUBLIC };
         };
 
-        var orderByName = function (languageProficiencies) {
-          return orderBy(languageProficiencies, 'languageName');
+        var orderByIndex = function (languageProficiencies) {
+          return orderBy(languageProficiencies, 'orderIndex');
         };
 
         var shouldUpdate = function () {
@@ -70,7 +70,14 @@ angular.module('directives.languageProficiencies', [
         };
 
         _.assign($scope, {
-          languageProficiencies: orderByName($scope.languageProficienciesData()),
+          languageProficiencies: orderByIndex($scope.languageProficienciesData()),
+          orderChanged: false,
+          sortableOptions: {
+            containment: '.language-proficiencies__dropzone',
+            orderChanged: function () {
+              $scope.orderChanged = true;
+            }
+          },
 
           edit: function () {
             $scope.editing = true;
@@ -79,6 +86,17 @@ angular.module('directives.languageProficiencies', [
 
           exitEdit: function () {
             $scope.$broadcast('saveComponent');
+
+            if ($scope.orderChanged) {
+              $scope.languageProficiencies = $scope.languageProficiencies.map(function (lang, idx) {
+                lang.orderIndex = idx + 1;
+                return lang;
+              });
+              updateBatch.updatedLanguageProficiencies = $scope.languageProficiencies
+                .filter(function (el) {
+                  return el.id;
+                });
+            }
 
             updateBatch.newLanguageProficiencies = $scope.languageProficiencies
               .filter(function (el) {
@@ -94,7 +112,7 @@ angular.module('directives.languageProficiencies', [
 
             if (shouldUpdate()) {
               LanguageProficienciesService.save(updateBatch).then(function (savedProficiencies) {
-                $scope.languageProficiencies = orderByName(savedProficiencies);
+                $scope.languageProficiencies = orderByIndex(savedProficiencies);
                 $state.reload(); // https://jira.it.helsinki.fi/browse/OO-1004
               });
             }
@@ -103,16 +121,22 @@ angular.module('directives.languageProficiencies', [
 
             return true;
           },
+
           addNew: function () {
             var newEntry = newLanguageProficiency();
 
             if (newEntry) {
+              newEntry.orderIndex = $scope.languageProficiencies.reduce(function (max, lang) {
+                return Math.max(max, lang.orderIndex);
+              }, 0) + 1;
               $scope.languageProficiencies.push(newEntry);
             }
           },
+
           updateLanguageProficiency: function (languageProficiency) {
             update(languageProficiency);
           },
+
           remove: function (languageProficiency) {
             if (languageProficiency.id) {
               updateBatch.deletedIds = _.union(updateBatch.deletedIds, [languageProficiency.id]);

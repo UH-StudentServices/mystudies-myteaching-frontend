@@ -57,7 +57,7 @@
   $background-color-edit: #797979;
   @include flex-container(flex-start);
   flex: 0 0 auto;
-  width: 300px;
+  width: 340px;
   min-height: 100px;
   margin: 0 4px 2px 0;
   border: 1px solid $mediumsilver;
@@ -68,8 +68,22 @@
     color: $white;
   }
 
+  &__drag-handle {
+    position: absolute;
+    top: 0.5em;
+    left: 0.5em;
+
+    &:before {
+      content: $icon-drag;
+      font-size: 2em;
+      color: $black;
+      font-family: "hy-icons";
+      vertical-align: middle;
+    }
+  }
+
   &__content {
-    padding: 20px;
+    padding: 1em 1em 1em 3em;
     flex: 1 1 auto;
   }
 
@@ -82,7 +96,9 @@
   }
 
   .item-visibility {
-    align-self: flex-start;
+    position: absolute;
+    top: 0.5em;
+    right: 1.5em;
     padding: 0.3em 0.5em 0 0;
 
     .visibility-toggle {
@@ -94,7 +110,9 @@
   }
 
   &__remove {
-    align-self: flex-start;
+    position: absolute;
+    top: 0.5em;
+    right: 0;
     padding: 0.3em 0.5em 0 0;
     color: $white;
 
