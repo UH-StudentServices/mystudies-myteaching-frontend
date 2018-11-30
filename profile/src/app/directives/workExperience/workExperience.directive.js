@@ -44,13 +44,6 @@ angular.module('directives.workExperience', [
       },
       templateUrl: 'app/directives/workExperience/workExperience.html',
       link: function ($scope) {
-        var isJobSearchValid = function () {
-          if ($scope.jobSearch !== null) {
-            return $scope.jobSearch.contactEmail;
-          }
-          return true;
-        };
-
         $scope.workExperience = WorkExperienceService.formatDates($scope.workExperienceData());
         $scope.editing = false;
         $scope.workExperienceValid = true;
@@ -66,7 +59,6 @@ angular.module('directives.workExperience', [
           $scope.origWorkExperience = $scope.workExperience.slice();
           $scope.origJobSearch = _.clone($scope.jobSearch);
         };
-
 
         $scope.exitEdit = function () {
           if ($scope.workExperienceForm.$valid) {
