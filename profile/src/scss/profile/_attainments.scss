@@ -19,6 +19,12 @@
   margin-top: 0.5em;
 }
 
+.study-attainments__grades-visibility-toggle-container {
+  display: flex;
+  align-items: center;
+  min-width: 185px;
+}
+
 .study-attainment__item {
   @extend .box-data, .border-bottom;
   padding-top: 15px;

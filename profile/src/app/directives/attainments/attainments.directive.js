@@ -80,13 +80,14 @@ angular.module('directives.attainments', [
           $scope.editing = false;
 
           AttainmentResource
-            .updateWhitelist($scope.profileId, { oodiStudyAttainmentIds: $scope.whitelist })
+            .updateWhitelist($scope.profileId, { gradesVisibility: $scope.gradesVisibility.val, oodiStudyAttainmentIds: $scope.whitelist })
             .then(updateWhitelistedAttainments);
 
           return true;
         };
 
         AttainmentResource.getWhitelist($scope.profileId).then(function (whitelist) {
+          $scope.gradesVisibility = { val: whitelist.gradesVisibility };
           $scope.whitelist = whitelist.oodiStudyAttainmentIds;
         });
 
