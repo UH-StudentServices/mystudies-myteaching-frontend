@@ -294,6 +294,7 @@
     "degreeProgramme": "Select degree programmes",
     "teachingLanguage": "Choose the language(s) you teach",
     "label": {
+      "degreeProgrammeLanguage": "Degree programme/language",
       "description": "Your consultation hours",
       "additionalInfo": "Additional contact information",
       "location": "Location"

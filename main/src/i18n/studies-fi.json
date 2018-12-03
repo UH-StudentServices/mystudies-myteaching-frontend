@@ -291,9 +291,10 @@
       "info": "Viimeisen voimassaolopäivän jälkeen vastaanottoaika ei näy Opiskelijan ohjeissa. ",
       "expired": "Vanhentunut. Päivitä tiedot."
     },
-    "degreeProgramme": "Valitse haluamasi koulutusohjelmat",
+    "degreeProgramme": "Valitse koulutusohjelma(t)",
     "teachingLanguage": "Valitse opettamasi kieli/kielet",
     "label": {
+      "degreeProgrammeLanguage": "Koulutusohjelma/kieli",
       "description": "Vastaanottoaikasi",
       "additionalInfo": "Muut yhteystiedot",
       "location": "Vastaanoton sijainti"
