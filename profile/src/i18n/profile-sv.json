@@ -114,7 +114,8 @@
   },
   "attainments": {
     "attainments": "Prestationer",
-    "seeMoreLink": "se en lista över dina prestationer i WebOodi"
+    "seeMoreLink": "se en lista över dina prestationer i WebOodi",
+    "showGrades": "Visa vitsord"
   },
   "buttons": {
     "showMore": "Visa mer"
