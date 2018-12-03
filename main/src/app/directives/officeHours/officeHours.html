@@ -114,7 +114,7 @@
         <select name="newTeachingLanguage"
                 class="office-hours__input"
                 ng-model="newTeachingLanguage" ng-change="addTeachingLanguage(newTeachingLanguage)"
-                ng-options="language.code as language.name[currentLanguage] for language in availableLanguages | orderBy:'index' track by language.code"
+                ng-options="language.code as language.name[currentLanguage] for language in availableLanguages | orderBy:nameInCurrentLang track by language.code"
                 ng-if="!officeHoursUnderEdit.degreeProgrammes.length">
           <option value="">{{::('officeHours.teachingLanguage' | translate)}}...</option>
         </select>
