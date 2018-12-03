@@ -98,7 +98,7 @@
               <div class="banner-content__banner-content">
                 <div class="banner-content__banner-title" translate="workExperience.jobSearch" />
                 <div class="banner-content__banner-text">
-                  {{::jobSearch.contactEmail}}
+                  {{jobSearch.contactEmail}}
                 </div>
                 <button class="banner-content__remove" ng-click="removeJobSearch()"></button>
               </div>
@@ -108,7 +108,6 @@
             <label for="job-search-headline">{{::'workExperience.jobSearchHeadline' | translate | capitalize}}</label>
             <input id="job-search-headline"
                    type="text"
-                   ng-required="jobSearch"
                    ng-model="jobSearch.headline"
                    placeholder="{{::'workExperience.jobSearchHeadline' | translate | capitalize}}"/>
             <label for="job-search-description">{{::'workExperience.jobSearchDescription' | translate | capitalize}}</label>
