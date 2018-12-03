@@ -287,13 +287,14 @@
     "publish": "publicera",
     "expiration": {
       "date": "Giltighetsdatum",
-      "mandatory": "(obligatorisk, upp till ett år från det har datumet)",
+      "mandatory": "(obligatorisk, upp till ett år från det här datumet)",
       "info": "Efter giltighetsdatum kommer mottagningstider inte längre att visas på Instruktioner för studerande -sidorna.",
       "expired": "Upphört. Uppdatera information."
     },
     "degreeProgramme": "Välj de utbildningsprogrammen",
     "teachingLanguage": "Välj det eller de språk du undervisar i",
     "label": {
+      "degreeProgrammeLanguage": "Utbildningsprogram/språk",
       "description": "Dina mottagningstider",
       "additionalInfo": "Mer information om mottagstider",
       "location": "Mottagsplats"

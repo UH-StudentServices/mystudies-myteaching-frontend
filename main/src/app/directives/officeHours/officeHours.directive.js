@@ -92,11 +92,11 @@ angular.module('directives.officeHours', [
           ]).then(function (results) {
             scope.degreeProgrammes = results[0];
             scope.availableDegreeProgrammes = _.cloneDeep(results[0]);
-            scope.languages = results[1].map(function (lang, idx) {
-              lang.index = idx;
-              return lang;
-            });
+            scope.languages = results[1];
             scope.availableLanguages = _.cloneDeep(scope.languages);
+            scope.nameInCurrentLang = function (item) {
+              return item.name[scope.currentLanguage];
+            };
 
             return OfficeHoursService.loadOfficeHours();
           })
