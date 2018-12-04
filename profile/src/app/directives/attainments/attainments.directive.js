@@ -123,16 +123,16 @@ angular.module('directives.attainments', [
       }
     };
   }).directive('toggleSwitch', function () {
-  return {
-    restrict: 'E',
-    replace: true,
-    templateUrl: 'app/directives/attainments/toggleSwitch.html',
-    scope: { ngModel: '=' },
-    link: function (scope) {
-      scope.toggle = function () {
-        scope.ngModel.val = !scope.ngModel.val;
-      };
-    }
-  };
-});
+    return {
+      restrict: 'E',
+      replace: true,
+      templateUrl: 'app/directives/attainments/toggleSwitch.html',
+      scope: { ngModel: '=' },
+      link: function (scope) {
+        scope.toggle = function () {
+          scope.ngModel.val = !scope.ngModel.val;
+        };
+      }
+    };
+  });
 
