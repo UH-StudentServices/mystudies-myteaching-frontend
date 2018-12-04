@@ -23,22 +23,18 @@ angular.module('services.workExperience', [
   .factory('WorkExperienceService', function (ProfileService,
     WorkExperienceResource,
     momentDateToLocalDateArray,
-    dateArrayToMomentObject,
-    $filter) {
+    dateArrayToMomentObject) {
     var Rx = window.Rx;
     var workExperienceSubject;
     var jobSearchSubject;
-    var orderBy = $filter('orderBy');
     var getProfile = ProfileService.getProfile;
 
     function formatDates(workExperiences) {
-      var workExperiencesWithDates = _.map(workExperiences, function (job) {
+      return _.map(workExperiences, function (job) {
         job.startDate = dateArrayToMomentObject(job.startDate);
         job.endDate = dateArrayToMomentObject(job.endDate);
         return job;
       });
-
-      return orderBy(workExperiencesWithDates, '-startDate');
     }
 
     function workExperienceArrayDatesToMoment(workExperience) {
