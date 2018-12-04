@@ -22,9 +22,7 @@ angular.module('directives.toggleSwitch', [])
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/toggleSwitch/toggleSwitch.html',
-      scope: {
-        ngModel: '=',
-      },
+      scope: { ngModel: '=' },
       link: function (scope) {
         scope.toggle = function () {
           scope.ngModel.val = !scope.ngModel.val;
