@@ -114,7 +114,8 @@
   },
   "attainments": {
     "attainments": "Suoritetut kurssit",
-    "seeMoreLink": "katso loput suoritukset WebOodista"
+    "seeMoreLink": "katso loput suoritukset WebOodista",
+    "showGrades": "Näytä arvosanat"
   },
   "buttons": {
     "showMore": "Näytä lisää"

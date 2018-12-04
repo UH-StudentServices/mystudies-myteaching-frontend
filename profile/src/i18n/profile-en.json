@@ -114,7 +114,8 @@
   },
   "attainments": {
     "attainments": "Completed studies",
-    "seeMoreLink": "see a list of your completed studies in WebOodi"
+    "seeMoreLink": "see a list of your completed studies in WebOodi",
+    "showGrades": "Show grades"
   },
   "buttons": {
     "showMore": "Show more"

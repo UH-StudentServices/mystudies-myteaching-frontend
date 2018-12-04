@@ -80,13 +80,17 @@ angular.module('directives.attainments', [
           $scope.editing = false;
 
           AttainmentResource
-            .updateWhitelist($scope.profileId, { oodiStudyAttainmentIds: $scope.whitelist })
+            .updateWhitelist($scope.profileId, {
+              showGrades: $scope.showGrades.val,
+              oodiStudyAttainmentIds: $scope.whitelist
+            })
             .then(updateWhitelistedAttainments);
 
           return true;
         };
 
         AttainmentResource.getWhitelist($scope.profileId).then(function (whitelist) {
+          $scope.showGrades = { val: whitelist.showGrades };
           $scope.whitelist = whitelist.oodiStudyAttainmentIds;
         });
 
@@ -118,4 +122,17 @@ angular.module('directives.attainments', [
         updateWhitelistedAttainments();
       }
     };
+  }).directive('toggleSwitch', function () {
+    return {
+      restrict: 'E',
+      replace: true,
+      templateUrl: 'app/directives/attainments/toggleSwitch.html',
+      scope: { ngModel: '=' },
+      link: function (scope) {
+        scope.toggle = function () {
+          scope.ngModel.val = !scope.ngModel.val;
+        };
+      }
+    };
   });
+

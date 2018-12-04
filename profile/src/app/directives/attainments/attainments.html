@@ -21,13 +21,14 @@
                       default-text="attainments.attainments"
                       profile-lang="{{::profileLang}}"
                       editing="editing"></editable-heading>
-
+    <div ng-if="editing" class="study-attainments__grades-visibility-toggle-container">
+      <toggle-switch ng-model="showGrades"/><span translate="attainments.showGrades"></span>
+    </div>
     <div class="component-header__actions">
       <visibility-toggle component-id="ATTAINMENTS"></visibility-toggle>
       <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
     </div>
   </div>
-
   <ul ng-if="editing" class="study-attainments">
     <li class="study-attainment" ng-repeat="attainment in allAttainments">
       <div class="study-attainment__item">
@@ -72,7 +73,7 @@
     <li class="study-attainment" ng-repeat="attainment in attainments | limitTo:numberOfVisibleAttainments">
       <div class="study-attainment__item">
 
-        <div class="study-attainment__left">
+        <div ng-if="attainment.grade" class="study-attainment__left">
           <span class="study-attainment__grade--{{:: gradeClass(attainment.grade) }}">
             {{:: formatGrade(attainment.grade) }}
           </span>

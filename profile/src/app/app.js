@@ -72,7 +72,6 @@ angular.module('opintoniProfileApp', [
   'directives.notifications',
   'directives.browseFiles',
   'directives.sharedLinks',
-
   'dialog.verificationDialog',
 
   'filters.formatting',
