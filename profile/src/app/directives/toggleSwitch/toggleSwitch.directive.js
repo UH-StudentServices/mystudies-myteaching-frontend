@@ -24,7 +24,6 @@ angular.module('directives.toggleSwitch', [])
       templateUrl: 'app/directives/toggleSwitch/toggleSwitch.html',
       scope: {
         ngModel: '=',
-        id: '@'
       },
       link: function (scope) {
         scope.toggle = function () {

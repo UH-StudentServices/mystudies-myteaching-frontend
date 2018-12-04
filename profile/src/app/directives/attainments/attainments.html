@@ -22,8 +22,7 @@
                       profile-lang="{{::profileLang}}"
                       editing="editing"></editable-heading>
     <div ng-if="editing" class="study-attainments__grades-visibility-toggle-container">
-      <toggle-switch id="grades-visibility" ng-model="gradesVisibility"/><span for="grades-visibility"
-                                                                               translate="attainments.showGrades"></span>
+      <toggle-switch ng-model="showGrades"/><span translate="attainments.showGrades"></span>
     </div>
     <div class="component-header__actions">
       <visibility-toggle component-id="ATTAINMENTS"></visibility-toggle>
