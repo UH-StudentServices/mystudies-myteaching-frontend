@@ -66,3 +66,55 @@ $study-attainment-grade-base-name: "study-attainment__grade";
 .study-attainment__teachers {
   @extend .box-data__content;
 }
+
+%toggle-switch-icon-shared {
+  z-index: -1;
+  position: absolute;
+  top: 4px;
+}
+
+.toggle-switch {
+  background: transparent;
+}
+
+.toggle-switch-slider {
+  display: block;
+  width: 48px;
+  height: 24px;
+  position: relative;
+  cursor: pointer;
+  transition: .2s;
+  z-index: 1;
+  border-radius: 34px;
+  background-color: $mediumsilver;
+  color: $lightsilver;
+  & .toggle-switch-icon--on {
+    @extend %toggle-switch-icon-shared;
+    left: 4px;
+  }
+  & .toggle-switch-icon--off {
+    @extend %toggle-switch-icon-shared;
+    right: 4px;
+  }
+}
+
+.toggle-switch-slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 2px;
+  background-color: $lightsilver;
+  transition: .2s;
+  border-radius: 50%;
+}
+
+.toggle-switch--on {
+  &> .toggle-switch-slider {
+    background-color:$blue;
+  }
+  &> .toggle-switch-slider:before {
+    transform: translateX(24px);
+  }
+}
