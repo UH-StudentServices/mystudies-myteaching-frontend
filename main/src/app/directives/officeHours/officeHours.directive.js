@@ -130,8 +130,11 @@ angular.module('directives.officeHours', [
 
         scope.editOfficeHours = function editOfficeHours(index) {
           scope.officeHoursUnderEdit = _.cloneDeep(scope.officeHoursList[index]);
-          scope.availableDegreeProgrammes = scope.degreeProgrammes.filter(function (code) {
-            return !_.find(scope.officeHoursUnderEdit.degreeProgrammes, ['code', code.code]);
+          scope.availableDegreeProgrammes = scope.degreeProgrammes.filter(function (programme) {
+            return !_.find(scope.officeHoursUnderEdit.degreeProgrammes, ['code', programme.code]);
+          });
+          scope.availableLanguages = scope.languages.filter(function (lang) {
+            return !_.find(scope.officeHoursUnderEdit.languages, ['code', lang.code]);
           });
           scope.editedOfficeHoursIndex = index;
           scope.openEditDialog();
@@ -158,6 +161,8 @@ angular.module('directives.officeHours', [
 
         scope.addOfficeHours = function addOfficeHours() {
           scope.editedOfficeHoursIndex = -1;
+          scope.availableDegreeProgrammes = _.cloneDeep(scope.degreeProgrammes);
+          scope.availableLanguages = _.cloneDeep(scope.languages);
           scope.resetOfficeHoursUnderEdit();
           scope.openEditDialog();
         };
