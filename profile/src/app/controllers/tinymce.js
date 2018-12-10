@@ -108,6 +108,7 @@ angular.module('controllers.tinymce', ['ui.tinymce', 'services.language', 'servi
     }
 
     $scope.tinymceOptions = {
+      skin_url : '/profile/assets/skins/lightgray',
       language: LanguageService.getCurrent(),
       language_url: '/profile/i18n/tinymce-locales/' + LanguageService.getCurrent() + '.js',
       height: '600',
