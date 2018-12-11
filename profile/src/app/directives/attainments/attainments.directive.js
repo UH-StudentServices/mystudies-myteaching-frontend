@@ -43,7 +43,7 @@ angular.module('directives.attainments', [
         $scope.attainments = [];
 
         $scope.formatGrade = function (grade) {
-          if (grade.endsWith('.')) {
+          if (_.endsWith(grade, '.')) {
             return grade.substring(0, grade.length - 1);
           }
           return grade;
