@@ -52,7 +52,7 @@
     width: 480px;
     top: 0;
     left: 50%;
-    @include transform(translate(-50%, 0));
+    @include transform(translateX(-50%));
   }
 }
 
