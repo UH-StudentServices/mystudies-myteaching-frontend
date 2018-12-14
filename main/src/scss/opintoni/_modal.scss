@@ -25,57 +25,39 @@
 }
 
 .modal {
+  @include breakpoint($mobile-only) {
+    position: absolute;
+  }
   position: fixed;
   top: 0;
   left: 10%;
   width: 80%;
-  height: 80%;
+  overflow-y: scroll;
+  height: 100%;
   z-index: 10000;
   outline: none;
 }
 
+
 .modal-dialog {
   width: 100%;
-  height: 100%;
-}
-
-.modal.confirm .modal-dialog {
+  height: auto;
   position: relative;
   background-color: rgba(0, 0, 0, 0.8);
-  height: auto;
   color: $white;
   @include font-size(13px);
   padding: 1em;
   @include breakpoint($small) {
-    position: relative;
-    position: relative;
-    width: 300px;
-    top: 50%;
-    left: 50%;
-    @include transform(translate(-50%, -50%));
-  }
-}
-
-.modal.dialog .modal-dialog {
-  position: relative;
-  background-color: rgba(0, 0, 0, 0.8);
-  height: auto;
-  color: $white;
-  @include font-size(13px);
-  padding: 1em;
-  @include breakpoint($small) {
-    position: relative;
     position: relative;
     width: 480px;
-    top: 50%;
+    top: 0;
     left: 50%;
-    @include transform(translate(-50%, -50%));
+    @include transform(translate(-50%, 0));
   }
 }
 
 .modal-content {
   width: 100%;
-  height: 100%;
 }
 
 .modal__actions {
