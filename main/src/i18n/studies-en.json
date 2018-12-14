@@ -291,6 +291,7 @@
       "info": "After the expiration date, the consultation hours will no longer be displayed in the Instructions for Students.",
       "expired": "Expired. Update information."
     },
+    "invalid": "Add degree programme/language",
     "degreeProgramme": "Select degree programmes",
     "teachingLanguage": "Choose the language(s) you teach",
     "label": {

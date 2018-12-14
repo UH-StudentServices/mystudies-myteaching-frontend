@@ -291,6 +291,7 @@
       "info": "Viimeisen voimassaolopäivän jälkeen vastaanottoaika ei näy Opiskelijan ohjeissa. ",
       "expired": "Vanhentunut. Päivitä tiedot."
     },
+    "invalid": "Lisää koulutusohjelma/kieli",
     "degreeProgramme": "Valitse koulutusohjelma(t)",
     "teachingLanguage": "Valitse opettamasi kieli/kielet",
     "label": {
