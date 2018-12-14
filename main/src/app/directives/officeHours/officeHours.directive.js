@@ -199,21 +199,37 @@ angular.module('directives.officeHours', [
           scope.resetOfficeHoursUnderEdit();
         };
 
-        function degreeProgrammesTeachingLanguagesValid() {
-          return (scope.officeHoursUnderEdit.degreeProgrammes.length
-            && !scope.officeHoursUnderEdit.languages.length)
-            || (!scope.officeHoursUnderEdit.degreeProgrammes.length
-              && scope.officeHoursUnderEdit.languages.length);
+        function degreeProgrammesTeachingLanguagesValid(officeHours) {
+          return (officeHours.degreeProgrammes.length
+            && !officeHours.languages.length)
+            || (!officeHours.degreeProgrammes.length
+              && officeHours.languages.length);
         }
 
-        scope.canPublishEdits = function canPublishEdits() {
-          var expirationDate = toMoment(scope.officeHoursUnderEdit.expirationDate);
+        function isValidOfficeHours(officeHours) {
+          var expirationDate = toMoment(officeHours.expirationDate);
 
-          return scope.officeHoursUnderEdit.description
-            && scope.officeHoursUnderEdit.name
-            && degreeProgrammesTeachingLanguagesValid()
+          return officeHours.description
+            && officeHours.name
+            && degreeProgrammesTeachingLanguagesValid(officeHours)
             && expirationDate.isValid()
             && expirationDate.isBefore(moment().add(1, 'year'));
+        }
+
+        scope.isValidOfficeHours = isValidOfficeHours;
+
+        scope.canPublishEdits = function canPublishEdits() {
+          return isValidOfficeHours(scope.officeHoursUnderEdit);
+        };
+
+        scope.hasInvalidOfficeHours = function hasInvalidOfficeHours() {
+          if (scope.officeHoursList) {
+            return _.some(scope.officeHoursList, function (oh) {
+              return !isValidOfficeHours(oh);
+            });
+          }
+
+          return false;
         };
 
         scope.resetOfficeHoursUnderEdit = function resetOfficeHoursUnderEdit() {

@@ -291,6 +291,7 @@
       "info": "Efter giltighetsdatum kommer mottagningstider inte längre att visas på Instruktioner för studerande -sidorna.",
       "expired": "Upphört. Uppdatera information."
     },
+    "invalid": "Lägg till utbildningsprogram/språk",
     "degreeProgramme": "Välj de utbildningsprogrammen",
     "teachingLanguage": "Välj det eller de språk du undervisar i",
     "label": {

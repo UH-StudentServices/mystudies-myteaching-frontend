@@ -52,6 +52,9 @@
             <div class="office-hours__expired" ng-if="officeHours.expired">
               {{::('officeHours.expiration.expired' | translate)}}
             </div>
+            <div class="office-hours__expired" ng-if="!isValidOfficeHours(officeHours)">
+              {{::('officeHours.invalid' | translate)}}
+            </div>
           </div>
           <div class="office-hours__item-icons">
             <button class="button--icon" ng-click="editOfficeHours($index)" title="{{'general.edit' | translate}}">
@@ -72,7 +75,12 @@
       </li>
     </ul>
     <div class="button-group office-hours__buttons">
-      <button class="button button-group__button" translate="officeHours.addNew" ng-click="addOfficeHours()"></button>
+      <button class="button button-group__button"
+              translate="officeHours.addNew"
+              ng-click="addOfficeHours()"
+              ng-class="{'disabled':hasInvalidOfficeHours()}"
+              ng-disabled="hasInvalidOfficeHours()">
+      </button>
     </div>
   </div>
 
