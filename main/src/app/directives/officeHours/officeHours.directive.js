@@ -222,16 +222,6 @@ angular.module('directives.officeHours', [
           return isValidOfficeHours(scope.officeHoursUnderEdit);
         };
 
-        scope.hasInvalidOfficeHours = function hasInvalidOfficeHours() {
-          if (scope.officeHoursList) {
-            return _.some(scope.officeHoursList, function (oh) {
-              return !isValidOfficeHours(oh);
-            });
-          }
-
-          return false;
-        };
-
         scope.resetOfficeHoursUnderEdit = function resetOfficeHoursUnderEdit() {
           scope.officeHoursUnderEdit = {
             description: null,
