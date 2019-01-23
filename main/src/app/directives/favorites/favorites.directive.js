@@ -34,21 +34,21 @@ angular.module('directives.favorites', [
       restrict: 'E',
       templateUrl: 'app/directives/favorites/favorites.html',
       scope: {},
-      link: function (scope) {
-        scope.editMode = false;
-        scope.availableFavoriteTypes = availableFavoriteTypes;
+      link: function ($scope) {
+        $scope.editMode = false;
+        $scope.availableFavoriteTypes = availableFavoriteTypes;
 
-        scope.edit = function () {
-          scope.editMode = true;
+        $scope.edit = function () {
+          $scope.editMode = true;
         };
 
-        scope.exitEdit = function () {
-          scope.editMode = false;
+        $scope.exitEdit = function () {
+          $scope.editMode = false;
           return true;
         };
 
         function showFavorites(favorites) {
-          scope.favorites = favorites;
+          $scope.favorites = favorites;
         }
 
         function updateFavorites() {
@@ -61,16 +61,16 @@ angular.module('directives.favorites', [
           });
         }
 
-        scope.$on(NewFavoriteAddedEvent, updateFavorites);
-        scope.$on(RemoveFavoriteEvent, removeFavorite);
+        $scope.$on(NewFavoriteAddedEvent, updateFavorites);
+        $scope.$on(RemoveFavoriteEvent, removeFavorite);
 
         updateFavorites();
 
-        scope.sortableOptions = {
+        $scope.sortableOptions = {
           containment: '.favorites__dropzone',
           orderChanged: function () {
             FavoritesService.updateFavoriteOrder({
-              favoriteIds: scope.favorites.map(function (favorite) {
+              favoriteIds: $scope.favorites.map(function (favorite) {
                 return favorite.id;
               })
             });
