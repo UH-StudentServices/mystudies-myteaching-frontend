@@ -113,7 +113,8 @@ module.exports = function (grunt) {
           routes: {
             '/bower_components': '../bower_components',
             '/common': '../common',
-            '/assets/fonts': '../common/src/assets/fonts'
+            '/assets/fonts': '../common/src/assets/fonts',
+            '/assets/skins': '../bower_components/tinymce/skins'
           },
           middleware: [
             proxyMiddleware,
