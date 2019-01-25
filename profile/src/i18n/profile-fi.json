@@ -106,8 +106,8 @@
     "dateOfEmployment": "Työtehtävän päivämäärä"
   },
   "samples": {
-    "title": "Näytteet",
-    "addSample": "Lisää näyte",
+    "title": "Esimerkkitöitä",
+    "addSample": "Lisää esimerkkityö",
     "sampleTitle": "Otsikko",
     "sampleDescription": "Kuvaus",
     "descriptionPlaceholder": "kuvausteksti"
@@ -170,7 +170,7 @@
     }
   },
   "skillsAndExpertise": {
-    "title": "Osaaminen ja asiantuntijuus"
+    "title": "Erityisosaaminen"
   },
   "tabs": {
     "basicInformation": "Perustiedot",
