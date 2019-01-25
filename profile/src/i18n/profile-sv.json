@@ -106,8 +106,8 @@
     "dateOfEmployment": "Anställningstid"
   },
   "samples": {
-    "title": "Prover",
-    "addSample": "Lägg till prov",
+    "title": "Exempel på arbeten",
+    "addSample": "Lägg till exempel på arbeten",
     "sampleTitle": "Rubrik",
     "sampleDescription": "Beskrivning",
     "descriptionPlaceholder": "beskrivningstext"
@@ -170,7 +170,7 @@
     }
   },
   "skillsAndExpertise": {
-    "title": "Kompetens och expertis"
+    "title": "Speciella kunskaper"
   },
   "tabs": {
     "basicInformation": "Basuppgifter",

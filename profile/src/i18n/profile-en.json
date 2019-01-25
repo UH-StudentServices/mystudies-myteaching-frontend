@@ -106,8 +106,8 @@
     "dateOfEmployment": "Date of employment",
   },
   "samples": {
-    "title": "Samples",
-    "addSample": "Add sample",
+    "title": "Work examples",
+    "addSample": "Add work example",
     "sampleTitle": "heading",
     "sampleDescription": "Description",
     "descriptionPlaceholder": "description text"
@@ -170,7 +170,7 @@
     }
   },
   "skillsAndExpertise": {
-    "title": "Skills and expertise"
+    "title": "Specialized skills"
   },
   "tabs": {
     "basicInformation": "Basic information",
