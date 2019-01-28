@@ -68,8 +68,7 @@ angular.module('directives.languageSelector', [
 
         function openOrCreateProfileInLang(lang) {
           if (supportedLangs.indexOf(lang) === -1) {
-            $translate.fallbackLanguage(lang);
-            $state.go('profile', { lang: lang });
+            throw new Error('Unsupported portfolio language');
           } else if (canCreateRoleProfileInLang(lang)) {
             scope.newLang = lang;
             togglePopover();
