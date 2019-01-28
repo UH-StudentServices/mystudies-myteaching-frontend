@@ -19,6 +19,13 @@
 
   &__trigger-btn {
     text-transform: uppercase;
+    display: inline-block;
+    margin-right: -1px;
+  }
+
+  &__trigger-btn.active_lang {
+    background-color: $blue--active;
+    color: $white;
   }
 
   &__content {
@@ -50,6 +57,26 @@
     @include breakpoint($small) {
       width: 23.8em;
     }
+
+    button {
+      text-transform: capitalize;
+    }
+  }
+
+  @media screen and (min-width: 850px) {
+    &__lang-abbr {
+      display: none;
+    }
+  }
+
+  @media (max-width: 850px) {
+    &__lang-full {
+      display: none;
+    }
+  }
+
+  &__new-lang {
+    font-weight: bold;
   }
 }
 

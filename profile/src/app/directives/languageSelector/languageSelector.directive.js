@@ -30,7 +30,7 @@ angular.module('directives.languageSelector', [
       scope: {},
       templateUrl: 'app/directives/languageSelector/languageSelector.html',
       link: function (scope) {
-        var supportedLangs = ['en', 'fi', 'sv'];
+        var supportedLangs = ['fi', 'sv', 'en'];
         var role = ProfileRoleService.getActiveRole();
         var profile;
         var session;
@@ -45,20 +45,6 @@ angular.module('directives.languageSelector', [
 
         function closePopover() {
           scope.displayPopover = false;
-        }
-
-        function confirm() {
-          // use of _.defer is warranted since otherwise ngIf will
-          // kick in before angular-click-outside which would
-          // close the popover instead of presenting the user with a different dialog
-          _.defer(function () {
-            scope.hasConfirmed = true;
-            scope.$apply();
-          });
-        }
-
-        function hasMultipleProfiles(userSession) {
-          return Object.keys(userSession.profilePathsByRoleAndLang[role]).length > 1;
         }
 
         function createAndSwitchToNewProfile(lang) {
@@ -80,6 +66,18 @@ angular.module('directives.languageSelector', [
           return $translate.instant(['languages', 'code', lang].join('.'));
         }
 
+        function openOrCreateProfileInLang(lang) {
+          if (supportedLangs.indexOf(lang) === -1) {
+            $translate.fallbackLanguage(lang);
+            $state.go('profile', { lang: lang });
+          } else if (canCreateRoleProfileInLang(lang)) {
+            scope.newLang = lang;
+            togglePopover();
+          } else {
+            switchToProfileInLang(lang);
+          }
+        }
+
         $q.all([ProfileService.getProfile(), SessionService.getSession()])
           .then(function (data) {
             profile = data[0];
@@ -90,12 +88,11 @@ angular.module('directives.languageSelector', [
               translatedLang: translateCurrentLang(profile.lang),
               supportedLangs: supportedLangs,
               availableLangs: supportedLangs.filter(canCreateRoleProfileInLang),
-              hasOnlyOneProfile: !hasMultipleProfiles(session),
               togglePopover: togglePopover,
               closePopover: closePopover,
-              confirm: confirm,
               createAndSwitchToNewProfile: createAndSwitchToNewProfile,
-              switchToProfileInLang: switchToProfileInLang
+              openOrCreateProfileInLang: openOrCreateProfileInLang,
+              translateLang: translateCurrentLang
             });
           });
       }

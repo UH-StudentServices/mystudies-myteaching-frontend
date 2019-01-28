@@ -17,17 +17,15 @@
 
 <div>
   <div class="lang-selector__prompt"
-       ng-if="hasOnlyOneProfile && !hasConfirmed"
        aria-role="dialog"
        aria-labelledby="change-profile-lang">
-    <div id="change-profile-lang"
-         class="prompt__intro"
-         translate="languageSelector.confirmation"
-         translate-values="{ lang: translatedLang }">
-    </div>
     <div>
+      <div class="prompt__intro"
+           translate="languageSelector.createForLang"
+           translate-values="{ lang: translateLang(newLang) }">
+      </div>
       <button class="button button--light prompt__btn"
-              ng-click="confirm()"
+              ng-click="createAndSwitchToNewProfile(newLang)"
               translate="general.ok">
       </button>
       <button class="button button--light prompt__btn"
@@ -36,33 +34,4 @@
       </button>
     </div>
   </div>
-
-  <div class="lang-selector__prompt"
-       ng-if="hasOnlyOneProfile && hasConfirmed"
-       aria-role="dialog"
-       aria-labelledby="select-profile-lang">
-    <div id="select-profile-lang"
-         class="prompt__intro"
-         translate="languageSelector.selectionPrompt">
-    </div>
-    <div>
-      <a ng-repeat="lang in availableLangs"
-         href=""
-         class="button button--light prompt__link"
-         ng-click="createAndSwitchToNewProfile(lang)"
-         translate="languages.code.{{::lang}}">
-      </a>
-    </div>
-  </div>
-
-  <ul ng-if="!hasOnlyOneProfile">
-    <li ng-repeat="lang in supportedLangs"
-        class="lang-selector__lang-list-item">
-      <a href=""
-         class="lang-selector__profile-link"
-         ng-click="switchToProfileInLang(lang)"
-         translate="languages.code.{{::lang}}">
-      </a>
-    </li>
-  </ul>
 </div>

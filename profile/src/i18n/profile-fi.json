@@ -136,10 +136,10 @@
     }
   },
   "preview": {
-    "enterPreview": "esikatsele",
+    "enterPreview": "Esikatsele",
     "info": "tältä portfoliosi näyttää muille jos olet määritellyt sen julkiseksi.",
     "exit": "sulje esikatselu",
-    "printAndShare": "Tulosta & Jaa",
+    "printAndShare": "Tulosta ja jaa PDF:nä",
     "printAndShareInfo": "Voit tulostaa portfoliosi pdf:ksi, tallentaa sen koneellesi ja jakaa sähköpostin liitetiedostona."
   },
   "freeTextContent": {
@@ -211,6 +211,7 @@
     "title": "Henkilötiedot"
   },
   "languageSelector": {
+    "createForLang": "Haluatko luoda uuden portfolion kielellä {{ lang }}?",
     "confirmation": "Tämän portfolion sisältö on kielellä {{ lang }}. Haluatko luoda uuden portfolion eri kielellä?",
     "selectionPrompt": "Valitse uuden portfolion kieli:"
   },

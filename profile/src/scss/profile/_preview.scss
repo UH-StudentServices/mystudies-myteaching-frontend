@@ -15,11 +15,10 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-.preview-btn, .print-btn {
+.preview-btn {
   @extend button.button--light;
 
   &--text {
-    text-transform: capitalize;
     display: none;
 
     @include breakpoint($small) {
@@ -37,6 +36,8 @@
 }
 
 .print-btn {
+
+  margin-top: 0.2em;
 
   .help-icon {
     top: 0;

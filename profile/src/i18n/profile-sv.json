@@ -136,10 +136,10 @@
     }
   },
   "preview": {
-    "enterPreview": "förhandsvisning",
+    "enterPreview": "Förhandsvisning",
     "info": "detta är hur din portfölj ser till andra om det publiceras.",
     "exit": "Stäng förhandsvisning",
-    "printAndShare": "Utskriva & Dela",
+    "printAndShare": "Skriv ut och dela som PDF",
     "printAndShareInfo": "Du kan utskriva din portföjl till PDF, spara den till dator och sicka den via e-post."
   },
   "freeTextContent": {
@@ -211,6 +211,7 @@
     "title": "Personalia"
   },
   "languageSelector": {
+    "createForLang": "Vill du skapa en ny portfölj i {{ lang }}?",
     "confirmation": "Denna portfölj är i {{lang}}. Vill du skapa en ny portfölj på ett annat språk?",
     "selectionPrompt": "Välj språk för din nya portfölj:"
   },
