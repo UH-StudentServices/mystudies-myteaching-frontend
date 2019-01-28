@@ -17,10 +17,22 @@
 
 // Check that i18n files are valid JSON.
 
-require('../profile/src/i18n/profile-fi.json');
-require('../profile/src/i18n/profile-sv.json');
-require('../profile/src/i18n/profile-en.json');
+var fs = require('fs');
+var jsonlint = require('jsonlint');
 
-require('../main/src/i18n/studies-fi.json');
-require('../main/src/i18n/studies-sv.json');
-require('../main/src/i18n/studies-en.json');
+var files = [
+  'main/src/i18n/studies-fi.json',
+  'main/src/i18n/studies-sv.json',
+  'main/src/i18n/studies-en.json',
+  'profile/src/i18n/profile-fi.json',
+  'profile/src/i18n/profile-sv.json',
+  'profile/src/i18n/profile-en.json'
+];
+
+function checkFile(file) {
+  var content = fs.readFileSync(file, 'utf-8');
+  jsonlint.parse(content);
+}
+
+files.forEach(checkFile);
+
