@@ -70,7 +70,7 @@
     "predist": "npm rebuild node-sass",
     "prepush": "npm test",
     "pretest": "npm run lint",
-    "test": "concurrently 'grunt test --gruntfile main/Gruntfile.js' 'grunt test --gruntfile profile/Gruntfile.js'",
+    "test": "concurrently 'grunt test --gruntfile main/Gruntfile.js' 'grunt test --gruntfile profile/Gruntfile.js' 'node scripts/i18nTest.js'",
     "test:e2e": "cross-env NODE_ENV=local testcafe 'chrome -incognito' -S -s screenshots common/test/e2e",
     "test:e2e:ci": "cross-env NODE_ENV=ci testcafe 'chromium:headless' -S -s screenshots common/test/e2e"
   },
