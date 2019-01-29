@@ -103,7 +103,7 @@
     "showLess": "less",
     "contactEmail": "contact email",
     "jobSearchHeadline": "headline",
-    "dateOfEmployment": "Date of employment",
+    "dateOfEmployment": "Date of employment"
   },
   "samples": {
     "title": "Work examples",
@@ -136,10 +136,10 @@
     }
   },
   "preview": {
-    "enterPreview": "preview",
+    "enterPreview": "Preview",
     "info": "this is how your portfolio looks to others if it is published.",
     "exit": "close preview",
-    "printAndShare": "Print & Share",
+    "printAndShare": "Print and share as PDF",
     "printAndShareInfo": "You may print your portfolio as a PDF, save it to your computer and share it as an attachment by email."
   },
   "freeTextContent": {
@@ -211,6 +211,7 @@
     "title": "Personal information"
   },
   "languageSelector": {
+    "createForLang": "Do you want to create a new portfolio in {{ lang }}?",
     "confirmation": "The contents of this portfolio are in {{ lang }}. Do you want to create a new portfolio in a different language?",
     "selectionPrompt": "Please select the language for your new portfolio:"
   },
