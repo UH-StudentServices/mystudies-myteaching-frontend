@@ -43,6 +43,11 @@
         </a>
       </span>
 
+      <help-icon ng-show="showHelp"
+                 translation-key="{{::helpKey}}"
+                 limit-visibility="{ visibility: 'PRIVATE', roles: ['STUDENT'] }"
+                 panel-align="right"></help-icon>
+
       <visibility-toggle component-id="FREE_TEXT_CONTENT"
                          section-name="{{::profileSection}}"
                          instance-name="{{::instanceName}}">

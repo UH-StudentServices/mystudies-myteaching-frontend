@@ -26,11 +26,13 @@ angular.module('directives.helpIcon', ['directives.popover'])
         ariaLabelTranslationKey: '@',
         plainTitle: '=',
         uniqueId: '@',
-        panelAlign: '@'
+        panelAlign: '@',
+        panelPosition: '@'
       },
       templateUrl: 'app/directives/helpIcon/helpIcon.html',
       link: function (scope) {
         var alignmentClass;
+        var positionClass = '';
 
         if (BrowserUtil.isMobile() || scope.panelAlign === 'center') {
           alignmentClass = 'help-icon-popover-container--center-aligned';
@@ -40,9 +42,14 @@ angular.module('directives.helpIcon', ['directives.popover'])
           alignmentClass = 'help-icon-popover-container--left-aligned';
         }
 
+        if (scope.panelPosition === 'top' && !BrowserUtil.isMobile()) {
+          positionClass = 'help-icon-popover-container--top-positioned';
+        }
+
         _.assign(scope, {
           uniqueId: scope.$id,
-          alignmentClass: alignmentClass
+          alignmentClass: alignmentClass,
+          positionClass: positionClass
         });
       }
     };

@@ -82,9 +82,51 @@ $minus-half-width-mobile: calc(-0.5 * #{$tooltip-width-mobile});
       right: auto !important;
     }
   }
+
+  &--top-positioned {
+    $triangle-size: 10px;
+
+    top: unset !important;
+    bottom: calc(100% + #{$triangle-size});
+
+    &::before {
+      top: unset !important;
+      bottom: -($triangle-size);
+      border-bottom: none !important;
+      border-top: $triangle-size solid $lightsilver;
+    }
+
+    &::after {
+      top: unset !important;
+      bottom: -($triangle-size - 1px);
+      border-bottom: none !important;
+      border-top: $triangle-size solid $white;
+    }
+  }
 }
 
 .help-icon__popover {
   @include font-size(13px);
   padding: 1em;
+  text-align: left;
+
+  h1 {
+    font-size: 1.2em;
+    letter-spacing: 0;
+    color: $silver;
+  }
+
+  p {
+    font-size: 1em;
+    line-height: 1;
+    margin: 0 0 1em;
+  }
+
+  ul {
+    list-style: disc;
+  }
+
+  li {
+    margin: 0 0 0.5em 1em;
+  }
 }

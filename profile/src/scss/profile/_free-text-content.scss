@@ -19,12 +19,11 @@
   position: relative;
 
   &__title-container--edit {
-    width: 100%;
+    width: 80%;
   }
 
   &__title--edit {
     @extend .ui-component__title--edit;
-    width: 90% !important;
   }
 
   &__text {
@@ -78,6 +77,12 @@
 
   &__title {
     @extend .add-favorite-button__title;
+  }
+
+  .help-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 }
 

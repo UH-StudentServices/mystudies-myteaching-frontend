@@ -52,6 +52,7 @@
     "addNew": "lisää avainsana"
   },
   "contactInformation": {
+    "helpText": "Yhteystietojen lisäksi voit linkata tähän osioon profiilisi allaolevista palveluista, tai liittää vapaasti linkin. Lisää linkkien URL kokonaisena eli alkuun https://.",
     "title": "Ota yhteyttä",
     "addPhoneNumber": "Lisää puhelinnumero",
     "addEmail": "Lisää sähköposti",
@@ -73,6 +74,7 @@
     "WEBSITE_LINK": "Linkki verkkosivulle"
   },
   "degrees": {
+    "helpText": "Tutkinnot osioon voit lisätä viralliset tutkintosi. Voit kuvata tutkinnon sisältöä ja pää- ja sivuaineiden tai opintosuuntautumisesi fokuksia vapaassa kuvaus-kenttään tai lisätä muuta lisätietoa tutkinnostasi. ",
     "title": "Tutkinnot",
     "dateLabel": "Päivämäärä",
     "datePlaceholder": "Lisää päivämäärä, esim. 31.5.2019 tai 5/2019",
@@ -85,9 +87,11 @@
     "addNewPlaceholder": "Lisää uusi tutkinto"
   },
   "studies": {
+    "helpText": "<p>Tähän osioon voit kirjoittaa esittelyn ja tiivistelmän opinnoistasi. Kirjaa tähän erityisesti sitä, millaista osaamista opinnoistasi kertyy. Millaisiin kysymyksiin, menetelmiin tai näkökulmiin olet opinnoissasi perehtynyt.</p><p>Voit myös lisätä avainsanoja, jotka tulevat näkyviin bannerikuvan kenttään.</p>",
     "title": "Opinnot"
   },
   "workExperience": {
+    "helpText": "<h1>Työkokemus</h1><p>Voit lisätä työtehtävien kuvauksia “lisää työnantaja” -painikkeesta. Kuvaa tekstiisi mistä kyseisessä tehtävässä vastasit ja mitä opit. Voit kirjata myös saamaasi palautetta. Huomioi, että sinun tulee kirjata tähän myös työnantaja, joten jos työkokemus koostuu esim. freelance-töistä eri toimeksiantajille nimeä työnantajataho niin, että tämä tulee selväksi.</p><h1>Haen työpaikkaa</h1><p>Lisää “haen työpaikkaa” ja tarkenna esimerkiksi mitä työtä (kesätyö, osa-aika-työ, jne.) ja mitä tehtäviä (kääntäjä, tutkimusassistentti, kehittäjä, jne.) etsit. Lisää sähköpostiosoitteesi. Tiedot näkyvät bannerikuvassa avainsanojen alapuolella.</p>",
     "title": "työkokemus",
     "addWorkExperience": "Lisää työnantaja",
     "addJobSearch": "Lisää haen työpaikkaa",
@@ -108,11 +112,13 @@
   "samples": {
     "title": "Esimerkkitöitä",
     "addSample": "Lisää esimerkkityö",
+    "helpText": "Lisää esimerkkejä töistäsi. Voit kuvata tarkemmin, minkälaisesta tehtävästä oli kyse sekä minkälaisia taitoja opit tehtävän aikana. Lisäksi voit lisätä kuvia, videota, linkkejä ja tiedostoja editorin avulla. Kirjaa esimerkkitöihin lyhyt kuvailu siis eräänlainen kuvateksti siitä, mistä näytteessä on kyse, minkälaista osaamista tai taitoja esimerkki ilmentää. Mieti millainen esimerkit toimivat tilanteessa parhaiten. Käytä tässä myös luovuutta ja tee esim. kuvakollaaseja, jotka kertovat tekemisistäsi.",
     "sampleTitle": "Otsikko",
     "sampleDescription": "Kuvaus",
     "descriptionPlaceholder": "kuvausteksti"
   },
   "attainments": {
+    "helpText": "Helsingin yliopistolla suorittamasi kurssit näkyvät automaattisesti. Voit itse valita, mitkä kurssit näytät portfoliossa ja näytätkö arvosanoja. Eri työnantajille eri kurssit ovat todennäköisesti relevantteja. Lisää uusi -osiossa voit kuvata tarkemmin eri kursseja ja mitä tietoa ja taitoja niistä opit. ",
     "attainments": "Suoritetut kurssit",
     "seeMoreLink": "katso loput suoritukset WebOodista",
     "showGrades": "Näytä arvosanat"
@@ -139,12 +145,12 @@
     "enterPreview": "Esikatsele",
     "info": "tältä portfoliosi näyttää muille jos olet määritellyt sen julkiseksi.",
     "exit": "sulje esikatselu",
-    "printAndShare": "Tulosta ja jaa PDF:nä",
-    "printAndShareInfo": "Voit tulostaa portfoliosi pdf:ksi, tallentaa sen koneellesi ja jakaa sähköpostin liitetiedostona."
+    "printAndShare": "Tulosta ja jaa PDF:nä"
   },
   "freeTextContent": {
     "defaultTitle": "Lisää otsikko",
     "defaultText": "Lisää sisältöä",
+    "helpText": "<p>Tämä on portfoliosi monipuolisin osio. Voit lisätä vapaasti lisää osioita erilaisilla otsikoilla, esimerkiksi: harrastukset, vapaaehtoistoiminta, luottamustehtävät, IT-taidot, tekninen osaaminen, laboratorio-osaaminen,viestintätaidot ja kokemus, HOPS-reflektio, HowULearn-reflektio, suoritetut MOOC-kurssit, osaamismerkit, jne. Suositeltavaa olisi tehdä yhdestä lisäosiosta oman itsen esittely, jonka siirrät ihan portfoliosi alkuun.</p><ul><li>Lisää editointitilassa tekstiä, kuvia, linkkejä, tiedostoja ja videoita. Videoita voit upottaa lisäämällä linkin esim Youtubesta tai Vimeosta (voit tehdä oman kanavan näihin, ja linkata omia videoitasi sitä kautta).</li><li>Kuvan voit ladata editorin kuvaikonista ja kuvan kokoa voit muuttaa kuvan kulmasta raahaamalla.</li><li>Muista tallentaa osio!</li><li>Lisää uusi osio -toimintoa kannattaa myös hyödyntää siihen, että tallennat tänne vain itseäsi varten linkkejä tai liitteitä, jotka ovat omaa arkistoasi ja aihealueisiin jaottelemattomia sisältöjä. Voit tehdä tällaisia omia arkistokansioita useita ja erilaisilla otsikoilla (esim. esseet, konferenssit, suunnitelmat, jne.). Käytä luovuutta: miten voisit hyödyntää omaa arkistoa.</li><li>Vinkki: linkkien väliin kannattaa jättää tilaa, samoin linkin ja tekstin, jotta ne erottuvat.</li></ul>",
     "fileUploadError": "Tiedoston lisäys epäonnistui",
     "addFromUploads": "Lisää ladattu tiedosto"
   },
@@ -159,6 +165,7 @@
     "readMore": "Lue lisää"
   },
   "languages": {
+    "helpText": "Lisää osaamiasi kieliä ja kuvaa taitotasoa. Voit lisätä kuvaus-kenttään tietoa esimerkiksi kielikursseista tai vaihto-opiskeluista, tai muusta kansainvälisestä kokemuksestasi liittyen viestintätaitoihisi. Europassin kielipassin itsearviointitaulukosta verkossa voit katsoa vinkkejä, miten kielitaito on jaettu ymmärtämiseen, puhumiseen ja kirjoittaimiseen ja miten eri taitotasoja on kuvattu. Mitä tärkeämpi kielitaito on omassa taustassasi ja tulevaisuuden suunnitelmissasi, sen paremmin taitotaso kannattaa kuvat ja kertoa siitä, missä tilanteissa kieltä on käytetty.",
     "title": "Kielitaito",
     "languagePlaceholder": "Kieli",
     "proficiencyPlaceholder": "Taitotaso, esim. Äidinkieli, erinomainen, ...",
@@ -170,7 +177,8 @@
     }
   },
   "skillsAndExpertise": {
-    "title": "Erityisosaaminen"
+    "title": "Erityisosaaminen",
+    "helpText": "Tähän osioon voit kirjoittaa sinulle erityistä osaamista, jossa sinulla on paljon kokemusta ja vahvuuksia, kuten esimerkiksi IT-taitoja, asiakaspalveluosaamista, kansainvälistä kokemusta, viestintäosaamista, tutkimuksenteon metodien erikoistumista, jne. "
   },
   "tabs": {
     "basicInformation": "Perustiedot",
@@ -213,20 +221,30 @@
   "languageSelector": {
     "createForLang": "Haluatko luoda uuden portfolion kielellä {{ lang }}?",
     "confirmation": "Tämän portfolion sisältö on kielellä {{ lang }}. Haluatko luoda uuden portfolion eri kielellä?",
-    "selectionPrompt": "Valitse uuden portfolion kieli:"
+    "selectionPrompt": "Valitse uuden portfolion kieli:",
+    "helpText": "Tästä kielivalikosta voit lisätä portfolion uudella kielellä. Koko käyttöliittymän kielen voit vaihtaa sivun ylänavigaatiosta, mikä vaikuttaa esimerkiksi portfolion asetusten kieleen."
   },
   "upload": {
-    "privacyMessage": "Lataamaasi kuvaa käytetään automaattisesti myös muissa HY:n palveluissa (esimerkiksi Opinderissa) ja kuvalle muodostuu julkinen linkki."
+    "privacyMessage": "Lataamaasi kuvaa käytetään automaattisesti myös muissa HY:n palveluissa ja kuvalle muodostuu julkinen linkki."
   },
   "pageBanner": {
     "chooseDefaultBackground": "Valitse vakiokuvista",
-    "uploadFile": "Lataa tiedosto"
+    "uploadFile": "Lataa tiedosto",
+    "helpText": {
+      "introduction": "Voit kirjoittaa profiilikuvan viereen esimerkiksi lyhyen esittelyn itsestäsi. Voit tässä osiossa myös antaa itsellesi jonkinlaisen otsikon. Muista olla spesifi ja ottaa mukaan esim. kiinnostuksen kohteita, itsellesi tärkeitä asioita tai kuvailevia sanoja omasta polustasi. Helsingin yliopiston opiskelija tai x-alan opiskelija jää turhan yleiselle tasolle.",
+      "chooseBackground": "Voit vaihtaa bannerikuvan. Klikkaa kameran kuvaa ja valitse joko “lataa tiedosto” tai “valitse vakiokuvista”. Valitse kuva ja tallenna."
+    }
   },
   "files": {
     "fileBrowserTitle": "Omat tiedostot",
     "deleteFile": "Poista tiedosto"
   },
   "settings": {
+    "helpText": {
+      "manageFiles": "<p>Voit selata ja poistaa portfolioosi ladattuja tiedostoja. Tiedosto poistuu kokonaan serveriltä.</p><p>Huom. jos poistat täältä tiedoston ja käytät sitä yhä jossain osiossa, niin tiedosto ei enää näy silloin osion tekstissä.</p>",
+      "sharedLinks": "<p>Voit jakaa portfoliosi, vaikka se olisi yksityisessä tilassa yläkulman valikosta. Tämä on kätevää, jos haluat jakaa portfolion työnantajalle, opiskelukaverille tai opettajalla, mutta et julkaista koko maailmalle. Lisää yksityinen linkki portfolioosi plus-painikkeesta.</p><p>Huom! On erityisen suositeltavaa lisätä “tuhoutumispäivämäärä” linkille; esimerkiksi työnhaun päättyminen tai kurssin päättyminen, jonka aikana portfoliota olet tehnyt. Kopioi sen jälkeen luotu linkki esimerkiksi sähköpostiin tai lisää Moodle-alueelle opettajan tehtävänannon mukaisesti.</p>",
+      "print": "Voit tulostaa portfoliosi pdf:ksi, tallentaa sen koneellesi ja jakaa sähköpostin liitetiedostona."
+    },
     "title": "Asetukset",
     "browseUploadedFiles": "Selaa lataamiasi tiedostoja"
   },

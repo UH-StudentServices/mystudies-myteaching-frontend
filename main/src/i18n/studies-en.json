@@ -411,7 +411,7 @@
     "anonymous" : "Give feedback anonymously"
   },
   "upload" : {
-    "privacyMessage" : "the uploaded picture is automatically used in other UH services (e.g. Opinder), and the picture will have a public link.",
+    "privacyMessage" : "the uploaded picture is automatically used in other UH services, and the picture will have a public link.",
     "deviceNotSupported": "Device not supported"
   },
   "eventCalendar" : {

@@ -75,3 +75,11 @@
    }
   }
 }
+
+.settings-header {
+  &__actions {
+    position: absolute;
+    top: 0.25em;
+    right: 0;
+  }
+}
