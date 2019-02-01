@@ -23,7 +23,7 @@ angular.module('directives.helpIcon', ['directives.popover'])
       replace: true,
       scope: {
         translationKey: '@',
-        ariaLabelTranslationKey: '@',
+        ariaLabelTranslationKey: '@?',
         plainTitle: '=',
         uniqueId: '@',
         panelAlign: '@',
@@ -49,7 +49,8 @@ angular.module('directives.helpIcon', ['directives.popover'])
         _.assign(scope, {
           uniqueId: scope.$id,
           alignmentClass: alignmentClass,
-          positionClass: positionClass
+          positionClass: positionClass,
+          ariaLabelTranslationKey: scope.ariaLabelTranslationKey || 'general.help'
         });
       }
     };

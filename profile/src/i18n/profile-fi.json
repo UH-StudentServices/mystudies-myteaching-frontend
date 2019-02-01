@@ -21,7 +21,8 @@
     "copyToClipboardFailMac": "Paina ⌘-C kopioidaksesi",
     "copyToClipboardFailOther": "Paina Ctrl-C kopioidaksesi",
     "expires": "Vanhenee",
-    "expired": "Vanhentunut"
+    "expired": "Vanhentunut",
+    "help": "apua"
   },
   "pageHeaderLinks": {
     "flamma": "flamma",

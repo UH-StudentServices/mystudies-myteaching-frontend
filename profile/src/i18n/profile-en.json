@@ -21,7 +21,8 @@
     "copyToClipboardFailMac" : "Press ⌘-C to copy",
     "copyToClipboardFailOther" : "Press Ctrl-C to copy",
     "expires": "Expires",
-    "expired": "Expired"
+    "expired": "Expired",
+    "help": "help"
   },
   "pageHeaderLinks": {
     "flamma": "flamma",

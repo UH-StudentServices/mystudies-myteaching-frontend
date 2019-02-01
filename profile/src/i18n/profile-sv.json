@@ -21,7 +21,8 @@
     "copyToClipboardFailMac" : "Klicka ⌘-C för att kopiera",
     "copyToClipboardFailOther" : "Klicka Ctrl-C för att kopiera",
     "expires": "Upphör",
-    "expired": "Upphört"
+    "expired": "Upphört",
+    "help": "hjälp"
   },
   "pageHeaderLinks": {
     "flamma": "flamma",
