@@ -25,6 +25,9 @@
       <toggle-switch ng-model="showGrades"/><span translate="attainments.showGrades"></span>
     </div>
     <div class="component-header__actions">
+      <help-icon translation-key="attainments.helpText"
+                 panel-align="right"
+                 limit-visibility="{ visibility: 'PRIVATE', roles: ['STUDENT'] }"></help-icon>
       <visibility-toggle component-id="ATTAINMENTS"></visibility-toggle>
       <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
     </div>

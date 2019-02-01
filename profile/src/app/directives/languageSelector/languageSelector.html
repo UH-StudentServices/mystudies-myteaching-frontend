@@ -16,15 +16,19 @@
   -->
 
 <div class="navigation-right__element">
-  <button
-    class="button button--light lang-selector__trigger-btn nav-ctrl"
-    ng-class="lang == currentLang ? 'active_lang' : ''"
-    ng-repeat="lang in supportedLangs"
-    ng-click="openOrCreateProfileInLang(lang)">
-    <span class="lang-selector__new-lang" ng-if="availableLangs.indexOf(lang) !== -1">+</span>
-    <span class="lang-selector__lang-abbr">{{::lang}}</span>
-    <span class="lang-selector__lang-full">{{translateLang(lang)}}</span>
-  </button>
+  <div class="lang-selector">
+    <button
+      class="button button--light lang-selector__trigger-btn nav-ctrl"
+      ng-class="lang == currentLang ? 'active_lang' : ''"
+      ng-repeat="lang in supportedLangs"
+      ng-click="openOrCreateProfileInLang(lang)">
+      <span class="lang-selector__new-lang" ng-if="availableLangs.indexOf(lang) !== -1">+</span>
+      <span class="lang-selector__lang-abbr">{{::lang}}</span>
+      <span class="lang-selector__lang-full">{{translateLang(lang)}}</span>
+    </button>
+    <help-icon translation-key="languageSelector.helpText"
+               limit-visibility="{ visibility: 'PRIVATE', roles: ['STUDENT'] }"></help-icon>
+  </div>
 
   <popover template="app/directives/languageSelector/languageSelector.popover.html"
            override-class="lang-selector__content"

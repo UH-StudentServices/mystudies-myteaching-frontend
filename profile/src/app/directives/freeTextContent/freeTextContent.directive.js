@@ -60,6 +60,7 @@ angular.module('directives.freeTextContent', [
         profileSection: '@',
         instanceName: '@',
         headingKey: '@?',
+        helpKey: '@?',
         profileLang: '@',
         deletable: '='
       },
@@ -190,7 +191,8 @@ angular.module('directives.freeTextContent', [
           toggleEdit: toggleEdit,
           embedOptions: NG_EMBED_OPTIONS,
           isTranslatableHeading: isTranslatableHeading,
-          isPreview: PreviewService.isPreview()
+          isPreview: PreviewService.isPreview(),
+          showHelp: !!scope.helpKey
         });
 
         init();

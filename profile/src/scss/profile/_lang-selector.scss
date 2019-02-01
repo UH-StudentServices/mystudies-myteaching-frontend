@@ -17,6 +17,11 @@
 
 .lang-selector {
 
+  &__actions {
+    display: flex;
+    flex-direction: row;
+  }
+
   &__trigger-btn {
     text-transform: uppercase;
     display: inline-block;
@@ -77,6 +82,10 @@
 
   &__new-lang {
     font-weight: bold;
+  }
+
+  .help-icon {
+    margin-left: 0.5em;
   }
 }
 

@@ -64,6 +64,7 @@
               <free-text-content limit-visibility="{componentId: 'FREE_TEXT_CONTENT',
                                                     instanceName: 'SKILLS_AND_EXPERTISE'}"
                                  heading-key="skillsAndExpertise.title"
+                                 help-key="skillsAndExpertise.helpText"
                                  instance-name="SKILLS_AND_EXPERTISE"
                                  profile-lang="{{::profile.lang}}">
               </free-text-content>
@@ -105,11 +106,20 @@
                          profile-lang="{{::profile.lang}}">
     </contact-information>
 
-    <div limit-visibility="PRIVATE">
+    <div limit-visibility="PRIVATE" class="profile-section__settings">
       <h3 translate="settings.title"></h3>
-      <browse-files manage-files="true"></browse-files>
-      <shared-links></shared-links>
-      <print-button></print-button>
+      <div class="settings__action">
+        <browse-files manage-files="true"></browse-files>
+        <help-icon translation-key="settings.helpText.manageFiles"></help-icon>
+      </div>
+      <div class="settings__action">
+        <shared-links></shared-links>
+        <help-icon translation-key="settings.helpText.sharedLinks"></help-icon>
+      </div>
+      <div class="settings__action print-btn-container">
+        <print-button></print-button>
+        <help-icon translation-key="settings.helpText.print"></help-icon>
+      </div>
     </div>
   </div>
 </div>

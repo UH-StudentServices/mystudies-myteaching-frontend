@@ -21,7 +21,8 @@
     "copyToClipboardFailMac" : "Klicka ⌘-C för att kopiera",
     "copyToClipboardFailOther" : "Klicka Ctrl-C för att kopiera",
     "expires": "Upphör",
-    "expired": "Upphört"
+    "expired": "Upphört",
+    "help": "hjälp"
   },
   "pageHeaderLinks": {
     "flamma": "flamma",
@@ -52,6 +53,7 @@
     "addNew": "lägg till nyckelord"
   },
   "contactInformation": {
+    "helpText": "Utöver kontaktuppgifterna kan du även i detta avsnitt länka din profil från nedanstående tjänster, eller lägga till en valbar länk.",
     "title": "Kontakta mig",
     "addPhoneNumber": "Lägg till telefonnummer",
     "addEmail": "Lägg till e-post",
@@ -73,6 +75,7 @@
     "WEBSITE_LINK": "Webbsidans länk"
   },
   "degrees": {
+    "helpText": "I Examina-avsnittet kan du lägga in dina officiella examina. Du kan beskriva innehållet i examen samt huvud- och sidoämnets fokus för studieinriktningen i det fria beskrivningsfältet. Eller lägga till annan tilläggsinformation angående din examen.",
     "title": "Examen",
     "dateLabel": "Datum ",
     "datePlaceholder": "Lägg till datum, t.ex. 31 maj 2018 eller 05/2018",
@@ -85,9 +88,11 @@
     "addNewPlaceholder": "Lägg till examen"
   },
   "studies": {
+    "helpText": "<p>I detta avsnitt kan du skriva en presentation och sammanfattning av dina studier. Ta upp speciellt det hurudant kunnande dina studier ackumulerar. Hurudana frågor, metoder eller synvinklar du har blivit insatt i under studierna.</p><p>Du kan även lägga till nyckelord som automatiskt syns i bannerbildens fält.</p>",
     "title": "Studier"
   },
   "workExperience": {
+    "helpText": "<h1>Arbetslivserfarenhet</h1><p>Du kan lägga till arbetsuppgifternas beskrivningar via “lägg till arbetsgivare” -knappen. Beskriv i texten vad ditt ansvarsområde i arbetsuppgiften var och vad du lärde dig. Du kan även skriva in feedback som du fått. Märk väl att du även måste ange arbetsgivaren, så om arbetserfarenheten består av t.ex. freelance-arbeten åt flera uppdragsgivare bör du namnge arbetsgivarparten så att det framgår tydligt.</p><h1>Söker arbete</h1><p>Lägg till “jag söker arbete” och specifiera t.ex. vilken typ av arbete (sommarjobb, deltidsjobb etc.) och hurudana arbetsuppgifter (översättare, forskningsassistent, utvecklare osv.) du söker. Lägg till din e-postaddress. Uppgifterna syns i bannerbilden nedanför nyckelorden.</p>",
     "title": "arbetslivserfarenhet",
     "addWorkExperience": "Lägg till arbetsgivare",
     "addJobSearch": "Lägg till söker job",
@@ -108,11 +113,13 @@
   "samples": {
     "title": "Exempel på arbeten",
     "addSample": "Lägg till exempel på arbeten",
+    "helpText": "Lägg till exempel på dina arbetsuppdrag. Du kan beskriva mer ingående hurudan uppgift det var frågan om samt hurudana färdigheter du lärde dig under uppdraget. Dessutom kan du lägga till bilder, videon, länkar och filer med redigeraren. Förse arbetsexemplen med en kort (bild)beskrivning över vad exemplet handlar om, hurudant kunnande och färdigheter exemplet förevisar. Tänk på hurudana exempel som fungerar bäst för omständigheten. Använd även kreativitet och gör t.ex. bildkollager som berättar om dina göranden.",
     "sampleTitle": "Rubrik",
     "sampleDescription": "Beskrivning",
     "descriptionPlaceholder": "beskrivningstext"
   },
   "attainments": {
+    "helpText": "De kurser du avklarat i Helsingfors universitet syns automatiskt. Du kan själv välja vilka kurser som visas i din portfolio och ifall vitsorden är synliga. För olika arbetsgivare är olika kurser antagligen relevanta. I Lägg till ny –delen kan du beskriva närmare de olika kurserna samt vilka kunskaper och färdigheter dessa gav dig.",
     "attainments": "Prestationer",
     "seeMoreLink": "se en lista över dina prestationer i WebOodi",
     "showGrades": "Visa vitsord"
@@ -139,12 +146,12 @@
     "enterPreview": "Förhandsvisning",
     "info": "detta är hur din portfölj ser till andra om det publiceras.",
     "exit": "Stäng förhandsvisning",
-    "printAndShare": "Skriv ut och dela som PDF",
-    "printAndShareInfo": "Du kan utskriva din portföjl till PDF, spara den till dator och sicka den via e-post."
+    "printAndShare": "Skriv ut och dela som PDF"
   },
   "freeTextContent": {
     "defaultTitle": "Lägg till rubrik",
     "defaultText": "Lägg till innehåll",
+    "helpText": "<p>Detta är det mångsidigaste avsnittet i din portfolio. Du kan fritt lägga till delar med olika rubriker, exempelvis: hobbyn, frivillig verksamhet, förtroendeuppgifter, IT-kunskaper, tekniskt kunnande, laboratoriekunskaper, kommunikationsfärdigheter och –erfarenhet, HOPS-reflektion, HowULearn-reflektion, avklarade MOOC-kurser, kunskapsmärken m.m. Det rekommenderas att göra en tilläggsdel som en personpresentation vilken du flyttar upp till början av din portfolio.</p><ul><li>I redigeringsläget lägg till text, bilder, länkar, filer och videon. Videon kan inbäddas genom att skriva in länken från t.ex. YouTube eller Vimeo (du kan skapa en egen kanal i dessa tjänster och länka dina videon via dem).</li><li>Bilden kan du ladda upp vida redigerarens bildikon och bildens storlek kan ändras genom att dra från bildens kant.</li><li>Kom ihåg att spara avsnittet!</li><li>Lägg till ny –funktionen lönar det sig även att utnyttja så, att du sparar in länkar här endast för dig själv eller filer, som är en del av ditt eget arkiv och vilka inte indelats enligt ämnesområde. Du kan skapa flera dylika arkivmappar med olika rubriker (t.ex. esséer, konferenser, planer etc.). Använd din kreativitet: hur kan du utnyttja ditt egna arkiv.</li><li>Tips: det lönar sig att lämna mellanrum mellan länkarna, samt länkarna och texten, så att de urkskiljs.</li></ul>",
     "fileUploadError": "Fel i filuppladdning",
     "addFromUploads": "Lägg till från mina uppladdade filer"
   },
@@ -159,6 +166,7 @@
     "readMore": "Du kan läsa mer här"
   },
   "languages": {
+    "helpText": "Lägg till de språk du behärskar samt beskriv kunskapsnivån. Du kan i beskrivning-fältet lägga till information t.ex. om språkkurser och utbytesstudier eller annan internationell erfarenhet i samband med dina kommunikationsfärdigheter. Ur Europass-språkpassets självbedömningstabell på nätet kan du få tips om hur språkkunskaperna indelats i förståelse, muntlig- och skriftlig färdighet samt hur de olika kunskapsnivåerna beskrivits. Ju viktigare språkkunskaperna är för din egen bakgrund och dina framtidsplaner, desto bättre lönar det sig att beskriva kunskapsnivån samt berätta om i hurudana situationer språket har använts.",
     "title": "Språk",
     "languagePlaceholder": "Kieli (sv)",
     "proficiencyPlaceholder": "Taitotaso (sv)",
@@ -170,7 +178,8 @@
     }
   },
   "skillsAndExpertise": {
-    "title": "Speciella kunskaper"
+    "title": "Speciella kunskaper",
+    "helpText": "I detta avsnitt kan du beskriva sådan specialkunskap som du har extra mycket erfarenhet och starka sidor i, som t.ex. IT-kunskaper, kundservicekunnande, internationellt kunnande, informationskunnande, specialisering i forskningsmetoder etc."
   },
   "tabs": {
     "basicInformation": "Basuppgifter",
@@ -213,20 +222,30 @@
   "languageSelector": {
     "createForLang": "Vill du skapa en ny portfölj i {{ lang }}?",
     "confirmation": "Denna portfölj är i {{lang}}. Vill du skapa en ny portfölj på ett annat språk?",
-    "selectionPrompt": "Välj språk för din nya portfölj:"
+    "selectionPrompt": "Välj språk för din nya portfölj:",
+    "helpText": "Från språkmenyn kan du lägga till en portfolio med ett nytt språk. Hela användargränssnittets språk går att ändra från sidans övre navigation, vilket påverkar t.ex. språket för portfolions inställningar."
   },
   "upload" : {
-    "privacyMessage": "Den uppladdade bilden används också i andra HUs tjänster (t.ex. Opinder) och bilden får en publik länk."
+    "privacyMessage": "Den uppladdade bilden används också i andra HUs tjänster och bilden får en publik länk."
   },
   "pageBanner": {
     "chooseDefaultBackground": "Välj av standardbilder",
-    "uploadFile": "Ladda up fil"
+    "uploadFile": "Ladda up fil",
+    "helpText": {
+      "introduction": "Du kan skriva bredvid profilbilden t.ex. en kort presentation av dig själv. I detta avsnitt kan du även ge dig en rubrik av något slag. Kom ihåg att vara specifik och ta med t.ex. intressen, saker som är viktiga för dig själv eller beskrivande saker om din egna väg. “Studerande vid Helsingfors universitet” eller “X-områdets studerande” blir ofta för generellt.",
+      "chooseBackground": "Du kan ändra bannerbilden. Klicka på kamerabilden och välj antingen ”ladda upp fil” eller ”välj från standardbilderna”. Välj bilden och spara."
+    }
   },
   "files": {
     "fileBrowserTitle": "Mina uppladdade filer",
     "deleteFile": "Radera fil"
   },
   "settings": {
+    "helpText": {
+      "manageFiles": "<p>Du kan bläddra i och radera de filer du laddat upp i din portfolio. Filen försvinner helt och hållet från servern.</p><p>Obs. Om du raderar filen här och ännu använder den i något annat avsnitt, så syns filen inte längre i avsnittets text.</p>",
+      "sharedLinks": "<p>Här kan du dela din portfolio, även om dess läge är redigerad som privat från övre kantens meny. Detta är behändigt ifall du vill dela med din portfolio till en arbetsgivare, studiekamrat eller lärare men inte publicera den till hela världen. Lägg till en privat länk i din portfolio med plus-knappen.</p><p>Obs! Det är starkt rekommenderat att lägga till ett “förstörningsdatum” åt länken; t.ex. då arbetssökandet eller kursen upphör som du byggt din portfolio till. Kopiera sedan den skapade länken t.ex. i ett e-postmeddelande eller lägg till den i Moodle-området enligt lärarens anvisning.</p>",
+      "print": "Du kan utskriva din portföjl till PDF, spara den till dator och sicka den via e-post."
+    },
     "title": "Inställningar",
     "browseUploadedFiles": "Bläddra i mina filer"
   },

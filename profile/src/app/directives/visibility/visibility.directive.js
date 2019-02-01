@@ -154,7 +154,9 @@ angular.module('directives.visibility',
           var limitVisibility = scope.$parent.$eval($attr.limitVisibility) || $attr.limitVisibility;
 
           function isLimitedByPrivateVisibility(visibility) {
-            if (visibility === Visibility.PRIVATE
+            var visibilityLimits = _.get(limitVisibility, 'visibility');
+
+            if ((visibility === Visibility.PRIVATE || visibilityLimits === Visibility.PRIVATE)
               && (preview || currentState !== State.PRIVATE)) {
               return $q.when(true);
             }

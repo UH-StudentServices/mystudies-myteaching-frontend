@@ -65,3 +65,30 @@
     border: 1px solid $lightsilver !important;
   }
 }
+
+.page-banner .help-icon-icon {
+  color: $white;
+}
+
+.page-banner__change-background-container .help-icon-icon {
+  @include breakpoint($mobile-only) {
+    color: $blue;
+  }
+}
+
+.page-banner__change-background-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.page-banner__change-background-container .help-icon {
+  margin-left: 0.5em;
+  margin-top: auto;
+  margin-bottom: auto;
+  left: 50%;
+}
+
+.page-banner__change-background {
+  margin: 0;
+  left: 50%;
+}

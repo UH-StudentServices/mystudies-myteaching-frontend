@@ -21,7 +21,8 @@
     "copyToClipboardFailMac" : "Press ⌘-C to copy",
     "copyToClipboardFailOther" : "Press Ctrl-C to copy",
     "expires": "Expires",
-    "expired": "Expired"
+    "expired": "Expired",
+    "help": "help"
   },
   "pageHeaderLinks": {
     "flamma": "flamma",
@@ -52,6 +53,7 @@
     "addNew": "add keyword"
   },
   "contactInformation": {
+    "helpText": "In addition to your contact info, you can link to this section from the services mentioned below. You can also freely add a link that relates to your contact info and profile.",
     "title": "Contact me",
     "addPhoneNumber": "Add phone number",
     "addEmail": "Add email",
@@ -73,6 +75,7 @@
     "WEBSITE_LINK": "Website link"
   },
   "degrees": {
+    "helpText": "Add your officially obtained degrees and diplomas here. Within the “description” field, you might describe your major and minor studies, as well as your study focus areas or other additional information about your studies.",
     "title": "Degrees",
     "dateLabel": "Date",
     "datePlaceholder": "Add date, e.g. 31st May 2019 or May 2019",
@@ -85,9 +88,11 @@
     "addNewPlaceholder": "Add new degree"
   },
   "studies": {
+    "helpText": "<p>Within this section you may write an introduction and a summary of your studies. Describe what kind of skills you are gaining during your studies. Also, you might reflect on the types of questions, methods, frameworks, or approaches you have been practicing and specializing in.</p><p>You can also add key words, which will be shown on the header image of your portfolio.</p>",
     "title": "Studies"
   },
   "workExperience": {
+    "helpText": "<h1>Work experience</h1><p>Add work experience descriptions from the “add employer”-button. Describe in your text what your duties included and what you learned. You may also add information about the feedback you received from your work. Please note that the employer text field is obligatory, so if you worked as a freelancer, you should indicate this in the “employer” field. </p><h1>Looking for work</h1><p>Add “looking for work” and provide details on the type of work (summer employment, part-time work, etc.) as well as what tasks you are looking for (e.g. translator, developer, coordinator, researcher, etc.). Add your email. This information will be shown within the header picture on the top of the page.</p>",
     "title": "work experience",
     "addWorkExperience": "Add employer",
     "addJobSearch": "Add looking for work",
@@ -108,11 +113,13 @@
   "samples": {
     "title": "Work examples",
     "addSample": "Add work example",
+    "helpText": "Add examples of your work. Here you can describe in more detail, what type of tasks and duties you were responsible for and what kind of skills you learned during the work. You may add pictures, video, links, and files within the editor. Write down a brief description about the work example; write about what kind of skills and knowledge this work example best reflects. Think about what kind of examples would work best for which situation. Feel free to use your creativity and create for example picture galleries or collages, which highlight and reflect your work experiences.",
     "sampleTitle": "heading",
     "sampleDescription": "Description",
     "descriptionPlaceholder": "description text"
   },
   "attainments": {
+    "helpText": "The courses you have completed at the University of Helsinki will be shown here automatically from Weboodi. However, you can select which courses you would like to show in your portfolio, as well as whether you would like to publish the grades. In the “add new” -section you can describe the different courses in more detail; what skills and knowledge you gained during a course.",
     "attainments": "Completed studies",
     "seeMoreLink": "see a list of your completed studies in WebOodi",
     "showGrades": "Show grades"
@@ -139,12 +146,12 @@
     "enterPreview": "Preview",
     "info": "this is how your portfolio looks to others if it is published.",
     "exit": "close preview",
-    "printAndShare": "Print and share as PDF",
-    "printAndShareInfo": "You may print your portfolio as a PDF, save it to your computer and share it as an attachment by email."
+    "printAndShare": "Print and share as PDF"
   },
   "freeTextContent": {
     "defaultTitle": "Add title",
     "defaultText": "Add content",
+    "helpText": "<p>This is the most versatile section in your portfolio. You can freely add new sections with your own topics, e.g. hobbies, voluntary work, IT skills, technical skills, laboratory skills, communication skills, HOPS-reflection, HowULearn-reflection, completed MOOC-courses, badges, etc. Also, it is recommended to create one extra section to use as your own introduction, which you can move to the top of your portfolio.<p><ul><li>In the editor, you can add text, pictures, links, files, and videos. To add videos, simply copy and paste a video URL from Youtube or Vimeo.</li><li>Upload and embed a picture from the editor’s picture icon. You can change the size of the picture by clicking the picture “active” and then scaling its size from the corner with the cursor.\n<li>Remember to save the section!</li><li>Tip: It is good to leave some extra space between the text and pictures, link and text, and so on.<li>This add new -section is recommended to be used for creating an archive for yourself. These could include links and files, which don’t yet have a category. You can create multiple archive folders like this with multiple topics, for example: essays, conferences, plans, etc. Use your creativity: how could you utilize your own archive.</li></ul>",
     "fileUploadError": "File upload has failed",
     "addFromUploads": "Add from my uploaded files"
   },
@@ -159,6 +166,7 @@
     "readMore": "You can read more here"
   },
   "languages": {
+    "helpText": "Add details of your language skills. Within the description box, you can add information for example about exchange studies or language courses, or about your other international experiences related to your communication skills. You can look for advice on how language competence can be categorized into different skills of comprehension, oral skills, and writing for example by consulting the self-assessment rubric of the Europass. The more important a particular language is in your own background and in your future plans, the more detailed the description of your language skills should be, including information about the context within which you have used the languages.",
     "title": "Languages",
     "languagePlaceholder": "Language name",
     "proficiencyPlaceholder": "Skill level, e.g. Native, Excellent, ...",
@@ -170,7 +178,8 @@
     }
   },
   "skillsAndExpertise": {
-    "title": "Specialized skills"
+    "title": "Specialized skills",
+    "helpText": "In this section, you may write about skills that are your strengths and/or in which you have a lot of experience, including IT-skills, customer service skills, international experience, communication skills, research method specializations, etc."
   },
   "tabs": {
     "basicInformation": "Basic information",
@@ -213,20 +222,30 @@
   "languageSelector": {
     "createForLang": "Do you want to create a new portfolio in {{ lang }}?",
     "confirmation": "The contents of this portfolio are in {{ lang }}. Do you want to create a new portfolio in a different language?",
-    "selectionPrompt": "Please select the language for your new portfolio:"
+    "selectionPrompt": "Please select the language for your new portfolio:",
+    "helpText": "Select a language here to add a new portfolio in another language. In addition, you may change the user interface language from the top navigation, which will only affect the language selection of the portfolio's settings."
   },
   "upload" : {
-    "privacyMessage": "The uploaded picture is automatically used in other UH services (e.g. Opinder), and the picture will have a public link."
+    "privacyMessage": "The uploaded picture is automatically used in other UH services, and the picture will have a public link."
   },
   "pageBanner": {
     "chooseDefaultBackground": "Choose from default backgrounds",
-    "uploadFile": "Upload file"
+    "uploadFile": "Upload file",
+    "helpText": {
+      "introduction": "Beside your profile picture, you may write a short description of your portfolio. In this section, you can also provide a title topic for your portfolio. Remember to be specific and include your interests: things that are important to you and your studies, and words that describe your learning path. Writing only “a student at the University of Helsinki” or “a student of field x” might be in many cases too general.",
+      "chooseBackground": "You can change the header image. Click on the the camera icon and select “upload file” or “choose from default backgrounds”. Select the picture and press “save”. "
+    }
   },
   "files": {
     "fileBrowserTitle": "My uploaded files",
     "deleteFile": "Delete file"
   },
   "settings": {
+    "helpText": {
+      "manageFiles": "<p>Browse and delete files uploaded to your portfolio. When you delete a file from here, it will be deleted from the server.</p><p>Note that if you delete a file here, but are still using it in one of the sections, the file link in the text will not be accessible anymore.</p>",
+      "sharedLinks": "<p>You can share your portfolio with a link even when it is in the private mode on the top corner privacy setting. This is useful if you would like to share your portfolio to your peers, employer, or teacher, but you don’t want to make the portfolio public otherwise. Create a new link to your portfolio from the plus sign.</p><p>Note that it is recommended to add an expiry date for your link. This could be, for example, the month after when the portfolio needs to be submitted. After you have created a new portfolio link from the plus sign, copy and paste the link to email or to a Moodle course area.</p>",
+      "print": "You may print your portfolio as a PDF, save it to your computer and share it as an attachment by email."
+    },
     "title": "Settings",
     "browseUploadedFiles": "View my uploaded files"
   },

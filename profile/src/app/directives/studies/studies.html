@@ -22,6 +22,9 @@
                       profile-lang="{{::profileLang}}"
                       editing="editing"></editable-heading>
     <div class="component-header__actions">
+      <help-icon translation-key="studies.helpText"
+                 panel-align="right"
+                 limit-visibility="{ visibility: 'PRIVATE', roles: ['STUDENT'] }"></help-icon>
       <visibility-toggle component-id="STUDIES"></visibility-toggle>
       <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
     </div>
