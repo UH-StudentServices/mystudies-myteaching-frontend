@@ -31,7 +31,7 @@ const PAGE_HEADERS = {
   sv: 'HELSINGFORS UNIVERSITET'
 };
 
-const pageHeaderSelector = headerText => Selector('h1').withText(headerText);
+const pageHeaderSelector = (headerText = PAGE_HEADERS.fi) => Selector('h1').withText(headerText);
 
 const loginAsUser = async (t, name, expectedWeekFeedHeader) => {
   const loginAsUserButton = Selector('a.button').withText(name);
@@ -39,7 +39,7 @@ const loginAsUser = async (t, name, expectedWeekFeedHeader) => {
 
   return await t
     .click(loginAsUserButton)
-    .expect(pageHeaderSelector(PAGE_HEADERS.fi).exists).ok()
+    .expect(pageHeaderSelector().exists).ok()
     .expect(weekFeedHeader.exists).ok();
 };
 
@@ -55,7 +55,7 @@ export const openProfile = async (t, profileLinkText, expectedProfileTitle) => {
   await t
     .click(porfolioLinkSelector)
     .expect(profileIntroSelector.exists).ok()
-    .expect(pageHeaderSelector(PAGE_HEADERS.fi).exists).ok()
+    .expect(pageHeaderSelector().exists).ok()
     .click(profileLinkSelector)
     .expect(profileStudiesSelector.exists)
     .ok();
