@@ -35,7 +35,7 @@ const pageHeaderSelector = headerText => Selector('h1').withText(headerText);
 
 const loginAsUser = async (t, name, expectedWeekFeedHeader) => {
   const loginAsUserButton = Selector('a.button').withText(name);
-  const weekFeedHeader =  Selector('h2 span').withText(expectedWeekFeedHeader);
+  const weekFeedHeader = Selector('h2 span').withText(expectedWeekFeedHeader);
 
   return await t
     .click(loginAsUserButton)
