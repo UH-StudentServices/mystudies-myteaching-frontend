@@ -28,6 +28,6 @@ fixture('Profile')
 
 test('Profile opens', t => loginAndOpenProfile(t));
 
-test('Language change to English', t => loginAndOpenProfileInFinnishAndChangeLanguage('en', t));
+test('Language is changed to English', t => loginAndOpenProfileInFinnishAndChangeLanguage('en', t));
 
-test('Language change to Swedish', t => loginAndOpenProfileInFinnishAndChangeLanguage('sv', t));
+test('Language is changed to Swedish', t => loginAndOpenProfileInFinnishAndChangeLanguage('sv', t));

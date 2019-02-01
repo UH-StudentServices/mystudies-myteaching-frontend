@@ -28,7 +28,7 @@ fixture('My Studies')
 
 test('My Studies page opens', t => loginAsStudent(t));
 
-test('Language change to English', t => loginAsStudentInFinnishAndChangeLanguage('en', t));
+test('Language is changed to English', t => loginAsStudentInFinnishAndChangeLanguage('en', t));
 
-test('Language change to Swedish', t => loginAsStudentInFinnishAndChangeLanguage('sv', t));
+test('Language is changed to Swedish', t => loginAsStudentInFinnishAndChangeLanguage('sv', t));
 

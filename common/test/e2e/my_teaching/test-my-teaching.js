@@ -28,6 +28,6 @@ fixture('My Teaching')
 
 test('My Teaching page opens', t => loginAsTeacher(t));
 
-test('Language change to English', t => loginAsTeacherInFinnishAndChangeLanguage('en', t));
+test('Language is changed to English', t => loginAsTeacherInFinnishAndChangeLanguage('en', t));
 
-test('Language change to Swedish', t => loginAsTeacherInFinnishAndChangeLanguage('sv', t));
+test('Language is changed to Swedish', t => loginAsTeacherInFinnishAndChangeLanguage('sv', t));

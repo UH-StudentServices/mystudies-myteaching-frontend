@@ -28,6 +28,6 @@ const loginAndOpenAcademicProfileInFinnishAndChangeLanguage = async (langCode, t
 
 test('Academic profile opens', t => loginAndOpenAcademicProfile(t));
 
-test('Language change to English', t => loginAndOpenAcademicProfileInFinnishAndChangeLanguage('en', t));
+test('Language is changed to English', t => loginAndOpenAcademicProfileInFinnishAndChangeLanguage('en', t));
 
-test('Language change to Swedish', t => loginAndOpenAcademicProfileInFinnishAndChangeLanguage('sv', t));
+test('Language is changed to Swedish', t => loginAndOpenAcademicProfileInFinnishAndChangeLanguage('sv', t));
