@@ -16,9 +16,19 @@
  */
 
 import config from '../config';
-import { loginAsStudent } from '../util';
+import { loginAsStudent, changeLanguage } from '../util';
+
+const loginAsStudentInFinnishAndChangeLanguage = async (langCode, t) => {
+  await loginAsStudent(t);
+  return changeLanguage(langCode, t);
+};
 
 fixture('My Studies')
   .page(config.myStudiesBaseUrl);
 
-test('My Studies page opens', async t => loginAsStudent(t));
+test('My Studies page opens', t => loginAsStudent(t));
+
+test('Language change to English', t => loginAsStudentInFinnishAndChangeLanguage('en', t));
+
+test('Language change to Swedish', t => loginAsStudentInFinnishAndChangeLanguage('sv', t));
+
