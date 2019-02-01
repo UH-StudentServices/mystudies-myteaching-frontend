@@ -16,9 +16,18 @@
  */
 
 import config from '../config';
-import { loginAndOpenAcademicProfile } from '../util';
+import { changeLanguage, loginAndOpenAcademicProfile } from '../util';
 
 fixture('Academic portfolio')
   .page(config.myTeachingBaseUrl);
 
-test('Academic profile opens', async t => loginAndOpenAcademicProfile(t));
+const loginAndOpenAcademicProfileInFinnishAndChangeLanguage = async (langCode, t) => {
+  await loginAndOpenAcademicProfile(t);
+  return changeLanguage(langCode, t);
+};
+
+test('Academic profile opens', t => loginAndOpenAcademicProfile(t));
+
+test('Language is changed to English', t => loginAndOpenAcademicProfileInFinnishAndChangeLanguage('en', t));
+
+test('Language is changed to Swedish', t => loginAndOpenAcademicProfileInFinnishAndChangeLanguage('sv', t));

@@ -16,9 +16,18 @@
  */
 
 import config from '../config';
-import { loginAndOpenProfile } from '../util';
+import { changeLanguage, loginAndOpenProfile } from '../util';
+
+const loginAndOpenProfileInFinnishAndChangeLanguage = async (langCode, t) => {
+  await loginAndOpenProfile(t);
+  return changeLanguage(langCode, t);
+};
 
 fixture('Profile')
   .page(config.myStudiesBaseUrl);
 
-test('Profile opens', async t => loginAndOpenProfile(t));
+test('Profile opens', t => loginAndOpenProfile(t));
+
+test('Language is changed to English', t => loginAndOpenProfileInFinnishAndChangeLanguage('en', t));
+
+test('Language is changed to Swedish', t => loginAndOpenProfileInFinnishAndChangeLanguage('sv', t));
