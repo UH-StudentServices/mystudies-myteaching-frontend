@@ -55,7 +55,7 @@
     "breakpoint-sass": "^2.7.1",
     "singularity": "^1.7.1",
     "normalize.css": "^5.0.0",
-    "Styleguide": "https://github.com/UniversityofHelsinki/Styleguide.git#release-1.12.0"
+    "Styleguide": "https://github.com/UniversityofHelsinki/Styleguide.git#release-1.13.0"
   },
   "resolutions": {
     "angular": "^1.6.1",
