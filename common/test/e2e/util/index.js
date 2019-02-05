@@ -19,13 +19,27 @@
 
 import { Selector } from 'testcafe';
 
+const LANGUAGES = {
+  fi: 'Finnish',
+  en: 'English',
+  sv: 'Svenska'
+};
+
+const PAGE_HEADERS = {
+  fi: 'HELSINGIN YLIOPISTO',
+  en: 'UNIVERSITY OF HELSINKI',
+  sv: 'HELSINGFORS UNIVERSITET'
+};
+
+const pageHeaderSelector = (headerText = PAGE_HEADERS.fi) => Selector('h1').withText(headerText);
+
 const loginAsUser = async (t, name, expectedWeekFeedHeader) => {
   const loginAsUserButton = Selector('a.button').withText(name);
   const weekFeedHeader = Selector('h2 span').withText(expectedWeekFeedHeader);
 
-
   return await t
     .click(loginAsUserButton)
+    .expect(pageHeaderSelector().exists).ok()
     .expect(weekFeedHeader.exists).ok();
 };
 
@@ -37,11 +51,11 @@ export const openProfile = async (t, profileLinkText, expectedProfileTitle) => {
   const profileLinkSelector = Selector('.profile-intro__title');
   const profileIntroSelector = profileLinkSelector.withText(expectedProfileTitle);
 
-
   await openAvatarMenu(t);
   await t
     .click(porfolioLinkSelector)
     .expect(profileIntroSelector.exists).ok()
+    .expect(pageHeaderSelector().exists).ok()
     .click(profileLinkSelector)
     .expect(profileStudiesSelector.exists)
     .ok();
@@ -57,11 +71,22 @@ export const loginAsStudent = async t => {
     .expect(firstWeekFeedItem.exists).ok();
 };
 export const loginAsTeacher = async t => loginAsUser(t, 'Olli Opettaja', 'NYT OPETUKSESSANI');
+
 export const loginAndOpenProfile = async (t) => {
   await loginAsStudent(t);
   await openProfile(t, 'Portfolio', 'OLLI OPISKELIJA');
 };
+
 export const loginAndOpenAcademicProfile = async (t) => {
   await loginAsTeacher(t);
   await openProfile(t, 'Yliopistoportfolio', 'OLLI OPETTAJA');
 };
+
+export const changeLanguage = async (langCode, t) => {
+  const languageButtonSelector = Selector('a.theme-language').withAttribute('aria-label', LANGUAGES[langCode]);
+
+  return t
+    .click(languageButtonSelector)
+    .expect(pageHeaderSelector(PAGE_HEADERS[langCode]).exists).ok();
+};
+
