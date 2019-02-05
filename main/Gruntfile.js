@@ -92,13 +92,12 @@ module.exports = function (grunt) {
 
   function serverConfiguration(config) {
     if (isHttps) {
-      console.log("setting https keys");
       config.https = {
         key: path.resolve(__dirname, '../private_key.pem').toString(),
         cert: path.resolve(__dirname, '../public_key.pem').toString()
-      }
+      };
     }
-    return config;	
+    return config;
   }
 
   grunt.initConfig({
@@ -139,7 +138,7 @@ module.exports = function (grunt) {
         host: 'local.student.helsinki.fi',
         open: 'external',
         port: 3000,
-        protocol: isHttps ? 'https': 'http', 
+        protocol: isHttps ? 'https' : 'http',
         server: serverConfiguration({
           baseDir: 'src',
           routes: {
