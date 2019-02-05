@@ -26,3 +26,13 @@ In addition, the following localhost alias configuration is also needed (in /etc
 
 This will open the app in a new browser window at http://local.student.helsinki.fi:3000.
 
+### HTTPS
+
+#### Generate required keys
+
+`npm run genkeys`
+
+
+#### Start dev server
+`npm run dev-https`
+

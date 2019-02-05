@@ -64,6 +64,8 @@
     "gitinfo": "node scripts/git-info.js",
     "build": "grunt build --gruntfile main/Gruntfile.js && grunt build --gruntfile profile/Gruntfile.js",
     "dev": "concurrently 'grunt serve --gruntfile main/Gruntfile.js' 'grunt serve --gruntfile profile/Gruntfile.js'",
+    "genkeys": "openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:2048 && openssl rsa -pubout -in private_key.pem -out public_key.pem",
+    "dev-https": "IS_HTTPS=1 npm run dev",
     "dist": "grunt buildMinified --gruntfile main/Gruntfile.js && grunt buildMinified --gruntfile profile/Gruntfile.js && npm run gitinfo",
     "lint": "concurrently 'npm run lint:js' 'npm run lint:json'",
     "lint:json": "jsonlint-cli main/**/*.json profile/**/*.json common/**/*.json",
