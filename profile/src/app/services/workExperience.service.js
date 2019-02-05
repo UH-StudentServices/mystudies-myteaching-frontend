@@ -24,9 +24,6 @@ angular.module('services.workExperience', [
     WorkExperienceResource,
     momentDateToLocalDateArray,
     dateArrayToMomentObject) {
-    var Rx = window.Rx;
-    var workExperienceSubject;
-    var jobSearchSubject;
     var getProfile = ProfileService.getProfile;
 
     function formatDates(workExperiences) {
@@ -37,72 +34,20 @@ angular.module('services.workExperience', [
       });
     }
 
-    function workExperienceArrayDatesToMoment(workExperience) {
-      if (workExperience) {
-        workExperience.startDate = dateArrayToMomentObject(workExperience.startDate);
-        workExperience.endDate = dateArrayToMomentObject(workExperience.endDate);
-      }
-      return workExperience;
-    }
-
-    function publishWorkExperience(workExperience) {
-      workExperienceSubject.onNext(workExperience);
-      return workExperience;
-    }
-
-    function publishJobSearch(jobSearch) {
-      jobSearchSubject.onNext(jobSearch);
-      return jobSearch;
-    }
-
     function getProfileId(profile) {
       return profile.id;
-    }
-
-    function getProperty(propName) {
-      return _.partialRight(_.get, propName);
-    }
-
-    function getJobSearch() {
-      return getProfile().then(getProperty('jobSearch'));
-    }
-
-    function getWorkExperience() {
-      return getProfile()
-        .then(getProperty('workExperience'))
-        .then(_.partialRight(_.map, workExperienceArrayDatesToMoment));
     }
 
     function saveJobSearch(jobSearch) {
       return getProfile()
         .then(getProfileId)
-        .then(_.partial(WorkExperienceResource.saveJobSearch, jobSearch))
-        .then(publishJobSearch);
+        .then(_.partial(WorkExperienceResource.saveJobSearch, jobSearch));
     }
 
     function deleteJobSearch(jobSearch) {
       return getProfile()
         .then(getProfileId)
-        .then(_.partial(WorkExperienceResource.deleteJobSearch, jobSearch))
-        .then(_.partial(publishJobSearch, null));
-    }
-
-    function getWorkExperienceSubject() {
-      if (!workExperienceSubject) {
-        workExperienceSubject = new Rx.BehaviorSubject();
-        getWorkExperience()
-          .then(publishWorkExperience);
-      }
-      return workExperienceSubject;
-    }
-
-    function getJobSearchSubject() {
-      if (!jobSearchSubject) {
-        jobSearchSubject = new Rx.BehaviorSubject();
-        getJobSearch()
-          .then(publishJobSearch);
-      }
-      return jobSearchSubject;
+        .then(_.partial(WorkExperienceResource.deleteJobSearch, jobSearch));
     }
 
     function updateWorkExperience(profileId, workExperience) {
@@ -119,8 +64,6 @@ angular.module('services.workExperience', [
 
     return {
       formatDates: formatDates,
-      getWorkExperienceSubject: getWorkExperienceSubject,
-      getJobSearchSubject: getJobSearchSubject,
       saveJobSearch: saveJobSearch,
       deleteJobSearch: deleteJobSearch,
       updateWorkExperience: updateWorkExperience

@@ -46,6 +46,7 @@
           <div ng-switch-when="WORK_EXPERIENCE" class="profile-section__body">
             <work-experience limit-visibility="{componentId: 'WORK_EXPERIENCE'}"
                              work-experience-data="profile.workExperience"
+                             job-search="profile.jobSearch"
                              profile-id="{{::profile.id}}"
                              profile-lang="{{::profile.lang}}">
             </work-experience>
