@@ -15,9 +15,8 @@
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<ul class="keywords-summary__list hide-mobile-only">
-  <li class="keywords-summary__item"
-      ng-repeat="keyword in keywords track by keyword.title">
+<ul class="intro-keywords hide-mobile-only">
+  <li ng-repeat="keyword in keywords track by keyword.title">
     {{::keyword.title}}
   </li>
 </ul>

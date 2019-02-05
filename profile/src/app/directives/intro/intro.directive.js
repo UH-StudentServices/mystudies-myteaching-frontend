@@ -16,6 +16,8 @@
  */
 
 angular.module('directives.intro', [
+  'directives.intro.keywords',
+  'directives.intro.jobSearch',
   'services.profile',
   'services.profileBackground',
   'directives.editLink',

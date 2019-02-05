@@ -37,14 +37,14 @@ angular.module('directives.workExperience', [
       restrict: 'E',
       replace: true,
       scope: {
-        workExperienceData: '&',
+        workExperience: '<',
         profileId: '@',
         profileLang: '@',
         sectionName: '@'
       },
       templateUrl: 'app/directives/workExperience/workExperience.html',
       link: function ($scope) {
-        $scope.workExperience = WorkExperienceService.formatDates($scope.workExperienceData());
+        $scope.workExperience = WorkExperienceService.formatDates($scope.workExperience);
         $scope.editing = false;
         $scope.workExperienceValid = true;
         $scope.newJob = {};
@@ -93,28 +93,6 @@ angular.module('directives.workExperience', [
           $scope.workExperienceForm.$setDirty();
           return false;
         };
-      }
-    };
-  })
-
-  .directive('workExperienceSummary', function () {
-    return {
-      restrict: 'E',
-      replace: true,
-      templateUrl: 'app/directives/workExperience/workExperienceSummary.html',
-      scope: {},
-      controller: function ($scope,
-        WorkExperienceService,
-        OrderWorkExperience) {
-        WorkExperienceService.getWorkExperienceSubject().subscribe(function (workExperience) {
-          $scope.workExperience = workExperience;
-        });
-
-        WorkExperienceService.getJobSearchSubject().subscribe(function (jobSearch) {
-          $scope.jobSearch = jobSearch;
-        });
-
-        $scope.orderWorkExperience = OrderWorkExperience;
       }
     };
   });

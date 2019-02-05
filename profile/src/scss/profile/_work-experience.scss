@@ -18,9 +18,6 @@
 $work-experience-description-height: 85px;
 $work-experience-description-edit-height: 82px;
 
-$work-experience-summary-max-height: 104px;
-
-
 .job-search .banner-content__backdrop {
   background-color: $blue--active;
   .editable & {
@@ -103,34 +100,6 @@ $work-experience-summary-max-height: 104px;
   .banner-content__banner-text {
     text-transform: none ;
   }
-}
-
-.work-experience-summary__list{
-  max-height: $work-experience-summary-max-height;
-  overflow: hidden;
-}
-
-.work-experience-summary__item {
-  text-transform: uppercase;
-  color: $white;
-  background: rgba($blue, 0.6);
-  padding: 1em;
-  font-weight: 600;
-  display: inline-block;
-  margin-right: 4px;
-  margin-bottom: 4px;
-}
-
-.work-experience-summary__contact-email {
-  text-transform: none;
-  margin-top: 0.5em;
-  @include font-size(12px);
-}
-
-.work-experience-summary__job-search {
-  width: 100%;
-  padding-bottom: 1.5em;
-  margin: 0;
 }
 
 input.work-experience__date-input {
