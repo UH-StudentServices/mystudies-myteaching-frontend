@@ -53,7 +53,7 @@
     "addNew": "add keyword"
   },
   "contactInformation": {
-    "helpText": "In addition to your contact info, you can link to this section from the services mentioned below. You can also freely add a link that relates to your contact info and profile.",
+    "helpText": "In addition to your contact info, you can link to this section from the services mentioned below. You can also freely add a link that relates to your contact info and profile. Indicate the whole URL, including https://",
     "title": "Contact me",
     "addPhoneNumber": "Add phone number",
     "addEmail": "Add email",
@@ -151,7 +151,7 @@
   "freeTextContent": {
     "defaultTitle": "Add title",
     "defaultText": "Add content",
-    "helpText": "<p>This is the most versatile section in your portfolio. You can freely add new sections with your own topics, e.g. hobbies, voluntary work, IT skills, technical skills, laboratory skills, communication skills, HOPS-reflection, HowULearn-reflection, completed MOOC-courses, badges, etc. Also, it is recommended to create one extra section to use as your own introduction, which you can move to the top of your portfolio.<p><ul><li>In the editor, you can add text, pictures, links, files, and videos. To add videos, simply copy and paste a video URL from Youtube or Vimeo.</li><li>Upload and embed a picture from the editor’s picture icon. You can change the size of the picture by clicking the picture “active” and then scaling its size from the corner with the cursor.\n<li>Remember to save the section!</li><li>Tip: It is good to leave some extra space between the text and pictures, link and text, and so on.<li>This add new -section is recommended to be used for creating an archive for yourself. These could include links and files, which don’t yet have a category. You can create multiple archive folders like this with multiple topics, for example: essays, conferences, plans, etc. Use your creativity: how could you utilize your own archive.</li></ul>",
+    "helpText": "<p>This is the most versatile section in your portfolio. You can freely add new sections with your own topics, e.g. hobbies, voluntary work, IT skills, technical skills, laboratory skills, communication skills, HOPS-reflection, HowULearn-reflection, completed MOOC-courses, badges, etc. Also, it is recommended to create one extra section to use as your own introduction, which you can move to the top of your portfolio.<p><ul><li>In the editor, you can add text, pictures, links, files, and videos. To add videos, simply copy and paste a video URL from Youtube or Vimeo.</li><li>Upload and embed a picture from the editor’s picture icon. You can change the size of the picture by clicking the picture “active” and then scaling its size from the corner with the cursor.\n<li>Remember to save the section!</li><li>Tip: It is good to leave some extra space between the text and pictures, link and text, and so on.<li>This add new -section is recommended to be used for creating an archive for yourself. These could include links and files, which don’t yet have a category. You can create multiple archive folders like this with multiple topics, for example: essays, conferences, plans, etc. Use your creativity: how you might utilize your own archive.</li></ul>",
     "fileUploadError": "File upload has failed",
     "addFromUploads": "Add from my uploaded files"
   },
@@ -232,7 +232,7 @@
     "chooseDefaultBackground": "Choose from default backgrounds",
     "uploadFile": "Upload file",
     "helpText": {
-      "introduction": "Beside your profile picture, you may write a short description of your portfolio. In this section, you can also provide a title topic for your portfolio. Remember to be specific and include your interests: things that are important to you and your studies, and words that describe your learning path. Writing only “a student at the University of Helsinki” or “a student of field x” might be in many cases too general.",
+      "introduction": "Beside your profile picture, you may write a short description of your portfolio. In this section, you can also provide a title topic for your portfolio. Remember to be specific and include your interests: things that are important to you and your studies, and words that describe your learning path. Writing only “a student at the University of Helsinki” or “a student of field x”, so it is recommended to be more specific.",
       "chooseBackground": "You can change the header image. Click on the the camera icon and select “upload file” or “choose from default backgrounds”. Select the picture and press “save”. "
     }
   },
