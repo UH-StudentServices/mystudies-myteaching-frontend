@@ -37,7 +37,7 @@ angular.module('directives.workExperience', [
       restrict: 'E',
       replace: true,
       scope: {
-        workExperienceData: '<',
+        workExperience: '<',
         jobSearch: '<',
         profileId: '@',
         profileLang: '@',
@@ -45,7 +45,7 @@ angular.module('directives.workExperience', [
       },
       templateUrl: 'app/directives/workExperience/workExperience.html',
       link: function ($scope) {
-        $scope.workExperience = WorkExperienceService.formatDates($scope.workExperienceData);
+        $scope.workExperience = WorkExperienceService.formatDates($scope.workExperience);
         $scope.editing = false;
         $scope.workExperienceValid = true;
         $scope.newJob = {};
