@@ -15,7 +15,7 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.intro.keywords', ['services.keyword', 'directives.inputUppercase', 'profileAnalytics'])
+angular.module('directives.intro.keywords', [])
 
   .directive('introKeywords', function () {
     return {
