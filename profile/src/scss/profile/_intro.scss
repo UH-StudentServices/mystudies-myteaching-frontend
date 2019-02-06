@@ -111,3 +111,36 @@
     background-color: $lila;
   }
 }
+
+ul.intro-keywords {
+  max-height: 162px;
+  overflow: hidden;
+
+  li {
+    text-transform: uppercase;
+    color: $white;
+    background: rgba($black, 0.6);
+    padding: 1em;
+    font-weight: 600;
+    display: inline-block;
+    margin-right: 4px;
+    margin-bottom: 4px;
+  }
+}
+
+.intro-job-search {
+  text-transform: uppercase;
+  color: $white;
+  background: rgba($blue, 0.6);
+  padding: 1em;
+  font-weight: 600;
+  display: inline-block;
+  margin: 0;
+  width: 100%;
+
+  &__contact-email {
+    text-transform: none;
+    margin-top: 0.5em;
+    @include font-size(12px);
+  }
+}

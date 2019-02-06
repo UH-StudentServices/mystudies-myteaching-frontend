@@ -46,19 +46,4 @@ angular.module('directives.keywords', ['services.keyword', 'directives.inputUppe
         };
       }
     };
-  })
-
-  .directive('keywordsSummary', function () {
-    return {
-      restrict: 'E',
-      replace: true,
-      templateUrl: 'app/directives/studies/keywordsSummary.html',
-      scope: {},
-      controller: function ($scope, KeywordService) {
-        KeywordService.getKeywordsSubject()
-          .subscribe(function (keywords) {
-            $scope.keywords = keywords;
-          });
-      }
-    };
   });

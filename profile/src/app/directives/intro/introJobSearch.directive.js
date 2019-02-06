@@ -15,10 +15,19 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-.keywords-input-container__btn {
-  @include default-focus;
-}
+angular.module('directives.intro.jobSearch', [])
 
-.keywords-input-container {
-  overflow: visible;
-}
+  .directive('introJobSearch', function () {
+    return {
+      restrict: 'E',
+      replace: true,
+      templateUrl: 'app/directives/intro/introJobSearch.html',
+      scope: {},
+      controller: function ($scope, WorkExperienceService) {
+        WorkExperienceService.getJobSearchSubject()
+          .subscribe(function (jobSearch) {
+            $scope.jobSearch = jobSearch;
+          });
+      }
+    };
+  });

@@ -15,10 +15,19 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-.keywords-input-container__btn {
-  @include default-focus;
-}
+angular.module('directives.intro.keywords', [])
 
-.keywords-input-container {
-  overflow: visible;
-}
+  .directive('introKeywords', function () {
+    return {
+      restrict: 'E',
+      replace: true,
+      templateUrl: 'app/directives/intro/introKeywords.html',
+      scope: {},
+      controller: function ($scope, KeywordService) {
+        KeywordService.getKeywordsSubject()
+          .subscribe(function (keywords) {
+            $scope.keywords = keywords;
+          });
+      }
+    };
+  });

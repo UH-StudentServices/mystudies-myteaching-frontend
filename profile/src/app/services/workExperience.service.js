@@ -25,7 +25,6 @@ angular.module('services.workExperience', [
     momentDateToLocalDateArray,
     dateArrayToMomentObject) {
     var Rx = window.Rx;
-    var workExperienceSubject;
     var jobSearchSubject;
     var getProfile = ProfileService.getProfile;
 
@@ -35,19 +34,6 @@ angular.module('services.workExperience', [
         job.endDate = dateArrayToMomentObject(job.endDate);
         return job;
       });
-    }
-
-    function workExperienceArrayDatesToMoment(workExperience) {
-      if (workExperience) {
-        workExperience.startDate = dateArrayToMomentObject(workExperience.startDate);
-        workExperience.endDate = dateArrayToMomentObject(workExperience.endDate);
-      }
-      return workExperience;
-    }
-
-    function publishWorkExperience(workExperience) {
-      workExperienceSubject.onNext(workExperience);
-      return workExperience;
     }
 
     function publishJobSearch(jobSearch) {
@@ -67,12 +53,6 @@ angular.module('services.workExperience', [
       return getProfile().then(getProperty('jobSearch'));
     }
 
-    function getWorkExperience() {
-      return getProfile()
-        .then(getProperty('workExperience'))
-        .then(_.partialRight(_.map, workExperienceArrayDatesToMoment));
-    }
-
     function saveJobSearch(jobSearch) {
       return getProfile()
         .then(getProfileId)
@@ -85,15 +65,6 @@ angular.module('services.workExperience', [
         .then(getProfileId)
         .then(_.partial(WorkExperienceResource.deleteJobSearch, jobSearch))
         .then(_.partial(publishJobSearch, null));
-    }
-
-    function getWorkExperienceSubject() {
-      if (!workExperienceSubject) {
-        workExperienceSubject = new Rx.BehaviorSubject();
-        getWorkExperience()
-          .then(publishWorkExperience);
-      }
-      return workExperienceSubject;
     }
 
     function getJobSearchSubject() {
@@ -119,7 +90,6 @@ angular.module('services.workExperience', [
 
     return {
       formatDates: formatDates,
-      getWorkExperienceSubject: getWorkExperienceSubject,
       getJobSearchSubject: getJobSearchSubject,
       saveJobSearch: saveJobSearch,
       deleteJobSearch: deleteJobSearch,
