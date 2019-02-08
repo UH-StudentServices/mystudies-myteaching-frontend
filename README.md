@@ -34,5 +34,5 @@ This will open the app in a new browser window at http://local.student.helsinki.
 
 
 #### Start dev server
-`npm run dev-https`
+`npm run dev:https`
 
