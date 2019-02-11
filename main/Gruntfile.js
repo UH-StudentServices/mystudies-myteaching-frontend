@@ -19,6 +19,7 @@
 
 'use strict';
 
+var path = require('path');
 var httpProxy = require('http-proxy');
 var modRewrite = require('connect-modrewrite');
 var urlUtil = require('url');
@@ -26,6 +27,8 @@ var proxy;
 var proxyPaths;
 var proxyMiddleware;
 var gruntPlugins;
+
+var isHttps = process.env.IS_HTTPS;
 
 // Grunt plugins must be loaded manually since load-grunt-tasks doesn't know
 // how to load node_modules from parent dir as of this writing
@@ -66,13 +69,14 @@ proxyPaths = [
   '/logout',
   '/redirect',
   '/files',
-  '/info'
+  '/info',
+  '/saml'
 ];
 
 proxyMiddleware = function (req, res, next) {
-  var path = urlUtil.parse(req.url).pathname;
+  var reqPath = urlUtil.parse(req.url).pathname;
 
-  if (proxyPaths.some(function (p) { return path.indexOf(p) === 0; })) {
+  if (proxyPaths.some(function (p) { return reqPath.indexOf(p) === 0; })) {
     proxy.web(req, res);
   } else {
     next();
@@ -85,6 +89,16 @@ module.exports = function (grunt) {
   });
 
   require('time-grunt')(grunt);
+
+  function serverConfiguration(config) {
+    if (isHttps) {
+      config.https = {
+        key: path.resolve(__dirname, '../private_key.pem').toString(),
+        cert: path.resolve(__dirname, '../public_key.pem').toString()
+      };
+    }
+    return config;
+  }
 
   grunt.initConfig({
     application: { dist: 'dist' },
@@ -124,7 +138,8 @@ module.exports = function (grunt) {
         host: 'local.student.helsinki.fi',
         open: 'external',
         port: 3000,
-        server: {
+        protocol: isHttps ? 'https' : 'http',
+        server: serverConfiguration({
           baseDir: 'src',
           routes: {
             '/bower_components': '../bower_components',
@@ -139,7 +154,7 @@ module.exports = function (grunt) {
               '^[^\\.]*$ /index.html [L]'
             ])
           ]
-        }
+        })
       }
     },
     clean: {
