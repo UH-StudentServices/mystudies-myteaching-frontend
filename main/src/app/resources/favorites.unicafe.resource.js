@@ -18,7 +18,7 @@
 angular.module('resources.favorites.unicafe', [])
 
   .factory('UnicafeResource', function ($http) {
-    var baseUrl = '/proxy/hyyravintolat';
+    var baseUrl = 'https://messi.hyyravintolat.fi/publicapi';
 
     var areas = [
       {
