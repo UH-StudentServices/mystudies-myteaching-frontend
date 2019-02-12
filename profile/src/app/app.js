@@ -28,6 +28,7 @@ angular.module('opintoniProfileApp', [
   'ui.utils',
   'profileAnalytics',
   'profileErrors',
+  'profileLanders',
   'resources.httpInterceptor',
   'angular-click-outside',
   'as.sortable',
@@ -72,6 +73,7 @@ angular.module('opintoniProfileApp', [
   'directives.notifications',
   'directives.browseFiles',
   'directives.sharedLinks',
+  'directives.obar',
   'dialog.verificationDialog',
 
   'filters.formatting',
@@ -89,6 +91,7 @@ angular.module('opintoniProfileApp', [
   'services.freeTextContent',
   'services.profileFiles',
   'services.sharedLinks',
+  'services.obar',
 
   'resources.notifications',
 
@@ -133,7 +136,48 @@ angular.module('opintoniProfileApp', [
       return undefined;
     }
 
-    $stateProvider.state('profileBySharedLink', {
+    $stateProvider.state('profileRoot', {
+      url: '/',
+      controller: 'MainCtrl',
+      resolve: {
+        session: profileSession,
+        state: function (StateService) {
+          return StateService.resolve(null, null, null);
+        },
+        profile: function (ProfileService,
+          ProfileRoleService,
+          LanguageService,
+          $state,
+          session) {
+          var role = ProfileRoleService.getActiveRole();
+          var currentLang = LanguageService.getCurrent();
+          var profilePathsForRole;
+          var profilePath;
+          var lang;
+          var userpath;
+
+          if (!session) {
+            $state.go('anonymousUser', null, { location: 'replace' });
+          }
+
+          profilePathsForRole = session.profilePathsByRoleAndLang[role];
+
+          if (profilePathsForRole) {
+            profilePath = (profilePathsForRole[currentLang] || profilePathsForRole[0])[0].split('/').slice(1);
+            lang = profilePath[0];
+            userpath = profilePath[1];
+            $state.go('profile', { lang: lang, userpath: userpath }, { location: 'replace' });
+          } else {
+            ProfileService.createProfile(role, currentLang).then(function (response) {
+              lang = response.lang;
+              userpath = response.url.split('/').pop();
+
+              $state.go('profile', { lang: lang, userpath: userpath }, { location: 'replace' });
+            });
+          }
+        }
+      }
+    }).state('profileBySharedLink', {
       url: '/:sharedlink',
       templateUrl: 'app/partials/_profile.html',
       controller: 'MainCtrl',
@@ -197,9 +241,9 @@ angular.module('opintoniProfileApp', [
             .catch(function findProfileFail(error) {
               if (error.status === 404) {
                 if (session) {
-                  $state.go('notFound');
+                  $state.go('notFound', { location: 'replace' });
                 } else {
-                  $state.go('loginNeeded', { originalUrl: $location.absUrl() });
+                  $state.go('loginNeeded', { originalUrl: $location.absUrl() }, { location: 'replace' });
                 }
               }
             })
@@ -211,10 +255,11 @@ angular.module('opintoniProfileApp', [
     }).state('files', {
       url: '/files',
       templateUrl: 'app/partials/_files.html'
-    }).state('links', {
-      url: '/links',
-      templateUrl: 'app/partials/_shared_links.html'
-    });
+    })
+      .state('links', {
+        url: '/links',
+        templateUrl: 'app/partials/_shared_links.html'
+      });
 
     $sceDelegateProvider.resourceUrlWhitelist([
       // Allow same origin resource loads.
@@ -224,10 +269,19 @@ angular.module('opintoniProfileApp', [
     ]);
   })
 
-  .run(function ($rootScope, $window, LanguageService, AnalyticsService) {
+  .run(function ($rootScope,
+    $window,
+    LanguageService,
+    Configuration,
+    AnalyticsService,
+    StateService,
+    State) {
     var language = LanguageService.getCurrent();
 
     $rootScope.selectedLanguage = language;
+    $rootScope.useObar = !!Configuration.obarBaseUrl
+      && StateService.getStateFromDomain() === State.MY_STUDIES;
+
     moment.locale(language);
     $window.FastClick.attach($window.document.body);
 

@@ -31,7 +31,7 @@ angular.module('services.language', ['constants.language'])
       suffix: '.json'
     });
     $translateProvider.useCookieStorage();
-    $translateProvider.storageKey('OO_LANGUAGE');
+    $translateProvider.storageKey('OBAR_LANG');
     $translateProvider.useSanitizeValueStrategy('escaped');
     $translateProvider.preferredLanguage(DEFAULT_LANGUAGE);
 

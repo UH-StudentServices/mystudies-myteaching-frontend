@@ -50,6 +50,10 @@ angular.module('utils.browser', [])
       return !!navigator.platform.match(/(Mac|iPhone|iPad)/i);
     }
 
+    function isModernBrowser() {
+      return 'fetch' in window && 'assign' in Object;
+    }
+
     viewportSizeSubject = new Rx.BehaviorSubject(getViewportSize());
 
     window.addEventListener('resize', _.debounce(function () {
@@ -61,6 +65,7 @@ angular.module('utils.browser', [])
       supportsCamera: supportsCamera,
       supportsTouch: supportsTouch,
       isMobile: isMobile,
-      isMac: isMac
+      isMac: isMac,
+      isModernBrowser: isModernBrowser
     };
   });

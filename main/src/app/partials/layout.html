@@ -22,8 +22,10 @@
   <notifications notifications="notifications"></notifications>
 
   <header id="top" class="l-header">
-    <page-header></page-header>
-    <page-navigation></page-navigation>
+    <page-header ng-if="!useObar"></page-header>
+    <page-navigation ng-if="!useObar"></page-navigation>
+
+    <obar ng-if="useObar" app="myStudies"></obar>
 
     <global-messages></global-messages>
   </header>

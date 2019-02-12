@@ -15,25 +15,29 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.navigation', ['services.configuration'])
+'use strict';
 
-  .directive('navigation', function () {
-    return {
-      restrict: 'E',
-      replace: true,
-      templateUrl: 'app/directives/navigation/navigation.html',
-      scope: {},
-      controller: function ($rootScope,
-        $scope,
-        $window,
-        Configuration,
-        ProfileRoleService,
-        ProfileRole) {
-        $scope.useObar = $rootScope.useObar;
-        $scope.backToFrontpage = function () {
-          $window.location = ProfileRoleService.isInRole(ProfileRole.TEACHER)
-            ? Configuration.teacherAppUrl : Configuration.studentAppUrl;
-        };
-      }
-    };
+angular.module('services.obar', ['resources.obar', 'resources.session'])
+  .factory('ObarService', function ObarService(ObarResource, SessionResource) {
+    function getPublicObarJwtToken() {
+      return ObarResource.getPublicObarJwtToken().then(function (response) {
+        return response.jwtToken;
+      });
+    }
+
+    function getPrivateObarJwtToken() {
+      return ObarResource.getPrivateObarJwtToken().then(function (response) {
+        return response.jwtToken;
+      });
+    }
+
+    function getObarJwtToken() {
+      return SessionResource.getSession().then(function () {
+        return getPrivateObarJwtToken();
+      }).catch(function () {
+        return getPublicObarJwtToken();
+      });
+    }
+
+    return { getObarJwtToken: getObarJwtToken };
   });

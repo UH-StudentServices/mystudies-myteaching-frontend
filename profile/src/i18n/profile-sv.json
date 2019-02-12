@@ -142,6 +142,12 @@
       "disclaimer": "Med Firefox-webbläsaren kan du behöva öppna länken efter inloggningen. Om portföljen är fortfarande inte nås, kontakta författaren."
     }
   },
+  "landerPage": {
+    "anonymous": {
+      "title": "Välkommen till din Portfolio!",
+      "description": "Det här är din Portfolio där du kan samla information om dina studier och erfarenheter. Du kan dela ut delar av Portfolion via en länk så att andra kan se den eller till din lärare för feedback."
+    }
+  },
   "preview": {
     "enterPreview": "Förhandsvisning",
     "info": "detta är hur din portfölj ser till andra om det publiceras.",

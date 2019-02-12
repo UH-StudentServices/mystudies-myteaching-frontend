@@ -15,11 +15,15 @@
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<sticky-message message-key="globalMessages.demoEnvNoticeMyStudies" environments="['demo']" limit-visibility="['MY_STUDIES_ONLY']"></sticky-message>
-<sticky-message message-key="globalMessages.demoEnvNoticeMyTeaching" environments="['demo']" limit-visibility="['MY_TEACHINGS_ONLY']"></sticky-message>
+<sticky-message message-key="globalMessages.demoEnvNoticeMyStudies"
+                environments="['demo']"
+                limit-visibility="['MY_STUDIES_ONLY']"></sticky-message>
+<sticky-message message-key="globalMessages.demoEnvNoticeMyTeaching"
+                environments="['demo']"
+                limit-visibility="['MY_TEACHINGS_ONLY']"></sticky-message>
 
 <header class="l-header">
-  <div class="l-top-bar">
+  <div ng-if="!useObar" class="l-top-bar">
     <mobile-toolbar></mobile-toolbar>
     <div class="l-top-bar__subregion">
       <div class="l-top-bar__main">
@@ -32,15 +36,20 @@
       <div class="l-top-bar__sub hide-mobile-only">
         <div id="block-hy-links-hy-links-header-block" class="l-top-bar__subleft">
           <div class="links">
-            <a href="http://flamma.helsinki.fi" target="_blank" class="links__link" translate="pageHeaderLinks.flamma"></a>
-            <a href="http://www.hel.fi/www/helsinki/fi" target="_blank" class="links__link" translate="pageHeaderLinks.city"></a>
+            <a href="http://flamma.helsinki.fi" target="_blank" class="links__link"
+               translate="pageHeaderLinks.flamma"></a>
+            <a href="http://www.hel.fi/www/helsinki/fi" target="_blank" class="links__link"
+               translate="pageHeaderLinks.city"></a>
           </div>
         </div>
         <div id="block-locale-language" role="complementary" class="l-top-bar__subright">
-        <menu-language></menu-language>
+          <menu-language></menu-language>
+        </div>
       </div>
     </div>
   </div>
+
+  <obar ng-if="useObar" app="myStudies"></obar>
 </header>
 
 <div class="l-page island wrapper" ui-view></div>

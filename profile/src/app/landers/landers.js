@@ -15,25 +15,22 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.navigation', ['services.configuration'])
-
-  .directive('navigation', function () {
-    return {
-      restrict: 'E',
-      replace: true,
-      templateUrl: 'app/directives/navigation/navigation.html',
-      scope: {},
-      controller: function ($rootScope,
-        $scope,
-        $window,
-        Configuration,
-        ProfileRoleService,
-        ProfileRole) {
-        $scope.useObar = $rootScope.useObar;
-        $scope.backToFrontpage = function () {
-          $window.location = ProfileRoleService.isInRole(ProfileRole.TEACHER)
-            ? Configuration.teacherAppUrl : Configuration.studentAppUrl;
-        };
-      }
-    };
+angular.module('profileLanders', [])
+  .config(function ($stateProvider) {
+    $stateProvider
+      .state('lander', {
+        abstract: true,
+        url: '/lander',
+        templateUrl: 'app/partials/landerPages/_lander.html',
+        controller: [
+          '$scope', 'pageHeaderLinks', function ($scope, pageHeaderLinks) {
+            $scope.pageHeaderLinks = pageHeaderLinks;
+          }
+        ]
+      })
+      .state('anonymousUser', {
+        parent: 'lander',
+        url: '/welcome',
+        templateUrl: 'app/partials/landerPages/_lander.anonymousUser.html'
+      });
   });

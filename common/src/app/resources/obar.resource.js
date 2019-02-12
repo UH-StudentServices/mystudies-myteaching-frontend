@@ -17,14 +17,17 @@
 
 'use strict';
 
-angular.module('resources.session', [])
-
-  .factory('SessionResource', function ($resource) {
-    var sessionResource = $resource('/api/private/v1/session');
+angular.module('resources.obar', [])
+  .factory('ObarResource', function ObarResource($resource) {
+    var publicObarResource = $resource('/api/public/v1/obar-jwt-token');
+    var privateObarResource = $resource('/api/private/v1/obar-jwt-token');
 
     return {
-      getSession: function () {
-        return sessionResource.get().$promise;
+      getPublicObarJwtToken: function getPublicJwtToken() {
+        return publicObarResource.get().$promise;
+      },
+      getPrivateObarJwtToken: function getPrivateJwtToken() {
+        return privateObarResource.get().$promise;
       }
     };
   });
