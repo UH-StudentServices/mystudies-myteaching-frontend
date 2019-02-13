@@ -22,11 +22,9 @@ angular.module('profileLanders', [])
         abstract: true,
         url: '/lander',
         templateUrl: 'app/partials/landerPages/_lander.html',
-        controller: [
-          '$scope', 'pageHeaderLinks', function ($scope, pageHeaderLinks) {
-            $scope.pageHeaderLinks = pageHeaderLinks;
-          }
-        ]
+        controller: function ($scope, pageHeaderLinks) {
+          $scope.pageHeaderLinks = pageHeaderLinks;
+        }
       })
       .state('anonymousUser', {
         parent: 'lander',

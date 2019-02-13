@@ -32,11 +32,9 @@ angular.module('services.obar', ['resources.obar', 'resources.session'])
     }
 
     function getObarJwtToken() {
-      return SessionResource.getSession().then(function () {
-        return getPrivateObarJwtToken();
-      }).catch(function () {
-        return getPublicObarJwtToken();
-      });
+      return SessionResource.getSession()
+        .then(getPrivateObarJwtToken)
+        .catch(getPublicObarJwtToken);
     }
 
     return { getObarJwtToken: getObarJwtToken };

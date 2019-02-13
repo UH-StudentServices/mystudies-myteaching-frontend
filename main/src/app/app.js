@@ -45,6 +45,7 @@ angular.module('opintoniApp', [
   'services.courses',
   'services.login',
   'services.scriptInjector',
+  'services.stylesheetInjector',
   'services.obar',
 
   'resources.httpInterceptor',
@@ -77,7 +78,7 @@ angular.module('opintoniApp', [
 ])
   .run(function ($rootScope, $window, LanguageService, StateService, State, Configuration) {
     $rootScope.selectedLanguage = LanguageService.getCurrent();
-    $rootScope.useObar = !!Configuration.obarBaseUrl
+    $rootScope.useObar = Configuration.obarBaseUrl
       && StateService.getStateFromDomain() === State.MY_STUDIES;
     moment.locale($rootScope.selectedLanguage);
     $window.FastClick.attach($window.document.body);

@@ -87,6 +87,7 @@ angular.module('opintoniProfileApp', [
   'services.configuration',
   'services.profileRole',
   'services.scriptInjector',
+  'services.stylesheetInjector',
   'services.preview',
   'services.freeTextContent',
   'services.profileFiles',
@@ -142,7 +143,7 @@ angular.module('opintoniProfileApp', [
       resolve: {
         session: profileSession,
         state: function (StateService) {
-          return StateService.resolve(null, null, null);
+          return StateService.resolve();
         },
         profile: function (ProfileService,
           ProfileRoleService,
@@ -184,7 +185,7 @@ angular.module('opintoniProfileApp', [
       resolve: {
         session: profileSession,
         state: function (StateService) {
-          return StateService.resolve(null, null, null);
+          return StateService.resolve();
         },
         userSettings: profileUserSettings,
         notifications: profileNotifications,
@@ -279,7 +280,7 @@ angular.module('opintoniProfileApp', [
     var language = LanguageService.getCurrent();
 
     $rootScope.selectedLanguage = language;
-    $rootScope.useObar = !!Configuration.obarBaseUrl
+    $rootScope.useObar = Configuration.obarBaseUrl
       && StateService.getStateFromDomain() === State.MY_STUDIES;
 
     moment.locale(language);

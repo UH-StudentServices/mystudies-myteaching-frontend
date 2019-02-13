@@ -50,7 +50,7 @@ angular.module('utils.browser', [])
       return !!navigator.platform.match(/(Mac|iPhone|iPad)/i);
     }
 
-    function isModernBrowser() {
+    function isModernObarClient() {
       return 'fetch' in window && 'assign' in Object;
     }
 
@@ -66,6 +66,6 @@ angular.module('utils.browser', [])
       supportsTouch: supportsTouch,
       isMobile: isMobile,
       isMac: isMac,
-      isModernBrowser: isModernBrowser
+      isModernObarClient: isModernObarClient
     };
   });

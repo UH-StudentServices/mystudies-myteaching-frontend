@@ -16,39 +16,25 @@
  */
 
 angular.module('directives.obar', [])
-  .directive('obar', function (Configuration, ObarService, BrowserUtil) {
+  .directive('obar', function (Configuration, ObarService, BrowserUtil, ScriptInjectorService, StylesheetInjectorService) {
     return {
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/obar/obar.html',
       scope: { app: '@' },
       link: function ($scope) {
-        var body = document.body;
-        var head = document.head;
-        var link = document.createElement('link');
         var baseUrl = Configuration.obarBaseUrl;
-
-        function loadScript(script) {
-          var scriptElement = document.createElement('script');
-          scriptElement.src = baseUrl + '/' + script + '.js';
-          scriptElement.innerHTML = '';
-          scriptElement.async = false;
-          scriptElement.defer = true;
-          body.appendChild(scriptElement);
-        }
 
         ObarService.getObarJwtToken().then(function (jwtToken) {
           $scope.baseUrl = baseUrl;
           $scope.jwtToken = jwtToken;
 
-          link.rel = 'stylesheet';
-          link.href = baseUrl + '/obar.css';
-          head.appendChild(link);
+          StylesheetInjectorService.addStylesheet(baseUrl + '/obar.css');
 
-          if (!BrowserUtil.isModernBrowser()) {
-            loadScript('polyfills');
+          if (!BrowserUtil.isModernObarClient()) {
+            ScriptInjectorService.addScript('obarPolyfills', baseUrl + '/polyfills.js', false);
           }
-          loadScript('obar');
+          ScriptInjectorService.addScript('obarScript', baseUrl + '/obar.js', false);
         });
       }
     };
