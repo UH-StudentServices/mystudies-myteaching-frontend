@@ -95,6 +95,7 @@ angular.module('opintoniProfileApp', [
   'services.obar',
 
   'resources.notifications',
+  'resources.session',
 
   'utils.moment'
 ])
