@@ -16,7 +16,6 @@
  */
 
 angular.module('services.state', [
-  'services.session',
   'services.profileRole',
   'services.configuration'
 ])
