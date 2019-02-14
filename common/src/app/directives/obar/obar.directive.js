@@ -32,9 +32,9 @@ angular.module('directives.obar', [])
           StylesheetInjectorService.addStylesheet(baseUrl + '/obar.css');
 
           if (!BrowserUtil.isModernObarClient()) {
-            ScriptInjectorService.addScript('obarPolyfills', baseUrl + '/polyfills.js', false);
+            ScriptInjectorService.addScript('obarPolyfills', baseUrl + '/polyfills.js', true);
           }
-          ScriptInjectorService.addScript('obarScript', baseUrl + '/obar.js', false);
+          ScriptInjectorService.addScript('obarScript', baseUrl + '/obar.js', true);
         });
       }
     };

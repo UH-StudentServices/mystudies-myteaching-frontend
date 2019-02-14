@@ -15,6 +15,12 @@ In addition, the following localhost alias configuration is also needed (in /etc
 
 ### Prerequisites
  - Backend server running, see [mystudies-myteaching-backend](https://github.com/UH-StudentServices/mystudies-myteaching-backend)
+ 
+### Obar integration
+
+If backend server has obar.baseUrl ([local config](https://github.com/UH-StudentServices/mystudies-myteaching-backend/blob/develop/src/main/resources/config/application-local-dev.yml)) 
+configured obar must also be running locally; see [obar](https://version.helsinki.fi/OPADev/obar) documentation. Default configuration requires using 
+[simulated server environment](https://version.helsinki.fi/OPADev/obar/blob/master/ansible/README.md).
 
 ### Install dependencies
 

@@ -18,17 +18,16 @@
 angular.module('services.scriptInjector', [])
 
   .factory('ScriptInjectorService', function ($document) {
-    function addScript(scriptId, scriptUrl, useAsync) {
+    function addScript(scriptId, scriptUrl, sync) {
       var newScript;
       var firstScript;
-      var useAsyncResolved = typeof useAsync === 'undefined' ? true : useAsync;
 
       if (!$document[0].getElementById(scriptId)) {
         newScript = $document[0].createElement('script');
         firstScript = $document[0].getElementsByTagName('script')[0];
         newScript.id = scriptId;
         newScript.type = 'text/javascript';
-        newScript.async = useAsyncResolved;
+        newScript.async = !sync;
         newScript.src = scriptUrl;
 
         firstScript.parentNode.insertBefore(newScript, firstScript);
