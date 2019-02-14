@@ -20,7 +20,10 @@ In addition, the following localhost alias configuration is also needed (in /etc
 
 If backend server has obar.baseUrl ([local config](https://github.com/UH-StudentServices/mystudies-myteaching-backend/blob/develop/src/main/resources/config/application-local-dev.yml)) 
 configured obar must also be running locally; see [obar](https://version.helsinki.fi/OPADev/obar) documentation. Default configuration requires using 
-[simulated server environment](https://version.helsinki.fi/OPADev/obar/blob/master/ansible/README.md).
+[simulated server environment](https://version.helsinki.fi/OPADev/obar/blob/master/ansible/README.md). 
+
+If you want to use webpack served development obar, obar.baseUrl on backend config must point to it and jwtPrivateKey on backend and jwtPublicKey on
+obar backend configuration must match, [see](https://version.helsinki.fi/OPADev/obar/blob/master/packages/backend/src/config/defaults.js).
 
 ### Install dependencies
 
