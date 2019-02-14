@@ -13,13 +13,11 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
-  -->
+-->
 
-<header class="l-header">
-  <page-header ng-if="!useObar"></page-header>
-  <obar ng-if="useObar" app="profile"></obar>
-</header>
-
-<div class="l-page island wrapper" ui-view></div>
-
-<footer class="l-footer island" ng-include="'app/partials/_page_footer.html'"></footer>
+<main class="welcome-page-wrapper">
+  <h1 class="text-transform-capitalize-block" translate="landerPage.anonymous.title"></h1>
+  <div>
+    <p translate="landerPage.anonymous.description"></p>
+  </div>
+</main>

@@ -15,24 +15,27 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('services.scriptInjector', [])
+'use strict';
 
-  .factory('ScriptInjectorService', function ($document) {
-    function addScript(scriptId, scriptUrl, sync) {
-      var newScript;
-      var firstScript;
-
-      if (!$document[0].getElementById(scriptId)) {
-        newScript = $document[0].createElement('script');
-        firstScript = $document[0].getElementsByTagName('script')[0];
-        newScript.id = scriptId;
-        newScript.type = 'text/javascript';
-        newScript.async = !sync;
-        newScript.src = scriptUrl;
-
-        firstScript.parentNode.insertBefore(newScript, firstScript);
-      }
+angular.module('services.obar', ['resources.obar', 'resources.session'])
+  .factory('ObarService', function ObarService(ObarResource, SessionResource) {
+    function getPublicObarJwtToken() {
+      return ObarResource.getPublicObarJwtToken().then(function (response) {
+        return response.jwtToken;
+      });
     }
 
-    return { addScript: addScript };
+    function getPrivateObarJwtToken() {
+      return ObarResource.getPrivateObarJwtToken().then(function (response) {
+        return response.jwtToken;
+      });
+    }
+
+    function getObarJwtToken() {
+      return SessionResource.getSession()
+        .then(getPrivateObarJwtToken)
+        .catch(getPublicObarJwtToken);
+    }
+
+    return { getObarJwtToken: getObarJwtToken };
   });

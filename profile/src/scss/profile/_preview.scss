@@ -17,6 +17,7 @@
 
 .preview-btn {
   @extend button.button--light;
+  padding: 0.5em 0.7em !important;
 
   &--text {
     display: none;

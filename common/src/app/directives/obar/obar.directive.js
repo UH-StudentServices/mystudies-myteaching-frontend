@@ -15,25 +15,27 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.navigation', ['services.configuration'])
-
-  .directive('navigation', function () {
+angular.module('directives.obar', [])
+  .directive('obar', function (Configuration, ObarService, BrowserUtil, ScriptInjectorService, StylesheetInjectorService) {
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'app/directives/navigation/navigation.html',
-      scope: {},
-      controller: function ($rootScope,
-        $scope,
-        $window,
-        Configuration,
-        ProfileRoleService,
-        ProfileRole) {
-        $scope.useObar = $rootScope.useObar;
-        $scope.backToFrontpage = function () {
-          $window.location = ProfileRoleService.isInRole(ProfileRole.TEACHER)
-            ? Configuration.teacherAppUrl : Configuration.studentAppUrl;
-        };
+      templateUrl: 'app/directives/obar/obar.html',
+      scope: { app: '@' },
+      link: function ($scope) {
+        var baseUrl = Configuration.obarBaseUrl;
+
+        ObarService.getObarJwtToken().then(function (jwtToken) {
+          $scope.baseUrl = baseUrl;
+          $scope.jwtToken = jwtToken;
+
+          StylesheetInjectorService.addStylesheet(baseUrl + '/obar.css');
+
+          if (!BrowserUtil.isModernObarClient()) {
+            ScriptInjectorService.addScript('obarPolyfills', baseUrl + '/polyfills.js', true);
+          }
+          ScriptInjectorService.addScript('obarScript', baseUrl + '/obar.js', true);
+        });
       }
     };
   });

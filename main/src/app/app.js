@@ -45,6 +45,8 @@ angular.module('opintoniApp', [
   'services.courses',
   'services.login',
   'services.scriptInjector',
+  'services.stylesheetInjector',
+  'services.obar',
 
   'resources.httpInterceptor',
   'resources.stateInterceptor',
@@ -60,6 +62,7 @@ angular.module('opintoniApp', [
   'directives.pageNavigation',
   'directives.stickyMessage',
   'directives.notifications',
+  'directives.obar',
 
   'controllers.main',
   'controllers.calendar',
@@ -73,8 +76,10 @@ angular.module('opintoniApp', [
   'ui.calendar',
   'utils.loader'
 ])
-  .run(function ($rootScope, $window, LanguageService) {
+  .run(function ($rootScope, $window, LanguageService, StateService, State, Configuration) {
     $rootScope.selectedLanguage = LanguageService.getCurrent();
+    $rootScope.useObar = Configuration.obarBaseUrl
+      && StateService.getStateFromDomain() === State.MY_STUDIES;
     moment.locale($rootScope.selectedLanguage);
     $window.FastClick.attach($window.document.body);
   })
@@ -143,7 +148,7 @@ angular.module('opintoniApp', [
           }
         },
         onEnter: function onEnter($state, toState) {
-          $state.go(toState);
+          $state.go(toState, null, { location: 'replace' });
         }
       })
       .state('opintoni', {

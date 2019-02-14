@@ -21,7 +21,8 @@
 <notifications notifications="notifications"></notifications>
 
 <header class="l-header">
-  <page-header></page-header>
+  <page-header ng-if="!useObar"></page-header>
+  <obar ng-if="useObar" app="profile"></obar>
 </header>
 
 <navigation></navigation>

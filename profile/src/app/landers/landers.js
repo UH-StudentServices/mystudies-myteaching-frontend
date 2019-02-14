@@ -15,24 +15,20 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('services.scriptInjector', [])
-
-  .factory('ScriptInjectorService', function ($document) {
-    function addScript(scriptId, scriptUrl, sync) {
-      var newScript;
-      var firstScript;
-
-      if (!$document[0].getElementById(scriptId)) {
-        newScript = $document[0].createElement('script');
-        firstScript = $document[0].getElementsByTagName('script')[0];
-        newScript.id = scriptId;
-        newScript.type = 'text/javascript';
-        newScript.async = !sync;
-        newScript.src = scriptUrl;
-
-        firstScript.parentNode.insertBefore(newScript, firstScript);
-      }
-    }
-
-    return { addScript: addScript };
+angular.module('profileLanders', [])
+  .config(function ($stateProvider) {
+    $stateProvider
+      .state('lander', {
+        abstract: true,
+        url: '/lander',
+        templateUrl: 'app/partials/landerPages/_lander.html',
+        controller: function ($scope, pageHeaderLinks) {
+          $scope.pageHeaderLinks = pageHeaderLinks;
+        }
+      })
+      .state('anonymousUser', {
+        parent: 'lander',
+        url: '/welcome',
+        templateUrl: 'app/partials/landerPages/_lander.anonymousUser.html'
+      });
   });
