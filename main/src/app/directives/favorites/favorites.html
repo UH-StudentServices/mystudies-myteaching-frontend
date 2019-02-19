@@ -43,12 +43,14 @@
         <div as-sortable-item-handle class="favorite__drag-handle">
           <a href="#favorite-{{favorite.id + 1}}"
              class="element-invisible element-focusable"
-             ng-if="favorite.id < favorites.length">
+             ng-if="favorite.id < favorites.length"
+             translate="favorites.skipContent">
             Skip content
           </a>
           <a href="#add-new-favorite"
              class="element-invisible element-focusable"
-             ng-if="favorite.id === favorites.length">
+             ng-if="favorite.id === favorites.length"
+             translate="favorites.skipContent">
             Skip content
           </a>
           <favorites-rss remove-favorite ng-switch-when="RSS" data="favorite"></favorites-rss>

@@ -104,7 +104,7 @@
   }
 
   input[type="checkbox"]:focus + label::before {
-    outline: rgb(59, 153, 252) auto 2px;
+    outline: $focus-color auto 2px;
   }
 
   .checkbox-container > label {

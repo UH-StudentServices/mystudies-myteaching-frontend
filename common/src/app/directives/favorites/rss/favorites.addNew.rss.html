@@ -34,8 +34,7 @@
         role="listitem"
         class="bar"
         ng-repeat="result in searchResults">
-        <a tabindex="0"
-           href=""
+        <a href=""
            ng-click="addFeed(result.url)">
           {{result.title | stripHTML}}
         </a>

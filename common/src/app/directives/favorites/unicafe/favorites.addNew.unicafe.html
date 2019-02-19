@@ -26,11 +26,10 @@
         {{ area.name }}
         <ul role="list" aria-label="{{'ariaLabels.searchResults'}}">
           <li tabindex="{{$index + 1}}"
-              href=""
               role="listitem"
               class="bar"
               ng-repeat="restaurant in area.restaurants">
-            <a tabindex="0"
+            <a href=""
                ng-click="addUnicafeFavorite(restaurant)">
               {{ restaurant.name }}
             </a>
