@@ -22,14 +22,16 @@
   </div>
   <div class="subscribe-events-popover__content">
     <div class="subscribe-events-popover__copy2clipboard" ng-show="showCopyToClipboard">
-      <button id="subscribe-events-trigger"
-         class="text-transform-capitalize button--small"
+      <a id="subscribe-events-trigger"
+         href
+         tabindex="0"
+         class="text-transform-capitalize"
          clipboard
          clipboard-value-selector="#calendar-feed-url"
          clipboard-success-callback="copyToClipboardSuccessCallback"
          clipboard-error-callback="copyToClipboardErrorCallback">
          {{::('general.copyToClipboard' | translate)}}
-      </button>
+      </a>
       <span ng-if="copyToClipboardSuccess" class="subscribe-events-popover__message"
             translate="general.copyToClipboardSuccess"></span>
       <span ng-if="copyToClipboardFail" class="subscribe-events-popover__message">
