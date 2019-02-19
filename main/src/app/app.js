@@ -100,7 +100,14 @@ angular.module('opintoniApp', [
 
     $httpProvider.interceptors.push('HttpInterceptor');
 
-    $urlRouterProvider.otherwise('/init');
+    $urlRouterProvider.otherwise(function ($injector, $location) {
+      // Force navigation to urls recognized as non-existent routes
+      // but should not be handled as such
+      if (['/logout', '/profile'].includes($location.path())) {
+        window.location.href = $location.absUrl();
+      }
+      return '/init';
+    });
 
     $compileProvider.debugInfoEnabled(false);
 
