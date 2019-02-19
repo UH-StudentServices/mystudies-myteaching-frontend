@@ -39,6 +39,7 @@
 
             <div class="shared-links__copy2clipboard-container">
               <a id="copy-shared-link-{{::link.id}}"
+                 href=""
                  class="text-transform-capitalize"
                  clipboard
                  clipboard-value-selector="#shared-link-{{::link.id}}"
@@ -49,6 +50,7 @@
             </div>
 
             <a class="shared-links__remove_link_button"
+               href=""
                ng-click="removeSharedLink(link)"
                role="button">
               <i class="icon--trash"></i>
@@ -70,6 +72,7 @@
                      placeholder="{{::('sharedLinks.expiryDatePlaceholder' | translate)}}"/>
           </div>
           <a class="shared-links__new-link-add-button"
+             href=""
              ng-click="addNewSharedLink(newLinkForm)"
              ng-disabled="newLinkForm.$invalid"
              role="button">
