@@ -12,7 +12,7 @@
     "beforeEach": false,
     "browser": false,
     "by": false,
-    "Clipboard": false,
+    "ClipboardJS": false,
     "describe": false,
     "element": false,
     "expect": false,

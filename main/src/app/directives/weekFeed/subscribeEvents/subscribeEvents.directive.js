@@ -69,7 +69,7 @@ angular.module('directives.subscribeEvents', [
         $scope.showPopover = false;
         $scope.InstructionLinks = InstructionLinks;
         $scope.selectedLanguage = $rootScope.selectedLanguage;
-        $scope.showCopyToClipboard = Clipboard.isSupported();
+        $scope.showCopyToClipboard = ClipboardJS.isSupported();
 
         $scope.copyToClipboardSuccessCallback = function () {
           $scope.copyToClipboardSuccess = true;
