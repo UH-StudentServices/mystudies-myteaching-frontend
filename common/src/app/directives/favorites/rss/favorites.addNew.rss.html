@@ -30,7 +30,16 @@
 
   <div class="add-favorite-search-result">
     <ul role="list" aria-label="{{::('favorites.ariaLabels.searchResults' | translate)}}">
-      <li role="listitem" class="bar" ng-repeat="result in searchResults"><a tabindex="0" ng-click="addFeed(result.url)">{{result.title | stripHTML}}</a></li>
+      <li
+        role="listitem"
+        class="bar"
+        ng-repeat="result in searchResults">
+        <a tabindex="0"
+           href=""
+           ng-click="addFeed(result.url)">
+          {{result.title | stripHTML}}
+        </a>
+      </li>
     </ul>
   </div>
 </div>

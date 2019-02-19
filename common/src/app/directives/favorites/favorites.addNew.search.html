@@ -25,11 +25,13 @@
         ng-change="search(searchString)"
         placeholder="{{placeholder}}">
     <a role="button"
+       href=""
        ng-if="searchString !== '' && !loading"
        class="icon--remove"
        ng-click="clearSearch()"
        aria-label="{{::('favorites.ariaLabels.clearSearch' | translate)}}"></a>
     <a role="button"
+       href=""
        ng-if="searchString !== '' && !loading && favoriteSearchForm.$valid"
        class="icon--done"
        ng-click="save()"
