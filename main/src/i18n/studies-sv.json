@@ -63,7 +63,8 @@
   },
   "pageHeaderLinks": {
     "flamma": "flamma",
-    "city": "Helsingfors stad"
+    "city": "Helsingfors stad",
+    "skipToMainContent": "Gå till innehållet"
   },
   "pageFooter": {
     "contact": "Kontaktinformation",

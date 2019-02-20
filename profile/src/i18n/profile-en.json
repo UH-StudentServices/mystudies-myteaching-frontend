@@ -26,7 +26,8 @@
   },
   "pageHeaderLinks": {
     "flamma": "flamma",
-    "city": "City of Helsinki"
+    "city": "City of Helsinki",
+    "skipToMainContent": "Skip to main content"
   },
   "pageFooter": {
     "contact": "Contact information",

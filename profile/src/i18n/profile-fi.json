@@ -26,7 +26,8 @@
   },
   "pageHeaderLinks": {
     "flamma": "flamma",
-    "city": "Helsingin kaupunki"
+    "city": "Helsingin kaupunki",
+    "skipToMainContent": "Siirry sisältöön"
   },
   "pageFooter": {
     "contact": "Yhteystiedot",
