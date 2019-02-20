@@ -38,8 +38,19 @@
       <li ng-repeat="favorite in favorites"
           as-sortable-item
           class="favorite"
+          id="favorite-{{favorite.id}}"
           ng-switch on="favorite.type">
         <div as-sortable-item-handle class="favorite__drag-handle">
+          <a href="#favorite-{{favorite.id + 1}}"
+             class="element-invisible element-focusable"
+             ng-if="favorite.id < favorites.length"
+             translate="favorites.skipContent">
+          </a>
+          <a href="#add-new-favorite"
+             class="element-invisible element-focusable"
+             ng-if="favorite.id === favorites.length"
+             translate="favorites.skipContent">
+          </a>
           <favorites-rss remove-favorite ng-switch-when="RSS" data="favorite"></favorites-rss>
           <favorites-unicafe remove-favorite ng-switch-when="UNICAFE" data="favorite"></favorites-unicafe>
           <favorites-twitter remove-favorite ng-switch-when="TWITTER" data="favorite"></favorites-twitter>
@@ -48,7 +59,7 @@
           <favorites-flamma remove-favorite ng-switch-when="FLAMMA_EVENTS" data="favorite"></favorites-flamma>
         </div>
       </li>
-      <li class="favorites__add-new">
+      <li id="add-new-favorite" class="favorites__add-new">
         <add-new-favorite favorites="favorites" available-favorite-types="availableFavoriteTypes"></add-new-favorite>
       </li>
     </ul>

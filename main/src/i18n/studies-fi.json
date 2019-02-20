@@ -260,7 +260,8 @@
     "ariaLabels": {
       "clearSearch": "tyhjennä haku",
       "searchResults": "hakutulokset"
-    }
+    },
+    "skipContent": "Ohita sisältö"
   },
   "globalMessages": {
     "errors": {

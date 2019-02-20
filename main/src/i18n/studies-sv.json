@@ -260,7 +260,8 @@
     "ariaLabels": {
       "clearSearch": "återställ",
       "searchResults": "sökresultat"
-    }
+    },
+    "skipContent": "Passera innehållet"
   },
   "globalMessages": {
     "errors": {

@@ -75,3 +75,10 @@
 .text-transform-capitalize-block {
   @include capitalize-first-letter(block);
 }
+
+.element-focusable:focus {
+  position: static !important;
+  clip: auto;
+  overflow: visible;
+  height: auto;
+}

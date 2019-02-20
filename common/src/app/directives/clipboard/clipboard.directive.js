@@ -30,7 +30,7 @@ angular.module('directives.clipboard', [])
         element.attr('data-clipboard-target', $scope.selector);
 
         $timeout(function () {
-          var clipboard = new Clipboard('#' + element.attr('id'));
+          var clipboard = new ClipboardJS('#' + element.attr('id'));
 
           clipboard.on('success', function (e) {
             e.clearSelection();

@@ -74,6 +74,10 @@
     text-transform: capitalize;
   }
 
+  .fc-button:focus {
+    outline: auto 5px $focus-color;
+  }
+
   .fc-state-disabled {
     opacity: 1;
   }

@@ -69,10 +69,10 @@
                ui-keypress="{'enter':'addNewUsefulLink()'}">
       </form>
       <span ng-show="pageTitleSearchState === SearchState.SEARCHING" class="icon--spinner icon-spin"/>
-      <a ng-show="newLink.url" tabindex="0" ng-click="clearSearch()">
+      <a href="" ng-show="newLink.url" ng-click="clearSearch()">
         <i class="icon--close"></i>
       </a>
-      <a class="new-useful-link__add-button" tabindex="0" ng-click="addNewUsefulLink()">
+      <a href="" class="new-useful-link__add-button" ng-click="addNewUsefulLink()">
         <i class="icon--plus"></i>
       </a>
     </div>

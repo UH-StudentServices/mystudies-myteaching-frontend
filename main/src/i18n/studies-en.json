@@ -260,7 +260,8 @@
     "ariaLabels": {
       "clearSearch": "clear search",
       "searchResults": "search results"
-    }
+    },
+    "skipContent": "Skip content"
   },
   "globalMessages": {
     "errors": {

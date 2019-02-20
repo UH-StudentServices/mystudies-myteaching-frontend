@@ -29,7 +29,10 @@
               role="listitem"
               class="bar"
               ng-repeat="restaurant in area.restaurants">
-            <a tabindex="0" ng-click="addUnicafeFavorite(restaurant)">{{ restaurant.name }}</a>
+            <a href=""
+               ng-click="addUnicafeFavorite(restaurant)">
+              {{ restaurant.name }}
+            </a>
           </li>
         </ul>
       </li>
