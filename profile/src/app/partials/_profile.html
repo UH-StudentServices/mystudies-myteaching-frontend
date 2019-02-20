@@ -25,7 +25,7 @@
   <obar ng-if="useObar" app="profile"></obar>
 </header>
 
-<div id="main-content">
+<main id="main-content">
   <navigation></navigation>
   <preview-message></preview-message>
 
@@ -48,6 +48,6 @@
   <div ng-if="!userSettings.cookieConsent">
     <cookie-notification limit-visibility="PRIVATE"></cookie-notification>
   </div>
-</div>
+</main>
 
 <footer role="contentinfo" ng-include="'app/partials/_page_footer.html'"></footer>
