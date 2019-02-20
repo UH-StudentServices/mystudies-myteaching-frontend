@@ -26,6 +26,8 @@
                  direction-nav="false"
                  controls-container=".page-banner--pager"
                  slideshow-speed="14000"
+                 after="updateTabIndex($slider)"
+                 start="updateTabIndex($slider)"
                  class="controls-visible">
       <li>
         <div class="page-banner__news-item-container">
@@ -37,7 +39,8 @@
               <li>
                 <a href="{{ news.url }}"
                    target="_blank"
-                   class="list-of-links__link button--action icon--arrow-right"
+                   id="news-link-{{$index}}"
+                   class="list-of-links__link button--action icon--arrow-right news-link"
                    analytics-event="{
                      eventCategory: 'PAGE_BANNER',
                      eventAction: 'CLICK',
