@@ -45,13 +45,11 @@
              class="element-invisible element-focusable"
              ng-if="favorite.id < favorites.length"
              translate="favorites.skipContent">
-            Skip content
           </a>
           <a href="#add-new-favorite"
              class="element-invisible element-focusable"
              ng-if="favorite.id === favorites.length"
              translate="favorites.skipContent">
-            Skip content
           </a>
           <favorites-rss remove-favorite ng-switch-when="RSS" data="favorite"></favorites-rss>
           <favorites-unicafe remove-favorite ng-switch-when="UNICAFE" data="favorite"></favorites-unicafe>
