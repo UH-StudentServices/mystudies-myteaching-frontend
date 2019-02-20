@@ -37,6 +37,13 @@ angular.module('directives.pageBanner', [
         NewsService.getNews($scope.currentStateName).then(function (data) {
           $scope.newsList = data;
         });
+
+        $scope.updateTabIndex = function ($slider) {
+          var currentSlide = $slider.element.currentSlide;
+
+          angular.element('.news-link').attr('tabindex', -1);
+          angular.element('#news-link-' + currentSlide).attr('tabindex', 0);
+        };
       }
     };
   })
