@@ -25,27 +25,29 @@
   <obar ng-if="useObar" app="profile"></obar>
 </header>
 
-<navigation></navigation>
-<preview-message></preview-message>
+<div id="main-content">
+  <navigation></navigation>
+  <preview-message></preview-message>
 
-<intro></intro>
+  <intro></intro>
 
-<div class="l-page island wrapper profile" ng-class="{'is-preview': isPreview}">
-  <div limit-visibility="{roles: ['STUDENT']}">
-    <div ng-include="'app/partials/_student.html'"></div>
+  <div class="l-page island wrapper profile" ng-class="{'is-preview': isPreview}">
+    <div limit-visibility="{roles: ['STUDENT']}">
+      <div ng-include="'app/partials/_student.html'"></div>
+    </div>
+
+    <div limit-visibility="{roles: ['TEACHER']}">
+      <div ng-include="'app/partials/_teacher.html'"></div>
+    </div>
   </div>
 
-  <div limit-visibility="{roles: ['TEACHER']}">
-    <div ng-include="'app/partials/_teacher.html'"></div>
+  <div ng-if="userSettings.cookieConsent">
+    <feedback limit-visibility="PRIVATE" ></feedback>
   </div>
-</div>
 
-<div ng-if="userSettings.cookieConsent">
-  <feedback limit-visibility="PRIVATE" ></feedback>
-</div>
-
-<div ng-if="!userSettings.cookieConsent">
-  <cookie-notification limit-visibility="PRIVATE"></cookie-notification>
+  <div ng-if="!userSettings.cookieConsent">
+    <cookie-notification limit-visibility="PRIVATE"></cookie-notification>
+  </div>
 </div>
 
 <footer role="contentinfo" ng-include="'app/partials/_page_footer.html'"></footer>
