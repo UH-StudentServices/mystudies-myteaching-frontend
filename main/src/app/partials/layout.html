@@ -16,6 +16,11 @@
 -->
 
 <div ng-show="showApp">
+  <a href="#main-content"
+     ng-if="!useObar"
+     class="element-invisible element-focusable"
+     translate="pageHeaderLinks.skipToMainContent"></a>
+
   <sticky-message message-key="globalMessages.demoEnvNoticeMyStudies" environments="['demo']" limit-visibility="['MY_STUDIES_ONLY']"></sticky-message>
   <sticky-message message-key="globalMessages.demoEnvNoticeMyTeaching" environments="['demo']" limit-visibility="['MY_TEACHINGS_ONLY']"></sticky-message>
 
@@ -30,30 +35,32 @@
     <global-messages></global-messages>
   </header>
 
-  <page-banner show-banner="showBanner"></page-banner>
+  <main id="main-content">
+    <page-banner show-banner="showBanner"></page-banner>
 
-  <div class="l-page island wrapper">
-    <div class="l-multi-col-content-wrapper">
-      <div class="l-content-primary-wrapper">
-        <week-feed courses-promise="courses" events-promise="events" date="currentDate" on-show-full-screen-calendar="showFullScreenCalendar()"></week-feed>
-        <attainments limit-visibility="['MY_STUDIES_ONLY']"></attainments>
-        <favorites limit-visibility="['MY_TEACHINGS_ONLY', 'DESKTOP_ONLY']"></favorites>
-      </div>
+    <div class="l-page island wrapper">
+      <div class="l-multi-col-content-wrapper">
+        <div class="l-content-primary-wrapper">
+          <week-feed courses-promise="courses" events-promise="events" date="currentDate" on-show-full-screen-calendar="showFullScreenCalendar()"></week-feed>
+          <attainments limit-visibility="['MY_STUDIES_ONLY']"></attainments>
+          <favorites limit-visibility="['MY_TEACHINGS_ONLY', 'DESKTOP_ONLY']"></favorites>
+        </div>
 
-      <div class="l-content-secondary-wrapper" role="navigation">
-        <div class="ui-component">
-          <div ng-if="!showBanner">
-            <todo-items limit-visibility="['MY_STUDIES_ONLY']" class="todo-items--secondary"></todo-items>
+        <div class="l-content-secondary-wrapper" role="navigation">
+          <div class="ui-component">
+            <div ng-if="!showBanner">
+              <todo-items limit-visibility="['MY_STUDIES_ONLY']" class="todo-items--secondary"></todo-items>
+            </div>
+            <office-hours limit-visibility="['MY_TEACHINGS_ONLY']"></office-hours>
+            <useful-links></useful-links>
           </div>
-          <office-hours limit-visibility="['MY_TEACHINGS_ONLY']"></office-hours>
-          <useful-links></useful-links>
         </div>
       </div>
-    </div>
 
-    <favorites limit-visibility="['MY_TEACHINGS_ONLY', 'MOBILE_ONLY']"></favorites>
-    <favorites limit-visibility="['MY_STUDIES_ONLY']" class="favorites__student"></favorites>
-  </div>
+      <favorites limit-visibility="['MY_TEACHINGS_ONLY', 'MOBILE_ONLY']"></favorites>
+      <favorites limit-visibility="['MY_STUDIES_ONLY']" class="favorites__student"></favorites>
+    </div>
+  </main>
 
   <feedback ng-if="userSettings.cookieConsent"></feedback>
   <cookie-notification ng-if="!userSettings.cookieConsent"></cookie-notification>

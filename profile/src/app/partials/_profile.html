@@ -15,6 +15,11 @@
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
+<a href="#main-content"
+   ng-if="!useObar"
+   class="element-invisible element-focusable"
+   translate="pageHeaderLinks.skipToMainContent"></a>
+
 <sticky-message message-key="globalMessages.demoEnvNoticeMyStudies" environments="['demo']" limit-visibility="{roles: ['STUDENT']}"></sticky-message>
 <sticky-message message-key="globalMessages.demoEnvNoticeMyTeaching" environments="['demo']" limit-visibility="{roles: ['TEACHER']}"></sticky-message>
 
@@ -25,27 +30,29 @@
   <obar ng-if="useObar" app="profile"></obar>
 </header>
 
-<navigation></navigation>
-<preview-message></preview-message>
+<main id="main-content">
+  <navigation></navigation>
+  <preview-message></preview-message>
 
-<intro></intro>
+  <intro></intro>
 
-<div class="l-page island wrapper profile" ng-class="{'is-preview': isPreview}">
-  <div limit-visibility="{roles: ['STUDENT']}">
-    <div ng-include="'app/partials/_student.html'"></div>
+  <div class="l-page island wrapper profile" ng-class="{'is-preview': isPreview}">
+    <div limit-visibility="{roles: ['STUDENT']}">
+      <div ng-include="'app/partials/_student.html'"></div>
+    </div>
+
+    <div limit-visibility="{roles: ['TEACHER']}">
+      <div ng-include="'app/partials/_teacher.html'"></div>
+    </div>
   </div>
 
-  <div limit-visibility="{roles: ['TEACHER']}">
-    <div ng-include="'app/partials/_teacher.html'"></div>
+  <div ng-if="userSettings.cookieConsent">
+    <feedback limit-visibility="PRIVATE" ></feedback>
   </div>
-</div>
 
-<div ng-if="userSettings.cookieConsent">
-  <feedback limit-visibility="PRIVATE" ></feedback>
-</div>
-
-<div ng-if="!userSettings.cookieConsent">
-  <cookie-notification limit-visibility="PRIVATE"></cookie-notification>
-</div>
+  <div ng-if="!userSettings.cookieConsent">
+    <cookie-notification limit-visibility="PRIVATE"></cookie-notification>
+  </div>
+</main>
 
 <footer role="contentinfo" ng-include="'app/partials/_page_footer.html'"></footer>
