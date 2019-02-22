@@ -34,3 +34,7 @@ body:hover .visually-hidden input,
 body:hover .visually-hidden button {
   display: none !important;
 }
+
+:focus {
+  outline: auto 5px $focus-color !important;
+}

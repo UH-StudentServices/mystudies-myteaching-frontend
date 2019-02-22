@@ -38,7 +38,9 @@
           </label>
         </div>
         <div class="actions">
-          <span ng-click="cancel()" class="icon--remove cancel"></span>
+          <button type="button" class="cancel" ng-click="cancel()">
+            <span class="icon--remove"></span>
+          </button>
           <input ng-disabled="!feedbackForm.$valid" ng-click="submit()" type="submit"
                  value="{{::('feedback.submit' | translate)}}" />
         </div>

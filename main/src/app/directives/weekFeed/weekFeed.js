@@ -616,7 +616,7 @@ angular.module('directives.weekFeed', [
         };
 
         $scope.getSubTabClasses = function getSubTabClasses(subTab) {
-          return { active: subTab === $scope.selectedSubTab };
+          return { 'is-active': subTab === $scope.selectedSubTab };
         };
 
         $scope.showFullScreenCalendar = function showFullScreenCalendar() {

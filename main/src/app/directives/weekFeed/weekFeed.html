@@ -37,12 +37,8 @@
       </ul>
     </scrollable-tab-bar>
     <ul class="weekfeed__sub-tabs" role="tablist" ng-hide="hideSubTabs">
-      <li ng-repeat="subTab in subTabs"
-          ng-class="getSubTabClasses(subTab)"
-          ng-click="selectSubTab(subTab)"
-          role="tab"
-          class="weekfeed__sub-tab clickable">
-        <a>{{ subTab.translateKey | translate | capitalize }}</a>
+      <li ng-repeat="subTab in subTabs" role="tab">
+        <button role="button" class="button subTabButton" ng-class="getSubTabClasses(subTab)" ng-click="selectSubTab(subTab)">{{ subTab.translateKey | translate | capitalize }}</button>
       </li>
       <li class="weekfeed-subscribe" ng-if="selectedTab.key === 'SCHEDULE'">
         <subscribe-events ng-if="!hideSubTabs"></subscribe-events>

@@ -52,6 +52,10 @@
   background-color: $black;
 }
 
+.feedback__box-default:focus {
+  outline: auto 5px #35b7ec;
+}
+
 .feedback__box-submitted {
   background-color: $limegreen;
 }
@@ -87,6 +91,7 @@
     .cancel {
       cursor: pointer;
       float: right;
+      background: none;
     }
   }
 
