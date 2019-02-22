@@ -38,3 +38,9 @@ body:hover .visually-hidden button {
 :focus {
   outline: solid 5px $focus-color !important;
 }
+
+// Fix IE focus styles
+body:focus,
+html:focus {
+  outline: 0 !important;
+}
