@@ -36,5 +36,5 @@ body:hover .visually-hidden button {
 }
 
 :focus {
-  outline: auto 5px $focus-color !important;
+  outline: solid 5px $focus-color !important;
 }
