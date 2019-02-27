@@ -53,6 +53,9 @@
     "load-grunt-tasks": "^4.0.0",
     "node-uuid": "^1.4.3",
     "phantomjs-prebuilt": "^2.1.14",
+    "stylelint": "^9.10.1",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-scss": "^3.5.4",
     "testcafe": "^0.20.4",
     "time-grunt": "^2.0.0"
   },
@@ -69,6 +72,7 @@
     "dist": "grunt buildMinified --gruntfile main/Gruntfile.js && grunt buildMinified --gruntfile profile/Gruntfile.js && npm run gitinfo",
     "lint": "concurrently 'npm run lint:js' 'npm run lint:json'",
     "lint:json": "jsonlint-cli main/**/*.json profile/**/*.json common/**/*.json",
+    "lint:scss": "stylelint */src/scss/**/*.scss",
     "lint:js": "eslint 'common/' 'main/' 'profile/'",
     "lintfix": "eslint 'common/' 'main/' 'profile/' --fix",
     "postinstall": "npm run bower:install",
