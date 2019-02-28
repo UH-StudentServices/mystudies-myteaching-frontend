@@ -61,16 +61,6 @@ angular.module('services.configuration', [])
           name: 'Eero Jukola',
           username: 'e_jukola',
           subject: 'faculties.H30'
-        },
-        {
-          name: 'Juhani Jukola',
-          username: 'j_jukola',
-          subject: 'faculties.H50'
-        },
-        {
-          name: 'Timo Jukola',
-          username: 't_jukola',
-          subject: 'faculties.A93000'
         }
       ]
     },
