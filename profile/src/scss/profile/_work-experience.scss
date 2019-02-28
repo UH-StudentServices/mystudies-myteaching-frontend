@@ -20,6 +20,7 @@ $work-experience-description-edit-height: 82px;
 
 .job-search .banner-content__backdrop {
   background-color: $blue--active;
+
   .editable & {
     background-color: $darkblue;
   }
@@ -43,6 +44,7 @@ $work-experience-description-edit-height: 82px;
   flex-grow: 1;
   padding-right: 0.5em;
   height: 100%;
+
   @include user-select(none);
 
   &:before {
@@ -68,7 +70,8 @@ $work-experience-description-edit-height: 82px;
   }
 }
 
-.job-search .banner-content__description, .work-experience .banner-content__description {
+.job-search .banner-content__description,
+.work-experience .banner-content__description {
   p {
     height: initial;
     max-height: $work-experience-description-height;
@@ -86,6 +89,7 @@ $work-experience-description-edit-height: 82px;
 
   .banner-content__remove {
     color: $white;
+
     @include vertically-center;
   }
 
@@ -98,7 +102,7 @@ $work-experience-description-edit-height: 82px;
   }
 
   .banner-content__banner-text {
-    text-transform: none ;
+    text-transform: none;
   }
 }
 
