@@ -19,7 +19,6 @@
 // Layout
 // --------------------------------------------------
 
-
 .l-toolbar {
   @include clearfix;
 }
@@ -64,6 +63,7 @@
 .ui-component__title {
   @include breakpoint($mobile-only) {
     text-align: center;
+
     @include font-size(28px);
-  };
+  }
 }

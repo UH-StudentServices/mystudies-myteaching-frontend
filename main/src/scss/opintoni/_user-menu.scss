@@ -17,7 +17,7 @@
 
 $user-component-height-mobile: 3em;
 
-$user-component-bg-default: rgba(0, 0, 0, .5);
+$user-component-bg-default: rgba(0, 0, 0, 0.5);
 $user-component-height-default: 4em;
 
 $grey-background: rgb(224, 224, 224);
@@ -25,6 +25,7 @@ $time-color: rgb(109, 109, 109);
 
 .user-menu {
   position: relative;
+
   @include breakpoint($small) {
     display: table;
     float: right;
@@ -38,7 +39,7 @@ $time-color: rgb(109, 109, 109);
 
 @include breakpoint($small) {
   .user-menu__item.user-settings {
-    padding-right: 0px;
+    padding-right: 0;
   }
 }
 
@@ -52,12 +53,14 @@ $time-color: rgb(109, 109, 109);
 
 .user-settings__menu {
   @extend .dropdown-menu;
+
   @include triangle-with-border(12px, 12px);
 
   background-color: $white;
 
   a {
     color: $blue;
+
     &.tag {
       color: $white;
     }
@@ -68,6 +71,19 @@ $time-color: rgb(109, 109, 109);
     left: -3px;
     margin-right: 2px;
     vertical-align: middle;
+  }
+
+  .user-settings__menu-item {
+    // Override the @extend .dropdown-menu so that we don't have to rewrite all of it.
+    padding: 0 !important;
+    margin: 0 1em;
+
+    @include border-bottom;
+
+    a {
+      padding: 1em 0;
+      display: block;
+    }
   }
 
   li.change-avatar {
@@ -108,18 +124,6 @@ $time-color: rgb(109, 109, 109);
     top: $user-component-height-default;
     width: 330px;
     min-width: 15em;
-  }
-}
-
-.user-settings__menu-item {
-  // Override the @extend .dropdown-menu so that we don't have to rewrite all of it.
-  padding: 0 !important;
-  margin: 0 1em;
-  @include border-bottom;
-
-  a {
-    padding: 1em 0;
-    display: block;
   }
 }
 

@@ -27,6 +27,7 @@
 
 .study-attainment__item {
   @extend .box-data, .border-bottom;
+
   padding-top: 15px;
 }
 
@@ -36,6 +37,7 @@
   float: left;
   padding: 5px 10px 5px 10px;
   font-size: 2em;
+
   &:hover {
     color: $lightgray;
   }
@@ -47,6 +49,7 @@
 
 $study-attainment-grade-font-sizes: 30px, 25px, 20px, 15px;
 $study-attainment-grade-base-name: "study-attainment__grade";
+
 @for $i from 1 through length($study-attainment-grade-font-sizes) {
   .#{$study-attainment-grade-base-name}--#{$i} {
     @extend .box-data__date;
@@ -83,22 +86,26 @@ $study-attainment-grade-base-name: "study-attainment__grade";
   height: 24px;
   position: relative;
   cursor: pointer;
-  transition: .2s;
+  transition: 0.2s;
   z-index: 1;
   border-radius: 34px;
   background-color: $mediumsilver;
   color: $lightsilver;
+
   & .toggle-switch-icon--on {
     @extend %toggle-switch-icon-shared;
+
     left: 4px;
   }
+
   & .toggle-switch-icon--off {
     @extend %toggle-switch-icon-shared;
+
     right: 4px;
   }
 }
 
-.toggle-switch-slider:before {
+.toggle-switch-slider::before {
   position: absolute;
   content: "";
   height: 20px;
@@ -106,15 +113,16 @@ $study-attainment-grade-base-name: "study-attainment__grade";
   left: 2px;
   bottom: 2px;
   background-color: $lightsilver;
-  transition: .2s;
+  transition: 0.2s;
   border-radius: 50%;
 }
 
 .toggle-switch--on {
-  &> .toggle-switch-slider {
-    background-color:$blue;
+  & > .toggle-switch-slider {
+    background-color: $blue;
   }
-  &> .toggle-switch-slider:before {
+
+  & > .toggle-switch-slider::before {
     transform: translateX(24px);
   }
 }

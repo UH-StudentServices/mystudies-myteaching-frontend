@@ -37,7 +37,8 @@
     page-break-after: avoid;
   }
 
-  ul, img {
+  ul,
+  img {
     page-break-inside: avoid;
   }
 }

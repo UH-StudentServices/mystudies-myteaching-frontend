@@ -19,23 +19,20 @@
 // Typography
 // --------------------------------------------------
 
-
 .milli { @include font-size(13px); }
 .micro { @include font-size(10px); }
-
-
 
 .text-neutral,
 a.text-neutral {
   color: $gray;
 }
 
-
-
 // Label-like looking text
 .text-label {
   color: $silver;
+
   @include font-size(14px);
-  margin-bottom: .5em;
+
+  margin-bottom: 0.5em;
   text-transform: uppercase;
 }

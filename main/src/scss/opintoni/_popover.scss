@@ -26,10 +26,10 @@
   color: $silver;
   word-wrap: break-word;
   background-color: $white;
+
   @include border;
   @include tab-shadow;
   @include font-size(13px);
-
   @include triangle($triangle-size);
 
   &::before {

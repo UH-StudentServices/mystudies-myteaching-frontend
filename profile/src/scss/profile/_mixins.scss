@@ -19,7 +19,7 @@
   -webkit-transform: $transform;
   -moz-transform: $transform;
   -ms-transform: $transform;
-  -transform: $transform;
+  transform: $transform;
 }
 
 @mixin user-select ($value) {

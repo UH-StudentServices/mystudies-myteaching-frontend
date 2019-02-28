@@ -27,14 +27,19 @@
   display: block;
 }
 
-.mobile-menu__links {
+.mobile-menu__actions {
   li {
-    position: relative;
-    padding: 0.7em 1em;
+    padding: 1em;
+  }
 
-    a {
-      @include font-size(13px);
-    }
+  a {
+    text-transform: uppercase;
+
+    @include font-weight-medium;
+  }
+
+  .in-menu-icon {
+    margin-right: 0.8em;
   }
 }
 
@@ -49,7 +54,7 @@
     color: $white;
   }
 
-  &:before {
+  &::before {
     content: "";
     width: 100%;
     height: 1px;
@@ -61,6 +66,17 @@
   }
 }
 
+.mobile-menu__links {
+  li {
+    position: relative;
+    padding: 0.7em 1em;
+
+    a {
+      @include font-size(13px);
+    }
+  }
+}
+
 .mobile-menu__links--light {
   background-color: $white;
 
@@ -68,23 +84,6 @@
     border-top: 1px solid $lightsilver;
   }
 }
-
-.mobile-menu__actions {
-
-  li {
-    padding: 1em;
-  }
-
-  a {
-    text-transform: uppercase;
-    @include font-weight-medium;
-  }
-
-  .in-menu-icon {
-    margin-right: 0.8em;
-  }
-}
-
 
 .mobile-toolbar {
   position: relative;
@@ -103,6 +102,9 @@
     top: -43px;
     width: 3em;
     height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &.active {
       > * {
@@ -110,9 +112,10 @@
       }
 
       top: -44px;
+
       @include mobile-toolbar-toggle;
 
-      &:before {
+      &::before {
         @include icon($icon-remove);
       }
     }
@@ -121,10 +124,12 @@
   .mobile-menu .dropdown-toggle {
     right: 0;
     top: 0;
+
     @include mobile-toolbar-toggle;
   }
 
-  .user-settings, .user-notifications {
+  .user-settings,
+  .user-notifications {
     display: block;
   }
 
@@ -138,14 +143,9 @@
     text-align: center;
   }
 
-  .dropdown-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
   .in-menu-icon {
     @include font-size(18px);
+
     vertical-align: top;
   }
 }

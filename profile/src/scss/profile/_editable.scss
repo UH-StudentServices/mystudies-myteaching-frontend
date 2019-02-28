@@ -16,7 +16,6 @@
  */
 
 .editable-wrapper {
-
   textarea {
     width: 100%;
   }
@@ -43,6 +42,7 @@
 .editable-content-active {
   $done-icon-size: 16px;
   $done-icon-right-offset: 5px;
+
   position: relative;
 
   input {
@@ -57,8 +57,11 @@
   .icon--done {
     right: $done-icon-right-offset;
     font-size: $done-icon-size;
+
     @include vertically-center;
+
     color: $blue;
+
     &:hover {
       cursor: pointer;
     }

@@ -17,6 +17,7 @@
 
 .favorites__header {
   @include border-bottom;
+
   margin-bottom: 1em;
 }
 
@@ -34,35 +35,36 @@
   @include breakpoint($small) {
     &::after {
       content: "";
-      width: calc(50% - (80px/3));
-    };
+      width: calc(50% - (80px / 3));
+    }
   }
 
   @include breakpoint($medium) {
     &::after {
       content: "";
-      width: calc(50% - (160px/3));
-    };
+      width: calc(50% - (160px / 3));
+    }
   }
 
   .favorites__student & {
     @include breakpoint($small) {
       &::after {
         content: "";
-        width: calc(33.33% - (80px/3));
-      };
+        width: calc(33.33% - (80px / 3));
+      }
     }
 
     @include breakpoint($medium) {
       &::after {
         content: "";
-        width: calc(33.33% - (160px/3));
-      };
+        width: calc(33.33% - (160px / 3));
+      }
     }
   }
 }
 
-.favorite, .favorites__add-new {
+.favorite,
+.favorites__add-new {
   padding-top: 20px;
 
   @include breakpoint($mobile-only) {
@@ -74,20 +76,20 @@
     height: 380px;
     display: inline-block;
     vertical-align: top;
-    width: calc(50% - (80px/3));
+    width: calc(50% - (80px / 3));
   }
 
   @include breakpoint($medium) {
-    width: calc(50% - (160px/3));
+    width: calc(50% - (160px / 3));
   }
 
   .favorites__student & {
     @include breakpoint($small) {
-      width: calc(33.33% - (80px/3));
+      width: calc(33.33% - (80px / 3));
     }
 
     @include breakpoint($medium) {
-      width: calc(33.33% - (160px/3));
+      width: calc(33.33% - (160px / 3));
     }
   }
 
@@ -103,6 +105,7 @@
     .box-story__tag {
       display: inline;
     }
+
     .rss-content {
       overflow-y: auto;
       max-height: 319px;
@@ -170,12 +173,13 @@
     display: block;
   }
 
-  &:before {
+  &::before {
     content: "";
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
     @include icon($icon-trash);
   }
 }
@@ -188,14 +192,14 @@
   left: 50%;
   width: 85%;
   height: 85%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   z-index: -1;
 
   &-text {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     color: $gray;
   }
 }
@@ -246,50 +250,27 @@
   }
 
   &::before {
-    transform: translate(50%,0);
+    transform: translate(50%, 0);
     right: 50% !important;
   }
 
   &::after {
-    transform: translate(50%,0);
+    transform: translate(50%, 0);
     right: 50% !important;
   }
 }
 
-.add-favorite-step {
-  width: 100%;
-
-  ul {
-    padding: 0.5em;
-  }
-
-  li.bar {
-    font-size: 0.9375rem;
-    cursor: pointer;
-    margin-bottom: 2px;
-    padding: 0;
-
-    a {
-      width: 100%;
-      padding: 0.3em 0.7em 0.4em;
-      line-height: normal;
-    }
-
-    &.disabled {
-      cursor: auto;
-
-      a {
-        color: grey;
-      }
-    }
-  }
+.add-favorite-button__title {
+  font-size: 2rem;
+  color: $blue;
 }
 
 .add-favorite-button {
   height: 100%;
   display: block;
 
-  &:hover, &:hover>.add-favorite-button__title {
+  &:hover,
+  &:hover > .add-favorite-button__title {
     color: $darkblue;
   }
 }
@@ -306,20 +287,18 @@
   transform: translate(-50%, -50%);
 }
 
-.add-favorite-button__title {
-  font-size: 2rem;
-  color: $blue;
-}
-
 .add-favorite-search {
-  .icon--search::after, .icon--remove::after, .icon--done::after {
+  .icon--search::after,
+  .icon--remove::after,
+  .icon--done::after {
     vertical-align: middle;
     flex: 1 0 20px;
     min-width: 18px;
     padding-left: 0.2em;
   }
 
-  input[type="text"], input[type="url"] {
+  input[type="text"],
+  input[type="url"] {
     border: 0;
     font-size: 0.8rem;
     flex: 9 1 auto;
@@ -411,6 +390,35 @@
 
       &__content {
         flex: 3;
+      }
+    }
+  }
+}
+
+.add-favorite-step {
+  width: 100%;
+
+  ul {
+    padding: 0.5em;
+  }
+
+  li.bar {
+    font-size: 0.9375rem;
+    cursor: pointer;
+    margin-bottom: 2px;
+    padding: 0;
+
+    a {
+      width: 100%;
+      padding: 0.3em 0.7em 0.4em;
+      line-height: normal;
+    }
+
+    &.disabled {
+      cursor: auto;
+
+      a {
+        color: grey;
       }
     }
   }

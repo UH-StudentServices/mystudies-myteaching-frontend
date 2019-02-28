@@ -28,6 +28,7 @@
 
   &__users-heading {
     @extend .local-login__heading;
+
     margin-bottom: 0.5em;
     font-size: 1.5em;
   }
@@ -43,6 +44,7 @@
   &__log-in {
     display: inline-block;
     width: 450px;
+
     @include breakpoint($mobile-only) {
       width: 250px;
     }

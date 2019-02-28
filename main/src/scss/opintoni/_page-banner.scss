@@ -37,6 +37,7 @@ $banner-transition-duration: 0.5s;
 
   &--open {
     height: $page-banner-height;
+
     @include banner-transition-delay;
 
     @include breakpoint($mobile-only) {
@@ -52,6 +53,7 @@ $banner-transition-duration: 0.5s;
 
     &.ng-enter {
       @include banner-transition-delay;
+
       opacity: 0;
     }
 
@@ -83,6 +85,7 @@ $banner-transition-duration: 0.5s;
 
 .page-banner--pager {
   @extend .wrapper;
+
   position: relative;
   padding-left: 1em;
   top: 1em;
@@ -90,9 +93,11 @@ $banner-transition-duration: 0.5s;
 
   .flex-control-nav {
     width: auto;
+
     @include breakpoint($mobile-only) {
       display: none;
     }
+
     @include breakpoint($small) {
       top: 0;
       text-align: left;
@@ -101,18 +106,22 @@ $banner-transition-duration: 0.5s;
 
   .flex-control-paging li a {
     $pager-control-size: 7px;
+
     border-radius: 0;
     width: $pager-control-size;
     height: $pager-control-size;
     background-color: $blue;
+
     &.flex-active {
       background-color: $black;
     }
   }
 }
 
-.page-banner__news-item-container, .page-banner__banner-input-container {
+.page-banner__news-item-container,
+.page-banner__banner-input-container {
   @extend .wrapper;
+
   position: relative;
 }
 
@@ -132,6 +141,7 @@ $banner-transition-duration: 0.5s;
 
 .page-banner__title {
   max-height: 180px;
+
   @include breakpoint($small) {
     color: $white;
     text-shadow: 0 1px 2px $black;
@@ -140,6 +150,7 @@ $banner-transition-duration: 0.5s;
 
 .page-banner__text {
   max-height: 100px;
+
   @include breakpoint($small) {
     color: $white;
     text-shadow: 0 1px 2px $black;
@@ -155,6 +166,7 @@ $banner-transition-duration: 0.5s;
   background-size: cover;
   width: 100%;
   height: $page-banner-height;
+
   @include breakpoint($mobile-only) {
     height: $page-banner-image-height-mobile;
   }
@@ -163,6 +175,7 @@ $banner-transition-duration: 0.5s;
 .page-banner__image-cover {
   width: 80%;
   height: 100%;
+
   @include linear-gradient-from-left(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
 }
 
@@ -170,6 +183,7 @@ $banner-transition-duration: 0.5s;
   width: 100%;
   position: absolute;
   bottom: 1px;
+
   @include breakpoint($mobile-only) {
     z-index: 9;
     bottom: -$page-banner-toggle-size;
@@ -179,6 +193,7 @@ $banner-transition-duration: 0.5s;
 .page-banner__change-background {
   height: $page-banner-toggle-size;
   position: relative;
+
   @include breakpoint($small) {
     width: $page-banner-toggle-size;
     margin-left: auto;
@@ -196,13 +211,16 @@ $banner-transition-duration: 0.5s;
   color: $color;
   text-align: center;
   z-index: 3;
+
   @include all-link-states {
     color: $color;
   }
+
   @include breakpoint($mobile-only) {
     float: right;
     height: $page-banner-toggle-size-mobile;
   }
+
   @include breakpoint($small) {
     margin-left: auto;
     margin-right: auto;
@@ -218,6 +236,7 @@ $banner-transition-duration: 0.5s;
   @include breakpoint($mobile-only) {
     @include page-banner-button($blue, transparent);
   }
+
   @include breakpoint($small) {
     @include page-banner-button($blue, $white);
   }
@@ -226,14 +245,17 @@ $banner-transition-duration: 0.5s;
 @mixin page-banner-button-icon($icon, $size) {
   position: absolute;
   display: block;
-  &:before {
+
+  &::before {
     font-size: $size;
+
     @include icon($icon);
   }
 }
 
 .page-banner__button-icon--arrow {
   @include page-banner-button-icon("\EA03", 18px);
+
   @include breakpoint($small) {
     top: 14px;
   }
@@ -241,34 +263,45 @@ $banner-transition-duration: 0.5s;
 
 .page-banner__button-icon--arrow-up {
   @extend .page-banner__button-icon--arrow;
+
   @include transform(rotate(270deg));
+
   left: 17px;
 }
 
 .page-banner__button-icon--arrow-down {
   @extend .page-banner__button-icon--arrow;
+
   @include transform(rotate(90deg));
+
   left: 14px;
 }
 
 .page-banner__button-icon--camera {
   @include page-banner-button-icon("\EA07", 24px);
+
   left: 13px;
   top: 14px;
 }
 
 .page-banner__change-background-menu {
   @extend .dropdown-menu;
+
   @include font-size(13px);
+
   position: absolute;
   white-space: nowrap;
   padding: 1em;
+
   @include breakpoint($small) {
     @include triangle-with-border(12px, 12px);
+
     top: $page-banner-toggle-size + 20px;
   }
+
   @include breakpoint($mobile-only) {
     @include triangle-with-border(12px, 12px, $white, $lightsilver, right);
+
     top: $page-banner-toggle-size;
     left: 0;
     border: 1px solid $lightsilver !important;
@@ -285,6 +318,7 @@ $banner-transition-duration: 0.5s;
   @include breakpoint($small) {
     position: absolute;
     bottom: -$page-banner-toggle-size;
+
     &--banner-hidden {
       @include border-top;
     }

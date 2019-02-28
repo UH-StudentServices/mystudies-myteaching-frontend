@@ -15,7 +15,7 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-  // Color codes are from the Styleguide
+// Color codes are from the Styleguide
 $facebook-bg: #547bb9;
 $youtube-bg: #e6644a;
 $twitter-bg: #5ea9dd;
@@ -24,7 +24,6 @@ $instagram-bg: #125688;
 
 $tuhat-bg: $black;
 $free-link-bg: $black;
-
 
 @mixin social-media-icon($icon, $background-color) {
   background-color: $background-color;
@@ -46,11 +45,11 @@ $free-link-bg: $black;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   vertical-align: bottom;
+
   @if ($unicode) {
     content: $unicode;
   }
 }
-
 
 .contact-information {
   position: relative;
@@ -65,6 +64,7 @@ $free-link-bg: $black;
       text-transform: uppercase;
       margin-bottom: 1em;
     }
+
     &__field {
       margin-bottom: 0.5em;
     }
@@ -86,6 +86,7 @@ $free-link-bg: $black;
     padding: 0;
     margin: 0;
     border: none;
+
     input {
       padding-right: 3em;
     }
@@ -94,6 +95,7 @@ $free-link-bg: $black;
   .edit-contact-details {
     input {
       margin-bottom: 0.5em;
+
       &:last-child {
         margin-bottom: 0;
       }
@@ -146,24 +148,25 @@ $free-link-bg: $black;
     }
 
     &--website_link {
-      @include social-media-icon($icon-url, $free-link-bg)
+      @include social-media-icon($icon-url, $free-link-bg);
     }
 
     &--linkedin {
       background: transparent url("../icons/In-2CRev-66px-R.png") no-repeat center center;
       background-size: cover;
     }
-
   }
 
   .editing {
     li {
       background-color: $gray;
+
       > a {
         padding: 0 3em 0 1em;
         color: $white;
       }
     }
+
     input.ng-invalid {
       border: 1px solid $red;
     }
@@ -171,6 +174,7 @@ $free-link-bg: $black;
 
   input[type="url"] {
     @extend input[type="text"];
+
     width: calc(100% - 60px);
   }
 }
@@ -184,68 +188,84 @@ $free-link-bg: $black;
   &.social-media-link__icon {
     &--facebook::after {
       @include social-media-link-icon($icon-facebook);
+
       background-color: $facebook-bg;
     }
+
     &--facebook:hover::after {
       background-color: darken($facebook-bg, 10%);
     }
 
     &--twitter::after {
       @include social-media-link-icon($icon-twitter);
+
       background-color: $twitter-bg;
     }
+
     &--twitter:hover::after {
       background-color: darken($twitter-bg, 10%);
     }
 
     &--youtube::after {
       @include social-media-link-icon($icon-youtube);
+
       background-color: $youtube-bg;
     }
+
     &--youtube:hover::after {
       background-color: darken($youtube-bg, 10%);
     }
 
     &--linkedin::after {
       @include social-media-link-icon($icon-linkedin);
+
       background-color: $linkedin-bg;
     }
+
     &--linkedin:hover::after {
       background-color: darken($linkedin-bg, 10%);
     }
 
     &--instagram::after {
       @include social-media-link-icon($icon-instagram);
+
       background-color: $instagram-bg;
     }
+
     &--instagram:hover::after {
       background-color: darken($instagram-bg, 10%);
     }
 
     &--tuhat::after {
       @include social-media-link-icon($icon-hy-logo);
+
       background-color: $tuhat-bg;
     }
+
     &--tuhat:hover::after {
       background-color: darken($tuhat-bg, 10%);
     }
 
     &--research_gate::after {
       @include social-media-link-icon();
+
       background: transparent url("../icons/rg_logo_square_brand.png") no-repeat center center;
     }
+
     &--research_gate:hover::after {
       opacity: 0.9;
     }
 
     &--academia::after {
       @include social-media-link-icon();
+
       background: transparent url("../icons/academia.png") no-repeat center center;
       background-size: cover;
     }
 
     &--website_link::after {
       @include social-media-link-icon($icon-url);
+
       background-color: $free-link-bg;
     }
   }

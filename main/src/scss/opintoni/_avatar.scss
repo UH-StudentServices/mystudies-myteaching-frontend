@@ -42,15 +42,19 @@ $avatar-size-large: 90px;
   width: 100%;
   height: 100%;
   background-color: $lila;
+
   @include breakpoint($small) {
     background-color: rgba($lila, 0.45);
   }
+
   &.teacher {
     background-color: $green;
+
     @include breakpoint($small) {
       background-color: rgba($green, 0.45);
     }
   }
+
   position: relative;
 
   &.default {

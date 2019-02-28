@@ -19,9 +19,11 @@ $navigationHeight: 60px;
 
 .page-navigation {
   @include clearfix();
+
   nav {
     float: left;
   }
+
   .wrapper {
     padding: 0 1em;
   }
@@ -29,14 +31,17 @@ $navigationHeight: 60px;
   @include breakpoint($small) {
     height: $navigationHeight;
     box-sizing: border-box;
+
     .wrapper {
       height: 100%;
       position: relative;
     }
+
     nav {
       height: 100%;
       border: none;
     }
+
     .fatmenu {
       display: none;
       left: 0;

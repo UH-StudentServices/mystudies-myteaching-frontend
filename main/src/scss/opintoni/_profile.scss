@@ -19,10 +19,9 @@
 // Profile
 // --------------------------------------------------
 
-
-
 .profile-header {
   @include clearfix;
+
   margin-bottom: 2em;
 }
 
@@ -32,8 +31,11 @@
 }
 
 @include breakpoint($small) {
-  .profile-header__title  { @include float-span(8, 'first'); }
-  .profile-header__search { @include float-span(4, 'last');
+  .profile-header__title { @include float-span(8, 'first'); }
+
+  .profile-header__search {
+    @include float-span(4, 'last');
+
     margin-bottom: 0;
     margin-top: 0;
   }

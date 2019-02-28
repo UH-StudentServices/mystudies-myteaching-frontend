@@ -33,9 +33,10 @@
   }
 
   &__loader {
-    padding: 1em;
-    color: $loader_color;
     @include border-side("top");
     @include border-side("bottom");
+
+    padding: 1em;
+    color: $loader_color;
   }
 }

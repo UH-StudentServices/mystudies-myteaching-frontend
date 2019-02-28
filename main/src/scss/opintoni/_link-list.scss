@@ -18,6 +18,7 @@
 .link-list {
   h3 {
     @include font-size(17px);
+
     font-weight: normal;
     text-transform: none;
     color: $silver;
@@ -26,7 +27,7 @@
 
   &__links {
     @extend .list-of-links__link;
+
     @include border-top;
   }
-
 }

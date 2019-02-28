@@ -17,10 +17,8 @@
 
 .language-proficiency-list {
   display: flex;
-
   flex-direction: column;
   flex-wrap: nowrap;
-
   margin-top: 1em;
 
   @include breakpoint($medium) {
@@ -30,6 +28,7 @@
 
   &__add-new-container {
     @include flex-container(center, stretch);
+
     width: 300px;
     height: 100px;
     flex: 0 0 auto;
@@ -39,6 +38,7 @@
 
   &__add-new {
     @include flex-container(center, center);
+
     flex: 1 1 auto;
     font-size: 3em;
     color: $blue;
@@ -55,7 +55,9 @@
 
 .language-proficiency-item {
   $background-color-edit: #797979;
+
   @include flex-container(flex-start);
+
   flex: 0 0 auto;
   width: 340px;
   min-height: 100px;
@@ -73,7 +75,7 @@
     top: 0.5em;
     left: 0.5em;
 
-    &:before {
+    &::before {
       content: $icon-drag;
       font-size: 2em;
       color: $black;
@@ -87,11 +89,32 @@
     flex: 1 1 auto;
   }
 
-  &__language-name, &__proficiency, &__description {
+  &__language-name {
+    @include flex-container(space-between, center);
+
+    font-weight: 600;
+    margin-bottom: 0.3em;
+  }
+
+  &__proficiency {
+    @include flex-container(space-between, center);
+
+    margin-bottom: 1em;
+  }
+
+  &__description {
+    @include flex-container(space-between, center);
+  }
+
+  &__language-name,
+  &__proficiency,
+  &__description {
     color: $gray;
+
     &:hover {
       color: $gray;
     }
+
     @include default-focus;
   }
 
@@ -103,6 +126,7 @@
 
     .visibility-toggle {
       color: $white;
+
       &:hover {
         color: $white;
       }
@@ -123,21 +147,6 @@
         font-weight: 600;
       }
     }
-  }
-
-  &__language-name {
-    @include flex-container(space-between, center);
-    font-weight: 600;
-    margin-bottom: 0.3em;
-  }
-
-  &__proficiency {
-    @include flex-container(space-between, center);
-    margin-bottom: 1em;
-  }
-
-  &__description {
-    @include flex-container(space-between, center);
   }
 
   &--private {
