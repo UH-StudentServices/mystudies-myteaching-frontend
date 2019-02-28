@@ -19,14 +19,14 @@
 // Form
 // --------------------------------------------------
 
-
 .input-search {
+  @include text-informative;
+
   border-color: $lightsilver;
   border-style: solid;
   border-width: 2px;
   box-sizing: border-box;
-  @include text-informative;
-  padding: .5em 1em;
+  padding: 0.5em 1em;
   width: 100%;
 }
 

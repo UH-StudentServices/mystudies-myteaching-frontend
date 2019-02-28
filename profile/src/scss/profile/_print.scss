@@ -15,20 +15,36 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+@page {
+  margin: 10mm 10mm 10mm 10mm;
+}
+
 @include breakpoint(print) {
-  .cookie-notification, .l-header, .navigation,
-  .edit-link, .visibility-toggle, .add-favorite-button,
-  .keywords-input-container, .new-degree, .favorites-list__remove,
-  .popover-wrapper, .language-proficiency-list__add-new ,
-  .work-experience__add-new, .add-free-text-content, .favorites-list__item-wrapper,
-  .feedback-container, .work-experience > li:last-child,
-  .l-footer, .page-banner__image, .messages, .profile-intro__keywords {
-    display: none !important;
+  li {
+    page-break-inside: avoid;
   }
 
-  @page
-  {
-    margin: 10mm 10mm 10mm 10mm;
+  .cookie-notification,
+  .l-header,
+  .navigation,
+  .edit-link,
+  .visibility-toggle,
+  .add-favorite-button,
+  .keywords-input-container,
+  .new-degree,
+  .favorites-list__remove,
+  .popover-wrapper,
+  .language-proficiency-list__add-new,
+  .work-experience__add-new,
+  .add-free-text-content,
+  .favorites-list__item-wrapper,
+  .feedback-container,
+  .work-experience > li:last-child,
+  .l-footer,
+  .page-banner__image,
+  .messages,
+  .profile-intro__keywords {
+    display: none !important;
   }
 
   @include default-grid-layout;
@@ -80,7 +96,8 @@
     display: none !important;
   }
 
-  h2, p {
+  h2,
+  p {
     color: $black !important;
   }
 
@@ -88,9 +105,4 @@
     text-shadow: none !important;
     box-shadow: none !important;
   }
-
-  li {
-    page-break-inside: avoid;
-  }
-
 }

@@ -23,7 +23,9 @@
 
 .attainments__container {
   @extend .box-data;
+
   @include border-bottom;
+
   padding-top: 15px;
 }
 

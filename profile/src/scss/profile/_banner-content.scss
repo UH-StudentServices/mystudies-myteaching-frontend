@@ -59,7 +59,8 @@ $banner-content-description-edit-height: 116px;
     }
   }
 
-  &__editable-content, &__editable-content--active {
+  &__editable-content,
+  &__editable-content--active {
     .ng-invalid {
       border: 2px solid $sample-invalid-color;
     }
@@ -77,6 +78,7 @@ $banner-content-description-edit-height: 116px;
 
   &__banner-link {
     color: $white;
+
     &:hover {
       color: $blue;
     }
@@ -140,6 +142,7 @@ $banner-content-description-edit-height: 116px;
 
     .angular-ellipsis-append {
       color: $blue;
+
       &:hover {
         color: $darkblue;
         cursor: pointer;
@@ -163,6 +166,7 @@ $banner-content-description-edit-height: 116px;
 
   &__full-description {
     display: none;
+
     p {
       height: 100%;
     }
@@ -185,7 +189,8 @@ $banner-content-description-edit-height: 116px;
     position: absolute;
     top: 0;
     right: 0;
-    &:before {
+
+    &::before {
       @include icon($icon-trash);
     }
   }

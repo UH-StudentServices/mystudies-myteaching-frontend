@@ -28,6 +28,7 @@
   @include breakpoint($mobile-only) {
     position: absolute;
   }
+
   position: fixed;
   top: 0;
   left: 10%;
@@ -38,20 +39,22 @@
   outline: none;
 }
 
-
 .modal-dialog {
   width: 100%;
   height: auto;
   position: relative;
   background-color: rgba(0, 0, 0, 0.8);
   color: $white;
-  @include font-size(13px);
   padding: 1em;
+
+  @include font-size(13px);
+
   @include breakpoint($small) {
     position: relative;
     width: 480px;
     top: 0;
     left: 50%;
+
     @include transform(translateX(-50%));
   }
 }
@@ -74,13 +77,15 @@
   @include breakpoint($mobile-only) {
     margin-top: 20px;
   }
-  a, button {
+
+  a,
+  button {
     color: $white !important;
     padding: 0.5em 2em;
     background-color: $blue;
+
     &:hover {
       background-color: $darkblue;
     }
   }
 }
-

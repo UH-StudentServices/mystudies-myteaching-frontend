@@ -17,8 +17,10 @@
 
 .toggle-button {
   @include button;
+
   display: inline;
   padding: 0.3em 1em;
+
   &.is-active {
     background-color: $darkblue;
   }
@@ -27,7 +29,6 @@
 .add-new-content {
   position: relative;
   margin-top: 2em;
-
   width: 100%;
 
   .list-of-links {

@@ -32,7 +32,7 @@
 }
 
 .page-banner__image::after {
-  content:"";
+  content: "";
   display: block;
   height: 100%;
   position: absolute;
@@ -51,15 +51,20 @@
   width: initial;
 
   @include font-size(13px);
+
   position: absolute;
   white-space: nowrap;
   padding: 1em;
+
   @include breakpoint($small) {
     @include triangle-with-border(12px, 12px);
+
     top: $page-banner-toggle-size + 20px;
   }
+
   @include breakpoint($mobile-only) {
     @include triangle-with-border(12px, 12px, $white, $lightsilver, right);
+
     top: $page-banner-toggle-size;
     left: 0;
     border: 1px solid $lightsilver !important;

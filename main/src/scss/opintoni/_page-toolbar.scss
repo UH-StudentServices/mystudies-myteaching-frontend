@@ -19,10 +19,10 @@
 // Toolbar
 // --------------------------------------------------
 
-
 .page-toolbar {
   @include font-size(12px);
-  padding: .5em 1.333em;
+
+  padding: 0.5em 1.333em;
 
   select {
     width: auto;

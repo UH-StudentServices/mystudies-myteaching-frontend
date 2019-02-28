@@ -23,6 +23,7 @@
 
   h2 {
     @include font-size(20px);
+
     text-align: center;
     position: relative;
     top: 5px;
@@ -40,16 +41,19 @@
     color: $silver;
     text-transform: uppercase;
     font-weight: normal;
+
     @include font-size(14px);
   }
 
-  .fc-day-grid-event, .fc-time-grid-event {
+  .fc-day-grid-event,
+  .fc-time-grid-event {
     border-radius: 0;
   }
 
   .fc-left .fc-button {
     @include button;
     @include font-size(15px);
+
     margin-left: 0;
     margin-right: 0.4em;
     background-image: none;
@@ -57,6 +61,7 @@
     text-shadow: none;
     padding: 0.3em 0.7em 0.4em;
     box-shadow: none;
+
     &.fc-state-active {
       background-color: $darkblue;
     }
@@ -64,13 +69,16 @@
 
   .fc-right .fc-button {
     @extend %button--light;
+
     @include font-size(15px);
+
     padding: 0.3em 0.7em 0.4em;
     background: transparent;
     border-radius: 0;
   }
 
-  .fc-today-button, .event-calendar__button {
+  .fc-today-button,
+  .event-calendar__button {
     text-transform: capitalize;
   }
 
@@ -82,7 +90,8 @@
     opacity: 1;
   }
 
-  .fc-prev-button, .fc-next-button {
+  .fc-prev-button,
+  .fc-next-button {
     padding: 0 0.3em !important;
   }
 
@@ -93,30 +102,35 @@
 
   .fc-icon-calendar-prev {
     @include transform(rotate(180deg));
-    &:before {
+
+    &::before {
       @include icon($icon-link-arrow);
     }
   }
 
   .fc-icon-calendar-next {
-    &:before {
+    &::before {
       @include icon($icon-link-arrow);
     }
   }
 
   @include breakpoint($mobile-only) {
     padding-top: 0.5em;
-    .fc-right, .fc-left, .fc-center {
+
+    .fc-right,
+    .fc-left,
+    .fc-center {
       display: block;
       width: 100%;
     }
 
-    .fc-right, .fc-center {
+    .fc-right,
+    .fc-center {
       margin-top: 0.5em;
     }
   }
 
-  .fc-today{
+  .fc-today {
     background-color: $today-color;
   }
 

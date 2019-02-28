@@ -18,7 +18,6 @@
 $tagColorEditingColor: #797979;
 
 .ui-component__studies {
-
   position: relative;
 
   .keyword-list {
@@ -30,11 +29,10 @@ $tagColorEditingColor: #797979;
 
     &__topical {
       @include font-weight-medium;
-      overflow: hidden;
 
+      overflow: hidden;
       border: none;
       display: inline-block;
-
       margin-bottom: 1em;
       margin-right: 1em;
     }
@@ -44,24 +42,20 @@ $tagColorEditingColor: #797979;
 
       display: inline-block;
       text-transform: uppercase;
-
       border: 1px solid $lightsilver;
     }
 
     &__tag--editing {
-      &:before {
+      &::before {
         border: 1px solid transparent;
         border-right-color: $tagColorEditingColor;
-
         border-width: 14px 10px;
         content: " ";
         pointer-events: none;
         position: absolute;
-
         top: 0;
         height: 0;
         width: 0;
-
         left: -20px;
       }
 
@@ -71,10 +65,8 @@ $tagColorEditingColor: #797979;
       margin-left: 12px;
       padding: 0.1em 0.5em 0 1em;
       position: relative;
-
       display: inline-block;
       text-transform: uppercase;
-
       background-color: $tagColorEditingColor;
 
       .icon--trash {
@@ -90,8 +82,9 @@ $tagColorEditingColor: #797979;
     }
   }
 
-  .tag-ball:before {
+  .tag-ball::before {
     @include border;
+
     border-color: darken($lightsilver, 10%);
     border-radius: 50%;
     content: " ";
@@ -108,7 +101,6 @@ $tagColorEditingColor: #797979;
   .tag-content {
     vertical-align: middle;
   }
-
 }
 
 .studies__summary {
@@ -117,13 +109,17 @@ $tagColorEditingColor: #797979;
   }
 
   &--view {
-    .ne-image, .ne-video {
+    .ne-image,
+    .ne-video {
       white-space: normal;
     }
+
     .ne-image {
       max-height: none;
     }
-    .ne-image-wrapper, .ne-video-player {
+
+    .ne-image-wrapper,
+    .ne-video-player {
       background-color: $white;
     }
   }

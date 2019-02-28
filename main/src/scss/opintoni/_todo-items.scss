@@ -70,12 +70,14 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
   &--secondary {
     margin-bottom: 2em;
     overflow-y: hidden;
+
     @include container-height();
 
     color: $todo-item-color;
 
     &.ng-enter {
       @include container-transition-delay;
+
       height: 0;
     }
 
@@ -94,6 +96,7 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
 
   .page-banner--visible.ng-enter & {
     @include container-transition-delay;
+
     transform: scale(0.1);
   }
 
@@ -122,7 +125,8 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
     padding: 20px;
     overflow-y: auto;
 
-    .todo-items--banner &, .todo-items--secondary & {
+    .todo-items--banner &,
+    .todo-items--secondary & {
       @include container-height(0);
     }
 
@@ -132,6 +136,7 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
 
     .todo-items--secondary & {
       @include border;
+
       background-color: rgba(0, 0, 0, 0.4);
     }
 
@@ -139,7 +144,6 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
       padding-right: 1em;
     }
   }
-
 }
 
 .todo-items__new-item {
@@ -166,7 +170,7 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
     background-color: rgba(255, 255, 255, 0.8);
 
     &:focus {
-      background: #ffffff;
+      background: #fff;
     }
 
     @include input-placeholder {
@@ -197,8 +201,7 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
 .todo-items__list-item {
   position: relative;
   word-wrap: break-word;
-
-  padding: 10px 60px 10px 0px;
+  padding: 10px 60px 10px 0;
 
   .todo-items--banner & {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -208,16 +211,9 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
     @include border-bottom;
   }
 
-  &.done {
-    color: $todo-item-color--done;
-
-    .todo-items__action--done {
-      cursor: default;
-    }
-  }
-
   .todo-items__action {
     @include vertically-center;
+
     cursor: pointer;
     color: $todo-item-color;
 
@@ -226,7 +222,15 @@ $add-todo-input-total-height: $add-todo-input-height-with-border + $add-todo-inp
     }
 
     &--remove {
-      right: 0px;
+      right: 0;
+    }
+  }
+
+  &.done {
+    color: $todo-item-color--done;
+
+    .todo-items__action--done {
+      cursor: default;
     }
   }
 }

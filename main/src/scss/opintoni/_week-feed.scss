@@ -46,6 +46,20 @@ $tablist-single-row: min-width 28.75em;
   }
 }
 
+.subscribe-events-popover__instructions {
+  a {
+    margin-right: 1em;
+  }
+
+  &__intro {
+    margin-bottom: 0.5em;
+  }
+
+  &__optime {
+    margin-bottom: 1.5em;
+  }
+}
+
 .weekfeed__sub-tab {
   @include font-size(15px);
 
@@ -55,7 +69,6 @@ $tablist-single-row: min-width 28.75em;
   margin-right: 0.4em;
   margin-bottom: 0.5em;
   transition: none; // workaround for an angular-animate bug where stale items are briefly shown with new items
-
   float: left;
   list-style: none;
   background-color: $blue;
@@ -70,7 +83,10 @@ $tablist-single-row: min-width 28.75em;
     background-color: $darkblue;
   }
 
-  &>a, &>a:hover, &>a:active, &>a:focus {
+  & > a,
+  & > a:hover,
+  & > a:active,
+  & > a:focus {
     color: $white;
   }
 }
@@ -89,21 +105,26 @@ $tablist-single-row: min-width 28.75em;
   .week-feed-items {
     li .event.exam {
       position: relative;
-      &:after {
+
+      &::after {
         @include mobile-exam-border(-1em);
+
         left: -1em;
       }
-      &:before {
+
+      &::before {
         @include mobile-exam-border(1em);
+
         right: -1em;
       }
     }
 
     li:first-child .event.exam {
-      &:after {
+      &::after {
         display: none;
       }
-      &:before {
+
+      &::before {
         display: none;
       }
     }
@@ -115,7 +136,8 @@ $tablist-single-row: min-width 28.75em;
   padding: 0;
 }
 
-.event, .enrollment {
+.event,
+.enrollment {
 
   $item-height: 200px;
   $child-item-size: 80px;
@@ -128,11 +150,13 @@ $tablist-single-row: min-width 28.75em;
 
   .box-data__title {
     @include font-size($base-font-size);
+
     padding: 0.3em 0;
   }
 
   .box-data__content {
     @include font-size($base-font-size);
+
     color: $gray;
   }
 
@@ -181,10 +205,12 @@ $tablist-single-row: min-width 28.75em;
     &--compact {
       display: inline-block;
     }
+
     &--full {
       @include breakpoint($mobile-only) {
         margin-top: 0.5em;
       }
+
       @include breakpoint($small) {
         position: absolute;
         bottom: 0;
@@ -196,10 +222,13 @@ $tablist-single-row: min-width 28.75em;
       border-bottom: 1px solid $lightsilver;
       border-top: 1px solid $lightsilver;
       font-weight: 600;
+
       a {
         @include font-size(14px);
+
         display: block;
       }
+
       .icon--arrow-right {
         float: right;
       }
@@ -217,15 +246,16 @@ $tablist-single-row: min-width 28.75em;
 
   .event-location__links {
     white-space: nowrap;
+
     > *:first-child {
       margin-right: 0.5em;
     }
   }
 
   .feed-item--child & {
-
     @include breakpoint($small) {
       padding-left: 1.5em;
+
       @include border-left;
     }
 
@@ -234,11 +264,13 @@ $tablist-single-row: min-width 28.75em;
       width: 20%;
       max-width: $child-item-size;
     }
+
     .info-container {
       height: $child-item-size;
       padding-bottom: 0;
       width: 70%;
     }
+
     .course-info {
       position: static;
     }
@@ -257,11 +289,13 @@ $tablist-single-row: min-width 28.75em;
 
   &--cancelled {
     @extend .enrollment-tag;
+
     background-color: $brown;
   }
 
   &--official {
     @extend .enrollment-tag;
+
     background-color: $green;
   }
 }
@@ -284,11 +318,13 @@ $tablist-single-row: min-width 28.75em;
 .feed-item--last-child {
   padding-bottom: 1em;
   margin-bottom: 1em;
+
   @include border-bottom;
 }
 
 .week-feed-actions {
   @include clearfix;
+
   button {
     float: left;
     margin-right: 1em;
@@ -299,6 +335,7 @@ $tablist-single-row: min-width 28.75em;
   @extend .weekfeed__sub-tab;
 
   padding: 0;
+
   @include breakpoint($tablist-multi-row) {
     flex: 10 1 auto;
     margin-left: none;
@@ -327,7 +364,8 @@ $tablist-single-row: min-width 28.75em;
     right: 0 !important;
     max-width: none !important;
 
-    &::before, &::after {
+    &::before,
+    &::after {
       transform: translate(50%, 0);
       right: 50% !important;
     }
@@ -336,7 +374,8 @@ $tablist-single-row: min-width 28.75em;
   @include breakpoint($tablist-single-row) {
     width: 375px;
 
-    &::before, &::after {
+    &::before,
+    &::after {
       left: auto;
       right: 1em;
     }
@@ -350,6 +389,7 @@ $tablist-single-row: min-width 28.75em;
 .subscribe-events-popover__link {
   @include border-bottom;
   @include font-size(13px);
+
   color: $silver;
   padding: 1em;
   font-weight: 600;
@@ -366,20 +406,6 @@ $tablist-single-row: min-width 28.75em;
 
 .subscribe-events-popover__message {
   margin-left: 1em;
-}
-
-.subscribe-events-popover__instructions {
-  a {
-    margin-right: 1em;
-  }
-
-  &__intro {
-    margin-bottom: 0.5em;
-  }
-
-  &__optime {
-    margin-bottom: 1.5em;
-  }
 }
 
 .week-feed-items {
@@ -412,9 +438,8 @@ $tablist-single-row: min-width 28.75em;
 
 .week-feed-calendar__extra-buttons {
   position: absolute;
-  top: 0px;
-  right: 0px;
-
+  top: 0;
+  right: 0;
   display: flex;
 }
 

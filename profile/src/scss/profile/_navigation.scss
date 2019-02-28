@@ -32,6 +32,7 @@ $navigationHeight: 60px;
 
   .wrapper {
     height: 100%;
+
     @include breakpoint($small) {
       padding: 0 1em;
     }
@@ -52,7 +53,7 @@ $navigationHeight: 60px;
           font-size: 0;
           padding: 0;
 
-          &:after {
+          &::after {
             @include icon($icon-home);
             @include font-size(16px);
           }
@@ -64,6 +65,7 @@ $navigationHeight: 60px;
 
 .navigation-right {
   @include vertically-center;
+
   display: flex;
   right: 1em;
 

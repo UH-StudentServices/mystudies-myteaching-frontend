@@ -85,18 +85,17 @@ $horizontal-tab-padding: 0.4em;
 .tab-set {
   display: flex;
   align-items: flex-start;
-
   text-transform: uppercase;
   font-weight: 600;
 
   @keyframes active-in {
-    from {border-color: $lightsilver;}
-    to {border-color: $darkblue;}
+    from { border-color: $lightsilver; }
+    to { border-color: $darkblue; }
   }
 
   @keyframes active-out {
-    from {border-color: $darkblue;}
-    to {border-color: $lightsilver;}
+    from { border-color: $darkblue; }
+    to { border-color: $lightsilver; }
   }
 
   &__tab {

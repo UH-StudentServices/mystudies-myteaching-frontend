@@ -23,6 +23,7 @@ $degree-invalid-color: red;
 
 .degree__item {
   @extend .box-data, .border-bottom;
+
   min-height: 94px;
   padding-top: 15px;
   position: relative;
@@ -39,8 +40,9 @@ $degree-invalid-color: red;
 
     .degree__container {
       width: 80%;
+
       > * {
-        margin-bottom: 3px
+        margin-bottom: 3px;
       }
     }
 
@@ -54,7 +56,8 @@ $degree-invalid-color: red;
       right: 3em;
     }
 
-    input, textarea {
+    input,
+    textarea {
       &.ng-invalid {
         outline: 2px solid $degree-invalid-color;
       }
@@ -64,11 +67,14 @@ $degree-invalid-color: red;
 
 .degree__lyre {
   @extend .box-data__left;
+
   background-color: white;
 
-  &:before {
-    font-family: hy-icons;
+  &::before {
+    font-family: "hy-icons";
+
     @include vertically-center;
+
     left: 0;
     height: 50px;
     width: 55px;
@@ -80,12 +86,15 @@ $degree-invalid-color: red;
 
 .degree__lyre--edit {
   @extend .box-data__left;
+
   background: rgba(0, 0, 0, 0);
   margin: 0 15px 0 15px;
 
-  &:before {
+  &::before {
     font-family: hy-icons;
+
     @include vertically-center;
+
     left: 0;
     height: 50px;
     width: 55px;
@@ -100,7 +109,7 @@ $degree-invalid-color: red;
   margin-left: 1em;
   margin-top: 0.5em;
 
-  &:before {
+  &::before {
     content: $icon-drag;
     font-size: 2rem;
     font-family: "hy-icons";
@@ -117,7 +126,7 @@ $degree-invalid-color: red;
 }
 
 .degree__institution {
-  @extend .box-data__content
+  @extend .box-data__content;
 }
 
 .degree__description {

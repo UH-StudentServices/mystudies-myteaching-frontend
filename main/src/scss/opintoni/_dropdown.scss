@@ -20,6 +20,7 @@
   @include border;
 
   background-color: $white;
+
   a {
     color: $blue;
   }
@@ -27,6 +28,7 @@
   li {
     padding: 1em;
     font-size: 0.8em;
+
     &:last-child {
       border: 0;
     }
@@ -39,6 +41,7 @@
   li.divider-with-margin {
     padding: 1em 0;
     margin: 0 1em;
+
     @include border-bottom;
   }
 

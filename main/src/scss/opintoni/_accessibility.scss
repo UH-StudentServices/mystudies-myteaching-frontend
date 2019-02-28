@@ -15,20 +15,21 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
- /*
-  * These rules are from this page: http://www.cssmojo.com/hide-content-from-sighted-users/
-  */
+/*
+ * These rules are from this page: http://www.cssmojo.com/hide-content-from-sighted-users/
+ */
 
 .visually-hidden {
   position: absolute !important;
   clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
   clip: rect(1px, 1px, 1px, 1px);
-  padding:0 !important;
-  border:0 !important;
+  padding: 0 !important;
+  border: 0 !important;
   height: 1px !important;
   width: 1px !important;
   overflow: hidden;
 }
+
 body:hover .visually-hidden a,
 body:hover .visually-hidden input,
 body:hover .visually-hidden button {

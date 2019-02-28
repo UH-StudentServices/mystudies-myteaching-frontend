@@ -26,11 +26,11 @@ $minus-half-width-mobile: calc(-0.5 * #{$tooltip-width-mobile});
 .help-icon {
   font-size: $icon-size;
   position: relative;
-  display:inline-block;
+  display: inline-block;
   top: 50%;
 }
 
-.help-icon-icon:after {
+.help-icon-icon::after {
   vertical-align: middle;
 }
 
@@ -52,7 +52,8 @@ $minus-half-width-mobile: calc(-0.5 * #{$tooltip-width-mobile});
       left: $minus-half-width;
       right: auto !important;
 
-      &::before, &::after {
+      &::before,
+      &::after {
         left: $half-width !important;
         right: auto !important;
       }
@@ -67,7 +68,8 @@ $minus-half-width-mobile: calc(-0.5 * #{$tooltip-width-mobile});
     left: -15px;
     right: auto !important;
 
-    &::before, &::after {
+    &::before,
+    &::after {
       left: 1em !important;
       right: auto !important;
     }
@@ -77,7 +79,8 @@ $minus-half-width-mobile: calc(-0.5 * #{$tooltip-width-mobile});
     left: $minus-half-width-mobile;
     right: auto !important;
 
-    &::before, &::after {
+    &::before,
+    &::after {
       left: $half-width-mobile !important;
       right: auto !important;
     }
@@ -107,6 +110,7 @@ $minus-half-width-mobile: calc(-0.5 * #{$tooltip-width-mobile});
 
 .help-icon__popover {
   @include font-size(13px);
+
   padding: 1em;
   text-align: left;
 

@@ -43,18 +43,10 @@
       font-weight: 600;
     }
 
-    .shared-links__expires {
-
-    }
-
     .shared-links__remove_link_button {
       position: absolute;
       top: 0;
       right: -1em;
-    }
-
-    .shared-links__copy2clipboard-container {
-
     }
   }
 }
@@ -91,6 +83,7 @@
     width: 3em;
     color: $white;
     background-color: $blue;
+
     @include all-link-states {
       color: $white;
     }
@@ -99,13 +92,14 @@
       position: absolute;
       top: 50%;
       left: 50%;
+
       @include transform(translate(-50%, -50%));
     }
 
     &[disabled] {
       color: grey;
       background-color: white;
-      border: 1px solid grey ;
+      border: 1px solid grey;
       cursor: auto;
     }
   }

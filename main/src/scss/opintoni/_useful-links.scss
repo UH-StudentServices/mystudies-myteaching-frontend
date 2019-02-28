@@ -25,12 +25,14 @@
 
 .useful-links__title {
   @include font-size(20px);
+
   display: inline-block;
   margin-right: 0.5em;
   word-wrap: break-word;
 }
 
-.useful-links__list, .useful-link {
+.useful-links__list,
+.useful-link {
   display: block;
   position: relative;
   margin-bottom: 0;
@@ -42,7 +44,8 @@
   // mutually exclusive ng-hide and ng-show rendering conditions
   // simultaneously -- disabling transition-duration fixes this
   // for some browsers
-  [ng-hide], [ng-show] { transition-duration: 0s; }
+  [ng-hide],
+  [ng-show] { transition-duration: 0s; }
 }
 
 .useful-links__edit {
@@ -57,9 +60,53 @@
   position: absolute;
   top: 50%;
   right: 1em;
+
   @include transform(translate(0, -50%));
+
   &:hover {
     color: $silver;
+  }
+}
+
+.useful-link-title {
+  @include border;
+  @include tab-shadow;
+  @include ng-show-fade;
+
+  background-color: $white;
+  position: absolute;
+  margin-top: -0.5em;
+  margin-left: 0.5em;
+  padding: 0.5em;
+  width: 85%;
+  z-index: 2;
+
+  input {
+    border: 0;
+    width: 100%;
+    color: $blue;
+  }
+}
+
+.new-useful-link__add-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 3em;
+  color: $white;
+  background-color: $blue;
+
+  @include all-link-states {
+    color: $white;
+  }
+
+  i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    @include transform(translate(-50%, -50%));
   }
 }
 
@@ -77,6 +124,7 @@
     border: 1px solid $mediumsilver;
     background-color: transparent;
     width: 100%;
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -91,7 +139,6 @@
   label {
     font-size: 0.9em;
   }
-
 }
 
 .useful-links__edit-link {
@@ -108,7 +155,7 @@
     width: 15px;
   }
 
-  &:after {
+  &::after {
     display: none;
   }
 
@@ -116,6 +163,7 @@
     display: table-cell;
     vertical-align: middle;
     padding-left: 20px;
+
     @include breakpoint($mobile-only) {
       margin-left: 0;
     }
@@ -130,6 +178,7 @@
     span {
       cursor: pointer;
       background-color: $gray;
+
       i {
         display: inline;
       }
@@ -147,63 +196,9 @@
   }
 }
 
-.new-useful-link {
-  position: relative;
-  padding: 0.2em 0 0.2em 1em;
-  margin-bottom: 2px;
-
-  form {
-    display: inline;
-    margin: 0;
-    padding: 0;
-  }
-
-  input {
-    border: 0;
-    width: 70%;
-  }
-}
-
-.new-useful-link__add-button {
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 100%;
-  width: 3em;
-  color: $white;
-  background-color: $blue;
-  @include all-link-states {
-    color: $white;
-  }
-
-  i {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    @include transform(translate(-50%, -50%));
-  }
-}
-
-.useful-link-title {
-  @include border;
-  @include tab-shadow;
-  @include ng-show-fade;
-  background-color: $white;
-  position: absolute;
-  margin-top: -0.5em;
-  margin-left: 0.5em;
-  padding: 0.5em;
-  width: 85%;
-  z-index: 2;
-  input {
-    border: 0;
-    width: 100%;
-    color: $blue;
-  }
-}
-
 .useful-link-title__arrow {
   @include triangle(10px);
+
   position: absolute;
   top: 0;
   display: block;
@@ -213,6 +208,7 @@
 
 .useful-links__fixed-link-button {
   @include button;
+
   display: block;
   padding-left: 10px;
   position: relative;
@@ -220,6 +216,7 @@
 
 .useful-links__fixed-link-title {
   @include font-size(18px);
+
   font-weight: bold;
   text-transform: uppercase;
   margin-bottom: 0;
@@ -227,5 +224,6 @@
 
 .useful-links__fixed-link-info {
   @include font-family-bodytext;
+
   margin-bottom: 0;
 }

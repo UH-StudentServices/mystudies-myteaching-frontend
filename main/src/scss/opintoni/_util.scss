@@ -16,7 +16,7 @@
  */
 
 @mixin capitalize-first-letter($display) {
-  &:first-letter {
+  &::first-letter {
     text-transform: capitalize;
   }
 
@@ -24,10 +24,10 @@
 }
 
 @mixin linear-gradient-from-left($from-color, $to-color) {
-  background: -webkit-linear-gradient(left, $from-color , $to-color); /* For Safari 5.1 to 6.0 */
+  background: -webkit-linear-gradient(left, $from-color, $to-color); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(right, $from-color, $to-color); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(right, $from-color, $to-color); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to right, $from-color , $to-color); /* Standard syntax */
+  background: linear-gradient(to right, $from-color, $to-color); /* Standard syntax */
 }
 
 @include breakpoint($mobile-only) {

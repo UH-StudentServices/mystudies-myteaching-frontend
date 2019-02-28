@@ -22,21 +22,24 @@ button {
   border: none;
 }
 
-a.disabled, button.disabled{
+a.disabled,
+button.disabled {
   color: grey;
   background-color: white;
   border: 1px solid grey;
   cursor: auto;
 }
 
-a.disabled:hover, button.disabled:hover {
+a.disabled:hover,
+button.disabled:hover {
   color: grey;
   background-color: white;
   border: 1px solid grey;
   cursor: auto;
 }
 
-button.button--light, %button--light {
+button.button--light,
+%button--light {
   color: $blue;
   border: $button_border;
   background-color: transparent;
@@ -54,6 +57,7 @@ button.button--icon {
   padding: 0;
   font-size: 1.2rem;
 }
+
 button.button--icon:hover {
   background-color: transparent;
 }

@@ -16,9 +16,9 @@
  */
 
 .office-hours {
-
   &__title {
     @include font-size(20px);
+
     display: inline-block;
     margin-right: 0.5em;
     word-wrap: break-word;
@@ -37,21 +37,21 @@
   &__selected {
     position: relative;
     word-wrap: break-word;
-
-    padding: 0px 10px 10px 0px;
+    padding: 0 10px 10px 0;
     text-transform: uppercase;
     font-weight: bold;
 
     .selected__remove {
       @include vertically-center;
+
       color: $blue;
-      right: 0px;
+      right: 0;
       font-size: 1em;
     }
   }
 
   &__description {
-    padding: 10px 0px 10px 0px;
+    padding: 10px 0 10px 0;
     white-space: pre-wrap;
   }
 
@@ -108,13 +108,13 @@
   }
 
   &__modal-body {
-
     label {
       color: white;
       font-size: 1rem;
       line-height: 1.6;
     }
   }
+
   &__expired {
     color: $orange;
   }

@@ -29,7 +29,8 @@
   &__text {
     margin-top: 0.2em;
 
-    .ne-image, .ne-video {
+    .ne-image,
+    .ne-video {
       white-space: normal;
     }
 
@@ -37,9 +38,11 @@
       max-height: none;
     }
 
-    .ne-image-wrapper, .ne-video-player {
+    .ne-image-wrapper,
+    .ne-video-player {
       background-color: $white;
     }
+
     &--edit {
       margin-top: 0.2em;
       height: 200px;
@@ -50,7 +53,6 @@
     max-width: 100%;
   }
 }
-
 
 .add-free-text-content {
   position: relative;
@@ -85,4 +87,3 @@
     right: 0;
   }
 }
-

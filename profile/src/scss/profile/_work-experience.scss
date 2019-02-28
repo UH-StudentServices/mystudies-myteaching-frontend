@@ -47,7 +47,7 @@ $work-experience-description-edit-height: 82px;
 
   @include user-select(none);
 
-  &:before {
+  &::before {
     content: $icon-drag;
     font-size: 2rem;
     color: $black;

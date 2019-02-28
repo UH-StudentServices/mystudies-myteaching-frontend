@@ -19,12 +19,12 @@
   -webkit-transform: $transform;
   -moz-transform: $transform;
   -ms-transform: $transform;
-  -transform: $transform;
+  transform: $transform;
 }
 
 @mixin triangle-with-border($size, $offset, $color : $white, $border-color : $lightsilver, $align:right) {
-
-  &:after, &:before {
+  &::after,
+  &::before {
     bottom: 100%;
     border-style: solid;
     border-left-color: transparent;
@@ -37,13 +37,14 @@
     pointer-events: none;
   }
 
-  &:after {
+  &::after {
     border-bottom-color: $color;
     border-width: $size;
+
     @include align-triangle($align, $offset);
   }
 
-  &:before {
+  &::before {
     border-bottom-color: $border-color;
     border-width: $size + 1;
 
@@ -52,10 +53,12 @@
 }
 
 @mixin align-triangle($align, $offset) {
-  @if $align == "right"  {
+  @if $align == "right" {
     right: $offset;
-  } @else if $align == "left" {
-    left: $offset
+  }
+
+  @if $align == "left" {
+    left: $offset;
   }
 }
 
@@ -87,21 +90,23 @@
 }
 
 @mixin clearfix() {
-  &:before,
-  &:after {
+  &::before,
+  &::after {
     content: "";
     display: table;
   }
-  &:after {
+
+  &::after {
     clear: both;
   }
 }
 
 // Rescued from the old styleguide TODO: include these better into the code base
 @mixin button {
+  @include font-size(15px);
+
   transition-duration: 0.1s;
   transition-property: all;
-  @include font-size(15px);
   background-color: $blue;
   border: none;
   color: $white;
@@ -113,86 +118,93 @@
     color: $white;
   }
 
-  &:before, &:after {
+  &::before,
+  &::after {
     transition-duration: 0.1s;
     transition-property: all;
   }
 }
 
 @mixin button-internal {
-	@include border-side(bottom);
-	@include font-family-main;
-	@include font-size(15px);
-	display: block;
-	line-height: normal;
-	overflow: hidden;
-	padding-bottom: 0.8em;
-	padding-left: 0;
-	padding-right: 2em;
-	padding-top: 0.8em;
-	position: relative;
+  @include border-side(bottom);
+  @include font-family-main;
+  @include font-size(15px);
 
-	&:after {
-		@include icon($icon-link-arrow);
-		color: inherit;
-		font-weight: 200;
-		height: 100%;
-		margin-top: -0.5em;
-		position: absolute;
-		right: 0;
-		top: 50%;
-	}
+  display: block;
+  line-height: normal;
+  overflow: hidden;
+  padding-bottom: 0.8em;
+  padding-left: 0;
+  padding-right: 2em;
+  padding-top: 0.8em;
+  position: relative;
 
-	a:hover &:after,
-	&:hover:after {
-		color: $darkblue;
-	}
+  &::after {
+    @include icon($icon-link-arrow);
+
+    color: inherit;
+    font-weight: 200;
+    height: 100%;
+    margin-top: -0.5em;
+    position: absolute;
+    right: 0;
+    top: 50%;
+  }
+
+  &:hover::after,
+  a:hover &::after {
+    color: $darkblue;
+  }
 }
 
 @mixin button-internal--dark {
-	@include button-internal;
-	background: $blue;
-	border: none;
-	color: $white;
-	overflow: visible;
-	padding-left: 1em;
-	padding-right: 3em;
+  @include button-internal;
 
-	&:after {
-		transition-duration: 0.1s;
-		transition-property: padding;
-		background-color: $blue--active;
-		color: $white;
-		line-height: 2.8em;
-		margin-top: 0;
-		padding-left: 1em;
-		padding-right: 1em;
-		top: 0;
-	}
+  background: $blue;
+  border: none;
+  color: $white;
+  overflow: visible;
+  padding-left: 1em;
+  padding-right: 3em;
 
-	&:hover {
-		background-color: $darkblue;
-		color: $white;
+  &::after {
+    transition-duration: 0.1s;
+    transition-property: padding;
+    background-color: $blue--active;
+    color: $white;
+    line-height: 2.8em;
+    margin-top: 0;
+    padding-left: 1em;
+    padding-right: 1em;
+    top: 0;
+  }
 
-		a:hover &:after,
-		&:after {
-			background: $darkblue--active;
-			color: $white;
-		}
-	}
+  &:hover {
+    background-color: $darkblue;
+    color: $white;
+
+    &::after,
+    a:hover &::after {
+      background: $darkblue--active;
+      color: $white;
+    }
+  }
 }
 
 // Rescue ends
 
 @mixin input-placeholder {
-  ::-webkit-input-placeholder {@content}
-  :-moz-placeholder           {@content}
-  ::-moz-placeholder          {@content}
-  :-ms-input-placeholder      {@content}
+  ::-webkit-input-placeholder { @content; }
+  ::-moz-placeholder { @content; }
+  :-moz-placeholder { @content; }
+  :-ms-input-placeholder { @content; }
 }
 
 @mixin all-link-states {
-  &:link, &:hover, &:active, &:visited {@content}
+  &:link,
+  &:hover,
+  &:active,
+  &:visited { @content; }
 }
 
 @mixin default-focus-outline {
@@ -206,6 +218,6 @@
 }
 
 @mixin default-grid-layout {
-  .l-content-primary-wrapper    { @include grid-span(8, 1); }
-  .l-content-secondary-wrapper  { @include grid-span(4, 9); }
+  .l-content-primary-wrapper { @include grid-span(8, 1); }
+  .l-content-secondary-wrapper { @include grid-span(4, 9); }
 }

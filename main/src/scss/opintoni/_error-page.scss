@@ -16,8 +16,9 @@
  */
 
 .error-page__title {
-  padding: 1em 0;
   @include border-bottom();
+
+  padding: 1em 0;
 }
 
 .error-page__description {
@@ -29,6 +30,7 @@
   margin-top: 1em;
   float: right;
   display: none;
+
   @include breakpoint($medium) {
     display: inline;
   }
