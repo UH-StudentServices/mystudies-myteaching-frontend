@@ -19,15 +19,18 @@
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  word-break: break-word;
 
   .component-header__actions {
-    text-align: right;
-    margin-left: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
     font-size: 1.2em;
     min-width: 96px;
 
     > * {
-      margin-left: 1em;
+      padding-left: 1em;
     }
   }
 }

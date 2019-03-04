@@ -21,6 +21,8 @@
 
 .profile:not(.is-preview) .profile-section {
   .ui-component__title {
+    text-align: left;
+
     &.is-editable {
       display: inline-block;
       padding-right: 2em;
