@@ -88,6 +88,23 @@
   }
 }
 
+.new-useful-link {
+  position: relative;
+  padding: 0.2em 0 0.2em 1em;
+  margin-bottom: 2px;
+
+  form {
+    display: inline;
+    margin: 0;
+    padding: 0;
+  }
+
+  input {
+    border: 0;
+    width: 70%;
+  }
+}
+
 .new-useful-link__add-button {
   position: absolute;
   right: 0;

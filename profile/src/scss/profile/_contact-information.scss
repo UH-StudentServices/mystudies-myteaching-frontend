@@ -58,6 +58,10 @@ $free-link-bg: $black;
     margin-bottom: 1em;
   }
 
+  &__title {
+    margin-right: 0.5em;
+  }
+
   .contact-details {
     &__name {
       font-weight: 600;

@@ -21,11 +21,10 @@
                       default-text="degrees.title"
                       profile-lang="{{::profileLang}}"
                       editing="editing"></editable-heading>
-
+    <help-icon translation-key="degrees.helpText"
+               panel-align="right"
+               limit-visibility="{ visibility: 'PRIVATE', roles: ['STUDENT'] }"></help-icon>
     <div class="component-header__actions">
-      <help-icon translation-key="degrees.helpText"
-                 panel-align="right"
-                 limit-visibility="{ visibility: 'PRIVATE', roles: ['STUDENT'] }"></help-icon>
       <visibility-toggle component-id="DEGREES" section-name="{{::sectionName}}"></visibility-toggle>
       <edit-link on-edit="edit()"
         on-exit-edit="exitEdit()"
