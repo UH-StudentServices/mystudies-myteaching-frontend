@@ -27,6 +27,10 @@
       </span>
 
     </h2>
+    <help-icon ng-show="showHelp"
+               translation-key="{{::helpKey}}"
+               limit-visibility="{ visibility: 'PRIVATE', roles: ['STUDENT'] }"
+               panel-align="right"></help-icon>
 
     <div class="free-text-content__title-container--edit" ng-if="isEditing">
       <input class="free-text-content__title--edit" type="text" ng-model="freeTextContentItem.title">
@@ -42,11 +46,6 @@
           <i class="icon--trash"></i>
         </a>
       </span>
-
-      <help-icon ng-show="showHelp"
-                 translation-key="{{::helpKey}}"
-                 limit-visibility="{ visibility: 'PRIVATE', roles: ['STUDENT'] }"
-                 panel-align="right"></help-icon>
 
       <visibility-toggle component-id="FREE_TEXT_CONTENT"
                          section-name="{{::profileSection}}"
