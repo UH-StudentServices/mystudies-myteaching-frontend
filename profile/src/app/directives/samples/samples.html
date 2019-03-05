@@ -21,11 +21,10 @@
                       default-text="samples.title"
                       profile-lang="{{::profileLang}}"
                       editing="editing"></editable-heading>
-
+    <help-icon translation-key="samples.helpText"
+               panel-align="right"
+               limit-visibility="{ visibility: 'PRIVATE', roles: ['STUDENT'] }"></help-icon>
     <div class="component-header__actions">
-      <help-icon translation-key="samples.helpText"
-                 panel-align="right"
-                 limit-visibility="{ visibility: 'PRIVATE', roles: ['STUDENT'] }"></help-icon>
       <visibility-toggle component-id="SAMPLES"></visibility-toggle>
       <edit-link on-edit="edit()"
                  on-exit-edit="exitEdit()"

@@ -20,6 +20,12 @@
   display: flex;
   align-items: center;
 
+  h2,
+  h3 {
+    padding: 0;
+    margin: 0 0.5em 0 0;
+  }
+
   .component-header__actions {
     text-align: right;
     margin-left: auto;
