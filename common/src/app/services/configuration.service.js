@@ -59,8 +59,7 @@ angular.module('services.configuration', [])
       teachers: [
         {
           name: 'Eero Jukola',
-          username: 'e_jukola',
-          subject: 'faculties.H30'
+          username: 'e_jukola'
         }
       ]
     },
