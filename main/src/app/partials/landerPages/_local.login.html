@@ -33,7 +33,7 @@
            href=""
            class="button local-login__log-in"
            tabindex="0">
-           {{::user.name}}, {{::user.subject | translate}}
+           {{::user.name}}<span ng-if="user.subject">, {{::user.subject | translate}}</span>
          </a>
       </li>
     </ul>
