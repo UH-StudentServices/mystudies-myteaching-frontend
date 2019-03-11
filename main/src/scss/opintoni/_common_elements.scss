@@ -26,7 +26,8 @@ input {
   border-radius: 0;
 }
 
-a {
+a,
+button {
   cursor: pointer;
 
   @include default-focus;

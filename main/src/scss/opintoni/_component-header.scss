@@ -37,6 +37,16 @@
     > * {
       padding-left: 1em;
     }
+
+    button {
+      color: $blue;
+      text-decoration: none;
+      padding: 0;
+
+      :hover {
+        color: $darkblue;
+      }
+    }
   }
 
   .editable-heading,
