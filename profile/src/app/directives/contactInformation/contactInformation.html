@@ -17,13 +17,14 @@
 
 <section class="ui-component contact-information">
   <div class="component-header">
-    <div class="contact-information__title"
-         translate translate-language="{{::profileLang}}">
-      contactInformation.title
+    <div class="contact-information__title">
+      <span translate translate-language="{{::profileLang}}">
+        contactInformation.title
+      </span>
+      <help-icon translation-key="contactInformation.helpText"
+                 panel-position="top"
+                 limit-visibility="{ visibility: 'PRIVATE', roles: ['STUDENT'] }"></help-icon>
     </div>
-    <help-icon translation-key="contactInformation.helpText"
-               panel-position="top"
-               limit-visibility="{ visibility: 'PRIVATE', roles: ['STUDENT'] }"></help-icon>
     <div class="component-header__actions">
       <visibility-toggle component-id="CONTACT_INFORMATION"></visibility-toggle>
       <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>

@@ -30,6 +30,7 @@ angular.module('directives.editableHeading', [
         componentId: '@',
         defaultText: '@',
         profileLang: '@',
+        helpKey: '@',
         editing: '<'
       },
       templateUrl: 'app/directives/editableHeading/editableHeading.html',

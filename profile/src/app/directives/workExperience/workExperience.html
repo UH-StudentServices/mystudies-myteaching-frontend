@@ -20,10 +20,8 @@
     <editable-heading component-id="WORK_EXPERIENCE"
                       default-text="workExperience.title"
                       profile-lang="{{::profileLang}}"
+                      help-key="workExperience.helpText"
                       editing="editing"></editable-heading>
-    <help-icon translation-key="workExperience.helpText"
-               panel-align="right"
-               limit-visibility="{ visibility: 'PRIVATE', roles: ['STUDENT'] }"></help-icon>
     <div class="component-header__actions">
       <visibility-toggle component-id="WORK_EXPERIENCE" section-name="{{::sectionName}}"></visibility-toggle>
       <edit-link on-edit="edit()"

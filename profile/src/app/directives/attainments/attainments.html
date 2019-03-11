@@ -20,10 +20,8 @@
     <editable-heading component-id="ATTAINMENTS"
                       default-text="attainments.attainments"
                       profile-lang="{{::profileLang}}"
+                      help-key="attainments.helpText"
                       editing="editing"></editable-heading>
-    <help-icon translation-key="attainments.helpText"
-               panel-align="right"
-               limit-visibility="{ visibility: 'PRIVATE', roles: ['STUDENT'] }"></help-icon>
     <div ng-if="editing" class="study-attainments__grades-visibility-toggle-container">
       <toggle-switch ng-model="showGrades"/><span translate="attainments.showGrades"></span>
     </div>
