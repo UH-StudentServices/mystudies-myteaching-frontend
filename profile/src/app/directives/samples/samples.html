@@ -20,10 +20,8 @@
     <editable-heading component-id="SAMPLES"
                       default-text="samples.title"
                       profile-lang="{{::profileLang}}"
+                      help-key="samples.helpText"
                       editing="editing"></editable-heading>
-    <help-icon translation-key="samples.helpText"
-               panel-align="right"
-               limit-visibility="{ visibility: 'PRIVATE', roles: ['STUDENT'] }"></help-icon>
     <div class="component-header__actions">
       <visibility-toggle component-id="SAMPLES"></visibility-toggle>
       <edit-link on-edit="edit()"

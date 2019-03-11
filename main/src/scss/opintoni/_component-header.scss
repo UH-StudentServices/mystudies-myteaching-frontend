@@ -33,10 +33,15 @@
     flex-wrap: nowrap;
     justify-content: flex-end;
     font-size: 1.2em;
-    min-width: 96px;
 
     > * {
       padding-left: 1em;
     }
+  }
+
+  .editable-heading,
+  .static-heading {
+    display: flex;
+    align-items: center;
   }
 }

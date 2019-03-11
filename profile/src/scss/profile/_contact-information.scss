@@ -59,7 +59,9 @@ $free-link-bg: $black;
   }
 
   &__title {
-    margin-right: 0.5em;
+    .help-icon {
+      margin-left: 0.5em;
+    }
   }
 
   .contact-details {

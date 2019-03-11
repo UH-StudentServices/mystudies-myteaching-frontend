@@ -20,10 +20,8 @@
     <editable-heading component-id="LANGUAGE_PROFICIENCIES"
                       default-text="languages.title"
                       profile-lang="{{::profileLang}}"
+                      help-key="languages.helpText"
                       editing="editing"></editable-heading>
-    <help-icon translation-key="languages.helpText"
-               panel-align="right"
-               limit-visibility="{ visibility: 'PRIVATE', roles: ['STUDENT'] }"></help-icon>
     <div class="component-header__actions">
       <visibility-toggle component-id="LANGUAGE_PROFICIENCIES" section-name="{{::sectionName}}"></visibility-toggle>
       <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>

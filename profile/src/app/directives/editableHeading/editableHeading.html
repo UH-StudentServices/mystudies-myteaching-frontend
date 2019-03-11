@@ -16,17 +16,17 @@
   -->
 
 
-<div>
-  <div ng-if="editing">
-    <input class="ui-component__title--edit"
-           type="text"
+<div class="editable-heading">
+  <div ng-if="editing" class="ui-component__title--edit">
+    <input type="text"
            ng-model="component.heading"
            ui-keypress="{'enter':'saveHeading()'}">
   </div>
-  <div ng-if="!editing">
-    <h2 class="ui-component__title">
-      {{::component.heading}}
-    </h2>
-  </div>
+  <h2 ng-if="!editing" class="ui-component__title">
+    {{::component.heading}}
+  </h2>
+  <help-icon translation-key="{{::helpKey}}"
+             panel-align="right"
+             limit-visibility="{ visibility: 'PRIVATE', roles: ['STUDENT'] }"></help-icon>
 </div>
 

@@ -19,10 +19,6 @@
   position: relative;
 
   &__title-container--edit {
-    width: 80%;
-  }
-
-  &__title--edit {
     @extend .ui-component__title--edit;
   }
 
@@ -79,5 +75,9 @@
 
   &__title {
     @extend .add-favorite-button__title;
+
+    .hide-mobile-only {
+      margin-right: 0.5em;
+    }
   }
 }

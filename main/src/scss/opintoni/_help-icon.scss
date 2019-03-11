@@ -28,6 +28,10 @@ $minus-half-width-mobile: calc(-0.5 * #{$tooltip-width-mobile});
   position: relative;
   display: inline-block;
   top: 50%;
+  line-height: 1.15;
+  font-weight: normal;
+  letter-spacing: normal;
+  text-transform: none;
 }
 
 .help-icon-icon::after {
