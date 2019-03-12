@@ -22,6 +22,7 @@ angular.module('directives.intro', [
   'services.profileBackground',
   'directives.editLink',
   'directives.chooseBackground',
+  'directives.changeAvatar',
   'angular-flexslider',
   'ngFileUpload',
   'profileAnalytics'

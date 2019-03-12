@@ -16,7 +16,7 @@
 -->
 
 <div>
-  <div ng-show="!cameraOn">
+  <div>
     <div ng-show="!showAvatarChangeType">
 
       <avatar-image class="user-avatar__large" img-src="session.avatarUrl" img-alt="session.name"></avatar-image>
@@ -27,19 +27,7 @@
     </div>
     <div class="avatar-change-type" ng-show="showAvatarChangeType">
       <upload-image upload-callback="upload" cancel-callback="cancelUpload" crop-to-square="true"></upload-image>
-      <span ng-show="supportsCamera">&nbsp;| <a tabindex="0" ng-click="startCamera()" translate="userSettings.changeAvatar.takePicture"></a></span>
       | <a tabindex="0" ng-click="deleteUserAvatar()" translate="userSettings.changeAvatar.useDefault"></a>
-    </div>
-  </div>
-  <div ng-show="cameraOn">
-    <div class="webcam-container">
-      <div class="camera-actions">
-        <a tabindex="0" class="tag" ng-click="takeSnapshot()" translate="userSettings.changeAvatar.takePicture"></a>
-        <a tabindex="0" ng-click="stopCamera()" translate="userSettings.changeAvatar.cancelPicture"></a>
-      </div>
-      <webcam channel="avatarChannel" on-streaming="onStreaming()">
-        <div class="frame"></div>
-      </webcam>
     </div>
   </div>
 </div>

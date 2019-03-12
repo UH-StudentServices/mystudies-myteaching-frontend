@@ -236,11 +236,18 @@
     "privacyMessage": "The uploaded picture is automatically used in other UH services, and the picture will have a public link."
   },
   "pageBanner": {
+    "title": "Change header image",
     "chooseDefaultBackground": "Choose from default backgrounds",
     "uploadFile": "Upload file",
     "helpText": {
       "introduction": "Beside your profile picture, you may write a short description of your portfolio. In this section, you can also provide a title topic for your portfolio. Remember to be specific and include your interests: things that are important to you and your studies, and words that describe your learning path. Writing only “a student at the University of Helsinki” or “a student of field x”, so it is recommended to be more specific.",
       "chooseBackground": "You can change the header image. Click on the the camera icon and select “upload file” or “choose from default backgrounds”. Select the picture and press “save”. "
+    },
+    "changeAvatar": {
+      "title": "Change profile picture",
+      "uploadFile": "Upload file",
+      "useDefault": "Use default picture",
+      "cancelPicture": "Cancel"
     }
   },
   "files": {

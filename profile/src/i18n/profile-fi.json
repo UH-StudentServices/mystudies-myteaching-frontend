@@ -236,11 +236,18 @@
     "privacyMessage": "Lataamaasi kuvaa käytetään automaattisesti myös muissa HY:n palveluissa ja kuvalle muodostuu julkinen linkki."
   },
   "pageBanner": {
+    "title": "Vaihda bannerikuva",
     "chooseDefaultBackground": "Valitse vakiokuvista",
     "uploadFile": "Lataa tiedosto",
     "helpText": {
       "introduction": "Voit kirjoittaa profiilikuvan viereen esimerkiksi lyhyen esittelyn itsestäsi. Voit tässä osiossa myös antaa portfoliollesi jonkinlaisen otsikon. Muista olla spesifi ja ottaa mukaan esim. kiinnostuksen kohteita, itsellesi tärkeitä asioita tai kuvailevia sanoja omasta polustasi. \"Helsingin yliopiston opiskelija\" tai \"x-alan opiskelija\" voi jäädä turhan yleiselle tasolle.",
       "chooseBackground": "Voit vaihtaa bannerikuvan. Klikkaa kameran kuvaa ja valitse joko “lataa tiedosto” tai “valitse vakiokuvista”. Valitse kuva ja tallenna."
+    },
+    "changeAvatar": {
+      "title": "Vaihda profiilikuva",
+      "uploadFile": "Lataa tiedosto",
+      "useDefault": "Käytä oletuskuvaa",
+      "cancelPicture": "Peruuta"
     }
   },
   "files": {

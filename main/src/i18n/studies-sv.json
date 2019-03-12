@@ -320,6 +320,7 @@
     "close": "Stäng sök"
   },
   "pageBanner": {
+    "changeBackground": "Ändra bannerbilden",
     "giveFeedback": "Ge feedback",
     "newsButtonLabel": "Läs mera",
     "chooseDefaultBackground": "Välj av standardbilder"

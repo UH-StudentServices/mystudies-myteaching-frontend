@@ -122,7 +122,7 @@ $time-color: rgb(109, 109, 109);
 
   @include breakpoint($small) {
     top: $user-component-height-default;
-    width: 330px;
+    width: 285px;
     min-width: 15em;
   }
 }

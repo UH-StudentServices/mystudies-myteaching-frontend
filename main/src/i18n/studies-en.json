@@ -320,6 +320,7 @@
     "close": "Close search"
   },
   "pageBanner": {
+    "changeBackground": "Change header image",
     "giveFeedback": "Give feedback",
     "newsButtonLabel": "Read more",
     "chooseDefaultBackground": "Choose from default backgrounds"

@@ -1,0 +1,64 @@
+/*
+ * This file is part of MystudiesMyteaching application.
+ *
+ * MystudiesMyteaching application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * MystudiesMyteaching application is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@mixin change-avatar-button-icon($icon, $size) {
+  display: block;
+
+  &::before {
+    font-size: $size;
+
+    @include icon($icon);
+  }
+}
+
+.change-avatar__button-icon--camera {
+  @include change-avatar-button-icon("\EA07", 24px);
+
+  position: relative;
+  left: 13px;
+  top: 14px;
+}
+
+.change-avatar__container {
+  display: flex;
+  position: relative;
+
+  .dropdown-content {
+    @include triangle-with-border(12px, 12px, $color : $white, $border-color : $lightsilver, $align:left);
+    @include font-size(13px);
+
+    text-transform: none;
+    top: 65px;
+    width: 240px;
+    padding: 1em;
+    white-space: nowrap;
+  }
+}
+
+.change-avatar__button {
+  width: 50px;
+  height: 50px;
+  display: block;
+  background-color: white;
+  z-index: 1;
+}
+
+.change-avatar__help-icon {
+  margin-left: 0.5em;
+  margin-top: auto;
+  margin-bottom: auto;
+}

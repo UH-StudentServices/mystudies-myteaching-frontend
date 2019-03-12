@@ -15,48 +15,34 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.userMenu.settings.avatar', [
+angular.module('directives.changeAvatar', [
   'directives.imgLoad',
-  'directives.uploadImage'
+  'directives.uploadImage',
+  'directives.avatarImage'
 ])
-
-  .directive('avatar', function (userAvatarUpdatedEvent,
+  .directive('changeAvatar', function (userAvatarUpdatedEvent,
     UserSettingsService,
     AnalyticsService) {
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'app/directives/header/userMenu/settings/userMenu.settings.avatar.html',
+      templateUrl: 'app/directives/avatarImage/changeAvatar.html',
       link: function ($scope) {
-        function reset() {
-          $scope.resetMenu();
-        }
-
-        $scope.showAvatarChangeType = false;
-
-        $scope.toggleChangeAvatar = function () {
-          $scope.showAvatarChangeType = !$scope.showAvatarChangeType;
-        };
-
         $scope.deleteUserAvatar = function () {
           UserSettingsService.deleteUserAvatar()
             .then(function deleteUserAvatarSuccess() {
-              AnalyticsService.trackRemoveAvatar();
               $scope.$emit(userAvatarUpdatedEvent);
-              $scope.resetMenu();
+              AnalyticsService.trackEvent(AnalyticsService.ec.PROFILE_PICTURE,
+                AnalyticsService.ea.RESET);
             });
         };
 
-        $scope.upload = function (image, imageSourceMedia) {
+        $scope.upload = function (image) {
           return UserSettingsService.updateUserAvatar(image).then(function () {
-            AnalyticsService.trackAddAvatar(imageSourceMedia);
-            reset();
             $scope.$emit(userAvatarUpdatedEvent);
+            AnalyticsService.trackEvent(AnalyticsService.ec.PROFILE_PICTURE,
+              AnalyticsService.ea.UPLOAD);
           });
-        };
-
-        $scope.cancelUpload = function () {
-          reset();
         };
       }
     };

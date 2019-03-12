@@ -103,6 +103,7 @@ module.exports = function (grunt) {
         }
       },
       options: {
+        online: true, // speed up startup by 30 sec
         watchTask: true,
         host: 'local.student.helsinki.fi',
         open: false,

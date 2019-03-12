@@ -31,7 +31,8 @@ angular.module('services.state', [
     var profileRole = ProfileRoleService.getActiveRole();
 
     function hasProfilePathInSessionDescriptor(session, lang, userpath) {
-      if (session.profilePathsByRoleAndLang[profileRole]) {
+      if (session.profilePathsByRoleAndLang[profileRole]
+        && session.profilePathsByRoleAndLang[profileRole][lang]) {
         return session.profilePathsByRoleAndLang[profileRole][lang][0] === ['', lang, userpath].join('/');
       }
       return false;

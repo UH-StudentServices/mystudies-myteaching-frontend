@@ -81,7 +81,8 @@ angular.module('profileAnalytics', ['provider.analyticsAccounts'])
       FAVORITES: 'favorites',
       FREE_TEXT_CONTENT: 'free_text_content',
       CONTACT_INFO: 'contact_information',
-      PROFILE: 'profile'
+      PROFILE: 'profile',
+      PROFILE_PICTURE: 'profile_picture'
     };
 
     var eventActions = {
@@ -95,7 +96,8 @@ angular.module('profileAnalytics', ['provider.analyticsAccounts'])
       ADD_IMAGE: 'add_image',
       ADD_FILE: 'add_file',
       EDIT_SUMMARY: 'edit_summary',
-      SET_VISIBILITY: 'set_visibility'
+      SET_VISIBILITY: 'set_visibility',
+      RESET: 'reset'
     };
 
     var eventLabels = {

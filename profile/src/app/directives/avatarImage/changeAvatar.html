@@ -13,14 +13,21 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
-  -->
+-->
 
-<div class="page-banner__change-background" dropdown>
-  <a role="button" href="" ng-click="changeBackground()" class="dropdown-toggle page-banner__button--light" aria-label="{{:: ('pageBanner.title' | translate) }}">
-    <span class="page-banner__button-icon--camera"></span>
-  </a>
-  <div class="dropdown-content page-banner__change-background-menu">
-    <upload-image upload-callback="upload" cropper-width="900" cropper-height="400"></upload-image>
-    | <a role="button" href="" ng-click="openChooseBGModal()" translate="pageBanner.chooseDefaultBackground"></a>
+<div>
+  <div>
+    <div class="change-avatar__container" dropdown close-callback="resetMenu()">
+      <div  class="dropdown-toggle">
+        <a class="change-avatar__button" tabindex="0" role="button" href="" ng-click="toggleChangeAvatar()" aria-label="{{:: ('pageBanner.changeAvatar.title' | translate) }}">
+          <span class="change-avatar__button-icon--camera"></span>
+        </a>
+      </div>
+      <div class="dropdown-content" >
+        <upload-image upload-callback="upload" crop-to-square="true"></upload-image>
+        | <a tabindex="0" ng-click="deleteUserAvatar()" translate="pageBanner.changeAvatar.useDefault"></a>
+      </div>
+    </div>
+
   </div>
 </div>

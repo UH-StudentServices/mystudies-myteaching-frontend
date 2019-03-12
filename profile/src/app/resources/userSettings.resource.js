@@ -18,7 +18,17 @@
 angular.module('resources.userSettings', [])
 
   .factory('UserSettingsResource', function ($resource) {
-    var userSettingsResource = $resource('/api/private/v1/usersettings/:id', { id: '@id' }, { update: { method: 'PUT' } });
+    var userSettingsResource = $resource('/api/private/v1/usersettings/:id', { id: '@id' }, {
+      update: { method: 'PUT' },
+      updateUserAvatar: {
+        url: '/api/private/v1/usersettings/:id/uploaduseravatar',
+        method: 'PUT'
+      },
+      deleteUserAvatar: {
+        url: '/api/private/v1/usersettings/:id/deleteuseravatar',
+        method: 'DELETE'
+      }
+    });
 
     var availableBackgroundImagesResource = $resource('/api/public/v1/images/backgrounds');
 
@@ -34,9 +44,19 @@ angular.module('resources.userSettings', [])
       return userSettingsResource.update(settings).$promise;
     };
 
+    var updateUserAvatar = function updateUserAvatar(id, imageBase64) {
+      return userSettingsResource.updateUserAvatar({ id: id, imageBase64: imageBase64 }).$promise;
+    };
+
+    var deleteUserAvatar = function deleteUserAvatar(id) {
+      return userSettingsResource.deleteUserAvatar({ id: id }).$promise;
+    };
+
     return {
       getUserSettings: getUserSettings,
       getAvailableBackgrounds: getAvailableBackgrounds,
-      updateUserSettings: updateUserSettings
+      updateUserSettings: updateUserSettings,
+      updateUserAvatar: updateUserAvatar,
+      deleteUserAvatar: deleteUserAvatar
     };
   });

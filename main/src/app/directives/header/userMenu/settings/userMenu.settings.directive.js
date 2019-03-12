@@ -22,8 +22,6 @@ angular.module('directives.userMenu.settings', [
   'services.profile',
   'services.session',
   'directives.userMenu.settings.avatar',
-  'webcam',
-  'utils.browser',
   'directives.avatarImage',
   'directives.userName',
   'directives.visibility'
@@ -32,12 +30,10 @@ angular.module('directives.userMenu.settings', [
 
   .directive('settings', function ($window,
     $rootScope,
-    Upload,
     userAvatarUpdatedEvent,
     UserSettingsService,
     ProfileService,
     SessionService,
-    BrowserUtil,
     Role) {
     return {
       restrict: 'E',
@@ -45,9 +41,6 @@ angular.module('directives.userMenu.settings', [
       scope: true,
       templateUrl: 'app/directives/header/userMenu/settings/userMenu.settings.html',
       link: function ($scope) {
-        $scope.showAvatarChangeType = false;
-        $scope.cameraOn = false;
-        $scope.supportsCamera = BrowserUtil.supportsCamera();
         $scope.roles = {
           teacher: Role.TEACHER,
           student: Role.STUDENT
@@ -72,8 +65,6 @@ angular.module('directives.userMenu.settings', [
 
         $scope.resetMenu = function () {
           $scope.showAvatarChangeType = false;
-          $scope.cameraOn = false;
-          $scope.$broadcast('STOP_WEBCAM');
         };
 
         $scope.$on(userAvatarUpdatedEvent, function () {
