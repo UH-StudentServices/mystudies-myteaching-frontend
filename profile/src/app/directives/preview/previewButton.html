@@ -16,14 +16,14 @@
   -->
 
 <div class="navigation-right__element">
-  <a href=""
-     class="button button-light preview-btn nav-ctrl"
+  <button
+     class="link icon preview-btn nav-ctrl"
      ng-click="enterPreview()"
      aria-labelledby="profile-preview-btn">
     <span id="profile-preview-btn"
           class="preview-btn--text"
           translate="preview.enterPreview">
     </span>
-    <span class="preview-btn--icon icon--preview" aria-hidden="true"></span>
-  </a>
+    <div class="preview-btn--icon" aria-hidden="true" ng-include="'assets/icons/preview.svg'"></div>
+  </button>
 </div>
