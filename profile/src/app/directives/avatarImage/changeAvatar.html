@@ -13,6 +13,14 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
-  -->
+-->
 
-<button class="link" ngf-select ng-model="files" ngf-multiple="true" class="needsclick">{{::('pageBanner.uploadFile' | translate)}}</button>
+<div class="change-avatar__container" dropdown>
+  <button ng-click="toggleChangeAvatar()" class="link dropdown-toggle change-avatar__button" aria-label="{{:: ('pageBanner.changeAvatar.title' | translate) }}">
+    <span class="page-banner__button-icon--camera"></span>
+  </button>
+  <div class="dropdown-content">
+    <upload-image upload-callback="upload" crop-to-square="true"></upload-image>
+    | <button class="link" ng-click="deleteUserAvatar()" translate="pageBanner.changeAvatar.useDefault"></button>
+  </div>
+</div>

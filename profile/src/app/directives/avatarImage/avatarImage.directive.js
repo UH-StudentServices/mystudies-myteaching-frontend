@@ -16,17 +16,24 @@
  */
 
 angular.module('directives.avatarImage', ['services.profile'])
-  .directive('avatarImage', function () {
+  .constant('userAvatarUpdatedEvent', 'USER_AVATAR_UPDATED_EVENT')
+  .directive('avatarImage', function (userAvatarUpdatedEvent) {
     return {
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/avatarImage/avatarImage.html',
       scope: {},
       controller: function ($scope, ProfileService) {
-        ProfileService.getProfile().then(function (profile) {
-          $scope.avatarUrl = profile.avatarUrl;
-          $scope.default = profile.avatarUrl.indexOf('/api') === -1;
-        });
+        function refresh() {
+          ProfileService.getProfile(true).then(function (profile) {
+            $scope.avatarUrl = profile.avatarUrl + '?' + new Date().getTime();
+            $scope.default = $scope.avatarUrl.indexOf('/api') === -1;
+          });
+        }
+
+        $scope.$parent.$on(userAvatarUpdatedEvent, refresh);
+
+        refresh();
       }
     };
   });

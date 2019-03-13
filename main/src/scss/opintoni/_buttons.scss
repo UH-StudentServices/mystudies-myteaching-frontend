@@ -20,6 +20,10 @@ $button_border : solid $blue 1px;
 
 button {
   border: none;
+
+  &.link {
+    color: $blue;
+  }
 }
 
 a.disabled,
