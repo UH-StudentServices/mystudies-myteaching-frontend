@@ -15,19 +15,12 @@
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<div>
-  <div>
-    <div class="change-avatar__container" dropdown close-callback="resetMenu()">
-      <div  class="dropdown-toggle">
-        <a class="change-avatar__button" tabindex="0" role="button" href="" ng-click="toggleChangeAvatar()" aria-label="{{:: ('pageBanner.changeAvatar.title' | translate) }}">
-          <span class="change-avatar__button-icon--camera"></span>
-        </a>
-      </div>
-      <div class="dropdown-content" >
-        <upload-image upload-callback="upload" crop-to-square="true"></upload-image>
-        | <a tabindex="0" ng-click="deleteUserAvatar()" translate="pageBanner.changeAvatar.useDefault"></a>
-      </div>
-    </div>
-
+<div class="change-avatar__container" dropdown>
+  <button ng-click="toggleChangeAvatar()" class="link dropdown-toggle change-avatar__button" aria-label="{{:: ('pageBanner.changeAvatar.title' | translate) }}">
+    <span class="page-banner__button-icon--camera"></span>
+  </button>
+  <div class="dropdown-content">
+    <upload-image upload-callback="upload" crop-to-square="true"></upload-image>
+    | <button class="link" ng-click="deleteUserAvatar()" translate="pageBanner.changeAvatar.useDefault"></button>
   </div>
 </div>

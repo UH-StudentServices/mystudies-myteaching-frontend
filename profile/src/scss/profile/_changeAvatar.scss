@@ -15,24 +15,6 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-@mixin change-avatar-button-icon($icon, $size) {
-  display: block;
-
-  &::before {
-    font-size: $size;
-
-    @include icon($icon);
-  }
-}
-
-.change-avatar__button-icon--camera {
-  @include change-avatar-button-icon("\EA07", 24px);
-
-  position: relative;
-  left: 13px;
-  top: 14px;
-}
-
 .change-avatar__container {
   display: flex;
   position: relative;
@@ -43,7 +25,7 @@
 
     text-transform: none;
     top: 65px;
-    width: 240px;
+    width: 260px;
     padding: 1em;
     white-space: nowrap;
   }
@@ -52,13 +34,9 @@
 .change-avatar__button {
   width: 50px;
   height: 50px;
+  padding: 0;
+  color: $blue;
   display: block;
   background-color: white;
   z-index: 1;
-}
-
-.change-avatar__help-icon {
-  margin-left: 0.5em;
-  margin-top: auto;
-  margin-bottom: auto;
 }

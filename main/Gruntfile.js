@@ -132,7 +132,7 @@ module.exports = function (grunt) {
         }
       },
       options: {
-        online: true, // speed up startup by 30 sec
+        online: true, // speed up startup significantly
         startPath: '/',
         watchTask: true,
         ghostMode: false,

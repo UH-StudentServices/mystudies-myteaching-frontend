@@ -24,13 +24,15 @@ angular.module('services.profile', [
     ProfileRoleService) {
     var profilePromise;
     var prevArguments;
+    var prevFunction;
 
-    function setPrevCall(prevCallArguments) {
+    function setPrevCall(prevCallArguments, prevCallFunction) {
       prevArguments = prevCallArguments;
+      prevFunction = prevCallFunction;
     }
 
     function refresh() {
-      profilePromise = prevArguments.callee.apply(null, prevArguments);
+      profilePromise = prevFunction.apply(null, prevArguments);
     }
 
     function findProfileByPath(state, lang, userpath) {
@@ -40,13 +42,13 @@ angular.module('services.profile', [
         lang,
         userpath
       );
-      setPrevCall(arguments);
+      setPrevCall(arguments, findProfileByPath);
       return profilePromise;
     }
 
     function findProfileBySharedLink(sharedLink) {
       profilePromise = ProfileResource.findBySharedLink(sharedLink);
-      setPrevCall(arguments);
+      setPrevCall(arguments, findProfileBySharedLink);
       return profilePromise;
     }
 
