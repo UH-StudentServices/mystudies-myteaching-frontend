@@ -18,7 +18,10 @@
 .preview-btn {
   @extend button.button--light;
 
-  padding: 0;
+  @include breakpoint($mobile-only) {
+    padding: 0;
+    border: none;
+  }
 
   &--text {
     display: none;
@@ -39,7 +42,7 @@
 
     svg:hover {
       background-color: $blue;
-      fill: white;
+      fill: $white;
     }
 
     @include breakpoint($small) {
