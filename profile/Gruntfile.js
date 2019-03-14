@@ -207,14 +207,8 @@ module.exports = function (grunt) {
       css: ['<%= application.dist %>/assets/styles/**/*.css'],
       js: ['<%= application.dist %>/app/**/*.js'],
       options: {
-        assetsDirs: [
-          '<%= application.dist %>'
-        ],
-        patterns: {
-          js: [
-            [/(assets\/(icons|images)\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the JS to reference our revved images']
-          ]
-        }
+        assetsDirs: ['<%= application.dist %>'],
+        patterns: { js: [[/(assets\/(icons|images)\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the JS to reference our revved images']] }
       }
     },
     htmlmin: {
