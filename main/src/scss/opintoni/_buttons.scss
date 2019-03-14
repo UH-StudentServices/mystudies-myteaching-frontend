@@ -24,6 +24,11 @@ button {
   &.link {
     color: $blue;
   }
+
+  &.icon {
+    padding: 0;
+    border: none;
+  }
 }
 
 a.disabled,
