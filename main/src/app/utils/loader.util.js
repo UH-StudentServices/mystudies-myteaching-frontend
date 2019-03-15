@@ -15,6 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 angular.module('utils.loader', ['blockUI'])
   .constant('BlockUITemplate',
     '<div class="block-ui-overlay"></div>'

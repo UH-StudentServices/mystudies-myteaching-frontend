@@ -5,3 +5,4 @@ profile/src/app/vendor
 profile/dist
 profile/src/app/templates.js
 common/src/app/vendor
+common/src/app/newrelic.js

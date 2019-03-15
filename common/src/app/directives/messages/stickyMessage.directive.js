@@ -15,6 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 angular.module('directives.stickyMessage', ['directives.message', 'services.configuration'])
 
   .directive('stickyMessage', function (MessageTypes, Configuration) {

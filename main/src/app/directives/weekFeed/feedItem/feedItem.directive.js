@@ -15,6 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 angular.module('directives.weekFeed.feedItem', [
   'directives.weekFeed.feedItem.event',
   'directives.weekFeed.feedItem.course'

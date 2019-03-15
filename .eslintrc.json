@@ -38,7 +38,9 @@
     "no-multiple-empty-lines": ["error", { "max": 1}],
     "no-empty": ["error", { "allowEmptyCatch": true }],
     "array-bracket-newline": ["error", { "multiline": true }],
-    "object-curly-newline": ["error", { "multiline": true }]
+    "object-curly-newline": ["error", { "multiline": true }],
+    "strict": ["error", "global"],
+    "no-caller": "error"
   },
   "plugins": [
     "header"

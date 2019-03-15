@@ -15,6 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 angular.module('directives.avatarImage', ['services.profile'])
   .constant('userAvatarUpdatedEvent', 'USER_AVATAR_UPDATED_EVENT')
   .directive('avatarImage', function (userAvatarUpdatedEvent) {

@@ -16,6 +16,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 angular.module('services.courses', ['resources.courses', 'utils.moment'])
 
   .factory('CoursesService', function (CoursesResource, dateArrayToMomentObject) {
