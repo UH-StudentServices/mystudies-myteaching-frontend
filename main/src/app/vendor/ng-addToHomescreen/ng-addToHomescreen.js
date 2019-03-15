@@ -15,6 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 /**!
  * Add To Homescreen is a javascript widget that opens an overlaying message inviting
  * the user to add the web site/application to the home screen on mobile devices (iOS and Android).

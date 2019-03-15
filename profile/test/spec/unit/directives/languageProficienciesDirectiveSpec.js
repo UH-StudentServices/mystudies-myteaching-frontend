@@ -15,6 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 describe('Language proficiencies directive', function () {
   var $compile;
   var $scope;

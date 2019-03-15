@@ -15,6 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 /* eslint-disable camelcase */
 
 angular.module('controllers.tinymce', ['ui.tinymce', 'services.language', 'services.profileFiles'])

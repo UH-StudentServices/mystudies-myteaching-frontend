@@ -15,6 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 angular.module('services.freeTextContent', ['resources.freeTextContent', 'services.profile'])
 
   .factory('FreeTextContentService', function (ProfileService, FreeTextContentResource) {

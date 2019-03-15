@@ -15,6 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 angular.module('services.profileBackground', ['resources.profileBackground', 'services.profile'])
 
   .factory('ProfileBackgroundService', function (ProfileBackgroundResource, ProfileService) {

@@ -15,6 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 angular.module('resources.sharedLinks', [])
 
   .constant('SharedLinksResourcePath', '/api/private/v1/profile/:profileId/sharedlinks')
