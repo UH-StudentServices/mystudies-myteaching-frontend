@@ -17,9 +17,11 @@
 
 <div class="useful-links" id="useful-links">
   <div class="component-header useful-links__header">
-    <h3 class="useful-links__title" translate="usefulLinks.title"></h3>
-    <help-icon translation-key="usefulLinks.helpText"
-               aria-label-translation-key="usefulLinks.title"></help-icon>
+    <div class="static-heading">
+      <h3 class="useful-links__title" translate="usefulLinks.title"></h3>
+      <help-icon translation-key="usefulLinks.helpText"
+                 aria-label-translation-key="usefulLinks.title"></help-icon>
+    </div>
     <div class="component-header__actions">
       <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
     </div>

@@ -18,11 +18,13 @@
 <div role="article" id="week-feed">
   <div class="ui-component ui-component--events">
     <div class="component-header">
-      <h2 class="ui-component__title weekfeed__header__title"><span ng-bind="header"></span></h2>
-      <help-icon ng-if="studentMode" translation-key="weekFeed.studentHelpText"
-                 aria-label-translation-key="weekFeed.nowStudying"></help-icon>
-      <help-icon ng-if="!studentMode" translation-key="weekFeed.teacherHelpText"
-                 aria-label-translation-key="weekFeed.nowTeaching"></help-icon>
+      <div class="static-heading">
+        <h2 class="ui-component__title weekfeed__header__title"><span ng-bind="header"></span></h2>
+        <help-icon ng-if="studentMode" translation-key="weekFeed.studentHelpText"
+                   aria-label-translation-key="weekFeed.nowStudying"></help-icon>
+        <help-icon ng-if="!studentMode" translation-key="weekFeed.teacherHelpText"
+                   aria-label-translation-key="weekFeed.nowTeaching"></help-icon>
+      </div>
     </div>
 
     <scrollable-tab-bar use-full-width-on-mobile="true">
