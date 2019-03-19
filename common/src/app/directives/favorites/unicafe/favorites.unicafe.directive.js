@@ -69,7 +69,7 @@ angular.module('directives.favorites.unicafe', [
       replace: true,
       scope: { data: '=' },
       link: function ($scope) {
-        var langKey = $cookies.get('OO_LANGUAGE');
+        var langKey = $cookies.get('OBAR_LANG');
 
         $scope.languageSuffix = langKey !== 'fi' ? '_' + langKey : '';
         $scope.restaurantOptions = [];
