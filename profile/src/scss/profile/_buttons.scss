@@ -41,3 +41,13 @@
     margin-top: 1em;
   }
 }
+
+button.button--link {
+  background: transparent;
+  color: $blue;
+  padding: 0;
+
+  :hover {
+    color: $darkblue;
+  }
+}

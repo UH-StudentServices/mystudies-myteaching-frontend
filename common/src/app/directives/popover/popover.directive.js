@@ -57,7 +57,8 @@ angular.module('directives.popover', ['angular-click-outside'])
               scope.showPopover = false;
             }
           },
-          togglePopover: function () {
+          togglePopover: function (event) {
+            event.stopPropagation();
             scope.showPopover = !scope.showPopover;
             scope.$apply();
           }

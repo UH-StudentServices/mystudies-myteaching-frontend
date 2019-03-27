@@ -127,6 +127,10 @@ $time-color: rgb(109, 109, 109);
   }
 }
 
-.user-menu__actions--action:hover {
-  cursor: pointer;
+.user-menu__actions--action {
+  padding: 0;
+
+  :hover {
+    cursor: pointer;
+  }
 }

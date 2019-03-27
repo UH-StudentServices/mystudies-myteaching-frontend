@@ -17,10 +17,11 @@
 
 <div dropdown class="user-settings" close-callback="resetMenu()">
   <div class="dropdown-toggle">
-    <a role="button" href="" aria-label="{{::('userSettings.title' | translate)}}"
-       class="user-menu__actions--action" ng-class="{active : showMenu}">
+    <button aria-label="{{::('userSettings.title' | translate)}}"
+            class="user-menu__actions--action"
+            ng-class="{active : showMenu}">
       <avatar-image class="user-avatar__small" img-src="session.avatarUrl" img-alt="session.name"></avatar-image>
-    </a>
+    </button>
   </div>
   <div role="menu" class="user-settings__menu dropdown-content">
     <ul>

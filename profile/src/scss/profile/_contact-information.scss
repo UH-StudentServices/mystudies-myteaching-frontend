@@ -88,7 +88,7 @@ $free-link-bg: $black;
     overflow: hidden;
   }
 
-  .useful-links__edit-link-url {
+  .useful-links__edit-button-url {
     padding: 0;
     margin: 0;
     border: none;
@@ -105,6 +105,10 @@ $free-link-bg: $black;
       &:last-child {
         margin-bottom: 0;
       }
+    }
+
+    &__reload-info {
+      background: transparent;
     }
   }
 

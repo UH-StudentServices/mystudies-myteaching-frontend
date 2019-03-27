@@ -108,3 +108,8 @@ h3,
 h4 {
   text-transform: uppercase;
 }
+
+// Override language select style to work as a button
+.links__link.theme-language {
+  background: transparent;
+}

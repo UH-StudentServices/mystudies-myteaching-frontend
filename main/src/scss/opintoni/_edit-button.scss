@@ -15,7 +15,9 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-.edit-link {
+.edit-button {
+  background: transparent;
+
   .disabled {
     color: $gray;
     cursor: default;

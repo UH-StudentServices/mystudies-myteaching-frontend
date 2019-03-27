@@ -55,7 +55,7 @@
     padding-right: 1em;
   }
 
-  .edit-link {
+  .edit-button {
     min-width: 50%;
     left: 105%;
     top: 50%;
@@ -84,8 +84,9 @@
 
 .profile-intro__title,
 .profile-intro__intro,
-.profile-intro__edit-link > a > i {
-  color: $white;
+.profile-intro__edit-button > button > i,
+.profile-intro__help-icon > button > span {
+  color: $white !important;
   text-shadow: 0 1px 2px $black;
 }
 

@@ -22,7 +22,7 @@ angular.module('directives.intro', [
   'directives.intro.jobSearch',
   'services.profile',
   'services.profileBackground',
-  'directives.editLink',
+  'directives.editButton',
   'directives.chooseBackground',
   'directives.changeAvatar',
   'angular-flexslider',

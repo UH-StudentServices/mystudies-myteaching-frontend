@@ -24,18 +24,14 @@
         ng-model="searchString"
         ng-change="search(searchString)"
         placeholder="{{placeholder}}">
-    <a role="button"
-       href=""
-       ng-if="searchString !== '' && !loading"
-       class="icon--remove"
-       ng-click="clearSearch()"
-       aria-label="{{::('favorites.ariaLabels.clearSearch' | translate)}}"></a>
-    <a role="button"
-       href=""
-       ng-if="searchString !== '' && !loading && favoriteSearchForm.$valid"
-       class="icon--done"
-       ng-click="save()"
-       aria-label="{{::('general.save' | translate)}}"></a>
+    <button ng-if="searchString !== '' && !loading"
+            class="icon--remove"
+            ng-click="clearSearch()"
+            aria-label="{{::('favorites.ariaLabels.clearSearch' | translate)}}"></button>
+    <button ng-if="searchString !== '' && !loading && favoriteSearchForm.$valid"
+            class="icon--done"
+            ng-click="save()"
+            aria-label="{{::('general.save' | translate)}}"></button>
 
   </form>
   <div class="loading-container" ng-if="loading">

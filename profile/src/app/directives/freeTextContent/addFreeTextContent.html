@@ -17,11 +17,9 @@
 
 <div>
   <div class="add-free-text-content ui-component" limit-visibility="PRIVATE">
-    <a class="add-free-text-content__add-new"
-       role="button"
-       href=""
-       aria-label="{{::('general.addNew' | translate)}}"
-       ng-click="insertFreeTextContent()">
+    <button class="add-free-text-content__add-new"
+            aria-label="{{::('general.addNew' | translate)}}"
+            ng-click="insertFreeTextContent()">
        <div class="component-header">
          <div class="static-heading">
            <h3 class="add-free-text-content__title hide-mobile-only" translate="general.addNew"></h3>
@@ -31,6 +29,6 @@
                       limit-visibility="{ roles: ['STUDENT'] }"></help-icon>
          </div>
        </div>
-    </a>
+    </button>
   </div>
 </div>

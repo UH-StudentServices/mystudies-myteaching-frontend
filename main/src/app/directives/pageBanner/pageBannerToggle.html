@@ -16,7 +16,7 @@
 -->
 
 <div class="page-banner-toggle" ng-class="{'page-banner-toggle--banner-hidden' : !showBanner}">
-  <a title="{{tooltip}}" role="button" href="" class="page-banner__button" ng-click="toggleShowBanner()">
+  <button title="{{tooltip}}" class="page-banner__button" ng-click="toggleShowBanner()">
     <span ng-class="{'page-banner__button-icon--arrow-up' : showBanner, 'page-banner__button-icon--arrow-down' : !showBanner}"></span>
-  </a>
+  </button>
 </div>

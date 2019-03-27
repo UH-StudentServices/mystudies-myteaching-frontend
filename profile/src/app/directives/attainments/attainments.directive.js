@@ -22,7 +22,7 @@ angular.module('directives.attainments', [
   'resources.attainment',
   'filters.moment',
   'filters.formatting',
-  'directives.editLink',
+  'directives.editButton',
   'directives.editableHeading',
   'profileAnalytics'
 ])

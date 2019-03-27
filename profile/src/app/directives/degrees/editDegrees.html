@@ -61,9 +61,9 @@
 
         </div>
         <item-visibility-toggle item="degree"></item-visibility-toggle>
-        <a class="degree__remove" role="button" href="" ng-click="removeDegree(degree)">
+        <button class="button--link degree__remove" ng-click="removeDegree(degree)">
           <i class="icon--trash"></i>
-        </a>
+        </button>
       </div>
     </li>
   </ul>
@@ -71,8 +71,8 @@
 
 <div class="add-new-content">
   <div class="list-of-links">
-    <a role="button" href="" class="button--action icon--plus" ng-click="addDegree(newDegree)">
+    <button class="button--action icon--plus" ng-click="addDegree(newDegree)">
       {{::('degrees.addNewPlaceholder' | translate)}}
-    </a>
+    </button>
   </div>
 </div>

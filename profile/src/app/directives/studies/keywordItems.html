@@ -20,9 +20,9 @@
     <span ng-class="{'keyword-list__tag': !editing, 'keyword-list__tag--editing': editing}">
       <span class="tag-ball"></span>
       <span class="tag-content">{{::keyword.title}}</span>
-      <a role="button" href="" ng-if="editing" ng-click="removeKeyword(keyword)">
+      <button class="tag__remove" ng-if="editing" ng-click="removeKeyword(keyword)">
         <i class="icon--trash"></i>
-      </a>
+      </button>
     </span>
   </div>
 </div>

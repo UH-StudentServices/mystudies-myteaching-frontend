@@ -101,6 +101,12 @@ $tagColorEditingColor: #797979;
   .tag-content {
     vertical-align: middle;
   }
+
+  .tag__remove {
+    background: transparent;
+    color: $white;
+    padding: 0;
+  }
 }
 
 .studies__summary {
@@ -158,4 +164,9 @@ $tagColorEditingColor: #797979;
 .degree__remove {
   position: absolute;
   right: 0;
+  color: $white !important;
+
+  :hover {
+    color: $white !important;
+  }
 }

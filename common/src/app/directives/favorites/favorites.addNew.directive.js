@@ -96,7 +96,7 @@ angular.module('directives.favorites.addNew', [
         };
 
         function setFocus() {
-          Focus.setFocus('.add-favorite-container a');
+          Focus.setFocus('.add-favorite-container button');
         }
 
         function resetPopover() {

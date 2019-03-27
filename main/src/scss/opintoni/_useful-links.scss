@@ -60,6 +60,8 @@
   position: absolute;
   top: 50%;
   right: 1em;
+  background: transparent;
+  padding: 0;
 
   @include transform(translate(0, -50%));
 
@@ -127,7 +129,7 @@
   }
 }
 
-.useful-links__edit-link-url {
+.useful-links__edit-button-url {
   position: relative;
   background-color: $white;
   border: 2px solid $lightsilver;
@@ -158,7 +160,7 @@
   }
 }
 
-.useful-links__edit-link {
+.useful-links__edit-button {
   @include button-internal--dark;
   @include font-weight-medium;
 

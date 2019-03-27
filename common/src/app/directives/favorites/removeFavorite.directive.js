@@ -24,7 +24,7 @@ angular.module('directives.removeFavorite', [])
       restrict: 'A',
       link: function ($scope, el, attrs) {
         var favorite = $scope.$eval(attrs.data);
-        var closeButton = $('<div class="favorites-list__remove" role="button"></div>');
+        var closeButton = $('<button class="favorites-list__remove"></button>');
         var screen = $('<div class="favorites-list__remove-screen"></div>');
         var element = $(el);
 

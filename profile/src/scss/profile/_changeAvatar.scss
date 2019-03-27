@@ -28,6 +28,11 @@
     width: 260px;
     padding: 1em;
     white-space: nowrap;
+
+    button.link {
+      padding: 0;
+      background: transparent;
+    }
   }
 }
 

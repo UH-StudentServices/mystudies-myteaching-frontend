@@ -17,14 +17,14 @@
 
 <div>
   <div>
-    <a class="useful-links__edit-link" ng-hide="usefulLink.edit" ng-class="{editable : editable}">
+    <a class="useful-links__edit-button" ng-hide="usefulLink.edit" ng-class="{editable : editable}">
       <i class="icon--drag hide-mobile-only"></i>
       <span ng-click="editUsefulLink()">
         {{ usefulLink.description | renderUsefulLinkDescription:usefulLink.type }}
         <i class="icon--edit"></i>
       </span>
     </a>
-    <div class="useful-links__edit-link-url" ng-show="usefulLink.edit">
+    <div class="useful-links__edit-button-url" ng-show="usefulLink.edit">
       <label for="url-{{:: usefulLink.id}}" translate="usefulLinks.linkUrlEditLabel" />
       <input id="url-{{:: usefulLink.id}}"
              ng-model="usefulLink.url"

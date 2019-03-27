@@ -27,17 +27,17 @@
     </div>
     <div class="component-header__actions">
       <visibility-toggle component-id="ATTAINMENTS"></visibility-toggle>
-      <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
+      <edit-button on-edit="edit()" on-exit-edit="exitEdit()"></edit-button>
     </div>
   </div>
   <ul ng-if="editing" class="study-attainments">
     <li class="study-attainment" ng-repeat="attainment in allAttainments">
       <div class="study-attainment__item">
 
-        <a role="button" href="" class="study-attainment__visibility" ng-click="toggleVisibility(attainment)">
+        <button class="study-attainment__visibility" ng-click="toggleVisibility(attainment)">
           <i ng-if="isVisible(attainment)" class="icon--preview"></i>
           <i ng-if="!isVisible(attainment)" class="icon--eye-slash"></i>
-        </a>
+        </button>
 
         <div class="study-attainment__left">
           <span class="study-attainment__grade--{{:: gradeClass(attainment.grade) }}">
