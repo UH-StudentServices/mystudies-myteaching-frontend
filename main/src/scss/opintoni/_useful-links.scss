@@ -60,6 +60,8 @@
   position: absolute;
   top: 50%;
   right: 1em;
+  background: transparent;
+  padding: 0;
 
   @include transform(translate(0, -50%));
 
@@ -127,44 +129,14 @@
   }
 }
 
-.useful-links__edit-link-url {
-  position: relative;
-  background-color: $white;
-  border: 2px solid $lightsilver;
-  margin-bottom: 2px;
-  padding: 0.8em 3em 0.8em 1em;
-  cursor: default;
-
-  input {
-    margin: 0 0 0.2em 0;
-    padding: 0.25em;
-    border: 1px solid $mediumsilver;
-    background-color: transparent;
-    width: 100%;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  a {
-    position: absolute;
-    right: 1em;
-    top: 1em;
-  }
-
-  label {
-    font-size: 0.9em;
-  }
-}
-
-.useful-links__edit-link {
+.useful-links__edit-useful-link {
   @include button-internal--dark;
   @include font-weight-medium;
 
   display: table;
   width: 100%;
   background-color: $lightgray !important;
+  cursor: pointer;
 
   .icon--drag {
     display: table-cell;
@@ -186,15 +158,25 @@
     }
   }
 
-  span i {
-    margin-left: 0.5em;
-    display: none;
+  button {
+    background: transparent;
+    width: 100%;
+    color: $white;
+    text-align: left;
+
+    :hover {
+      color: $white;
+    }
+
+    i {
+      margin-left: 0.5em;
+      display: none;
+    }
   }
 
   @mixin show-editable-link() {
-    span {
-      cursor: pointer;
-      background-color: $gray;
+    button {
+      background: $gray;
 
       i {
         display: inline;
@@ -210,6 +192,43 @@
 
   &.editable:hover {
     @include show-editable-link;
+  }
+
+  &--edit-url {
+    position: relative;
+    background-color: $white;
+    border: 2px solid $lightsilver;
+    margin-bottom: 2px;
+    padding: 0.8em 3em 0.8em 1em;
+    cursor: default;
+
+    input {
+      margin: 0 0 0.2em 0;
+      padding: 0.25em;
+      border: 1px solid $mediumsilver;
+      background-color: transparent;
+      width: 100%;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    label {
+      font-size: 0.9em;
+    }
+
+    button {
+      position: absolute;
+      right: 1em;
+      top: 1em;
+      background: transparent;
+      color: $blue;
+
+      :hover {
+        color: $darkblue;
+      }
+    }
   }
 }
 

@@ -17,11 +17,10 @@
 
 <ul class="links">
   <li ng-repeat="languageOption in getLanguageOptions(selectedLanguage)">
-    <a role="button"
-       href=""
-       aria-label="{{:: languageOption.nativeName }}"
-       ng-click="changeLanguage(languageOption.languageCode)" class="links__link theme-language">
+    <button aria-label="{{:: languageOption.nativeName }}"
+            ng-click="changeLanguage(languageOption.languageCode)"
+            class="links__link theme-language">
        <abbr title="{{:: languageOption.nativeName }}">{{:: languageOption.languageCode }}</abbr>
-    </a>
+    </button>
   </li>
 </ul>

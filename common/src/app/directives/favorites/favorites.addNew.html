@@ -16,15 +16,13 @@
   -->
 
 <article class="favorites-list__item add-new">
-  <a class="add-favorite-button island"
-     role="button"
-     href=""
-     aria-label="{{::('favorites.addNew' | translate)}}"
-     class="island"
-     ng-click="togglePopover()">
+  <button class="add-favorite-button island"
+          aria-label="{{::('favorites.addNew' | translate)}}"
+          class="island"
+          ng-click="togglePopover()">
     <h4 class="add-favorite-button__title hide-mobile-only" translate="favorites.addNew"></h4>
     <span class="add-favorite-button__plus">+</span>
-  </a>
+  </button>
   <popover template="app/directives/favorites/favorites.addNew.popover.html"
            override-class="favorites-list-popover-container"
            ng-if="displayPopover"

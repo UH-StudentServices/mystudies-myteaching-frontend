@@ -56,7 +56,7 @@ angular.module('opintoniApp', [
   'directives.menuLanguage',
   'directives.currentLang',
   'directives.dropdown',
-  'directives.editLink',
+  'directives.editButton',
   'directives.feedback',
   'directives.visibility',
   'directives.pageNavigation',

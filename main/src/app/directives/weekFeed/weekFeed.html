@@ -40,7 +40,7 @@
     </scrollable-tab-bar>
     <ul class="weekfeed__sub-tabs" role="tablist" ng-hide="hideSubTabs">
       <li ng-repeat="subTab in subTabs" role="tab">
-        <button role="button" class="button subTabButton" ng-class="getSubTabClasses(subTab)" ng-click="selectSubTab(subTab)">{{ subTab.translateKey | translate | capitalize }}</button>
+        <button class="button subTabButton" ng-class="getSubTabClasses(subTab)" ng-click="selectSubTab(subTab)">{{ subTab.translateKey | translate | capitalize }}</button>
       </li>
       <li class="weekfeed-subscribe" ng-if="selectedTab.key === 'SCHEDULE'">
         <subscribe-events ng-if="!hideSubTabs"></subscribe-events>
@@ -65,9 +65,9 @@
         <event-calendar events="events" date="currentDate" calendar-view="calendarView" full-screen="false"></event-calendar>
         <div class="week-feed-calendar__extra-buttons hide-mobile-only">
           <subscribe-events></subscribe-events>
-          <a href="" role="button" ng-click="showFullScreenCalendar(currentDate)"
-             class="icon--full-screen week-feed-calendar__full-screen-button "
-             aria-label="{{::('fullScreenCalendar.open' | translate)}}" />
+          <button ng-click="showFullScreenCalendar(currentDate)"
+                  class="icon--full-screen week-feed-calendar__full-screen-button"
+                  aria-label="{{::('fullScreenCalendar.open' | translate)}}"></button>
         </div>
       </div>
 

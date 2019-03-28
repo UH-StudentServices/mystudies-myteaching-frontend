@@ -19,7 +19,7 @@
 
 angular.module('directives.freeTextContent', [
   'services.freeTextContent',
-  'directives.editLink',
+  'directives.editButton',
   'constants.ngEmbedOptions',
   'profileAnalytics'
 ])

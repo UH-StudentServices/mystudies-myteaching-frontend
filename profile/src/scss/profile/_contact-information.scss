@@ -88,16 +88,6 @@ $free-link-bg: $black;
     overflow: hidden;
   }
 
-  .useful-links__edit-link-url {
-    padding: 0;
-    margin: 0;
-    border: none;
-
-    input {
-      padding-right: 3em;
-    }
-  }
-
   .edit-contact-details {
     input {
       margin-bottom: 0.5em;
@@ -105,6 +95,10 @@ $free-link-bg: $black;
       &:last-child {
         margin-bottom: 0;
       }
+    }
+
+    &__reload-info {
+      background: transparent;
     }
   }
 

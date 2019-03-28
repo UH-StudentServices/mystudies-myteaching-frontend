@@ -49,12 +49,10 @@
               </a>
             </div>
 
-            <a class="shared-links__remove_link_button"
-               href=""
-               ng-click="removeSharedLink(link)"
-               role="button">
+            <button class="shared-links__remove_link_button button--link"
+                    ng-click="removeSharedLink(link)">
               <i class="icon--trash"></i>
-            </a>
+            </button>
           </div>
         </li>
       </ul>
@@ -71,13 +69,11 @@
                      ui-keypress="{ 'enter': 'addNewSharedLink(newLinkForm)' }"
                      placeholder="{{::('sharedLinks.expiryDatePlaceholder' | translate)}}"/>
           </div>
-          <a class="shared-links__new-link-add-button"
-             href=""
-             ng-click="addNewSharedLink(newLinkForm)"
-             ng-disabled="newLinkForm.$invalid"
-             role="button">
+          <button class="shared-links__new-link-add-button"
+                  ng-click="addNewSharedLink(newLinkForm)"
+                  ng-disabled="newLinkForm.$invalid">
             <i class="icon--plus"></i>
-          </a>
+          </button>
         </form>
       </div>
 

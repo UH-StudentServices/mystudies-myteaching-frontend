@@ -23,6 +23,10 @@ button {
 
   &.link {
     color: $blue;
+
+    :hover {
+      color: $darkblue;
+    }
   }
 
   &.icon {

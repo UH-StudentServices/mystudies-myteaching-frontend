@@ -24,7 +24,7 @@
                       editing="editing"></editable-heading>
     <div class="component-header__actions">
       <visibility-toggle component-id="LANGUAGE_PROFICIENCIES" section-name="{{::sectionName}}"></visibility-toggle>
-      <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
+      <edit-button on-edit="edit()" on-exit-edit="exitEdit()"></edit-button>
     </div>
   </div>
 
@@ -89,17 +89,17 @@
       <item-visibility-toggle item="languageProficiency"
                               callback="updateLanguageProficiency"
                               ng-show="editing"></item-visibility-toggle>
-      <a role="button" href="" class="language-proficiency-item__remove"
+      <button class="language-proficiency-item__remove"
          aria-label="{{::('general.remove' | translate)}}"
          ng-show="editing"
          ng-click="remove(languageProficiency)">
         <i class="icon--trash"></i>
-      </a>
+      </button>
     </li>
     <li class="language-proficiency-list__add-new-container" ng-show="editing">
-      <a role="button" href="" class="language-proficiency-list__add-new"
+      <button class="language-proficiency-list__add-new"
          aria-label="{{::('general.add' | translate)}}"
-         ng-click="addNew()"></a>
+         ng-click="addNew()"></button>
     </li>
   </ul>
 </div>
