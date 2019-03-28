@@ -30,11 +30,11 @@
           <div class="component-header">
             <h2 class="profile-intro__title">{{::profile.ownerName}}</h2>
             <div class="component-header__actions">
-              <help-icon class="profile-intro__help-icon"
+              <help-icon class="profile-intro__help"
                          translation-key="pageBanner.helpText.introduction"
                          limit-visibility="{ visibility: 'PRIVATE', roles: ['STUDENT'] }"
                          panel-align="right"></help-icon>
-              <edit-button class="profile-intro__edit-button" on-edit="edit()" on-exit-edit="exitEdit()"></edit-button>
+              <edit-button class="profile-intro__edit" on-edit="edit()" on-exit-edit="exitEdit()"></edit-button>
             </div>
           </div>
           <div class="editable-wrapper">
