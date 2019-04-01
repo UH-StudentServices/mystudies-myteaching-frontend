@@ -17,16 +17,20 @@
 
 'use strict';
 
-angular.module('filters.moment', [])
+angular.module('filters.moment', ['services.language'])
 
-  .filter('momentFormat', function () {
+  .filter('momentFormat', function (LanguageService) {
     return function (input, format) {
-      return input ? input.format(format) : '';
+      var locale = LanguageService.getLocale();
+
+      return input ? input.locale(locale).format(format) : '';
     };
   })
 
-  .filter('convertDateFormat', function () {
-    return function (inputString, outputFormat) {
-      return moment(new Date(inputString)).format(outputFormat);
+  .filter('convertDateFormat', function (LanguageService) {
+    return function (input, format) {
+      var locale = LanguageService.getLocale();
+
+      return input ? moment(new Date(input)).locale(locale).format(format) : '';
     };
   });

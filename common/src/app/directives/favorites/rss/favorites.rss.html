@@ -22,7 +22,7 @@
     </div>
     <div ng-if="!loading">
       <div class="box-story__topical rss-header">
-        <span class="box-story__date" ng-bind="feedDateLocalized"></span>
+        <span class="box-story__date">{{feedMomentDate | convertDateFormat:'l'}}</span>
         <a class="box-story__tag" href="{{ feedLink }}" target="_blank" title="{{ feedTitle }}"><span>{{ feedTitle }}</span></a>
       </div>
       <div class="rss-content">

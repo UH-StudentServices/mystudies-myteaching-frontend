@@ -52,7 +52,7 @@ angular
         FavoritesService.getRSSFeed(feedUrl)
           .then(function getFeedSuccess(feedData) {
             $scope.feedTitle = feedData.title ? feedData.title : feedUrl;
-            $scope.feedDateLocalized = feedData.momentDate.format('l');
+            $scope.feedMomentDate = feedData.momentDate;
             $scope.feedLink = feedData.link;
             $scope.feed = feedData;
           });

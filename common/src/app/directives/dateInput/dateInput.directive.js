@@ -17,44 +17,50 @@
 
 'use strict';
 
-angular.module('directives.dateTimeInput', [])
+angular.module('directives.dateInput', ['services.language'])
 
-  .constant('DefaultFormats', [
-    'D.M.YYYY H:mm',
-    'D.M.YYYY H.mm',
-    'YYYY-M-D H:mm',
-    'YYYY-M-D H.mm',
-    'M/D/YYYY H:mm',
-    'M/D/YYYY H.mm',
+  .constant('DefaultDateFormats', [
     'D.M.YYYY',
     'YYYY-M-D',
-    'M/D/YYYY'
+    'D/M/YYYY'
   ])
 
-  .directive('dateTimeInput', function (DefaultFormats) {
+  .directive('dateInput', function (DefaultDateFormats, LanguageService) {
     return {
       restrict: 'A',
-      scope: { isStrict: '@dateTimeInputStrict' },
       require: 'ngModel',
       link: function ($scope, elm, attrs, ngModelCtrl) {
-        var format;
-        if (attrs.dateTimeInput) {
-          format = _.map(attrs.dateTimeInput.split(','), function (inputFormat) {
-            return _.trim(inputFormat);
+        var format = DefaultDateFormats;
+        if (attrs.dateInput) {
+          format = attrs.dateInput.split(',').map(function (dateFormat) {
+            return _.trim(dateFormat);
           });
-        } else {
-          format = DefaultFormats;
+        }
+
+        function getDateFormat() {
+          switch (LanguageService.getCurrent()) {
+            case 'fi':
+              return DefaultDateFormats[0];
+            case 'sv':
+              return DefaultDateFormats[1];
+            case 'en':
+              return DefaultDateFormats[2];
+            default:
+              return DefaultDateFormats[0];
+          }
         }
 
         ngModelCtrl.$formatters.push(function (modelValue) {
-          return modelValue ? moment(modelValue).format(format[0]) : '';
+          var displayFormat = attrs.dateInput ? format[0] : getDateFormat();
+
+          return modelValue ? moment(modelValue).format(displayFormat) : '';
         });
 
         ngModelCtrl.$parsers.unshift(function (viewValue) {
-          return viewValue ? moment(viewValue, format, !!$scope.isStrict) : '';
+          return moment(viewValue, format);
         });
 
-        ngModelCtrl.$validators.dateTimeInput = function (modelValue) {
+        ngModelCtrl.$validators.dateInput = function (modelValue) {
           return ngModelCtrl.$isEmpty(modelValue) || modelValue.isValid();
         };
       }

@@ -41,9 +41,17 @@ angular.module('services.language', ['constants.language'])
   })
 
   .factory('LanguageService', function ($translate) {
+    function getCurrent() {
+      return $translate.proposedLanguage() || $translate.use();
+    }
+
+    function getLocale() {
+      var current = getCurrent();
+      return current === 'en' ? 'en-gb' : current;
+    }
+
     return {
-      getCurrent: function () {
-        return $translate.proposedLanguage() || $translate.use();
-      }
+      getCurrent: getCurrent,
+      getLocale: getLocale
     };
   });

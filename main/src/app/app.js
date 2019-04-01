@@ -63,6 +63,8 @@ angular.module('opintoniApp', [
   'directives.stickyMessage',
   'directives.notifications',
   'directives.obar',
+  'directives.dateInput',
+  'directives.dateTimeInput',
 
   'controllers.main',
   'controllers.calendar',

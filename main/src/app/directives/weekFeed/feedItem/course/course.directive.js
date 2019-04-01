@@ -18,6 +18,7 @@
 'use strict';
 
 angular.module('directives.weekFeed.feedItem.course', [
+  'services.language',
   'directives.helpIcon',
   'directives.analytics'
 ])
@@ -104,10 +105,13 @@ angular.module('directives.weekFeed.feedItem.course', [
     };
   })
 
-  .filter('eventDateSpan', function () {
+  .filter('eventDateSpan', function (LanguageService) {
+    var locale = LanguageService.getLocale();
+    var dateFormat = 'l';
+
     function formatMomentDate(momentDate) {
       if (momentDate) {
-        return momentDate.format('DD.MM.YYYY');
+        return momentDate.locale(locale).format(dateFormat);
       }
       return undefined;
     }
