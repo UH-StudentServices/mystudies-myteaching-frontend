@@ -27,7 +27,7 @@
     <div class="media__body">
 
       <div class="box-story__topical">
-        <span class="box-story__date">{{ event.datestart | date:'dd.MM.yyyy' }} - {{ event.dateEnd | date:'dd.MM.yyyy' }}</span>
+        <span class="box-story__date">{{ event.datestart | momentFormat:'l' }} - {{ event.dateEnd | momentFormat:'l' }}</span>
         <a tabindex="0" class="box-story__tag">{{ event.type }}</a>
       </div>
 

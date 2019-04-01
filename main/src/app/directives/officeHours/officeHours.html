@@ -47,7 +47,7 @@
               <div ng-repeat="row in [officeHours.description, officeHours.additionalInfo, officeHours.location] track by $index">{{row}}</div>
             </div>
             <div class="office-hours__expiration_date" ng-if="!officeHours.expired">
-              {{::('officeHours.expiration.date' | translate)}} {{ officeHours.expirationDate}}
+              {{::('officeHours.expiration.date' | translate)}} {{::officeHours.expirationDate | convertDateFormat:'l'}}
             </div>
             <div class="office-hours__expired" ng-if="officeHours.expired">
               {{::('officeHours.expiration.expired' | translate)}}
@@ -148,7 +148,11 @@
       </label>
       <label>
         {{::('officeHours.expiration.date' | translate)}} {{::('officeHours.expiration.mandatory' | translate)}}
-        <input type="text" class="office-hours__input" placeholder="{{::('officeHours.placeholder.expirationDate' | translate)}}" ng-model="officeHoursUnderEdit.expirationDate">
+        <input type="text"
+               date-input
+               class="office-hours__input"
+               placeholder="{{::('officeHours.placeholder.expirationDate' | translate)}}"
+               ng-model="officeHoursUnderEdit.expirationDate">
       </label>
 
     </div>
