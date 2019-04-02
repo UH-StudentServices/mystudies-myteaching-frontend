@@ -27,7 +27,7 @@ angular.module('directives.studies', [
   'profileAnalytics'
 ])
 
-  .directive('studies', function (KeywordService, SummaryService, NG_EMBED_OPTIONS, AnalyticsService, $state) {
+  .directive('studies', function (KeywordService, SummaryService, NG_EMBED_OPTIONS, AnalyticsService) {
     return {
       restrict: 'E',
       replace: true,
@@ -46,12 +46,11 @@ angular.module('directives.studies', [
         scope.edit = function () {
           scope.editing = true;
           scope.origText = scope.summaryData;
-          scope.origKeywords = scope.keywords;
+          scope.origKeywords = _.cloneDeep(scope.keywords);
         };
 
         scope.exitEdit = function () {
           var updateKeywordsRequest = { keywords: scope.keywords };
-
           var updateSummaryRequest = { summary: scope.summaryData };
 
           scope.$broadcast('saveComponent');
@@ -82,7 +81,8 @@ angular.module('directives.studies', [
           scope.editing = false;
           scope.summaryData = scope.origText;
           scope.keywords = scope.origKeywords;
-          $state.reload();
+          KeywordService.updateKeywords(profileId, { keywords: scope.keywords });
+          scope.$broadcast('revertComponent');
         };
 
         KeywordService.getKeywordsSubject()

@@ -26,7 +26,7 @@ angular.module('directives.samples', [
   'profileAnalytics'
 ])
 
-  .directive('samples', function (SamplesService, AnalyticsService, $state) {
+  .directive('samples', function (SamplesService, AnalyticsService) {
     return {
       restrict: 'E',
       replace: true,
@@ -49,7 +49,7 @@ angular.module('directives.samples', [
 
         scope.edit = function () {
           scope.editing = true;
-          scope.origSamples = scope.samples.slice();
+          scope.origSamples = _.cloneDeep(scope.samples);
         };
 
         scope.refreshValidity = _.debounce(function () {
@@ -81,7 +81,8 @@ angular.module('directives.samples', [
 
         scope.cancelEdit = function () {
           scope.editing = false;
-          $state.reload();
+          scope.samples = scope.origSamples;
+          scope.$broadcast('revertComponent');
         };
       }
     };

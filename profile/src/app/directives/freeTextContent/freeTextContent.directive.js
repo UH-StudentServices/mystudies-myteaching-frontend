@@ -53,7 +53,6 @@ angular.module('directives.freeTextContent', [
     PreviewService,
     NG_EMBED_OPTIONS,
     $translate,
-    $state,
     AnalyticsService) {
     return {
       restrict: 'E',
@@ -177,6 +176,7 @@ angular.module('directives.freeTextContent', [
         function toggleEdit() {
           scope.isEditing = !scope.isEditing;
           scope.origFreeText = scope.freeTextContentItem.text;
+          scope.origTitle = scope.freeTextContentItem.title;
         }
 
         function init() {
@@ -189,7 +189,8 @@ angular.module('directives.freeTextContent', [
 
         function cancelEdit() {
           scope.isEditing = false;
-          $state.reload();
+          scope.freeTextContentItem.title = scope.origTitle;
+          scope.freeTextContentItem.text = scope.origFreeText;
         }
 
         _.assign(scope, {

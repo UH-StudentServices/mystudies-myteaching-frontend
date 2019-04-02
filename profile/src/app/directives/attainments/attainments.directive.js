@@ -27,7 +27,7 @@ angular.module('directives.attainments', [
   'profileAnalytics'
 ])
 
-  .directive('attainments', function (AttainmentResource, AnalyticsService, $state) {
+  .directive('attainments', function (AttainmentResource, AnalyticsService) {
     return {
       restrict: 'E',
       replace: true,
@@ -58,6 +58,7 @@ angular.module('directives.attainments', [
         $scope.edit = function edit() {
           $scope.editing = true;
           $scope.origWhitelist = $scope.whitelist.slice();
+          $scope.origShowGrades = $scope.showGrades.val;
           AttainmentResource.getAll($scope.profileLang)
             .then(function attainmentsSuccess(attainments) {
               $scope.allAttainments = attainments;
@@ -123,7 +124,9 @@ angular.module('directives.attainments', [
 
         $scope.cancelEdit = function () {
           $scope.editing = false;
-          $state.reload();
+          $scope.showGrades.val = $scope.origShowGrades;
+          $scope.whitelist = $scope.origWhitelist;
+          $scope.$broadcast('revertComponent');
         };
 
         updateWhitelistedAttainments();
