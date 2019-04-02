@@ -21,6 +21,9 @@
 
 var httpProxy = require('http-proxy');
 var modRewrite = require('connect-modrewrite');
+var path = require('path');
+
+var isHttps = process.env.IS_HTTPS;
 
 // Grunt plugins must be loaded manually since load-grunt-tasks doesn't know
 // how to load node_modules from parent dir as of this writing
@@ -62,6 +65,16 @@ var proxyMiddleware = function (req, res, next) {
     next();
   }
 };
+
+function serverConfiguration(config) {
+  if (isHttps) {
+    config.https = {
+      key: path.resolve(__dirname, '../../private_key.pem').toString(),
+      cert: path.resolve(__dirname, '../../public_key.pem').toString()
+    };
+  }
+  return config;
+}
 
 module.exports = function (grunt) {
   gruntPlugins.forEach(function (plugin) {
@@ -108,7 +121,8 @@ module.exports = function (grunt) {
         open: false,
         ghostMode: false,
         port: 3002,
-        server: {
+        protocol: isHttps ? 'https' : 'http',
+        server: serverConfiguration({
           baseDir: 'src',
           routes: {
             '/bower_components': '../bower_components',
@@ -120,10 +134,10 @@ module.exports = function (grunt) {
             proxyMiddleware,
             modRewrite([
               '^[^\\.]*$ /index.html [L]',
-              '^/profile* http://localhost:3002 [P]'
+              '^/profile* https://localhost:3002 [P]'
             ])
           ]
-        }
+        })
       }
     },
     clean: {
