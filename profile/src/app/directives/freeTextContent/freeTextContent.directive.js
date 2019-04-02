@@ -53,6 +53,7 @@ angular.module('directives.freeTextContent', [
     PreviewService,
     NG_EMBED_OPTIONS,
     $translate,
+    $state,
     AnalyticsService) {
     return {
       restrict: 'E',
@@ -186,8 +187,14 @@ angular.module('directives.freeTextContent', [
           }).then(subscribeToChanges);
         }
 
+        function cancelEdit() {
+          scope.isEditing = false;
+          $state.reload();
+        }
+
         _.assign(scope, {
           deleteItem: deleteItem,
+          cancelEdit: cancelEdit,
           confirmDelete: confirmDelete,
           updateOrCreateNew: updateOrCreateNew,
           toggleEdit: toggleEdit,

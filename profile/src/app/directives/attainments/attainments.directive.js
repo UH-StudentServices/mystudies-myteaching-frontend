@@ -27,7 +27,7 @@ angular.module('directives.attainments', [
   'profileAnalytics'
 ])
 
-  .directive('attainments', function (AttainmentResource, AnalyticsService) {
+  .directive('attainments', function (AttainmentResource, AnalyticsService, $state) {
     return {
       restrict: 'E',
       replace: true,
@@ -119,6 +119,11 @@ angular.module('directives.attainments', [
 
         $scope.showMoreClick = function showMoreClick() {
           $scope.numberOfVisibleAttainments += SHOW_MORE_ADDITION;
+        };
+
+        $scope.cancelEdit = function () {
+          $scope.editing = false;
+          $state.reload();
         };
 
         updateWhitelistedAttainments();

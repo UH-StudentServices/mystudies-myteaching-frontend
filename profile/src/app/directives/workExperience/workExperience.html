@@ -32,4 +32,15 @@
 
   <show-work-experience ng-show="!editing"></show-work-experience>
   <edit-work-experience ng-show="editing"></edit-work-experience>
+
+  <div class="edit-buttons" ng-show="editing">
+    <button
+      class="button"
+      ng-click="cancelEdit()"
+      translate="general.cancel"></button>
+    <button
+      class="button"
+      ng-click="exitEdit()"
+      translate="general.save"></button>
+  </div>
 </div>

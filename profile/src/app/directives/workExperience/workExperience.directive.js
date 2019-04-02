@@ -95,6 +95,11 @@ angular.module('directives.workExperience', [
           $scope.workExperienceForm.$setDirty();
           return false;
         };
+
+        $scope.cancelEdit = function () {
+          $scope.editing = false;
+          $state.reload();
+        };
       }
     };
   });

@@ -33,4 +33,15 @@
 
   <show-samples ng-show="!editing" samples="samples"></show-samples>
   <edit-samples ng-show="editing" samples="samples" on-change="refreshValidity()"></edit-samples>
+
+  <div class="edit-buttons" ng-show="editing">
+    <button
+      class="button"
+      ng-click="cancelEdit()"
+      translate="general.cancel"></button>
+    <button
+      class="button"
+      ng-click="exitEdit()"
+      translate="general.save"></button>
+  </div>
 </div>

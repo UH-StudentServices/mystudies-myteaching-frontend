@@ -26,7 +26,7 @@ angular.module('directives.samples', [
   'profileAnalytics'
 ])
 
-  .directive('samples', function (SamplesService, AnalyticsService) {
+  .directive('samples', function (SamplesService, AnalyticsService, $state) {
     return {
       restrict: 'E',
       replace: true,
@@ -77,6 +77,11 @@ angular.module('directives.samples', [
 
         scope.markAllSubmitted = function () {
           scope.samples.forEach(function (sample) { sample.submitted = true; });
+        };
+
+        scope.cancelEdit = function () {
+          scope.editing = false;
+          $state.reload();
         };
       }
     };

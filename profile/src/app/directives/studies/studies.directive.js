@@ -27,7 +27,7 @@ angular.module('directives.studies', [
   'profileAnalytics'
 ])
 
-  .directive('studies', function (KeywordService, SummaryService, NG_EMBED_OPTIONS, AnalyticsService) {
+  .directive('studies', function (KeywordService, SummaryService, NG_EMBED_OPTIONS, AnalyticsService, $state) {
     return {
       restrict: 'E',
       replace: true,
@@ -46,6 +46,7 @@ angular.module('directives.studies', [
         scope.edit = function () {
           scope.editing = true;
           scope.origText = scope.summaryData;
+          scope.origKeywords = scope.keywords;
         };
 
         scope.exitEdit = function () {
@@ -75,6 +76,13 @@ angular.module('directives.studies', [
             });
 
           return true;
+        };
+
+        scope.cancelEdit = function () {
+          scope.editing = false;
+          scope.summaryData = scope.origText;
+          scope.keywords = scope.origKeywords;
+          $state.reload();
         };
 
         KeywordService.getKeywordsSubject()

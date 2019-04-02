@@ -70,4 +70,14 @@
     </div>
   </div>
 
+  <div class="edit-buttons" ng-show="isEditing">
+    <button
+      class="button"
+      ng-click="cancelEdit()"
+      translate="general.cancel"></button>
+    <button
+      class="button"
+      ng-click="updateOrCreateNew()"
+      translate="general.save"></button>
+  </div>
 </div>

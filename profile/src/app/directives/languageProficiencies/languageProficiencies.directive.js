@@ -124,6 +124,11 @@ angular.module('directives.languageProficiencies', [
             return true;
           },
 
+          cancelEdit: function () {
+            $scope.editing = false;
+            $state.reload();
+          },
+
           addNew: function () {
             var newEntry = newLanguageProficiency();
 
