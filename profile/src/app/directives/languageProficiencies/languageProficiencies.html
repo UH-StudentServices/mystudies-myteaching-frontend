@@ -24,6 +24,7 @@
                       editing="editing"></editable-heading>
     <div class="component-header__actions">
       <visibility-toggle component-id="LANGUAGE_PROFICIENCIES" section-name="{{::sectionName}}"></visibility-toggle>
+      <edit-button on-edit="edit()" on-exit-edit="exitEdit()"></edit-button>
       <enable-edit edit="edit()" editing="editing"></enable-edit>
     </div>
   </div>
@@ -109,7 +110,7 @@
       ng-click="cancelEdit()"
       translate="general.cancel"></button>
     <button
-      class="button"
+      class="button save-changes"
       ng-click="exitEdit()"
       translate="general.save"></button>
   </div>
