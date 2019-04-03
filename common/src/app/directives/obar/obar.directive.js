@@ -18,7 +18,7 @@
 'use strict';
 
 angular.module('directives.obar', [])
-  .directive('obar', function (Configuration, ObarService, BrowserUtil, ScriptInjectorService, StylesheetInjectorService) {
+  .directive('obar', function ($window, $timeout, Configuration, ObarService, BrowserUtil, ScriptInjectorService, StylesheetInjectorService) {
     return {
       restrict: 'E',
       replace: true,
@@ -31,12 +31,17 @@ angular.module('directives.obar', [])
           $scope.baseUrl = baseUrl;
           $scope.jwtToken = jwtToken;
 
-          StylesheetInjectorService.addStylesheet(baseUrl + '/obar.css');
+          if ($window.obarApp) {
+            // Timeout is needed here for data binding to happen before calling render()
+            $timeout(function () { $window.obarApp.render(); }, 0);
+          } else {
+            StylesheetInjectorService.addStylesheet(baseUrl + '/obar.css');
 
-          if (!BrowserUtil.isModernObarClient()) {
-            ScriptInjectorService.addScript('obarPolyfills', baseUrl + '/polyfills.js', true);
+            if (!BrowserUtil.isModernObarClient()) {
+              ScriptInjectorService.addScript('obarPolyfills', baseUrl + '/polyfills.js', true);
+            }
+            ScriptInjectorService.addScript('obarScript', baseUrl + '/obar.js', true);
           }
-          ScriptInjectorService.addScript('obarScript', baseUrl + '/obar.js', true);
         });
       }
     };

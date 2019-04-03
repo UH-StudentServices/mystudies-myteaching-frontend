@@ -27,7 +27,7 @@
 
 <header class="l-header">
   <page-header ng-if="!useObar"></page-header>
-  <obar ng-if="useObar" app="profile"></obar>
+  <obar ng-if="useObar && !hideObar" app="profile"></obar>
 </header>
 
 <main id="main-content">
