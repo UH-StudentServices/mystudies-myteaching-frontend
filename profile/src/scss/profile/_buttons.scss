@@ -67,6 +67,7 @@ button.toggle-edit {
   padding: 0.25em;
   font-size: 0.75em;
   text-transform: capitalize;
+  white-space: nowrap;
 
   i:hover {
     color: $white;
