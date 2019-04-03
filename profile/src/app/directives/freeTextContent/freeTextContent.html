@@ -51,17 +51,7 @@
                          section-name="{{::profileSection}}"
                          instance-name="{{::instanceName}}">
       </visibility-toggle>
-
-      <span>
-        <button
-          class="edit-button"
-          ng-click="toggleEdit()"
-          ng-hide="editing"
-          title="{{'general.edit' | translate}}"
-          limit-visibility="PRIVATE">
-          <i class="icon--edit-event"></i>
-        </button>
-      </span>
+      <enable-edit edit="toggleEdit()" editing="editing"></enable-edit>
     </div>
   </div>
 
