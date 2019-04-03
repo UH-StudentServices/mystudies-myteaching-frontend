@@ -37,7 +37,6 @@ angular.module('directives.obar', [])
             ScriptInjectorService.addScript('obarPolyfills', baseUrl + '/polyfills.js', true);
           }
           ScriptInjectorService.addScript('obarScript', baseUrl + '/obar.js', true);
-
         });
       }
     };
