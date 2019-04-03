@@ -60,7 +60,7 @@ angular.module('directives.languageSelector', [
             createAndSwitchToNewProfile(lang);
           } else {
             $translate.fallbackLanguage(lang);
-            $state.go('profile', { lang: lang });
+            $window.location.href = $state.href('profile', { lang: lang });
           }
         }
 
