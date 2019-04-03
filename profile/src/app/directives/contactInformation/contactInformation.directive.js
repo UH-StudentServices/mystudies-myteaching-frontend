@@ -116,9 +116,7 @@ angular.module('directives.contactInformation', [
         };
 
         function selectFilledSomeLinks(someLinks) {
-          return _.filter(someLinks, function (someLink) {
-            return !_.isEmpty(someLink.url);
-          });
+          return _.filter(someLinks, 'url');
         }
 
         $scope.exitEdit = function () {
@@ -151,6 +149,12 @@ angular.module('directives.contactInformation', [
                 return key === 'someLinks' || !value;
               }));
             });
+        };
+
+        $scope.cancelEdit = function () {
+          $scope.editing = false;
+          $scope.contactInfo = $scope.origContactInfo;
+          $scope.contactInfo.someLinks = selectFilledSomeLinks($scope.origContactInfo.someLinks);
         };
       }
     };
