@@ -174,7 +174,7 @@ angular.module('directives.freeTextContent', [
         }
 
         function toggleEdit() {
-          scope.isEditing = !scope.isEditing;
+          scope.editing = !scope.editing;
           scope.origFreeText = scope.freeTextContentItem.text;
           scope.origTitle = scope.freeTextContentItem.title;
         }
@@ -188,7 +188,7 @@ angular.module('directives.freeTextContent', [
         }
 
         function cancelEdit() {
-          scope.isEditing = false;
+          scope.editing = false;
           scope.freeTextContentItem.title = scope.origTitle;
           scope.freeTextContentItem.text = scope.origFreeText;
         }

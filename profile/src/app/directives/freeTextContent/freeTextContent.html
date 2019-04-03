@@ -18,7 +18,7 @@
 <div class="free-text-content ui-component">
   <div class="component-header">
     <div class="editable-heading">
-      <h2 ng-if="!isEditing" class="ui-component__title border-bottom">
+      <h2 ng-if="!editing" class="ui-component__title border-bottom">
         <span ng-if="!isTranslatableHeading()">
           {{::freeTextContentItem.title}}
         </span>
@@ -29,7 +29,7 @@
 
       </h2>
 
-      <div class="free-text-content__title-container--edit" ng-if="isEditing">
+      <div class="free-text-content__title-container--edit" ng-if="editing">
         <input type="text" ng-model="freeTextContentItem.title">
       </div>
       <help-icon ng-show="showHelp"
@@ -41,7 +41,7 @@
     <div class="component-header__actions">
       <span limit-visibility="PRIVATE">
         <button
-           ng-if="deletable && !isEditing"
+           ng-if="deletable && !editing"
            ng-click="confirmDelete()"
            title="delete">
           <i class="icon--trash"></i>
@@ -52,25 +52,32 @@
                          instance-name="{{::instanceName}}">
       </visibility-toggle>
 
-      <edit-button on-edit="toggleEdit()"
-                 on-exit-edit="updateOrCreateNew()">
-      </edit-button>
+      <span>
+        <button
+          class="edit-button"
+          ng-click="toggleEdit()"
+          ng-hide="editing"
+          title="{{'general.edit' | translate}}"
+          limit-visibility="PRIVATE">
+          <i class="icon--edit-event"></i>
+        </button>
+      </span>
     </div>
   </div>
 
 
-  <div class="free-text-content__text user-text" ng-if="!isEditing && freeTextContentItem.text.length">
+  <div class="free-text-content__text user-text" ng-if="!editing && freeTextContentItem.text.length">
     <ng-embed embed-data="freeTextContentItem.text" embed-options="embedOptions"></ng-embed>
   </div>
 
-  <div ng-if="isEditing" class="free-text-content--edit">
+  <div ng-if="editing" class="free-text-content--edit">
     <div ng-controller="TinymceController">
       <textarea ui-tinymce="tinymceOptions" ng-model="freeTextContentItem.text"></textarea>
       <browse-files></browse-files>
     </div>
   </div>
 
-  <div class="edit-buttons" ng-show="isEditing">
+  <div class="edit-buttons" ng-show="editing">
     <button
       class="button"
       ng-click="cancelEdit()"

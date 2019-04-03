@@ -24,9 +24,16 @@
                       editing="editing"></editable-heading>
     <div class="component-header__actions">
       <visibility-toggle component-id="WORK_EXPERIENCE" section-name="{{::sectionName}}"></visibility-toggle>
-      <edit-button on-edit="edit()"
-        on-exit-edit="exitEdit()">
-      </edit-button>
+      <span>
+        <button
+          class="edit-button"
+          ng-click="edit()"
+          ng-hide="editing"
+          title="{{'general.edit' | translate}}"
+          limit-visibility="PRIVATE">
+          <i class="icon--edit-event"></i>
+        </button>
+      </span>
     </div>
   </div>
 
