@@ -18,7 +18,7 @@
 'use strict';
 
 angular.module('directives.obar', [])
-  .directive('obar', function ($window, Configuration, ObarService, BrowserUtil, ScriptInjectorService, StylesheetInjectorService) {
+  .directive('obar', function (Configuration, ObarService, BrowserUtil, ScriptInjectorService, StylesheetInjectorService) {
     return {
       restrict: 'E',
       replace: true,
