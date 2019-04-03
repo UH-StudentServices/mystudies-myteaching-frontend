@@ -122,6 +122,7 @@ describe('Language proficiencies directive', function () {
     module('templates');
     module('directives.editButton');
     module('directives.enableEdit');
+    module('directives.editModeButtons');
 
     inject(function (_$compile_, _$rootScope_, _LanguageProficienciesService_, _$state_) {
       $compile = _$compile_;

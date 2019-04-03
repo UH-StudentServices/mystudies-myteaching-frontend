@@ -41,14 +41,5 @@
     <keywords editing="editing" keywords="keywords"></keywords>
   </div>
 
-  <div class="edit-buttons" ng-show="editing">
-    <button
-      class="button"
-      ng-click="cancelEdit()"
-      translate="general.cancel"></button>
-    <button
-      class="button"
-      ng-click="exitEdit()"
-      translate="general.save"></button>
-  </div>
+  <edit-mode-buttons cancel="cancelEdit()" save="exitEdit()" ng-show="editing"></edit-mode-buttons>
 </div>
