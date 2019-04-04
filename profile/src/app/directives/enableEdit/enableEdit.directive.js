@@ -25,9 +25,6 @@ angular.module('directives.enableEdit', [])
         edit: '&',
         editing: '<'
       },
-      templateUrl: 'app/directives/enableEdit/enableEdit.html',
-      link: function () {
-        return true;
-      }
+      templateUrl: 'app/directives/enableEdit/enableEdit.html'
     };
   });

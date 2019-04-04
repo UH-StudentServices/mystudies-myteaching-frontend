@@ -25,9 +25,6 @@ angular.module('directives.editModeButtons', [])
         cancel: '&',
         save: '&'
       },
-      templateUrl: 'app/directives/editModeButtons/editModeButtons.html',
-      link: function () {
-        return true;
-      }
+      templateUrl: 'app/directives/editModeButtons/editModeButtons.html'
     };
   });
