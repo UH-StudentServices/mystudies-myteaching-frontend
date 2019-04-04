@@ -24,6 +24,8 @@ var httpProxy = require('http-proxy');
 var modRewrite = require('connect-modrewrite');
 var urlUtil = require('url');
 var proxy;
+var profileProxy;
+var profileProxyPaths;
 var proxyPaths;
 var proxyMiddleware;
 var gruntPlugins;
@@ -62,6 +64,7 @@ gruntPlugins = [
 ];
 
 proxy = httpProxy.createProxyServer({ target: 'http://localhost:8080/' });
+profileProxy = httpProxy.createProxyServer({ target: 'http://localhost:3002/' });
 
 proxyPaths = [
   '/api',
@@ -73,11 +76,15 @@ proxyPaths = [
   '/saml'
 ];
 
+profileProxyPaths = ['/profile'];
+
 proxyMiddleware = function (req, res, next) {
   var reqPath = urlUtil.parse(req.url).pathname;
 
   if (proxyPaths.some(function (p) { return reqPath.indexOf(p) === 0; })) {
     proxy.web(req, res);
+  } else if (profileProxyPaths.some(function (p) { return reqPath.indexOf(p) === 0; })) {
+    profileProxy.web(req, res);
   } else {
     next();
   }
