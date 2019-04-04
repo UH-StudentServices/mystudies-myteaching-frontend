@@ -88,8 +88,12 @@ describe('Language proficiencies directive', function () {
     });
   };
 
-  var toggleEditMode = function () {
-    directiveElem[0].querySelector('.component-header .edit-button').click();
+  var enterEditMode = function () {
+    directiveElem[0].querySelector('.component-header .toggle-edit').click();
+  };
+
+  var saveChanges = function () {
+    directiveElem[0].querySelector('.save-changes').click();
   };
 
   angular.module('profileAnalytics', []);
@@ -117,6 +121,8 @@ describe('Language proficiencies directive', function () {
 
     module('templates');
     module('directives.editButton');
+    module('directives.enableEdit');
+    module('directives.editModeButtons');
 
     inject(function (_$compile_, _$rootScope_, _LanguageProficienciesService_, _$state_) {
       $compile = _$compile_;
@@ -161,7 +167,7 @@ describe('Language proficiencies directive', function () {
     var itemToDelete; var
       itemToUpdate;
 
-    toggleEditMode();
+    enterEditMode();
     itemToDelete = directiveElem[0].querySelector('.language-proficiency-item[data-id="1"]');
     deleteItem(itemToDelete, { id: 1 });
 
@@ -169,7 +175,7 @@ describe('Language proficiencies directive', function () {
     updateItem(itemToUpdate, 'zh', 'Moderate');
 
     addNewItem('nl', 'Excellent');
-    toggleEditMode();
+    saveChanges();
     expect(LanguageProficienciesService.save).toHaveBeenCalledWith({
       updatedLanguageProficiencies: [{ id: 2, languageName: 'zh', proficiency: 'Moderate', description: 'description' }],
       newLanguageProficiencies: [{ languageName: 'nl', proficiency: 'Excellent', description: 'description' }],
@@ -182,14 +188,14 @@ describe('Language proficiencies directive', function () {
   it('should not send update diff when post-edit state is unchanged from initial state', function () {
     var itemToDelete;
 
-    toggleEditMode();
+    enterEditMode();
 
     addNewItem('nl', 'Excellent');
 
     itemToDelete = directiveElem[0].querySelector('.language-proficiency-item[data-id=""]');
     deleteItem(itemToDelete, { languageName: 'nl' });
 
-    toggleEditMode();
+    saveChanges();
     expect(LanguageProficienciesService.save.calls.any()).toEqual(false);
   });
 
@@ -217,20 +223,20 @@ describe('Language proficiencies directive', function () {
       ];
     };
 
-    toggleEditMode();
+    enterEditMode();
 
     addNewItem('fr', 'Moderate');
 
     itemToDelete = directiveElem[0].querySelector('.language-proficiency-item[data-id="2"]');
     deleteItem(itemToDelete, { id: 2 });
 
-    toggleEditMode();
+    saveChanges();
     $scope.$digest();
-    toggleEditMode();
+    enterEditMode();
 
     addNewItem('de', 'Native');
 
-    toggleEditMode();
+    saveChanges();
 
     expect(LanguageProficienciesService.save.calls.count()).toEqual(2);
     expect(LanguageProficienciesService.save.calls.mostRecent().args[0]).toEqual({

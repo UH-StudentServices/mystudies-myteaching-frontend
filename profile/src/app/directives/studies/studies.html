@@ -24,7 +24,7 @@
                       editing="editing"></editable-heading>
     <div class="component-header__actions">
       <visibility-toggle component-id="STUDIES"></visibility-toggle>
-      <edit-button on-edit="edit()" on-exit-edit="exitEdit()"></edit-button>
+      <enable-edit edit="edit()" editing="editing"></enable-edit>
     </div>
   </div>
 
@@ -40,4 +40,6 @@
     </div>
     <keywords editing="editing" keywords="keywords"></keywords>
   </div>
+
+  <edit-mode-buttons cancel="cancelEdit()" save="exitEdit()" ng-show="editing"></edit-mode-buttons>
 </div>

@@ -24,12 +24,12 @@
                       editing="editing"></editable-heading>
     <div class="component-header__actions">
       <visibility-toggle component-id="WORK_EXPERIENCE" section-name="{{::sectionName}}"></visibility-toggle>
-      <edit-button on-edit="edit()"
-        on-exit-edit="exitEdit()">
-      </edit-button>
+      <enable-edit edit="edit()" editing="editing"></enable-edit>
     </div>
   </div>
 
   <show-work-experience ng-show="!editing"></show-work-experience>
   <edit-work-experience ng-show="editing"></edit-work-experience>
+
+  <edit-mode-buttons cancel="cancelEdit()" save="exitEdit()" ng-show="editing"></edit-mode-buttons>
 </div>

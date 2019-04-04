@@ -24,13 +24,12 @@
                       editing="editing"></editable-heading>
     <div class="component-header__actions">
       <visibility-toggle component-id="SAMPLES"></visibility-toggle>
-      <edit-button on-edit="edit()"
-                 on-exit-edit="exitEdit()"
-                 exit-edit-disabled="!samplesValid"
-                 on-disabled-exit-edit="markAllSubmitted()"></edit-button>
+      <enable-edit edit="edit()" editing="editing"></enable-edit>
     </div>
   </div>
 
   <show-samples ng-show="!editing" samples="samples"></show-samples>
   <edit-samples ng-show="editing" samples="samples" on-change="refreshValidity()"></edit-samples>
+
+  <edit-mode-buttons cancel="cancelEdit()" save="exitEdit()" ng-show="editing"></edit-mode-buttons>
 </div>

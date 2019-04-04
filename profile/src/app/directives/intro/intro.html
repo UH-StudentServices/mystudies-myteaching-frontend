@@ -34,12 +34,13 @@
                          translation-key="pageBanner.helpText.introduction"
                          limit-visibility="{ visibility: 'PRIVATE', roles: ['STUDENT'] }"
                          panel-align="right"></help-icon>
-              <edit-button class="profile-intro__edit" on-edit="edit()" on-exit-edit="exitEdit()"></edit-button>
+              <enable-edit editing="editing" edit="edit()"></enable-edit>
             </div>
           </div>
           <div class="editable-wrapper">
             <p class="profile-intro__intro user-text" ng-hide="editing" ng-bind="profile.intro"></p>
             <textarea maxlength="150" ng-show="editing" ng-model="profile.intro"></textarea>
+            <edit-mode-buttons cancel="cancelEdit()" save="exitEdit()" ng-show="editing"></edit-mode-buttons>
           </div>
         </div>
       </div>

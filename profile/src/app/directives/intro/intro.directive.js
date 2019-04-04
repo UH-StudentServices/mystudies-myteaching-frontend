@@ -62,6 +62,7 @@ angular.module('directives.intro', [
 
         $scope.edit = function () {
           $scope.editing = true;
+          $scope.origProfile = _.cloneDeep($scope.profile);
         };
 
         $scope.exitEdit = function () {
@@ -71,6 +72,11 @@ angular.module('directives.intro', [
             $scope.profile = profile;
           });
           return true;
+        };
+
+        $scope.cancelEdit = function () {
+          $scope.editing = false;
+          $scope.profile = $scope.origProfile;
         };
 
         $rootScope.$on(backgroundChangeEvent, updateBackgroundImage);

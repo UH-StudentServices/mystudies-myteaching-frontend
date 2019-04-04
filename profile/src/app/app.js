@@ -76,6 +76,8 @@ angular.module('opintoniProfileApp', [
   'directives.browseFiles',
   'directives.sharedLinks',
   'directives.obar',
+  'directives.enableEdit',
+  'directives.editModeButtons',
   'dialog.verificationDialog',
 
   'filters.formatting',

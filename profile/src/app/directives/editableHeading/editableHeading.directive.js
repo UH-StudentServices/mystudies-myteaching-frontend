@@ -52,6 +52,7 @@ angular.module('directives.editableHeading', [
             };
           }
           $scope.currentText = $scope.component.heading;
+          $scope.origText = $scope.component.heading;
         });
 
         $scope.saveHeading = function () {
@@ -72,7 +73,12 @@ angular.module('directives.editableHeading', [
           return false;
         };
 
+        $scope.revertHeading = function () {
+          $scope.component.heading = $scope.origText;
+        };
+
         $scope.$on('saveComponent', $scope.saveHeading);
+        $scope.$on('revertComponent', $scope.revertHeading);
       }
     };
   });

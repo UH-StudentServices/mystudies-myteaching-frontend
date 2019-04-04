@@ -49,7 +49,7 @@ angular.module('directives.samples', [
 
         scope.edit = function () {
           scope.editing = true;
-          scope.origSamples = scope.samples.slice();
+          scope.origSamples = _.cloneDeep(scope.samples);
         };
 
         scope.refreshValidity = _.debounce(function () {
@@ -77,6 +77,12 @@ angular.module('directives.samples', [
 
         scope.markAllSubmitted = function () {
           scope.samples.forEach(function (sample) { sample.submitted = true; });
+        };
+
+        scope.cancelEdit = function () {
+          scope.editing = false;
+          scope.samples = scope.origSamples;
+          scope.$broadcast('revertComponent');
         };
       }
     };

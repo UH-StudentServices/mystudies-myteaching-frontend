@@ -58,6 +58,7 @@ angular.module('directives.attainments', [
         $scope.edit = function edit() {
           $scope.editing = true;
           $scope.origWhitelist = $scope.whitelist.slice();
+          $scope.origShowGrades = $scope.showGrades.val;
           AttainmentResource.getAll($scope.profileLang)
             .then(function attainmentsSuccess(attainments) {
               $scope.allAttainments = attainments;
@@ -119,6 +120,13 @@ angular.module('directives.attainments', [
 
         $scope.showMoreClick = function showMoreClick() {
           $scope.numberOfVisibleAttainments += SHOW_MORE_ADDITION;
+        };
+
+        $scope.cancelEdit = function () {
+          $scope.editing = false;
+          $scope.showGrades.val = $scope.origShowGrades;
+          $scope.whitelist = $scope.origWhitelist;
+          $scope.$broadcast('revertComponent');
         };
 
         updateWhitelistedAttainments();

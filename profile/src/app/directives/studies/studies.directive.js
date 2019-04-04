@@ -46,11 +46,11 @@ angular.module('directives.studies', [
         scope.edit = function () {
           scope.editing = true;
           scope.origText = scope.summaryData;
+          scope.origKeywords = _.cloneDeep(scope.keywords);
         };
 
         scope.exitEdit = function () {
           var updateKeywordsRequest = { keywords: scope.keywords };
-
           var updateSummaryRequest = { summary: scope.summaryData };
 
           scope.$broadcast('saveComponent');
@@ -75,6 +75,14 @@ angular.module('directives.studies', [
             });
 
           return true;
+        };
+
+        scope.cancelEdit = function () {
+          scope.editing = false;
+          scope.summaryData = scope.origText;
+          scope.keywords = scope.origKeywords;
+          KeywordService.updateKeywords(profileId, { keywords: scope.keywords });
+          scope.$broadcast('revertComponent');
         };
 
         KeywordService.getKeywordsSubject()

@@ -27,7 +27,7 @@
     </div>
     <div class="component-header__actions">
       <visibility-toggle component-id="ATTAINMENTS"></visibility-toggle>
-      <edit-button on-edit="edit()" on-exit-edit="exitEdit()"></edit-button>
+      <enable-edit edit="edit()" editing="editing"></enable-edit>
     </div>
   </div>
   <ul ng-if="editing" class="study-attainments">
@@ -108,4 +108,6 @@
   <div ng-show="showMoreVisible()">
     <button class="button button--light" ng-click="showMoreClick()" translate="buttons.showMore"></button>
   </div>
+
+  <edit-mode-buttons cancel="cancelEdit()" save="exitEdit()" ng-show="editing"></edit-mode-buttons>
 </div>

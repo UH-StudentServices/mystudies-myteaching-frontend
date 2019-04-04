@@ -42,6 +42,15 @@
   }
 }
 
+.edit-buttons {
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    margin-left: 0.5em;
+  }
+}
+
 button.button--link {
   background: transparent;
   color: $blue;
@@ -50,4 +59,21 @@ button.button--link {
   :hover {
     color: $darkblue;
   }
+}
+
+button.toggle-edit,
+.component-header button.toggle-edit {
+  color: $white;
+  padding: 0.25em;
+  font-size: 0.75em;
+  text-transform: capitalize;
+  white-space: nowrap;
+
+  i:hover {
+    color: $white;
+  }
+}
+
+.component-header button.visibility-toggle {
+  padding-top: 0.1em;
 }

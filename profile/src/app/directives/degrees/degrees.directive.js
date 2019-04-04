@@ -75,6 +75,10 @@ angular.module('directives.degrees', [
             AnalyticsService.ec.DEGREES, AnalyticsService.ea.ADD);
         }
 
+        $scope.cancelEdit = function () {
+          $state.reload();
+        };
+
         $scope.exitEdit = function () {
           if (isValid()) {
             trackIfNeeded();
