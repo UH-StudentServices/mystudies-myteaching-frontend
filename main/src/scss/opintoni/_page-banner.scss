@@ -293,6 +293,16 @@ $banner-transition-duration: 0.5s;
   white-space: nowrap;
   padding: 1em;
 
+  button {
+    padding: 0;
+    background: transparent;
+    color: $blue;
+
+    :hover {
+      color: $darkblue;
+    }
+  }
+
   @include breakpoint($small) {
     @include triangle-with-border(12px, 12px);
 

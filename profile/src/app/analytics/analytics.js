@@ -15,6 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 angular.module('profileAnalytics', ['provider.analyticsAccounts'])
   .constant('STRIP_USERNAME_REGEX', /\/[^\/]+$/) // eslint-disable-line no-useless-escape
   .constant('TRACK_PAGE_TITLE', 'Profile')
@@ -81,7 +83,8 @@ angular.module('profileAnalytics', ['provider.analyticsAccounts'])
       FAVORITES: 'favorites',
       FREE_TEXT_CONTENT: 'free_text_content',
       CONTACT_INFO: 'contact_information',
-      PROFILE: 'profile'
+      PROFILE: 'profile',
+      PROFILE_PICTURE: 'profile_picture'
     };
 
     var eventActions = {
@@ -95,7 +98,8 @@ angular.module('profileAnalytics', ['provider.analyticsAccounts'])
       ADD_IMAGE: 'add_image',
       ADD_FILE: 'add_file',
       EDIT_SUMMARY: 'edit_summary',
-      SET_VISIBILITY: 'set_visibility'
+      SET_VISIBILITY: 'set_visibility',
+      RESET: 'reset'
     };
 
     var eventLabels = {

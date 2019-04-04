@@ -236,11 +236,18 @@
     "privacyMessage": "Den uppladdade bilden används också i andra HUs tjänster och bilden får en publik länk."
   },
   "pageBanner": {
+    "title": "Ändra bannerbilden",
     "chooseDefaultBackground": "Välj av standardbilder",
     "uploadFile": "Ladda up fil",
     "helpText": {
       "introduction": "Du kan skriva bredvid profilbilden t.ex. en kort presentation av dig själv. I detta avsnitt kan du även ge dig en rubrik av något slag. Kom ihåg att vara specifik och ta med t.ex. intressen, saker som är viktiga för dig själv eller beskrivande saker om din egna väg. “Studerande vid Helsingfors universitet” eller “X-områdets studerande” blir ofta för generellt.",
       "chooseBackground": "Du kan ändra bannerbilden. Klicka på kamerabilden och välj antingen ”ladda upp fil” eller ”välj från standardbilderna”. Välj bilden och spara."
+    },
+    "changeAvatar": {
+      "title": "Byt profil bild",
+      "uploadFile": "Ladda up fil",
+      "useDefault": "Anfand standard bild",
+      "cancelPicture": "Annullera"
     }
   },
   "files": {

@@ -16,14 +16,12 @@
 -->
 
 <span>
-  <a
-    role="button"
-    href=""
-    class="edit-link"
+  <button
+    class="edit-button"
     ng-click="onClick()"
     title="{{(editing ? 'general.done' : 'general.edit') | translate}}"
     limit-visibility="PRIVATE">
     <i
       ng-class="{'icon--done' : editing, 'icon--edit-event' : !editing, 'disabled' : editing && exitEditDisabled}"></i>
-  </a>
+  </button>
 </span>

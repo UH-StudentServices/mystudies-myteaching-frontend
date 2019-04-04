@@ -20,26 +20,24 @@
     <editable-heading component-id="ATTAINMENTS"
                       default-text="attainments.attainments"
                       profile-lang="{{::profileLang}}"
+                      help-key="attainments.helpText"
                       editing="editing"></editable-heading>
     <div ng-if="editing" class="study-attainments__grades-visibility-toggle-container">
       <toggle-switch ng-model="showGrades"/><span translate="attainments.showGrades"></span>
     </div>
     <div class="component-header__actions">
-      <help-icon translation-key="attainments.helpText"
-                 panel-align="right"
-                 limit-visibility="{ visibility: 'PRIVATE', roles: ['STUDENT'] }"></help-icon>
       <visibility-toggle component-id="ATTAINMENTS"></visibility-toggle>
-      <edit-link on-edit="edit()" on-exit-edit="exitEdit()"></edit-link>
+      <edit-button on-edit="edit()" on-exit-edit="exitEdit()"></edit-button>
     </div>
   </div>
   <ul ng-if="editing" class="study-attainments">
     <li class="study-attainment" ng-repeat="attainment in allAttainments">
       <div class="study-attainment__item">
 
-        <a role="button" href="" class="study-attainment__visibility" ng-click="toggleVisibility(attainment)">
+        <button class="study-attainment__visibility" ng-click="toggleVisibility(attainment)">
           <i ng-if="isVisible(attainment)" class="icon--preview"></i>
           <i ng-if="!isVisible(attainment)" class="icon--eye-slash"></i>
-        </a>
+        </button>
 
         <div class="study-attainment__left">
           <span class="study-attainment__grade--{{:: gradeClass(attainment.grade) }}">
@@ -49,7 +47,7 @@
 
         <div class="study-attainment__container">
           <div class="study-attainment__date">
-            {{:: attainment.attainmentDate | momentFormat:'DD.MM.YYYY' }}
+            {{:: attainment.attainmentDate | momentFormat:'l' }}
           </div>
 
           <div class="study-attainment__title">
@@ -84,7 +82,7 @@
 
         <div class="study-attainment__container">
           <div class="study-attainment__date">
-            {{:: attainment.attainmentDate | momentFormat:'DD.MM.YYYY' }}
+            {{:: attainment.attainmentDate | momentFormat:'l' }}
           </div>
 
           <div class="study-attainment__title">

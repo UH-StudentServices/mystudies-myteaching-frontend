@@ -320,6 +320,7 @@
     "close": "Sulje haku"
   },
   "pageBanner": {
+    "changeBackground": "Vaihda bannerikuva",
     "giveFeedback": "Anna palautetta",
     "newsButtonLabel": "Lue lisää",
     "chooseDefaultBackground": "Valitse vakiokuvista"

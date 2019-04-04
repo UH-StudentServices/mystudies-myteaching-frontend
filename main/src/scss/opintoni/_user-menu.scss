@@ -122,11 +122,15 @@ $time-color: rgb(109, 109, 109);
 
   @include breakpoint($small) {
     top: $user-component-height-default;
-    width: 330px;
+    width: 285px;
     min-width: 15em;
   }
 }
 
-.user-menu__actions--action:hover {
-  cursor: pointer;
+.user-menu__action {
+  padding: 0;
+
+  :hover {
+    cursor: pointer;
+  }
 }

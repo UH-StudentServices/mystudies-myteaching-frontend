@@ -15,5 +15,7 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 angular.module('constants.language', [])
   .constant('TRANSLATION_FILE_PREFIX', 'i18n/profile-');

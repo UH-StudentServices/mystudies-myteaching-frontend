@@ -23,10 +23,9 @@
             ng-repeat="favoriteType in availableFavoriteTypes"
             class="bar"
             ng-class="getFavoriteTypeClasses(favoriteType)">
-          <a class="button"
-             ng-click="selectFavoriteType(favoriteType)"
-             href=""
-             translate="{{'favorites.types.' + favoriteType}}"></a>
+          <button class="button"
+                  ng-click="selectFavoriteType(favoriteType)"
+                  translate="{{'favorites.types.' + favoriteType}}"></button>
         </li>
       </ul>
     </div>

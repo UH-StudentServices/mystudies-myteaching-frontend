@@ -15,6 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 var baseUrl = browser.params.baseUrl;
 
 describe('Frontpage', function () {

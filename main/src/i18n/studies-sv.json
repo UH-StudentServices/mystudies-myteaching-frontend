@@ -306,7 +306,7 @@
       "description": "Till exempel, Mån 14-15, Tis 12-13",
       "additionalInfo": "Till exempel, adress till dina websidor eller blog",
       "location": "Till exempel, rum numret",
-      "expirationDate": "dd.mm.yyyy"
+      "expirationDate": "yyyy-mm-dd"
     },
     "addNew": "Ny mottagstid...",
     "loading": "Mottagningstider laddas...",
@@ -320,6 +320,7 @@
     "close": "Stäng sök"
   },
   "pageBanner": {
+    "changeBackground": "Ändra bannerbilden",
     "giveFeedback": "Ge feedback",
     "newsButtonLabel": "Läs mera",
     "chooseDefaultBackground": "Välj av standardbilder"

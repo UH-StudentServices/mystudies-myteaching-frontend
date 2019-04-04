@@ -15,6 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 angular.module('directives.browseFiles', ['services.profileFiles', 'ui.bootstrap.modal'])
 
   .constant('ProfilePublicFilesResourcePath', '/api/public/v1/profile/files')

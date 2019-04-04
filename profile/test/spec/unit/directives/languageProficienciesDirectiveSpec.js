@@ -15,6 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 describe('Language proficiencies directive', function () {
   var $compile;
   var $scope;
@@ -87,7 +89,7 @@ describe('Language proficiencies directive', function () {
   };
 
   var toggleEditMode = function () {
-    directiveElem[0].querySelector('.component-header .edit-link').click();
+    directiveElem[0].querySelector('.component-header .edit-button').click();
   };
 
   angular.module('profileAnalytics', []);
@@ -114,7 +116,7 @@ describe('Language proficiencies directive', function () {
     });
 
     module('templates');
-    module('directives.editLink');
+    module('directives.editButton');
 
     inject(function (_$compile_, _$rootScope_, _LanguageProficienciesService_, _$state_) {
       $compile = _$compile_;

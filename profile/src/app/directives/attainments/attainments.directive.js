@@ -15,12 +15,14 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 angular.module('directives.attainments', [
   'services.profile',
   'resources.attainment',
   'filters.moment',
   'filters.formatting',
-  'directives.editLink',
+  'directives.editButton',
   'directives.editableHeading',
   'profileAnalytics'
 ])

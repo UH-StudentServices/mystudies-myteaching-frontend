@@ -20,6 +20,19 @@ $button_border : solid $blue 1px;
 
 button {
   border: none;
+
+  &.link {
+    color: $blue;
+
+    :hover {
+      color: $darkblue;
+    }
+  }
+
+  &.icon {
+    padding: 0;
+    border: none;
+  }
 }
 
 a.disabled,

@@ -16,26 +16,26 @@
   -->
 
 <div>
-  <div>
-    <a class="useful-links__edit-link" ng-hide="usefulLink.edit" ng-class="{editable : editable}">
-      <i class="icon--drag hide-mobile-only"></i>
-      <span ng-click="editUsefulLink()">
-        {{ usefulLink.description | renderUsefulLinkDescription:usefulLink.type }}
-        <i class="icon--edit"></i>
-      </span>
-    </a>
-    <div class="useful-links__edit-link-url" ng-show="usefulLink.edit">
-      <label for="url-{{:: usefulLink.id}}" translate="usefulLinks.linkUrlEditLabel" />
-      <input id="url-{{:: usefulLink.id}}"
-             ng-model="usefulLink.url"
-             ui-keypress="{'enter':'saveUsefulLink()'}"
-             placeholder="{{::('usefulLinks.linkUrl' | translate | capitalize)}}" />
-      <label for="description-{{:: usefulLink.id}}" translate="usefulLinks.linkDescriptionEditLabel" />
-      <input id="description-{{:: usefulLink.id}}"
-             ng-model="usefulLink.description"
-             ui-keypress="{'enter':'saveUsefulLink()'}"
-             placeholder="{{::('usefulLinks.linkDescription' | translate | capitalize)}}" />
-      <a href="" ng-click="saveUsefulLink()"><i class="icon--done"></i></a>
-    </div>
+  <div class="useful-links__edit-useful-link" ng-hide="usefulLink.edit" ng-class="{editable : editable}">
+    <i class="icon--drag hide-mobile-only"></i>
+    <button ng-click="editUsefulLink()">
+      {{ usefulLink.description | renderUsefulLinkDescription:usefulLink.type }}
+      <i class="icon--edit"></i>
+    </button>
+  </div>
+  <div class="useful-links__edit-useful-link--edit-url" ng-show="usefulLink.edit">
+    <label for="url-{{:: usefulLink.id}}" translate="usefulLinks.linkUrlEditLabel" />
+    <input id="url-{{:: usefulLink.id}}"
+           type="text"
+           ng-model="usefulLink.url"
+           ui-keypress="{'enter':'saveUsefulLink()'}"
+           placeholder="{{::('usefulLinks.linkUrl' | translate | capitalize)}}" />
+    <label for="description-{{:: usefulLink.id}}" translate="usefulLinks.linkDescriptionEditLabel" />
+    <input id="description-{{:: usefulLink.id}}"
+           type="text"
+           ng-model="usefulLink.description"
+           ui-keypress="{'enter':'saveUsefulLink()'}"
+           placeholder="{{::('usefulLinks.linkDescription' | translate | capitalize)}}" />
+    <button ng-click="saveUsefulLink()"><i class="icon--done"></i></button>
   </div>
 </div>

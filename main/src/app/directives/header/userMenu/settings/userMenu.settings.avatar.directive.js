@@ -15,21 +15,15 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 angular.module('directives.userMenu.settings.avatar', [
   'directives.imgLoad',
   'directives.uploadImage'
 ])
-  .constant('Camera', {
-    START: 'START_WEBCAM',
-    STOP: 'STOP_WEBCAM'
-  })
 
   .directive('avatar', function (userAvatarUpdatedEvent,
-    startImageCropperEvent,
-    Camera,
     UserSettingsService,
-    BrowserUtil,
-    ImageSourceMedia,
     AnalyticsService) {
     return {
       restrict: 'E',
@@ -37,7 +31,6 @@ angular.module('directives.userMenu.settings.avatar', [
       templateUrl: 'app/directives/header/userMenu/settings/userMenu.settings.avatar.html',
       link: function ($scope) {
         function reset() {
-          $scope.stopCamera();
           $scope.resetMenu();
         }
 
@@ -47,8 +40,6 @@ angular.module('directives.userMenu.settings.avatar', [
           $scope.showAvatarChangeType = !$scope.showAvatarChangeType;
         };
 
-        $scope.supportsCamera = BrowserUtil.supportsCamera();
-
         $scope.deleteUserAvatar = function () {
           UserSettingsService.deleteUserAvatar()
             .then(function deleteUserAvatarSuccess() {
@@ -57,28 +48,6 @@ angular.module('directives.userMenu.settings.avatar', [
               $scope.resetMenu();
             });
         };
-
-        $scope.startCamera = function () {
-          $scope.$broadcast(Camera.START);
-        };
-
-        $scope.stopCamera = function () {
-          $scope.$broadcast(Camera.STOP);
-          $scope.cameraOn = false;
-        };
-
-        $scope.takeSnapshot = function () {
-          var videoElement = $scope.avatarChannel.video;
-
-          $scope.$broadcast(startImageCropperEvent, videoElement, ImageSourceMedia.WEBCAM);
-        };
-
-        $scope.onStreaming = function () {
-          $scope.cameraOn = true;
-          $scope.$apply();
-        };
-
-        $scope.avatarChannel = { video: null }; // Will reference the video element on success
 
         $scope.upload = function (image, imageSourceMedia) {
           return UserSettingsService.updateUserAvatar(image).then(function () {

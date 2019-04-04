@@ -15,6 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 angular.module('services.keyword', ['services.profile', 'resources.keyword'])
   .factory('KeywordService', function (ProfileService, KeywordResource) {
     var Rx = window.Rx;

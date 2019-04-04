@@ -17,7 +17,7 @@
 
 <section class="accordion" ng-class="{'is-open': isOpen}">
   <header>
-    <a role="button" href="" class="accordion__title" ng-click="toggle()">
+    <button class="accordion__title" ng-click="toggle()">
       <div class="accordion__title__status-indicator">
         <span class="accordion-status icon--arrow"></span>
       </div>
@@ -26,7 +26,7 @@
           {{::headingKey}}
         </h3>
       </div>
-    </a>
+    </button>
   </header>
 
   <div class="accordion__contents" ng-transclude></div>

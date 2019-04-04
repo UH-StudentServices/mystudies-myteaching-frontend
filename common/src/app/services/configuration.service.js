@@ -15,6 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 angular.module('services.configuration', [])
 
   .constant('ConfigurationProperties', {
@@ -59,8 +61,7 @@ angular.module('services.configuration', [])
       teachers: [
         {
           name: 'Eero Jukola',
-          username: 'e_jukola',
-          subject: 'faculties.H30'
+          username: 'e_jukola'
         }
       ]
     },

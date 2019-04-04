@@ -15,6 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 angular.module('directives.languageSelector', [
   'services.profile',
   'services.profileRole',
@@ -58,7 +60,7 @@ angular.module('directives.languageSelector', [
             createAndSwitchToNewProfile(lang);
           } else {
             $translate.fallbackLanguage(lang);
-            $state.go('profile', { lang: lang });
+            $window.location.href = $state.href('profile', { lang: lang });
           }
         }
 

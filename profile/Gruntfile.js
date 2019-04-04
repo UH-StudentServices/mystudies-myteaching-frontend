@@ -103,6 +103,7 @@ module.exports = function (grunt) {
         }
       },
       options: {
+        online: true, // speed up startup significantly
         watchTask: true,
         host: 'local.student.helsinki.fi',
         open: false,
@@ -204,12 +205,13 @@ module.exports = function (grunt) {
     usemin: {
       html: ['<%= application.dist %>/**/*.html'],
       css: ['<%= application.dist %>/assets/styles/**/*.css'],
-      js: ['<%= application.dist %>/scripts/**/*.js'],
+      js: ['<%= application.dist %>/app/**/*.js'],
       options: {
         assetsDirs: [
           '<%= application.dist %>',
           '<%= application.dist %>/assets/fonts'
-        ]
+        ],
+        patterns: { js: [[/(assets\/(icons|images)\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the JS to reference our revved images']] }
       }
     },
     htmlmin: {

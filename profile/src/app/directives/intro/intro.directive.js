@@ -15,13 +15,16 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 angular.module('directives.intro', [
   'directives.intro.keywords',
   'directives.intro.jobSearch',
   'services.profile',
   'services.profileBackground',
-  'directives.editLink',
+  'directives.editButton',
   'directives.chooseBackground',
+  'directives.changeAvatar',
   'angular-flexslider',
   'ngFileUpload',
   'profileAnalytics'

@@ -17,6 +17,10 @@
 
 @include default-focus;
 
+html {
+  font-size: 100%;
+}
+
 ul {
   margin: 0;
   padding: 0;
@@ -26,7 +30,8 @@ input {
   border-radius: 0;
 }
 
-a {
+a,
+button {
   cursor: pointer;
 
   @include default-focus;

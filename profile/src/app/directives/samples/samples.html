@@ -20,17 +20,14 @@
     <editable-heading component-id="SAMPLES"
                       default-text="samples.title"
                       profile-lang="{{::profileLang}}"
+                      help-key="samples.helpText"
                       editing="editing"></editable-heading>
-
     <div class="component-header__actions">
-      <help-icon translation-key="samples.helpText"
-                 panel-align="right"
-                 limit-visibility="{ visibility: 'PRIVATE', roles: ['STUDENT'] }"></help-icon>
       <visibility-toggle component-id="SAMPLES"></visibility-toggle>
-      <edit-link on-edit="edit()"
+      <edit-button on-edit="edit()"
                  on-exit-edit="exitEdit()"
                  exit-edit-disabled="!samplesValid"
-                 on-disabled-exit-edit="markAllSubmitted()"></edit-link>
+                 on-disabled-exit-edit="markAllSubmitted()"></edit-button>
     </div>
   </div>
 

@@ -15,10 +15,12 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 angular.module('directives.studies', [
   'services.keyword',
   'services.summary',
-  'directives.editLink',
+  'directives.editButton',
   'directives.keywords',
   'directives.editableHeading',
   'constants.ngEmbedOptions',

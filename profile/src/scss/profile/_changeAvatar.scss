@@ -15,9 +15,33 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-.edit-link {
-  .disabled {
-    color: $gray;
-    cursor: default;
+.change-avatar__container {
+  display: flex;
+  position: relative;
+
+  .dropdown-content {
+    @include triangle-with-border(12px, 12px, $color : $white, $border-color : $lightsilver, $align:left);
+    @include font-size(13px);
+
+    text-transform: none;
+    top: 65px;
+    width: 260px;
+    padding: 1em;
+    white-space: nowrap;
+
+    button.link {
+      padding: 0;
+      background: transparent;
+    }
   }
+}
+
+.change-avatar__button {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  color: $blue;
+  display: block;
+  background-color: white;
+  z-index: 1;
 }

@@ -15,7 +15,7 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-$icon-size: 20px;
+$icon-size: 1.25rem;
 $tooltip-width: 300px;
 $tooltip-width-mobile: 250px;
 $half-width: calc(0.5 * #{$tooltip-width});
@@ -28,6 +28,10 @@ $minus-half-width-mobile: calc(-0.5 * #{$tooltip-width-mobile});
   position: relative;
   display: inline-block;
   top: 50%;
+  line-height: 1.15;
+  font-weight: normal;
+  letter-spacing: normal;
+  text-transform: none;
 }
 
 .help-icon-icon::after {
@@ -35,7 +39,14 @@ $minus-half-width-mobile: calc(-0.5 * #{$tooltip-width-mobile});
 }
 
 .help-icon-popover-trigger {
+  background: transparent;
+  color: $blue;
   font-size: inherit !important;
+  padding: 0;
+
+  :hover {
+    color: $darkblue;
+  }
 }
 
 .help-icon-popover-container {

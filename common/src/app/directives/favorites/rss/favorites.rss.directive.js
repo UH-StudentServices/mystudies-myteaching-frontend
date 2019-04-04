@@ -15,6 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 angular.module('directives.favorites.rss', ['services.favorites'])
 
   .directive('favoritesRss', function (FavoritesService) {
@@ -32,7 +34,7 @@ angular.module('directives.favorites.rss', ['services.favorites'])
         FavoritesService.getRSSFeed(feedUrl).then(function getFeedSuccess(feedData) {
           $scope.error = false;
           $scope.feedTitle = feedData.title ? feedData.title : feedUrl;
-          $scope.feedDateLocalized = feedData.momentDate.format('l');
+          $scope.feedMomentDate = feedData.momentDate.format('l');
           $scope.feedLink = feedData.link;
 
           $scope.feed = feedData;

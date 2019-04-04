@@ -19,10 +19,6 @@
   position: relative;
 
   &__title-container--edit {
-    width: 80%;
-  }
-
-  &__title--edit {
     @extend .ui-component__title--edit;
   }
 
@@ -77,13 +73,24 @@
     }
   }
 
+  .component-header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
   &__title {
     @extend .add-favorite-button__title;
+
+    position: relative;
+    padding-right: 0.5em !important;
+
+    .hide-mobile-only {
+      margin-right: 0.5em;
+    }
   }
 
   .help-icon {
-    position: absolute;
-    top: 0;
-    right: 0;
+    margin-top: 1.5em;
   }
 }

@@ -15,6 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 angular.module('directives.popover', ['angular-click-outside'])
 
   .directive('popover', function ($templateCache, $compile) {
@@ -55,7 +57,8 @@ angular.module('directives.popover', ['angular-click-outside'])
               scope.showPopover = false;
             }
           },
-          togglePopover: function () {
+          togglePopover: function (event) {
+            event.stopPropagation();
             scope.showPopover = !scope.showPopover;
             scope.$apply();
           }

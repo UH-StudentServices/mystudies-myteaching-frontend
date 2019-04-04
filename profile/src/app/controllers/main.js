@@ -15,13 +15,15 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 angular.module('controllers.main', [
   'constants.profileTabs',
   'services.componentOrder',
   'utils.browser'
 ])
 
-  .controller('MainCtrl', function ($scope, profileTabs, profile, state, userSettings, notifications,
+  .controller('MainCtrl', function ($state, $scope, profileTabs, profile, state, userSettings, notifications,
     ComponentOrderService, PreviewService, State, BrowserUtil) {
     $scope.profile = profile;
     $scope.userSettings = userSettings;
@@ -31,6 +33,8 @@ angular.module('controllers.main', [
     $scope.isPreview = PreviewService.isPreview();
     $scope.sectionSortDisabled = state !== State.PRIVATE || BrowserUtil.supportsTouch();
     $scope.profileSections = [];
+    $scope
+      .hideObar = PreviewService.isPreview() || $state.params.sharedlink;
 
     ComponentOrderService.subscribeToComponentOrderChanges(profile, function (componentOrders) {
       $scope.profileSections = componentOrders;

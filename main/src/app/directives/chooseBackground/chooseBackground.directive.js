@@ -15,6 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 angular.module('directives.chooseBackground', [
   'ui.bootstrap.modal', 'directives.uploadImage',
   'services.userSettings', 'directives.userBackground'

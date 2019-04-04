@@ -15,6 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 // EditableHeading is intended for profile section headers.
 
 angular.module('directives.editableHeading', [
@@ -30,6 +32,7 @@ angular.module('directives.editableHeading', [
         componentId: '@',
         defaultText: '@',
         profileLang: '@',
+        helpKey: '@',
         editing: '<'
       },
       templateUrl: 'app/directives/editableHeading/editableHeading.html',

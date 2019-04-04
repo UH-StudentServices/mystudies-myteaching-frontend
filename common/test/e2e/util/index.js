@@ -83,7 +83,7 @@ export const loginAndOpenAcademicProfile = async (t) => {
 };
 
 export const changeLanguage = async (langCode, t) => {
-  const languageButtonSelector = Selector('a.theme-language').withAttribute('aria-label', LANGUAGES[langCode]);
+  const languageButtonSelector = Selector('button.theme-language').withAttribute('aria-label', LANGUAGES[langCode]);
 
   return t
     .click(languageButtonSelector)

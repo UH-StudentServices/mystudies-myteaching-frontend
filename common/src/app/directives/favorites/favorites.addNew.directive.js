@@ -15,6 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 angular.module('directives.favorites.addNew', [
   'directives.favorites.addNew.rss',
   'directives.favorites.addNew.unicafe',
@@ -94,7 +96,7 @@ angular.module('directives.favorites.addNew', [
         };
 
         function setFocus() {
-          Focus.setFocus('.add-favorite-container a');
+          Focus.setFocus('.add-favorite-container button');
         }
 
         function resetPopover() {

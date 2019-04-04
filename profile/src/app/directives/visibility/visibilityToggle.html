@@ -15,14 +15,12 @@
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <span>
-  <a
-    role="button"
-    href=""
+  <button
     class="visibility-toggle"
     ng-click="toggleVisibility()"
     title="{{(visibility === Visibility.PUBLIC ? 'visibility.toPrivate' : 'visibility.toPublic') | translate}}"
     limit-visibility="PRIVATE">
     <i
       ng-class="{'icon--preview' : visibility === Visibility.PUBLIC, 'icon--eye-slash' : visibility === Visibility.PRIVATE }"></i>
-  </a>
+  </button>
 </span>

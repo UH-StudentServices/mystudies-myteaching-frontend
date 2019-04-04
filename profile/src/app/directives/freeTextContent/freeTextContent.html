@@ -17,45 +17,44 @@
 
 <div class="free-text-content ui-component">
   <div class="component-header">
-    <h2 ng-if="!isEditing" class="ui-component__title border-bottom">
-      <span ng-if="!isTranslatableHeading()">
-        {{::freeTextContentItem.title}}
-      </span>
+    <div class="editable-heading">
+      <h2 ng-if="!isEditing" class="ui-component__title border-bottom">
+        <span ng-if="!isTranslatableHeading()">
+          {{::freeTextContentItem.title}}
+        </span>
 
-      <span ng-if="isTranslatableHeading()" translate translate-language="{{::profileLang}}">
-        {{::headingKey}}
-      </span>
+        <span ng-if="isTranslatableHeading()" translate translate-language="{{::profileLang}}">
+          {{::headingKey}}
+        </span>
 
-    </h2>
+      </h2>
 
-    <div class="free-text-content__title-container--edit" ng-if="isEditing">
-      <input class="free-text-content__title--edit" type="text" ng-model="freeTextContentItem.title">
-    </div>
-
-    <div class="component-header__actions">
-      <span limit-visibility="PRIVATE">
-        <a ng-if="deletable && !isEditing"
-           role="button"
-           href=""
-           ng-click="confirmDelete()"
-           title="delete">
-          <i class="icon--trash"></i>
-        </a>
-      </span>
-
+      <div class="free-text-content__title-container--edit" ng-if="isEditing">
+        <input type="text" ng-model="freeTextContentItem.title">
+      </div>
       <help-icon ng-show="showHelp"
                  translation-key="{{::helpKey}}"
                  limit-visibility="{ visibility: 'PRIVATE', roles: ['STUDENT'] }"
                  panel-align="right"></help-icon>
+    </div>
 
+    <div class="component-header__actions">
+      <span limit-visibility="PRIVATE">
+        <button
+           ng-if="deletable && !isEditing"
+           ng-click="confirmDelete()"
+           title="delete">
+          <i class="icon--trash"></i>
+        </button>
+      </span>
       <visibility-toggle component-id="FREE_TEXT_CONTENT"
                          section-name="{{::profileSection}}"
                          instance-name="{{::instanceName}}">
       </visibility-toggle>
 
-      <edit-link on-edit="toggleEdit()"
+      <edit-button on-edit="toggleEdit()"
                  on-exit-edit="updateOrCreateNew()">
-      </edit-link>
+      </edit-button>
     </div>
   </div>
 

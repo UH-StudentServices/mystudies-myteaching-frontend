@@ -15,9 +15,12 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 angular.module('directives.weekFeed.feedItem.event', [
   'services.location',
   'services.eventUri',
+  'services.language',
   'directives.analytics'
 ])
 
@@ -57,8 +60,9 @@ angular.module('directives.weekFeed.feedItem.event', [
     };
   })
 
-  .filter('eventTimeSpan', function () {
-    var dateString = 'DD.MM.YYYY';
+  .filter('eventTimeSpan', function (LanguageService) {
+    var locale = LanguageService.getLocale();
+    var dateString = 'l';
     var hoursString = 'HH:mm';
 
     function momentDateHasHours(momentDate) {
@@ -74,7 +78,7 @@ angular.module('directives.weekFeed.feedItem.event', [
     }
 
     function formatMomentDate(momentDate) {
-      return momentDate.format(getFormatString(momentDate));
+      return momentDate.locale(locale).format(getFormatString(momentDate));
     }
 
     function formatMomentDateSpan(startDate, endDate) {

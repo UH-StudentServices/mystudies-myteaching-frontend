@@ -15,6 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 angular.module('directives.obar', [])
   .directive('obar', function (Configuration, ObarService, BrowserUtil, ScriptInjectorService, StylesheetInjectorService) {
     return {

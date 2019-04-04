@@ -30,16 +30,7 @@ angular.module('directives.officeHours', [
       replace: true,
       templateUrl: 'app/directives/officeHours/officeHours.html',
       link: function (scope) {
-        var dateFormats = ['D.M.YYYY', 'D/M/YYYY'];
-
         scope.currentLanguage = LanguageService.getCurrent();
-
-        function toMoment(dateInput) {
-          if (moment.isMoment(dateInput)) {
-            return dateInput;
-          }
-          return moment(dateInput, dateFormats, true);
-        }
 
         function setLoadError() {
           scope.loadError = true;
@@ -51,7 +42,7 @@ angular.module('directives.officeHours', [
               name: oh.name,
               additionalInfo: oh.additionalInfo,
               location: oh.location,
-              expirationDate: momentDateToLocalDateArray(toMoment(oh.expirationDate)),
+              expirationDate: momentDateToLocalDateArray(oh.expirationDate),
               description: oh.description,
               degreeProgrammes: oh.degreeProgrammes,
               languages: oh.languages
@@ -64,15 +55,13 @@ angular.module('directives.officeHours', [
         }
 
         function officeHoursLoaded(officeHours) {
-          var dateFormat = scope.currentLanguage === 'en' ? dateFormats[1] : dateFormats[0];
-
           scope.loaded = true;
           scope.officeHoursList = officeHours.map(function (oh) {
             return {
               description: oh.description,
               additionalInfo: oh.additionalInfo,
               location: oh.location,
-              expirationDate: dateArrayToMomentObject(oh.expirationDate).format(dateFormat),
+              expirationDate: dateArrayToMomentObject(oh.expirationDate),
               expired: hasExpired(dateArrayToMomentObject(oh.expirationDate)),
               degreeProgrammes: oh.degreeProgrammes.map(function (programme) {
                 return _.find(scope.degreeProgrammes, ['code', programme.code]);
@@ -207,13 +196,12 @@ angular.module('directives.officeHours', [
         }
 
         function isValidOfficeHours(officeHours) {
-          var expirationDate = toMoment(officeHours.expirationDate);
-
           return officeHours.description
             && officeHours.name
             && degreeProgrammesTeachingLanguagesValid(officeHours)
-            && expirationDate.isValid()
-            && expirationDate.isBefore(moment().add(1, 'year'));
+            && officeHours.expirationDate
+            && officeHours.expirationDate.isValid()
+            && officeHours.expirationDate.isBefore(moment().add(1, 'year'));
         }
 
         scope.isValidOfficeHours = isValidOfficeHours;

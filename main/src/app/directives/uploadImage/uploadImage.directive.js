@@ -15,16 +15,15 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser'])
 
   .constant('MaxImageDimensionsDesktop', 2000)
   .constant('MaxImageDimensionsMobile', 1000)
   .constant('AvatarImageSize', 510)
   .constant('CropperMargin', 30)
-  .constant('ImageSourceMedia', {
-    WEBCAM: 'webcam',
-    FILE_SYSTEM: 'fileSystem'
-  })
+  .constant('ImageSourceMedia', { FILE_SYSTEM: 'fileSystem' })
 
   .factory('MaxImageDimensions', function (BrowserUtil, MaxImageDimensionsDesktop,
     MaxImageDimensionsMobile) {
@@ -74,7 +73,6 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
 
   .directive('uploadImage', function ($uibModal,
     $window,
-    Camera,
     UserSettingsService,
     BrowserUtil,
     ResizeImageService,

@@ -15,12 +15,14 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-angular.module('directives.editLink', [])
-  .directive('editLink', function () {
+'use strict';
+
+angular.module('directives.editButton', [])
+  .directive('editButton', function () {
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'app/directives/editLink/editLink.html',
+      templateUrl: 'app/directives/editButton/editButton.html',
       scope: {
         onEdit: '&',
         onExitEdit: '&',

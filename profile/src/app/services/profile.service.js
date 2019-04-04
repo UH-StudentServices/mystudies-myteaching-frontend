@@ -15,6 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 angular.module('services.profile', [
   'resources.profile',
   'services.profileRole'
@@ -23,6 +25,17 @@ angular.module('services.profile', [
   .factory('ProfileService', function (ProfileResource,
     ProfileRoleService) {
     var profilePromise;
+    var prevArguments;
+    var prevFunction;
+
+    function setPrevCall(prevCallArguments, prevCallFunction) {
+      prevArguments = prevCallArguments;
+      prevFunction = prevCallFunction;
+    }
+
+    function refresh() {
+      profilePromise = prevFunction.apply(null, prevArguments);
+    }
 
     function findProfileByPath(state, lang, userpath) {
       profilePromise = ProfileResource.find(
@@ -31,11 +44,13 @@ angular.module('services.profile', [
         lang,
         userpath
       );
+      setPrevCall(arguments, findProfileByPath);
       return profilePromise;
     }
 
     function findProfileBySharedLink(sharedLink) {
       profilePromise = ProfileResource.findBySharedLink(sharedLink);
+      setPrevCall(arguments, findProfileBySharedLink);
       return profilePromise;
     }
 
@@ -48,7 +63,10 @@ angular.module('services.profile', [
       return profilePromise;
     }
 
-    function getProfile() {
+    function getProfile(doRefresh) {
+      if (doRefresh) {
+        refresh();
+      }
       return profilePromise;
     }
 

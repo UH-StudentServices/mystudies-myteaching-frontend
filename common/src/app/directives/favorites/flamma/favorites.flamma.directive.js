@@ -15,6 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 angular
   .module('directives.favorites.flamma', ['services.favorites', 'services.language'])
   .constant('FLAMMA_EVENTS', {
@@ -50,7 +52,7 @@ angular
         FavoritesService.getRSSFeed(feedUrl)
           .then(function getFeedSuccess(feedData) {
             $scope.feedTitle = feedData.title ? feedData.title : feedUrl;
-            $scope.feedDateLocalized = feedData.momentDate.format('l');
+            $scope.feedMomentDate = feedData.momentDate;
             $scope.feedLink = feedData.link;
             $scope.feed = feedData;
           });

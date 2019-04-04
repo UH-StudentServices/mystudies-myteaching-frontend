@@ -18,7 +18,10 @@
 .preview-btn {
   @extend button.button--light;
 
-  padding: 0.5em 0.7em !important;
+  @include breakpoint($mobile-only) {
+    padding: 0;
+    border: none;
+  }
 
   &--text {
     display: none;
@@ -30,6 +33,17 @@
 
   &--icon {
     display: inline-block;
+    width: 26px;
+    height: 28px;
+
+    svg {
+      fill: $blue;
+    }
+
+    svg:hover {
+      background-color: $blue;
+      fill: $white;
+    }
 
     @include breakpoint($small) {
       display: none !important;

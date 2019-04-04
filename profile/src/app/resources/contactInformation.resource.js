@@ -15,6 +15,8 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 angular.module('resources.contactInformation', [])
 
   .constant('CONTACT_INFORMATION_RESOURCE_URL', '/api/:currentState/v1/profile/:profileId/contactinformation')

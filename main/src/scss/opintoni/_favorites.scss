@@ -263,11 +263,17 @@
 .add-favorite-button__title {
   font-size: 2rem;
   color: $blue;
+  position: absolute;
+  top: 0.5em;
+  left: 0.5em;
 }
 
 .add-favorite-button {
+  background: transparent;
   height: 100%;
+  width: 100%;
   display: block;
+  color: $blue;
 
   &:hover,
   &:hover > .add-favorite-button__title {
@@ -306,6 +312,16 @@
 
     &.ng-invalid {
       border: 1px solid $red;
+    }
+  }
+
+  button {
+    color: $blue;
+    background: transparent;
+    padding: 0;
+
+    :hover {
+      color: $darkblue;
     }
   }
 
@@ -408,7 +424,7 @@
     margin-bottom: 2px;
     padding: 0;
 
-    a {
+    button {
       width: 100%;
       padding: 0.3em 0.7em 0.4em;
       line-height: normal;
