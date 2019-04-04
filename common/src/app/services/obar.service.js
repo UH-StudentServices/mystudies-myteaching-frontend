@@ -19,22 +19,22 @@
 
 angular.module('services.obar', ['resources.obar', 'resources.session'])
   .factory('ObarService', function ObarService(ObarResource, SessionResource) {
-    function getPublicObarJwtToken() {
-      return ObarResource.getPublicObarJwtToken().then(function (response) {
+    function getPublicObarJwtToken(app) {
+      return ObarResource.getPublicObarJwtToken(app).then(function (response) {
         return response.jwtToken;
       });
     }
 
-    function getPrivateObarJwtToken() {
-      return ObarResource.getPrivateObarJwtToken().then(function (response) {
+    function getPrivateObarJwtToken(app) {
+      return ObarResource.getPrivateObarJwtToken(app).then(function (response) {
         return response.jwtToken;
       });
     }
 
-    function getObarJwtToken() {
+    function getObarJwtToken(app) {
       return SessionResource.getSession()
-        .then(getPrivateObarJwtToken)
-        .catch(getPublicObarJwtToken);
+        .then(function () { return getPrivateObarJwtToken(app); })
+        .catch(function () { return getPublicObarJwtToken(app); });
     }
 
     return { getObarJwtToken: getObarJwtToken };

@@ -21,13 +21,12 @@ angular.module('resources.obar', [])
   .factory('ObarResource', function ObarResource($resource) {
     var publicObarResource = $resource('/api/public/v1/obar-jwt-token');
     var privateObarResource = $resource('/api/private/v1/obar-jwt-token');
-
     return {
-      getPublicObarJwtToken: function getPublicJwtToken() {
-        return publicObarResource.get().$promise;
+      getPublicObarJwtToken: function getPublicJwtToken(app) {
+        return publicObarResource.get({ app: app }).$promise;
       },
-      getPrivateObarJwtToken: function getPrivateJwtToken() {
-        return privateObarResource.get().$promise;
+      getPrivateObarJwtToken: function getPrivateJwtToken(app) {
+        return privateObarResource.get({ app: app }).$promise;
       }
     };
   });

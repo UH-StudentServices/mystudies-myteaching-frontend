@@ -27,7 +27,7 @@ angular.module('directives.obar', [])
       link: function ($scope) {
         var baseUrl = Configuration.obarBaseUrl;
 
-        ObarService.getObarJwtToken().then(function (jwtToken) {
+        ObarService.getObarJwtToken($scope.app).then(function (jwtToken) {
           $scope.baseUrl = baseUrl;
           $scope.jwtToken = jwtToken;
 

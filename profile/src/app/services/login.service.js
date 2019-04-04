@@ -32,8 +32,8 @@ angular.module('services.login', [
     function goToLogin(originalUrl) {
       var state = StateService.getStateFromDomain();
       var loginUrl = state === State.MY_TEACHINGS
-        ? Configuration.loginUrlTeacher
-        : Configuration.loginUrlStudent;
+        ? Configuration.loginUrlTeacherProfile
+        : Configuration.loginUrlStudentProfile;
 
       $cookies.put(RedirectCookie.NAME, originalUrl,
         { expires: moment().add(RedirectCookie.TIMEOUT_IN_MINUTES, 'minutes').toDate() });
