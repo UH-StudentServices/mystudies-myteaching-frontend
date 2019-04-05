@@ -45,7 +45,8 @@
     "RESTRICTED": "HY käyttäjät",
     "PUBLIC": "julkinen",
     "toPublic" : "Muuta julkiseksi",
-    "toPrivate" : "Muuta yksityiseksi"
+    "toPrivate" : "Muuta yksityiseksi",
+    "helpText": "<p>Julkinen: Portfolio on löydettävissä yleisesti hakukoneilla ja jos jaat URL:in, se näkyy kaikille vastaanottajille.</p><p>HY Käyttäjät: Portfolio ei ole löydettävissä hakukoneilla. Portfolio näkyy vain HY:n tunnuksilla kirjautuneille, kun jaat URL:in.</p><p>Yksityinen: Portfolio näkyy vain sinulle. Voit kuitenkin jakaa yksityisessä tilassa olevan portfolion linkillä portfolion asetuksista “jaa linkillä”-toiminnolla. Tämä on suositeltu asetus, paitsi jos haluat julkaista portfolion yleisesti.</p>"
   },
   "keywords": {
     "title": "Avainsanat",

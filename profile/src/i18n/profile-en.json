@@ -45,7 +45,8 @@
     "RESTRICTED": "UH users",
     "PUBLIC": "public",
     "toPublic" : "Change to public",
-    "toPrivate" : "Change to private"
+    "toPrivate" : "Change to private",
+    "helpText": "<p>Public: The portfolio can be found with search engines and if you share the URL, it is visible to all recipients.</p><p>UH Users: The portfolio is not visible to search engines. When you share the URL, it is only visible to HU users.</p><p>Private: The portfolio is only visible to you. However, you can share the portfolio with a private link from the portfolio settings by selecting “share with a link”. The private mode is the recommended setting, unless you would like to generally publish your portfolio.</p>"
   },
   "keywords": {
     "title": "Keywords",
