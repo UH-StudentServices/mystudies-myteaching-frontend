@@ -29,16 +29,18 @@ angular.module('directives.helpIcon', ['directives.popover'])
         plainTitle: '=',
         uniqueId: '@',
         panelAlign: '@',
+        mobileAlign: '@',
         panelPosition: '@'
       },
       templateUrl: 'app/directives/helpIcon/helpIcon.html',
       link: function (scope) {
         var alignmentClass;
         var positionClass = '';
+        var align = BrowserUtil.isMobile ? scope.mobileAlign : scope.panelAlign;
 
-        if (BrowserUtil.isMobile() || scope.panelAlign === 'center') {
+        if ((BrowserUtil.isMobile() && !scope.mobileAlign) || align === 'center') {
           alignmentClass = 'help-icon-popover-container--center-aligned';
-        } else if (scope.panelAlign === 'right') {
+        } else if (align === 'right') {
           alignmentClass = 'help-icon-popover-container--right-aligned';
         } else {
           alignmentClass = 'help-icon-popover-container--left-aligned';
