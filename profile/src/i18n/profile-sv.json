@@ -41,9 +41,9 @@
     "helsinkiUniversity": "Helsingfors universitet"
   },
   "visibility": {
-    "PRIVATE": "privat",
+    "PRIVATE": "Privat",
     "RESTRICTED": "HU andvändare",
-    "PUBLIC": "allmän",
+    "PUBLIC": "Allmän",
     "toPublic" : "ändra till offentligt",
     "toPrivate" : "ändra  till privat",
     "helpText": "<p>Allmän: Portfolion kan hittas med sökmotorer och om du delar URL:en, syns den till alla mottagare.</p><p>HU Användare: Portfolion kan inte hittas med sökmotorer. Portfolion är synlig enbart för dem som är inskrivna med HU:s användarrätt.</p><p>Privat: Detta är den rekommenderade inställningen, förutom om du vill publicera portfolion allmänt. Portfolion syns enbart för dig. Du kan dock dela med dig en privat portfolio med en privat länk från portfolions inställningar genom att välja ”dela med länk”.</p>"
