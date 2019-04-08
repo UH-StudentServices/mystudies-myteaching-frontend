@@ -37,22 +37,9 @@ angular.module('directives.visibility',
           $scope.profile = profile;
         });
 
-        $scope.visibilities = [
-          {
-            visibility: 'PUBLIC',
-            name: $translate.instant('visibility.PUBLIC')
-          },
-          {
-            visibility: 'RESTRICTED',
-            name: $translate.instant('visibility.RESTRICTED')
-          },
-          {
-            visibility: 'PRIVATE',
-            name: $translate.instant('visibility.PRIVATE')
-          }
-        ];
+        $scope.setVisibility = function () {
+          var visibility = $scope.profile.visibility;
 
-        $scope.setVisibility = function (visibility) {
           AnalyticsService.trackEvent(
             AnalyticsService.ec.PROFILE,
             AnalyticsService.ea.SET_VISIBILITY,
@@ -65,10 +52,6 @@ angular.module('directives.visibility',
           }).then(function (profile) {
             $scope.profile = profile;
           });
-        };
-
-        $scope.setVisibility2 = function () {
-
         };
       }
     };
