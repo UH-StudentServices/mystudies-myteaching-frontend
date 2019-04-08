@@ -26,7 +26,7 @@ angular.module('directives.visibility',
     'profileAnalytics'
   ])
 
-  .directive('profileVisibility', function (AnalyticsService) {
+  .directive('profileVisibility', function (AnalyticsService, $translate) {
     return {
       restrict: 'E',
       replace: true,
@@ -36,6 +36,21 @@ angular.module('directives.visibility',
         ProfileService.getProfile().then(function (profile) {
           $scope.profile = profile;
         });
+
+        $scope.visibilities = [
+          {
+            visibility: 'PUBLIC',
+            name: $translate.instant('visibility.PUBLIC')
+          },
+          {
+            visibility: 'RESTRICTED',
+            name: $translate.instant('visibility.RESTRICTED')
+          },
+          {
+            visibility: 'PRIVATE',
+            name: $translate.instant('visibility.PRIVATE')
+          }
+        ];
 
         $scope.setVisibility = function (visibility) {
           AnalyticsService.trackEvent(
@@ -50,6 +65,10 @@ angular.module('directives.visibility',
           }).then(function (profile) {
             $scope.profile = profile;
           });
+        };
+
+        $scope.setVisibility2 = function () {
+
         };
       }
     };

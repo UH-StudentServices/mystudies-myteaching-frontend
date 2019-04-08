@@ -17,7 +17,7 @@
 
 <div class="navigation-right__element">
   <div class="profile-visibility">
-    <div dropdown close-on-content-click class="dropdown">
+    <!--<div dropdown close-on-content-click class="dropdown">
       <div class="dropdown-toggle text-transform-capitalize-block" translate="{{'visibility.' + profile.visibility}}" tabindex="0">
       </div>
       <div role="menu" class="dropdown-content">
@@ -45,7 +45,12 @@
           </li>
         </ul>
       </div>
-    </div>
+    </div>-->
+    <select role="menu" ng-model="profile.visibility" ng-options="v.name for v in visibilities track by v.visibility">
+<!--      <option onselect="setVisibility('PUBLIC')" role="menuitem" translate="visibility.PUBLIC" value="PUBLIC"></option>-->
+<!--      <option onselect="setVisibility('RESTRICTED')" role="menuitem" translate="visibility.RESTRICTED" value="RESTRICTED"></option>-->
+<!--      <option onselect="setVisibility('PRIVATE')" role="menuitem" translate="visibility.PRIVATE" value="PRIVATE"></option>-->
+    </select>
     <help-icon translation-key="visibility.helpText"
                limit-visibility="{ visibility: 'PRIVATE', roles: ['STUDENT'] }"
                mobile-align="left"></help-icon>
