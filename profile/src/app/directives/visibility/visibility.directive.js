@@ -26,7 +26,7 @@ angular.module('directives.visibility',
     'profileAnalytics'
   ])
 
-  .directive('profileVisibility', function (AnalyticsService, $translate) {
+  .directive('profileVisibility', function (AnalyticsService) {
     return {
       restrict: 'E',
       replace: true,
