@@ -17,11 +17,12 @@
 
 <div class="navigation-right__element">
   <div class="profile-visibility">
-    <select role="menu" ng-model="profile.visibility" ng-change="setVisibility()" class="text-transform-capitalize">
+    <select ng-model="profile.visibility" ng-change="setVisibility()" class="text-transform-capitalize" aria-describedby="privacy-setting-info">
       <option onselect="setVisibility('PUBLIC')" role="menuitem" translate="visibility.PUBLIC" value="PUBLIC"></option>
       <option onselect="setVisibility('RESTRICTED')" role="menuitem" translate="visibility.RESTRICTED" value="RESTRICTED"></option>
       <option onselect="setVisibility('PRIVATE')" role="menuitem" translate="visibility.PRIVATE" value="PRIVATE"></option>
     </select>
+    <div id="privacy-setting-info" class="invisible" translate="visibility.helpText"></div>
     <help-icon translation-key="visibility.helpText"
                limit-visibility="{ visibility: 'PRIVATE', roles: ['STUDENT'] }"
                mobile-align="left"></help-icon>
