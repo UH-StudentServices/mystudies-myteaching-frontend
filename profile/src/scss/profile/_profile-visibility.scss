@@ -22,4 +22,30 @@
   .help-icon {
     margin-left: 0.5em;
   }
+
+  select {
+    background-color: $limegreen;
+    border: 0;
+    color: $white;
+    height: 32px;
+    padding: 0;
+    padding-left: 10px;
+    padding-right: 2em;
+    text-transform: capitalize;
+    appearance: none;
+    background-repeat: no-repeat;
+    background-image:
+      linear-gradient(45deg, transparent 50%, $white 50%),
+      linear-gradient(135deg, $white 50%, transparent 50%);
+    background-position:
+      calc(100% - 21px) 0.85em,
+      calc(100% - 14px) 0.85em;
+    background-size:
+      8px 7px,
+      7px 7px;
+  }
+
+  select::-ms-expand {
+    display: none;
+  }
 }

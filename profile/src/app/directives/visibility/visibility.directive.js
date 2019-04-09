@@ -37,7 +37,9 @@ angular.module('directives.visibility',
           $scope.profile = profile;
         });
 
-        $scope.setVisibility = function (visibility) {
+        $scope.setVisibility = function () {
+          var visibility = $scope.profile.visibility;
+
           AnalyticsService.trackEvent(
             AnalyticsService.ec.PROFILE,
             AnalyticsService.ea.SET_VISIBILITY,
