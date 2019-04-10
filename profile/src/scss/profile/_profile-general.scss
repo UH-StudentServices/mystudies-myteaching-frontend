@@ -19,6 +19,11 @@
   display: flex;
 }
 
+.profile-intro__title,
+.ui-component__title {
+  hyphens: auto;
+}
+
 .profile:not(.is-preview) .profile-section {
   .ui-component__title {
     text-align: left;
