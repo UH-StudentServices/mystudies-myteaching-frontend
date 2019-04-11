@@ -217,7 +217,7 @@ module.exports = function (grunt) {
           'dist/app/vendor.js',
           'dist/app/newrelic.js',
           'dist/assets/styles/*.css',
-          'dist/assets/fonts/hy-icons.*',
+          'dist/assets/fonts/oo-hy-icons.*',
           'dist/assets/images/bg/*.{png,ico,jpg}',
           'dist/assets/images/ui/*.{png,ico,jpg}',
           'dist/assets/icons/**/*.{png,svg}',

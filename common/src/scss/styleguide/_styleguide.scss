@@ -37,7 +37,8 @@
 
 //@import "../bower_components/Styleguide/sass/icons/__icon_font";
 @import "../bower_components/Styleguide/sass/icons/__variables";
-@import "../bower_components/Styleguide/sass/icons/icons";
+//@import "../bower_components/Styleguide/sass/icons/icons";
+@import "icon-overrides";
 @import "../bower_components/Styleguide/sass/objects/bar";
 @import "../bower_components/Styleguide/sass/objects/button";
 @import "../bower_components/Styleguide/sass/objects/island";

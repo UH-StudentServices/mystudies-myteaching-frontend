@@ -71,7 +71,7 @@ $degree-invalid-color: red;
   background-color: white;
 
   &::before {
-    font-family: "hy-icons";
+    font-family: "oo-hy-icons";
 
     @include vertically-center;
 
@@ -91,7 +91,7 @@ $degree-invalid-color: red;
   margin: 0 15px 0 15px;
 
   &::before {
-    font-family: hy-icons;
+    font-family: "oo-hy-icons";
 
     @include vertically-center;
 
@@ -112,7 +112,7 @@ $degree-invalid-color: red;
   &::before {
     content: $icon-drag;
     font-size: 2rem;
-    font-family: "hy-icons";
+    font-family: "oo-hy-icons";
     vertical-align: middle;
   }
 }
