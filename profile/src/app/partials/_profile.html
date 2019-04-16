@@ -26,7 +26,7 @@
 <notifications notifications="notifications"></notifications>
 
 <header class="l-header">
-  <page-header ng-if="!useObar"></page-header>
+  <page-header ng-if="!useObar || hideObar" hide-links="hideObar"></page-header>
   <obar ng-if="useObar && !hideObar" app="profile"></obar>
 </header>
 

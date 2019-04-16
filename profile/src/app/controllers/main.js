@@ -34,7 +34,7 @@ angular.module('controllers.main', [
     $scope.sectionSortDisabled = state !== State.PRIVATE || BrowserUtil.supportsTouch();
     $scope.profileSections = [];
     $scope
-      .hideObar = PreviewService.isPreview() || $state.params.sharedlink;
+      .hideObar = state === State.PUBLIC || PreviewService.isPreview() || $state.params.sharedlink;
 
     ComponentOrderService.subscribeToComponentOrderChanges(profile, function (componentOrders) {
       $scope.profileSections = componentOrders;
