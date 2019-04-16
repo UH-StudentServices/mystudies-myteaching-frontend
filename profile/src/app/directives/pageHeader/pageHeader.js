@@ -22,6 +22,7 @@ angular.module('directives.pageHeader', ['constants.commonExternalLinks', 'const
     return {
       restrict: 'E',
       templateUrl: 'app/directives/pageHeader/page_header.html',
+      scope: { hideLinks: '=' },
       link: function ($scope) {
         $scope.primaryLinks = primaryLinks;
         $scope.pageHeaderLinks = pageHeaderLinks;
