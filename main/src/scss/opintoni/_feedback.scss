@@ -34,12 +34,12 @@
 
 .feedback__box-default,
 .feedback__box-submitted {
-  height: 50px;
-  width: 50px;
+  height: 3em;
+  width: 3em;
 
   @include breakpoint($small) {
-    height: 100px;
-    width: 100px;
+    height: 5em;
+    width: 5em;
   }
 
   text-align: center;

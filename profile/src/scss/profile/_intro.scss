@@ -80,6 +80,10 @@
 
 .profile-intro__owner-details {
   width: 100%;
+
+  .component-header {
+    flex-wrap: wrap;
+  }
 }
 
 .profile-intro__title {
@@ -119,7 +123,7 @@
 }
 
 ul.intro-keywords {
-  max-height: 162px;
+  max-height: 20em;
   overflow: hidden;
 
   li {

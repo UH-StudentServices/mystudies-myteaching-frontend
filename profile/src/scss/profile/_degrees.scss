@@ -69,6 +69,8 @@ $degree-invalid-color: red;
   @extend .box-data__left;
 
   background-color: white;
+  margin-right: 1.5em;
+  top: -0.5em;
 
   &::before {
     font-family: "hy-icons";

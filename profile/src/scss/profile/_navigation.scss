@@ -67,7 +67,7 @@ $navigationHeight: 60px;
   @include vertically-center;
 
   display: flex;
-  right: 1em;
+  right: 0;
 
   &__element {
     vertical-align: bottom;
@@ -85,13 +85,14 @@ $navigationHeight: 60px;
 }
 
 .nav-ctrl {
-  height: 28px;
+  min-height: 28px;
+  height: 1.75em;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   line-height: 1;
 
   @include breakpoint($small) {
-    height: 32px;
+    min-height: 32px;
   }
 }

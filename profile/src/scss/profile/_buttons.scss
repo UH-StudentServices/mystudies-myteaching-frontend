@@ -69,8 +69,15 @@ button.toggle-edit,
   text-transform: capitalize;
   white-space: nowrap;
 
-  i:hover {
+  i:hover,
+  .toggle-edit-label:hover {
     color: $white;
+  }
+}
+
+@include breakpoint($mobile-only) {
+  .toggle-edit-label {
+    display: none;
   }
 }
 
