@@ -94,6 +94,12 @@
   flex-grow: 30;
 }
 
+.profile-section__settings {
+  .button {
+    padding: 0.8em 0.6em;
+  }
+}
+
 .settings-header {
   &__actions {
     position: absolute;
