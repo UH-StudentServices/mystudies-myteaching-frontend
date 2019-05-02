@@ -63,7 +63,7 @@ angular.module('directives.weekFeed.feedItem.event', [
   .filter('eventTimeSpan', function (LanguageService) {
     var locale = LanguageService.getLocale();
     var dateString = 'l';
-    var hoursString = 'HH:mm';
+    var hoursString = locale === 'fi' ? 'HH.mm' : 'HH:mm';
 
     function momentDateHasHours(momentDate) {
       // eslint-disable-next-line no-underscore-dangle
