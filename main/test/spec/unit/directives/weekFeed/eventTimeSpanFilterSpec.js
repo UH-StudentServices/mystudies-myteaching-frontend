@@ -38,14 +38,14 @@ describe('Event time span filter', function () {
     var endDate = moment([2014, 2, 12, 13, 40]);
     var result = eventTimeSpanFilter(startDate, endDate);
 
-    expect(result).toEqual('12.3.2014 13:40');
+    expect(result).toEqual('12.3.2014 13.40');
   });
 
   it('Will show only startdate if enddate is not defined', function () {
     var startDate = moment([2014, 2, 12, 13, 40]);
     var result = eventTimeSpanFilter(startDate);
 
-    expect(result).toEqual('12.3.2014 13:40');
+    expect(result).toEqual('12.3.2014 13.40');
   });
 
   it('Will not show anything if both dates are undefined', function () {
@@ -68,7 +68,7 @@ describe('Event time span filter', function () {
       var endDate = moment([2014, 2, 12, 14, 40]);
       var result = eventTimeSpanFilter(startDate, endDate);
 
-      expect(result).toEqual('12.3.2014 13:40 - 14:40');
+      expect(result).toEqual('12.3.2014 13.40 - 14.40');
     });
 
   it('Will show full time span if dates are not identical', function () {
@@ -76,7 +76,7 @@ describe('Event time span filter', function () {
     var endDate = moment([2014, 2, 13, 15, 40]);
     var result = eventTimeSpanFilter(startDate, endDate);
 
-    expect(result).toEqual('12.3.2014 13:40 - 13.3.2014 15:40');
+    expect(result).toEqual('12.3.2014 13.40 - 13.3.2014 15.40');
   });
 
   it('Will show full time span without hours if dates are not identical and hours are not included',

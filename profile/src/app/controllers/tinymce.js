@@ -117,6 +117,8 @@ angular.module('controllers.tinymce', ['ui.tinymce', 'services.language', 'servi
       plugins: 'link image code',
       toolbar: 'link uploadImage uploadFile',
       menubar: false,
+      relative_urls: false,
+      remove_script_host: true,
       statusbar: false,
       target_list: false,
       link_title: false,

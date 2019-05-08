@@ -64,10 +64,12 @@ angular.module('directives.eventCalendar', [])
           'eventCalendar.week',
           'eventCalendar.month'
         ]).then(function (buttonLabels) {
+          var language = LanguageService.getCurrent();
+          var timeFormat = language === 'fi' ? 'HH.mm' : 'HH:mm';
           $scope.uiConfig = {
             calendar: {
               height: 'auto',
-              lang: LanguageService.getCurrent(),
+              lang: language,
               allDaySlot: false,
               eventRender: function (event, element) {
                 element.attr('title', event.tooltip);
@@ -118,8 +120,8 @@ angular.module('directives.eventCalendar', [])
                 right: 'today prev,next'
               },
               columnFormat: 'dd',
-              timeFormat: 'HH:mm',
-              slotLabelFormat: 'HH:mm',
+              timeFormat: timeFormat,
+              slotLabelFormat: timeFormat,
               buttonIcons: {
                 prev: 'calendar-prev',
                 next: 'calendar-next'
