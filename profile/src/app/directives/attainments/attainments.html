@@ -62,7 +62,7 @@
             <span translate translate-language="{{::profileLang}}" class="text-transform-capitalize">
               general.teachers
             </span>:
-            <span ng-repeat="teacher in attainment.teachers">{{:: teacher.shortName }}{{:: $last ? '' : ', ' }}</span>
+            <span ng-repeat="teacher in attainment.teachers">{{:: teacher.name }}{{:: $last ? '' : ', ' }}</span>
           </div>
         </div>
 
@@ -97,7 +97,7 @@
             <span translate translate-language="{{::profileLang}}" class="text-transform-capitalize">
               general.teachers
             </span>:
-            <span ng-repeat="teacher in attainment.teachers">{{:: teacher.shortName }}{{:: $last ? '' : ', ' }}</span>
+            <span ng-repeat="teacher in attainment.teachers">{{:: teacher.name }}{{:: $last ? '' : ', ' }}</span>
           </div>
         </div>
 
