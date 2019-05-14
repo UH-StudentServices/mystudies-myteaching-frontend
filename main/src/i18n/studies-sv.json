@@ -71,7 +71,8 @@
     "library": "Bibliotek",
     "addressLine1": "PL 3 (Fabiansgatan 33)",
     "addressLine2": "00014 Helsingfors universitet",
-    "telephoneExchange": "Växel"
+    "telephoneExchange": "Växel",
+    "flammaLink": "https://flamma.helsinki.fi/sv"
   },
   "primaryLinks": {
     "oodi": "Weboodi",

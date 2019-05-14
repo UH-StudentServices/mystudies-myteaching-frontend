@@ -71,7 +71,8 @@
     "library": "Library",
     "addressLine1": "PL 3 (Fabianinkatu 33)",
     "addressLine2": "00014 Helsingin yliopisto",
-    "telephoneExchange": "Exchange"
+    "telephoneExchange": "Exchange",
+    "flammaLink": "https://flamma.helsinki.fi/en/"
   },
   "primaryLinks": {
     "oodi": "Weboodi",
