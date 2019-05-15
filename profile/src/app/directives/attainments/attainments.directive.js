@@ -85,7 +85,7 @@ angular.module('directives.attainments', [
           AttainmentResource
             .updateWhitelist($scope.profileId, {
               showGrades: $scope.showGrades.val,
-              oodiStudyAttainmentIds: $scope.whitelist
+              studyAttainmentIds: $scope.whitelist
             })
             .then(updateWhitelistedAttainments);
 
