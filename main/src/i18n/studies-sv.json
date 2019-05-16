@@ -62,17 +62,19 @@
     }
   },
   "pageHeaderLinks": {
-    "flamma": "flamma",
+    "flamma": "Flamma",
     "city": "Helsingfors stad",
     "skipToMainContent": "Gå till innehållet"
   },
-  "pageFooter": {
-    "contact": "Kontaktinformation",
+  "pageFooterLinks": {
+    "contact": "Personsökning och kontaktuppgifter",
     "library": "Bibliotek",
+    "flamma": "Flamma"
+  },
+  "pageFooter": {
     "addressLine1": "PL 3 (Fabiansgatan 33)",
     "addressLine2": "00014 Helsingfors universitet",
-    "telephoneExchange": "Växel",
-    "flammaLink": "https://flamma.helsinki.fi/sv"
+    "telephoneExchange": "Växel"
   },
   "primaryLinks": {
     "oodi": "Weboodi",

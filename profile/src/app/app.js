@@ -46,6 +46,7 @@ angular.module('opintoniProfileApp', [
   'directives.visibility',
   'directives.attainments',
   'directives.pageHeader',
+  'directives.pageFooter',
   'directives.intro',
   'directives.menuLanguage',
   'directives.currentLang',

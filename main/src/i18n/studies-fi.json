@@ -62,17 +62,19 @@
     }
   },
   "pageHeaderLinks": {
-    "flamma": "flamma",
+    "flamma": "Flamma",
     "city": "Helsingin kaupunki",
     "skipToMainContent": "Siirry sisältöön"
   },
-  "pageFooter": {
-    "contact": "Yhteystiedot",
+  "pageFooterLinks": {
+    "contact": "Henkilöhaku ja yhteystiedot",
     "library": "Kirjasto",
+    "flamma": "Flamma"
+  },
+  "pageFooter": {
     "addressLine1": "PL 3 (Fabianinkatu 33)",
     "addressLine2": "00014 Helsingin yliopisto",
-    "telephoneExchange": "Puhelinvaihde",
-    "flammaLink": "https://flamma.helsinki.fi/"
+    "telephoneExchange": "Puhelinvaihde"
   },
   "primaryLinks": {
     "oodi": "Weboodi",

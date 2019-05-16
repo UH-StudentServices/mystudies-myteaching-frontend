@@ -13,9 +13,8 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
-  -->
+-->
 
-<!-- app/views/partials/_page_footer.html -->
 <div class="l-footer">
   <div class="l-footer__subregion">
 
@@ -26,7 +25,7 @@
              class="logo theme-big"></a>
         </div>
         <div class="logo-block__content">
-          <div class="logo-block__sitename">{{::('general.helsinkiUniversity' | translate)}}</div>
+          <p class="logo-block__sitename">{{::('general.helsinkiUniversity' | translate)}}</p>
           <p>{{::('pageFooter.addressLine1' | translate)}}<br>{{::('pageFooter.addressLine2' | translate)}}</p>
           <p>{{::('pageFooter.telephoneExchange' | translate)}}:
             <a class="is-tel" href="tel:+3582941911">02941 911</a>
@@ -37,18 +36,9 @@
 
     <div class="l-footer__column">
       <div class="list-of-links--condensed theme-footer">
-        <a class="list-of-links__link button--action icon--arrow-right theme-transparent-alt"
-           href="http://www.helsinki.fi/yliopisto/yhteystiedot.html">
-          {{::('pageFooter.contact' | translate)}}
-        </a>
-        <a class="list-of-links__link button--action icon--arrow-right theme-transparent-alt"
-           href="http://www.helsinki.fi/kirjasto">
-          {{::('pageFooter.library' | translate)}}
-        </a>
-        <a class="list-of-links__link button--action icon--arrow-right theme-transparent-alt"
-           href="{{::('pageFooter.flammaLink' | translate)}}">
-          Flamma
-        </a>
+        <a ng-repeat="link in pageFooterLinks"
+           class="list-of-links__link button--action icon--arrow-right theme-transparent-alt"
+           href="{{::link.href[selectedLanguage]}}" target="_blank">{{::(link.key | translate)}}</a>
       </div>
     </div>
 

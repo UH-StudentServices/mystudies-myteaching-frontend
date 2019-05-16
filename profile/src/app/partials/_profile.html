@@ -55,4 +55,6 @@
   </div>
 </main>
 
-<footer role="contentinfo" ng-include="'app/partials/_page_footer.html'"></footer>
+<footer role="contentinfo">
+  <page-footer ng-if="!useObar && !hideObar"></page-footer>
+</footer>

@@ -18,5 +18,7 @@
 <div class="calendar">
   <full-screen-calendar events-promise="events" calendar-view="calendarView" date="currentDate"
                         on-close="closeCalendar()"></full-screen-calendar>
-  <footer role="contentinfo" ng-include="'app/partials/_page_footer.html'"></footer>
+  <footer role="contentinfo">
+    <page-footer></page-footer>
+  </footer>
 </div>

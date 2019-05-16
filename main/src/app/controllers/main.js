@@ -26,6 +26,7 @@ angular.module('controllers.main', [
   'directives.todoItems',
   'directives.officeHours',
   'directives.pageHeader',
+  'directives.pageFooter',
   'directives.mobileToolbar',
   'directives.weekFeed',
   'directives.usefulLinks',
