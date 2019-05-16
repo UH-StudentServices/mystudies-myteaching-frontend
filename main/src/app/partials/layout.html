@@ -64,5 +64,7 @@
 
   <feedback ng-if="userSettings.cookieConsent"></feedback>
   <cookie-notification ng-if="!userSettings.cookieConsent"></cookie-notification>
-  <footer role="contentinfo" ng-include="'app/partials/_page_footer.html'"></footer>
+  <footer role="contentinfo" ng-class="{obar: useObar}" ng-attr-id="{{useObar ? 'obar-footer': undefined}}">
+    <page-footer ng-if="!useObar"></page-footer>
+  </footer>
 </div>

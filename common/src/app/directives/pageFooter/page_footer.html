@@ -13,9 +13,8 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
-  -->
+-->
 
-<!-- app/views/partials/_page_footer.html -->
 <div class="l-footer">
   <div class="l-footer__subregion">
 
@@ -26,7 +25,7 @@
              class="logo theme-big"></a>
         </div>
         <div class="logo-block__content">
-          <h4>{{::('general.helsinkiUniversity' | translate)}}</h4>
+          <p class="logo-block__sitename">{{::('general.helsinkiUniversity' | translate)}}</p>
           <p>{{::('pageFooter.addressLine1' | translate)}}<br>{{::('pageFooter.addressLine2' | translate)}}</p>
           <p>{{::('pageFooter.telephoneExchange' | translate)}}:
             <a class="is-tel" href="tel:+3582941911">02941 911</a>
@@ -37,24 +36,15 @@
 
     <div class="l-footer__column">
       <div class="list-of-links--condensed theme-footer">
-        <a class="list-of-links__link button--action icon--arrow-right theme-transparent-alt"
-           href="http://www.helsinki.fi/yliopisto/yhteystiedot.html">
-          {{::('pageFooter.contact' | translate)}}
-        </a>
-        <a class="list-of-links__link button--action icon--arrow-right theme-transparent-alt"
-           href="http://www.helsinki.fi/kirjasto">
-          {{::('pageFooter.library' | translate)}}
-        </a>
-        <a class="list-of-links__link button--action icon--arrow-right theme-transparent-alt"
-           href="http://www.helsinki.fi/yliopisto/yhteystiedot.html">
-          Flamma
-        </a>
+        <a ng-repeat="link in pageFooterLinks"
+           class="list-of-links__link button--action icon--arrow-right theme-transparent-alt"
+           href="{{::link.href[selectedLanguage]}}">{{::(link.key | translate)}}</a>
       </div>
     </div>
 
     <div class="l-footer__column theme-center">
       <div class="button-group">
-        <a class="button-group__button button--icon icon--facebook" href="http://www.facebook.com/helsinginyliopisto"
+        <a class="button-group__button button--icon icon--facebook" href="https://www.facebook.com/HelsinkiUniversity"
            target="_blank" aria-label="Facebook"></a>
         <a class="button-group__button button--icon icon--twitter" href="http://www.twitter.com/helsinkiuni"
            target="_blank" aria-label="Twitter"></a>

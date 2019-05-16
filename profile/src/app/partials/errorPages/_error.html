@@ -22,4 +22,7 @@
 
 <div class="l-page island wrapper" ui-view></div>
 
-<footer class="l-footer island" ng-include="'app/partials/_page_footer.html'"></footer>
+<footer role="contentinfo">
+  <page-footer ng-if="!useObar"></page-footer>
+</footer>
+
