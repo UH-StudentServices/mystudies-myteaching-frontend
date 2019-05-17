@@ -30,14 +30,14 @@
     "skipToMainContent": "Gå till innehållet"
   },
   "pageFooterLinks": {
-    "contact": "Henkilöhaku ja yhteystiedot",
-    "library": "Kirjasto",
+    "contact": "Personsökning och kontaktuppgifter",
+    "library": "Bibliotek",
     "flamma": "Flamma"
   },
   "pageFooter": {
-    "addressLine1": "PL 3 (Fabianinkatu 33)",
-    "addressLine2": "00014 Helsingin yliopisto",
-    "telephoneExchange": "Puhelinvaihde"
+    "addressLine1": "PL 3 (Fabiansgatan 33)",
+    "addressLine2": "00014 Helsingfors universitet",
+    "telephoneExchange": "Växel"
   },
   "toolbar": {
     "home": "hem",
