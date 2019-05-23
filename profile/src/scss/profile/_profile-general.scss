@@ -75,17 +75,13 @@
   .profile-section__drag-handle {
     margin-top: -0.3em;
     min-width: 4em;
+    max-height: 6em;
+    background-image: url("../../assets/icons/drag-icon.svg");
+    background-repeat: no-repeat;
+    color: $darkgray;
 
-    &::before {
-      content: url("../../assets/icons/drag-icon.svg");
-      color: $darkgray;
-      margin-right: 0.5em;
-      position: relative;
-
-      @include breakpoint($mobile-only) {
-        font-size: 1.4rem;
-        top: -0.3em;
-      }
+    @include breakpoint($mobile-only) {
+      margin-top: -0.7em;
     }
   }
 }
