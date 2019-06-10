@@ -74,7 +74,8 @@
   "pageFooter": {
     "addressLine1": "PB 4 (Universitetsgatan 3)",
     "addressLine2": "00014 Helsingfors universitet",
-    "telephoneExchange": "Växel"
+    "telephoneExchange": "Växel",
+    "telephone": "+358 (0) 2941 911"
   },
   "primaryLinks": {
     "oodi": "Weboodi",

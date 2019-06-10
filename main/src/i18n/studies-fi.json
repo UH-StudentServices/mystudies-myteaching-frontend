@@ -74,7 +74,8 @@
   "pageFooter": {
     "addressLine1": "PL 4 (Yliopistonkatu 3)",
     "addressLine2": "00014 Helsingin yliopisto",
-    "telephoneExchange": "Puhelinvaihde"
+    "telephoneExchange": "Puhelinvaihde",
+    "telephone": "02941 911"
   },
   "primaryLinks": {
     "oodi": "Weboodi",
