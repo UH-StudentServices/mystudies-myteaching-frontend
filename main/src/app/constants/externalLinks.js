@@ -122,6 +122,24 @@ angular.module('constants.externalLinks', [])
         }
       },
       {
+        key: 'primaryLinks.teaching',
+        domain: ['opetukseni'],
+        href: {
+          fi: 'https://teaching.helsinki.fi/fi',
+          sv: 'https://teaching.helsinki.fi/sv',
+          en: 'https://teaching.helsinki.fi/en'
+        }
+      },
+      {
+        key: 'primaryLinks.guide',
+        domain: ['opetukseni'],
+        href: {
+          fi: 'https://dev.guide.student.helsinki.fi/fi',
+          sv: 'https://dev.guide.student.helsinki.fi/sv',
+          en: 'https://dev.guide.student.helsinki.fi/en'
+        }
+      },
+      {
         key: 'primaryLinks.courseSearch',
         domain: ['opintoni', 'opetukseni'],
         href: {
@@ -131,8 +149,9 @@ angular.module('constants.externalLinks', [])
         }
       },
       {
+        // Repeated because order of links is different between opintoni and opetukseni
         key: 'primaryLinks.guide',
-        domain: ['opintoni', 'opetukseni'],
+        domain: ['opintoni'],
         href: {
           fi: 'https://dev.guide.student.helsinki.fi/fi',
           sv: 'https://dev.guide.student.helsinki.fi/sv',
@@ -194,6 +213,25 @@ angular.module('constants.externalLinks', [])
         }
       },
       {
+        key: 'primaryLinks.teaching',
+        domain: ['opetukseni'],
+        href: {
+          fi: 'https://teaching.helsinki.fi/fi',
+          sv: 'https://teaching.helsinki.fi/sv',
+          en: 'https://teaching.helsinki.fi/en'
+        }
+      },
+
+      {
+        key: 'primaryLinks.guide',
+        domain: ['opetukseni'],
+        href: {
+          fi: 'https://dev.guide.student.helsinki.fi/fi',
+          sv: 'https://dev.guide.student.helsinki.fi/sv',
+          en: 'https://dev.guide.student.helsinki.fi/en'
+        }
+      },
+      {
         key: 'primaryLinks.courseSearch',
         domain: ['opintoni', 'opetukseni'],
         href: {
@@ -203,8 +241,9 @@ angular.module('constants.externalLinks', [])
         }
       },
       {
+        // Repeated because order of links is different between opintoni and opetukseni
         key: 'primaryLinks.guide',
-        domain: ['opintoni', 'opetukseni'],
+        domain: ['opintoni'],
         href: {
           fi: 'https://dev.guide.student.helsinki.fi/fi',
           sv: 'https://dev.guide.student.helsinki.fi/sv',
@@ -266,6 +305,24 @@ angular.module('constants.externalLinks', [])
         }
       },
       {
+        key: 'primaryLinks.teaching',
+        domain: ['opetukseni'],
+        href: {
+          fi: 'https://teaching.helsinki.fi/fi',
+          sv: 'https://teaching.helsinki.fi/sv',
+          en: 'https://teaching.helsinki.fi/en'
+        }
+      },
+      {
+        key: 'primaryLinks.guide',
+        domain: ['opetukseni'],
+        href: {
+          fi: 'https://dev.guide.student.helsinki.fi/fi',
+          sv: 'https://dev.guide.student.helsinki.fi/sv',
+          en: 'https://dev.guide.student.helsinki.fi/en'
+        }
+      },
+      {
         key: 'primaryLinks.courseSearch',
         domain: ['opintoni', 'opetukseni'],
         href: {
@@ -275,8 +332,9 @@ angular.module('constants.externalLinks', [])
         }
       },
       {
+        // Repeated because order of links is different between opintoni and opetukseni
         key: 'primaryLinks.guide',
-        domain: ['opintoni', 'opetukseni'],
+        domain: ['opintoni'],
         href: {
           fi: 'https://dev.guide.student.helsinki.fi/fi',
           sv: 'https://dev.guide.student.helsinki.fi/sv',
@@ -338,6 +396,25 @@ angular.module('constants.externalLinks', [])
         }
       },
       {
+        key: 'primaryLinks.teaching',
+        domain: ['opetukseni'],
+        href: {
+          fi: 'https://teaching.helsinki.fi/fi',
+          sv: 'https://teaching.helsinki.fi/sv',
+          en: 'https://teaching.helsinki.fi/en'
+        }
+      },
+
+      {
+        key: 'primaryLinks.guide',
+        domain: ['opetukseni'],
+        href: {
+          fi: 'https://guide.student.helsinki.fi/fi',
+          sv: 'https://guide.student.helsinki.fi/sv',
+          en: 'https://guide.student.helsinki.fi/en'
+        }
+      },
+      {
         key: 'primaryLinks.courseSearch',
         domain: ['opintoni', 'opetukseni'],
         href: {
@@ -347,8 +424,9 @@ angular.module('constants.externalLinks', [])
         }
       },
       {
+        // Repeated because order of links is different between opintoni and opetukseni
         key: 'primaryLinks.guide',
-        domain: ['opintoni', 'opetukseni'],
+        domain: ['opintoni'],
         href: {
           fi: 'https://guide.student.helsinki.fi/fi',
           sv: 'https://guide.student.helsinki.fi/sv',
@@ -410,6 +488,24 @@ angular.module('constants.externalLinks', [])
         }
       },
       {
+        key: 'primaryLinks.teaching',
+        domain: ['opetukseni'],
+        href: {
+          fi: 'https://teaching.helsinki.fi/fi',
+          sv: 'https://teaching.helsinki.fi/sv',
+          en: 'https://teaching.helsinki.fi/en'
+        }
+      },
+      {
+        key: 'primaryLinks.guide',
+        domain: ['opetukseni'],
+        href: {
+          fi: 'https://guide.student.helsinki.fi/fi',
+          sv: 'https://guide.student.helsinki.fi/sv',
+          en: 'https://guide.student.helsinki.fi/en'
+        }
+      },
+      {
         key: 'primaryLinks.courseSearch',
         domain: ['opintoni', 'opetukseni'],
         href: {
@@ -419,8 +515,9 @@ angular.module('constants.externalLinks', [])
         }
       },
       {
+        // Repeated because order of links is different between opintoni and opetukseni
         key: 'primaryLinks.guide',
-        domain: ['opintoni', 'opetukseni'],
+        domain: ['opintoni'],
         href: {
           fi: 'https://guide.student.helsinki.fi/fi',
           sv: 'https://guide.student.helsinki.fi/sv',
