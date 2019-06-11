@@ -85,7 +85,8 @@
     "completedStudies": "Prestationer",
     "email": "E-post",
     "library": "Bibliotek",
-    "dictionary": "MOT-ordböcker"
+    "dictionary": "MOT-ordböcker",
+    "teaching": "Instruktioner för undervisning"
   },
   "optionalLinks": {
     "pilotProgram": "Studieplanering",

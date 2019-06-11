@@ -85,7 +85,8 @@
     "completedStudies": "Opintosuoritukset",
     "email": "Sähköposti",
     "library": "Kirjasto",
-    "dictionary": "MOT-sanakirjat"
+    "dictionary": "MOT-sanakirjat",
+    "teaching": "Opetustyön ohjeet"
   },
   "optionalLinks": {
     "pilotProgram": "Opintojen suunnittelu",
