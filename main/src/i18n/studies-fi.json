@@ -211,8 +211,8 @@
       "cancelPicture": "Peruuta"
     },
     "changeBackground": "vaihda taustakuva",
-    "profile": "portfolio",
-    "universityProfile": "yliopistoportfolio",
+    "profile": "Profiili",
+    "universityProfile": "yliopistoprofiili",
     "ariaLabels": {
       "chooseBackgroundImage": "valitse taustakuva"
     }
