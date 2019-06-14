@@ -74,12 +74,12 @@ export const loginAsTeacher = async t => loginAsUser(t, 'Olli Opettaja', 'NYT OP
 
 export const loginAndOpenProfile = async (t) => {
   await loginAsStudent(t);
-  await openProfile(t, 'Portfolio', 'OLLI OPISKELIJA');
+  await openProfile(t, 'Profiili', 'OLLI OPISKELIJA');
 };
 
 export const loginAndOpenAcademicProfile = async (t) => {
   await loginAsTeacher(t);
-  await openProfile(t, 'Yliopistoportfolio', 'OLLI OPETTAJA');
+  await openProfile(t, 'Yliopistoprofiili', 'OLLI OPETTAJA');
 };
 
 export const changeLanguage = async (langCode, t) => {

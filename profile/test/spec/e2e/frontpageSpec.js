@@ -22,6 +22,6 @@ var baseUrl = browser.params.baseUrl;
 describe('Frontpage', function () {
   it('Will load the profile page', function () {
     browser.get(baseUrl);
-    expect(element(by.cssContainingText('h1', 'Portfolio')).isPresent()).toEqual(true);
+    expect(element(by.cssContainingText('h1', 'Profiili')).isPresent()).toEqual(true);
   });
 });
