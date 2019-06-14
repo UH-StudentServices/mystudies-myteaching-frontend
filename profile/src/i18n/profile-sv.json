@@ -145,7 +145,7 @@
     "loginNeeded": {
       "title": "login needed",
       "description": "Profil du letar efter kan begränsas till användarna av Helsingfors universitet. Vänligen logga in.",
-      "disclaimer": "Med Firefox-webbläsaren kan du behöva öppna länken efter inloggningen. Om portföljen är fortfarande inte nås, kontakta författaren."
+      "disclaimer": "Med Firefox-webbläsaren kan du behöva öppna länken efter inloggningen. Om profilen är fortfarande inte nås, kontakta författaren."
     }
   },
   "landerPage": {
@@ -156,7 +156,7 @@
   },
   "preview": {
     "enterPreview": "Förhandsvisning",
-    "info": "detta är hur din portfölj ser till andra om det publiceras.",
+    "info": "detta är hur din profil ser till andra om det publiceras.",
     "exit": "Stäng förhandsvisning",
     "printAndShare": "Skriv ut och dela som PDF"
   },
@@ -232,9 +232,9 @@
     "title": "Personalia"
   },
   "languageSelector": {
-    "createForLang": "Vill du skapa en ny portfölj i {{ lang }}?",
-    "confirmation": "Denna portfölj är i {{lang}}. Vill du skapa en ny portfölj på ett annat språk?",
-    "selectionPrompt": "Välj språk för din nya portfölj:",
+    "createForLang": "Vill du skapa en ny profil i {{ lang }}?",
+    "confirmation": "Denna profil är i {{lang}}. Vill du skapa en ny profil på ett annat språk?",
+    "selectionPrompt": "Välj språk för din nya profil:",
     "helpText": "Från språkmenyn kan du lägga till en profil med ett nytt språk. Hela användargränssnittets språk går att ändra från sidans övre navigation, vilket påverkar t.ex. språket för profilens inställningar."
   },
   "upload" : {
