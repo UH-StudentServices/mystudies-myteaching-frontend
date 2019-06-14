@@ -81,7 +81,7 @@
     "WEBSITE_LINK": "Linkki verkkosivulle"
   },
   "degrees": {
-    "helpText": "Tutkinnot osioon voit lisätä viralliset tutkintosi. Voit kuvata tutkinnon sisältöä ja pää- ja sivuaineiden tai opintosuuntautumisesi fokuksia kuvaus-kenttään tai lisätä muuta lisätietoa tutkinnostasi. ",
+    "helpText": "Tutkinnot osioon voit lisätä viralliset tutkintosi. Voit kuvata tutkinnon sisältöä ja pää- ja sivuaineiden tai opintosuuntautumisesi fokuksia kuvaus-kenttään tai lisätä muuta lisätietoa tutkinnostasi.",
     "title": "Tutkinnot",
     "dateLabel": "Päivämäärä",
     "datePlaceholder": "Lisää päivämäärä, esim. 31.5.2019 tai 5/2019",
