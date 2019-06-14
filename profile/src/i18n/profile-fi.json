@@ -50,7 +50,7 @@
     "PUBLIC": "Julkinen",
     "toPublic" : "Muuta julkiseksi",
     "toPrivate" : "Muuta yksityiseksi",
-    "helpText": "<p>Julkinen: Portfolio on löydettävissä yleisesti hakukoneilla ja jos jaat URL:in, se näkyy kaikille vastaanottajille.</p><p>HY Käyttäjät: Portfolio ei ole löydettävissä hakukoneilla. Portfolio näkyy vain HY:n tunnuksilla kirjautuneille, kun jaat URL:in.</p><p>Yksityinen: Portfolio näkyy vain sinulle. Voit kuitenkin jakaa yksityisessä tilassa olevan portfolion linkillä portfolion asetuksista “jaa linkillä”-toiminnolla. Tämä on suositeltu asetus, paitsi jos haluat julkaista portfolion yleisesti.</p>"
+    "helpText": "<p>Julkinen: Profiili on löydettävissä yleisesti hakukoneilla ja jos jaat URL:in, se näkyy kaikille vastaanottajille.</p><p>HY Käyttäjät: Profiili ei ole löydettävissä hakukoneilla. Profiili näkyy vain HY:n tunnuksilla kirjautuneille, kun jaat URL:in.</p><p>Yksityinen: Profiili näkyy vain sinulle. Voit kuitenkin jakaa yksityisessä tilassa olevan profiilin linkillä profiilin asetuksista “jaa linkillä”-toiminnolla. Tämä on suositeltu asetus, paitsi jos haluat julkaista profiilin yleisesti.</p>"
   },
   "keywords": {
     "title": "Avainsanat",
@@ -125,7 +125,7 @@
     "descriptionPlaceholder": "kuvausteksti"
   },
   "attainments": {
-    "helpText": "Helsingin yliopistolla suorittamasi kurssit näkyvät automaattisesti. Voit itse valita, mitkä kurssit näytät portfoliossa ja näytätkö arvosanoja. Eri työnantajille eri kurssit ovat todennäköisesti relevantteja. \"Lisää uusi\"&nbsp;-osiossa voit kuvata tarkemmin eri kursseja ja mitä tietoa ja taitoja niistä opit. ",
+    "helpText": "Helsingin yliopistolla suorittamasi kurssit näkyvät automaattisesti. Voit itse valita, mitkä kurssit näytät profiilissa ja näytätkö arvosanoja. Eri työnantajille eri kurssit ovat todennäköisesti relevantteja. \"Lisää uusi\"&nbsp;-osiossa voit kuvata tarkemmin eri kursseja ja mitä tietoa ja taitoja niistä opit. ",
     "attainments": "Suoritetut kurssit",
     "seeMoreLink": "katso loput suoritukset WebOodista",
     "showGrades": "Näytä arvosanat"
@@ -144,26 +144,26 @@
     },
     "loginNeeded": {
       "title": "kirjautuminen tarvitaan",
-      "description": "Hakemasi portfolio saattaa olla rajoitettu vain Helsingin yliopiston käyttäjille. Ole hyvä ja kirjaudu sisään.",
-      "disclaimer": "Firefox-selaimella saatat joutumaan avaamaan linkin uudellen kirjautumisen jälkeen. Jos portfolio ei sittenkään näy, ole hyvä ja ota yhteyttä sen kirjoittajaan."
+      "description": "Hakemasi profiili saattaa olla rajoitettu vain Helsingin yliopiston käyttäjille. Ole hyvä ja kirjaudu sisään.",
+      "disclaimer": "Firefox-selaimella saatat joutumaan avaamaan linkin uudellen kirjautumisen jälkeen. Jos profiili ei sittenkään näy, ole hyvä ja ota yhteyttä sen kirjoittajaan."
     }
   },
   "landerPage": {
     "anonymous": {
-      "title": "Tervetuloa Portfolioon!",
-      "description": "Tämä on oma Portfoliosi, jonne voit kerätä tietoa opinnoistasi ja kokemuksistasi. Voit jakaa Portfoliosi elementtejä linkillä muille katseltavaksi tai lähettää opettajalle palautetta varten."
+      "title": "Tervetuloa Profiiliin!",
+      "description": "Tämä on oma Profiilisi, jonne voit kerätä tietoa opinnoistasi ja kokemuksistasi. Voit jakaa Profiilisi elementtejä linkillä muille katseltavaksi tai lähettää opettajalle palautetta varten."
     }
   },
   "preview": {
     "enterPreview": "Esikatsele",
-    "info": "tältä portfoliosi näyttää muille jos olet määritellyt sen julkiseksi.",
+    "info": "tältä profiilisi näyttää muille jos olet määritellyt sen julkiseksi.",
     "exit": "sulje esikatselu",
     "printAndShare": "Tulosta ja jaa PDF:nä"
   },
   "freeTextContent": {
     "defaultTitle": "Lisää otsikko",
     "defaultText": "Lisää sisältöä",
-    "helpText": "<p>Tämä on portfoliosi monipuolisin osio. Voit lisätä vapaasti osioita erilaisilla otsikoilla, esimerkiksi: harrastukset, vapaaehtoistoiminta, luottamustehtävät, IT-taidot, tekninen osaaminen, laboratorio-osaaminen, viestintätaidot ja kokemus, HOPS-reflektio, HowULearn-reflektio, suoritetut MOOC-kurssit, osaamismerkit, jne. Suositeltavaa olisi tehdä yhdestä lisäosiosta oman itsen esittely, jonka siirrät ihan portfoliosi alkuun.</p><ul><li>Lisää editointitilassa tekstiä, kuvia, linkkejä, tiedostoja ja videoita. Videoita voit upottaa lisäämällä URL-linkin esim. Youtubesta tai Vimeosta (voit tehdä oman kanavan näihin, ja linkata omia videoitasi sitä kautta).</li><li>Lisää kuva editorin kuvaikonista. Muuta kuvan kokoa kuvan kulmasta raahaamalla.</li><li>Muista tallentaa osio!</li><li>Lisää uusi osio -toimintoa kannattaa myös hyödyntää siihen, että tallennat tänne vain itseäsi varten linkkejä tai liitteitä, jotka ovat omaa arkistoasi ja aihealueisiin jaottelemattomia sisältöjä. Voit tehdä tällaisia omia arkistokansioita useita ja erilaisilla otsikoilla (esim. esseet, konferenssit, suunnitelmat, jne.). Käytä luovuutta: miten voisit hyödyntää omaa arkistoa.</li><li>Vinkki: linkkien väliin kannattaa jättää tilaa, samoin linkin ja tekstin, jotta ne erottuvat.</li></ul>",
+    "helpText": "<p>Tämä on profiilisi monipuolisin osio. Voit lisätä vapaasti osioita erilaisilla otsikoilla, esimerkiksi: harrastukset, vapaaehtoistoiminta, luottamustehtävät, IT-taidot, tekninen osaaminen, laboratorio-osaaminen, viestintätaidot ja kokemus, HOPS-reflektio, HowULearn-reflektio, suoritetut MOOC-kurssit, osaamismerkit, jne. Suositeltavaa olisi tehdä yhdestä lisäosiosta oman itsen esittely, jonka siirrät ihan profiilisi alkuun.</p><ul><li>Lisää editointitilassa tekstiä, kuvia, linkkejä, tiedostoja ja videoita. Videoita voit upottaa lisäämällä URL-linkin esim. Youtubesta tai Vimeosta (voit tehdä oman kanavan näihin, ja linkata omia videoitasi sitä kautta).</li><li>Lisää kuva editorin kuvaikonista. Muuta kuvan kokoa kuvan kulmasta raahaamalla.</li><li>Muista tallentaa osio!</li><li>Lisää uusi osio -toimintoa kannattaa myös hyödyntää siihen, että tallennat tänne vain itseäsi varten linkkejä tai liitteitä, jotka ovat omaa arkistoasi ja aihealueisiin jaottelemattomia sisältöjä. Voit tehdä tällaisia omia arkistokansioita useita ja erilaisilla otsikoilla (esim. esseet, konferenssit, suunnitelmat, jne.). Käytä luovuutta: miten voisit hyödyntää omaa arkistoa.</li><li>Vinkki: linkkien väliin kannattaa jättää tilaa, samoin linkin ja tekstin, jotta ne erottuvat.</li></ul>",
     "fileUploadError": "Tiedoston lisäys epäonnistui",
     "addFromUploads": "Lisää ladattu tiedosto"
   },
@@ -232,10 +232,10 @@
     "title": "Henkilötiedot"
   },
   "languageSelector": {
-    "createForLang": "Haluatko luoda uuden portfolion kielellä {{ lang }}?",
-    "confirmation": "Tämän portfolion sisältö on kielellä {{ lang }}. Haluatko luoda uuden portfolion eri kielellä?",
-    "selectionPrompt": "Valitse uuden portfolion kieli:",
-    "helpText": "Tästä kielivalikosta voit lisätä portfolion uudella kielellä. Koko käyttöliittymän kielen voit vaihtaa sivun ylänavigaatiosta, mikä vaikuttaa esimerkiksi portfolion asetusten kieleen."
+    "createForLang": "Haluatko luoda uuden profiilin kielellä {{ lang }}?",
+    "confirmation": "Tämän profiilin sisältö on kielellä {{ lang }}. Haluatko luoda uuden profiilin eri kielellä?",
+    "selectionPrompt": "Valitse uuden profiilin kieli:",
+    "helpText": "Tästä kielivalikosta voit lisätä profiilin uudella kielellä. Koko käyttöliittymän kielen voit vaihtaa sivun ylänavigaatiosta, mikä vaikuttaa esimerkiksi profiilin asetusten kieleen."
   },
   "upload": {
     "privacyMessage": "Lataamaasi kuvaa käytetään automaattisesti myös muissa HY:n palveluissa ja kuvalle muodostuu julkinen linkki."
@@ -245,7 +245,7 @@
     "chooseDefaultBackground": "Valitse vakiokuvista",
     "uploadFile": "Lataa tiedosto",
     "helpText": {
-      "introduction": "Voit kirjoittaa profiilikuvan viereen esimerkiksi lyhyen esittelyn itsestäsi. Voit tässä osiossa myös antaa portfoliollesi jonkinlaisen otsikon. Muista olla spesifi ja ottaa mukaan esim. kiinnostuksen kohteita, itsellesi tärkeitä asioita tai kuvailevia sanoja omasta polustasi. \"Helsingin yliopiston opiskelija\" tai \"x-alan opiskelija\" voi jäädä turhan yleiselle tasolle.",
+      "introduction": "Voit kirjoittaa profiilikuvan viereen esimerkiksi lyhyen esittelyn itsestäsi. Voit tässä osiossa myös antaa profiilillesi jonkinlaisen otsikon. Muista olla spesifi ja ottaa mukaan esim. kiinnostuksen kohteita, itsellesi tärkeitä asioita tai kuvailevia sanoja omasta polustasi. \"Helsingin yliopiston opiskelija\" tai \"x-alan opiskelija\" voi jäädä turhan yleiselle tasolle.",
       "chooseBackground": "Voit vaihtaa bannerikuvan. Klikkaa kameran kuvaa ja valitse joko “lataa tiedosto” tai “valitse vakiokuvista”. Valitse kuva ja tallenna."
     },
     "changeAvatar": {
@@ -261,9 +261,9 @@
   },
   "settings": {
     "helpText": {
-      "manageFiles": "<p>Voit selata ja poistaa portfolioosi ladattuja tiedostoja. Tiedosto poistuu kokonaan serveriltä.</p><p>Huom. jos poistat täältä tiedoston ja käytät sitä yhä jossain osiossa, niin tiedosto ei enää toimi kyseisen osion tekstissä.</p>",
-      "sharedLinks": "<p>Voit jakaa portfoliosi, vaikka se olisi yksityisessä tilassa yläkulman valikossa. Tämä on hyödyllistä, jos haluat jakaa portfolion työnantajalle, opiskelukaverille tai opettajalla, mutta et julkaista koko maailmalle. Lisää yksityinen linkki portfolioosi plus-painikkeesta.</p><p>Huom! On suositeltavaa lisätä “tuhoutumispäivämäärä” linkille; esimerkiksi työnhaun päättyminen tai kurssin päättyminen, jonka aikana portfoliota olet tehnyt. Kopioi sen jälkeen luotu linkki esimerkiksi sähköpostiin tai lisää Moodle-alueelle opettajan tehtävänannon mukaisesti.</p>",
-      "print": "Voit tulostaa portfoliosi pdf:ksi, tallentaa sen koneellesi ja jakaa sähköpostin liitetiedostona."
+      "manageFiles": "<p>Voit selata ja poistaa profiilisi ladattuja tiedostoja. Tiedosto poistuu kokonaan serveriltä.</p><p>Huom. jos poistat täältä tiedoston ja käytät sitä yhä jossain osiossa, niin tiedosto ei enää toimi kyseisen osion tekstissä.</p>",
+      "sharedLinks": "<p>Voit jakaa profiilisi, vaikka se olisi yksityisessä tilassa yläkulman valikossa. Tämä on hyödyllistä, jos haluat jakaa profiilisi työnantajalle, opiskelukaverille tai opettajalla, mutta et julkaista koko maailmalle. Lisää yksityinen linkki profiilisi plus-painikkeesta.</p><p>Huom! On suositeltavaa lisätä “tuhoutumispäivämäärä” linkille; esimerkiksi työnhaun päättyminen tai kurssin päättyminen, jonka aikana profiilia olet tehnyt. Kopioi sen jälkeen luotu linkki esimerkiksi sähköpostiin tai lisää Moodle-alueelle opettajan tehtävänannon mukaisesti.</p>",
+      "print": "Voit tulostaa profiilisi pdf:ksi, tallentaa sen koneellesi ja jakaa sähköpostin liitetiedostona."
     },
     "title": "Asetukset",
     "browseUploadedFiles": "Selaa lataamiasi tiedostoja"

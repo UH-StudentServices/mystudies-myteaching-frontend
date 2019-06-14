@@ -50,7 +50,7 @@
     "PUBLIC": "Public",
     "toPublic" : "Change to public",
     "toPrivate" : "Change to private",
-    "helpText": "<p>Public: The portfolio can be found with search engines and if you share the URL, it is visible to all recipients.</p><p>UH Users: The portfolio is not visible to search engines. When you share the URL, it is only visible to UH users.</p><p>Private: The portfolio is only visible to you. However, you can share the portfolio with a private link from the portfolio settings by selecting “share with a link”. The private mode is the recommended setting, unless you would like to generally publish your portfolio.</p>"
+    "helpText": "<p>Public: The profile can be found with search engines and if you share the URL, it is visible to all recipients.</p><p>UH Users: The profile is not visible to search engines. When you share the URL, it is only visible to UH users.</p><p>Private: The profile is only visible to you. However, you can share the profile with a private link from the profile settings by selecting “share with a link”. The private mode is the recommended setting, unless you would like to generally publish your profile.</p>"
   },
   "keywords": {
     "title": "Keywords",
@@ -94,7 +94,7 @@
     "addNewPlaceholder": "Add new degree"
   },
   "studies": {
-    "helpText": "<p>Within this section you may write an introduction and a summary of your studies. Describe what kind of skills you are gaining during your studies. Also, you might reflect on the types of questions, methods, frameworks, or approaches you have been practicing and specializing in.</p><p>You can also add key words, which will be shown on the header image of your portfolio.</p>",
+    "helpText": "<p>Within this section you may write an introduction and a summary of your studies. Describe what kind of skills you are gaining during your studies. Also, you might reflect on the types of questions, methods, frameworks, or approaches you have been practicing and specializing in.</p><p>You can also add key words, which will be shown on the header image of your profile.</p>",
     "title": "Studies"
   },
   "workExperience": {
@@ -125,7 +125,7 @@
     "descriptionPlaceholder": "description text"
   },
   "attainments": {
-    "helpText": "The courses you have completed at the University of Helsinki will be shown here automatically from Weboodi. However, you can select which courses you would like to show in your portfolio, as well as whether you would like to publish the grades. In the “add new” -section you can describe the different courses in more detail; what skills and knowledge you gained during a course.",
+    "helpText": "The courses you have completed at the University of Helsinki will be shown here automatically from Weboodi. However, you can select which courses you would like to show in your profile, as well as whether you would like to publish the grades. In the “add new” -section you can describe the different courses in more detail; what skills and knowledge you gained during a course.",
     "attainments": "Completed studies",
     "seeMoreLink": "see a list of your completed studies in WebOodi",
     "showGrades": "Show grades"
@@ -144,26 +144,26 @@
     },
     "loginNeeded": {
       "title": "login needed",
-      "description": "Portfolio you are looking for may be restricted to the users of University of Helsinki. Please login.",
-      "disclaimer": "Firefox browser users may need to open the link again after the login. If the portfolio is still unreachable, please contact the author."
+      "description": "Profile you are looking for may be restricted to the users of University of Helsinki. Please login.",
+      "disclaimer": "Firefox browser users may need to open the link again after the login. If the profile is still unreachable, please contact the author."
     }
   },
   "landerPage": {
     "anonymous": {
-      "title": "Welcome to your Portfolio!",
-      "description": "This is your Portfolio where you can gather information about your studies and experience. You can share elements of the Portfolio through a link for others to see or send to a teacher for feedback."
+      "title": "Welcome to your Profile!",
+      "description": "This is your Profile where you can gather information about your studies and experience. You can share elements of the Profile through a link for others to see or send to a teacher for feedback."
     }
   },
   "preview": {
     "enterPreview": "Preview",
-    "info": "this is how your portfolio looks to others if it is published.",
+    "info": "this is how your profile looks to others if it is published.",
     "exit": "close preview",
     "printAndShare": "Print and share as PDF"
   },
   "freeTextContent": {
     "defaultTitle": "Add title",
     "defaultText": "Add content",
-    "helpText": "<p>This is the most versatile section in your portfolio. You can freely add new sections with your own topics, e.g. hobbies, voluntary work, IT skills, technical skills, laboratory skills, communication skills, HOPS-reflection, HowULearn-reflection, completed MOOC-courses, badges, etc. Also, it is recommended to create one extra section to use as your own introduction, which you can move to the top of your portfolio.<p><ul><li>In the editor, you can add text, pictures, links, files, and videos. To add videos, simply copy and paste a video URL from Youtube or Vimeo.</li><li>Upload and embed a picture from the editor’s picture icon. You can change the size of the picture by clicking the picture “active” and then scaling its size from the corner with the cursor.\n<li>Remember to save the section!</li><li>Tip: It is good to leave some extra space between the text and pictures, link and text, and so on.<li>This add new -section is recommended to be used for creating an archive for yourself. These could include links and files, which don’t yet have a category. You can create multiple archive folders like this with multiple topics, for example: essays, conferences, plans, etc. Use your creativity: how you might utilize your own archive.</li></ul>",
+    "helpText": "<p>This is the most versatile section in your profile. You can freely add new sections with your own topics, e.g. hobbies, voluntary work, IT skills, technical skills, laboratory skills, communication skills, HOPS-reflection, HowULearn-reflection, completed MOOC-courses, badges, etc. Also, it is recommended to create one extra section to use as your own introduction, which you can move to the top of your profile.<p><ul><li>In the editor, you can add text, pictures, links, files, and videos. To add videos, simply copy and paste a video URL from Youtube or Vimeo.</li><li>Upload and embed a picture from the editor’s picture icon. You can change the size of the picture by clicking the picture “active” and then scaling its size from the corner with the cursor.\n<li>Remember to save the section!</li><li>Tip: It is good to leave some extra space between the text and pictures, link and text, and so on.<li>This add new -section is recommended to be used for creating an archive for yourself. These could include links and files, which don’t yet have a category. You can create multiple archive folders like this with multiple topics, for example: essays, conferences, plans, etc. Use your creativity: how you might utilize your own archive.</li></ul>",
     "fileUploadError": "File upload has failed",
     "addFromUploads": "Add from my uploaded files"
   },
@@ -232,10 +232,10 @@
     "title": "Personal information"
   },
   "languageSelector": {
-    "createForLang": "Do you want to create a new portfolio in {{ lang }}?",
-    "confirmation": "The contents of this portfolio are in {{ lang }}. Do you want to create a new portfolio in a different language?",
-    "selectionPrompt": "Please select the language for your new portfolio:",
-    "helpText": "Select a language here to add a new portfolio in another language. In addition, you may change the user interface language from the top navigation, which will only affect the language selection of the portfolio's settings."
+    "createForLang": "Do you want to create a new profile in {{ lang }}?",
+    "confirmation": "The contents of this profile are in {{ lang }}. Do you want to create a new profile in a different language?",
+    "selectionPrompt": "Please select the language for your new profile:",
+    "helpText": "Select a language here to add a new profile in another language. In addition, you may change the user interface language from the top navigation, which will only affect the language selection of the profile's settings."
   },
   "upload" : {
     "privacyMessage": "The uploaded picture is automatically used in other UH services, and the picture will have a public link."
@@ -245,7 +245,7 @@
     "chooseDefaultBackground": "Choose from default backgrounds",
     "uploadFile": "Upload file",
     "helpText": {
-      "introduction": "Beside your profile picture, you may write a short description of your portfolio. In this section, you can also provide a title topic for your portfolio. Remember to be specific and include your interests: things that are important to you and your studies, and words that describe your learning path. Writing only “a student at the University of Helsinki” or “a student of field x”, so it is recommended to be more specific.",
+      "introduction": "Beside your profile picture, you may write a short description of your profile. In this section, you can also provide a title topic for your profile. Remember to be specific and include your interests: things that are important to you and your studies, and words that describe your learning path. Writing only “a student at the University of Helsinki” or “a student of field x”, so it is recommended to be more specific.",
       "chooseBackground": "You can change the header image. Click on the the camera icon and select “upload file” or “choose from default backgrounds”. Select the picture and press “save”. "
     },
     "changeAvatar": {
@@ -261,9 +261,9 @@
   },
   "settings": {
     "helpText": {
-      "manageFiles": "<p>Browse and delete files uploaded to your portfolio. When you delete a file from here, it will be deleted from the server.</p><p>Note that if you delete a file here, but are still using it in one of the sections, the file link in the text will not be accessible anymore.</p>",
-      "sharedLinks": "<p>You can share your portfolio with a link even when it is in the private mode on the top corner privacy setting. This is useful if you would like to share your portfolio to your peers, employer, or teacher, but you don’t want to make the portfolio public otherwise. Create a new link to your portfolio from the plus sign.</p><p>Note that it is recommended to add an expiry date for your link. This could be, for example, the month after when the portfolio needs to be submitted. After you have created a new portfolio link from the plus sign, copy and paste the link to email or to a Moodle course area.</p>",
-      "print": "You may print your portfolio as a PDF, save it to your computer and share it as an attachment by email."
+      "manageFiles": "<p>Browse and delete files uploaded to your profile. When you delete a file from here, it will be deleted from the server.</p><p>Note that if you delete a file here, but are still using it in one of the sections, the file link in the text will not be accessible anymore.</p>",
+      "sharedLinks": "<p>You can share your profile with a link even when it is in the private mode on the top corner privacy setting. This is useful if you would like to share your profile to your peers, employer, or teacher, but you don’t want to make the profile public otherwise. Create a new link to your profile from the plus sign.</p><p>Note that it is recommended to add an expiry date for your link. This could be, for example, the month after when the profile needs to be submitted. After you have created a new profile link from the plus sign, copy and paste the link to email or to a Moodle course area.</p>",
+      "print": "You may print your profile as a PDF, save it to your computer and share it as an attachment by email."
     },
     "title": "Settings",
     "browseUploadedFiles": "View my uploaded files"

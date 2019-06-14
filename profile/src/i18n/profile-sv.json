@@ -50,7 +50,7 @@
     "PUBLIC": "Allmän",
     "toPublic" : "ändra till offentligt",
     "toPrivate" : "ändra  till privat",
-    "helpText": "<p>Allmän: Portfolion kan hittas med sökmotorer och om du delar URL:en, syns den till alla mottagare.</p><p>HU Användare: Portfolion kan inte hittas med sökmotorer. Portfolion är synlig enbart för dem som är inskrivna med HU:s användarrätt.</p><p>Privat: Detta är den rekommenderade inställningen, förutom om du vill publicera portfolion allmänt. Portfolion syns enbart för dig. Du kan dock dela med dig en privat portfolio med en privat länk från portfolions inställningar genom att välja ”dela med länk”.</p>"
+    "helpText": "<p>Allmän: Profilen kan hittas med sökmotorer och om du delar URL:en, syns den till alla mottagare.</p><p>HU Användare: Profilen kan inte hittas med sökmotorer. Profilen är synlig enbart för dem som är inskrivna med HU:s användarrätt.</p><p>Privat: Detta är den rekommenderade inställningen, förutom om du vill publicera profilen allmänt. Profilen syns enbart för dig. Du kan dock dela med dig en privat profile med en privat länk från profilens inställningar genom att välja ”dela med länk”.</p>"
   },
   "keywords": {
     "title": "nyckelord",
@@ -125,7 +125,7 @@
     "descriptionPlaceholder": "beskrivningstext"
   },
   "attainments": {
-    "helpText": "De kurser du avklarat i Helsingfors universitet syns automatiskt. Du kan själv välja vilka kurser som visas i din portfolio och ifall vitsorden är synliga. För olika arbetsgivare är olika kurser antagligen relevanta. I Lägg till ny –delen kan du beskriva närmare de olika kurserna samt vilka kunskaper och färdigheter dessa gav dig.",
+    "helpText": "De kurser du avklarat i Helsingfors universitet syns automatiskt. Du kan själv välja vilka kurser som visas i din profil och ifall vitsorden är synliga. För olika arbetsgivare är olika kurser antagligen relevanta. I Lägg till ny –delen kan du beskriva närmare de olika kurserna samt vilka kunskaper och färdigheter dessa gav dig.",
     "attainments": "Prestationer",
     "seeMoreLink": "se en lista över dina prestationer i WebOodi",
     "showGrades": "Visa vitsord"
@@ -144,14 +144,14 @@
     },
     "loginNeeded": {
       "title": "login needed",
-      "description": "Portfolio du letar efter kan begränsas till användarna av Helsingfors universitet. Vänligen logga in.",
+      "description": "Profil du letar efter kan begränsas till användarna av Helsingfors universitet. Vänligen logga in.",
       "disclaimer": "Med Firefox-webbläsaren kan du behöva öppna länken efter inloggningen. Om portföljen är fortfarande inte nås, kontakta författaren."
     }
   },
   "landerPage": {
     "anonymous": {
-      "title": "Välkommen till din Portfolio!",
-      "description": "Det här är din Portfolio där du kan samla information om dina studier och erfarenheter. Du kan dela ut delar av Portfolion via en länk så att andra kan se den eller till din lärare för feedback."
+      "title": "Välkommen till din Profil!",
+      "description": "Det här är din Profil där du kan samla information om dina studier och erfarenheter. Du kan dela ut delar av Profilen via en länk så att andra kan se den eller till din lärare för feedback."
     }
   },
   "preview": {
@@ -163,7 +163,7 @@
   "freeTextContent": {
     "defaultTitle": "Lägg till rubrik",
     "defaultText": "Lägg till innehåll",
-    "helpText": "<p>Detta är det mångsidigaste avsnittet i din portfolio. Du kan fritt lägga till delar med olika rubriker, exempelvis: hobbyn, frivillig verksamhet, förtroendeuppgifter, IT-kunskaper, tekniskt kunnande, laboratoriekunskaper, kommunikationsfärdigheter och –erfarenhet, HOPS-reflektion, HowULearn-reflektion, avklarade MOOC-kurser, kunskapsmärken m.m. Det rekommenderas att göra en tilläggsdel som en personpresentation vilken du flyttar upp till början av din portfolio.</p><ul><li>I redigeringsläget lägg till text, bilder, länkar, filer och videon. Videon kan inbäddas genom att skriva in länken från t.ex. YouTube eller Vimeo (du kan skapa en egen kanal i dessa tjänster och länka dina videon via dem).</li><li>Bilden kan du ladda upp vida redigerarens bildikon och bildens storlek kan ändras genom att dra från bildens kant.</li><li>Kom ihåg att spara avsnittet!</li><li>Lägg till ny –funktionen lönar det sig även att utnyttja så, att du sparar in länkar här endast för dig själv eller filer, som är en del av ditt eget arkiv och vilka inte indelats enligt ämnesområde. Du kan skapa flera dylika arkivmappar med olika rubriker (t.ex. esséer, konferenser, planer etc.). Använd din kreativitet: hur kan du utnyttja ditt egna arkiv.</li><li>Tips: det lönar sig att lämna mellanrum mellan länkarna, samt länkarna och texten, så att de urkskiljs.</li></ul>",
+    "helpText": "<p>Detta är det mångsidigaste avsnittet i din profilen. Du kan fritt lägga till delar med olika rubriker, exempelvis: hobbyn, frivillig verksamhet, förtroendeuppgifter, IT-kunskaper, tekniskt kunnande, laboratoriekunskaper, kommunikationsfärdigheter och –erfarenhet, HOPS-reflektion, HowULearn-reflektion, avklarade MOOC-kurser, kunskapsmärken m.m. Det rekommenderas att göra en tilläggsdel som en personpresentation vilken du flyttar upp till början av din profil.</p><ul><li>I redigeringsläget lägg till text, bilder, länkar, filer och videon. Videon kan inbäddas genom att skriva in länken från t.ex. YouTube eller Vimeo (du kan skapa en egen kanal i dessa tjänster och länka dina videon via dem).</li><li>Bilden kan du ladda upp vida redigerarens bildikon och bildens storlek kan ändras genom att dra från bildens kant.</li><li>Kom ihåg att spara avsnittet!</li><li>Lägg till ny –funktionen lönar det sig även att utnyttja så, att du sparar in länkar här endast för dig själv eller filer, som är en del av ditt eget arkiv och vilka inte indelats enligt ämnesområde. Du kan skapa flera dylika arkivmappar med olika rubriker (t.ex. esséer, konferenser, planer etc.). Använd din kreativitet: hur kan du utnyttja ditt egna arkiv.</li><li>Tips: det lönar sig att lämna mellanrum mellan länkarna, samt länkarna och texten, så att de urkskiljs.</li></ul>",
     "fileUploadError": "Fel i filuppladdning",
     "addFromUploads": "Lägg till från mina uppladdade filer"
   },
@@ -235,7 +235,7 @@
     "createForLang": "Vill du skapa en ny portfölj i {{ lang }}?",
     "confirmation": "Denna portfölj är i {{lang}}. Vill du skapa en ny portfölj på ett annat språk?",
     "selectionPrompt": "Välj språk för din nya portfölj:",
-    "helpText": "Från språkmenyn kan du lägga till en portfolio med ett nytt språk. Hela användargränssnittets språk går att ändra från sidans övre navigation, vilket påverkar t.ex. språket för portfolions inställningar."
+    "helpText": "Från språkmenyn kan du lägga till en profil med ett nytt språk. Hela användargränssnittets språk går att ändra från sidans övre navigation, vilket påverkar t.ex. språket för profilens inställningar."
   },
   "upload" : {
     "privacyMessage": "Den uppladdade bilden används också i andra HUs tjänster och bilden får en publik länk."
@@ -245,7 +245,7 @@
     "chooseDefaultBackground": "Välj av standardbilder",
     "uploadFile": "Ladda up fil",
     "helpText": {
-      "introduction": "Du kan skriva bredvid profilbilden t.ex. en kort presentation av dig själv. I detta avsnitt kan du även ge dig en rubrik av något slag. Kom ihåg att vara specifik och ta med t.ex. intressen, saker som är viktiga för dig själv eller beskrivande saker om din egna väg. “Studerande vid Helsingfors universitet” eller “X-områdets studerande” blir ofta för generellt.",
+      "introduction": "Du kan skriva bredvid profilbilden t.ex. en kort presentation av dig själv. I detta avsnitt kan du även ge din profile en rubrik av något slag. Kom ihåg att vara specifik och ta med t.ex. intressen, saker som är viktiga för dig själv eller beskrivande saker om din egna väg. “Studerande vid Helsingfors universitet” eller “X-områdets studerande” blir ofta för generellt.",
       "chooseBackground": "Du kan ändra bannerbilden. Klicka på kamerabilden och välj antingen ”ladda upp fil” eller ”välj från standardbilderna”. Välj bilden och spara."
     },
     "changeAvatar": {
@@ -261,8 +261,8 @@
   },
   "settings": {
     "helpText": {
-      "manageFiles": "<p>Du kan bläddra i och radera de filer du laddat upp i din portfolio. Filen försvinner helt och hållet från servern.</p><p>Obs. Om du raderar filen här och ännu använder den i något annat avsnitt, så syns filen inte längre i avsnittets text.</p>",
-      "sharedLinks": "<p>Här kan du dela din portfolio, även om dess läge är redigerad som privat från övre kantens meny. Detta är behändigt ifall du vill dela med din portfolio till en arbetsgivare, studiekamrat eller lärare men inte publicera den till hela världen. Lägg till en privat länk i din portfolio med plus-knappen.</p><p>Obs! Det är starkt rekommenderat att lägga till ett “förstörningsdatum” åt länken; t.ex. då arbetssökandet eller kursen upphör som du byggt din portfolio till. Kopiera sedan den skapade länken t.ex. i ett e-postmeddelande eller lägg till den i Moodle-området enligt lärarens anvisning.</p>",
+      "manageFiles": "<p>Du kan bläddra i och radera de filer du laddat upp i din profil. Filen försvinner helt och hållet från servern.</p><p>Obs. Om du raderar filen här och ännu använder den i något annat avsnitt, så syns filen inte längre i avsnittets text.</p>",
+      "sharedLinks": "<p>Här kan du dela din profil, även om dess läge är redigerad som privat från övre kantens meny. Detta är behändigt ifall du vill dela med din profil till en arbetsgivare, studiekamrat eller lärare men inte publicera den till hela världen. Lägg till en privat länk i din profil med plus-knappen.</p><p>Obs! Det är starkt rekommenderat att lägga till ett “förstörningsdatum” åt länken; t.ex. då arbetssökandet eller kursen upphör som du byggt din profil till. Kopiera sedan den skapade länken t.ex. i ett e-postmeddelande eller lägg till den i Moodle-området enligt lärarens anvisning.</p>",
       "print": "Du kan utskriva din portföjl till PDF, spara den till dator och sicka den via e-post."
     },
     "title": "Inställningar",
