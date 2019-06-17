@@ -21,22 +21,22 @@ angular.module('resources.userSettings', [])
 
   .factory('UserSettingsResource', function ($resource) {
     var userSettingsResource = $resource('/api/private/v1/usersettings/:id', { id: '@id' }, {
-      update: { method: 'PUT' },
+      update: { method: 'POST' },
       updateUserAvatar: {
-        url: '/api/private/v1/usersettings/:id/uploaduseravatar',
-        method: 'PUT'
+        url: '/api/private/v1/usersettings/avatar',
+        method: 'POST'
       },
       deleteUserAvatar: {
-        url: '/api/private/v1/usersettings/:id/deleteuseravatar',
+        url: '/api/private/v1/usersettings/avatar',
         method: 'DELETE'
       },
       uploadUserBackground: {
-        url: '/api/private/v1/usersettings/:id/uploadbackground',
-        method: 'PUT'
+        url: '/api/private/v1/usersettings/background',
+        method: 'POST'
       },
       selectUserBackground: {
-        url: '/api/private/v1/usersettings/:id/selectbackground',
-        method: 'PUT'
+        url: '/api/private/v1/usersettings/background/select',
+        method: 'POST'
       }
     });
 
