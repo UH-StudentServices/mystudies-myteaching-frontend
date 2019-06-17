@@ -23,20 +23,20 @@ angular.module('resources.userSettings', [])
     var userSettingsResource = $resource('/api/private/v1/usersettings/:id', { id: '@id' }, {
       update: { method: 'PUT' },
       updateUserAvatar: {
-        url: '/api/private/v1/usersettings/:id/avatar',
-        method: 'PUT'
+        url: '/api/private/v1/usersettings/avatar',
+        method: 'POST'
       },
       deleteUserAvatar: {
-        url: '/api/private/v1/usersettings/:id/avatar',
+        url: '/api/private/v1/usersettings/avatar',
         method: 'DELETE'
       },
       uploadUserBackground: {
-        url: '/api/private/v1/usersettings/:id/background',
-        method: 'PUT'
+        url: '/api/private/v1/usersettings/background',
+        method: 'POST'
       },
       selectUserBackground: {
-        url: '/api/private/v1/usersettings/:id/selectbackground',
-        method: 'PUT'
+        url: '/api/private/v1/usersettings/background/select',
+        method: 'POST'
       }
     });
 
