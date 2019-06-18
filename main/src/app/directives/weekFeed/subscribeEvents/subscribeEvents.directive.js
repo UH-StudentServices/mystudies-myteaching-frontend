@@ -110,7 +110,6 @@ angular.module('directives.subscribeEvents', [
             .then(function (calendarInfo) {
               if (calendarInfo.url) {
                 cachedCalendarFeedUrl = calendarInfo.url;
-                $scope.optimeCalendar = true;
                 $scope.calendarFeedUrl = cachedCalendarFeedUrl;
                 return undefined;
               }

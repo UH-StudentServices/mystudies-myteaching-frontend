@@ -157,7 +157,6 @@
       "errorLoadingEvents" : "Händelser kunde inte laddas"
     },
     "subscribeEvents": "Lägg till kalender",
-    "optimeInstructions": "Länken ovan hämtar din undervisningstidtabell från Optime. För tillfället visar Min undervisning alla kurshändelser.",
     "calendarInstructions": "Så här importerar du händelser till kalenderprogram",
     "cancelled": "Annullerad",
     "official": "Administratör",
