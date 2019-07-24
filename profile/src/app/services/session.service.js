@@ -22,8 +22,8 @@ angular.module('services.session', ['resources.session'])
   .factory('SessionService', function SessionService(SessionResource) {
     var sessionPromise;
 
-    function getSession() {
-      if (!sessionPromise) {
+    function getSession(reload) {
+      if (!sessionPromise || reload) {
         sessionPromise = SessionResource.getSession().catch(function () {
           return null;
         });
