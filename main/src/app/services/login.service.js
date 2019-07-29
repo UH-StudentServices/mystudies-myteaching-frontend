@@ -114,7 +114,13 @@ angular.module('services.login', [
         .then(reloadUserData)
         .then(StateService.getStateFromDomain)
         .then($state.go)
-        .catch(_.partial($state.go, State.ACCESS_DENIED));
+        .catch(function(err) {
+          if (err.status === 503) {
+            $state.go(State.MAINTENANCE);
+          } else {
+            $state.go(State.ACCESS_DENIED);
+          }
+        });
     }
 
     return {

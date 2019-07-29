@@ -25,6 +25,7 @@ angular.module('services.state', [
     MY_STUDIES: 'opintoni',
     MY_TEACHINGS: 'opetukseni',
     ACCESS_DENIED: 'accessDenied',
+    MAINTENANCE: 'maintenance',
     ERROR: 'error',
     LOCAL_LOGIN: 'localLogin',
     LANDER: 'login'

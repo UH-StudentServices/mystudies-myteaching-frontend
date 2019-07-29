@@ -23,7 +23,7 @@ angular.module('resources.stateInterceptor', [
   'services.login'
 ])
 
-  .run(function ($rootScope, $state, SessionService, State, LoginService) {
+  .run(function ($rootScope, $state, SessionService, State) {
     function authorizeState(stateRoles) {
       return SessionService.isInAnyRole(stateRoles);
     }
@@ -44,7 +44,7 @@ angular.module('resources.stateInterceptor', [
           if (!authorized) {
             $state.go(State.ACCESS_DENIED);
           }
-        }).catch(LoginService.goToLoginOrLander);
+        });
       }
     });
   });

@@ -23,24 +23,17 @@
 !(function () {
   var CONFIG_RESOURCE_PATH = '/api/public/v1/configuration';
   var TIMEOUT = 5000;
-  var ERROR_PAGE_PATH = '/error/maintenance';
   var PROFILE_PATH = '/profile';
 
   var isProfile = function () {
     return location.pathname.indexOf(PROFILE_PATH) !== -1;
   };
 
-  var RESOLVED_ERROR_PAGE_PATH = isProfile() ? PROFILE_PATH + ERROR_PAGE_PATH : ERROR_PAGE_PATH;
-
   var NG_APP_NAME = isProfile() ? 'opintoniProfileApp' : 'opintoniApp';
 
-  var bootstrap = function (res) {
+  var bootstrap = function () {
     angular.element(document).ready(function () {
       angular.bootstrap(document, [NG_APP_NAME]);
-
-      if (!res && location.pathname !== RESOLVED_ERROR_PAGE_PATH) {
-        location.pathname = RESOLVED_ERROR_PAGE_PATH;
-      }
     });
   };
 
@@ -58,9 +51,5 @@
       });
   };
 
-  if (location.pathname !== RESOLVED_ERROR_PAGE_PATH) {
-    fetchConf().then(bootstrap);
-  } else {
-    bootstrap();
-  }
+  fetchConf().then(bootstrap);
 }());

@@ -19,13 +19,10 @@
 
 angular.module('resources.httpInterceptor', ['services.state', 'services.configuration'])
 
-  .constant('ErrorPages', { MAINTENANCE: 'maintenance' })
-
   .factory('HttpInterceptor', function HttpInterceptor($q,
     $injector,
     Configuration,
     $location,
-    ErrorPages,
     State) {
     function redirectToErrorPage(errorPage) {
       $location.path('/error/' + errorPage);
@@ -43,7 +40,6 @@ angular.module('resources.httpInterceptor', ['services.state', 'services.configu
 
     function handleForbidden() {
       var StateService = $injector.get('StateService');
-
       if (!StateService.currentOrParentStateMatches(State.ERROR)) {
         goToLoginOrLander();
       }
@@ -53,7 +49,7 @@ angular.module('resources.httpInterceptor', ['services.state', 'services.configu
       if (response.status === 401) {
         handleForbidden();
       } else if (response.status === 503) {
-        redirectToErrorPage(ErrorPages.MAINTENANCE);
+        redirectToErrorPage(State.MAINTENANCE);
       }
 
       return $q.reject(response);
