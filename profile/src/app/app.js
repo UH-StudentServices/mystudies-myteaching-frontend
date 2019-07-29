@@ -126,7 +126,7 @@ angular.module('opintoniProfileApp', [
     $qProvider.errorOnUnhandledRejections(false);
 
     function profileSession(SessionService) {
-      return SessionService.getSession();
+      return SessionService.getSession(true);
     }
 
     function profileUserSettings(StateService, State, UserSettingsService, state) {
