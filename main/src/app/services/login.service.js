@@ -114,7 +114,7 @@ angular.module('services.login', [
         .then(reloadUserData)
         .then(StateService.getStateFromDomain)
         .then($state.go)
-        .catch(function(err) {
+        .catch(function (err) {
           if (err.status === 503) {
             $state.go(State.MAINTENANCE);
           } else {
