@@ -23,11 +23,14 @@
 !(function () {
   var CONFIG_RESOURCE_PATH = '/api/public/v1/configuration';
   var TIMEOUT = 5000;
+  var ERROR_PAGE_PATH = '/error/maintenance';
   var PROFILE_PATH = '/profile';
 
   var isProfile = function () {
     return location.pathname.indexOf(PROFILE_PATH) !== -1;
   };
+
+  var RESOLVED_ERROR_PAGE_PATH = isProfile() ? PROFILE_PATH + ERROR_PAGE_PATH : ERROR_PAGE_PATH;
 
   var NG_APP_NAME = isProfile() ? 'opintoniProfileApp' : 'opintoniApp';
 
@@ -45,11 +48,16 @@
       .then(function (res) {
         window.configuration = res.data;
         return res;
-      })
-      .catch(function () {
-        return false;
       });
   };
 
-  fetchConf().then(bootstrap);
+  if (location.pathname !== RESOLVED_ERROR_PAGE_PATH) {
+    fetchConf()
+      .then(bootstrap)
+      .catch(function () {
+        location.pathname = RESOLVED_ERROR_PAGE_PATH;
+      });
+  } else {
+    bootstrap();
+  }
 }());
