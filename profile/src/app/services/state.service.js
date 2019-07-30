@@ -17,9 +17,7 @@
 
 'use strict';
 
-angular.module('services.state', [
-  'services.profileRole'
-])
+angular.module('services.state', ['services.profileRole'])
   .constant('State', {
     MY_STUDIES: 'opintoni',
     MY_TEACHINGS: 'opetukseni',
