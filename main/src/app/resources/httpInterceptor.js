@@ -17,11 +17,10 @@
 
 'use strict';
 
-angular.module('resources.httpInterceptor', ['services.state', 'services.configuration'])
+angular.module('resources.httpInterceptor', ['services.state'])
 
   .factory('HttpInterceptor', function HttpInterceptor($q,
     $injector,
-    Configuration,
     $location,
     State) {
     function redirectToErrorPage(errorPage) {
