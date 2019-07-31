@@ -113,14 +113,7 @@ angular.module('services.login', [
       }), { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
         .then(reloadUserData)
         .then(StateService.getStateFromDomain)
-        .then($state.go)
-        .catch(function (err) {
-          if (err.status === 503) {
-            $state.go(State.MAINTENANCE);
-          } else {
-            $state.go(State.ACCESS_DENIED);
-          }
-        });
+        .then($state.go);
     }
 
     return {
