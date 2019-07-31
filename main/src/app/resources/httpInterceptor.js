@@ -17,20 +17,12 @@
 
 'use strict';
 
-angular.module('resources.httpInterceptor', ['services.state', 'services.configuration'])
-
-  .constant('ErrorPages', { MAINTENANCE: 'maintenance' })
+angular.module('resources.httpInterceptor', ['services.state'])
 
   .factory('HttpInterceptor', function HttpInterceptor($q,
     $injector,
-    Configuration,
     $location,
-    ErrorPages,
     State) {
-    function redirectToErrorPage(errorPage) {
-      $location.path('/error/' + errorPage);
-    }
-
     function success(response) {
       return response;
     }
@@ -41,19 +33,22 @@ angular.module('resources.httpInterceptor', ['services.state', 'services.configu
       LoginService.goToLoginOrLander();
     }
 
-    function handleForbidden() {
+    function handleUnauthorized() {
       var StateService = $injector.get('StateService');
-
       if (!StateService.currentOrParentStateMatches(State.ERROR)) {
         goToLoginOrLander();
       }
     }
 
     function error(response) {
+      var $state = $injector.get('$state');
+
       if (response.status === 401) {
-        handleForbidden();
+        handleUnauthorized();
+      } else if (response.status === 403) {
+        $state.go(State.ACCESS_DENIED);
       } else if (response.status === 503) {
-        redirectToErrorPage(ErrorPages.MAINTENANCE);
+        $state.go(State.MAINTENANCE);
       }
 
       return $q.reject(response);

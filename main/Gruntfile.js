@@ -72,7 +72,6 @@ proxyPaths = [
   '/logout',
   '/redirect',
   '/files',
-  '/info',
   '/saml'
 ];
 
