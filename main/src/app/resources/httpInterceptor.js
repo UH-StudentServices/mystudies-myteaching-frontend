@@ -23,10 +23,6 @@ angular.module('resources.httpInterceptor', ['services.state'])
     $injector,
     $location,
     State) {
-    function redirectToErrorPage(errorPage) {
-      $location.path('/error/' + errorPage);
-    }
-
     function success(response) {
       return response;
     }
@@ -37,7 +33,7 @@ angular.module('resources.httpInterceptor', ['services.state'])
       LoginService.goToLoginOrLander();
     }
 
-    function handleForbidden() {
+    function handleUnauthorized() {
       var StateService = $injector.get('StateService');
       if (!StateService.currentOrParentStateMatches(State.ERROR)) {
         goToLoginOrLander();
@@ -45,10 +41,14 @@ angular.module('resources.httpInterceptor', ['services.state'])
     }
 
     function error(response) {
+      var $state = $injector.get('$state');
+
       if (response.status === 401) {
-        handleForbidden();
+        handleUnauthorized();
+      } else if (response.status === 403) {
+        $state.go(State.ACCESS_DENIED);
       } else if (response.status === 503) {
-        redirectToErrorPage(State.MAINTENANCE);
+        $state.go(State.MAINTENANCE);
       }
 
       return $q.reject(response);

@@ -29,12 +29,10 @@ angular.module('opintoniAnalytics', [
   * If relying on automatic page tracking, do not remove it.
   */
   .run(function (Analytics, SessionService, StateService) {
-    Analytics.set('dimension1', StateService.getStateFromDomain());
-
-    SessionService.getFacultyCode()
-      .then(function (facultyCode) {
-        Analytics.set('dimension2', facultyCode);
-      });
+    SessionService.getFacultyCode().then(function (facultyCode) {
+      Analytics.set('dimension1', StateService.getStateFromDomain());
+      Analytics.set('dimension2', facultyCode);
+    });
   })
 
   .config(function (AnalyticsProvider, AnalyticsAccountsProvider) {

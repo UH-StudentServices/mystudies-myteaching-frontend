@@ -120,11 +120,9 @@ angular.module('opintoniApp', [
         abstract: true,
         params: { currentDate: null },
         resolve: {
-          session: function ($q, SessionService, $state) {
+          session: function ($q, SessionService) {
             return SessionService.getSession().then(function getSessionSuccess(session) {
               return session;
-            }, function getSessionError() {
-              $state.go('noSession');
             });
           },
           userSettings: function (UserSettingsService) {
@@ -281,9 +279,7 @@ angular.module('opintoniApp', [
             }
           ]
         }
-      })
-
-      .state('noSession', {}); // State to terminate ui processing in case of no session
+      });
 
     $sceDelegateProvider.resourceUrlWhitelist([
       // Allow same origin resource loads.
