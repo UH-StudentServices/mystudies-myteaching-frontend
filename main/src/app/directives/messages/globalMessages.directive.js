@@ -46,23 +46,6 @@ angular.module('directives.globalMessages',
     };
   })
 
-  .factory('httpRequestInterceptor', function ($q, GlobalMessagesService) {
-    return {
-      responseError: function (err) {
-        if (err.config && err.config.url
-            && err.config.url.indexOf('/api/') > -1 && err.status !== 404) {
-          GlobalMessagesService.addErrorMessage();
-        }
-
-        return $q.reject(err);
-      }
-    };
-  })
-
-  .config(function ($httpProvider) {
-    $httpProvider.interceptors.push('httpRequestInterceptor');
-  })
-
   .directive('globalMessages', function (GlobalMessagesService, MessageTypes) {
     return {
       restrict: 'E',

@@ -31,7 +31,6 @@ angular.module('opintoniProfileApp', [
   'profileAnalytics',
   'profileErrors',
   'profileLanders',
-  'resources.httpInterceptor',
   'angular-click-outside',
   'as.sortable',
   'templates',
@@ -109,15 +108,12 @@ angular.module('opintoniProfileApp', [
     $stateProvider,
     $urlRouterProvider,
     $translateProvider,
-    $httpProvider,
     $locationProvider,
     $compileProvider,
     $qProvider,
     $sceDelegateProvider
   ) {
     $locationProvider.html5Mode(true);
-
-    $httpProvider.interceptors.push('HttpInterceptor');
 
     $urlRouterProvider.otherwise('/');
 
