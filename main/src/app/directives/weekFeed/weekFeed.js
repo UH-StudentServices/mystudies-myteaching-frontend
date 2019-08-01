@@ -19,7 +19,7 @@
 
 angular.module('directives.weekFeed', [
   'filters.moment',
-  'directives.message',
+  'constants.messageTypes',
   'directives.subscribeEvents',
   'directives.eventCalendar',
   'directives.weekFeed.feedItem',

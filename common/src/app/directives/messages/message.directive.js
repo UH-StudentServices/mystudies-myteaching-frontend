@@ -17,14 +17,7 @@
 
 'use strict';
 
-angular.module('directives.message', [])
-
-  .constant('MessageTypes', {
-    ERROR: 'error',
-    INFO: 'info',
-    STATUS: 'status'
-  })
-
+angular.module('directives.message', ['contants.messageTypes'])
   .directive('message', function () {
     return {
       restrict: 'E',

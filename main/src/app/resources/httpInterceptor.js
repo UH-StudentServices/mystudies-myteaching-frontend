@@ -17,12 +17,9 @@
 
 'use strict';
 
-angular.module('resources.httpInterceptor', ['services.state'])
+angular.module('resources.httpInterceptor', ['services.state', 'services.globalMessages'])
 
-  .factory('HttpInterceptor', function HttpInterceptor($q,
-    $injector,
-    $location,
-    State) {
+  .factory('HttpInterceptor', function HttpInterceptor($q, $injector, $location, GlobalMessagesService, State) {
     function success(response) {
       return response;
     }
@@ -40,18 +37,23 @@ angular.module('resources.httpInterceptor', ['services.state'])
       }
     }
 
-    function error(response) {
+    function isApiCall(err) {
+      return err.config && err.config.url
+        && err.config.url.indexOf('/api/') > -1 && err.status !== 404;
+    }
+
+    function error(err) {
       var $state = $injector.get('$state');
 
-      if (response.status === 401) {
+      if (err.status === 401) {
         handleUnauthorized();
-      } else if (response.status === 403) {
+      } else if (err.status === 403) {
         $state.go(State.ACCESS_DENIED);
-      } else if (response.status === 503) {
-        $state.go(State.MAINTENANCE);
+      } else if (isApiCall(err)) {
+        GlobalMessagesService.addErrorMessage();
       }
 
-      return $q.reject(response);
+      return $q.reject(err);
     }
 
     return {

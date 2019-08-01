@@ -29,7 +29,7 @@ angular.module('profileAnalytics', ['provider.analyticsAccounts'])
     TRACK_PREFIX) {
     var TRACKER_CONFIG_KEY = 'googleAnalyticsAccountProfile';
     var trackerConfig = ConfigurationProvider.$get()[TRACKER_CONFIG_KEY];
-    var config;
+    var config = {};
 
     function isStudentProfile() {
       return window.location.hostname.indexOf('student') >= 0;
@@ -52,17 +52,17 @@ angular.module('profileAnalytics', ['provider.analyticsAccounts'])
         },
         select: isStudentProfile
       };
-
-      AnalyticsProvider.setAccount(config);
-      // Disabling automatic page tracking, because it was sending the user name in the title when
-      // switching to a profile in another language, no matter what I did.
-      AnalyticsProvider.trackPages(false);
-      AnalyticsProvider.trackPrefix(TRACK_PREFIX);
-      AnalyticsProvider.setRemoveRegExp(STRIP_USERNAME_REGEX);
-      AnalyticsProvider.useAnalytics(true);
-      AnalyticsProvider.setPageEvent('$stateChangeSuccess');
-      AnalyticsProvider.logAllCalls(true);
     }
+
+    AnalyticsProvider.setAccount(config);
+    // Disabling automatic page tracking, because it was sending the user name in the title when
+    // switching to a profile in another language, no matter what I did.
+    AnalyticsProvider.trackPages(false);
+    AnalyticsProvider.trackPrefix(TRACK_PREFIX);
+    AnalyticsProvider.setRemoveRegExp(STRIP_USERNAME_REGEX);
+    AnalyticsProvider.useAnalytics(true);
+    AnalyticsProvider.setPageEvent('$stateChangeSuccess');
+    AnalyticsProvider.logAllCalls(true);
   })
 
   .factory('AnalyticsService', function (Analytics,
