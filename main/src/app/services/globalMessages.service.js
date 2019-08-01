@@ -17,29 +17,30 @@
 
 'use strict';
 
-angular.module('directives.globalMessages',
-  ['constants.messageTypes', 'services.globalMessages'])
+angular.module('services.globalMessages', ['constants.messageTypes'])
 
-  .directive('globalMessages', function (GlobalMessagesService, MessageTypes) {
+  .factory('GlobalMessagesService', function (MessageTypes, $window) {
+    var messages = [];
+    var Rx = $window.Rx;
+    var msgSubject = new Rx.Subject();
+    var errorMsg = {
+      messageType: MessageTypes.ERROR,
+      key: 'globalMessages.errors.genericError'
+    };
+
     return {
-      restrict: 'E',
-      replace: true,
-      templateUrl: 'app/directives/messages/globalMessages.html',
-      link: function (scope) {
-        GlobalMessagesService.subscribe(function (messages) {
-          scope.$applyAsync(function () {
-            scope.messages = messages;
-          });
-        });
-
-        _.assign(scope, {
-          messages: [],
-          dismissMessage: function (message) {
-            if (message.messageType === MessageTypes.ERROR) {
-              GlobalMessagesService.removeErrorMessage();
-            }
-          }
-        });
+      addErrorMessage: function () {
+        if (!_.find(messages, errorMsg)) {
+          messages.push(errorMsg);
+          msgSubject.onNext(messages);
+        }
+      },
+      removeErrorMessage: function () {
+        messages = _.without(messages, errorMsg);
+        msgSubject.onNext(messages);
+      },
+      subscribe: function (fn) {
+        return msgSubject.subscribe(fn);
       }
     };
   });

@@ -17,7 +17,7 @@
 
 'use strict';
 
-angular.module('resources.httpInterceptor', ['services.state', 'directives.globalMessages'])
+angular.module('resources.httpInterceptor', ['services.state', 'services.globalMessages'])
 
   .factory('HttpInterceptor', function HttpInterceptor($q, $injector, $location, GlobalMessagesService, State) {
     function success(response) {
@@ -37,7 +37,7 @@ angular.module('resources.httpInterceptor', ['services.state', 'directives.globa
       }
     }
 
-    function showGlobalErrorMessage(err) {
+    function isApiCall(err) {
       return err.config && err.config.url
         && err.config.url.indexOf('/api/') > -1 && err.status !== 404;
     }
@@ -49,7 +49,7 @@ angular.module('resources.httpInterceptor', ['services.state', 'directives.globa
         handleUnauthorized();
       } else if (err.status === 403) {
         $state.go(State.ACCESS_DENIED);
-      } else if (showGlobalErrorMessage(err)) {
+      } else if (isApiCall(err)) {
         GlobalMessagesService.addErrorMessage();
       }
 

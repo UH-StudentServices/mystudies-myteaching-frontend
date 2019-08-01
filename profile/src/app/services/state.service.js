@@ -25,7 +25,7 @@ angular.module('services.state', ['services.profileRole'])
     RESTRICTED: 'restricted',
     PUBLIC: 'public'
   })
-  .factory('StateService', function (State, ProfileRoleService) {
+  .factory('StateService', function (State, ProfileRoleService, $location) {
     var currentState = State.PUBLIC;
     var profileRole = ProfileRoleService.getActiveRole();
 
@@ -51,8 +51,21 @@ angular.module('services.state', ['services.profileRole'])
       return currentState;
     }
 
+    function getStateFromDomain() {
+      var host = $location.host();
+
+      if (host.indexOf('student') > -1) {
+        return State.MY_STUDIES;
+      }
+      if (host.indexOf('teacher') > -1) {
+        return State.MY_TEACHINGS;
+      }
+      throw Error('Unexpected hostname');
+    }
+
     return {
       resolve: resolve,
-      getCurrent: getCurrent
+      getCurrent: getCurrent,
+      getStateFromDomain: getStateFromDomain
     };
   });

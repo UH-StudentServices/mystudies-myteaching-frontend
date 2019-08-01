@@ -21,7 +21,7 @@ angular.module('directives.attainments', [
   'services.attainments',
   'filters.moment',
   'filters.formatting',
-  'directives.message'
+  'constants.messageTypes'
 ])
 
   .constant('OodiLinks', {

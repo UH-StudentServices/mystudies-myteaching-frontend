@@ -17,29 +17,10 @@
 
 'use strict';
 
-angular.module('directives.globalMessages',
-  ['constants.messageTypes', 'services.globalMessages'])
+angular.module('constants.messageTypes', [])
 
-  .directive('globalMessages', function (GlobalMessagesService, MessageTypes) {
-    return {
-      restrict: 'E',
-      replace: true,
-      templateUrl: 'app/directives/messages/globalMessages.html',
-      link: function (scope) {
-        GlobalMessagesService.subscribe(function (messages) {
-          scope.$applyAsync(function () {
-            scope.messages = messages;
-          });
-        });
-
-        _.assign(scope, {
-          messages: [],
-          dismissMessage: function (message) {
-            if (message.messageType === MessageTypes.ERROR) {
-              GlobalMessagesService.removeErrorMessage();
-            }
-          }
-        });
-      }
-    };
+  .constant('MessageTypes', {
+    ERROR: 'error',
+    INFO: 'info',
+    STATUS: 'status'
   });
