@@ -18,7 +18,7 @@
 'use strict';
 
 angular.module('directives.globalMessages',
-  ['constants.messageTypes', 'services.globalMessages'])
+  ['constants.messageTypes', 'services.globalMessages', 'directives.message'])
 
   .directive('globalMessages', function (GlobalMessagesService, MessageTypes) {
     return {

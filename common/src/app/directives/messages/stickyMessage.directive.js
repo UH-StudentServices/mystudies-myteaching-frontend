@@ -17,7 +17,7 @@
 
 'use strict';
 
-angular.module('directives.stickyMessage', ['constants.messageTypes', 'services.configuration'])
+angular.module('directives.stickyMessage', ['constants.messageTypes', 'services.configuration', 'directives.message'])
 
   .directive('stickyMessage', function (MessageTypes, Configuration) {
     return {

@@ -17,7 +17,7 @@
 
 'use strict';
 
-angular.module('directives.message', ['contants.messageTypes'])
+angular.module('directives.message', ['constants.messageTypes'])
   .directive('message', function () {
     return {
       restrict: 'E',
