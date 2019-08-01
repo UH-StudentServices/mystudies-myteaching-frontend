@@ -17,7 +17,6 @@
 
 'use strict';
 
-
 angular.module('directives.notifications', ['constants.messageTypes', 'directives.message'])
 
   .directive('notifications', function (MessageTypes) {
