@@ -40,6 +40,10 @@
     });
   };
 
+  var redirectToErrorPage = function () {
+    location.pathname = RESOLVED_ERROR_PAGE_PATH;
+  };
+
   var fetchConf = function () {
     var injector = angular.injector(['ng']);
     var $http = injector.get('$http');
@@ -50,13 +54,10 @@
         return res;
       });
   };
-
   if (location.pathname !== RESOLVED_ERROR_PAGE_PATH) {
     fetchConf()
-      .then(bootstrap)
-      .catch(function () {
-        location.pathname = RESOLVED_ERROR_PAGE_PATH;
-      });
+      .catch(redirectToErrorPage)
+      .then(bootstrap);
   } else {
     bootstrap();
   }
