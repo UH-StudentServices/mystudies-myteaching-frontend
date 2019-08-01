@@ -97,8 +97,8 @@ angular.module('opintoniProfileApp', [
   'services.profileFiles',
   'services.sharedLinks',
   'services.obar',
+  'services.notifications',
 
-  'resources.notifications',
   'resources.session',
 
   'utils.moment'
@@ -128,13 +128,6 @@ angular.module('opintoniProfileApp', [
     function profileUserSettings(StateService, State, UserSettingsService, state) {
       if (state === State.PRIVATE) {
         return UserSettingsService.getUserSettings();
-      }
-      return undefined;
-    }
-
-    function profileNotifications(NotificationsResource, session) {
-      if (session && session.$resolved) {
-        return NotificationsResource.getNotifications();
       }
       return undefined;
     }
@@ -190,7 +183,6 @@ angular.module('opintoniProfileApp', [
           return StateService.resolve();
         },
         userSettings: profileUserSettings,
-        notifications: profileNotifications,
         profile: function (ProfileService,
           FreeTextContentService,
           $location,
@@ -226,7 +218,6 @@ angular.module('opintoniProfileApp', [
           return StateService.resolve(session, $stateParams.lang, $stateParams.userpath);
         },
         userSettings: profileUserSettings,
-        notifications: profileNotifications,
         profile: function (ProfileService,
           FreeTextContentService,
           $location,

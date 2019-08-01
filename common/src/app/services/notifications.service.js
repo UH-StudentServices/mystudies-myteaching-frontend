@@ -17,13 +17,12 @@
 
 'use strict';
 
-angular.module('resources.notifications', [])
-
-  .factory('NotificationsResource', function ($resource) {
-    var resource = $resource('/api/private/v1/notifications', null, { get: { method: 'GET', isArray: true } });
-
+angular.module('services.notifications', ['resources.session', 'resources.notifications'])
+  .factory('NotificationsService', function (SessionResource, NotificationsResource) {
     function getNotifications() {
-      return resource.get().$promise;
+      return SessionResource.getSession()
+        .then(function () { return NotificationsResource.getNotifications(); })
+        .catch(function () { return []; });
     }
 
     return { getNotifications: getNotifications };
