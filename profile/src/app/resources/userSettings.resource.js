@@ -20,14 +20,14 @@
 angular.module('resources.userSettings', [])
 
   .factory('UserSettingsResource', function ($resource) {
-    var userSettingsResource = $resource('/api/private/v1/usersettings/:id', { id: '@id' }, {
-      update: { method: 'PUT' },
+    var userSettingsResource = $resource('/api/private/v1/usersettings', null, {
+      update: { method: 'POST' },
       updateUserAvatar: {
-        url: '/api/private/v1/usersettings/:id/uploaduseravatar',
-        method: 'PUT'
+        url: '/api/private/v1/usersettings/avatar',
+        method: 'POST'
       },
       deleteUserAvatar: {
-        url: '/api/private/v1/usersettings/:id/deleteuseravatar',
+        url: '/api/private/v1/usersettings/avatar',
         method: 'DELETE'
       }
     });
