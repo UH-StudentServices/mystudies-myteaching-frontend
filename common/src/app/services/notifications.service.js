@@ -17,12 +17,10 @@
 
 'use strict';
 
-angular.module('services.notifications', ['resources.session', 'resources.notifications'])
-  .factory('NotificationsService', function (SessionResource, NotificationsResource) {
+angular.module('services.notifications', ['resources.notifications'])
+  .factory('NotificationsService', function (NotificationsResource) {
     function getNotifications() {
-      return SessionResource.getSession()
-        .then(function () { return NotificationsResource.getNotifications(); })
-        .catch(function () { return []; });
+      return NotificationsResource.getNotifications();
     }
 
     return { getNotifications: getNotifications };
