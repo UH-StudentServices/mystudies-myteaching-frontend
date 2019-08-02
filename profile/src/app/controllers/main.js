@@ -23,11 +23,10 @@ angular.module('controllers.main', [
   'utils.browser'
 ])
 
-  .controller('MainCtrl', function ($state, $scope, profileTabs, profile, state, userSettings, notifications,
+  .controller('MainCtrl', function ($state, $scope, profileTabs, profile, state, userSettings,
     ComponentOrderService, PreviewService, State, BrowserUtil) {
     $scope.profile = profile;
     $scope.userSettings = userSettings;
-    $scope.notifications = notifications;
     $scope.profileTabs = profileTabs;
     $scope.isPreview = PreviewService.isPreview();
     $scope.sectionSortDisabled = state !== State.PRIVATE || BrowserUtil.supportsTouch();

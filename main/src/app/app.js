@@ -47,6 +47,7 @@ angular.module('opintoniApp', [
   'services.scriptInjector',
   'services.stylesheetInjector',
   'services.obar',
+  'services.notifications',
 
   'resources.httpInterceptor',
   'resources.stateInterceptor',
@@ -132,12 +133,6 @@ angular.module('opintoniApp', [
               }, function getUserSettingsError() {
                 return undefined;
               });
-          },
-          notifications: function (NotificationsResource, session) {
-            if (session && session.$resolved) {
-              return NotificationsResource.getNotifications();
-            }
-            return undefined;
           }
         }
       })
