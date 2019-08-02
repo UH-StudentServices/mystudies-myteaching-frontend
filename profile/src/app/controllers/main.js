@@ -29,7 +29,6 @@ angular.module('controllers.main', [
     $scope.userSettings = userSettings;
     $scope.notifications = notifications;
     $scope.profileTabs = profileTabs;
-    $scope.currentYear = moment().year();
     $scope.isPreview = PreviewService.isPreview();
     $scope.sectionSortDisabled = state !== State.PRIVATE || BrowserUtil.supportsTouch();
     $scope.profileSections = [];
