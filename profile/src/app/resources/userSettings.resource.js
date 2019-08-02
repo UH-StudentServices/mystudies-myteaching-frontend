@@ -46,12 +46,12 @@ angular.module('resources.userSettings', [])
       return userSettingsResource.update(settings).$promise;
     };
 
-    var updateUserAvatar = function updateUserAvatar(id, imageBase64) {
-      return userSettingsResource.updateUserAvatar({ id: id, imageBase64: imageBase64 }).$promise;
+    var updateUserAvatar = function updateUserAvatar(imageBase64) {
+      return userSettingsResource.updateUserAvatar({ imageBase64: imageBase64 }).$promise;
     };
 
-    var deleteUserAvatar = function deleteUserAvatar(id) {
-      return userSettingsResource.deleteUserAvatar({ id: id }).$promise;
+    var deleteUserAvatar = function deleteUserAvatar() {
+      return userSettingsResource.deleteUserAvatar().$promise;
     };
 
     return {

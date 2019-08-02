@@ -51,24 +51,12 @@ angular.module('services.userSettings', ['resources.userSettings'])
       return updateUserSettings({ cookieConsent: true });
     }
 
-    function updateUserAvatar(imageBase64) {
-      return getUserSettings().then(function (userSettings) {
-        return UserSettingsResource.updateUserAvatar(userSettings.id, imageBase64);
-      });
-    }
-
-    function deleteUserAvatar() {
-      return getUserSettings().then(function (settings) {
-        return UserSettingsResource.deleteUserAvatar(settings.id);
-      });
-    }
-
     return {
       acceptCookies: acceptCookies,
       getAvailableBackgrounds: getAvailableBackgrounds,
       getUserSettings: getUserSettings,
       updateUserSettings: updateUserSettings,
-      updateUserAvatar: updateUserAvatar,
-      deleteUserAvatar: deleteUserAvatar
+      updateUserAvatar: UserSettingsResource.updateUserAvatar,
+      deleteUserAvatar: UserSettingsResource.deleteUserAvatar
     };
   });
