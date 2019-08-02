@@ -21,24 +21,28 @@
     <div class="l-footer__column theme-sub">
       <div class="logo-block">
         <div class="logo-block__logo">
-          <a href="http://www.helsinki.fi/yliopisto/" aria-label="{{::('general.helsinkiUniversity' | translate) }}"
+          <a href="http://www.helsinki.fi/yliopisto/" translate-attr="{ 'aria-label': 'general.helsinkiUniversity' }"
              class="logo theme-big"></a>
         </div>
         <div class="logo-block__content">
-          <p class="logo-block__sitename">{{::('general.helsinkiUniversity' | translate)}}</p>
-          <p>{{::('pageFooter.addressLine1' | translate)}}<br>{{::('pageFooter.addressLine2' | translate)}}</p>
-          <p>{{::('pageFooter.telephoneExchange' | translate)}}:
-            <a class="is-tel" href="tel:+3582941911">{{::('pageFooter.telephone' | translate)}}</a>
+          <p class="logo-block__sitename" translate="general.helsinkiUniversity"></p>
+          <p>
+            <span translate="pageFooter.addressLine1"></span><br>
+            <span translate="pageFooter.addressLine2"></span>
+          </p>
+          <p>
+            <span translate="pageFooter.telephoneExchange"></span>:
+            <a class="is-tel" href="tel:+3582941911" translate="pageFooter.telephone"></a>
           </p>
         </div>
-      </div>
+      </div>a
     </div>
 
     <div class="l-footer__column">
       <div class="list-of-links--condensed theme-footer">
         <a ng-repeat="link in pageFooterLinks"
            class="list-of-links__link button--action icon--arrow-right theme-transparent-alt"
-           href="{{::link.href[selectedLanguage]}}">{{::(link.key | translate)}}</a>
+           href="{{::link.href[selectedLanguage]}}" translate="{{link.key}}">{{::(link.key | translate)}}</a>
       </div>
     </div>
 
@@ -61,7 +65,7 @@
 
   <div class="l-footer__copyright">
     <p>
-      © {{::('general.helsinkiUniversity' | translate)}} {{:: currentYear}}
+      © <span translate="general.helsinkiUniversity"></span> {{:: currentYear}}
     </p>
   </div>
 </div>

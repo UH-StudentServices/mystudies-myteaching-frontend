@@ -24,6 +24,7 @@ angular.module('directives.pageFooter', ['constants.commonExternalLinks'])
       templateUrl: 'app/directives/pageFooter/page_footer.html',
       link: function ($scope) {
         $scope.pageFooterLinks = pageFooterLinks;
+        $scope.currentYear = moment().year();
       }
     };
   });
