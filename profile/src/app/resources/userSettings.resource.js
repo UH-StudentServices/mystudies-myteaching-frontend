@@ -20,14 +20,14 @@
 angular.module('resources.userSettings', [])
 
   .factory('UserSettingsResource', function ($resource) {
-    var userSettingsResource = $resource('/api/private/v1/usersettings/:id', { id: '@id' }, {
-      update: { method: 'PUT' },
+    var userSettingsResource = $resource('/api/private/v1/usersettings', null, {
+      update: { method: 'POST' },
       updateUserAvatar: {
-        url: '/api/private/v1/usersettings/:id/uploaduseravatar',
-        method: 'PUT'
+        url: '/api/private/v1/usersettings/avatar',
+        method: 'POST'
       },
       deleteUserAvatar: {
-        url: '/api/private/v1/usersettings/:id/deleteuseravatar',
+        url: '/api/private/v1/usersettings/avatar',
         method: 'DELETE'
       }
     });
@@ -46,12 +46,12 @@ angular.module('resources.userSettings', [])
       return userSettingsResource.update(settings).$promise;
     };
 
-    var updateUserAvatar = function updateUserAvatar(id, imageBase64) {
-      return userSettingsResource.updateUserAvatar({ id: id, imageBase64: imageBase64 }).$promise;
+    var updateUserAvatar = function updateUserAvatar(imageBase64) {
+      return userSettingsResource.updateUserAvatar({ imageBase64: imageBase64 }).$promise;
     };
 
-    var deleteUserAvatar = function deleteUserAvatar(id) {
-      return userSettingsResource.deleteUserAvatar({ id: id }).$promise;
+    var deleteUserAvatar = function deleteUserAvatar() {
+      return userSettingsResource.deleteUserAvatar().$promise;
     };
 
     return {

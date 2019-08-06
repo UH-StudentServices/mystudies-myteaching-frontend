@@ -20,7 +20,7 @@
 angular.module('resources.userSettings', [])
 
   .factory('UserSettingsResource', function ($resource) {
-    var userSettingsResource = $resource('/api/private/v1/usersettings/:id', { id: '@id' }, {
+    var userSettingsResource = $resource('/api/private/v1/usersettings', null, {
       update: { method: 'POST' },
       updateUserAvatar: {
         url: '/api/private/v1/usersettings/avatar',
@@ -42,8 +42,8 @@ angular.module('resources.userSettings', [])
 
     var availableBackgroundImagesResource = $resource('/api/public/v1/images/backgrounds');
 
-    var uploadUserBackground = function uploadUserBackground(id, imageBase64) {
-      return userSettingsResource.uploadUserBackground({ id: id, imageBase64: imageBase64 })
+    var uploadUserBackground = function uploadUserBackground(imageBase64) {
+      return userSettingsResource.uploadUserBackground({ imageBase64: imageBase64 })
         .$promise;
     };
 
@@ -59,16 +59,16 @@ angular.module('resources.userSettings', [])
       return userSettingsResource.update(settings).$promise;
     };
 
-    var updateUserAvatar = function updateUserAvatar(id, imageBase64) {
-      return userSettingsResource.updateUserAvatar({ id: id, imageBase64: imageBase64 }).$promise;
+    var updateUserAvatar = function updateUserAvatar(imageBase64) {
+      return userSettingsResource.updateUserAvatar({ imageBase64: imageBase64 }).$promise;
     };
 
-    var deleteUserAvatar = function deleteUserAvatar(id) {
-      return userSettingsResource.deleteUserAvatar({ id: id }).$promise;
+    var deleteUserAvatar = function deleteUserAvatar() {
+      return userSettingsResource.deleteUserAvatar().$promise;
     };
 
-    var selectUserBackground = function selectUserBackground(id, filename) {
-      return userSettingsResource.selectUserBackground({ id: id, filename: filename }).$promise;
+    var selectUserBackground = function selectUserBackground(filename) {
+      return userSettingsResource.selectUserBackground({ filename: filename }).$promise;
     };
 
     return {
