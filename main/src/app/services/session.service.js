@@ -50,13 +50,6 @@ angular.module('services.session', ['resources.session'])
         .then(_.some);
     };
 
-    var isInPilotDegreeProgramme = function () {
-      return getSession()
-        .then(function (session) {
-          return session.pilotDegreeProgramme ? session.pilotDegreeProgramme : false;
-        });
-    };
-
     var getFacultyCode = function () {
       return getSession().then(function (session) {
         return session.faculty ? session.faculty.code : undefined;
@@ -66,7 +59,6 @@ angular.module('services.session', ['resources.session'])
     return {
       isInRole: isInRole,
       isInAnyRole: isInAnyRole,
-      isInPilotDegreeProgramme: isInPilotDegreeProgramme,
       getSession: getSession,
       getFacultyCode: getFacultyCode
     };
