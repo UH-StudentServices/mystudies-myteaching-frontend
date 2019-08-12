@@ -84,6 +84,7 @@
 .page-banner__change-background-container {
   display: flex;
   flex-direction: row;
+  left: 0;
 }
 
 .page-banner__change-background-container .help-icon {
@@ -96,4 +97,10 @@
 .page-banner__change-background {
   margin: 0;
   left: 50%;
+}
+
+.page-banner__button-icon--camera {
+  position: relative;
+  left: 0;
+  top: 0;
 }
