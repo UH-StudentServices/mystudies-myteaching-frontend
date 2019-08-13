@@ -50,16 +50,9 @@ angular.module('services.session', ['resources.session'])
         .then(_.some);
     };
 
-    var getFacultyCode = function () {
-      return getSession().then(function (session) {
-        return session.faculty ? session.faculty.code : undefined;
-      });
-    };
-
     return {
       isInRole: isInRole,
       isInAnyRole: isInAnyRole,
-      getSession: getSession,
-      getFacultyCode: getFacultyCode
+      getSession: getSession
     };
   });
