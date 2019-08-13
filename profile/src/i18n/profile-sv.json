@@ -42,7 +42,8 @@
   },
   "toolbar": {
     "home": "hem",
-    "helsinkiUniversity": "Helsingfors universitet"
+    "helsinkiUniversity": "Helsingfors universitet",
+    "logout": "Logga ut"
   },
   "visibility": {
     "PRIVATE": "Privat",

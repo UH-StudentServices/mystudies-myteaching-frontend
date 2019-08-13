@@ -42,7 +42,8 @@
   },
   "toolbar": {
     "home": "koti",
-    "helsinkiUniversity": "Helsingin Yliopisto"
+    "helsinkiUniversity": "Helsingin Yliopisto",
+    "logout": "Kirjaudu ulos"
   },
   "visibility": {
     "PRIVATE": "Yksityinen",

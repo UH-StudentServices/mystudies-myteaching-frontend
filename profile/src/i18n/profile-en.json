@@ -42,7 +42,8 @@
   },
   "toolbar": {
     "home": "home",
-    "helsinkiUniversity": "University of Helsinki"
+    "helsinkiUniversity": "University of Helsinki",
+    "logout": "Log out"
   },
   "visibility": {
     "PRIVATE": "Private",
