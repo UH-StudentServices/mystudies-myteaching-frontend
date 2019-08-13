@@ -17,25 +17,14 @@
 
 'use strict';
 
-angular.module('services.news', ['services.affiliations', 'resources.news'])
+angular.module('resources.affiliations', [])
 
-  .factory('NewsService', function (NewsResource, AffiliationsService, State) {
-    var promise;
+  .factory('AffiliationsResource', function AffiliationsResource($resource) {
+    var affiliationsResource = $resource('/api/private/v1/affiliations');
 
-    function getNews(currentStateName) {
-      return AffiliationsService.getAffiliations().then(function (affiliations) {
-        if (_.isUndefined(promise)) {
-          if (affiliations.openUniversity) {
-            promise = NewsResource.getOpenUniversityNews();
-          } else if (currentStateName === State.MY_STUDIES) {
-            promise = NewsResource.getStudentNews();
-          } else {
-            promise = NewsResource.getTeacherNews();
-          }
-        }
-        return promise;
-      });
-    }
-
-    return { getNews: getNews };
+    return {
+      getAffiliations: function getAffiliations() {
+        return affiliationsResource.get().$promise;
+      }
+    };
   });

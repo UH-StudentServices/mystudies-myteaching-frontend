@@ -19,6 +19,7 @@
 
 angular.module('directives.feedback', [
   'resources.feedback',
+  'services.affiliations',
   'services.session',
   'services.state'
 ])
@@ -39,11 +40,13 @@ angular.module('directives.feedback', [
   })
 
   .directive('feedback', function (FeedbackResource,
+    AffiliationsService,
     SessionService,
     FeedbackSiteService,
     LanguageService,
     $timeout,
-    $window) {
+    $window,
+    $q) {
     return {
       restrict: 'E',
       replace: true,
@@ -79,12 +82,12 @@ angular.module('directives.feedback', [
 
         $scope.submit = function () {
           if ($scope.content && $scope.feedbackForm.$valid) {
-            SessionService
-              .getSession()
-              .then(function (session) {
-                var facultyCode = session.faculty && session.faculty.code;
+            $q.all([AffiliationsService.getFacultyCode(), SessionService.getSession()])
+              .then(function (results) {
+                var facultyCode = results[0];
+                var email = results[1].email;
 
-                return _.assign({ email: session.email }, facultyCode
+                return _.assign({ email: email }, facultyCode
                   ? { facultyCode: facultyCode }
                   : {});
               })

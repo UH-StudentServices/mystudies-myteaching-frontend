@@ -17,25 +17,26 @@
 
 'use strict';
 
-angular.module('services.news', ['services.affiliations', 'resources.news'])
+angular.module('services.affiliations', ['resources.affiliations'])
+  .factory('AffiliationsService', function AffiliationsService(AffiliationsResource) {
+    var affiliations;
 
-  .factory('NewsService', function (NewsResource, AffiliationsService, State) {
-    var promise;
+    function getAffiliations() {
+      if (!affiliations) {
+        affiliations = AffiliationsResource.getAffiliations();
+      }
 
-    function getNews(currentStateName) {
-      return AffiliationsService.getAffiliations().then(function (affiliations) {
-        if (_.isUndefined(promise)) {
-          if (affiliations.openUniversity) {
-            promise = NewsResource.getOpenUniversityNews();
-          } else if (currentStateName === State.MY_STUDIES) {
-            promise = NewsResource.getStudentNews();
-          } else {
-            promise = NewsResource.getTeacherNews();
-          }
-        }
-        return promise;
+      return affiliations;
+    }
+
+    function getFacultyCode() {
+      return getAffiliations().then(function (a) {
+        return a.faculty ? a.faculty.code : undefined;
       });
     }
 
-    return { getNews: getNews };
+    return {
+      getAffiliations: getAffiliations,
+      getFacultyCode: getFacultyCode
+    };
   });
