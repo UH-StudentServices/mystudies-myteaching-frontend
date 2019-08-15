@@ -79,8 +79,7 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
     startImageCropperEvent,
     ImageSourceMedia,
     AvatarImageSize,
-    CropperMargin,
-    $translate) {
+    CropperMargin) {
     return {
       restrict: 'E',
       replace: true,
