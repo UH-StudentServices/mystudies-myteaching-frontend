@@ -37,7 +37,7 @@ angular.module('directives.subscribeEvents', [
   .constant('InstructionLinks', {
     OUTLOOK: {
       fi: 'https://helpdesk.it.helsinki.fi/ohjeet/yhteydenpito-ja-julkaiseminen/kalentereiden-synkronointi',
-      en: 'https://helpdesk.it.helsinki.fi/en/instructions/collaboration-and-publication/synchronising-calendars',
+      en: 'https://helpdesk.it.helsinki.fi/en/instructions/collaboration-and-publication/synchronising-different-calendars',
       sv: 'https://helpdesk.it.helsinki.fi/sv/instruktioner/kontakter-och-publicering/kalendersynkronisering'
     },
     GOOGLE: {
