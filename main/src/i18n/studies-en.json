@@ -154,7 +154,12 @@
     },
     "subscribeEvents" : "Add to calendar",
     "optimeInstructions": "The link above fetches your teaching schedule from Optime. For now, My teaching displays all the events of your courses.",
-    "calendarInstructions" : "How to import events to calendar applications",
+    "calendarInstructions": "Lisätietoja kalenterin lisäämisestä: (en)",
+    "addCalendarInstructions": "Lisää kalenterin sisältö omaan Outlook tai Google -kalenteriisi seuraavan osoitteen avulla: (en)",
+    "calendarLinkUpdateNotice": "Huom! Ethän jaa osoitetta muille. Jos osoite kuitenkin päätyy vääriin käsiin, päivitä se tästä: (en)",
+    "updateLink": "Päivitä osoite (en)",
+    "addToOutlook": "Office -kalenteriin lisääminen (en)",
+    "addToGoogle": "Google -kalenteriin lisääminen (en)",
     "cancelled" : "canceled",
     "official": "Official",
     "calendarCustom": {

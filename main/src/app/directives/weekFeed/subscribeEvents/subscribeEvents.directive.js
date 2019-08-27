@@ -66,8 +66,6 @@ angular.module('directives.subscribeEvents', [
       templateUrl: 'app/directives/weekFeed/subscribeEvents/subscribeEvents.html',
       scope: {},
       controller: function ($scope) {
-        var cachedCalendarFeedUrl;
-
         $scope.showPopover = false;
         $scope.InstructionLinks = InstructionLinks;
         $scope.selectedLanguage = $rootScope.selectedLanguage;
@@ -90,16 +88,21 @@ angular.module('directives.subscribeEvents', [
           }, MessageTimeouts.FAIL);
         };
 
+        function handleGetMyStudiesCalendarUrlResponse(calendarFeed) {
+          $scope.calendarFeedUrl = DomainUtil.getDomain() + calendarFeed.feedUrl + '/' + $rootScope.selectedLanguage;
+        }
+
+        $scope.updateCalendarFeedUrl = function () {
+          CalendarFeedResource.saveOrUpdateCalendarFeed()
+            .then(handleGetMyStudiesCalendarUrlResponse);
+        };
+
         function getMyStudiesTeachingCalendarUrl() {
           return CalendarFeedResource.getCalendarFeed()
             .catch(function () {
-              return CalendarFeedResource.saveCalendarFeed();
+              return CalendarFeedResource.saveOrUpdateCalendarFeed();
             })
-            .then(function (calendarFeed) {
-              cachedCalendarFeedUrl = DomainUtil.getDomain() + calendarFeed.feedUrl + '/' + $rootScope.selectedLanguage;
-              $scope.calendarFeedUrl = cachedCalendarFeedUrl;
-              return undefined;
-            });
+            .then(handleGetMyStudiesCalendarUrlResponse);
         }
 
         function getOptimeCalendarUrl() {
@@ -107,11 +110,10 @@ angular.module('directives.subscribeEvents', [
             .catch(function () {
               return getMyStudiesTeachingCalendarUrl();
             })
-            .then(function (calendarInfo) {
-              if (calendarInfo.url) {
-                cachedCalendarFeedUrl = calendarInfo.url;
+            .then(function (optimeCalendarInfo) {
+              if (optimeCalendarInfo.url) {
                 $scope.optimeCalendar = true;
-                $scope.calendarFeedUrl = cachedCalendarFeedUrl;
+                $scope.calendarFeedUrl = optimeCalendarInfo.url;
                 return undefined;
               }
               return getMyStudiesTeachingCalendarUrl();
@@ -132,15 +134,9 @@ angular.module('directives.subscribeEvents', [
 
         $scope.onClick = function () {
           $scope.showPopover = !$scope.showPopover;
-
-          if ($scope.showPopover) {
-            return $q(function (resolve, reject) {
-              return cachedCalendarFeedUrl ? resolve() : reject();
-            })
-              .catch(getOrCreateCalendarFeedUrl);
-          }
-          return undefined;
         };
+
+        getOrCreateCalendarFeedUrl();
       }
     };
   });
