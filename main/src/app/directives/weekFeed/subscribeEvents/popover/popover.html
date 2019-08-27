@@ -23,7 +23,7 @@
   </div>
   <div ng-show="showCopyToClipboard">
     <button id="subscribe-events-trigger"
-       tabindex="0"
+       type="button"
        class="button--outline"
        clipboard
        clipboard-value-selector="#calendar-feed-url"
@@ -39,7 +39,7 @@
   </div>
   <div ng-if="!optimeCalendar && calendarFeedUrl">
     <p class="subscribe-events-popover__text-content">{{::('weekFeed.calendarLinkUpdateNotice' | translate)}}</p>
-    <button ng-click="updateCalendarFeedUrl()" class="button--outline" href="">{{::('weekFeed.updateLink' | translate)}}</button>
+    <button type="button" ng-click="updateCalendarFeedUrl()" class="button--outline">{{::('weekFeed.updateLink' | translate)}}</button>
   </div>
   <p ng-if="optimeCalendar"
        class="subscribe-events-popover__text-content">
