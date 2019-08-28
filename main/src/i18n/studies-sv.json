@@ -154,7 +154,12 @@
     },
     "subscribeEvents": "Lägg till kalender",
     "optimeInstructions": "Länken ovan hämtar din undervisningstidtabell från Optime. För tillfället visar Min undervisning alla kurshändelser.",
-    "calendarInstructions": "Så här importerar du händelser till kalenderprogram",
+    "calendarInstructions": "Lisätietoja kalenterin lisäämisestä: (sv)",
+    "addCalendarInstructions": "Lisää kalenterin sisältö omaan Outlook tai Google -kalenteriisi seuraavan osoitteen avulla: (sv)",
+    "calendarLinkUpdateNotice": "Huom! Ethän jaa osoitetta muille. Jos osoite kuitenkin päätyy vääriin käsiin, päivitä se tästä: (sv)",
+    "updateLink": "Päivitä osoite (sv)",
+    "addToOutlook": "Office -kalenteriin (sv)",
+    "addToGoogle": "Google -kalenteriin lisääminen (sv)",
     "cancelled": "Annullerad",
     "official": "Administratör",
     "calendarCustom": {

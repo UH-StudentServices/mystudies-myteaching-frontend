@@ -46,20 +46,6 @@ $tablist-single-row: min-width 28.75em;
   }
 }
 
-.subscribe-events-popover__instructions {
-  a {
-    margin-right: 1em;
-  }
-
-  &__intro {
-    margin-bottom: 0.5em;
-  }
-
-  &__optime {
-    margin-bottom: 1.5em;
-  }
-}
-
 .weekfeed__sub-tab {
   @include font-size(15px);
 
@@ -362,7 +348,6 @@ $tablist-single-row: min-width 28.75em;
   @include breakpoint($tablist-multi-row) {
     left: 0;
     right: 0 !important;
-    max-width: none !important;
 
     &::before,
     &::after {
@@ -382,30 +367,31 @@ $tablist-single-row: min-width 28.75em;
   }
 
   @include breakpoint($small) {
-    width: 400px;
+    width: 420px;
   }
 }
 
-.subscribe-events-popover__link {
-  @include border-bottom;
-  @include font-size(13px);
-
-  color: $silver;
+.subscribe-events-popover {
   padding: 1em;
-  font-weight: 600;
-}
 
-.subscribe-events-popover__content {
-  padding: 1.5em 1em 1em 1em;
-  line-height: 1.3;
-}
+  button {
+    margin: 0 0 1em 0;
+    text-transform: uppercase;
+  }
 
-.subscribe-events-popover__copy2clipboard {
-  margin-bottom: 1.5em;
-}
+  &__link {
+    color: $black;
+    font-weight: 600;
+  }
 
-.subscribe-events-popover__message {
-  margin-left: 1em;
+  &__message {
+    margin-left: 1em;
+  }
+
+  &__text-content {
+    margin: 0 0 0.5em 0;
+    font-size: 1em;
+  }
 }
 
 .week-feed-items {
