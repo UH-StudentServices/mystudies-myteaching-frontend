@@ -155,7 +155,7 @@
     "subscribeEvents": "Lisää kalenteriisi",
     "optimeInstructions": "Yllä oleva linkki hakee oman opetusaikataulusi Optimesta. Opetukseni-sivu näyttää toistaiseksi kurssiesi kaikki opetuskerrat.",
     "calendarInstructions": "Lisätietoja kalenterin lisäämisestä:",
-    "addCalendarInstructions": "Lisää kalenterin sisältö omaan Outlook tai Google -kalenteriisi seuraavan osoitteen avulla:",
+    "addCalendarInstructions": "Lisää kalenterin sisältö omaan Office 365 tai Google -kalenteriisi seuraavan osoitteen avulla:",
     "calendarLinkUpdateNotice": "Huom! Ethän jaa osoitetta muille. Jos osoite kuitenkin päätyy vääriin käsiin, päivitä se tästä:",
     "updateLink": "Päivitä osoite",
     "addToOutlook": "Office -kalenteriin lisääminen",
