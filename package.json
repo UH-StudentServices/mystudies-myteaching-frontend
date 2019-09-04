@@ -80,7 +80,7 @@
     "prepush": "npm test",
     "pretest": "npm run lint",
     "test": "concurrently 'grunt test --gruntfile main/Gruntfile.js' 'grunt test --gruntfile profile/Gruntfile.js'",
-    "test:e2e": "cross-env NODE_ENV=local testcafe 'chrome -incognito' -S -s screenshots common/test/e2e",
+    "test:e2e": "cross-env NODE_ENV=local testcafe 'chrome -incognito' --skip-js-errors -S -s screenshots common/test/e2e",
     "test:e2e:ci": "cross-env NODE_ENV=ci testcafe 'chromium:headless' -S -s screenshots common/test/e2e"
   },
   "dependencies": {
