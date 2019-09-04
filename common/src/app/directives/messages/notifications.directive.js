@@ -17,22 +17,24 @@
 
 'use strict';
 
-angular.module('directives.notifications', ['directives.message'])
+angular.module('directives.notifications', ['constants.messageTypes', 'directives.message'])
 
-  .directive('notifications', function (MessageTypes) {
+  .directive('notifications', function (MessageTypes, NotificationsService) {
     return {
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/messages/notifications.html',
-      scope: { notifications: '=' },
-      link: function (scope) {
-        scope.messages = scope.notifications ? scope.notifications.map(function (n) {
-          return {
-            messageType: MessageTypes.INFO,
-            text: n.text,
-            id: n.id
-          };
-        }) : [];
+      scope: {},
+      link: function ($scope) {
+        NotificationsService.getNotifications().then(function (notifications) {
+          $scope.messages = notifications.map(function (n) {
+            return {
+              messageType: MessageTypes.INFO,
+              text: n.text,
+              id: n.id
+            };
+          });
+        });
       }
     };
   });

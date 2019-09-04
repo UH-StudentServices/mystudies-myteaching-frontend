@@ -80,7 +80,7 @@ describe('UnicafeOpenDaysParser', function () {
   beforeEach(function () {
     module(function ($provide) {
       $provide.constant('AnalyticsService', { trackAddFavorite: function () { } });
-      $provide.constant('SessionService', { getFacultyCode: function () { return { then: function () {} }; } });
+      $provide.constant('AffiliationsService', { getFacultyCode: function () { return { then: function () {} }; } });
       $provide.constant('StateService', { getStateFromDomain: function () { } });
       $provide.constant('Analytics', { set: function () { } });
     });

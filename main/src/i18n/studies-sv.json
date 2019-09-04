@@ -88,10 +88,6 @@
     "dictionary": "MOT-ordböcker",
     "teaching": "Instruktioner för undervisning"
   },
-  "optionalLinks": {
-    "pilotProgram": "Studieplanering",
-    "normalProgram": "Studiehandböcker"
-  },
   "banner": {
     "news": "Nyheter",
     "tooltip": {
@@ -157,7 +153,12 @@
       "errorLoadingEvents" : "Händelser kunde inte laddas"
     },
     "subscribeEvents": "Lägg till kalender",
-    "calendarInstructions": "Så här importerar du händelser till kalenderprogram",
+    "calendarInstructions": "Mera information om att lägga till kalender:",
+    "addCalendarInstructions": "Lägg till kalenderns innehåll i din egen Office 365- eller Google-kalender med hjälp av följande adress:",
+    "calendarLinkUpdateNotice": "OBS! Dela inte ut adressen åt andra. Om adressen ändå hamnar i fel händer, uppdatera den här:",
+    "updateLink": "Uppdatera adress",
+    "addToOutlook": "Lägg till i Office 365-kalender",
+    "addToGoogle": "Lägg till i Google-kalender",
     "cancelled": "Annullerad",
     "official": "Administratör",
     "calendarCustom": {

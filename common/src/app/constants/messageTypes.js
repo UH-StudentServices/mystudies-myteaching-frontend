@@ -17,28 +17,10 @@
 
 'use strict';
 
-angular.module('resources.httpInterceptor', ['services.state'])
+angular.module('constants.messageTypes', [])
 
-  .constant('ErrorPages', { MAINTENANCE: 'maintenance' })
-
-  .factory('HttpInterceptor', function HttpInterceptor($q, Configuration, $location, ErrorPages) {
-    function redirectToErrorPage(errorPage) {
-      $location.path('/error/' + errorPage);
-    }
-
-    function success(response) {
-      return response;
-    }
-
-    function error(response) {
-      if (response.status === 503) {
-        redirectToErrorPage(ErrorPages.MAINTENANCE);
-      }
-      return $q.reject(response);
-    }
-
-    return {
-      response: success,
-      responseError: error
-    };
+  .constant('MessageTypes', {
+    ERROR: 'error',
+    INFO: 'info',
+    STATUS: 'status'
   });

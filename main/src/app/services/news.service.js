@@ -17,15 +17,15 @@
 
 'use strict';
 
-angular.module('services.news', ['resources.news'])
+angular.module('services.news', ['services.affiliations', 'resources.news'])
 
-  .factory('NewsService', function (NewsResource, SessionService, State) {
+  .factory('NewsService', function (NewsResource, AffiliationsService, State) {
     var promise;
 
     function getNews(currentStateName) {
-      return SessionService.getSession().then(function (data) {
+      return AffiliationsService.getAffiliations().then(function (affiliations) {
         if (_.isUndefined(promise)) {
-          if (data.openUniversity) {
+          if (affiliations.openUniversity) {
             promise = NewsResource.getOpenUniversityNews();
           } else if (currentStateName === State.MY_STUDIES) {
             promise = NewsResource.getStudentNews();

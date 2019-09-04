@@ -32,13 +32,9 @@ angular.module('directives.pageNavigation', [
       scope: {},
       controller: function ($scope,
         primaryLinks,
-        optionalLinks,
         LanguageService,
-        SessionService,
         StateService,
-        Configuration,
-        Role,
-        State) {
+        Configuration) {
         $scope.primaryLinks = _.chain(primaryLinks[Configuration.environment])
           .filter(function (link) {
             return _.includes(link.domain, StateService.getStateFromDomain());
@@ -69,22 +65,6 @@ angular.module('directives.pageNavigation', [
           $scope.fatmenuOpen = !wasOpen;
           $scope.fatmenuContent = link.hasSub ? link.subMenu : [];
         };
-
-        SessionService.isInRole(Role.STUDENT).then(function (isStudent) {
-          var optional;
-          if (!isStudent || !StateService.currentOrParentStateMatches(State.MY_STUDIES)) {
-            return;
-          }
-          optional = optionalLinks[Configuration.environment];
-
-          SessionService.isInPilotDegreeProgramme().then(function (isInPilotProgramme) {
-            if (isInPilotProgramme) {
-              $scope.primaryLinks.unshift(optional.pilot);
-            } else {
-              $scope.primaryLinks.unshift(optional.normal);
-            }
-          });
-        });
 
         $scope.selectedLanguage = LanguageService.getCurrent();
       }

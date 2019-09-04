@@ -54,31 +54,17 @@ angular.module('services.userSettings', ['resources.userSettings'])
     }
 
     function selectUserBackground(filename) {
-      return getUserSettings().then(function (settings) {
-        settingsPromise = UserSettingsResource.selectUserBackground(settings.id, filename)
-          .then(publishUserSettings);
-        return settingsPromise;
-      });
+      settingsPromise = UserSettingsResource.selectUserBackground(filename)
+        .then(publishUserSettings);
+
+      return settingsPromise;
     }
 
     function uploadUserBackground(imageBase64) {
-      return getUserSettings().then(function (userSettings) {
-        settingsPromise = UserSettingsResource.uploadUserBackground(userSettings.id, imageBase64)
-          .then(publishUserSettings);
-        return settingsPromise;
-      });
-    }
+      settingsPromise = UserSettingsResource.uploadUserBackground(imageBase64)
+        .then(publishUserSettings);
 
-    function updateUserAvatar(imageBase64) {
-      return getUserSettings().then(function (userSettings) {
-        return UserSettingsResource.updateUserAvatar(userSettings.id, imageBase64);
-      });
-    }
-
-    function deleteUserAvatar() {
-      return getUserSettings().then(function (settings) {
-        return UserSettingsResource.deleteUserAvatar(settings.id);
-      });
+      return settingsPromise;
     }
 
     function updateUserSettings(updateObject) {
@@ -109,8 +95,8 @@ angular.module('services.userSettings', ['resources.userSettings'])
       getAvailableBackgrounds: getAvailableBackgrounds,
       selectUserBackground: selectUserBackground,
       uploadUserBackground: uploadUserBackground,
-      updateUserAvatar: updateUserAvatar,
-      deleteUserAvatar: deleteUserAvatar,
+      updateUserAvatar: UserSettingsResource.updateUserAvatar,
+      deleteUserAvatar: UserSettingsResource.deleteUserAvatar,
       setShowBanner: setShowBanner,
       getShowBannerSubject: getShowBannerSubject
     };

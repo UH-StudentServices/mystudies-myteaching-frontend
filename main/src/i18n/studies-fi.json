@@ -88,10 +88,6 @@
     "dictionary": "MOT-sanakirjat",
     "teaching": "Opetustyön ohjeet"
   },
-  "optionalLinks": {
-    "pilotProgram": "Opintojen suunnittelu",
-    "normalProgram": "Opinto-oppaat"
-  },
   "banner": {
     "news": "Uutiset",
     "tooltip": {
@@ -157,7 +153,12 @@
       "errorLoadingEvents" : "Tapahtumien haussa tapahtui virhe"
     },
     "subscribeEvents": "Lisää kalenteriisi",
-    "calendarInstructions": "Näin lisäät tapahtumat kalenteriohjelmiin ",
+    "calendarInstructions": "Lisätietoja kalenterin lisäämisestä:",
+    "addCalendarInstructions": "Lisää kalenterin sisältö omaan Office 365 tai Google -kalenteriisi seuraavan osoitteen avulla:",
+    "calendarLinkUpdateNotice": "Huom! Ethän jaa osoitetta muille. Jos osoite kuitenkin päätyy vääriin käsiin, päivitä se tästä:",
+    "updateLink": "Päivitä osoite",
+    "addToOutlook": "Office 365 -kalenteriin lisääminen",
+    "addToGoogle": "Google -kalenteriin lisääminen",
     "cancelled" : "peruttu",
     "official": "Virkailija",
     "calendarCustom": {

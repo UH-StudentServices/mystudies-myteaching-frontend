@@ -34,14 +34,14 @@
 
   var NG_APP_NAME = isProfile() ? 'opintoniProfileApp' : 'opintoniApp';
 
-  var bootstrap = function (res) {
+  var bootstrap = function () {
     angular.element(document).ready(function () {
       angular.bootstrap(document, [NG_APP_NAME]);
-
-      if (!res && location.pathname !== RESOLVED_ERROR_PAGE_PATH) {
-        location.pathname = RESOLVED_ERROR_PAGE_PATH;
-      }
     });
+  };
+
+  var redirectToErrorPage = function () {
+    location.pathname = RESOLVED_ERROR_PAGE_PATH;
   };
 
   var fetchConf = function () {
@@ -52,14 +52,12 @@
       .then(function (res) {
         window.configuration = res.data;
         return res;
-      })
-      .catch(function () {
-        return false;
       });
   };
-
   if (location.pathname !== RESOLVED_ERROR_PAGE_PATH) {
-    fetchConf().then(bootstrap);
+    fetchConf()
+      .catch(redirectToErrorPage)
+      .then(bootstrap);
   } else {
     bootstrap();
   }

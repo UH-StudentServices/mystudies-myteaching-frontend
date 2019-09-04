@@ -17,10 +17,7 @@
 
 'use strict';
 
-angular.module('services.state', [
-  'services.profileRole',
-  'services.configuration'
-])
+angular.module('services.state', ['services.profileRole'])
   .constant('State', {
     MY_STUDIES: 'opintoni',
     MY_TEACHINGS: 'opetukseni',
@@ -28,7 +25,7 @@ angular.module('services.state', [
     RESTRICTED: 'restricted',
     PUBLIC: 'public'
   })
-  .factory('StateService', function (State, ProfileRoleService, Configuration, ConfigurationProperties, $location) {
+  .factory('StateService', function (State, ProfileRoleService, $location) {
     var currentState = State.PUBLIC;
     var profileRole = ProfileRoleService.getActiveRole();
 
@@ -54,19 +51,16 @@ angular.module('services.state', [
       return currentState;
     }
 
-    function configurationPropertyContains(property, expectedValue) {
-      return Configuration[property] && Configuration[property].indexOf(expectedValue) > -1;
-    }
-
     function getStateFromDomain() {
       var host = $location.host();
 
-      if (configurationPropertyContains(ConfigurationProperties.STUDENT_APP_URL, host)) {
+      if (host.indexOf('student') > -1) {
         return State.MY_STUDIES;
-      } if (configurationPropertyContains(ConfigurationProperties.TEACHER_APP_URL, host)) {
+      }
+      if (host.indexOf('teacher') > -1) {
         return State.MY_TEACHINGS;
       }
-      throw Error('hostname does not match any configured values');
+      throw Error('Unexpected hostname');
     }
 
     return {

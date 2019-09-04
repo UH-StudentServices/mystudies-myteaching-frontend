@@ -26,7 +26,7 @@ angular.module('resources.calendarFeed', [])
       getCalendarFeed: function () {
         return calendarFeedResource.get().$promise;
       },
-      saveCalendarFeed: function () {
+      saveOrUpdateCalendarFeed: function () {
         return calendarFeedResource.save().$promise;
       }
     };

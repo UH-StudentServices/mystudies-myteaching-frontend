@@ -25,12 +25,12 @@ angular.module('services.state', [
     MY_STUDIES: 'opintoni',
     MY_TEACHINGS: 'opetukseni',
     ACCESS_DENIED: 'accessDenied',
+    MAINTENANCE: 'maintenance',
     ERROR: 'error',
     LOCAL_LOGIN: 'localLogin',
     LANDER: 'login'
   })
-  .factory('StateService', function ($state, $location, State, Configuration, Role, ConfigurationProperties) {
-    var getStateFromDomain;
+  .factory('StateService', function ($state, $location, State, Configuration, Role) {
     var stateMatches = function (state, name) {
       if (state === name || state.name === name) {
         return true;
@@ -67,20 +67,17 @@ angular.module('services.state', [
       return State.ACCESS_DENIED;
     };
 
-    function configurationPropertyContains(property, expectedValue) {
-      return Configuration[property] && Configuration[property].indexOf(expectedValue) > -1;
-    }
-
-    getStateFromDomain = function getStateFromDomainFn() {
+    function getStateFromDomain() {
       var host = $location.host();
 
-      if (configurationPropertyContains(ConfigurationProperties.STUDENT_APP_URL, host)) {
+      if (host.indexOf('student') > -1) {
         return State.MY_STUDIES;
-      } if (configurationPropertyContains(ConfigurationProperties.TEACHER_APP_URL, host)) {
+      }
+      if (host.indexOf('teacher') > -1) {
         return State.MY_TEACHINGS;
       }
-      throw Error('hostname does not match any configured values');
-    };
+      throw Error('Unexpected hostname');
+    }
 
     return {
       getRootStateName: getRootStateName,

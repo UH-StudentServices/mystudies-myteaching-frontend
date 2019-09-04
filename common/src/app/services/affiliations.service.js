@@ -17,14 +17,26 @@
 
 'use strict';
 
-angular.module('resources.notifications', [])
+angular.module('services.affiliations', ['resources.affiliations'])
+  .factory('AffiliationsService', function AffiliationsService(AffiliationsResource) {
+    var affiliations;
 
-  .factory('NotificationsResource', function ($resource) {
-    var resource = $resource('/api/private/v1/notifications', null, { get: { method: 'GET', isArray: true } });
+    function getAffiliations() {
+      if (!affiliations) {
+        affiliations = AffiliationsResource.getAffiliations();
+      }
 
-    function getNotifications() {
-      return resource.get().$promise;
+      return affiliations;
     }
 
-    return { getNotifications: getNotifications };
+    function getFacultyCode() {
+      return getAffiliations().then(function (a) {
+        return a.faculty ? a.faculty.code : undefined;
+      });
+    }
+
+    return {
+      getAffiliations: getAffiliations,
+      getFacultyCode: getFacultyCode
+    };
   });

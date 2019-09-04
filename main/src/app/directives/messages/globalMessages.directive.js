@@ -18,50 +18,7 @@
 'use strict';
 
 angular.module('directives.globalMessages',
-  ['directives.message'])
-
-  .factory('GlobalMessagesService', function (MessageTypes, $window) {
-    var messages = [];
-    var Rx = $window.Rx;
-    var msgSubject = new Rx.Subject();
-    var errorMsg = {
-      messageType: MessageTypes.ERROR,
-      key: 'globalMessages.errors.genericError'
-    };
-
-    return {
-      addErrorMessage: function () {
-        if (!_.find(messages, errorMsg)) {
-          messages.push(errorMsg);
-          msgSubject.onNext(messages);
-        }
-      },
-      removeErrorMessage: function () {
-        messages = _.without(messages, errorMsg);
-        msgSubject.onNext(messages);
-      },
-      subscribe: function (fn) {
-        return msgSubject.subscribe(fn);
-      }
-    };
-  })
-
-  .factory('httpRequestInterceptor', function ($q, GlobalMessagesService) {
-    return {
-      responseError: function (err) {
-        if (err.config && err.config.url
-            && err.config.url.indexOf('/api/') > -1 && err.status !== 404) {
-          GlobalMessagesService.addErrorMessage();
-        }
-
-        return $q.reject(err);
-      }
-    };
-  })
-
-  .config(function ($httpProvider) {
-    $httpProvider.interceptors.push('httpRequestInterceptor');
-  })
+  ['constants.messageTypes', 'services.globalMessages', 'directives.message'])
 
   .directive('globalMessages', function (GlobalMessagesService, MessageTypes) {
     return {

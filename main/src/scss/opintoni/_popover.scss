@@ -21,14 +21,13 @@
   position: absolute;
   top: calc(100% + #{$triangle-size});
   right: 0;
-  max-width: 400px;
   z-index: 100;
   color: $silver;
   word-wrap: break-word;
   background-color: $white;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.4);
 
   @include border;
-  @include tab-shadow;
   @include font-size(13px);
   @include triangle($triangle-size);
 

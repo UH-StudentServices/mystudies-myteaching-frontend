@@ -27,7 +27,7 @@
     "bootstrap": "^3.3.7",
     "clipboard": "^2.0.4",
     "compass-mixins": "^1.0.2",
-    "cropper": "^2.3.4",
+    "cropper": "^4.0.0",
     "es6-promise-polyfill": "^1.1.1",
     "fastclick": "^1.0.6",
     "hammerjs": "^2.0.8",

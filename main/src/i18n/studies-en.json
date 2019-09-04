@@ -88,10 +88,6 @@
     "dictionary": "MOT Dictionaries",
     "teaching": "Instuctions for teaching"
   },
-  "optionalLinks": {
-    "pilotProgram": "Plan your studies",
-    "normalProgram": "Course catalogues"
-  },
   "banner": {
     "news": "News",
     "tooltip": {
@@ -157,7 +153,12 @@
       "errorLoadingEvents" : "Events could not be loaded"
     },
     "subscribeEvents" : "Add to calendar",
-    "calendarInstructions" : "How to import events to calendar applications",
+    "calendarInstructions": "More information on how to add your calendar:",
+    "addCalendarInstructions": "Add calendar to your own Office 365 or Google Calendar using the following address:",
+    "calendarLinkUpdateNotice": "Please note! Do not give this address to anyone else. If the address ends up in wrong hands, update it here:",
+    "updateLink": "Update address",
+    "addToOutlook": "Add to Office 365 calendar",
+    "addToGoogle": "Add to Google Calendar",
     "cancelled" : "canceled",
     "official": "Official",
     "calendarCustom": {

@@ -17,20 +17,9 @@
 
 'use strict';
 
-angular.module('resources.httpInterceptor', ['services.state', 'services.configuration'])
+angular.module('resources.httpInterceptor', ['services.state', 'services.globalMessages'])
 
-  .constant('ErrorPages', { MAINTENANCE: 'maintenance' })
-
-  .factory('HttpInterceptor', function HttpInterceptor($q,
-    $injector,
-    Configuration,
-    $location,
-    ErrorPages,
-    State) {
-    function redirectToErrorPage(errorPage) {
-      $location.path('/error/' + errorPage);
-    }
-
+  .factory('HttpInterceptor', function HttpInterceptor($q, $injector, $location, GlobalMessagesService, State) {
     function success(response) {
       return response;
     }
@@ -41,22 +30,30 @@ angular.module('resources.httpInterceptor', ['services.state', 'services.configu
       LoginService.goToLoginOrLander();
     }
 
-    function handleForbidden() {
+    function handleUnauthorized() {
       var StateService = $injector.get('StateService');
-
       if (!StateService.currentOrParentStateMatches(State.ERROR)) {
         goToLoginOrLander();
       }
     }
 
-    function error(response) {
-      if (response.status === 401) {
-        handleForbidden();
-      } else if (response.status === 503) {
-        redirectToErrorPage(ErrorPages.MAINTENANCE);
+    function isApiCall(err) {
+      return err.config && err.config.url
+        && err.config.url.indexOf('/api/') > -1 && err.status !== 404;
+    }
+
+    function error(err) {
+      var $state = $injector.get('$state');
+
+      if (err.status === 401) {
+        handleUnauthorized();
+      } else if (err.status === 403) {
+        $state.go(State.ACCESS_DENIED);
+      } else if (isApiCall(err)) {
+        GlobalMessagesService.addErrorMessage();
       }
 
-      return $q.reject(response);
+      return $q.reject(err);
     }
 
     return {

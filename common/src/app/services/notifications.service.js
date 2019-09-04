@@ -17,13 +17,10 @@
 
 'use strict';
 
-angular.module('resources.notifications', [])
-
-  .factory('NotificationsResource', function ($resource) {
-    var resource = $resource('/api/private/v1/notifications', null, { get: { method: 'GET', isArray: true } });
-
+angular.module('services.notifications', ['resources.notifications'])
+  .factory('NotificationsService', function (NotificationsResource) {
     function getNotifications() {
-      return resource.get().$promise;
+      return NotificationsResource.getNotifications();
     }
 
     return { getNotifications: getNotifications };

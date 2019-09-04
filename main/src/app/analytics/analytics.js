@@ -19,7 +19,7 @@
 
 angular.module('opintoniAnalytics', [
   'provider.analyticsAccounts',
-  'services.session',
+  'services.affiliations',
   'services.state',
   'angular-google-analytics'
 ])
@@ -28,8 +28,8 @@ angular.module('opintoniAnalytics', [
   * Analytics must be injected at least once.
   * If relying on automatic page tracking, do not remove it.
   */
-  .run(function (Analytics, SessionService, StateService) {
-    SessionService.getFacultyCode().then(function (facultyCode) {
+  .run(function (Analytics, AffiliationsService, StateService) {
+    AffiliationsService.getFacultyCode().then(function (facultyCode) {
       Analytics.set('dimension1', StateService.getStateFromDomain());
       Analytics.set('dimension2', facultyCode);
     });

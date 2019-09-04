@@ -66,7 +66,7 @@ angular.module('services.login', [
       });
 
       if (stateMatch) {
-        $state.go(stateMatch.name);
+        $state.go(stateMatch.name, null, { location: 'replace' });
       } else {
         $window.location.href = url;
       }
@@ -81,7 +81,7 @@ angular.module('services.login', [
     }
 
     function goToLander() {
-      $state.go(State.LANDER);
+      $state.go(State.LANDER, null, { location: 'replace' });
     }
 
     function goToLogin() {
@@ -113,8 +113,7 @@ angular.module('services.login', [
       }), { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
         .then(reloadUserData)
         .then(StateService.getStateFromDomain)
-        .then($state.go)
-        .catch(_.partial($state.go, State.ACCESS_DENIED));
+        .then($state.go);
     }
 
     return {

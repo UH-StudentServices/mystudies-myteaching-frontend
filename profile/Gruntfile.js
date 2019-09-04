@@ -265,6 +265,13 @@ module.exports = function (grunt) {
             cwd: '../bower_components/tinymce',
             dest: '<%= application.dist %>/assets',
             src: ['skins/**']
+          },
+          {
+            flatten: true,
+            expand: true,
+            cwd: '..',
+            src: ['bower_components/flexslider/fonts/*'],
+            dest: '<%= application.dist %>/assets/styles/fonts'
           }
         ]
       },

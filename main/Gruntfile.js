@@ -72,7 +72,6 @@ proxyPaths = [
   '/logout',
   '/redirect',
   '/files',
-  '/info',
   '/saml'
 ];
 
@@ -307,6 +306,13 @@ module.exports = function (grunt) {
               'app/vendor/ng-file-upload/FileAPI.flash.swf'
             ],
             dest: '<%= application.dist %>/app'
+          },
+          {
+            flatten: true,
+            expand: true,
+            cwd: '..',
+            src: ['bower_components/flexslider/fonts/*'],
+            dest: '<%= application.dist %>/assets/styles/fonts'
           }
         ]
       },

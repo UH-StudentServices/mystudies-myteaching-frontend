@@ -79,8 +79,7 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
     startImageCropperEvent,
     ImageSourceMedia,
     AvatarImageSize,
-    CropperMargin,
-    $translate) {
+    CropperMargin) {
     return {
       restrict: 'E',
       replace: true,
@@ -168,18 +167,7 @@ angular.module('directives.uploadImage', ['directives.imgLoad', 'utils.browser']
         });
 
         $scope.readImage = function (file) {
-          var reader = new FileReader();
-
-          reader.onload = function (event) {
-            openImageCropper(event.target.result, ImageSourceMedia.FILE_SYSTEM);
-          };
-
-          reader.onerror = function () {
-            // eslint-disable-next-line no-alert
-            alert($translate.instant('upload.deviceNotSupported'));
-          };
-
-          reader.readAsDataURL(file);
+          openImageCropper(URL.createObjectURL(file), ImageSourceMedia.FILE_SYSTEM);
         };
       }
     };

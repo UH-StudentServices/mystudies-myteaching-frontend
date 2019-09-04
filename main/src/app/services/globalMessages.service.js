@@ -17,14 +17,30 @@
 
 'use strict';
 
-angular.module('resources.notifications', [])
+angular.module('services.globalMessages', ['constants.messageTypes'])
 
-  .factory('NotificationsResource', function ($resource) {
-    var resource = $resource('/api/private/v1/notifications', null, { get: { method: 'GET', isArray: true } });
+  .factory('GlobalMessagesService', function (MessageTypes, $window) {
+    var messages = [];
+    var Rx = $window.Rx;
+    var msgSubject = new Rx.Subject();
+    var errorMsg = {
+      messageType: MessageTypes.ERROR,
+      key: 'globalMessages.errors.genericError'
+    };
 
-    function getNotifications() {
-      return resource.get().$promise;
-    }
-
-    return { getNotifications: getNotifications };
+    return {
+      addErrorMessage: function () {
+        if (!_.find(messages, errorMsg)) {
+          messages.push(errorMsg);
+          msgSubject.onNext(messages);
+        }
+      },
+      removeErrorMessage: function () {
+        messages = _.without(messages, errorMsg);
+        msgSubject.onNext(messages);
+      },
+      subscribe: function (fn) {
+        return msgSubject.subscribe(fn);
+      }
+    };
   });

@@ -21,6 +21,7 @@ angular.module('directives.attainments', [
   'services.attainments',
   'filters.moment',
   'filters.formatting',
+  'constants.messageTypes',
   'directives.message'
 ])
 

@@ -31,7 +31,6 @@ angular.module('opintoniProfileApp', [
   'profileAnalytics',
   'profileErrors',
   'profileLanders',
-  'resources.httpInterceptor',
   'angular-click-outside',
   'as.sortable',
   'templates',
@@ -98,8 +97,8 @@ angular.module('opintoniProfileApp', [
   'services.profileFiles',
   'services.sharedLinks',
   'services.obar',
+  'services.notifications',
 
-  'resources.notifications',
   'resources.session',
 
   'utils.moment'
@@ -109,15 +108,12 @@ angular.module('opintoniProfileApp', [
     $stateProvider,
     $urlRouterProvider,
     $translateProvider,
-    $httpProvider,
     $locationProvider,
     $compileProvider,
     $qProvider,
     $sceDelegateProvider
   ) {
     $locationProvider.html5Mode(true);
-
-    $httpProvider.interceptors.push('HttpInterceptor');
 
     $urlRouterProvider.otherwise('/');
 
@@ -126,19 +122,12 @@ angular.module('opintoniProfileApp', [
     $qProvider.errorOnUnhandledRejections(false);
 
     function profileSession(SessionService) {
-      return SessionService.getSession();
+      return SessionService.getSession(true);
     }
 
     function profileUserSettings(StateService, State, UserSettingsService, state) {
       if (state === State.PRIVATE) {
         return UserSettingsService.getUserSettings();
-      }
-      return undefined;
-    }
-
-    function profileNotifications(NotificationsResource, session) {
-      if (session && session.$resolved) {
-        return NotificationsResource.getNotifications();
       }
       return undefined;
     }
@@ -194,7 +183,6 @@ angular.module('opintoniProfileApp', [
           return StateService.resolve();
         },
         userSettings: profileUserSettings,
-        notifications: profileNotifications,
         profile: function (ProfileService,
           FreeTextContentService,
           $location,
@@ -230,7 +218,6 @@ angular.module('opintoniProfileApp', [
           return StateService.resolve(session, $stateParams.lang, $stateParams.userpath);
         },
         userSettings: profileUserSettings,
-        notifications: profileNotifications,
         profile: function (ProfileService,
           FreeTextContentService,
           $location,

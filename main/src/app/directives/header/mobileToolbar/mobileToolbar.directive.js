@@ -32,14 +32,11 @@ angular.module('directives.mobileToolbar', [
   .directive('mobileToolbar', function (pageHeaderLinks,
     mobileReturnLinks,
     primaryLinks,
-    optionalLinks,
     LanguageService,
     StateService,
     SessionService,
     $state,
-    Configuration,
-    Role,
-    State) {
+    Configuration) {
     return {
       restrict: 'E',
       replace: true,
@@ -74,22 +71,6 @@ angular.module('directives.mobileToolbar', [
             return link;
           })
           .value();
-
-        SessionService.isInRole(Role.STUDENT).then(function (isStudent) {
-          var optional;
-          if (!isStudent || !StateService.currentOrParentStateMatches(State.MY_STUDIES)) {
-            return;
-          }
-          optional = optionalLinks[Configuration.environment];
-
-          SessionService.isInPilotDegreeProgramme().then(function (isInPilotProgramme) {
-            if (isInPilotProgramme) {
-              $scope.primaryLinks.unshift(optional.pilot);
-            } else {
-              $scope.primaryLinks.unshift(optional.normal);
-            }
-          });
-        });
 
         $scope.selectedLanguage = LanguageService.getCurrent();
       }
