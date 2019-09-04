@@ -61,7 +61,7 @@ angular.module('directives.subscribeEvents', [
     State,
     MessageTimeouts) {
     return {
-      rescrict: 'E',
+      restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/weekFeed/subscribeEvents/subscribeEvents.html',
       scope: {},

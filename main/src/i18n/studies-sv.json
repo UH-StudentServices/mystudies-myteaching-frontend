@@ -153,7 +153,6 @@
       "errorLoadingEvents" : "Händelser kunde inte laddas"
     },
     "subscribeEvents": "Lägg till kalender",
-    "optimeInstructions": "Länken ovan hämtar din undervisningstidtabell från Optime. För tillfället visar Min undervisning alla kurshändelser.",
     "calendarInstructions": "Mera information om att lägga till kalender:",
     "addCalendarInstructions": "Lägg till kalenderns innehåll i din egen Office 365- eller Google-kalender med hjälp av följande adress:",
     "calendarLinkUpdateNotice": "OBS! Dela inte ut adressen åt andra. Om adressen ändå hamnar i fel händer, uppdatera den här:",

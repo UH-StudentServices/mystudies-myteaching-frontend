@@ -153,7 +153,6 @@
       "errorLoadingEvents" : "Events could not be loaded"
     },
     "subscribeEvents" : "Add to calendar",
-    "optimeInstructions": "The link above fetches your teaching schedule from Optime. For now, My teaching displays all the events of your courses.",
     "calendarInstructions": "More information on how to add your calendar:",
     "addCalendarInstructions": "Add calendar to your own Office 365 or Google Calendar using the following address:",
     "calendarLinkUpdateNotice": "Please note! Do not give this address to anyone else. If the address ends up in wrong hands, update it here:",
