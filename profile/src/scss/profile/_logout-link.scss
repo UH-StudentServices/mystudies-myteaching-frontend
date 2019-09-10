@@ -15,36 +15,6 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* Profile application styles */
-
-@import "profile-general";
-@import "common";
-@import "mixins";
-@import "editable";
-@import "intro";
-@import "studies";
-@import "keywords";
-@import "degrees";
-@import "banner-content";
-@import "work-experience";
-@import "forms";
-@import "attainments";
-@import "buttons";
-@import "dropdown";
-@import "contact-information";
-@import "page-banner";
-@import "navigation";
-@import "preview";
-@import "free-text-content";
-@import "language-proficiencies";
-@import "logout-link";
-@import "accordion";
-@import "lang-selector";
-@import "print";
-@import "files";
-@import "samples";
-@import "shared-links";
-@import "settings";
-@import "lander";
-@import "changeAvatar";
-@import "profile-visibility";
+.logout-link > span {
+  font-size: 1.5em;
+}

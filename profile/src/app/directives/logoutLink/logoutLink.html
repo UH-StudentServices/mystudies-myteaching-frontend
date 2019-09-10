@@ -14,23 +14,9 @@
   ~ You should have received a copy of the GNU General Public License
   ~ along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<div>
-  <div class="navigation" limit-visibility="PRIVATE">
-    <div class="wrapper">
-      <nav class="main-menu" ng-if="!useObar">
-        <ul class="menu">
-          <li class="is-lvl1 main-menu__front">
-            <span class="main-menu__home"></span>
-            <a href="" ng-click="backToFrontpage()" aria-label="{{:: ('toolbar.home' | translate) }}"></a>
-          </li>
-        </ul>
-      </nav>
-      <div class="navigation-right">
-        <language-selector></language-selector>
-        <preview-button></preview-button>
-        <profile-visibility></profile-visibility>
-        <logout-link></logout-link>
-      </div>
-    </div>
-  </div>
+
+<div class="navigation-right__element" ng-if="showLogoutLink">
+  <a class="nav-ctrl logout-link" aria-label="{{::('toolbar.logout' | translate)}}" target="_self" href="{{::logoutUrl}}">
+    <span class="icon--logout" title="{{::('toolbar.logout' | translate)}}"></span>
+  </a>
 </div>

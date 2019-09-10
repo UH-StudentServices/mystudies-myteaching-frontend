@@ -15,36 +15,17 @@
  * along with MystudiesMyteaching application.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* Profile application styles */
+'use strict';
 
-@import "profile-general";
-@import "common";
-@import "mixins";
-@import "editable";
-@import "intro";
-@import "studies";
-@import "keywords";
-@import "degrees";
-@import "banner-content";
-@import "work-experience";
-@import "forms";
-@import "attainments";
-@import "buttons";
-@import "dropdown";
-@import "contact-information";
-@import "page-banner";
-@import "navigation";
-@import "preview";
-@import "free-text-content";
-@import "language-proficiencies";
-@import "logout-link";
-@import "accordion";
-@import "lang-selector";
-@import "print";
-@import "files";
-@import "samples";
-@import "shared-links";
-@import "settings";
-@import "lander";
-@import "changeAvatar";
-@import "profile-visibility";
+angular.module('directives.logoutLink', ['services.configuration'])
+  .directive('logoutLink', function (Configuration, StateService, State) {
+    return {
+      restrict: 'E',
+      replace: true,
+      templateUrl: 'app/directives/logoutLink/logoutLink.html',
+      link: function ($scope) {
+        $scope.showLogoutLink = StateService.getStateFromDomain() === State.MY_TEACHINGS;
+        $scope.logoutUrl = Configuration.logoutUrl;
+      }
+    };
+  });
