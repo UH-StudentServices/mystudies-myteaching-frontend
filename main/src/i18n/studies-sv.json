@@ -150,7 +150,8 @@
     "errors": {
       "errorLoadingExams": "Tentamina kunde inte laddas",
       "errorLoadingCourses": "Kurserna kunde inte laddas",
-      "errorLoadingEvents" : "Händelser kunde inte laddas"
+      "errorLoadingEvents" : "Händelser kunde inte laddas",
+      "errorLoadingFeed": "Kalender adress kunde inte laddas"
     },
     "subscribeEvents": "Lägg till kalender",
     "calendarInstructions": "Mera information om att lägga till kalender:",

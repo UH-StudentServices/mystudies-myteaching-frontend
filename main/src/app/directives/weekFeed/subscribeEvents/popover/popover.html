@@ -23,12 +23,14 @@
   </div>
   <div ng-show="showCopyToClipboard">
     <button id="subscribe-events-trigger"
-       type="button"
-       class="button--outline"
-       clipboard
-       clipboard-value-selector="#calendar-feed-url"
-       clipboard-success-callback="copyToClipboardSuccessCallback"
-       clipboard-error-callback="copyToClipboardErrorCallback">
+            type="button"
+            class="button--outline"
+            ng-class="{ 'disabled': calendarFeedUrlError }"
+            ng-disabled="calendarFeedUrlError"
+            clipboard
+            clipboard-value-selector="#calendar-feed-url"
+            clipboard-success-callback="copyToClipboardSuccessCallback"
+            clipboard-error-callback="copyToClipboardErrorCallback">
       {{::('general.copyToClipboard' | translate)}}
     </button>
     <span ng-if="copyToClipboardSuccess" class="subscribe-events-popover__message"
@@ -39,7 +41,13 @@
   </div>
   <div ng-if="!optimeCalendar && calendarFeedUrl">
     <p class="subscribe-events-popover__text-content">{{::('weekFeed.calendarLinkUpdateNotice' | translate)}}</p>
-    <button type="button" ng-click="updateCalendarFeedUrl()" class="button--outline">{{::('weekFeed.updateLink' | translate)}}</button>
+    <button type="button"
+            ng-click="updateCalendarFeedUrl()"
+            ng-disabled="calendarFeedUrlError"
+            class="button--outline"
+            ng-class="{ 'disabled': calendarFeedUrlError }">
+      {{::('weekFeed.updateLink' | translate)}}
+    </button>
   </div>
   <p class="subscribe-events-popover__text-content">
     {{::('weekFeed.calendarInstructions' | translate)}}
