@@ -325,6 +325,7 @@ $tablist-single-row: min-width 28.75em;
   @include breakpoint($tablist-multi-row) {
     flex: 10 1 auto;
     margin-left: none;
+    margin-top: 0.5em;
     width: 100%;
   }
 
