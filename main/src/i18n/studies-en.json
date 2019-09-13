@@ -150,7 +150,8 @@
     "errors": {
       "errorLoadingExams": "Exams could not be loaded",
       "errorLoadingCourses": "Courses could not be loaded",
-      "errorLoadingEvents" : "Events could not be loaded"
+      "errorLoadingEvents" : "Events could not be loaded",
+      "errorLoadingFeed": "Calendar address could not be loaded"
     },
     "subscribeEvents" : "Add to calendar",
     "calendarInstructions": "More information on how to add your calendar:",

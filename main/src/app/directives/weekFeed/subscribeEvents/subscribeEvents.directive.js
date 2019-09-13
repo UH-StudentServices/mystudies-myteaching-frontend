@@ -65,7 +65,7 @@ angular.module('directives.subscribeEvents', [
       replace: true,
       templateUrl: 'app/directives/weekFeed/subscribeEvents/subscribeEvents.html',
       scope: {},
-      controller: function ($scope) {
+      controller: function ($scope, $translate) {
         $scope.showPopover = false;
         $scope.InstructionLinks = InstructionLinks;
         $scope.selectedLanguage = $rootScope.selectedLanguage;
@@ -99,8 +99,14 @@ angular.module('directives.subscribeEvents', [
 
         function getMyStudiesTeachingCalendarUrl() {
           return CalendarFeedResource.getCalendarFeed()
-            .catch(function () {
-              return CalendarFeedResource.saveOrUpdateCalendarFeed();
+            .catch(function (error) {
+              if (error.status === 404) {
+                // only try to create new feed if existing one is not found
+                return CalendarFeedResource.saveOrUpdateCalendarFeed();
+              }
+              $scope.calendarFeedUrl = $translate.instant('weekFeed.errors.errorLoadingFeed');
+              $scope.calendarFeedUrlError = true;
+              return undefined;
             })
             .then(handleGetMyStudiesCalendarUrlResponse);
         }

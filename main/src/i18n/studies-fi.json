@@ -150,7 +150,8 @@
     "errors": {
       "errorLoadingExams": "Tenttien haussa tapahtui virhe",
       "errorLoadingCourses": "Kurssien haussa tapahtui virhe",
-      "errorLoadingEvents" : "Tapahtumien haussa tapahtui virhe"
+      "errorLoadingEvents" : "Tapahtumien haussa tapahtui virhe",
+      "errorLoadingFeed": "Kalenterin osoitteen haussa tapahtui virhe"
     },
     "subscribeEvents": "Lisää kalenteriisi",
     "calendarInstructions": "Lisätietoja kalenterin lisäämisestä:",
