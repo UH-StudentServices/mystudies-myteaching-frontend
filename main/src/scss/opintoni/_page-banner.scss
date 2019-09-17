@@ -217,7 +217,6 @@ $banner-transition-duration: 0.5s;
   }
 
   @include breakpoint($mobile-only) {
-    float: right;
     height: $page-banner-toggle-size-mobile;
   }
 
@@ -250,6 +249,10 @@ $banner-transition-duration: 0.5s;
     font-size: $size;
 
     @include icon($icon);
+  }
+
+  @include breakpoint($mobile-only) {
+    top: 0.2em;
   }
 }
 
@@ -333,4 +336,8 @@ $banner-transition-duration: 0.5s;
       @include border-top;
     }
   }
+}
+
+.page-banner__banner-without-todo-filler {
+  height: $page-banner-image-height-mobile;
 }
