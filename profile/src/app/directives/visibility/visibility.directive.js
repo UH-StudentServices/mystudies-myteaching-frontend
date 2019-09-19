@@ -82,7 +82,11 @@ angular.module('directives.visibility',
             ? Visibility.PRIVATE
             : Visibility.PUBLIC;
 
-          AnalyticsService.trackEvent(scope.componentId.toLowerCase(),
+          var componentName = scope.componentId
+            ? scope.componentId.toLowerCase()
+            : scope.sectionName.toLowerCase();
+
+          AnalyticsService.trackEvent(componentName,
             AnalyticsService.ea.SET_VISIBILITY, newVisibility);
 
           VisibilityService.setComponentVisibility(visibilityDescriptor, newVisibility)
