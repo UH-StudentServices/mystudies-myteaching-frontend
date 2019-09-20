@@ -150,7 +150,7 @@ module.exports = function (grunt) {
       dev: {
         options: {
           map: true,
-          processors: [require('autoprefixer')({ browsers: ['last 3 versions'] })]
+          processors: [require('autoprefixer')()]
         },
         src: 'src/assets/styles/main.css',
         dest: 'src/assets/styles/main.css'
@@ -158,7 +158,7 @@ module.exports = function (grunt) {
       prod: {
         options: {
           map: false,
-          processors: [require('autoprefixer')({ browsers: ['last 3 versions'] })]
+          processors: [require('autoprefixer')()]
         },
         src: 'src/assets/styles/main.css',
         dest: 'src/assets/styles/main.css'
