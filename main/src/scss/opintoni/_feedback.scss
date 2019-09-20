@@ -89,6 +89,7 @@
     input[type="submit"] {
       background-color: transparent;
       padding: 0;
+      color: $white;
 
       &:hover {
         background-color: transparent;
@@ -103,6 +104,7 @@
       cursor: pointer;
       float: right;
       background: transparent;
+      color: $white;
     }
   }
 
@@ -116,6 +118,8 @@
 
   label {
     @include font-size(12px);
+
+    color: $white;
   }
 
   .checkbox-container > label {
