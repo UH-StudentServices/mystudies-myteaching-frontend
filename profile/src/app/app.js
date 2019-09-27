@@ -160,7 +160,7 @@ angular.module('opintoniProfileApp', [
           profilePathsForRole = session.profilePathsByRoleAndLang[role];
 
           if (profilePathsForRole) {
-            profilePath = (profilePathsForRole[currentLang] || profilePathsForRole[0])[0].split('/').slice(1);
+            profilePath = (profilePathsForRole[currentLang] || Object.values(profilePathsForRole)[0])[0].split('/').slice(1);
             lang = profilePath[0];
             userpath = profilePath[1];
             $state.go('profile', { lang: lang, userpath: userpath }, { location: 'replace' });
