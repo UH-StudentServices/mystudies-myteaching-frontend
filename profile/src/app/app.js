@@ -273,6 +273,12 @@ angular.module('opintoniProfileApp', [
     State) {
     var language = LanguageService.getCurrent();
 
+    $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
+      event.preventDefault();
+      // eslint-disable-next-line no-console
+      console.error('stateChangeError', event, error);
+    });
+
     $rootScope.selectedLanguage = language;
     $rootScope.useObar = Configuration.obarBaseUrl
       && StateService.getStateFromDomain() === State.MY_STUDIES;
