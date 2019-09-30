@@ -34,7 +34,8 @@ angular.module('directives.studies', [
       scope: {
         summaryData: '=',
         profileId: '@',
-        profileLang: '@'
+        profileLang: '@',
+        sectionName: '@'
       },
       templateUrl: 'app/directives/studies/studies.html',
       link: function (scope) {
