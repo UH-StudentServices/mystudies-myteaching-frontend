@@ -160,7 +160,7 @@ angular.module('opintoniProfileApp', [
           profilePathsForRole = session.profilePathsByRoleAndLang[role];
 
           if (profilePathsForRole) {
-            profilePath = (profilePathsForRole[currentLang] || Object.values(profilePathsForRole)[0])[0].split('/').slice(1);
+            profilePath = (profilePathsForRole[currentLang] || profilePathsForRole[Object.keys(profilePathsForRole)[0]])[0].split('/').slice(1);
             lang = profilePath[0];
             userpath = profilePath[1];
             $state.go('profile', { lang: lang, userpath: userpath }, { location: 'replace' });
@@ -275,8 +275,7 @@ angular.module('opintoniProfileApp', [
 
     $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
       event.preventDefault();
-      // eslint-disable-next-line no-console
-      console.error('stateChangeError', event, error);
+      throw error;
     });
 
     $rootScope.selectedLanguage = language;
