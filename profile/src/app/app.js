@@ -160,7 +160,7 @@ angular.module('opintoniProfileApp', [
           profilePathsForRole = session.profilePathsByRoleAndLang[role];
 
           if (profilePathsForRole) {
-            profilePath = (profilePathsForRole[currentLang] || profilePathsForRole[0])[0].split('/').slice(1);
+            profilePath = (profilePathsForRole[currentLang] || profilePathsForRole[Object.keys(profilePathsForRole)[0]])[0].split('/').slice(1);
             lang = profilePath[0];
             userpath = profilePath[1];
             $state.go('profile', { lang: lang, userpath: userpath }, { location: 'replace' });
@@ -272,6 +272,11 @@ angular.module('opintoniProfileApp', [
     StateService,
     State) {
     var language = LanguageService.getCurrent();
+
+    $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
+      event.preventDefault();
+      throw error;
+    });
 
     $rootScope.selectedLanguage = language;
     $rootScope.useObar = Configuration.obarBaseUrl
