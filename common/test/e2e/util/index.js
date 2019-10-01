@@ -31,7 +31,7 @@ const PAGE_HEADERS = {
   sv: 'HELSINGFORS UNIVERSITET'
 };
 
-const pageHeaderSelector = (headerText = PAGE_HEADERS.fi) => Selector('h1').withText(headerText);
+const pageHeaderSelector = (headerText = PAGE_HEADERS.fi) => Selector('h1.logo__sitename').withText(headerText);
 
 const loginAsUser = async (t, name, expectedWeekFeedHeader) => {
   const loginAsUserButton = Selector('a.button').withText(name);
