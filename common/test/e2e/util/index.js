@@ -33,6 +33,8 @@ const PAGE_HEADERS = {
 
 const pageHeaderSelector = (headerText = PAGE_HEADERS.fi) => Selector('h1').withText(headerText);
 
+const htmlLanguageSelector = (langCode = LANGUAGES.fi) => Selector('html').withAttribute('lang', langCode);
+
 const loginAsUser = async (t, name, expectedWeekFeedHeader) => {
   const loginAsUserButton = Selector('a.button').withText(name);
   const weekFeedHeader = Selector('h2 span').withText(expectedWeekFeedHeader);
@@ -87,6 +89,6 @@ export const changeLanguage = async (langCode, t) => {
 
   return t
     .click(languageButtonSelector)
-    .expect(pageHeaderSelector(PAGE_HEADERS[langCode]).exists).ok();
+    .expect(htmlLanguageSelector(langCode).exists).ok();
 };
 
