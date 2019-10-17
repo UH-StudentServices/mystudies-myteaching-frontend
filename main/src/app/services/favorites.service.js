@@ -31,7 +31,7 @@ angular.module('services.favorites', [
     UnicafeResource,
     UnisportResource,
     AnalyticsService,
-    dateArrayToMomentObject) {
+    dateStringToMomentObject) {
     function getFavorites() {
       return FavoritesResource.getAll();
     }
@@ -43,7 +43,7 @@ angular.module('services.favorites', [
 
     function getRSSFeed(feedUrl) {
       function convertDate(d) {
-        return dateArrayToMomentObject(_.slice(d, 0, 5));
+        return dateStringToMomentObject(d);
       }
       return RSSResource.get(feedUrl).then(function (feed) {
         return {
@@ -51,9 +51,9 @@ angular.module('services.favorites', [
           link: feed.feedUrl,
           description: feed.description,
           date: feed.pubDate,
-          momentDate: convertDate(feed.date),
+          momentDate: convertDate(feed.pubDate),
           entries: _.each(feed.items, function (entry) {
-            entry.momentDate = convertDate(entry.date);
+            entry.momentDate = convertDate(entry.pubDate);
           })
         };
       });

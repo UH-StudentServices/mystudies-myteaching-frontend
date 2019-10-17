@@ -19,6 +19,20 @@
 
 angular.module('utils.moment', ['services.language'])
 
+  .service('dateStringToMomentObject', function (LanguageService) {
+    function convert(input, format) {
+      if (input) {
+        return format
+          ? moment(input, format).locale(LanguageService.getCurrent())
+          : moment(input).locale(LanguageService.getCurrent());
+      }
+
+      return undefined;
+    }
+
+    return convert;
+  })
+
   .service('dateArrayToMomentObject', function (LanguageService) {
     function convert(input) {
       if (input && _.isArray(input)) {
