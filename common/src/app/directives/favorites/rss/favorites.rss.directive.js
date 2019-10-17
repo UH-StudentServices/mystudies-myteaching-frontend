@@ -34,7 +34,7 @@ angular.module('directives.favorites.rss', ['services.favorites'])
         FavoritesService.getRSSFeed(feedUrl).then(function getFeedSuccess(feedData) {
           $scope.error = false;
           $scope.feedTitle = feedData.title ? feedData.title : feedUrl;
-          $scope.feedMomentDate = feedData.momentDate.format('l');
+          $scope.feedMomentDate = feedData.momentDate;
           $scope.feedLink = feedData.link;
 
           $scope.feed = feedData;
