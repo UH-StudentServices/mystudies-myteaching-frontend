@@ -35,6 +35,7 @@ angular.module('services.login', [
     $translate,
     SessionService,
     UserSettingsService,
+    AffiliationsService,
     StateService,
     State,
     Configuration,
@@ -102,7 +103,8 @@ angular.module('services.login', [
     function reloadUserData() {
       return $q.all([
         SessionService.getSession(true),
-        UserSettingsService.getUserSettings(true)
+        UserSettingsService.getUserSettings(true),
+        AffiliationsService.getAffiliations(true)
       ]);
     }
 
