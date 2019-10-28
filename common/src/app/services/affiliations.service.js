@@ -21,11 +21,10 @@ angular.module('services.affiliations', ['resources.affiliations'])
   .factory('AffiliationsService', function AffiliationsService(AffiliationsResource) {
     var affiliations;
 
-    function getAffiliations() {
-      if (!affiliations) {
+    function getAffiliations(forceRefresh) {
+      if (!affiliations || forceRefresh) {
         affiliations = AffiliationsResource.getAffiliations();
       }
-
       return affiliations;
     }
 
