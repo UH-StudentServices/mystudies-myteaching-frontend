@@ -3,7 +3,7 @@
     "myStudiesBaseUrl": "http://local.student.helsinki.fi:3000",
     "myTeachingBaseUrl": "http://local.teacher.helsinki.fi:3000"
   },
-  "ci" : {
+  "dev" : {
     "myStudiesBaseUrl": "https://dev.student.helsinki.fi",
     "myTeachingBaseUrl": "https://dev.teacher.helsinki.fi"
   }
