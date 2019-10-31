@@ -236,6 +236,7 @@ module.exports = function (grunt) {
         ]
       }
     },
+    uglify: { options: { sourceMap: true } },
     // Put files not handled in other tasks here
     copy: {
       distMinified: {
