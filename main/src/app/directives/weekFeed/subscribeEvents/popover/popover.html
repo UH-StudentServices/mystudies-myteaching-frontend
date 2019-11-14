@@ -49,6 +49,10 @@
       {{::('weekFeed.updateLink' | translate)}}
     </button>
   </div>
+  <p ng-if="optimeCalendar"
+     class="subscribe-events-popover__text-content">
+    {{::('weekFeed.optimeInstructions' | translate)}}
+  </p>
   <p class="subscribe-events-popover__text-content">
     {{::('weekFeed.calendarInstructions' | translate)}}
   </p>

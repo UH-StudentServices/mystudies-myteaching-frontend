@@ -157,6 +157,7 @@
     "calendarInstructions": "More information on how to add your calendar:",
     "addCalendarInstructions": "Add calendar to your own Office 365 or Google Calendar using the following address:",
     "calendarLinkUpdateNotice": "Please note! Do not give this address to anyone else. If the address ends up in wrong hands, update it here:",
+    "optimeInstructions": "The link above fetches your teaching schedule from Optime. My teaching displays all the events of your courses.",
     "updateLink": "Update address",
     "addToOutlook": "Add to Office 365 calendar",
     "addToGoogle": "Add to Google Calendar",
