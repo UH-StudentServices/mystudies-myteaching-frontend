@@ -21,8 +21,7 @@
       <ul role="list">
         <li role="listitem"
             ng-repeat="favoriteType in availableFavoriteTypes"
-            class="bar"
-            ng-class="getFavoriteTypeClasses(favoriteType)">
+            class="bar">
           <button class="button"
                   ng-click="selectFavoriteType(favoriteType)"
                   translate="{{'favorites.types.' + favoriteType}}"></button>
@@ -44,9 +43,6 @@
           </span>
           <span ng-switch-when="TWITTER">
             <add-new-twitter-favorite favorite="favorite"></add-new-twitter-favorite>
-          </span>
-          <span ng-switch-when="UNISPORT">
-            <add-new-unisport-favorite favorite="favorite"></add-new-unisport-favorite>
           </span>
           <span ng-switch-when="FLAMMA_NEWS">
             <add-new-flamma-favorite type="FLAMMA_NEWS"></add-new-flamma-favorite>

@@ -23,7 +23,6 @@ angular.module('resources.favorites', [])
       saveRSSFavorite: { method: 'POST', url: '/api/private/v1/favorites/rss' },
       saveUnicafeFavorite: { method: 'POST', url: '/api/private/v1/favorites/unicafe' },
       updateUnicafeFavorite: { method: 'PUT', url: '/api/private/v1/favorites/unicafe/:id' },
-      saveUnisportFavorite: { method: 'POST', url: '/api/private/v1/favorites/unisport' },
       saveTwitterFavorite: { method: 'POST', url: '/api/private/v1/favorites/twitter' },
       saveFlammaFavorite: { method: 'POST', url: '/api/private/v1/favorites/flamma/:type' },
       updateFavoriteOrder: { method: 'POST', url: '/api/private/v1/favorites/order', isArray: true },
@@ -47,10 +46,6 @@ angular.module('resources.favorites', [])
       return favoritesResource.updateUnicafeFavorite(unicafeFavoriteRequest).$promise;
     }
 
-    function saveUnisportFavorite() {
-      return favoritesResource.saveUnisportFavorite().$promise;
-    }
-
     function saveTwitterFavorite(insertTwitterFavoriteRequest) {
       return favoritesResource.saveTwitterFavorite(insertTwitterFavoriteRequest).$promise;
     }
@@ -70,7 +65,6 @@ angular.module('resources.favorites', [])
     return {
       getAll: getAll,
       saveRSSFavorite: saveRSSFavorite,
-      saveUnisportFavorite: saveUnisportFavorite,
       saveUnicafeFavorite: saveUnicafeFavorite,
       updateUnicafeFavorite: updateUnicafeFavorite,
       saveTwitterFavorite: saveTwitterFavorite,

@@ -228,7 +228,6 @@
       "TWITTER": "Twitter-aikajana",
       "LINK": "Linkki verkkosivulle",
       "UNICAFE": "Unicafe-lounaslista",
-      "UNISPORT": "Unisport-varaukset",
       "FLAMMA_EVENTS": "Flamma tapahtumat",
       "FLAMMA_NEWS": "Flamma uutiset"
     },
@@ -246,11 +245,6 @@
       "notAvailable": "lounaslista ei saatavilla",
       "closed": "ravintola suljettu",
       "lunchMenu": "lounaslista"
-    },
-    "unisport": {
-      "authorizationRequired": "Unisport-Suosikki näyttää varauksesi. Varaustietoja ei tallenneta eikä niitä luovuteta kolmansille osapuolille. Siirry Unisportin sivustolle ja anna lupa varaustietojesi välittämiseen Opintoni-sivulle.",
-      "authorizationButton": "Unisport",
-      "noReservations": "Ei varauksia"
     },
     "twitter": {
       "twitterPlaceholder": "Twitter-käyttäjänimi, esim. helsinkiuni"
