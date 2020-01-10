@@ -22,14 +22,12 @@ angular.module('services.favorites', [
   'resources.favorites',
   'resources.favorites.rss',
   'resources.favorites.unicafe',
-  'resources.favorites.unisport',
   'utils.moment'
 ])
 
   .factory('FavoritesService', function (FavoritesResource,
     RSSResource,
     UnicafeResource,
-    UnisportResource,
     AnalyticsService,
     dateStringToMomentObject) {
     function getFavorites() {
@@ -81,15 +79,6 @@ angular.module('services.favorites', [
       return UnicafeResource.getRestaurantOptions();
     }
 
-    function saveUnisportFavorite(favoriteType) {
-      AnalyticsService.trackAddFavorite(favoriteType);
-      return FavoritesResource.saveUnisportFavorite();
-    }
-
-    function getUnisportUserReservations() {
-      return UnisportResource.getUserReservations();
-    }
-
     function saveTwitterFavorite(insertTwitterFavoriteRequest, favoriteType) {
       AnalyticsService.trackAddFavorite(favoriteType);
       return FavoritesResource.saveTwitterFavorite(insertTwitterFavoriteRequest);
@@ -118,8 +107,6 @@ angular.module('services.favorites', [
       updateUnicafeFavorite: updateUnicafeFavorite,
       getUnicafeRestaurantMenu: getUnicafeRestaurantMenu,
       getUnicafeRestaurantOptions: getUnicafeRestaurantOptions,
-      saveUnisportFavorite: saveUnisportFavorite,
-      getUnisportUserReservations: getUnisportUserReservations,
       saveTwitterFavorite: saveTwitterFavorite,
       updateFavoriteOrder: updateFavoriteOrder,
       deleteFavorite: deleteFavorite,

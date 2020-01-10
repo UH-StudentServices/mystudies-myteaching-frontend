@@ -21,7 +21,6 @@ angular.module('directives.favorites.addNew', [
   'directives.favorites.addNew.rss',
   'directives.favorites.addNew.unicafe',
   'directives.favorites.addNew.twitter',
-  'directives.favorites.addNew.unisport',
   'directives.favorites.addNew.link',
   'directives.favorites.addNew.flamma',
   'directives.popover',
@@ -87,13 +86,6 @@ angular.module('directives.favorites.addNew', [
       link: function ($scope) {
         $scope.favorite = {};
         $scope.displayPopover = false;
-
-        $scope.getFavoriteTypeClasses = function getFavoriteTypeClasses(favoriteType) {
-          if (favoriteType === 'UNISPORT') {
-            return { disabled: !_.isUndefined(_.find($scope.favorites, { type: 'UNISPORT' })) };
-          }
-          return {};
-        };
 
         function setFocus() {
           Focus.setFocus('.add-favorite-container button');

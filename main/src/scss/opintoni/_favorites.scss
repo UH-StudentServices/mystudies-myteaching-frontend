@@ -348,69 +348,6 @@
   }
 }
 
-.unisport {
-  .unisport-header {
-    width: 100%;
-    height: 100px;
-    overflow: hidden;
-    position: relative;
-
-    img {
-      position: absolute;
-      width: 100%;
-      left: 0;
-      bottom: 0;
-    }
-  }
-
-  .authorization-url-container {
-    padding: 10px;
-
-    a {
-      margin-top: 1em;
-    }
-  }
-
-  .events {
-    display: flex;
-    flex-direction: column;
-    height: 260px;
-    overflow-y: auto;
-    font-size: 0.9em;
-
-    li {
-      display: flex;
-      flex-direction: column;
-      flex: 0 0 auto;
-      margin-top: 1em;
-      justify-content: center;
-      border-bottom: 1px solid $lightsilver;
-      padding-bottom: 1em;
-    }
-
-    &__event-name {
-      display: flex;
-      justify-content: center;
-      color: $blue;
-      margin-bottom: 0.2em;
-    }
-
-    &__info-row {
-      display: flex;
-      flex-direction: row;
-      margin-top: 0.2em;
-
-      &__heading {
-        flex: 1;
-      }
-
-      &__content {
-        flex: 3;
-      }
-    }
-  }
-}
-
 .add-favorite-step {
   width: 100%;
 

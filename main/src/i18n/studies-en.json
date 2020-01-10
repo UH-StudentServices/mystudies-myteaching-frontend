@@ -228,7 +228,6 @@
       "TWITTER": "Twitter timeline",
       "LINK": "Website link",
       "UNICAFE": "Unicafe lunch menu",
-      "UNISPORT": "Unisport timetable",
       "FLAMMA_EVENTS": "Flamma events",
       "FLAMMA_NEWS": "Flamma news"
     },
@@ -246,11 +245,6 @@
       "notAvailable" : "lunch menu not available",
       "closed" : "restaurant is closed",
       "lunchMenu" : "lunch menu"
-    },
-    "unisport": {
-      "authorizationRequired": "Unisport Favourite displays your bookings. The booking information will not be saved nor handed over to third parties. Please go to Unisport site and give permission to the disclosure of your booking information.",
-      "authorizationButton": "Unisport",
-      "noReservations": "No reservations"
     },
     "twitter": {
       "twitterPlaceholder": "Twitter username, eg. helsinkiuni"
