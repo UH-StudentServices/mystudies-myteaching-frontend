@@ -28,12 +28,14 @@
     <input id="url-{{:: usefulLink.id}}"
            type="text"
            ng-model="usefulLink.url"
+           maxlength="500"
            ui-keypress="{'enter':'saveUsefulLink()'}"
            placeholder="{{::('usefulLinks.linkUrl' | translate | capitalize)}}" />
     <label for="description-{{:: usefulLink.id}}" translate="usefulLinks.linkDescriptionEditLabel" />
     <input id="description-{{:: usefulLink.id}}"
            type="text"
            ng-model="usefulLink.description"
+           maxlength="100"
            ui-keypress="{'enter':'saveUsefulLink()'}"
            placeholder="{{::('usefulLinks.linkDescription' | translate | capitalize)}}" />
     <button ng-click="saveUsefulLink()"><i class="icon--done"></i></button>
