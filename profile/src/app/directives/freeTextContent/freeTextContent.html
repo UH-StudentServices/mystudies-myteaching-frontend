@@ -29,7 +29,7 @@
 
       </h2>
 
-      <div class="free-text-content__title-container--edit" ng-if="editing">
+      <div class="free-text-content__title-container--edit" ng-if="editing" ng-class="{'ng-invalid':!freeTextContentItem.title}">
         <input type="text" ng-model="freeTextContentItem.title">
       </div>
       <help-icon ng-show="showHelp"
@@ -60,7 +60,7 @@
     <ng-embed embed-data="freeTextContentItem.text" embed-options="embedOptions"></ng-embed>
   </div>
 
-  <div ng-if="editing" class="free-text-content--edit">
+  <div ng-if="editing" class="free-text-content--edit" ng-class="{'ng-invalid':!freeTextContentItem.text}">
     <div ng-controller="TinymceController">
       <textarea ui-tinymce="tinymceOptions" ng-model="freeTextContentItem.text"></textarea>
       <browse-files></browse-files>

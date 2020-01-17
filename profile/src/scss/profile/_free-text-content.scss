@@ -18,6 +18,10 @@
 .free-text-content {
   position: relative;
 
+  .ng-invalid {
+    border: $redalert 1px solid;
+  }
+
   &__title-container--edit {
     @extend .ui-component__title--edit;
   }

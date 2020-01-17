@@ -148,6 +148,10 @@ angular.module('directives.freeTextContent', [
         function updateOrCreateNew() {
           var serviceFn;
 
+          if (!scope.freeTextContentItem.text || !scope.freeTextContentItem.title) {
+            return false;
+          }
+
           trackIfNeeded(scope.origFreeText, scope.freeTextContentItem.text);
 
           if (getMatchingItem(freeTextContentSubject.getValue(), visibilityDescriptor)) {
