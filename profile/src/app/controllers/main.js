@@ -26,6 +26,7 @@ angular.module('controllers.main', [
   .controller('MainCtrl', function ($state, $scope, profileTabs, profile, state, userSettings,
     ComponentOrderService, PreviewService, State, BrowserUtil) {
     $scope.profile = profile;
+    $scope.sharedLinkUUID = $state.params.sharedlink;
     $scope.userSettings = userSettings;
     $scope.profileTabs = profileTabs;
     $scope.isPreview = PreviewService.isPreview();
