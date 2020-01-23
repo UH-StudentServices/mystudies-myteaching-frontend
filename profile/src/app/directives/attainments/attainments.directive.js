@@ -34,7 +34,8 @@ angular.module('directives.attainments', [
       templateUrl: 'app/directives/attainments/attainments.html',
       scope: {
         profileId: '@',
-        profileLang: '@'
+        profileLang: '@',
+        profileSharedLink: '@'
       },
       link: function ($scope) {
         var SHOW_MORE_ADDITION = 5;
@@ -66,7 +67,8 @@ angular.module('directives.attainments', [
         };
 
         function updateWhitelistedAttainments() {
-          AttainmentResource.getAllWhitelisted($scope.profileId, $scope.profileLang)
+          var profileId = $scope.profileSharedLink ? $scope.profileSharedLink : $scope.profileId;
+          AttainmentResource.getAllWhitelisted(profileId, $scope.profileLang)
             .then(function (attainments) {
               $scope.attainments = attainments;
             });

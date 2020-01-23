@@ -82,7 +82,8 @@
           <div ng-switch-when="ATTAINMENTS" class="profile-section__body">
             <attainments limit-visibility="{componentId: 'ATTAINMENTS'}"
                          profile-id="{{::profile.id}}"
-                         profile-lang="{{::profile.lang}}">
+                         profile-lang="{{::profile.lang}}"
+                         profile-shared-link="{{::sharedLinkUUID}}">
             </attainments>
           </div>
 
