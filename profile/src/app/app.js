@@ -75,7 +75,6 @@ angular.module('opintoniProfileApp', [
   'directives.notifications',
   'directives.browseFiles',
   'directives.sharedLinks',
-  'directives.obar',
   'directives.enableEdit',
   'directives.editModeButtons',
   'directives.logoutLink',
@@ -97,7 +96,6 @@ angular.module('opintoniProfileApp', [
   'services.freeTextContent',
   'services.profileFiles',
   'services.sharedLinks',
-  'services.obar',
   'services.notifications',
 
   'resources.session',
@@ -268,9 +266,7 @@ angular.module('opintoniProfileApp', [
     $window,
     LanguageService,
     Configuration,
-    AnalyticsService,
-    StateService,
-    State) {
+    AnalyticsService) {
     var language = LanguageService.getCurrent();
 
     $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
@@ -279,8 +275,6 @@ angular.module('opintoniProfileApp', [
     });
 
     $rootScope.selectedLanguage = language;
-    $rootScope.useObar = Configuration.obarBaseUrl
-      && StateService.getStateFromDomain() === State.MY_STUDIES;
 
     moment.locale(language);
     $window.FastClick.attach($window.document.body);

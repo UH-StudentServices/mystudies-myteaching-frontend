@@ -31,6 +31,12 @@ angular.module('profileLanders', [])
       .state('anonymousUser', {
         parent: 'lander',
         url: '/welcome',
-        templateUrl: 'app/partials/landerPages/_lander.anonymousUser.html'
+        templateUrl: 'app/partials/landerPages/_lander.anonymousUser.html',
+        controller: function ($scope, $stateParams, LoginService) {
+          $scope.redirectToLogin = function redirectToLogin() {
+            LoginService.goToLogin($stateParams.originalUrl);
+          };
+        },
+        params: { originalUrl: null }
       });
   });

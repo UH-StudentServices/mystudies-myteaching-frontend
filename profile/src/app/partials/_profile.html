@@ -16,7 +16,6 @@
 -->
 
 <a href="#main-content"
-   ng-if="!useObar"
    class="element-invisible element-focusable"
    translate="pageHeaderLinks.skipToMainContent"></a>
 
@@ -26,8 +25,7 @@
 <notifications></notifications>
 
 <header class="l-header">
-  <page-header ng-if="!useObar || hideObar" hide-links="hideObar"></page-header>
-  <obar ng-if="useObar && !hideObar" app="profile"></obar>
+  <page-header hide-links="hideLinks"></page-header>
 </header>
 
 <main id="main-content">
@@ -55,6 +53,6 @@
   </div>
 </main>
 
-<footer role="contentinfo" ng-class="{obar: useObar}" ng-attr-id="{{useObar ? 'obar-footer': undefined}}">
-  <page-footer ng-if="!useObar && !hideObar"></page-footer>
+<footer role="contentinfo">
+  <page-footer></page-footer>
 </footer>

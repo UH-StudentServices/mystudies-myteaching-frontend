@@ -18,13 +18,12 @@
 'use strict';
 
 angular.module('directives.logoutLink', ['services.configuration'])
-  .directive('logoutLink', function (Configuration, StateService, State) {
+  .directive('logoutLink', function (Configuration) {
     return {
       restrict: 'E',
       replace: true,
       templateUrl: 'app/directives/logoutLink/logoutLink.html',
       link: function ($scope) {
-        $scope.showLogoutLink = StateService.getStateFromDomain() === State.MY_TEACHINGS;
         $scope.logoutUrl = Configuration.logoutUrl;
       }
     };

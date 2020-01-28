@@ -31,7 +31,6 @@ angular.module('directives.navigation', ['services.configuration'])
         Configuration,
         ProfileRoleService,
         ProfileRole) {
-        $scope.useObar = $rootScope.useObar;
         $scope.backToFrontpage = function () {
           $window.location = ProfileRoleService.isInRole(ProfileRole.TEACHER)
             ? Configuration.teacherAppUrl : Configuration.studentAppUrl;
