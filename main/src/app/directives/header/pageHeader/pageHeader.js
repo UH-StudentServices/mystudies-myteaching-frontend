@@ -17,13 +17,18 @@
 
 'use strict';
 
-angular.module('directives.pageHeader', ['directives.analytics', 'constants.commonExternalLinks'])
-  .directive('pageHeader', function (pageHeaderLinks) {
+angular.module('directives.pageHeader', [
+  'constants.commonExternalLinks',
+  'directives.analytics'
+])
+  .directive('pageHeader', function (LanguageService, pageHeaderLinks, localizedLinks) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/header/pageHeader/page_header.html',
       link: function ($scope) {
         $scope.pageHeaderLinks = pageHeaderLinks;
+        $scope.universityOfHelsinkiLinkValue =
+          localizedLinks.universityOfHelsinki[LanguageService.getCurrent()];
       }
     };
   });

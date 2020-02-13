@@ -30,7 +30,7 @@ angular.module('directives.analytics', ['opintoniAnalytics'])
             AnalyticsService.trackEvent(
               $scope.analyticsEvent.eventCategory,
               $scope.analyticsEvent.eventAction,
-              $scope.analyticsEvent.value || element.attr('href')
+              $scope.analyticsEvent.value
             );
           }
         });
