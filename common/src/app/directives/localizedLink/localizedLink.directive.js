@@ -17,23 +17,20 @@
 
 'use strict';
 
-angular.module('directives.analytics', ['opintoniAnalytics'])
+angular.module('directives.localizedLink', ['services.language'])
+  .constant('localizedLinks', {
+    universityOfHelsinki: {
+      fi: 'https://www.helsinki.fi/fi',
+      sv: 'https://www.helsinki.fi/sv',
+      en: 'https://www.helsinki.fi/en'
+    }
+  })
 
-  .directive('analyticsEvent', function (AnalyticsService) {
+  .directive('localizedLink', function (LanguageService, localizedLinks) {
     return {
       restrict: 'A',
-      scope: { analyticsEvent: '=' },
-      link: function ($scope, element) {
-        element.on('click mouseup', function (e) {
-          // catch click events and middle mouse clicks
-          if (AnalyticsService.isClickOrMiddleButton(e)) {
-            AnalyticsService.trackEvent(
-              $scope.analyticsEvent.eventCategory,
-              $scope.analyticsEvent.eventAction,
-              $scope.analyticsEvent.value || element.attr('href')
-            );
-          }
-        });
+      link: function ($scope, el, attrs) {
+        el.attr('href', localizedLinks[attrs.localizedLink][LanguageService.getCurrent()]);
       }
     };
   });

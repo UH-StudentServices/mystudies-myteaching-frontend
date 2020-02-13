@@ -66,6 +66,7 @@ angular.module('opintoniApp', [
   'directives.obar',
   'directives.dateInput',
   'directives.dateTimeInput',
+  'directives.localizedLink',
 
   'controllers.main',
   'controllers.calendar',
