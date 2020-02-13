@@ -78,6 +78,7 @@ angular.module('opintoniProfileApp', [
   'directives.enableEdit',
   'directives.editModeButtons',
   'directives.logoutLink',
+  'directives.localizedLink',
   'dialog.verificationDialog',
 
   'filters.formatting',

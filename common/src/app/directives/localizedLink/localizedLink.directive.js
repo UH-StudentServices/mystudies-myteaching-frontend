@@ -17,18 +17,20 @@
 
 'use strict';
 
-angular.module('directives.pageHeader', [
-  'constants.commonExternalLinks',
-  'directives.analytics'
-])
-  .directive('pageHeader', function (LanguageService, pageHeaderLinks, localizedLinks) {
+angular.module('directives.localizedLink', ['services.language'])
+  .constant('localizedLinks', {
+    universityOfHelsinki: {
+      fi: 'https://www.helsinki.fi/fi',
+      sv: 'https://www.helsinki.fi/sv',
+      en: 'https://www.helsinki.fi/en'
+    }
+  })
+
+  .directive('localizedLink', function (LanguageService, localizedLinks) {
     return {
-      restrict: 'E',
-      templateUrl: 'app/directives/header/pageHeader/page_header.html',
-      link: function ($scope) {
-        $scope.pageHeaderLinks = pageHeaderLinks;
-        $scope.universityOfHelsinkiLinkValue =
-          localizedLinks.universityOfHelsinki[LanguageService.getCurrent()];
+      restrict: 'A',
+      link: function ($scope, el, attrs) {
+        el.attr('href', localizedLinks[attrs.localizedLink][LanguageService.getCurrent()]);
       }
     };
   });
