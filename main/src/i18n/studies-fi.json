@@ -163,6 +163,7 @@
     "addToGoogle": "Google -kalenteriin lisääminen",
     "cancelled" : "peruttu",
     "official": "Virkailija",
+    "unpublished": "Kurssisivua ei ole vielä julkaistu",
     "calendarCustom": {
       "list": "Lista"
     }

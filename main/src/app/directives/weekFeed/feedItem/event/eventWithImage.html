@@ -42,6 +42,7 @@
           <span ng-show="location.loadingLocation" class="icon--spinner icon-spin"/>
         </a>
       </span>
+      <p ng-if="feedItem.isHidden" translate="weekFeed.unpublished"></p>
     </div>
   </div>
   {{:: feedItem.optimeExtrasAsString}}
