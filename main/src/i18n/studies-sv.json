@@ -163,6 +163,7 @@
     "addToGoogle": "Lägg till i Google-kalender",
     "cancelled": "Annullerad",
     "official": "Administratör",
+    "unpublished": "Kurssidan har ännu inte publicerats",
     "calendarCustom": {
       "list": "Lista"
     }

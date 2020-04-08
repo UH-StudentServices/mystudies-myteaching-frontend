@@ -35,6 +35,7 @@
         <span ng-if="feedItem.coursePageUri === null">{{ feedItem.name }}</span>
         <span ng-if="feedItem.isCancelled" class="enrollment-tag--cancelled" translate="weekFeed.cancelled"></span>
         <span ng-if="isOfficial(feedItem)" class="enrollment-tag--official" translate="weekFeed.official"></span>
+        <p ng-if="feedItem.isHidden" translate="weekFeed.unpublished"></p>
       </div>
 
       <div class="course-info">

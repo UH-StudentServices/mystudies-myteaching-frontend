@@ -163,6 +163,7 @@
     "addToGoogle": "Add to Google Calendar",
     "cancelled" : "canceled",
     "official": "Official",
+    "unpublished": "The course page has not yet been published",
     "calendarCustom": {
       "list": "list"
     }
