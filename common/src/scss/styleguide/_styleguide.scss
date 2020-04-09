@@ -20,7 +20,10 @@
 @import "../bower_components/Styleguide/sass/variables/breakpoints";
 @import "../bower_components/Styleguide/sass/variables/colors";
 //@import "../bower_components/Styleguide/sass/variables/rasters";
-@import "../bower_components/Styleguide/sass/variables/typography";
+//@import "../bower_components/Styleguide/sass/variables/typography";
+$base-font-size-mobile: 14px;
+$base-font-size: 16px;
+
 @import "../bower_components/Styleguide/sass/mixins/angular";
 @import "../bower_components/Styleguide/sass/mixins/arrow";
 @import "../bower_components/Styleguide/sass/mixins/border";
