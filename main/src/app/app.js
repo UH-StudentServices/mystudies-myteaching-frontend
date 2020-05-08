@@ -185,7 +185,8 @@ angular.module('opintoniApp', [
             return EventsResource.getStudentEvents;
           }
         },
-        onEnter: function onEnter(ngAddToHomescreen) {
+        onEnter: function onEnter($window, ngAddToHomescreen) {
+          $window.location.href = '/opintoni';
           ngAddToHomescreen({ maxDisplayCount: 1 });
         }
       })
