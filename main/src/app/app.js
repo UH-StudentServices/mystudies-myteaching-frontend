@@ -185,8 +185,10 @@ angular.module('opintoniApp', [
             return EventsResource.getStudentEvents;
           }
         },
-        onEnter: function onEnter(ngAddToHomescreen) {
-          ngAddToHomescreen({ maxDisplayCount: 1 });
+        onEnter: function onEnter($window) {
+          if ($window.location.href.indexOf('redirected') < 0) {
+            $window.location.href = '/opintoni?redirected=from_old';
+          }
         }
       })
       .state('opetukseni', {
