@@ -17,13 +17,13 @@
 
 'use strict';
 
-angular.module('directives.pageFooter', ['constants.commonExternalLinks', 'constants.externalLinks', 'services.state'])
-  .directive('pageFooter', function (pageFooterLinks, footerLinks) {
+angular.module('directives.pageFooter', ['constants.externalLinks'])
+  .directive('pageFooter', function (pageFooterLinks) {
     return {
       restrict: 'E',
       templateUrl: 'app/directives/pageFooter/page_footer.html',
       link: function ($scope) {
-        $scope.pageFooterLinks = _.concat(pageFooterLinks, footerLinks);
+        $scope.pageFooterLinks = pageFooterLinks;
         $scope.currentYear = moment().year();
       }
     };
