@@ -18,6 +18,7 @@
 'use strict';
 
 angular.module('constants.externalLinks', [])
+
   .constant('primaryLinks', {
     local: [
       {
@@ -476,4 +477,39 @@ angular.module('constants.externalLinks', [])
         ]
       }
     ]
-  });
+  })
+
+  .constant('pageFooterLinks', [
+    {
+      key: 'pageFooterLinks.contact',
+      href: {
+        fi: 'https://www.helsinki.fi/fi/yliopisto/henkilohaku',
+        sv: 'https://www.helsinki.fi/sv/universitetet/personsokning',
+        en: 'https://www.helsinki.fi/en/university/people-finder'
+      }
+    },
+    {
+      key: 'pageFooterLinks.library',
+      href: {
+        fi: 'http://www.helsinki.fi/kirjasto',
+        sv: 'http://www.helsinki.fi/kirjasto/sv',
+        en: 'http://www.helsinki.fi/kirjasto/en'
+      }
+    },
+    {
+      key: 'pageFooterLinks.flamma',
+      href: {
+        fi: 'https://flamma.helsinki.fi/',
+        sv: 'https://flamma.helsinki.fi/sv',
+        en: 'https://flamma.helsinki.fi/en'
+      }
+    },
+    {
+      key: 'pageFooterLinks.accessibility',
+      href: {
+        fi: 'https://teaching.helsinki.fi/ohjeet/artikkeli/opetukseni-sivun-saavutettavuusseloste',
+        sv: 'https://teaching.helsinki.fi/instruktioner/artikel/tillganglighetsutlatande-min-undervisning',
+        en: 'https://teaching.helsinki.fi/instructions/article/accessibility-statement-my-teaching'
+      }
+    }
+  ]);

@@ -17,7 +17,7 @@
 
 'use strict';
 
-angular.module('directives.pageFooter', ['constants.commonExternalLinks'])
+angular.module('directives.pageFooter', ['constants.externalLinks'])
   .directive('pageFooter', function (pageFooterLinks) {
     return {
       restrict: 'E',
