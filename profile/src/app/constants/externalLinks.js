@@ -19,4 +19,6 @@
 
 angular.module('constants.externalLinks', [])
 
-  .constant('primaryLinks', [{ key: 'navigationTab.list', href: '', active: true }]);
+  .constant('primaryLinks', [{ key: 'navigationTab.list', href: '', active: true }])
+
+  .constant('footerLinks', []);

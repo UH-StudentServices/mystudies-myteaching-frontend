@@ -18,6 +18,7 @@
 'use strict';
 
 angular.module('constants.externalLinks', [])
+
   .constant('primaryLinks', {
     local: [
       {
@@ -476,4 +477,15 @@ angular.module('constants.externalLinks', [])
         ]
       }
     ]
-  });
+  })
+
+  .constant('footerLinks', [
+    {
+      key: 'pageFooterLinks.accessibility',
+      href: {
+        fi: 'https://teaching.helsinki.fi/ohjeet/artikkeli/opetukseni-sivun-saavutettavuusseloste',
+        sv: 'https://teaching.helsinki.fi/instruktioner/artikel/tillganglighetsutlatande-min-undervisning',
+        en: 'https://teaching.helsinki.fi/instructions/article/accessibility-statement-my-teaching'
+      }
+    }
+  ]);

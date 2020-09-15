@@ -69,7 +69,8 @@
   "pageFooterLinks": {
     "contact": "Henkilöhaku ja yhteystiedot",
     "library": "Kirjasto",
-    "flamma": "Flamma"
+    "flamma": "Flamma",
+    "accessibility": "Saavutettavuus"
   },
   "pageFooter": {
     "addressLine1": "PL 4 (Yliopistonkatu 3)",
