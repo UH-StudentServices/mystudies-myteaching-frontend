@@ -29,10 +29,22 @@ angular.module('directives.eventCalendar', [])
   .service('EventColorService', function () {
     var colors = ['#0098d0', '#005479', '#888888', ' #424242'];
 
+    /** Naive hash function used for casting colors to events  */
+    function hash(str) {
+      var i;
+      var h;
+
+      for (i = 0, h = 0; i < str.length; i += 1) {
+        // eslint-disable-next-line no-bitwise
+        h += (h << 5) - h + str.charCodeAt(i);
+      }
+
+      return h;
+    }
+
     return {
       getColor: function (identifier) {
-        var index = identifier % colors.length;
-
+        var index = hash(identifier) % colors.length;
         return colors[index];
       }
     };
