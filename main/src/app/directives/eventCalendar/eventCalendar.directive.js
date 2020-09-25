@@ -200,7 +200,7 @@ angular.module('directives.eventCalendar', [])
               end: endMoment.toDate(),
               color: EventColorService.getColor(event.realisationId),
               tooltip: title,
-              url: event.moodleUri ? event.moodleUri : event.courseUri
+              url: event.courseUri
             };
           });
 
