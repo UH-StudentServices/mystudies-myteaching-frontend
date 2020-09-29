@@ -1,6 +1,6 @@
 {
   "name": "@helsinkiuni/my-studies",
-  "version": "0.0.195",
+  "version": "0.0.196",
   "private": true,
   "devDependencies": {
     "autoprefixer": "^9.6.1",
