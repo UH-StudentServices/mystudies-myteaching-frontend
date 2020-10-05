@@ -24,7 +24,7 @@ const loginAndOpenProfileInFinnishAndChangeLanguage = async (langCode, t) => {
 };
 
 fixture('Profile')
-  .page(config.myStudiesBaseUrl);
+  .page(config.myStudiesBaseUrl + '/profile');
 
 test('Profile opens', t => loginAndOpenProfile(t));
 

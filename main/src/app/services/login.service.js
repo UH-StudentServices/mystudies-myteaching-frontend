@@ -115,7 +115,13 @@ angular.module('services.login', [
       }), { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
         .then(reloadUserData)
         .then(StateService.getStateFromDomain)
-        .then($state.go);
+        .then((function (state) {
+          console.log(state);
+          if (state === 'opintoni') {
+            return window.location.href = '/profile';
+          }
+          return $state.go(state);
+        }));
     }
 
     return {

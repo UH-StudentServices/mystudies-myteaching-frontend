@@ -37,12 +37,15 @@ const htmlLanguageSelector = (langCode = LANGUAGES.fi) => Selector('html').withA
 
 const loginAsUser = async (t, name, expectedWeekFeedHeader) => {
   const loginAsUserButton = Selector('a.button').withText(name);
-  const weekFeedHeader = Selector('h2 span').withText(expectedWeekFeedHeader);
 
-  return await t
-    .click(loginAsUserButton)
-    .expect(pageHeaderSelector().exists).ok()
-    .expect(weekFeedHeader.exists).ok();
+  if (expectedWeekFeedHeader) {
+    const weekFeedHeader = Selector('h2 span').withText(expectedWeekFeedHeader);
+    return t.click(loginAsUserButton)
+      .expect(pageHeaderSelector().exists).ok()
+      .expect(weekFeedHeader.exists).ok();
+  }
+
+  return t.click(loginAsUserButton);
 };
 
 const openAvatarMenu = async t => t.click(Selector('.user-avatar'));
@@ -64,19 +67,16 @@ export const openProfile = async (t, profileLinkText, expectedProfileTitle) => {
 };
 
 export const loginAsStudent = async t => {
-  const tabs = Selector('ul.tab-set');
-  const firstWeekFeedItem = Selector('ul.week-feed-items').child(0);
 
-  loginAsUser(t, 'Olli Opiskelija', 'NYT OPINNOISSANI');
-  return t
-    .click(tabs.child(2))
-    .expect(firstWeekFeedItem.exists).ok();
+  const loginButton = Selector('.login-page__login-link');
+  await t.click(loginButton);
+
+  await loginAsUser(t, 'Olli Opiskelija');
 };
 export const loginAsTeacher = async t => loginAsUser(t, 'Olli Opettaja', 'NYT OPETUKSESSANI');
 
 export const loginAndOpenProfile = async (t) => {
-  await loginAsStudent(t);
-  await openProfile(t, 'Profiili', 'OLLI OPISKELIJA');
+  return loginAsStudent(t);
 };
 
 export const loginAndOpenAcademicProfile = async (t) => {
