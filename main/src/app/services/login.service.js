@@ -116,11 +116,11 @@ angular.module('services.login', [
         .then(reloadUserData)
         .then(StateService.getStateFromDomain)
         .then((function (state) {
-          console.log(state);
           if (state === 'opintoni') {
-            return window.location.href = '/profile';
+            window.location.href = '/profile';
+            return;
           }
-          return $state.go(state);
+          $state.go(state);
         }));
     }
 
