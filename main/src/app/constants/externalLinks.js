@@ -31,6 +31,15 @@ angular.module('constants.externalLinks', [])
         }
       },
       {
+        key: 'primaryLinks.sisu',
+        domain: ['opetukseni'],
+        href: {
+          fi: 'https://sisu.helsinki.fi',
+          sv: 'https://sisu.helsinki.fi',
+          en: 'https://sisu.helsinki.fi'
+        }
+      },
+      {
         key: 'primaryLinks.teaching',
         domain: ['opetukseni'],
         href: {
@@ -119,6 +128,15 @@ angular.module('constants.externalLinks', [])
           fi: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=1',
           sv: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=2',
           en: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=6'
+        }
+      },
+      {
+        key: 'primaryLinks.sisu',
+        domain: ['opetukseni'],
+        href: {
+          fi: 'https://sisu.helsinki.fi',
+          sv: 'https://sisu.helsinki.fi',
+          en: 'https://sisu.helsinki.fi'
         }
       },
       {
@@ -214,6 +232,15 @@ angular.module('constants.externalLinks', [])
         }
       },
       {
+        key: 'primaryLinks.sisu',
+        domain: ['opetukseni'],
+        href: {
+          fi: 'https://sisu.helsinki.fi',
+          sv: 'https://sisu.helsinki.fi',
+          en: 'https://sisu.helsinki.fi'
+        }
+      },
+      {
         key: 'primaryLinks.teaching',
         domain: ['opetukseni'],
         href: {
@@ -302,6 +329,15 @@ angular.module('constants.externalLinks', [])
           fi: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=1',
           sv: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=2',
           en: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=6'
+        }
+      },
+      {
+        key: 'primaryLinks.sisu',
+        domain: ['opetukseni'],
+        href: {
+          fi: 'https://sisu.helsinki.fi',
+          sv: 'https://sisu.helsinki.fi',
+          en: 'https://sisu.helsinki.fi'
         }
       },
       {
@@ -394,6 +430,15 @@ angular.module('constants.externalLinks', [])
           fi: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=1',
           sv: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=2',
           en: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=6'
+        }
+      },
+      {
+        key: 'primaryLinks.sisu',
+        domain: ['opetukseni'],
+        href: {
+          fi: 'https://sisu.helsinki.fi',
+          sv: 'https://sisu.helsinki.fi',
+          en: 'https://sisu.helsinki.fi'
         }
       },
       {
