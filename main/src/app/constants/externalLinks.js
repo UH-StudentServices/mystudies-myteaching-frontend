@@ -61,9 +61,9 @@ angular.module('constants.externalLinks', [])
         key: 'primaryLinks.courseSearch',
         domain: ['opintoni', 'opetukseni'],
         href: {
-          fi: 'https://dev.courses.helsinki.fi/fi/search',
-          sv: 'https://dev.courses.helsinki.fi/sv/search',
-          en: 'https://dev.courses.helsinki.fi/search'
+          fi: 'http://local.studies.helsinki.fi:8060/opintotarjonta',
+          sv: 'http://local.studies.helsinki.fi:8060/studieutbud',
+          en: 'http://local.studies.helsinki.fi:8060/courses'
         }
       },
       {
@@ -162,9 +162,9 @@ angular.module('constants.externalLinks', [])
         key: 'primaryLinks.courseSearch',
         domain: ['opintoni', 'opetukseni'],
         href: {
-          fi: 'https://dev.courses.helsinki.fi/fi/search',
-          sv: 'https://dev.courses.helsinki.fi/sv/search',
-          en: 'https://dev.courses.helsinki.fi/search'
+          fi: 'https://studies-qa.it.helsinki.fi/opintotarjonta',
+          sv: 'https://studies-qa.it.helsinki.fi/studieutbud',
+          en: 'https://studies-qa.it.helsinki.fi/courses'
         }
       },
       {
@@ -262,9 +262,9 @@ angular.module('constants.externalLinks', [])
         key: 'primaryLinks.courseSearch',
         domain: ['opintoni', 'opetukseni'],
         href: {
-          fi: 'https://dev.courses.helsinki.fi/fi/search',
-          sv: 'https://dev.courses.helsinki.fi/sv/search',
-          en: 'https://dev.courses.helsinki.fi/search'
+          fi: 'https://studies-qa.it.helsinki.fi/opintotarjonta',
+          sv: 'https://studies-qa.it.helsinki.fi/studieutbud',
+          en: 'https://studies-qa.it.helsinki.fi/courses'
         }
       },
       {
@@ -363,9 +363,9 @@ angular.module('constants.externalLinks', [])
         key: 'primaryLinks.courseSearch',
         domain: ['opintoni', 'opetukseni'],
         href: {
-          fi: 'https://demo.courses.helsinki.fi/fi/search',
-          sv: 'https://demo.courses.helsinki.fi/sv/search',
-          en: 'https://demo.courses.helsinki.fi/search'
+          fi: 'https://studies.helsinki.fi/opintotarjonta',
+          sv: 'https://studies.helsinki.fi/studieutbud',
+          en: 'https://studies.helsinki.fi/courses'
         }
       },
       {
@@ -463,9 +463,9 @@ angular.module('constants.externalLinks', [])
         key: 'primaryLinks.courseSearch',
         domain: ['opintoni', 'opetukseni'],
         href: {
-          fi: 'https://courses.helsinki.fi/fi/search',
-          sv: 'https://courses.helsinki.fi/sv/search',
-          en: 'https://courses.helsinki.fi/search'
+          fi: 'https://studies.helsinki.fi/opintotarjonta',
+          sv: 'https://studies.helsinki.fi/studieutbud',
+          en: 'https://studies.helsinki.fi/courses'
         }
       },
       {
