@@ -21,14 +21,9 @@ angular.module('opintoniLander', [
   'services.language',
   'services.login',
   'services.state',
-  'services.configuration'
+  'services.configuration',
+  'constants.externalLinks'
 ])
-
-  .constant('COURSE_SEARCH_URL', {
-    en: 'https://courses.helsinki.fi/search',
-    sv: 'https://courses.helsinki.fi/sv/search',
-    fi: 'https://courses.helsinki.fi/fi/search '
-  })
 
   .constant('LIBRARY_URL', {
     en: 'http://www.helsinki.fi/kirjasto/en/home/',
@@ -70,7 +65,9 @@ angular.module('opintoniLander', [
         url: '/login',
         templateUrl: 'app/partials/landerPages/_lander.login.html',
         controller:
-          function ($scope, Configuration, LanguageService, COURSE_SEARCH_URL, LoginService) {
+          function ($scope, Configuration, LanguageService, primaryLinks, LoginService) {
+            var courseSearch = _.find(primaryLinks[Configuration.environment], { key: 'primaryLinks.courseSearch' }).href;
+
             _.assign($scope, {
               loginUrls: {
                 loginUrlStudent: Configuration.studentAppUrl,
@@ -79,7 +76,7 @@ angular.module('opintoniLander', [
               redirectToLogin: function () {
                 LoginService.goToLogin();
               },
-              courseSearchUrl: COURSE_SEARCH_URL[LanguageService.getCurrent()]
+              courseSearchUrl: courseSearch[LanguageService.getCurrent()]
             });
           }
       })
