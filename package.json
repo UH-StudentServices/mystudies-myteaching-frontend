@@ -28,7 +28,7 @@
     "grunt-contrib-uglify": "^4.0.1",
     "grunt-contrib-watch": "^1.1.0",
     "grunt-filerev": "^2.3.1",
-    "grunt-html2js": "^0.6.0",
+    "grunt-html2js": "^0.8.0",
     "grunt-karma": "^3.0.2",
     "grunt-modernizr": "^2.0.1",
     "grunt-ng-annotate": "^3.0.0",
@@ -40,9 +40,9 @@
     "grunt-usemin": "^3.1.1",
     "grunt-wiredep": "^3.0.1",
     "gruntify-eslint": "^5.0.0",
-    "http-proxy": "^1.17.0",
+    "http-proxy": "^1.18.1",
     "jasmine-core": "^3.4.0",
-    "jsonlint-cli": "^1.0.1",
+    "jsonlint": "^1.6.3",
     "karma": "^4.3.0",
     "karma-chrome-launcher": "^3.1.0",
     "karma-html2js-preprocessor": "^1.1.0",
@@ -52,6 +52,7 @@
     "karma-script-launcher": "^1.0.0",
     "load-grunt-tasks": "^5.1.0",
     "node-uuid": "^1.4.3",
+    "npm-force-resolutions": "0.0.10",
     "phantomjs-prebuilt": "^2.1.14",
     "stylelint": "^10.1.0",
     "stylelint-config-standard": "^18.3.0",
@@ -71,10 +72,11 @@
     "dev:https": "cross-env IS_HTTPS=1 npm run dev",
     "dist": "grunt buildMinified --gruntfile main/Gruntfile.js && grunt buildMinified --gruntfile profile/Gruntfile.js && npm run gitinfo",
     "lint": "concurrently 'npm run lint:js' 'npm run lint:json' 'npm run lint:scss'",
-    "lint:json": "jsonlint-cli main/**/*.json profile/**/*.json common/**/*.json",
+    "lint:json": "jsonlint -q main/src/i18n/*.json profile/src/i18n/*.json",
     "lint:scss": "stylelint '**/*.scss'",
     "lint:js": "eslint 'common/' 'main/' 'profile/'",
     "lintfix": "eslint 'common/' 'main/' 'profile/' --fix",
+    "preinstall": "npx npm-force-resolutions",
     "postinstall": "npm run bower:install",
     "predist": "npm rebuild node-sass",
     "prepush": "npm test",
@@ -87,5 +89,8 @@
   "dependencies": {
     "git-rev-sync": "^1.12.0",
     "husky": "^0.14.3"
+  },
+  "resolutions": {
+    "lodash": "4.17.21"
   }
 }
