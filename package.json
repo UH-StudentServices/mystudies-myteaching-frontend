@@ -52,7 +52,6 @@
     "karma-script-launcher": "^1.0.0",
     "load-grunt-tasks": "^5.1.0",
     "node-uuid": "^1.4.3",
-    "npm-force-resolutions": "0.0.10",
     "phantomjs-prebuilt": "^2.1.14",
     "stylelint": "^10.1.0",
     "stylelint-config-standard": "^18.3.0",
@@ -76,7 +75,6 @@
     "lint:scss": "stylelint '**/*.scss'",
     "lint:js": "eslint 'common/' 'main/' 'profile/'",
     "lintfix": "eslint 'common/' 'main/' 'profile/' --fix",
-    "preinstall": "npx npm-force-resolutions",
     "postinstall": "npm run bower:install",
     "predist": "npm rebuild node-sass",
     "prepush": "npm test",
@@ -89,8 +87,5 @@
   "dependencies": {
     "git-rev-sync": "^1.12.0",
     "husky": "^0.14.3"
-  },
-  "resolutions": {
-    "lodash": "4.17.21"
   }
 }
