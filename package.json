@@ -52,7 +52,6 @@
     "karma-script-launcher": "^1.0.0",
     "load-grunt-tasks": "^5.1.0",
     "node-uuid": "^1.4.3",
-    "npm-force-resolutions": "0.0.10",
     "phantomjs-prebuilt": "^2.1.14",
     "stylelint": "^10.1.0",
     "stylelint-config-standard": "^18.3.0",
