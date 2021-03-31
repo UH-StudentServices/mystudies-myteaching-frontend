@@ -72,7 +72,7 @@
     "dev:https": "cross-env IS_HTTPS=1 npm run dev",
     "dist": "grunt buildMinified --gruntfile main/Gruntfile.js && grunt buildMinified --gruntfile profile/Gruntfile.js && npm run gitinfo",
     "lint": "concurrently 'npm run lint:js' 'npm run lint:json' 'npm run lint:scss'",
-    "lint:json": "jsonlint -q main/src/i18n/*.json profile/src/i18n/*.json",
+    "lint:json": "jsonlint -q main/test/testdata/enrollments.json main/src/i18n/*.json main/src/assets/*.json profile/src/i18n/*.json common/test/e2e/*.json",
     "lint:scss": "stylelint '**/*.scss'",
     "lint:js": "eslint 'common/' 'main/' 'profile/'",
     "lintfix": "eslint 'common/' 'main/' 'profile/' --fix",
