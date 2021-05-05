@@ -227,7 +227,8 @@
   },
   "globalMessages": {
     "demoEnvNoticeMyStudies": "Notice! This is a demo environment and the information is not correct. For the correct information go to <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>",
-    "demoEnvNoticeMyTeaching": "Notice! This is a demo environment and the information is not correct. For the correct information go to <a href='http://teacher.helsinki.fi'>http://teacher.helsinki.fi</a>"
+    "demoEnvNoticeMyTeaching": "Notice! This is a demo environment and the information is not correct. For the correct information go to <a href='http://teacher.helsinki.fi'>http://teacher.helsinki.fi</a>",
+    "profileSunsetting": "The Profile and the University Portfolio pages will be discontinued starting from 31st October, 2021. Check <a href='https://wiki.helsinki.fi/display/OPJYI/Profiili+ja+Yliopistoportfolio+-+infosivu'>Wiki</a> for more information."
   },
   "personalInformation": {
     "title": "Personal information"
