@@ -227,7 +227,8 @@
   },
   "globalMessages": {
     "demoEnvNoticeMyStudies": "Huomio! Tämä on demoympäristö, jossa tiedot eivät ole oikeita. Oikeat tiedot ovat osoitteessa <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>",
-    "demoEnvNoticeMyTeaching": "Huomio! Tämä on demoympäristö, jossa tiedot eivät ole oikeita. Oikeat tiedot ovat osoitteessa <a href='http://teacher.helsinki.fi'>http://teacher.helsinki.fi</a>"
+    "demoEnvNoticeMyTeaching": "Huomio! Tämä on demoympäristö, jossa tiedot eivät ole oikeita. Oikeat tiedot ovat osoitteessa <a href='http://teacher.helsinki.fi'>http://teacher.helsinki.fi</a>",
+    "profileSunsetting": "Profiili sekä Yliopistoportfolio -sivut poistuvat käytöstä 31.10.2021. Katso lisätietoja <a href='https://wiki.helsinki.fi/display/OPJYI/Profiili+ja+Yliopistoportfolio+-+infosivu'>Wikistä</a>."
   },
   "personalInformation": {
     "title": "Henkilötiedot"
