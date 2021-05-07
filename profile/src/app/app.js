@@ -164,12 +164,8 @@ angular.module('opintoniProfileApp', [
             userpath = profilePath[1];
             $state.go('profile', { lang: lang, userpath: userpath }, { location: 'replace' });
           } else {
-            ProfileService.createProfile(role, currentLang).then(function (response) {
-              lang = response.lang;
-              userpath = response.url.split('/').pop();
-
-              $state.go('profile', { lang: lang, userpath: userpath }, { location: 'replace' });
-            });
+            // User does not have existing profile(s), redirect to info page
+            window.location.href = 'https://wiki.helsinki.fi/display/OPJYI/Profiili+ja+Yliopistoportfolio+-+infosivu';
           }
         }
       }
