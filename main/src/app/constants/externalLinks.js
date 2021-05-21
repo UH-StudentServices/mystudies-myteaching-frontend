@@ -34,9 +34,9 @@ angular.module('constants.externalLinks', [])
         key: 'primaryLinks.sisu',
         domain: ['opetukseni'],
         href: {
-          fi: 'https://sisu.helsinki.fi',
-          sv: 'https://sisu.helsinki.fi',
-          en: 'https://sisu.helsinki.fi'
+          fi: 'https://sisu.helsinki.fi/teacher',
+          sv: 'https://sisu.helsinki.fi/teacher',
+          en: 'https://sisu.helsinki.fi/teacher'
         }
       },
       {
@@ -134,9 +134,9 @@ angular.module('constants.externalLinks', [])
         key: 'primaryLinks.sisu',
         domain: ['opetukseni'],
         href: {
-          fi: 'https://sisu.helsinki.fi',
-          sv: 'https://sisu.helsinki.fi',
-          en: 'https://sisu.helsinki.fi'
+          fi: 'https://sisu.helsinki.fi/teacher',
+          sv: 'https://sisu.helsinki.fi/teacher',
+          en: 'https://sisu.helsinki.fi/teacher'
         }
       },
       {
@@ -235,9 +235,9 @@ angular.module('constants.externalLinks', [])
         key: 'primaryLinks.sisu',
         domain: ['opetukseni'],
         href: {
-          fi: 'https://sisu.helsinki.fi',
-          sv: 'https://sisu.helsinki.fi',
-          en: 'https://sisu.helsinki.fi'
+          fi: 'https://sisu.helsinki.fi/teacher',
+          sv: 'https://sisu.helsinki.fi/teacher',
+          en: 'https://sisu.helsinki.fi/teacher'
         }
       },
       {
@@ -335,9 +335,9 @@ angular.module('constants.externalLinks', [])
         key: 'primaryLinks.sisu',
         domain: ['opetukseni'],
         href: {
-          fi: 'https://sisu.helsinki.fi',
-          sv: 'https://sisu.helsinki.fi',
-          en: 'https://sisu.helsinki.fi'
+          fi: 'https://sisu.helsinki.fi/teacher',
+          sv: 'https://sisu.helsinki.fi/teacher',
+          en: 'https://sisu.helsinki.fi/teacher'
         }
       },
       {
@@ -436,9 +436,9 @@ angular.module('constants.externalLinks', [])
         key: 'primaryLinks.sisu',
         domain: ['opetukseni'],
         href: {
-          fi: 'https://sisu.helsinki.fi',
-          sv: 'https://sisu.helsinki.fi',
-          en: 'https://sisu.helsinki.fi'
+          fi: 'https://sisu.helsinki.fi/teacher',
+          sv: 'https://sisu.helsinki.fi/teacher',
+          en: 'https://sisu.helsinki.fi/teacher'
         }
       },
       {
