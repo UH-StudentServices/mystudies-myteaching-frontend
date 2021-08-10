@@ -51,6 +51,7 @@ $info-bg-color: $lightsilver;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+  z-index: 100;
 
   @include clearfix;
 }

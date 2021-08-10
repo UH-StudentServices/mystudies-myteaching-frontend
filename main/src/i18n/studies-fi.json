@@ -263,7 +263,8 @@
       "genericError": "Palvelun toiminnassa on havaittu ongelmia. Jotkut ominaisuudet saattavat olla pois käytöstä."
     },
     "demoEnvNoticeMyStudies": "Huomio! Tämä on demoympäristö, jossa tiedot eivät ole oikeita. Oikeat tiedot ovat osoitteessa <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>",
-    "demoEnvNoticeMyTeaching": "Huomio! Tämä on demoympäristö, jossa tiedot eivät ole oikeita. Oikeat tiedot ovat osoitteessa <a href='http://teacher.helsinki.fi'>http://teacher.helsinki.fi</a>"
+    "demoEnvNoticeMyTeaching": "Huomio! Tämä on demoympäristö, jossa tiedot eivät ole oikeita. Oikeat tiedot ovat osoitteessa <a href='http://teacher.helsinki.fi'>http://teacher.helsinki.fi</a>",
+    "myTeachingSunsetting": " Opetukseni-sivu poistuu käytöstä 31.10.2021. Oman opetuksen listaus löytyy nyt Flammasta opettajan <a href='https://flamma.helsinki.fi/fi/group/flamma/opettaja'>roolisivulta</a>. Flamman listaus korvaa tämän teknisesti vanhentuvan Opetukseni-sivun. Myös vastaanottoajan lisäys onnistuu Flammassa. Kokeile Flammaa jo nyt!"
   },
   "todoItems": {
     "heading": "Tehtävälista",

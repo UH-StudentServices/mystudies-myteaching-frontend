@@ -263,7 +263,8 @@
       "genericError": "Det uppstår problem med tjänsten för tillfället. Vissa funktioner fungerar inte kanske som de ska."
     },
     "demoEnvNoticeMyStudies": "Obs! Detta är en demomiljö och information är inte korrekt. För rätt information gå till <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>",
-    "demoEnvNoticeMyTeaching": "Obs! Detta är en demomiljö och information är inte korrekt. För rätt information gå till <a href='http://teacher.helsinki.fi'>http://teacher.helsinki.fi</a>"
+    "demoEnvNoticeMyTeaching": "Obs! Detta är en demomiljö och information är inte korrekt. För rätt information gå till <a href='http://teacher.helsinki.fi'>http://teacher.helsinki.fi</a>",
+    "myTeachingSunsetting": "Min undervisning -sidan tas ur bruk 31.10.2021. En lista över den egna undervisningen finns nu på Flamma på lärarens <a href='https://flamma.helsinki.fi/sv/group/flamma/opettaja'>rollsida</a>. Listan på Flamma ersätter den här gamla sidan. Du kan även lägga till mottagningstiderna på Flamma. Prova den nya sidan på Flamma redan nu!"
   },
   "todoItems": {
     "heading": "Uppgiftslista",
