@@ -22,15 +22,6 @@ angular.module('constants.externalLinks', [])
   .constant('primaryLinks', {
     local: [
       {
-        key: 'primaryLinks.oodi',
-        domain: ['opetukseni'],
-        href: {
-          fi: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=1',
-          sv: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=2',
-          en: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=6'
-        }
-      },
-      {
         key: 'primaryLinks.sisu',
         domain: ['opetukseni'],
         href: {
@@ -121,15 +112,6 @@ angular.module('constants.externalLinks', [])
       }
     ],
     dev: [
-      {
-        key: 'primaryLinks.oodi',
-        domain: ['opetukseni'],
-        href: {
-          fi: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=1',
-          sv: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=2',
-          en: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=6'
-        }
-      },
       {
         key: 'primaryLinks.sisu',
         domain: ['opetukseni'],
@@ -223,15 +205,6 @@ angular.module('constants.externalLinks', [])
     ],
     qa: [
       {
-        key: 'primaryLinks.oodi',
-        domain: ['opetukseni'],
-        href: {
-          fi: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=1',
-          sv: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=2',
-          en: 'https://weboodi.helsinki.fi/hytest/etusivu.html?Kieli=6'
-        }
-      },
-      {
         key: 'primaryLinks.sisu',
         domain: ['opetukseni'],
         href: {
@@ -322,15 +295,6 @@ angular.module('constants.externalLinks', [])
       }
     ],
     demo: [
-      {
-        key: 'primaryLinks.oodi',
-        domain: ['opetukseni'],
-        href: {
-          fi: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=1',
-          sv: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=2',
-          en: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=6'
-        }
-      },
       {
         key: 'primaryLinks.sisu',
         domain: ['opetukseni'],
@@ -423,15 +387,6 @@ angular.module('constants.externalLinks', [])
       }
     ],
     prod: [
-      {
-        key: 'primaryLinks.oodi',
-        domain: ['opetukseni'],
-        href: {
-          fi: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=1',
-          sv: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=2',
-          en: 'https://weboodi.helsinki.fi/hy/alkusivu.jsp?Kieli=6'
-        }
-      },
       {
         key: 'primaryLinks.sisu',
         domain: ['opetukseni'],
