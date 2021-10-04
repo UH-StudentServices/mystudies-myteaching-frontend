@@ -264,7 +264,7 @@
     },
     "demoEnvNoticeMyStudies": "Notice! This is a demo environment and the information is not correct. For the correct information go to <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>",
     "demoEnvNoticeMyTeaching": "Notice! This is a demo environment and the information is not correct. For the correct information go to <a href='http://teacher.helsinki.fi'>http://teacher.helsinki.fi</a>",
-    "myTeachingSunsetting": "The My Teaching page will be retired on October 31, 2021. The list of your own teaching can now be found on Flamma on the Teacher's <a href='https://flamma.helsinki.fi/en/group/flamma/opettaja'>role page</a>. The list in Flamma replaces this technically obsolete page. You can also add your consultation hours in Flamma. Try Flamma now!"
+    "myTeachingSunsetting": "The My Teaching website will be retired on October 31, 2021. You can find your own Course pages on Flamma on the <a href='https://flamma.helsinki.fi/en/group/flamma/opettaja'>teacher’s role page</a>. You can also add your office hours on Flamma. If you have not added your office hours on Flamma, do so before October 31, so that students will continue to be informed about your office hours. The My Teaching website will be closed because it is technically out of date."
   },
   "todoItems": {
     "heading": "To do list",
@@ -278,14 +278,14 @@
   },
   "officeHours": {
     "title": "Consultation hours",
-    "intro": "Choose the right degree programme(s) and publish your consultation hours. Any changes you make will be automatically updated to the published consultation hours.",
+    "intro": "Add your office hours on the <a href='https://flamma.helsinki.fi/en/group/flamma/opettaja'>teacher’s role page</a> on Flamma",
     "dialogIntro": "Choose the right degree programme(s) and publish your consultation hours. If you teach at the Language Centre, select the language(s) you teach.",
     "heading": "published consultation hours",
     "publish": "publish",
     "expiration": {
       "date": "Expiration date",
       "mandatory": "(mandatory, up to one year from this date)",
-      "info": "After the expiration date, the consultation hours will no longer be displayed in the Instructions for Students.",
+      "info": "This website is about to close. The office hours shown below will not be visible to students as of October 30, 2021. Add your office hours on the <a href='https://flamma.helsinki.fi/en/group/flamma/opettaja'>teacher’s role page</a> on Flamma.",
       "expired": "Expired. Update information."
     },
     "invalid": "Add degree programme/language",

@@ -263,7 +263,7 @@
     },
     "demoEnvNoticeMyStudies": "Huomio! Tämä on demoympäristö, jossa tiedot eivät ole oikeita. Oikeat tiedot ovat osoitteessa <a href='http://student.helsinki.fi'>http://student.helsinki.fi</a>",
     "demoEnvNoticeMyTeaching": "Huomio! Tämä on demoympäristö, jossa tiedot eivät ole oikeita. Oikeat tiedot ovat osoitteessa <a href='http://teacher.helsinki.fi'>http://teacher.helsinki.fi</a>",
-    "myTeachingSunsetting": " Opetukseni-sivu poistuu käytöstä 31.10.2021. Oman opetuksen listaus löytyy nyt Flammasta opettajan <a href='https://flamma.helsinki.fi/fi/group/flamma/opettaja'>roolisivulta</a>. Flamman listaus korvaa tämän teknisesti vanhentuvan Opetukseni-sivun. Myös vastaanottoajan lisäys onnistuu Flammassa. Kokeile Flammaa jo nyt!"
+    "myTeachingSunsetting": "Opetukseni-sivu poistuu käytöstä 31.10.2021. Löydät omat kurssisivusi Flammasta <a href='https://flamma.helsinki.fi/fi/group/flamma/opettaja'>opettajan roolisivulta</a>. Myös vastaanottoajan lisäys tehdään Flammassa. Jos et ole tallentanut vastaanottoaikaasi Flammaan, tee se ennen 31.10., jotta opiskelijat saavat tiedon vastaanottoajastasi myös jatkossa. Opetukseni-sivu suljetaan, koska se on teknisesti vanhentunut."
   },
   "todoItems": {
     "heading": "Tehtävälista",
@@ -277,14 +277,14 @@
   },
   "officeHours": {
     "title": "Vastaanottoajat",
-    "intro": "Julkaise vastaanottoaikasi valitsemassasi koulutusohjelmassa tai -ohjelmissa. Tekemäsi muutokset päivittyvät automaattisesti julkaistuihin vastaanottoaikoihin.",
-    "dialogIntro": "Julkaise vastaanottoaikasi valitsemissasi koulutusohjelmissa. Jos olet kielikeskuksen opettaja, valitse opettamasi kieli/kielet.",
+    "intro": "Tallenna vastaanottoaikasi Flammaan <a href='https://flamma.helsinki.fi/fi/group/flamma/opettaja'>opettajan roolisivulla.</a>",
+    "dialogIntro": "Julkaise vastaanottoaikasi valitsemissasi koulutusohjelmissa. Jos olet kielikeskuksen opettaja, valitse opettamasi kieli/kielet.</a>",
     "heading": "julkaistut vastaanottoajat",
     "publish": "julkaise",
     "expiration": {
       "date": "Viimeinen voimassaolopäivä",
       "mandatory": "(pakollinen, enintään vuosi tästä päivästä)",
-      "info": "Viimeisen voimassaolopäivän jälkeen vastaanottoaika ei näy Opiskelijan ohjeissa. ",
+      "info": "Tämä palvelu on pian sulkeutumassa. Nämä vastaanottoajat eivät näy opiskelijoille 30.10.2021 jälkeen. Tallenna vastaanottoaikasi Flammaan <a href='https://flamma.helsinki.fi/fi/group/flamma/opettaja'>opettajan roolisivulla.</a>",
       "expired": "Vanhentunut. Päivitä tiedot."
     },
     "invalid": "Lisää koulutusohjelma/kieli",
