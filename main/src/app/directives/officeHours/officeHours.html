@@ -20,9 +20,6 @@
   <div ng-if="!loadError && loaded && officeHoursList.length === 0" class="office-hours__box">
     <h3 class="office-hours__title" translate="officeHours.title" />
     <p translate="officeHours.intro"></p>
-    <div class="button-group office-hours__buttons">
-      <button class="button button-group__button" translate="officeHours.addNew" ng-click="addOfficeHours()"></button>
-    </div>
   </div>
 
   <div ng-if="!loadError && loaded && officeHoursList.length > 0" class="office-hours__box">
@@ -74,12 +71,6 @@
         </div>
       </li>
     </ul>
-    <div class="button-group office-hours__buttons">
-      <button class="button button-group__button"
-              translate="officeHours.addNew"
-              ng-click="addOfficeHours()">
-      </button>
-    </div>
   </div>
 
   <div ng-if="!loadError && !loaded" class="office-hours__box">

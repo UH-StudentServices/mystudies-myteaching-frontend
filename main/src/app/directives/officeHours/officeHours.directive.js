@@ -148,14 +148,6 @@ angular.module('directives.officeHours', [
             .then(officeHoursLoaded);
         };
 
-        scope.addOfficeHours = function addOfficeHours() {
-          scope.editedOfficeHoursIndex = -1;
-          scope.availableDegreeProgrammes = _.cloneDeep(scope.degreeProgrammes);
-          scope.availableLanguages = _.cloneDeep(scope.languages);
-          scope.resetOfficeHoursUnderEdit();
-          scope.openEditDialog();
-        };
-
         scope.openEditDialog = function openEditDialog() {
           scope.modalInstance = $uibModal.open({
             templateUrl: 'officeHoursEditDialog.html',
